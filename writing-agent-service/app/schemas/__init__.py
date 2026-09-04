@@ -8,6 +8,16 @@ from app.schemas.checkpoint import (
     FailureOutcome,
     ResumePoint,
 )
+from app.schemas.hot_news import (
+    AnalysisReason,
+    HotNewsAnalysisInput,
+    HotNewsAnalysisReport,
+    HotNewsMetrics,
+    HotScoreComponents,
+    OperationSuggestion,
+    RelatedNewsContext,
+    RelatedNewsEvidence,
+)
 from app.schemas.research import ResearchPackage
 from app.schemas.review import ReviewInput, ReviewReport
 from app.schemas.writing import (
@@ -28,6 +38,14 @@ __all__ = [
     "CheckpointCommit",
     "FailureCommit",
     "FailureOutcome",
+    "AnalysisReason",
+    "HotNewsAnalysisInput",
+    "HotNewsAnalysisReport",
+    "HotNewsMetrics",
+    "HotScoreComponents",
+    "OperationSuggestion",
+    "RelatedNewsContext",
+    "RelatedNewsEvidence",
     "ResumePoint",
     "ResearchPackage",
     "ReviewInput",

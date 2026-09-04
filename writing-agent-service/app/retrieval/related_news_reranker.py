@@ -32,6 +32,7 @@ class RelatedNewsReranker:
         self.config = config or RerankerConfig()
 
     def rerank(
+        # 目标文章的内容/候选集，做一个精细排序
         self,
         source: NewsContent,
         candidates: list[RelatedNews],

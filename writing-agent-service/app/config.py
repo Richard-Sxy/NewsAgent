@@ -32,6 +32,7 @@ class Settings(BaseSettings):
     fastgpt_research_app_id: str
     fastgpt_writer_app_id: str
     fastgpt_reviewer_app_id: str
+    fastgpt_hot_news_app_id: str | None = None
     fastgpt_supervisor_app_id: str | None = None
 
     artifact_bucket: str

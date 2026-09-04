@@ -13,6 +13,7 @@ from app.retrieval.related_news_reranker import (
 
 @dataclass(frozen=True, slots=True)
 class EnrichedHotNews:
+    """热点新闻实体/新闻内容/相关的新闻(召回)"""
     ranking: RankedHotNews
     content: NewsContent | None
     related_news: tuple[RerankRelatedNews, ...]
@@ -43,6 +44,7 @@ class HotNewsEnrichmentService:
 
         enriched: list[EnrichedHotNews] = []
         for ranking in ranked:
+            # 获取排行对象的ID/从仓库里面查找内容/列出相关文章
             news_id = ranking.current.news_id
             content = self.content_repository.get_by_news_id(news_id)
             related: list[RerankRelatedNews] = []
@@ -58,6 +60,7 @@ class HotNewsEnrichmentService:
                         limit=candidate_limit,
                     )
                 )
+                # 候选文章的混合检索
                 hydrated_candidates = [
                     self._hydrate_related_news(candidate)
                     for candidate in candidates
