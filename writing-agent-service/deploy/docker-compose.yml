@@ -1,0 +1,169 @@
+name: news-agent
+
+x-writing-agent-env: &writing-agent-env
+  ENVIRONMENT: docker
+  DATABASE_URL: postgresql+psycopg://${WRITING_DB_USER}:${WRITING_DB_PASSWORD}@writing-postgres:5432/${WRITING_DB_NAME}
+  REDIS_URL: redis://default:${FASTGPT_REDIS_PASSWORD}@fastgpt-redis:6379/1
+  TEMPORAL_ADDRESS: temporal:7233
+  TEMPORAL_NAMESPACE: default
+  TEMPORAL_TASK_QUEUE: news-writing
+  FASTGPT_BASE_URL: http://fastgpt-app:3000
+  FASTGPT_API_KEY: ${FASTGPT_API_KEY}
+  FASTGPT_RESEARCH_APP_ID: ${FASTGPT_RESEARCH_APP_ID}
+  FASTGPT_WRITER_APP_ID: ${FASTGPT_WRITER_APP_ID}
+  FASTGPT_REVIEWER_APP_ID: ${FASTGPT_REVIEWER_APP_ID}
+  CMS_PUBLISH_URL: ${CMS_PUBLISH_URL:-}
+  CMS_PUBLISH_TOKEN: ${CMS_PUBLISH_TOKEN:-}
+  CMS_PUBLISH_TIMEOUT_SECONDS: ${CMS_PUBLISH_TIMEOUT_SECONDS:-30}
+  ARTIFACT_BUCKET: ${ARTIFACT_BUCKET}
+  ARTIFACT_ENDPOINT: http://fastgpt-minio:9000
+  ARTIFACT_REGION: us-east-1
+  ARTIFACT_PREFIX: news-writing
+  # 当前 WSL MinIO 未配置 KMS；企业环境必须改为 AES256 或 aws:kms。
+  ARTIFACT_SSE_ALGORITHM: none
+  AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY}
+  AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_KEY}
+
+x-writing-agent-service: &writing-agent-service
+  image: news-agent/writing-agent-service:dev
+  build:
+    context: ..
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  init: true
+  stop_grace_period: 30s
+  read_only: true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  environment: *writing-agent-env
+  networks:
+    - news-agent
+    - fastgpt
+
+services:
+  writing-postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${WRITING_DB_USER}
+      POSTGRES_PASSWORD: ${WRITING_DB_PASSWORD}
+      POSTGRES_DB: ${WRITING_DB_NAME}
+    volumes:
+      - writing-postgres-data:/var/lib/postgresql/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${WRITING_DB_USER} -d ${WRITING_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  temporal-postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${TEMPORAL_DB_USER}
+      POSTGRES_PASSWORD: ${TEMPORAL_DB_PASSWORD}
+    volumes:
+      - temporal-postgres-data:/var/lib/postgresql/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${TEMPORAL_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  temporal:
+    image: temporalio/auto-setup:1.27.2
+    restart: unless-stopped
+    depends_on:
+      temporal-postgres:
+        condition: service_healthy
+    environment:
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_USER: ${TEMPORAL_DB_USER}
+      POSTGRES_PWD: ${TEMPORAL_DB_PASSWORD}
+      POSTGRES_SEEDS: temporal-postgres
+    ports:
+      - "7233:7233"
+    networks: [news-agent]
+
+  temporal-ui:
+    image: temporalio/ui:2.34.0
+    restart: unless-stopped
+    depends_on: [temporal]
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      TEMPORAL_CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8233:8080"
+    networks: [news-agent]
+
+  migrate:
+    <<: *writing-agent-service
+    restart: "no"
+    depends_on:
+      writing-postgres:
+        condition: service_healthy
+    command: ["alembic", "upgrade", "head"]
+
+  api:
+    <<: *writing-agent-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "${API_CPU_LIMIT:-1.0}"
+          memory: "${API_MEMORY_LIMIT:-1G}"
+
+  temporal-worker:
+    <<: *writing-agent-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_started
+    command: ["python", "-m", "app.worker"]
+    deploy:
+      resources:
+        limits:
+          cpus: "${WORKER_CPU_LIMIT:-2.0}"
+          memory: "${WORKER_MEMORY_LIMIT:-2G}"
+
+  outbox-worker:
+    <<: *writing-agent-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    command: ["python", "-m", "app.outbox_worker"]
+    deploy:
+      resources:
+        limits:
+          cpus: "${OUTBOX_CPU_LIMIT:-0.5}"
+          memory: "${OUTBOX_MEMORY_LIMIT:-512M}"
+
+volumes:
+  writing-postgres-data:
+  temporal-postgres-data:
+
+networks:
+  news-agent:
+  fastgpt:
+    external: true
+    name: dev_fastgpt

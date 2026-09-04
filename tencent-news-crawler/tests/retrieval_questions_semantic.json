@@ -1,0 +1,902 @@
+[
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "科技",
+    "question": "月之暗面在2026年7月发布Kimi K3时，API输入和输出价格分别调整至多少？相比前代涨幅如何？",
+    "reference_answer": "输入价格涨至20元/百万tokens，输出价格涨至100元/百万tokens，均较前代涨超3倍。",
+    "expected_collection_ids": [
+      "6a86c49ad97cd32c2f5c927a"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A08YNM00"
+    ],
+    "source_title": "国产大模型掀涨价潮，“百模大战”熄火？",
+    "publish_time": "2026-08-20 15:18:04",
+    "qa_collection_id": "6a86c53cd97cd32c2f5ca15b",
+    "specificity_score": 17.6,
+    "id": "retrieval_0001"
+  },
+  {
+    "category": "retrieval",
+    "intent": "causal_reasoning",
+    "topic": "体育",
+    "question": "为什么说科杰尔查的56分50秒代表“人类半马首次进57分内”？",
+    "reference_answer": "因为科杰尔查的56分50秒快于57分钟，而此前基普利莫跑出的56分42秒因未被世界田联认证，不能作为正式纪录，所以从认证角度这是人类半马首次进入57分以内。",
+    "expected_collection_ids": [
+      "6a8ae7d3ec07ec4689e80d83"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260823A0ALR300"
+    ],
+    "source_title": "人类半马首进57分内！全马破二第2人科杰尔查，再破半马世界纪录",
+    "publish_time": "2026-08-23 20:16:54",
+    "qa_collection_id": "6a8ae7d7ec07ec4689e81134",
+    "specificity_score": 7.1,
+    "id": "retrieval_0002"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "汽车",
+    "question": "别克至境L7纯电版的CLTC纯电续航里程是多少？电池容量和超充性能如何？",
+    "reference_answer": "CLTC纯电续航里程为702公里，匹配容量80.6kWh的宁德时代磷酸铁锂电池组，支持6C超快充，10分钟可补能450公里。",
+    "expected_collection_ids": [
+      "6a858efc5b953dce7fd1cb9c"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A0A5RR00"
+    ],
+    "source_title": "别克至境L7纯电版上市：续航里程702公里 权益价16.99万起",
+    "publish_time": "2026-08-19 17:22:05",
+    "qa_collection_id": "6a85b99e5b953dce7fd20072",
+    "specificity_score": 10.7,
+    "id": "retrieval_0003"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "未分类",
+    "question": "傅利叶创始人兼CEO顾捷如何描述具身智能当前的落差？他给出的机器人“GPT时刻”标准是什么？",
+    "reference_answer": "顾捷说“会动不代表会干活”；机器人的“GPT时刻”标准是：在没有见过的空间里，机器人能够自主走到一杯没见过的水面前，稳定地拿起它，再递到人手中。",
+    "expected_collection_ids": [
+      "6a83f966f4e9a82e680c13c3"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260718A03B9V00"
+    ],
+    "source_title": "驶向AI的下一程：2026腾讯WAIC之夜成功举办",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9ba5b953dce7fd20a86",
+    "specificity_score": 10.5,
+    "id": "retrieval_0004"
+  },
+  {
+    "category": "retrieval",
+    "intent": "outcome_status",
+    "topic": "财经",
+    "question": "2026年上半年泡泡玛特旗下LABUBU所在的THE MONSTERS系列、MOLLY和星星人的收入表现如何？",
+    "reference_answer": "THE MONSTERS系列收入44.54亿元，同比下滑7.5%；MOLLY收入9.01亿元，同比下滑33.6%；星星人收入26.50亿元，同比暴增580.6%，跃居集团IP收入第二名。",
+    "expected_collection_ids": [
+      "6a899654a969c22aeba3cf69"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A09ZJO00"
+    ],
+    "source_title": "半年赚了51亿，还是不被看好？",
+    "publish_time": "2026-08-22 19:26:44",
+    "qa_collection_id": "6a899656a969c22aeba3d0e4",
+    "specificity_score": 14.7,
+    "id": "retrieval_0005"
+  },
+  {
+    "category": "retrieval",
+    "intent": "specific_fact",
+    "topic": "财经",
+    "question": "贝森特对当前通胀压力有何公开判断？美联储FOMC官员对AI带来的通胀压力持什么态度？",
+    "reference_answer": "贝森特认为，市场对通胀的担忧“并不符合基本面”，当前通胀压力主要来自能源，且属于暂时性因素；美联储FOMC官员则对AI带来的通胀压力能否广泛传导存在明显分歧，尚未形成共识。",
+    "expected_collection_ids": [
+      "6a8ae7d4ec07ec4689e80e48"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A04VMF00"
+    ],
+    "source_title": "贝森特没能稳住市场，日本有重蹈“1997年亚洲金融危机”覆辙的风险",
+    "publish_time": "2026-08-23 20:20:33",
+    "qa_collection_id": "6a8ae7d7ec07ec4689e8108a",
+    "specificity_score": 9.0,
+    "id": "retrieval_0006"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "未分类",
+    "question": "混元大模型Hy3发布后，接入了哪些产品？",
+    "reference_answer": "接入了WorkBuddy、元宝等产品。",
+    "expected_collection_ids": [
+      "6a83f969f4e9a82e680c1451"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260812A0BLWD00"
+    ],
+    "source_title": "腾讯Q2财报：模型与产品双向赋能，云收入同比增长，Hy4近期发布",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b95b953dce7fd20a2a",
+    "specificity_score": 8.7,
+    "id": "retrieval_0007"
+  },
+  {
+    "category": "retrieval",
+    "intent": "person_entity",
+    "topic": "汽车",
+    "question": "2027款海豹06的主要目标用户是谁？它被用来和哪些车型竞争？",
+    "reference_answer": "目标用户是预算在15万元以内、看重品牌售后、续航、补能效率和智能化体验的家庭用户；主要与同价位合资燃油车和紧凑级新能源车型竞争。",
+    "expected_collection_ids": [
+      "6a8591675b953dce7fd1d563"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A0369E00"
+    ],
+    "source_title": "9.99万起！2027款海豹06正式上市，“B级满配家轿”还要什么自行车？",
+    "publish_time": "2026-08-19 08:20:22",
+    "qa_collection_id": "6a85a9035b953dce7fd1e83c",
+    "specificity_score": 8.4,
+    "id": "retrieval_0008"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "体育",
+    "question": "2026世界人形机器人运动会的100米和400米大型组预赛将于何时何地举行？",
+    "reference_answer": "于2026年8月22日晚在国家速滑馆“冰丝带”举行。",
+    "expected_collection_ids": [
+      "6a899654a969c22aeba3cf1b"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A0635I00"
+    ],
+    "source_title": "视频丨打破人类百米极限！机器人户外实测跑出9秒32 全程直击",
+    "publish_time": "2026-08-22 19:43:33",
+    "qa_collection_id": "6a899656a969c22aeba3d128",
+    "specificity_score": 5.6,
+    "id": "retrieval_0009"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "科技",
+    "question": "截至2026年8月19日，小米下一代人形机器人处于什么阶段？计划在哪些地区展出？",
+    "reference_answer": "目前处于样机阶段，国内首展后会在欧洲展出。",
+    "expected_collection_ids": [
+      "6a856e755b953dce7fd1c332"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A07PFB00"
+    ],
+    "source_title": "独家 | 小米新一代人形机器人剧透！双足、1.7米左右、全身66个自由度",
+    "publish_time": "2026-08-19 14:33:08",
+    "qa_collection_id": "6a85b9b55b953dce7fd207fa",
+    "specificity_score": 7.1,
+    "id": "retrieval_0010"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "科技",
+    "question": "关于TNFα靶标，新闻提到了哪些背景？Claude Opus 4.8产出了什么结果？",
+    "reference_answer": "TNFα是更难的靶标，多个专家团队此前从头设计结合剂全部失败；Claude Opus 4.8产出了12个有效设计，部分还能跨物种同时结合人、猴、鼠的TNFα。",
+    "expected_collection_ids": [
+      "6a856e6e5b953dce7fd1c2ae"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A09GGJ00"
+    ],
+    "source_title": "Claude开始自主设计新蛋白质，效率超越人类专家数十倍！",
+    "publish_time": "2026-08-19 16:25:42",
+    "qa_collection_id": "6a85b9b65b953dce7fd20889",
+    "specificity_score": 14.7,
+    "id": "retrieval_0011"
+  },
+  {
+    "category": "retrieval",
+    "intent": "person_entity",
+    "topic": "体育",
+    "question": "在2026年印度新德里举行的羽毛球世锦赛女单1/8决赛中，中国选手韩悦击败了哪位韩国选手？比赛结果如何？",
+    "reference_answer": "韩悦以2-1击败韩国选手金佳恩，晋级八强。",
+    "expected_collection_ids": [
+      "6a86f354d97cd32c2f5cc86f"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A0AK8300"
+    ],
+    "source_title": "先灭金佳恩，再战安洗莹！韩悦2-1笑傲中韩大战，晋级世锦赛八强",
+    "publish_time": "2026-08-20 16:45:57",
+    "qa_collection_id": "6a86f357d97cd32c2f5ccc7b",
+    "specificity_score": 7.1,
+    "id": "retrieval_0012"
+  },
+  {
+    "category": "retrieval",
+    "intent": "specific_fact",
+    "topic": "汽车",
+    "question": "蔚来创始人、董事长、CEO李斌于2026年8月22日在哪个论坛上分享了对中国新能源汽车产业的看法？",
+    "reference_answer": "在2026中国首席经济学家复旦管院科创论坛上。",
+    "expected_collection_ids": [
+      "6a8ae7d5ec07ec4689e80f14"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260823A05TOP00"
+    ],
+    "source_title": "蔚来李斌：中国汽车进入“最残酷决赛阶段”，三五年尘埃落定",
+    "publish_time": "2026-08-23 16:34:54",
+    "qa_collection_id": "6a8ae7d6ec07ec4689e80fbe",
+    "specificity_score": 8.6,
+    "id": "retrieval_0013"
+  },
+  {
+    "category": "retrieval",
+    "intent": "outcome_status",
+    "topic": "未分类",
+    "question": "武磊团队官方账号在2026年8月19日发布了什么内容？",
+    "reference_answer": "发布寻人启事，寻找当晚在上海体育场身穿中国男足国家队7号球衣观赛的小球迷父子。",
+    "expected_collection_ids": [
+      "6a853d775b953dce7fd1bb8c"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A00DQ500"
+    ],
+    "source_title": "愤怒！小球迷穿武磊国足球衣遭申花球迷围攻 武磊团队声援+寻人",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b75b953dce7fd20975",
+    "specificity_score": 5.6,
+    "id": "retrieval_0014"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "财经",
+    "question": "中信证券在2026年8月19日的研报中如何评价当前白酒行业基本面？",
+    "reference_answer": "认为白酒行业基本面在底部逐渐企稳，呈现批价在控货下企稳、动销在低基数下边际修复、库存开始去化等特点。",
+    "expected_collection_ids": [
+      "6a8591645b953dce7fd1d384"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A09ET500"
+    ],
+    "source_title": "中信证券：白酒板块迎来修复，关注中秋旺季动销",
+    "publish_time": "2026-08-19 16:24:10",
+    "qa_collection_id": "6a85a9075b953dce7fd1e9bc",
+    "specificity_score": 8.1,
+    "id": "retrieval_0015"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "财经",
+    "question": "美国国会预算办公室（CBO）预测，联邦利息支出占GDP的比重今年将升至多少？到2036年预计攀升至多少？",
+    "reference_answer": "今年将升至3.3%，2036年预计攀升至4.6%。",
+    "expected_collection_ids": [
+      "6a8591615b953dce7fd1d16a"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A03A3E00"
+    ],
+    "source_title": "美国债市遭“重锤”，华尔街：这一次恐非暂时，看起来很像2007年",
+    "publish_time": "2026-08-19 08:41:13",
+    "qa_collection_id": "6a85a90a5b953dce7fd1eb24",
+    "specificity_score": 10.2,
+    "id": "retrieval_0016"
+  },
+  {
+    "category": "retrieval",
+    "intent": "causal_reasoning",
+    "topic": "未分类",
+    "question": "柯洁认为人类能够赢下围棋AI的原因是什么？",
+    "reference_answer": "柯洁认为人类找到了AI的bug，通过“强行扮弱智”的方式骗过AI，让AI不知道人在做什么，最终被“偷吃”。",
+    "expected_collection_ids": [
+      "6a853d775b953dce7fd1bbc3"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A044YC00"
+    ],
+    "source_title": "柯洁：人类能赢围棋AI了！靠的不是硬实力是强行扮弱智 装傻欺骗AI",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b75b953dce7fd208e3",
+    "specificity_score": 6.5,
+    "id": "retrieval_0017"
+  },
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "汽车",
+    "question": "2026年第一季度和第二季度小米创新业务的经营亏损分别是多少？环比变化如何？",
+    "reference_answer": "一季度亏损31亿元，二季度亏损26亿元，环比亏损收窄5亿元。",
+    "expected_collection_ids": [
+      "6a8591665b953dce7fd1d4ad"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A078KC00"
+    ],
+    "source_title": "雷军嘴里的“销量奇迹”，怎么就成了“越卖越亏”的生意？",
+    "publish_time": "2026-08-19 13:54:39",
+    "qa_collection_id": "6a85a9055b953dce7fd1e8cc",
+    "specificity_score": 7.2,
+    "id": "retrieval_0018"
+  },
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "体育",
+    "question": "哈登在骑士效力期间（即新闻中的上赛季）的常规赛和季后赛数据分别是什么？",
+    "reference_answer": "哈登常规赛场均20.5分、4.8个篮板、7.7次助攻；季后赛场均19.2分、5.1个篮板、5.5次助攻、1.7次抢断。",
+    "expected_collection_ids": [
+      "6a86c4a9d97cd32c2f5c9926"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A03Z0900"
+    ],
+    "source_title": "三方交易达成！骑士4年8800万搞定沃特森，哈登降薪换来豪华五虎",
+    "publish_time": "2026-08-20 08:48:05",
+    "qa_collection_id": "6a86c53bd97cd32c2f5c9d0b",
+    "specificity_score": 4.5,
+    "id": "retrieval_0019"
+  },
+  {
+    "category": "retrieval",
+    "intent": "causal_reasoning",
+    "topic": "科技",
+    "question": "嫦娥七号任务为什么不能在今年预定窗口实施？",
+    "reference_answer": "因为不满足发射条件，经综合研判后决定不能实施。",
+    "expected_collection_ids": [
+      "6a8ae7d2ec07ec4689e80ce7"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260823A0AFEL00"
+    ],
+    "source_title": "嫦娥七号任务不满足发射条件，不能在今年预定窗口实施",
+    "publish_time": "2026-08-23 20:04:48",
+    "qa_collection_id": "6a8ae7d7ec07ec4689e811bc",
+    "specificity_score": 3.5,
+    "id": "retrieval_0020"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "科技",
+    "question": "龙芯3A6000桌面处理器在2026年5月的累计出货量是多少？主要应用领域有哪些？",
+    "reference_answer": "龙芯3A6000桌面处理器在主流行业的累计出货量已突破100万片，主要应用于党政办公、税务和教育等领域。",
+    "expected_collection_ids": [
+      "6a86c49cd97cd32c2f5c93d6"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A049A700"
+    ],
+    "source_title": "龙芯回应处理器安全漏洞",
+    "publish_time": "2026-08-19 10:08:10",
+    "qa_collection_id": "6a86c53cd97cd32c2f5ca0a7",
+    "specificity_score": 11.1,
+    "id": "retrieval_0021"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "体育",
+    "question": "根据新闻，2026年8月18日赛后球迷质问小球迷父亲的事件，怎样做本可以避免？",
+    "reference_answer": "如果主队球迷能够恪守文明观赛的底线，普通观赛球迷能够更好理解足球中的德比文化，这起冲突本可以避免。",
+    "expected_collection_ids": [
+      "6a856e785b953dce7fd1c3d8"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A074P300"
+    ],
+    "source_title": "武磊球衣引发的不该是恐惧，热爱不应裹挟戾气",
+    "publish_time": "2026-08-19 13:48:28",
+    "qa_collection_id": "6a85b9a35b953dce7fd202dc",
+    "specificity_score": 5.6,
+    "id": "retrieval_0022"
+  },
+  {
+    "category": "retrieval",
+    "intent": "outcome_status",
+    "topic": "汽车",
+    "question": "挪威本土汽车品牌Think Global的结局是什么？",
+    "reference_answer": "它被福特收购，并在2011年彻底破产。",
+    "expected_collection_ids": [
+      "6a8591695b953dce7fd1d60c"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A07B6N00"
+    ],
+    "source_title": "挪威成为全球首个完成汽车电动化转型国家，可是有参考价值吗？",
+    "publish_time": "2026-08-19 14:01:46",
+    "qa_collection_id": "6a85a4995b953dce7fd1de1e",
+    "specificity_score": 8.0,
+    "id": "retrieval_0023"
+  },
+  {
+    "category": "retrieval",
+    "intent": "specific_fact",
+    "topic": "财经",
+    "question": "“医保助力基层医疗卫生专项行动”提出到2030年实现什么目标？",
+    "reference_answer": "设有村卫生室的行政村纳入医保定点管理的比例达98%以上。",
+    "expected_collection_ids": [
+      "6a8591605b953dce7fd1d0d2"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A09ODV00"
+    ],
+    "source_title": "医保“十五五”规划指标调整，未来五年求医问药有哪些变化",
+    "publish_time": "2026-08-19 17:15:11",
+    "qa_collection_id": "6a85b98f5b953dce7fd1fb61",
+    "specificity_score": 5.7,
+    "id": "retrieval_0024"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "未分类",
+    "question": "腾讯在WAIC 2026上如何将Agent接入产品并进行演示？",
+    "reference_answer": "腾讯以混元Hy3为模型底座，将能力接入元宝、WorkBuddy、CodeBuddy、Marvis和ima等产品。现场WorkBuddy演示从一句话生成参观攻略、搭建网站等任务，可自主拆解步骤、调用工具并完成交付；Marvis把Agent放到操作系统层级，支持自然语言操控电脑并用手机远程调度电脑执行任务。",
+    "expected_collection_ids": [
+      "6a83f967f4e9a82e680c1407"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260719A04P4Y00"
+    ],
+    "source_title": "WAIC 2026观察：大模型不再独占C位，智能体、机器人和算力走到台前",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b95b953dce7fd20a57",
+    "specificity_score": 11.7,
+    "id": "retrieval_0025"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "财经",
+    "question": "2026年8月21日，哪三个部门联合发布了《关于进一步做好财政金融协同促内需政策有关工作的通知》？",
+    "reference_answer": "财政部、中国人民银行和金融监管总局。",
+    "expected_collection_ids": [
+      "6a899654a969c22aeba3cf42"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A09Y1N00"
+    ],
+    "source_title": "额度提高、范围扩大！个人消费贷款贴息“红包”升级，多家银行答疑",
+    "publish_time": "2026-08-22 19:23:12",
+    "qa_collection_id": "6a899656a969c22aeba3d106",
+    "specificity_score": 8.1,
+    "id": "retrieval_0026"
+  },
+  {
+    "category": "retrieval",
+    "intent": "person_entity",
+    "topic": "汽车",
+    "question": "文章认为方程S的主要竞争对手是谁？文中提到方程豹钛7在2026年7月的销量表现如何？",
+    "reference_answer": "主要竞争对手是小米SU7；文章认为方程S的优势在于空间拓展能力、二代刀片电池以及闪充技术。文中还提到，方程豹钛7在2026年7月的月销量已冲到2万辆以上。",
+    "expected_collection_ids": [
+      "6a86f356d97cd32c2f5cca8b"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A0B6UH00"
+    ],
+    "source_title": "惊喜吗？方程豹方程S系列开启预订，23万-28万元",
+    "publish_time": "2026-08-20 17:18:24",
+    "qa_collection_id": "6a86f356d97cd32c2f5ccb4a",
+    "specificity_score": 6.9,
+    "id": "retrieval_0027"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "体育",
+    "question": "2026年斯诺克深圳公开赛定于什么时间举行？",
+    "reference_answer": "9月28日至10月4日。",
+    "expected_collection_ids": [
+      "6a856e7a5b953dce7fd1c448"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A07EEY00"
+    ],
+    "source_title": "斯诺克深圳公开赛奖金分布公布，总奖金达到85万英镑",
+    "publish_time": "2026-08-19 14:09:14",
+    "qa_collection_id": "6a85b9b45b953dce7fd20695",
+    "specificity_score": 3.2,
+    "id": "retrieval_0028"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "科技",
+    "question": "截至2025年9月，Neuralink表示全球已有多少名重度瘫痪患者植入其设备？",
+    "reference_answer": "全球已有12名重度瘫痪患者植入其设备。",
+    "expected_collection_ids": [
+      "6a86c49dd97cd32c2f5c946b"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A05ODR00"
+    ],
+    "source_title": "脑机接口走向患者，资本开始争夺神经数据入口",
+    "publish_time": "2026-08-20 11:02:14",
+    "qa_collection_id": "6a86c53cd97cd32c2f5ca04d",
+    "specificity_score": 7.4,
+    "id": "retrieval_0029"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "未分类",
+    "question": "腾讯Hy3在OpenRouter上的Token消耗量排名如何？其日均Token用量是preview版的几倍？",
+    "reference_answer": "自推出以来持续位列全球前三；日均Token用量是preview版的7倍。",
+    "expected_collection_ids": [
+      "6a83f3b9f4e9a82e680c12c8"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260812A0BLLJ00"
+    ],
+    "source_title": "腾讯二季度营收增长11%，马化腾：大幅增加算力采购，将模型使用转化成收入",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9ba5b953dce7fd20ab4",
+    "specificity_score": 14.7,
+    "id": "retrieval_0030"
+  },
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "未分类",
+    "question": "腾讯2026年第二季度Non-IFRS经营利润是多少？AI产品等相关投入对当季经营利润形成多大差异？",
+    "reference_answer": "腾讯二季度Non-IFRS经营利润为756.36亿元，同比增长9%；AI产品等相关投入对当季经营利润形成约105亿元的差异。",
+    "expected_collection_ids": [
+      "6a83fe0df4e9a82e680c15eb"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260815A0ATU200"
+    ],
+    "source_title": "528亿，腾讯终于开始“烧钱”了",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b85b953dce7fd209d0",
+    "specificity_score": 10.2,
+    "id": "retrieval_0031"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "科技",
+    "question": "百度AI应用层在新闻中出现了哪些代表性产品和数据？",
+    "reference_answer": "百度搭子2026年7月月活环比增速达1063.79%；库库AI办公月活突破2500万，在国家工信安全中心Office Agent工作流测评中位列第一梯队；秒哒以33.4%市场份额稳居AI原生无代码平台第一；全场景数字人平台百度一镜服务超10万客户，连续两年保持市场份额第一。",
+    "expected_collection_ids": [
+      "6a86c49dd97cd32c2f5c940f"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A089U500"
+    ],
+    "source_title": "纳入港股通在即，是时候重新定价百度了",
+    "publish_time": "2026-08-20 14:26:27",
+    "qa_collection_id": "6a86c53cd97cd32c2f5ca07a",
+    "specificity_score": 7.5,
+    "id": "retrieval_0032"
+  },
+  {
+    "category": "retrieval",
+    "intent": "person_entity",
+    "topic": "体育",
+    "question": "马竞2-0战胜马拉加的比赛中，第二个进球是谁打进的？如何打进的？",
+    "reference_answer": "替补出场的巴埃纳在第85分钟主罚前场任意球直接破门，皮球绕过人墙后打横梁入网。",
+    "expected_collection_ids": [
+      "6a86c4a1d97cd32c2f5c95db"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A02YE600"
+    ],
+    "source_title": "25岁李刚仁首秀轰世界波！马竞2-0开门红：匪帅狂喜 小蜘蛛未出场",
+    "publish_time": "2026-08-20 16:50:39",
+    "qa_collection_id": "6a86c53bd97cd32c2f5c9f6c",
+    "specificity_score": 5.9,
+    "id": "retrieval_0033"
+  },
+  {
+    "category": "retrieval",
+    "intent": "outcome_status",
+    "topic": "汽车",
+    "question": "2026年前7个月，宝马X5的销量和终端表现如何？",
+    "reference_answer": "宝马X5累计销量3.4万辆，仍稳居中大型豪华SUV前列，但相比同级国产车型销量增速放缓，终端优惠加大，品牌溢价缩水。",
+    "expected_collection_ids": [
+      "6a8ae7d5ec07ec4689e80ef2"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260823A045WD00"
+    ],
+    "source_title": "30万以上的国产车，在成都赢麻了",
+    "publish_time": "2026-08-23 18:39:36",
+    "qa_collection_id": "6a8ae7d6ec07ec4689e80fe0",
+    "specificity_score": 11.1,
+    "id": "retrieval_0034"
+  },
+  {
+    "category": "retrieval",
+    "intent": "causal_reasoning",
+    "topic": "财经",
+    "question": "2026年第二季度，农商行单季净利润同比变化如何？背后可能的原因有哪些？",
+    "reference_answer": "农商行二季度单季净利润同比高增16.6个百分点，环比改善最为明显；背后或与基数扰动、中小银行改革化险推进节奏等因素有关。",
+    "expected_collection_ids": [
+      "6a8591635b953dce7fd1d2ef"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A059HM00"
+    ],
+    "source_title": "上半年银行业净利润微降至1.2万亿，城商行以7.4%增速领跑",
+    "publish_time": "2026-08-19 11:18:03",
+    "qa_collection_id": "6a85a9085b953dce7fd1ea16",
+    "specificity_score": 8.7,
+    "id": "retrieval_0035"
+  },
+  {
+    "category": "retrieval",
+    "intent": "specific_fact",
+    "topic": "体育",
+    "question": "中国U18男篮本次参赛名单中，哪6人拥有今年在土耳其举办的U17男篮世界杯参赛经历？",
+    "reference_answer": "赵博新、吕飞燕、张宇辰、张懿赵杰、陈昱休和张淳智。",
+    "expected_collection_ids": [
+      "6a8ae7d3ec07ec4689e80df8"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260823A056TY00"
+    ],
+    "source_title": "U18亚洲杯决赛前瞻：中国能否打破澳不败神话，时隔12年再夺冠？",
+    "publish_time": "2026-08-23 17:02:31",
+    "qa_collection_id": "6a8ae7d7ec07ec4689e810ce",
+    "specificity_score": 12.6,
+    "id": "retrieval_0036"
+  },
+  {
+    "category": "retrieval",
+    "intent": "specific_fact",
+    "topic": "科技",
+    "question": "杰夫·迪恩离开谷歌后创办的Discovery Loop是一家什么性质的公司？其目标是什么？",
+    "reference_answer": "Discovery Loop是一家公益公司，目标是自动化机器学习以及更广泛的科学和工程研究，提高不同领域的发现速度。",
+    "expected_collection_ids": [
+      "6a856e6d5b953dce7fd1c1c7"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A08S8900"
+    ],
+    "source_title": "“我喜欢小团队，注意力不会分散”，杰夫·迪恩首度回应离开谷歌",
+    "publish_time": "2026-08-19 15:45:58",
+    "qa_collection_id": "6a85b9b35b953dce7fd2060e",
+    "specificity_score": 9.5,
+    "id": "retrieval_0037"
+  },
+  {
+    "category": "retrieval",
+    "intent": "causal_reasoning",
+    "topic": "财经",
+    "question": "国泰海通2026年上半年公允价值变动损益与去年同期相比有何变化？主要原因是什么？同期科创板累计跟投金额及行业排名如何？",
+    "reference_answer": "由去年同期亏损约30.06亿元转为盈利近270亿元，主要是交易性金融资产公允价值变动；科创板累计跟投近70亿元，位居行业第一。",
+    "expected_collection_ids": [
+      "6a8591615b953dce7fd1d1af"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A09ZY000"
+    ],
+    "source_title": "国泰海通营收472亿近翻倍、净利200亿创新高，半年报自评：初步实现1+1>2效果",
+    "publish_time": "2026-08-19 17:09:10",
+    "qa_collection_id": "6a85a90a5b953dce7fd1eaf7",
+    "specificity_score": 6.2,
+    "id": "retrieval_0038"
+  },
+  {
+    "category": "retrieval",
+    "intent": "outcome_status",
+    "topic": "汽车",
+    "question": "2026年1月CES期间追觅发布了什么？记者在地下车库看到的红色车辆是什么？",
+    "reference_answer": "俞浩发布了追觅新车Nebula NEXT 01亮相视频；红色车辆是模型车，不能开，公司定制了10辆不同颜色模型车，每辆成本约300万元。",
+    "expected_collection_ids": [
+      "6a899655a969c22aeba3cfb2"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A0ACGY00"
+    ],
+    "source_title": "办公室大片工位闲置、几十个总监集中在外求职，追觅的造车梦遇挫",
+    "publish_time": "2026-08-22 19:58:10",
+    "qa_collection_id": "6a899656a969c22aeba3d0a0",
+    "specificity_score": 8.4,
+    "id": "retrieval_0039"
+  },
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "未分类",
+    "question": "宇树科技科创板IPO注册获批，计划募资多少亿元？宇树科技2025年营收和扣非净利润分别是多少？",
+    "reference_answer": "计划募资42.02亿元；2025年营收16.99亿元，扣非净利润5.91亿元。",
+    "expected_collection_ids": [
+      "6a89490ea969c22aeba39b64"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260729A08XKX00"
+    ],
+    "source_title": "具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关",
+    "publish_time": null,
+    "qa_collection_id": "6a894c29a969c22aeba3a2ac",
+    "specificity_score": 8.7,
+    "id": "retrieval_0040"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "汽车",
+    "question": "全新长轴距GLE SUV在后排舒适性配置上有哪些具体升级？",
+    "reference_answer": "后排座垫加长加厚各20毫米，靠背支持38°电动调节，带3档加热和按摩功能。",
+    "expected_collection_ids": [
+      "6a899655a969c22aeba3d018"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A09RGB00"
+    ],
+    "source_title": "奔驰终于想通了，国产GLE把灵魂押在中国",
+    "publish_time": "2026-08-22 19:05:05",
+    "qa_collection_id": "6a899656a969c22aeba3d03a",
+    "specificity_score": 11.0,
+    "id": "retrieval_0041"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "财经",
+    "question": "2026年8月19日A股市场中哪些板块跌幅靠前？",
+    "reference_answer": "半导体、算力硬件、机器人等板块跌幅靠前；AI产业链中的CPO、PCB、存储芯片、半导体等方向领跌。",
+    "expected_collection_ids": [
+      "6a8591605b953dce7fd1d122"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A09VM500"
+    ],
+    "source_title": "A股超5000股下跌，创业板指跌超6%，半导体、机器人板块领跌 | 大鱼财经",
+    "publish_time": "2026-08-19 16:59:06",
+    "qa_collection_id": "6a85b99d5b953dce7fd20016",
+    "specificity_score": 8.1,
+    "id": "retrieval_0042"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "科技",
+    "question": "根据原文，SpaceX首次成功回收猎鹰9号是在什么时候？截至2026年7月，单枚猎鹰9号一级的最高飞行次数是多少？",
+    "reference_answer": "SpaceX首次成功回收猎鹰9号是在2015年12月；截至2026年7月，单枚猎鹰9号一级的最高飞行次数已达36次。",
+    "expected_collection_ids": [
+      "6a856e6e5b953dce7fd1c252"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A08NNJ00"
+    ],
+    "source_title": "年亏17亿的“中国版SpaceX”，终于把火箭收回来了",
+    "publish_time": "2026-08-19 16:24:02",
+    "qa_collection_id": "6a85b9a45b953dce7fd203c0",
+    "specificity_score": 8.6,
+    "id": "retrieval_0043"
+  },
+  {
+    "category": "retrieval",
+    "intent": "person_entity",
+    "topic": "体育",
+    "question": "2024年7月27日巴黎奥运会上，中国队射击项目首金由谁在什么项目中拿下？杜丽当时担任什么角色？",
+    "reference_answer": "2024年7月27日，黄雨婷和盛李豪在10米气步枪混合团体决赛中拿下金牌，这是巴黎奥运会中国代表团首金；杜丽当时是中国射击队教练，坐在教练席上。",
+    "expected_collection_ids": [
+      "6a86c4aad97cd32c2f5c997e"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A04KVZ00"
+    ],
+    "source_title": "奥运冠军杜丽现状：44岁仍韵味十足，如今从满脸痘蜕变成颜值女神",
+    "publish_time": "2026-08-19 12:35:00",
+    "qa_collection_id": "6a86c53ad97cd32c2f5c9cdb",
+    "specificity_score": 6.6,
+    "id": "retrieval_0044"
+  },
+  {
+    "category": "retrieval",
+    "intent": "comparison",
+    "topic": "未分类",
+    "question": "2026年8月19日上市当日9:34:20，宇树科技股价和总市值分别约为多少？",
+    "reference_answer": "股价报900元/股，涨幅496.82%，总市值约3640亿元。",
+    "expected_collection_ids": [
+      "6a853d765b953dce7fd1bb25"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A04Y6O00"
+    ],
+    "source_title": "宇树上市：少数人的资本盛宴，4位90后身价过亿",
+    "publish_time": null,
+    "qa_collection_id": "6a85b9b85b953dce7fd209a3",
+    "specificity_score": 8.1,
+    "id": "retrieval_0045"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "体育",
+    "question": "涉嫌接受韩国足协性招待的日本裁判在采访中最初如何否认？最终承认了什么？",
+    "reference_answer": "最初称据他所知性招待根本不存在，并称无论去哪个国家基本不与对方足协人员直接接触，最多就是吃顿饭；最终承认很难否认当时去了按摩店。",
+    "expected_collection_ids": [
+      "6a85915d5b953dce7fd1cf73"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260819A02XVE00"
+    ],
+    "source_title": "中国足协3人均保持沉默 接受性招待的日本裁判：很难否认去过夜店",
+    "publish_time": "2026-08-19 07:17:22",
+    "qa_collection_id": "6a85b9925b953dce7fd1fc81",
+    "specificity_score": 4.5,
+    "id": "retrieval_0046"
+  },
+  {
+    "category": "retrieval",
+    "intent": "mechanism_process",
+    "topic": "科技",
+    "question": "强化学习奠基人Rich Sutton在红杉资本旗下播客《Training Data》于2026年8月18日发布的一期访谈中，如何评价合成数据？",
+    "reference_answer": "Sutton认为合成数据是一个“巨大的错误”，因为它只是扩大了数据规模，没有改变AI依赖外部数据生产者的基本方式；同时模拟环境只能保留现实的一部分，与现实的复杂程度存在差距。",
+    "expected_collection_ids": [
+      "6a8ae7d2ec07ec4689e80d5a"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A05RYQ00"
+    ],
+    "source_title": "强化学习之父Sutton最新访谈：合成数据是巨大错误，大模型只完成了四分之一的智能",
+    "publish_time": "2026-08-23 19:29:05",
+    "qa_collection_id": "6a8ae7d7ec07ec4689e81156",
+    "specificity_score": 16.1,
+    "id": "retrieval_0047"
+  },
+  {
+    "category": "retrieval",
+    "intent": "time_event",
+    "topic": "财经",
+    "question": "2026年3月至5月泡泡玛特股价走势如何？截至8月20日年内累计跌幅是多少？",
+    "reference_answer": "股价在3月至5月间从约220港元回落至最低约138港元，跌幅超过三成；截至8月20日，年内股价累计跌幅接近20%。",
+    "expected_collection_ids": [
+      "6a86f354d97cd32c2f5cc8db"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A0DI8W00"
+    ],
+    "source_title": "业绩不及预期、海外市场承压，泡泡玛特启动最高50亿元回购计划",
+    "publish_time": "2026-08-20 20:03:10",
+    "qa_collection_id": "6a86f357d97cd32c2f5ccc30",
+    "specificity_score": 8.1,
+    "id": "retrieval_0048"
+  },
+  {
+    "category": "retrieval",
+    "intent": "numeric_fact",
+    "topic": "汽车",
+    "question": "2026年8月21日，国家市场监督管理总局公告中，浙江吉利汽车有限公司召回了哪些领克汽车？召回数量是多少？",
+    "reference_answer": "召回了部分领克900、领克10 EM-P、领克07和领克08汽车，共计74037辆。",
+    "expected_collection_ids": [
+      "6a899655a969c22aeba3cfd4"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260822A05S7V00"
+    ],
+    "source_title": "领克召回7.4万辆汽车，激光雷达故障动摇车主信任",
+    "publish_time": "2026-08-22 13:49:13",
+    "qa_collection_id": "6a899656a969c22aeba3d07e",
+    "specificity_score": 8.1,
+    "id": "retrieval_0049"
+  },
+  {
+    "category": "retrieval",
+    "intent": "enumeration",
+    "topic": "汽车",
+    "question": "报道中提到A0级纯电动车对A00级市场的替代，零跑汽车董事长朱江明对此有什么看法？",
+    "reference_answer": "朱江明表示，现在的A0级车用户基本上替代了原来A00级车的用户。",
+    "expected_collection_ids": [
+      "6a86f356d97cd32c2f5ccace"
+    ],
+    "expected_urls": [
+      "https://news.qq.com/rain/a/20260820A0C72W00"
+    ],
+    "source_title": "“小车”退潮调查：“以前不够卖，现在没人看”，连电动三轮车也来抢市场",
+    "publish_time": "2026-08-20 18:18:14",
+    "qa_collection_id": "6a86f356d97cd32c2f5ccb0a",
+    "specificity_score": 10.4,
+    "id": "retrieval_0050"
+  }
+]

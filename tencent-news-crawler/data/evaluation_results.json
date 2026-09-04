@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-08-19T22:54:09.179230+08:00",
+  "summary": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3,
+    "pass_rate": 0.0
+  },
+  "items": [
+    {
+      "id": "fact_001",
+      "category": "fact",
+      "question": "挪威汽车电动化经验为什么难以直接复制到其他国家？",
+      "expected_keywords": [
+        "油气出口",
+        "水电资源",
+        "市场规模"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A07B6N00"
+      ],
+      "should_refuse": false,
+      "answer": "挪威的电动化转型建立在极为特殊的国情之上，因此难以直接复制到其他国家。该国没有本土汽车工业，无需平衡产业转型带来的就业与制造链冲击；同时经济高度依赖油气出口，更倾向于将油气资源用作出口创汇而非本土消耗，从而为交通电动化腾出了政策空间。\n\n此外，挪威的水电资源极其丰富，电力工业高度发达，水电占比一度高达97%，能够提供充足且廉价的清洁电力，这为电动汽车的大规模使用奠定了能源基础。再加上其市场规模很小，这些条件叠加在一起，使挪威案例在客观上不具备普遍参考价值。\n\n挪威的电动化转型建立在极为特殊的国情之上，因此难以直接复制到其他国家。该国没有本土汽车工业，无需平衡产业转型带来的就业与制造链冲击；同时经济高度依赖油气出口，更倾向于将油气资源用作出口创汇而非本土消耗，从而为交通电动化腾出了政策空间。\n\n此外，挪威的水电资源极其丰富，电力工业高度发达，水电占比一度高达97%，能够提供充足且廉价的清洁电力，这为电动汽车的大规模使用奠定了能源基础。再加上其市场规模很小，这些条件叠加在一起，使挪威案例在客观上不具备普遍参考价值。",
+      "error": null,
+      "passed": false,
+      "keyword_pass": true,
+      "matched_keywords": [
+        "油气出口",
+        "水电资源",
+        "市场规模"
+      ],
+      "citation_pass": false,
+      "matched_urls": [],
+      "refusal_pass": true,
+      "detected_refusal": false,
+      "length_pass": null,
+      "answer_chars": 456
+    },
+    {
+      "id": "fact_002",
+      "category": "fact",
+      "question": "成都车展出现大批品牌缺席，主要受到哪些因素影响？",
+      "expected_keywords": [
+        "参展成本",
+        "营销预算",
+        "缺乏新品",
+        "线上直播"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A08RWL00"
+      ],
+      "should_refuse": false,
+      "answer": "成都车展出现大批品牌缺席，据官方展位图，至少22个汽车品牌缺席，覆盖豪华、合资、新势力等多个阵营。\n\n这主要受到多重因素影响：参展、搭建、运营成本居高不下，车企普遍收紧营销预算；部分品牌市场表现承压、缺乏新品；同时车企传播方式发生改变，更多选择独立发布会和线上直播发布新车。\n\n成都车展出现大批品牌缺席，据官方展位图，至少22个汽车品牌缺席，覆盖豪华、合资、新势力等多个阵营。\n\n这主要受到多重因素影响：参展、搭建、运营成本居高不下，车企普遍收紧营销预算；部分品牌市场表现承压、缺乏新品；同时车企传播方式发生改变，更多选择独立发布会和线上直播发布新车。",
+      "error": null,
+      "passed": false,
+      "keyword_pass": false,
+      "matched_keywords": [
+        "营销预算",
+        "缺乏新品",
+        "线上直播"
+      ],
+      "citation_pass": false,
+      "matched_urls": [],
+      "refusal_pass": true,
+      "detected_refusal": false,
+      "length_pass": null,
+      "answer_chars": 270
+    },
+    {
+      "id": "fact_003",
+      "category": "fact",
+      "question": "钛7 DM长续航版升级后的最大充电功率和30%至80%充电表现如何？",
+      "expected_keywords": [
+        "158千瓦",
+        "缩短20%"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A071XQ00"
+      ],
+      "should_refuse": false,
+      "answer": "钛7 DM长续航版升级后的最大充电功率从73千瓦提升至158千瓦。同时，30%至80%电量的充电时间缩短了20%。\n\n钛7 DM长续航版升级后的最大充电功率从73千瓦提升至158千瓦。同时，30%至80%电量的充电时间缩短了20%。",
+      "error": null,
+      "passed": false,
+      "keyword_pass": false,
+      "matched_keywords": [
+        "158千瓦"
+      ],
+      "citation_pass": false,
+      "matched_urls": [],
+      "refusal_pass": true,
+      "detected_refusal": false,
+      "length_pass": null,
+      "answer_chars": 112
+    }
+  ]
+}

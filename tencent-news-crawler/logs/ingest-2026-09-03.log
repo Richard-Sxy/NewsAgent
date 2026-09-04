@@ -1,0 +1,484 @@
+===== start 2026-09-03T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-03",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0A77X00",
+        "title": "智谱MiniMax，疯狂卖Token",
+        "collection_id": "6a996850462e4bbfa78624aa",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0ATBK00",
+        "title": "N个第一次：AI影视持续放卫星",
+        "collection_id": "6a996851462e4bbfa78624cf",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A07IXN00",
+        "title": "AI“资本局”：当大厂“经营现金流”不够烧了",
+        "collection_id": "6a996851462e4bbfa78624f4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A091HR00",
+        "title": "Fable 5.1变身Token刺客，几分钟烧光额度！AI圈掀起「榨汁革命」",
+        "collection_id": "6a996851462e4bbfa7862543",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0AUBG00",
+        "title": "英伟达将以129亿美元收购开源AI平台Hugging Face",
+        "collection_id": "6a996851462e4bbfa786257c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A08UYJ00",
+        "title": "合规，就一定合理吗？朱婷与樊振东的“远走”困局丨体谈",
+        "collection_id": "6a996852462e4bbfa78625b3",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A09W5N00",
+        "title": "WTT常规赛：前国乒主力两项出局！男双2-3惜败不敌世界冠军组合",
+        "collection_id": "6a996852462e4bbfa78625e4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A094E900",
+        "title": "中国女篮vs美国前瞻：张子宇领衔新生代力量 上届冠亚军再度交锋",
+        "collection_id": "6a996852462e4bbfa7862674",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A09UDM00",
+        "title": "媒体人：刘翔是活祖宗不解他为何常年旅居国外 2015年后代言没分成",
+        "collection_id": "6a996852462e4bbfa78626bb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260901A05UO600",
+        "title": "国球抄起中超错题本 国乒需要U19“拔苗助长”吗？",
+        "collection_id": "6a996853462e4bbfa7862733",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0AGKZ00",
+        "title": "担心房贷展期至40年影响征信？多家银行人士：展期本身无影响，出现逾期才影响征信",
+        "collection_id": "6a996853462e4bbfa786277b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0A1XH00",
+        "title": "不靠贬值换优势！潘功胜G20会议谈人民币汇率、货币政策、经济再平衡",
+        "collection_id": "6a996853462e4bbfa78627d2",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A08ZTR00",
+        "title": "黄金多头集结！高盛喊出4900美元年终目标，央行需求是关键支撑",
+        "collection_id": "6a996853462e4bbfa7862812",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0AIW200",
+        "title": "4000点争夺战，国家队买了谁？",
+        "collection_id": "6a996854462e4bbfa7862864",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A09WIB00",
+        "title": "工信部等十部门重磅发布！设立国家中小企业发展基金二期",
+        "collection_id": "6a996854462e4bbfa78628b3",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0ACKH00",
+        "title": "太惨了，汽车企业财报亏得没法看",
+        "collection_id": "6a996854462e4bbfa7862903",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A04P5600",
+        "title": "AI大神司罗：中国智舱AI领先欧美一到两个代际，特斯拉也没赶上",
+        "collection_id": "6a996854462e4bbfa786295a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A09S9H00",
+        "title": "147页绝密文件曝光！大众要关4家工厂，重组势在必行",
+        "collection_id": "6a996855462e4bbfa78629b4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A0AHB500",
+        "title": "李想余承东力推！这项底盘黑科技，正成车圈新潮流",
+        "collection_id": "6a996855462e4bbfa7862a48",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260903A05GIU00",
+        "title": "直降19万？奥迪A6L跌成“白菜价” ，现在入手值吗？",
+        "collection_id": "6a996855462e4bbfa7862acc",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "智谱MiniMax，疯狂卖Token",
+      "url": "https://news.qq.com/rain/a/20260903A0A77X00",
+      "publish_time": "2026-09-03 19:58:28"
+    },
+    {
+      "topic": "科技",
+      "title": "N个第一次：AI影视持续放卫星",
+      "url": "https://news.qq.com/rain/a/20260903A0ATBK00",
+      "publish_time": "2026-09-03 20:02:10"
+    },
+    {
+      "topic": "科技",
+      "title": "AI“资本局”：当大厂“经营现金流”不够烧了",
+      "url": "https://news.qq.com/rain/a/20260903A07IXN00",
+      "publish_time": "2026-09-03 18:34:41"
+    },
+    {
+      "topic": "科技",
+      "title": "Fable 5.1变身Token刺客，几分钟烧光额度！AI圈掀起「榨汁革命」",
+      "url": "https://news.qq.com/rain/a/20260903A091HR00",
+      "publish_time": "2026-09-03 16:44:42"
+    },
+    {
+      "topic": "科技",
+      "title": "英伟达将以129亿美元收购开源AI平台Hugging Face",
+      "url": "https://news.qq.com/rain/a/20260903A0AUBG00",
+      "publish_time": "2026-09-03 20:06:08"
+    },
+    {
+      "topic": "体育",
+      "title": "合规，就一定合理吗？朱婷与樊振东的“远走”困局丨体谈",
+      "url": "https://news.qq.com/rain/a/20260903A08UYJ00",
+      "publish_time": "2026-09-03 16:28:48"
+    },
+    {
+      "topic": "体育",
+      "title": "WTT常规赛：前国乒主力两项出局！男双2-3惜败不敌世界冠军组合",
+      "url": "https://news.qq.com/rain/a/20260903A09W5N00",
+      "publish_time": "2026-09-03 18:05:12"
+    },
+    {
+      "topic": "体育",
+      "title": "中国女篮vs美国前瞻：张子宇领衔新生代力量 上届冠亚军再度交锋",
+      "url": "https://news.qq.com/rain/a/20260903A094E900",
+      "publish_time": "2026-09-03 17:31:21"
+    },
+    {
+      "topic": "体育",
+      "title": "媒体人：刘翔是活祖宗不解他为何常年旅居国外 2015年后代言没分成",
+      "url": "https://news.qq.com/rain/a/20260903A09UDM00",
+      "publish_time": "2026-09-03 18:00:20"
+    },
+    {
+      "topic": "体育",
+      "title": "国球抄起中超错题本 国乒需要U19“拔苗助长”吗？",
+      "url": "https://news.qq.com/rain/a/20260901A05UO600",
+      "publish_time": "2026-09-03 07:53:10"
+    },
+    {
+      "topic": "财经",
+      "title": "担心房贷展期至40年影响征信？多家银行人士回应",
+      "url": "https://news.qq.com/rain/a/20260903A0AGKZ00",
+      "publish_time": "2026-09-03 20:03:34"
+    },
+    {
+      "topic": "财经",
+      "title": "不靠贬值换优势！潘功胜G20会议谈人民币汇率、货币政策、经济再平衡",
+      "url": "https://news.qq.com/rain/a/20260903A0A1XH00",
+      "publish_time": "2026-09-03 19:46:12"
+    },
+    {
+      "topic": "财经",
+      "title": "黄金多头集结！高盛喊出4900美元年终目标，央行需求是关键支撑",
+      "url": "https://news.qq.com/rain/a/20260903A08ZTR00",
+      "publish_time": "2026-09-03 19:19:06"
+    },
+    {
+      "topic": "财经",
+      "title": "4000点争夺战，国家队买了谁？",
+      "url": "https://news.qq.com/rain/a/20260903A0AIW200",
+      "publish_time": "2026-09-03 19:18:22"
+    },
+    {
+      "topic": "财经",
+      "title": "工信部等十部门重磅发布！设立国家中小企业发展基金二期",
+      "url": "https://news.qq.com/rain/a/20260903A09WIB00",
+      "publish_time": "2026-09-03 18:06:15"
+    },
+    {
+      "topic": "汽车",
+      "title": "太惨了，汽车企业财报亏得没法看",
+      "url": "https://news.qq.com/rain/a/20260903A0ACKH00",
+      "publish_time": "2026-09-03 19:29:56"
+    },
+    {
+      "topic": "汽车",
+      "title": "AI大神司罗：中国智舱AI领先欧美一到两个代际，特斯拉也没赶上",
+      "url": "https://news.qq.com/rain/a/20260903A04P5600",
+      "publish_time": "2026-09-03 19:29:32"
+    },
+    {
+      "topic": "汽车",
+      "title": "147页绝密文件曝光！大众要关4家工厂，重组势在必行",
+      "url": "https://news.qq.com/rain/a/20260903A09S9H00",
+      "publish_time": "2026-09-03 19:16:01"
+    },
+    {
+      "topic": "汽车",
+      "title": "李想余承东力推！这项底盘黑科技，正成车圈新潮流",
+      "url": "https://news.qq.com/rain/a/20260903A0AHB500",
+      "publish_time": "2026-09-03 19:16:32"
+    },
+    {
+      "topic": "汽车",
+      "title": "直降19万？奥迪A6L跌成“白菜价” ，现在入手值吗？",
+      "url": "https://news.qq.com/rain/a/20260903A05GIU00",
+      "publish_time": "2026-09-03 11:48:27"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260831A05D4S00",
+      "title": "渤海化学2026年半年报：转让股权盘活资产，亏损收窄仍承压",
+      "status": "submitted",
+      "collection_id": "6a996855462e4bbfa7862b15"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09QC800",
+      "title": "“看过去、看现在、定未来”：评级如何为消费类ABS风险画“三维透视图”？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862b45"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A05Z5100",
+      "title": "洪田股份中报亏损放大 行业压力显现",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862b7e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09SY100",
+      "title": "【焦点复盘】沪指日线5连阳收复年线，AI应用端掀批量涨停，超节点概念午后大放异彩",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862bae"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09WV300",
+      "title": "中报首亏！智洋创新主营业务“卖一单亏一单”，拟定增布局具身智能？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862bde"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09VPJ00",
+      "title": "澜起科技扣非后净利润增速21%，如何撑起80倍市盈率？｜公司观察",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862c0e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A05E0900",
+      "title": "尖峰集团2026中报出炉 净利由盈转亏",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862c3e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09ZWA00",
+      "title": "卤味卖不动：四巨头上半年业绩分化，门店扩张退潮，下一步怎么走？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862c6e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09HGV00",
+      "title": "午后，利好突袭！“一支穿云箭”，发生了什么？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862c9e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09VVS00",
+      "title": "净利下滑12.7%！拼多多增长见顶利润滑坡",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862cce"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09TT200",
+      "title": "血制品行业半年考：盈利持续承压，创新与出海破局",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862cfe"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09SOS00",
+      "title": "账面扭亏难掩颓势！老牌鞋企奥康深陷关店潮，实控人近乎满仓质押股权？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862d2b"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09MPU00",
+      "title": "规模突破9000亿，创新高！债券ETF为何这么火？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862d58"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09WKE00",
+      "title": "营收腰斩、现金流“断崖”，百年老凤祥经历了什么？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862d85"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09TSL00",
+      "title": "老牌恒瑞求变：不愿老去的医药龙头",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862db2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09QTH00",
+      "title": "星宇股份港股IPO之路：拿就业扶持，解约应届生",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862ddf"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09ROB00",
+      "title": "“Token贷”如何让算力数据成为信用资产",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862e0c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09SL700",
+      "title": "九毛九上半年收入降13%利润反增33%，太二“单骑救主”难掩多品牌溃败",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862e39"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A09OJK00",
+      "title": "从5.5个月到24个月：霸王茶姬加盟商的回本账",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862e66"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260831A08R8T00",
+      "title": "这么一砸反而“活”了！地产板块高开低走，三大指数午后翻红，发生了什么？",
+      "status": "submitted",
+      "collection_id": "6a996856462e4bbfa7862e93"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-03",
+  "generated_at": "2026-09-03T20:30:15.118079+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 0,
+    "status_counts": {},
+    "not_submitted": 20,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 1712
+  },
+  "files": {
+    "json": "reports/daily-2026-09-03.json",
+    "markdown": "reports/daily-2026-09-03.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-03T20:30:15+08:00, exit=0 =====

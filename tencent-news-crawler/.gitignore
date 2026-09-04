@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# pytest
+.pytest_cache/
+
+# coverage
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# SQLite
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/articles/
+reports/

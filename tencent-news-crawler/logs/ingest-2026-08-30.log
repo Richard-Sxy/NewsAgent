@@ -1,0 +1,384 @@
+===== start 2026-08-30T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-08-30",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 0,
+    "skipped": 0,
+    "failed": 20,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260830A08PEC00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻内容过短。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09A1400",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09DCT00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09FGT00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A0879100",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09RLY00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09GTI00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A08BPG00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A0963V00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A089IP00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09GD300",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A06L6S00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A088VK00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A09API00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A089C200",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A05S4F00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A080Q100",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A08FSP00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A08HQ100",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260830A08HW500",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "史上最贵iPhone要来了，中国用户可能还有One More Thing",
+      "url": "https://news.qq.com/rain/a/20260830A08PEC00",
+      "publish_time": "2026-08-30 17:40:47"
+    },
+    {
+      "topic": "科技",
+      "title": "追随三星，台积电所有制程，涨价10~15%？",
+      "url": "https://news.qq.com/rain/a/20260830A09A1400",
+      "publish_time": "2026-08-30 19:07:14"
+    },
+    {
+      "topic": "科技",
+      "title": "“力小了会脱手，力大了会捏碎”",
+      "url": "https://news.qq.com/rain/a/20260830A09DCT00",
+      "publish_time": "2026-08-30 19:42:45"
+    },
+    {
+      "topic": "科技",
+      "title": "曝Meta正测试数据中心机器人，可完成插拔线缆、重启服务器等工作",
+      "url": "https://news.qq.com/rain/a/20260830A09FGT00",
+      "publish_time": "2026-08-30 19:30:25"
+    },
+    {
+      "topic": "科技",
+      "title": "3个90后创业4年，公司估值2000亿",
+      "url": "https://news.qq.com/rain/a/20260830A0879100",
+      "publish_time": "2026-08-30 16:34:04"
+    },
+    {
+      "topic": "体育",
+      "title": "亚锦赛决赛：胜者直通奥运！中国女排第三局25-23泰国 2-1领先",
+      "url": "https://news.qq.com/rain/a/20260830A09RLY00",
+      "publish_time": "2026-08-30 20:18:15"
+    },
+    {
+      "topic": "体育",
+      "title": "辽宁男篮新增注册13人：赵继伟剩3年顶薪 付豪续约2年顶薪",
+      "url": "https://news.qq.com/rain/a/20260830A09GTI00",
+      "publish_time": "2026-08-30 19:35:43"
+    },
+    {
+      "topic": "体育",
+      "title": "申花OR海港？上海五星体育以观众投票结果选择直播足协杯",
+      "url": "https://news.qq.com/rain/a/20260830A08BPG00",
+      "publish_time": "2026-08-30 16:49:20"
+    },
+    {
+      "topic": "体育",
+      "title": "女排世界杯已出9队 日本女排搭上末班车 领奖台上主力痛哭流泪",
+      "url": "https://news.qq.com/rain/a/20260830A0963V00",
+      "publish_time": "2026-08-30 18:39:25"
+    },
+    {
+      "topic": "体育",
+      "title": "中足联罚单：国安外援达万停赛6场+罚6万，英博翻译禁赛5场+罚5万",
+      "url": "https://news.qq.com/rain/a/20260830A089IP00",
+      "publish_time": "2026-08-30 16:41:11"
+    },
+    {
+      "topic": "财经",
+      "title": "头部券商、地产集团火线解读：资本市场支持房地产新政，怎么搞",
+      "url": "https://news.qq.com/rain/a/20260830A09GD300",
+      "publish_time": "2026-08-30 19:53:30"
+    },
+    {
+      "topic": "财经",
+      "title": "八月惊涛：贝森特出手干预，政策底牌悄然揭开",
+      "url": "https://news.qq.com/rain/a/20260830A06L6S00",
+      "publish_time": "2026-08-30 18:29:54"
+    },
+    {
+      "topic": "财经",
+      "title": "侵占、挪用基金资产908万，又无力偿债，这家私募把自己推向了终点",
+      "url": "https://news.qq.com/rain/a/20260830A088VK00",
+      "publish_time": "2026-08-30 16:39:05"
+    },
+    {
+      "topic": "财经",
+      "title": "与景甜风波前，孙宇晨重仓资产被欧盟、英国制裁",
+      "url": "https://news.qq.com/rain/a/20260830A09API00",
+      "publish_time": "2026-08-30 19:32:43"
+    },
+    {
+      "topic": "财经",
+      "title": "杰克逊霍尔年会传递出哪些重要信息",
+      "url": "https://news.qq.com/rain/a/20260830A089C200",
+      "publish_time": "2026-08-30 16:57:40"
+    },
+    {
+      "topic": "汽车",
+      "title": "成都车展豪华品牌终端售价调研：价格越贵的车，优惠力度越大",
+      "url": "https://news.qq.com/rain/a/20260830A05S4F00",
+      "publish_time": "2026-08-30 15:50:53"
+    },
+    {
+      "topic": "汽车",
+      "title": "奔驰回应星宇劝退应届生：严重道德和劳动失当行为",
+      "url": "https://news.qq.com/rain/a/20260830A080Q100",
+      "publish_time": "2026-08-30 16:13:20"
+    },
+    {
+      "topic": "汽车",
+      "title": "新能源重卡充电赛道分化：央国企布局干线，小散户加速出局",
+      "url": "https://news.qq.com/rain/a/20260830A08FSP00",
+      "publish_time": "2026-08-30 17:03:23"
+    },
+    {
+      "topic": "汽车",
+      "title": "速成车的代价",
+      "url": "https://news.qq.com/rain/a/20260830A08HQ100",
+      "publish_time": "2026-08-30 17:07:37"
+    },
+    {
+      "topic": "汽车",
+      "title": "自动驾驶入法后，罚单还得车主交?",
+      "url": "https://news.qq.com/rain/a/20260830A08HW500",
+      "publish_time": "2026-08-30 17:10:26"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 0,
+  "submitted": 0,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [],
+  "message": "当前没有待生成的QA新闻。"
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-08-30",
+  "generated_at": "2026-08-30T20:30:28.879863+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "failed": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 0,
+    "status_counts": {},
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 1105
+  },
+  "files": {
+    "json": "reports/daily-2026-08-30.json",
+    "markdown": "reports/daily-2026-08-30.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-08-30T20:30:28+08:00, exit=1 =====

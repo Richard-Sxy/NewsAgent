@@ -1,0 +1,918 @@
+{
+  "generated_at": "2026-08-24T19:33:25.688646+08:00",
+  "summary": {
+    "total": 5,
+    "completed": 5,
+    "errors": 0,
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "mrr": 1.0
+  },
+  "items": [
+    {
+      "category": "retrieval",
+      "intent": "comparison",
+      "topic": "科技",
+      "question": "月之暗面在2026年7月发布Kimi K3时，API输入和输出价格分别调整至多少？相比前代涨幅如何？",
+      "reference_answer": "输入价格涨至20元/百万tokens，输出价格涨至100元/百万tokens，均较前代涨超3倍。",
+      "expected_collection_ids": [
+        "6a86c49ad97cd32c2f5c927a"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260820A08YNM00"
+      ],
+      "source_title": "国产大模型掀涨价潮，“百模大战”熄火？",
+      "publish_time": "2026-08-20 15:18:04",
+      "qa_collection_id": "6a86c53cd97cd32c2f5ca15b",
+      "specificity_score": 17.6,
+      "id": "retrieval_0001",
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hits": {
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 6,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a86c49ad97cd32c2f5c927a",
+          "data_id": "6a86c49ad97cd32c2f5c92a9",
+          "source_name": "tencent-news-20260820A08YNM00.txt",
+          "chunk_index": 0,
+          "text": "# 国产大模型掀涨价潮，“百模大战”熄火？\n\n来源地址: https://news.qq.com/rain/a/20260820A08YNM00\n作者: 腾讯网\n发布时间: 2026-08-20 15:18:04\n\n21世纪经济报道\n2026-08-20 15:18 发布于 广东 21世纪经济报道官方账号\n21世纪经济报道记者 孙燕\n8月17日0点起，DeepSeek-V4 API新定价正式生效。\n此轮调整实行 分时定价 ，高峰时段输出价格升至27元/百万tokens，为此前价格的4.5倍；缓存未命中价格升至9元/百万tokens，为此前价格的3倍；缓存命中价格则大幅上调至0.30元/百万to",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6185747981071472,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 10.173640743716732,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.01639344262295082,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a86c492d97cd32c2f5c8e56",
+          "data_id": "6a86c494d97cd32c2f5c8ebf",
+          "source_name": "tencent-news-20260820A0A9DO00.txt",
+          "chunk_index": 1,
+          "text": "# OpenAI的高增长，踩刹车了\n与此同时，企业端（B端）虽在增长，但尚在爬坡，且面临多重结构性挑战。\n进入7月，企业业务收入环比增长32%，高于公司整体ARR 约20%的环比增长，可作为观察B端势头的先行指标。从此维度看，B端收入在加速。\n但值得注意的是，B端尚在爬坡中， 目前OpenAI 仍在补齐销售体系短板。 2026 年内连续调整首席营收官、设立 DeployCo 联合实体、收购 Tomoro 引入驻场工程师，销售体系处于从产品驱动向企业交付驱动的重构中。\n且B端面临的竞争压力正在加剧。\nAnthropic凭借Claude Code不碰客户数据的合规卖点，在金融、法律等高监管行业建立",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4823348820209503,
+              "index": 10
+            },
+            {
+              "type": "fullText",
+              "value": 5.847410831151834,
+              "index": 2
+            },
+            {
+              "type": "rrf",
+              "value": 0.015515314106863402,
+              "index": 2
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a86c494d97cd32c2f5c8f0e",
+          "data_id": "6a86c494d97cd32c2f5c8f40",
+          "source_name": "tencent-news-20260820A0ANDI00.txt",
+          "chunk_index": 0,
+          "text": "# 半年少赚86亿，小米还在过苦日子\n\n来源地址: https://news.qq.com/rain/a/20260820A0ANDI00\n作者: 腾讯网\n发布时间: 2026-08-20 16:50:43\n\n财天COVER\n2026-08-20 16:50 发布于 北京\n内存涨价对小米利润的打击，还没有结束。小米的手机×AIoT传统业务，第二季度收入840.26亿元，在总营收中占比77%，同比下滑11%，成为拉低小米收入的主要原因。\n具体来看，第二季度小米智能手机业务收入为421亿元，同比下滑7.47%，比今年第一季度的443亿元还要更低。财报发布后的电话会上，小米高管总结说，去年就预测到内",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4617109000682831,
+              "index": 14
+            },
+            {
+              "type": "fullText",
+              "value": 5.281155015197568,
+              "index": 16
+            },
+            {
+              "type": "rrf",
+              "value": 0.013056277056277057,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a86f355d97cd32c2f5cc9d4",
+          "data_id": "6a86f355d97cd32c2f5cca23",
+          "source_name": "tencent-news-20260820A05IYL00.txt",
+          "chunk_index": 2,
+          "text": "# 铂智3X登顶合资电车销冠，铂智7销量腰斩，丰田在华高端电车梦受阻\n作为一款紧凑型纯电SUV，铂智3X瞄准了10-12万的家用SUV油转电市场，尤其是二三线城市务实的家庭用户， 他们其中很多都是丰田或大众等传统合资油车用户，认可丰田的品质和皮实耐用的口碑， 在油价高企的今天，这部分人群想要尝试新能源车，铂智3X是最适合尝鲜的稳妥之选。\n在一家广汽丰田4S店内，一位在为孩子选车的用户告诉腾讯汽车《远光灯》，自己原本就是 汉兰达 车主，退休后车给了闺女上下班代步开，但是她嫌汉兰达太大了不好开，功能也太少，准备给她换一台铂智3X，“好开，价格也合适，家里还能装充电桩”。选车前他基本没考虑其他品牌，",
+          "scores": [
+            {
+              "type": "fullText",
+              "value": 5.778306806848404,
+              "index": 3
+            },
+            {
+              "type": "rrf",
+              "value": 0.012499999999999999,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a856e6e5b953dce7fd1c252",
+          "data_id": "6a856e6e5b953dce7fd1c284",
+          "source_name": "tencent-news-20260819A08NNJ00.txt",
+          "chunk_index": 0,
+          "text": "# 年亏17亿的“中国版SpaceX”，终于把火箭收回来了\n\n来源地址: https://news.qq.com/rain/a/20260819A08NNJ00\n作者: 腾讯网\n发布时间: 2026-08-19 15:37:21\n\n金角财经\n2026-08-19 15:37 发布于 广东 财经领域创作者\n原创首发 | 金角财经（ID: F-Jinjiao)\n作者 | 罗夏\n8月19日早晨，蓝箭航天迎来了中国商业航天历史性的一刻。\n7时35分，朱雀三号遥二运载火箭从东风商业航天创新试验区破空而起。\n约137秒后，一二级成功分离：二级火箭继续挺进，将“鸿鹄03星”送入预定轨道；\n一级火箭则调头返程",
+          "scores": [
+            {
+              "type": "fullText",
+              "value": 5.771891276041667,
+              "index": 4
+            },
+            {
+              "type": "rrf",
+              "value": 0.012307692307692308,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a858efb5b953dce7fd1cb13",
+          "data_id": "6a858efb5b953dce7fd1cb3d",
+          "source_name": "tencent-news-20260819A0AYGK00.txt",
+          "chunk_index": 1,
+          "text": "# 兆易创新上半年归母净利润大涨11倍，葛卫东夫妇持仓超百亿元\n作为第二曲线的MCU业务，表现同样可圈可点。今年上半年，该业务实现营业收入14.30亿元，同比增长49.07%，占总收入的12.36%。半年报显示，工业市场已超越消费领域成为兆易创新MCU产品的第一大收入来源。公司 车规级 MCU出货量突破1000万颗，车规级NOR Flash累计出货超过4.5亿颗。\n今年上半年，兆易创新通过“炒股”也大赚了一笔。财报显示，公司报告期内 公允价值变动收益 为22.28亿元，比2025年同期增加约22.21亿元。截至2026年上半年末，兆易创新持有翱捷科技（688220.SH）、 强一股份 （688",
+          "scores": [
+            {
+              "type": "fullText",
+              "value": 5.675316756020491,
+              "index": 5
+            },
+            {
+              "type": "rrf",
+              "value": 0.012121212121212121,
+              "index": 6
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "causal_reasoning",
+      "topic": "体育",
+      "question": "为什么说科杰尔查的56分50秒代表“人类半马首次进57分内”？",
+      "reference_answer": "因为科杰尔查的56分50秒快于57分钟，而此前基普利莫跑出的56分42秒因未被世界田联认证，不能作为正式纪录，所以从认证角度这是人类半马首次进入57分以内。",
+      "expected_collection_ids": [
+        "6a8ae7d3ec07ec4689e80d83"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260823A0ALR300"
+      ],
+      "source_title": "人类半马首进57分内！全马破二第2人科杰尔查，再破半马世界纪录",
+      "publish_time": "2026-08-23 20:16:54",
+      "qa_collection_id": "6a8ae7d7ec07ec4689e81134",
+      "specificity_score": 7.1,
+      "id": "retrieval_0002",
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hits": {
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 10,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a8ae7d3ec07ec4689e80d83",
+          "data_id": "6a8ae7e8ec07ec4689e812af",
+          "source_name": "tencent-news-20260823A0ALR300.txt",
+          "chunk_index": 1,
+          "text": "文章标题：人类半马首进57分内！全马破二第2人科杰尔查，再破半马世界纪录\n发布时间：2026-08-23 20:16:54\n新闻导语：全景体育\n\n2026-08-23 20:16 发布于 山东 体育领域创作者\n\n北京时间8月23日，2026年布宜诺斯艾利斯半程马拉松进行。此前在伦敦马拉松成为 全马破二 第2人的科杰尔查，以56分50秒的成绩完赛，创造了新的半程马拉松世界纪录。这是人类半程马拉松首次进入57分以内的时代（此前基普利莫的56分42秒未被 世界田联认证 ）。\n\n这场比赛是科杰尔查全马破二之后的首秀，从比赛开始之后，他就展现了对世界纪录的渴望，早早处于独自领跑的位置。\n\n第1个5公里，",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7126024961471558,
+              "index": 1
+            },
+            {
+              "type": "fullText",
+              "value": 8.820569199299126,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.016234796404019036,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a899654a969c22aeba3cf1b",
+          "data_id": "6a89966fa969c22aeba3d3e5",
+          "source_name": "tencent-news-20260822A0635I00.txt",
+          "chunk_index": 1,
+          "text": "文章标题：视频丨打破人类百米极限！机器人户外实测跑出9秒32 全程直击\n发布时间：2026-08-22 14:22:35\n新闻导语：央视新闻\n\n2026-08-22 14:22 发布于 北京 中央广播电视总台央视新闻官方账号\n\n2026 世界人形机器人运动会 今日开幕，5天赛程里将有来自六大洲16个国家的666支队伍的2056台机器人同台竞技。\n\n在即将开幕的第二届世界人形机器人运动会上，今年北京亦庄人形机器人半程马拉松上夺冠的“闪电”将再次登场！今晚，国家速滑馆“ 冰丝带 ”将率先开启100米和400米的大型组预赛，总台记者提前探访参赛队伍户外实测场地，一镜到底拍下冲刺瞬间——荣耀“闪电”机",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5102552771568298,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 1.5187499999999998,
+              "index": 12
+            },
+            {
+              "type": "rrf",
+              "value": 0.015003261578604044,
+              "index": 2
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a8ae7d3ec07ec4689e80daa",
+          "data_id": "6a8ae7f9ec07ec4689e813ce",
+          "source_name": "tencent-news-20260823A0ACWA00.txt",
+          "chunk_index": 1,
+          "text": "文章标题：46秒24！全国夏季游泳锦标赛：潘展乐100自轻松夺冠，5金2银收官\n发布时间：2026-08-23 19:54:07\n新闻导语：全景体育\n\n2026-08-23 19:54 发布于 山东 体育领域创作者\n\n北京时间8月23日，全国夏季游泳锦标赛（短池）继续在平度奥体中心游泳馆进行。在男子100米自由泳决赛的比赛当中， 潘展乐 以46秒24的成绩轻松夺冠，他以5金2银的成绩结束了此次全国夏季游泳锦标赛之旅。\n\n【各项纪录】\n\n男子100米自由泳（短池）世界纪录由澳大利亚选手查默斯在2021年喀山创造，成绩为44秒84。\n\n亚洲纪录和全国纪录均由潘展乐在2022年墨尔本创造，成绩为45",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4716600775718689,
+              "index": 4
+            },
+            {
+              "type": "fullText",
+              "value": 1.5534771126760565,
+              "index": 11
+            },
+            {
+              "type": "rrf",
+              "value": 0.014786324786324787,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a86f353d97cd32c2f5cc837",
+          "data_id": "6a86f353d97cd32c2f5cc855",
+          "source_name": "tencent-news-20260820A0CHXJ00.txt",
+          "chunk_index": 0,
+          "text": "# 39岁竞走奥运冠军刘虹官宣退役：5战奥运里约夺金 世锦赛3连冠\n\n来源地址: https://news.qq.com/rain/a/20260820A0CHXJ00\n作者: 腾讯网\n发布时间: 2026-08-20 18:37:15\n\n醉卧浮生\n2026-08-20 18:37 发布于 江西 体育领域创作者\n北京时间8月20日，39岁的竞走奥运冠军 刘虹 通过社媒正式宣布退役，结束她二十余年职业生涯，她曾经参加5届奥运会、8届世锦赛、六届全运会，获得过里约奥运会女子20公里竞走冠军，曾经世锦赛3连冠。\n奥运战绩（5届奥运会，集齐金银铜牌）\n2008北京奥运会：20公里竞走第4名，距奖牌一步",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.3842698037624359,
+              "index": 20
+            },
+            {
+              "type": "fullText",
+              "value": 2.7633689839572195,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.013859020310633213,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a899653a969c22aeba3cecd",
+          "data_id": "6a899698a969c22aeba3d451",
+          "source_name": "tencent-news-20260822A07JQ900.txt",
+          "chunk_index": 2,
+          "text": "文章标题：世锦赛：决胜局连丢12分溃不成军！蒋振邦/魏雅欣1-2法国王牌止步四强\n发布时间：2026-08-22 16:04:11\n新闻导语：陌上花开谈体育\n\n首局比赛开打之后，吉凯尔/德尔吕就打得很有针对性，接发球偷袭后场的策略效果明显，强势建立起了4-0的领先，好在蒋振邦/魏雅欣及时加强了后场的防御，在把比赛拖入多拍相持对抗后，只要有机会就打德尔吕的追身，迅速抹平了分差，随后双方进入拉锯战，你追我赶打到10平后，兴邦组合拿下关键分，带着1分的优势，进入技术间歇。\n\n重新回到赛场之后，两对组合依旧打得难解难分，比分也是交替领先，不过在14平之后，蒋振邦/魏雅欣突然提速，频频在网前形成双压的优",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.42882606387138367,
+              "index": 7
+            },
+            {
+              "type": "fullText",
+              "value": 1.0119742990654204,
+              "index": 34
+            },
+            {
+              "type": "rrf",
+              "value": 0.01303405572755418,
+              "index": 6
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a85915f5b953dce7fd1d01d",
+          "data_id": "6a85915f5b953dce7fd1d03b",
+          "source_name": "tencent-news-20260819A07R5900.txt",
+          "chunk_index": 0,
+          "text": "# 记者：哈贾尔手腕受伤缺席荷兰大奖赛，劳森开大牛角田开小牛\n\n来源地址: https://news.qq.com/rain/a/20260819A07R5900\n作者: 腾讯网\n发布时间: 2026-08-19 14:36:09\n\n懂球帝\n2026-08-19 14:36 发布于 北京 懂球帝官方账号\n北京时间8月19日，据记者Jacky Martens报道，红牛F1车队车手哈贾尔因手腕受伤将错过荷兰大奖赛，他的席位将由劳森暂时取代，而角田则代替劳森小红牛的席位。\n据报道，哈贾尔遭遇了手腕伤势，他将错过今年的荷兰大奖赛。去年的荷兰大奖赛，哈贾尔拿到了第3名，职业生涯首次登上领奖台。而劳森将在",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.3725457489490509,
+              "index": 26
+            },
+            {
+              "type": "fullText",
+              "value": 1.0105263157894737,
+              "index": 35
+            },
+            {
+              "type": "rrf",
+              "value": 0.011063218390804597,
+              "index": 7
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "collection_id": "6a899653a969c22aeba3ce7f",
+          "data_id": "6a899767a969c22aeba3e095",
+          "source_name": "tencent-news-20260822A097O300.txt",
+          "chunk_index": 2,
+          "text": "文章标题：越会用AI的人，学习能力退化得越快\n发布时间：2026-08-22 18:09:17\n新闻导语：极客公园\n\n这个县的作业在线上提交，系统记下每个人的用时；月考、中考、高考的成绩都进数据库——写多快、考多好，第一次成了直接测量的硬数据。谁在用 AI，则来自回收率超过 96% 的全员问卷。\n\n2022 年 9 月，用 AI 的学生几乎为零。到 2025 年 6 月，这个数字是 80% 。这条曲线有两次明显跳升，分别踩在 DeepSeek V2.5 和 R1 的发布点上。工具全是熟面孔：豆包、DeepSeek、文心一言、通义千问。\n\n采纳曲线的两次跳升，都踩在 DeepSeek 发版上｜图",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.3732430934906006,
+              "index": 25
+            },
+            {
+              "type": "fullText",
+              "value": 1.0037735849056604,
+              "index": 40
+            },
+            {
+              "type": "rrf",
+              "value": 0.010937140225650472,
+              "index": 8
+            }
+          ]
+        },
+        {
+          "rank": 8,
+          "collection_id": "6a899654a969c22aeba3cf69",
+          "data_id": "6a899768a969c22aeba3e0cc",
+          "source_name": "tencent-news-20260822A09ZJO00.txt",
+          "chunk_index": 0,
+          "text": "文章标题：半年赚了51亿，还是不被看好？\n发布时间：2026-08-22 19:26:44\n作者：腾讯网\n来源地址：https://news.qq.com/rain/a/20260822A09ZJO00\n新闻导语：中国新闻周刊",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4279898405075073,
+              "index": 8
+            },
+            {
+              "type": "rrf",
+              "value": 0.008695652173913045,
+              "index": 11
+            }
+          ]
+        },
+        {
+          "rank": 9,
+          "collection_id": "6a899652a969c22aeba3ce0a",
+          "data_id": "6a899766a969c22aeba3dfca",
+          "source_name": "tencent-news-20260822A08CIB00.txt",
+          "chunk_index": 6,
+          "text": "文章标题：今年WRC风向变了：能跳舞的机器人，不如能搬货的\n发布时间：2026-08-22 17:26:16\n新闻导语：深网\n\nWRC现场因此出现两套参数：面向观众，是自由度、速度、格斗和后空翻；到了采购和交付环节，讨论的是成功率、 CT 、连续工作时间、部署周期和回本期。两条腿、五根手指值不值钱，最后还是要落到这张表上。",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4042821526527405,
+              "index": 10
+            },
+            {
+              "type": "rrf",
+              "value": 0.008450704225352114,
+              "index": 13
+            }
+          ]
+        },
+        {
+          "rank": 10,
+          "collection_id": "6a899652a969c22aeba3ce31",
+          "data_id": "6a8a67a2ec07ec4689e7e80b",
+          "source_name": "tencent-news-20260822A0A42P00.txt",
+          "chunk_index": 0,
+          "text": "文章标题：墨奇智能黄青虬：家庭机器人不能只看本体，模型能力更关键\n发布时间：2026-08-22 19:36:27\n作者：腾讯网\n来源地址：https://news.qq.com/rain/a/20260822A0A42P00\n新闻导语：腾讯科技",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4005667567253113,
+              "index": 11
+            },
+            {
+              "type": "rrf",
+              "value": 0.008333333333333335,
+              "index": 14
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "numeric_fact",
+      "topic": "汽车",
+      "question": "别克至境L7纯电版的CLTC纯电续航里程是多少？电池容量和超充性能如何？",
+      "reference_answer": "CLTC纯电续航里程为702公里，匹配容量80.6kWh的宁德时代磷酸铁锂电池组，支持6C超快充，10分钟可补能450公里。",
+      "expected_collection_ids": [
+        "6a858efc5b953dce7fd1cb9c"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A0A5RR00"
+      ],
+      "source_title": "别克至境L7纯电版上市：续航里程702公里 权益价16.99万起",
+      "publish_time": "2026-08-19 17:22:05",
+      "qa_collection_id": "6a85b99e5b953dce7fd20072",
+      "specificity_score": 10.7,
+      "id": "retrieval_0003",
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hits": {
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 6,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a858efc5b953dce7fd1cb9c",
+          "data_id": "6a858efc5b953dce7fd1cbba",
+          "source_name": "tencent-news-20260819A0A5RR00.txt",
+          "chunk_index": 0,
+          "text": "# 别克至境L7纯电版上市：续航里程702公里 权益价16.99万起\n\n来源地址: https://news.qq.com/rain/a/20260819A0A5RR00\n作者: 腾讯网\n发布时间: 2026-08-19 17:22:05\n\n鹅看新车\n2026-08-19 17:22 发布于 北京 腾讯汽车内容出品团队官方账号\n文｜Darko\n编辑｜刘坎顺\n8月19日， 别克 至境L7纯电版正式上市，共推出3款车型， 其官方售价区间为17.99-20.99万元，上市权益价16.99-19.99万元。 别克至境L7纯电版定位为一款中大型轿车，基于800V架构打造，配备Momenta R6强化学习",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.8414660096168518,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 6.999126746506986,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.01639344262295082,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a86f355d97cd32c2f5cca4d",
+          "data_id": "6a86f356d97cd32c2f5ccab3",
+          "source_name": "tencent-news-20260820A0DHOD00.txt",
+          "chunk_index": 2,
+          "text": "# 华为系首款“方盒子”42.98万起卖！余承东抢发车顶帐篷，喊话再有几个月就能用上L3\n▲享界G9搭载电动顶 帐\n新车还可选择搭载集成式尾门厨房，提供即热式饮水机，有五档热水可选择，用户在外面洗澡也没问题，只要带上水箱，可使用花洒，同样温度多档可调。\n▲享界G9可选择搭载集成式尾门厨房\n底盘是享界G9核心技术亮点之一。\n新车首发华为 全地形途灵平台 ，全系标配集中供气式双腔空悬、双阀连续可变阻尼减振器。新车还标配±12°后轮转向，最小转弯半径为5.2米。\n▲享界G9首发华为全地形途灵平台\n在此基础上，享界G9实现了三项行业首发技术：其一，首发智能全地形系统，能主动识别地形，智能调节底盘参数。",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.49091753363609314,
+              "index": 8
+            },
+            {
+              "type": "fullText",
+              "value": 3.137861010830325,
+              "index": 2
+            },
+            {
+              "type": "rrf",
+              "value": 0.015458937198067632,
+              "index": 1
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a8bd957ec07ec4689e83ee7",
+          "data_id": "6a8bda6bec07ec4689e8418b",
+          "source_name": "tencent-news-20260821A02RYQ00.txt",
+          "chunk_index": 7,
+          "text": "文章标题：消费者不好骗了，请在车展上拿出点真东西吧\n发布时间：2026-08-21 08:35:51\n新闻导语：汽车公社\n\n就在成都车展前夕，《汽车公社》的团队 在也 讨论一个话题：在新能源转型的路上，一些合资品牌进入“3.0”时代。1.0时期是油改电车型，2.0时期是全球化车型导入，3.0时期则是完全的中国本土化车型。那么在3.0时代，这些合资品牌能够再次证明自己一次吗？\n\n在回答这个问题之前，应该还需要搞清楚另外一个问题。那就是合资品牌与自主品牌的角色互换，这个角色有三个层面的含义，一是市场占有率，二是品牌价值，三是产品力。\n\n要知道，在2014年，合资品牌汽车的市场占有率超过了70%，到",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5442977547645569,
+              "index": 3
+            },
+            {
+              "type": "fullText",
+              "value": 2.00796812749004,
+              "index": 7
+            },
+            {
+              "type": "rrf",
+              "value": 0.014981617647058824,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a8591675b953dce7fd1d4f1",
+          "data_id": "6a8591675b953dce7fd1d50f",
+          "source_name": "tencent-news-20260819A099QF00.txt",
+          "chunk_index": 0,
+          "text": "# 比亚迪旗舰轿车 大汉内饰实拍图流出：行政豪华范儿十足\n\n来源地址: https://news.qq.com/rain/a/20260819A099QF00\n作者: 腾讯网\n发布时间: 2026-08-19 16:15:15\n\n驱动之家\n2026-08-19 16:15 发布于 河南\n快科技8月19日消息， 比亚迪 全新旗舰轿车大汉即将发布，近日，网络上流出了该车的内饰实拍图。\n大汉是比亚迪王朝网首款 D级大型行政轿车 ，车身尺寸5256*1999*1510mm，轴距3130mm，主打高端商务市场。\n外观延续王朝龙颜家族语言，低趴溜背轿跑造型，配备主动开闭进气格栅、半隐藏式门把手、车顶一体式",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4625551700592041,
+              "index": 13
+            },
+            {
+              "type": "fullText",
+              "value": 2.9603706624605675,
+              "index": 4
+            },
+            {
+              "type": "rrf",
+              "value": 0.014823284823284825,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a899655a969c22aeba3d018",
+          "data_id": "6a89974ba969c22aeba3de1e",
+          "source_name": "tencent-news-20260822A09RGB00.txt",
+          "chunk_index": 2,
+          "text": "文章标题：奔驰终于想通了，国产GLE把灵魂押在中国\n发布时间：2026-08-22 19:05:05\n新闻导语：智电汽车\n\n纯电 GLC 也一样。29.99万到38.88万的预售价，刚上市的鎏金版33.98万。39.1英寸的一体式巨幕屏，搭载Momenta R7世界模型和“车位到车位”辅助驾驶。奔驰自研的电动两挡变速箱和DCU四驱断开装置，CLTC续航703公里。加上逸安启的超级快充——峰值功率320千瓦，10分钟补300公里——这套组合放在豪华品牌里，算得上能打了。\n\n我知道有人会说，这些东西新势力早就有了。是，但奔驰的用户不这么看问题。奔驰车主对一台车的期待和新势力车主不一样。他们要的是“",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6018966436386108,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 1.8901041666666667,
+              "index": 9
+            },
+            {
+              "type": "rrf",
+              "value": 0.01476190476190476,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a8ae7d5ec07ec4689e80f36",
+          "data_id": "6a8ae948ec07ec4689e8227e",
+          "source_name": "tencent-news-20260823A09SI300.txt",
+          "chunk_index": 1,
+          "text": "文章标题：新世代iX3未到急卖，交付量未明，宝马电动化背水一战\n发布时间：2026-08-23 18:50:06\n新闻导语：北京商报\n\n2026-08-23 18:50 发布于 北京 北京商报社有限公司官方账号\n\n在销量、利润双双下滑，老款纯电产品进入停产断档的关口，宝马新世代iX3开启预售，但暂无法向消费者提供展车与试驾，首批交付将于11月开启，中、低配版本则要到12月才能交付。\n\n业内人士直言，过去 宝马 并未有真正取得市场成功的纯电车型。因此，新世代iX3成为宝马电动化冲量的关键产品，这款车的成败，直接关系宝马电动化战略的推进效果。如果产品市场表现向好，则能够扭转消费者对其电动汽车的固有",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4485853612422943,
+              "index": 21
+            },
+            {
+              "type": "fullText",
+              "value": 3.026315789473684,
+              "index": 3
+            },
+            {
+              "type": "rrf",
+              "value": 0.014596036585365853,
+              "index": 6
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "mechanism_process",
+      "topic": "未分类",
+      "question": "傅利叶创始人兼CEO顾捷如何描述具身智能当前的落差？他给出的机器人“GPT时刻”标准是什么？",
+      "reference_answer": "顾捷说“会动不代表会干活”；机器人的“GPT时刻”标准是：在没有见过的空间里，机器人能够自主走到一杯没见过的水面前，稳定地拿起它，再递到人手中。",
+      "expected_collection_ids": [
+        "6a83f966f4e9a82e680c13c3"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260718A03B9V00"
+      ],
+      "source_title": "驶向AI的下一程：2026腾讯WAIC之夜成功举办",
+      "publish_time": null,
+      "qa_collection_id": "6a85b9ba5b953dce7fd20a86",
+      "specificity_score": 10.5,
+      "id": "retrieval_0004",
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hits": {
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 4,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a83f966f4e9a82e680c13c3",
+          "data_id": "6a8419eb007f580bc666c9cf",
+          "source_name": "tencent-news-20260718A03B9V00.txt",
+          "chunk_index": 1,
+          "text": "# 驶向AI的下一程：2026腾讯WAIC之夜成功举办\n李志飞分享了出门问问过去一年围绕AI编程调整组织的经历。随着个人借助AI完成任务的速度大幅提升，他很快发现，“超级个体”并不等于“超级组织”。当少数人已经能在半小时内完成过去以周计算的工作，团队仍沿用原来的排期、分工和协作方式，个人效率无法自动转化为组织效率。\n在他看来，判断一家企业是否真正AI原生，有两个直接标准。一是Agent是不是主要生产力，甚至被当作“正式员工”。二是组织内部能不能做到多人共同指挥多个Agent协作。\nAI进入公司之后，产品、设计、研发、运营等岗位的边界会重新划分，工作流也将从线性接力转向围绕原型快速迭代。与过去依",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6411930322647095,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 7.543255131964809,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.01639344262295082,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a89490ea969c22aeba39b64",
+          "data_id": "6a894a23a969c22aeba39c21",
+          "source_name": "tencent-news-20260729A08XKX00.txt",
+          "chunk_index": 4,
+          "text": "文章标题：具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关\n发布时间：2026-07-29 17:02:28\n新闻导语：深网\n\n而部分合作已从基金入股延伸至产业基地。2025年底，银河通用与重庆璧山区签约建设产业创新中心，计划推动机器人在制造、商业、医疗和教育等场景实现千台级应用，并配套研发中试、供应链适配和数据训练。企业获得测试场景和潜在订单，地方则借此集聚上下游产业。\n\n但无论产业落地还是概念包装（如VLA、世界模型），最终都要转化为可验证的经营结果。\n\n蓝驰创投合伙人曹巍表示，项目考察重点已从团队和实验室Demo，转向工程化交付、规模化落地和持续复购。单次抓取或一段完整视",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5900120735168457,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 3.722640562248996,
+              "index": 8
+            },
+            {
+              "type": "rrf",
+              "value": 0.01518288474810214,
+              "index": 2
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a899652a969c22aeba3ce31",
+          "data_id": "6a8996aca969c22aeba3d5cb",
+          "source_name": "tencent-news-20260822A0A42P00.txt",
+          "chunk_index": 1,
+          "text": "文章标题：墨奇智能黄青虬：家庭机器人不能只看本体，模型能力更关键\n发布时间：2026-08-22 19:36:27\n新闻导语：腾讯科技\n\n2026-08-22 19:36 发布于 北京 腾讯新闻科技频道官方账号\n\n作者声明：该图片由AI生成 墨奇智能联创兼CTO黄青虬。图片经由AI处理\n\n文丨周小燕\n\n编辑丨徐青阳\n\n家庭机器人什么时候才能真正走进普通人的生活？\n\n在墨奇智能联合创始人、首席技术官黄青虬看来，这件事不能急着从“家庭”开始。\n\n8月22日，在2026世界机器人大会上，黄青虬发表《以 端到端具身智能 破解 非结构化居家难题 ：让通用机器人服务亿万家庭民生》主题演讲。他提出，家庭对机",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5814311504364014,
+              "index": 6
+            },
+            {
+              "type": "fullText",
+              "value": 4.023407648744541,
+              "index": 6
+            },
+            {
+              "type": "rrf",
+              "value": 0.014925373134328358,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a86c493d97cd32c2f5c8e8e",
+          "data_id": "6a86c494d97cd32c2f5c8ee2",
+          "source_name": "tencent-news-20260820A08IFI00.txt",
+          "chunk_index": 1,
+          "text": "# 具身智能展会最热的一年，肉眼难见机器人的进化\n过去两年，行业越来越擅长证明“这件事机器人能做”。拿药盒、整理会议室、抓取异形物体、上下料、叠衣服，只要任务边界足够明确，再给模型足够的数据和工程资源，越来越多公司可以把任务做到很高的完成度。\n银河通用创始人王鹤给出了一个很有代表性的判断：今天如果有一个明确任务，并且愿意投入资源进行后训练，“几乎都能把这个任务做好”。真正的问题在于，背后仍然需要专业人员参与后训练，这笔研发投入很难立即复制到成千上万个行业。\n于是，2026年机器人行业真正的分水岭开始发生变化，关键的问题是： 这个任务做“会”以后，能不能少采数据、少派工程师，把能力复制到100家",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5410683751106262,
+              "index": 13
+            },
+            {
+              "type": "fullText",
+              "value": 5.501280574122957,
+              "index": 2
+            },
+            {
+              "type": "rrf",
+              "value": 0.014693264693264693,
+              "index": 4
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "outcome_status",
+      "topic": "财经",
+      "question": "2026年上半年泡泡玛特旗下LABUBU所在的THE MONSTERS系列、MOLLY和星星人的收入表现如何？",
+      "reference_answer": "THE MONSTERS系列收入44.54亿元，同比下滑7.5%；MOLLY收入9.01亿元，同比下滑33.6%；星星人收入26.50亿元，同比暴增580.6%，跃居集团IP收入第二名。",
+      "expected_collection_ids": [
+        "6a899654a969c22aeba3cf69"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260822A09ZJO00"
+      ],
+      "source_title": "半年赚了51亿，还是不被看好？",
+      "publish_time": "2026-08-22 19:26:44",
+      "qa_collection_id": "6a899656a969c22aeba3d0e4",
+      "specificity_score": 14.7,
+      "id": "retrieval_0005",
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hits": {
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 5,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a899654a969c22aeba3cf69",
+          "data_id": "6a899768a969c22aeba3e0da",
+          "source_name": "tencent-news-20260822A09ZJO00.txt",
+          "chunk_index": 2,
+          "text": "文章标题：半年赚了51亿，还是不被看好？\n发布时间：2026-08-22 19:26:44\n新闻导语：中国新闻周刊\n\n图/泡泡玛特2026半年报\n\n面对这些数字，泡泡玛特管理层并没有回避。“去年确实有运气，也有意想不到的流量，带来快速增长的同时，也暴露了内部非常多的管理问题。”创始人王宁在业绩会上坦言，今年大概率完不成年初定的“增长20%”目标，并将2026年定义为“内部调整的一年”。\n\n管理层表示，由于此前对爆单行情的销售预测出现偏差，导致库存积压；加之海外物流链条过长、开店工程预算超标等问题，推高了运营成本。因此，泡泡玛特今年选择主动“降速”，优先解决库存、团队建设和全球化标准对齐等运营基",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7216595411300659,
+              "index": 1
+            },
+            {
+              "type": "fullText",
+              "value": 9.476131889763778,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.0162876784769963,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a86f354d97cd32c2f5cc8db",
+          "data_id": "6a86f354d97cd32c2f5cc945",
+          "source_name": "tencent-news-20260820A0DI8W00.txt",
+          "chunk_index": 0,
+          "text": "# 业绩不及预期、海外市场承压，泡泡玛特启动最高50亿元回购计划\n\n来源地址: https://news.qq.com/rain/a/20260820A0DI8W00\n作者: 腾讯网\n发布时间: 2026-08-20 20:03:10\n\n腾讯财经\n2026-08-20 20:03 发布于 北京 腾讯财经官方账号\n文｜杨心玥\n编辑｜刘鹏\n8月20日，泡泡玛特国际集团（9992.HK）发布2026年中期业绩。\n根据财报，2026年上半年 泡泡玛特 实现营收171.7亿元，同比增长23.8%；经调整净利润51.6亿元，同比增长9.5%；归母净利润50.4亿元，同比增长10.1%。集团旗下6大IP营收",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6625197529792786,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 8.299674534906535,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.016026625704045058,
+              "index": 1
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a86c494d97cd32c2f5c8f0e",
+          "data_id": "6a86c494d97cd32c2f5c8f40",
+          "source_name": "tencent-news-20260820A0ANDI00.txt",
+          "chunk_index": 0,
+          "text": "# 半年少赚86亿，小米还在过苦日子\n\n来源地址: https://news.qq.com/rain/a/20260820A0ANDI00\n作者: 腾讯网\n发布时间: 2026-08-20 16:50:43\n\n财天COVER\n2026-08-20 16:50 发布于 北京\n内存涨价对小米利润的打击，还没有结束。小米的手机×AIoT传统业务，第二季度收入840.26亿元，在总营收中占比77%，同比下滑11%，成为拉低小米收入的主要原因。\n具体来看，第二季度小米智能手机业务收入为421亿元，同比下滑7.47%，比今年第一季度的443亿元还要更低。财报发布后的电话会上，小米高管总结说，去年就预测到内",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.42934006452560425,
+              "index": 8
+            },
+            {
+              "type": "fullText",
+              "value": 3.905015197568389,
+              "index": 13
+            },
+            {
+              "type": "rrf",
+              "value": 0.013905209557383471,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a83f3b9f4e9a82e680c12c8",
+          "data_id": "6a8419ed007f580bc666ca33",
+          "source_name": "tencent-news-20260812A0BLLJ00.txt",
+          "chunk_index": 0,
+          "text": "# 腾讯二季度营收增长11%，马化腾：大幅增加算力采购，将模型使用转化成收入\n\n来源地址: https://news.qq.com/rain/a/20260812A0BLLJ00\n作者: 腾讯网\n发布时间: 2026-08-12 18:26:28\n\n澎湃新闻\n2026-08-12 18:26 发布于 上海 澎湃新闻官方账号\n向来“稳重”的腾讯，进入激进的AI投入期。\n8月12日，腾讯控股（00700.HK）发布二季度财报，营收2047.9亿元，同比增长11%；Non-IFRS经营利润756.4亿元，同比增长9%。若剔除新AI产品（以Hy、元宝、 CodeBuddy 、 WorkBuddy 及小",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4266706705093384,
+              "index": 9
+            },
+            {
+              "type": "fullText",
+              "value": 3.26161123853211,
+              "index": 30
+            },
+            {
+              "type": "rrf",
+              "value": 0.012307692307692308,
+              "index": 6
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a8591665b953dce7fd1d4ad",
+          "data_id": "6a8591665b953dce7fd1d4d6",
+          "source_name": "tencent-news-20260819A078KC00.txt",
+          "chunk_index": 0,
+          "text": "# 雷军嘴里的“销量奇迹”，怎么就成了“越卖越亏”的生意？\n\n来源地址: https://news.qq.com/rain/a/20260819A078KC00\n作者: 腾讯网\n发布时间: 2026-08-19 13:54:39\n\n撩车办公室\n2026-08-19 13:54\n雷军说这是\"销量奇迹\"，财报说这是\"越卖越亏\"：交付涨28%、亏损扩大766%。你薅的羊毛，都是股东扛的账单。\n文｜王月半\n8月17日，雷军发微博庆祝：SU7系列累计交付突破50万台，官方说，这是\"销量奇迹\"。\n8月18日，小米交出同一辆车的财报：二季度交付涨了28.2%，创新业务经营亏损从去年的3个亿，扩大到26个亿。",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.3821943402290344,
+              "index": 50
+            },
+            {
+              "type": "fullText",
+              "value": 4.145886889460154,
+              "index": 9
+            },
+            {
+              "type": "rrf",
+              "value": 0.012175032175032173,
+              "index": 7
+            }
+          ]
+        }
+      ],
+      "error": null
+    }
+  ],
+  "config": {
+    "dataset_id": "6a82c8acf4e9a82e680be9eb",
+    "search_mode": "mixedRecall",
+    "token_limit": 5000,
+    "similarity": null,
+    "using_rerank": false,
+    "using_query_rewrite": false,
+    "query_rewrite_model": null,
+    "ks": [
+      1,
+      3,
+      5
+    ]
+  }
+}

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NewsAgent 审核台</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; }
+    body { margin: 0; background: #f4f6f8; color: #182230; }
+    main { width: min(880px,calc(100% - 32px)); margin: 40px auto; }
+    .card { background: white; border: 1px solid #dce2e8; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 4px 16px #172b4d0d; }
+    h1 { margin: 0 0 8px; font-size: 24px; } .muted { color: #667085; }
+    .form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; }
+    .config-form { grid-template-columns:1fr 1fr 1fr auto; }
+    label { display: grid; gap: 6px; font-size: 13px; color: #475467; }
+    input,textarea { padding: 10px 12px; border: 1px solid #cbd5df; border-radius: 8px; font: inherit; }
+    textarea { min-height:120px; resize:vertical; line-height:1.6; }
+    button { border: 0; border-radius: 8px; padding: 11px 16px; font-weight: 600; cursor: pointer; background: #155eef; color: white; }
+    button.secondary { background: #e8eef7; color: #344054; } button:disabled { opacity: .55; cursor: wait; }
+    .grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 18px; }
+    .metric { padding: 14px; background: #f8fafc; border-radius: 8px; } .metric strong { display:block; margin-top:5px; }
+    .bar { height: 10px; background: #e4e7ec; border-radius: 10px; overflow:hidden; margin-top: 16px; }
+    .bar span { display:block; height:100%; background:#12b76a; transition:width .25s; }
+    #actions { display:flex; gap:10px; margin-top:18px; } #message { margin-top:12px; min-height:24px; }
+    .error { color:#b42318; } .success { color:#067647; }
+    pre { white-space:pre-wrap; word-break:break-word; background:#101828; color:#eaecf0; padding:14px; border-radius:8px; max-height:240px; overflow:auto; }
+    .result { margin-top:18px; border-top:1px solid #eaecf0; padding-top:18px; }
+    .article { white-space:pre-wrap; line-height:1.8; max-height:620px; overflow:auto; padding:18px; background:#fcfcfd; border:1px solid #eaecf0; border-radius:8px; }
+    .rag-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+    .rag-grid .metric { text-align:center; }
+    @media(max-width:720px){ .form,.grid,.rag-grid{grid-template-columns:1fr} main{margin:20px auto} }
+  </style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <h1>创建新闻写作任务</h1>
+    <p class="muted">输入完整创作提示词，系统会把第一行作为选题，并将全部内容传给 Research、Writer 和 Reviewer。</p>
+    <label>创作提示词
+      <textarea id="editorialPrompt" placeholder="例如：请基于知识库资料，撰写一篇面向科技从业者的3000字新闻综述，主题是人工智能大模型推动新闻行业智能化转型。要求客观准确、每个关键事实均有来源，不使用营销化表达。"></textarea>
+    </label>
+    <div style="margin-top:12px"><button id="create">创建并开始执行</button></div>
+  </section>
+  <section class="card">
+    <h1>NewsAgent 最小审核台</h1>
+    <p class="muted">输入任务与租户 UUID。页面每 5 秒刷新，仅在审核门禁显示批准按钮。</p>
+    <div class="form config-form">
+      <label>任务 ID<input id="jobId" placeholder="Job UUID" autocomplete="off"></label>
+      <label>租户 ID<input id="tenantId" placeholder="Tenant UUID" autocomplete="off"></label>
+      <label>操作者 ID<input id="userId" placeholder="User UUID" autocomplete="off"></label>
+      <button id="load">加载任务</button>
+    </div>
+    <div id="message" aria-live="polite"></div>
+  </section>
+  <section class="card" id="jobCard" hidden>
+    <div class="grid">
+      <div class="metric">状态<strong id="status">-</strong></div>
+      <div class="metric">当前步骤<strong id="step">-</strong></div>
+      <div class="metric">整体进度<strong id="percent">0%</strong></div>
+      <div class="metric">章节<strong id="sections">0 / 0</strong></div>
+    </div>
+    <div class="bar"><span id="bar" style="width:0"></span></div>
+    <div id="actions"></div>
+    <section class="result" id="ragPanel" hidden>
+      <h2>RAG 质量指标</h2>
+      <div class="rag-grid" id="ragMetrics"></div>
+    </section>
+    <section class="result" id="resultPanel" hidden>
+      <h2 id="articleTitle">最终稿</h2>
+      <div id="resultActions"></div>
+      <article class="article" id="articleContent"></article>
+    </section>
+    <details><summary>任务原始数据</summary><pre id="raw"></pre></details>
+  </section>
+</main>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const gates = {
+    research_review: { gate: 'research', label: '通过研究并继续' },
+    outline_review: { gate: 'outline', label: '通过提纲并继续' },
+    final_review: { gate: 'final', label: '批准最终稿' }
+  };
+  let timer;
+  let currentStatus;
+
+  function values() {
+    return { jobId: $('jobId').value.trim(), tenantId: $('tenantId').value.trim() };
+  }
+  function message(text, error=false) {
+    $('message').textContent = text;
+    $('message').className = error ? 'error' : 'success';
+  }
+  async function api(path, options={}) {
+    const { tenantId } = values();
+    const response = await fetch(path, {
+      ...options,
+      headers: { 'Content-Type':'application/json', 'X-Tenant-ID':tenantId, ...(options.headers || {}) }
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.detail || `请求失败：HTTP ${response.status}`);
+    return payload;
+  }
+  function render(job) {
+    currentStatus = job.status;
+    $('jobCard').hidden = false;
+    $('status').textContent = job.status;
+    $('step').textContent = job.current_step || '-';
+    $('percent').textContent = `${job.progress_percent}%`;
+    $('sections').textContent = `${job.sections_completed} / ${job.sections_total}`;
+    $('bar').style.width = `${job.progress_percent}%`;
+    $('raw').textContent = JSON.stringify(job, null, 2);
+    $('actions').replaceChildren();
+    const gate = gates[job.status];
+    if (gate) {
+      const button = document.createElement('button');
+      button.textContent = gate.label;
+      button.onclick = () => approve(button, gate.gate);
+      $('actions').append(button);
+    } else if (job.status === 'waiting_human') {
+      const wrapper=document.createElement('div'); wrapper.style.width='100%';
+      const instruction=document.createElement('textarea');
+      instruction.id='researchInstruction';
+      instruction.placeholder='补充研究要求，例如：检索具有原文链接和发布日期的一手体育新闻来源，删除无法核验的观点。';
+      instruction.value='补充具有真实 HTTP/HTTPS 原文链接、明确发布日期的一手来源；无法核验的事实必须列为证据缺口，不得虚构。';
+      const button=document.createElement('button'); button.style.marginTop='10px';
+      button.textContent='补充研究后继续';
+      button.onclick=()=>resumeResearch(button,instruction.value);
+      wrapper.append(instruction,button); $('actions').append(wrapper);
+    } else {
+      const note = document.createElement('span');
+      note.className = 'muted';
+      note.textContent = job.status === 'final_approved' ? '终稿已批准，可以导出。' : '当前不需要人工操作。';
+      $('actions').append(note);
+    }
+    loadRagMetrics();
+    if (job.status === 'final_approved' || job.status === 'published') loadFinalArticle();
+    else $('resultPanel').hidden = true;
+  }
+  async function loadRagMetrics() {
+    const { jobId } = values();
+    try {
+      const payload = await api(`/api/v1/jobs/${encodeURIComponent(jobId)}/research-metrics`);
+      const labels = {
+        fact_count:'事实数', unique_source_count:'独立来源', numeric_fact_count:'数值事实',
+        citation_coverage_percent:'引用覆盖率', average_confidence:'平均置信度',
+        timeline_event_count:'时间线事件', conflict_count:'证据冲突',
+        evidence_gap_count:'证据缺口', angle_count:'建议角度'
+      };
+      $('ragMetrics').replaceChildren();
+      Object.entries(labels).forEach(([key,label]) => {
+        const box=document.createElement('div'); box.className='metric';
+        const value=payload.metrics[key];
+        box.textContent=label;
+        const strong=document.createElement('strong');
+        strong.textContent=key==='citation_coverage_percent' ? `${value}%` : value;
+        box.append(strong); $('ragMetrics').append(box);
+      });
+      $('ragPanel').hidden=false;
+    } catch (_) { $('ragPanel').hidden=true; }
+  }
+  async function loadFinalArticle() {
+    const { jobId } = values();
+    try {
+      const article = await api(`/api/v1/jobs/${encodeURIComponent(jobId)}/export?format=json`);
+      $('articleTitle').textContent = article.title || '最终稿';
+      $('articleContent').textContent = article.content || '';
+      $('resultActions').replaceChildren();
+      [['下载 Markdown','markdown'],['下载 JSON','json']].forEach(([label,format]) => {
+        const button=document.createElement('button'); button.className='secondary'; button.textContent=label;
+        button.onclick=()=>downloadArticle(format,button); $('resultActions').append(button);
+      });
+      $('resultPanel').hidden=false;
+    } catch (error) { message(`终稿读取失败：${error.message}`,true); }
+  }
+  async function downloadArticle(format, button) {
+    const { jobId, tenantId } = values(); button.disabled=true;
+    try {
+      const response=await fetch(`/api/v1/jobs/${encodeURIComponent(jobId)}/export?format=${format}`, {
+        headers:{'X-Tenant-ID':tenantId}
+      });
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      const blob=await response.blob(); const url=URL.createObjectURL(blob);
+      const link=document.createElement('a'); link.href=url; link.download=`news-${jobId}.${format==='markdown'?'md':'json'}`;
+      document.body.append(link); link.click(); link.remove(); URL.revokeObjectURL(url);
+      message(`${format.toUpperCase()} 已开始下载。`);
+    } catch(error) { message(`下载失败：${error.message}`,true); }
+    finally { button.disabled=false; }
+  }
+  async function load(showMessage=true) {
+    const { jobId, tenantId } = values();
+    if (!jobId || !tenantId) return message('请填写任务 ID 和租户 ID。', true);
+    try {
+      const job = await api(`/api/v1/jobs/${encodeURIComponent(jobId)}`);
+      render(job);
+      if (showMessage) message('任务已加载，页面将每 5 秒自动刷新。');
+      localStorage.setItem('newsAgentTenantId', tenantId);
+      const url = new URL(location.href); url.searchParams.set('job_id', jobId); history.replaceState({},'',url);
+      clearInterval(timer); timer = setInterval(() => load(false), 5000);
+    } catch (error) { message(error.message, true); }
+  }
+  async function createJob() {
+    const prompt=$('editorialPrompt').value.trim();
+    const tenantId=$('tenantId').value.trim(); const userId=$('userId').value.trim();
+    if(!prompt) return message('请先输入新闻创作提示词。',true);
+    if(!tenantId || !userId) return message('请填写租户 ID 和操作者 ID。',true);
+    const button=$('create'); button.disabled=true;
+    const firstLine=prompt.split(/\r?\n/).find(line=>line.trim()) || prompt;
+    const topic=firstLine.replace(/^请(?:基于[^，。]*[，。])?/, '').slice(0,2000);
+    const token=(globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`).replace(/[^A-Za-z0-9_-]/g,'-');
+    try {
+      const job=await api('/api/v1/jobs', {
+        method:'POST', headers:{'X-User-ID':userId},
+        body:JSON.stringify({
+          topic,
+          idempotency_key:`review-console-${token}`,
+          requirements:{ editorial_prompt:prompt, source:'review_console' }
+        })
+      });
+      $('jobId').value=job.id;
+      localStorage.setItem('newsAgentUserId',userId);
+      message(`任务已创建：${job.id}`);
+      await load(false);
+    } catch(error) { message(`创建失败：${error.message}`,true); }
+    finally { button.disabled=false; }
+  }
+  async function approve(button, gate) {
+    if (!confirm(`确认执行“${button.textContent}”？`)) return;
+    button.disabled = true;
+    try {
+      const { jobId } = values();
+      await api(`/api/v1/jobs/${encodeURIComponent(jobId)}/decisions`, {
+        method:'POST', body:JSON.stringify({ gate, action:'approve' })
+      });
+      message('审核已通过，工作流正在继续。');
+      setTimeout(() => load(false), 800);
+    } catch (error) { message(error.message, true); button.disabled = false; }
+  }
+  async function resumeResearch(button, instruction) {
+    if(!instruction.trim()) return message('请填写补充研究要求。',true);
+    if(!confirm('确认从现有 checkpoint 补充研究并重新生成后续稿件？')) return;
+    button.disabled=true;
+    try {
+      const {jobId}=values();
+      const token=`research-${Date.now()}`;
+      await api(`/api/v1/jobs/${encodeURIComponent(jobId)}/resume`, {
+        method:'POST',
+        body:JSON.stringify({
+          resume_token:token,
+          recovery_action:'research',
+          instruction:instruction.trim()
+        })
+      });
+      message('补充研究 Workflow 已启动，将复用旧 checkpoint 并生成研究包 v2。');
+      setTimeout(()=>load(false),1000);
+    } catch(error) { message(`恢复失败：${error.message}`,true); button.disabled=false; }
+  }
+  $('load').onclick = () => load(true);
+  $('create').onclick = createJob;
+  const query = new URLSearchParams(location.search);
+  $('jobId').value = query.get('job_id') || '';
+  $('tenantId').value = query.get('tenant_id') || localStorage.getItem('newsAgentTenantId') || '';
+  $('userId').value = localStorage.getItem('newsAgentUserId') || '22222222-2222-4222-8222-222222222222';
+  if ($('jobId').value && $('tenantId').value) load(true);
+</script>
+</body>
+</html>

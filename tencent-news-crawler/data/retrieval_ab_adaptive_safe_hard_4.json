@@ -1,0 +1,694 @@
+{
+  "generated_at": "2026-08-24T20:05:14.619274+08:00",
+  "summary": {
+    "total": 4,
+    "completed": 4,
+    "errors": 0,
+    "recall_at_1": 0.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "mrr": 0.4167
+  },
+  "items": [
+    {
+      "category": "retrieval",
+      "intent": "comparison",
+      "topic": "汽车",
+      "question": "2026年第一季度和第二季度小米创新业务的经营亏损分别是多少？环比变化如何？",
+      "reference_answer": "一季度亏损31亿元，二季度亏损26亿元，环比亏损收窄5亿元。",
+      "expected_collection_ids": [
+        "6a8591665b953dce7fd1d4ad"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A078KC00"
+      ],
+      "source_title": "雷军嘴里的“销量奇迹”，怎么就成了“越卖越亏”的生意？",
+      "publish_time": "2026-08-19 13:54:39",
+      "qa_collection_id": "6a85a9055b953dce7fd1e8cc",
+      "specificity_score": 7.2,
+      "id": "retrieval_0018",
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hits": {
+        "recall_at_1": false,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 6,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a86c494d97cd32c2f5c8f0e",
+          "data_id": "6a86c494d97cd32c2f5c8f3c",
+          "source_name": "tencent-news-20260820A0ANDI00.txt",
+          "chunk_index": 1,
+          "text": "# 半年少赚86亿，小米还在过苦日子\n在小米的财报中，汽车业务无疑是最受投资者瞩目，也是最“烧钱”的板块。\n财报显示，第二季度智能电动汽车及AI等创新业务分部收入249亿元，同比增长17.1%，占营收比重为22.9%。其中，智能电动汽车贡献239亿元收入，其余10亿元则来自Xiaomi MiMo大模型 等AI相关业务。\n去年表现不错的小米创新业务，今年业绩来了大变脸，第一季度由盈转亏，亏损达31亿元，第二季度虽有所改善，但仍录得26亿元的经营亏损。针对这种“反复横跳”的财务表现，小米集团CFO林世伟解释称，目前AI业务仍处于大规模投入期，尽管此前推出的Token Plan已带来一定收入，但变现",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7280706167221069,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 8.1029168510437,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.01639344262295082,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a8591665b953dce7fd1d4ad",
+          "data_id": "6a8591665b953dce7fd1d4d6",
+          "source_name": "tencent-news-20260819A078KC00.txt",
+          "chunk_index": 0,
+          "text": "# 雷军嘴里的“销量奇迹”，怎么就成了“越卖越亏”的生意？\n\n来源地址: https://news.qq.com/rain/a/20260819A078KC00\n作者: 腾讯网\n发布时间: 2026-08-19 13:54:39\n\n撩车办公室\n2026-08-19 13:54\n雷军说这是\"销量奇迹\"，财报说这是\"越卖越亏\"：交付涨28%、亏损扩大766%。你薅的羊毛，都是股东扛的账单。\n文｜王月半\n8月17日，雷军发微博庆祝：SU7系列累计交付突破50万台，官方说，这是\"销量奇迹\"。\n8月18日，小米交出同一辆车的财报：二季度交付涨了28.2%，创新业务经营亏损从去年的3个亿，扩大到26个亿。",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6589946746826172,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 5.919344473007713,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.01605222734254992,
+              "index": 1
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a86c492d97cd32c2f5c8e56",
+          "data_id": "6a86c494d97cd32c2f5c8ec5",
+          "source_name": "tencent-news-20260820A0A9DO00.txt",
+          "chunk_index": 0,
+          "text": "# OpenAI的高增长，踩刹车了\n\n来源地址: https://news.qq.com/rain/a/20260820A0A9DO00\n作者: 腾讯网\n发布时间: 2026-08-20 16:32:09\n\n虎嗅APP\n2026-08-20 16:32 发布于 北京 虎嗅APP官方账号\n该图片使用了AI生成技术\n出品｜妙投APP\n作者｜张贝贝\n编辑｜丁萍\n头图｜AI制图\nOpenAI的万亿美元估值，正在迎来一次关键压力测试。\n2026年第二季度，OpenAI交出了一份令市场紧绷的成绩单。营收从Q1的约57亿美元涨到Q2的67亿美元，环比仅增长18%，较一季度35.7%的环比增速近乎腰斩；营业亏",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.524051308631897,
+              "index": 6
+            },
+            {
+              "type": "fullText",
+              "value": 4.71660447761194,
+              "index": 6
+            },
+            {
+              "type": "rrf",
+              "value": 0.014925373134328356,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a858efb5b953dce7fd1cb13",
+          "data_id": "6a858efb5b953dce7fd1cb35",
+          "source_name": "tencent-news-20260819A0AYGK00.txt",
+          "chunk_index": 0,
+          "text": "# 兆易创新上半年归母净利润大涨11倍，葛卫东夫妇持仓超百亿元\n\n来源地址: https://news.qq.com/rain/a/20260819A0AYGK00\n作者: 腾讯网\n发布时间: 2026-08-19 18:26:10\n\n时代财经\n2026-08-19 18:26 发布于 广东 时代财经官方账号\n本文来源：时代财经 作者：张洁 温斯婷\n凭借 存储周期红利 和股权投资，8月18日晚间，存储芯片设计龙头 兆易创新 （603986.SH）交出了一份令市场侧目的半年报。\n财报数据显示，2026年上半年，兆易创新实现营业收入115.66亿元，同比增长178.67%；实现归母净利润68.57",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4686284065246582,
+              "index": 12
+            },
+            {
+              "type": "fullText",
+              "value": 5.015690682503173,
+              "index": 4
+            },
+            {
+              "type": "rrf",
+              "value": 0.01487881981032666,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a858ef95b953dce7fd1c9ea",
+          "data_id": "6a858ef95b953dce7fd1ca40",
+          "source_name": "tencent-news-20260819A09WMW00.txt",
+          "chunk_index": 0,
+          "text": "# 快手Q2营收355.4亿符合预期，可灵AI收入涨超200%\n\n来源地址: https://news.qq.com/rain/a/20260819A09WMW00\n作者: 腾讯网\n发布时间: 2026-08-19 17:01:09\n\n华尔街见闻\n2026-08-19 17:01 发布于 广东 华尔街见闻官方账号\n快手科技第二季度业绩整体符合市场预期，但AI业务的强劲表现与用户规模的超预期增长，成为本季财报最具看点的亮点，显示平台用户规模持续扩张。\n据快手公告，截至2026年6月30日止三个月， 公司总收入同比增长1.4%至355.4亿元人民币， 与彭博综合预期355.1亿元基本持平。 净利润",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.49005037546157837,
+              "index": 9
+            },
+            {
+              "type": "fullText",
+              "value": 4.499769088669951,
+              "index": 8
+            },
+            {
+              "type": "rrf",
+              "value": 0.014430641821946168,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a83fe0df4e9a82e680c15eb",
+          "data_id": "6a8419ef007f580bc666ca63",
+          "source_name": "tencent-news-20260815A0ATU200.txt",
+          "chunk_index": 0,
+          "text": "# 528亿，腾讯终于开始“烧钱”了\n\n来源地址: https://news.qq.com/rain/a/20260815A0ATU200\n作者: 腾讯网\n发布时间: 2026-08-15 17:56:12\n\n钛媒体APP\n2026-08-15 17:56 发布于 山西 钛媒体APP官方账号\n（本文作者为 市值榜，钛媒体经授权发布）\n文 | 市值榜，作者 | 孟醒；编辑 | 赵元\n腾讯终于开始重押AI了。\n8月12日，腾讯发布2026年第二季度财报。二季度 资本开支 达到528亿元，同比增长176%，环比增长约65%；在大规模算力采购和预付款影响下，单季自由现金流转为负138亿元。\n这是一个颇",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.43809181451797485,
+              "index": 26
+            },
+            {
+              "type": "fullText",
+              "value": 4.571130087209302,
+              "index": 7
+            },
+            {
+              "type": "rrf",
+              "value": 0.013742393509127789,
+              "index": 6
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "mechanism_process",
+      "topic": "体育",
+      "question": "根据新闻，2026年8月18日赛后球迷质问小球迷父亲的事件，怎样做本可以避免？",
+      "reference_answer": "如果主队球迷能够恪守文明观赛的底线，普通观赛球迷能够更好理解足球中的德比文化，这起冲突本可以避免。",
+      "expected_collection_ids": [
+        "6a856e785b953dce7fd1c3d8"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A074P300"
+      ],
+      "source_title": "武磊球衣引发的不该是恐惧，热爱不应裹挟戾气",
+      "publish_time": "2026-08-19 13:48:28",
+      "qa_collection_id": "6a85b9a35b953dce7fd202dc",
+      "specificity_score": 5.6,
+      "id": "retrieval_0022",
+      "first_relevant_rank": 3,
+      "reciprocal_rank": 0.333333,
+      "hits": {
+        "recall_at_1": false,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 7,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a85915b5b953dce7fd1ce27",
+          "data_id": "6a85915b5b953dce7fd1ce45",
+          "source_name": "tencent-news-20260819A07WNG00.txt",
+          "chunk_index": 0,
+          "text": "# 0-3落败后迁怒孩子？小球迷穿武磊7号球衣离场遭上海申花球迷推搡辱骂，武磊深夜发文寻找当事父子，韩乔生两度发声；上海警方已介入\n\n来源地址: https://news.qq.com/rain/a/20260819A07WNG00\n作者: 腾讯网\n发布时间: 2026-08-19 14:43:31\n\n交汇点\n2026-08-19 14:43 发布于 江苏 新华日报交汇点新闻官方账号\n8月18日晚，中超第18轮补赛上海申花主场0比3不敌北京国安。\n赛后，一名身穿 武磊 国家队7号球衣的小球迷在父亲陪同下离场时，遭到数名身着申花球衣球迷的围堵和言语攻击。目前双方冲突的具体起因尚未明确。\n武磊在国",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.558361291885376,
+              "index": 3
+            },
+            {
+              "type": "fullText",
+              "value": 7.7043991416309,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.01592741935483871,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a853d775b953dce7fd1bb8c",
+          "data_id": "6a853d775b953dce7fd1bbaa",
+          "source_name": "tencent-news-20260819A00DQ500.txt",
+          "chunk_index": 0,
+          "text": "# 愤怒！小球迷穿武磊国足球衣遭申花球迷围攻 武磊团队声援+寻人\n\n来源地址: https://news.qq.com/rain/a/20260819A00DQ500\n作者: 腾讯网\n发布时间: 2026-08-19 12:09:12\n\n我爱英超\n2026-08-19 12:09 发布于 广东 体育领域创作者\n北京时间8月19日，国足射手 武磊 团队官方账号发布寻人启事，寻找当晚在上海体育场身着中国男足国家队7号球衣观赛的小球迷父子。\n武磊团队账号表示，若当事人本人或能联系到他们的知情者看到消息，可通过私信取得联系。\n在18日晚结束的中超第18轮补赛中，上海申花主场0-3不敌北京国安，赛后场外",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5586462616920471,
+              "index": 2
+            },
+            {
+              "type": "fullText",
+              "value": 6.526192196531793,
+              "index": 2
+            },
+            {
+              "type": "rrf",
+              "value": 0.015873015873015872,
+              "index": 1
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a856e785b953dce7fd1c3d8",
+          "data_id": "6a856e795b953dce7fd1c3f6",
+          "source_name": "tencent-news-20260819A074P300.txt",
+          "chunk_index": 0,
+          "text": "# 武磊球衣引发的不该是恐惧，热爱不应裹挟戾气\n\n来源地址: https://news.qq.com/rain/a/20260819A074P300\n作者: 腾讯网\n发布时间: 2026-08-19 13:48:28\n\n澎湃新闻\n2026-08-19 13:48 发布于 上海 澎湃新闻官方账号\n8月18日中超联赛焦点大战上海申花主场与北京国安赛后不久，社交媒体上的一个短视频迅速引发热议，散场过程中，一位成年人（应该是父亲）带着穿印有7号 武磊 名字红色球衣的小孩子一起往外走。其间，几位主队球迷用激动的情绪伴随着粗口质问孩子父亲为何要这么做。\n十秒左右的视频里，小孩子看上去有些蒙，眼神中有点害怕",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5378877520561218,
+              "index": 6
+            },
+            {
+              "type": "fullText",
+              "value": 8.878984167220743,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.015806214827501837,
+              "index": 2
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a86c4a8d97cd32c2f5c989c",
+          "data_id": "6a86c4a8d97cd32c2f5c98ba",
+          "source_name": "tencent-news-20260820A09CCI00.txt",
+          "chunk_index": 0,
+          "text": "# 正式官宣！CCTV5直播法甲揭幕战，时隔4年，中国球员或在上演五大联赛首秀\n\n来源地址: https://news.qq.com/rain/a/20260820A09CCI00\n作者: 腾讯网\n发布时间: 2026-08-20 15:43:12\n\n篮球圈里的那些事儿\n2026-08-20 15:43 发布于 河南 体育领域创作者\n2026-27赛季法甲联赛马上就要开始了，8月22日一共是安排了两场揭幕战，马赛对阵斯特拉斯堡和朗斯对阵 欧塞尔 ！而在CCTV5更新的直播表当中，将会在8月22日晚上11点15分直播朗斯对阵欧塞尔队的这一场比赛。按以往的经历来看，CCTV5一般直播法甲联赛的比赛",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4537523090839386,
+              "index": 36
+            },
+            {
+              "type": "fullText",
+              "value": 6.057372464200478,
+              "index": 4
+            },
+            {
+              "type": "rrf",
+              "value": 0.013354480570975418,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a86c4a4d97cd32c2f5c971b",
+          "data_id": "6a86c4a4d97cd32c2f5c973f",
+          "source_name": "tencent-news-20260820A0917W00.txt",
+          "chunk_index": 0,
+          "text": "# 晚上7点半！CCTV5直播男篮生死战，杨瀚森带队争主场首胜，郭士强压力很大\n\n来源地址: https://news.qq.com/rain/a/20260820A0917W00\n作者: 腾讯网\n发布时间: 2026-08-20 15:24:11\n\n体育斗兽场\n2026-08-20 15:24 发布于 河南\n根据相关消息透露，中国男篮将在8月22日正式启程飞往卡塔尔备战即将开打的世预赛第二阶段的比赛！值得一提的是，这一场比赛是8月28日打响，等于是男篮提前一周时间前往客场，目的肯定是想要尽早熟悉那边的环境和场地。这确实是男篮的喜欢的做法，什么都喜欢用“长时间”，就看看提前一周时间过去后，球员",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.4980037212371826,
+              "index": 10
+            },
+            {
+              "type": "fullText",
+              "value": 4.808099724264705,
+              "index": 31
+            },
+            {
+              "type": "rrf",
+              "value": 0.012155541947336191,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a899654a969c22aeba3cef4",
+          "data_id": "6a8996c9a969c22aeba3d745",
+          "source_name": "tencent-news-20260822A09INJ00.txt",
+          "chunk_index": 1,
+          "text": "文章标题：一个J2队长的“滑落”：U24球员在日本如何生存 | 深度观察\n发布时间：2026-08-22 18:37:32\n新闻导语：霓虹足球档案\n\n2026-08-22 18:37 体育领域创作者\n\n本文部分翻译自土屋雅史先生8月19日发表在《footballista》的专文\n\n重新起航的 跨年制J联赛 对于磐田喜悦这样的传统豪门而言，本应是重新出发的舞台。然而，作为球队队长的24岁中场角昂志郎，却始终在为球队和自己的表现苦恼。\n\n过去这一周，角昂志郎经历了两件完全没有想到的事情。\n\n角昂志郎出自JFL横河武藏野和J1劲旅FC东京的青训，从筑波大学毕业后加入磐田喜悦。上赛季开始担任队长\n\n第",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.447590172290802,
+              "index": 41
+            },
+            {
+              "type": "fullText",
+              "value": 5.16023166023166,
+              "index": 21
+            },
+            {
+              "type": "rrf",
+              "value": 0.011238641798182687,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "collection_id": "6a86c4aad97cd32c2f5c99c7",
+          "data_id": "6a86c4abd97cd32c2f5c99e5",
+          "source_name": "tencent-news-20260820A03HE700.txt",
+          "chunk_index": 0,
+          "text": "# 前国脚：中国足协出事我乐得蹦高！恨之入骨希望他们死 必须落井下石\n\n来源地址: https://news.qq.com/rain/a/20260820A03HE700\n作者: 腾讯网\n发布时间: 2026-08-20 07:36:15\n\n念洲\n2026-08-20 07:36 发布于 山东 英超评论员，腾讯足球特约撰稿人 体育领域创作者\n韩国足协在2012年1月18日对访问韩国的3名中国足球协会官员进行性招待，中国足协表示高度重视并展开调查、公布调查结果，对此，前国脚徐亮进行了评论。\n徐亮 说道：“我其实不爱去聊一些人，你们问我谁能力怎么样，谁咋地的，我都不爱聊。足球圈里边很多人，我徐亮基",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.5025743842124939,
+              "index": 7
+            },
+            {
+              "type": "fullText",
+              "value": 4.411137440758294,
+              "index": 54
+            },
+            {
+              "type": "rrf",
+              "value": 0.011099744245524297,
+              "index": 6
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "comparison",
+      "topic": "未分类",
+      "question": "宇树科技科创板IPO注册获批，计划募资多少亿元？宇树科技2025年营收和扣非净利润分别是多少？",
+      "reference_answer": "计划募资42.02亿元；2025年营收16.99亿元，扣非净利润5.91亿元。",
+      "expected_collection_ids": [
+        "6a89490ea969c22aeba39b64"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260729A08XKX00"
+      ],
+      "source_title": "具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关",
+      "publish_time": null,
+      "qa_collection_id": "6a894c29a969c22aeba3a2ac",
+      "specificity_score": 8.7,
+      "id": "retrieval_0040",
+      "first_relevant_rank": 3,
+      "reciprocal_rank": 0.333333,
+      "hits": {
+        "recall_at_1": false,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 7,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a858f9f5b953dce7fd1cc0f",
+          "data_id": "6a858f9f5b953dce7fd1cc3d",
+          "source_name": "tencent-news-20260819A09C9J00.txt",
+          "chunk_index": 2,
+          "text": "# 股价狂飙，宇树“静悄悄”\n若以当天开盘价1100元/股计算，中一签（500股）账面浮盈超47.46万元。\n宇树科技上市首日股价表现 图源：同花顺iFinD\n若按发行价衡量，宇树科技已是年内继频准激光（单签盈利48.26万元）、 联讯仪器 （688808.SH） （单签盈利35.86万元）、 长进光子 （688635.SH） （单签盈利30.95万元）、 臻宝科技 （688797.SH） （单签盈利27.02万元）、 超纯应材 （301717.SZ） （单签盈利21.85万元）、 恒运昌 （688785.SH） （单签盈利13.96万元）之后，第七只单签盈利超过10万元的“大肉签”新股。\n据",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.8125506639480591,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 7.3512379237583705,
+              "index": 2
+            },
+            {
+              "type": "rrf",
+              "value": 0.016029143897996357,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a856e6c5b953dce7fd1c18f",
+          "data_id": "6a856e6d5b953dce7fd1c1f9",
+          "source_name": "tencent-news-20260819A092QX00.txt",
+          "chunk_index": 0,
+          "text": "# 上市首日股价收涨460%！“人形机器人第一股”宇树科技登陆科创板\n\n来源地址: https://news.qq.com/rain/a/20260819A092QX00\n作者: 腾讯网\n发布时间: 2026-08-19 16:27:18\n\n财联社\n2026-08-19 16:27 发布于 上海 上海报业集团旗下《财联社》官方账号\n《科创板日报》8月19日讯（记者 陈俊清） 今日（8月19日）， 人形机器人第一股 宇树科技 正式登陆科创板。\n上市首日，宇树科技开盘价报1100元/股，为今日（8月19日）盘中最高点。截至收盘，宇树科技股价上涨460.34%，报845元/股，换手率85.28%，成",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7752892374992371,
+              "index": 4
+            },
+            {
+              "type": "fullText",
+              "value": 8.231339674729568,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.015905707196029777,
+              "index": 1
+            }
+          ]
+        },
+        {
+          "rank": 3,
+          "collection_id": "6a89490ea969c22aeba39b64",
+          "data_id": "6a894a23a969c22aeba39c38",
+          "source_name": "tencent-news-20260729A08XKX00.txt",
+          "chunk_index": 3,
+          "text": "文章标题：具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关\n发布时间：2026-07-29 17:02:28\n新闻导语：深网\n\n一方面，势乘资本合伙人刘英航与东方富海合伙人王鑫警示高估值风险。他们指出，在世界模型等技术路线尚未收敛前，头部机构入场容易带动盲目跟投，部分企业一年内估值暴涨十倍，技术与经营进展却未能同步；若产品长期停留在演示、营销或科研阶段，继续融资抬高估值只会放大泡沫。\n\n另一方面，德同资本合伙人郑凯则主张将产业机会与估值分开看待。通用具身智能需数十亿元级的持续投入才有机会参与竞争；而对于已经在具体工业或物流场景中找到产品市场匹配（PMF）的企业，当前的资本投入并",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7615664005279541,
+              "index": 8
+            },
+            {
+              "type": "fullText",
+              "value": 8.551354895104895,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.015823235923022094,
+              "index": 2
+            }
+          ]
+        },
+        {
+          "rank": 4,
+          "collection_id": "6a8591615b953dce7fd1d1f3",
+          "data_id": "6a8591625b953dce7fd1d221",
+          "source_name": "tencent-news-20260819A042KP00.txt",
+          "chunk_index": 2,
+          "text": "# 中一签赚超47万！宇树科技批量造富，王兴兴身家超千亿\n公募方面更为踊跃。共有95家公募机构旗下5117只产品参与网下打新并最终获配，合计获配1206.84万股，对应金额18.20亿元。 其中，易方达基金以584个配售对象、171.07万股的获配数量、2.58亿元的获配金额位居榜首，按今日开盘价计算，浮盈约为16.2亿元 ；南方基金、工银瑞信基金分别获配2.17亿元、1.90亿元，分列二、三位。华夏基金、国泰基金的获配金额也均超过1亿元。\n业绩增速放缓，高估值之下的隐忧\n公开资料显示，宇树科技成立于2016年，是全球知名的高性能通用机器人企业，专注于高性能通用人形机器人、四足机器人、机器人组",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.8029194474220276,
+              "index": 1
+            },
+            {
+              "type": "fullText",
+              "value": 6.8416585527228175,
+              "index": 4
+            },
+            {
+              "type": "rrf",
+              "value": 0.015607940446650124,
+              "index": 3
+            }
+          ]
+        },
+        {
+          "rank": 5,
+          "collection_id": "6a8591645b953dce7fd1d3bc",
+          "data_id": "6a8591655b953dce7fd1d3da",
+          "source_name": "tencent-news-20260819A08JLH00.txt",
+          "chunk_index": 0,
+          "text": "# 宇树科技上市首日收涨 460%：盘中一度暴涨 629% 市值突破4400亿\n\n来源地址: https://news.qq.com/rain/a/20260819A08JLH00\n作者: 腾讯网\n发布时间: 2026-08-19 15:30:08\n\nIT之家\n2026-08-19 15:30 发布于 湖北 IT之家官方账号\nIT之家 8 月 19 日消息，A 股“ 人形机器人第一股 ” 宇树科技 今日正式登陆科创板。该股发行价为 150.80 元 / 股，开盘即报 1100 元 / 股，较发行价大涨 629.44%，总市值一度站上 4449 亿元。\n盘中股价冲高后有所回落，截至收盘报 845",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7508775591850281,
+              "index": 13
+            },
+            {
+              "type": "fullText",
+              "value": 7.08305178095379,
+              "index": 3
+            },
+            {
+              "type": "rrf",
+              "value": 0.014991554054054054,
+              "index": 4
+            }
+          ]
+        },
+        {
+          "rank": 6,
+          "collection_id": "6a86c497d97cd32c2f5c90bb",
+          "data_id": "6a86c497d97cd32c2f5c90dd",
+          "source_name": "tencent-news-20260820A077VU00.txt",
+          "chunk_index": 0,
+          "text": "# 宇树市值为何跌破3000亿元\n\n来源地址: https://news.qq.com/rain/a/20260820A077VU00\n作者: 腾讯网\n发布时间: 2026-08-20 12:59:11\n\n蓝鲸新闻\n2026-08-20 12:59 发布于 北京 蓝鲸财经官方账号\n图源：视觉中国\n蓝鲸新闻8月20日讯（记者 翟智超） 在 宇树科技 上市狂欢中，有人欢喜，有人忧。喜的是打新者，忧的则是在二级市场开盘追高的人。\n8月19日，宇树科技登陆科创板首日，在集合竞价刚进入最后阶段，股民李溪瑞告诉蓝鲸科技记者，他在微信股票群里敲下一行字： “集合竞价1100，我干进去了！”配上了一个“冲”的",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.754212498664856,
+              "index": 12
+            },
+            {
+              "type": "fullText",
+              "value": 6.185803451742628,
+              "index": 6
+            },
+            {
+              "type": "rrf",
+              "value": 0.01455735023512574,
+              "index": 5
+            }
+          ]
+        },
+        {
+          "rank": 7,
+          "collection_id": "6a853d765b953dce7fd1bb25",
+          "data_id": "6a853d765b953dce7fd1bb62",
+          "source_name": "tencent-news-20260819A04Y6O00.txt",
+          "chunk_index": 2,
+          "text": "# 宇树上市：少数人的资本盛宴，4位90后身价过亿\n在净利润方面，2023年宇树还处于亏损状态，当年亏1114.51万元。 2024年宇树扭亏为盈，净利润达到 9547.47万元；2025年宇树科技净利润进一步飙升至 27,821.05万元（约2.78亿元），同比增长近两倍。\n宇树科技之所以能在2024年和2025年实现营收和净利润的翻倍增长，主要有两大原因：一是四足机器人和人形机器人销量大幅增长；二是其电机、减速器、 编码器 、灵巧手、激光雷达等核心部件自研。随着规模量产提升，逐步摊薄了单位机器人的成本。\n招股书显示，2023 年，宇树四足机器人销量3121台，平均单价为3.83万/台；20",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7558889389038086,
+              "index": 10
+            },
+            {
+              "type": "fullText",
+              "value": 6.136411708515284,
+              "index": 7
+            },
+            {
+              "type": "rrf",
+              "value": 0.01451946975973488,
+              "index": 6
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "retrieval",
+      "intent": "time_event",
+      "topic": "科技",
+      "question": "根据原文，SpaceX首次成功回收猎鹰9号是在什么时候？截至2026年7月，单枚猎鹰9号一级的最高飞行次数是多少？",
+      "reference_answer": "SpaceX首次成功回收猎鹰9号是在2015年12月；截至2026年7月，单枚猎鹰9号一级的最高飞行次数已达36次。",
+      "expected_collection_ids": [
+        "6a856e6e5b953dce7fd1c252"
+      ],
+      "expected_urls": [
+        "https://news.qq.com/rain/a/20260819A08NNJ00"
+      ],
+      "source_title": "年亏17亿的“中国版SpaceX”，终于把火箭收回来了",
+      "publish_time": "2026-08-19 16:24:02",
+      "qa_collection_id": "6a85b9a45b953dce7fd203c0",
+      "specificity_score": 8.6,
+      "id": "retrieval_0043",
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hits": {
+        "recall_at_1": false,
+        "recall_at_3": true,
+        "recall_at_5": true
+      },
+      "returned_collection_count": 2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "collection_id": "6a853d755b953dce7fd1baed",
+          "data_id": "6a853d765b953dce7fd1bb52",
+          "source_name": "tencent-news-20260819A034S300.txt",
+          "chunk_index": 2,
+          "text": "# 中国首次火箭陆地回收成功，蓝箭航天通过“第二次大考”\n接下来真正有区分度的指标，将更多的聚焦在：一枚火箭能飞多少次、两次飞行间隔多长、每年能发射多少次，以及每公斤载荷最终要花多少钱。\n回收成功，只解决了其中第一道门槛。\n朱雀三号遥二成功回收，对蓝箭来说，还有另一层更重要的意义。\n目前，蓝箭航天正处于 科创板 IPO推进阶段。上交所披露的信息显示，其IPO申请于2025年12月31日获得受理，目前审核状态为“已问询”，公司拟募集资金75亿元。\n在这个时间点，朱雀三号遥二完成商业载荷入轨和一级回收，为蓝箭补上了一块重要的工程验证。\n过去几年，蓝箭的几次关键进展，几乎都围绕液氧甲烷和重复使用这条",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.7109500169754028,
+              "index": 0
+            },
+            {
+              "type": "fullText",
+              "value": 13.060629618536566,
+              "index": 0
+            },
+            {
+              "type": "rrf",
+              "value": 0.01639344262295082,
+              "index": 0
+            }
+          ]
+        },
+        {
+          "rank": 2,
+          "collection_id": "6a856e6e5b953dce7fd1c252",
+          "data_id": "6a856e6e5b953dce7fd1c28c",
+          "source_name": "tencent-news-20260819A08NNJ00.txt",
+          "chunk_index": 3,
+          "text": "# 年亏17亿的“中国版SpaceX”，终于把火箭收回来了\n技术路线决定起点，工程成熟度才决定终点。朱雀三号选择的“液氧甲烷+不锈钢+陆地垂直回收”架构，在底层逻辑上更接近SpaceX的星舰（Starship），但在“技术转化为可靠性”的链条上，蓝箭才刚跨出第一步。\n董锴在接受《晚点LatePost》采访时，曾用一套1到9级的技术成熟度划分朱雀三号所处的位置。\n按照他的判断，成功回收只是从第6级跨入第7级；把收回来的火箭重新送上天，才算进入第8级；而实现高可靠、规模化的持续发射，才是最高阶段的第9级。\n他也曾借用修仙小说打过比方：如果猎鹰9号已是“化神”期，朱雀三号最多算“结丹”；唯有完成复飞",
+          "scores": [
+            {
+              "type": "embedding",
+              "value": 0.6393613815307617,
+              "index": 1
+            },
+            {
+              "type": "fullText",
+              "value": 12.469310798267328,
+              "index": 1
+            },
+            {
+              "type": "rrf",
+              "value": 0.016129032258064516,
+              "index": 1
+            }
+          ]
+        }
+      ],
+      "error": null
+    }
+  ],
+  "config": {
+    "dataset_id": "6a82c8acf4e9a82e680be9eb",
+    "search_mode": "mixedRecall",
+    "token_limit": 5000,
+    "similarity": null,
+    "using_rerank": false,
+    "using_query_rewrite": true,
+    "query_rewrite_model": null,
+    "ks": [
+      1,
+      3,
+      5
+    ]
+  }
+}

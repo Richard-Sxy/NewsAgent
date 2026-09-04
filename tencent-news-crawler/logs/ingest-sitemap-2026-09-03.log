@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/scripts/ingest_batch.py", line 82, in <module>
+    main()
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/scripts/ingest_batch.py", line 61, in main
+    result = NewsIngestService().ingest_urls(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/service/news_ingest_service.py", line 201, in ingest_urls
+    items = list(executor.map(ingest_one, unique_urls))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shi/.pyenv/versions/3.11.9/lib/python3.11/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shi/.pyenv/versions/3.11.9/lib/python3.11/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/shi/.pyenv/versions/3.11.9/lib/python3.11/concurrent/futures/_base.py", line 451, in result
+    self._condition.wait(timeout)
+  File "/home/shi/.pyenv/versions/3.11.9/lib/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt
