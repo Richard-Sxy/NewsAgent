@@ -80,6 +80,7 @@ class RuleBasedHotNewsAnalyzer:
         """计算运营分析需要的派生指标。"""
         
 
+
     def _build_trend_summary(self, input_data: HotNewsAnalysisInput) -> str:
         """TODO：加入热点等级、环比变化及异常波动判断。"""
 

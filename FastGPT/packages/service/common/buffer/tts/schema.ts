@@ -1,0 +1,35 @@
+import { defineIndex, Schema, getMongoModel } from '../../../common/mongo';
+import { type TTSBufferSchemaType } from './type';
+import { getLogger, LogCategories } from '../../logger';
+
+export const collectionName = 'buffer_tts';
+
+const logger = getLogger(LogCategories.INFRA.MONGO);
+
+const TTSBufferSchema = new Schema({
+  bufferId: {
+    type: String,
+    required: true
+  },
+  text: {
+    type: String,
+    required: true
+  },
+  buffer: {
+    type: Buffer,
+    required: true
+  },
+  createTime: {
+    type: Date,
+    default: () => new Date()
+  }
+});
+
+defineIndex(TTSBufferSchema, { key: { bufferId: 1 } });
+//  24 hour
+defineIndex(TTSBufferSchema, {
+  key: { createTime: 1 },
+  options: { expireAfterSeconds: 24 * 60 * 60 }
+});
+
+export const MongoTTSBuffer = getMongoModel<TTSBufferSchemaType>(collectionName, TTSBufferSchema);

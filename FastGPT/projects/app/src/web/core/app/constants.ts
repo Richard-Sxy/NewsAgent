@@ -1,0 +1,61 @@
+import { AppTypeEnum } from '@fastgpt/global/core/app/constants';
+import { type AppDetailType } from '@fastgpt/global/core/app/type';
+import type {
+  DingtalkAppType,
+  FeishuAppType,
+  OutLinkEditType
+} from '@fastgpt/global/support/outLink/type';
+import { AppPermission } from '@fastgpt/global/support/permission/app/controller';
+export const defaultApp: AppDetailType = {
+  _id: '',
+  name: 'AI',
+  type: AppTypeEnum.simple,
+  avatar: '/icon/logo.svg',
+  intro: '',
+  updateTime: new Date(),
+  modules: [],
+  chatConfig: {},
+  teamId: '',
+  tmbId: '',
+  edges: [],
+  version: 'v2',
+  permission: new AppPermission(),
+  inheritPermission: false
+};
+
+export const defaultOutLinkForm: OutLinkEditType = {
+  name: '',
+  showRunningStatus: true,
+  showSkillReferences: false,
+  showCite: false,
+  showFullText: false,
+  canDownloadSource: false,
+  limit: {
+    QPM: 100,
+    maxUsagePoints: -1
+  }
+};
+
+export const defaultFeishuOutLinkForm: OutLinkEditType<FeishuAppType> = {
+  name: '',
+  limit: {
+    QPM: 100,
+    maxUsagePoints: -1
+  }
+};
+
+export const defaultDingtalkOutlinkForm: OutLinkEditType<DingtalkAppType> = {
+  name: '',
+  limit: {
+    QPM: 100,
+    maxUsagePoints: -1
+  }
+};
+
+export enum TTSTypeEnum {
+  none = 'none',
+  web = 'web',
+  model = 'model'
+}
+
+export const workflowStartNodeId = 'workflowStartNodeId';

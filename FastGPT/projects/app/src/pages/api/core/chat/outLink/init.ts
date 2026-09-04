@@ -1,0 +1,104 @@
+import type { NextApiRequest } from 'next';
+import { getGuideModule, getAppChatConfig } from '@fastgpt/global/core/workflow/utils';
+import { authOutLink } from '@/service/support/permission/auth/outLink';
+import { MongoApp } from '@fastgpt/service/core/app/schema';
+import { AppErrEnum } from '@fastgpt/global/common/error/code/app';
+import { MongoChat } from '@fastgpt/service/core/chat/chatSchema';
+import { ChatErrEnum } from '@fastgpt/global/common/error/code/chat';
+import { getAppLatestVersion } from '@fastgpt/service/core/app/version/controller';
+import { FlowNodeTypeEnum } from '@fastgpt/global/core/workflow/node/constant';
+import { NextAPI } from '@/service/middleware/entry';
+import { getRandomUserAvatar } from '@fastgpt/global/support/user/utils';
+import { presignVariablesFileUrls } from '@fastgpt/service/core/chat/utils';
+import {
+  InitOutLinkChatQuerySchema,
+  InitOutLinkChatResponseSchema,
+  type InitOutLinkChatResponseType
+} from '@fastgpt/global/openapi/core/chat/outLink/api';
+import { ChatGenerateStatusEnum, ChatSourceTypeEnum } from '@fastgpt/global/core/chat/constants';
+import { parseApiInput } from '@fastgpt/service/common/zod/requestParseError';
+import { buildChatSourceQuery } from '@fastgpt/service/core/chat/source';
+import { buildChatTargetResponse } from '@fastgpt/global/openapi/core/chat/api';
+
+async function handler(req: NextApiRequest): Promise<InitOutLinkChatResponseType> {
+  const { chatId, outLinkAuthData } = parseApiInput({
+    req,
+    querySchema: InitOutLinkChatQuerySchema
+  }).query;
+  const { shareId, outLinkUid } = outLinkAuthData;
+
+  // auth link permission
+  const { uid, appId } = await authOutLink({ shareId, outLinkUid });
+
+  // auth app permission
+  const [chat, app] = await Promise.all([
+    MongoChat.findOne({
+      ...buildChatSourceQuery({ sourceType: ChatSourceTypeEnum.app, sourceId: String(appId) }),
+      chatId
+    }).lean(),
+    MongoApp.findById(appId).lean()
+  ]);
+
+  if (!app) {
+    throw new Error(AppErrEnum.unExist);
+  }
+
+  // auth chat permission
+  if (chat && chat.outLinkUid !== uid) {
+    return Promise.reject(ChatErrEnum.unAuthChat);
+  }
+
+  const chatGenerateStatus = chat?.chatGenerateStatus ?? ChatGenerateStatusEnum.done;
+  if (chat?.hasBeenRead === false && chatGenerateStatus !== ChatGenerateStatusEnum.generating) {
+    await MongoChat.updateOne(
+      {
+        ...buildChatSourceQuery({ sourceType: ChatSourceTypeEnum.app, sourceId: String(appId) }),
+        chatId
+      },
+      { $set: { hasBeenRead: true } }
+    );
+    chat.hasBeenRead = true;
+  }
+
+  const { nodes, chatConfig } = await getAppLatestVersion(app._id, app);
+  const systemConfigNode = getGuideModule(nodes);
+  const appChatConfig = getAppChatConfig({
+    chatConfig,
+    systemConfigNode,
+    storeVariables: chat?.variableList,
+    storeWelcomeText: chat?.welcomeText,
+    isPublicFetch: false
+  });
+  const pluginInputs =
+    chat?.pluginInputs ??
+    nodes?.find((node) => node.flowNodeType === FlowNodeTypeEnum.pluginInput)?.inputs ??
+    [];
+
+  const variables = await presignVariablesFileUrls({
+    variables: chat?.variables,
+    variableConfig: appChatConfig.variables
+  });
+
+  return InitOutLinkChatResponseSchema.parse({
+    chatId,
+    ...buildChatTargetResponse({
+      sourceType: ChatSourceTypeEnum.app,
+      sourceId: app._id
+    }),
+    title: chat?.title || '',
+    userAvatar: getRandomUserAvatar(),
+    variables,
+    chatGenerateStatus: chat?.chatGenerateStatus,
+    hasBeenRead: chat?.hasBeenRead,
+    app: {
+      chatConfig: appChatConfig,
+      name: app.name,
+      avatar: app.avatar,
+      intro: app.intro,
+      type: app.type,
+      pluginInputs
+    }
+  });
+}
+
+export default NextAPI(handler);

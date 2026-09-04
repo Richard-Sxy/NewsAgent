@@ -1,0 +1,94 @@
+import type { ApiRequestProps } from '@fastgpt/next/type';
+import { NextAPI } from '@/service/middleware/entry';
+import { getLogger, LogCategories } from '@fastgpt/service/common/logger';
+import { authDataset } from '@fastgpt/service/support/permission/dataset/auth';
+import { WritePermissionVal } from '@fastgpt/global/support/permission/constant';
+import { createCollectionAndInsertData } from '@fastgpt/service/core/dataset/collection/controller';
+import {
+  DatasetCollectionDataProcessModeEnum,
+  DatasetCollectionTypeEnum
+} from '@fastgpt/global/core/dataset/constants';
+import { i18nT } from '@fastgpt/global/common/i18n/utils';
+import { multer } from '@fastgpt/service/common/file/multer';
+import { getS3DatasetSource } from '@fastgpt/service/common/s3/sources/dataset';
+import { CreateBackupCollectionFormSchema } from '@fastgpt/global/openapi/core/dataset/collection/createApi';
+import { checkDatasetIndexLimit } from '@fastgpt/service/support/permission/teamLimit';
+import { parseDatasetImportFile } from '@fastgpt/service/core/dataset/importFile';
+const logger = getLogger(LogCategories.MODULE.DATASET.COLLECTION);
+
+async function handler(req: ApiRequestProps) {
+  const filepaths: string[] = [];
+
+  try {
+    const result = await multer.resolveFormData({
+      request: req,
+      maxFileSize: global.feConfigs.uploadFileMaxSize
+    });
+    filepaths.push(result.fileMetadata.path);
+    const filename = decodeURIComponent(result.fileMetadata.originalname);
+    const { datasetId, parentId } = CreateBackupCollectionFormSchema.parse(result.data);
+
+    const { teamId, tmbId, dataset } = await authDataset({
+      req,
+      authToken: true,
+      authApiKey: true,
+      per: WritePermissionVal,
+      datasetId
+    });
+
+    // Check dataset limit
+    await checkDatasetIndexLimit({
+      teamId,
+      insertLen: 1
+    });
+
+    const rawText = await parseDatasetImportFile({
+      teamId,
+      tmbId,
+      filePath: result.fileMetadata.path,
+      filename,
+      encoding: result.fileMetadata.encoding
+    }).catch((error) => {
+      logger.warn('Backup dataset import file parse failed', { filename, error });
+      return Promise.reject(i18nT('dataset:backup_template_invalid'));
+    });
+
+    const fileId = await getS3DatasetSource().upload({
+      datasetId: dataset._id,
+      stream: result.getReadStream(),
+      size: result.fileMetadata.size,
+      filename: filename
+    });
+
+    await createCollectionAndInsertData({
+      dataset,
+      rawText,
+      backupParse: true,
+      createCollectionParams: {
+        teamId,
+        tmbId,
+        datasetId: dataset._id,
+        parentId,
+        name: filename,
+        type: DatasetCollectionTypeEnum.file,
+        fileId,
+        trainingType: DatasetCollectionDataProcessModeEnum.backup
+      }
+    });
+
+    return {};
+  } catch (error) {
+    logger.error(`Backup dataset collection create error: ${error}`);
+    return Promise.reject(error);
+  } finally {
+    multer.clearDiskTempFiles(filepaths);
+  }
+}
+
+export default NextAPI(handler);
+
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};

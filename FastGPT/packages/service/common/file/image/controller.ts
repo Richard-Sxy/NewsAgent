@@ -1,0 +1,132 @@
+import { imageBaseUrl } from '@fastgpt/global/common/file/image/constants';
+import { MongoImage } from './schema';
+import { type ClientSession, Types } from '../../../common/mongo';
+import { guessBase64ImageType } from './utils';
+import { readFromSecondary } from '../../mongo/utils';
+import { UserError } from '@fastgpt/global/common/error/utils';
+import { getS3AvatarSource } from '../../s3/sources/avatar';
+import { isS3ObjectKey } from '../../s3/utils';
+import path from 'path';
+import { getNanoid } from '@fastgpt/global/common/string/tools';
+import { serviceEnv } from '../../../env';
+
+const imageRouteBase = serviceEnv.NEXT_PUBLIC_BASE_URL;
+
+export const copyAvatarImage = async ({
+  teamId,
+  imageUrl,
+  temporary,
+  session
+}: {
+  teamId: string;
+  imageUrl: string;
+  temporary: boolean;
+  session?: ClientSession;
+}) => {
+  if (!imageUrl) return;
+
+  const avatarSource = getS3AvatarSource();
+  if (isS3ObjectKey(imageUrl?.slice(avatarSource.prefix.length), 'avatar')) {
+    const filename = (() => {
+      const extname = path.extname(imageUrl);
+      if (!extname) return getNanoid(6);
+      return path.basename(imageUrl);
+    })();
+    const key = await getS3AvatarSource().copyAvatar({
+      key: imageUrl,
+      teamId,
+      filename,
+      temporary
+    });
+    return key;
+  }
+
+  const paths = imageUrl.split('/');
+  const name = paths[paths.length - 1];
+  const id = name.split('.')[0];
+
+  // Mongo
+  if (id && Types.ObjectId.isValid(id)) {
+    const image = await MongoImage.findOne(
+      {
+        _id: id,
+        teamId
+      },
+      undefined,
+      {
+        session
+      }
+    );
+    if (!image) return imageUrl;
+    const [newImage] = await MongoImage.create(
+      [
+        {
+          teamId,
+          binary: image.binary,
+          metadata: image.metadata
+        }
+      ],
+      {
+        session,
+        ordered: true
+      }
+    );
+    return `${imageRouteBase}${imageBaseUrl}${String(newImage._id)}.${image.metadata?.mime?.split('/')[1]}`;
+  }
+
+  return imageUrl;
+};
+
+export const removeImageByPath = (path?: string, session?: ClientSession) => {
+  if (!path) return;
+
+  const paths = path.split('/');
+  const name = paths[paths.length - 1];
+
+  if (!name) return;
+
+  const id = name.split('.')[0];
+  if (!id) return;
+
+  if (Types.ObjectId.isValid(id)) {
+    return MongoImage.deleteOne({ _id: id }, { session });
+  } else if (isS3ObjectKey(path?.slice(getS3AvatarSource().prefix.length), 'avatar')) {
+    return getS3AvatarSource().deleteAvatar(path, session);
+  }
+};
+
+export async function readMongoImg({ id }: { id: string }) {
+  const formatId = id.replace(/\.[^/.]+$/, '');
+
+  const data = await MongoImage.findById(formatId, undefined, {
+    ...readFromSecondary
+  });
+  if (!data) {
+    return Promise.reject(new UserError('Image not found'));
+  }
+
+  return {
+    binary: data.binary,
+    mime: data.metadata?.mime ?? guessBase64ImageType(data.binary.toString('base64'))
+  };
+}
+
+export async function delImgByRelatedId({
+  teamId,
+  relateIds,
+  session
+}: {
+  teamId: string;
+  relateIds: string[];
+  session?: ClientSession;
+}) {
+  if (relateIds.length === 0) return;
+
+  return MongoImage.deleteMany(
+    {
+      teamId,
+      'metadata.relatedId': { $in: relateIds.map((id) => String(id)) }
+    },
+    { session }
+  );
+}

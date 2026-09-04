@@ -1,0 +1,40 @@
+import { ManagePermissionVal } from '@fastgpt/global/support/permission/constant';
+import { MongoDatasetTraining } from '@fastgpt/service/core/dataset/training/schema';
+import { authDatasetCollection } from '@fastgpt/service/support/permission/dataset/auth';
+import { NextAPI } from '@/service/middleware/entry';
+import { type ApiRequestProps } from '@fastgpt/next/type';
+import { parseApiInput } from '@fastgpt/service/common/zod/requestParseError';
+import {
+  DeleteTrainingDataBodySchema,
+  DeleteTrainingDataResponseSchema,
+  type DeleteTrainingDataResponse
+} from '@fastgpt/global/openapi/core/dataset/training/api';
+
+async function handler(req: ApiRequestProps): Promise<DeleteTrainingDataResponse> {
+  const { collectionId, dataId } = parseApiInput({
+    req,
+    bodySchema: DeleteTrainingDataBodySchema
+  }).body;
+
+  const { collection } = await authDatasetCollection({
+    req,
+    authToken: true,
+    authApiKey: true,
+    collectionId,
+    per: ManagePermissionVal
+  });
+
+  await MongoDatasetTraining.deleteOne({
+    teamId: collection.teamId,
+    datasetId: collection.datasetId,
+    collectionId: collection._id,
+    _id: dataId
+  });
+
+  return DeleteTrainingDataResponseSchema.parse(undefined);
+}
+
+export default NextAPI(handler);
+export type deleteTrainingDataBody =
+  import('@fastgpt/global/openapi/core/dataset/training/api').DeleteTrainingDataBody;
+export type deleteTrainingDataResponse = DeleteTrainingDataResponse;

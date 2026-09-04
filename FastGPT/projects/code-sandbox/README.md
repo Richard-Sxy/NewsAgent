@@ -1,0 +1,328 @@
+# FastGPT Code Sandbox
+
+基于 Node + Hono 的代码执行沙盒，支持 JS 和 Python。JS 采用长驻 worker 进程池；Python 采用 one-shot 预热进程池，Linux/Docker 环境固定启用 chroot、seccomp、setuid/setgid 隔离。
+
+## 架构
+
+```
+HTTP Request → Hono Server
+                  ├─ JS Process Pool → node worker.js (long-lived) → Result
+                  └─ Python One-shot Warm Pool → clean python3 bootstrap → one task → exit
+```
+
+- **JS 进程池**：启动时预热 N 个 worker 进程（默认 20），请求到达时直接分配空闲 worker，执行完归还池中
+- **JS 执行**：Node worker 进程 + 安全 shim（冻结 Function 构造器、危险全局对象遮蔽、require 白名单）
+- **Python 执行**：预热 `SANDBOX_POOL_SIZE` 个干净 python3 进程，进程进入 native seccomp/chroot/降权后等待一条任务；执行用户代码后立即销毁并异步补充新的干净进程
+- **网络请求**：统一通过 `SystemHelper.httpRequest()` / `system_helper.http_request()` 收口，内置 SSRF 防护
+- **并发控制**：JS 请求超过池大小时自动排队；Python 同时运行的独立子进程数复用 `SANDBOX_POOL_SIZE`
+
+## 性能
+
+JS 仍保留进程池收益。Python 为了多租户安全改为 one-shot 预热池：空闲进程只在执行用户代码前复用，执行用户代码后立即销毁。它能降低 Python 冷启动成本，但吞吐仍会低于旧长驻 worker。
+
+| 场景 | 旧版 QPS / P50 | 进程池 QPS / P50 | 提升 |
+|------|----------------|------------------|------|
+| JS 简单函数 (c50) | 22 / 1,938ms | 1,414 / 7ms | **64x** |
+| JS IO 500ms (c50) | 22 / 2,107ms | 38 / 1,005ms | 1.7x |
+| JS 高 CPU (c10) | 9 / 1,079ms | 12 / 796ms | 1.3x |
+| JS 高内存 (c10) | — | 13 / 787ms | — |
+资源占用由 `SANDBOX_POOL_SIZE`、Python 预热空闲进程、Python 包加载情况和 `SANDBOX_MAX_MEMORY_MB` 共同决定。
+
+## 快速开始
+
+```bash
+# 安装依赖（在 monorepo 根目录执行）
+pnpm install
+
+# 开发运行（带 watch）
+cd projects/code-sandbox && pnpm dev
+
+# 运行测试
+cd projects/code-sandbox && pnpm test
+
+# 构建
+cd projects/code-sandbox && pnpm build && pnpm start
+```
+
+## Docker
+
+```bash
+# 构建
+docker build -f projects/code-sandbox/Dockerfile -t fastgpt-code-sandbox .
+
+# 运行
+docker run -p 3000:3000 \
+  -e SANDBOX_TOKEN=your-secret-token \
+  -e SANDBOX_POOL_SIZE=20 \
+  fastgpt-code-sandbox
+```
+
+## API
+
+### `POST /sandbox/js`
+
+执行 JavaScript 代码。
+
+```json
+{
+  "code": "async function main(variables) {\n  return { result: variables.a + variables.b }\n}",
+  "variables": { "a": 1, "b": 2 },
+  "queueId": "team-xxx"
+}
+```
+
+`queueId` 可选；仅当配置 `SANDBOX_QUEUE_ID_CONCURRENCY` 时，同一 `queueId` 会按该并发数排队执行。
+
+### `POST /sandbox/python`
+
+执行 Python 代码。
+
+```json
+{
+  "code": "def main(variables):\n    return {'result': variables['a'] + variables['b']}",
+  "variables": { "a": 1, "b": 2 },
+  "queueId": "team-xxx"
+}
+```
+
+### `GET /health`
+
+健康检查，返回 JS 进程池和 Python isolated runner 状态。
+
+```json
+{
+  "status": "ok",
+  "pools": {
+    "js": { "total": 20, "idle": 18, "busy": 2, "queued": 0, "poolSize": 20 },
+    "python": {
+      "total": 20,
+      "idle": 18,
+      "busy": 2,
+      "warming": 0,
+      "queued": 0,
+      "poolSize": 20,
+      "ready": true
+    }
+  }
+}
+```
+
+### 响应格式
+
+成功：
+
+```json
+{
+  "success": true,
+  "data": {
+    "codeReturn": { "result": 3 },
+    "log": "console.log 输出内容"
+  }
+}
+```
+
+失败：
+
+```json
+{
+  "success": false,
+  "message": "错误信息"
+}
+```
+
+## 环境变量
+
+### 服务配置
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `SANDBOX_PORT` | 服务端口 | `3000` |
+| `SANDBOX_TOKEN` | Bearer Token 认证密钥 | 空（不鉴权） |
+
+### 并发控制
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `SANDBOX_POOL_SIZE` | JS worker 进程数；也是 Python 同时运行和空闲预热的进程数 | `20` |
+| `SANDBOX_QUEUE_ID_CONCURRENCY` | 同一 `queueId` 同时可进入执行流程的请求数，空值表示不按 `queueId` 排队 | 空 |
+
+### Python 隔离
+
+Python 隔离不再提供运行时关闭开关。Linux 环境固定启用 native seccomp/chroot/降权，chroot 根目录固定为 `/tmp/fastgpt-python-sandbox`，用户代码进程固定降权到 `65537:65537`。Python 子进程不允许直接网络 syscall，外部请求必须通过父进程代理的 `http_request` 能力，并受请求次数、超时、请求体和响应体大小限制。
+
+### 资源限制
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `SANDBOX_API_MAX_BODY_MB` | API JSON 请求体总大小上限（包含 variables） | `8` |
+| `SANDBOX_MAX_TIMEOUT` | 超时上限（ms），请求不可超过此值 | `60000` |
+| `SANDBOX_MAX_MEMORY_MB` | 内存上限（MB） | `256` |
+| `SANDBOX_MAX_TMP_MB` | Python 单任务临时目录写入上限（MB） | `16` |
+| `SANDBOX_MAX_OUTPUT_MB` | 单次执行输出 JSON 大小上限（包含返回值和日志） | `10` |
+
+### 网络请求限制
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `CHECK_INTERNAL_IP` | 是否阻止访问内网、回环、链路本地等地址 | `true` |
+| `SANDBOX_REQUEST_MAX_COUNT` | 单次执行最大 HTTP 请求数 | `30` |
+| `SANDBOX_REQUEST_TIMEOUT` | 单次 HTTP 请求超时（ms） | `60000` |
+| `SANDBOX_REQUEST_MAX_RESPONSE_MB` | 最大响应体大小（MB） | `10` |
+| `SANDBOX_REQUEST_MAX_BODY_MB` | 最大请求体大小（MB） | `5` |
+
+## 项目结构
+
+```
+src/
+├── index.ts                   # 入口：Hono 服务 + 进程池初始化
+├── env.ts                     # 环境变量加载与校验
+├── types.ts                   # 类型定义
+├── pool/
+│   ├── process-pool.ts        # JS 进程池管理
+│   └── worker.ts              # JS worker（长驻进程，含安全 shim）
+├── isolated/
+│   ├── python-isolated-runner.ts # Python 独立进程执行器
+│   └── python-bootstrap.py       # Python 单次执行 bootstrap
+└── utils/
+    └── semaphore.ts           # 信号量（通用并发控制）
+
+test/
+├── unit/                      # 单元测试（进程池、信号量）
+├── integration/               # 集成测试（API 路由）
+├── boundary/                  # 边界测试（超时、内存限制）
+├── security/                  # 安全测试（沙箱逃逸防护）
+├── compat/                    # 兼容性测试（旧版代码格式）
+├── examples/                  # 示例测试（常用包）
+└── benchmark/                 # 压测脚本
+```
+
+## 添加 JS 包
+
+沙盒内的 JS 代码通过 `require()` 加载包，但仅允许白名单内的包。
+
+### 当前白名单
+
+`lodash`、`dayjs`、`moment`、`uuid`、`crypto-js`、`qs`、`url`、`querystring`
+
+### 添加新包步骤
+
+1. **安装包**：
+
+```bash
+cd projects/code-sandbox
+pnpm add <package-name>
+```
+
+2. **加入白名单**（环境变量 `SANDBOX_JS_ALLOWED_MODULES`）：
+
+在逗号分隔列表中添加包名：
+
+```bash
+SANDBOX_JS_ALLOWED_MODULES=lodash,dayjs,moment,uuid,crypto-js,qs,url,querystring,your-new-package
+```
+
+3. **重新构建 Docker 镜像**。
+
+### 注意事项
+
+- 只添加纯计算类的包，不要添加有网络/文件系统/子进程能力的包
+- 包会被打入 Docker 镜像，注意体积
+- 网络请求统一走 `SystemHelper.httpRequest()`，不要放行 `axios`、`node-fetch` 等网络库
+- 如果显式放行 `child_process`、`worker_threads`、`cluster`，worker 会在每次任务后回收，以清理潜在后台执行残留
+
+## 添加 Python 包
+
+### 当前预装包
+
+`numpy`、`pandas`（通过 `requirements.txt` 安装）
+
+### 添加新包步骤
+
+1. **编辑 `requirements.txt`**：
+
+```
+numpy
+pandas
+your-new-package
+```
+
+2. **加入白名单**（环境变量 `SANDBOX_PYTHON_ALLOWED_MODULES`）：
+
+在逗号分隔列表中添加包名。用户代码能否直接 import 某个模块完全由 `SANDBOX_PYTHON_ALLOWED_MODULES` 控制；第三方包和标准库内部依赖会按调用栈放行，避免误伤包自身初始化。
+
+3. **重新构建 Docker 镜像**。
+
+### 注意事项
+
+- Python 的模块黑名单通过 `__import__` 拦截实现，只拦截用户代码的直接 import
+- 标准库和第三方包的内部间接 import 不受影响
+- 默认白名单不包含 `os`、`sys`、`subprocess`、`socket` 等高危模块；如果显式加入环境变量白名单，用户代码会按配置获得对应能力
+- 如果显式放行 `subprocess`、`multiprocessing`、`threading`、`concurrent`，worker 会在每次任务后回收，以清理潜在后台执行残留
+
+## 安全机制
+
+### JS
+
+- `require()` 白名单，非白名单模块直接拒绝
+- 危险全局对象（`process`、`globalThis`、`global`、`Bun` 等）通过函数参数遮蔽，用户代码无法访问
+- `Function` 构造器冻结，阻止 `constructor.constructor` 逃逸
+- `process.env` 清理，仅保留必要变量
+- `fetch`、`XMLHttpRequest`、`WebSocket` 禁用
+
+### Python
+
+- `__import__` 白名单控制：默认不允许用户代码 import `os`、`sys`、`subprocess` 等高危模块；显式加入 `SANDBOX_PYTHON_ALLOWED_MODULES` 后按配置放行
+- `exec()`/`eval()` 内的 import 同样被拦截（基于调用栈帧检测）
+- `builtins.__import__` 通过代理对象保护，用户无法覆盖
+- `signal.SIGALRM` 超时保护
+
+### 网络
+
+- 所有网络请求通过 `httpRequest()` 收口
+- 内网 IP 黑名单：`10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16`、`127.0.0.0/8`、`169.254.0.0/16`
+- 仅允许 `http:` / `https:` 协议
+- 单次执行请求数、响应体大小、超时均有限制
+
+## 内置函数
+
+### JS（全局可用）
+
+| 函数 | 说明 |
+|------|------|
+| `SystemHelper.httpRequest(url, opts?)` | HTTP 请求（opts: `{method, headers, body, timeout}`） |
+
+### Python（全局可用）
+
+| 函数 | 说明 |
+|------|------|
+| `SystemHelper.httpRequest(url, opts?)` | HTTP 请求（opts: `{method, headers, body, timeout}`） |
+
+## 测试
+
+```bash
+# 全部测试（332 cases）
+pnpm test
+
+# 单个文件
+pnpm exec vitest run test/unit/security.test.ts
+
+# 带详细输出
+pnpm exec vitest run --reporter=verbose
+
+# 压测（需先启动服务）
+bash test/benchmark/bench-sandbox.sh
+bash test/benchmark/bench-sandbox-python.sh
+```
+
+测试配置：串行执行（`fileParallelism: false`），池大小 1（避免资源竞争）。
+
+测试覆盖维度：
+
+| 分类 | 文件数 | 用例数 | 说明 |
+|------|--------|--------|------|
+| 单元测试 | 4 | 43 | 进程池生命周期/恢复/健康检查、Semaphore 并发控制 |
+| 集成测试 | 2 | 53 | HTTP API 路由、JS/Python 功能验证 |
+| 安全测试 | 1 | 102 | 模块拦截、逃逸攻击、SSRF 防护、注入攻击 |
+| 边界测试 | 1 | 58 | 空输入、超时、大数据、类型边界 |
+| 兼容性测试 | 2 | 39 | 旧版 JS/Python 代码格式兼容 |
+| 示例测试 | 1 | 31 | 常用场景和第三方包 |

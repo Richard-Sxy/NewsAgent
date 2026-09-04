@@ -1,0 +1,97 @@
+import { GET, POST } from '@/web/common/api/request';
+import type {
+  FlowNodeTemplateType,
+  NodeTemplateListItemType
+} from '@fastgpt/global/core/workflow/type/node';
+import { getAppDetailById, getMyApps } from '../api';
+import { FlowNodeTypeEnum } from '@fastgpt/global/core/workflow/node/constant';
+import { FlowNodeTemplateTypeEnum } from '@fastgpt/global/core/workflow/constants';
+import { AppTypeEnum } from '@fastgpt/global/core/app/constants';
+import type {
+  ParentIdType,
+  ParentTreePathItemType
+} from '@fastgpt/global/common/parentFolder/type';
+import { AppToolSourceEnum } from '@fastgpt/global/core/app/tool/constants';
+import { getMcpChildren } from './mcpTools';
+import type {
+  GetPreviewNodeQuery,
+  GetSystemToolTemplatesBodyType,
+  GetToolPathQueryType
+} from '@fastgpt/global/openapi/core/app/tool/api';
+
+/* ============ team plugin ============== */
+export const getTeamAppTemplates = async (data?: {
+  parentId?: ParentIdType;
+  searchKey?: string;
+  type?: AppTypeEnum[];
+}) => {
+  if (data?.parentId) {
+    // handle get mcptools
+    const app = await getAppDetailById(data.parentId);
+    if (app.type === AppTypeEnum.mcpToolSet) {
+      const children = await getMcpChildren({ id: data.parentId, searchKey: data.searchKey });
+      return children.map((item) => ({
+        ...item,
+        intro: item.description || '',
+        flowNodeType: FlowNodeTypeEnum.tool,
+        templateType: FlowNodeTemplateTypeEnum.teamApp,
+        appType: app.type,
+        isFolder: false
+      }));
+      // handle http toolset
+    } else if (app.type === AppTypeEnum.httpToolSet) {
+      const toolList = app.modules[0]?.toolConfig?.httpToolSet?.toolList;
+      if (!toolList) return [];
+      return toolList.map((item) => ({
+        id: `${AppToolSourceEnum.http}-${app._id}/${item.name}`,
+        avatar: app.avatar,
+        name: item.name,
+        intro: item.description || '',
+        flowNodeType: FlowNodeTypeEnum.tool,
+        templateType: FlowNodeTemplateTypeEnum.teamApp,
+        appType: app.type,
+        isFolder: false
+      }));
+    }
+  }
+  return getMyApps(data).then((res) =>
+    res.map((app) => ({
+      tmbId: app.tmbId,
+      id: app._id,
+      pluginId: app._id,
+      isFolder:
+        app.type === AppTypeEnum.folder ||
+        app.type === AppTypeEnum.toolFolder ||
+        app.type === AppTypeEnum.httpToolSet ||
+        app.type === AppTypeEnum.httpPlugin ||
+        app.type === AppTypeEnum.mcpToolSet,
+      templateType: FlowNodeTemplateTypeEnum.teamApp,
+      flowNodeType:
+        app.type === AppTypeEnum.workflow
+          ? FlowNodeTypeEnum.appModule
+          : app.type === AppTypeEnum.mcpToolSet || app.type === AppTypeEnum.httpToolSet
+            ? FlowNodeTypeEnum.toolSet
+            : FlowNodeTypeEnum.pluginModule,
+      avatar: app.avatar,
+      name: app.name,
+      intro: app.intro,
+      showStatus: false,
+      version: app.pluginData?.nodeVersion,
+      isTool: true,
+      sourceMember: app.sourceMember,
+      appType: app.type
+    }))
+  );
+};
+
+/* ============ Tool ============== */
+export const getAppToolTemplates = (data: GetSystemToolTemplatesBodyType) =>
+  POST<NodeTemplateListItemType[]>('/core/app/tool/getSystemToolTemplates', data);
+
+export const getAppToolPaths = (data: GetToolPathQueryType) => {
+  if (!data.sourceId) return Promise.resolve<ParentTreePathItemType[]>([]);
+  return GET<ParentTreePathItemType[]>('/core/app/tool/path', data);
+};
+
+export const getClientToolPreviewNode = (data: GetPreviewNodeQuery) =>
+  GET<FlowNodeTemplateType>('/core/app/tool/getPreviewNode', data);

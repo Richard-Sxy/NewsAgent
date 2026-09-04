@@ -1,0 +1,326 @@
+import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { type BoxProps } from '@chakra-ui/react';
+import { useAudioPlay } from '@/web/common/utils/voice';
+import { type OutLinkChatAuthProps } from '@fastgpt/global/support/permission/chat';
+import {
+  type AppQGConfigType,
+  type AppTTSConfigType,
+  type AppWhisperConfigType,
+  type ChatInputGuideConfigType,
+  type VariableItemType
+} from '@fastgpt/global/core/app/type';
+import { type AppFileSelectConfigType } from '@fastgpt/global/core/app/type/config.schema';
+import { type ChatHistoryItemResType } from '@fastgpt/global/core/chat/type';
+import { ChatStatusEnum } from '@fastgpt/global/core/chat/constants';
+import {
+  defaultAppSelectFileConfig,
+  defaultChatInputGuideConfig,
+  defaultQGConfig,
+  defaultTTSConfig,
+  defaultWhisperConfig
+} from '@fastgpt/global/core/app/constants';
+import { createContext, useContextSelector } from 'use-context-selector';
+import { getChatResData } from '@/web/core/chat/record/api';
+import { ChatItemContext } from '@/web/core/chat/context/chatItemContext';
+import { ChatRecordContext } from '@/web/core/chat/context/chatRecordContext';
+import { useCreation } from 'ahooks';
+import type { ChatTypeEnum } from './constants';
+import type { ChatQuickAppType } from '@fastgpt/global/core/chat/setting/type';
+import { WorkflowRuntimeContextProvider } from '@/components/core/chat/ChatContainer/context/workflowRuntimeContext';
+import {
+  getChatSourceKey,
+  type ChatSourceTarget,
+  toChatAuthApiTarget
+} from '@/web/core/chat/utils';
+import { ChatSourceTypeEnum } from '@fastgpt/global/core/chat/constants';
+import { resolveChatFileUploadMode } from './utils/file';
+
+export type ChatProviderProps = {
+  /** 标准内部 chat target。ChatBox 不再接收 appId/skillId raw 形态。 */
+  sourceTarget: ChatSourceTarget;
+  chatId: string;
+  outLinkAuthData?: OutLinkChatAuthProps;
+
+  InputLeftComponent?: React.ReactNode;
+
+  chatType: ChatTypeEnum;
+  dialogTips?: string;
+  wideLogo?: string;
+  squareLogo?: string;
+  slogan?: string;
+
+  quickAppList?: ChatQuickAppType[];
+  onSwitchQuickApp?: (appId: string) => Promise<void>;
+  boxBodyProps?: BoxProps;
+  inputBodyProps?: BoxProps;
+};
+
+type useChatStoreType = Omit<ChatProviderProps, 'sourceTarget' | 'chatId' | 'outLinkAuthData'> & {
+  welcomeText: string;
+  welcomeQuestions: string[];
+  variableList: VariableItemType[];
+  questionGuide: AppQGConfigType;
+  ttsConfig: AppTTSConfigType;
+  whisperConfig: AppWhisperConfigType;
+  autoTTSResponse: boolean;
+  startSegmentedAudio: () => Promise<any>;
+  splitText2Audio: (text: string, done?: boolean | undefined) => void;
+  finishSegmentedAudio: () => void;
+  audioLoading: boolean;
+  audioPlaying: boolean;
+  hasAudio: boolean;
+  playAudioByText: ({
+    text,
+    buffer
+  }: {
+    text: string;
+    buffer?: Uint8Array | undefined;
+  }) => Promise<{
+    buffer?: Uint8Array | undefined;
+  }>;
+  cancelAudio: () => void;
+  audioPlayingChatId: string | undefined;
+  setAudioPlayingChatId: React.Dispatch<React.SetStateAction<string | undefined>>;
+  isChatting: boolean;
+  chatInputGuide: ChatInputGuideConfigType;
+  getHistoryResponseData: ({ dataId }: { dataId: string }) => Promise<ChatHistoryItemResType[]>;
+  fileSelectConfig: AppFileSelectConfigType;
+};
+
+export const ChatBoxContext = createContext<useChatStoreType>({
+  welcomeText: '',
+  welcomeQuestions: [],
+  variableList: [],
+  questionGuide: {
+    open: false,
+    model: undefined,
+    customPrompt: undefined
+  },
+  ttsConfig: {
+    type: 'none',
+    model: undefined,
+    voice: undefined,
+    speed: undefined
+  },
+  whisperConfig: {
+    open: false,
+    autoSend: false,
+    autoTTSResponse: false
+  },
+  autoTTSResponse: false,
+  startSegmentedAudio: function (): Promise<any> {
+    throw new Error('Function not implemented.');
+  },
+  splitText2Audio: function (text: string, done?: boolean | undefined): void {
+    throw new Error('Function not implemented.');
+  },
+  isChatting: false,
+  audioLoading: false,
+  audioPlaying: false,
+  hasAudio: false,
+  playAudioByText: function ({
+    text,
+    buffer
+  }: {
+    text: string;
+    buffer?: Uint8Array | undefined;
+  }): Promise<{ buffer?: Uint8Array | undefined }> {
+    throw new Error('Function not implemented.');
+  },
+  cancelAudio: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  audioPlayingChatId: undefined,
+  setAudioPlayingChatId: function (value: React.SetStateAction<string | undefined>): void {
+    throw new Error('Function not implemented.');
+  },
+  finishSegmentedAudio: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  chatInputGuide: {
+    open: false,
+    customUrl: ''
+  },
+  boxBodyProps: undefined,
+  inputBodyProps: undefined,
+  // @ts-ignore
+  variablesForm: undefined
+});
+
+const Provider = ({
+  sourceTarget,
+  chatId,
+  outLinkAuthData,
+  chatType,
+  enableTTS = true,
+  children,
+  ...props
+}: ChatProviderProps & {
+  /** AI 回复朗读和自动 TTS 能力开关，由 ChatBox features 下沉。 */
+  enableTTS?: boolean;
+  children: React.ReactNode;
+}) => {
+  const formatOutLinkAuth = useCreation(() => {
+    return outLinkAuthData || {};
+  }, [outLinkAuthData]);
+
+  const welcomeText = useContextSelector(
+    ChatItemContext,
+    (v) =>
+      v.chatBoxData?.app?.chatConfig?.welcomeConfig?.welcomeText ??
+      v.chatBoxData?.app?.chatConfig?.welcomeText ??
+      ''
+  );
+  const welcomeQuestions = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.welcomeConfig?.welcomeQuestions ?? []
+  );
+  const variables = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.variables ?? []
+  );
+  const questionGuide = useContextSelector(ChatItemContext, (v) => {
+    const val = v.chatBoxData?.app?.chatConfig?.questionGuide;
+    if (typeof val === 'boolean') {
+      return {
+        ...defaultQGConfig,
+        open: val
+      };
+    }
+    return v.chatBoxData?.app?.chatConfig?.questionGuide ?? defaultQGConfig;
+  });
+  const ttsConfig = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.ttsConfig ?? defaultTTSConfig
+  );
+  const whisperConfig = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.whisperConfig ?? defaultWhisperConfig
+  );
+  const chatInputGuide = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.chatInputGuide ?? defaultChatInputGuideConfig
+  );
+  const fileSelectConfig = useContextSelector(
+    ChatItemContext,
+    (v) => v.chatBoxData?.app?.chatConfig?.fileSelectConfig ?? defaultAppSelectFileConfig
+  );
+  const fileUploadMode = resolveChatFileUploadMode({
+    chatType,
+    sourceType: sourceTarget.sourceType
+  });
+
+  const chatRecords = useContextSelector(ChatRecordContext, (v) => v.chatRecords);
+  const setChatRecords = useContextSelector(ChatRecordContext, (v) => v.setChatRecords);
+  const resolvedChatAuthTarget = useMemo(
+    () => toChatAuthApiTarget({ sourceTarget, outLinkAuthData: formatOutLinkAuth }),
+    [sourceTarget, formatOutLinkAuth]
+  );
+  const audioScopeKey = useMemo(
+    () => `${getChatSourceKey(sourceTarget)}:${chatId}`,
+    [sourceTarget, chatId]
+  );
+  const resolvedAppId = useMemo(
+    () => (sourceTarget.sourceType === ChatSourceTypeEnum.app ? sourceTarget.sourceId : undefined),
+    [sourceTarget]
+  );
+
+  // segment audio
+  const [audioPlayingChatId, setAudioPlayingChatId] = useState<string>();
+  const {
+    audioLoading,
+    audioPlaying,
+    hasAudio,
+    playAudioByText,
+    cancelAudio,
+    startSegmentedAudio,
+    finishSegmentedAudio,
+    splitText2Audio
+  } = useAudioPlay({
+    appId: enableTTS ? resolvedAppId : undefined,
+    ttsConfig: enableTTS ? ttsConfig : defaultTTSConfig,
+    outLinkAuthData: formatOutLinkAuth
+  });
+
+  const lastAudioScopeKeyRef = useRef(audioScopeKey);
+  useEffect(() => {
+    if (lastAudioScopeKeyRef.current === audioScopeKey) return;
+
+    lastAudioScopeKeyRef.current = audioScopeKey;
+    cancelAudio();
+    setAudioPlayingChatId(undefined);
+  }, [audioScopeKey, cancelAudio]);
+
+  const autoTTSResponse =
+    enableTTS &&
+    whisperConfig?.open &&
+    whisperConfig?.autoSend &&
+    whisperConfig?.autoTTSResponse &&
+    hasAudio;
+
+  const isChatting = useMemo(
+    () =>
+      chatRecords[chatRecords.length - 1] &&
+      chatRecords[chatRecords.length - 1]?.status !== 'finish',
+    [chatRecords]
+  );
+  const getHistoryResponseData = useCallback(
+    async ({ dataId }: { dataId: string }) => {
+      const aimItem = chatRecords.find((item) => item.dataId === dataId)!;
+      if (!chatId || (aimItem?.status !== ChatStatusEnum.finish && !!aimItem?.responseData)) {
+        return aimItem.responseData || [];
+      }
+
+      const resData = await getChatResData({
+        ...resolvedChatAuthTarget,
+        chatId: chatId,
+        dataId
+      });
+      const nextResponseData = resData.length ? resData : aimItem?.responseData || [];
+      setChatRecords((state) =>
+        state.map((item) =>
+          item.dataId === dataId ? { ...item, responseData: nextResponseData } : item
+        )
+      );
+      return nextResponseData;
+    },
+    [chatRecords, chatId, resolvedChatAuthTarget, setChatRecords]
+  );
+  const value: useChatStoreType = {
+    ...props,
+    welcomeText,
+    welcomeQuestions,
+    variableList: variables,
+    questionGuide,
+    ttsConfig,
+    fileSelectConfig,
+    whisperConfig,
+    autoTTSResponse,
+    startSegmentedAudio,
+    finishSegmentedAudio,
+    splitText2Audio,
+    audioLoading,
+    audioPlaying,
+    hasAudio,
+    playAudioByText,
+    cancelAudio,
+    audioPlayingChatId,
+    setAudioPlayingChatId,
+    isChatting,
+    chatInputGuide,
+    getHistoryResponseData,
+    chatType
+  };
+  return (
+    <WorkflowRuntimeContextProvider
+      sourceTarget={sourceTarget}
+      chatId={chatId}
+      outLinkAuthData={formatOutLinkAuth}
+      fileUploadMode={fileUploadMode}
+    >
+      <ChatBoxContext.Provider value={value}>{children}</ChatBoxContext.Provider>
+    </WorkflowRuntimeContextProvider>
+  );
+};
+
+export default React.memo(Provider);

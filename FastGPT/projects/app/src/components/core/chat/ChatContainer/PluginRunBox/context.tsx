@@ -1,0 +1,286 @@
+import React, { type ReactNode, useCallback, useRef } from 'react';
+import { createContext, useContextSelector } from 'use-context-selector';
+import { type PluginRunBoxProps } from './type';
+import { type AIChatItemValueItemType } from '@fastgpt/global/core/chat/type';
+import { PluginRunBoxTabEnum } from './constants';
+import { useToast } from '@fastgpt/web/hooks/useToast';
+import { getNanoid } from '@fastgpt/global/common/string/tools';
+import { ChatRoleEnum, ChatSourceTypeEnum } from '@fastgpt/global/core/chat/constants';
+import { type generatingMessageProps } from '../type';
+import { SseResponseEventEnum } from '@fastgpt/global/core/workflow/runtime/constants';
+import { useTranslation } from 'next-i18next';
+import { type ChatBoxInputFormType } from '../ChatBox/type';
+import { chats2GPTMessages } from '@fastgpt/global/core/chat/adapt';
+import { clientGetWorkflowToolRunUserQuery } from '@fastgpt/global/core/workflow/utils';
+import { ChatItemContext } from '@/web/core/chat/context/chatItemContext';
+import { ChatRecordContext } from '@/web/core/chat/context/chatRecordContext';
+import {
+  appendNodeResponseByParent,
+  mergeNodeResponseDataByIdAndParent
+} from '@fastgpt/global/core/chat/utils/mergeNode';
+import { getErrText } from '@fastgpt/global/common/error/utils';
+import { WorkflowRuntimeContextProvider } from '@/components/core/chat/ChatContainer/context/workflowRuntimeContext';
+
+type PluginRunContextType = PluginRunBoxProps & {
+  isChatting: boolean;
+  onSubmit: (e: ChatBoxInputFormType) => Promise<any>;
+  instruction: string;
+};
+
+export const PluginRunContext = createContext<
+  Omit<PluginRunContextType, 'appId' | 'chatId' | 'outLinkAuthData'>
+>({
+  isChatting: false,
+  onSubmit: function (): Promise<any> {
+    throw new Error('Function not implemented.');
+  },
+  instruction: ''
+});
+
+const PluginRunContextProvider = ({
+  children,
+  ...props
+}: PluginRunBoxProps & { children: ReactNode }) => {
+  const { onStartChat } = props;
+
+  const pluginInputs = useContextSelector(ChatItemContext, (v) => v.chatBoxData?.app?.pluginInputs);
+  const setTab = useContextSelector(ChatItemContext, (v) => v.setPluginRunTab);
+  const resetVariables = useContextSelector(ChatItemContext, (v) => v.resetVariables);
+  const chatConfig = useContextSelector(ChatItemContext, (v) => v.chatBoxData?.app?.chatConfig);
+
+  const setChatRecords = useContextSelector(ChatRecordContext, (v) => v.setChatRecords);
+  const chatRecords = useContextSelector(ChatRecordContext, (v) => v.chatRecords);
+
+  const instruction = chatConfig?.instruction || '';
+
+  const { toast } = useToast();
+  const chatController = useRef(new AbortController());
+  const { t } = useTranslation();
+  /* Abort chat completions, questionGuide */
+  const abortRequest = useCallback(() => {
+    chatController.current?.abort('stop');
+  }, []);
+
+  const generatingMessage = useCallback(
+    ({ event, text = '', status, name, tool, nodeResponse, variables }: generatingMessageProps) => {
+      setChatRecords((state) =>
+        state.map((item, index) => {
+          if (index !== state.length - 1 || item.obj !== ChatRoleEnum.AI) return item;
+
+          const lastValue: AIChatItemValueItemType = JSON.parse(
+            JSON.stringify(item.value[item.value.length - 1])
+          );
+
+          if (event === SseResponseEventEnum.flowNodeResponse && nodeResponse) {
+            return {
+              ...item,
+              responseData: appendNodeResponseByParent(item.responseData, nodeResponse)
+            };
+          } else if (event === SseResponseEventEnum.flowNodeStatus && status) {
+            return {
+              ...item,
+              status,
+              moduleName: name
+            };
+          } else if (
+            (event === SseResponseEventEnum.answer || event === SseResponseEventEnum.fastAnswer) &&
+            text
+          ) {
+            if (!lastValue || !lastValue.text) {
+              const newValue: AIChatItemValueItemType = {
+                text: {
+                  content: text
+                }
+              };
+              return {
+                ...item,
+                value: item.value.concat(newValue)
+              };
+            } else {
+              lastValue.text.content += text;
+              return {
+                ...item,
+                value: item.value.slice(0, -1).concat(lastValue)
+              };
+            }
+          } else if (event === SseResponseEventEnum.toolCall && tool) {
+            const val: AIChatItemValueItemType = {
+              tools: [tool]
+            };
+            return {
+              ...item,
+              value: item.value.concat(val)
+            };
+          } else if (event === SseResponseEventEnum.toolParams && tool && lastValue?.tools) {
+            lastValue.tools = lastValue.tools.map((item) => {
+              if (item.id === tool.id) {
+                item.params += tool.params;
+              }
+              return item;
+            });
+            return {
+              ...item,
+              value: item.value.slice(0, -1).concat(lastValue)
+            };
+          } else if (event === SseResponseEventEnum.toolResponse && tool) {
+            // replace tool response
+            return {
+              ...item,
+              value: item.value.map((val) => {
+                if (val.tools) {
+                  const tools = val.tools.map((item) =>
+                    item.id === tool.id ? { ...item, response: tool.response } : item
+                  );
+                  return {
+                    ...val,
+                    tools
+                  };
+                }
+                return val;
+              })
+            };
+          } else if (event === SseResponseEventEnum.updateVariables && variables) {
+            resetVariables({ variables });
+          }
+
+          return item;
+        })
+      );
+    },
+    [setChatRecords, resetVariables]
+  );
+
+  const isChatting =
+    chatRecords[chatRecords.length - 1] && chatRecords[chatRecords.length - 1]?.status !== 'finish';
+
+  const onSubmit = useCallback(
+    async ({ variables }: ChatBoxInputFormType) => {
+      if (!onStartChat) return;
+      if (isChatting) {
+        toast({
+          title: t('chat:is_chatting'),
+          status: 'warning'
+        });
+        return;
+      }
+
+      // reset controller
+      abortRequest();
+      const abortSignal = new AbortController();
+      chatController.current = abortSignal;
+      const humanChatItemId = getNanoid(24);
+      const responseChatItemId = getNanoid(24);
+
+      setChatRecords([
+        {
+          ...clientGetWorkflowToolRunUserQuery({
+            pluginInputs,
+            variables
+          }),
+          id: humanChatItemId,
+          dataId: humanChatItemId,
+          status: 'finish'
+        },
+        {
+          id: responseChatItemId,
+          dataId: responseChatItemId,
+          obj: ChatRoleEnum.AI,
+          value: [
+            {
+              text: {
+                content: ''
+              }
+            }
+          ],
+          status: 'loading'
+        }
+      ]);
+      setTab(PluginRunBoxTabEnum.output);
+
+      const messages = chats2GPTMessages({
+        messages: [
+          {
+            dataId: getNanoid(24),
+            obj: ChatRoleEnum.Human,
+            value: []
+          }
+        ],
+        reserveId: true,
+        reserveTool: true
+      });
+
+      try {
+        await onStartChat({
+          messages,
+          responseChatItemId,
+          controller: chatController.current,
+          generatingMessage,
+          variables
+        });
+
+        setChatRecords((state) =>
+          state.map((item, index) => {
+            if (index !== state.length - 1) return item;
+
+            // Check node response error
+            const responseData = mergeNodeResponseDataByIdAndParent(item.responseData || []);
+            if (responseData[responseData.length - 1]?.error) {
+              toast({
+                title: t(getErrText(responseData[responseData.length - 1].error)),
+                status: 'error'
+              });
+            }
+
+            return {
+              ...item,
+              status: 'finish',
+              responseData
+            };
+          })
+        );
+      } catch (err: any) {
+        const errorMsg = t(getErrText(err, t('common:core.chat.error.Chat error') as any));
+        toast({ title: errorMsg, status: 'error' });
+        setChatRecords((state) =>
+          state.map((item, index) => {
+            if (index !== state.length - 1) return item;
+            return {
+              ...item,
+              status: 'finish'
+            };
+          })
+        );
+      }
+    },
+    [
+      abortRequest,
+      generatingMessage,
+      isChatting,
+      onStartChat,
+      pluginInputs,
+      setChatRecords,
+      setTab,
+      t,
+      toast
+    ]
+  );
+
+  const contextValue: PluginRunContextType = {
+    ...props,
+    isChatting,
+    onSubmit,
+    instruction
+  };
+  return (
+    <WorkflowRuntimeContextProvider
+      sourceTarget={{ sourceType: ChatSourceTypeEnum.app, sourceId: props.appId }}
+      chatId={props.chatId}
+      outLinkAuthData={props.outLinkAuthData || {}}
+      fileUploadMode={props.fileUploadMode ?? 'runtime'}
+    >
+      <PluginRunContext.Provider value={contextValue}>{children}</PluginRunContext.Provider>
+    </WorkflowRuntimeContextProvider>
+  );
+};
+
+export default PluginRunContextProvider;

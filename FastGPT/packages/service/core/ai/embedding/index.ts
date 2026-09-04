@@ -1,0 +1,268 @@
+import { type EmbeddingModelItemType } from '@fastgpt/global/core/ai/model.schema';
+import { getAIApi } from '../config';
+import { countPromptTokens, countPromptTokensBatch } from '../../../common/string/tiktoken/index';
+import { EmbeddingTypeEnm } from '@fastgpt/global/core/ai/constants';
+import { batchRun, retryFn } from '@fastgpt/global/common/system/utils';
+import { getLogger, LogCategories } from '../../../common/logger';
+import z from 'zod';
+import { truncateTextByFormattedTokenLimit } from './tokenLimit';
+
+const logger = getLogger(LogCategories.MODULE.AI.EMBEDDING);
+
+type GetVectorsBaseProps = {
+  model: EmbeddingModelItemType;
+  type?: `${EmbeddingTypeEnm}`;
+  headers?: Record<string, string>;
+};
+
+const InputItemSchema = z.object({
+  type: z.enum(['text', 'image']),
+  input: z.string()
+});
+type GetVectorInputItem = z.infer<typeof InputItemSchema>;
+
+export type GetVectorsProps = GetVectorsBaseProps & {
+  inputs: GetVectorInputItem[];
+};
+
+const getRequestInput = (input: GetVectorInputItem) => {
+  if (input.type === 'image') {
+    return {
+      type: 'image_url',
+      image_url: {
+        url: input.input
+      }
+    };
+  }
+
+  return input.input;
+};
+
+const countInputTokens = async (input: GetVectorInputItem) => {
+  if (input.type === 'image') return 1;
+  return countPromptTokens(input.input);
+};
+
+export async function getVectors({ model, inputs: rawInputs, type, headers }: GetVectorsProps) {
+  const validatedInputs = z
+    .array(InputItemSchema)
+    .parse(rawInputs)
+    .map((item) => ({
+      ...item,
+      input: item.input.trim()
+    }));
+  if (validatedInputs.length === 0 || validatedInputs.some((item) => !item.input)) {
+    return Promise.reject({
+      code: 500,
+      message: 'input is empty'
+    });
+  }
+  const textInputs = validatedInputs
+    .filter((item) => item.type === 'text')
+    .map((item) => item.input);
+  const textTokenCounts = textInputs.length > 0 ? await countPromptTokensBatch(textInputs) : [];
+  let textIndex = 0;
+  const inputs = await Promise.all(
+    validatedInputs.map(async (item) => {
+      const currentTokens = item.type === 'text' ? textTokenCounts[textIndex++] : undefined;
+
+      // getVectors 是所有 embedding 请求的最后入口。这里仅对 text 做单条截断兜底，
+      // 不做拆分；知识库入库这类需要保留完整内容的场景，应在上游先拆成多条 index。
+      return {
+        ...item,
+        input:
+          item.type === 'text'
+            ? await truncateTextByFormattedTokenLimit({
+                text: item.input,
+                maxToken: model.maxToken,
+                currentTokens
+              })
+            : item.input
+      };
+    })
+  );
+  if (inputs.length === 0 || inputs.some((item) => !item.input)) {
+    return Promise.reject({
+      code: 500,
+      message: 'input is empty'
+    });
+  }
+
+  const { ai } = getAIApi();
+
+  // chunkSize 单次请求包含多少条文本
+  // batchConcurrency 同时执行多少个请求
+  const configuredBatchSize = Number(model.batchSize);
+  const chunkSize =
+    Number.isInteger(configuredBatchSize) && configuredBatchSize > 0 ? configuredBatchSize : 1;
+  const configuredBatchConcurrency = Number(model.batchConcurrency);
+  const batchConcurrency =
+    Number.isInteger(configuredBatchConcurrency) && configuredBatchConcurrency > 0
+      ? Math.min(configuredBatchConcurrency, 10)
+      : 1;
+  // 这部分就是对批次的切分
+  const chunks = [];
+  for (let i = 0; i < inputs.length; i += chunkSize) {
+    chunks.push(inputs.slice(i, i + chunkSize));
+  }
+
+  try {
+    // 有限并发执行批次；batchRun 会按照 chunks 的输入顺序保存结果。
+    const batchResults = await batchRun(
+      chunks,
+      async (chunk) => {
+        const requestInput = chunk.map(getRequestInput);
+        const inputTypes = Array.from(new Set(chunk.map((item) => item.type)));
+
+        return retryFn(() =>
+          ai.embeddings
+            .create(
+              {
+                model: model.model,
+                input: requestInput,
+                encoding_format: 'float',
+                ...model.defaultConfig,
+                ...(type === EmbeddingTypeEnm.db && model.dbConfig),
+                ...(type === EmbeddingTypeEnm.query && model.queryConfig)
+              } as any,
+              model.requestUrl
+                ? {
+                    path: model.requestUrl,
+                    headers: {
+                      ...(model.requestAuth
+                        ? { Authorization: `Bearer ${model.requestAuth}` }
+                        : {}),
+                      ...headers
+                    }
+                  }
+                : { headers }
+            )
+            .then(async (res) => {
+              if (!res.data) {
+                logger.error('Embedding API returned empty data', {
+                  model: model.model,
+                  inputTypes,
+                  inputCount: chunk.length,
+                  response: res
+                });
+                return Promise.reject('Embedding API is not responding');
+              }
+              if (!res?.data?.[0]?.embedding) {
+                // @ts-expect-error provider error payload is not part of the embedding response type
+                const msg = res.data?.err?.message || '';
+                logger.error('Embedding API returned invalid embedding', {
+                  model: model.model,
+                  inputTypes,
+                  inputCount: chunk.length,
+                  response: res,
+                  apiMessage: msg
+                });
+                return Promise.reject('Embedding API is not responding');
+              }
+              if (res.data.length !== chunk.length) {
+                throw new Error(
+                  `Embedding response count mismatch: expected ${chunk.length}, received ${res.data.length}`
+                );
+              }
+              const indexedCount = res.data.filter((item) => Number.isInteger(item.index)).length;
+              // 部分数据有 index、部分没有，无法确认向量对应关系
+              if (indexedCount !== 0 && indexedCount !== res.data.length) {
+                throw new Error('Embedding response contains partial indexes');
+              }
+              // 有 index 时按照原始输入顺序排序；完全没有 index 时信任接口返回顺序
+              const orderedData =
+                indexedCount === res.data.length
+                  ? [...res.data].sort((a, b) => a.index - b.index)
+                  : res.data;
+              if (indexedCount === res.data.length) {
+                const indexesAreComplete = orderedData.every(
+                  (item, position) => item.index === position
+                );
+
+                if (!indexesAreComplete) {
+                  throw new Error('Embedding response contains missing or duplicate indexes');
+                }
+              }
+              const [tokens, vectors] = await Promise.all([
+                (async () => {
+                  if (res.usage) return res.usage.total_tokens;
+
+                  const tokens = await Promise.all(chunk.map(countInputTokens));
+                  return tokens.reduce((sum, item) => sum + item, 0);
+                })(),
+                Promise.all(
+                  orderedData.map((item) =>
+                    formatVectors(decodeEmbedding(item.embedding), model.normalization)
+                  )
+                )
+              ]);
+
+              return {
+                tokens,
+                vectors
+              };
+            })
+        );
+      },
+      batchConcurrency
+    );
+
+    return {
+      tokens: batchResults.reduce((sum, item) => sum + item.tokens, 0),
+      vectors: batchResults.flatMap((item) => item.vectors)
+    };
+  } catch (error) {
+    logger.error('Embedding request failed', {
+      model: model.model,
+      inputTypes: Array.from(new Set(inputs.map((item) => item.type))),
+      inputCount: inputs.length,
+      error
+    });
+
+    return Promise.reject(error);
+  }
+}
+
+export function decodeEmbedding(embedding: number[] | string): number[] {
+  if (typeof embedding === 'string') {
+    // base64-encoded IEEE 754 little-endian float32 array
+    const buf = Buffer.from(embedding, 'base64');
+    const floats = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
+    return Array.from(floats);
+  }
+  return embedding;
+}
+
+export function formatVectors(vector: number[], normalization = false) {
+  // normalization processing
+  function normalizationVector(vector: number[]) {
+    // Calculate the Euclidean norm (L2 norm)
+    const norm = Math.sqrt(vector.reduce((sum, val) => sum + val * val, 0));
+    if (norm === 0) {
+      return vector;
+    }
+    // Normalize the vector by dividing each component by the norm
+    return vector.map((val) => val / norm);
+  }
+
+  // 超过上限，截断，并强制归一化
+  if (vector.length > 1536) {
+    logger.warn('Embedding vector dimension exceeded, truncating to 1536', {
+      vectorLength: vector.length,
+      limit: 1536
+    });
+    return normalizationVector(vector.slice(0, 1536));
+  } else if (vector.length < 1536) {
+    const vectorLen = vector.length;
+
+    const zeroVector = new Array(1536 - vectorLen).fill(0);
+
+    vector = vector.concat(zeroVector);
+  }
+
+  if (normalization) {
+    return normalizationVector(vector);
+  }
+
+  return vector;
+}
