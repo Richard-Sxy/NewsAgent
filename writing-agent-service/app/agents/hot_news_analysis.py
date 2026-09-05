@@ -73,6 +73,7 @@ class RuleBasedHotNewsAnalyzer:
             ),
         )
 
+    """计算派生指标"""
     def _calculate_derived_metrics(
         self,
         input_data: HotNewsAnalysisInput,

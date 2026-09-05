@@ -65,3 +65,9 @@ class AgentOutputValidationError(FastGPTError):
     ) -> None:
         super().__init__(message, request_id=request_id)
         self.raw_content = raw_content
+
+
+class HotNewsDataQualityError(RuntimeError):
+    """热点运行缺少可信内容或收到不一致的确定性数据。"""
+
+    retryable = False
