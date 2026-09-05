@@ -17,6 +17,9 @@ from app.services.hot_news_orchestration import (
     HotNewsOrchestrationPolicy,
     HotNewsOrchestrationService,
 )
+from app.activities.hot_news import HotNewsActivities
+from app.db.session import Database
+from app.services.hot_news_run_store import PostgresHotNewsRunStore
 
 @dataclass
 class HotNewsRuntime:
@@ -29,6 +32,19 @@ class HotNewsRuntime:
         await self.fastgpt_client.close()
         await self.knowledge_client.close()
 
+@dataclass
+class HotNewsWorkerRuntime:
+    """这边要持有数据库等内容"""
+    activities: HotNewsActivities
+    run_store: PostgresHotNewsRunStore
+    database: Database
+    hot_news_runtime: HotNewsRuntime
+
+    async def close(self) -> None:
+        await self.hot_news_runtime.close()
+        await self.database.close()
+
+
 """这边是创建热点新闻执行对象"""
 def create_hot_news_runtime(
         settings: Settings,
@@ -36,10 +52,10 @@ def create_hot_news_runtime(
         behavior_data_source: BehaviorDataSource,
         baseline_provider: HotNewsBaselineProvider,
         content_repository: NewsContentRepository,
-        policy: HotNewsOrchestrationPolicy,
+    policy: HotNewsOrchestrationPolicy,
 ) -> HotNewsRuntime:
     if not settings.fastgpt_hot_news_app_id:
-        raise ValueError("FASTGPT_HOT_NEW_APP_ID is required")
+        raise ValueError("FASTGPT_HOT_NEWS_APP_ID is required")
     if not settings.fastgpt_dataset_id:
         raise ValueError("FASTGPT_DATASET_ID is required")
 
@@ -47,7 +63,7 @@ def create_hot_news_runtime(
     knowledge_client = FastGPTKnowledgeSearchClient(settings)
 
     analysis_service = HotNewsAnalysisService(
-        input_builder=HotNewsAnalysisInputBuilder,
+        input_builder=HotNewsAnalysisInputBuilder(),
         runner=HotNewsAnalysisAgentRunner(
             fastgpt_client,
             settings.fastgpt_hot_news_app_id,
@@ -57,7 +73,7 @@ def create_hot_news_runtime(
 
     enrichment_service = HotNewsEnrichmentService(
         content_repository=content_repository,
-        knowledge_search=knowledge_client
+        knowledge_search=knowledge_client,
     )
 
     orchestration_service = HotNewsOrchestrationService(
@@ -72,4 +88,37 @@ def create_hot_news_runtime(
         service=orchestration_service,
         fastgpt_client=fastgpt_client,
         knowledge_client=knowledge_client,
+    )
+
+def create_hot_news_worker_runtime(
+    settings: Settings,
+    *,
+    behavior_data_source: BehaviorDataSource,
+    baseline_provider: HotNewsBaselineProvider,
+    content_repository: NewsContentRepository,
+    policy: HotNewsOrchestrationPolicy,
+) -> HotNewsWorkerRuntime:
+    # 创建数据库
+    database = Database(settings)
+    # 装配热点计算、内容富化、FastGPT分析主链路
+    hot_news_runtime = create_hot_news_runtime(
+        settings,
+        behavior_data_source=behavior_data_source,
+        baseline_provider=baseline_provider,
+        content_repository=content_repository,
+        policy=policy,
+    )
+    # Activity 重试时，通过 PostgreSQL 进行幂等计算和持久化结果
+    run_store = PostgresHotNewsRunStore(database)
+    # Temporal 只负责调用主链路和持久化结果
+    activities = HotNewsActivities(
+        orchestration_service=hot_news_runtime.service,
+        run_store=run_store,
+    )
+
+    return HotNewsWorkerRuntime(
+        activities=activities,
+        run_store=run_store,
+        database=database,
+        hot_news_runtime=hot_news_runtime,
     )

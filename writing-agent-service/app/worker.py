@@ -18,12 +18,14 @@ async def run_worker(
     resolved = settings or get_settings()
     runtime = None if handler is not None else create_worker_runtime(resolved)
     resolved_handler = handler or runtime.handler
+    # 调用 Temporal 的 Client
     client = await Client.connect(
         resolved.temporal_address,
         namespace=resolved.temporal_namespace,
     )
     resolved_state_handler = state_handler or (runtime.state_handler if runtime else None)
     activities = NewsStepActivities(resolved_handler, resolved_state_handler)
+    # 调用 Worker
     worker = Worker(
         client,
         task_queue=resolved.temporal_task_queue,

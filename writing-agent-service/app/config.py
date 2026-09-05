@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     temporal_address: str
     temporal_namespace: str
     temporal_task_queue: str = "news-writing"
+    temporal_hot_news_task_queue: str = "hot-news"
 
     fastgpt_base_url: str
     fastgpt_api_key: str

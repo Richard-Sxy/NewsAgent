@@ -88,3 +88,16 @@ class JobStateCommand:
         "research_completed", "waiting_human", "cancelled", "failed"
     ]
     reason: str | None = None
+
+
+@dataclass(frozen=True)
+class HotNewsActivityOutcome:
+    """Activity 返回给 Workflow 的轻量结果。"""
+
+    run_id: str
+    idempotency_key: str
+    status: Literal["completed"]
+    fetched_record_count: int
+    metric_snapshot_count: int
+    ranked_news_count: int
+    analyzed_news_count: int

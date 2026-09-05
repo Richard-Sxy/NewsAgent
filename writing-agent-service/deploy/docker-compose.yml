@@ -7,6 +7,7 @@ x-writing-agent-env: &writing-agent-env
   TEMPORAL_ADDRESS: temporal:7233
   TEMPORAL_NAMESPACE: default
   TEMPORAL_TASK_QUEUE: news-writing
+  TEMPORAL_HOT_NEWS_TASK_QUEUE: hot-news
   FASTGPT_BASE_URL: http://fastgpt-app:3000
   FASTGPT_API_KEY: ${FASTGPT_API_KEY}
   FASTGPT_RESEARCH_APP_ID: ${FASTGPT_RESEARCH_APP_ID}

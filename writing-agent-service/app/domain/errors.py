@@ -71,3 +71,9 @@ class HotNewsDataQualityError(RuntimeError):
     """热点运行缺少可信内容或收到不一致的确定性数据。"""
 
     retryable = False
+
+
+class HotNewsPersistenceError(RuntimeError):
+    """热点运行的 PostgreSQL 持久化操作失败。"""
+
+    retryable = True
