@@ -1,4 +1,6 @@
 """热点分析大模型模块的输入构造、业务校验与统一调用入口。"""
+from dataclasses import dataclass
+from datetime import datetime, timezone
 
 from app.analytics.hot_news_enrichment import EnrichedHotNews
 from app.clients.fastgpt import AgentResult
@@ -8,6 +10,7 @@ from app.schemas.hot_news import (
     HotNewsAnalysisReport,
     HotNewsMetrics,
     HotScoreComponents,
+    PromptMemoryContext,
     RelatedNewsEvidence,
 )
 from app.services.agents.hot_news import HotNewsAnalysisAgentRunner
@@ -21,7 +24,12 @@ class HotNewsAnalysisInputBuilder:
             raise ValueError("policy_version cannot be empty")
         self.policy_version = policy_version
 
-    def build(self, item: EnrichedHotNews) -> HotNewsAnalysisInput:
+    def build(
+        self,
+        item: EnrichedHotNews,
+        *,
+        memory_context: PromptMemoryContext | None = None,
+    ) -> HotNewsAnalysisInput:
         """构造不包含原始用户明细的热点分析上下文。
 
         约束：
@@ -87,6 +95,7 @@ class HotNewsAnalysisInputBuilder:
             ),
             related_news=related_news,
             analysis_policy_version=self.policy_version,
+            memory_context=memory_context,
         )
 
 
@@ -109,7 +118,8 @@ class HotNewsAnalysisValidator:
         5. ``reason_type=evidence`` 时必须至少引用一个 evidence ID。
         6. ``reason_type=hypothesis`` 必须使用 ``certainty=inferred``。
         7. 输入无关联证据时，输出不得包含 related context，并且必须有 limitation。
-        8. 失败时抛 ``AgentOutputValidationError``，保留 raw_content/request_id。
+        8. ``applied_memory_ids`` 只能引用本次实际注入模型的 Memory。
+        9. 失败时抛 ``AgentOutputValidationError``，保留 raw_content/request_id。
         """
 
         report = result.value
@@ -117,6 +127,11 @@ class HotNewsAnalysisValidator:
         try:
             # 必须与可信输入完全一致
             self._validate_news_id(
+                analysis_input=analysis_input,
+                report=report,
+            )
+            # 模型只能声明使用本次实际注入的 Memory。
+            self._validate_applied_memory_ids(
                 analysis_input=analysis_input,
                 report=report,
             )
@@ -179,6 +194,33 @@ class HotNewsAnalysisValidator:
             for item in analysis_input.related_news
             if item.news_id
         }
+
+    def _validate_applied_memory_ids(
+        self,
+        *,
+        analysis_input: HotNewsAnalysisInput,
+        report: HotNewsAnalysisReport,
+    ) -> None:
+        """拒绝重复或不在本次 Prompt 白名单中的 Memory 引用。"""
+
+        applied_ids = report.applied_memory_ids
+        if len(applied_ids) != len(set(applied_ids)):
+            raise ValueError(
+                "applied_memory_ids contains duplicate memory ids"
+            )
+
+        memory_context = analysis_input.memory_context
+        allowed_ids = (
+            {item.memory_id for item in memory_context.items}
+            if memory_context is not None
+            else set()
+        )
+        unknown_ids = set(applied_ids) - allowed_ids
+        if unknown_ids:
+            raise ValueError(
+                "report references unknown or omitted memory ids: "
+                f"{sorted(str(memory_id) for memory_id in unknown_ids)}"
+            )
 
     def _validate_evidence_ids(
         self,
@@ -316,6 +358,16 @@ class HotNewsAnalysisValidator:
             )
 
 
+@dataclass(frozen=True, slots=True)
+class HotNewsAnalysisExecution:
+    """一次交验通过分析，包括当时的业务输入"""
+
+    analysis_input: HotNewsAnalysisInput
+    analysis: AgentResult[HotNewsAnalysisReport]
+    captured_at: datetime
+    validated_at: datetime
+
+
 class HotNewsAnalysisService:
     """未来供 API 或 Temporal Activity 调用的唯一热点 Agent 入口。"""
 
@@ -333,10 +385,42 @@ class HotNewsAnalysisService:
     async def analyze(
         self,
         item: EnrichedHotNews,
+        *,
+        memory_context: PromptMemoryContext | None = None,
     ) -> AgentResult[HotNewsAnalysisReport]:
         """构造可信输入、调用模型并执行输出交叉校验。"""
 
-        analysis_input = self.input_builder.build(item)
+        execution = await self.analyze_with_snapshot(
+            item,
+            memory_context=memory_context,
+        )
+        return execution.analysis
+
+    async def analyze_with_snapshot(
+        self,
+        item: EnrichedHotNews,
+        *,
+        memory_context: PromptMemoryContext | None = None,
+    ) -> HotNewsAnalysisExecution:
+        analysis_input = self.input_builder.build(
+            item,
+            memory_context=memory_context,
+        )
+        input_snapshot = analysis_input.model_copy(deep=True)
+        capture_at = datetime.now(timezone.utc)
+
+        # 调用LLM获得结构化报告
         result = await self.runner.run(analysis_input)
-        self.validator.validate(analysis_input=analysis_input, result=result)
-        return result
+
+        self.validator.validate(
+            analysis_input=input_snapshot,
+            result=result,
+        )
+
+        # 返回执行结果
+        return HotNewsAnalysisExecution(
+            analysis_input=input_snapshot,
+            analysis=result,
+            captured_at=capture_at,
+            validated_at=datetime.now(timezone.utc),
+        )

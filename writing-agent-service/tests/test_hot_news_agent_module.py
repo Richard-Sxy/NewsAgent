@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
+from uuid import UUID, uuid4
 
 import httpx
 import pytest
@@ -24,6 +25,8 @@ from app.schemas.hot_news import (
     HotNewsAnalysisReport,
     HotNewsMetrics,
     HotScoreComponents,
+    PromptMemoryContext,
+    PromptMemoryItem,
     RelatedNewsContext,
     RelatedNewsEvidence,
 )
@@ -137,6 +140,27 @@ def analysis_input() -> HotNewsAnalysisInput:
     )
 
 
+def prompt_memory_context(*, memory_id: UUID | None = None) -> PromptMemoryContext:
+    selected_memory_id = memory_id or uuid4()
+    return PromptMemoryContext(
+        resolver_policy_version="memory-prompt-v1",
+        resolved_at=datetime(2026, 9, 4, 10, tzinfo=timezone.utc),
+        items=(
+            PromptMemoryItem(
+                memory_id=selected_memory_id,
+                memory_key="output.language",
+                memory_kind="temporary_preference",
+                selected_tier="short_term",
+                origin="explicit_user",
+                summary="本次任务使用中文",
+                value="zh-CN",
+                confidence=1,
+                version=1,
+            ),
+        ),
+    )
+
+
 def valid_report() -> HotNewsAnalysisReport:
     return HotNewsAnalysisReport(
         news_id="news-1",
@@ -177,6 +201,23 @@ def test_input_builder_maps_enriched_hot_news_without_raw_user_data() -> None:
     assert "user_id" not in payload.model_dump_json()
 
 
+def test_input_builder_includes_resolved_prompt_memory() -> None:
+    memory_context = PromptMemoryContext(
+        resolver_policy_version="memory-prompt-v1",
+        resolved_at=datetime(2026, 9, 4, 10, tzinfo=timezone.utc),
+    )
+
+    payload = HotNewsAnalysisInputBuilder().build(
+        enriched_hot_news(),
+        memory_context=memory_context,
+    )
+
+    assert payload.memory_context is memory_context
+    assert payload.model_dump(mode="json")["memory_context"] == (
+        memory_context.model_dump(mode="json")
+    )
+
+
 @pytest.mark.asyncio
 async def test_runner_uses_existing_structured_fastgpt_client() -> None:
     expected = AgentResult(valid_report(), "req-1", {"total_tokens": 100}, "{}")
@@ -205,6 +246,79 @@ def test_validator_rejects_unknown_evidence_news_id() -> None:
         HotNewsAnalysisValidator().validate(
             analysis_input=analysis_input(),
             result=result,
+        )
+
+
+def test_validator_accepts_applied_memory_from_prompt_context() -> None:
+    memory_id = uuid4()
+    trusted_input = analysis_input().model_copy(
+        update={"memory_context": prompt_memory_context(memory_id=memory_id)}
+    )
+    report = valid_report().model_copy(
+        update={"applied_memory_ids": [memory_id]}
+    )
+
+    HotNewsAnalysisValidator().validate(
+        analysis_input=trusted_input,
+        result=AgentResult(report, "req-memory", {}, report.model_dump_json()),
+    )
+
+
+def test_validator_rejects_unknown_applied_memory_id() -> None:
+    trusted_input = analysis_input().model_copy(
+        update={"memory_context": prompt_memory_context()}
+    )
+    report = valid_report().model_copy(
+        update={"applied_memory_ids": [uuid4()]}
+    )
+
+    with pytest.raises(AgentOutputValidationError, match="memory"):
+        HotNewsAnalysisValidator().validate(
+            analysis_input=trusted_input,
+            result=AgentResult(
+                report,
+                "req-memory-unknown",
+                {},
+                report.model_dump_json(),
+            ),
+        )
+
+
+def test_validator_rejects_memory_id_without_prompt_context() -> None:
+    report = valid_report().model_copy(
+        update={"applied_memory_ids": [uuid4()]}
+    )
+
+    with pytest.raises(AgentOutputValidationError, match="memory"):
+        HotNewsAnalysisValidator().validate(
+            analysis_input=analysis_input(),
+            result=AgentResult(
+                report,
+                "req-memory-empty",
+                {},
+                report.model_dump_json(),
+            ),
+        )
+
+
+def test_validator_rejects_duplicate_applied_memory_ids() -> None:
+    memory_id = uuid4()
+    trusted_input = analysis_input().model_copy(
+        update={"memory_context": prompt_memory_context(memory_id=memory_id)}
+    )
+    report = valid_report().model_copy(
+        update={"applied_memory_ids": [memory_id, memory_id]}
+    )
+
+    with pytest.raises(AgentOutputValidationError, match="duplicate"):
+        HotNewsAnalysisValidator().validate(
+            analysis_input=trusted_input,
+            result=AgentResult(
+                report,
+                "req-memory-duplicate",
+                {},
+                report.model_dump_json(),
+            ),
         )
 
 
@@ -322,8 +436,70 @@ def test_validator_rejects_related_context_when_input_has_no_evidence() -> None:
 
 
 @pytest.mark.asyncio
+async def test_snapshot_preserves_nested_input_and_call_metadata() -> None:
+    report = valid_report()
+    expected = AgentResult(report, "req-snapshot", {"total_tokens": 12}, "raw")
+    runner = AsyncMock()
+    runner.run.return_value = expected
+    service = HotNewsAnalysisService(
+        input_builder=HotNewsAnalysisInputBuilder(),
+        runner=runner,
+        validator=HotNewsAnalysisValidator(),
+    )
+
+    execution = await service.analyze_with_snapshot(enriched_hot_news())
+
+    runner.run.assert_awaited_once()
+    sent_input = runner.run.await_args.args[0]
+    assert execution.analysis_input == sent_input
+    assert execution.analysis is expected
+    assert execution.captured_at.tzinfo == timezone.utc
+    assert execution.validated_at.tzinfo == timezone.utc
+    assert execution.captured_at <= execution.validated_at
+    sent_input.related_news[0].rerank_reasons.clear()
+    sent_input.related_news.clear()
+    assert execution.analysis_input.related_news[0].rerank_reasons
+
+
+@pytest.mark.asyncio
+async def test_snapshot_rejects_invalid_report() -> None:
+    report = valid_report().model_copy(update={"news_id": "wrong-news"})
+    runner = AsyncMock()
+    runner.run.return_value = AgentResult(report, "req-invalid", {}, "raw")
+    service = HotNewsAnalysisService(
+        input_builder=HotNewsAnalysisInputBuilder(),
+        runner=runner,
+        validator=HotNewsAnalysisValidator(),
+    )
+
+    with pytest.raises(AgentOutputValidationError, match="news_id"):
+        await service.analyze_with_snapshot(enriched_hot_news())
+    runner.run.assert_awaited_once()
+
+
+@pytest.mark.asyncio
 async def test_service_executes_complete_hot_news_agent_chain() -> None:
-    expected_report = valid_report()
+    memory_id = uuid4()
+    expected_report = valid_report().model_copy(
+        update={"applied_memory_ids": [memory_id]}
+    )
+    memory_context = PromptMemoryContext(
+        resolver_policy_version="memory-prompt-v1",
+        resolved_at=datetime(2026, 9, 4, 10, tzinfo=timezone.utc),
+        items=(
+            PromptMemoryItem(
+                memory_id=memory_id,
+                memory_key="output.language",
+                memory_kind="temporary_preference",
+                selected_tier="short_term",
+                origin="explicit_user",
+                summary="本次任务使用中文",
+                value="zh-CN",
+                confidence=1,
+                version=1,
+            ),
+        ),
+    )
 
     def handler(request: httpx.Request) -> httpx.Response:
         body = json.loads(request.content)
@@ -334,6 +510,12 @@ async def test_service_executes_complete_hot_news_agent_chain() -> None:
         assert model_input["news_id"] == "news-1"
         assert model_input["metrics"]["clicks"] == 40
         assert model_input["related_news"][0]["news_id"] == "evidence-1"
+        assert model_input["memory_context"] == (
+            memory_context.model_dump(mode="json")
+        )
+        assert model_input["memory_context"]["items"][0][
+            "memory_id"
+        ] == str(memory_id)
         assert "user_id" not in model_input
         return httpx.Response(
             200,
@@ -365,10 +547,14 @@ async def test_service_executes_complete_hot_news_agent_chain() -> None:
     )
 
     try:
-        result = await service.analyze(enriched_hot_news())
+        result = await service.analyze(
+            enriched_hot_news(),
+            memory_context=memory_context,
+        )
     finally:
         await http_client.aclose()
 
     assert result.value == expected_report
+    assert result.value.applied_memory_ids == [memory_id]
     assert result.request_id == "req-chain"
     assert result.usage == {"total_tokens": 120}

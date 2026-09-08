@@ -13,7 +13,7 @@ from app.analytics.metrics import NewsMetricCalculator, NewsMetricSnapshot
 from app.analytics.ranking import HotNewsRanker, MetricKey, RankedHotNews
 from app.clients.fastgpt import AgentResult
 from app.domain.errors import HotNewsDataQualityError
-from app.schemas.hot_news import HotNewsAnalysisReport
+from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
 from app.services.hot_news_analysis import HotNewsAnalysisService
 
 
@@ -115,11 +115,14 @@ class EmptyHotNewsBaselineProvider:
 
 @dataclass(frozen=True, slots=True)
 class AnalyzedHotNews:
-    """轻量分析结果；新闻正文不进入未来 Workflow 返回载荷。"""
+    """供持久化的分析及输入快照；Workflow 只返回运行摘要。"""
 
     news_id: str
     rank: int
     analysis: AgentResult[HotNewsAnalysisReport]
+    analysis_input: HotNewsAnalysisInput
+    captured_at: datetime
+    validated_at: datetime
 
 
 @dataclass(frozen=True, slots=True)
@@ -219,12 +222,15 @@ class HotNewsOrchestrationService:
 
         analyzed: list[AnalyzedHotNews] = []
         for item in enriched:
-            result = await self.analysis_service.analyze(item)
+            execution = await self.analysis_service.analyze_with_snapshot(item)
             analyzed.append(
                 AnalyzedHotNews(
                     news_id=item.ranking.current.news_id,
                     rank=item.ranking.rank,
-                    analysis=result,
+                    analysis=execution.analysis,
+                    analysis_input=execution.analysis_input,
+                    captured_at=execution.captured_at,
+                    validated_at=execution.validated_at,
                 )
             )
 

@@ -12,6 +12,12 @@ def test_all_checkpoint_tables_are_registered() -> None:
         "writing_artifacts",
         "agent_runs",
         "outbox_events",
+        "analysis_runs",
+        "hot_news_decisions",
+        "short_term_user_memories",
+        "long_term_memory_candidates",
+        "long_term_user_memories",
+        "memory_promotion_requests",
     }
 
 

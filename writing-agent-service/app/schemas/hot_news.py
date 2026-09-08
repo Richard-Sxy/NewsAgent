@@ -2,8 +2,22 @@
 
 from datetime import datetime
 from typing import Literal
+from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl
+from pydantic import (
+    AwareDatetime,
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    JsonValue,
+)
+
+from app.schemas.user_memory import (
+    MemoryKind,
+    MemoryTier,
+    ResolvedMemoryOrigin,
+)
 
 
 MetricKey = Literal[
@@ -67,6 +81,36 @@ class RelatedNewsEvidence(BaseModel):
     rerank_reasons: list[str] = Field(default_factory=list, max_length=10)
 
 
+class PromptMemoryItem(BaseModel):
+    """一条经过 Resolver 选择、允许发送给模型的记忆。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    memory_id: UUID
+    memory_key: str = Field(min_length=1, max_length=128)
+    memory_kind: MemoryKind
+    selected_tier: MemoryTier
+    origin: ResolvedMemoryOrigin
+    summary: str = Field(min_length=1, max_length=500)
+    value: JsonValue
+    confidence: float = Field(ge=0, le=1)
+    version: int = Field(ge=1)
+
+
+class PromptMemoryContext(BaseModel):
+    """一次模型调用允许使用的、大小受控的 Memory Context。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    resolver_policy_version: str = Field(min_length=1, max_length=64)
+    resolved_at: AwareDatetime
+    items: tuple[PromptMemoryItem, ...] = Field(default=(), max_length=20)
+    omitted_memory_ids: tuple[UUID, ...] = Field(
+        default=(),
+        max_length=100,
+    )
+
+
 class HotNewsAnalysisInput(BaseModel):
     """发送给 FastGPT 热点分析 App 的最小可信上下文。"""
 
@@ -84,6 +128,7 @@ class HotNewsAnalysisInput(BaseModel):
     score_components: HotScoreComponents
     related_news: list[RelatedNewsEvidence] = Field(default_factory=list, max_length=5)
     analysis_policy_version: str = Field(min_length=1, max_length=64)
+    memory_context: PromptMemoryContext | None = None
 
 
 class AnalysisReason(BaseModel):
@@ -136,6 +181,14 @@ class HotNewsAnalysisReport(BaseModel):
         max_length=10,
     )
     evidence_news_ids: list[str] = Field(default_factory=list, max_length=10)
+    applied_memory_ids: list[UUID] = Field(
+        default_factory=list,
+        max_length=20,
+        description=(
+            "本次报告实际使用的 memory_context.items[].memory_id；"
+            "未使用记忆时必须为空，不得填写 omitted_memory_ids"
+        ),
+    )
     limitations: list[str] = Field(default_factory=list, max_length=10)
     overall_confidence: float = Field(ge=0, le=1)
     output_schema_version: Literal["1.0"] = "1.0"

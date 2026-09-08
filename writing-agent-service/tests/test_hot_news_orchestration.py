@@ -1,7 +1,14 @@
+import json
+from contextlib import asynccontextmanager
+from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, Mock
+from uuid import uuid4
 
 import pytest
 from temporalio.converter import DataConverter
+from sqlalchemy.dialects import postgresql
 
 from app.analytics.baseline import NewsMetricBaseline
 from app.analytics.data_source import InMemoryBehaviorDataSource
@@ -22,6 +29,7 @@ from app.services.hot_news_orchestration import (
     HotNewsOrchestrationService,
     HotNewsRunRequest,
 )
+from app.services.hot_news_run_store import PostgresHotNewsRunStore
 
 
 START = datetime(2026, 9, 4, 10, tzinfo=timezone.utc)
@@ -157,9 +165,48 @@ async def test_runs_bounded_hot_news_chain_without_retaining_raw_user_data() -> 
     assert result.metric_snapshots[0].clicks == 1
     assert result.ranked_news[0].current.news_id == "news-1"
     assert result.analyzed_news[0].analysis.value.news_id == "news-1"
+    snapshot = result.analyzed_news[0]
+    assert snapshot.analysis_input == runner.inputs[0]
+    assert snapshot.analysis_input is not runner.inputs[0]
+    assert snapshot.captured_at <= snapshot.validated_at
     assert runner.inputs[0].metrics.effective_consumptions == 1
     assert enrichment.calls[0][1:] == (2, 5)
     assert "private-user" not in repr(result)
+
+
+@pytest.mark.asyncio
+async def test_persistence_writes_snapshot_v2_and_returns_only_summary() -> None:
+    service, _, runner = orchestration(
+        [record("impression-1", EventType.IMPRESSION)]
+    )
+    result = await service.run(request())
+    run_id = uuid4()
+    session = SimpleNamespace(
+        execute=AsyncMock(return_value=Mock(scalar_one_or_none=lambda: run_id))
+    )
+
+    @asynccontextmanager
+    async def open_session():
+        yield session
+
+    store = PostgresHotNewsRunStore(SimpleNamespace(session=open_session))
+    outcome = await store.save_completed(result=result)
+
+    statement = session.execute.await_args.args[0]
+    values = statement.compile(dialect=postgresql.dialect()).params
+    assert values["payload_schema_version"] == "2.0"
+    payload = values["result_payload"]
+    saved = payload["analyzed_news"][0]
+    assert saved["analysis_input"] == runner.inputs[0].model_dump(mode="json")
+    assert saved["analysis"]["value"]["news_id"] == "news-1"
+    assert saved["analysis"]["request_id"] == "request-news-1"
+    assert saved["captured_at"] == result.analyzed_news[0].captured_at.isoformat()
+    assert saved["validated_at"] == result.analyzed_news[0].validated_at.isoformat()
+    assert payload["request"]["production_bundle_version"] == "bundle-v1"
+    assert "private-user" not in json.dumps(payload)
+    assert outcome.run_id == str(run_id)
+    assert "analysis_input" not in asdict(outcome)
+    assert "result_payload" not in asdict(outcome)
 
 
 @pytest.mark.asyncio

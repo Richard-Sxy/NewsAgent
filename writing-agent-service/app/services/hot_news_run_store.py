@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
+from app.schemas.hot_news_memory import HotNewsAnalysisMemory
 
 from app.db.session import Database
 from app.domain.errors import HotNewsPersistenceError
@@ -64,7 +65,7 @@ class PostgresHotNewsRunStore:
             "metric_snapshot_count": len(result.metric_snapshots),
             "ranked_news_count": len(result.ranked_news),
             "analyzed_news_count": len(result.analyzed_news),
-            "payload_schema_version": "1.0",
+            "payload_schema_version": "2.0",
             "result_payload": self._serialize_result(result),
             "completed_at": datetime.now(timezone.utc),
         }
@@ -107,6 +108,89 @@ class PostgresHotNewsRunStore:
                 return self._to_outcome(existing)
         except SQLAlchemyError as exc:
             raise HotNewsPersistenceError("保存热点运行失败") from exc
+
+    async def get_analysis_memory(
+        self,
+        *,
+        tenant_id: str,
+        run_id: UUID,
+        news_id: str,
+    ) -> HotNewsAnalysisMemory | None:
+        try:
+            async with self._database.session() as session:
+                statement = select(HotNewsAnalysisRun).where(
+                    HotNewsAnalysisRun.id == run_id,
+                    HotNewsAnalysisRun.tenant_id == tenant_id,
+                    HotNewsAnalysisRun.status == "completed",
+                )
+                db_result = await session.execute(statement)
+                run = db_result.scalar_one_or_none()
+
+                if run is None:
+                    return None
+
+                return self._extract_analysis_memory(run=run, news_id=news_id)
+        except SQLAlchemyError as exc:
+            raise HotNewsPersistenceError("查询热点分析记忆失败") from exc
+
+    @staticmethod
+    def _extract_analysis_memory(
+        *,
+        run: HotNewsAnalysisRun,
+        news_id: str,
+    ) -> HotNewsAnalysisMemory | None:
+        if run.payload_schema_version != "2.0":
+            raise HotNewsPersistenceError(
+                f"热点运行不包含输入快照：{run.payload_schema_version}"
+            )
+
+        if not isinstance(run.result_payload, dict):
+            raise HotNewsPersistenceError("热点运行的pay_load格式错误")
+
+        analyzed_news = run.result_payload.get("analyzed_news")
+        if not isinstance(analyzed_news, list):
+            raise HotNewsPersistenceError(
+                "热点运行的 analyzed_news 格式错误"
+            )
+
+        for item in analyzed_news:
+            if not isinstance(item, dict):
+                raise HotNewsPersistenceError(
+                    "热点分析记录格式错误"
+                )
+
+            if item.get("news_id") != news_id:
+                continue
+
+            analysis = item.get("analysis")
+            if not isinstance(analysis, dict):
+                raise HotNewsPersistenceError(
+                    "热点分析结果格式错误"
+                )
+
+            try:
+                return HotNewsAnalysisMemory(
+                    run_id=run.id,
+                    tenant_id=run.tenant_id,
+                    news_id=item["news_id"],
+                    rank=item["rank"],
+                    production_bundle_version=run.production_bundle_version,
+                    workflow_version=run.workflow_version,
+                    payload_schema_version=run.payload_schema_version,
+                    analysis_input=item["analysis_input"],
+                    analysis_report=analysis["value"],
+                    fastgpt_request_id=analysis.get("request_id"),
+                    usage=analysis.get("usage") or {},
+                    captured_at=item["captured_at"],
+                    validated_at=item["validated_at"],
+                    completed_at=run.completed_at,
+                )
+            except (KeyError, TypeError, ValueError) as exc:
+                raise HotNewsPersistenceError(
+                    "热点分析记忆不能通过 Schema 校验"
+                ) from exc
+
+        return None
 
     @staticmethod
     def _to_outcome(run: HotNewsAnalysisRun) -> HotNewsActivityOutcome:
