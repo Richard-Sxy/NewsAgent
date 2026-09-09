@@ -32,7 +32,12 @@ class NewsContent:
 
 
 class NewsContentRepository(Protocol):
-    def get_by_news_id(self, news_id: str) -> NewsContent | None: ...
+    async def batch_get_by_news_ids(
+        self,
+        *,
+        tenant_id: str,
+        news_ids: tuple[str, ...],
+    ) -> dict[str, NewsContent]: ...
 
 
 class InMemoryNewsContentRepository:
@@ -48,6 +53,24 @@ class InMemoryNewsContentRepository:
 
     def get_by_news_id(self, news_id: str) -> NewsContent | None:
         return self._contents.get(news_id)
+
+    def list_all(self) -> list[NewsContent]:
+        """返回内存快照，供离线检索演示使用。"""
+        return list(self._contents.values())
+
+    async def batch_get_by_news_ids(
+        self,
+        *,
+        tenant_id: str,
+        news_ids: tuple[str, ...],
+    ) -> dict[str, NewsContent]:
+        if not tenant_id.strip():
+            raise ValueError("tenant_id cannot be empty")
+        return {
+            news_id: self._contents[news_id]
+            for news_id in dict.fromkeys(news_ids)
+            if news_id in self._contents
+        }
 
 
 class TencentNewsCacheRepository:
@@ -67,6 +90,20 @@ class TencentNewsCacheRepository:
     def list_all(self) -> list[NewsContent]:
         """返回内容快照，供离线联调检索使用。"""
         return list(self._contents.values())
+
+    async def batch_get_by_news_ids(
+        self,
+        *,
+        tenant_id: str,
+        news_ids: tuple[str, ...],
+    ) -> dict[str, NewsContent]:
+        if not tenant_id.strip():
+            raise ValueError("tenant_id cannot be empty")
+        return {
+            news_id: self._contents[news_id]
+            for news_id in dict.fromkeys(news_ids)
+            if news_id in self._contents
+        }
 
     def _load_contents(self) -> dict[str, NewsContent]:
         if not self.cache_dir.is_dir():

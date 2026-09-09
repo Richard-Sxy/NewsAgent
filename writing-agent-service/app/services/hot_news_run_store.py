@@ -133,6 +133,58 @@ class PostgresHotNewsRunStore:
         except SQLAlchemyError as exc:
             raise HotNewsPersistenceError("查询热点分析记忆失败") from exc
 
+    async def list_analysis_memories(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+    ) -> tuple[HotNewsAnalysisMemory, ...]:
+        """Load every validated item from one completed run for Data Loop repair."""
+
+        try:
+            async with self._database.session() as session:
+                statement = select(HotNewsAnalysisRun).where(
+                    HotNewsAnalysisRun.tenant_id == tenant_id,
+                    HotNewsAnalysisRun.idempotency_key == idempotency_key,
+                    HotNewsAnalysisRun.status == "completed",
+                )
+                db_result = await session.execute(statement)
+                run = db_result.scalar_one_or_none()
+                if run is None:
+                    return ()
+                return self._extract_all_analysis_memories(run=run)
+        except SQLAlchemyError as exc:
+            raise HotNewsPersistenceError("查询热点分析记忆列表失败") from exc
+
+    @classmethod
+    def _extract_all_analysis_memories(
+        cls,
+        *,
+        run: HotNewsAnalysisRun,
+    ) -> tuple[HotNewsAnalysisMemory, ...]:
+        if run.payload_schema_version != "2.0":
+            raise HotNewsPersistenceError(
+                f"热点运行不包含输入快照：{run.payload_schema_version}"
+            )
+        if not isinstance(run.result_payload, dict):
+            raise HotNewsPersistenceError("热点运行的pay_load格式错误")
+        analyzed_news = run.result_payload.get("analyzed_news")
+        if not isinstance(analyzed_news, list):
+            raise HotNewsPersistenceError("热点运行的 analyzed_news 格式错误")
+
+        memories: list[HotNewsAnalysisMemory] = []
+        for item in analyzed_news:
+            if not isinstance(item, dict) or not isinstance(item.get("news_id"), str):
+                raise HotNewsPersistenceError("热点分析记录格式错误")
+            memory = cls._extract_analysis_memory(
+                run=run,
+                news_id=item["news_id"],
+            )
+            if memory is None:
+                raise HotNewsPersistenceError("热点分析记录缺少可重放快照")
+            memories.append(memory)
+        return tuple(memories)
+
     @staticmethod
     def _extract_analysis_memory(
         *,
@@ -171,6 +223,7 @@ class PostgresHotNewsRunStore:
             try:
                 return HotNewsAnalysisMemory(
                     run_id=run.id,
+                    run_idempotency_key=run.idempotency_key,
                     tenant_id=run.tenant_id,
                     news_id=item["news_id"],
                     rank=item["rank"],

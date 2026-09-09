@@ -1,0 +1,78 @@
+{
+  "plan_name": "enterprise-rpc-and-agent-boundary",
+  "plan_version": "2026-09-09.v1",
+  "scenarios": [
+    {
+      "scenario_id": "behavior-rpc-timeout",
+      "operation": "behavior.query_events",
+      "fault_type": "rpc_timeout",
+      "expected_retryable": true,
+      "expected_action": "retry_once",
+      "alert_key": "hot_news_rpc_timeout"
+    },
+    {
+      "scenario_id": "content-rpc-unavailable",
+      "operation": "content.batch_get_news",
+      "fault_type": "rpc_unavailable",
+      "expected_retryable": true,
+      "expected_action": "retry_once",
+      "alert_key": "hot_news_rpc_unavailable"
+    },
+    {
+      "scenario_id": "retrieval-rate-limited",
+      "operation": "retrieval.batch_search_related_news",
+      "fault_type": "rpc_rate_limit",
+      "expected_retryable": true,
+      "expected_action": "retry_once",
+      "alert_key": "hot_news_rpc_rate_limit"
+    },
+    {
+      "scenario_id": "rpc-authentication-rejected",
+      "operation": "behavior.get_watermark",
+      "fault_type": "rpc_authentication",
+      "expected_retryable": false,
+      "expected_action": "block_and_alert",
+      "alert_key": "hot_news_rpc_authentication"
+    },
+    {
+      "scenario_id": "behavior-watermark-incomplete",
+      "operation": "behavior.get_watermark",
+      "fault_type": "watermark_incomplete",
+      "expected_retryable": false,
+      "expected_action": "block_and_alert",
+      "alert_key": "hot_news_data_watermark_incomplete"
+    },
+    {
+      "scenario_id": "baseline-version-drift",
+      "operation": "baseline.query_baselines",
+      "fault_type": "data_version_drift",
+      "expected_retryable": false,
+      "expected_action": "block_and_alert",
+      "alert_key": "hot_news_data_version_drift"
+    },
+    {
+      "scenario_id": "content-partial-response",
+      "operation": "content.batch_get_news",
+      "fault_type": "rpc_response_invalid",
+      "expected_retryable": false,
+      "expected_action": "block_and_alert",
+      "alert_key": "hot_news_rpc_response_invalid"
+    },
+    {
+      "scenario_id": "model-hallucinated-evidence",
+      "operation": "analysis.validate",
+      "fault_type": "model_output_invalid",
+      "expected_retryable": false,
+      "expected_action": "block_and_alert",
+      "alert_key": "hot_news_model_output_invalid"
+    },
+    {
+      "scenario_id": "postgres-transient-failure",
+      "operation": "run_store.save_completed",
+      "fault_type": "persistence_failure",
+      "expected_retryable": true,
+      "expected_action": "retry_once",
+      "alert_key": "hot_news_persistence_failure"
+    }
+  ]
+}

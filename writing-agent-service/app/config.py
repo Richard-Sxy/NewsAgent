@@ -26,6 +26,7 @@ class Settings(BaseSettings):
     temporal_namespace: str
     temporal_task_queue: str = "news-writing"
     temporal_hot_news_task_queue: str = "hot-news"
+    temporal_data_loop_task_queue: str = "hot-news-data-loop"
 
     fastgpt_base_url: str
     fastgpt_api_key: str
@@ -34,6 +35,7 @@ class Settings(BaseSettings):
     fastgpt_writer_app_id: str
     fastgpt_reviewer_app_id: str
     fastgpt_hot_news_app_id: str | None = None
+    fastgpt_error_attribution_app_id: str | None = None
     fastgpt_supervisor_app_id: str | None = None
 
     artifact_bucket: str

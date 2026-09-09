@@ -71,7 +71,8 @@ def test_query_rejects_invalid_window() -> None:
         BehaviorQuery(start=START, end=START).validate()
 
 
-def test_in_memory_source_filters_with_left_closed_right_open_window() -> None:
+@pytest.mark.asyncio
+async def test_in_memory_source_filters_with_left_closed_right_open_window() -> None:
     source = InMemoryBehaviorDataSource(
         [
             record("at-start", event_time=START),
@@ -88,16 +89,21 @@ def test_in_memory_source_filters_with_left_closed_right_open_window() -> None:
         content_types=frozenset({ContentType.ARTICLE}),
     )
 
-    assert [item.event_id for item in source.fetch(query)] == ["at-start", "inside"]
+    assert [item.event_id for item in await source.fetch(query)] == [
+        "at-start",
+        "inside",
+    ]
 
 
-def test_in_memory_source_does_not_mutate_input() -> None:
+@pytest.mark.asyncio
+async def test_in_memory_source_does_not_mutate_input() -> None:
     records = [record("event-1")]
     source = InMemoryBehaviorDataSource(records)
 
-    result = source.fetch(BehaviorQuery(start=START, end=END))
+    result = await source.fetch(BehaviorQuery(start=START, end=END))
     result.clear()
 
-    assert [item.event_id for item in source.fetch(BehaviorQuery(start=START, end=END))] == [
+    fetched_again = await source.fetch(BehaviorQuery(start=START, end=END))
+    assert [item.event_id for item in fetched_again] == [
         "event-1"
     ]

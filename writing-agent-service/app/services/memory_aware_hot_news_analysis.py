@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from datetime import datetime
+from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -24,6 +25,7 @@ class MemoryAwareHotNewsAnalysisExecution:
 
     resolved_memory_context: ResolvedMemoryContext
     prompt_memory_context: PromptMemoryContext
+    omitted_memory_ids: tuple[UUID, ...]
     analysis_execution: HotNewsAnalysisExecution
 
 
@@ -68,18 +70,19 @@ class MemoryAwareHotNewsAnalysisService:
                 role_id=role_id,
             )
         )
-        prompt_context = self._memory_prompt_builder.build(
+        prompt_build = self._memory_prompt_builder.build_with_audit(
             resolved_context
         )
         analysis_execution = (
             await self._analysis_service.analyze_with_snapshot(
                 item,
-                memory_context=prompt_context,
+                memory_context=prompt_build.prompt_context,
             )
         )
 
         return MemoryAwareHotNewsAnalysisExecution(
             resolved_memory_context=resolved_context,
-            prompt_memory_context=prompt_context,
+            prompt_memory_context=prompt_build.prompt_context,
+            omitted_memory_ids=prompt_build.omitted_memory_ids,
             analysis_execution=analysis_execution,
         )

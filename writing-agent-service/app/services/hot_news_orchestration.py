@@ -87,7 +87,7 @@ class HotNewsBaselineProvider(Protocol):
     """从已授权的聚合快照中读取当前窗口所需历史基线。"""
     """读取基线的接口"""
 
-    def get_baselines(
+    async def get_baselines(
         self,
         *,
         tenant_id: str,
@@ -101,7 +101,7 @@ class HotNewsBaselineProvider(Protocol):
 class EmptyHotNewsBaselineProvider:
     """显式的无基线实现；仅适合首次运行或本地联调。"""
 
-    def get_baselines(
+    async def get_baselines(
         self,
         *,
         tenant_id: str,
@@ -178,7 +178,7 @@ class HotNewsOrchestrationService:
             tenant_id=request.tenant_id,
             content_types=self.policy.content_types,
         )
-        records = self.behavior_data_source.fetch(query)
+        records = await self.behavior_data_source.fetch(query)
         snapshots = self.metric_calculator.calculate(
             records,
             window_start=request.window_start,
@@ -191,7 +191,7 @@ class HotNewsOrchestrationService:
             (snapshot.news_id, snapshot.content_type) for snapshot in snapshots
         )
 
-        baselines = self.baseline_provider.get_baselines(
+        baselines = await self.baseline_provider.get_baselines(
             tenant_id=request.tenant_id,
             window_start=request.window_start,
             window_end=request.window_end,
@@ -215,6 +215,7 @@ class HotNewsOrchestrationService:
 
         enriched = await self.enrichment_service.enrich(
             ranked,
+            tenant_id=request.tenant_id,
             related_limit=self.policy.related_limit,
             candidate_limit=self.policy.candidate_limit,
         )

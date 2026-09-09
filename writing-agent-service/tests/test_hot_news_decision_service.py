@@ -199,3 +199,62 @@ async def test_matching_superseded_decision_allows_insert():
     assert result is inserted
     assert created is True
     assert session.execute.await_count == 2
+
+
+@pytest.mark.asyncio
+async def test_rejected_decision_collects_feedback_in_same_transaction():
+    request = command(decision_type="rejected", reason="分析结论不准确")
+    inserted = decision_for(request)
+    session = SimpleNamespace(execute=AsyncMock(return_value=ScalarResult(inserted)))
+
+    @asynccontextmanager
+    async def open_session():
+        yield session
+
+    analysis_memory = SimpleNamespace(
+        run_id=request.run_id,
+        run_idempotency_key="hot-news-run-1",
+    )
+    collector = SimpleNamespace(collect_from_operator_decision=AsyncMock())
+    service = HotNewsDecisionService(
+        database=SimpleNamespace(session=open_session),
+        memory_store=SimpleNamespace(
+            get_analysis_memory=AsyncMock(return_value=analysis_memory)
+        ),
+        feedback_collector=collector,
+    )
+
+    result, created = await service.record_decision(
+        tenant_id="tenant-1",
+        operator_id="operator-1",
+        command=request,
+        feedback_problem_type="unsupported_claim",
+        feedback_severity="high",
+    )
+
+    assert result is inserted
+    assert created is True
+    call = collector.collect_from_operator_decision.await_args
+    assert call.args == (session,)
+    assert call.kwargs["decision"] is inserted
+    assert call.kwargs["run_idempotency_key"] == "hot-news-run-1"
+    assert call.kwargs["problem_type"] == "unsupported_claim"
+    assert call.kwargs["severity"] == "high"
+
+
+@pytest.mark.asyncio
+async def test_accepted_decision_does_not_create_feedback_case():
+    request = command()
+    inserted = decision_for(request)
+    service, _, _ = service_with_results(inserted)
+    service._feedback_collector = SimpleNamespace(
+        collect_from_operator_decision=AsyncMock()
+    )
+
+    await service.record_decision(
+        tenant_id="tenant-1",
+        operator_id="operator-1",
+        command=request,
+    )
+
+    service._feedback_collector.collect_from_operator_decision.assert_not_awaited()

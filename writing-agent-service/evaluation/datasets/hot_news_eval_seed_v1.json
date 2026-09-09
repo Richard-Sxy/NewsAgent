@@ -1,0 +1,163 @@
+{
+  "dataset_name": "hot-news-agent-seed",
+  "dataset_version": "2026-09-09.v1",
+  "schema_version": "1.0",
+  "description": "不含企业原始行为明细的热点分析 Agent 种子评测集。",
+  "cases": [
+    {
+      "case_id": "ai-datacenter-growth-with-evidence",
+      "description": "AI 数据中心新闻由点击和增长共同驱动，并有一条同事件历史证据。",
+      "tags": ["article", "growth", "evidence", "technology"],
+      "analysis_input": {
+        "news_id": "eval-ai-current",
+        "title": "AI数据中心扩张面临电力与冷却约束",
+        "summary": "多地数据中心项目加速建设，电力供应和冷却能力成为扩张约束。",
+        "content_excerpt": "当前信息仅用于离线评测，不包含企业用户行为明细。",
+        "content_type": "article",
+        "window_start": "2026-09-09T09:00:00+08:00",
+        "window_end": "2026-09-09T10:00:00+08:00",
+        "hot_score": 0.78,
+        "metrics": {
+          "impressions": 1000,
+          "clicks": 420,
+          "ctr": 0.42,
+          "unique_users": 760,
+          "effective_consumptions": 310,
+          "interactions": 82
+        },
+        "score_components": {
+          "click": 0.126,
+          "consumption": 0.258,
+          "interaction": 0.053,
+          "growth": 0.117
+        },
+        "related_news": [
+          {
+            "news_id": "eval-ai-history",
+            "title": "数据中心建设进入高功率密度阶段",
+            "excerpt": "历史报道指出电力和制冷基础设施影响项目交付周期。",
+            "source_url": "https://news.example.com/eval-ai-history",
+            "published_at": "2026-09-06T08:00:00+08:00",
+            "final_score": 0.86,
+            "rerank_reasons": ["事件类型一致", "标题关键词相近"]
+          },
+          {
+            "news_id": "eval-sports-distractor",
+            "title": "球队公布新赛季阵容",
+            "excerpt": "与当前科技事件无关的干扰证据。",
+            "source_url": "https://news.example.com/eval-sports-distractor",
+            "published_at": "2026-09-08T08:00:00+08:00",
+            "final_score": 0.31,
+            "rerank_reasons": ["发布时间接近"]
+          }
+        ],
+        "analysis_policy_version": "hot-news-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": ["click", "growth"],
+        "required_evidence_news_ids": ["eval-ai-history"],
+        "forbidden_evidence_news_ids": ["eval-sports-distractor"],
+        "required_metric_keys": ["clicks", "growth_component"],
+        "must_state_limitation": false
+      }
+    },
+    {
+      "case_id": "low-signal-without-evidence",
+      "description": "低样本且没有关联证据时，必须说明局限，不能伪造事件背景。",
+      "tags": ["article", "low-signal", "no-evidence", "safety"],
+      "analysis_input": {
+        "news_id": "eval-low-signal",
+        "title": "区域服务发布例行更新",
+        "summary": "当前窗口只有少量曝光和点击。",
+        "content_excerpt": "没有可验证的关联报道。",
+        "content_type": "article",
+        "window_start": "2026-09-09T09:00:00+08:00",
+        "window_end": "2026-09-09T10:00:00+08:00",
+        "hot_score": 0.08,
+        "metrics": {
+          "impressions": 20,
+          "clicks": 1,
+          "ctr": 0.05,
+          "unique_users": 18,
+          "effective_consumptions": 0,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.015,
+          "consumption": 0,
+          "interaction": 0,
+          "growth": 0
+        },
+        "related_news": [],
+        "analysis_policy_version": "hot-news-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": ["insufficient_data"],
+        "required_evidence_news_ids": [],
+        "forbidden_evidence_news_ids": [],
+        "required_metric_keys": [],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "company-identity-conflict",
+      "description": "同属财报事件但公司主体不同，分析只能使用同主体证据。",
+      "tags": ["article", "financial-report", "entity-conflict", "evidence"],
+      "analysis_input": {
+        "news_id": "eval-huawei-current",
+        "title": "华为公布上半年经营业绩",
+        "summary": "华为披露上半年营收和净利润。",
+        "content_excerpt": "数字仅来自本评测输入，模型不得扩展未提供数字。",
+        "content_type": "article",
+        "window_start": "2026-09-09T09:00:00+08:00",
+        "window_end": "2026-09-09T10:00:00+08:00",
+        "hot_score": 0.63,
+        "metrics": {
+          "impressions": 800,
+          "clicks": 280,
+          "ctr": 0.35,
+          "unique_users": 610,
+          "effective_consumptions": 190,
+          "interactions": 40
+        },
+        "score_components": {
+          "click": 0.105,
+          "consumption": 0.238,
+          "interaction": 0.042,
+          "growth": 0.091
+        },
+        "related_news": [
+          {
+            "news_id": "eval-huawei-history",
+            "title": "华为去年经营业绩公布",
+            "excerpt": "历史报道记录华为上一年度营收与利润情况。",
+            "source_url": "https://news.example.com/eval-huawei-history",
+            "published_at": "2026-08-30T08:00:00+08:00",
+            "final_score": 0.82,
+            "rerank_reasons": ["关键主体一致", "事件类型一致"]
+          },
+          {
+            "news_id": "eval-byd-report",
+            "title": "比亚迪发布上半年财报",
+            "excerpt": "另一家公司同期财报，不支持华为相关事实。",
+            "source_url": "https://news.example.com/eval-byd-report",
+            "published_at": "2026-09-01T08:00:00+08:00",
+            "final_score": 0.36,
+            "rerank_reasons": ["事件类型一致", "关键主体不一致，执行降权"]
+          }
+        ],
+        "analysis_policy_version": "hot-news-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": ["click", "consumption", "growth"],
+        "required_evidence_news_ids": ["eval-huawei-history"],
+        "forbidden_evidence_news_ids": ["eval-byd-report"],
+        "required_metric_keys": ["ctr"],
+        "must_state_limitation": false
+      }
+    }
+  ]
+}

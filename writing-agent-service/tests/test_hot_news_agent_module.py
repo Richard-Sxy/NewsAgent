@@ -9,6 +9,7 @@ from uuid import UUID, uuid4
 
 import httpx
 import pytest
+from pydantic import ValidationError
 
 from app.analytics.entities import ContentType
 from app.analytics.hot_news_enrichment import EnrichedHotNews
@@ -179,6 +180,7 @@ def valid_report() -> HotNewsAnalysisReport:
         related_contexts=[],
         operation_suggestions=[],
         evidence_news_ids=[],
+        applied_memory_ids=[],
         limitations=[],
         overall_confidence=0.85,
     )
@@ -262,6 +264,13 @@ def test_validator_accepts_applied_memory_from_prompt_context() -> None:
         analysis_input=trusted_input,
         result=AgentResult(report, "req-memory", {}, report.model_dump_json()),
     )
+
+
+def test_report_requires_explicit_applied_memory_ids() -> None:
+    payload = valid_report().model_dump(exclude={"applied_memory_ids"})
+
+    with pytest.raises(ValidationError, match="applied_memory_ids"):
+        HotNewsAnalysisReport.model_validate(payload)
 
 
 def test_validator_rejects_unknown_applied_memory_id() -> None:
@@ -513,6 +522,7 @@ async def test_service_executes_complete_hot_news_agent_chain() -> None:
         assert model_input["memory_context"] == (
             memory_context.model_dump(mode="json")
         )
+        assert "omitted_memory_ids" not in model_input["memory_context"]
         assert model_input["memory_context"]["items"][0][
             "memory_id"
         ] == str(memory_id)

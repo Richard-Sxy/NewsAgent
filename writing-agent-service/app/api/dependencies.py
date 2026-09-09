@@ -12,6 +12,7 @@ from app.services.outbox import OutboxService
 from app.services.event_reader import RedisProgressReader
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
+from app.services.data_loop.orchestrator import DataLoopOrchestrator
 
 """ 这边配置提供：数据库Session/Temporal Client/OrchestratorService/当前 """
 async def get_session(request: Request) -> AsyncIterator[AsyncSession]:
@@ -34,6 +35,10 @@ async def get_event_reader(request: Request) -> RedisProgressReader:
 
 async def get_orchestrator(request: Request) -> OrchestratorService:
     return request.app.state.orchestrator
+
+
+async def get_data_loop_orchestrator(request: Request) -> DataLoopOrchestrator:
+    return request.app.state.data_loop_orchestrator
 
 
 async def get_artifact_store(request: Request) -> S3ArtifactStore:

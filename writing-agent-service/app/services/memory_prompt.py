@@ -1,10 +1,19 @@
 """将完整 ResolvedMemoryContext 裁剪为模型可见的 Prompt Memory。"""
 
 import json
+from dataclasses import dataclass
 from uuid import UUID
 
 from app.schemas.hot_news import PromptMemoryContext, PromptMemoryItem
 from app.schemas.user_memory import ResolvedMemoryContext
+
+
+@dataclass(frozen=True, slots=True)
+class MemoryPromptBuildResult:
+    """区分模型可见上下文和仅供服务端审计的裁剪结果。"""
+
+    prompt_context: PromptMemoryContext
+    omitted_memory_ids: tuple[UUID, ...]
 
 
 class MemoryPromptInputBuilder:
@@ -33,7 +42,15 @@ class MemoryPromptInputBuilder:
         self,
         context: ResolvedMemoryContext,
     ) -> PromptMemoryContext:
-        """只复制模型所需字段；来源和覆盖链保留在审计快照中。"""
+        """兼容入口：只返回允许发送给模型的最小上下文。"""
+
+        return self.build_with_audit(context).prompt_context
+
+    def build_with_audit(
+        self,
+        context: ResolvedMemoryContext,
+    ) -> MemoryPromptBuildResult:
+        """构造模型上下文，并单独返回未注入 ID 供服务端审计。"""
 
         prompt_items: list[PromptMemoryItem] = []
         omitted_memory_ids: list[UUID] = []
@@ -70,9 +87,11 @@ class MemoryPromptInputBuilder:
                 )
             )
 
-        return PromptMemoryContext(
-            resolver_policy_version=self.policy_version,
-            resolved_at=context.resolved_at,
-            items=tuple(prompt_items),
+        return MemoryPromptBuildResult(
+            prompt_context=PromptMemoryContext(
+                resolver_policy_version=self.policy_version,
+                resolved_at=context.resolved_at,
+                items=tuple(prompt_items),
+            ),
             omitted_memory_ids=tuple(omitted_memory_ids),
         )

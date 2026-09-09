@@ -1,13 +1,18 @@
-"""处理热点新闻对象的服务"""
+"""处理热点运营决策，并原子写入需要进入 Data Loop 的反馈。"""
+from datetime import UTC, datetime
 from uuid import uuid4
 
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import Database
 from app.models.hot_news_decision import HotNewsDecision
 from app.schemas.hot_news_decision import RecordHotNewsDecisionCommand
+from app.schemas.analysis_feedback import FeedbackProblemType, FeedbackSeverity
+from app.schemas.hot_news_memory import HotNewsAnalysisMemory
+from app.services.data_loop.feedback_collector import AnalysisFeedbackCollector
 from app.services.hot_news_run_store import PostgresHotNewsRunStore
 
 
@@ -31,9 +36,13 @@ class HotNewsDecisionService:
         *,
         database: Database,
         memory_store: PostgresHotNewsRunStore,
+        feedback_collector: AnalysisFeedbackCollector | None = None,
     ) -> None:
         self._database = database
         self._memory_store = memory_store
+        self._feedback_collector = (
+            feedback_collector or AnalysisFeedbackCollector()
+        )
 
     async def record_decision(
         self,
@@ -41,6 +50,8 @@ class HotNewsDecisionService:
         tenant_id: str,
         operator_id: str,
         command: RecordHotNewsDecisionCommand,
+        feedback_problem_type: FeedbackProblemType = "analysis_incorrect",
+        feedback_severity: FeedbackSeverity = "medium",
     ) -> tuple[HotNewsDecision, bool]:
         tenant_id = tenant_id.strip()
         operator_id = operator_id.strip()
@@ -106,6 +117,14 @@ class HotNewsDecisionService:
                 decision = insert_result.scalar_one_or_none()
 
                 if decision is not None:
+                    await self._collect_feedback_if_required(
+                        session=session,
+                        tenant_id=tenant_id,
+                        analysis_memory=analysis_memory,
+                        decision=decision,
+                        problem_type=feedback_problem_type,
+                        severity=feedback_severity,
+                    )
                     return decision, True
 
                 existing_result = await session.execute(
@@ -131,6 +150,14 @@ class HotNewsDecisionService:
                         "同一个 idempotency_key 对应不同的决策内容"
                     )
 
+                await self._collect_feedback_if_required(
+                    session=session,
+                    tenant_id=tenant_id,
+                    analysis_memory=analysis_memory,
+                    decision=existing,
+                    problem_type=feedback_problem_type,
+                    severity=feedback_severity,
+                )
                 return existing, False
 
         except (
@@ -143,6 +170,37 @@ class HotNewsDecisionService:
             raise HotNewsDecisionPersistenceError(
                 "保存热点决策失败"
             ) from exc
+
+    async def _collect_feedback_if_required(
+        self,
+        *,
+        session: AsyncSession,
+        tenant_id: str,
+        analysis_memory: HotNewsAnalysisMemory,
+        decision: HotNewsDecision,
+        problem_type: FeedbackProblemType,
+        severity: FeedbackSeverity,
+    ) -> None:
+        """Keep decision + feedback in the same database transaction."""
+
+        if decision.decision_type not in {"rejected", "corrected"}:
+            return
+        now = datetime.now(UTC)
+        run_idempotency_key = (
+            analysis_memory.run_idempotency_key
+            or f"analysis-run:{analysis_memory.run_id}"
+        )
+        await self._feedback_collector.collect_from_operator_decision(
+            session,
+            tenant_id=tenant_id,
+            memory=analysis_memory,
+            run_idempotency_key=run_idempotency_key,
+            decision=decision,
+            problem_type=problem_type,
+            severity=severity,
+            occurred_at=now,
+            recorded_at=now,
+        )
 
     @staticmethod
     def _same_business_content(

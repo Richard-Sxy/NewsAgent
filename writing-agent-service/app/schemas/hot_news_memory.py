@@ -14,6 +14,7 @@ class HotNewsAnalysisMemory(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     run_id: UUID
+    run_idempotency_key: str | None = None
     tenant_id: str
     news_id: str
     rank: int

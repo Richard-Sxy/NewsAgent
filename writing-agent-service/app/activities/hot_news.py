@@ -7,7 +7,14 @@ from typing import Protocol
 from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
-from app.domain.errors import HotNewsDataQualityError
+from app.domain.errors import (
+    HotNewsAnalysisAttemptError,
+    HotNewsDataQualityError,
+)
+from app.observability.hot_news import (
+    HotNewsRunMetrics,
+    NoopHotNewsRunMetrics,
+)
 from app.services.hot_news_orchestration import (
     HotNewsOrchestrationService,
     HotNewsRunRequest,
@@ -33,6 +40,32 @@ class HotNewsRunStore(Protocol):
     ) -> HotNewsActivityOutcome: ...
 
 
+class HotNewsFeedbackSink(Protocol):
+    """Persist automatic feedback without leaking it into Temporal history."""
+
+    async def collect_completed_run(
+        self,
+        *,
+        result: HotNewsRunResult,
+        run_id: str,
+    ) -> None: ...
+
+    async def collect_persisted_run(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+        run_id: str,
+    ) -> None: ...
+
+    async def collect_analysis_failure(
+        self,
+        *,
+        request: HotNewsRunRequest,
+        error: HotNewsAnalysisAttemptError,
+    ) -> None: ...
+
+
 class HotNewsActivities:
     """在 Temporal 运行语义和热点业务编排之间做薄适配。"""
 
@@ -40,9 +73,14 @@ class HotNewsActivities:
         self,
         orchestration_service: HotNewsOrchestrationService,
         run_store: HotNewsRunStore,
+        *,
+        run_metrics: HotNewsRunMetrics | None = None,
+        feedback_sink: HotNewsFeedbackSink | None = None,
     ) -> None:
         self._orchestration_service = orchestration_service
         self._run_store = run_store
+        self._run_metrics = run_metrics or NoopHotNewsRunMetrics()
+        self._feedback_sink = feedback_sink
 
     @activity.defn(name="run_hot_news_window")
     async def run_hot_news_window(
@@ -81,25 +119,64 @@ class HotNewsActivities:
                     request=request,
                     outcome=completed,
                 )
+                if self._feedback_sink is not None:
+                    await self._feedback_sink.collect_persisted_run(
+                        tenant_id=request.tenant_id,
+                        idempotency_key=request.idempotency_key,
+                        run_id=completed.run_id,
+                    )
+                self._run_metrics.record("replayed")
                 return completed
 
             result = await self._orchestration_service.run(request)
-            return await self._run_store.save_completed(result=result)
+            outcome = await self._run_store.save_completed(result=result)
+            if self._feedback_sink is not None:
+                await self._feedback_sink.collect_completed_run(
+                    result=result,
+                    run_id=outcome.run_id,
+                )
+            self._run_metrics.record("completed")
+            return outcome
 
-        except ApplicationError:
+        except ApplicationError as exc:
+            self._run_metrics.record(
+                "failed",
+                error_type=exc.type or "ApplicationError",
+                retryable=not exc.non_retryable,
+            )
             raise
         except Exception as exc:
+            reported_error = exc
+            if (
+                isinstance(exc, HotNewsAnalysisAttemptError)
+                and self._feedback_sink is not None
+            ):
+                try:
+                    await self._feedback_sink.collect_analysis_failure(
+                        request=request,
+                        error=exc,
+                    )
+                except Exception as feedback_error:
+                    # A transient feedback write may retry the bounded Activity
+                    # once; the original validation error remains its cause.
+                    reported_error = feedback_error
+            retryable = bool(getattr(reported_error, "retryable", False))
+            self._run_metrics.record(
+                "failed",
+                error_type=type(reported_error).__name__,
+                retryable=retryable,
+            )
             if activity.in_activity():
                 activity.logger.exception(
                     "hot news window failed",
                     extra={
                         "tenant_id": request.tenant_id,
                         "idempotency_key": request.idempotency_key,
-                        "error_type": type(exc).__name__,
-                        "request_id": getattr(exc, "request_id", None),
+                        "error_type": type(reported_error).__name__,
+                        "request_id": getattr(reported_error, "request_id", None),
                     },
                 )
-            raise self._to_application_error(exc) from exc
+            raise self._to_application_error(reported_error) from reported_error
         finally:
             if heartbeat_task is not None:
                 heartbeat_task.cancel()

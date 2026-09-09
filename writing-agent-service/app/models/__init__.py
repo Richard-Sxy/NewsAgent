@@ -11,6 +11,21 @@ from app.models.user_memory import (
     MemoryPromotionRequestRecord,
     ShortTermUserMemoryRecord,
 )
+from app.models.analysis_feedback import (
+    AnalysisFeedbackCaseRecord,
+    AnalysisFeedbackLabelRecord,
+    PublicationOutcomeRecord,
+)
+from app.models.evaluation_dataset import (
+    EvaluationDatasetCaseRecord,
+    EvaluationDatasetRecord,
+)
+from app.models.production_bundle import (
+    CandidateEvaluationRunRecord,
+    ConfigurationCandidateRecord,
+    ProductionBundleRecord,
+    PromotionDecisionRecord,
+)
 
 __all__ = [
     "AgentRun",
@@ -24,4 +39,13 @@ __all__ = [
     "LongTermMemoryCandidateRecord",
     "LongTermUserMemoryRecord",
     "MemoryPromotionRequestRecord",
+    "AnalysisFeedbackCaseRecord",
+    "AnalysisFeedbackLabelRecord",
+    "PublicationOutcomeRecord",
+    "EvaluationDatasetRecord",
+    "EvaluationDatasetCaseRecord",
+    "ProductionBundleRecord",
+    "ConfigurationCandidateRecord",
+    "CandidateEvaluationRunRecord",
+    "PromotionDecisionRecord",
 ]

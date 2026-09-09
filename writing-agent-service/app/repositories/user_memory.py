@@ -100,6 +100,90 @@ class PostgresUserMemoryRepository:
             for record in records
         ]
 
+    async def get_short_term_by_idempotency_key(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+    ) -> ShortTermUserMemory | None:
+        """读取一次已存在的短期记忆写入，用于幂等重放。"""
+
+        statement = select(ShortTermUserMemoryRecord).where(
+            ShortTermUserMemoryRecord.tenant_id == tenant_id,
+            ShortTermUserMemoryRecord.idempotency_key == idempotency_key,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_short_term_domain(record)
+
+    async def insert_short_term_memory(
+        self,
+        *,
+        memory: ShortTermUserMemory,
+        idempotency_key: str,
+    ) -> bool:
+        """尝试插入短期记忆；幂等键已存在时返回 ``False``。"""
+
+        statement = (
+            insert(ShortTermUserMemoryRecord)
+            .values(
+                **self.to_short_term_values(
+                    memory,
+                    idempotency_key=idempotency_key,
+                )
+            )
+            .on_conflict_do_nothing(
+                constraint=(
+                    "uq_short_term_user_memories_tenant_idempotency_key"
+                )
+            )
+            .returning(ShortTermUserMemoryRecord.id)
+        )
+        result = await self._session.execute(statement)
+        return result.scalar_one_or_none() is not None
+
+    async def get_candidate_by_idempotency_key(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+    ) -> LongTermMemoryCandidate | None:
+        """读取已存在的长期候选写入，用于幂等重放。"""
+
+        statement = select(LongTermMemoryCandidateRecord).where(
+            LongTermMemoryCandidateRecord.tenant_id == tenant_id,
+            LongTermMemoryCandidateRecord.idempotency_key == idempotency_key,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_candidate_domain(record)
+
+    async def insert_memory_candidate(
+        self,
+        *,
+        candidate: LongTermMemoryCandidate,
+        idempotency_key: str,
+    ) -> bool:
+        """尝试插入长期候选；幂等键已存在时返回 ``False``。"""
+
+        statement = (
+            insert(LongTermMemoryCandidateRecord)
+            .values(
+                **self.to_candidate_values(
+                    candidate,
+                    idempotency_key=idempotency_key,
+                )
+            )
+            .on_conflict_do_nothing(
+                constraint=(
+                    "uq_long_term_memory_candidates_tenant_idempotency_key"
+                )
+            )
+            .returning(LongTermMemoryCandidateRecord.id)
+        )
+        result = await self._session.execute(statement)
+        return result.scalar_one_or_none() is not None
+
     async def get_candidate_for_update(
         self,
         *,

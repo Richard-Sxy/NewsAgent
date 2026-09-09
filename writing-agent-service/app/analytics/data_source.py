@@ -52,7 +52,7 @@ class BehaviorDataSource(Protocol):
     并且只查询获得授权且分析必需的字段。
     """
 
-    def fetch(self, query: BehaviorQuery) -> list[BehaviorRecord]:
+    async def fetch(self, query: BehaviorQuery) -> list[BehaviorRecord]:
         """返回已经完成字段名、枚举值和时间格式映射的领域对象。"""
 
         ...
@@ -64,7 +64,7 @@ class InMemoryBehaviorDataSource:
     def __init__(self, records: list[BehaviorRecord]) -> None:
         self._records = list(records)
 
-    def fetch(self, query: BehaviorQuery) -> list[BehaviorRecord]:
+    async def fetch(self, query: BehaviorQuery) -> list[BehaviorRecord]:
         """按查询条件过滤内存记录，返回符合条件的 BehaviorRecord 列表。"""
 
         query.validate()

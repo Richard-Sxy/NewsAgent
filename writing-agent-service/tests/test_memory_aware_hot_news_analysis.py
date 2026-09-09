@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock
+from uuid import UUID
 
 import pytest
 
@@ -9,6 +10,7 @@ from app.schemas.user_memory import ResolvedMemoryContext
 from app.services.memory_aware_hot_news_analysis import (
     MemoryAwareHotNewsAnalysisService,
 )
+from app.services.memory_prompt import MemoryPromptBuildResult
 
 
 NOW = datetime(2026, 9, 8, 10, tzinfo=timezone.utc)
@@ -36,8 +38,14 @@ async def test_resolves_builds_and_injects_memory_in_order() -> None:
     memory_context_service = SimpleNamespace(
         resolve_for_task=AsyncMock(return_value=resolved_context)
     )
+    omitted_memory_id = UUID(int=9)
     memory_prompt_builder = SimpleNamespace(
-        build=Mock(return_value=prompt_context)
+        build_with_audit=Mock(
+            return_value=MemoryPromptBuildResult(
+                prompt_context=prompt_context,
+                omitted_memory_ids=(omitted_memory_id,),
+            )
+        )
     )
     analysis_service = SimpleNamespace(
         analyze_with_snapshot=AsyncMock(
@@ -72,13 +80,16 @@ async def test_resolves_builds_and_injects_memory_in_order() -> None:
         section_id="finance",
         role_id="reviewer",
     )
-    memory_prompt_builder.build.assert_called_once_with(resolved_context)
+    memory_prompt_builder.build_with_audit.assert_called_once_with(
+        resolved_context
+    )
     analysis_service.analyze_with_snapshot.assert_awaited_once_with(
         item,
         memory_context=prompt_context,
     )
     assert result.resolved_memory_context is resolved_context
     assert result.prompt_memory_context is prompt_context
+    assert result.omitted_memory_ids == (omitted_memory_id,)
     assert result.analysis_execution is analysis_execution
 
 
@@ -89,7 +100,7 @@ async def test_memory_resolution_failure_stops_model_call() -> None:
             side_effect=RuntimeError("memory unavailable")
         )
     )
-    memory_prompt_builder = SimpleNamespace(build=Mock())
+    memory_prompt_builder = SimpleNamespace(build_with_audit=Mock())
     analysis_service = SimpleNamespace(
         analyze_with_snapshot=AsyncMock()
     )
@@ -109,5 +120,5 @@ async def test_memory_resolution_failure_stops_model_call() -> None:
             now=NOW,
         )
 
-    memory_prompt_builder.build.assert_not_called()
+    memory_prompt_builder.build_with_audit.assert_not_called()
     analysis_service.analyze_with_snapshot.assert_not_awaited()

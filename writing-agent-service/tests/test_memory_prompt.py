@@ -100,7 +100,7 @@ def test_omits_oversized_values_and_items_over_limit() -> None:
         max_value_chars=20,
     )
 
-    result = builder.build(
+    result = builder.build_with_audit(
         resolved_context(
             resolved_item(
                 memory_id=accepted_id,
@@ -120,8 +120,11 @@ def test_omits_oversized_values_and_items_over_limit() -> None:
         )
     )
 
-    assert [item.memory_id for item in result.items] == [accepted_id]
+    assert [
+        item.memory_id for item in result.prompt_context.items
+    ] == [accepted_id]
     assert result.omitted_memory_ids == (oversized_id, overflow_id)
+    assert "omitted_memory_ids" not in result.prompt_context.model_dump()
 
 
 @pytest.mark.parametrize(

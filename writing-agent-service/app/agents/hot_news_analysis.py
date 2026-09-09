@@ -122,7 +122,7 @@ class RuleBasedHotNewsAnalyzer:
         return {
             "click_rate": click_rate,
             "effective_consumption_rate":
-                effective_consumptions,
+                effective_consumptions_rate,
             "interaction_rate": interaction_rate,
             "click_share": self._safe_share(
                 components["click"],
@@ -165,20 +165,30 @@ class RuleBasedHotNewsAnalyzer:
             f"{derived['click_rate']:.2%}。"
         )
 
-        return f"《{input_data.title}》当前热点分数为 {input_data.hot_score:.4f}。"
-        
+
     def _build_attention_reasons(
         self,
         input_data: HotNewsAnalysisInput,
     ) -> tuple[str, ...]:
         """TODO：根据各分量贡献识别点击、消费、互动或增长驱动。"""
-        metrics = input_data.metrics
-        derived = self._calculate_derived_metrics( input_data )
+        derived = self._calculate_derived_metrics(input_data)
         components = {
-            "点击表现": input_data.metrics.get("click_component", 0.0),
-            "有效消费": input_data.metrics.get("consumption_component", 0.0),
-            "用户互动": input_data.metrics.get("interaction_component", 0.0),
-            "热度增长": input_data.metrics.get("growth_component", 0.0),
+            "点击表现": (
+                input_data.metrics.get("click_component", 0.0),
+                derived["click_share"],
+            ),
+            "有效消费": (
+                input_data.metrics.get("consumption_component", 0.0),
+                derived["consumption_share"],
+            ),
+            "用户互动": (
+                input_data.metrics.get("interaction_component", 0.0),
+                derived["interaction_share"],
+            ),
+            "热度增长": (
+                input_data.metrics.get("growth_component", 0.0),
+                derived["growth_share"],
+            ),
         }
         sorted_components = sorted(
             components.items(),
@@ -213,10 +223,8 @@ class RuleBasedHotNewsAnalyzer:
             and secondary_share >= 0.25
         ):
             reasons.append(
-                f"{secondary_name}同样表现突出",
-                f"约占热点贡献的"
-                f"{secondary_share:.1f}，"
-                f"当前热点呈现多因素驱动特征。"
+                f"{secondary_name}同样表现突出，约占热点贡献的"
+                f" {secondary_share:.1%}，当前热点呈现多因素驱动特征。"
             )
         if (
             derived["effective_consumption_rate"] >= 0.60
@@ -233,9 +241,9 @@ class RuleBasedHotNewsAnalyzer:
     ) -> tuple[str, ...]:
         """TODO：将关联报道组织成事件背景或时间线，而不只是标题列表。"""
         if not input_data.related_news:
-            return ( "当前知识库暂未检索到高相关的历史报道" )
-        
-        contexts: list[str] = str
+            return ("当前知识库暂未检索到高相关的历史报道",)
+
+        contexts: list[str] = []
 
         for index, item in enumerate( input_data.related_news[:5], start=1 ):
             contexts.append(
@@ -251,14 +259,14 @@ class RuleBasedHotNewsAnalyzer:
         input_data: HotNewsAnalysisInput,
     ) -> tuple[str, ...]:
         """TODO：根据业务指标和证据充分度补充可执行运营策略。"""
-        derived = self._calculate_derived_metrics( input_data )
+        derived = self._calculate_derived_metrics(input_data)
 
         suggestions: list[str] = []
 
         dominant = max(
             {
                 "click": derived["click_share"],
-                "consuption":
+                "consumption":
                     derived["consumption_share"],
                 "interaction":
                     derived["interaction_share"],
@@ -310,23 +318,25 @@ class RuleBasedHotNewsAnalyzer:
 
         return tuple(suggestions)
 
+    @staticmethod
     def _safe_share(
         value: float,
         total: float,
     ) -> float:
-        if total < 0:
+        if total <= 0:
             return 0.0
-        
+
         return max(value, 0.0) / total
 
+    @staticmethod
     def _get_hot_level(
         hot_score: float,
     ) -> str:
         """第一版热点等级规则，后续根据线上历史热点分数分布，改成分位数阈值"""
         if hot_score <= 0.2:
             return "低热度"
-        if hot_score <=0.5:
+        if hot_score <= 0.5:
             return "中热度"
-        if hot_score <= "0.8":
+        if hot_score <= 0.8:
             return "中高热度"
         return "高热度"

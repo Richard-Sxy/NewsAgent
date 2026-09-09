@@ -5,6 +5,8 @@ from temporalio.worker import Worker
 
 from app.analytics.data_source import BehaviorDataSource
 from app.analytics.news_content import NewsContentRepository
+from app.clients.knowledge_base import KnowledgeSearchClient
+from app.observability.hot_news import HotNewsRunMetrics
 from app.config import Settings, get_settings
 from app.hot_news_bootstrap import create_hot_news_worker_runtime
 from app.services.hot_news_orchestration import (
@@ -19,6 +21,8 @@ async def run_hot_news_worker(
     baseline_provider: HotNewsBaselineProvider,
     content_repository: NewsContentRepository,
     policy: HotNewsOrchestrationPolicy,
+    knowledge_search: KnowledgeSearchClient | None = None,
+    run_metrics: HotNewsRunMetrics | None = None,
     settings: Settings | None = None,
 ) -> None:
     """ 注册热点 Workflow 和 Activity,并持续消费热点任务 """
@@ -30,6 +34,8 @@ async def run_hot_news_worker(
         baseline_provider=baseline_provider,
         content_repository=content_repository,
         policy=policy,
+        knowledge_search=knowledge_search,
+        run_metrics=run_metrics,
     )
 
     try:

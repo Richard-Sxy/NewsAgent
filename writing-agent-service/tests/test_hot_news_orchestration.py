@@ -72,10 +72,11 @@ class RecordingEnrichmentService:
         self,
         ranked,
         *,
+        tenant_id: str,
         related_limit: int,
         candidate_limit: int,
     ):
-        self.calls.append((ranked, related_limit, candidate_limit))
+        self.calls.append((ranked, tenant_id, related_limit, candidate_limit))
         return [
             EnrichedHotNews(
                 ranking=item,
@@ -108,6 +109,7 @@ class RecordingRunner:
             news_id=analysis_input.news_id,
             trend_assessment="当前窗口内形成热点。",
             dominant_driver="click",
+            applied_memory_ids=[],
             limitations=["当前没有关联新闻证据。"],
             overall_confidence=0.7,
         )
@@ -170,7 +172,7 @@ async def test_runs_bounded_hot_news_chain_without_retaining_raw_user_data() -> 
     assert snapshot.analysis_input is not runner.inputs[0]
     assert snapshot.captured_at <= snapshot.validated_at
     assert runner.inputs[0].metrics.effective_consumptions == 1
-    assert enrichment.calls[0][1:] == (2, 5)
+    assert enrichment.calls[0][1:] == ("tenant-1", 2, 5)
     assert "private-user" not in repr(result)
 
 
@@ -239,7 +241,7 @@ async def test_missing_ranked_content_is_a_hard_data_quality_failure() -> None:
 @pytest.mark.asyncio
 async def test_rejects_baseline_whose_key_does_not_match_identity() -> None:
     class InvalidBaselineProvider:
-        def get_baselines(self, **kwargs):
+        async def get_baselines(self, **kwargs):
             baseline = NewsMetricBaseline(
                 news_id="news-1",
                 content_type=ContentType.ARTICLE,

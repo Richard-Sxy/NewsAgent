@@ -4,7 +4,10 @@ from datetime import datetime, timezone
 
 from app.analytics.hot_news_enrichment import EnrichedHotNews
 from app.clients.fastgpt import AgentResult
-from app.domain.errors import AgentOutputValidationError
+from app.domain.errors import (
+    AgentOutputValidationError,
+    HotNewsAnalysisAttemptError,
+)
 from app.schemas.hot_news import (
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
@@ -409,13 +412,24 @@ class HotNewsAnalysisService:
         input_snapshot = analysis_input.model_copy(deep=True)
         capture_at = datetime.now(timezone.utc)
 
-        # 调用LLM获得结构化报告
-        result = await self.runner.run(analysis_input)
+        try:
+            # 调用LLM获得结构化报告
+            result = await self.runner.run(analysis_input)
 
-        self.validator.validate(
-            analysis_input=input_snapshot,
-            result=result,
-        )
+            self.validator.validate(
+                analysis_input=input_snapshot,
+                result=result,
+            )
+        except AgentOutputValidationError as exc:
+            # Preserve only the bounded trusted input plus model-call metadata.
+            # The Activity-level feedback sink persists it independently from a
+            # successful analysis run, which does not exist on this path.
+            raise HotNewsAnalysisAttemptError(
+                str(exc),
+                analysis_input=input_snapshot,
+                raw_content=exc.raw_content,
+                request_id=exc.request_id,
+            ) from exc
 
         # 返回执行结果
         return HotNewsAnalysisExecution(

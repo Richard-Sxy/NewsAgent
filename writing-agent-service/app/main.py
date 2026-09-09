@@ -9,13 +9,14 @@ from pathlib import Path
 from temporalio.client import Client
 from redis.asyncio import Redis
 
-from app.api import events_router, jobs_router
+from app.api import data_loop_router, events_router, jobs_router
 from app.config import get_settings
 from app.db.session import Database
 from app.services.orchestrator import OrchestratorService
 from app.services.event_reader import RedisProgressReader
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
+from app.services.data_loop.orchestrator import DataLoopOrchestrator
 
 
 @asynccontextmanager
@@ -30,6 +31,7 @@ async def lifespan(app: FastAPI):
     app.state.settings = settings
     app.state.database = database
     app.state.orchestrator = OrchestratorService(temporal, settings)
+    app.state.data_loop_orchestrator = DataLoopOrchestrator(temporal, settings)
     app.state.temporal = temporal
     app.state.redis = redis
     app.state.event_reader = RedisProgressReader(redis, settings)
@@ -50,6 +52,7 @@ def create_app() -> FastAPI:
     )
     application.include_router(jobs_router)
     application.include_router(events_router)
+    application.include_router(data_loop_router)
 
     application.get("/health")(health)
     application.get("/ready")(ready)

@@ -32,6 +32,7 @@ dev = [
 [project.scripts]
 writing-agent-worker = "app.worker:main"
 writing-agent-outbox-worker = "app.outbox_worker:main"
+writing-agent-data-loop-worker = "app.data_loop_worker:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

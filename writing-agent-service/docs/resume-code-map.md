@@ -25,8 +25,9 @@
 - `tests/test_analytics_data_source.py`、`test_news_metric_calculator.py`、
   `test_baseline.py`、`test_hot_score.py`、`test_ranking.py`：本地验证。
 
-**状态：部分完成。** 企业数仓/RPC 适配器、数据 watermark、真实字段映射和
-生产数据质量验证尚未实现，预设入口为 `app/clients/enterprise/`。
+**状态：仓库级核心完成，企业联调待完成。** 已实现异步行为/基线 RPC 契约、watermark、
+分页、枚举防腐映射、总 deadline、版本漂移与数据质量校验；真实企业 SDK、字段表和授权
+环境仍需接入，入口为 `app/clients/enterprise/`。
 
 ## 2. 新闻内容查询、关联报道召回与规则重排
 
@@ -43,8 +44,9 @@
 - `tests/test_news_content_repository.py`、`test_hot_news_enrichment.py`、
   `test_related_news_reranker.py`：本地验证。
 
-**状态：部分完成。** 企业内容服务和检索 RPC 尚未接入；当前 FastGPT/本地缓存
-只能视为实验适配器，预设入口为 `app/clients/enterprise/`。
+**状态：仓库级核心完成，企业联调待完成。** 已实现内容批量 RPC、响应完整性校验、
+关联报道批量召回、索引/策略版本校验、去重、自身排除、元数据补全和本地确定性重排；
+当前 FastGPT/本地缓存仍只视为实验适配器，真实服务 Client 待企业环境联调。
 
 ## 3. 结构化热点分析 Agent 与可信输出校验
 
@@ -79,8 +81,8 @@
 - `tests/test_hot_news_orchestration.py`、`test_hot_news_activity.py`、
   `test_hot_news_workflow.py`：编排验证。
 
-**状态：部分完成。** Worker 代码已经存在；真实 PostgreSQL 迁移、企业依赖装配、
-Schedule、监控告警和端到端运行仍需完成。
+**状态：部分完成。** Worker 与企业 Adapter 依赖装配已经存在；真实 PostgreSQL 迁移、
+企业 SDK Client、Schedule、监控告警和获授权环境端到端运行仍需完成。
 
 ## 5. 运营反馈 Data Loop
 
@@ -120,7 +122,9 @@ Diff 与回归用例；在黄金集、新鲜 Bad Case 和高风险回归集上�
 
 ## 简历用词边界
 
-- 第 1～4 项可以描述为“构建/实现本地核心链路”，但企业 RPC 和生产上线需按真实状态说明。
+- 第 1～2 项可以描述为“完成仓库级核心链路与企业 RPC 防腐层”，但在真实联调前不能写
+  “已接入腾讯数仓/内容中心”或生产效果数据。
+- 第 3～4 项可以描述为“构建/实现核心链路”，企业模型 RPC 和生产上线仍按真实状态说明。
 - 第 5～6 项在端到端闭环完成前只能描述为“设计并推进”。
 - FastGPT、爬虫和 QA 生成是本地实验基础设施，不应写成腾讯内部生产能力。
 - 指标、基线、热度和评测统计由确定性代码或 SQL 计算；Agent 只负责解释、归因、

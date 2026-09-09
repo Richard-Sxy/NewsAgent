@@ -60,7 +60,7 @@ class ScenarioHotNewsBaselineProvider:
         self._window_end = window_end
         self._production_bundle_version = production_bundle_version
 
-    def get_baselines(
+    async def get_baselines(
         self,
         *,
         tenant_id: str,

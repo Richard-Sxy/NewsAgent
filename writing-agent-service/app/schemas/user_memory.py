@@ -164,6 +164,50 @@ class LongTermUserMemory(BaseModel):
         return self
 
 
+class CreateShortTermMemoryCommand(BaseModel):
+    """创建有任务边界和有效期的短期记忆。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    scope: UserMemoryScope
+    task_id: NonBlank128
+    content: UserMemoryContent
+    origin: ShortTermMemoryOrigin
+    source_refs: tuple[MemorySourceRef, ...] = Field(min_length=1)
+    confidence: float = Field(ge=0, le=1)
+    expires_at: AwareDatetime
+    idempotency_key: Annotated[
+        str,
+        StringConstraints(
+            strip_whitespace=True,
+            min_length=8,
+            max_length=128,
+        ),
+    ]
+
+
+class ProposeLongTermMemoryCommand(BaseModel):
+    """创建待人工审批的长期记忆候选，不能直接写长期记忆。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    scope: UserMemoryScope
+    proposed_content: UserMemoryContent
+    origin: MemoryOrigin
+    source_refs: tuple[MemorySourceRef, ...] = Field(min_length=1)
+    confidence: float = Field(ge=0, le=1)
+    reason: NonBlank500
+    expires_at: AwareDatetime
+    idempotency_key: Annotated[
+        str,
+        StringConstraints(
+            strip_whitespace=True,
+            min_length=8,
+            max_length=128,
+        ),
+    ]
+
+
 class PromoteMemoryCandidateCommand(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 

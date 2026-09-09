@@ -105,10 +105,6 @@ class PromptMemoryContext(BaseModel):
     resolver_policy_version: str = Field(min_length=1, max_length=64)
     resolved_at: AwareDatetime
     items: tuple[PromptMemoryItem, ...] = Field(default=(), max_length=20)
-    omitted_memory_ids: tuple[UUID, ...] = Field(
-        default=(),
-        max_length=100,
-    )
 
 
 class HotNewsAnalysisInput(BaseModel):
@@ -182,11 +178,10 @@ class HotNewsAnalysisReport(BaseModel):
     )
     evidence_news_ids: list[str] = Field(default_factory=list, max_length=10)
     applied_memory_ids: list[UUID] = Field(
-        default_factory=list,
         max_length=20,
         description=(
             "本次报告实际使用的 memory_context.items[].memory_id；"
-            "未使用记忆时必须为空，不得填写 omitted_memory_ids"
+            "未使用记忆时必须为空"
         ),
     )
     limitations: list[str] = Field(default_factory=list, max_length=10)

@@ -1,5 +1,6 @@
-"""FastGPT 新闻知识库检索适配器。"""
+"""关联新闻领域 Port 与 FastGPT 实验适配器。"""
 
+import asyncio
 from dataclasses import dataclass
 import re
 from typing import Any, Protocol
@@ -40,14 +41,45 @@ class RelatedNews:
     score: float | None
 
 
+@dataclass(frozen=True, slots=True)
+class RelatedNewsSearchQuery:
+    """一次关联报道召回所需的稳定领域查询。"""
+
+    query_id: str
+    source_news_id: str
+    title: str
+    summary: str
+    exclude_news_ids: tuple[str, ...] = ()
+    candidate_limit: int = 20
+
+    def validate(self) -> None:
+        if not self.query_id.strip():
+            raise ValueError("query_id cannot be empty")
+        if not self.source_news_id.strip():
+            raise ValueError("source_news_id cannot be empty")
+        if not self.title.strip():
+            raise ValueError("title cannot be empty")
+        if self.candidate_limit <= 0:
+            raise ValueError("candidate_limit must be greater than 0")
+        if any(not item.strip() for item in self.exclude_news_ids):
+            raise ValueError("exclude_news_ids cannot contain empty values")
+
+    @property
+    def query_text(self) -> str:
+        return " ".join(
+            part.strip()
+            for part in (self.title, self.summary)
+            if part.strip()
+        )
+
+
 class KnowledgeSearchClient(Protocol):
-    async def search_related_news(
+    async def batch_search_related_news(
         self,
-        query: str,
+        queries: tuple[RelatedNewsSearchQuery, ...],
         *,
-        exclude_news_id: str | None = None,
-        limit: int = 5,
-    ) -> list[RelatedNews]: ...
+        tenant_id: str,
+    ) -> dict[str, list[RelatedNews]]: ...
 
 
 class FastGPTKnowledgeSearchClient:
@@ -64,6 +96,7 @@ class FastGPTKnowledgeSearchClient:
         *,
         http_client: httpx.AsyncClient | None = None,
         timeout_seconds: float = 30,
+        max_concurrency: int = 8,
     ) -> None:
         if not settings.fastgpt_dataset_id:
             raise ValueError("FASTGPT_DATASET_ID is required for knowledge search")
@@ -73,6 +106,9 @@ class FastGPTKnowledgeSearchClient:
         self.http_client = http_client or httpx.AsyncClient()
         self._owns_client = http_client is None
         self.timeout = httpx.Timeout(timeout_seconds, connect=10)
+        if max_concurrency <= 0:
+            raise ValueError("max_concurrency must be greater than 0")
+        self.max_concurrency = max_concurrency
 
     async def close(self) -> None:
         if self._owns_client:
@@ -149,6 +185,45 @@ class FastGPTKnowledgeSearchClient:
             if len(results) >= limit:
                 break
         return results
+
+    async def batch_search_related_news(
+        self,
+        queries: tuple[RelatedNewsSearchQuery, ...],
+        *,
+        tenant_id: str,
+    ) -> dict[str, list[RelatedNews]]:
+        """实验适配器使用有界并发兼容不支持批量查询的 FastGPT 接口。"""
+
+        if not tenant_id.strip():
+            raise ValueError("tenant_id cannot be empty")
+        query_ids = [query.query_id for query in queries]
+        if len(query_ids) != len(set(query_ids)):
+            raise ValueError("queries cannot contain duplicate query_id values")
+
+        semaphore = asyncio.Semaphore(self.max_concurrency)
+
+        async def search_one(
+            query: RelatedNewsSearchQuery,
+        ) -> tuple[str, list[RelatedNews]]:
+            query.validate()
+            excluded = set(query.exclude_news_ids)
+            excluded.add(query.source_news_id)
+            async with semaphore:
+                # 旧接口只支持一个 exclude_news_id，其余排除项在响应后确定性过滤。
+                rows = await self.search_related_news(
+                    query.query_text,
+                    exclude_news_id=query.source_news_id,
+                    limit=query.candidate_limit + len(excluded),
+                )
+            filtered = [
+                row for row in rows if row.news_id not in excluded
+            ][: query.candidate_limit]
+            return query.query_id, filtered
+
+        pairs = await asyncio.gather(
+            *(search_one(query) for query in queries)
+        )
+        return dict(pairs)
 
     @staticmethod
     def _optional_text(value: Any) -> str | None:

@@ -67,6 +67,30 @@ class AgentOutputValidationError(FastGPTError):
         self.raw_content = raw_content
 
 
+class HotNewsAnalysisAttemptError(AgentOutputValidationError):
+    """A model-quality failure carrying the exact trusted input snapshot.
+
+    Data Loop collectors use this envelope to retain a reproducible bad case.
+    It deliberately remains a validation error so existing retry policy stays
+    non-retryable.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        analysis_input: object,
+        raw_content: str,
+        request_id: str | None = None,
+    ) -> None:
+        super().__init__(
+            message,
+            raw_content=raw_content,
+            request_id=request_id,
+        )
+        self.analysis_input = analysis_input
+
+
 class HotNewsDataQualityError(RuntimeError):
     """热点运行缺少可信内容或收到不一致的确定性数据。"""
 
