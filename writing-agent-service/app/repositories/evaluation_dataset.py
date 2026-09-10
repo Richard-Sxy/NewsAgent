@@ -48,6 +48,16 @@ class FeedbackSnapshotCorruptedError(RuntimeError):
 
 
 class EvaluationDatasetRepository(Protocol):
+    async def list_approved_case_ids_for_window(
+        self,
+        *,
+        tenant_id: str,
+        occurred_start: datetime,
+        occurred_end: datetime,
+        source_cutoff_at: datetime,
+        limit: int,
+    ) -> tuple[UUID, ...]: ...
+
     async def get_by_idempotency_key(
         self,
         *,
@@ -100,6 +110,60 @@ class PostgresEvaluationDatasetRepository:
 
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
+
+    async def list_approved_case_ids_for_window(
+        self,
+        *,
+        tenant_id: str,
+        occurred_start: datetime,
+        occurred_end: datetime,
+        source_cutoff_at: datetime,
+        limit: int,
+    ) -> tuple[UUID, ...]:
+        """Select bounded bad cases using labels approved as of the cutoff."""
+
+        if limit < 1:
+            raise ValueError("limit must be positive")
+        latest_approved_version = self._latest_approved_version_at_cutoff(
+            source_cutoff_at
+        )
+        statement = (
+            select(AnalysisFeedbackCaseRecord.id)
+            .join(
+                AnalysisFeedbackLabelRecord,
+                (
+                    AnalysisFeedbackLabelRecord.tenant_id
+                    == AnalysisFeedbackCaseRecord.tenant_id
+                )
+                & (
+                    AnalysisFeedbackLabelRecord.feedback_case_id
+                    == AnalysisFeedbackCaseRecord.id
+                ),
+            )
+            .where(
+                AnalysisFeedbackCaseRecord.tenant_id == tenant_id,
+                AnalysisFeedbackCaseRecord.occurred_at >= occurred_start,
+                AnalysisFeedbackCaseRecord.occurred_at < occurred_end,
+                AnalysisFeedbackCaseRecord.recorded_at <= source_cutoff_at,
+                AnalysisFeedbackLabelRecord.approval_status.in_(
+                    ("approved", "superseded")
+                ),
+                AnalysisFeedbackLabelRecord.approved_at.is_not(None),
+                AnalysisFeedbackLabelRecord.approved_at <= source_cutoff_at,
+                AnalysisFeedbackLabelRecord.label_version
+                == latest_approved_version,
+                AnalysisFeedbackLabelRecord.verdict != "not_evaluable",
+            )
+            .order_by(AnalysisFeedbackCaseRecord.id)
+            .limit(limit)
+        )
+        try:
+            result = await self._session.execute(statement)
+        except SQLAlchemyError as exc:
+            raise EvaluationDatasetRepositoryError(
+                "failed to select approved feedback window"
+            ) from exc
+        return tuple(result.scalars().all())
 
     async def get_by_idempotency_key(
         self,
@@ -209,17 +273,8 @@ class PostgresEvaluationDatasetRepository:
         if not requested_ids:
             return ()
 
-        latest_approved_version = (
-            select(func.max(AnalysisFeedbackLabelRecord.label_version))
-            .where(
-                AnalysisFeedbackLabelRecord.tenant_id
-                == AnalysisFeedbackCaseRecord.tenant_id,
-                AnalysisFeedbackLabelRecord.feedback_case_id
-                == AnalysisFeedbackCaseRecord.id,
-                AnalysisFeedbackLabelRecord.approval_status == "approved",
-            )
-            .correlate(AnalysisFeedbackCaseRecord)
-            .scalar_subquery()
+        latest_approved_version = self._latest_approved_version_at_cutoff(
+            source_cutoff_at
         )
         statement = (
             select(
@@ -240,14 +295,17 @@ class PostgresEvaluationDatasetRepository:
             .where(
                 AnalysisFeedbackCaseRecord.tenant_id == tenant_id,
                 AnalysisFeedbackCaseRecord.id.in_(requested_ids),
-                AnalysisFeedbackCaseRecord.status.in_(("labeled", "frozen")),
                 AnalysisFeedbackCaseRecord.recorded_at <= source_cutoff_at,
-                AnalysisFeedbackLabelRecord.approval_status == "approved",
+                AnalysisFeedbackLabelRecord.approval_status.in_(
+                    ("approved", "superseded")
+                ),
+                AnalysisFeedbackLabelRecord.approved_at.is_not(None),
+                AnalysisFeedbackLabelRecord.approved_at <= source_cutoff_at,
                 AnalysisFeedbackLabelRecord.label_version
                 == latest_approved_version,
+                AnalysisFeedbackLabelRecord.verdict != "not_evaluable",
             )
             .order_by(AnalysisFeedbackCaseRecord.id)
-            .with_for_update()
         )
         try:
             result = await self._session.execute(statement)
@@ -265,6 +323,32 @@ class PostgresEvaluationDatasetRepository:
                     f"feedback case {case.id} is not freezeable: {exc}"
                 ) from exc
         return tuple(snapshots)
+
+    @staticmethod
+    def _latest_approved_version_at_cutoff(source_cutoff_at: datetime):
+        """Return the latest label that had actually been approved by cutoff.
+
+        A historically approved label may now have ``superseded`` status.  Its
+        approval metadata is retained, so status alone must not erase the
+        point-in-time view.
+        """
+
+        return (
+            select(func.max(AnalysisFeedbackLabelRecord.label_version))
+            .where(
+                AnalysisFeedbackLabelRecord.tenant_id
+                == AnalysisFeedbackCaseRecord.tenant_id,
+                AnalysisFeedbackLabelRecord.feedback_case_id
+                == AnalysisFeedbackCaseRecord.id,
+                AnalysisFeedbackLabelRecord.approval_status.in_(
+                    ("approved", "superseded")
+                ),
+                AnalysisFeedbackLabelRecord.approved_at.is_not(None),
+                AnalysisFeedbackLabelRecord.approved_at <= source_cutoff_at,
+            )
+            .correlate(AnalysisFeedbackCaseRecord)
+            .scalar_subquery()
+        )
 
     async def save_frozen_dataset(
         self,

@@ -4,7 +4,10 @@ from unittest.mock import AsyncMock, patch
 import pytest
 
 from app.data_loop_worker import run_data_loop_worker
-from app.workflows.data_loop import HotNewsDataLoopWorkflow
+from app.workflows.data_loop import (
+    HotNewsDataLoopActivationRecoveryWorkflow,
+    HotNewsDataLoopWorkflow,
+)
 
 
 @pytest.mark.asyncio
@@ -29,6 +32,9 @@ async def test_worker_registers_data_loop_on_dedicated_queue() -> None:
 
     kwargs = factory.call_args.kwargs
     assert kwargs["task_queue"] == "hot-news-data-loop"
-    assert kwargs["workflows"] == [HotNewsDataLoopWorkflow]
+    assert kwargs["workflows"] == [
+        HotNewsDataLoopWorkflow,
+        HotNewsDataLoopActivationRecoveryWorkflow,
+    ]
     assert len(kwargs["activities"]) == 1
     worker.run.assert_awaited_once()

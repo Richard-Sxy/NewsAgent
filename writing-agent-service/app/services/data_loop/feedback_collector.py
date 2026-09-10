@@ -515,6 +515,16 @@ class AnalysisFeedbackCollector:
                 raise AnalysisFeedbackTargetNotFoundError(
                     "Feedback Case 不存在"
                 )
+            # Linearize concurrent retries on the case row, then recheck the
+            # idempotency ledger. Server-generated timestamps are not business
+            # input and must not make a retry conflict.
+            existing = await repository.get_label_by_idempotency_key(
+                tenant_id=tenant_id,
+                idempotency_key=command.idempotency_key,
+            )
+            if existing is not None:
+                self._ensure_same_submitted_label(existing, command)
+                return FeedbackLabelWriteOutcome(existing, False)
             if feedback_case.status in {"excluded", "frozen"}:
                 raise AnalysisFeedbackConflictError(
                     "当前 Feedback Case 状态不允许修改标签"
@@ -642,6 +652,15 @@ class AnalysisFeedbackCollector:
                 raise AnalysisFeedbackTargetNotFoundError(
                     "Feedback Case 不存在"
                 )
+            replay = (
+                await repository.get_label_by_approval_idempotency_key(
+                    tenant_id=tenant_id,
+                    idempotency_key=command.idempotency_key,
+                )
+            )
+            if replay is not None:
+                self._ensure_same_approval(replay, command)
+                return FeedbackLabelWriteOutcome(replay, False)
             if feedback_case.status in {"excluded", "frozen"}:
                 raise AnalysisFeedbackConflictError(
                     "当前 Feedback Case 状态不允许批准标签"
@@ -674,6 +693,10 @@ class AnalysisFeedbackCollector:
             if command.approved_at < label.labeled_at:
                 raise ValueError(
                     "approved_at cannot be earlier than labeled_at"
+                )
+            if command.approved_by == label.labeled_by:
+                raise AnalysisFeedbackConflictError(
+                    "Feedback Label submitter cannot approve their own label"
                 )
 
             approved = await repository.approve_label(
@@ -789,7 +812,6 @@ class AnalysisFeedbackCollector:
             != command.must_state_limitation
             or existing.operator_comment != command.operator_comment
             or existing.labeled_by != command.labeled_by
-            or existing.labeled_at != command.labeled_at
         ):
             raise AnalysisFeedbackConflictError(
                 "同一个 idempotency_key 对应不同的 Feedback Label"
@@ -806,7 +828,6 @@ class AnalysisFeedbackCollector:
             or existing.label_version != command.expected_label_version
             or existing.approval_status != "approved"
             or existing.approved_by != command.approved_by
-            or existing.approved_at != command.approved_at
         ):
             raise AnalysisFeedbackConflictError(
                 "同一个 idempotency_key 对应不同的标签批准内容"

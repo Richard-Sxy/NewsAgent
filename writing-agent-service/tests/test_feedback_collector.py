@@ -299,6 +299,91 @@ async def test_submit_and_approve_label_use_version_and_human_gate(
 
 
 @pytest.mark.asyncio
+async def test_label_submitter_cannot_approve_own_label(monkeypatch) -> None:
+    repository = repository_mock(monkeypatch)
+    label = pending_label()
+    repository.get_label_by_approval_idempotency_key.return_value = None
+    repository.get_case_for_update.return_value = stored_case(case_command())
+    repository.get_label_for_update.return_value = label
+    repository.get_latest_label_for_update.return_value = label
+
+    with pytest.raises(
+        AnalysisFeedbackConflictError,
+        match="cannot approve their own label",
+    ):
+        await AnalysisFeedbackCollector().approve_label(
+            object(),
+            tenant_id=label.tenant_id,
+            command=ApproveAnalysisFeedbackLabelCommand(
+                feedback_case_id=label.feedback_case_id,
+                label_id=label.id,
+                expected_label_version=label.label_version,
+                approved_by=label.labeled_by,
+                approved_at=NOW + timedelta(minutes=1),
+                idempotency_key="label-self-approval-1",
+            ),
+        )
+
+    repository.approve_label.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_label_retries_ignore_server_generated_timestamps(
+    monkeypatch,
+) -> None:
+    repository = repository_mock(monkeypatch)
+    existing = pending_label()
+    repository.get_label_by_idempotency_key.return_value = existing
+    submit = SubmitAnalysisFeedbackLabelCommand(
+        feedback_case_id=existing.feedback_case_id,
+        verdict=existing.verdict,
+        allowed_dominant_drivers=existing.allowed_dominant_drivers,
+        required_metric_keys=existing.required_metric_keys,
+        operator_comment=existing.operator_comment,
+        labeled_by=existing.labeled_by,
+        labeled_at=existing.labeled_at + timedelta(minutes=5),
+        idempotency_key=existing.idempotency_key,
+    )
+
+    submitted = await AnalysisFeedbackCollector().submit_label(
+        object(),
+        tenant_id=existing.tenant_id,
+        command=submit,
+        recorded_at=NOW + timedelta(minutes=5),
+    )
+
+    assert submitted.created is False
+    assert submitted.label is existing
+
+    approved = existing.model_copy(
+        update={
+            "approval_status": "approved",
+            "approved_by": "reviewer-1",
+            "approved_at": NOW + timedelta(minutes=1),
+            "approval_idempotency_key": "approve-retry-1",
+        }
+    )
+    repository.get_label_by_approval_idempotency_key.return_value = approved
+    approval = ApproveAnalysisFeedbackLabelCommand(
+        feedback_case_id=approved.feedback_case_id,
+        label_id=approved.id,
+        expected_label_version=approved.label_version,
+        approved_by="reviewer-1",
+        approved_at=NOW + timedelta(minutes=10),
+        idempotency_key="approve-retry-1",
+    )
+
+    replayed = await AnalysisFeedbackCollector().approve_label(
+        object(),
+        tenant_id=approved.tenant_id,
+        command=approval,
+    )
+
+    assert replayed.created is False
+    assert replayed.label is approved
+
+
+@pytest.mark.asyncio
 async def test_record_publication_outcome_is_idempotent_and_aggregate_only(
     monkeypatch,
 ) -> None:

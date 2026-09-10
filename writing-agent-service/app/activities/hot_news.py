@@ -2,6 +2,7 @@
 
 import asyncio
 from contextlib import suppress
+from datetime import datetime
 from typing import Protocol
 
 from temporalio import activity
@@ -16,7 +17,7 @@ from app.observability.hot_news import (
     NoopHotNewsRunMetrics,
 )
 from app.services.hot_news_orchestration import (
-    HotNewsOrchestrationService,
+    HotNewsRunService,
     HotNewsRunRequest,
     HotNewsRunResult,
 )
@@ -31,6 +32,10 @@ class HotNewsRunStore(Protocol):
         *,
         tenant_id: str,
         idempotency_key: str,
+        window_start: datetime,
+        window_end: datetime,
+        production_bundle_version: str,
+        workflow_version: str,
     ) -> HotNewsActivityOutcome | None: ...
 
     async def save_completed(
@@ -71,7 +76,7 @@ class HotNewsActivities:
 
     def __init__(
         self,
-        orchestration_service: HotNewsOrchestrationService,
+        orchestration_service: HotNewsRunService,
         run_store: HotNewsRunStore,
         *,
         run_metrics: HotNewsRunMetrics | None = None,
@@ -113,6 +118,12 @@ class HotNewsActivities:
             completed = await self._run_store.get_completed(
                 tenant_id=request.tenant_id,
                 idempotency_key=request.idempotency_key,
+                window_start=request.window_start,
+                window_end=request.window_end,
+                production_bundle_version=(
+                    request.production_bundle_version
+                ),
+                workflow_version=request.workflow_version,
             )
             if completed is not None:
                 self._validate_replayed_outcome(

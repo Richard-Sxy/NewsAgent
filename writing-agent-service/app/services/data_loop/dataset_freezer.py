@@ -6,7 +6,8 @@ import asyncio
 import base64
 import hashlib
 import json
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Protocol
 from urllib.parse import quote
@@ -64,6 +65,16 @@ class EvaluationDatasetArtifactStore(Protocol):
         storage_uri: str,
         expected_sha256: str,
     ) -> dict: ...
+
+
+@dataclass(frozen=True, slots=True)
+class EvaluationDatasetFreezePreparation:
+    """Canonical manifest prepared inside the read-only database phase."""
+
+    command: FreezeEvaluationDatasetCommand
+    manifest: EvaluationDatasetManifest
+    content: bytes
+    content_sha256: str
 
 
 class S3EvaluationDatasetArtifactStore:
@@ -170,6 +181,7 @@ class S3EvaluationDatasetArtifactStore:
             "Bucket": self._bucket,
             "Key": object_key,
             "Body": content,
+            "IfNoneMatch": "*",
             "ContentType": "application/json",
             "ChecksumSHA256": base64.b64encode(
                 bytes.fromhex(content_sha256)
@@ -185,11 +197,87 @@ class S3EvaluationDatasetArtifactStore:
             request["SSEKMSKeyId"] = self._kms_key_id
         try:
             self._client.put_object(**request)
-        except (BotoCoreError, ClientError) as exc:
+        except ClientError as exc:
+            if self._is_conditional_write_conflict(exc):
+                self._verify_existing_object(
+                    object_key=object_key,
+                    expected_content=content,
+                    expected_sha256=content_sha256,
+                )
+                return
             raise ArtifactStoreError(
                 f"failed to write evaluation dataset: "
                 f"s3://{self._bucket}/{object_key}"
             ) from exc
+        except BotoCoreError as exc:
+            raise ArtifactStoreError(
+                f"failed to write evaluation dataset: "
+                f"s3://{self._bucket}/{object_key}"
+            ) from exc
+
+    def _verify_existing_object(
+        self,
+        *,
+        object_key: str,
+        expected_content: bytes,
+        expected_sha256: str,
+    ) -> None:
+        storage_uri = f"s3://{self._bucket}/{object_key}"
+        try:
+            response = self._client.get_object(
+                Bucket=self._bucket,
+                Key=object_key,
+            )
+            existing_content = response["Body"].read()
+        except (BotoCoreError, ClientError, KeyError, OSError) as exc:
+            raise ArtifactStoreError(
+                "failed to verify an existing evaluation dataset after "
+                f"conditional-write conflict: {storage_uri}"
+            ) from exc
+
+        actual_sha256 = hashlib.sha256(existing_content).hexdigest()
+        if (
+            existing_content != expected_content
+            or actual_sha256 != expected_sha256
+        ):
+            raise EvaluationDatasetIntegrityError(
+                "existing evaluation dataset content does not match its "
+                "content-addressed key"
+            )
+
+        metadata = response.get("Metadata")
+        if not isinstance(metadata, dict):
+            raise EvaluationDatasetIntegrityError(
+                "existing evaluation dataset is missing integrity metadata"
+            )
+        normalized_metadata = {
+            str(key).lower(): str(value) for key, value in metadata.items()
+        }
+        if (
+            normalized_metadata.get("content-sha256", "").lower()
+            != expected_sha256
+            or normalized_metadata.get("artifact-kind")
+            != "evaluation-dataset"
+        ):
+            raise EvaluationDatasetIntegrityError(
+                "existing evaluation dataset integrity metadata does not "
+                "match its content-addressed key"
+            )
+
+    @staticmethod
+    def _is_conditional_write_conflict(exc: ClientError) -> bool:
+        response = exc.response or {}
+        error = response.get("Error") or {}
+        code = str(error.get("Code", ""))
+        response_metadata = response.get("ResponseMetadata") or {}
+        status = response_metadata.get("HTTPStatusCode")
+        return code in {
+            "409",
+            "412",
+            "Conflict",
+            "ConditionalRequestConflict",
+            "PreconditionFailed",
+        } or status in {409, 412}
 
     def _object_key(
         self,
@@ -233,9 +321,13 @@ class EvaluationDatasetFreezer:
     """
     Data Loop 冻结服务。
 
-    Artifact 采用内容寻址，因此幂等重放不会改变已冻结对象。
-    PostgreSQL Repository 负责在同一事务内写入 Dataset/Case 索引并将
-    Feedback Case 状态从 ``labeled`` 推进到 ``frozen``。
+    冻结显式分为 prepare、upload、persist 三个阶段。调用方必须在
+    prepare 与 upload 之间结束只读数据库事务，避免网络 I/O 持有事务或
+    Feedback 锁；persist 再开启短写事务保存 Dataset/Case 索引。
+
+    Manifest 的 ``frozen_at`` 是稳定的逻辑快照时点，等于请求中的
+    ``source_cutoff_at``。数据库审计字段仍记录实际写入时间，因此提交失败
+    后以同一命令重试不会因墙上时钟变化产生另一个内容哈希对象。
     """
 
     def __init__(
@@ -254,7 +346,25 @@ class EvaluationDatasetFreezer:
     async def freeze(
         self,
         command: FreezeEvaluationDatasetCommand,
+        *,
+        end_prepare_transaction: Callable[[], Awaitable[None]],
     ) -> FreezeEvaluationDatasetResult:
+        """Run a freeze while enforcing a transaction boundary before upload."""
+
+        prepared = await self.prepare(command)
+        if isinstance(prepared, FreezeEvaluationDatasetResult):
+            return prepared
+
+        await end_prepare_transaction()
+        artifact = await self.upload(prepared)
+        return await self.persist(prepared, artifact)
+
+    async def prepare(
+        self,
+        command: FreezeEvaluationDatasetCommand,
+    ) -> EvaluationDatasetFreezePreparation | FreezeEvaluationDatasetResult:
+        """Read the point-in-time snapshot and build deterministic content."""
+
         existing = await self._repository.get_by_idempotency_key(
             tenant_id=command.tenant_id,
             idempotency_key=command.idempotency_key,
@@ -278,10 +388,10 @@ class EvaluationDatasetFreezer:
                 "dataset name/version is already frozen under another request"
             )
 
-        frozen_at = self._clock()
-        if frozen_at.tzinfo is None or frozen_at.utcoffset() is None:
+        observed_at = self._clock()
+        if observed_at.tzinfo is None or observed_at.utcoffset() is None:
             raise ValueError("freezer clock must return an aware datetime")
-        if command.source_cutoff_at > frozen_at:
+        if command.source_cutoff_at > observed_at:
             raise EvaluationDatasetNotReadyError(
                 "source_cutoff_at cannot be in the future"
             )
@@ -310,9 +420,10 @@ class EvaluationDatasetFreezer:
                 raise EvaluationDatasetNotReadyError(
                     f"feedback case {snapshot.feedback_case_id} is newer than cutoff"
                 )
-            if snapshot.lineage.label_approved_at > frozen_at:
+            if snapshot.lineage.label_approved_at > command.source_cutoff_at:
                 raise EvaluationDatasetNotReadyError(
-                    f"feedback case {snapshot.feedback_case_id} has a future label"
+                    f"feedback case {snapshot.feedback_case_id} has a label "
+                    "approved after source cutoff"
                 )
             cases.append(
                 FrozenEvaluationCase(
@@ -336,34 +447,75 @@ class EvaluationDatasetFreezer:
             dataset_layer=command.dataset_layer,
             description=command.description,
             source_cutoff_at=command.source_cutoff_at,
-            frozen_at=frozen_at,
+            frozen_at=command.source_cutoff_at,
             frozen_by=command.frozen_by,
             cases=tuple(cases),
         )
         content = manifest.canonical_content
         content_sha256 = hashlib.sha256(content).hexdigest()
+        return EvaluationDatasetFreezePreparation(
+            command=command,
+            manifest=manifest,
+            content=content,
+            content_sha256=content_sha256,
+        )
+
+    async def upload(
+        self,
+        prepared: EvaluationDatasetFreezePreparation,
+    ) -> EvaluationDatasetArtifactReceipt:
+        """Upload canonical bytes with no database transaction held."""
+
+        command = prepared.command
+        manifest = prepared.manifest
         artifact = await self._artifact_store.put_json(
             tenant_id=command.tenant_id,
             dataset_id=manifest.dataset_id,
             dataset_name=command.dataset_name,
             dataset_version=command.dataset_version,
-            content=content,
-            content_sha256=content_sha256,
+            content=prepared.content,
+            content_sha256=prepared.content_sha256,
         )
         if (
-            artifact.content_sha256 != content_sha256
-            or artifact.content_size != len(content)
+            artifact.content_sha256 != prepared.content_sha256
+            or artifact.content_size != len(prepared.content)
         ):
             raise EvaluationDatasetIntegrityError(
                 "artifact receipt does not match canonical dataset content"
             )
+        return artifact
 
+    async def persist(
+        self,
+        prepared: EvaluationDatasetFreezePreparation,
+        artifact: EvaluationDatasetArtifactReceipt,
+    ) -> FreezeEvaluationDatasetResult:
+        """Persist the uploaded manifest and case indexes in a short transaction."""
+
+        command = prepared.command
+        manifest = prepared.manifest
+        if (
+            artifact.content_sha256 != prepared.content_sha256
+            or artifact.content_size != len(prepared.content)
+        ):
+            raise EvaluationDatasetIntegrityError(
+                "artifact receipt does not match prepared dataset content"
+            )
         reference, created = await self._repository.save_frozen_dataset(
             manifest=manifest,
             artifact=artifact,
             idempotency_key=command.idempotency_key,
             request_fingerprint=command.request_fingerprint,
         )
+        if (
+            reference.tenant_id != command.tenant_id
+            or reference.dataset_id != manifest.dataset_id
+            or reference.request_fingerprint != command.request_fingerprint
+            or reference.content_sha256 != manifest.content_sha256
+        ):
+            raise EvaluationDatasetIntegrityError(
+                "persisted dataset reference differs from prepared manifest"
+            )
         return FreezeEvaluationDatasetResult(
             dataset=reference,
             created=created,

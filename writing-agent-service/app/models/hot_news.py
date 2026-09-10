@@ -28,6 +28,17 @@ class HotNewsAnalysisRun(TimestampMixin, Base):
             "idempotency_key",
             name="uq_analysis_runs_tenant_idempotency_key",
         ),
+        UniqueConstraint(
+            "tenant_id",
+            "id",
+            name="uq_analysis_runs_tenant_id",
+        ),
+        UniqueConstraint(
+            "tenant_id",
+            "id",
+            "idempotency_key",
+            name="uq_analysis_runs_tenant_run_identity",
+        ),
         Index(
             "ix_analysis_runs_tenant_window",
             "tenant_id",
@@ -61,7 +72,7 @@ class HotNewsAnalysisRun(TimestampMixin, Base):
         DateTime(timezone=True), nullable=False
     )
     production_bundle_version: Mapped[str] = mapped_column(
-        String(120), nullable=False
+        String(128), nullable=False
     )
     workflow_version: Mapped[str] = mapped_column(String(120), nullable=False)
     status: Mapped[str] = mapped_column(String(32), nullable=False)

@@ -1,5 +1,5 @@
 from functools import lru_cache
-from pydantic import Field, PostgresDsn, RedisDsn
+from pydantic import Field, PostgresDsn, RedisDsn, SecretStr
 from pydantic_settings import (
     BaseSettings,
     SettingsConfigDict,
@@ -37,6 +37,15 @@ class Settings(BaseSettings):
     fastgpt_hot_news_app_id: str | None = None
     fastgpt_error_attribution_app_id: str | None = None
     fastgpt_supervisor_app_id: str | None = None
+    # JSON array of complete ProductionBundleSpec snapshots that this worker
+    # can actually execute. Data Loop workers fail closed when it is empty or
+    # a candidate is not registered.
+    hot_news_runtime_manifest_json: str = "[]"
+    data_loop_replay_max_concurrency: int = Field(default=8, ge=1, le=32)
+    data_loop_max_cases_per_cohort: int = Field(default=20, ge=1, le=100)
+    # Shared only with the trusted edge gateway. When absent or blank, every
+    # Data Loop management endpoint remains unavailable (fail-closed).
+    data_loop_gateway_token: SecretStr | None = None
 
     artifact_bucket: str
     artifact_endpoint: str | None = None

@@ -38,6 +38,21 @@ class PostgresProductionBundleRepository:
     def __init__(self, session: AsyncSession) -> None:
         self._session = session
 
+    async def get_active_bundle(
+        self,
+        *,
+        tenant_id: str,
+    ) -> ProductionBundle | None:
+        """Read the active runtime snapshot without taking a lifecycle lock."""
+
+        statement = select(ProductionBundleRecord).where(
+            ProductionBundleRecord.tenant_id == tenant_id,
+            ProductionBundleRecord.status == "active",
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_bundle_domain(record)
+
     async def get_active_bundle_for_update(
         self,
         *,
@@ -73,6 +88,22 @@ class PostgresProductionBundleRepository:
         record = result.scalar_one_or_none()
         return None if record is None else self.to_bundle_domain(record)
 
+    async def get_bundle(
+        self,
+        *,
+        tenant_id: str,
+        bundle_id: UUID,
+    ) -> ProductionBundle | None:
+        """Read one immutable Bundle snapshot without taking a row lock."""
+
+        statement = select(ProductionBundleRecord).where(
+            ProductionBundleRecord.tenant_id == tenant_id,
+            ProductionBundleRecord.id == bundle_id,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_bundle_domain(record)
+
     async def get_candidate_for_update(
         self,
         *,
@@ -85,6 +116,52 @@ class PostgresProductionBundleRepository:
                 ConfigurationCandidateRecord.tenant_id == tenant_id,
                 ConfigurationCandidateRecord.id == candidate_id,
             )
+            .with_for_update()
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_candidate_domain(record)
+
+    async def get_candidate(
+        self,
+        *,
+        tenant_id: str,
+        candidate_id: UUID,
+    ) -> ConfigurationCandidate | None:
+        """Read a candidate for the control plane without a lifecycle lock."""
+
+        statement = select(ConfigurationCandidateRecord).where(
+            ConfigurationCandidateRecord.tenant_id == tenant_id,
+            ConfigurationCandidateRecord.id == candidate_id,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_candidate_domain(record)
+
+    async def get_latest_evaluated_candidate_for_update(
+        self,
+        *,
+        tenant_id: str,
+        base_bundle_id: UUID,
+        exclude_candidate_id: UUID,
+    ) -> ConfigurationCandidate | None:
+        """Resolve the server-authoritative previous experiment baseline."""
+
+        statement = (
+            select(ConfigurationCandidateRecord)
+            .where(
+                ConfigurationCandidateRecord.tenant_id == tenant_id,
+                ConfigurationCandidateRecord.base_bundle_id == base_bundle_id,
+                ConfigurationCandidateRecord.id != exclude_candidate_id,
+                ConfigurationCandidateRecord.status.in_(
+                    ("evaluation_passed", "approved", "activated")
+                ),
+            )
+            .order_by(
+                ConfigurationCandidateRecord.created_at.desc(),
+                ConfigurationCandidateRecord.id.desc(),
+            )
+            .limit(1)
             .with_for_update()
         )
         result = await self._session.execute(statement)

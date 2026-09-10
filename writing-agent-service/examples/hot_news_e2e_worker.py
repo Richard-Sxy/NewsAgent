@@ -6,16 +6,24 @@ from app.hot_news_worker import run_hot_news_worker
 from examples.hot_news_e2e_support import (
     build_hot_news_e2e_dependencies,
 )
+from examples.hot_news_e2e_knowledge import (
+    OfflineScenarioKnowledgeSearchClient,
+)
 
 
 async def run() -> None:
     dependencies = build_hot_news_e2e_dependencies()
+    knowledge_search = OfflineScenarioKnowledgeSearchClient(
+        dependencies.content_repository,
+        dependencies.news_ids,
+    )
 
     await run_hot_news_worker(
         behavior_data_source=dependencies.behavior_data_source,
         baseline_provider=dependencies.baseline_provider,
         content_repository=dependencies.content_repository,
         policy=dependencies.policy,
+        knowledge_search=knowledge_search,
     )
 
 

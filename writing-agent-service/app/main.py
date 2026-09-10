@@ -17,6 +17,9 @@ from app.services.event_reader import RedisProgressReader
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
 from app.services.data_loop.orchestrator import DataLoopOrchestrator
+from app.services.data_loop.dataset_freezer import (
+    S3EvaluationDatasetArtifactStore,
+)
 
 
 @asynccontextmanager
@@ -36,6 +39,9 @@ async def lifespan(app: FastAPI):
     app.state.redis = redis
     app.state.event_reader = RedisProgressReader(redis, settings)
     app.state.artifact_store = S3ArtifactStore(settings)
+    app.state.evaluation_dataset_artifact_store = (
+        S3EvaluationDatasetArtifactStore(settings)
+    )
     app.state.cms_publisher = CmsPublisher(settings)
     try:
         yield
@@ -59,6 +65,7 @@ def create_app() -> FastAPI:
     application.get("/metrics", response_class=PlainTextResponse)(metrics)
     application.get("/review", include_in_schema=False)(review_console)
     application.get("/research-package", include_in_schema=False)(research_package_console)
+    application.get("/console", include_in_schema=False)(operator_console)
 
     return application
 
@@ -75,6 +82,11 @@ def review_console() -> FileResponse:
 def research_package_console() -> FileResponse:
     """面向运营的资料包可视化工作台。"""
     return FileResponse(Path(__file__).parent / "web" / "research-package.html")
+
+
+def operator_console() -> FileResponse:
+    """热点、写作与 Data Loop 三合一运营总控制台。"""
+    return FileResponse(Path(__file__).parent / "web" / "console.html")
 
 
 async def metrics(request: Request) -> PlainTextResponse:

@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: news-agent
+
+resources:
+  - frontend-configmap.yaml
+  - frontend-deployment.yaml
+  - frontend-service.yaml
+  - frontend-ingress.yaml
+  - frontend-hpa.yaml
+  - frontend-networkpolicy.yaml
+
+# 发布时用不可变 digest 覆盖镜像，避免 :latest 带来的漂移。
+# 用法：
+#   kustomize edit set image registry.internal/newsagent/frontend@sha256:<digest>
+images:
+  - name: registry.internal/newsagent/frontend
+    newTag: 0.1.0

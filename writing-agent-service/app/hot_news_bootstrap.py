@@ -38,6 +38,12 @@ from app.services.data_loop.automatic_feedback import (
     AutomaticFeedbackPolicy,
     AutomaticHotNewsFeedbackSink,
 )
+from app.services.active_bundle_hot_news import (
+    ActiveProductionBundleHotNewsService,
+)
+from app.services.production_bundle_runtime import (
+    ProductionBundleRuntimeRegistry,
+)
 
 @dataclass
 class HotNewsRuntime:
@@ -168,19 +174,32 @@ def create_hot_news_worker_runtime(
         policy=policy,
         knowledge_search=knowledge_search,
     )
+    runtime_registry = ProductionBundleRuntimeRegistry.from_json(
+        hot_news_runtime.fastgpt_client,
+        settings.hot_news_runtime_manifest_json,
+    )
+    active_bundle_service = ActiveProductionBundleHotNewsService(
+        database=database,
+        runtime_registry=runtime_registry,
+        behavior_data_source=behavior_data_source,
+        baseline_provider=baseline_provider,
+        content_repository=content_repository,
+        knowledge_search=hot_news_runtime.knowledge_client,
+        policy_template=policy,
+    )
     # Activity 重试时，通过 PostgreSQL 进行幂等计算和持久化结果
     run_store = PostgresHotNewsRunStore(database)
     feedback_sink = AutomaticHotNewsFeedbackSink(
         database=database,
         run_store=run_store,
         policy=AutomaticFeedbackPolicy(
-            version=f"{policy.production_bundle_version}:automatic-feedback-v1",
+            version="automatic-feedback-v1",
         ),
     )
     # Temporal 只负责调用主链路和持久化结果
     resolved_run_metrics = run_metrics or InMemoryHotNewsRunMetrics()
     activities = HotNewsActivities(
-        orchestration_service=hot_news_runtime.service,
+        orchestration_service=active_bundle_service,
         run_store=run_store,
         run_metrics=resolved_run_metrics,
         feedback_sink=feedback_sink,

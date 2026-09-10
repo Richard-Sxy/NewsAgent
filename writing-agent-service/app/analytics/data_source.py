@@ -54,8 +54,8 @@ class BehaviorDataSource(Protocol):
 
     async def fetch(self, query: BehaviorQuery) -> list[BehaviorRecord]:
         """返回已经完成字段名、枚举值和时间格式映射的领域对象。"""
-
         ...
+        
 
 
 class InMemoryBehaviorDataSource:

@@ -18,6 +18,15 @@ def test_all_checkpoint_tables_are_registered() -> None:
         "long_term_memory_candidates",
         "long_term_user_memories",
         "memory_promotion_requests",
+        "feedback_cases",
+        "feedback_labels",
+        "publication_outcomes",
+        "evaluation_datasets",
+        "evaluation_dataset_cases",
+        "production_bundles",
+        "configuration_candidates",
+        "candidate_evaluation_runs",
+        "promotion_decisions",
     }
 
 
@@ -53,6 +62,73 @@ def test_artifact_version_is_immutable_identity() -> None:
     }
     assert ("job_id", "logical_key", "version") in unique_column_sets
     assert table.c.content_sha256.type.length == 64
+
+
+def test_analysis_run_identity_supports_tenant_scoped_references() -> None:
+    table = Base.metadata.tables["analysis_runs"]
+    unique_column_sets = {
+        tuple(column.name for column in constraint.columns)
+        for constraint in table.constraints
+        if constraint.__class__.__name__ == "UniqueConstraint"
+    }
+    assert table.c.production_bundle_version.type.length == 128
+    assert ("tenant_id", "id") in unique_column_sets
+    assert (
+        "tenant_id",
+        "id",
+        "idempotency_key",
+    ) in unique_column_sets
+
+
+def test_feedback_run_links_bind_tenant_id_and_idempotency_key() -> None:
+    expected_targets = (
+        "analysis_runs.tenant_id",
+        "analysis_runs.id",
+        "analysis_runs.idempotency_key",
+    )
+    for table_name, constraint_name in (
+        (
+            "publication_outcomes",
+            "fk_publication_outcomes_tenant_run_identity",
+        ),
+        ("feedback_cases", "fk_feedback_cases_tenant_run_identity"),
+    ):
+        table = Base.metadata.tables[table_name]
+        constraint = next(
+            item
+            for item in table.foreign_key_constraints
+            if item.name == constraint_name
+        )
+        assert tuple(column.name for column in constraint.columns) == (
+            "tenant_id",
+            "run_id",
+            "run_idempotency_key",
+        )
+        assert tuple(
+            element.target_fullname for element in constraint.elements
+        ) == expected_targets
+
+
+def test_operator_decision_links_are_tenant_scoped() -> None:
+    table = Base.metadata.tables["hot_news_decisions"]
+    constraints = {
+        constraint.name: constraint
+        for constraint in table.foreign_key_constraints
+    }
+    run_constraint = constraints[
+        "fk_hot_news_decisions_tenant_run_analysis_runs"
+    ]
+    supersedes_constraint = constraints[
+        "fk_hot_news_decisions_tenant_supersedes"
+    ]
+    assert tuple(column.name for column in run_constraint.columns) == (
+        "tenant_id",
+        "run_id",
+    )
+    assert tuple(column.name for column in supersedes_constraint.columns) == (
+        "tenant_id",
+        "supersedes_decision_id",
+    )
 
 
 def test_all_tables_compile_for_postgresql() -> None:

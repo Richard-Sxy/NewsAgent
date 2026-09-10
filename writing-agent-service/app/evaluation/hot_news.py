@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from hashlib import sha256
 from pathlib import Path
 from typing import Protocol
@@ -9,6 +10,7 @@ from typing import Protocol
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.clients.fastgpt import AgentResult
+from app.domain.errors import AgentOutputValidationError
 from app.schemas.hot_news import (
     DriverType,
     HotNewsAnalysisInput,
@@ -139,17 +141,32 @@ class HotNewsEvaluationService:
         self,
         runner: HotNewsEvaluationRunner,
         validator: HotNewsAnalysisValidator | None = None,
+        *,
+        concurrency_limiter: asyncio.Semaphore | None = None,
     ) -> None:
         self._runner = runner
         self._validator = validator or HotNewsAnalysisValidator()
+        self._concurrency_limiter = concurrency_limiter
 
     async def evaluate(
         self,
         dataset: HotNewsEvaluationDataset,
     ) -> HotNewsEvaluationReport:
-        results: list[HotNewsCaseEvaluation] = []
-        for case in dataset.cases:
-            results.append(await self._evaluate_case(case))
+        if self._concurrency_limiter is None:
+            results = [
+                await self._evaluate_case(case) for case in dataset.cases
+            ]
+        else:
+            # asyncio.gather preserves input order while the shared semaphore
+            # bounds aggregate FastGPT pressure across every cohort/baseline.
+            results = list(
+                await asyncio.gather(
+                    *(
+                        self._evaluate_case_bounded(case)
+                        for case in dataset.cases
+                    )
+                )
+            )
 
         total = len(results)
         return HotNewsEvaluationReport(
@@ -174,6 +191,14 @@ class HotNewsEvaluationService:
             cases=tuple(results),
         )
 
+    async def _evaluate_case_bounded(
+        self,
+        case: HotNewsEvaluationCase,
+    ) -> HotNewsCaseEvaluation:
+        assert self._concurrency_limiter is not None
+        async with self._concurrency_limiter:
+            return await self._evaluate_case(case)
+
     async def _evaluate_case(
         self,
         case: HotNewsEvaluationCase,
@@ -184,7 +209,7 @@ class HotNewsEvaluationService:
                 analysis_input=case.analysis_input,
                 result=result,
             )
-        except Exception as exc:
+        except AgentOutputValidationError as exc:
             return HotNewsCaseEvaluation(
                 case_id=case.case_id,
                 passed=False,

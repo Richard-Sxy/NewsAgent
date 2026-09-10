@@ -4,8 +4,12 @@ from datetime import UTC, datetime
 from uuid import UUID
 
 import pytest
+from sqlalchemy.dialects import postgresql
 
-from app.repositories.evaluation_dataset import EvaluationDatasetConflictError
+from app.repositories.evaluation_dataset import (
+    EvaluationDatasetConflictError,
+    PostgresEvaluationDatasetRepository,
+)
 from app.schemas.evaluation_dataset import (
     ApprovedFeedbackSnapshot,
     EvaluationDatasetArtifactReceipt,
@@ -164,7 +168,9 @@ class FakeArtifactStore:
 
 class FakeRepository:
     def __init__(self, snapshots):
-        self.snapshots = {item.feedback_case_id: item for item in snapshots}
+        self.snapshots = {}
+        for item in snapshots:
+            self.snapshots.setdefault(item.feedback_case_id, []).append(item)
         self.references = {}
         self.saved_manifest = None
 
@@ -211,13 +217,23 @@ class FakeRepository:
     async def list_approved_feedback_snapshots(
         self, *, tenant_id, feedback_case_ids, source_cutoff_at
     ):
-        return tuple(
-            self.snapshots[item]
-            for item in feedback_case_ids
-            if item in self.snapshots
-            and self.snapshots[item].tenant_id == tenant_id
-            and self.snapshots[item].lineage.recorded_at <= source_cutoff_at
-        )
+        selected = []
+        for feedback_case_id in feedback_case_ids:
+            eligible = [
+                snapshot
+                for snapshot in self.snapshots.get(feedback_case_id, ())
+                if snapshot.tenant_id == tenant_id
+                and snapshot.lineage.recorded_at <= source_cutoff_at
+                and snapshot.lineage.label_approved_at <= source_cutoff_at
+            ]
+            if eligible:
+                selected.append(
+                    max(
+                        eligible,
+                        key=lambda snapshot: snapshot.lineage.label_version,
+                    )
+                )
+        return tuple(selected)
 
     async def save_frozen_dataset(
         self,
@@ -266,6 +282,17 @@ def _freezer(repo, store):
     )
 
 
+async def _end_read_transaction() -> None:
+    return None
+
+
+async def _freeze(freezer, command):
+    return await freezer.freeze(
+        command,
+        end_prepare_transaction=_end_read_transaction,
+    )
+
+
 @pytest.mark.asyncio
 async def test_freezes_approved_cases_in_canonical_order_and_is_idempotent():
     repo = FakeRepository([_snapshot(CASE_A, "a"), _snapshot(CASE_B, "b")])
@@ -273,8 +300,8 @@ async def test_freezes_approved_cases_in_canonical_order_and_is_idempotent():
     freezer = _freezer(repo, store)
     command = _command()
 
-    first = await freezer.freeze(command)
-    second = await freezer.freeze(command)
+    first = await _freeze(freezer, command)
+    second = await _freeze(freezer, command)
 
     assert first.created is True
     assert second.created is False
@@ -310,9 +337,134 @@ async def test_missing_or_unapproved_feedback_stops_before_artifact_write():
     store = FakeArtifactStore()
 
     with pytest.raises(EvaluationDatasetNotReadyError, match="not approved"):
-        await _freezer(repo, store).freeze(_command())
+        await _freeze(_freezer(repo, store), _command())
 
     assert store.put_calls == 0
+
+
+@pytest.mark.asyncio
+async def test_cutoff_uses_latest_label_approved_at_that_point_in_time():
+    original = _snapshot(CASE_A, "a")
+    approved_after_cutoff = original.model_copy(
+        update={
+            "lineage": original.lineage.model_copy(
+                update={
+                    "label_id": UUID(
+                        "10000000-0000-0000-0000-000000000099"
+                    ),
+                    "label_version": 2,
+                    "label_approved_at": datetime(
+                        2026, 9, 9, 0, tzinfo=UTC
+                    ),
+                }
+            )
+        }
+    )
+    repo = FakeRepository((original, approved_after_cutoff))
+    store = FakeArtifactStore()
+
+    result = await _freeze(
+        _freezer(repo, store),
+        _command(ids=(CASE_A,)),
+    )
+
+    assert result.created is True
+    assert repo.saved_manifest.cases[0].lineage.label_version == 1
+    assert (
+        repo.saved_manifest.cases[0].lineage.label_approved_at
+        <= repo.saved_manifest.source_cutoff_at
+    )
+
+
+@pytest.mark.asyncio
+async def test_freeze_ends_read_transaction_before_artifact_upload():
+    events = []
+
+    class OrderingStore(FakeArtifactStore):
+        async def put_json(self, **kwargs):
+            assert events == ["read-transaction-ended"]
+            events.append("artifact-uploaded")
+            return await super().put_json(**kwargs)
+
+    async def end_read_transaction():
+        events.append("read-transaction-ended")
+
+    repo = FakeRepository((_snapshot(CASE_A, "a"),))
+    freezer = _freezer(repo, OrderingStore())
+    await freezer.freeze(
+        _command(ids=(CASE_A,)),
+        end_prepare_transaction=end_read_transaction,
+    )
+
+    assert events == ["read-transaction-ended", "artifact-uploaded"]
+
+
+@pytest.mark.asyncio
+async def test_retry_uses_same_manifest_hash_when_wall_clock_advances():
+    repo = FakeRepository((_snapshot(CASE_A, "a"),))
+    store = FakeArtifactStore()
+    command = _command(ids=(CASE_A,))
+    first_freezer = EvaluationDatasetFreezer(
+        repository=repo,
+        artifact_store=store,
+        clock=lambda: FROZEN_AT,
+        id_factory=lambda _: DATASET_ID,
+    )
+    retry_freezer = EvaluationDatasetFreezer(
+        repository=repo,
+        artifact_store=store,
+        clock=lambda: datetime(2026, 9, 10, 1, tzinfo=UTC),
+        id_factory=lambda _: DATASET_ID,
+    )
+
+    first = await first_freezer.prepare(command)
+    retry = await retry_freezer.prepare(command)
+    first_receipt = await first_freezer.upload(first)
+    retry_receipt = await retry_freezer.upload(retry)
+
+    assert first.manifest.frozen_at == CUTOFF
+    assert retry.manifest.frozen_at == CUTOFF
+    assert first.content_sha256 == retry.content_sha256
+    assert first_receipt.storage_uri == retry_receipt.storage_uri
+    assert len(store.payloads) == 1
+
+
+@pytest.mark.asyncio
+async def test_repository_queries_case_and_label_as_of_same_cutoff():
+    class EmptyResult:
+        def scalars(self):
+            return self
+
+        def all(self):
+            return []
+
+    class CapturingSession:
+        statement = None
+
+        async def execute(self, statement):
+            self.statement = statement
+            return EmptyResult()
+
+    session = CapturingSession()
+    repository = PostgresEvaluationDatasetRepository(session)
+    await repository.list_approved_case_ids_for_window(
+        tenant_id="tenant-1",
+        occurred_start=datetime(2026, 9, 8, tzinfo=UTC),
+        occurred_end=datetime(2026, 9, 9, tzinfo=UTC),
+        source_cutoff_at=CUTOFF,
+        limit=10,
+    )
+
+    compiled = session.statement.compile(dialect=postgresql.dialect())
+    sql = str(compiled)
+    assert "feedback_cases.recorded_at <=" in sql
+    assert sql.count("feedback_labels.approved_at <=") == 2
+    assert "max(feedback_labels.label_version)" in sql
+    assert "feedback_cases.status" not in sql
+    parameter_values = list(compiled.params.values())
+    assert "tenant-1" in parameter_values
+    assert CUTOFF in parameter_values
+    assert ["approved", "superseded"] in parameter_values
 
 
 @pytest.mark.asyncio
@@ -320,10 +472,10 @@ async def test_same_idempotency_key_with_different_command_is_rejected():
     repo = FakeRepository([_snapshot(CASE_A, "a"), _snapshot(CASE_B, "b")])
     store = FakeArtifactStore()
     freezer = _freezer(repo, store)
-    await freezer.freeze(_command())
+    await _freeze(freezer, _command())
 
     with pytest.raises(EvaluationDatasetConflictError):
-        await freezer.freeze(_command(description="不同的冻结内容"))
+        await _freeze(freezer, _command(description="不同的冻结内容"))
 
     assert store.put_calls == 1
 
@@ -333,7 +485,7 @@ async def test_manifest_load_rejects_database_artifact_identity_mismatch():
     repo = FakeRepository([_snapshot(CASE_A, "a"), _snapshot(CASE_B, "b")])
     store = FakeArtifactStore()
     freezer = _freezer(repo, store)
-    result = await freezer.freeze(_command())
+    result = await _freeze(freezer, _command())
     payload = store.payloads[result.dataset.artifact_uri]
     payload["dataset_version"] = "tampered"
 
@@ -349,7 +501,7 @@ async def test_manifest_load_rejects_cross_tenant_repository_result_before_io():
     repo = FakeRepository([_snapshot(CASE_A, "a"), _snapshot(CASE_B, "b")])
     store = FakeArtifactStore()
     freezer = _freezer(repo, store)
-    result = await freezer.freeze(_command())
+    result = await _freeze(freezer, _command())
     reference = result.dataset.model_copy(update={"tenant_id": "tenant-2"})
 
     async def malicious_get_by_id(**kwargs):

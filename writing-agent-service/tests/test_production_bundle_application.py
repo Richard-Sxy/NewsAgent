@@ -1,92 +1,50 @@
-from datetime import datetime, timedelta, timezone
-from unittest.mock import create_autospec
-from uuid import uuid4
+from types import SimpleNamespace
+from unittest.mock import AsyncMock
 
 import pytest
 
-import app.services.production_bundle_application as application_module
-from app.repositories.production_bundle import PostgresProductionBundleRepository
+import app.services.production_bundle as bundle_module
 from app.schemas.production_bundle import (
-    ConfigurationCandidate,
-    ConfigurationDiff,
-    ProductionBundle,
-    ProductionBundleSpec,
-    ProposeConfigurationCandidateCommand,
+    ActivateCandidateCommand,
+    ApproveCandidateCommand,
 )
 from app.services.production_bundle import (
-    ProductionBundleDomainService,
-    bundle_spec_sha256,
-    command_fingerprint,
-)
-from app.services.production_bundle_application import (
     ProductionBundleApplicationService,
     ProductionBundleConflictError,
-    ProductionBundleTargetNotFoundError,
+    ProductionBundleDomainService,
+)
+from tests.test_production_bundle import (
+    NOW,
+    active_bundle,
+    evaluation_command,
+    proposal,
 )
 
 
-NOW = datetime(2026, 9, 9, 8, tzinfo=timezone.utc)
-
-
-def spec() -> ProductionBundleSpec:
-    return ProductionBundleSpec(
-        metric_definition_version="metric-v1",
-        hot_score_policy_version="score-v1",
-        reranker_policy_version="rerank-v1",
-        analysis_prompt_version="prompt-v1",
-        fastgpt_app_id="app-v1",
-        model_version="model-v1",
-        output_schema_version="schema-v1",
-        validator_version="validator-v1",
-        memory_resolver_policy_version="memory-v1",
-    )
-
-
-def bundle() -> ProductionBundle:
-    value = spec()
-    return ProductionBundle(
-        id=uuid4(),
-        tenant_id="tenant-1",
-        bundle_version="bundle-v1",
-        spec=value,
-        content_sha256=bundle_spec_sha256(value),
-        status="active",
-        created_by="operator-0",
-        created_at=NOW - timedelta(days=1),
-        activated_by="operator-0",
-        activated_at=NOW - timedelta(days=1),
-    )
-
-
-def proposal(base: ProductionBundle) -> ProposeConfigurationCandidateCommand:
-    return ProposeConfigurationCandidateCommand(
-        tenant_id=base.tenant_id,
-        base_bundle_id=base.id,
-        candidate_version="bundle-v2",
-        proposed_spec=base.spec.model_copy(
-            update={"analysis_prompt_version": "prompt-v2"}
+def install_repository(monkeypatch, **methods):
+    defaults = {
+        "get_candidate_by_idempotency_key": AsyncMock(return_value=None),
+        "get_evaluation_by_idempotency_key": AsyncMock(return_value=None),
+        "get_decision_by_idempotency_key": AsyncMock(return_value=None),
+        "get_bundle_for_update": AsyncMock(return_value=None),
+        "get_active_bundle_for_update": AsyncMock(return_value=None),
+        "get_candidate_for_update": AsyncMock(return_value=None),
+        "get_latest_evaluated_candidate_for_update": AsyncMock(
+            return_value=None
         ),
-        structured_diff=(
-            ConfigurationDiff(
-                asset="analysis_prompt",
-                before_version="prompt-v1",
-                after_version="prompt-v2",
-                reason="修复 bad case",
-            ),
-        ),
-        proposed_by="attribution-agent",
-        proposal_reason="提示词边界不清晰",
-        idempotency_key="candidate-request-1",
-    )
-
-
-def repository_mock(monkeypatch):
-    repository = create_autospec(
-        PostgresProductionBundleRepository,
-        instance=True,
-    )
+        "get_evaluation_for_update": AsyncMock(return_value=None),
+        "get_frozen_dataset_layers_for_update": AsyncMock(return_value={}),
+        "insert_candidate": AsyncMock(return_value=True),
+        "insert_evaluation": AsyncMock(return_value=True),
+        "insert_bundle": AsyncMock(),
+        "insert_decision": AsyncMock(return_value=True),
+        "update_candidate": AsyncMock(return_value=True),
+        "update_bundle_lifecycle": AsyncMock(return_value=True),
+    }
+    defaults.update(methods)
+    repository = SimpleNamespace(**defaults)
     monkeypatch.setattr(
-        application_module,
+        bundle_module,
         "PostgresProductionBundleRepository",
         lambda session: repository,
     )
@@ -94,108 +52,160 @@ def repository_mock(monkeypatch):
 
 
 @pytest.mark.asyncio
-async def test_candidate_proposal_locks_base_and_is_idempotent(monkeypatch):
-    base = bundle()
+async def test_application_proposes_candidate_with_idempotency_fingerprint(
+    monkeypatch,
+) -> None:
+    base = active_bundle()
     command = proposal(base)
-    expected = ProductionBundleDomainService().propose_candidate(
-        base_bundle=base,
-        command=command,
-        now=NOW,
+    repository = install_repository(
+        monkeypatch,
+        get_bundle_for_update=AsyncMock(return_value=base),
     )
-    domain = create_autospec(ProductionBundleDomainService, instance=True)
-    domain.propose_candidate.return_value = expected
-    repository = repository_mock(monkeypatch)
-    repository.get_candidate_by_idempotency_key.side_effect = [None, None]
-    repository.get_bundle_for_update.return_value = base
-    repository.insert_candidate.return_value = True
 
-    outcome = await ProductionBundleApplicationService(domain).propose_candidate(
-        object(),
-        command=command,
-        now=NOW,
+    outcome = await ProductionBundleApplicationService().propose_candidate(
+        object(), command=command, now=NOW
     )
 
     assert outcome.created is True
-    assert outcome.candidate is expected
-    repository.get_bundle_for_update.assert_awaited_once_with(
-        tenant_id=base.tenant_id,
-        bundle_id=base.id,
-    )
-    repository.insert_candidate.assert_awaited_once()
+    assert outcome.candidate.status == "pending_evaluation"
+    call = repository.insert_candidate.await_args
+    assert len(call.kwargs["request_fingerprint"]) == 64
 
 
 @pytest.mark.asyncio
-async def test_same_candidate_request_replays_without_writes(monkeypatch):
-    base = bundle()
+async def test_application_rejects_changed_idempotent_proposal(
+    monkeypatch,
+) -> None:
+    base = active_bundle()
     command = proposal(base)
     candidate = ProductionBundleDomainService().propose_candidate(
         base_bundle=base,
         command=command,
         now=NOW,
     )
-    repository = repository_mock(monkeypatch)
-    repository.get_candidate_by_idempotency_key.return_value = (
-        candidate,
-        command_fingerprint(command),
+    install_repository(
+        monkeypatch,
+        get_candidate_by_idempotency_key=AsyncMock(
+            return_value=(candidate, "f" * 64)
+        ),
     )
 
-    outcome = await ProductionBundleApplicationService().propose_candidate(
-        object(),
-        command=command,
+    with pytest.raises(ProductionBundleConflictError):
+        await ProductionBundleApplicationService().propose_candidate(
+            object(), command=command, now=NOW
+        )
+
+
+@pytest.mark.asyncio
+async def test_application_records_evaluation_only_for_three_frozen_layers(
+    monkeypatch,
+) -> None:
+    base = active_bundle()
+    domain = ProductionBundleDomainService()
+    candidate = domain.propose_candidate(
+        base_bundle=base,
+        command=proposal(base),
         now=NOW,
     )
+    command = evaluation_command(candidate)
+    expected_layers = {
+        command.suite_metrics.golden.dataset_id: "golden",
+        command.suite_metrics.fresh_bad_case.dataset_id: "fresh_bad_case",
+        command.suite_metrics.high_risk_regression.dataset_id: (
+            "high_risk_regression"
+        ),
+    }
+    repository = install_repository(
+        monkeypatch,
+        get_candidate_for_update=AsyncMock(return_value=candidate),
+        get_active_bundle_for_update=AsyncMock(return_value=base),
+        get_latest_evaluated_candidate_for_update=AsyncMock(
+            return_value=SimpleNamespace(
+                id=command.previous_experiment_candidate_id
+            )
+        ),
+        get_frozen_dataset_layers_for_update=AsyncMock(
+            return_value=expected_layers
+        ),
+    )
 
-    assert outcome.created is False
-    assert outcome.candidate == candidate
-    repository.get_bundle_for_update.assert_not_awaited()
-    repository.insert_candidate.assert_not_awaited()
+    outcome = await ProductionBundleApplicationService().record_evaluation(
+        object(), command=command, now=NOW
+    )
+
+    assert outcome.created is True
+    assert outcome.candidate.status == "evaluation_passed"
+    repository.insert_evaluation.assert_awaited_once()
+    repository.update_candidate.assert_awaited_once()
 
 
 @pytest.mark.asyncio
-async def test_reused_idempotency_key_with_other_content_conflicts(monkeypatch):
-    base = bundle()
-    command = proposal(base)
-    candidate = ConfigurationCandidate(
-        **ProductionBundleDomainService()
-        .propose_candidate(
-            base_bundle=base,
-            command=command,
-            now=NOW,
-        )
-        .model_dump()
+async def test_approval_and_activation_are_separate_ledger_transitions(
+    monkeypatch,
+) -> None:
+    base = active_bundle()
+    domain = ProductionBundleDomainService()
+    candidate = domain.propose_candidate(
+        base_bundle=base,
+        command=proposal(base),
+        now=NOW,
     )
-    repository = repository_mock(monkeypatch)
-    repository.get_candidate_by_idempotency_key.return_value = (
-        candidate,
-        "0" * 64,
+    evaluated = domain.record_evaluation(
+        candidate=candidate,
+        command=evaluation_command(candidate),
+        now=NOW,
     )
-
-    with pytest.raises(ProductionBundleConflictError, match="idempotency"):
-        await ProductionBundleApplicationService().propose_candidate(
-            object(),
-            command=command,
-            now=NOW,
-        )
-
-    repository.insert_candidate.assert_not_awaited()
-
-
-@pytest.mark.asyncio
-async def test_cross_tenant_or_missing_base_is_not_disclosed(monkeypatch):
-    base = bundle()
-    command = proposal(base)
-    repository = repository_mock(monkeypatch)
-    repository.get_candidate_by_idempotency_key.return_value = None
-    repository.get_bundle_for_update.return_value = None
-
-    with pytest.raises(ProductionBundleTargetNotFoundError, match="not found"):
-        await ProductionBundleApplicationService().propose_candidate(
-            object(),
-            command=command,
-            now=NOW,
-        )
-
-    repository.get_bundle_for_update.assert_awaited_once_with(
+    approve = ApproveCandidateCommand(
         tenant_id="tenant-1",
-        bundle_id=base.id,
+        candidate_id=evaluated.candidate.id,
+        evaluation_run_id=evaluated.evaluation_run.id,
+        approved_by="operator-1",
+        reason="三层门禁已通过",
+        expected_candidate_revision=evaluated.candidate.revision,
+        idempotency_key="approve-request-1",
     )
+    approval_repository = install_repository(
+        monkeypatch,
+        get_candidate_for_update=AsyncMock(
+            return_value=evaluated.candidate
+        ),
+        get_evaluation_for_update=AsyncMock(
+            return_value=evaluated.evaluation_run
+        ),
+    )
+
+    reviewed = await ProductionBundleApplicationService().approve_candidate(
+        object(), command=approve, now=NOW
+    )
+
+    assert reviewed.candidate.status == "approved"
+    approval_repository.insert_bundle.assert_not_awaited()
+
+    activate = ActivateCandidateCommand(
+        tenant_id="tenant-1",
+        candidate_id=reviewed.candidate.id,
+        evaluation_run_id=evaluated.evaluation_run.id,
+        activated_by="operator-1",
+        reason="人工确认发布",
+        expected_candidate_revision=reviewed.candidate.revision,
+        idempotency_key="activate-request-1",
+    )
+    activation_repository = install_repository(
+        monkeypatch,
+        get_candidate_for_update=AsyncMock(
+            return_value=reviewed.candidate
+        ),
+        get_evaluation_for_update=AsyncMock(
+            return_value=evaluated.evaluation_run
+        ),
+        get_active_bundle_for_update=AsyncMock(return_value=base),
+    )
+
+    activated = await ProductionBundleApplicationService().activate_candidate(
+        object(), command=activate, now=NOW
+    )
+
+    assert activated.activated_bundle.status == "active"
+    assert activated.previous_bundle.status == "inactive"
+    activation_repository.insert_bundle.assert_awaited_once()
+    assert activation_repository.update_bundle_lifecycle.await_count == 1

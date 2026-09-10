@@ -14,7 +14,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
 
 from app.db.session import Database
-from app.domain.errors import HotNewsPersistenceError
+from app.domain.errors import HotNewsDataQualityError, HotNewsPersistenceError
 from app.models.hot_news import HotNewsAnalysisRun
 from app.services.hot_news_orchestration import HotNewsRunResult
 from app.workflows.contracts import HotNewsActivityOutcome
@@ -31,6 +31,10 @@ class PostgresHotNewsRunStore:
         *,
         tenant_id: str,
         idempotency_key: str,
+        window_start: datetime,
+        window_end: datetime,
+        production_bundle_version: str,
+        workflow_version: str,
     ) -> HotNewsActivityOutcome | None:
         try:
             async with self._database.session() as session:
@@ -41,7 +45,18 @@ class PostgresHotNewsRunStore:
                 )
                 db_result = await session.execute(query)
                 run = db_result.scalar_one_or_none()
-                return None if run is None else self._to_outcome(run)
+                if run is None:
+                    return None
+                self._validate_run_identity(
+                    run=run,
+                    tenant_id=tenant_id,
+                    idempotency_key=idempotency_key,
+                    window_start=window_start,
+                    window_end=window_end,
+                    production_bundle_version=production_bundle_version,
+                    workflow_version=workflow_version,
+                )
+                return self._to_outcome(run)
         except SQLAlchemyError as exc:
             raise HotNewsPersistenceError(
                 "查询已完成热点运行失败"
@@ -53,6 +68,10 @@ class PostgresHotNewsRunStore:
         result: HotNewsRunResult,
     ) -> HotNewsActivityOutcome:
         request = result.request
+        if result.idempotency_key != request.idempotency_key:
+            raise HotNewsDataQualityError(
+                "hot news result idempotency key does not match its request"
+            )
         values = {
             "tenant_id": request.tenant_id,
             "idempotency_key": result.idempotency_key,
@@ -105,6 +124,17 @@ class PostgresHotNewsRunStore:
                     raise HotNewsPersistenceError(
                         "已有热点运行尚未完成，暂时不能覆盖"
                     )
+                self._validate_run_identity(
+                    run=existing,
+                    tenant_id=request.tenant_id,
+                    idempotency_key=result.idempotency_key,
+                    window_start=request.window_start,
+                    window_end=request.window_end,
+                    production_bundle_version=(
+                        request.production_bundle_version
+                    ),
+                    workflow_version=request.workflow_version,
+                )
                 return self._to_outcome(existing)
         except SQLAlchemyError as exc:
             raise HotNewsPersistenceError("保存热点运行失败") from exc
@@ -256,6 +286,31 @@ class PostgresHotNewsRunStore:
             ranked_news_count=run.ranked_news_count,
             analyzed_news_count=run.analyzed_news_count,
         )
+
+    @staticmethod
+    def _validate_run_identity(
+        *,
+        run: HotNewsAnalysisRun,
+        tenant_id: str,
+        idempotency_key: str,
+        window_start: datetime,
+        window_end: datetime,
+        production_bundle_version: str,
+        workflow_version: str,
+    ) -> None:
+        """Reject idempotency aliases before replaying a stored result."""
+
+        if (
+            run.tenant_id != tenant_id
+            or run.idempotency_key != idempotency_key
+            or run.window_start != window_start
+            or run.window_end != window_end
+            or run.production_bundle_version != production_bundle_version
+            or run.workflow_version != workflow_version
+        ):
+            raise HotNewsDataQualityError(
+                "hot news idempotency key is bound to different run content"
+            )
 
     @staticmethod
     def _outcome_from_result(

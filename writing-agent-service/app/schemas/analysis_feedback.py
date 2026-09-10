@@ -364,4 +364,9 @@ class AnalysisFeedbackLabel(AnalysisFeedbackLabelContent):
             and self.approved_at < self.labeled_at
         ):
             raise ValueError("approved_at cannot be earlier than labeled_at")
+        if (
+            self.approved_by is not None
+            and self.approved_by == self.labeled_by
+        ):
+            raise ValueError("label submitter cannot approve their own label")
         return self

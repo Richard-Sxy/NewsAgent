@@ -8,7 +8,6 @@ from sqlalchemy import (
     Boolean,
     CheckConstraint,
     DateTime,
-    ForeignKey,
     ForeignKeyConstraint,
     Index,
     Integer,
@@ -28,6 +27,16 @@ class PublicationOutcomeRecord(TimestampMixin, Base):
 
     __tablename__ = "publication_outcomes"
     __table_args__ = (
+        ForeignKeyConstraint(
+            ["tenant_id", "run_id", "run_idempotency_key"],
+            [
+                "analysis_runs.tenant_id",
+                "analysis_runs.id",
+                "analysis_runs.idempotency_key",
+            ],
+            name="fk_publication_outcomes_tenant_run_identity",
+            ondelete="RESTRICT",
+        ),
         UniqueConstraint(
             "tenant_id",
             "idempotency_key",
@@ -71,7 +80,6 @@ class PublicationOutcomeRecord(TimestampMixin, Base):
     tenant_id: Mapped[str] = mapped_column(String(128), nullable=False)
     run_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
-        ForeignKey("analysis_runs.id", ondelete="RESTRICT"),
         nullable=False,
     )
     run_idempotency_key: Mapped[str] = mapped_column(
@@ -114,6 +122,16 @@ class AnalysisFeedbackCaseRecord(TimestampMixin, Base):
 
     __tablename__ = "feedback_cases"
     __table_args__ = (
+        ForeignKeyConstraint(
+            ["tenant_id", "run_id", "run_idempotency_key"],
+            [
+                "analysis_runs.tenant_id",
+                "analysis_runs.id",
+                "analysis_runs.idempotency_key",
+            ],
+            name="fk_feedback_cases_tenant_run_identity",
+            ondelete="RESTRICT",
+        ),
         UniqueConstraint(
             "tenant_id",
             "idempotency_key",
@@ -188,7 +206,6 @@ class AnalysisFeedbackCaseRecord(TimestampMixin, Base):
     tenant_id: Mapped[str] = mapped_column(String(128), nullable=False)
     run_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
-        ForeignKey("analysis_runs.id", ondelete="RESTRICT"),
         nullable=True,
     )
     run_idempotency_key: Mapped[str] = mapped_column(
@@ -296,6 +313,10 @@ class AnalysisFeedbackLabelRecord(TimestampMixin, Base):
         CheckConstraint(
             "approved_at IS NULL OR approved_at >= labeled_at",
             name="approval_order_valid",
+        ),
+        CheckConstraint(
+            "approved_by IS NULL OR approved_by <> labeled_by",
+            name="approval_separation_valid",
         ),
         CheckConstraint(
             "labeled_at <= recorded_at",

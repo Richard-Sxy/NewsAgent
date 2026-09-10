@@ -210,6 +210,40 @@ def test_candidate_evaluation_and_approval_do_not_activate_bundle() -> None:
     assert reviewed.decision.to_bundle_id is None
 
 
+def test_candidate_proposer_cannot_approve_own_candidate() -> None:
+    service = ProductionBundleDomainService()
+    base = active_bundle()
+    candidate = service.propose_candidate(
+        base_bundle=base,
+        command=proposal(base),
+        now=NOW,
+    )
+    evaluated = service.record_evaluation(
+        candidate=candidate,
+        command=evaluation_command(candidate),
+        now=NOW,
+    )
+
+    with pytest.raises(
+        ProductionBundleRuleViolation,
+        match="proposer cannot approve",
+    ):
+        service.approve_candidate(
+            candidate=evaluated.candidate,
+            evaluation_run=evaluated.evaluation_run,
+            command=ApproveCandidateCommand(
+                tenant_id=candidate.tenant_id,
+                candidate_id=candidate.id,
+                evaluation_run_id=evaluated.evaluation_run.id,
+                approved_by=candidate.proposed_by,
+                reason="self approval must be rejected",
+                expected_candidate_revision=evaluated.candidate.revision,
+                idempotency_key="self-approve-request-1",
+            ),
+            now=NOW,
+        )
+
+
 def test_activation_requires_approval_and_creates_audited_bundle_switch() -> None:
     service = ProductionBundleDomainService()
     base = active_bundle()
@@ -287,6 +321,7 @@ def test_explicit_rollback_reactivates_history_and_preserves_audit() -> None:
     current = active_bundle(
         bundle_version="bundle-v2",
         derived_from_bundle_id=old.id,
+        source_candidate_id=uuid4(),
     )
     command = RollbackProductionBundleCommand(
         tenant_id="tenant-1",

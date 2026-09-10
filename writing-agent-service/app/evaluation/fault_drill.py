@@ -108,7 +108,16 @@ class _RaisingService:
 
 
 class _EmptyRunStore:
-    async def get_completed(self, *, tenant_id: str, idempotency_key: str):
+    async def get_completed(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+        window_start: datetime,
+        window_end: datetime,
+        production_bundle_version: str,
+        workflow_version: str,
+    ):
         return None
 
     async def save_completed(self, *, result):

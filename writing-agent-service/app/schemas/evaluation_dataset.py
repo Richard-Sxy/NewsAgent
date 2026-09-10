@@ -112,7 +112,7 @@ class EvaluationSourceLineage(BaseModel):
     source_type: str = Field(min_length=1, max_length=64)
     problem_type: str = Field(min_length=1, max_length=64)
     source_reference: dict[str, Any] = Field(default_factory=dict)
-    production_bundle_version: str = Field(min_length=1, max_length=120)
+    production_bundle_version: str = Field(min_length=1, max_length=128)
     occurred_at: AwareDatetime
     recorded_at: AwareDatetime
     label_id: UUID

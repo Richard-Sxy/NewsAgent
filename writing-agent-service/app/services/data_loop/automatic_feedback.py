@@ -124,7 +124,7 @@ class AutomaticHotNewsFeedbackSink:
             request.tenant_id,
             request.idempotency_key,
             analysis_input.news_id,
-            error.request_id or "no-request-id",
+            "strict-output-validation-failed",
             self._policy.version,
         )
         command = CollectAnalysisFeedbackCommand(
@@ -140,14 +140,20 @@ class AutomaticHotNewsFeedbackSink:
             source_reference=FeedbackSourceReference(
                 reference_type="validation_attempt",
                 reference_id=reference_id,
-                request_id=error.request_id,
+                # A retry can receive a different upstream request id after an
+                # uncertain feedback commit. Keeping it out of the immutable
+                # case makes that retry converge on the same business fact;
+                # the Activity log still carries the diagnostic request id.
+                request_id=None,
                 diagnostic_code="strict_output_validation_failed",
                 diagnostic_summary=(
                     "Model output failed the strict schema or deterministic "
                     "business validator; raw output was intentionally discarded."
                 ),
             ),
-            occurred_at=now,
+            # Use the trusted analysis window boundary as the stable event
+            # time. Wall-clock time is only the database audit timestamp.
+            occurred_at=analysis_input.window_end,
             idempotency_key=f"feedback:validation:{reference_id}",
         )
         async with self._database.session() as session:

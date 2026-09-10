@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-runtime-config
+  namespace: news-agent
+  labels:
+    app.kubernetes.io/name: news-agent-frontend
+    app.kubernetes.io/part-of: news-agent
+data:
+  # 该文件会被挂载到 /usr/share/nginx/html/config.json，覆盖镜像内的开发默认值。
+  # 修改后只需重启 Pod，无需重新构建镜像。
+  #
+  # apiBaseUrl 留空表示同源：浏览器请求 /api/...，由 Ingress 路由到 API Service。
+  # 只有在前后端分属不同域名时才填写网关绝对地址。
+  config.json: |
+    {
+      "apiBaseUrl": "",
+      "appTitle": "NewsAgent 运营控制台",
+      "tenantId": "",
+      "enableHotNews": false,
+      "environment": "production",
+      "errorReportingDsn": ""
+    }

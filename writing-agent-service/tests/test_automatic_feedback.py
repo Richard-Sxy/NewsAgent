@@ -155,6 +155,42 @@ async def test_analysis_failure_keeps_snapshot_but_discards_raw_output() -> None
 
 
 @pytest.mark.asyncio
+async def test_analysis_failure_retry_has_stable_business_content() -> None:
+    collector = SimpleNamespace(collect=AsyncMock())
+    sink = AutomaticHotNewsFeedbackSink(
+        database=FakeDatabase(),
+        run_store=SimpleNamespace(),
+        collector=collector,
+    )
+    request = run_result().request
+
+    await sink.collect_analysis_failure(
+        request=request,
+        error=HotNewsAnalysisAttemptError(
+            "first invalid response",
+            analysis_input=analysis_input(),
+            raw_content="first raw output",
+            request_id="request-1",
+        ),
+    )
+    await sink.collect_analysis_failure(
+        request=request,
+        error=HotNewsAnalysisAttemptError(
+            "retry invalid response",
+            analysis_input=analysis_input(),
+            raw_content="second raw output",
+            request_id="request-2",
+        ),
+    )
+
+    first = collector.collect.await_args_list[0].kwargs["command"]
+    second = collector.collect.await_args_list[1].kwargs["command"]
+    assert first == second
+    assert first.occurred_at == analysis_input().window_end
+    assert first.source_reference.request_id is None
+
+
+@pytest.mark.asyncio
 async def test_replay_repairs_automatic_cases_from_persisted_memories() -> None:
     memory = HotNewsAnalysisMemory(
         run_id=RUN_ID,

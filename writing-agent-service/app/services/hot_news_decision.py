@@ -1,5 +1,4 @@
 """处理热点运营决策，并原子写入需要进入 Data Loop 的反馈。"""
-from datetime import UTC, datetime
 from uuid import uuid4
 
 from sqlalchemy import select
@@ -185,7 +184,9 @@ class HotNewsDecisionService:
 
         if decision.decision_type not in {"rejected", "corrected"}:
             return
-        now = datetime.now(UTC)
+        # Use the persisted decision event time. A retry of the same decision
+        # must produce byte-identical feedback content instead of a new hash.
+        now = decision.created_at
         run_idempotency_key = (
             analysis_memory.run_idempotency_key
             or f"analysis-run:{analysis_memory.run_id}"

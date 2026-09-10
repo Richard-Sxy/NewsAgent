@@ -171,6 +171,27 @@ def test_approved_label_requires_complete_human_approval_metadata() -> None:
         )
 
 
+def test_approved_label_requires_an_independent_reviewer() -> None:
+    with pytest.raises(ValidationError, match="cannot approve their own"):
+        AnalysisFeedbackLabel(
+            id=UUID(int=2),
+            tenant_id="tenant-1",
+            feedback_case_id=UUID(int=1),
+            label_version=1,
+            verdict="incorrect",
+            allowed_dominant_drivers=("click",),
+            operator_comment="分析有误",
+            approval_status="approved",
+            labeled_by="operator-1",
+            labeled_at=NOW,
+            approved_by="operator-1",
+            approved_at=NOW,
+            approval_idempotency_key="feedback-label-approve-1",
+            idempotency_key="feedback-label-1",
+            recorded_at=NOW,
+        )
+
+
 def test_publication_outcome_only_accepts_aggregate_metrics() -> None:
     command = RecordPublicationOutcomeCommand(
         run_id=UUID(int=3),

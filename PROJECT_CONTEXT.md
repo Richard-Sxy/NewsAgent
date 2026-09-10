@@ -1,6 +1,6 @@
 # NewsAgent 持久项目上下文
 
-最后更新：2026-09-07
+最后更新：2026-09-10
 
 本文是用户要求跨后续项目会话复用的长期上下文。它保存已经确认的目标、架构判断、
 当前进度和工程约束，不保存密码、Token、`.env` 内容或企业原始用户数据。
@@ -71,6 +71,13 @@ Python 3.11、FastAPI、Temporal、PostgreSQL、Redis、S3/MinIO 构成的研究
 
 完成“持续热点分析最小闭环”后，整体完成度预计可到约 60%。这些数字是架构里程碑
 估算，不代表经过生产验证的测试覆盖率。
+
+2026-09-10 复核：上述百分比是 2026-09-04 的历史基线。当前 Data Loop 按业务功能实现
+约 95%；本地依赖 L2 闭环（正常批准、人工拒绝、下一次线上运行、显式回滚、授权故障恢复）
+已经验收通过。按生产启用口径约 75%，差异主要来自真实 FastGPT App、企业数据 Adapter、
+网关/IdP、Schedule、对象存储生产治理，以及 48 小时审批超时的 Temporal time-skipping CI
+验收。全服务默认回归为 554 项通过、3 项 opt-in E2E 跳过；隔离 Compose 的完整 L2 为
+3 项通过。尚不能据此描述为生产已上线。
 
 ## 4. 已确认的目标架构
 
@@ -284,9 +291,31 @@ EnrichedHotNews
 模块测试现共 28 项通过。尚未在真实 PostgreSQL 执行迁移，也尚未注册热点 Worker 或创建
 Temporal Schedule。
 
+2026-09-10 里程碑：热点 Data Loop 的代码级业务闭环已经完成。线上运行会按租户读取一次
+Active Production Bundle 快照，并将校验失败、低置信、检索异常、运营决策和聚合发布效果
+统一转为 Feedback Case；强类型人工标签经独立权限审批后，可按 cutoff 冻结为不可变评测
+Dataset。Workflow 在黄金集、窗口新鲜 bad case 和高风险回归集上并发回放候选、线上基线与
+可选上一实验基线，由版本化确定性 Gate 判定，随后等待人工批准或拒绝；批准账本、激活、
+失败恢复与显式回滚均使用稳定幂等键。生产 Bundle 运行时 Registry、端点级 RBAC、租户复合
+外键、不可变触发器、S3 条件写与哈希核验已经补齐，Alembic 迁移头为 `20260910_0013`，
+Data Loop 核心回归 140 项通过。生产环境迁移/并发演练、Object Lock、企业数据 RPC、
+网关/IdP、热点 Worker 的真实 Adapter 装配/Schedule 与 FastGPT 真实 App 验收仍是上线前
+必做项；FastGPT 不支持业务幂等键时，模型调用语义仍是有界 at-least-once，不能声称
+exactly-once。
+
+2026-09-10 L2 验收补充：新增隔离 Compose 栈，实际启动 PostgreSQL、Temporal、Redis、
+MinIO、API、HotNews Worker、Data Loop Worker 和确定性 FastGPT HTTP 替身。黑盒验收已
+实跑通过 `approve → activate → next run → rollback`、`REJECT → keep base active`，以及
+`approve ledger committed → forced activation failure → bounded recovery → next run` 三条路径；
+对象内容 SHA-256 与 Metadata、三层 Dataset、单一 Active Bundle、审批/激活账本唯一性均
+进入自动断言。另已实际操作 stdin 人工 `REJECT` 停点。该结果只代表本地依赖闭环，L3
+真实模型、企业 Gateway/IdP 和企业 Adapter 仍需发布前验收。
+
 ## 11. 后续阶段
 
-今日热点 Agent 稳定后，依次建设：
+以下是原规划顺序；其中第 4 项和第 5 项的候选评测、人工晋升、激活与回滚部分已于
+2026-09-10 完成代码级闭环，尚待生产环境验收。Temporal Schedule、热点查询/SSE 和企业
+训练平台仍未因此自动完成。
 
 1. `AnalysisRun`、指标快照、热点事件和分析报告持久化。
 2. `HotNewsMonitorWorkflow` 与 Temporal Schedule。

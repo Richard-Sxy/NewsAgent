@@ -138,6 +138,16 @@ class HotNewsRunResult:
     analyzed_news: tuple[AnalyzedHotNews, ...]
 
 
+class HotNewsRunService(Protocol):
+    """Execution port used by the Temporal Activity.
+
+    The concrete implementation may be a statically assembled service in
+    tests or an active-Production-Bundle resolver in production.
+    """
+
+    async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult: ...
+
+
 class HotNewsOrchestrationService:
     """编排一次热点运行；重试、持久化和调度由外围基础设施负责。"""
 

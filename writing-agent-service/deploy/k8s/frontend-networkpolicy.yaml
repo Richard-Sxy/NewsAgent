@@ -1,0 +1,35 @@
+# 前端是纯静态容器：不发起任何外部调用，只接受来自 Ingress 的入站流量。
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: news-agent-frontend
+  namespace: news-agent
+  labels:
+    app.kubernetes.io/name: news-agent-frontend
+    app.kubernetes.io/part-of: news-agent
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: news-agent-frontend
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    # 仅保留集群 DNS；静态容器不需要访问任何后端。
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53

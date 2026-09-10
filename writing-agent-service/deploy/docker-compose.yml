@@ -8,12 +8,17 @@ x-writing-agent-env: &writing-agent-env
   TEMPORAL_NAMESPACE: default
   TEMPORAL_TASK_QUEUE: news-writing
   TEMPORAL_HOT_NEWS_TASK_QUEUE: hot-news
-  FASTGPT_BASE_URL: http://fastgpt-app:3000
+  TEMPORAL_DATA_LOOP_TASK_QUEUE: hot-news-data-loop
+  DATA_LOOP_REPLAY_MAX_CONCURRENCY: ${DATA_LOOP_REPLAY_MAX_CONCURRENCY:-8}
+  DATA_LOOP_MAX_CASES_PER_COHORT: ${DATA_LOOP_MAX_CASES_PER_COHORT:-20}
+  FASTGPT_BASE_URL: ${FASTGPT_BASE_URL:-http://fastgpt-app:3000}
   FASTGPT_API_KEY: ${FASTGPT_API_KEY}
   FASTGPT_RESEARCH_APP_ID: ${FASTGPT_RESEARCH_APP_ID}
   FASTGPT_WRITER_APP_ID: ${FASTGPT_WRITER_APP_ID}
   FASTGPT_REVIEWER_APP_ID: ${FASTGPT_REVIEWER_APP_ID}
   FASTGPT_HOT_NEWS_APP_ID: ${FASTGPT_HOT_NEWS_APP_ID:-}
+  FASTGPT_ERROR_ATTRIBUTION_APP_ID: ${FASTGPT_ERROR_ATTRIBUTION_APP_ID:-}
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: ${HOT_NEWS_RUNTIME_MANIFEST_JSON:?must be set}
   CMS_PUBLISH_URL: ${CMS_PUBLISH_URL:-}
   CMS_PUBLISH_TOKEN: ${CMS_PUBLISH_TOKEN:-}
   CMS_PUBLISH_TIMEOUT_SECONDS: ${CMS_PUBLISH_TIMEOUT_SECONDS:-30}
@@ -115,6 +120,9 @@ services:
 
   api:
     <<: *writing-agent-service
+    environment:
+      <<: *writing-agent-env
+      DATA_LOOP_GATEWAY_TOKEN: ${DATA_LOOP_GATEWAY_TOKEN:?must be set}
     depends_on:
       migrate:
         condition: service_completed_successfully
@@ -147,6 +155,20 @@ services:
         limits:
           cpus: "${WORKER_CPU_LIMIT:-2.0}"
           memory: "${WORKER_MEMORY_LIMIT:-2G}"
+
+  data-loop-worker:
+    <<: *writing-agent-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_started
+    command: ["python", "-m", "app.data_loop_worker"]
+    deploy:
+      resources:
+        limits:
+          cpus: "${DATA_LOOP_WORKER_CPU_LIMIT:-2.0}"
+          memory: "${DATA_LOOP_WORKER_MEMORY_LIMIT:-2G}"
 
   outbox-worker:
     <<: *writing-agent-service

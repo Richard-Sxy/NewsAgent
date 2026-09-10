@@ -10,6 +10,8 @@ from typing import Any
 from uuid import UUID, uuid4
 
 from pydantic import BaseModel
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.schemas.production_bundle import (
     ActivateCandidateCommand,
@@ -26,10 +28,27 @@ from app.schemas.production_bundle import (
     RollbackProductionBundleCommand,
 )
 from app.services.data_loop.evaluation_gate import EvaluationGate
+from app.repositories.production_bundle import (
+    PostgresProductionBundleRepository,
+)
 
 
 class ProductionBundleRuleViolation(ValueError):
     """候选、审批或生产版本不满足领域约束。"""
+
+
+class ProductionBundleNotFoundError(LookupError):
+    """租户作用域内的 Bundle、Candidate 或 Evaluation 不存在。"""
+
+
+class ProductionBundleConflictError(RuntimeError):
+    """幂等内容、状态或乐观锁发生冲突。"""
+
+
+class ProductionBundlePersistenceError(RuntimeError):
+    """生产 Bundle 账本持久化失败。"""
+
+    retryable = True
 
 
 ASSET_SPEC_FIELDS = {
@@ -92,6 +111,49 @@ class BundleRollbackResult:
     previous_bundle: ProductionBundle
     activated_bundle: ProductionBundle
     decision: PromotionDecision
+
+
+@dataclass(frozen=True, slots=True)
+class CandidateWriteOutcome:
+    candidate: ConfigurationCandidate
+    created: bool
+
+
+@dataclass(frozen=True, slots=True)
+class BundleWriteOutcome:
+    bundle: ProductionBundle
+    created: bool
+
+
+@dataclass(frozen=True, slots=True)
+class EvaluationWriteOutcome:
+    candidate: ConfigurationCandidate
+    evaluation_run: CandidateEvaluationRun
+    created: bool
+
+
+@dataclass(frozen=True, slots=True)
+class ReviewWriteOutcome:
+    candidate: ConfigurationCandidate
+    decision: PromotionDecision
+    created: bool
+
+
+@dataclass(frozen=True, slots=True)
+class ActivationWriteOutcome:
+    candidate: ConfigurationCandidate
+    previous_bundle: ProductionBundle
+    activated_bundle: ProductionBundle
+    decision: PromotionDecision
+    created: bool
+
+
+@dataclass(frozen=True, slots=True)
+class RollbackWriteOutcome:
+    previous_bundle: ProductionBundle
+    activated_bundle: ProductionBundle
+    decision: PromotionDecision
+    created: bool
 
 
 class ProductionBundleDomainService:
@@ -250,6 +312,10 @@ class ProductionBundleDomainService:
         if candidate.status != "evaluation_passed":
             raise ProductionBundleRuleViolation(
                 "only an evaluation-passed candidate can be approved"
+            )
+        if command.approved_by == candidate.proposed_by:
+            raise ProductionBundleRuleViolation(
+                "candidate proposer cannot approve their own candidate"
             )
 
         approved = candidate.model_copy(
@@ -573,3 +639,668 @@ class ProductionBundleDomainService:
     def _require_aware(value: datetime) -> None:
         if value.tzinfo is None or value.utcoffset() is None:
             raise ProductionBundleRuleViolation("now must be timezone-aware")
+
+
+class ProductionBundleApplicationService:
+    """Transactional application layer for the immutable bundle ledger.
+
+    The caller owns the ``AsyncSession`` transaction.  Every mutating method
+    checks tenant scope, idempotency fingerprints and compare-and-swap state.
+    """
+
+    def __init__(
+        self,
+        domain: ProductionBundleDomainService | None = None,
+    ) -> None:
+        self._domain = domain or ProductionBundleDomainService()
+
+    async def bootstrap_initial_bundle(
+        self,
+        session: AsyncSession,
+        *,
+        tenant_id: str,
+        bundle_version: str,
+        spec: ProductionBundleSpec,
+        actor_id: str,
+        now: datetime,
+    ) -> BundleWriteOutcome:
+        """Create the first active bundle; later changes must use promotion."""
+
+        ProductionBundleDomainService._require_aware(now)
+        tenant_id = tenant_id.strip()
+        bundle_version = bundle_version.strip()
+        actor_id = actor_id.strip()
+        if not tenant_id or not bundle_version or not actor_id:
+            raise ProductionBundleRuleViolation(
+                "tenant, bundle version and actor are required"
+            )
+        repository = PostgresProductionBundleRepository(session)
+        try:
+            active = await repository.get_active_bundle_for_update(
+                tenant_id=tenant_id
+            )
+            if active is not None:
+                if (
+                    active.bundle_version == bundle_version
+                    and active.spec == spec
+                ):
+                    return BundleWriteOutcome(active, False)
+                raise ProductionBundleConflictError(
+                    "an active production bundle already exists"
+                )
+            bundle = ProductionBundle(
+                id=uuid4(),
+                tenant_id=tenant_id,
+                bundle_version=bundle_version,
+                spec=spec,
+                content_sha256=bundle_spec_sha256(spec),
+                status="active",
+                created_by=actor_id,
+                created_at=now,
+                activated_by=actor_id,
+                activated_at=now,
+            )
+            await repository.insert_bundle(bundle=bundle)
+            return BundleWriteOutcome(bundle, True)
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "initial bundle conflicts with the production ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to persist initial production bundle"
+            ) from exc
+
+    async def propose_candidate(
+        self,
+        session: AsyncSession,
+        *,
+        command: ProposeConfigurationCandidateCommand,
+        now: datetime,
+    ) -> CandidateWriteOutcome:
+        repository = PostgresProductionBundleRepository(session)
+        fingerprint = command_fingerprint(command)
+        try:
+            replay = await repository.get_candidate_by_idempotency_key(
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+            )
+            if replay is not None:
+                candidate, stored_fingerprint = replay
+                self._require_fingerprint(stored_fingerprint, fingerprint)
+                return CandidateWriteOutcome(candidate, False)
+
+            base = await repository.get_bundle_for_update(
+                tenant_id=command.tenant_id,
+                bundle_id=command.base_bundle_id,
+            )
+            if base is None:
+                raise ProductionBundleNotFoundError(
+                    "base production bundle is not available"
+                )
+            candidate = self._domain.propose_candidate(
+                base_bundle=base,
+                command=command,
+                now=now,
+            )
+            inserted = await repository.insert_candidate(
+                candidate=candidate,
+                idempotency_key=command.idempotency_key,
+                request_fingerprint=fingerprint,
+            )
+            if inserted:
+                return CandidateWriteOutcome(candidate, True)
+            replay = await repository.get_candidate_by_idempotency_key(
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+            )
+            if replay is None:
+                raise ProductionBundleConflictError(
+                    "candidate version or idempotency key is already occupied"
+                )
+            existing, stored_fingerprint = replay
+            self._require_fingerprint(stored_fingerprint, fingerprint)
+            return CandidateWriteOutcome(existing, False)
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "candidate conflicts with the production bundle ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to persist configuration candidate"
+            ) from exc
+
+    async def record_evaluation(
+        self,
+        session: AsyncSession,
+        *,
+        command: RecordCandidateEvaluationCommand,
+        now: datetime,
+    ) -> EvaluationWriteOutcome:
+        repository = PostgresProductionBundleRepository(session)
+        fingerprint = command_fingerprint(command)
+        try:
+            replay = await repository.get_evaluation_by_idempotency_key(
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+            )
+            if replay is not None:
+                run, stored_fingerprint = replay
+                self._require_fingerprint(stored_fingerprint, fingerprint)
+                candidate = await repository.get_candidate_for_update(
+                    tenant_id=command.tenant_id,
+                    candidate_id=run.candidate_id,
+                )
+                if candidate is None:
+                    raise ProductionBundleNotFoundError(
+                        "configuration candidate is not available"
+                    )
+                return EvaluationWriteOutcome(candidate, run, False)
+
+            candidate = await repository.get_candidate_for_update(
+                tenant_id=command.tenant_id,
+                candidate_id=command.candidate_id,
+            )
+            if candidate is None:
+                raise ProductionBundleNotFoundError(
+                    "configuration candidate is not available"
+                )
+            active = await repository.get_active_bundle_for_update(
+                tenant_id=command.tenant_id,
+            )
+            if active is None or active.id != candidate.base_bundle_id:
+                raise ProductionBundleRuleViolation(
+                    "candidate base is no longer the active production bundle"
+                )
+            if command.previous_experiment_candidate_id is not None:
+                previous = (
+                    await repository.get_latest_evaluated_candidate_for_update(
+                        tenant_id=command.tenant_id,
+                        base_bundle_id=candidate.base_bundle_id,
+                        exclude_candidate_id=candidate.id,
+                    )
+                )
+                if (
+                    previous is None
+                    or previous.id
+                    != command.previous_experiment_candidate_id
+                ):
+                    raise ProductionBundleRuleViolation(
+                        "previous experiment is not the latest eligible "
+                        "server-selected candidate"
+                    )
+            expected_layers = {
+                command.suite_metrics.golden.dataset_id: "golden",
+                command.suite_metrics.fresh_bad_case.dataset_id: (
+                    "fresh_bad_case"
+                ),
+                command.suite_metrics.high_risk_regression.dataset_id: (
+                    "high_risk_regression"
+                ),
+            }
+            layers = await repository.get_frozen_dataset_layers_for_update(
+                tenant_id=command.tenant_id,
+                dataset_ids=expected_layers,
+            )
+            if layers != expected_layers:
+                raise ProductionBundleRuleViolation(
+                    "evaluation requires three correctly layered frozen datasets"
+                )
+            result = self._domain.record_evaluation(
+                candidate=candidate,
+                command=command,
+                now=now,
+            )
+            inserted = await repository.insert_evaluation(
+                evaluation_run=result.evaluation_run,
+                idempotency_key=command.idempotency_key,
+                request_fingerprint=fingerprint,
+            )
+            if not inserted:
+                replay = await repository.get_evaluation_by_idempotency_key(
+                    tenant_id=command.tenant_id,
+                    idempotency_key=command.idempotency_key,
+                )
+                if replay is None:
+                    raise ProductionBundleConflictError(
+                        "evaluation idempotency key is occupied"
+                    )
+                existing, stored_fingerprint = replay
+                self._require_fingerprint(stored_fingerprint, fingerprint)
+                return EvaluationWriteOutcome(candidate, existing, False)
+            if not await repository.update_candidate(
+                previous=candidate,
+                updated=result.candidate,
+            ):
+                raise ProductionBundleConflictError(
+                    "configuration candidate revision changed during evaluation"
+                )
+            return EvaluationWriteOutcome(
+                result.candidate,
+                result.evaluation_run,
+                True,
+            )
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "evaluation conflicts with the production bundle ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to persist candidate evaluation"
+            ) from exc
+
+    async def approve_candidate(
+        self,
+        session: AsyncSession,
+        *,
+        command: ApproveCandidateCommand,
+        now: datetime,
+    ) -> ReviewWriteOutcome:
+        return await self._review_candidate(
+            session,
+            command=command,
+            now=now,
+            action="approve",
+        )
+
+    async def reject_candidate(
+        self,
+        session: AsyncSession,
+        *,
+        command: RejectCandidateCommand,
+        now: datetime,
+    ) -> ReviewWriteOutcome:
+        return await self._review_candidate(
+            session,
+            command=command,
+            now=now,
+            action="reject",
+        )
+
+    async def _review_candidate(
+        self,
+        session: AsyncSession,
+        *,
+        command: ApproveCandidateCommand | RejectCandidateCommand,
+        now: datetime,
+        action: str,
+    ) -> ReviewWriteOutcome:
+        repository = PostgresProductionBundleRepository(session)
+        fingerprint = command_fingerprint(command)
+        try:
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action=action,
+            )
+            if replay is not None:
+                candidate = await repository.get_candidate_for_update(
+                    tenant_id=command.tenant_id,
+                    candidate_id=command.candidate_id,
+                )
+                if candidate is None:
+                    raise ProductionBundleNotFoundError(
+                        "configuration candidate is not available"
+                    )
+                return ReviewWriteOutcome(candidate, replay, False)
+
+            candidate = await repository.get_candidate_for_update(
+                tenant_id=command.tenant_id,
+                candidate_id=command.candidate_id,
+            )
+            if candidate is None:
+                raise ProductionBundleNotFoundError(
+                    "configuration candidate is not available"
+                )
+            # Recheck after acquiring the candidate lock to make concurrent
+            # retries converge on the first committed decision.
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action=action,
+            )
+            if replay is not None:
+                return ReviewWriteOutcome(candidate, replay, False)
+
+            if action == "approve":
+                assert isinstance(command, ApproveCandidateCommand)
+                evaluation = await repository.get_evaluation_for_update(
+                    tenant_id=command.tenant_id,
+                    evaluation_run_id=command.evaluation_run_id,
+                )
+                if evaluation is None:
+                    raise ProductionBundleNotFoundError(
+                        "candidate evaluation run is not available"
+                    )
+                result = self._domain.approve_candidate(
+                    candidate=candidate,
+                    evaluation_run=evaluation,
+                    command=command,
+                    now=now,
+                )
+            else:
+                assert isinstance(command, RejectCandidateCommand)
+                result = self._domain.reject_candidate(
+                    candidate=candidate,
+                    command=command,
+                    now=now,
+                )
+            if not await repository.update_candidate(
+                previous=candidate,
+                updated=result.candidate,
+            ):
+                raise ProductionBundleConflictError(
+                    "configuration candidate revision changed during review"
+                )
+            if not await repository.insert_decision(decision=result.decision):
+                raise ProductionBundleConflictError(
+                    "promotion decision idempotency key is occupied"
+                )
+            return ReviewWriteOutcome(
+                result.candidate,
+                result.decision,
+                True,
+            )
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "review conflicts with the production bundle ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to persist candidate review"
+            ) from exc
+
+    async def activate_candidate(
+        self,
+        session: AsyncSession,
+        *,
+        command: ActivateCandidateCommand,
+        now: datetime,
+    ) -> ActivationWriteOutcome:
+        repository = PostgresProductionBundleRepository(session)
+        fingerprint = command_fingerprint(command)
+        try:
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action="activate",
+            )
+            if replay is not None:
+                return await self._activation_replay(repository, replay)
+
+            candidate = await repository.get_candidate_for_update(
+                tenant_id=command.tenant_id,
+                candidate_id=command.candidate_id,
+            )
+            if candidate is None:
+                raise ProductionBundleNotFoundError(
+                    "configuration candidate is not available"
+                )
+            evaluation = await repository.get_evaluation_for_update(
+                tenant_id=command.tenant_id,
+                evaluation_run_id=command.evaluation_run_id,
+            )
+            if evaluation is None:
+                raise ProductionBundleNotFoundError(
+                    "candidate evaluation run is not available"
+                )
+            active = await repository.get_active_bundle_for_update(
+                tenant_id=command.tenant_id,
+            )
+            if active is None:
+                raise ProductionBundleNotFoundError(
+                    "active production bundle is not available"
+                )
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action="activate",
+            )
+            if replay is not None:
+                return await self._activation_replay(repository, replay)
+
+            result = self._domain.activate_candidate(
+                candidate=candidate,
+                evaluation_run=evaluation,
+                active_bundle=active,
+                command=command,
+                now=now,
+            )
+            if not await repository.update_bundle_lifecycle(
+                previous=active,
+                updated=result.previous_bundle,
+            ):
+                raise ProductionBundleConflictError(
+                    "active bundle changed during activation"
+                )
+            await repository.insert_bundle(bundle=result.activated_bundle)
+            if not await repository.update_candidate(
+                previous=candidate,
+                updated=result.candidate,
+            ):
+                raise ProductionBundleConflictError(
+                    "configuration candidate changed during activation"
+                )
+            if not await repository.insert_decision(decision=result.decision):
+                raise ProductionBundleConflictError(
+                    "activation idempotency key is occupied"
+                )
+            return ActivationWriteOutcome(
+                result.candidate,
+                result.previous_bundle,
+                result.activated_bundle,
+                result.decision,
+                True,
+            )
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "activation conflicts with the production bundle ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to activate production bundle"
+            ) from exc
+
+    async def rollback_bundle(
+        self,
+        session: AsyncSession,
+        *,
+        command: RollbackProductionBundleCommand,
+        now: datetime,
+    ) -> RollbackWriteOutcome:
+        repository = PostgresProductionBundleRepository(session)
+        fingerprint = command_fingerprint(command)
+        try:
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action="rollback",
+            )
+            if replay is not None:
+                return await self._rollback_replay(repository, replay)
+            active = await repository.get_active_bundle_for_update(
+                tenant_id=command.tenant_id,
+            )
+            target = await repository.get_bundle_for_update(
+                tenant_id=command.tenant_id,
+                bundle_id=command.target_bundle_id,
+            )
+            if active is None or target is None:
+                raise ProductionBundleNotFoundError(
+                    "production bundle is not available"
+                )
+            replay = await self._decision_replay(
+                repository,
+                tenant_id=command.tenant_id,
+                idempotency_key=command.idempotency_key,
+                fingerprint=fingerprint,
+                action="rollback",
+            )
+            if replay is not None:
+                return await self._rollback_replay(repository, replay)
+            result = self._domain.rollback_bundle(
+                active_bundle=active,
+                target_bundle=target,
+                command=command,
+                now=now,
+            )
+            if not await repository.update_bundle_lifecycle(
+                previous=active,
+                updated=result.previous_bundle,
+            ):
+                raise ProductionBundleConflictError(
+                    "active bundle changed during rollback"
+                )
+            if not await repository.update_bundle_lifecycle(
+                previous=target,
+                updated=result.activated_bundle,
+            ):
+                raise ProductionBundleConflictError(
+                    "rollback target changed during activation"
+                )
+            if not await repository.insert_decision(decision=result.decision):
+                raise ProductionBundleConflictError(
+                    "rollback idempotency key is occupied"
+                )
+            return RollbackWriteOutcome(
+                result.previous_bundle,
+                result.activated_bundle,
+                result.decision,
+                True,
+            )
+        except self._known_errors():
+            raise
+        except IntegrityError as exc:
+            raise ProductionBundleConflictError(
+                "rollback conflicts with the production bundle ledger"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise ProductionBundlePersistenceError(
+                "failed to rollback production bundle"
+            ) from exc
+
+    @staticmethod
+    async def _decision_replay(
+        repository: PostgresProductionBundleRepository,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+        fingerprint: str,
+        action: str,
+    ) -> PromotionDecision | None:
+        decision = await repository.get_decision_by_idempotency_key(
+            tenant_id=tenant_id,
+            idempotency_key=idempotency_key,
+        )
+        if decision is None:
+            return None
+        ProductionBundleApplicationService._require_fingerprint(
+            decision.request_fingerprint,
+            fingerprint,
+        )
+        if decision.action != action:
+            raise ProductionBundleConflictError(
+                "idempotency key was reused for another promotion action"
+            )
+        return decision
+
+    @staticmethod
+    async def _activation_replay(
+        repository: PostgresProductionBundleRepository,
+        decision: PromotionDecision,
+    ) -> ActivationWriteOutcome:
+        if (
+            decision.candidate_id is None
+            or decision.from_bundle_id is None
+            or decision.to_bundle_id is None
+        ):
+            raise ProductionBundleConflictError(
+                "stored activation decision is incomplete"
+            )
+        candidate = await repository.get_candidate_for_update(
+            tenant_id=decision.tenant_id,
+            candidate_id=decision.candidate_id,
+        )
+        previous = await repository.get_bundle_for_update(
+            tenant_id=decision.tenant_id,
+            bundle_id=decision.from_bundle_id,
+        )
+        activated = await repository.get_bundle_for_update(
+            tenant_id=decision.tenant_id,
+            bundle_id=decision.to_bundle_id,
+        )
+        if candidate is None or previous is None or activated is None:
+            raise ProductionBundlePersistenceError(
+                "stored activation ledger is incomplete"
+            )
+        return ActivationWriteOutcome(
+            candidate,
+            previous,
+            activated,
+            decision,
+            False,
+        )
+
+    @staticmethod
+    async def _rollback_replay(
+        repository: PostgresProductionBundleRepository,
+        decision: PromotionDecision,
+    ) -> RollbackWriteOutcome:
+        if decision.from_bundle_id is None or decision.to_bundle_id is None:
+            raise ProductionBundleConflictError(
+                "stored rollback decision is incomplete"
+            )
+        previous = await repository.get_bundle_for_update(
+            tenant_id=decision.tenant_id,
+            bundle_id=decision.from_bundle_id,
+        )
+        activated = await repository.get_bundle_for_update(
+            tenant_id=decision.tenant_id,
+            bundle_id=decision.to_bundle_id,
+        )
+        if previous is None or activated is None:
+            raise ProductionBundlePersistenceError(
+                "stored rollback ledger is incomplete"
+            )
+        return RollbackWriteOutcome(
+            previous,
+            activated,
+            decision,
+            False,
+        )
+
+    @staticmethod
+    def _require_fingerprint(stored: str, expected: str) -> None:
+        if stored != expected:
+            raise ProductionBundleConflictError(
+                "idempotency key was reused with different business content"
+            )
+
+    @staticmethod
+    def _known_errors() -> tuple[type[Exception], ...]:
+        return (
+            ProductionBundleRuleViolation,
+            ProductionBundleNotFoundError,
+            ProductionBundleConflictError,
+            ProductionBundlePersistenceError,
+        )

@@ -1,7 +1,8 @@
 """热点分析端到端联调所需的本地依赖装配。
 
 该模块只读取仓库内的模拟场景数据，不连接或保存企业原始行为明细。
-Temporal、PostgreSQL、FastGPT 和 FastGPT 知识库仍使用真实外部服务。
+Temporal、PostgreSQL 和 FastGPT 仍使用真实外部服务。知识检索可由调用方
+注入仓库内的离线场景适配器，避免 E2E 依赖企业知识库。
 """
 
 from __future__ import annotations
@@ -24,7 +25,7 @@ from examples.hot_news_demo import load_scenario
 
 
 SCENARIO_PATH = Path(__file__).parent / "data" / "hot_news_scenario.json"
-E2E_TENANT_ID = "local-e2e"
+E2E_TENANT_ID = "11111111-1111-4111-8111-111111111111"
 E2E_PRODUCTION_BUNDLE_VERSION = "bundle-v1"
 
 MetricKey = tuple[str, ContentType]
@@ -42,6 +43,7 @@ class HotNewsE2EDependencies:
     window_start: datetime
     window_end: datetime
     production_bundle_version: str
+    news_ids: tuple[str, ...]
 
 
 class ScenarioHotNewsBaselineProvider:
@@ -53,12 +55,10 @@ class ScenarioHotNewsBaselineProvider:
         baselines: dict[MetricKey, NewsMetricBaseline],
         window_start: datetime,
         window_end: datetime,
-        production_bundle_version: str,
     ) -> None:
         self._baselines = dict(baselines)
         self._window_start = window_start
         self._window_end = window_end
-        self._production_bundle_version = production_bundle_version
 
     async def get_baselines(
         self,
@@ -73,10 +73,8 @@ class ScenarioHotNewsBaselineProvider:
             raise ValueError("tenant_id cannot be empty")
         if window_start != self._window_start or window_end != self._window_end:
             raise ValueError("E2E request window does not match scenario window")
-        if production_bundle_version != self._production_bundle_version:
-            raise ValueError(
-                "E2E request production bundle does not match loaded scenario"
-            )
+        if not production_bundle_version.strip():
+            raise ValueError("production_bundle_version cannot be empty")
 
         return {
             key: self._baselines[key]
@@ -176,8 +174,16 @@ def _build_baseline(
 
 def build_hot_news_e2e_dependencies(
     scenario_path: Path = SCENARIO_PATH,
+    *,
+    tenant_id: str = E2E_TENANT_ID,
+    production_bundle_version: str = E2E_PRODUCTION_BUNDLE_VERSION,
 ) -> HotNewsE2EDependencies:
     """把紧凑场景 JSON 装配为热点 Worker 所需的四类依赖。"""
+
+    if not tenant_id.strip():
+        raise ValueError("tenant_id cannot be empty")
+    if not production_bundle_version.strip():
+        raise ValueError("production_bundle_version cannot be empty")
 
     scenario = load_scenario(scenario_path)
     window_minutes = int(scenario["window_minutes"])
@@ -194,7 +200,9 @@ def build_hot_news_e2e_dependencies(
     baselines: dict[MetricKey, NewsMetricBaseline] = {}
     content_types: set[ContentType] = set()
 
+    news_ids: list[str] = []
     for news in scenario["news"]:
+        news_ids.append(str(news["news_id"]))
         content_type = ContentType(str(news["content_type"]))
         content_types.add(content_type)
         current_records.extend(
@@ -229,7 +237,7 @@ def build_hot_news_e2e_dependencies(
         )
 
     policy = HotNewsOrchestrationPolicy(
-        production_bundle_version=E2E_PRODUCTION_BUNDLE_VERSION,
+        production_bundle_version=production_bundle_version,
         content_types=frozenset(content_types),
         ranking_limit=int(scenario.get("limit", len(contents))),
         related_limit=3,
@@ -243,12 +251,12 @@ def build_hot_news_e2e_dependencies(
             baselines=baselines,
             window_start=window_start,
             window_end=window_end,
-            production_bundle_version=E2E_PRODUCTION_BUNDLE_VERSION,
         ),
         content_repository=InMemoryNewsContentRepository(contents),
         policy=policy,
-        tenant_id=E2E_TENANT_ID,
+        tenant_id=tenant_id,
         window_start=window_start,
         window_end=window_end,
-        production_bundle_version=E2E_PRODUCTION_BUNDLE_VERSION,
+        production_bundle_version=production_bundle_version,
+        news_ids=tuple(news_ids),
     )

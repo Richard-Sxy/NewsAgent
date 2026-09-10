@@ -38,6 +38,11 @@ writing-agent-data-loop-worker = "app.data_loop_worker:main"
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-q"
+markers = [
+    "e2e: opt-in black-box tests requiring the dedicated dependency stack",
+    "integration: tests using real local infrastructure",
+    "live: tests calling explicitly configured non-stub external services",
+]
 
 [tool.setuptools.packages.find]
 include = ["app*"]
