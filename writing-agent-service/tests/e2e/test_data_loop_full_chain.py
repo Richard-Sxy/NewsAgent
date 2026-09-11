@@ -1,4 +1,4 @@
-"""Opt-in black-box acceptance test for the hermetic Compose stack."""
+"""Opt-in black-box acceptance test for the isolated Compose stack."""
 
 import hashlib
 import json
@@ -127,6 +127,138 @@ def test_data_loop_reject_keeps_base_active(tmp_path: Path) -> None:
     assert state["activated_bundle_id"] is None
     assert state["checks"]["rejection_keeps_base_active"] is True
     assert all(state["checks"].values())
+
+
+def test_manual_label_duties_resume_into_the_release_gate(
+    tmp_path: Path,
+) -> None:
+    """Exercise both resumable label duties through the real public API."""
+
+    state_path = tmp_path / "data-loop-manual-label.json"
+    prepared_feedback = run_driver(
+        "prepare-feedback",
+        "--state",
+        str(state_path),
+    )
+    assert_succeeded(prepared_feedback)
+    feedback_state = load_state(state_path)
+    assert feedback_state["manual_label_gate"] is True
+    assert feedback_state["feedback_case_id"]
+    assert feedback_state["label_id"] is None
+
+    submitted = run_driver(
+        "label-submit",
+        "--state",
+        str(state_path),
+        "--action",
+        "submit",
+    )
+    assert_succeeded(submitted)
+    submitted_state = load_state(state_path)
+    assert submitted_state["label_id"]
+    assert submitted_state["label_review_decision"] is None
+    assert submitted_state["checks"][
+        "human_label_submitted_pending_review"
+    ] is True
+
+    reviewed = run_driver(
+        "label-review",
+        "--state",
+        str(state_path),
+        "--action",
+        "approve",
+        "--reason",
+        "Independent E2E reviewer accepted the smoke-test label",
+    )
+    assert_succeeded(reviewed)
+    reviewed_state = load_state(state_path)
+    assert reviewed_state["label_review_decision"] == "approve"
+    assert reviewed_state["checks"][
+        "human_label_review_approved_independently"
+    ] is True
+
+    prepared_release = run_driver("prepare", "--state", str(state_path))
+    assert_succeeded(prepared_release)
+    release_state = load_state(state_path)
+    assert release_state["workflow_id"]
+    assert release_state["evaluation_run_id"]
+    assert release_state["checks"]["workflow_waiting_for_human"] is True
+
+    rejected = run_driver(
+        "decide",
+        "--state",
+        str(state_path),
+        "--action",
+        "reject",
+        "--reason",
+        "E2E release reviewer rejected after independent label approval",
+    )
+    assert_succeeded(rejected)
+    final_state = load_state(state_path)
+    assert final_state["terminal_phase"] == "rejected"
+    assert final_state["checks"]["rejection_keeps_base_active"] is True
+    assert all(final_state["checks"].values())
+
+    with psycopg.connect(database_dsn()) as connection:
+        label_row = connection.execute(
+            "SELECT approval_status, labeled_by, approved_by "
+            "FROM feedback_labels WHERE tenant_id = %s AND id = %s",
+            (final_state["tenant_id"], final_state["label_id"]),
+        ).fetchone()
+    assert label_row is not None
+    assert label_row[0] == "approved"
+    assert label_row[1] != label_row[2]
+
+
+def test_manual_label_request_changes_is_persisted_and_blocks_freeze(
+    tmp_path: Path,
+) -> None:
+    state_path = tmp_path / "manual-label-request-changes.json"
+    prepared = run_driver(
+        "prepare-feedback",
+        "--state",
+        str(state_path),
+    )
+    assert_succeeded(prepared)
+    submitted = run_driver(
+        "label-submit",
+        "--state",
+        str(state_path),
+        "--action",
+        "submit",
+    )
+    assert_succeeded(submitted)
+    reason = "E2E reviewer requires stronger evidence before freezing"
+    rejected = run_driver(
+        "label-review",
+        "--state",
+        str(state_path),
+        "--action",
+        "reject",
+        "--reason",
+        reason,
+    )
+    assert_succeeded(rejected)
+    state = load_state(state_path)
+    assert state["label_review_decision"] == "reject"
+    assert state["checks"]["human_label_review_rejected_safely"] is True
+
+    with psycopg.connect(database_dsn()) as connection:
+        label_row = connection.execute(
+            "SELECT approval_status, labeled_by, reviewed_by, "
+            "review_reason, approved_by FROM feedback_labels "
+            "WHERE tenant_id = %s AND id = %s",
+            (state["tenant_id"], state["label_id"]),
+        ).fetchone()
+    assert label_row is not None
+    assert label_row[0] == "rejected"
+    assert label_row[1] != label_row[2]
+    assert label_row[3] == reason
+    assert label_row[4] is None
+
+    blocked = run_driver("prepare", "--state", str(state_path))
+    assert blocked.returncode != 0
+    assert "cannot continue" in blocked.stderr
 
 
 def test_data_loop_recovers_only_an_authorized_failed_activation(

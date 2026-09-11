@@ -16,6 +16,7 @@ from app.schemas.analysis_feedback import (
     CollectAnalysisFeedbackCommand,
     PublicationOutcomeMetrics,
     RecordPublicationOutcomeCommand,
+    RequestChangesAnalysisFeedbackLabelCommand,
     SubmitAnalysisFeedbackLabelCommand,
 )
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
@@ -290,6 +291,7 @@ async def test_submit_and_approve_label_use_version_and_human_gate(
     )
     assert approved.label.approval_status == "approved"
     assert approved.label.approved_by == "reviewer-1"
+    assert approved.label.review_reason == "Label approved"
     repository.update_case_status.assert_awaited_with(
         tenant_id="tenant-1",
         feedback_case_id=feedback_case.id,
@@ -361,6 +363,10 @@ async def test_label_retries_ignore_server_generated_timestamps(
             "approved_by": "reviewer-1",
             "approved_at": NOW + timedelta(minutes=1),
             "approval_idempotency_key": "approve-retry-1",
+            "reviewed_by": "reviewer-1",
+            "reviewed_at": NOW + timedelta(minutes=1),
+            "review_reason": "Label approved",
+            "review_idempotency_key": "approve-retry-1",
         }
     )
     repository.get_label_by_approval_idempotency_key.return_value = approved
@@ -381,6 +387,92 @@ async def test_label_retries_ignore_server_generated_timestamps(
 
     assert replayed.created is False
     assert replayed.label is approved
+
+
+@pytest.mark.asyncio
+async def test_independent_reviewer_can_request_label_changes(
+    monkeypatch,
+) -> None:
+    repository = repository_mock(monkeypatch)
+    label = pending_label()
+    repository.get_label_by_review_idempotency_key.return_value = None
+    repository.get_case_for_update.return_value = stored_case(case_command())
+    repository.get_label_for_update.return_value = label
+    repository.get_latest_label_for_update.return_value = label
+    repository.request_label_changes.return_value = True
+    repository.update_case_status.return_value = True
+
+    outcome = await AnalysisFeedbackCollector().request_label_changes(
+        object(),
+        tenant_id=label.tenant_id,
+        command=RequestChangesAnalysisFeedbackLabelCommand(
+            feedback_case_id=label.feedback_case_id,
+            label_id=label.id,
+            expected_label_version=label.label_version,
+            reviewed_by="reviewer-1",
+            reviewed_at=NOW + timedelta(minutes=1),
+            review_reason="缺少关键证据，请补充后提交新版本",
+            idempotency_key="label-request-changes-1",
+        ),
+    )
+
+    assert outcome.label.approval_status == "rejected"
+    assert outcome.label.review_reason == "缺少关键证据，请补充后提交新版本"
+    assert outcome.label.approved_by is None
+    repository.update_case_status.assert_awaited_once_with(
+        tenant_id=label.tenant_id,
+        feedback_case_id=label.feedback_case_id,
+        expected_statuses=("collected", "needs_label"),
+        status="needs_label",
+    )
+
+
+@pytest.mark.asyncio
+async def test_labeler_can_submit_new_version_after_changes_requested(
+    monkeypatch,
+) -> None:
+    repository = repository_mock(monkeypatch)
+    previous = pending_label().model_copy(
+        update={
+            "approval_status": "rejected",
+            "reviewed_by": "reviewer-1",
+            "reviewed_at": NOW + timedelta(minutes=1),
+            "review_reason": "补充关键证据",
+            "review_idempotency_key": "label-request-changes-1",
+        }
+    )
+    repository.get_label_by_idempotency_key.return_value = None
+    repository.get_case_for_update.return_value = stored_case(case_command())
+    repository.get_latest_label_for_update.return_value = previous
+    repository.insert_label.return_value = True
+    repository.mark_label_superseded.return_value = True
+    repository.update_case_status.return_value = True
+
+    outcome = await AnalysisFeedbackCollector().submit_label(
+        object(),
+        tenant_id=previous.tenant_id,
+        command=SubmitAnalysisFeedbackLabelCommand(
+            feedback_case_id=previous.feedback_case_id,
+            expected_previous_version=previous.label_version,
+            verdict="incorrect",
+            allowed_dominant_drivers=("click",),
+            required_metric_keys=("clicks",),
+            operator_comment="已按复核意见补充关键证据",
+            labeled_by=previous.labeled_by,
+            labeled_at=NOW + timedelta(minutes=2),
+            idempotency_key="feedback-label-v2",
+        ),
+        recorded_at=NOW + timedelta(minutes=2),
+        label_id=UUID(int=21),
+    )
+
+    assert outcome.label.label_version == 2
+    assert outcome.label.approval_status == "pending"
+    repository.mark_label_superseded.assert_awaited_once_with(
+        tenant_id=previous.tenant_id,
+        feedback_case_id=previous.feedback_case_id,
+        label_id=previous.id,
+    )
 
 
 @pytest.mark.asyncio

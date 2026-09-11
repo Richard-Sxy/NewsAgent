@@ -14,7 +14,6 @@ class NewsArticle:
     publish_time: str
     author: str
     content: str
-    news_id: str | None = None
 
     def to_dict(self):
         return asdict(self)
@@ -244,6 +243,3 @@ class TencentNewsCrawler:
             paragraphs.append(text)
 
         return "\n".join(paragraphs)
-
-    @staticmethod
-    def _parse_article_id(soup: BeautifulSoup) -> str | None:

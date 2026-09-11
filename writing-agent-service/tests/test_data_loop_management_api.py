@@ -32,6 +32,7 @@ from tests.test_dataset_freezer import (
 from tests.test_production_bundle import (
     NOW,
     active_bundle,
+    evaluation_command,
     proposal,
 )
 from app.services.production_bundle import ProductionBundleDomainService
@@ -201,6 +202,55 @@ def test_candidate_proposal_uses_authenticated_proposer() -> None:
     assert command.proposed_by == str(USER_ID)
 
 
+def test_evaluation_detail_exposes_three_cohorts_and_gate_failures(
+    monkeypatch,
+) -> None:
+    domain = ProductionBundleDomainService()
+    base = active_bundle(tenant_id=str(TENANT_ID))
+    candidate = domain.propose_candidate(
+        base_bundle=base,
+        command=proposal(
+            base,
+            tenant_id=str(TENANT_ID),
+            proposed_by="proposer-1",
+        ),
+        now=NOW,
+    )
+    evaluated = domain.record_evaluation(
+        candidate=candidate,
+        command=evaluation_command(candidate),
+        now=NOW,
+    )
+
+    class EvaluationRepository:
+        def __init__(self, session):
+            pass
+
+        async def get_evaluation(self, **kwargs):
+            assert kwargs["tenant_id"] == str(TENANT_ID)
+            return evaluated.evaluation_run
+
+    monkeypatch.setattr(
+        data_loop_api_module,
+        "PostgresProductionBundleRepository",
+        EvaluationRepository,
+    )
+    client = client_with({}, permission=DataLoopPermission.READ)
+
+    response = client.get(
+        f"/api/v1/data-loop/evaluation-runs/{evaluated.evaluation_run.id}"
+    )
+
+    assert response.status_code == 200
+    payload = response.json()["evaluation"]
+    assert set(payload["suite_metrics"]) == {
+        "golden",
+        "fresh_bad_case",
+        "high_risk_regression",
+    }
+    assert payload["gate_decision"]["passed"] is True
+
+
 def test_dataset_freeze_api_ends_read_transaction_before_upload(
     monkeypatch,
 ) -> None:
@@ -267,6 +317,45 @@ def test_label_submitter_cannot_approve_a_label() -> None:
     assert response.status_code == 403
     assert DataLoopPermission.LABEL_APPROVE.value in response.json()["detail"]
     collector.approve_label.assert_not_awaited()
+
+
+def test_label_reviewer_can_request_changes_with_server_identity() -> None:
+    label = pending_label()
+    rejected = label.model_copy(
+        update={
+            "approval_status": "rejected",
+            "reviewed_by": str(USER_ID),
+            "reviewed_at": label.labeled_at,
+            "review_reason": "补充证据后重新提交",
+            "review_idempotency_key": "label-review-api-1",
+        }
+    )
+    collector = SimpleNamespace(
+        request_label_changes=AsyncMock(
+            return_value=FeedbackLabelWriteOutcome(rejected, True)
+        )
+    )
+    client = client_with(
+        {get_analysis_feedback_collector: collector},
+        permission=DataLoopPermission.LABEL_APPROVE,
+    )
+
+    response = client.post(
+        f"/api/v1/data-loop/feedback-cases/{label.feedback_case_id}"
+        f"/labels/{label.id}/review",
+        json={
+            "action": "request_changes",
+            "expected_label_version": 1,
+            "reason": "补充证据后重新提交",
+            "idempotency_key": "label-review-api-1",
+        },
+    )
+
+    assert response.status_code == 200
+    command = collector.request_label_changes.await_args.kwargs["command"]
+    assert command.reviewed_by == str(USER_ID)
+    assert command.review_reason == "补充证据后重新提交"
+    assert response.json()["label"]["approval_status"] == "rejected"
 
 
 def test_bootstrap_rejects_bundle_missing_from_runtime_manifest() -> None:

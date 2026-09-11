@@ -198,6 +198,21 @@ class PostgresAnalysisFeedbackRepository:
         record = result.scalar_one_or_none()
         return None if record is None else self.to_label_domain(record)
 
+    async def get_label_by_review_idempotency_key(
+        self,
+        *,
+        tenant_id: str,
+        idempotency_key: str,
+    ) -> AnalysisFeedbackLabel | None:
+        statement = select(AnalysisFeedbackLabelRecord).where(
+            AnalysisFeedbackLabelRecord.tenant_id == tenant_id,
+            AnalysisFeedbackLabelRecord.review_idempotency_key
+            == idempotency_key,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_label_domain(record)
+
     async def list_labels(
         self,
         *,
@@ -331,7 +346,7 @@ class PostgresAnalysisFeedbackRepository:
                 == feedback_case_id,
                 AnalysisFeedbackLabelRecord.id == label_id,
                 AnalysisFeedbackLabelRecord.approval_status.in_(
-                    ("pending", "approved")
+                    ("pending", "approved", "rejected")
                 ),
             )
             .values(approval_status="superseded")
@@ -349,6 +364,7 @@ class PostgresAnalysisFeedbackRepository:
         expected_label_version: int,
         approved_by: str,
         approved_at: datetime,
+        review_reason: str,
         approval_idempotency_key: str,
     ) -> bool:
         statement = (
@@ -367,6 +383,45 @@ class PostgresAnalysisFeedbackRepository:
                 approved_by=approved_by,
                 approved_at=approved_at,
                 approval_idempotency_key=approval_idempotency_key,
+                reviewed_by=approved_by,
+                reviewed_at=approved_at,
+                review_reason=review_reason,
+                review_idempotency_key=approval_idempotency_key,
+            )
+            .returning(AnalysisFeedbackLabelRecord.id)
+        )
+        result = await self._session.execute(statement)
+        return result.scalar_one_or_none() is not None
+
+    async def request_label_changes(
+        self,
+        *,
+        tenant_id: str,
+        feedback_case_id: UUID,
+        label_id: UUID,
+        expected_label_version: int,
+        reviewed_by: str,
+        reviewed_at: datetime,
+        review_reason: str,
+        review_idempotency_key: str,
+    ) -> bool:
+        statement = (
+            update(AnalysisFeedbackLabelRecord)
+            .where(
+                AnalysisFeedbackLabelRecord.tenant_id == tenant_id,
+                AnalysisFeedbackLabelRecord.feedback_case_id
+                == feedback_case_id,
+                AnalysisFeedbackLabelRecord.id == label_id,
+                AnalysisFeedbackLabelRecord.label_version
+                == expected_label_version,
+                AnalysisFeedbackLabelRecord.approval_status == "pending",
+            )
+            .values(
+                approval_status="rejected",
+                reviewed_by=reviewed_by,
+                reviewed_at=reviewed_at,
+                review_reason=review_reason,
+                review_idempotency_key=review_idempotency_key,
             )
             .returning(AnalysisFeedbackLabelRecord.id)
         )
@@ -430,6 +485,10 @@ class PostgresAnalysisFeedbackRepository:
             "approval_idempotency_key": (
                 label.approval_idempotency_key
             ),
+            "reviewed_by": label.reviewed_by,
+            "reviewed_at": label.reviewed_at,
+            "review_reason": label.review_reason,
+            "review_idempotency_key": label.review_idempotency_key,
             "recorded_at": label.recorded_at,
         }
 
@@ -525,6 +584,10 @@ class PostgresAnalysisFeedbackRepository:
                 approval_idempotency_key=(
                     record.approval_idempotency_key
                 ),
+                reviewed_by=record.reviewed_by,
+                reviewed_at=record.reviewed_at,
+                review_reason=record.review_reason,
+                review_idempotency_key=record.review_idempotency_key,
                 recorded_at=record.recorded_at,
             )
         except (ValidationError, TypeError, ValueError) as exc:

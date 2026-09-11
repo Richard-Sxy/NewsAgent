@@ -1,4 +1,6 @@
-FROM python:3.11-slim AS runtime
+# Keep the readable tag, but pin its multi-platform manifest digest. Update the
+# tag and digest together through an explicit dependency-maintenance change.
+FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534 AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -13,13 +15,16 @@ RUN groupadd --system --gid 10001 app \
 
 COPY pyproject.toml ./
 COPY app ./app
+
+# Install the application and dependencies before copying test-only assets, so
+# editing a runbook fixture or E2E test does not force a full dependency fetch.
+RUN pip install --upgrade pip \
+    && pip install ".[dev]"
+
 COPY alembic ./alembic
 COPY alembic.ini ./
 COPY examples ./examples
 COPY tests ./tests
-
-RUN pip install --upgrade pip \
-    && pip install ".[dev]"
 
 USER 10001:10001
 

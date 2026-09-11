@@ -321,6 +321,21 @@ class ApproveAnalysisFeedbackLabelCommand(BaseModel):
     expected_label_version: int = Field(ge=1)
     approved_by: NonBlank128
     approved_at: AwareDatetime
+    review_reason: NonBlank1000 = "Label approved"
+    idempotency_key: IdempotencyKey
+
+
+class RequestChangesAnalysisFeedbackLabelCommand(BaseModel):
+    """由独立审核人退回当前标签版本并给出可执行修改意见。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    feedback_case_id: UUID
+    label_id: UUID
+    expected_label_version: int = Field(ge=1)
+    reviewed_by: NonBlank128
+    reviewed_at: AwareDatetime
+    review_reason: NonBlank1000
     idempotency_key: IdempotencyKey
 
 
@@ -337,6 +352,10 @@ class AnalysisFeedbackLabel(AnalysisFeedbackLabelContent):
     approved_by: NonBlank128 | None = None
     approved_at: AwareDatetime | None = None
     approval_idempotency_key: IdempotencyKey | None = None
+    reviewed_by: NonBlank128 | None = None
+    reviewed_at: AwareDatetime | None = None
+    review_reason: NonBlank1000 | None = None
+    review_idempotency_key: IdempotencyKey | None = None
     idempotency_key: IdempotencyKey
     recorded_at: AwareDatetime
 
@@ -357,6 +376,20 @@ class AnalysisFeedbackLabel(AnalysisFeedbackLabelContent):
             raise ValueError(
                 "unapproved label cannot contain approval metadata"
             )
+        review_fields = (
+            self.reviewed_by,
+            self.reviewed_at,
+            self.review_reason,
+            self.review_idempotency_key,
+        )
+        if self.approval_status in {"approved", "rejected"} and any(
+            item is None for item in review_fields
+        ):
+            raise ValueError("reviewed label requires review metadata")
+        if self.approval_status == "pending" and any(
+            item is not None for item in review_fields
+        ):
+            raise ValueError("pending label cannot contain review metadata")
         if self.labeled_at > self.recorded_at:
             raise ValueError("labeled_at cannot be later than recorded_at")
         if (
@@ -369,4 +402,23 @@ class AnalysisFeedbackLabel(AnalysisFeedbackLabelContent):
             and self.approved_by == self.labeled_by
         ):
             raise ValueError("label submitter cannot approve their own label")
+        if (
+            self.reviewed_by is not None
+            and self.reviewed_by == self.labeled_by
+        ):
+            raise ValueError("label submitter cannot review their own label")
+        if (
+            self.reviewed_at is not None
+            and self.reviewed_at < self.labeled_at
+        ):
+            raise ValueError("reviewed_at cannot be earlier than labeled_at")
+        if self.approval_status == "approved" and (
+            self.reviewed_by != self.approved_by
+            or self.reviewed_at != self.approved_at
+            or self.review_idempotency_key
+            != self.approval_idempotency_key
+        ):
+            raise ValueError(
+                "approved label review metadata must match approval metadata"
+            )
         return self

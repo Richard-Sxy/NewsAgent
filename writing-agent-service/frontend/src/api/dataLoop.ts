@@ -18,6 +18,7 @@ import type {
   RecoverDataLoopActivationResponse,
   RollbackProductionBundleRequest,
   RollbackProductionBundleResponse,
+  ReviewFeedbackLabelRequest,
   StartDataLoopRequest,
   StartDataLoopResponse,
   SubmitDataLoopDecisionRequest,
@@ -88,6 +89,14 @@ export const dataLoopApi = {
   approveLabel(feedbackCaseId: string, labelId: string, body: ApproveFeedbackLabelRequest) {
     return request<FeedbackLabelResponse>(
       `${BASE}/feedback-cases/${feedbackCaseId}/labels/${labelId}/approve`,
+      { method: 'POST', body },
+    )
+  },
+
+  /** 独立二审：action=approve 通过、action=request_changes 退回（退回必须给出可执行修改意见）。 */
+  reviewLabel(feedbackCaseId: string, labelId: string, body: ReviewFeedbackLabelRequest) {
+    return request<FeedbackLabelResponse>(
+      `${BASE}/feedback-cases/${feedbackCaseId}/labels/${labelId}/review`,
       { method: 'POST', body },
     )
   },

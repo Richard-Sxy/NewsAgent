@@ -34,13 +34,7 @@ export type JobStatus =
   | 'cancelled'
 
 export type StepType =
-  | 'research'
-  | 'outline'
-  | 'section_draft'
-  | 'assemble'
-  | 'review'
-  | 'section_revise'
-  | 'finalize'
+  'research' | 'outline' | 'section_draft' | 'assemble' | 'review' | 'section_revise' | 'finalize'
 
 export type JobScenario = 'research_package' | 'assisted_writing'
 
@@ -349,6 +343,14 @@ export interface ApproveFeedbackLabelRequest {
   idempotency_key: string
 }
 
+/** 与 app/schemas/data_loop_api.py::ReviewFeedbackLabelRequest 保持一致；退回时 reason 必填。 */
+export interface ReviewFeedbackLabelRequest {
+  action: 'approve' | 'request_changes'
+  expected_label_version: number
+  reason: string
+  idempotency_key: string
+}
+
 export interface FeedbackLabelResponse {
   /** TODO(gen:api): AnalysisFeedbackLabel */
   label: JsonObject
@@ -419,5 +421,113 @@ export interface ProposeCandidateRequest {
 export interface CandidateResponse {
   /** TODO(gen:api): ConfigurationCandidate */
   candidate: JsonObject
+  created: boolean
+}
+
+/* ---------------------------------------------------------------------- */
+/* 热点运营控制台（/api/v1/hot-news）                                       */
+/* 与后端 app/schemas/hot_news_api.py 逐字段对齐。                          */
+/* 数字（ctr、热度分数与分量）按字符串透传，前端不做二次计算。               */
+/* ---------------------------------------------------------------------- */
+
+export interface HotNewsRunSummary {
+  run_id: string
+  idempotency_key: string
+  window_start: string
+  window_end: string
+  production_bundle_version: string
+  workflow_version: string
+  status: string
+  fetched_record_count: number
+  metric_snapshot_count: number
+  ranked_news_count: number
+  analyzed_news_count: number
+  completed_at: string
+}
+
+export interface HotNewsRunListResponse {
+  runs: HotNewsRunSummary[]
+  offset: number
+  limit: number
+}
+
+export interface HotNewsMetricSnapshotView {
+  news_id: string
+  content_type: string
+  window_start: string
+  window_end: string
+  impressions: number
+  clicks: number
+  unique_users: number
+  total_duration_seconds: number
+  effective_consumptions: number
+  interactions: number
+  /** 精确小数的字符串形式 */
+  ctr: string
+}
+
+export interface HotScoreView {
+  score: string
+  click_component: string
+  consumption_component: string
+  interaction_component: string
+  growth_component: string
+}
+
+export interface HotNewsAnalysisSummaryView {
+  trend_assessment: string
+  dominant_driver: string
+  attention_reasons: JsonObject[]
+  operation_suggestions: JsonObject[]
+  limitations: string[]
+  evidence_news_ids: string[]
+  overall_confidence: number
+  fastgpt_request_id: string | null
+  validated_at: string
+}
+
+export interface HotNewsRankedItemView {
+  rank: number
+  news_id: string
+  metrics: HotNewsMetricSnapshotView
+  baseline: JsonObject | null
+  hot_score: HotScoreView
+  analysis: HotNewsAnalysisSummaryView | null
+}
+
+export interface HotNewsDecisionView {
+  decision_id: string
+  news_id: string
+  decision_type: string
+  reason: string
+  correction_payload: JsonObject
+  operator_id: string
+  idempotency_key: string
+  supersedes_decision_id: string | null
+  created_at: string
+}
+
+export interface HotNewsRunDetailResponse {
+  run: HotNewsRunSummary
+  ranked_news: HotNewsRankedItemView[]
+  decisions: HotNewsDecisionView[]
+}
+
+export interface RecordHotNewsDecisionRequest {
+  run_id: string
+  news_id: string
+  decision_type: DecisionType
+  reason: string
+  correction_payload: JsonObject
+  idempotency_key: string
+  supersedes_decision_id: string | null
+  feedback_problem_type: FeedbackProblemType
+  feedback_severity: FeedbackSeverity
+}
+
+export interface RecordHotNewsDecisionResponse {
+  decision_id: string
+  decision_type: string
+  status: string
   created: boolean
 }

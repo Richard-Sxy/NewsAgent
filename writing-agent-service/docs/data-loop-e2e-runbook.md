@@ -36,10 +36,11 @@ Adapter 再跑一遍。
 - 标签提交人批准自己的标签；
 - Candidate 提交人批准自己的 Candidate。
 
-这里需要区分两类“人工”：`prepare` 会用两个不同的合成 UUID 自动执行标签提交和
-标签二审，以验证职责分离及 API 合约；真正读取 stdin、要求测试人员作出决定的是最终
-发布闸门。L3 发布验收还必须用真实 IdP 用户和企业 Gateway 重跑，合成身份不能替代
-真实人员身份验收。
+默认快速路径的 `prepare` 会用两个不同的合成 UUID 自动执行标签提交和标签二审，
+以验证职责分离及 API 合约。需要真人逐岗操作时，使用第 2.1 节的 opt-in 命令；它会在
+标签提交和独立二审处分别读取 stdin。无论采用哪条路径，最终发布闸门都必须读取 stdin
+（除非 CI 显式传入 `--action`）。L3 发布验收还必须用真实 IdP 用户和企业 Gateway
+重跑，合成身份不能替代真实人员身份验收。
 
 ## 2. 最快启动独立测试环境
 
@@ -74,6 +75,53 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml exec -T api alembic cu
 会立即失败并提示换新路径，而不会等待旧 Workflow。需要从零重置时使用第 11 节的
 `down -v`。
 
+### 2.1 可选：真人完成标签提交与独立二审
+
+这一模式替代第 3.1 节的单个 `prepare` 命令，但不会改变默认快速路径。第一位测试人员
+先把真实链路运行到 Feedback Case：
+
+```bash
+docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
+  e2e-runner prepare-feedback --state /state/manual-label.json
+```
+
+确认输出中的 `analysis_run_id`、`feedback_case_id`、原始分析证据和 `labeler` UUID 后，
+由标签提交人员运行：
+
+```bash
+docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
+  e2e-runner label-submit --state /state/manual-label.json
+```
+
+命令只有在操作人员输入字面值 `SUBMIT` 后才调用提交 API；标签必须处于 `pending`，
+且 `labeled_by` 必须等于输出中的 `labeler` UUID。此 E2E 命令提交的是驱动内预设的
+宽松 smoke-test 标签内容，人工动作只表示“确认提交”，不提供交互式标签编辑；真实标注
+内容和标注 UI 的验收仍属于 L3。然后由另一位测试人员核对标签内容和
+`label_reviewer` UUID，运行：
+
+```bash
+docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
+  e2e-runner label-review --state /state/manual-label.json \
+  --reason "独立二审已核对原始分析、证据和标签约束"
+```
+
+输入 `APPROVE` 时，驱动会验证 `approved_by != labeled_by`，并把标签批准时间保存为后续
+Dataset 冻结截止时间。随后用同一状态继续到最终发布闸门：
+
+```bash
+docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
+  e2e-runner prepare --state /state/manual-label.json
+```
+
+输入 `REJECT` 时，驱动调用标签 `/review` 接口执行 `request_changes`：服务端把当前标签
+写为 `rejected`，同时保存独立审核人、审核时间、退回理由与审核幂等键。该版本不能冻结进
+Dataset；标注人可把它作为 `expected_previous_version` 提交下一版本。权限为 `0600` 的
+本地状态仍保存同一决定，用于中断恢复和服务端交叉核验。
+
+CI 如需覆盖命令编排，可分别显式传入 `label-submit --action submit` 和
+`label-review --action approve|reject`；不传 `--action` 才是本节要求的真人 stdin 验收。
+状态文件仍不保存或输出 Gateway Token。
+
 ## 3. 必测：真实人员在门禁处批准
 
 ### 3.1 准备到人工门禁
@@ -85,9 +133,10 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
   e2e-runner prepare --state /state/manual-approve.json
 ```
 
-命令会自动完成：Base Bundle 初始化、一次在线热点运行、运营拒绝、Feedback Case、
+默认路径会自动完成：Base Bundle 初始化、一次在线热点运行、运营拒绝、Feedback Case、
 两个独立合成身份完成标签提交与二审、两层基准集冻结、Candidate 创建、Fresh 集自动
-冻结和三层回放。它只有在下面三个条件同时满足时才成功退出：
+冻结和三层回放。若已按第 2.1 节完成真人标签二审，则此命令从已批准标签继续。它只有在
+下面三个条件同时满足时才成功退出：
 
 ```text
 phase == waiting_approval
@@ -194,8 +243,11 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
 ```
 
 默认全量单测不会误连外部系统；只有 `RUN_DATA_LOOP_E2E=1` 才执行黑盒 E2E。
-该文件会自动覆盖批准与下一次运行、显式回滚、拒绝保持基线，以及“已审批但激活失败”
-的受限恢复；因此它是完整 L2 自动验收入口。人工 stdin 行为仍按第 3、4 节单独验收。
+该文件的 5 个测试会自动覆盖批准与下一次运行、显式回滚、拒绝保持基线、人工标签退回的
+服务端审计与冻结阻断、独立二审后恢复到发布闸门，以及“已审批但激活失败”的受限恢复；
+因此它是完整 L2 自动
+验收入口。自动套件用显式 `--action` 重放人工协议，真实 stdin 行为仍按第 2.1、3、4 节
+单独验收。
 
 ## 6. 数据库账本人工复核
 
@@ -214,7 +266,8 @@ FROM analysis_runs
 WHERE tenant_id = '<TENANT_UUID>'
 ORDER BY completed_at;
 
-SELECT labeled_by, approved_by, approval_status, label_version
+SELECT labeled_by, approved_by, reviewed_by, review_reason,
+       approval_status, label_version
 FROM feedback_labels
 WHERE tenant_id = '<TENANT_UUID>';
 
@@ -337,8 +390,23 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
 
 生产 Workflow 的默认策略是等待 48 小时，然后记录系统拒绝并返回
 `approval_expired`，绝不自动激活。不要在普通 E2E 中真实等待 48 小时；该分支应在
-Temporal time-skipping 集成环境中验证。当前仓库已有 Workflow 语义级回归，但专用
-Compose 尚未内置 time-skipping server，这是仍需补进 CI L1 的测试基础设施 TODO。
+Temporal 官方 time-skipping 测试环境中验证：
+
+```bash
+RUN_TEMPORAL_TIME_SKIPPING=1 PYTHONDONTWRITEBYTECODE=1 \
+  .venv/bin/python -m pytest tests/test_data_loop_time_skipping.py -q
+```
+
+该测试运行真实 `HotNewsDataLoopWorkflow` 和真实 Activity 边界，把 Temporal 逻辑时间
+推进至少 48 小时，并断言最终只依次执行 `freeze_dataset`、`attribute_errors`、
+`evaluate_candidate`、`record_promotion_decision`；最后一条决定必须是 `system/reject`，
+`activate_bundle` 不得执行。
+
+首次运行时 Temporal Python SDK 会下载与当前 SDK 兼容的官方 test-server 二进制；CI
+可用 `TEMPORAL_TEST_SERVER_DOWNLOAD_DIR` 指定缓存目录，或用
+`TEMPORAL_TEST_SERVER_PATH` 指向预置二进制以禁用下载。测试需要启动本地子进程和回环
+端口，因此受限沙箱中要为这两项能力授权。它默认 opt-in，不会让普通单测误下载或启动
+额外服务。
 
 ## 10. 测试分层与放行条件
 

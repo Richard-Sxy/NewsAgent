@@ -1,6 +1,6 @@
 # NewsAgent 持久项目上下文
 
-最后更新：2026-09-10
+最后更新：2026-09-11
 
 本文是用户要求跨后续项目会话复用的长期上下文。它保存已经确认的目标、架构判断、
 当前进度和工程约束，不保存密码、Token、`.env` 内容或企业原始用户数据。
@@ -74,10 +74,11 @@ Python 3.11、FastAPI、Temporal、PostgreSQL、Redis、S3/MinIO 构成的研究
 
 2026-09-10 复核：上述百分比是 2026-09-04 的历史基线。当前 Data Loop 按业务功能实现
 约 95%；本地依赖 L2 闭环（正常批准、人工拒绝、下一次线上运行、显式回滚、授权故障恢复）
-已经验收通过。按生产启用口径约 75%，差异主要来自真实 FastGPT App、企业数据 Adapter、
-网关/IdP、Schedule、对象存储生产治理，以及 48 小时审批超时的 Temporal time-skipping CI
-验收。全服务默认回归为 554 项通过、3 项 opt-in E2E 跳过；隔离 Compose 的完整 L2 为
-3 项通过。尚不能据此描述为生产已上线。
+已经验收通过；48 小时无人审批也已在 Temporal 官方 time-skipping 环境验证为系统拒绝且
+不激活。按生产启用口径约 75%，差异主要来自真实 FastGPT App、企业数据 Adapter、
+网关/IdP、Schedule 和对象存储生产治理。全服务默认回归为 592 项通过、5 项 opt-in
+集成/E2E 跳过；time-skipping L1 为 1 项通过，隔离 Compose 的完整 L2 为 4 项通过。
+尚不能据此描述为生产已上线。
 
 ## 4. 已确认的目标架构
 
@@ -303,12 +304,16 @@ Data Loop 核心回归 140 项通过。生产环境迁移/并发演练、Object 
 必做项；FastGPT 不支持业务幂等键时，模型调用语义仍是有界 at-least-once，不能声称
 exactly-once。
 
-2026-09-10 L2 验收补充：新增隔离 Compose 栈，实际启动 PostgreSQL、Temporal、Redis、
+2026-09-11 L1/L2 验收补充：新增隔离 Compose 栈，实际启动 PostgreSQL、Temporal、Redis、
 MinIO、API、HotNews Worker、Data Loop Worker 和确定性 FastGPT HTTP 替身。黑盒验收已
 实跑通过 `approve → activate → next run → rollback`、`REJECT → keep base active`，以及
 `approve ledger committed → forced activation failure → bounded recovery → next run` 三条路径；
-对象内容 SHA-256 与 Metadata、三层 Dataset、单一 Active Bundle、审批/激活账本唯一性均
-进入自动断言。另已实际操作 stdin 人工 `REJECT` 停点。该结果只代表本地依赖闭环，L3
+第四条路径会在 Feedback Case 后分别停住，由标签提交人确认 `SUBMIT`、独立二审人确认
+`APPROVE`，恢复后继续三层回放与最终发布闸门。对象内容 SHA-256 与 Metadata、三层
+Dataset、单一 Active Bundle、审批/激活账本唯一性均进入自动断言。另已实际操作 stdin
+完成 `SUBMIT → 标签 APPROVE → 发布 APPROVE → next run → rollback`，并实操最终发布
+`REJECT` 停点。Temporal 官方 time-skipping test server 也已验证 History 中 48 小时 Timer
+精确为 2 天，超时只记录 `system/reject`，不调用激活。该结果只代表本地依赖闭环，L3
 真实模型、企业 Gateway/IdP 和企业 Adapter 仍需发布前验收。
 
 ## 11. 后续阶段

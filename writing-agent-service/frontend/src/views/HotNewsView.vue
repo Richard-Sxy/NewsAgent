@@ -1,82 +1,188 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { onMounted, ref } from 'vue'
 
+import { hotNewsApi } from '@/api'
+import type {
+  HotNewsRankedItemView,
+  HotNewsRunDetailResponse,
+  HotNewsRunSummary,
+} from '@/api'
+import NaStateBlock from '@/components/NaStateBlock.vue'
+import HotNewsDecisionForm from '@/components/hotnews/HotNewsDecisionForm.vue'
+import HotNewsRankTable from '@/components/hotnews/HotNewsRankTable.vue'
 import { useAppStore } from '@/stores/app'
+import { describeError } from '@/utils/errors'
+import { formatDateTime } from '@/utils/format'
+import { decisionTypeLabel } from '@/utils/labels'
 
 const appStore = useAppStore()
 
-/**
- * 热点榜的确定性计算已在后端 `app/analytics` 落地，但**没有对外读接口**。
- * 企业版不保留前端假数据：运营看到的排名必须可追溯到后端计算，
- * 否则榜单无法审计。这里只声明前端期望的契约。
- */
-const expectedContract = [
-  {
-    method: 'GET',
-    path: '/api/v1/hot-news/runs',
-    purpose: '当前窗口的榜单与热度分量拆解',
-  },
-  {
-    method: 'GET',
-    path: '/api/v1/hot-news/runs/{run_id}',
-    purpose: '单条热点的 12 点趋势与决策记录',
-  },
-  {
-    method: 'POST',
-    path: '/api/v1/hot-news/decisions',
-    purpose: '运营决策（采纳 / 拒绝 / 修正）',
-  },
-]
+const runs = ref<HotNewsRunSummary[]>([])
+const runsLoading = ref(false)
+const runsError = ref<string | null>(null)
+
+const selectedRunId = ref<string | null>(null)
+const detail = ref<HotNewsRunDetailResponse | null>(null)
+const detailLoading = ref(false)
+const detailError = ref<string | null>(null)
+
+/** 决策表单预填的 news_id；点榜单行的"决策"按钮时更新。 */
+const decisionNewsId = ref('')
+
+async function loadRuns(): Promise<void> {
+  runsLoading.value = true
+  runsError.value = null
+  try {
+    const page = await hotNewsApi.listRuns({ limit: 20 })
+    runs.value = page.runs
+    if (page.runs.length > 0 && !selectedRunId.value) {
+      await selectRun(page.runs[0].run_id)
+    }
+  } catch (cause) {
+    runsError.value = describeError(cause)
+  } finally {
+    runsLoading.value = false
+  }
+}
+
+async function selectRun(runId: string): Promise<void> {
+  selectedRunId.value = runId
+  detailLoading.value = true
+  detailError.value = null
+  detail.value = null
+  try {
+    detail.value = await hotNewsApi.runDetail(runId)
+  } catch (cause) {
+    detailError.value = describeError(cause)
+  } finally {
+    detailLoading.value = false
+  }
+}
+
+function prefillDecision(item: HotNewsRankedItemView): void {
+  decisionNewsId.value = item.news_id
+}
+
+async function onDecisionRecorded(): Promise<void> {
+  if (selectedRunId.value) await selectRun(selectedRunId.value)
+}
+
+onMounted(loadRuns)
 </script>
 
 <template>
   <section class="na-card">
     <div class="na-card__head">
       <h2>热点运营工作台</h2>
-      <span class="na-badge na-badge--sample">后端接口未接入</span>
+      <span class="na-badge na-badge--live">GET /hot-news/runs</span>
     </div>
 
-    <div class="na-notice">
-      该模块在旧版单文件控制台中渲染的是前端内置示例数据。企业版不保留假数据，
-      因此这里不展示任何排名或趋势 —— 避免运营依据伪造的榜单做决策。
-    </div>
-
-    <h3>当前可用能力</h3>
-    <p class="na-muted">
-      热点的判决链路已经存在，可通过
-      <RouterLink :to="{ name: 'data-loop-feedback' }">Data Loop 评审台</RouterLink>
-      记录运营决策与反馈案例，那组的写接口是真实的，可以直接使用。
-    </p>
-
-    <p v-if="!appStore.hotNewsEnabled" class="na-muted">
+    <p v-if="!appStore.hotNewsEnabled" class="na-notice">
       运行时配置中 <code>enableHotNews</code> 为 false，本模块在网关侧未开放。
     </p>
+
+    <div class="na-row na-row--end">
+      <button class="na-btn" type="button" :disabled="runsLoading" @click="loadRuns">
+        {{ runsLoading ? '刷新中…' : '刷新运行列表' }}
+      </button>
+    </div>
+
+    <NaStateBlock
+      :loading="runsLoading && runs.length === 0"
+      :error="runsError"
+      :empty="runs.length === 0"
+      empty-text="当前租户还没有已完成的热点运行"
+      loading-text="加载热点运行…"
+    >
+      <table class="na-table">
+        <thead>
+          <tr>
+            <th>窗口</th>
+            <th>Production Bundle</th>
+            <th style="width: 72px">上榜</th>
+            <th style="width: 72px">已分析</th>
+            <th>完成时间</th>
+            <th style="width: 72px" />
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="run in runs"
+            :key="run.run_id"
+            :class="{ 'na-row--active': run.run_id === selectedRunId }"
+          >
+            <td class="na-mono">
+              {{ formatDateTime(run.window_start) }} ~ {{ formatDateTime(run.window_end) }}
+            </td>
+            <td class="na-mono">{{ run.production_bundle_version }}</td>
+            <td>{{ run.ranked_news_count }}</td>
+            <td>{{ run.analyzed_news_count }}</td>
+            <td>{{ formatDateTime(run.completed_at) }}</td>
+            <td>
+              <button class="na-btn" type="button" @click="selectRun(run.run_id)">查看</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </NaStateBlock>
   </section>
 
-  <section class="na-card">
+  <section v-if="selectedRunId" class="na-card">
     <div class="na-card__head">
-      <h2>接入前提：后端需要补齐的只读接口</h2>
+      <h2>榜单与热度分量</h2>
+      <span v-if="detail" class="na-badge">{{ detail.run.status }}</span>
+    </div>
+
+    <NaStateBlock
+      :loading="detailLoading"
+      :error="detailError"
+      :empty="!detail"
+      empty-text="选择一次运行查看榜单"
+      loading-text="加载榜单…"
+    >
+      <template v-if="detail">
+        <p class="na-muted">
+          窗口 {{ formatDateTime(detail.run.window_start) }} ~ {{ formatDateTime(detail.run.window_end) }}
+          · 行为记录 {{ detail.run.fetched_record_count }} 条 · 指标快照
+          {{ detail.run.metric_snapshot_count }} 篇 · 数字均来自后端确定性计算，可追溯到
+          analysis_runs 快照。
+        </p>
+
+        <HotNewsRankTable :items="detail.ranked_news" @decide="prefillDecision" />
+      </template>
+    </NaStateBlock>
+  </section>
+
+  <section v-if="detail && detail.decisions.length" class="na-card">
+    <div class="na-card__head">
+      <h2>本次运行的决策记录</h2>
     </div>
     <table class="na-table">
       <thead>
         <tr>
-          <th style="width: 76px">方法</th>
-          <th style="width: 300px">路径</th>
-          <th>用途</th>
+          <th>news_id</th>
+          <th style="width: 84px">决策</th>
+          <th>原因</th>
+          <th style="width: 160px">操作者</th>
+          <th style="width: 170px">时间</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in expectedContract" :key="item.path">
-          <td>
-            <span class="na-badge">{{ item.method }}</span>
-          </td>
-          <td class="na-mono">{{ item.path }}</td>
-          <td class="na-muted">{{ item.purpose }}</td>
+        <tr v-for="item in detail.decisions" :key="item.decision_id">
+          <td class="na-mono">{{ item.news_id }}</td>
+          <td>{{ decisionTypeLabel(item.decision_type) }}</td>
+          <td>{{ item.reason }}</td>
+          <td class="na-mono">{{ item.operator_id.slice(0, 8) }}…</td>
+          <td>{{ formatDateTime(item.created_at) }}</td>
         </tr>
       </tbody>
     </table>
-    <p class="na-muted">
-      接口就绪后，本页只需替换数据来源，页面结构与交互无需重写。
-    </p>
   </section>
+
+  <HotNewsDecisionForm
+    v-if="selectedRunId"
+    :run-id="selectedRunId"
+    :news-id="decisionNewsId"
+    @recorded="onDecisionRecorded"
+  />
 </template>

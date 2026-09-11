@@ -3,6 +3,11 @@ import pytest
 from crawler.tencent_news import NewsArticle
 from service.ingest_repository import IngestRepository
 from service.news_ingest_service import NewsIngestService
+from intelligence.title_nlp import (
+    TitleAnalysis,
+    TitleEntity,
+    TitleToken,
+)
 
 
 class FakeCrawler:
@@ -42,6 +47,22 @@ class FakeFastGPTClient:
         }
 
 
+class FakeTitleAnalyzer:
+    extractor = "fake-ltp"
+    model_version = "fake-v1"
+
+    def analyze(self, title):
+        return TitleAnalysis(
+            title=title,
+            tokens=(TitleToken(title, "nh", 0, len(title)),),
+            entities=(
+                TitleEntity(title, title, "person", 0, len(title), "ner"),
+            ),
+            extractor=self.extractor,
+            model_version=self.model_version,
+        )
+
+
 def test_ingest_url(tmp_path):
     crawler = FakeCrawler()
     fastgpt_client = FakeFastGPTClient()
@@ -78,6 +99,52 @@ def test_ingest_url(tmp_path):
         fastgpt_client.received_text
     )
     assert fastgpt_client.received_metadata == {"topic": "科技"}
+
+
+def test_ingest_url_analyzes_title_persists_and_forwards_metadata(tmp_path):
+    crawler = FakeCrawler()
+    fastgpt_client = FakeFastGPTClient()
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    service = NewsIngestService(
+        crawler=crawler,
+        fastgpt_client=fastgpt_client,
+        repository=repository,
+        title_analyzer=FakeTitleAnalyzer(),
+    )
+
+    result = service.ingest_url("https://news.qq.com/rain/a/NLP")
+
+    assert result["status"] == "success"
+    stored = repository.get_title_analysis(result["url"])
+    assert stored["status"] == "success"
+    assert stored["entities"][0]["entity_type"] == "person"
+    assert fastgpt_client.received_metadata["title_persons"] == ["测试新闻"]
+    assert fastgpt_client.received_metadata["title_tokens"] == ["测试新闻"]
+
+
+def test_ingest_url_continues_when_optional_title_analysis_fails(tmp_path):
+    class BrokenAnalyzer:
+        extractor = "broken"
+        model_version = "broken-v1"
+
+        def analyze(self, title):
+            raise RuntimeError("模拟 NLP 故障")
+
+    fastgpt_client = FakeFastGPTClient()
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    service = NewsIngestService(
+        crawler=FakeCrawler(),
+        fastgpt_client=fastgpt_client,
+        repository=repository,
+        title_analyzer=BrokenAnalyzer(),
+    )
+
+    result = service.ingest_url("https://news.qq.com/rain/a/NLP-OPTIONAL")
+
+    assert result["status"] == "success"
+    stored = repository.get_title_analysis(result["url"])
+    assert stored["status"] == "failed"
+    assert stored["error_message"] == "模拟 NLP 故障"
 
 class ConfigurableCrawler:
 

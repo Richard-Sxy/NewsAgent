@@ -26,6 +26,7 @@ from app.schemas.analysis_feedback import (
     FeedbackStatus,
     PublicationOutcome,
     RecordPublicationOutcomeCommand,
+    RequestChangesAnalysisFeedbackLabelCommand,
     SubmitAnalysisFeedbackLabelCommand,
 )
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
@@ -706,6 +707,7 @@ class AnalysisFeedbackCollector:
                 expected_label_version=command.expected_label_version,
                 approved_by=command.approved_by,
                 approved_at=command.approved_at,
+                review_reason=command.review_reason,
                 approval_idempotency_key=command.idempotency_key,
             )
             if not approved:
@@ -733,6 +735,10 @@ class AnalysisFeedbackCollector:
                     "approved_by": command.approved_by,
                     "approved_at": command.approved_at,
                     "approval_idempotency_key": command.idempotency_key,
+                    "reviewed_by": command.approved_by,
+                    "reviewed_at": command.approved_at,
+                    "review_reason": command.review_reason,
+                    "review_idempotency_key": command.idempotency_key,
                 }
             )
             return FeedbackLabelWriteOutcome(approved_label, True)
@@ -749,6 +755,120 @@ class AnalysisFeedbackCollector:
         except SQLAlchemyError as exc:
             raise AnalysisFeedbackPersistenceError(
                 "Feedback Label 批准持久化失败"
+            ) from exc
+
+    async def request_label_changes(
+        self,
+        session: AsyncSession,
+        *,
+        tenant_id: str,
+        command: RequestChangesAnalysisFeedbackLabelCommand,
+    ) -> FeedbackLabelWriteOutcome:
+        """退回最新标签版本；审核人与标注人必须分离并完整留痕。"""
+
+        tenant_id = self._validate_identity(tenant_id, "tenant_id")
+        repository = PostgresAnalysisFeedbackRepository(session)
+        try:
+            replay = await repository.get_label_by_review_idempotency_key(
+                tenant_id=tenant_id,
+                idempotency_key=command.idempotency_key,
+            )
+            if replay is not None:
+                self._ensure_same_change_request(replay, command)
+                return FeedbackLabelWriteOutcome(replay, False)
+
+            feedback_case = await repository.get_case_for_update(
+                tenant_id=tenant_id,
+                feedback_case_id=command.feedback_case_id,
+            )
+            if feedback_case is None:
+                raise AnalysisFeedbackTargetNotFoundError(
+                    "Feedback Case 不存在"
+                )
+            if feedback_case.status in {"excluded", "frozen"}:
+                raise AnalysisFeedbackConflictError(
+                    "当前 Feedback Case 状态不允许退回标签"
+                )
+            label = await repository.get_label_for_update(
+                tenant_id=tenant_id,
+                feedback_case_id=command.feedback_case_id,
+                label_id=command.label_id,
+            )
+            if label is None:
+                raise AnalysisFeedbackTargetNotFoundError(
+                    "Feedback Label 不存在"
+                )
+            latest = await repository.get_latest_label_for_update(
+                tenant_id=tenant_id,
+                feedback_case_id=command.feedback_case_id,
+            )
+            if latest is None or latest.id != label.id:
+                raise AnalysisFeedbackConflictError(
+                    "只能退回当前最新标签版本"
+                )
+            if (
+                label.label_version != command.expected_label_version
+                or label.approval_status != "pending"
+            ):
+                raise AnalysisFeedbackConflictError(
+                    "Feedback Label 版本或状态已发生变化"
+                )
+            if command.reviewed_at < label.labeled_at:
+                raise ValueError(
+                    "reviewed_at cannot be earlier than labeled_at"
+                )
+            if command.reviewed_by == label.labeled_by:
+                raise AnalysisFeedbackConflictError(
+                    "Feedback Label submitter cannot review their own label"
+                )
+
+            changed = await repository.request_label_changes(
+                tenant_id=tenant_id,
+                feedback_case_id=command.feedback_case_id,
+                label_id=command.label_id,
+                expected_label_version=command.expected_label_version,
+                reviewed_by=command.reviewed_by,
+                reviewed_at=command.reviewed_at,
+                review_reason=command.review_reason,
+                review_idempotency_key=command.idempotency_key,
+            )
+            if not changed:
+                raise AnalysisFeedbackConflictError(
+                    "Feedback Label 版本或状态已发生变化"
+                )
+            status_changed = await repository.update_case_status(
+                tenant_id=tenant_id,
+                feedback_case_id=command.feedback_case_id,
+                expected_statuses=("collected", "needs_label"),
+                status="needs_label",
+            )
+            if not status_changed:
+                raise AnalysisFeedbackConflictError(
+                    "Feedback Case 状态已发生变化"
+                )
+            reviewed = label.model_copy(
+                update={
+                    "approval_status": "rejected",
+                    "reviewed_by": command.reviewed_by,
+                    "reviewed_at": command.reviewed_at,
+                    "review_reason": command.review_reason,
+                    "review_idempotency_key": command.idempotency_key,
+                }
+            )
+            return FeedbackLabelWriteOutcome(reviewed, True)
+        except (
+            AnalysisFeedbackTargetNotFoundError,
+            AnalysisFeedbackConflictError,
+            AnalysisFeedbackPersistenceError,
+        ):
+            raise
+        except IntegrityError as exc:
+            raise AnalysisFeedbackConflictError(
+                "Feedback Label 退回发生数据库约束冲突"
+            ) from exc
+        except SQLAlchemyError as exc:
+            raise AnalysisFeedbackPersistenceError(
+                "Feedback Label 退回持久化失败"
             ) from exc
 
     @staticmethod
@@ -828,9 +948,27 @@ class AnalysisFeedbackCollector:
             or existing.label_version != command.expected_label_version
             or existing.approval_status != "approved"
             or existing.approved_by != command.approved_by
+            or existing.review_reason != command.review_reason
         ):
             raise AnalysisFeedbackConflictError(
                 "同一个 idempotency_key 对应不同的标签批准内容"
+            )
+
+    @staticmethod
+    def _ensure_same_change_request(
+        existing: AnalysisFeedbackLabel,
+        command: RequestChangesAnalysisFeedbackLabelCommand,
+    ) -> None:
+        if (
+            existing.feedback_case_id != command.feedback_case_id
+            or existing.id != command.label_id
+            or existing.label_version != command.expected_label_version
+            or existing.approval_status != "rejected"
+            or existing.reviewed_by != command.reviewed_by
+            or existing.review_reason != command.review_reason
+        ):
+            raise AnalysisFeedbackConflictError(
+                "同一个 idempotency_key 对应不同的标签退回内容"
             )
 
     @staticmethod

@@ -187,9 +187,37 @@ def test_approved_label_requires_an_independent_reviewer() -> None:
             approved_by="operator-1",
             approved_at=NOW,
             approval_idempotency_key="feedback-label-approve-1",
+            reviewed_by="operator-1",
+            reviewed_at=NOW,
+            review_reason="同意标签",
+            review_idempotency_key="feedback-label-approve-1",
             idempotency_key="feedback-label-1",
             recorded_at=NOW,
         )
+
+
+def test_rejected_label_requires_auditable_independent_review() -> None:
+    label = AnalysisFeedbackLabel(
+        id=UUID(int=2),
+        tenant_id="tenant-1",
+        feedback_case_id=UUID(int=1),
+        label_version=1,
+        verdict="incorrect",
+        allowed_dominant_drivers=("click",),
+        operator_comment="分析有误",
+        approval_status="rejected",
+        labeled_by="operator-1",
+        labeled_at=NOW,
+        reviewed_by="reviewer-1",
+        reviewed_at=NOW,
+        review_reason="证据编号与输入快照不一致，请修订",
+        review_idempotency_key="feedback-label-review-1",
+        idempotency_key="feedback-label-1",
+        recorded_at=NOW,
+    )
+
+    assert label.approval_status == "rejected"
+    assert label.reviewed_by == "reviewer-1"
 
 
 def test_publication_outcome_only_accepts_aggregate_metrics() -> None:

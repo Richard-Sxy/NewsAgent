@@ -202,6 +202,20 @@ class PostgresProductionBundleRepository:
         record = result.scalar_one_or_none()
         return None if record is None else self.to_evaluation_domain(record)
 
+    async def get_evaluation(
+        self,
+        *,
+        tenant_id: str,
+        evaluation_run_id: UUID,
+    ) -> CandidateEvaluationRun | None:
+        statement = select(CandidateEvaluationRunRecord).where(
+            CandidateEvaluationRunRecord.tenant_id == tenant_id,
+            CandidateEvaluationRunRecord.id == evaluation_run_id,
+        )
+        result = await self._session.execute(statement)
+        record = result.scalar_one_or_none()
+        return None if record is None else self.to_evaluation_domain(record)
+
     async def get_evaluation_by_idempotency_key(
         self,
         *,

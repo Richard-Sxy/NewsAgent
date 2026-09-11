@@ -131,6 +131,17 @@ def test_operator_decision_links_are_tenant_scoped() -> None:
     )
 
 
+def test_feedback_label_review_is_auditable_and_separated() -> None:
+    table = Base.metadata.tables["feedback_labels"]
+    constraint_names = {constraint.name for constraint in table.constraints}
+    assert "uq_feedback_labels_tenant_review_idempotency_key" in constraint_names
+    assert "ck_feedback_labels_review_metadata_valid" in constraint_names
+    assert "ck_feedback_labels_review_order_valid" in constraint_names
+    assert "ck_feedback_labels_review_separation_valid" in constraint_names
+    assert "ck_feedback_labels_review_approval_consistent" in constraint_names
+    assert table.c.review_reason.nullable is True
+
+
 def test_all_tables_compile_for_postgresql() -> None:
     dialect = postgresql.dialect()
     for table in Base.metadata.sorted_tables:

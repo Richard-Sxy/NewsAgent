@@ -381,6 +381,7 @@ class HotNewsAnalysisService:
         runner: HotNewsAnalysisAgentRunner,
         validator: HotNewsAnalysisValidator,
     ) -> None:
+        """输入构建/LLM调用/错误验证"""
         self.input_builder = input_builder
         self.runner = runner
         self.validator = validator

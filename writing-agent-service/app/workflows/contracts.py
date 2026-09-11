@@ -101,3 +101,20 @@ class HotNewsActivityOutcome:
     metric_snapshot_count: int
     ranked_news_count: int
     analyzed_news_count: int
+
+
+@dataclass(frozen=True)
+class HotNewsWindowDispatchRequest:
+    """Temporal Schedule 触发的热点窗口分发请求。
+
+    Schedule 的 action 参数是静态的，不能携带"当前时间"；分发 Workflow
+    在每次触发时用 ``workflow.now()`` 计算 ``[now - window_minutes, now)``
+    窗口，再以子 Workflow 启动一次有边界的热点监控运行。
+    每个租户组一个 Schedule，组内只含一个租户的生产 Bundle 配置。
+    """
+
+    tenant_group: str
+    tenant_id: str
+    window_minutes: int
+    production_bundle_version: str
+    workflow_version: str = "hot-news-workflow-v1"

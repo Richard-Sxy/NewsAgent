@@ -19,8 +19,11 @@ x-writing-agent-env: &writing-agent-env
   FASTGPT_HOT_NEWS_APP_ID: ${FASTGPT_HOT_NEWS_APP_ID:-}
   FASTGPT_ERROR_ATTRIBUTION_APP_ID: ${FASTGPT_ERROR_ATTRIBUTION_APP_ID:-}
   HOT_NEWS_RUNTIME_MANIFEST_JSON: ${HOT_NEWS_RUNTIME_MANIFEST_JSON:?must be set}
-  CMS_PUBLISH_URL: ${CMS_PUBLISH_URL:-}
-  CMS_PUBLISH_TOKEN: ${CMS_PUBLISH_TOKEN:-}
+  HOT_NEWS_SCHEDULE_DEFINITIONS_JSON: ${HOT_NEWS_SCHEDULE_DEFINITIONS_JSON:-[]}
+  HOT_NEWS_DEPENDENCIES_FACTORY: ${HOT_NEWS_DEPENDENCIES_FACTORY:-}
+  # 企业 CMS 未接入前，默认指向本 compose 栈内的 mock-cms；生产由真实网关覆盖。
+  CMS_PUBLISH_URL: ${CMS_PUBLISH_URL:-http://mock-cms:8080/api/v1/publications}
+  CMS_PUBLISH_TOKEN: ${CMS_PUBLISH_TOKEN:-mock-cms-dev-token}
   CMS_PUBLISH_TIMEOUT_SECONDS: ${CMS_PUBLISH_TIMEOUT_SECONDS:-30}
   ARTIFACT_BUCKET: ${ARTIFACT_BUCKET}
   ARTIFACT_ENDPOINT: http://fastgpt-minio:9000
@@ -170,6 +173,36 @@ services:
           cpus: "${DATA_LOOP_WORKER_CPU_LIMIT:-2.0}"
           memory: "${DATA_LOOP_WORKER_MEMORY_LIMIT:-2G}"
 
+  # 热点监控 Worker：消费 TEMPORAL_HOT_NEWS_TASK_QUEUE（默认 hot-news）。
+  # 依赖由 HOT_NEWS_DEPENDENCIES_FACTORY 在运行期解析，未配置则启动即失败。
+  hot-news-worker:
+    <<: *writing-agent-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_started
+    command: ["python", "-m", "app.hot_news_worker"]
+    deploy:
+      resources:
+        limits:
+          cpus: "${HOT_NEWS_WORKER_CPU_LIMIT:-2.0}"
+          memory: "${HOT_NEWS_WORKER_MEMORY_LIMIT:-2G}"
+
+  # Schedule provisioning：一次性任务，按 HOT_NEWS_SCHEDULE_DEFINITIONS_JSON
+  # 幂等创建/更新每个租户组的 Schedule，成功后退出。定义为空时直接返回 0。
+  hot-news-scheduler:
+    <<: *writing-agent-service
+    restart: "no"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_started
+      hot-news-worker:
+        condition: service_started
+    command: ["python", "-m", "app.hot_news_scheduler", "ensure"]
+
   outbox-worker:
     <<: *writing-agent-service
     depends_on:
@@ -181,6 +214,32 @@ services:
         limits:
           cpus: "${OUTBOX_CPU_LIMIT:-0.5}"
           memory: "${OUTBOX_MEMORY_LIMIT:-512M}"
+
+  # 本地/测试用 Mock CMS 发布网关（企业 CMS 暂未提供）；生产环境不要启用，
+  # 直接用真实 CMS_PUBLISH_URL / CMS_PUBLISH_TOKEN 覆盖即可。
+  mock-cms:
+    build:
+      context: ./mock-cms
+      dockerfile: Dockerfile
+    image: news-agent/mock-cms:dev
+    restart: unless-stopped
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    environment:
+      MOCK_CMS_TOKEN: ${CMS_PUBLISH_TOKEN:-mock-cms-dev-token}
+    networks:
+      - news-agent
+    ports:
+      - "18080:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   writing-postgres-data:

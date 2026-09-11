@@ -226,8 +226,11 @@ class AnalysisFeedbackCaseRecord(TimestampMixin, Base):
     analysis_input_snapshot: Mapped[dict[str, Any]] = mapped_column(
         JSONB, nullable=False
     )
+    # none_as_null=True 是必须的：SQLAlchemy 的 JSONB 默认把 Python None 序列化成
+    # JSON 字面量 'null'，而不是 SQL NULL，会踩 ck_feedback_cases_output_snapshot_object
+    # （该约束只放行 SQL NULL 与 JSON object，jsonb_typeof('null') = 'null' 会被拒）。
     analysis_output_snapshot: Mapped[dict[str, Any] | None] = mapped_column(
-        JSONB, nullable=True
+        JSONB(none_as_null=True), nullable=True
     )
     source_reference: Mapped[dict[str, Any]] = mapped_column(
         JSONB, nullable=False
@@ -273,6 +276,11 @@ class AnalysisFeedbackLabelRecord(TimestampMixin, Base):
             "approval_idempotency_key",
             name="uq_feedback_labels_tenant_approval_idempotency_key",
         ),
+        UniqueConstraint(
+            "tenant_id",
+            "review_idempotency_key",
+            name="uq_feedback_labels_tenant_review_idempotency_key",
+        ),
         Index(
             "ix_feedback_labels_tenant_case_version",
             "tenant_id",
@@ -317,6 +325,31 @@ class AnalysisFeedbackLabelRecord(TimestampMixin, Base):
         CheckConstraint(
             "approved_by IS NULL OR approved_by <> labeled_by",
             name="approval_separation_valid",
+        ),
+        CheckConstraint(
+            "(approval_status IN ('approved', 'rejected') "
+            "AND reviewed_by IS NOT NULL AND reviewed_at IS NOT NULL "
+            "AND review_reason IS NOT NULL "
+            "AND review_idempotency_key IS NOT NULL) OR "
+            "(approval_status = 'pending' AND reviewed_by IS NULL "
+            "AND reviewed_at IS NULL AND review_reason IS NULL "
+            "AND review_idempotency_key IS NULL) OR "
+            "approval_status = 'superseded'",
+            name="review_metadata_valid",
+        ),
+        CheckConstraint(
+            "reviewed_at IS NULL OR reviewed_at >= labeled_at",
+            name="review_order_valid",
+        ),
+        CheckConstraint(
+            "reviewed_by IS NULL OR reviewed_by <> labeled_by",
+            name="review_separation_valid",
+        ),
+        CheckConstraint(
+            "approval_status <> 'approved' OR "
+            "(reviewed_by = approved_by AND reviewed_at = approved_at "
+            "AND review_idempotency_key = approval_idempotency_key)",
+            name="review_approval_consistent",
         ),
         CheckConstraint(
             "labeled_at <= recorded_at",
@@ -366,6 +399,16 @@ class AnalysisFeedbackLabelRecord(TimestampMixin, Base):
         String(160), nullable=False
     )
     approval_idempotency_key: Mapped[str | None] = mapped_column(
+        String(160), nullable=True
+    )
+    reviewed_by: Mapped[str | None] = mapped_column(
+        String(128), nullable=True
+    )
+    reviewed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    review_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    review_idempotency_key: Mapped[str | None] = mapped_column(
         String(160), nullable=True
     )
     recorded_at: Mapped[datetime] = mapped_column(

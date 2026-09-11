@@ -46,6 +46,46 @@ QA_MAX_RETRY_COUNT=3
 
 试运行阶段建议每个分类限制为 5 篇。确认连续运行稳定后，再逐步提高数量。
 
+## 本地标题分词与实体抽取
+
+新闻导入链路支持使用哈工大 LTP 在本机完成标题分词、词性标注和实体抽取，当前输出三类实体：
+
+- `person`：人名，对应 LTP 的 `Nh`。
+- `organization`：企业或其他机构，对应 `Ni`，并使用企业词典修正简称和别名。
+- `proper_noun`：其他专有名词，主要由 `nz` 词性以及英文大写词元补充。
+
+模型只读取新闻标题，不执行标题中的任何指令。抽取结果写入 SQLite 的
+`news_title_analyses` 和 `news_title_entities`，同时作为 `title_*` metadata 发送给
+FastGPT，便于后续检索、事件聚类和实体热度统计。
+
+首次安装和下载模型：
+
+```bash
+python -m pip install -r requirements-nlp.txt
+python -m scripts.download_title_nlp_model
+```
+
+验证成功后在 `.env` 启用：
+
+```env
+TITLE_NLP_ENABLED=true
+TITLE_NLP_MODEL=LTP/tiny
+TITLE_NLP_CACHE_DIR=data/models/huggingface
+TITLE_NLP_LOCAL_FILES_ONLY=true
+TITLE_NLP_LEXICON_PATH=intelligence/extraction/title_entity_lexicon.json
+TITLE_NLP_REQUIRED=false
+```
+
+默认使用约 35MB 的 `LTP/tiny`，CPU 即可运行。生产导入保持
+`TITLE_NLP_LOCAL_FILES_ONLY=true`，避免任务运行期间临时联网下载。默认
+`TITLE_NLP_REQUIRED=false` 表示 NLP 故障会被单独记录，但不阻断新闻正文和 FastGPT
+入库；如果实体是下游必需字段，可改为 `true` 将其提升为数据质量硬门槛。
+
+企业别名和行业专有词维护在
+`intelligence/extraction/title_entity_lexicon.json`。通用模型无法可靠区分所有企业和普通
+机构，因此生产上线前应从真实标题抽样标注，分别评测人名、企业和专有名词的精确率、
+召回率，并持续把高频简称加入词典。
+
 ## 启动前检查
 
 每日任务依赖 FastGPT 和 AI Proxy。执行任务前检查服务：

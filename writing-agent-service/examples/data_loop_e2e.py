@@ -11,6 +11,14 @@ Typical manual flow::
     python -m examples.data_loop_e2e verify --state /tmp/data-loop.json
     python -m examples.data_loop_e2e rollback --state /tmp/data-loop.json
 
+To exercise both human label duties as explicit resumable stops, replace the
+first command with::
+
+    python -m examples.data_loop_e2e prepare-feedback --state /tmp/data-loop.json
+    python -m examples.data_loop_e2e label-submit --state /tmp/data-loop.json
+    python -m examples.data_loop_e2e label-review --state /tmp/data-loop.json
+    python -m examples.data_loop_e2e prepare --state /tmp/data-loop.json
+
 ``decide`` deliberately prompts for the literal word APPROVE or REJECT unless
 ``--action`` is supplied by an automated test.  The state file contains only
 public test identifiers and immutable Bundle specs; the gateway token is never
@@ -117,6 +125,9 @@ class E2EState:
     post_activation_run_id: str | None = None
     post_activation_run_key: str | None = None
     rolled_back: bool = False
+    manual_label_gate: bool = False
+    label_review_decision: str | None = None
+    label_review_reason: str | None = None
     checks: dict[str, bool] = field(default_factory=dict)
     updated_at: str | None = None
 
@@ -185,6 +196,24 @@ class E2EState:
             raise E2EFailure("every E2E duty must use a distinct user UUID")
         ProductionBundleSpec.model_validate(self.base_spec)
         ProductionBundleSpec.model_validate(self.candidate_spec)
+        if self.label_review_decision not in {None, "approve", "reject"}:
+            raise E2EFailure(
+                "label_review_decision must be approve, reject, or null"
+            )
+        if self.label_review_decision is not None and not self.manual_label_gate:
+            raise E2EFailure(
+                "label_review_decision requires the opt-in manual label gate"
+            )
+        if self.label_review_decision is None and self.label_review_reason is not None:
+            raise E2EFailure(
+                "label_review_reason requires a recorded label review decision"
+            )
+        if self.label_review_decision is not None and not str(
+            self.label_review_reason or ""
+        ).strip():
+            raise E2EFailure(
+                "a recorded label review decision requires a non-empty reason"
+            )
 
     def require(self, *names: str) -> None:
         missing = [name for name in names if getattr(self, name) in (None, "")]
@@ -434,6 +463,162 @@ class DataLoopE2EDriver:
         self.checkpoint()
         report = self._report(snapshot=snapshot, candidate=candidate)
         _print_event("prepared_for_human_decision", report)
+        return report
+
+    async def prepare_feedback_for_human_label(self) -> dict[str, Any]:
+        """Run only to a durable Feedback Case and require explicit label duties."""
+
+        await self.api.preflight()
+        if self.state.label_review_decision == "reject":
+            raise E2EFailure(
+                "the human label reviewer rejected this scenario; create a new "
+                "label version or use a new --state path"
+            )
+        self.state.manual_label_gate = True
+        self.checkpoint()
+        await self._bootstrap_base_bundle()
+        await self._run_initial_hot_news_window()
+        await self._record_operator_feedback()
+        if self.state.label_id is None:
+            self.state.check("waiting_for_human_label_submission", True)
+        self.checkpoint()
+        report = self._report()
+        _print_event("prepared_for_human_label_submission", report)
+        return report
+
+    async def submit_human_label(self) -> dict[str, Any]:
+        """Submit the test label with the dedicated labeler identity only."""
+
+        await self.api.preflight()
+        if not self.state.manual_label_gate:
+            raise E2EFailure(
+                "manual label submission requires a state created by "
+                "prepare-feedback"
+            )
+        if self.state.label_review_decision == "reject":
+            raise E2EFailure(
+                "the human reviewer already rejected this label scenario"
+            )
+        await self._submit_label()
+        label = await self._get_state_label()
+        self.state.check(
+            "human_label_was_submitted_by_labeler",
+            label.get("approval_status") in {"pending", "approved"}
+            and label.get("labeled_by") == self.state.actors["labeler"],
+        )
+        if label.get("approval_status") == "pending":
+            self.state.check(
+                "human_label_submitted_pending_review",
+                label.get("approved_by") is None,
+            )
+        self.checkpoint()
+        report = self._report(label=label)
+        _print_event("human_label_submitted", report)
+        return report
+
+    async def review_human_label(
+        self,
+        action: Literal["approve", "reject"],
+        *,
+        reason: str,
+    ) -> dict[str, Any]:
+        """Persist an independent approval or request-changes decision."""
+
+        await self.api.preflight()
+        if not self.state.manual_label_gate:
+            raise E2EFailure(
+                "manual label review requires a state created by prepare-feedback"
+            )
+        if action not in {"approve", "reject"}:
+            raise E2EFailure("label review action must be approve or reject")
+        self.state.require("feedback_case_id", "label_id", "label_version")
+        if not reason.strip():
+            raise E2EFailure("label review reason cannot be empty")
+        if len(reason.strip()) > 500:
+            raise E2EFailure("label review reason must not exceed 500 characters")
+        if self.state.label_review_decision is not None:
+            if self.state.label_review_decision != action:
+                raise E2EFailure(
+                    "state already contains label review decision "
+                    f"{self.state.label_review_decision!r}"
+                )
+            if self.state.label_review_reason != reason.strip():
+                raise E2EFailure(
+                    "state already contains this label review action with a "
+                    "different reason"
+                )
+            label = await self._get_state_label()
+            report = self._report(label=label)
+            _print_event("human_label_review_replayed", report)
+            return report
+
+        label = await self._get_state_label()
+        if action == "approve" and label.get("approval_status") == "approved":
+            self.state.check(
+                "human_label_review_approved_independently",
+                label.get("labeled_by") == self.state.actors["labeler"]
+                and label.get("approved_by")
+                == self.state.actors["label_reviewer"],
+            )
+            self.state.feedback_window_end = _required_string(
+                label, "approved_at"
+            )
+            self.state.label_review_decision = "approve"
+            self.state.label_review_reason = reason.strip()
+            self.checkpoint()
+            report = self._report(label=label)
+            _print_event("human_label_review_recovered", report)
+            return report
+        if label.get("approval_status") != "pending":
+            raise E2EFailure(
+                "label is not pending an independent review: "
+                f"status={label.get('approval_status')!r}"
+            )
+        if action == "reject":
+            payload = await self.api.request(
+                "POST",
+                (
+                    f"/feedback-cases/{self.state.feedback_case_id}/labels/"
+                    f"{self.state.label_id}/review"
+                ),
+                actor="label_reviewer",
+                json_body={
+                    "action": "request_changes",
+                    "expected_label_version": self.state.label_version,
+                    "reason": reason.strip(),
+                    "idempotency_key": self._key("label-review-reject"),
+                },
+            )
+            label = _required_mapping(payload, "label")
+            self.state.label_review_decision = "reject"
+            self.state.label_review_reason = reason.strip()
+            self.state.check(
+                "human_label_review_rejected_safely",
+                label.get("approval_status") == "rejected"
+                and label.get("reviewed_by")
+                == self.state.actors["label_reviewer"]
+                and label.get("review_reason") == reason.strip()
+                and label.get("approved_by") is None,
+            )
+            self.checkpoint()
+            report = self._report(label=label)
+            _print_event("human_label_review_rejected", report)
+            return report
+
+        await self._approve_label(review_reason=reason.strip())
+        label = await self._get_state_label()
+        self.state.check(
+            "human_label_review_approved_independently",
+            label.get("approval_status") == "approved"
+            and label.get("labeled_by") == self.state.actors["labeler"]
+            and label.get("approved_by")
+            == self.state.actors["label_reviewer"],
+        )
+        self.state.label_review_decision = "approve"
+        self.state.label_review_reason = reason.strip()
+        self.checkpoint()
+        report = self._report(label=label)
+        _print_event("human_label_review_approved", report)
         return report
 
     async def decide(
@@ -770,6 +955,38 @@ class DataLoopE2EDriver:
         self.checkpoint()
 
     async def _submit_and_approve_label(self) -> None:
+        if self.state.manual_label_gate:
+            if self.state.label_review_decision == "reject":
+                raise E2EFailure(
+                    "the human label reviewer rejected this scenario; the Data "
+                    "Loop cannot continue"
+                )
+            if self.state.label_id is None:
+                raise E2EFailure(
+                    "manual label submission is pending; run label-submit"
+                )
+            if self.state.label_review_decision != "approve":
+                raise E2EFailure(
+                    "independent human label review is pending; run label-review"
+                )
+            approved = await self._get_state_label()
+            self.state.check(
+                "human_label_review_approved_independently",
+                approved.get("approval_status") == "approved"
+                and approved.get("labeled_by") == self.state.actors["labeler"]
+                and approved.get("approved_by")
+                == self.state.actors["label_reviewer"],
+            )
+            self.state.feedback_window_end = _required_string(
+                approved, "approved_at"
+            )
+            self.checkpoint()
+            return
+        else:
+            await self._submit_label()
+        await self._approve_label()
+
+    async def _submit_label(self) -> None:
         self.state.require("feedback_case_id")
         if self.state.label_id is None:
             payload = await self.api.request(
@@ -809,6 +1026,7 @@ class DataLoopE2EDriver:
             self.state.label_version = version
             self.checkpoint()
 
+    async def _approve_label(self, *, review_reason: str = "Label approved") -> None:
         self.state.require("label_id", "label_version")
         # First prove the role boundary. This call cannot mutate the label.
         denied = await self.api.request(
@@ -873,6 +1091,7 @@ class DataLoopE2EDriver:
                 actor="label_reviewer",
                 json_body={
                     "expected_label_version": self.state.label_version,
+                    "reason": review_reason,
                     "idempotency_key": self._key("label-approve"),
                 },
             )
@@ -888,6 +1107,26 @@ class DataLoopE2EDriver:
             approved, "approved_at"
         )
         self.checkpoint()
+
+    async def _get_state_label(self) -> dict[str, Any]:
+        self.state.require("feedback_case_id", "label_id")
+        labels_payload = await self.api.request(
+            "GET",
+            f"/feedback-cases/{self.state.feedback_case_id}/labels",
+            actor="reader",
+        )
+        labels = labels_payload.get("labels")
+        label = next(
+            (
+                item
+                for item in labels or []
+                if isinstance(item, dict) and item.get("id") == self.state.label_id
+            ),
+            None,
+        )
+        if label is None:
+            raise E2EFailure("state label was not returned by the public API")
+        return label
 
     async def _freeze_baseline_datasets(self) -> None:
         self.state.require(
@@ -1131,6 +1370,9 @@ class DataLoopE2EDriver:
             "recovery_workflow_id": self.state.recovery_workflow_id,
             "post_activation_run_id": self.state.post_activation_run_id,
             "rolled_back": self.state.rolled_back,
+            "manual_label_gate": self.state.manual_label_gate,
+            "label_review_decision": self.state.label_review_decision,
+            "label_review_reason": self.state.label_review_reason,
             "actors": self.state.actors,
             "checks": dict(sorted(self.state.checks.items())),
             "observed": observed,
@@ -1288,7 +1530,7 @@ def _create_driver(args: argparse.Namespace, state: E2EState) -> DataLoopE2EDriv
     )
 
 
-def _human_action() -> Literal["approve", "reject"]:
+def _human_release_action() -> Literal["approve", "reject"]:
     print(
         "\n人工审批点已到达。请先核对上方 workflow_id、evaluation_run_id、"
         "三层 dataset_id 和角色 UUID。",
@@ -1302,6 +1544,36 @@ def _human_action() -> Literal["approve", "reject"]:
     raise E2EFailure("human decision aborted; no release decision was submitted")
 
 
+def _human_label_submission_action() -> Literal["submit"]:
+    print(
+        "\n人工标签提交点已到达。请核对 feedback_case_id、原始分析"
+        "和 labeler UUID。",
+        flush=True,
+    )
+    answer = input(
+        "输入 SUBMIT（其他输入不会提交标签）："
+    ).strip().upper()
+    if answer == "SUBMIT":
+        return "submit"
+    raise E2EFailure("human label submission aborted; no label was submitted")
+
+
+def _human_label_review_action() -> Literal["approve", "reject"]:
+    print(
+        "\n独立标签二审点已到达。请核对 feedback_case_id、label_id、"
+        "标签内容以及 label_reviewer UUID。",
+        flush=True,
+    )
+    answer = input(
+        "输入 APPROVE 或 REJECT（其他输入不会变更标签）："
+    ).strip().upper()
+    if answer == "APPROVE":
+        return "approve"
+    if answer == "REJECT":
+        return "reject"
+    raise E2EFailure("human label review aborted; no review action was submitted")
+
+
 def _default_decision_reason(
     action: Literal["approve", "reject"],
     *,
@@ -1310,6 +1582,16 @@ def _default_decision_reason(
     actor = "Automated E2E reviewer" if automated else "E2E release reviewer"
     verb = "approved" if action == "approve" else "rejected"
     return f"{actor} {verb} the candidate after reviewing the gate evidence"
+
+
+def _default_label_review_reason(
+    action: Literal["approve", "reject"],
+    *,
+    automated: bool,
+) -> str:
+    actor = "Automated E2E label reviewer" if automated else "E2E label reviewer"
+    verb = "approved" if action == "approve" else "rejected"
+    return f"{actor} {verb} the submitted feedback label after review"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -1347,6 +1629,20 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--manifest", default=str(DEFAULT_MANIFEST_PATH))
     prepare.add_argument("--tenant-id")
     prepare.add_argument("--run-tag")
+
+    prepare_feedback = common("prepare-feedback")
+    prepare_feedback.add_argument(
+        "--manifest", default=str(DEFAULT_MANIFEST_PATH)
+    )
+    prepare_feedback.add_argument("--tenant-id")
+    prepare_feedback.add_argument("--run-tag")
+
+    label_submit = common("label-submit")
+    label_submit.add_argument("--action", choices=("submit",))
+
+    label_review = common("label-review")
+    label_review.add_argument("--action", choices=("approve", "reject"))
+    label_review.add_argument("--reason", default=None)
 
     decide = common("decide")
     decide.add_argument("--action", choices=("approve", "reject"))
@@ -1386,15 +1682,32 @@ async def _run(args: argparse.Namespace) -> None:
         raise E2EFailure("poll and timeout values must be positive")
     state = (
         _load_or_create_state(args)
-        if args.command in {"prepare", "auto"}
+        if args.command in {"prepare", "prepare-feedback", "auto"}
         else _load_existing_state(args)
     )
     driver = _create_driver(args, state)
     try:
         if args.command == "prepare":
             await driver.prepare()
+        elif args.command == "prepare-feedback":
+            await driver.prepare_feedback_for_human_label()
+        elif args.command == "label-submit":
+            args.action or await asyncio.to_thread(_human_label_submission_action)
+            await driver.submit_human_label()
+        elif args.command == "label-review":
+            automated = args.action is not None
+            action = args.action or await asyncio.to_thread(
+                _human_label_review_action
+            )
+            await driver.review_human_label(
+                action,
+                reason=args.reason
+                or _default_label_review_reason(action, automated=automated),
+            )
         elif args.command == "decide":
-            action = args.action or await asyncio.to_thread(_human_action)
+            action = args.action or await asyncio.to_thread(
+                _human_release_action
+            )
             await driver.decide(
                 action,
                 reason=args.reason
@@ -1411,7 +1724,9 @@ async def _run(args: argparse.Namespace) -> None:
             )
         elif args.command == "auto":
             await driver.prepare()
-            action = args.action or await asyncio.to_thread(_human_action)
+            action = args.action or await asyncio.to_thread(
+                _human_release_action
+            )
             await driver.decide(
                 action,
                 reason=args.reason

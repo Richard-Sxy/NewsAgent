@@ -665,3 +665,8 @@ pre {
   max-height: 220px;
 }
 
+
+/* 热点工作台：当前选中运行的高亮行 */
+.na-row--active td {
+  background: var(--na-accent-soft, rgba(37, 99, 235, 0.08));
+}

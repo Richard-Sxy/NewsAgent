@@ -1,6 +1,8 @@
 # 前端企业级部署方案
 
-> 状态：骨架已落地（`frontend/` + `deploy/k8s/`），尚未替换线上页面。
+> 状态：热点全链路已打通（2026-09-10）。骨架已落地（`frontend/` + `deploy/k8s/`），
+> 热点模块后端只读接口与决策接口已实现并接入前端真实页面；企业 CMS 由
+> `deploy/mock-cms` 替身支撑发布链路；尚未替换线上页面。
 > 本文档说明目标架构、鉴权模型、迁移步骤与验收标准。
 
 ## 1. 现状
@@ -100,10 +102,12 @@ deploy/k8s/
 
 ### P0 — 前置补齐（阻塞项）
 
-1. 后端补热点榜只读接口。`HotNewsView` 已声明期望契约，可直接照此实现：
-   - `GET /api/v1/hot-news/runs`：当前窗口榜单与热度分量
-   - `GET /api/v1/hot-news/runs/{id}`：单条热点的趋势与决策记录
-   - `POST /api/v1/hot-news/decisions`：运营决策
+1. ~~后端补热点榜只读接口~~（2026-09-10 已完成，`app/api/hot_news.py`）：
+   - `GET /api/v1/hot-news/runs`：运行列表（窗口、Bundle、计数）
+   - `GET /api/v1/hot-news/runs/{id}`：榜单、热度分量、分析摘要与决策记录
+   - `POST /api/v1/hot-news/decisions`：运营决策（幂等，拒绝/修正原子进入 Data Loop 反馈）
+   鉴权按已确认决策：**与 Data Loop 复用 `DATA_LOOP_GATEWAY_TOKEN` 共享 Bearer，
+   角色头独立为 `X-Hot-News-Roles`**（`hot-news:read` / `hot-news:decide` / `hot-news:admin`）。
 2. 提供 SSO 网关，并确定 `auth-url` 校验通过后返回的身份头名称。
 3. 把 API 部署到 K8s 并暴露 Service（仓库目前只有 compose 的 `api`）。
 

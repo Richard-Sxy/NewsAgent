@@ -20,6 +20,7 @@ from app.schemas.evaluation_dataset import (
 )
 from app.schemas.hot_news_decision import DecisionType
 from app.schemas.production_bundle import (
+    CandidateEvaluationRun,
     ConfigurationCandidate,
     ConfigurationDiff,
     ProductionBundle,
@@ -165,6 +166,24 @@ class ApproveFeedbackLabelRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     expected_label_version: int = Field(ge=1)
+    reason: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=1000),
+    ] = "Label approved"
+    idempotency_key: IdempotencyKey
+
+
+class ReviewFeedbackLabelRequest(BaseModel):
+    """统一标签审核入口；退回必须给出可执行修改意见。"""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    action: Literal["approve", "request_changes"]
+    expected_label_version: int = Field(ge=1)
+    reason: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=1000),
+    ]
     idempotency_key: IdempotencyKey
 
 
@@ -253,6 +272,12 @@ class CandidateResponse(BaseModel):
 
     candidate: ConfigurationCandidate
     created: bool
+
+
+class CandidateEvaluationResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    evaluation: CandidateEvaluationRun
 
 
 class RollbackProductionBundleRequest(BaseModel):

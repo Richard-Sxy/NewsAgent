@@ -185,6 +185,81 @@ def _dedupe_list(values: list[Any], fallback: str) -> list[str]:
     return result or [fallback]
 
 
+def _build_hot_news_report(context: dict[str, Any]) -> dict[str, Any]:
+    """定点构造一份能通过 HotNewsAnalysisValidator 的热点分析报告。
+
+    通用 SchemaFaker 只知道 JSON Schema，而热点报告的硬约束（news_id 必须等于可信
+    输入、evidence 只能引用输入白名单、无证据时必须给 limitation 且禁止 related
+    context、metric reason 必须引用合法 metric_key、applied_memory_ids 必须为空或
+    注入子集）都写在 Pydantic / 业务校验里，因此这里整体构造而不是随机填充。
+    """
+
+    news_id = str(context.get("news_id") or "mock-news-id")
+    evidence_pool = [
+        item
+        for item in (context.get("_related_news_ids") or [])
+        if isinstance(item, str) and item
+    ]
+
+    report: dict[str, Any] = {
+        "news_id": news_id,
+        "trend_assessment": (
+            "mock 生成的热点趋势评估：热度在观察窗口内上升，属于确定性指标驱动，"
+            "仅用于本地链路验证，不代表真实判断。"
+        ),
+        "dominant_driver": "insufficient_data",
+        "attention_reasons": [],
+        "related_contexts": [],
+        "operation_suggestions": [],
+        "evidence_news_ids": [],
+        # 注入的 Memory 允许为空：置空即天然是「注入集合」的子集，最安全
+        "applied_memory_ids": [],
+        "limitations": [],
+        "overall_confidence": 0.5,
+        "output_schema_version": "1.0",
+    }
+
+    # metric 类型的关注原因：必须引用 allowed_metric_keys 中的 key（hot_score 恒合法）
+    report["attention_reasons"].append(
+        {
+            "reason_type": "metric",
+            "statement": "热度分值高于同窗口基线，主要由确定性分量抬升。",
+            "metric_keys": ["hot_score"],
+            "evidence_news_ids": [],
+            "confidence": 0.6,
+            "certainty": "observed",
+        }
+    )
+
+    if evidence_pool:
+        picked = _dedupe_list(evidence_pool[:2], evidence_pool[0])
+        report["attention_reasons"].append(
+            {
+                "reason_type": "evidence",
+                "statement": "相关新闻在同一窗口内同步升温，构成同一事件的背景。",
+                "metric_keys": [],
+                "evidence_news_ids": picked,
+                "confidence": 0.5,
+                "certainty": "observed",
+            }
+        )
+        report["evidence_news_ids"] = list(picked)
+        report["related_contexts"].append(
+            {
+                "statement": "多条相关新闻在同一时间窗内出现，提示事件正在扩散。",
+                "evidence_news_ids": list(picked),
+                "confidence": 0.5,
+            }
+        )
+    else:
+        # 输入没有关联证据时：必须显式声明证据不足，且 related_contexts 必须为空
+        report["limitations"].append(
+            "输入未提供相关新闻证据，事件背景无法交叉验证。"
+        )
+
+    return report
+
+
 def fix_cross_field_refs(
     title: str,
     value: Any,
@@ -202,6 +277,10 @@ def fix_cross_field_refs(
     url_pool = [u for u in (ctx.get("_fact_urls") or []) if isinstance(u, str)]
     fallback_facts = ["F%03d" % i for i in range(1, 11)]
     fallback_urls = ["https://example.com/evidence/mock-%d" % i for i in range(1000, 1010)]
+
+    if title == "HotNewsAnalysisReport":
+        # 热点分析报告的交叉约束最多，整体定点构造而不是随机填充
+        return _build_hot_news_report(ctx)
 
     if title == "ArticleOutline":
         for index, section in enumerate(value.get("sections") or []):
@@ -599,10 +678,39 @@ def extract_context(messages: list[Any]) -> dict[str, Any]:
     """从用户消息里取出真实输入（包括上游阶段产出），让假输出能引用真实 ID。"""
     payload = _extract_payload(messages)
     context: dict[str, Any] = {}
-    for key in ("topic", "title", "job_id", "section_id", "angle", "review_round"):
+    for key in (
+        "topic",
+        "title",
+        "job_id",
+        "section_id",
+        "angle",
+        "review_round",
+        # 热点分析输入里的可信新闻身份：HotNewsAnalysisReport.news_id 必须与之一致，
+        # 否则 HotNewsAnalysisValidator._validate_news_id 会直接拒收。
+        "news_id",
+    ):
         value = payload.get(key)
         if isinstance(value, (str, int)) and value:
             context[key] = str(value)
+
+    # 热点分析：只允许引用输入 related_news 里的 news_id（evidence 白名单）
+    related_news = payload.get("related_news")
+    if isinstance(related_news, list):
+        context["_related_news_ids"] = [
+            item.get("news_id")
+            for item in related_news
+            if isinstance(item, dict) and isinstance(item.get("news_id"), str)
+        ]
+
+    # 热点分析：applied_memory_ids 只能引用本次实际注入的 memory_id
+    memory_context = payload.get("memory_context")
+    if isinstance(memory_context, dict):
+        items = memory_context.get("items") or []
+        context["_memory_ids"] = [
+            item.get("memory_id")
+            for item in items
+            if isinstance(item, dict) and isinstance(item.get("memory_id"), str)
+        ]
 
     # 上游 Research 阶段产出的真实 fact_id 与 url，是 Writer/Reviewer 唯一可靠的引用池
     research = payload.get("research_package")

@@ -195,7 +195,9 @@ class EvaluationDatasetCaseRecord(Base):
     label_version: Mapped[int] = mapped_column(Integer, nullable=False)
     analysis_input_snapshot: Mapped[dict] = mapped_column(JSONB, nullable=False)
     analysis_output_snapshot: Mapped[dict | None] = mapped_column(
-        JSONB,
+        # 见 app/models/analysis_feedback.py 同名列说明：默认 JSONB 会把 None
+        # 写成 JSON 'null'，被 ck_evaluation_dataset_cases_output_snapshot_object 拒绝。
+        JSONB(none_as_null=True),
         nullable=True,
     )
     expected_label: Mapped[dict] = mapped_column(JSONB, nullable=False)

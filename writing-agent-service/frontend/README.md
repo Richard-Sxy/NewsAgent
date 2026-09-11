@@ -28,11 +28,15 @@ npm run dev          # http://127.0.0.1:5173
 配置在 `.env.development`：
 
 ```
-VITE_DEV_TENANT_ID=11111111-1111-1111-1111-111111111111
-VITE_DEV_USER_ID=22222222-2222-2222-2222-222222222222
+VITE_DEV_TENANT_ID=11111111-1111-4111-8111-111111111111
+VITE_DEV_USER_ID=22222222-2222-4222-8222-222222222222
 VITE_DEV_DATA_LOOP_ROLES=data-loop:admin
+VITE_DEV_HOT_NEWS_ROLES=hot-news:admin
 VITE_DEV_GATEWAY_TOKEN=local-dev-token
 ```
+
+> 这两个 UUID 必须与后端场景/测试使用的 `E2E_TENANT_ID`（`examples/hot_news_e2e_support.py`）
+> 保持一致，否则接口会 200 但返回空列表 —— 因为查的是另一个租户的数据。
 
 要对接别处后端时改这几个值即可，也可以删掉它们 —— 删掉就模拟"没有网关"，接口会返回 401/403，
 正好用来验证前端的鉴权失败提示。
@@ -42,6 +46,9 @@ VITE_DEV_GATEWAY_TOKEN=local-dev-token
 - `X-Tenant-ID` 与 `X-User-ID` 后端要求是 **UUID**，写成 `operator` 这类字符串会 422。
 - `X-Data-Loop-Roles` 是**逗号分隔的权限串**，取值见
   `app/api/dependencies.py::DataLoopPermission`；填 `data-loop:admin` 可通吃全部端点。
+- `X-Hot-News-Roles` 是热点控制台的独立角色头，取值见
+  `app/api/dependencies.py::HotNewsPermission`（`hot-news:read` / `hot-news:decide` /
+  `hot-news:admin`）。它与 Data Loop **复用同一个共享网关 Token**，但权限独立授予。
 - `VITE_DEV_GATEWAY_TOKEN` 必须等于后端 `.env` 里的 `DATA_LOOP_GATEWAY_TOKEN`。
 
 ## 命令
@@ -61,9 +68,10 @@ VITE_DEV_GATEWAY_TOKEN=local-dev-token
 
 ```
 src/
-  api/          类型化接口层：http / jobs(12 端点) / dataLoop(17 端点) / events(SSE) / types
+  api/          类型化接口层：http / jobs(12 端点) / dataLoop(17 端点) / hotNews(3 端点) / events(SSE) / types
   components/   通用组件：NaToastHost / NaConfirmDialog / NaPaginator / NaStateBlock / NaJsonBlock
   components/jobs/  写作任务：创建卡片 / 任务表格 / 检查器 / 事件流查看器
+  components/hotnews/  热点：榜单表格（热度分量+分析摘要）/ 运营决策表单
   composables/  useAsyncTask（统一 loading + 错误提示）
   config/       运行时配置加载（替代 localStorage）
   stores/       Pinia：app（配置与未授权态）、jobs（任务与事件流）、toast、confirm
@@ -87,7 +95,10 @@ nginx/          容器内 nginx 配置
 
 ## 尚未完成
 
-- 热点榜读接口未在后端实现，`HotNewsView` 只声明期望契约，不渲染假数据。
+- ~~热点榜读接口未在后端实现~~（2026-09-10 已接入）：`HotNewsView` 现在真实调用
+  `GET /api/v1/hot-news/runs`、`GET /api/v1/hot-news/runs/{id}` 与
+  `POST /api/v1/hot-news/decisions`；榜单、热度分量与分析摘要全部来自
+  `analysis_runs` 持久化快照，不渲染任何假数据。
 - `src/api/types.ts` 中标注 `TODO(gen:api)` 的类型是刻意保留的宽松类型，接入前需先跑生成脚本。
 - 企业错误上报（`errorReportingDsn`）只留了挂载点，未接入具体平台。
 - API / Worker 侧尚无 K8s 清单，见 `../deploy/k8s/README.md` 与 `../docs/frontend-enterprise-plan.md`。

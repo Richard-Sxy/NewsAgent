@@ -14,7 +14,7 @@ async def run_worker(
     state_handler: StateHandler | None = None,
     settings: Settings | None = None,
 ) -> None:
-    """注册 Workflow 与 Activity；部署时每个 Pod 只启动一个 Worker。"""
+    """注册 Workflow 与 Activity; 部署时每个 Pod 只启动一个 Worker。"""
     resolved = settings or get_settings()
     runtime = None if handler is not None else create_worker_runtime(resolved)
     resolved_handler = handler or runtime.handler

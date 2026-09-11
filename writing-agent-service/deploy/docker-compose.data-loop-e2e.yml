@@ -1,7 +1,9 @@
 name: news-agent-data-loop-e2e
 
-# Disposable, hermetic acceptance stack. Every credential below is deliberately
+# Disposable, isolated acceptance stack. Every credential below is deliberately
 # local-only; never reuse this file as a production deployment definition.
+# Base images retain readable tags and pin their multi-platform manifest digest.
+# Update each tag and digest together through an explicit maintenance change.
 
 x-runtime-manifest: &runtime-manifest >-
   [{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"e2e-analysis-prompt-v1","fastgpt_app_id":"e2e-hot-news-app-v1","model_version":"e2e-model-v1","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"},{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"e2e-analysis-prompt-v2","fastgpt_app_id":"e2e-hot-news-app-v2","model_version":"e2e-model-v2","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"}]
@@ -51,7 +53,7 @@ x-app-service: &app-service
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
     environment:
       POSTGRES_USER: newsagent_e2e
       POSTGRES_PASSWORD: newsagent_e2e
@@ -68,7 +70,7 @@ services:
       retries: 30
 
   temporal-postgres:
-    image: postgres:16-alpine
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
     environment:
       POSTGRES_USER: temporal
       POSTGRES_PASSWORD: temporal
@@ -82,7 +84,7 @@ services:
       retries: 30
 
   temporal:
-    image: temporalio/auto-setup:1.27.2
+    image: temporalio/auto-setup:1.27.2@sha256:b44cbfeb43dbeae42db113b44fb8414c3452f05643b3d6b1592f955277d73526
     depends_on:
       temporal-postgres:
         condition: service_healthy
@@ -110,7 +112,7 @@ services:
       start_period: 10s
 
   temporal-ui:
-    image: temporalio/ui:2.34.0
+    image: temporalio/ui:2.34.0@sha256:cb17ea423d76a8a19a269d0bcd81fc12eee1f6365acd2a56b590dafb35696a95
     depends_on:
       temporal:
         condition: service_healthy
@@ -122,7 +124,7 @@ services:
     networks: [e2e]
 
   redis:
-    image: redis:7-alpine
+    image: redis:7-alpine@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf
     networks: [e2e]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -131,7 +133,7 @@ services:
       retries: 30
 
   minio:
-    image: minio/minio:latest
+    image: minio/minio:latest@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
     command: ["server", "/data", "--console-address", ":9001"]
     environment:
       MINIO_ROOT_USER: newsagent-e2e-minio
@@ -149,7 +151,7 @@ services:
       retries: 30
 
   minio-init:
-    image: minio/mc:latest
+    image: minio/mc:latest@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
     depends_on:
       minio:
         condition: service_healthy

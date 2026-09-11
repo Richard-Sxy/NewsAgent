@@ -50,14 +50,15 @@ Python/SQL 确定性执行。
 
 ## 首次接入顺序
 
-1. 执行 `alembic upgrade head`，当前迁移头为 `20260910_0013`。
+1. 执行 `alembic upgrade head`，当前迁移头为 `20260911_0014`。
 2. 用 `POST /api/v1/data-loop/production-bundles/bootstrap` 注册该租户唯一的初始生产
    Bundle。此接口只允许首次初始化；后续只能走候选、评测、审批、激活或回滚。
 3. 将企业行为、基线、正文和检索 Adapter 注入并运行热点 Worker。成功结果、模型校验失败、
    低置信结果和高热度无关联证据会自动进入 Feedback Case；运营拒绝/纠正可调用
    `POST /operator-decisions`；发布平台只提交聚合 Outcome，不提交用户行为明细。
-4. 在 `/feedback-cases/{id}/labels` 提交强类型标签，再调用对应 `/approve` 接口人工
-   批准。提交标签和批准标签是两个版本化动作，且批准人不能是原标签提交人。
+4. 在 `/feedback-cases/{id}/labels` 提交强类型标签，再调用对应 `/review` 接口由另一位
+   员工选择通过或退回修改。审核人、时间、理由和幂等键都会留痕；退回版本不能进入数据集，
+   标注人可基于该版本提交下一版。旧 `/approve` 接口继续兼容。
 5. 用 `/datasets/freeze` 分别冻结 `golden` 与 `high_risk_regression` 基线集。日常运行会
    自动把指定窗口内、截至窗口截止时刻已批准的 Case 冻结为 `fresh_bad_case`。
 6. 用 `/configuration-candidates` 提交一个相对当前 Bundle 的强类型 Diff。所有改变的资产
@@ -73,6 +74,7 @@ Python/SQL 确定性执行。
 - `GET /api/v1/data-loop/feedback-cases`
 - `GET|POST /api/v1/data-loop/feedback-cases/{case_id}/labels`
 - `POST /api/v1/data-loop/feedback-cases/{case_id}/labels/{label_id}/approve`
+- `POST /api/v1/data-loop/feedback-cases/{case_id}/labels/{label_id}/review`
 - `POST /api/v1/data-loop/publication-outcomes`
 - `POST /api/v1/data-loop/datasets/freeze`
 - `GET /api/v1/data-loop/datasets/{dataset_id}`
@@ -80,6 +82,7 @@ Python/SQL 确定性执行。
 - `GET /api/v1/data-loop/production-bundles/active`
 - `POST /api/v1/data-loop/configuration-candidates`
 - `GET /api/v1/data-loop/configuration-candidates/{candidate_id}`
+- `GET /api/v1/data-loop/evaluation-runs/{evaluation_run_id}`
 - `POST /api/v1/data-loop/runs`
 - `GET /api/v1/data-loop/runs/{workflow_id}`
 - `POST /api/v1/data-loop/runs/{workflow_id}/decision`
@@ -176,6 +179,8 @@ DATA_LOOP_GATEWAY_TOKEN=<secret; API container only>
 
 ```bash
 pytest -q
+RUN_TEMPORAL_TIME_SKIPPING=1 \
+  .venv/bin/python -m pytest tests/test_data_loop_time_skipping.py -q
 alembic heads
 alembic upgrade head --sql
 docker compose -f deploy/docker-compose.data-loop-e2e.yml config --quiet
@@ -184,19 +189,22 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
   -m pytest tests/e2e/test_data_loop_full_chain.py -q
 ```
 
-完整的独立依赖环境、人工 `APPROVE`/`REJECT` 停点、激活恢复、下一次线上运行与回滚步骤见
+完整的独立依赖环境、人工标签 `SUBMIT`、独立二审 `APPROVE/REJECT`、发布
+`APPROVE/REJECT` 停点、激活恢复、下一次线上运行与回滚步骤见
 [`docs/data-loop-e2e-runbook.md`](../../../docs/data-loop-e2e-runbook.md)。其中
 `examples/data_loop_e2e.py` 是可恢复的验收驱动，状态文件不保存 Gateway Token；
 `examples/fastgpt_e2e_stub.py` 只用于稳定验证管道，不能替代真实 FastGPT 质量验收。
 
-2026-09-10 全服务默认回归为 554 项通过、3 项 opt-in E2E 跳过；独立 Compose 的完整
-L2 黑盒套件为 3 项通过，并已另外实操 stdin 人工 `REJECT` 停点。两条默认回归告警来自
-Starlette/httpx 的弃用提示。
+2026-09-11 全服务默认回归为 592 项通过、5 项 opt-in 集成/E2E 跳过；Temporal
+time-skipping L1 为 1 项通过，History 中唯一审批 Timer 精确为 48 小时；独立 Compose
+完整 L2 黑盒套件为 4 项通过。另已实操 stdin
+`SUBMIT → 标签 APPROVE → 发布 APPROVE → next run → rollback` 和发布 `REJECT` 停点。
+两条默认回归告警来自 Starlette/httpx 的弃用提示。
 
 重点测试覆盖 Feedback Schema/Repository/Collector、自动回流边界、人工决策原子性、
 Dataset Freezer 完整性、归因引用校验、三层 Offline Replay、双基准 Gate、Bundle 状态机、
 Temporal Workflow/Activity、Step Handler、Bearer 网关认证、租户/用户身份注入、端点级 RBAC
-与故障演练。
+与故障演练；48 小时无人审批必须记录 `system/reject` 且绝不激活。
 
 ## 生产验收仍需完成
 

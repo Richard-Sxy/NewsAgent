@@ -49,6 +49,19 @@ class DataLoopPermission(StrEnum):
     ADMIN = "data-loop:admin"
 
 
+class HotNewsPermission(StrEnum):
+    """Least-privilege permissions for the hot-news operations console.
+
+    与 Data Loop 复用同一个网关共享 Bearer Token（DATA_LOOP_GATEWAY_TOKEN），
+    但角色头独立：网关通过 ``X-Hot-News-Roles`` 注入热点模块的权限串，
+    两套权限可以分别授予、分别回收。
+    """
+
+    READ = "hot-news:read"
+    DECIDE = "hot-news:decide"
+    ADMIN = "hot-news:admin"
+
+
 @dataclass(frozen=True, slots=True)
 class DataLoopPrincipal:
     """Authenticated gateway identity used by the Data Loop control plane."""
@@ -185,6 +198,91 @@ def require_data_loop_permission(permission: DataLoopPermission):
     return dependency
 
 
+async def get_hot_news_principal(
+    configured_token: Annotated[
+        str | None,
+        Depends(get_data_loop_gateway_token),
+    ],
+    authorization: Annotated[str | None, Header()] = None,
+    x_tenant_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-Tenant-ID"),
+    ] = None,
+    x_user_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-User-ID"),
+    ] = None,
+    x_hot_news_roles: Annotated[
+        str | None,
+        Header(alias="X-Hot-News-Roles"),
+    ] = None,
+) -> DataLoopPrincipal:
+    """Authenticate a hot-news console request that passed the trusted gateway.
+
+    共享凭据与 Data Loop 相同（DATA_LOOP_GATEWAY_TOKEN，网关注入 Bearer），
+    但权限串来自独立的 ``X-Hot-News-Roles`` 头；网关必须先剥离客户端传入的
+    同名头再注入自己的值。租户、用户与权限永远不从请求体获取。
+    """
+
+    if configured_token is None or not configured_token.strip():
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="hot news gateway authentication is not configured",
+        )
+
+    parts = authorization.split() if authorization is not None else []
+    if (
+        len(parts) != 2
+        or parts[0].lower() != "bearer"
+        or not compare_digest(parts[1], configured_token)
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid hot news gateway credential",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if x_tenant_id is None or x_user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="trusted gateway identity headers are required",
+        )
+
+    raw_permissions = (
+        [] if x_hot_news_roles is None else x_hot_news_roles.split(",")
+    )
+    permissions = frozenset(item.strip() for item in raw_permissions if item.strip())
+    if not permissions:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="hot news permissions are required",
+        )
+    return DataLoopPrincipal(
+        tenant_id=x_tenant_id,
+        user_id=x_user_id,
+        permissions=permissions,
+    )
+
+
+def require_hot_news_permission(permission: HotNewsPermission):
+    """Build an endpoint dependency enforcing one hot-news permission."""
+
+    async def dependency(
+        principal: Annotated[DataLoopPrincipal, Depends(get_hot_news_principal)],
+    ) -> DataLoopPrincipal:
+        if (
+            permission.value not in principal.permissions
+            and HotNewsPermission.ADMIN.value not in principal.permissions
+        ):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"missing hot news permission: {permission.value}",
+            )
+        return principal
+
+    return dependency
+
+
 """ 这边配置提供：数据库Session/Temporal Client/OrchestratorService/当前 """
 async def get_session(request: Request) -> AsyncIterator[AsyncSession]:
     database: Database = request.app.state.database
@@ -243,6 +341,15 @@ async def get_publication_outcome_feedback_service(
     return PublicationOutcomeFeedbackService(
         memory_store=PostgresHotNewsRunStore(database),
     )
+
+
+async def get_hot_news_query_service(request: Request):
+    """热点控制台的只读查询服务；延迟导入避免 API 启动环路。"""
+
+    from app.services.hot_news_query import HotNewsQueryService
+
+    database: Database = request.app.state.database
+    return HotNewsQueryService(database=database)
 
 
 async def get_artifact_store(request: Request) -> S3ArtifactStore:

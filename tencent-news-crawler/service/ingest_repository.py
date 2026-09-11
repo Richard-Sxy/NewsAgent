@@ -1,6 +1,9 @@
 import sqlite3
+import json
 from datetime import datetime, timezone
 from pathlib import Path
+
+from intelligence.title_nlp import TitleAnalysis
 
 """ SQLite存储服务 """
 class IngestRepository:
@@ -35,6 +38,45 @@ class IngestRepository:
                     created_at TEXT NOT NULL,
                     updated_at TEXT NOT NULL
                 )
+                """
+            )
+            connection.execute(
+                """
+                CREATE TABLE IF NOT EXISTS news_title_analyses(
+                    url TEXT PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    tokens_json TEXT NOT NULL,
+                    extractor TEXT NOT NULL,
+                    model_version TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    error_message TEXT,
+                    analyzed_at TEXT,
+                    updated_at TEXT NOT NULL
+                )
+                """
+            )
+            connection.execute(
+                """
+                CREATE TABLE IF NOT EXISTS news_title_entities(
+                    url TEXT NOT NULL,
+                    entity_type TEXT NOT NULL,
+                    entity_text TEXT NOT NULL,
+                    normalized_text TEXT NOT NULL,
+                    start_char INTEGER NOT NULL,
+                    end_char INTEGER NOT NULL,
+                    source TEXT NOT NULL,
+                    confidence REAL,
+                    created_at TEXT NOT NULL,
+                    PRIMARY KEY (
+                        url, entity_type, normalized_text, start_char, end_char
+                    )
+                )
+                """
+            )
+            connection.execute(
+                """
+                CREATE INDEX IF NOT EXISTS idx_title_entities_lookup
+                ON news_title_entities(entity_type, normalized_text)
                 """
             )
 
@@ -245,6 +287,142 @@ class IngestRepository:
                     url,
                 ),
             )
+
+    def save_title_analysis(self, url: str, analysis: TitleAnalysis) -> None:
+        """原子替换一篇新闻的标题分析和可查询实体行。"""
+        now = datetime.now(timezone.utc).isoformat()
+        tokens_json = json.dumps(
+            [
+                {
+                    "text": token.text,
+                    "pos": token.pos,
+                    "start": token.start,
+                    "end": token.end,
+                }
+                for token in analysis.tokens
+            ],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        with self.connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO news_title_analyses (
+                    url, title, tokens_json, extractor, model_version,
+                    status, error_message, analyzed_at, updated_at
+                )
+                VALUES (?, ?, ?, ?, ?, 'success', NULL, ?, ?)
+                ON CONFLICT(url) DO UPDATE SET
+                    title = excluded.title,
+                    tokens_json = excluded.tokens_json,
+                    extractor = excluded.extractor,
+                    model_version = excluded.model_version,
+                    status = 'success',
+                    error_message = NULL,
+                    analyzed_at = excluded.analyzed_at,
+                    updated_at = excluded.updated_at
+                """,
+                (
+                    url,
+                    analysis.title,
+                    tokens_json,
+                    analysis.extractor,
+                    analysis.model_version,
+                    now,
+                    now,
+                ),
+            )
+            connection.execute(
+                "DELETE FROM news_title_entities WHERE url = ?",
+                (url,),
+            )
+            connection.executemany(
+                """
+                INSERT INTO news_title_entities (
+                    url, entity_type, entity_text, normalized_text,
+                    start_char, end_char, source, confidence, created_at
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                [
+                    (
+                        url,
+                        entity.entity_type,
+                        entity.text,
+                        entity.normalized_text,
+                        entity.start,
+                        entity.end,
+                        entity.source,
+                        entity.confidence,
+                        now,
+                    )
+                    for entity in analysis.entities
+                ],
+            )
+
+    def mark_title_analysis_failed(
+        self,
+        url: str,
+        title: str,
+        error_message: str,
+        *,
+        extractor: str = "ltp",
+        model_version: str = "unknown",
+    ) -> None:
+        now = datetime.now(timezone.utc).isoformat()
+        with self.connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO news_title_analyses (
+                    url, title, tokens_json, extractor, model_version,
+                    status, error_message, analyzed_at, updated_at
+                )
+                VALUES (?, ?, '[]', ?, ?, 'failed', ?, NULL, ?)
+                ON CONFLICT(url) DO UPDATE SET
+                    title = excluded.title,
+                    tokens_json = '[]',
+                    extractor = excluded.extractor,
+                    model_version = excluded.model_version,
+                    status = 'failed',
+                    error_message = excluded.error_message,
+                    analyzed_at = NULL,
+                    updated_at = excluded.updated_at
+                """,
+                (url, title, extractor, model_version, error_message[:2000], now),
+            )
+            connection.execute(
+                "DELETE FROM news_title_entities WHERE url = ?",
+                (url,),
+            )
+
+    def get_title_analysis(self, url: str) -> dict | None:
+        with self.connect() as connection:
+            connection.row_factory = sqlite3.Row
+            analysis_row = connection.execute(
+                """
+                SELECT url, title, tokens_json, extractor, model_version,
+                       status, error_message, analyzed_at, updated_at
+                FROM news_title_analyses
+                WHERE url = ?
+                """,
+                (url,),
+            ).fetchone()
+            if analysis_row is None:
+                return None
+            entity_rows = connection.execute(
+                """
+                SELECT entity_type, entity_text, normalized_text,
+                       start_char, end_char, source, confidence
+                FROM news_title_entities
+                WHERE url = ?
+                ORDER BY start_char, end_char, entity_type
+                """,
+                (url,),
+            ).fetchall()
+        result = dict(analysis_row)
+        result["tokens"] = json.loads(result.pop("tokens_json"))
+        result["entities"] = [dict(row) for row in entity_rows]
+        return result
 
     """ 增加失败和重试次数 """
     def list_pending_qa(

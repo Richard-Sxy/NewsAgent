@@ -14,6 +14,10 @@ from examples.data_loop_e2e import (
     E2EFailure,
     E2EState,
     _default_decision_reason,
+    _default_label_review_reason,
+    _human_label_review_action,
+    _human_label_submission_action,
+    build_parser,
     build_structured_diff,
     load_runtime_specs,
 )
@@ -71,6 +75,195 @@ def test_reject_reason_is_not_recorded_as_an_acceptance() -> None:
 
     assert "rejected" in reason
     assert "accepted" not in reason
+
+
+def test_manual_label_cli_exposes_three_resumable_stages() -> None:
+    parser = build_parser()
+
+    prepare = parser.parse_args(
+        ["prepare-feedback", "--state", "/tmp/manual-label.json"]
+    )
+    submit = parser.parse_args(
+        [
+            "label-submit",
+            "--state",
+            "/tmp/manual-label.json",
+            "--action",
+            "submit",
+        ]
+    )
+    review = parser.parse_args(
+        [
+            "label-review",
+            "--state",
+            "/tmp/manual-label.json",
+            "--action",
+            "reject",
+        ]
+    )
+
+    assert prepare.command == "prepare-feedback"
+    assert submit.action == "submit"
+    assert review.action == "reject"
+    assert "rejected" in _default_label_review_reason(
+        "reject", automated=False
+    )
+
+
+def test_manual_label_prompts_require_literal_actions(monkeypatch) -> None:
+    monkeypatch.setattr("builtins.input", lambda _: "SUBMIT")
+    assert _human_label_submission_action() == "submit"
+    monkeypatch.setattr("builtins.input", lambda _: "APPROVE")
+    assert _human_label_review_action() == "approve"
+    monkeypatch.setattr("builtins.input", lambda _: "not-approved")
+    with pytest.raises(E2EFailure, match="no review action"):
+        _human_label_review_action()
+
+
+class _PendingLabelApi:
+    def __init__(self, state: E2EState, *, status: str = "pending") -> None:
+        self.state = state
+        self.status = status
+        self.requests: list[tuple[str, str]] = []
+
+    async def preflight(self) -> None:
+        return None
+
+    async def close(self) -> None:
+        return None
+
+    async def request(self, method, path, **kwargs):
+        self.requests.append((method, path))
+        if method == "GET" and path.endswith("/labels"):
+            return {
+                "labels": [
+                    {
+                        "id": self.state.label_id,
+                        "label_version": self.state.label_version,
+                        "approval_status": self.status,
+                        "labeled_by": self.state.actors["labeler"],
+                        "approved_by": (
+                            self.state.actors["label_reviewer"]
+                            if self.status == "approved"
+                            else None
+                        ),
+                        "approved_at": (
+                            "2026-09-11T01:00:00+00:00"
+                            if self.status == "approved"
+                            else None
+                        ),
+                    }
+                ]
+            }
+        if method == "POST" and path.endswith("/review"):
+            assert kwargs["actor"] == "label_reviewer"
+            body = kwargs["json_body"]
+            assert body["action"] == "request_changes"
+            self.status = "rejected"
+            return {
+                "label": {
+                    "id": self.state.label_id,
+                    "label_version": self.state.label_version,
+                    "approval_status": "rejected",
+                    "labeled_by": self.state.actors["labeler"],
+                    "approved_by": None,
+                    "reviewed_by": self.state.actors["label_reviewer"],
+                    "review_reason": body["reason"],
+                },
+                "created": True,
+            }
+        raise AssertionError(f"unexpected mutating API request: {method} {path}")
+
+
+@pytest.mark.asyncio
+async def test_manual_label_rejection_is_resumable_and_never_approves(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    monkeypatch.delenv("HOT_NEWS_RUNTIME_MANIFEST_JSON", raising=False)
+    base, candidate = load_runtime_specs(DEFAULT_MANIFEST_PATH)
+    state = E2EState.create(
+        tag="manual-label-reject",
+        tenant_id="11111111-1111-4111-8111-111111111111",
+        base_spec=base,
+        candidate_spec=candidate,
+    )
+    state.manual_label_gate = True
+    state.feedback_case_id = "22222222-2222-4222-8222-222222222222"
+    state.label_id = "33333333-3333-4333-8333-333333333333"
+    state.label_version = 1
+    api = _PendingLabelApi(state)
+    state_path = tmp_path / "manual-label.json"
+    driver = DataLoopE2EDriver(
+        state=state,
+        state_path=state_path,
+        api=api,
+        hot_news=SimpleNamespace(),
+        stub_probe=SimpleNamespace(),
+        poll_seconds=0.01,
+        timeout_seconds=0.1,
+    )
+
+    report = await driver.review_human_label(
+        "reject",
+        reason="independent reviewer found the label unsuitable",
+    )
+
+    assert state.label_review_decision == "reject"
+    assert report["label_review_decision"] == "reject"
+    assert api.requests == [
+        (
+            "GET",
+            f"/feedback-cases/{state.feedback_case_id}/labels",
+        ),
+        (
+            "POST",
+            f"/feedback-cases/{state.feedback_case_id}/labels/{state.label_id}/review",
+        ),
+    ]
+    restored = E2EState.load(state_path)
+    assert restored.label_review_decision == "reject"
+    with pytest.raises(E2EFailure, match="cannot continue"):
+        await driver._submit_and_approve_label()
+
+
+@pytest.mark.asyncio
+async def test_manual_label_approval_recovers_after_api_success_before_checkpoint(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    monkeypatch.delenv("HOT_NEWS_RUNTIME_MANIFEST_JSON", raising=False)
+    base, candidate = load_runtime_specs(DEFAULT_MANIFEST_PATH)
+    state = E2EState.create(
+        tag="manual-label-recover",
+        tenant_id="11111111-1111-4111-8111-111111111111",
+        base_spec=base,
+        candidate_spec=candidate,
+    )
+    state.manual_label_gate = True
+    state.feedback_case_id = "22222222-2222-4222-8222-222222222222"
+    state.label_id = "33333333-3333-4333-8333-333333333333"
+    state.label_version = 1
+    api = _PendingLabelApi(state, status="approved")
+    driver = DataLoopE2EDriver(
+        state=state,
+        state_path=tmp_path / "manual-label-approved.json",
+        api=api,
+        hot_news=SimpleNamespace(),
+        stub_probe=SimpleNamespace(),
+        poll_seconds=0.01,
+        timeout_seconds=0.1,
+    )
+
+    await driver.review_human_label(
+        "approve",
+        reason="retry after the durable approval response was lost",
+    )
+    await driver._submit_and_approve_label()
+
+    assert state.label_review_decision == "approve"
+    assert state.feedback_window_end == "2026-09-11T01:00:00+00:00"
+    assert all(method == "GET" for method, _ in api.requests)
 
 
 @pytest.mark.asyncio

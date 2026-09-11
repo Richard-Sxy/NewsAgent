@@ -6,6 +6,7 @@ import type {
   FeedbackCase,
   FeedbackStatus,
   JsonObject,
+  ReviewFeedbackLabelRequest,
   SubmitFeedbackLabelRequest,
 } from '@/api'
 import NaJsonBlock from '@/components/NaJsonBlock.vue'
@@ -52,6 +53,7 @@ const labelsError = ref<string | null>(null)
 const labelContent = ref('')
 const expectedPreviousVersion = ref('')
 const approveVersions = ref<Record<string, string>>({})
+const reviewReasons = ref<Record<string, string>>({})
 
 async function reload(): Promise<void> {
   listLoading.value = true
@@ -90,6 +92,7 @@ function pickCase(item: FeedbackCase): void {
   selectedId.value = item.id
   labels.value = []
   approveVersions.value = {}
+  reviewReasons.value = {}
   void loadLabels(item.id)
 }
 
@@ -165,6 +168,63 @@ async function approveLabel(label: JsonObject): Promise<void> {
         idempotency_key: newIdempotencyKey('approve'),
       }),
     { success: '标签已审批', failure: '审批标签失败' },
+  )
+  if (!result) return
+  await loadLabels(current.id)
+}
+
+/** 独立二审：通过或退回当前标签版本；退回必须给出可执行修改意见。 */
+async function reviewLabel(
+  label: JsonObject,
+  action: ReviewFeedbackLabelRequest['action'],
+): Promise<void> {
+  const current = selected.value
+  if (!current) return
+
+  const id = labelId(label)
+  if (!id) {
+    toast.warn('该标签缺少 id 字段，无法二审')
+    return
+  }
+  const raw = (approveVersions.value[id] ?? '').trim() || String(labelVersion(label) ?? '')
+  if (!raw || Number.isNaN(Number(raw))) {
+    toast.warn('请填写该标签的版本号后再二审')
+    return
+  }
+
+  const reason = (reviewReasons.value[id] ?? '').trim()
+  if (action === 'request_changes' && !reason) {
+    toast.warn('退回修改必须填写审核意见')
+    return
+  }
+
+  const confirmed = await dialog.ask(
+    action === 'approve'
+      ? {
+          title: '确认二审通过该标签？',
+          description: `标签 ${id} 二审通过后进入可用于数据集冻结的状态。`,
+          confirmText: '二审通过',
+        }
+      : {
+          title: '确认退回该标签？',
+          description: `标签 ${id} 将退回给标注人修改。审核意见：${reason}`,
+          confirmText: '退回修改',
+        },
+  )
+  if (!confirmed) return
+
+  const result = await run(
+    () =>
+      dataLoopApi.reviewLabel(current.id, id, {
+        action,
+        expected_label_version: Number(raw),
+        reason: reason || '二审通过',
+        idempotency_key: newIdempotencyKey('review'),
+      }),
+    {
+      success: action === 'approve' ? '标签已二审通过' : '标签已退回修改',
+      failure: '二审操作失败',
+    },
   )
   if (!result) return
   await loadLabels(current.id)
@@ -296,7 +356,7 @@ onMounted(reload)
                 <tr>
                   <th>标签 ID</th>
                   <th style="width: 84px">版本</th>
-                  <th style="width: 150px">审批</th>
+                  <th style="width: 320px">审批 / 二审</th>
                 </tr>
               </thead>
               <tbody>
@@ -311,6 +371,14 @@ onMounted(reload)
                         :placeholder="String(labelVersion(label) ?? '版本')"
                         inputmode="numeric"
                       >
+                      <input
+                        v-model="reviewReasons[labelId(label)]"
+                        class="na-input na-field--grow"
+                        placeholder="审核意见（退回必填）"
+                        maxlength="1000"
+                      >
+                    </div>
+                    <div class="na-row">
                       <button
                         class="na-btn"
                         type="button"
@@ -318,6 +386,22 @@ onMounted(reload)
                         @click="approveLabel(label)"
                       >
                         审批
+                      </button>
+                      <button
+                        class="na-btn"
+                        type="button"
+                        :disabled="pending"
+                        @click="reviewLabel(label, 'approve')"
+                      >
+                        二审通过
+                      </button>
+                      <button
+                        class="na-btn na-btn--danger"
+                        type="button"
+                        :disabled="pending"
+                        @click="reviewLabel(label, 'request_changes')"
+                      >
+                        退回修改
                       </button>
                     </div>
                   </td>

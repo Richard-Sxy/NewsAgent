@@ -41,6 +41,12 @@ class Settings(BaseSettings):
     # can actually execute. Data Loop workers fail closed when it is empty or
     # a candidate is not registered.
     hot_news_runtime_manifest_json: str = "[]"
+    # JSON array of hot-news schedule definitions, one Temporal Schedule per
+    # tenant group: [{"tenant_group","tenant_id","production_bundle_version",
+    # "window_minutes","interval_minutes","paused"?}]. Empty list disables
+    # schedule provisioning; workers run without any scheduled triggers.
+    hot_news_schedule_definitions_json: str = "[]"
+    hot_news_dependencies_factory: str | None = None
     data_loop_replay_max_concurrency: int = Field(default=8, ge=1, le=32)
     data_loop_max_cases_per_cohort: int = Field(default=20, ge=1, le=100)
     # Shared only with the trusted edge gateway. When absent or blank, every

@@ -2,6 +2,11 @@ import sqlite3
 
 from service.ingest_repository import IngestRepository
 from service.qa_repository import QARepository
+from intelligence.title_nlp import (
+    TitleAnalysis,
+    TitleEntity,
+    TitleToken,
+)
 
 def test_repository_records_success(tmp_path):
     db_path = tmp_path / "test.db"
@@ -48,6 +53,48 @@ def test_repository_records_failure(tmp_path):
 
     assert record["status"] == "failed"
     assert record["error_message"] == "模拟失败"
+
+
+def test_repository_saves_queryable_title_analysis(tmp_path):
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    url = "https://news.qq.com/rain/a/NLP"
+    repository.mark_pending(url)
+    analysis = TitleAnalysis(
+        title="雷军发布新品",
+        tokens=(
+            TitleToken("雷军", "nh", 0, 2),
+            TitleToken("发布", "v", 2, 4),
+            TitleToken("新品", "n", 4, 6),
+        ),
+        entities=(
+            TitleEntity("雷军", "雷军", "person", 0, 2, "ner"),
+        ),
+        extractor="ltp",
+        model_version="LTP/tiny@test",
+    )
+
+    repository.save_title_analysis(url, analysis)
+
+    stored = repository.get_title_analysis(url)
+    assert stored["status"] == "success"
+    assert stored["tokens"][0] == {
+        "text": "雷军", "pos": "nh", "start": 0, "end": 2
+    }
+    assert stored["entities"][0]["normalized_text"] == "雷军"
+    assert stored["entities"][0]["entity_type"] == "person"
+
+
+def test_repository_records_title_analysis_failure(tmp_path):
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    url = "https://news.qq.com/rain/a/NLP-FAILED"
+    repository.mark_pending(url)
+
+    repository.mark_title_analysis_failed(url, "标题", "模型不可用")
+
+    stored = repository.get_title_analysis(url)
+    assert stored["status"] == "failed"
+    assert stored["error_message"] == "模型不可用"
+    assert stored["entities"] == []
 
 
 def test_repository_records_discovery_metadata(tmp_path):

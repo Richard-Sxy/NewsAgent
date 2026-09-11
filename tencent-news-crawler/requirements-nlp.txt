@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# LTP 4.2.x still calls the pre-1.0 huggingface-hub API. Keep these majors
+# pinned so a fresh deployment does not reproduce the use_auth_token failure.
+ltp>=4.2.14,<5
+requests>=2.31,<3
+huggingface-hub>=0.20,<1
+transformers>=4.30,<5
+torch>=2.1,<3

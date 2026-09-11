@@ -8,6 +8,7 @@ from service.fastgpt_client import FastGPTClient
 from config import settings
 from service.article_cache import ArticleCache
 from service.ingest_repository import IngestRepository
+from intelligence.title_nlp import LTPTitleAnalyzer, TitleAnalysis
 
 """ NewsArticle -> str 有标题/来源地址/发布消息/正文的转换 """
 def format_article_text(article: NewsArticle) -> str:
@@ -40,6 +41,7 @@ class NewsIngestService:
         fastgpt_client=None,
         repository=None,
         article_cache=None,
+        title_analyzer=None,
     ):
         self.crawler = (
             crawler
@@ -64,6 +66,38 @@ class NewsIngestService:
             else str(Path(self.repository.db_path).parent / "articles")
         )
         self.article_cache = article_cache or ArticleCache(cache_dir)
+        self.title_analyzer = title_analyzer
+        if self.title_analyzer is None and settings.title_nlp_enabled:
+            self.title_analyzer = LTPTitleAnalyzer(
+                model_name=settings.title_nlp_model,
+                cache_dir=settings.title_nlp_cache_dir,
+                local_files_only=settings.title_nlp_local_files_only,
+                lexicon_path=settings.title_nlp_lexicon_path,
+            )
+
+    def _analyze_title(
+        self,
+        article: NewsArticle,
+    ) -> TitleAnalysis | None:
+        if self.title_analyzer is None:
+            return None
+        try:
+            analysis = self.title_analyzer.analyze(article.title)
+            self.repository.save_title_analysis(article.url, analysis)
+            return analysis
+        except Exception as exc:
+            self.repository.mark_title_analysis_failed(
+                article.url,
+                article.title,
+                str(exc),
+                extractor=getattr(self.title_analyzer, "extractor", "unknown"),
+                model_version=getattr(
+                    self.title_analyzer, "model_version", "unknown"
+                ),
+            )
+            if settings.title_nlp_required:
+                raise RuntimeError(f"标题 NLP 抽取失败: {exc}") from exc
+            return None
     
     """ 提取单次的URL """
     def ingest_url(
@@ -108,14 +142,21 @@ class NewsIngestService:
                 self.crawler.crawl,
             )
 
+            title_analysis = self._analyze_title(article)
+
             text = format_article_text(article)
+
+            metadata = dict(extra_metadata or {})
+            if title_analysis is not None:
+                # 可信的本地计算字段后写入，避免调用者覆盖分析结果。
+                metadata.update(title_analysis.to_fastgpt_metadata())
 
             result = (
                 self.fastgpt_client
                 .create_news_collection(
                     article=article,
                     text=text,
-                    extra_metadata=extra_metadata,
+                    extra_metadata=metadata,
                 )
             )
 

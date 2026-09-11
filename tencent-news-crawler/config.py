@@ -17,6 +17,17 @@ class Settings(BaseSettings):
     ingest_db_path: str = "data/news_ingest.db"
     article_cache_dir: str = "data/articles"
 
+    # 标题分词与实体抽取。先执行 scripts/download_title_nlp_model.py，
+    # 再显式启用；生产运行默认禁止推理时临时联网下载模型。
+    title_nlp_enabled: bool = False
+    title_nlp_model: str = "LTP/tiny"
+    title_nlp_cache_dir: str = "data/models/huggingface"
+    title_nlp_local_files_only: bool = True
+    title_nlp_lexicon_path: str = (
+        "intelligence/extraction/title_entity_lexicon.json"
+    )
+    title_nlp_required: bool = False
+
     # 稳定性配置
     crawler_max_retries: int = 3
     crawler_retry_base_delay: float = 1.0

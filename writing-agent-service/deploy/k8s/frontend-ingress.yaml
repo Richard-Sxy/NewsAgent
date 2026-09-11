@@ -7,7 +7,9 @@
 #
 # 前置条件（本项目尚未提供，需要按实际环境补齐）：
 #   1. 上游 SSO / oauth2-proxy 网关，暴露 auth-url 与 auth-signin 两个端点；
-#      auth-url 校验通过时必须返回 X-Tenant-ID / X-User-ID / X-Data-Loop-Roles 三个响应头。
+#      auth-url 校验通过时必须返回 X-Tenant-ID / X-User-ID / X-Data-Loop-Roles /
+#      X-Hot-News-Roles 四个响应头。两个业务模块复用同一个网关共享 Token
+#      （DATA_LOOP_GATEWAY_TOKEN），但角色头各自独立、分别授权。
 #   2. 后端 API 的 K8s Service，名称与本文件中 `writing-agent-api` 保持一致。
 #      当前仓库只有 docker compose 的 `api` 服务，K8s 侧需要单独部署同一镜像。
 #   3. 网关共享 Token 通过 ConfigMap 注入请求头，不要写进 Ingress 注解：
@@ -57,14 +59,15 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: 'https://sso.internal.example/oauth2/auth'
     nginx.ingress.kubernetes.io/auth-signin: 'https://sso.internal.example/oauth2/start?rd=$escaped_request_uri'
     # 把 auth-url 返回的身份头透传给上游 FastAPI。
-    # 后端 app/api/dependencies.py 正是从这三个头 + Authorization 构造 Principal。
-    nginx.ingress.kubernetes.io/auth-response-headers: 'X-Tenant-ID,X-User-ID,X-Data-Loop-Roles'
+    # 后端 app/api/dependencies.py 从这些头 + Authorization 构造 Principal；
+    # X-Hot-News-Roles 是热点控制台的独立角色头（共享 Token 与 Data Loop 相同）。
+    nginx.ingress.kubernetes.io/auth-response-headers: 'X-Tenant-ID,X-User-ID,X-Data-Loop-Roles,X-Hot-News-Roles'
     # 静态注入网关共享 Token（来源见文件头的 ConfigMap 说明）。
     nginx.ingress.kubernetes.io/proxy-set-headers: 'news-agent/gateway-request-headers'
     # 先清掉客户端伪造的同名头，再接受 auth-response-headers 注入的值。
     # 这一步是安全前提：否则任何浏览器都能自称任意租户。
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_clear_input_headers "X-Tenant-ID" "X-User-ID" "X-Data-Loop-Roles";
+      more_clear_input_headers "X-Tenant-ID" "X-User-ID" "X-Data-Loop-Roles" "X-Hot-News-Roles";
       more_clear_input_headers "Authorization" "X-Forwarded-User" "X-Forwarded-Tenant";
     # SSE 进度流必须关闭缓冲，否则事件会被积压到连接结束。
     nginx.ingress.kubernetes.io/proxy-buffering: 'off'

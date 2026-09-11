@@ -36,12 +36,14 @@ from app.schemas.analysis_feedback import (
     ApproveAnalysisFeedbackLabelCommand,
     FeedbackStatus,
     RecordPublicationOutcomeCommand,
+    RequestChangesAnalysisFeedbackLabelCommand,
     SubmitAnalysisFeedbackLabelCommand,
 )
 from app.schemas.data_loop_api import (
     ApproveFeedbackLabelRequest,
     BootstrapProductionBundleRequest,
     CandidateResponse,
+    CandidateEvaluationResponse,
     DataLoopDecisionResponse,
     DataLoopSnapshotResponse,
     FeedbackCaseListResponse,
@@ -58,6 +60,7 @@ from app.schemas.data_loop_api import (
     RecordOperatorDecisionRequest,
     RollbackProductionBundleRequest,
     RollbackProductionBundleResponse,
+    ReviewFeedbackLabelRequest,
     StartDataLoopRequest,
     StartDataLoopResponse,
     SubmitFeedbackLabelRequest,
@@ -443,9 +446,66 @@ async def approve_feedback_label(
                 expected_label_version=request.expected_label_version,
                 approved_by=str(user_id),
                 approved_at=datetime.now(UTC),
+                review_reason=request.reason,
                 idempotency_key=request.idempotency_key,
             ),
         )
+    except Exception as exc:
+        _raise_data_loop_http_error(exc)
+    return FeedbackLabelResponse(
+        label=outcome.label,
+        created=outcome.created,
+    )
+
+
+@router.post(
+    "/feedback-cases/{feedback_case_id}/labels/{label_id}/review",
+    response_model=FeedbackLabelResponse,
+)
+async def review_feedback_label(
+    feedback_case_id: UUID,
+    label_id: UUID,
+    request: ReviewFeedbackLabelRequest,
+    principal: LabelApprovePrincipal,
+    session: AsyncSession = Depends(get_session),
+    collector: AnalysisFeedbackCollector = Depends(
+        get_analysis_feedback_collector
+    ),
+) -> FeedbackLabelResponse:
+    """由独立审核人通过或退回当前标签版本，并保存审核理由。"""
+
+    tenant_id = str(principal.tenant_id)
+    reviewer_id = str(principal.user_id)
+    reviewed_at = datetime.now(UTC)
+    try:
+        if request.action == "approve":
+            outcome = await collector.approve_label(
+                session,
+                tenant_id=tenant_id,
+                command=ApproveAnalysisFeedbackLabelCommand(
+                    feedback_case_id=feedback_case_id,
+                    label_id=label_id,
+                    expected_label_version=request.expected_label_version,
+                    approved_by=reviewer_id,
+                    approved_at=reviewed_at,
+                    review_reason=request.reason,
+                    idempotency_key=request.idempotency_key,
+                ),
+            )
+        else:
+            outcome = await collector.request_label_changes(
+                session,
+                tenant_id=tenant_id,
+                command=RequestChangesAnalysisFeedbackLabelCommand(
+                    feedback_case_id=feedback_case_id,
+                    label_id=label_id,
+                    expected_label_version=request.expected_label_version,
+                    reviewed_by=reviewer_id,
+                    reviewed_at=reviewed_at,
+                    review_reason=request.reason,
+                    idempotency_key=request.idempotency_key,
+                ),
+            )
     except Exception as exc:
         _raise_data_loop_http_error(exc)
     return FeedbackLabelResponse(
@@ -673,6 +733,33 @@ async def get_configuration_candidate(
     except Exception as exc:
         _raise_data_loop_http_error(exc)
     return CandidateResponse(candidate=candidate, created=False)
+
+
+@router.get(
+    "/evaluation-runs/{evaluation_run_id}",
+    response_model=CandidateEvaluationResponse,
+)
+async def get_candidate_evaluation(
+    evaluation_run_id: UUID,
+    principal: ReadPrincipal,
+    session: AsyncSession = Depends(get_session),
+) -> CandidateEvaluationResponse:
+    """返回人工发布审核所需的三组指标、门禁阈值和失败原因。"""
+
+    try:
+        evaluation = await PostgresProductionBundleRepository(
+            session
+        ).get_evaluation(
+            tenant_id=str(principal.tenant_id),
+            evaluation_run_id=evaluation_run_id,
+        )
+        if evaluation is None:
+            raise ProductionBundleNotFoundError(
+                "candidate evaluation is not available"
+            )
+    except Exception as exc:
+        _raise_data_loop_http_error(exc)
+    return CandidateEvaluationResponse(evaluation=evaluation)
 
 
 @router.post(

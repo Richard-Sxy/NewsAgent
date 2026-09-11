@@ -23,6 +23,10 @@ export default defineConfig(({ mode }) => {
   if (env.VITE_DEV_DATA_LOOP_ROLES) {
     devIdentityHeaders['X-Data-Loop-Roles'] = env.VITE_DEV_DATA_LOOP_ROLES
   }
+  // 热点控制台与 Data Loop 复用同一个网关共享 Token，但角色头独立。
+  if (env.VITE_DEV_HOT_NEWS_ROLES) {
+    devIdentityHeaders['X-Hot-News-Roles'] = env.VITE_DEV_HOT_NEWS_ROLES
+  }
   if (env.VITE_DEV_GATEWAY_TOKEN) {
     devIdentityHeaders.Authorization = `Bearer ${env.VITE_DEV_GATEWAY_TOKEN}`
   }
