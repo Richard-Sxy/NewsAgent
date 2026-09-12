@@ -37,6 +37,12 @@ class Settings(BaseSettings):
     fastgpt_hot_news_app_id: str | None = None
     fastgpt_error_attribution_app_id: str | None = None
     fastgpt_supervisor_app_id: str | None = None
+    # Text2SQL 兜底 SQL 生成 App；模板取数不依赖它。未配置时只有确定性模板可用。
+    fastgpt_text2sql_app_id: str | None = None
+    # 模板优先取数的确定性护栏；模板与模型生成的 SQL 都必须满足这些上限。
+    # 表/列白名单与方言由调用方传入的 Text2SqlSchema 定义，不在此处重复配置。
+    text2sql_max_rows: int = Field(default=1000, ge=1, le=100000)
+    text2sql_timeout_ms: int = Field(default=30000, ge=1000, le=300000)
     # JSON array of complete ProductionBundleSpec snapshots that this worker
     # can actually execute. Data Loop workers fail closed when it is empty or
     # a candidate is not registered.

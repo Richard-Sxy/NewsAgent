@@ -218,7 +218,7 @@ ASR 超时/失败只是记一条 `degrade_reason` 并继续往下走，**不会�
 | `app/clients/enterprise/tencent_asr.py` | 企业适配 | `TencentCloudAsrRpc`（腾讯云录音文件识别 + TC3 签名）+ `RpcAudioTranscriber`（错误翻译） |
 | `app/clients/enterprise/multimodal_gateway.py` | 企业契约 | 视频理解 RPC 强类型请求/响应 + `MultimodalModelGatewayRpc` Protocol |
 | `app/clients/enterprise/hunyuan_video.py` | 企业适配 | `HunyuanVisionVideoRpc`（混元协议）+ `RpcVideoUnderstandingModel`（错误翻译） |
-| `app/clients/local_whisper.py` | 本地适配 | `LocalWhisperTranscriber`（faster-whisper 离线参考实现，可选依赖） |
+| `app/clients/local_whisper.py` | 本地适配 | `LocalWhisperTranscriber`（faster-whisper 离线参考实现，可选依赖，超长视频用 ffmpeg 分片） |
 | `app/knowledge/document.py` | 领域对象 | `KnowledgeDocument` / `IngestReport` / `KnowledgeBaseWriter` Port |
 | `app/knowledge/ingest.py` | 编排 | `ContentIngestService`、`ContentIngestPolicy`、充分性闸门 |
 | `app/clients/knowledge_writer.py` | 外部适配 | `FastGPTKnowledgeWriter`（幂等写入 + metadata） |
@@ -248,6 +248,10 @@ ASR 超时/失败只是记一条 `degrade_reason` 并继续往下走，**不会�
   **凭据一律由调用方注入，不读环境变量、不落日志。**
 - `LocalWhisperTranscriber` — 只接受本地路径 / `file://`，拒绝远程 URL；
   `faster_whisper` 懒加载，未安装时抛可降级异常而不是 import 期崩溃。
+  **超长视频**按 `chunk_seconds`（默认 600 秒）用 ffmpeg 切成 16kHz 单声道 wav
+  分片，逐片转写后把时间戳整体平移合并，避免 faster-whisper 一次解码整段音频
+  导致内存暴涨；`ffmpeg` / `ffprobe` 不可用时回退为整段直转，
+  `max_processing_seconds` 可限制只处理前 N 秒。
 - `FastGPTKnowledgeWriter.upsert_documents(...)` — 先按 `document_id` 查同名 Collection，
   存在则跳过；单条失败返回 `FAILED` 而不中断整批。
 
@@ -268,6 +272,10 @@ python tools/video_ingest_demo.py \
   --title "寒潮来袭北方多地气温骤降" \
   --asr local --whisper-model small
 ```
+
+超长视频的本地转写可用 `--chunk-seconds 600`（默认）控制 ffmpeg 分片时长，
+用 `--max-processing-seconds N` 只转写前 N 秒作为成本上限；两者都走
+`LocalWhisperTranscriber`，不需要额外配置。
 
 实测结果：`small` 模型在 CPU 上约 7 秒完成 20 秒音频的转写，
 产出上面第四节的统一文档，`skipped=0 / failed=0`，

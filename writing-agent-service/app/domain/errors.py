@@ -97,6 +97,12 @@ class HotNewsDataQualityError(RuntimeError):
     retryable = False
 
 
+class Text2SqlGuardError(HotNewsDataQualityError):
+    """模板或模型生成的 SQL 未通过只读白名单护栏，禁止进入数仓执行。"""
+
+    retryable = False
+
+
 class HotNewsPersistenceError(RuntimeError):
     """热点运行的 PostgreSQL 持久化操作失败。"""
 

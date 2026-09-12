@@ -177,6 +177,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--whisper-model", default="small", help="whisper 模型规格")
     parser.add_argument(
+        "--chunk-seconds",
+        type=float,
+        default=600.0,
+        help="超长视频的 ffmpeg 分片时长（秒），0 表示不分片",
+    )
+    parser.add_argument(
+        "--max-processing-seconds",
+        type=float,
+        default=None,
+        help="只转写前 N 秒（超长素材成本上限），默认转写全部",
+    )
+    parser.add_argument(
         "--min-text-chars", type=int, default=40, help="充分性闸门阈值"
     )
     parser.add_argument(
@@ -217,7 +229,11 @@ async def run(args: argparse.Namespace) -> int:
     if args.asr == "local":
         from app.clients.local_whisper import LocalWhisperTranscriber
 
-        transcriber = LocalWhisperTranscriber(model_size=args.whisper_model)
+        transcriber = LocalWhisperTranscriber(
+            model_size=args.whisper_model,
+            chunk_seconds=args.chunk_seconds,
+            max_processing_seconds=args.max_processing_seconds,
+        )
 
     policy = VideoTextualizationPolicy(
         version="video-text-v2",

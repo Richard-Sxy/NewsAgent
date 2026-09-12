@@ -7,6 +7,20 @@ from typing import Protocol, TypedDict
 
 from app.analytics.entities import BehaviorRecord, ContentType, EventType
 
+#: ``NewsMetricSnapshot`` 必须齐备的基础指标列。上游 SQL 无论请求什么，
+#: 都必须至少返回这些列，才能构造确定性的窗口快照。
+BASE_METRIC_KEYS = frozenset(
+    {
+        "impressions",
+        "clicks",
+        "unique_users",
+        "total_duration_seconds",
+        "effective_consumptions",
+        "interactions",
+    }
+)
+
+
 
 class NewsMetricReference(Protocol):
     """热点计算所需的最小指标接口。

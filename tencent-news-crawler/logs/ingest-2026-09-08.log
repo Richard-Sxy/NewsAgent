@@ -1,0 +1,486 @@
+===== start 2026-09-08T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-08",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0AICE00",
+        "title": "从实习生日薪5000，到上亿年薪，AI人才争夺陷入疯狂",
+        "collection_id": "6a9fffd1cfc7a9b3a4516eaa",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0BSUW00",
+        "title": "DeepSeek V4.1 Flash开始限时内测：新架构、原生多模态",
+        "collection_id": "6a9fffd1cfc7a9b3a4516efe",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CGZ500",
+        "title": "美国人形机器人第一股要来了！去年营收1195万，估值167亿元",
+        "collection_id": "6a9fffd2cfc7a9b3a4516f2c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CGZ100",
+        "title": "就在明天！苹果折叠掀起史上最强新机发布潮",
+        "collection_id": "6a9fffd2cfc7a9b3a4516f5a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0BBMI00",
+        "title": "通往AGI之路，字节要同时修两条",
+        "collection_id": "6a9fffd2cfc7a9b3a4516fe8",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CE1C00",
+        "title": "国足公布30人集训名单：蓉城7人！17岁赵松源+18岁布尼亚明首次入选",
+        "collection_id": "6a9fffd2cfc7a9b3a4517066",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0BWZ300",
+        "title": "张新履新，总局向国羽释放强烈整改信号",
+        "collection_id": "6a9fffd3cfc7a9b3a45170ad",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A08RWB00",
+        "title": "大胜意大利！中国女篮30小时变脸找到正确作战模式",
+        "collection_id": "6a9fffd3cfc7a9b3a45170ed",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0A8ID00",
+        "title": "惊天逆转催生年度体育神图：斯瓦泰克在郑钦文身后痛苦哭泣",
+        "collection_id": "6a9fffd3cfc7a9b3a451713d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A08Q1P00",
+        "title": "车手救了车手，谁来救China GT？",
+        "collection_id": "6a9fffd3cfc7a9b3a4517176",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0D2XI00",
+        "title": "日元对美元持续走强，哪些因素在主导走势",
+        "collection_id": "6a9fffd4cfc7a9b3a45171b7",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CQFO00",
+        "title": "A股粮食、糖业等板块连续大涨，本次厄尔尼诺对全球粮食产量影响到底有多大？",
+        "collection_id": "6a9fffd4cfc7a9b3a4517202",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CDHH00",
+        "title": "巨头创始人离婚，未签婚前协议，400亿财产待分割",
+        "collection_id": "6a9fffd4cfc7a9b3a451724a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0D2PR00",
+        "title": "处罚高管被指未经董事会批准，星宇股份整改措施又违规？",
+        "collection_id": "6a9fffd4cfc7a9b3a4517296",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0D2F100",
+        "title": "A股捧上天、港股开盘破发：江波龙撕裂了什么",
+        "collection_id": "6a9fffd4cfc7a9b3a45172da",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A064HU00",
+        "title": "4分钟锁单1万台，澎程上市初期表现超越SU7？月销7万台压力给了它",
+        "collection_id": "6a9fffd5cfc7a9b3a4517322",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CPET00",
+        "title": "8月汽车销量前十已无燃油车",
+        "collection_id": "6a9fffd5cfc7a9b3a4517372",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A07G5F00",
+        "title": "塔子你变了！阿维塔9系旗舰SUV“撞脸”仰望U8，四季度发布",
+        "collection_id": "6a9fffd5cfc7a9b3a45173b2",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0CGH300",
+        "title": "比亚迪回应“网传闪充车型订单积压25万辆”：消息不实",
+        "collection_id": "6a9fffd5cfc7a9b3a45173f9",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A0BADT00",
+        "title": "特斯拉降价后，有门店爆单！多个汽车品牌集体促销，“价格战”再现？",
+        "collection_id": "6a9fffd5cfc7a9b3a4517429",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "从实习生日薪5000，到上亿年薪，AI人才争夺陷入疯狂",
+      "url": "https://news.qq.com/rain/a/20260908A0AICE00",
+      "publish_time": "2026-09-08 16:11:06"
+    },
+    {
+      "topic": "科技",
+      "title": "DeepSeek V4.1 Flash开始限时内测：新架构、原生多模态",
+      "url": "https://news.qq.com/rain/a/20260908A0BSUW00",
+      "publish_time": "2026-09-08 17:33:40"
+    },
+    {
+      "topic": "科技",
+      "title": "美国人形机器人第一股要来了！去年营收1195万，估值167亿元",
+      "url": "https://news.qq.com/rain/a/20260908A0CGZ500",
+      "publish_time": "2026-09-08 18:33:12"
+    },
+    {
+      "topic": "科技",
+      "title": "就在明天！苹果折叠掀起史上最强新机发布潮",
+      "url": "https://news.qq.com/rain/a/20260908A0CGZ100",
+      "publish_time": "2026-09-08 18:33:11"
+    },
+    {
+      "topic": "科技",
+      "title": "通往AGI之路，字节要同时修两条",
+      "url": "https://news.qq.com/rain/a/20260908A0BBMI00",
+      "publish_time": "2026-09-08 17:05:07"
+    },
+    {
+      "topic": "体育",
+      "title": "国足公布30人集训名单：蓉城7人！17岁赵松源+18岁布尼亚明首次入选",
+      "url": "https://news.qq.com/rain/a/20260908A0CE1C00",
+      "publish_time": "2026-09-08 18:25:44"
+    },
+    {
+      "topic": "体育",
+      "title": "张新履新，总局向国羽释放强烈整改信号",
+      "url": "https://news.qq.com/rain/a/20260908A0BWZ300",
+      "publish_time": "2026-09-08 17:44:23"
+    },
+    {
+      "topic": "体育",
+      "title": "大胜意大利！中国女篮30小时变脸找到正确作战模式",
+      "url": "https://news.qq.com/rain/a/20260908A08RWB00",
+      "publish_time": "2026-09-08 14:08:05"
+    },
+    {
+      "topic": "体育",
+      "title": "惊天逆转催生年度体育神图：斯瓦泰克在郑钦文身后痛苦哭泣",
+      "url": "https://news.qq.com/rain/a/20260908A0A8ID00",
+      "publish_time": "2026-09-08 15:51:52"
+    },
+    {
+      "topic": "体育",
+      "title": "车手救了车手，谁来救China GT？",
+      "url": "https://news.qq.com/rain/a/20260908A08Q1P00",
+      "publish_time": "2026-09-08 14:02:14"
+    },
+    {
+      "topic": "财经",
+      "title": "日元对美元持续走强，哪些因素在主导走势",
+      "url": "https://news.qq.com/rain/a/20260908A0D2XI00",
+      "publish_time": "2026-09-08 20:14:10"
+    },
+    {
+      "topic": "财经",
+      "title": "A股粮食、糖业等板块连续大涨，本次厄尔尼诺对全球粮食产量影响到底有多大？",
+      "url": "https://news.qq.com/rain/a/20260908A0CQFO00",
+      "publish_time": "2026-09-08 19:08:29"
+    },
+    {
+      "topic": "财经",
+      "title": "巨头创始人离婚，未签婚前协议，400亿财产待分割",
+      "url": "https://news.qq.com/rain/a/20260908A0CDHH00",
+      "publish_time": "2026-09-08 18:56:44"
+    },
+    {
+      "topic": "财经",
+      "title": "处罚高管被指未经董事会批准，星宇股份整改措施又违规？",
+      "url": "https://news.qq.com/rain/a/20260908A0D2PR00",
+      "publish_time": "2026-09-08 20:03:09"
+    },
+    {
+      "topic": "财经",
+      "title": "A股捧上天、港股开盘破发：江波龙撕裂了什么",
+      "url": "https://news.qq.com/rain/a/20260908A0D2F100",
+      "publish_time": "2026-09-08 20:01:25"
+    },
+    {
+      "topic": "汽车",
+      "title": "4分钟锁单1万台，澎程上市初期表现超越SU7？月销7万台压力给了它",
+      "url": "https://news.qq.com/rain/a/20260908A064HU00",
+      "publish_time": "2026-09-08 15:15:16"
+    },
+    {
+      "topic": "汽车",
+      "title": "8月汽车销量前十已无燃油车",
+      "url": "https://news.qq.com/rain/a/20260908A0CPET00",
+      "publish_time": "2026-09-08 19:03:14"
+    },
+    {
+      "topic": "汽车",
+      "title": "塔子你变了！阿维塔9系旗舰SUV“撞脸”仰望U8，四季度发布",
+      "url": "https://news.qq.com/rain/a/20260908A07G5F00",
+      "publish_time": "2026-09-08 17:31:39"
+    },
+    {
+      "topic": "汽车",
+      "title": "比亚迪回应“网传闪充车型订单积压25万辆”：消息不实",
+      "url": "https://news.qq.com/rain/a/20260908A0CGH300",
+      "publish_time": "2026-09-08 18:32:11"
+    },
+    {
+      "topic": "汽车",
+      "title": "特斯拉降价后，有门店爆单！多个汽车品牌集体促销，“价格战”再现？",
+      "url": "https://news.qq.com/rain/a/20260908A0BADT00",
+      "publish_time": "2026-09-08 17:03:07"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0BADT00",
+      "title": "特斯拉降价后，有门店爆单！多个汽车品牌集体促销，“价格战”再现？",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a451746c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CGH300",
+      "title": "比亚迪回应“网传闪充车型订单积压25万辆”：消息不实",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45174a4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A07G5F00",
+      "title": "塔子你变了！阿维塔9系旗舰SUV“撞脸”仰望U8，四季度发布",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45174d4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CPET00",
+      "title": "8月汽车销量前十已无燃油车",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517504"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A064HU00",
+      "title": "4分钟锁单1万台，澎程上市初期表现超越SU7？月销7万台压力给了它",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517534"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0D2F100",
+      "title": "A股捧上天、港股开盘破发：江波龙撕裂了什么",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517564"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0D2PR00",
+      "title": "处罚高管被指未经董事会批准，星宇股份整改措施又违规？",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517594"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CDHH00",
+      "title": "巨头创始人离婚，未签婚前协议，400亿财产待分割",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45175c4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CQFO00",
+      "title": "A股粮食、糖业等板块连续大涨，本次厄尔尼诺对全球粮食产量影响到底有多大？",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45175f4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0D2XI00",
+      "title": "日元对美元持续走强，哪些因素在主导走势",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517624"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A08Q1P00",
+      "title": "车手救了车手，谁来救China GT？",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517654"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0A8ID00",
+      "title": "惊天逆转催生年度体育神图：斯瓦泰克在郑钦文身后痛苦哭泣",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517681"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A08RWB00",
+      "title": "大胜意大利！中国女篮30小时变脸找到正确作战模式",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45176ae"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0BWZ300",
+      "title": "张新履新，总局向国羽释放强烈整改信号",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a45176de"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CE1C00",
+      "title": "国足公布30人集训名单：蓉城7人！17岁赵松源+18岁布尼亚明首次入选",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a451770c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0BBMI00",
+      "title": "通往AGI之路，字节要同时修两条",
+      "status": "submitted",
+      "collection_id": "6a9fffd6cfc7a9b3a4517744"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CGZ100",
+      "title": "就在明天！苹果折叠掀起史上最强新机发布潮",
+      "status": "submitted",
+      "collection_id": "6a9fffd7cfc7a9b3a4517778"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0CGZ500",
+      "title": "美国人形机器人第一股要来了！去年营收1195万，估值167亿元",
+      "status": "submitted",
+      "collection_id": "6a9fffd7cfc7a9b3a45177a6"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0BSUW00",
+      "title": "DeepSeek V4.1 Flash开始限时内测：新架构、原生多模态",
+      "status": "submitted",
+      "collection_id": "6a9fffd7cfc7a9b3a45177dd"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A0AICE00",
+      "title": "从实习生日薪5000，到上亿年薪，AI人才争夺陷入疯狂",
+      "status": "submitted",
+      "collection_id": "6a9fffd7cfc7a9b3a451780a"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-08",
+  "generated_at": "2026-09-08T20:30:15.689103+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12219
+  },
+  "files": {
+    "json": "reports/daily-2026-09-08.json",
+    "markdown": "reports/daily-2026-09-08.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-08T20:30:15+08:00, exit=0 =====

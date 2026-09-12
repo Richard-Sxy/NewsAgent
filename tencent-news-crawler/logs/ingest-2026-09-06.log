@@ -1,0 +1,476 @@
+===== start 2026-09-06T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-09-06",
+  "discovered": 20,
+  "unique": 19,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 19,
+    "succeeded": 17,
+    "skipped": 0,
+    "failed": 2,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BALI00",
+        "title": "GPT-6 Astra杀疯了：只要你学得够慢，就可以不用学了？",
+        "collection_id": "6a9d5cd1cfc7a9b3a45120b8",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BE4600",
+        "title": "中国人形机器人，距离“ChatGPT时刻”还有多远？｜IPP编译",
+        "collection_id": "6a9d5cd1cfc7a9b3a45120dd",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BAGN00",
+        "title": "订单排到年底、产线两班倒 芯片“太热”液冷迈入“必选”时代",
+        "collection_id": "6a9d5cd1cfc7a9b3a4512104",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BCRY00",
+        "title": "AI会制造一个“新封建主义”社会吗？",
+        "collection_id": "6a9d5cd2cfc7a9b3a4512165",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A079LW00",
+        "title": "赛博牛马！Cybercab下月实现24小时运营",
+        "collection_id": "6a9d5cd2cfc7a9b3a4512195",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BCO500",
+        "title": "一度领跑遭红旗搅局！德比斯最后一弯抢回第三 法国站连登领奖台",
+        "collection_id": "6a9d5cd2cfc7a9b3a45121c2",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/RLV2026090611744600",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻正文为空。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0AX3300",
+        "title": "赢5场奖金195万，郑钦文美网一天烧掉5万，账本背后的职业网球真相",
+        "collection_id": "6a9d5cd3cfc7a9b3a451224d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A046UB00",
+        "title": "三连胜后，曼城坐实“阿森纳第一挑战者”地位？｜直球视线",
+        "collection_id": "6a9d5cd3cfc7a9b3a4512284",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A03DZI00",
+        "title": "3-2！37岁阿森纳传奇西甲1射2传+1条龙绝杀 4轮造6球助升班马不败",
+        "collection_id": "6a9d5cd3cfc7a9b3a45122dc",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0BERZ00",
+        "title": "3000亿元特别国债，安排上了",
+        "collection_id": "6a9d5cd3cfc7a9b3a451231d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0B4EH00",
+        "title": "中国为耕地立法，从“守红线”到“提质量”",
+        "collection_id": "6a9d5cd4cfc7a9b3a451235d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0AVIH00",
+        "title": "施行30年的保险法迎系统性“大修”，修订草案公开征求意见，有哪些变化？专家解读来了",
+        "collection_id": "6a9d5cd4cfc7a9b3a451239c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0AG0300",
+        "title": "这项手术新政，“解决报销问题”",
+        "collection_id": "6a9d5cd4cfc7a9b3a45123d4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A08ZCB00",
+        "title": "海口七项措施优化房地产市场，​直接释放跨市县置业需求，业内：近年来海口限购政策最宽松的一次",
+        "collection_id": "6a9d5cd4cfc7a9b3a4512431",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A08UUV00",
+        "title": "一周新车盘点：理想新MEGA换上800伏主动防倾杆 神行者8上市价降至28.99万元",
+        "collection_id": "6a9d5cd5cfc7a9b3a4512475",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A09ZRD00",
+        "title": "雷军：增程汽车大有可为，理想等同行也不断证明用户愿意为优秀增程汽车买单",
+        "collection_id": "6a9d5cd5cfc7a9b3a45124c7",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0AJHJ00",
+        "title": "央视曝光电动自行车乱象：时速已超百公里 仪表永远显示25km/h",
+        "collection_id": "6a9d5cd5cfc7a9b3a4512518",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260906A0AZQM00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻内容过短。"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "GPT-6 Astra杀疯了：只要你学得够慢，就可以不用学了？",
+      "url": "https://news.qq.com/rain/a/20260906A0BALI00",
+      "publish_time": "2026-09-06 20:22:46"
+    },
+    {
+      "topic": "科技",
+      "title": "中国人形机器人，距离“ChatGPT时刻”还有多远？｜IPP编译",
+      "url": "https://news.qq.com/rain/a/20260906A0BE4600",
+      "publish_time": "2026-09-06 19:42:12"
+    },
+    {
+      "topic": "科技",
+      "title": "订单排到年底、产线两班倒 芯片“太热”液冷迈入“必选”时代",
+      "url": "https://news.qq.com/rain/a/20260906A0BAGN00",
+      "publish_time": "2026-09-06 19:14:12"
+    },
+    {
+      "topic": "科技",
+      "title": "AI会制造一个“新封建主义”社会吗？",
+      "url": "https://news.qq.com/rain/a/20260906A0BCRY00",
+      "publish_time": "2026-09-06 19:33:18"
+    },
+    {
+      "topic": "科技",
+      "title": "赛博牛马！Cybercab下月实现24小时运营",
+      "url": "https://news.qq.com/rain/a/20260906A079LW00",
+      "publish_time": "2026-09-06 18:35:30"
+    },
+    {
+      "topic": "体育",
+      "title": "一度领跑遭红旗搅局！德比斯最后一弯抢回第三 法国站连登领奖台",
+      "url": "https://news.qq.com/rain/a/20260906A0BCO500",
+      "publish_time": "2026-09-06 20:18:02"
+    },
+    {
+      "topic": "体育",
+      "title": "女篮世界杯：中国vs捷克 中国女篮冲击本届首胜",
+      "url": "https://news.qq.com/rain/a/RLV2026090611744600",
+      "publish_time": "2026-09-06 20:21:29"
+    },
+    {
+      "topic": "体育",
+      "title": "赢5场奖金195万，郑钦文美网一天烧掉5万，账本背后的职业网球真相",
+      "url": "https://news.qq.com/rain/a/20260906A0AX3300",
+      "publish_time": "2026-09-06 17:52:38"
+    },
+    {
+      "topic": "体育",
+      "title": "三连胜后，曼城坐实“阿森纳第一挑战者”地位？｜直球视线",
+      "url": "https://news.qq.com/rain/a/20260906A046UB00",
+      "publish_time": "2026-09-06 09:23:21"
+    },
+    {
+      "topic": "体育",
+      "title": "3-2！37岁阿森纳传奇西甲1射2传+1条龙绝杀 4轮造6球助升班马不败",
+      "url": "https://news.qq.com/rain/a/20260906A03DZI00",
+      "publish_time": "2026-09-06 09:31:24"
+    },
+    {
+      "topic": "财经",
+      "title": "3000亿元特别国债，安排上了",
+      "url": "https://news.qq.com/rain/a/20260906A0BERZ00",
+      "publish_time": "2026-09-06 19:44:45"
+    },
+    {
+      "topic": "财经",
+      "title": "中国为耕地立法，从“守红线”到“提质量”",
+      "url": "https://news.qq.com/rain/a/20260906A0B4EH00",
+      "publish_time": "2026-09-06 18:33:28"
+    },
+    {
+      "topic": "财经",
+      "title": "施行30年的保险法迎系统性“大修”，修订草案公开征求意见，有哪些变化？专家解读来了",
+      "url": "https://news.qq.com/rain/a/20260906A0AVIH00",
+      "publish_time": "2026-09-06 17:43:06"
+    },
+    {
+      "topic": "财经",
+      "title": "这项手术新政，“解决报销问题”",
+      "url": "https://news.qq.com/rain/a/20260906A0AG0300",
+      "publish_time": "2026-09-06 16:46:29"
+    },
+    {
+      "topic": "财经",
+      "title": "海口七项措施优化房地产市场，​直接释放跨市县置业需求",
+      "url": "https://news.qq.com/rain/a/20260906A08ZCB00",
+      "publish_time": "2026-09-06 14:39:00"
+    },
+    {
+      "topic": "汽车",
+      "title": "一周新车盘点：理想新MEGA换上800伏主动防倾杆 神行者8上市价降至28.99万元",
+      "url": "https://news.qq.com/rain/a/20260906A08UUV00",
+      "publish_time": "2026-09-06 16:20:19"
+    },
+    {
+      "topic": "汽车",
+      "title": "雷军：增程汽车大有可为，理想等同行也不断证明用户愿意为优秀增程汽车买单",
+      "url": "https://news.qq.com/rain/a/20260906A09ZRD00",
+      "publish_time": "2026-09-06 16:18:17"
+    },
+    {
+      "topic": "汽车",
+      "title": "央视曝光电动自行车乱象：时速已超百公里 仪表永远显示25km/h",
+      "url": "https://news.qq.com/rain/a/20260906A0AJHJ00",
+      "publish_time": "2026-09-06 17:00:09"
+    },
+    {
+      "topic": "汽车",
+      "title": "合资想通了？这些10万级新车真要和国产掰手腕，实力够吗？",
+      "url": "https://news.qq.com/rain/a/20260906A0AZQM00",
+      "publish_time": "2026-09-06 18:00:10"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0AJHJ00",
+      "title": "央视曝光电动自行车乱象：时速已超百公里 仪表永远显示25km/h",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512558"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A09ZRD00",
+      "title": "雷军：增程汽车大有可为，理想等同行也不断证明用户愿意为优秀增程汽车买单",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512588"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A08UUV00",
+      "title": "一周新车盘点：理想新MEGA换上800伏主动防倾杆 神行者8上市价降至28.99万元",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45125b8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A08ZCB00",
+      "title": "海口七项措施优化房地产市场，​直接释放跨市县置业需求，业内：近年来海口限购政策最宽松的一次",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45125e8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0AG0300",
+      "title": "这项手术新政，“解决报销问题”",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512618"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0AVIH00",
+      "title": "施行30年的保险法迎系统性“大修”，修订草案公开征求意见，有哪些变化？专家解读来了",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512648"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0B4EH00",
+      "title": "中国为耕地立法，从“守红线”到“提质量”",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512678"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BERZ00",
+      "title": "3000亿元特别国债，安排上了",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45126a8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A03DZI00",
+      "title": "3-2！37岁阿森纳传奇西甲1射2传+1条龙绝杀 4轮造6球助升班马不败",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45126d8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A046UB00",
+      "title": "三连胜后，曼城坐实“阿森纳第一挑战者”地位？｜直球视线",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512708"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0AX3300",
+      "title": "赢5场奖金195万，郑钦文美网一天烧掉5万，账本背后的职业网球真相",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512738"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BCO500",
+      "title": "一度领跑遭红旗搅局！德比斯最后一弯抢回第三 法国站连登领奖台",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512765"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A079LW00",
+      "title": "赛博牛马！Cybercab下月实现24小时运营",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512792"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BCRY00",
+      "title": "AI会制造一个“新封建主义”社会吗？",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45127bf"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BAGN00",
+      "title": "订单排到年底、产线两班倒 芯片“太热”液冷迈入“必选”时代",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45127ec"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BE4600",
+      "title": "中国人形机器人，距离“ChatGPT时刻”还有多远？｜IPP编译",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512819"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260906A0BALI00",
+      "title": "GPT-6 Astra杀疯了：只要你学得够慢，就可以不用学了？",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512846"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A04PWO00",
+      "title": "从建材一条街到科创TOD？上海宜山路站的逆袭剧本",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a4512873"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0A73A00",
+      "title": "独家爆料！汇峰天峻顶藏复式、城央墅、四房升级旗舰版，震撼首发！",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45128a0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A06G4O00",
+      "title": "土拍预告：9月7日9城12宗地块挂牌截止，其中光住宅用地就有10宗",
+      "status": "submitted",
+      "collection_id": "6a9d5cd6cfc7a9b3a45128cd"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-06",
+  "generated_at": "2026-09-06T20:30:15.256123+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 19,
+    "status_counts": {
+      "failed": 2,
+      "success": 17
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 17,
+    "status_counts": {
+      "submitted": 17
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12182
+  },
+  "files": {
+    "json": "reports/daily-2026-09-06.json",
+    "markdown": "reports/daily-2026-09-06.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-06T20:30:15+08:00, exit=1 =====

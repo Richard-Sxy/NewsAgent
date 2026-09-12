@@ -1,0 +1,61 @@
+===== start 2026-09-05T20:30:01+08:00 =====
+===== news ingest start =====
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/scripts/ingest_daily.py", line 8, in <module>
+    from service.discovery_ingest_service import DiscoveryIngestService
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/service/discovery_ingest_service.py", line 2, in <module>
+    from service.news_ingest_service import NewsIngestService
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/service/news_ingest_service.py", line 1, in <module>
+    from crawler.tencent_news import (
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/crawler/tencent_news.py", line 249
+    def _parse_article_id(soup: BeautifulSoup) -> str | None:
+                                                             ^
+IndentationError: expected an indented block after function definition on line 249
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/scripts/generate_qa.py", line 6, in <module>
+    from service.news_qa_service import NewsQAService
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/service/news_qa_service.py", line 3, in <module>
+    from crawler.tencent_news import TencentNewsCrawler
+  File "/home/shi/project/NewsAgent/tencent-news-crawler/crawler/tencent_news.py", line 249
+    def _parse_article_id(soup: BeautifulSoup) -> str | None:
+                                                             ^
+IndentationError: expected an indented block after function definition on line 249
+===== qa generate end, exit=1 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-05",
+  "generated_at": "2026-09-05T20:30:02.133845+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 1,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 0,
+    "status_counts": {},
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 0,
+    "status_counts": {},
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 11946
+  },
+  "files": {
+    "json": "reports/daily-2026-09-05.json",
+    "markdown": "reports/daily-2026-09-05.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-05T20:30:02+08:00, exit=1 =====

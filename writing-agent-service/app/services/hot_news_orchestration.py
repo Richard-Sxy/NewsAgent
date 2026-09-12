@@ -9,6 +9,7 @@ from app.analytics.baseline import NewsMetricBaseline
 from app.analytics.data_source import BehaviorDataSource, BehaviorQuery
 from app.analytics.entities import ContentType
 from app.analytics.hot_news_enrichment import EnrichedHotNews, HotNewsEnrichmentService
+from app.analytics.metric_source import HotNewsMetricQuery, NewsMetricSource
 from app.analytics.metrics import NewsMetricCalculator, NewsMetricSnapshot
 from app.analytics.ranking import HotNewsRanker, MetricKey, RankedHotNews
 from app.clients.fastgpt import AgentResult
@@ -154,15 +155,21 @@ class HotNewsOrchestrationService:
     def __init__(
         self,
         *,
-        behavior_data_source: BehaviorDataSource,
         baseline_provider: HotNewsBaselineProvider,
         enrichment_service: HotNewsEnrichmentService,
         analysis_service: HotNewsAnalysisService,
         policy: HotNewsOrchestrationPolicy,
+        behavior_data_source: BehaviorDataSource | None = None,
+        metric_source: NewsMetricSource | None = None,
         metric_calculator: NewsMetricCalculator | None = None,
         ranker: HotNewsRanker | None = None,
     ) -> None:
+        if (behavior_data_source is None) == (metric_source is None):
+            raise ValueError(
+                "exactly one of behavior_data_source or metric_source is required"
+            )
         self.behavior_data_source = behavior_data_source
+        self.metric_source = metric_source
         self.baseline_provider = baseline_provider
         self.enrichment_service = enrichment_service
         self.analysis_service = analysis_service
@@ -182,21 +189,34 @@ class HotNewsOrchestrationService:
                 f"request={request.production_bundle_version!r}, "
                 f"policy={self.policy.production_bundle_version!r}"
             )
-        query = BehaviorQuery(
-            start=request.window_start,
-            end=request.window_end,
-            tenant_id=request.tenant_id,
-            content_types=self.policy.content_types,
-        )
-        records = await self.behavior_data_source.fetch(query)
-        snapshots = self.metric_calculator.calculate(
-            records,
-            window_start=request.window_start,
-            window_end=request.window_end,
-            source_guarantees_unique_event_id=(
-                self.policy.source_guarantees_unique_event_id
-            ),
-        )
+        if self.metric_source is not None:
+            snapshots = await self.metric_source.fetch_snapshots(
+                HotNewsMetricQuery(
+                    tenant_id=request.tenant_id,
+                    window_start=request.window_start,
+                    window_end=request.window_end,
+                    content_types=self.policy.content_types,
+                    ranking_limit=self.policy.ranking_limit,
+                )
+            )
+            fetched_record_count = len(snapshots)
+        else:
+            query = BehaviorQuery(
+                start=request.window_start,
+                end=request.window_end,
+                tenant_id=request.tenant_id,
+                content_types=self.policy.content_types,
+            )
+            records = await self.behavior_data_source.fetch(query)
+            snapshots = self.metric_calculator.calculate(
+                records,
+                window_start=request.window_start,
+                window_end=request.window_end,
+                source_guarantees_unique_event_id=(
+                    self.policy.source_guarantees_unique_event_id
+                ),
+            )
+            fetched_record_count = len(records)
         metric_keys = frozenset(
             (snapshot.news_id, snapshot.content_type) for snapshot in snapshots
         )
@@ -218,7 +238,7 @@ class HotNewsOrchestrationService:
         if not ranked:
             return self._empty_result(
                 request=request,
-                fetched_record_count=len(records),
+                fetched_record_count=fetched_record_count,
                 snapshots=snapshots,
                 baselines=baselines,
             )
@@ -249,7 +269,7 @@ class HotNewsOrchestrationService:
         return HotNewsRunResult(
             request=request,
             idempotency_key=request.idempotency_key,
-            fetched_record_count=len(records),
+            fetched_record_count=fetched_record_count,
             metric_snapshots=tuple(snapshots),
             baselines=self._ordered_baselines(baselines),
             ranked_news=tuple(ranked),

@@ -30,15 +30,26 @@ import asyncio
 import json
 import os
 import re
+from dataclasses import replace
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any, Mapping, Sequence
 
 from dotenv import load_dotenv
 
 from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
-from app.analytics.news_content import NewsContent, NewsContentRepository
+from app.analytics.news_content import (
+    NewsContent,
+    NewsContentRepository,
+    TencentNewsCacheRepository,
+)
 from app.clients.fastgpt import AgentResult
-from app.clients.knowledge_base import RelatedNews, RelatedNewsSearchQuery
+from app.clients.knowledge_base import (
+    FastGPTKnowledgeSearchClient,
+    KnowledgeSearchSettings,
+    RelatedNews,
+    RelatedNewsSearchQuery,
+)
 from app.schemas.hot_news import (
     AnalysisReason,
     HotNewsAnalysisInput,
@@ -404,9 +415,17 @@ def render_report(report: HotNewsAnalysisReport) -> list[str]:
     return lines
 
 
-def render_result(result: Any, runner_label: str, *, show_raw: bool) -> None:
+def render_result(
+    result: Any,
+    runner_label: str,
+    *,
+    show_raw: bool,
+    knowledge_label: str | None = None,
+) -> None:
     print("=" * 78)
     print(f"Runner: {runner_label}")
+    if knowledge_label is not None:
+        print(f"关联新闻来源: {knowledge_label}")
     print(
         f"窗口: {result.request.window_start.isoformat()} → "
         f"{result.request.window_end.isoformat()}"
@@ -459,6 +478,67 @@ def render_result(result: Any, runner_label: str, *, show_raw: bool) -> None:
     )
 
 
+_ARTICLE_CACHE_DIR = (
+    Path(__file__).resolve().parents[2]
+    / "tencent-news-crawler"
+    / "data"
+    / "articles"
+)
+
+
+def with_real_content_cache(dependencies: Any) -> Any:
+    """真实知识库模式下，用爬虫正文缓存补全召回候选的标题与链接。
+
+    离线场景仓储只包含少量场景新闻，无法 hydrate 真实召回的候选，导致标题
+    退化成 FastGPT 的 collection 名。爬虫缓存存在时改用它；不存在则保持原样。
+    """
+
+    if not _ARTICLE_CACHE_DIR.is_dir():
+        return dependencies
+    return replace(
+        dependencies,
+        content_repository=TencentNewsCacheRepository(_ARTICLE_CACHE_DIR),
+    )
+
+
+def build_knowledge_search(
+    *,
+    use_real_kb: bool,
+    content_repository: NewsContentRepository,
+    candidate_news_ids: Sequence[str],
+    min_overlap: int,
+) -> tuple[Any, str]:
+    """选择关联新闻检索实现：真实 FastGPT 知识库或离线场景桩。
+
+    真实模式复用 ``FastGPTKnowledgeSearchClient``，从 ``.env`` 读取
+    ``FASTGPT_BASE_URL`` / ``FASTGPT_API_KEY`` / ``FASTGPT_DATASET_ID``。
+    返回的客户端可能带 ``close``（真实客户端有，离线桩没有），调用方负责
+    在结束后关闭。
+    """
+
+    if not use_real_kb:
+        return (
+            OfflineScenarioKnowledgeSearchClient(
+                content_repository,
+                candidate_news_ids,
+                tenant_id=E2E_TENANT_ID,
+                min_overlap=min_overlap,
+            ),
+            "离线场景桩",
+        )
+
+    try:
+        settings = KnowledgeSearchSettings()
+    except Exception as exc:  # noqa: BLE001 - 演示脚本需给出可读提示
+        raise SystemExit(
+            "--real-kb 需要 .env 配置 FASTGPT_API_KEY 与 FASTGPT_DATASET_ID："
+            f"{exc}"
+        ) from exc
+
+    client = FastGPTKnowledgeSearchClient(settings)
+    return client, f"真实 FastGPT 知识库（dataset={settings.fastgpt_dataset_id}）"
+
+
 # --------------------------------------------------------------------------- #
 # 入口
 # --------------------------------------------------------------------------- #
@@ -466,16 +546,19 @@ async def run(
     *,
     show_raw: bool = False,
     use_real: bool = False,
+    use_real_kb: bool = False,
     min_overlap: int = 2,
 ) -> None:
     dependencies = build_hot_news_e2e_dependencies()
+    if use_real_kb:
+        dependencies = with_real_content_cache(dependencies)
     scenario = load_scenario()
     candidate_news_ids = tuple(str(item["news_id"]) for item in scenario["news"])
 
-    knowledge_search = OfflineScenarioKnowledgeSearchClient(
-        dependencies.content_repository,
-        candidate_news_ids,
-        tenant_id=E2E_TENANT_ID,
+    knowledge_search, knowledge_label = build_knowledge_search(
+        use_real_kb=use_real_kb,
+        content_repository=dependencies.content_repository,
+        candidate_news_ids=candidate_news_ids,
         min_overlap=min_overlap,
     )
     runner, runner_label = build_runner(use_real=use_real)
@@ -504,8 +587,18 @@ async def run(
     )
     request.validate()
 
-    result = await service.run(request)
-    render_result(result, runner_label, show_raw=show_raw)
+    try:
+        result = await service.run(request)
+        render_result(
+            result,
+            runner_label,
+            show_raw=show_raw,
+            knowledge_label=knowledge_label,
+        )
+    finally:
+        close = getattr(knowledge_search, "close", None)
+        if close is not None:
+            await close()
 
 
 def main() -> None:
@@ -522,6 +615,11 @@ def main() -> None:
         help="连接真实 FastGPT（需要三个环境变量已配置且服务可达）",
     )
     parser.add_argument(
+        "--real-kb",
+        action="store_true",
+        help="关联新闻改用真实 FastGPT 新闻知识库检索（读取 .env 的 FASTGPT_DATASET_ID）",
+    )
+    parser.add_argument(
         "--min-overlap",
         type=int,
         default=2,
@@ -529,7 +627,12 @@ def main() -> None:
     )
     args = parser.parse_args()
     asyncio.run(
-        run(show_raw=args.raw, use_real=args.real, min_overlap=args.min_overlap)
+        run(
+            show_raw=args.raw,
+            use_real=args.real,
+            use_real_kb=args.real_kb,
+            min_overlap=args.min_overlap,
+        )
     )
 
 

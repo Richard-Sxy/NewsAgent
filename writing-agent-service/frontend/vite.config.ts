@@ -11,6 +11,8 @@ import type { ProxyOptions } from 'vite'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   const devProxyTarget = env.VITE_DEV_PROXY_TARGET || 'http://127.0.0.1:8000'
+  // 端口保持团队默认 5173，本地可用 .env.*.local 的 VITE_DEV_PORT 覆盖。
+  const devPort = Number(env.VITE_DEV_PORT) || 5173
 
   /**
    * 本地开发时没有企业网关注入身份头，而生产环境**必须**由网关注入。
@@ -55,7 +57,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: 5173,
+      port: devPort,
       strictPort: true,
       proxy: { '/api': apiProxy },
     },

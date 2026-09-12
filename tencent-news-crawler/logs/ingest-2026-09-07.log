@@ -1,0 +1,476 @@
+===== start 2026-09-07T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-09-07",
+  "discovered": 20,
+  "unique": 19,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 19,
+    "succeeded": 17,
+    "skipped": 0,
+    "failed": 2,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0B0H600",
+        "title": "起售价19999元，华为三折叠凭什么越卖越贵？",
+        "collection_id": "6a9eae51cfc7a9b3a451459d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CILL00",
+        "title": "韩国券商：三星海力士存储芯片库存不足10天，明年或现史上最严重短缺",
+        "collection_id": "6a9eae51cfc7a9b3a45145d5",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0AODI00",
+        "title": "库克卸任苹果CEO，掌舵15年工资单曝光！市值涨31万亿，给了他多少钱",
+        "collection_id": "6a9eae51cfc7a9b3a4514605",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CBDL00",
+        "title": "老黄30亿美元押注穆拉蒂！估值冲到400亿，钱转一圈又买英伟达的卡",
+        "collection_id": "6a9eae51cfc7a9b3a4514660",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CEA000",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻内容过短。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A058TB00",
+        "title": "时隔8年U20世界杯首秀！中国女足首发：欧阳玉环先发 卢家玉替补",
+        "collection_id": "6a9eae52cfc7a9b3a45146cf",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0BXNY00",
+        "title": "被轻视！今晚23时30分郑钦文冲击八强，官方预测其胜率仅为12%",
+        "collection_id": "6a9eae52cfc7a9b3a45146ff",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0C52F00",
+        "title": "张家齐：前两任男友都因出轨分手 女孩多谈恋爱才知道自己想要什么",
+        "collection_id": "6a9eae52cfc7a9b3a4514737",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CDFO00",
+        "title": "世界杯-澳大利亚附加赛大概率战中国女篮 比利时大胜直通八强",
+        "collection_id": "6a9eae52cfc7a9b3a451476f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A03T3700",
+        "title": "侥幸闯过捷克这一关，中国女篮不能每次靠运气续命｜体谈",
+        "collection_id": "6a9eae53cfc7a9b3a45147a7",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CRJY00",
+        "title": "金价高位震荡，央行增持黄金热度不减",
+        "collection_id": "6a9eae53cfc7a9b3a45147eb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0ACP000",
+        "title": "“县人民政府”写成“县人民币政府”，万亿巨头翻车了",
+        "collection_id": "6a9eae53cfc7a9b3a4514837",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0C7GU00",
+        "title": "就任百日，沃什还想坚持做“最沉默的美联储主席”吗？",
+        "collection_id": "6a9eae53cfc7a9b3a4514882",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0AZS500",
+        "title": "瓶装水，失去了钞能力",
+        "collection_id": "6a9eae53cfc7a9b3a45148c6",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/RLV2026090506840900",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻正文为空。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0BXJ500",
+        "title": "车企供应商账期再收紧：3日验收、议价先付，重点车企将被年度评估",
+        "collection_id": "6a9eae54cfc7a9b3a4514926",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0C2LK00",
+        "title": "特斯拉推“金九”万元优惠，门店称湖北半天订单增幅超50%，其他车企会跟吗？",
+        "collection_id": "6a9eae54cfc7a9b3a4514956",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0CP9I00",
+        "title": "奥迪A2 e-tron正式发布，WLTC续航里程646km",
+        "collection_id": "6a9eae54cfc7a9b3a4514999",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260907A0BXOI00",
+        "title": "美国8月车市：皮卡看F系列，SUV看CR-V，轿车看凯美瑞",
+        "collection_id": "6a9eae54cfc7a9b3a45149d1",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "起售价19999元，华为三折叠凭什么越卖越贵？",
+      "url": "https://news.qq.com/rain/a/20260907A0B0H600",
+      "publish_time": "2026-09-07 16:56:38"
+    },
+    {
+      "topic": "科技",
+      "title": "韩国券商：三星海力士存储芯片库存不足10天，明年或现史上最严重短缺",
+      "url": "https://news.qq.com/rain/a/20260907A0CILL00",
+      "publish_time": "2026-09-07 19:31:10"
+    },
+    {
+      "topic": "科技",
+      "title": "库克卸任苹果CEO，掌舵15年工资单曝光！市值涨31万亿，给了他多少钱",
+      "url": "https://news.qq.com/rain/a/20260907A0AODI00",
+      "publish_time": "2026-09-07 16:32:06"
+    },
+    {
+      "topic": "科技",
+      "title": "老黄30亿美元押注穆拉蒂！估值冲到400亿，钱转一圈又买英伟达的卡",
+      "url": "https://news.qq.com/rain/a/20260907A0CBDL00",
+      "publish_time": "2026-09-07 19:02:10"
+    },
+    {
+      "topic": "科技",
+      "title": "“质保10年，第4年就没配件了？” 云米科技被曝“摆烂式售后”，众人喊话创始人“别总画大饼！”",
+      "url": "https://news.qq.com/rain/a/20260907A0CEA000",
+      "publish_time": "2026-09-07 19:14:29"
+    },
+    {
+      "topic": "体育",
+      "title": "时隔8年U20世界杯首秀！中国女足首发：欧阳玉环先发 卢家玉替补",
+      "url": "https://news.qq.com/rain/a/20260907A058TB00",
+      "publish_time": "2026-09-07 19:54:25"
+    },
+    {
+      "topic": "体育",
+      "title": "被轻视！今晚23时30分郑钦文冲击八强，官方预测其胜率仅为12%",
+      "url": "https://news.qq.com/rain/a/20260907A0BXNY00",
+      "publish_time": "2026-09-07 18:18:11"
+    },
+    {
+      "topic": "体育",
+      "title": "张家齐：前两任男友都因出轨分手 女孩多谈恋爱才知道自己想要什么",
+      "url": "https://news.qq.com/rain/a/20260907A0C52F00",
+      "publish_time": "2026-09-07 18:40:29"
+    },
+    {
+      "topic": "体育",
+      "title": "世界杯-澳大利亚附加赛大概率战中国女篮 比利时大胜直通八强",
+      "url": "https://news.qq.com/rain/a/20260907A0CDFO00",
+      "publish_time": "2026-09-07 19:16:24"
+    },
+    {
+      "topic": "体育",
+      "title": "侥幸闯过捷克这一关，中国女篮不能每次靠运气续命｜体谈",
+      "url": "https://news.qq.com/rain/a/20260907A03T3700",
+      "publish_time": "2026-09-07 08:21:12"
+    },
+    {
+      "topic": "财经",
+      "title": "金价高位震荡，央行增持黄金热度不减",
+      "url": "https://news.qq.com/rain/a/20260907A0CRJY00",
+      "publish_time": "2026-09-07 20:23:56"
+    },
+    {
+      "topic": "财经",
+      "title": "“县人民政府”写成“县人民币政府”，万亿巨头翻车了",
+      "url": "https://news.qq.com/rain/a/20260907A0ACP000",
+      "publish_time": "2026-09-07 16:14:43"
+    },
+    {
+      "topic": "财经",
+      "title": "就任百日，沃什还想坚持做“最沉默的美联储主席”吗？",
+      "url": "https://news.qq.com/rain/a/20260907A0C7GU00",
+      "publish_time": "2026-09-07 18:48:14"
+    },
+    {
+      "topic": "财经",
+      "title": "瓶装水，失去了钞能力",
+      "url": "https://news.qq.com/rain/a/20260907A0AZS500",
+      "publish_time": "2026-09-07 16:57:49"
+    },
+    {
+      "topic": "汽车",
+      "title": "小米秋季旗舰新品发布会",
+      "url": "https://news.qq.com/rain/a/RLV2026090506840900",
+      "publish_time": "2026-09-07 19:49:17"
+    },
+    {
+      "topic": "汽车",
+      "title": "车企供应商账期再收紧：3日验收、议价先付，重点车企将被年度评估",
+      "url": "https://news.qq.com/rain/a/20260907A0BXJ500",
+      "publish_time": "2026-09-07 18:18:06"
+    },
+    {
+      "topic": "汽车",
+      "title": "特斯拉推“金九”万元优惠，门店称湖北半天订单增幅超50%，其他车企会跟吗？",
+      "url": "https://news.qq.com/rain/a/20260907A0C2LK00",
+      "publish_time": "2026-09-07 18:34:12"
+    },
+    {
+      "topic": "汽车",
+      "title": "奥迪A2 e-tron正式发布，WLTC续航里程646km",
+      "url": "https://news.qq.com/rain/a/20260907A0CP9I00",
+      "publish_time": "2026-09-07 20:04:14"
+    },
+    {
+      "topic": "汽车",
+      "title": "美国8月车市：皮卡看F系列，SUV看CR-V，轿车看凯美瑞",
+      "url": "https://news.qq.com/rain/a/20260907A0BXOI00",
+      "publish_time": "2026-09-07 18:16:53"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0BXOI00",
+      "title": "美国8月车市：皮卡看F系列，SUV看CR-V，轿车看凯美瑞",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514a0d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0CP9I00",
+      "title": "奥迪A2 e-tron正式发布，WLTC续航里程646km",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514a43"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0C2LK00",
+      "title": "特斯拉推“金九”万元优惠，门店称湖北半天订单增幅超50%，其他车企会跟吗？",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514a75"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0BXJ500",
+      "title": "车企供应商账期再收紧：3日验收、议价先付，重点车企将被年度评估",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514aa5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0AZS500",
+      "title": "瓶装水，失去了钞能力",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514add"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0C7GU00",
+      "title": "就任百日，沃什还想坚持做“最沉默的美联储主席”吗？",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514b0d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0ACP000",
+      "title": "“县人民政府”写成“县人民币政府”，万亿巨头翻车了",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514b3d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0CRJY00",
+      "title": "金价高位震荡，央行增持黄金热度不减",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514b6d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A03T3700",
+      "title": "侥幸闯过捷克这一关，中国女篮不能每次靠运气续命｜体谈",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514b9d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0CDFO00",
+      "title": "世界杯-澳大利亚附加赛大概率战中国女篮 比利时大胜直通八强",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514bcd"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0C52F00",
+      "title": "张家齐：前两任男友都因出轨分手 女孩多谈恋爱才知道自己想要什么",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514bfd"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0BXNY00",
+      "title": "被轻视！今晚23时30分郑钦文冲击八强，官方预测其胜率仅为12%",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514c2a"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A058TB00",
+      "title": "时隔8年U20世界杯首秀！中国女足首发：欧阳玉环先发 卢家玉替补",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514c57"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0CBDL00",
+      "title": "老黄30亿美元押注穆拉蒂！估值冲到400亿，钱转一圈又买英伟达的卡",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514c84"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0AODI00",
+      "title": "库克卸任苹果CEO，掌舵15年工资单曝光！市值涨31万亿，给了他多少钱",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514cb1"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0CILL00",
+      "title": "韩国券商：三星海力士存储芯片库存不足10天，明年或现史上最严重短缺",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514cde"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260907A0B0H600",
+      "title": "起售价19999元，华为三折叠凭什么越卖越贵？",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514d0b"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260904A0675600",
+      "title": "执行阶段达成和解，可以申请解封被查封的房产以及撤销失信人吗？",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514d38"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260904A0DYV400",
+      "title": "重磅定调！老房子告别缝缝补补，原拆原建模式正在全国铺开",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514d65"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A05WHD00",
+      "title": "280米！上海杨浦第一高双子塔正式落成！中间的大缺口为何偏偏做成金色？",
+      "status": "submitted",
+      "collection_id": "6a9eae55cfc7a9b3a4514d92"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-07",
+  "generated_at": "2026-09-07T20:30:14.389291+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 19,
+    "status_counts": {
+      "failed": 2,
+      "success": 17
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 17,
+    "status_counts": {
+      "submitted": 17
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12199
+  },
+  "files": {
+    "json": "reports/daily-2026-09-07.json",
+    "markdown": "reports/daily-2026-09-07.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-07T20:30:14+08:00, exit=1 =====

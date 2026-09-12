@@ -8,6 +8,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from app.analytics.data_source import BehaviorDataSource
 from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.analytics.metric_source import NewsMetricSource
 from app.analytics.news_content import NewsContentRepository
 from app.clients.knowledge_base import KnowledgeSearchClient
 from app.db.session import Database
@@ -52,15 +53,17 @@ class ActiveProductionBundleHotNewsService:
         *,
         database: Database,
         runtime_registry: ProductionBundleRuntimeRegistry,
-        behavior_data_source: BehaviorDataSource,
         baseline_provider: HotNewsBaselineProvider,
         content_repository: NewsContentRepository,
         knowledge_search: KnowledgeSearchClient,
         policy_template: HotNewsOrchestrationPolicy,
+        behavior_data_source: BehaviorDataSource | None = None,
+        metric_source: NewsMetricSource | None = None,
     ) -> None:
         self._database = database
         self._runtime_registry = runtime_registry
         self._behavior_data_source = behavior_data_source
+        self._metric_source = metric_source
         self._baseline_provider = baseline_provider
         self._enrichment_service = HotNewsEnrichmentService(
             content_repository=content_repository,
@@ -107,6 +110,7 @@ class ActiveProductionBundleHotNewsService:
         )
         service = HotNewsOrchestrationService(
             behavior_data_source=self._behavior_data_source,
+            metric_source=self._metric_source,
             baseline_provider=self._baseline_provider,
             enrichment_service=self._enrichment_service,
             analysis_service=analysis_service,

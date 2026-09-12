@@ -9,6 +9,8 @@ from app.analytics.entities import BehaviorRecord, ContentType, EventType
 from app.analytics.hot_score import HotScoreCalculator, HotScoreConfig, HotScoreResult
 from app.analytics.hot_news_enrichment import EnrichedHotNews, HotNewsEnrichmentService
 from app.analytics.metrics import NewsMetricCalculator, NewsMetricSnapshot
+from app.analytics.metric_source import HotNewsMetricQuery, NewsMetricSource
+from app.analytics.sql_guard import SqlGuard, SqlGuardPolicy
 from app.analytics.news_content import (
     InMemoryNewsContentRepository,
     NewsContent,
@@ -37,5 +39,9 @@ __all__ = [
     "NewsMetricBaseline",
     "NewsMetricCalculator",
     "NewsMetricSnapshot",
+    "HotNewsMetricQuery",
+    "NewsMetricSource",
     "RankedHotNews",
+    "SqlGuard",
+    "SqlGuardPolicy",
 ]

@@ -1,0 +1,486 @@
+===== start 2026-09-09T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-09",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260909A09FC800",
+        "title": "未卖先火？有人出价1500元代抢苹果折叠机",
+        "collection_id": "6aa15151cfc7a9b3a451919a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0CS0B00",
+        "title": "OpenAI宣布攻克千禧年难题，清华姚班传奇陈立杰：不可思议的时代",
+        "collection_id": "6aa15152cfc7a9b3a45191ce",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0D5KR00",
+        "title": "自动驾驶出事，找谁赔？立法司法双重破解千亿责任迷局",
+        "collection_id": "6aa15152cfc7a9b3a4519206",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0D07200",
+        "title": "刘元春：AI经济新形态已确立，经济学家的饭碗被AI弄得七零八落",
+        "collection_id": "6aa15152cfc7a9b3a4519247",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0CR5K00",
+        "title": "份额战之后，东南亚电商开始拼闭环",
+        "collection_id": "6aa15153cfc7a9b3a45192c7",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260908A032IR00",
+        "title": "23点30郑钦文首冲美网四强迎苦主：与世界第二莱巴金娜交锋1胜4负",
+        "collection_id": "6aa15153cfc7a9b3a451934f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0D78I00",
+        "title": "波多黎各主帅：中国女篮实力强劲+身高突出 但我们抱着取胜心态去打",
+        "collection_id": "6aa15153cfc7a9b3a4519391",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0D7X500",
+        "title": "22岁铜梁龙红星赛季报销+退出亚运！男足剩22人：补招2人无法参赛",
+        "collection_id": "6aa15154cfc7a9b3a45193d0",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DM8R00",
+        "title": "4-2！丁俊晖两连鞭险胜赫吉尔，中国一哥闯进英格兰公开赛16强",
+        "collection_id": "6aa15154cfc7a9b3a451940a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0CYBM00",
+        "title": "让自己女儿变成女版自己？姚明：没要求她打篮球 尊重她的兴趣爱好",
+        "collection_id": "6aa15154cfc7a9b3a4519441",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DLH600",
+        "title": "8月CPI、PPI同步转涨，产业升级形成新价格支撑",
+        "collection_id": "6aa15154cfc7a9b3a451947a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DMS400",
+        "title": "“不让如厕导致员工裸奔”？宁德时代回应，公司上半年日赚约2.39亿",
+        "collection_id": "6aa15155cfc7a9b3a45194b9",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0ASUP00",
+        "title": "油价自7月来首破100美元！美伊互袭油轮，汇丰：霍尔木兹中断将成新常态",
+        "collection_id": "6aa15155cfc7a9b3a4519505",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DBT600",
+        "title": "“董事长母子年龄相差仅7岁”，星宇股份道歉、更正",
+        "collection_id": "6aa15155cfc7a9b3a4519540",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0ADVQ00",
+        "title": "9省份社保缴费涨幅降至1.5%及以下，专家：与平均工资增速放缓有关",
+        "collection_id": "6aa15155cfc7a9b3a4519586",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0CHRT00",
+        "title": "工信部第411批新车：时隔十年，长城又造了辆燃油三厢轿车",
+        "collection_id": "6aa15156cfc7a9b3a45195cb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0BQZ000",
+        "title": "燃油车再度“出局”！8月车型销量出炉：多款新车崛起，排名大涨",
+        "collection_id": "6aa15156cfc7a9b3a4519621",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DS0G00",
+        "title": "全新捷途X90上市，搭载猎鹰500系统，超级置换价9.99万起",
+        "collection_id": "6aa15156cfc7a9b3a451966b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DNY500",
+        "title": "车企加速“捆绑”二线电池厂商，“少宁化”是否可行？",
+        "collection_id": "6aa15156cfc7a9b3a45196af",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260909A0DFS700",
+        "title": "特斯拉史上最便宜！有的国产车价格一分没降，“优惠”却超10万元",
+        "collection_id": "6aa15157cfc7a9b3a4519712",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "未卖先火？有人出价1500元代抢苹果折叠机",
+      "url": "https://news.qq.com/rain/a/20260909A09FC800",
+      "publish_time": "2026-09-09 20:23:52"
+    },
+    {
+      "topic": "科技",
+      "title": "OpenAI宣布攻克千禧年难题，清华姚班传奇陈立杰：不可思议的时代",
+      "url": "https://news.qq.com/rain/a/20260909A0CS0B00",
+      "publish_time": "2026-09-09 19:22:18"
+    },
+    {
+      "topic": "科技",
+      "title": "自动驾驶出事，找谁赔？立法司法双重破解千亿责任迷局",
+      "url": "https://news.qq.com/rain/a/20260909A0D5KR00",
+      "publish_time": "2026-09-09 18:53:38"
+    },
+    {
+      "topic": "科技",
+      "title": "刘元春：AI经济新形态已确立，经济学家的饭碗被AI弄得七零八落",
+      "url": "https://news.qq.com/rain/a/20260909A0D07200",
+      "publish_time": "2026-09-09 18:54:25"
+    },
+    {
+      "topic": "科技",
+      "title": "份额战之后，东南亚电商开始拼闭环",
+      "url": "https://news.qq.com/rain/a/20260909A0CR5K00",
+      "publish_time": "2026-09-09 19:27:47"
+    },
+    {
+      "topic": "体育",
+      "title": "23点30郑钦文首冲美网四强迎苦主：与世界第二莱巴金娜交锋1胜4负",
+      "url": "https://news.qq.com/rain/a/20260908A032IR00",
+      "publish_time": "2026-09-09 20:12:33"
+    },
+    {
+      "topic": "体育",
+      "title": "波多黎各主帅：中国女篮实力强劲+身高突出 但我们抱着取胜心态去打",
+      "url": "https://news.qq.com/rain/a/20260909A0D78I00",
+      "publish_time": "2026-09-09 19:38:59"
+    },
+    {
+      "topic": "体育",
+      "title": "22岁铜梁龙红星赛季报销+退出亚运！男足剩22人：补招2人无法参赛",
+      "url": "https://news.qq.com/rain/a/20260909A0D7X500",
+      "publish_time": "2026-09-09 19:06:18"
+    },
+    {
+      "topic": "体育",
+      "title": "4-2！丁俊晖两连鞭险胜赫吉尔，中国一哥闯进英格兰公开赛16强",
+      "url": "https://news.qq.com/rain/a/20260909A0DM8R00",
+      "publish_time": "2026-09-09 20:16:07"
+    },
+    {
+      "topic": "体育",
+      "title": "让自己女儿变成女版自己？姚明：没要求她打篮球 尊重她的兴趣爱好",
+      "url": "https://news.qq.com/rain/a/20260909A0CYBM00",
+      "publish_time": "2026-09-09 18:38:25"
+    },
+    {
+      "topic": "财经",
+      "title": "8月CPI、PPI同步转涨，产业升级形成新价格支撑",
+      "url": "https://news.qq.com/rain/a/20260909A0DLH600",
+      "publish_time": "2026-09-09 20:19:17"
+    },
+    {
+      "topic": "财经",
+      "title": "“不让如厕导致员工裸奔”？宁德时代回应，公司上半年日赚约2.39亿",
+      "url": "https://news.qq.com/rain/a/20260909A0DMS400",
+      "publish_time": "2026-09-09 20:08:21"
+    },
+    {
+      "topic": "财经",
+      "title": "油价自7月来首破100美元！美伊互袭油轮，机构解读",
+      "url": "https://news.qq.com/rain/a/20260909A0ASUP00",
+      "publish_time": "2026-09-09 19:47:40"
+    },
+    {
+      "topic": "财经",
+      "title": "“董事长母子年龄相差仅7岁”，星宇股份道歉、更正",
+      "url": "https://news.qq.com/rain/a/20260909A0DBT600",
+      "publish_time": "2026-09-09 19:11:02"
+    },
+    {
+      "topic": "财经",
+      "title": "9省份社保缴费涨幅降至1.5%及以下，专家：与平均工资增速放缓有关",
+      "url": "https://news.qq.com/rain/a/20260909A0ADVQ00",
+      "publish_time": "2026-09-09 15:56:03"
+    },
+    {
+      "topic": "汽车",
+      "title": "工信部第411批新车：时隔十年，长城又造了辆燃油三厢轿车",
+      "url": "https://news.qq.com/rain/a/20260909A0CHRT00",
+      "publish_time": "2026-09-09 19:23:09"
+    },
+    {
+      "topic": "汽车",
+      "title": "燃油车再度“出局”！8月车型销量出炉：多款新车崛起，排名大涨",
+      "url": "https://news.qq.com/rain/a/20260909A0BQZ000",
+      "publish_time": "2026-09-09 17:16:23"
+    },
+    {
+      "topic": "汽车",
+      "title": "全新捷途X90上市，搭载猎鹰500系统，超级置换价9.99万起",
+      "url": "https://news.qq.com/rain/a/20260909A0DS0G00",
+      "publish_time": "2026-09-09 20:10:38"
+    },
+    {
+      "topic": "汽车",
+      "title": "车企加速“捆绑”二线电池厂商，“少宁化”是否可行？",
+      "url": "https://news.qq.com/rain/a/20260909A0DNY500",
+      "publish_time": "2026-09-09 19:58:12"
+    },
+    {
+      "topic": "汽车",
+      "title": "特斯拉史上最便宜！有的国产车价格一分没降，“优惠”却超10万元",
+      "url": "https://news.qq.com/rain/a/20260909A0DFS700",
+      "publish_time": "2026-09-09 19:28:43"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DFS700",
+      "title": "特斯拉史上最便宜！有的国产车价格一分没降，“优惠”却超10万元",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a451974a"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DNY500",
+      "title": "车企加速“捆绑”二线电池厂商，“少宁化”是否可行？",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519790"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DS0G00",
+      "title": "全新捷途X90上市，搭载猎鹰500系统，超级置换价9.99万起",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a45197c2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0BQZ000",
+      "title": "燃油车再度“出局”！8月车型销量出炉：多款新车崛起，排名大涨",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a45197f2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0CHRT00",
+      "title": "工信部第411批新车：时隔十年，长城又造了辆燃油三厢轿车",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519822"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0ADVQ00",
+      "title": "9省份社保缴费涨幅降至1.5%及以下，专家：与平均工资增速放缓有关",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519852"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DBT600",
+      "title": "“董事长母子年龄相差仅7岁”，星宇股份道歉、更正",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519882"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0ASUP00",
+      "title": "油价自7月来首破100美元！美伊互袭油轮，汇丰：霍尔木兹中断将成新常态",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a45198b2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DMS400",
+      "title": "“不让如厕导致员工裸奔”？宁德时代回应，公司上半年日赚约2.39亿",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a45198e2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DLH600",
+      "title": "8月CPI、PPI同步转涨，产业升级形成新价格支撑",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519912"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0CYBM00",
+      "title": "让自己女儿变成女版自己？姚明：没要求她打篮球 尊重她的兴趣爱好",
+      "status": "submitted",
+      "collection_id": "6aa15157cfc7a9b3a4519942"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0DM8R00",
+      "title": "4-2！丁俊晖两连鞭险胜赫吉尔，中国一哥闯进英格兰公开赛16强",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a451997c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0D7X500",
+      "title": "22岁铜梁龙红星赛季报销+退出亚运！男足剩22人：补招2人无法参赛",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a45199ad"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0D78I00",
+      "title": "波多黎各主帅：中国女篮实力强劲+身高突出 但我们抱着取胜心态去打",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a45199e1"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260908A032IR00",
+      "title": "23点30郑钦文首冲美网四强迎苦主：与世界第二莱巴金娜交锋1胜4负",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519a14"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0CR5K00",
+      "title": "份额战之后，东南亚电商开始拼闭环",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519a45"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0D07200",
+      "title": "刘元春：AI经济新形态已确立，经济学家的饭碗被AI弄得七零八落",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519a76"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0D5KR00",
+      "title": "自动驾驶出事，找谁赔？立法司法双重破解千亿责任迷局",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519aa7"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A0CS0B00",
+      "title": "OpenAI宣布攻克千禧年难题，清华姚班传奇陈立杰：不可思议的时代",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519ad8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260909A09FC800",
+      "title": "未卖先火？有人出价1500元代抢苹果折叠机",
+      "status": "submitted",
+      "collection_id": "6aa15158cfc7a9b3a4519b09"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-09",
+  "generated_at": "2026-09-09T20:30:16.792206+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12239
+  },
+  "files": {
+    "json": "reports/daily-2026-09-09.json",
+    "markdown": "reports/daily-2026-09-09.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-09T20:30:16+08:00, exit=0 =====

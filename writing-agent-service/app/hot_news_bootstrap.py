@@ -2,14 +2,22 @@ from dataclasses import dataclass, field
 
 from app.analytics.data_source import BehaviorDataSource
 from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.analytics.metric_source import NewsMetricSource
 from app.analytics.news_content import NewsContentRepository
+from app.analytics.text2sql_metric_source import (
+    HotNewsMetricSqlTemplate,
+    Text2SqlNewsMetricSource,
+)
 from app.clients.fastgpt import FastGPTClient
+from app.clients.enterprise.sql_warehouse import SqlWarehouseClient
 from app.clients.knowledge_base import (
     FastGPTKnowledgeSearchClient,
     KnowledgeSearchClient,
 )
 from app.config import Settings
+from app.schemas.text2sql import Text2SqlSchema
 from app.services.agents.hot_news import HotNewsAnalysisAgentRunner
+from app.services.agents.text2sql import Text2SqlAgentRunner
 from app.services.hot_news_analysis import (
     HotNewsAnalysisInputBuilder,
     HotNewsAnalysisService,
@@ -77,14 +85,19 @@ class HotNewsWorkerRuntime:
 
 def create_hot_news_orchestration_service(
     *,
-    behavior_data_source: BehaviorDataSource,
     baseline_provider: HotNewsBaselineProvider,
     content_repository: NewsContentRepository,
     knowledge_search: KnowledgeSearchClient,
     analysis_service: HotNewsAnalysisService,
     policy: HotNewsOrchestrationPolicy,
+    behavior_data_source: BehaviorDataSource | None = None,
+    metric_source: NewsMetricSource | None = None,
 ) -> HotNewsOrchestrationService:
-    """组装稳定领域 Port；企业 SDK 只能在调用方先转换为 Adapter。"""
+    """组装稳定领域 Port；企业 SDK 只能在调用方先转换为 Adapter。
+
+    ``metric_source`` 非空时使用模板优先 + Text2SQL 取数；否则沿用
+    ``behavior_data_source`` + 本地指标计算。
+    """
 
     enrichment_service = HotNewsEnrichmentService(
         content_repository=content_repository,
@@ -92,6 +105,7 @@ def create_hot_news_orchestration_service(
     )
     return HotNewsOrchestrationService(
         behavior_data_source=behavior_data_source,
+        metric_source=metric_source,
         baseline_provider=baseline_provider,
         enrichment_service=enrichment_service,
         analysis_service=analysis_service,
@@ -99,14 +113,46 @@ def create_hot_news_orchestration_service(
     )
 
 
+def create_text2sql_metric_source(
+    settings: Settings,
+    *,
+    warehouse: SqlWarehouseClient,
+    schema: Text2SqlSchema,
+    template: HotNewsMetricSqlTemplate | None = None,
+    fastgpt_client: FastGPTClient | None = None,
+) -> Text2SqlNewsMetricSource:
+    """组装模板优先 + Text2SQL 兜底的热点取数源。
+
+    未配置 ``FASTGPT_TEXT2SQL_APP_ID`` 时只启用确定性模板；此时请求超出模板
+    能力会显式失败，而不是让模型兜底。``fastgpt_client`` 可复用常驻客户端，
+    避免额外建立 HTTP 连接。
+    """
+
+    generator = None
+    if settings.fastgpt_text2sql_app_id:
+        generator = Text2SqlAgentRunner(
+            fastgpt_client or FastGPTClient(settings),
+            settings.fastgpt_text2sql_app_id,
+        )
+    return Text2SqlNewsMetricSource(
+        warehouse=warehouse,
+        schema=schema,
+        template=template,
+        generator=generator,
+        max_rows=settings.text2sql_max_rows,
+        timeout_ms=settings.text2sql_timeout_ms,
+    )
+
+
 """这边是创建热点新闻执行对象"""
 def create_hot_news_runtime(
         settings: Settings,
         *,
-        behavior_data_source: BehaviorDataSource,
         baseline_provider: HotNewsBaselineProvider,
         content_repository: NewsContentRepository,
         policy: HotNewsOrchestrationPolicy,
+        behavior_data_source: BehaviorDataSource | None = None,
+        metric_source: NewsMetricSource | None = None,
         knowledge_search: KnowledgeSearchClient | None = None,
 ) -> HotNewsRuntime:
     if not settings.fastgpt_hot_news_app_id:
@@ -138,6 +184,7 @@ def create_hot_news_runtime(
 
     orchestration_service = create_hot_news_orchestration_service(
         behavior_data_source=behavior_data_source,
+        metric_source=metric_source,
         baseline_provider=baseline_provider,
         content_repository=content_repository,
         knowledge_search=knowledge_client,
@@ -156,10 +203,11 @@ def create_hot_news_runtime(
 def create_hot_news_worker_runtime(
     settings: Settings,
     *,
-    behavior_data_source: BehaviorDataSource,
     baseline_provider: HotNewsBaselineProvider,
     content_repository: NewsContentRepository,
     policy: HotNewsOrchestrationPolicy,
+    behavior_data_source: BehaviorDataSource | None = None,
+    metric_source: NewsMetricSource | None = None,
     knowledge_search: KnowledgeSearchClient | None = None,
     run_metrics: HotNewsRunMetrics | None = None,
 ) -> HotNewsWorkerRuntime:
@@ -169,6 +217,7 @@ def create_hot_news_worker_runtime(
     hot_news_runtime = create_hot_news_runtime(
         settings,
         behavior_data_source=behavior_data_source,
+        metric_source=metric_source,
         baseline_provider=baseline_provider,
         content_repository=content_repository,
         policy=policy,
@@ -182,6 +231,7 @@ def create_hot_news_worker_runtime(
         database=database,
         runtime_registry=runtime_registry,
         behavior_data_source=behavior_data_source,
+        metric_source=metric_source,
         baseline_provider=baseline_provider,
         content_repository=content_repository,
         knowledge_search=hot_news_runtime.knowledge_client,
