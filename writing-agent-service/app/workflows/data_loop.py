@@ -228,6 +228,7 @@ class HotNewsDataLoopWorkflow:
         step_key: str,
         inputs: dict,
     ) -> DataLoopStepOutcome:
+        """DataLoop执行"""
         self._phase = step_type
         outcome = await workflow.execute_activity(
             "run_data_loop_step",

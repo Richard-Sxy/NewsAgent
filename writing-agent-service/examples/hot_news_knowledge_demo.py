@@ -140,7 +140,8 @@ async def run(
 ) -> list[EnrichedHotNews]:
     scenario = load_scenario()
     ranked = build_ranking(scenario)
-    if cache_dir.is_dir():
+    cache_available = cache_dir.is_dir() and any(cache_dir.glob("*.json"))
+    if cache_available:
         content_repository: LocalSearchableNewsRepository = (
             TencentNewsCacheRepository(cache_dir)
         )

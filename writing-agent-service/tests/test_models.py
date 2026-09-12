@@ -14,6 +14,7 @@ def test_all_checkpoint_tables_are_registered() -> None:
         "outbox_events",
         "analysis_runs",
         "hot_news_decisions",
+        "hot_events",
         "short_term_user_memories",
         "long_term_memory_candidates",
         "long_term_user_memories",

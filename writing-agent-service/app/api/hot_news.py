@@ -11,22 +11,29 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy.ext.asyncio import AsyncSession
+from temporalio.service import RPCError
 
 from app.api.dependencies import (
     DataLoopPrincipal,
     HotNewsPermission,
     get_hot_news_decision_service,
     get_hot_news_query_service,
+    get_hot_news_writing_handoff_service,
+    get_session,
     require_hot_news_permission,
 )
 from app.domain.errors import HotNewsPersistenceError
 from app.schemas.hot_news_api import (
+    HandoffHotNewsToWritingRequest,
     HotNewsRunDetailResponse,
     HotNewsRunListResponse,
+    HotNewsWritingHandoffResponse,
     RecordHotNewsDecisionRequest,
     RecordHotNewsDecisionResponse,
 )
 from app.schemas.hot_news_decision import RecordHotNewsDecisionCommand
+from app.schemas.job import WritingJobResponse
 from app.services.hot_news_decision import (
     HotNewsDecisionConflictError,
     HotNewsDecisionPersistenceError,
@@ -34,6 +41,11 @@ from app.services.hot_news_decision import (
     HotNewsDecisionTargetNotFoundError,
 )
 from app.services.hot_news_query import HotNewsQueryService
+from app.services.hot_news_writing_handoff import (
+    HotNewsAnalysisNotFoundError,
+    HotNewsWritingHandoffService,
+)
+from app.services.job import JobNotFoundError
 
 
 router = APIRouter(prefix="/api/v1/hot-news", tags=["hot-news-console"])
@@ -45,6 +57,10 @@ ReadPrincipal = Annotated[
 DecidePrincipal = Annotated[
     DataLoopPrincipal,
     Depends(require_hot_news_permission(HotNewsPermission.DECIDE)),
+]
+HandoffPrincipal = Annotated[
+    DataLoopPrincipal,
+    Depends(require_hot_news_permission(HotNewsPermission.HANDOFF)),
 ]
 
 
@@ -132,4 +148,45 @@ async def record_hot_news_decision(
         decision_type=decision.decision_type,
         status="recorded",
         created=created,
+    )
+
+
+@router.post(
+    "/runs/{run_id}/news/{news_id}/handoff",
+    response_model=HotNewsWritingHandoffResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def handoff_hot_news_to_writing(
+    run_id: UUID,
+    news_id: str,
+    request: HandoffHotNewsToWritingRequest,
+    principal: HandoffPrincipal,
+    session: AsyncSession = Depends(get_session),
+    service: HotNewsWritingHandoffService = Depends(
+        get_hot_news_writing_handoff_service
+    ),
+) -> HotNewsWritingHandoffResponse:
+    """把一条已校验热点分析转交研究/写作流程；同场景重复转交幂等。"""
+
+    try:
+        outcome = await service.handoff(
+            session,
+            tenant_id=principal.tenant_id,
+            created_by=principal.user_id,
+            run_id=run_id,
+            news_id=news_id,
+            scenario=request.scenario,
+        )
+    except HotNewsAnalysisNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except RPCError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Temporal 暂时不可用，请稍后重试",
+        ) from exc
+    except JobNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return HotNewsWritingHandoffResponse(
+        job=WritingJobResponse.model_validate(outcome.job),
+        created=outcome.created,
     )

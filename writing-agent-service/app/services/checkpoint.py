@@ -294,7 +294,7 @@ class CheckpointService:
 
     @staticmethod
     async def _lock_agent_run(
-        session: AsyncSession,
+        session: AsyncSession, # 异步会话
         job_id: uuid.UUID,
         step_id: uuid.UUID,
         agent_run_id: uuid.UUID,

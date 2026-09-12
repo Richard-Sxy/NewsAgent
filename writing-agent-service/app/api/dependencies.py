@@ -32,6 +32,16 @@ from app.services.production_bundle_runtime import (
     ProductionBundleRuntimeRegistry,
     UnsupportedProductionBundleRuntimeError,
 )
+from app.services.memory_context_application import (
+    MemoryContextApplicationService,
+)
+from app.services.memory_promotion_application import (
+    MemoryPromotionApplicationService,
+)
+from app.services.memory_write_application import MemoryWriteApplicationService
+from app.services.hot_news_writing_handoff import (
+    HotNewsWritingHandoffService,
+)
 
 
 class DataLoopPermission(StrEnum):
@@ -59,7 +69,21 @@ class HotNewsPermission(StrEnum):
 
     READ = "hot-news:read"
     DECIDE = "hot-news:decide"
+    HANDOFF = "hot-news:handoff"
     ADMIN = "hot-news:admin"
+
+
+class MemoryPermission(StrEnum):
+    """Least-privilege permissions for the user-memory control plane.
+
+    复用 Data Loop 网关共享 Bearer Token，角色串来自独立的
+    ``X-Memory-Roles`` 头，与热点、Data Loop 权限分别授予、分别回收。
+    """
+
+    READ = "memory:read"
+    WRITE = "memory:write"
+    APPROVE = "memory:approve"
+    ADMIN = "memory:admin"
 
 
 @dataclass(frozen=True, slots=True)
@@ -69,6 +93,9 @@ class DataLoopPrincipal:
     tenant_id: uuid.UUID
     user_id: uuid.UUID
     permissions: frozenset[str]
+    team_id: str | None = None
+    section_id: str | None = None
+    role_id: str | None = None
 
 
 async def get_data_loop_gateway_token(request: Request) -> str | None:
@@ -283,6 +310,112 @@ def require_hot_news_permission(permission: HotNewsPermission):
     return dependency
 
 
+async def get_memory_principal(
+    configured_token: Annotated[
+        str | None,
+        Depends(get_data_loop_gateway_token),
+    ],
+    authorization: Annotated[str | None, Header()] = None,
+    x_tenant_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-Tenant-ID"),
+    ] = None,
+    x_user_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-User-ID"),
+    ] = None,
+    x_memory_roles: Annotated[
+        str | None,
+        Header(alias="X-Memory-Roles"),
+    ] = None,
+    x_team_id: Annotated[str | None, Header(alias="X-Team-ID")] = None,
+    x_section_id: Annotated[
+        str | None,
+        Header(alias="X-Section-ID"),
+    ] = None,
+    x_role_id: Annotated[str | None, Header(alias="X-Role-ID")] = None,
+) -> DataLoopPrincipal:
+    """Authenticate a user-memory request that passed the trusted gateway.
+
+    共享凭据与 Data Loop/热点相同（DATA_LOOP_GATEWAY_TOKEN），但权限串来自
+    独立的 ``X-Memory-Roles`` 头。租户、用户与组织作用域只信任网关注入的
+    Header，绝不从请求体读取，防止越权写入他人记忆。
+    """
+
+    if configured_token is None or not configured_token.strip():
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="memory gateway authentication is not configured",
+        )
+
+    parts = authorization.split() if authorization is not None else []
+    if (
+        len(parts) != 2
+        or parts[0].lower() != "bearer"
+        or not compare_digest(parts[1], configured_token)
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid memory gateway credential",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if x_tenant_id is None or x_user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="trusted gateway identity headers are required",
+        )
+
+    raw_permissions = (
+        [] if x_memory_roles is None else x_memory_roles.split(",")
+    )
+    permissions = frozenset(item.strip() for item in raw_permissions if item.strip())
+    if not permissions:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="memory permissions are required",
+        )
+    return DataLoopPrincipal(
+        tenant_id=x_tenant_id,
+        user_id=x_user_id,
+        permissions=permissions,
+        team_id=_optional_header_value("X-Team-ID", x_team_id),
+        section_id=_optional_header_value("X-Section-ID", x_section_id),
+        role_id=_optional_header_value("X-Role-ID", x_role_id),
+    )
+
+
+def _optional_header_value(name: str, value: str | None) -> str | None:
+    if value is None:
+        return None
+    normalized = value.strip()
+    if not normalized:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"{name} must not be blank when provided",
+        )
+    return normalized
+
+
+def require_memory_permission(permission: MemoryPermission):
+    """Build an endpoint dependency enforcing one memory permission."""
+
+    async def dependency(
+        principal: Annotated[DataLoopPrincipal, Depends(get_memory_principal)],
+    ) -> DataLoopPrincipal:
+        if (
+            permission.value not in principal.permissions
+            and MemoryPermission.ADMIN.value not in principal.permissions
+        ):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"missing memory permission: {permission.value}",
+            )
+        return principal
+
+    return dependency
+
+
 """ 这边配置提供：数据库Session/Temporal Client/OrchestratorService/当前 """
 async def get_session(request: Request) -> AsyncIterator[AsyncSession]:
     database: Database = request.app.state.database
@@ -350,6 +483,32 @@ async def get_hot_news_query_service(request: Request):
 
     database: Database = request.app.state.database
     return HotNewsQueryService(database=database)
+
+
+async def get_hot_news_writing_handoff_service(
+    request: Request,
+) -> HotNewsWritingHandoffService:
+    """把热点分析快照转交写作流程的服务；复用主写作编排器。"""
+
+    database: Database = request.app.state.database
+    orchestrator: OrchestratorService = request.app.state.orchestrator
+    return HotNewsWritingHandoffService(
+        run_store=PostgresHotNewsRunStore(database),
+        job_service=JobService(OutboxService()),
+        orchestrator=orchestrator,
+    )
+
+
+async def get_memory_write_service() -> MemoryWriteApplicationService:
+    return MemoryWriteApplicationService()
+
+
+async def get_memory_promotion_service() -> MemoryPromotionApplicationService:
+    return MemoryPromotionApplicationService()
+
+
+async def get_memory_context_service() -> MemoryContextApplicationService:
+    return MemoryContextApplicationService()
 
 
 async def get_artifact_store(request: Request) -> S3ArtifactStore:

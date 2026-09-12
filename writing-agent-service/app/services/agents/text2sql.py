@@ -21,6 +21,7 @@ class Text2SqlAgentRunner:
         self,
         generation_input: Text2SqlGenerationInput,
     ) -> AgentResult[Text2SqlPlan]:
+        # 这边就是调用 app_id 的大模型 提示词什么的都设置在那边了
         return await self.client.run_structured(
             app_id=self.app_id,
             payload=generation_input,

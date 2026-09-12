@@ -17,6 +17,13 @@ from app.analytics.news_content import (
     NewsContentRepository,
     TencentNewsCacheRepository,
 )
+from app.analytics.tencent_content_bridge import (
+    TencentIngestContentRepository,
+)
+from app.analytics.corpus_knowledge_search import (
+    CorpusKnowledgeSearchClient,
+    SearchableNewsContentRepository,
+)
 from app.analytics.ranking import HotNewsRanker, RankedHotNews
 
 __all__ = [
@@ -36,6 +43,9 @@ __all__ = [
     "NewsContent",
     "NewsContentRepository",
     "TencentNewsCacheRepository",
+    "TencentIngestContentRepository",
+    "CorpusKnowledgeSearchClient",
+    "SearchableNewsContentRepository",
     "NewsMetricBaseline",
     "NewsMetricCalculator",
     "NewsMetricSnapshot",

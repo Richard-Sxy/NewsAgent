@@ -93,23 +93,42 @@ class PassingEvaluationRunner:
         )
 
 
+SCORING_CASE_IDS = {
+    "ai-datacenter-growth-with-evidence",
+    "low-signal-without-evidence",
+    "company-identity-conflict",
+}
+
+
+def load_scoring_dataset():
+    """评测打分逻辑只依赖稳定子集，不随种子集规模增长而失效。"""
+
+    dataset = load_evaluation_dataset(DATASET_PATH)
+    return dataset.model_copy(
+        update={
+            "cases": tuple(
+                case for case in dataset.cases if case.case_id in SCORING_CASE_IDS
+            )
+        }
+    )
+
+
 def test_seed_evaluation_dataset_is_strict_and_versioned() -> None:
     dataset = load_evaluation_dataset(DATASET_PATH)
 
-    assert len(dataset.cases) == 3
+    assert len(dataset.cases) == 30
+    assert dataset.dataset_version == "2026-09-12.v2"
     assert len(dataset.content_sha256) == 64
-    assert {case.case_id for case in dataset.cases} == {
-        "ai-datacenter-growth-with-evidence",
-        "low-signal-without-evidence",
-        "company-identity-conflict",
-    }
+    case_ids = {case.case_id for case in dataset.cases}
+    assert len(case_ids) == 30
+    assert SCORING_CASE_IDS <= case_ids
 
 
 @pytest.mark.asyncio
 async def test_evaluation_service_scores_contract_and_business_labels() -> None:
     report = await HotNewsEvaluationService(
         PassingEvaluationRunner()
-    ).evaluate(load_evaluation_dataset(DATASET_PATH))
+    ).evaluate(load_scoring_dataset())
 
     assert report.total_cases == 3
     assert report.passed_cases == 3

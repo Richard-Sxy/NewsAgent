@@ -42,6 +42,8 @@ from app.observability.hot_news import (
     InMemoryHotNewsRunMetrics,
 )
 from app.services.hot_news_run_store import PostgresHotNewsRunStore
+from app.services.hot_event_lifecycle import HotEventLifecycleService
+from app.repositories.hot_event import PostgresHotEventRepository
 from app.services.data_loop.automatic_feedback import (
     AutomaticFeedbackPolicy,
     AutomaticHotNewsFeedbackSink,
@@ -246,6 +248,10 @@ def create_hot_news_worker_runtime(
             version="automatic-feedback-v1",
         ),
     )
+    # 热点事件去重/合并台账；失败在 Activity 内降级，不阻塞分析结果
+    event_lifecycle = HotEventLifecycleService(
+        repository=PostgresHotEventRepository(database),
+    )
     # Temporal 只负责调用主链路和持久化结果
     resolved_run_metrics = run_metrics or InMemoryHotNewsRunMetrics()
     activities = HotNewsActivities(
@@ -253,6 +259,7 @@ def create_hot_news_worker_runtime(
         run_store=run_store,
         run_metrics=resolved_run_metrics,
         feedback_sink=feedback_sink,
+        event_lifecycle=event_lifecycle,
     )
 
     return HotNewsWorkerRuntime(

@@ -13,8 +13,10 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.domain.job_scenario import JobScenario
 from app.schemas.analysis_feedback import FeedbackProblemType, FeedbackSeverity
 from app.schemas.hot_news_decision import DecisionType
+from app.schemas.job import WritingJobResponse
 
 
 class HotNewsRunSummary(BaseModel):
@@ -151,4 +153,19 @@ class RecordHotNewsDecisionResponse(BaseModel):
     decision_id: UUID
     decision_type: str
     status: Literal["recorded"]
+    created: bool
+
+
+class HandoffHotNewsToWritingRequest(BaseModel):
+    """把一条已校验热点分析转交研究/写作流程的请求。"""
+
+    model_config = ConfigDict(extra="forbid")
+
+    scenario: JobScenario = JobScenario.ASSISTED_WRITING
+
+
+class HotNewsWritingHandoffResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    job: WritingJobResponse
     created: bool

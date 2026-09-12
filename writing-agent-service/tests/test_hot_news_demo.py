@@ -8,11 +8,15 @@ def test_demo_builds_expected_hot_news_ranking() -> None:
     assert [item.current.news_id for item in ranked] == [
         "20260827A0C5VA00",
         "20260828A009SN00",
+        "20260901A0VID001",
         "20260831A09TNH00",
+        "20260901A0FIN001",
     ]
-    assert [item.rank for item in ranked] == [1, 2, 3]
+    assert [item.rank for item in ranked] == [1, 2, 3, 4, 5]
     assert ranked[0].hot_score.score > ranked[1].hot_score.score
     assert ranked[1].hot_score.score > ranked[2].hot_score.score
+    assert ranked[2].hot_score.score > ranked[3].hot_score.score
+    assert ranked[3].hot_score.score > ranked[4].hot_score.score
 
 """测试渲染输出是否包含指标和解释性组件"""
 def test_demo_render_contains_metrics_and_explanatory_components() -> None:

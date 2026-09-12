@@ -21,6 +21,7 @@ from app.services.hot_news_orchestration import (
     HotNewsRunRequest,
     HotNewsRunResult,
 )
+from app.services.hot_event_lifecycle import HotEventLifecycleService
 from app.workflows.contracts import HotNewsActivityOutcome
 
 
@@ -81,11 +82,13 @@ class HotNewsActivities:
         *,
         run_metrics: HotNewsRunMetrics | None = None,
         feedback_sink: HotNewsFeedbackSink | None = None,
+        event_lifecycle: HotEventLifecycleService | None = None,
     ) -> None:
         self._orchestration_service = orchestration_service
         self._run_store = run_store
         self._run_metrics = run_metrics or NoopHotNewsRunMetrics()
         self._feedback_sink = feedback_sink
+        self._event_lifecycle = event_lifecycle
 
     @activity.defn(name="run_hot_news_window")
     async def run_hot_news_window(
@@ -146,6 +149,7 @@ class HotNewsActivities:
                     result=result,
                     run_id=outcome.run_id,
                 )
+            await self._apply_event_lifecycle(request=request, result=result)
             self._run_metrics.record("completed")
             return outcome
 
@@ -193,6 +197,32 @@ class HotNewsActivities:
                 heartbeat_task.cancel()
                 with suppress(asyncio.CancelledError):
                     await heartbeat_task
+
+    async def _apply_event_lifecycle(
+        self,
+        *,
+        request: HotNewsRunRequest,
+        result: HotNewsRunResult,
+    ) -> None:
+        """推进热点事件台账；失败只降级，不阻塞可信分析结果。"""
+
+        if self._event_lifecycle is None:
+            return
+        try:
+            await self._event_lifecycle.apply_completed_run(
+                tenant_id=request.tenant_id,
+                result=result,
+            )
+        except Exception as exc:
+            if activity.in_activity():
+                activity.logger.warning(
+                    "hot event lifecycle degraded",
+                    extra={
+                        "tenant_id": request.tenant_id,
+                        "idempotency_key": request.idempotency_key,
+                        "error_type": type(exc).__name__,
+                    },
+                )
 
     @staticmethod
     def _validate_replayed_outcome(
