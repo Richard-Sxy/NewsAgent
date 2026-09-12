@@ -18,7 +18,7 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
                                                                   ├─→ 热点分析智能体
 新闻内容 ───────→ 清洗/切分 ─→ 内容库和向量知识库 ────────────────┘
                                                                          ↓
-                                                               研究、解释、辅助写作
+                                                                研究、解释、辅助写作
 ```
 
 两条数据链路必须分开建设：
@@ -42,9 +42,10 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
 - 空标题、空正文和正文过短校验。
 - 以 URL 哈希为键的本地 JSON 缓存。
 - SQLite 入库状态、失败次数和重试记录。
-- 新闻正文及元数据写入 FastGPT。
+- 新闻正文及元数据写入 FastGPT，并在元数据中写入 `news_id`。
 - 基础文本切片、QA 生成与检索评测。
 - 实体抽取、数值抽取和事件聚类的实验代码。
+- 事件关系人工标注候选集（`datasets/annotations/`）。
 
 主要入口：
 
@@ -56,28 +57,33 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
 
 ### `writing-agent-service`
 
-新闻研究与辅助写作后端，当前包含：
+新闻研究、辅助写作、热点分析与数据闭环后端。当前包含：
 
-- FastAPI 任务创建、查询、进度和人工决策接口。
-- PostgreSQL 任务、步骤、Agent 调用、Artifact 和 Outbox 模型。
+- FastAPI 任务创建、查询、进度、SSE 和人工决策接口。
+- PostgreSQL 任务、步骤、Agent 调用、Artifact、Outbox 与热点相关模型。
 - 数据库幂等键与 Temporal Workflow ID 双重重复启动保护。
-- Research → Outline → Section → Assemble → Review → Revise → Finalize 工作流。
-- 研究、提纲和终稿人工确认节点。
-- Reviewer 驱动的章节级定点返工，最多三轮审核。
-- Pydantic 结构化数据契约。
-- `job_id`、`section_id`、审核轮次和引用覆盖率等业务质量校验。
-- S3/MinIO 版本化 Artifact 与 PostgreSQL Checkpoint。
-- Activity 心跳、超时重试、失败恢复和 Outbox 事件。
-- 基础健康检查、监控指标和 CMS 发布适配。
+- Research → Outline → Section → Assemble → Review → Revise → Finalize 写作工作流。
+- 热点监控 Workflow、窗口派发 Workflow、Temporal Schedule 运维 CLI 与 Worker 入口。
+- 确定性指标聚合、历史基线、热度评分、排行、内容富化与关联新闻重排。
+- 热点分析 Agent 的结构化输入构造、FastGPT 调用、业务校验和统一 Service 入口。
+- 热点结果持久化（`analysis_runs`）、热点事件去重/合并生命周期（`hot_events`）。
+- 热点运营 API：榜单/详情、运营决策、转交研究/写作。
+- Data Loop：Feedback Case、人工标签与二审、不可变评测数据集、三层离线回放与门禁。
+- Model Loop：Production Bundle、候选配置、确定性评测、人工晋升、激活与回滚。
+- 运营 Memory：短期记忆、长期候选、长期记忆、晋升审批与运行时上下文解析。
+- 本地内容桥接与确定性语料检索（读取爬虫 JSON 缓存与 SQLite 台账）。
 
 主要入口：
 
-- `writing-agent-service/app/workflows/news_writing.py`
-- `writing-agent-service/app/services/news_step_handler.py`
-- `writing-agent-service/app/services/agents/`
-- `writing-agent-service/app/services/artifact_pipeline.py`
-- `writing-agent-service/app/services/checkpoint.py`
-- `writing-agent-service/app/services/orchestrator.py`
+- `writing-agent-service/app/workflows/news_writing.py`、`hot_news.py`、`data_loop.py`
+- `writing-agent-service/app/activities/`、`app/services/news_step_handler.py`
+- `writing-agent-service/app/services/agents/`、`app/services/hot_news_analysis.py`
+- `writing-agent-service/app/services/hot_news_orchestration.py`、`hot_news_run_store.py`
+- `writing-agent-service/app/services/data_loop/`、`app/services/production_bundle.py`
+- `writing-agent-service/app/services/memory_*.py`
+- `writing-agent-service/app/api/`（`jobs`、`events`、`hot_news`、`data_loop`、`memory`）
+- `writing-agent-service/app/analytics/`、`app/retrieval/`
+- `writing-agent-service/app/hot_news_worker.py`、`app/data_loop_worker.py`、`app/outbox_worker.py`
 
 ### `FastGPT`
 
@@ -85,9 +91,7 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
 
 ## 3. 当前真正完成的业务链路
 
-目前相对完整的是两条后半链路。
-
-### 新闻内容入库
+### 3.1 新闻内容入库
 
 ```text
 发现新闻 URL
@@ -100,7 +104,7 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
   → 记录 collection_id、成功或失败状态
 ```
 
-### 辅助写作编排
+### 3.2 辅助写作编排
 
 ```text
 创建任务
@@ -113,202 +117,113 @@ NewsAgent 的目标不是单纯做一个新闻写作机器人，而是构建一�
   → 指定章节返工或转人工
   → 人工确认终稿
   → 保存版本化产物
+  → CMS 发布（需配置）
 ```
 
-因此当前仓库更准确的状态是：
-
-> 已实现新闻内容知识库的基础接入，以及工程化程度较高的新闻研究/辅助写作后端；尚未实现由用户行为驱动的热点发现与关注度分析主链路。
-
-## 4. 尚未实现或未完成集成的内容
-
-### P0：形成项目核心闭环
-
-以下能力是项目当前最关键的缺口，应优先完成。
-
-#### 4.1 统一新闻身份和内容模型
-
-当前内容链路主要以 URL 去重，尚未建立内部唯一 `news_id`。需要补充：
-
-- `news_id` 
-- URL 与 `news_id` 的映射。
-- 图文与视频的统一内容模型。
-- 正文、字幕和对象存储 URI。
-- 内容哈希与内容版本。
-- 新闻更正、撤稿和索引失效状态。
-- `news_id + content_version` 唯一约束。
-
-建议最小字段：
+### 3.3 热点发现与分析闭环
 
 ```text
-news_id, content_type, title, summary, publish_time, channel,
-content_uri, transcript_uri, content_hash, content_version, status
+窗口触发（Temporal Schedule / 手动）
+  → 查询企业行为数据并聚合指标
+  → 历史基线、热度评分、排行
+  → 按 news_id 精确读取正文
+  → FastGPT 召回关联新闻 + 确定性重排
+  → 构造 EvidencePacket（证据白名单）
+  → 热点分析 Agent（结构化输入/输出）
+  → 数字、指标引用、证据引用校验
+  → 保存 analysis_runs 不可变快照
+  → 热点事件去重/合并与生命周期推进
+  → 运营决策（采纳/拒绝/纠正）
+  → 可转交 Research/Writing 流程
 ```
 
-#### 4.2 企业行为数据读取与 Python 对象处理
+关键约束：权威指标、热度分量和排行全部由 Python/SQL 确定性计算；模型只做趋势解释与
+表达；新闻正文、检索结果和模型输出按不可信输入处理。
 
-企业已经提供 C 端行为数据库，因此本项目不需要实现埋点、日志采集、消息传输和行为数仓。当前缺少的是从企业数据库到分析代码之间的消费层：
-
-- `BehaviorDataSource` 查询接口，屏蔽企业数据库的具体实现。
-- 将查询结果映射为曝光、点击、阅读、播放和互动等 Python 领域对象。
-- 只读取热点分析所需字段，遵守数据权限和最小化原则。
-- 用户、新闻、事件类型和时间字段的防御性校验。
-- 按查询窗口过滤数据，避免窗口边界重复计算。
-- 图文与视频行为口径的标准化。
-- 如果上游没有保证去重或异常值清洗，再补充 `event_id` 去重和时长异常处理；如果企业数据表已经保证，则不重复建设。
-- 将数据库连接、SQL 或内部 API 与热点计算逻辑隔离，确保计算器可以直接接收 Python 对象进行测试。
-
-建议最小字段：
+### 3.4 热点 Data Loop 与 Model Loop
 
 ```text
-event_id, user_id, news_id, event_type, event_time,
-content_type, duration, channel, device_type
+校验失败 / 低置信 / 检索异常 / 运营拒绝 / 发布效果
+  → Feedback Case
+  → 强类型人工标签（提交 → 独立二审）
+  → 不可变评测 Dataset（golden / fresh_bad_case / high_risk_regression）
+  → 三层离线回放（候选 / 线上基线 / 上一实验）
+  → 确定性 Evaluation Gate
+  → Temporal 等待人工批准（48 小时超时默认不晋升）
+  → 审批账本 → 激活账本 → 新 Active Bundle / 显式回滚
 ```
 
-推荐接口边界：
+人工标签执行四眼分离（提交人 ≠ 二审人），候选提交人 ≠ 发布批准人；激活与回滚均为显式、
+可审计、可幂等重放的命令。模型只生成候选与 Diff，不自动训练、不自动发布。
 
-```text
-企业数据库
-  → BehaviorDataSource.fetch(start, end, filters)
-  → list[BehaviorRecord]
-  → NewsMetricCalculator.calculate(records)
-  → list[NewsMetricSnapshot]
+### 3.5 运营 Memory
+
+- 短期记忆：有任务边界和有效期。
+- 长期候选 → 人工审批 → 长期记忆，支持版本、有效期、替代关系和过期。
+- 运行时按 `tenant_id + team_id + section_id + role_id + user_id` 作用域过滤，确定性解析冲突。
+- 模型可见上下文经过大小裁剪，未注入的 Memory 单独留作服务端审计。
+
+### 3.6 内容侧桥接
+
+- `TencentIngestContentRepository`：合并爬虫 JSON 正文缓存与 SQLite 入库台账，提供带
+  `collection_id` 的精确 `NewsContent`。
+- `CorpusKnowledgeSearchClient`：在本地语料上做确定性词面召回，作为 FastGPT 检索的离线回退。
+
+### 3.7 验证状态
+
+截至 2026-09-12：
+
+- 全服务默认回归：**671 passed, 6 skipped**（6 项为 opt-in 集成/E2E）。
+- Temporal time-skipping L1：1 项通过。
+- 隔离 Compose 栈（PostgreSQL / Temporal / Redis / MinIO / FastGPT 替身）黑盒 Data Loop
+  E2E：**5/5 通过**。
+- 迁移头：`20260912_0015`；`hot_events` 已在真实 PostgreSQL 建表。
+- Memory API 与热点转交写作 API 已在真实栈上写入并回读验证。
+
+```bash
+cd writing-agent-service
+.venv-local/bin/python -m pytest -o addopts="" -q
+.venv-local/bin/python -m evaluation.run_hot_news_eval
+docker compose -f deploy/docker-compose.data-loop-e2e.yml up -d --build
+docker compose -f deploy/docker-compose.data-loop-e2e.yml run --rm \
+  --entrypoint python -e RUN_DATA_LOOP_E2E=1 e2e-runner \
+  -m pytest tests/e2e/test_data_loop_full_chain.py -q
 ```
 
-本地开发时使用内存中的 `list[BehaviorRecord]` 或 JSON fixture 模拟企业查询结果，不复制企业数据库，也不在项目中保存真实用户明细。
+## 4. 尚未完成或未在生产启用的内容
 
-#### 4.3 新闻指标与热点计算
+### 4.1 生产依赖接入（P0）
 
-需要按 `news_id + 时间窗口` 聚合：
+以下能力代码已就绪，但尚未接入真实企业环境，是上线前的硬性缺口：
 
-- 曝光人数和次数。
-- 点击人数、点击次数和 CTR。
-- 有效阅读、平均停留时长和阅读完成度。
-- 视频有效播放、平均播放进度和完播率。
-- 评论、收藏和分享等互动率。
-- 当前值、历史基线、增长率和时间衰减。
-- 图文与视频归一化后的热点分数。
-- 新闻级热点榜和查询接口。
+- **企业行为 / 基线 / 正文 / 检索 RPC Adapter**：仓库只提供 Port 契约与本地 Adapter，
+  真实 SDK、鉴权与服务发现由部署侧实现（入口 `app/hot_news_dependencies.py` 的依赖工厂）。
+- **网关 / IdP**：Data Loop、热点、Memory 已使用共享 Bearer + 角色头的最小权限模型，
+  但 `/api/v1/jobs`、`/api/v1/events` 尚未收口到同一网关鉴权，且尚未对接企业 SSO。
+- **真实 FastGPT App 质量验收**：热点分析 App 的 System Prompt、输出约束与质量尚未验收。
+- **Temporal Schedule 生产注册与热点 Worker 真实装配**：Schedule CLI 与 Worker 入口已具备，
+  需在目标环境配置租户组与真实 Adapter 后启用。
 
-第一版本地实现直接对 `list[BehaviorRecord]` 进行小时级聚合即可，不需要先建设本地行为库，也不需要引入 Kafka、Flink 或 Spark。后续如果需要保存热点快照，可以只将聚合结果写入 PostgreSQL，不落企业原始用户行为。
+### 4.2 数据与评测补齐（P1）
 
-#### 4.4 热点与知识库联合检索
+- 热点 Agent 种子评测集当前 30 条，建议扩到 100 条。
+- 事件关系标注候选集 300 对中仅 100 对已标注，其余需**人工**补标。
+- 需要在目标环境冻结真实的 golden / high_risk_regression 数据集并校准门禁阈值。
 
-需要实现以下顺序，而不是把所有问题都交给向量检索：
+### 4.3 生产化与可观测性（P2）
 
-1. 从指标库获得热点 `news_id`。
-2. 根据 `news_id` 从内容库精确读取当前新闻。
-3. 使用标题、摘要、实体和主题进行向量检索。
-4. 按发布时间、频道和内容类型过滤、去重。
-5. 合并行为指标、新闻事实和来源证据。
+- 目标生产库的迁移 upgrade/downgrade 演练与并发冲突测试。
+- 对象存储 SSE/KMS、Bucket Versioning、Object Lock 与生命周期治理。
+- API/Worker 的 K8s 清单、镜像不可变 tag、灰度与回滚。
+- 热点指标与 SSE、审计告警、越权与高风险操作告警。
+- CMS 发布网关配置（未配置时发布接口保持关闭）。
 
-#### 4.5 热点分析智能体
+### 4.4 扩展场景（P3）
 
-当前 Research Agent 面向新闻研究和写作，尚没有专门的热点分析 Agent。需要新增：
-
-- 热点指标查询工具。
-- 新闻内容精确查询工具。
-- 关联新闻语义检索工具。
-- 用户群体关注度查询工具。
-- 结构化热点分析报告。
-- 指标结论引用具体数值、新闻事实引用具体来源的校验。
-- 数据不足时拒绝得出确定结论的机制。
-
-智能体的职责是规划查询和解释证据，不应自由访问整个数据库或自行计算权威指标。
-
-### P1：知识库更新可靠性
-
-当前新闻抓取后同步调用 FastGPT，新闻保存和知识索引耦合。需要拆分为：
-
-```text
-新闻清洗并保存
-  → 同事务写入知识索引 Outbox
-  → 异步 KnowledgeIndexWorker
-  → 切片、向量化并写入知识库
-  → 更新索引状态
-```
-
-需要增加：
-
-- `KnowledgeIndexService`：知识写入、更新、删除和状态查询。
-- `KnowledgeIndexWorker`：异步消费索引任务。
-- `IndexTaskRepository`：记录版本、状态、错误和重试次数。
-- `ReconciliationService`：定时检查遗漏、失败、卡住和版本不一致任务。
-- `news_id + content_version + index_type` 索引幂等键。
-- 新版本索引成功后再使旧版本失效。
-- 撤稿新闻的知识条目删除或禁用。
-
-主链路采用事件驱动，定时任务只做补偿和对账，不能靠定时扫描知识库发现新增新闻。
-
-### P1：视频新闻覆盖
-
-不能完全忽略视频新闻，但也不应全量下载视频并直接交给智能体。需要实现分级处理：
-
-1. 全量接入视频标题、简介、频道、时长、已有标签和播放指标。
-2. 优先读取内部已有字幕或 ASR 转写文本。
-3. 清洗字幕时间戳、重复句和无意义片段后进入统一内容链路。
-4. 只有热点且缺少文本的视频按需执行 ASR。
-5. 只有需要验证画面事实时才执行抽帧、OCR 或多模态分析。
-
-知识库保存视频元数据和转写文本，不保存视频二进制；原始视频继续位于对象存储。
-
-### P1：用户关注度和标签体系
-
-需要补充：
-
-- 新闻主题、实体、事件和内容类型标签。
-- 用户短期兴趣与长期兴趣分值。
-- 行为强度和时间衰减。
-- 标签计算依据与证据 `news_id`。
-- 用户群体与主题的关注度聚合。
-- 标签版本、更新时间和失效机制。
-
-基本计算关系：
-
-```text
-用户兴趣分值 = Σ(内容标签 × 行为强度 × 时间衰减)
-```
-
-项目第一版建议先实现群体关注度，再考虑个人级画像，以降低范围和隐私风险。
-
-### P2：事件理解能力集成
-
-仓库已有实体抽取、数值抽取和事件聚类实验，但尚未完整接入主链路。需要补充：
-
-- 清洗后的内容自动进入实体和主题抽取。
-- 通过实体、时间、标题和向量相似度生成 `event_id`。
-- 多篇报道归并为事件。
-- 新闻级热度汇总为事件级热度。
-- 官方更正和事实版本更新。
-- 固定标注集和聚类效果评测。
-
-完成集成前，应将这部分描述为实验或基础实现，而不是生产级实时事件平台。
-
-### P2：受控 Text2SQL
-
-当前尚未实现 Text2SQL。后续如果为运营提供自由查询，需要增加：
-
-- 指标词典和语义层。
-- 表、字段及租户白名单。
-- 自然语言意图识别和歧义澄清。
-- SQL AST 只读校验。
-- 时间范围、扫描量、行数和超时限制。
-- 查询结果校验及解释。
-- 固定问题评测集。
-
-核心热点链路应先使用固定查询工具，不能为了展示 Text2SQL 而让 Agent 自由查询生产数据库。
-
-### P2：运营工作台与生产交付
-
-当前缺少完整前端闭环和真实生产验证，需要补充：
-
-- 热点列表和趋势图。
-- 图文/视频指标对比。
-- 用户群体关注度。
-- 相关新闻、事件时间线和证据展示。
-- 智能体任务进度、人工确认和局部重试。
-- 企业 SSO/RBAC、审计与数据权限。
-- CI/CD、灰度发布和版本回滚。
-- 日志、Tracing、告警、压测和故障演练。
+- 视频字幕与按需 ASR、必要时的抽帧/OCR/多模态理解。
+- 事件级热度聚合与运营界面、事件时间线展示。
+- 受控 Text2SQL 的生产化（表/字段白名单、SQL AST 只读校验、行数与超时限制、评测集）。
+- 用户群体关注度与标签体系。
 
 ## 5. GMV异常归因能力的定位
 
@@ -338,92 +253,36 @@ GMV 异常归因不是新闻热点主链路的必要组成部分，但可以作�
 
 ## 6. 推荐实施顺序
 
-### 第一阶段：纯 Python 数据计算
+### 第一阶段：纯 Python 数据计算（已完成）
 
-目标是练习代码并形成可测试的确定性核心，不连接 Agent。
+领域对象、时间窗口过滤、指标聚合、历史基线、热度分数与排行均已实现，并有对应单元测试。
 
-1. 按企业查询结果定义订单或用户行为 Python 对象。
-2. 实现查询结果到领域对象的映射、时间窗口过滤和合法性校验。
-3. 计算 GMV 或新闻行为指标快照。
-4. 计算历史均值、标准差和变化率。
-5. 使用变化率与绝对差额规则判断异常。
-6. 为正常、空数据、边界时间、重复记录和异常值编写测试。
+### 第二阶段：新闻热点最小闭环（已完成）
 
-只使用 Python 标准库：`dataclasses`、`datetime`、`decimal`、`enum`、`statistics` 和 `collections`。
+统一 `news_id`、`BehaviorDataSource`、指标聚合、热点分数、精确内容读取、FastGPT 关联召回、
+结构化热点报告与业务校验均已打通，并已通过真实依赖的端到端验证。
 
-### 第二阶段：新闻热点最小闭环
+### 第三阶段：可靠异步链路（已完成）
 
-1. 建立统一 `news_id` 内容表。
-2. 使用脱敏样例或自建 fixture 模拟企业数据库查询结果。
-3. 定义 `BehaviorDataSource` 接口，并先实现返回 Python 对象的本地假数据版本。
-4. 实现领域对象校验和小时级指标聚合。
-5. 实现简单、可解释的热点分数。
-6. 根据热点 `news_id` 精确读取内容。
-7. 从 FastGPT 召回关联报道。
-8. 输出包含指标和引用的结构化热点报告。
+Temporal Workflow/Activity、幂等持久化、Outbox、Checkpoint、失败恢复、人工 Gate 与
+Data Loop/Model Loop 闭环均已实现。
 
-完成这一阶段后，项目才真正从“写作助手”变为“用户行为驱动的新闻热点分析系统”。
+### 第四阶段：生产接入与工程完善（进行中）
 
-### 第三阶段：可靠异步链路
+1. 企业 RPC Adapter、网关/IdP、真实 FastGPT App 验收。
+2. `/api/v1/jobs`、`/api/v1/events` 收口到统一网关鉴权。
+3. 评测数据补齐与门禁阈值校准。
+4. 生产化部署、可观测性与告警。
 
-1. 将 FastGPT 同步入库拆为索引任务。
-2. 增加 Outbox 和异步索引 Worker。
-3. 增加幂等、超时、重试、死信和定时对账。
-4. 让热点任务能够提升相关新闻的索引优先级。
-5. 在知识索引未完成时，从内容库精确读取并降级分析。
+## 7. 下一项任务
 
-### 第四阶段：智能分析与工程完善
+按当前缺口，建议优先级为：
 
-1. 增加热点分析 Agent 及受控工具。
-2. 集成事件聚类与事件级热度。
-3. 增加用户群体关注度和标签解释。
-4. 增加视频字幕和按需 ASR。
-5. 增加运营工作台、监控、权限和部署闭环。
-
-## 7. 下一项编码任务
-
-当前不要继续扩展 Writer/Reviewer，也不要先引入大数据组件。下一项最小任务建议为：
-
-> 使用纯 Python 定义企业行为查询结果对应的领域对象，并实现“按 `news_id`、小时窗口聚合新闻指标”，用单元测试覆盖对象映射、窗口边界、空数据和图文/视频的不同行为口径。
-
-建议首先创建：
-
-```text
-writing-agent-service/app/analytics/entities.py
-writing-agent-service/app/analytics/news_metric_calculator.py
-writing-agent-service/tests/test_news_metric_calculator.py
-```
-
-上述骨架现已创建，具体说明、基础包和 TODO 顺序见
-`writing-agent-service/app/analytics/README.md`。测试模板默认标记为 skip；每完成一个
-TODO，删除对应测试的 skip 并运行该测试。
-
-第一版输入：
-
-```text
-event_id, user_id, news_id, event_type, event_time,
-content_type, duration
-```
-
-第一版输出：
-
-```text
-news_id, window_start, window_end,
-impressions, clicks, unique_users, ctr,
-total_duration, effective_consumptions, interactions
-```
-
-验收标准：
-
-- 如果企业数据源不保证唯一，则相同 `event_id` 不重复计算；如果上游已经保证，测试中记录这一数据契约。
-- 使用左闭右开时间窗口 `[start, end)`。
-- 缺少 `news_id`、非法时间和负时长被拒绝或进入错误集合。
-- 空分母时 CTR 返回 0，不发生除零。
-- 图文阅读和视频播放使用明确的事件类型，不混用口径。
-- 同一输入重复执行得到相同输出。
-- 所有规则有对应的 pytest 测试。
-
-完成这个小模块之后，再实现热点分数；热点分数正确后，再接企业数据库适配器、API、Temporal 和 Agent。PostgreSQL 只在需要保存热点快照、异常事件和分析任务时使用，不作为企业行为明细的替代数据源。
+1. **真实依赖端到端验证**：已完成（迁移、Memory API、转交写作、Data Loop E2E 全部通过）。
+2. **`/api/v1/jobs`、`/api/v1/events` 网关鉴权**：复用现有 `get_data_loop_principal` 模式，
+   补共享 Bearer 与独立角色头，堵住跨租户越权。
+3. **评测数据补齐**：种子集 30 → 100；组织人工补标事件关系候选对。
+4. **企业接入**：真实 FastGPT App、企业 RPC Adapter、IdP/网关。
 
 ## 8. 简历表述边界
 
@@ -433,16 +292,17 @@ total_duration, effective_consumptions, interactions
 - Temporal 多智能体编排、人工节点、章节级返工。
 - 结构化契约和跨任务业务校验。
 - S3 Artifact、PostgreSQL Checkpoint、Outbox 和异常恢复。
+- 热点发现、指标聚合、热度评分、排行与关联新闻确定性重排。
+- 热点分析 Agent 的可信输入、结构化输出与业务校验。
+- Data Loop / Model Loop：人工标签与二审、不可变评测集、三层回放、确定性门禁、人工晋升与回滚。
+- 运营 Memory 的作用域、冲突解析与晋升审批。
 
-完成核心闭环前不应表述为已经实现：
+尚未在生产启用、不应表述为已经上线的部分：
 
 - 企业 C 端行为采集或数仓建设（不属于本项目职责）。
-- 企业行为数据查询适配、Python 对象映射和热点聚合（当前尚未实现）。
-- 完整用户标签库。
-- 实时热点发现平台。
-- 全量视频多模态理解。
-- 热点与知识库联合分析 Agent。
-- 生产级 Text2SQL。
+- 企业行为数据 RPC、网关/IdP 与真实 FastGPT App 的生产接入。
+- 实时热点发现平台与持续调度（本地闭环已验证，生产 Schedule 未注册）。
+- 全量视频多模态理解、生产级 Text2SQL。
 - 自动 GMV 根因定位和策略执行。
 
 后续每完成一个阶段，再将对应能力从“规划”调整为“已实现”，并补充可验证的测试、接口、样例数据和运行说明。
