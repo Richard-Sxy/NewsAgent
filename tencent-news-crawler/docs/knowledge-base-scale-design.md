@@ -227,13 +227,19 @@ Embedding模型本身不消耗多少的API，但是切片策略版本分层就�
 - **L2 冷层**：不建全局 HNSW，改为「元数据/时间分区 + 关键词召回 + 小范围向量精排」，
   或对特定事件按需构建临时索引。
 
-python实现的代码：
-   import numpy as np
-   def to_fp16(vec: np.ndarray) -> np.ndarray:
-      """fp32 -> fp16: 直接改 dtype， 省一半"""
-      return vec.astype(np.float16)
-   这部分是不同精度的向量的转换
-
+这部分是不同精度的向量的转换：
+   python实现的代码：
+      import numpy as np
+      def to_fp16(vec: np.ndarray) -> np.ndarray:
+         """fp32 -> fp16: 直接改 dtype， 省一半"""
+         return vec.astype(np.float16)
+迁移时不需要重建HNSW的边：
+   HNSW支持增量插入，把一条向量插入到目标索引的时候，算法为他找邻居、连边，复杂度约o(log N)
+   热层(fp16)/温层(int8) 都做HNSW处理
+   热层(1w篇/6w切片/123MB向量内存/18MBHNSW图/总内存140MB)  构建时长(并行16-32核)秒级
+      单篇文章插入：1篇6切片 = 3-20ms
+         计算依据： ef_construction * 2M = 128*64 = 8192次距离计算，每次 1024 维乘加(约 2 KFLOPs)，共约 16 MFLOPs：单盒有效算力 GFLOPs，所以是毫秒级。
+   温层()
 
 
 > 分层原则：**越热越精确、越贵；越冷越便宜、越可近似。** 全量高精度是成本陷阱。
