@@ -2,6 +2,11 @@
 
 本项目用于自动发现腾讯新闻分类内容、抓取正文、使用 SQLite 去重，并将新闻导入 FastGPT 知识库。
 
+> - 企业级知识库容量与架构推演（8000 篇/天 × 10 年）：
+>   [`docs/knowledge-base-scale-design.md`](docs/knowledge-base-scale-design.md)
+> - 向量入库链路（正文如何进入 FastGPT、metadata、分片、训练状态与检索衔接）：
+>   [`docs/vector-ingest/README.md`](docs/vector-ingest/README.md)
+
 ## 运行环境
 
 进入项目并激活虚拟环境：
