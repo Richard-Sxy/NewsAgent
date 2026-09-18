@@ -1,4 +1,4 @@
-### 1.NewsAgent 运营推送链路完善计划
+# 1.NewsAgent 运营推送链路完善计划
 
 ## 1. 项目目标与边界
 
@@ -23,7 +23,7 @@
 
 ## 2. 模块划分
 
-# 2.1 HotNewsAnalysisAgent
+### 2.1 HotNewsAnalysisAgent
 
 职责：回答“发生了什么、为什么变热、证据是什么、可能影响谁”。
 
@@ -41,7 +41,7 @@ class HotNewsAnalysisReport:
 
 这里的地域和人群只是新闻影响范围，不是具体用户集合。
 
-# 2.2 PushStrategyGenerator
+### 2.2 PushStrategyGenerator
 
 职责：把热点分析结果转换为运营建议，包括：
 
@@ -59,7 +59,7 @@ class HotNewsAnalysisReport:
 
 该模块可以使用 LLM，但只能生成“候选计划”，不能直接执行推送。
 
-# 2.3 PushPolicyValidator
+### 2.3 PushPolicyValidator
 
 职责：用确定性代码检查候选计划：
 
@@ -83,7 +83,7 @@ S/A 级计划是否要求人工审核；
 
 校验失败直接阻断，不允许静默降级后继续发送。
 
-# 2.4 EditorialApproval
+### 2.4 EditorialApproval
 
 运营人员可以通过、拒绝或修改计划。建议状态：
 
@@ -134,7 +134,7 @@ strategy_version 用于说明本次计划采用哪一版运营规则；event_id 
 
 ## 4. 最少需要对接的企业 RPC
 
-# 4.1 人群圈选 RPC
+### 4.1 人群圈选 RPC
 
 用途：根据运营条件创建人群包，返回 audience_id，不要向 Agent 返回大量用户 ID。
 
@@ -203,7 +203,7 @@ CreateAudienceResponse
 
 第一版可以实现 MockAudienceRpcClient，根据条件返回固定或计算出的估算人数。
 
-# 4.2 消息推送 RPC
+### 4.2 消息推送 RPC
 
 用途：把已经审核通过的计划提交给企业消息平台。
 
@@ -283,7 +283,7 @@ SubmitPushTaskResponse
 
 第一版只需要模拟任务受理、失败、超时和重复请求，不需要真的对接 APNs、华为或小米推送。
 
-# 4.3 推送结果查询或回调 RPC
+### 4.3 推送结果查询或回调 RPC
 
 用于把执行结果回流到运营平台，至少包含：
 
