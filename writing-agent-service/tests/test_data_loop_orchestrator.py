@@ -19,6 +19,7 @@ from app.workflows.data_loop_contracts import (
     DataLoopDecisionUpdateResult,
     DataLoopHumanDecision,
     DataLoopRunRequest,
+    DataLoopWorkflowSnapshot,
 )
 
 
@@ -152,6 +153,41 @@ async def test_decision_requires_waiting_passed_gate() -> None:
         )
 
     handle.execute_update.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_decision_preflight_rejects_closed_failed_workflow() -> None:
+    handle = SimpleNamespace(
+        query=AsyncMock(
+            return_value=DataLoopWorkflowSnapshot(
+                tenant_id="tenant-1",
+                phase="evaluation_failed",
+                dataset_id="dataset-1",
+                evaluation_run_id="evaluation-1",
+                gate_passed=False,
+                waiting_for_approval=False,
+            )
+        ),
+        execute_update=AsyncMock(),
+    )
+    client = SimpleNamespace(get_workflow_handle=lambda _: handle)
+    decision = DataLoopHumanDecision(
+        action="approve",
+        actor_id="operator-1",
+        reason="looks good",
+        idempotency_key="approval-request-1",
+    )
+
+    with pytest.raises(
+        DataLoopDecisionNotAllowedError,
+        match="evaluation gate",
+    ):
+        await orchestrator(client).submit_decision(
+            "workflow-1", decision, tenant_id="tenant-1"
+        )
+
+    handle.query.assert_awaited_once()
+    handle.execute_update.assert_not_awaited()
 
 
 @pytest.mark.asyncio

@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 
+from redis.asyncio import Redis
+
 from app.analytics.data_source import BehaviorDataSource
 from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.metric_source import NewsMetricSource
@@ -43,6 +45,7 @@ from app.observability.hot_news import (
 )
 from app.services.hot_news_run_store import PostgresHotNewsRunStore
 from app.services.hot_event_lifecycle import HotEventLifecycleService
+from app.services.hot_news_event_stream import RedisHotNewsEventStream
 from app.repositories.hot_event import PostgresHotEventRepository
 from app.services.data_loop.automatic_feedback import (
     AutomaticFeedbackPolicy,
@@ -79,9 +82,11 @@ class HotNewsWorkerRuntime:
     database: Database
     hot_news_runtime: HotNewsRuntime
     run_metrics: HotNewsRunMetrics
+    redis: Redis
 
     async def close(self) -> None:
         await self.hot_news_runtime.close()
+        await self.redis.aclose()
         await self.database.close()
 
 
@@ -215,6 +220,7 @@ def create_hot_news_worker_runtime(
 ) -> HotNewsWorkerRuntime:
     # 创建数据库
     database = Database(settings)
+    redis = Redis.from_url(str(settings.redis_url), decode_responses=False)
     # 装配热点计算、内容富化、FastGPT分析主链路
     hot_news_runtime = create_hot_news_runtime(
         settings,
@@ -260,6 +266,7 @@ def create_hot_news_worker_runtime(
         run_metrics=resolved_run_metrics,
         feedback_sink=feedback_sink,
         event_lifecycle=event_lifecycle,
+        event_stream=RedisHotNewsEventStream(redis, settings),
     )
 
     return HotNewsWorkerRuntime(
@@ -268,4 +275,5 @@ def create_hot_news_worker_runtime(
         database=database,
         hot_news_runtime=hot_news_runtime,
         run_metrics=resolved_run_metrics,
+        redis=redis,
     )

@@ -4,9 +4,13 @@ import uuid
 
 import pytest
 from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
+from temporalio.service import RPCError, RPCStatusCode
 
 from app.domain.job_scenario import JobScenario
-from app.services.orchestrator import OrchestratorService
+from app.services.orchestrator import (
+    OrchestratorService,
+    WorkflowExecutionNotFoundError,
+)
 from app.workflows.contracts import HumanDecision, WorkflowSnapshot
 
 
@@ -57,3 +61,16 @@ async def test_query_and_signal_use_job_workflow_handle() -> None:
     assert snapshot.waiting_gate == "research"
     client.get_workflow_handle.assert_called_with("workflow-1")
     assert handle.signal.await_args.args[1] == decision
+
+
+@pytest.mark.asyncio
+async def test_missing_workflow_rpc_error_is_classified() -> None:
+    service, client = service_and_client()
+    handle = Mock()
+    handle.query = AsyncMock(
+        side_effect=RPCError("workflow not found", RPCStatusCode.NOT_FOUND, b"")
+    )
+    client.get_workflow_handle.return_value = handle
+
+    with pytest.raises(WorkflowExecutionNotFoundError):
+        await service.get_progress("missing-workflow")

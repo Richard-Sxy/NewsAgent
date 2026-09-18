@@ -99,6 +99,7 @@ class HotNewsRankedItemView(BaseModel):
 
     rank: int
     news_id: str
+    title: str | None = None
     metrics: HotNewsMetricSnapshotView
     baseline: dict[str, Any] | None
     hot_score: HotScoreView

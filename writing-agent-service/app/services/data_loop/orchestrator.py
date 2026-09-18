@@ -10,6 +10,7 @@ from typing import Any, Callable
 from temporalio.client import Client, WorkflowUpdateFailedError
 from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
 from temporalio.exceptions import WorkflowAlreadyStartedError
+from temporalio.service import RPCError, RPCStatusCode
 
 from app.config import Settings
 from app.workflows.data_loop import (
@@ -123,6 +124,41 @@ class DataLoopOrchestrator:
     ) -> DataLoopDecisionUpdateResult:
         decision.validate()
         handle = self._client.get_workflow_handle(workflow_id)
+        # Fail fast with a useful business error when the workflow has already
+        # failed/completed.  Temporal otherwise reports an RPC transport error
+        # for an update sent to a closed execution, which the API would expose
+        # as the misleading generic "Temporal unavailable" response.
+        query = getattr(handle, "query", None)
+        if query is not None:
+            try:
+                snapshot = await query(
+                    HotNewsDataLoopWorkflow.snapshot,
+                    result_type=DataLoopWorkflowSnapshot,
+                )
+            except RPCError as exc:
+                if exc.status == RPCStatusCode.NOT_FOUND:
+                    raise DataLoopWorkflowAccessError(
+                        "Data Loop workflow was not found"
+                    ) from exc
+                raise
+            if snapshot.tenant_id != tenant_id:
+                raise DataLoopWorkflowAccessError(
+                    "Data Loop workflow was not found"
+                )
+            # Keep idempotent replays valid while the workflow is recording or
+            # activating an already accepted decision.  Only terminal phases
+            # are rejected by this preflight; transient phases still go through
+            # the Workflow Update validator, which remains authoritative.
+            if snapshot.phase in {
+                "evaluation_failed",
+                "rejected",
+                "activated",
+                "approval_expired",
+            }:
+                raise DataLoopDecisionNotAllowedError(
+                    "Data Loop workflow is not waiting at a passed evaluation gate "
+                    f"(current phase: {snapshot.phase})"
+                )
         try:
             return await handle.execute_update(
                 HotNewsDataLoopWorkflow.submit_promotion_decision,
@@ -144,6 +180,12 @@ class DataLoopOrchestrator:
                     "Data Loop workflow was not found"
                 ) from exc
             raise DataLoopDecisionNotAllowedError(message) from exc
+        except RPCError as exc:
+            if exc.status == RPCStatusCode.NOT_FOUND:
+                raise DataLoopWorkflowAccessError(
+                    "Data Loop workflow was not found"
+                ) from exc
+            raise
 
     @staticmethod
     def decision_update_id(

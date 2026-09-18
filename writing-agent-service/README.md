@@ -71,3 +71,6 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml up -d --build
 
 生产依赖（企业 RPC、网关/IdP、真实 FastGPT App、Schedule 注册）由部署侧接入；
 未配置时依赖工厂 fail-closed，不提供隐式假数据。
+
+热点本地 SQL 数仓模拟的表结构、Text2SQL 执行链路、配置和验证方法见
+[`docs/hot-news-sql-warehouse-demo.md`](docs/hot-news-sql-warehouse-demo.md)。

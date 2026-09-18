@@ -1,0 +1,486 @@
+===== start 2026-09-16T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-16",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0CL3400",
+        "title": "AI办公，是怎么变成大厂必争入口的",
+        "collection_id": "6aaa8bd1851913fa43912cbc",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0BAF300",
+        "title": "折叠屏，主机厂的“提价稻草”",
+        "collection_id": "6aaa8bd1851913fa43912ce1",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0CC5I00",
+        "title": "GPT-6掀起具身智能风暴，恐慌与惊喜同时涌来",
+        "collection_id": "6aaa8bd1851913fa43912d08",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0ARLA00",
+        "title": "智谱分析师交流会：年末ARR指引上调25%至30亿美元，云厂商分成收入10月起确认",
+        "collection_id": "6aaa8bd2851913fa43912d65",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0691400",
+        "title": "DeepSeek核心工程师长文刷屏：《我不得不把才华埋葬在昨天》",
+        "collection_id": "6aaa8bd2851913fa43912d9d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0AUA700",
+        "title": "亚运：中国男足2-1逆转朝鲜 连续3届开门红 吴曦张玉宁互相传射",
+        "collection_id": "6aaa8bd3851913fa43912e1a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0AQVH00",
+        "title": "第13次进亚运四强！中国男篮险胜沙特 廖三宁爆砍30+7",
+        "collection_id": "6aaa8bd3851913fa43912e95",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0BF4200",
+        "title": "亚运女排综述：中国女排不够兴奋！中国台北横扫对手，日韩皆完胜",
+        "collection_id": "6aaa8bd3851913fa43912efb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0AX7C00",
+        "title": "HYROX中国宣布对9月12日相关批次出发的运动员全额退费",
+        "collection_id": "6aaa8bd4851913fa43912f7f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0CID100",
+        "title": "亚运首位拳击旗手！吴愉：从幕后陪练到大满贯拳手的逆袭之路",
+        "collection_id": "6aaa8bd4851913fa43912faf",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0CP0M00",
+        "title": "美联储议息会议前夜：加息箭在弦上 三问沃什主席",
+        "collection_id": "6aaa8bd4851913fa43912ff3",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0B0V100",
+        "title": "中国十大消费县排行，义乌昆山晋江位居前三",
+        "collection_id": "6aaa8bd5851913fa4391302f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0CFA300",
+        "title": "潘东夫妇的蓝月亮账本：两年半亏掉12亿、分红近20亿",
+        "collection_id": "6aaa8bd5851913fa43913076",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A07NI300",
+        "title": "银行催收“找人”难，催热找地址生意",
+        "collection_id": "6aaa8bd5851913fa439130c6",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0AWQ500",
+        "title": "身价超1050亿美元！张一鸣首登亚洲首富，7年财富增长约七倍",
+        "collection_id": "6aaa8bd5851913fa43913117",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A08QKL00",
+        "title": "走向“专属专营”，问界主导权交接背后的98.4亿账本",
+        "collection_id": "6aaa8bd6851913fa43913163",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A0BN0F00",
+        "title": "电厂 | 汽车公司承诺“60天账期”一年后，财报显示没有一家能够达标",
+        "collection_id": "6aaa8bd6851913fa439131ab",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A092NB00",
+        "title": "香港实拍特斯拉Cybercab/Model 3平价版：特斯拉的曲线进攻",
+        "collection_id": "6aaa8bd6851913fa439131fb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A08EAL00",
+        "title": "自行破解车机：车主的无奈，被掩盖的责任",
+        "collection_id": "6aaa8bd7851913fa43913259",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260916A040QL00",
+        "title": "资本为什么不给零跑汽车面子啊",
+        "collection_id": "6aaa8bd7851913fa439132a1",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "AI办公，是怎么变成大厂必争入口的",
+      "url": "https://news.qq.com/rain/a/20260916A0CL3400",
+      "publish_time": "2026-09-16 20:24:43"
+    },
+    {
+      "topic": "科技",
+      "title": "折叠屏，主机厂的“提价稻草”",
+      "url": "https://news.qq.com/rain/a/20260916A0BAF300",
+      "publish_time": "2026-09-16 19:27:11"
+    },
+    {
+      "topic": "科技",
+      "title": "GPT-6掀起具身智能风暴，恐慌与惊喜同时涌来",
+      "url": "https://news.qq.com/rain/a/20260916A0CC5I00",
+      "publish_time": "2026-09-16 19:23:23"
+    },
+    {
+      "topic": "科技",
+      "title": "智谱分析师交流会：年末ARR指引上调25%至30亿美元，云厂商分成收入10月起确认",
+      "url": "https://news.qq.com/rain/a/20260916A0ARLA00",
+      "publish_time": "2026-09-16 19:25:53"
+    },
+    {
+      "topic": "科技",
+      "title": "DeepSeek核心工程师长文刷屏：《我不得不把才华埋葬在昨天》",
+      "url": "https://news.qq.com/rain/a/20260916A0691400",
+      "publish_time": "2026-09-16 11:02:05"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运：中国男足2-1逆转朝鲜 连续3届开门红 吴曦张玉宁互相传射",
+      "url": "https://news.qq.com/rain/a/20260916A0AUA700",
+      "publish_time": "2026-09-16 20:28:15"
+    },
+    {
+      "topic": "体育",
+      "title": "第13次进亚运四强！中国男篮险胜沙特 廖三宁爆砍30+7",
+      "url": "https://news.qq.com/rain/a/20260916A0AQVH00",
+      "publish_time": "2026-09-16 19:45:28"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运女排综述：中国女排不够兴奋！中国台北横扫对手，日韩皆完胜",
+      "url": "https://news.qq.com/rain/a/20260916A0BF4200",
+      "publish_time": "2026-09-16 19:34:47"
+    },
+    {
+      "topic": "体育",
+      "title": "HYROX中国宣布对9月12日相关批次出发的运动员全额退费",
+      "url": "https://news.qq.com/rain/a/20260916A0AX7C00",
+      "publish_time": "2026-09-16 17:10:30"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运首位拳击旗手！吴愉：从幕后陪练到大满贯拳手的逆袭之路",
+      "url": "https://news.qq.com/rain/a/20260916A0CID100",
+      "publish_time": "2026-09-16 19:50:43"
+    },
+    {
+      "topic": "财经",
+      "title": "美联储议息会议前夜：加息箭在弦上 三问沃什主席",
+      "url": "https://news.qq.com/rain/a/20260916A0CP0M00",
+      "publish_time": "2026-09-16 20:28:59"
+    },
+    {
+      "topic": "财经",
+      "title": "中国十大消费县排行，义乌昆山晋江位居前三",
+      "url": "https://news.qq.com/rain/a/20260916A0B0V100",
+      "publish_time": "2026-09-16 20:01:46"
+    },
+    {
+      "topic": "财经",
+      "title": "潘东夫妇的蓝月亮账本：两年半亏掉12亿、分红近20亿",
+      "url": "https://news.qq.com/rain/a/20260916A0CFA300",
+      "publish_time": "2026-09-16 19:39:36"
+    },
+    {
+      "topic": "财经",
+      "title": "银行催收“找人”难，催热找地址生意",
+      "url": "https://news.qq.com/rain/a/20260916A07NI300",
+      "publish_time": "2026-09-16 18:52:44"
+    },
+    {
+      "topic": "财经",
+      "title": "身价超1050亿美元！张一鸣首登亚洲首富，7年财富增长约七倍",
+      "url": "https://news.qq.com/rain/a/20260916A0AWQ500",
+      "publish_time": "2026-09-16 19:15:22"
+    },
+    {
+      "topic": "汽车",
+      "title": "走向“专属专营”，问界主导权交接背后的98.4亿账本",
+      "url": "https://news.qq.com/rain/a/20260916A08QKL00",
+      "publish_time": "2026-09-16 14:28:15"
+    },
+    {
+      "topic": "汽车",
+      "title": "电厂 | 汽车公司承诺“60天账期”一年后，财报显示没有一家能够达标",
+      "url": "https://news.qq.com/rain/a/20260916A0BN0F00",
+      "publish_time": "2026-09-16 18:05:12"
+    },
+    {
+      "topic": "汽车",
+      "title": "香港实拍特斯拉Cybercab/Model 3平价版：特斯拉的曲线进攻",
+      "url": "https://news.qq.com/rain/a/20260916A092NB00",
+      "publish_time": "2026-09-16 17:03:15"
+    },
+    {
+      "topic": "汽车",
+      "title": "自行破解车机：车主的无奈，被掩盖的责任",
+      "url": "https://news.qq.com/rain/a/20260916A08EAL00",
+      "publish_time": "2026-09-16 17:17:04"
+    },
+    {
+      "topic": "汽车",
+      "title": "资本为什么不给零跑汽车面子啊",
+      "url": "https://news.qq.com/rain/a/20260916A040QL00",
+      "publish_time": "2026-09-16 08:47:38"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260916A040QL00",
+      "title": "资本为什么不给零跑汽车面子啊",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa43913307"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A08EAL00",
+      "title": "自行破解车机：车主的无奈，被掩盖的责任",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa4391333c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A092NB00",
+      "title": "香港实拍特斯拉Cybercab/Model 3平价版：特斯拉的曲线进攻",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa4391336c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0BN0F00",
+      "title": "电厂 | 汽车公司承诺“60天账期”一年后，财报显示没有一家能够达标",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa4391339c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A08QKL00",
+      "title": "走向“专属专营”，问界主导权交接背后的98.4亿账本",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa439133cc"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0AWQ500",
+      "title": "身价超1050亿美元！张一鸣首登亚洲首富，7年财富增长约七倍",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa439133fc"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A07NI300",
+      "title": "银行催收“找人”难，催热找地址生意",
+      "status": "submitted",
+      "collection_id": "6aaa8bd7851913fa4391342c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0CFA300",
+      "title": "潘东夫妇的蓝月亮账本：两年半亏掉12亿、分红近20亿",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa4391345d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0B0V100",
+      "title": "中国十大消费县排行，义乌昆山晋江位居前三",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa4391348d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0CP0M00",
+      "title": "美联储议息会议前夜：加息箭在弦上 三问沃什主席",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa439134be"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0CID100",
+      "title": "亚运首位拳击旗手！吴愉：从幕后陪练到大满贯拳手的逆袭之路",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa439134ee"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0AX7C00",
+      "title": "HYROX中国宣布对9月12日相关批次出发的运动员全额退费",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa4391351b"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0BF4200",
+      "title": "亚运女排综述：中国女排不够兴奋！中国台北横扫对手，日韩皆完胜",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa43913548"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0AQVH00",
+      "title": "第13次进亚运四强！中国男篮险胜沙特 廖三宁爆砍30+7",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa43913575"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0AUA700",
+      "title": "亚运：中国男足2-1逆转朝鲜 连续3届开门红 吴曦张玉宁互相传射",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa439135a2"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0691400",
+      "title": "DeepSeek核心工程师长文刷屏：《我不得不把才华埋葬在昨天》",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa439135cf"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0ARLA00",
+      "title": "智谱分析师交流会：年末ARR指引上调25%至30亿美元，云厂商分成收入10月起确认",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa439135fc"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0CC5I00",
+      "title": "GPT-6掀起具身智能风暴，恐慌与惊喜同时涌来",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa43913629"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0BAF300",
+      "title": "折叠屏，主机厂的“提价稻草”",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa43913656"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260916A0CL3400",
+      "title": "AI办公，是怎么变成大厂必争入口的",
+      "status": "submitted",
+      "collection_id": "6aaa8bd8851913fa43913683"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-16",
+  "generated_at": "2026-09-16T20:30:16.963259+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12356
+  },
+  "files": {
+    "json": "reports/daily-2026-09-16.json",
+    "markdown": "reports/daily-2026-09-16.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-16T20:30:16+08:00, exit=0 =====

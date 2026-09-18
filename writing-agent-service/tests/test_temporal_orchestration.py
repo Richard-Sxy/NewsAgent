@@ -193,7 +193,6 @@ async def test_supplemental_research_regenerates_downstream_artifacts() -> None:
     instance = NewsWritingWorkflow()
     instance._execute = AsyncMock(
         side_effect=[
-            outcome("research-v1"),
             outcome("research-v2"),
             outcome("outline-v2", section_ids=["S01"]),
             outcome("section-v2"),
@@ -222,11 +221,12 @@ async def test_supplemental_research_regenerates_downstream_artifacts() -> None:
 
     assert result.status == "final_approved"
     calls = instance._execute.await_args_list
-    assert calls[1].kwargs["step_key"] == "research_package_v2"
-    assert calls[1].kwargs["inputs"]["instruction"] == "补充一手来源"
-    assert calls[2].kwargs["step_key"] == "outline_research_v2"
-    assert calls[3].kwargs["step_key"] == "section_S01_research_v2"
-    assert calls[5].kwargs["step_key"] == "review_round_2"
+    assert calls[0].kwargs["step_key"] == "research_package_v2"
+    assert calls[0].kwargs["inputs"]["instruction"] == "补充一手来源"
+    assert "previous_artifact" not in calls[0].kwargs["inputs"]
+    assert calls[1].kwargs["step_key"] == "outline_research_v2"
+    assert calls[2].kwargs["step_key"] == "section_S01_research_v2"
+    assert calls[4].kwargs["step_key"] == "review_round_2"
 
 
 @pytest.mark.asyncio

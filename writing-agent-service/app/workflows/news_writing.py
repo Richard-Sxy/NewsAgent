@@ -52,14 +52,11 @@ class NewsWritingWorkflow:
 
     """"""
     async def _run_pipeline(self, request: NewsWritingInput) -> WorkflowResult:
-        research = await self._execute(
-            request,
-            step_type="research",
-            step_key="research_package_v1",
-            inputs={"topic": request.topic, "requirements": request.requirements},
-        )
         research_recovery = request.recovery_action == "research"
         if research_recovery:
+            # A research recovery may be needed because the previous Artifact
+            # is stale or fails current quality checks. Skip that checkpoint
+            # and generate fresh research instead of validating it again.
             research = await self._execute(
                 request,
                 step_type="research",
@@ -68,9 +65,15 @@ class NewsWritingWorkflow:
                 inputs={
                     "topic": request.topic,
                     "requirements": request.requirements,
-                    "previous_artifact": self._artifact_ref(research),
                     "instruction": request.recovery_instruction,
                 },
+            )
+        else:
+            research = await self._execute(
+                request,
+                step_type="research",
+                step_key="research_package_v1",
+                inputs={"topic": request.topic, "requirements": request.requirements},
             )
         decision = await self._wait_for_human("research")   # 取消执行
         if decision.action == "cancel":

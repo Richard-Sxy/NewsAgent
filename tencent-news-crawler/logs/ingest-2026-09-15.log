@@ -1,0 +1,488 @@
+===== start 2026-09-15T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-09-15",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 19,
+    "skipped": 0,
+    "failed": 1,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0BQNS00",
+        "title": "Anthropic抢跑纳斯达克，OpenAI不来了",
+        "collection_id": "6aa93a536fdf83b18a0e9459",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A09FI400",
+        "title": "微软开始强调“人类控制权”：AI再强，也必须能被人叫停",
+        "collection_id": "6aa93a536fdf83b18a0e9491",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0AUN900",
+        "title": "AI短剧市场见顶，Seedance开始降价",
+        "collection_id": "6aa93a536fdf83b18a0e9504",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0A24W00",
+        "title": "AI攻克世纪数学难题，顶尖数学家抵制，他们担心的并不是丢工作",
+        "collection_id": "6aa93a546fdf83b18a0e9578",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A06GVY00",
+        "title": "计划有变，他准备当首富",
+        "collection_id": "6aa93a546fdf83b18a0e95b8",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/RLV2026090812690500",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻正文为空。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0A2W500",
+        "title": "终结亚冠13场不胜！武磊传射海港6-4泰超季军 安佩姆15分钟戴帽",
+        "collection_id": "6aa93a546fdf83b18a0e963c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A09DB900",
+        "title": "NBA总亚军成员加盟北京！前勇士三分悍将沃特斯正式官宣签约首钢",
+        "collection_id": "6aa93a556fdf83b18a0e966c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A08PU200",
+        "title": "亚运会将至！伤病是否彻底恢复？孙颖莎首次回应",
+        "collection_id": "6aa93a556fdf83b18a0e96ac",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A05ID500",
+        "title": "大声思考丨国际足球权力游戏：美国入场欧洲掀桌 中国不能再当看客",
+        "collection_id": "6aa93a556fdf83b18a0e96e0",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0BZRO00",
+        "title": "分析｜怎么看8月消费、投资增速放缓？",
+        "collection_id": "6aa93a556fdf83b18a0e9743",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0BXRY00",
+        "title": "经营贷利率悄然上行！银行主动缩规模，贸易类申请人被收紧",
+        "collection_id": "6aa93a566fdf83b18a0e97bb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0AJQ200",
+        "title": "“去宁化”担忧发酵？宁德时代A+H股总市值跌破1.5万亿元",
+        "collection_id": "6aa93a566fdf83b18a0e9815",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A03FGA00",
+        "title": "10年期美债突破5%！引爆金融危机or短暂见顶?",
+        "collection_id": "6aa93a566fdf83b18a0e985f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0964000",
+        "title": "半导体盘中逆势爆发，主力机构借道ETF狂买科创50超170亿元，发生了什么？",
+        "collection_id": "6aa93a566fdf83b18a0e989c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0AH6V00",
+        "title": "华为与赛力斯合作新局：问界交由赛力斯主导，鸿蒙智行聚焦其余“四界”",
+        "collection_id": "6aa93a576fdf83b18a0e98db",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A09IFI00",
+        "title": "一汽看上亏损中的广汽，丰田股权成为转型筹码",
+        "collection_id": "6aa93a576fdf83b18a0e9914",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0AHMB00",
+        "title": "吉利银河战舰700开启预售：起售价为19.98万元",
+        "collection_id": "6aa93a576fdf83b18a0e9962",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A0BYZH00",
+        "title": "三大央企卖了365万台车，养得起自研智驾吗？",
+        "collection_id": "6aa93a586fdf83b18a0e99a6",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260915A099CD00",
+        "title": "消息称吉利内部正对电池板块进行新一轮整理",
+        "collection_id": "6aa93a586fdf83b18a0e99ea",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "Anthropic抢跑纳斯达克，OpenAI不来了",
+      "url": "https://news.qq.com/rain/a/20260915A0BQNS00",
+      "publish_time": "2026-09-15 19:27:09"
+    },
+    {
+      "topic": "科技",
+      "title": "微软开始强调“人类控制权”：AI再强，也必须能被人叫停",
+      "url": "https://news.qq.com/rain/a/20260915A09FI400",
+      "publish_time": "2026-09-15 19:59:04"
+    },
+    {
+      "topic": "科技",
+      "title": "AI短剧市场见顶，Seedance开始降价",
+      "url": "https://news.qq.com/rain/a/20260915A0AUN900",
+      "publish_time": "2026-09-15 20:06:03"
+    },
+    {
+      "topic": "科技",
+      "title": "AI攻克世纪数学难题，顶尖数学家抵制，他们担心的并不是丢工作",
+      "url": "https://news.qq.com/rain/a/20260915A0A24W00",
+      "publish_time": "2026-09-15 19:00:17"
+    },
+    {
+      "topic": "科技",
+      "title": "计划有变，他准备当首富",
+      "url": "https://news.qq.com/rain/a/20260915A06GVY00",
+      "publish_time": "2026-09-15 12:42:02"
+    },
+    {
+      "topic": "体育",
+      "title": "亚冠精英联赛东亚区第1轮：北京国安2-1浦项铁人 阿科洛闪击",
+      "url": "https://news.qq.com/rain/a/RLV2026090812690500",
+      "publish_time": "2026-09-15 20:08:55"
+    },
+    {
+      "topic": "体育",
+      "title": "终结亚冠13场不胜！武磊传射海港6-4泰超季军 安佩姆15分钟戴帽",
+      "url": "https://news.qq.com/rain/a/20260915A0A2W500",
+      "publish_time": "2026-09-15 20:15:30"
+    },
+    {
+      "topic": "体育",
+      "title": "NBA总亚军成员加盟北京！前勇士三分悍将沃特斯正式官宣签约首钢",
+      "url": "https://news.qq.com/rain/a/20260915A09DB900",
+      "publish_time": "2026-09-15 16:12:02"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运会将至！伤病是否彻底恢复？孙颖莎首次回应",
+      "url": "https://news.qq.com/rain/a/20260915A08PU200",
+      "publish_time": "2026-09-15 19:18:13"
+    },
+    {
+      "topic": "体育",
+      "title": "大声思考丨国际足球权力游戏：美国入场欧洲掀桌 中国不能再当看客",
+      "url": "https://news.qq.com/rain/a/20260914A05ID500",
+      "publish_time": "2026-09-15 07:57:07"
+    },
+    {
+      "topic": "财经",
+      "title": "怎么看8月消费、投资增速放缓？",
+      "url": "https://news.qq.com/rain/a/20260915A0BZRO00",
+      "publish_time": "2026-09-15 20:17:02"
+    },
+    {
+      "topic": "财经",
+      "title": "经营贷利率悄然上行！银行主动缩规模，贸易类申请人被收紧",
+      "url": "https://news.qq.com/rain/a/20260915A0BXRY00",
+      "publish_time": "2026-09-15 20:13:31"
+    },
+    {
+      "topic": "财经",
+      "title": "“去宁化”担忧发酵？宁德时代A+H股总市值跌破1.5万亿元",
+      "url": "https://news.qq.com/rain/a/20260915A0AJQ200",
+      "publish_time": "2026-09-15 19:05:17"
+    },
+    {
+      "topic": "财经",
+      "title": "10年期美债突破5%！引爆金融危机or短暂见顶?",
+      "url": "https://news.qq.com/rain/a/20260915A03FGA00",
+      "publish_time": "2026-09-15 18:03:15"
+    },
+    {
+      "topic": "财经",
+      "title": "半导体盘中逆势爆发，主力机构狂买科创50超170亿元，发生了什么",
+      "url": "https://news.qq.com/rain/a/20260915A0964000",
+      "publish_time": "2026-09-15 17:24:35"
+    },
+    {
+      "topic": "汽车",
+      "title": "华为赛力斯合作新局：问界交由赛力斯主导，鸿蒙智行聚焦其余四界",
+      "url": "https://news.qq.com/rain/a/20260915A0AH6V00",
+      "publish_time": "2026-09-15 19:22:40"
+    },
+    {
+      "topic": "汽车",
+      "title": "一汽看上亏损中的广汽，丰田股权成为转型筹码",
+      "url": "https://news.qq.com/rain/a/20260915A09IFI00",
+      "publish_time": "2026-09-15 17:01:15"
+    },
+    {
+      "topic": "汽车",
+      "title": "吉利银河战舰700开启预售：起售价为19.98万元",
+      "url": "https://news.qq.com/rain/a/20260915A0AHMB00",
+      "publish_time": "2026-09-15 17:29:40"
+    },
+    {
+      "topic": "汽车",
+      "title": "三大央企卖了365万台车，养得起自研智驾吗？",
+      "url": "https://news.qq.com/rain/a/20260915A0BYZH00",
+      "publish_time": "2026-09-15 19:52:16"
+    },
+    {
+      "topic": "汽车",
+      "title": "消息称吉利内部正对电池板块进行新一轮整理",
+      "url": "https://news.qq.com/rain/a/20260915A099CD00",
+      "publish_time": "2026-09-15 18:51:49"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260915A099CD00",
+      "title": "消息称吉利内部正对电池板块进行新一轮整理",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9a4e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0BYZH00",
+      "title": "三大央企卖了365万台车，养得起自研智驾吗？",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9a7e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0AHMB00",
+      "title": "吉利银河战舰700开启预售：起售价为19.98万元",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9aae"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A09IFI00",
+      "title": "一汽看上亏损中的广汽，丰田股权成为转型筹码",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9ade"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0AH6V00",
+      "title": "华为与赛力斯合作新局：问界交由赛力斯主导，鸿蒙智行聚焦其余“四界”",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9b0f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0964000",
+      "title": "半导体盘中逆势爆发，主力机构借道ETF狂买科创50超170亿元，发生了什么？",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9b40"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A03FGA00",
+      "title": "10年期美债突破5%！引爆金融危机or短暂见顶?",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9b70"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0AJQ200",
+      "title": "“去宁化”担忧发酵？宁德时代A+H股总市值跌破1.5万亿元",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9ba0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0BXRY00",
+      "title": "经营贷利率悄然上行！银行主动缩规模，贸易类申请人被收紧",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9bd0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0BZRO00",
+      "title": "分析｜怎么看8月消费、投资增速放缓？",
+      "status": "submitted",
+      "collection_id": "6aa93a586fdf83b18a0e9c00"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A05ID500",
+      "title": "大声思考丨国际足球权力游戏：美国入场欧洲掀桌 中国不能再当看客",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9c30"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A08PU200",
+      "title": "亚运会将至！伤病是否彻底恢复？孙颖莎首次回应",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9c5d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A09DB900",
+      "title": "NBA总亚军成员加盟北京！前勇士三分悍将沃特斯正式官宣签约首钢",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9c8b"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0A2W500",
+      "title": "终结亚冠13场不胜！武磊传射海港6-4泰超季军 安佩姆15分钟戴帽",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9cb8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A06GVY00",
+      "title": "计划有变，他准备当首富",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9ce5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0A24W00",
+      "title": "AI攻克世纪数学难题，顶尖数学家抵制，他们担心的并不是丢工作",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9d12"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0AUN900",
+      "title": "AI短剧市场见顶，Seedance开始降价",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9d3f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A09FI400",
+      "title": "微软开始强调“人类控制权”：AI再强，也必须能被人叫停",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9d6c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260915A0BQNS00",
+      "title": "Anthropic抢跑纳斯达克，OpenAI不来了",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9d99"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A033NB00",
+      "title": "姆巴佩的点球该不该重罚？｜裁判放大镜",
+      "status": "submitted",
+      "collection_id": "6aa93a596fdf83b18a0e9dc6"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-15",
+  "generated_at": "2026-09-15T20:30:17.840579+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "failed": 1,
+      "success": 19
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 19,
+    "status_counts": {
+      "submitted": 19
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12336
+  },
+  "files": {
+    "json": "reports/daily-2026-09-15.json",
+    "markdown": "reports/daily-2026-09-15.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-15T20:30:17+08:00, exit=1 =====

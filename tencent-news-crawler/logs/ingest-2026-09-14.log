@@ -1,0 +1,486 @@
+===== start 2026-09-14T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-14",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BINH00",
+        "title": "追觅万人大撤退",
+        "collection_id": "6aa7e8d16fdf83b18a0e6f48",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C2Q100",
+        "title": "知名苹果爆料人大胆预测：十年内折叠屏手机将成市场主流",
+        "collection_id": "6aa7e8d16fdf83b18a0e6f6d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BBU300",
+        "title": "三天做出样机，三年留不住用户：智能戒指为何戴着戴着就摘了？",
+        "collection_id": "6aa7e8d26fdf83b18a0e6f92",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C8HN00",
+        "title": "Anthropic CEO谈放缓AI研发：AI风险是真实的，这个行业撒谎太久了，但也无需“把一切都关掉”",
+        "collection_id": "6aa7e8d26fdf83b18a0e6fbb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A05EO800",
+        "title": "仅仅半年，6亿人“中毒”AI短剧",
+        "collection_id": "6aa7e8d26fdf83b18a0e7027",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C24300",
+        "title": "亚运会：女足5-1中国香港取开门红 王霜2射2传，后防失误送礼",
+        "collection_id": "6aa7e8d36fdf83b18a0e7057",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0AR4800",
+        "title": "外国选手赛场失禁仍完赛，HYROX中国宣布整改",
+        "collection_id": "6aa7e8d36fdf83b18a0e7085",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C20200",
+        "title": "官宣！17岁吕孟洋加盟西班牙人青年B队 毛剑卿猛夸：踢球像齐达内",
+        "collection_id": "6aa7e8d36fdf83b18a0e70b2",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0A4Y500",
+        "title": "乒联公布第38周世界排名：王曼昱首排女单第一，陈熠重返前十",
+        "collection_id": "6aa7e8d46fdf83b18a0e7135",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0AYG900",
+        "title": "亚运八强对阵：中国男篮vs沙特 半决赛战日本vs中国台北胜者",
+        "collection_id": "6aa7e8d46fdf83b18a0e71bb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C3V800",
+        "title": "8月社会融资规模增加1.66万亿，债券、股票等融资渠道作用增强",
+        "collection_id": "6aa7e8d46fdf83b18a0e7203",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0CHU600",
+        "title": "事关下半年A股韧性，五大券商首席发声",
+        "collection_id": "6aa7e8d56fdf83b18a0e7267",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0CCQU00",
+        "title": "付款后订单离奇消失，低价礼品卡藏骗局：有人为了省三百，损失近三千",
+        "collection_id": "6aa7e8d56fdf83b18a0e729f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0CAAC00",
+        "title": "历史数据显示：单次加息不足以终结牛市，完整紧缩周期才是真正威胁",
+        "collection_id": "6aa7e8d56fdf83b18a0e7300",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BZVL00",
+        "title": "多地推进公交国有化改革",
+        "collection_id": "6aa7e8d56fdf83b18a0e7340",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A07SFT00",
+        "title": "日赚2.4亿，15家车企利润不敌它一半！新势力打响去宁化战役",
+        "collection_id": "6aa7e8d66fdf83b18a0e7384",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0C9J900",
+        "title": "广汽停牌，与一汽有关？",
+        "collection_id": "6aa7e8d66fdf83b18a0e73c9",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BJMT00",
+        "title": "中国品牌，连续两月包揽汽车销量榜前五",
+        "collection_id": "6aa7e8d66fdf83b18a0e741d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BRAQ00",
+        "title": "百公里仅6.48度电！大众发布Mission Efficiency概念车：风阻0.158创纪录",
+        "collection_id": "6aa7e8d66fdf83b18a0e7474",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260914A0BPY300",
+        "title": "谁守住了燃油车阵地？8月销量前十盘点，只有三家车企上榜",
+        "collection_id": "6aa7e8d76fdf83b18a0e74b4",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "追觅万人大撤退",
+      "url": "https://news.qq.com/rain/a/20260914A0BINH00",
+      "publish_time": "2026-09-14 18:01:22"
+    },
+    {
+      "topic": "科技",
+      "title": "知名苹果爆料人大胆预测：十年内折叠屏手机将成市场主流",
+      "url": "https://news.qq.com/rain/a/20260914A0C2Q100",
+      "publish_time": "2026-09-14 19:37:38"
+    },
+    {
+      "topic": "科技",
+      "title": "三天做出样机，三年留不住用户：智能戒指为何戴着戴着就摘了？",
+      "url": "https://news.qq.com/rain/a/20260914A0BBU300",
+      "publish_time": "2026-09-14 17:47:56"
+    },
+    {
+      "topic": "科技",
+      "title": "Anthropic CEO谈放缓AI研发：AI风险是真实的，这个行业撒谎太久了",
+      "url": "https://news.qq.com/rain/a/20260914A0C8HN00",
+      "publish_time": "2026-09-14 20:15:42"
+    },
+    {
+      "topic": "科技",
+      "title": "仅仅半年，6亿人“中毒”AI短剧",
+      "url": "https://news.qq.com/rain/a/20260914A05EO800",
+      "publish_time": "2026-09-14 10:29:12"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运会：女足5-1中国香港取开门红 王霜2射2传，后防失误送礼",
+      "url": "https://news.qq.com/rain/a/20260914A0C24300",
+      "publish_time": "2026-09-14 20:25:34"
+    },
+    {
+      "topic": "体育",
+      "title": "外国选手赛场失禁仍完赛，HYROX中国宣布整改",
+      "url": "https://news.qq.com/rain/a/20260914A0AR4800",
+      "publish_time": "2026-09-14 18:46:17"
+    },
+    {
+      "topic": "体育",
+      "title": "官宣！17岁吕孟洋加盟西班牙人青年B队 毛剑卿猛夸：踢球像齐达内",
+      "url": "https://news.qq.com/rain/a/20260914A0C20200",
+      "publish_time": "2026-09-14 18:54:42"
+    },
+    {
+      "topic": "体育",
+      "title": "乒联公布第38周世界排名：王曼昱首排女单第一，陈熠重返前十",
+      "url": "https://news.qq.com/rain/a/20260914A0A4Y500",
+      "publish_time": "2026-09-14 16:05:39"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运八强对阵：中国男篮vs沙特 半决赛战日本vs中国台北胜者",
+      "url": "https://news.qq.com/rain/a/20260914A0AYG900",
+      "publish_time": "2026-09-14 17:29:27"
+    },
+    {
+      "topic": "财经",
+      "title": "8月社会融资规模增加1.66万亿，债券、股票等融资渠道作用增强",
+      "url": "https://news.qq.com/rain/a/20260914A0C3V800",
+      "publish_time": "2026-09-14 19:58:42"
+    },
+    {
+      "topic": "财经",
+      "title": "事关下半年A股韧性，五大券商首席发声",
+      "url": "https://news.qq.com/rain/a/20260914A0CHU600",
+      "publish_time": "2026-09-14 20:04:11"
+    },
+    {
+      "topic": "财经",
+      "title": "付款后订单离奇消失，低价礼品卡藏骗局：有人为了省三百，损失近三千",
+      "url": "https://news.qq.com/rain/a/20260914A0CCQU00",
+      "publish_time": "2026-09-14 19:43:19"
+    },
+    {
+      "topic": "财经",
+      "title": "历史数据显示：单次加息不足以终结牛市，完整紧缩周期才是真正威胁",
+      "url": "https://news.qq.com/rain/a/20260914A0CAAC00",
+      "publish_time": "2026-09-14 19:31:20"
+    },
+    {
+      "topic": "财经",
+      "title": "多地推进公交国有化改革",
+      "url": "https://news.qq.com/rain/a/20260914A0BZVL00",
+      "publish_time": "2026-09-14 18:46:31"
+    },
+    {
+      "topic": "汽车",
+      "title": "日赚2.4亿，15家车企利润不敌它一半！新势力打响去宁化战役",
+      "url": "https://news.qq.com/rain/a/20260914A07SFT00",
+      "publish_time": "2026-09-14 13:14:29"
+    },
+    {
+      "topic": "汽车",
+      "title": "广汽停牌，与一汽有关？",
+      "url": "https://news.qq.com/rain/a/20260914A0C9J900",
+      "publish_time": "2026-09-14 20:19:55"
+    },
+    {
+      "topic": "汽车",
+      "title": "中国品牌，连续两月包揽汽车销量榜前五",
+      "url": "https://news.qq.com/rain/a/20260914A0BJMT00",
+      "publish_time": "2026-09-14 18:03:09"
+    },
+    {
+      "topic": "汽车",
+      "title": "百公里仅6.48度电！大众发布Mission Efficiency概念车：风阻0.158创纪录",
+      "url": "https://news.qq.com/rain/a/20260914A0BRAQ00",
+      "publish_time": "2026-09-14 18:20:13"
+    },
+    {
+      "topic": "汽车",
+      "title": "谁守住了燃油车阵地？8月销量前十盘点，只有三家车企上榜",
+      "url": "https://news.qq.com/rain/a/20260914A0BPY300",
+      "publish_time": "2026-09-14 18:16:18"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BPY300",
+      "title": "谁守住了燃油车阵地？8月销量前十盘点，只有三家车企上榜",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e74ec"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BRAQ00",
+      "title": "百公里仅6.48度电！大众发布Mission Efficiency概念车：风阻0.158创纪录",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e751c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BJMT00",
+      "title": "中国品牌，连续两月包揽汽车销量榜前五",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e7555"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C9J900",
+      "title": "广汽停牌，与一汽有关？",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e7585"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A07SFT00",
+      "title": "日赚2.4亿，15家车企利润不敌它一半！新势力打响去宁化战役",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e75b5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BZVL00",
+      "title": "多地推进公交国有化改革",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e75e5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0CAAC00",
+      "title": "历史数据显示：单次加息不足以终结牛市，完整紧缩周期才是真正威胁",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e7615"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0CCQU00",
+      "title": "付款后订单离奇消失，低价礼品卡藏骗局：有人为了省三百，损失近三千",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e7645"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0CHU600",
+      "title": "事关下半年A股韧性，五大券商首席发声",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e7675"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C3V800",
+      "title": "8月社会融资规模增加1.66万亿，债券、股票等融资渠道作用增强",
+      "status": "submitted",
+      "collection_id": "6aa7e8d76fdf83b18a0e76a5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0AYG900",
+      "title": "亚运八强对阵：中国男篮vs沙特 半决赛战日本vs中国台北胜者",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e76d5"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0A4Y500",
+      "title": "乒联公布第38周世界排名：王曼昱首排女单第一，陈熠重返前十",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e7702"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C20200",
+      "title": "官宣！17岁吕孟洋加盟西班牙人青年B队 毛剑卿猛夸：踢球像齐达内",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e772f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0AR4800",
+      "title": "外国选手赛场失禁仍完赛，HYROX中国宣布整改",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e775c"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C24300",
+      "title": "亚运会：女足5-1中国香港取开门红 王霜2射2传，后防失误送礼",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e7789"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A05EO800",
+      "title": "仅仅半年，6亿人“中毒”AI短剧",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e77b6"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C8HN00",
+      "title": "Anthropic CEO谈放缓AI研发：AI风险是真实的，这个行业撒谎太久了，但也无需“把一切都关掉”",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e77e3"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BBU300",
+      "title": "三天做出样机，三年留不住用户：智能戒指为何戴着戴着就摘了？",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e7810"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0C2Q100",
+      "title": "知名苹果爆料人大胆预测：十年内折叠屏手机将成市场主流",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e783d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260914A0BINH00",
+      "title": "追觅万人大撤退",
+      "status": "submitted",
+      "collection_id": "6aa7e8d86fdf83b18a0e786a"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-14",
+  "generated_at": "2026-09-14T20:30:16.771298+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12317
+  },
+  "files": {
+    "json": "reports/daily-2026-09-14.json",
+    "markdown": "reports/daily-2026-09-14.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-14T20:30:16+08:00, exit=0 =====

@@ -1,0 +1,489 @@
+===== start 2026-09-17T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-09-17",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 18,
+    "skipped": 0,
+    "failed": 2,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0DL5F00",
+        "title": "特斯拉机器人量产加速，启动新一轮中国供应链审厂",
+        "collection_id": "6aabdd51851913fa43915aa0",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0CAIE00",
+        "title": "智谱首个RSI成果发布，10万国产卡用GLM造GLM",
+        "collection_id": "6aabdd51851913fa43915ad4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0769X00",
+        "title": "卡死中国EUV光刻机！美专家给对华芯片管制下结论：高度有效",
+        "collection_id": "6aabdd51851913fa43915b0c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A060V300",
+        "title": "罗福莉也学雷军玩直播！小米新模型训练首次公开，一小时狂烧20万",
+        "collection_id": "6aabdd52851913fa43915b69",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0B5AG00",
+        "title": "“你想毁掉自己的职业生涯吗？”",
+        "collection_id": "6aabdd52851913fa43915ba3",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0DWNY00",
+        "title": "篮协重磅处罚：U21北京vs苏科消极比赛 主帅王骁辉、董俊江停赛一年",
+        "collection_id": "6aabdd52851913fa43915bfe",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0A54Z00",
+        "title": "为何大幅调整首发阵容？中国女足主教练：希望给更多球员机会",
+        "collection_id": "6aabdd52851913fa43915c55",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/RLV2026091014004700",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻正文为空。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0C6IQ00",
+        "title": "运维失职“甩锅”给规则！中国女子板球队未战先败，谁来埋单？",
+        "collection_id": "6aabdd53851913fa43915c9c",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A09W2T00",
+        "title": "运动员“囧游”名古屋！这届“史上最差”亚运会有多奇葩？",
+        "collection_id": "6aabdd53851913fa43915ccc",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0DO5300",
+        "title": "国家统计局：8月全国城镇不包含在校生16-24岁劳动力失业率18.9%",
+        "collection_id": "6aabdd53851913fa43915d04",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0CPBW00",
+        "title": "最“憋屈”的能源大区，终于等来了出海口",
+        "collection_id": "6aabdd53851913fa43915d5a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0DQYK00",
+        "title": "手握300亿流动资产，海天买下了一个118年的出海跳板",
+        "collection_id": "6aabdd54851913fa43915d96",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0DGA700",
+        "title": "8.36亿抄底，华谊兄弟易主，沪圈影视大佬接盘",
+        "collection_id": "6aabdd54851913fa43915dee",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A047Y200",
+        "title": "美联储重启加息如何影响市场？六大券商首席发声",
+        "collection_id": "6aabdd54851913fa43915e3e",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0BLV600",
+        "title": "赛力斯：部分鸿蒙智行和华为专卖店会继续销售问界",
+        "collection_id": "6aabdd55851913fa43915e8b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0BWL500",
+        "title": "乘联会：9月狭义乘用车零售预计169.0万辆，同比下降24.6%",
+        "collection_id": "6aabdd55851913fa43915ecc",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A04X8A00",
+        "title": "独家｜玛莎拉蒂的“华为叙事”最新进展：规划了纯电GT和纯电SUV两个产品方案，SKD出海模式同步落地",
+        "collection_id": "6aabdd55851913fa43915f04",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0BPGW00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻内容过短。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260917A0CKUN00",
+        "title": "对话｜宁德时代首席制造官倪军：会造车不一定会造电池",
+        "collection_id": "6aabdd55851913fa43915f43",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "特斯拉机器人量产加速，启动新一轮中国供应链审厂",
+      "url": "https://news.qq.com/rain/a/20260917A0DL5F00",
+      "publish_time": "2026-09-17 19:48:15"
+    },
+    {
+      "topic": "科技",
+      "title": "智谱首个RSI成果发布，10万国产卡用GLM造GLM",
+      "url": "https://news.qq.com/rain/a/20260917A0CAIE00",
+      "publish_time": "2026-09-17 19:48:48"
+    },
+    {
+      "topic": "科技",
+      "title": "卡死中国EUV光刻机！美专家给对华芯片管制下结论：高度有效",
+      "url": "https://news.qq.com/rain/a/20260917A0769X00",
+      "publish_time": "2026-09-17 17:44:45"
+    },
+    {
+      "topic": "科技",
+      "title": "罗福莉也学雷军玩直播！小米新模型训练首次公开，一小时狂烧20万",
+      "url": "https://news.qq.com/rain/a/20260917A060V300",
+      "publish_time": "2026-09-17 16:55:28"
+    },
+    {
+      "topic": "科技",
+      "title": "“你想毁掉自己的职业生涯吗？”",
+      "url": "https://news.qq.com/rain/a/20260917A0B5AG00",
+      "publish_time": "2026-09-17 16:54:21"
+    },
+    {
+      "topic": "体育",
+      "title": "篮协重磅处罚：U21北京vs苏科消极比赛 主帅王骁辉、董俊江停赛一年",
+      "url": "https://news.qq.com/rain/a/20260917A0DWNY00",
+      "publish_time": "2026-09-17 20:17:41"
+    },
+    {
+      "topic": "体育",
+      "title": "为何大幅调整首发阵容？中国女足主教练：希望给更多球员机会",
+      "url": "https://news.qq.com/rain/a/20260917A0A54Z00",
+      "publish_time": "2026-09-17 15:49:13"
+    },
+    {
+      "topic": "体育",
+      "title": "亚冠二级联赛：上海申花0-0淡滨尼流浪者 刘诚宇单箭头冲锋",
+      "url": "https://news.qq.com/rain/a/RLV2026091014004700",
+      "publish_time": "2026-09-17 20:20:31"
+    },
+    {
+      "topic": "体育",
+      "title": "运维失职“甩锅”给规则！中国女子板球队未战先败，谁来埋单？",
+      "url": "https://news.qq.com/rain/a/20260917A0C6IQ00",
+      "publish_time": "2026-09-17 19:50:32"
+    },
+    {
+      "topic": "体育",
+      "title": "运动员“囧游”名古屋！这届“史上最差”亚运会有多奇葩？",
+      "url": "https://news.qq.com/rain/a/20260917A09W2T00",
+      "publish_time": "2026-09-17 15:34:09"
+    },
+    {
+      "topic": "财经",
+      "title": "国家统计局：8月全国城镇不包含在校生16-24岁劳动力失业率18.9%",
+      "url": "https://news.qq.com/rain/a/20260917A0DO5300",
+      "publish_time": "2026-09-17 20:10:05"
+    },
+    {
+      "topic": "财经",
+      "title": "最“憋屈”的能源大区，终于等来了出海口",
+      "url": "https://news.qq.com/rain/a/20260917A0CPBW00",
+      "publish_time": "2026-09-17 19:56:17"
+    },
+    {
+      "topic": "财经",
+      "title": "手握300亿流动资产，海天买下了一个118年的出海跳板",
+      "url": "https://news.qq.com/rain/a/20260917A0DQYK00",
+      "publish_time": "2026-09-17 20:03:19"
+    },
+    {
+      "topic": "财经",
+      "title": "8.36亿抄底，华谊兄弟易主，沪圈影视大佬接盘",
+      "url": "https://news.qq.com/rain/a/20260917A0DGA700",
+      "publish_time": "2026-09-17 19:55:07"
+    },
+    {
+      "topic": "财经",
+      "title": "美联储重启加息如何影响市场？六大券商首席发声",
+      "url": "https://news.qq.com/rain/a/20260917A047Y200",
+      "publish_time": "2026-09-17 18:20:29"
+    },
+    {
+      "topic": "汽车",
+      "title": "赛力斯：部分鸿蒙智行和华为专卖店会继续销售问界",
+      "url": "https://news.qq.com/rain/a/20260917A0BLV600",
+      "publish_time": "2026-09-17 18:59:03"
+    },
+    {
+      "topic": "汽车",
+      "title": "乘联会：9月狭义乘用车零售预计169.0万辆，同比下降24.6%",
+      "url": "https://news.qq.com/rain/a/20260917A0BWL500",
+      "publish_time": "2026-09-17 17:34:08"
+    },
+    {
+      "topic": "汽车",
+      "title": "独家｜玛莎拉蒂的“华为叙事”最新进展：规划了纯电GT和纯电SUV两个产品方案，SKD出海模式同步落地",
+      "url": "https://news.qq.com/rain/a/20260917A04X8A00",
+      "publish_time": "2026-09-17 17:03:57"
+    },
+    {
+      "topic": "汽车",
+      "title": "小MEGA而非大i8，全新理想i9能够终结比赛吗？",
+      "url": "https://news.qq.com/rain/a/20260917A0BPGW00",
+      "publish_time": "2026-09-17 18:17:35"
+    },
+    {
+      "topic": "汽车",
+      "title": "对话｜宁德时代首席制造官倪军：会造车不一定会造电池",
+      "url": "https://news.qq.com/rain/a/20260917A0CKUN00",
+      "publish_time": "2026-09-17 19:44:47"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0CKUN00",
+      "title": "对话｜宁德时代首席制造官倪军：会造车不一定会造电池",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43915f9e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A04X8A00",
+      "title": "独家｜玛莎拉蒂的“华为叙事”最新进展：规划了纯电GT和纯电SUV两个产品方案，SKD出海模式同步落地",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43915fcf"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0BWL500",
+      "title": "乘联会：9月狭义乘用车零售预计169.0万辆，同比下降24.6%",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43915fff"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0BLV600",
+      "title": "赛力斯：部分鸿蒙智行和华为专卖店会继续销售问界",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391602f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A047Y200",
+      "title": "美联储重启加息如何影响市场？六大券商首席发声",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391605f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0DGA700",
+      "title": "8.36亿抄底，华谊兄弟易主，沪圈影视大佬接盘",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391608f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0DQYK00",
+      "title": "手握300亿流动资产，海天买下了一个118年的出海跳板",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa439160bf"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0CPBW00",
+      "title": "最“憋屈”的能源大区，终于等来了出海口",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa439160ef"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0DO5300",
+      "title": "国家统计局：8月全国城镇不包含在校生16-24岁劳动力失业率18.9%",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391611f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A09W2T00",
+      "title": "运动员“囧游”名古屋！这届“史上最差”亚运会有多奇葩？",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391614f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0C6IQ00",
+      "title": "运维失职“甩锅”给规则！中国女子板球队未战先败，谁来埋单？",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa4391617f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0A54Z00",
+      "title": "为何大幅调整首发阵容？中国女足主教练：希望给更多球员机会",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa439161ac"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0DWNY00",
+      "title": "篮协重磅处罚：U21北京vs苏科消极比赛 主帅王骁辉、董俊江停赛一年",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa439161d9"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0B5AG00",
+      "title": "“你想毁掉自己的职业生涯吗？”",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43916206"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A060V300",
+      "title": "罗福莉也学雷军玩直播！小米新模型训练首次公开，一小时狂烧20万",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43916234"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0769X00",
+      "title": "卡死中国EUV光刻机！美专家给对华芯片管制下结论：高度有效",
+      "status": "submitted",
+      "collection_id": "6aabdd56851913fa43916261"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0CAIE00",
+      "title": "智谱首个RSI成果发布，10万国产卡用GLM造GLM",
+      "status": "submitted",
+      "collection_id": "6aabdd57851913fa4391628f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260917A0DL5F00",
+      "title": "特斯拉机器人量产加速，启动新一轮中国供应链审厂",
+      "status": "submitted",
+      "collection_id": "6aabdd57851913fa439162bc"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0947300",
+      "title": "美网正赛第7日焦点赛程：郑钦文对阵凯斯冲击16强",
+      "status": "submitted",
+      "collection_id": "6aabdd57851913fa439162ea"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A03UGY00",
+      "title": "2份廉价合同签约，火箭队一石二鸟！6大高塔就位，乌度卡豪组内线禁飞区",
+      "status": "submitted",
+      "collection_id": "6aabdd57851913fa43916317"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-17",
+  "generated_at": "2026-09-17T20:30:15.547234+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "failed": 2,
+      "success": 18
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 18,
+    "status_counts": {
+      "submitted": 18
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12374
+  },
+  "files": {
+    "json": "reports/daily-2026-09-17.json",
+    "markdown": "reports/daily-2026-09-17.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-17T20:30:15+08:00, exit=1 =====

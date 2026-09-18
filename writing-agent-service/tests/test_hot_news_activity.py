@@ -80,6 +80,65 @@ async def test_new_window_runs_and_persists() -> None:
 
 
 @pytest.mark.asyncio
+async def test_new_window_publishes_started_and_completed_events() -> None:
+    request = build_request()
+    outcome = build_outcome(request)
+    orchestration_result = object()
+    service = SimpleNamespace(
+        run=AsyncMock(return_value=orchestration_result)
+    )
+    store = SimpleNamespace(
+        get_completed=AsyncMock(return_value=None),
+        save_completed=AsyncMock(return_value=outcome),
+    )
+    event_stream = SimpleNamespace(publish=AsyncMock())
+
+    result = await HotNewsActivities(
+        service,
+        store,
+        event_stream=event_stream,
+    ).run_hot_news_window(request)
+
+    assert result == outcome
+    published = [
+        call.args[0] for call in event_stream.publish.await_args_list
+    ]
+    assert [item.event for item in published] == [
+        "hot-news.run.started",
+        "hot-news.run.completed",
+    ]
+    assert published[0].run_key == request.idempotency_key
+    assert published[1].run_id == outcome.run_id
+    assert published[1].counts.analyzed_news_count == 5
+
+
+@pytest.mark.asyncio
+async def test_redis_publish_failure_does_not_fail_completed_run() -> None:
+    request = build_request()
+    outcome = build_outcome(request)
+    orchestration_result = object()
+    service = SimpleNamespace(
+        run=AsyncMock(return_value=orchestration_result)
+    )
+    store = SimpleNamespace(
+        get_completed=AsyncMock(return_value=None),
+        save_completed=AsyncMock(return_value=outcome),
+    )
+    event_stream = SimpleNamespace(
+        publish=AsyncMock(side_effect=RuntimeError("redis unavailable"))
+    )
+
+    result = await HotNewsActivities(
+        service,
+        store,
+        event_stream=event_stream,
+    ).run_hot_news_window(request)
+
+    assert result == outcome
+    assert event_stream.publish.await_count == 2
+
+
+@pytest.mark.asyncio
 async def test_retryable_error_remains_retryable_for_temporal() -> None:
     request = build_request()
     service = SimpleNamespace(

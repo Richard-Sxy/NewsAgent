@@ -1,3 +1,4 @@
+/* global process */
 // vite.config.ts
 import { fileURLToPath, URL } from "node:url";
 import vue from "file:///Users/shi/Project/PyCharmProject/NewsAgent/writing-agent-service/frontend/node_modules/@vitejs/plugin-vue/dist/index.mjs";

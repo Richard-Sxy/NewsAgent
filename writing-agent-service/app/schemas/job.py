@@ -59,6 +59,7 @@ class WorkflowProgressResponse(BaseModel):
     status: JobStatus
     current_step: StepType | None
     workflow: WorkflowSnapshot | None = None
+    workflow_status: Literal["available", "missing"] = "available"
 
 """决定接收回复"""
 class DecisionAcceptedResponse(BaseModel):

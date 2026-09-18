@@ -2,7 +2,7 @@
 
 import asyncio
 from contextlib import suppress
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Protocol
 
 from temporalio import activity
@@ -22,6 +22,11 @@ from app.services.hot_news_orchestration import (
     HotNewsRunResult,
 )
 from app.services.hot_event_lifecycle import HotEventLifecycleService
+from app.schemas.hot_news_events import (
+    HotNewsProgressEvent,
+    HotNewsProgressEventName,
+    HotNewsProgressStatus,
+)
 from app.workflows.contracts import HotNewsActivityOutcome
 
 
@@ -72,6 +77,15 @@ class HotNewsFeedbackSink(Protocol):
     ) -> None: ...
 
 
+class HotNewsEventStream(Protocol):
+    """热点事件推送端口；失败不得改变 PostgreSQL 业务结果。"""
+
+    async def publish(
+        self,
+        event: HotNewsProgressEvent,
+    ) -> HotNewsProgressEvent | None: ...
+
+
 class HotNewsActivities:
     """在 Temporal 运行语义和热点业务编排之间做薄适配。"""
 
@@ -83,12 +97,14 @@ class HotNewsActivities:
         run_metrics: HotNewsRunMetrics | None = None,
         feedback_sink: HotNewsFeedbackSink | None = None,
         event_lifecycle: HotEventLifecycleService | None = None,
+        event_stream: HotNewsEventStream | None = None,
     ) -> None:
         self._orchestration_service = orchestration_service
         self._run_store = run_store
         self._run_metrics = run_metrics or NoopHotNewsRunMetrics()
         self._feedback_sink = feedback_sink
         self._event_lifecycle = event_lifecycle
+        self._event_stream = event_stream
 
     @activity.defn(name="run_hot_news_window")
     async def run_hot_news_window(
@@ -100,6 +116,11 @@ class HotNewsActivities:
         heartbeat_task: asyncio.Task[None] | None = None
         try:
             request.validate()
+            await self._publish_progress(
+                request=request,
+                event="hot-news.run.started",
+                status="running",
+            )
 
             if activity.in_activity():
                 activity.logger.info(
@@ -139,6 +160,12 @@ class HotNewsActivities:
                         idempotency_key=request.idempotency_key,
                         run_id=completed.run_id,
                     )
+                await self._publish_progress(
+                    request=request,
+                    event="hot-news.run.replayed",
+                    status="replayed",
+                    outcome=completed,
+                )
                 self._run_metrics.record("replayed")
                 return completed
 
@@ -150,6 +177,12 @@ class HotNewsActivities:
                     run_id=outcome.run_id,
                 )
             await self._apply_event_lifecycle(request=request, result=result)
+            await self._publish_progress(
+                request=request,
+                event="hot-news.run.completed",
+                status="completed",
+                outcome=outcome,
+            )
             self._run_metrics.record("completed")
             return outcome
 
@@ -158,6 +191,12 @@ class HotNewsActivities:
                 "failed",
                 error_type=exc.type or "ApplicationError",
                 retryable=not exc.non_retryable,
+            )
+            await self._publish_progress(
+                request=request,
+                event="hot-news.run.failed",
+                status="failed",
+                error_type=exc.type or "ApplicationError",
             )
             raise
         except Exception as exc:
@@ -191,12 +230,82 @@ class HotNewsActivities:
                         "request_id": getattr(reported_error, "request_id", None),
                     },
                 )
+            await self._publish_progress(
+                request=request,
+                event="hot-news.run.failed",
+                status="failed",
+                error_type=type(reported_error).__name__,
+            )
             raise self._to_application_error(reported_error) from reported_error
         finally:
             if heartbeat_task is not None:
                 heartbeat_task.cancel()
                 with suppress(asyncio.CancelledError):
                     await heartbeat_task
+
+    async def _publish_progress(
+        self,
+        *,
+        request: HotNewsRunRequest,
+        event: HotNewsProgressEventName,
+        status: HotNewsProgressStatus,
+        outcome: HotNewsActivityOutcome | None = None,
+        error_type: str | None = None,
+    ) -> None:
+        """Best-effort publish; Redis is never the hot-news source of truth."""
+
+        if self._event_stream is None:
+            return
+        try:
+            await self._event_stream.publish(
+                HotNewsProgressEvent(
+                    event=event,
+                    deduplication_key=(
+                        f"{request.idempotency_key}:{status}"
+                    ),
+                    tenant_id=request.tenant_id,
+                    run_key=request.idempotency_key,
+                    run_id=None if outcome is None else outcome.run_id,
+                    status=status,
+                    production_bundle_version=(
+                        request.production_bundle_version
+                    ),
+                    workflow_version=request.workflow_version,
+                    window_start=request.window_start,
+                    window_end=request.window_end,
+                    counts=(
+                        {}
+                        if outcome is None
+                        else {
+                            "fetched_record_count": (
+                                outcome.fetched_record_count
+                            ),
+                            "metric_snapshot_count": (
+                                outcome.metric_snapshot_count
+                            ),
+                            "ranked_news_count": (
+                                outcome.ranked_news_count
+                            ),
+                            "analyzed_news_count": (
+                                outcome.analyzed_news_count
+                            ),
+                        }
+                    ),
+                    error_type=error_type,
+                    occurred_at=datetime.now(timezone.utc),
+                )
+            )
+        except Exception as exc:
+            if activity.in_activity():
+                activity.logger.warning(
+                    "hot news Redis progress degraded",
+                    extra={
+                        "tenant_id": request.tenant_id,
+                        "idempotency_key": request.idempotency_key,
+                        "event": event,
+                        "error_type": type(exc).__name__,
+                    },
+                )
 
     async def _apply_event_lifecycle(
         self,

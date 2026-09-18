@@ -51,6 +51,7 @@ async function consume(options: JobEventStreamOptions, signal: AbortSignal): Pro
       if (signal.aborted || isAbortError(error)) return
       attempt += 1
       options.onError?.(error, attempt)
+      if (isUnauthorizedError(error)) return
       await sleep(Math.min(500 * 2 ** (attempt - 1), MAX_BACKOFF_MS), signal)
     }
   }
@@ -73,6 +74,11 @@ async function pump(
   })
 
   if (!response.ok || !response.body) {
+    if (response.status === 401 || response.status === 403) {
+      window.dispatchEvent(
+        new CustomEvent('newsagent:unauthorized', { detail: response.status }),
+      )
+    }
     throw new ApiError(response.status, 'event stream unavailable')
   }
 
@@ -84,7 +90,7 @@ async function pump(
 
   for (;;) {
     const { done, value } = await reader.read()
-    if (done) return
+    if (done) throw new Error('event stream ended; reconnecting')
     buffer += decoder.decode(value, { stream: true })
 
     let boundary = buffer.indexOf('\n\n')
@@ -137,16 +143,19 @@ function isAbortError(error: unknown): boolean {
   return error instanceof Error && error.name === 'AbortError'
 }
 
+function isUnauthorizedError(error: unknown): boolean {
+  return error instanceof ApiError && (error.status === 401 || error.status === 403)
+}
+
 function sleep(ms: number, signal: AbortSignal): Promise<void> {
   return new Promise((resolve) => {
-    const timer = window.setTimeout(resolve, ms)
-    signal.addEventListener(
-      'abort',
-      () => {
-        window.clearTimeout(timer)
-        resolve()
-      },
-      { once: true },
-    )
+    const finish = () => {
+      window.clearTimeout(timer)
+      signal.removeEventListener('abort', finish)
+      resolve()
+    }
+    const timer = window.setTimeout(finish, ms)
+    signal.addEventListener('abort', finish, { once: true })
+    if (signal.aborted) finish()
   })
 }

@@ -136,6 +136,7 @@ class HotNewsQueryService:
             raise HotNewsPersistenceError("热点运行的 ranked_news 格式错误")
 
         analyzed_by_news_id = cls._index_analyzed_news(payload)
+        titles_by_news_id = cls._index_news_titles(payload)
 
         items: list[HotNewsRankedItemView] = []
         for entry in ranked_news:
@@ -151,6 +152,7 @@ class HotNewsQueryService:
                     HotNewsRankedItemView(
                         rank=int(entry["rank"]),
                         news_id=metrics.news_id,
+                        title=titles_by_news_id.get(metrics.news_id),
                         metrics=metrics,
                         baseline=baseline,
                         hot_score=hot_score,
@@ -236,6 +238,30 @@ class HotNewsQueryService:
                 raise HotNewsPersistenceError(
                     "热点分析记录不能通过 Schema 校验"
                 ) from exc
+        return indexed
+
+    @staticmethod
+    def _index_news_titles(payload: dict[str, Any]) -> dict[str, str]:
+        """从已持久化的可信分析输入快照中投影新闻标题。"""
+
+        analyzed_news = payload.get("analyzed_news")
+        if not isinstance(analyzed_news, list):
+            return {}
+
+        indexed: dict[str, str] = {}
+        for item in analyzed_news:
+            if not isinstance(item, dict):
+                continue
+            news_id = item.get("news_id")
+            analysis_input = item.get("analysis_input")
+            if not isinstance(news_id, str) or not isinstance(
+                analysis_input,
+                dict,
+            ):
+                continue
+            title = analysis_input.get("title")
+            if isinstance(title, str) and title.strip():
+                indexed[news_id] = title.strip()
         return indexed
 
     @staticmethod

@@ -1,5 +1,6 @@
 from temporalio.client import Client
 from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
+from temporalio.service import RPCError, RPCStatusCode
 
 from app.config import Settings
 from app.models.job import WritingJob
@@ -9,6 +10,10 @@ from app.workflows.news_writing import NewsWritingWorkflow
 
 class InvalidHumanDecisionError(ValueError):
     pass
+
+
+class WorkflowExecutionNotFoundError(LookupError):
+    """The database points at a Temporal execution that no longer exists."""
 
 
 class OrchestratorService:
@@ -46,10 +51,15 @@ class OrchestratorService:
     """ 获取进程 """
     async def get_progress(self, workflow_id: str) -> WorkflowSnapshot:
         handle = self.client.get_workflow_handle(workflow_id)
-        return await handle.query(
-            NewsWritingWorkflow.snapshot,
-            result_type=WorkflowSnapshot,
-        )
+        try:
+            return await handle.query(
+                NewsWritingWorkflow.snapshot,
+                result_type=WorkflowSnapshot,
+            )
+        except RPCError as exc:
+            if exc.status == RPCStatusCode.NOT_FOUND:
+                raise WorkflowExecutionNotFoundError(workflow_id) from exc
+            raise
     
     """ 提交人工决定 """
     async def submit_human_decision(
@@ -59,12 +69,22 @@ class OrchestratorService:
     ) -> None:
         handle = self.client.get_workflow_handle(workflow_id)
         # 先查询 Temporal Workflow 某一时刻的当前状态图，在真正发送人工校验前先做决策。
-        snapshot = await handle.query(
-            NewsWritingWorkflow.snapshot,
-            result_type=WorkflowSnapshot,
-        )
+        try:
+            snapshot = await handle.query(
+                NewsWritingWorkflow.snapshot,
+                result_type=WorkflowSnapshot,
+            )
+        except RPCError as exc:
+            if exc.status == RPCStatusCode.NOT_FOUND:
+                raise WorkflowExecutionNotFoundError(workflow_id) from exc
+            raise
         if snapshot.waiting_gate != decision.gate:
             raise InvalidHumanDecisionError(
                 f"当前等待 {snapshot.waiting_gate!r}，不能提交 {decision.gate!r} 决策"
             )
-        await handle.signal(NewsWritingWorkflow.submit_human_decision, decision)
+        try:
+            await handle.signal(NewsWritingWorkflow.submit_human_decision, decision)
+        except RPCError as exc:
+            if exc.status == RPCStatusCode.NOT_FOUND:
+                raise WorkflowExecutionNotFoundError(workflow_id) from exc
+            raise

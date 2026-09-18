@@ -57,7 +57,7 @@ class RuleBasedHotNewsAnalyzer:
     def analyze(self, input_data: HotNewsAnalysisInput) -> HotNewsAnalysisResult:
         if not input_data.news_id.strip():
             raise ValueError("news_id cannot be empty")
-        if not input_data.title.strip():
+         if not input_data.title.strip():
             raise ValueError("title cannot be empty")
 
         return HotNewsAnalysisResult(

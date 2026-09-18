@@ -107,6 +107,7 @@ export interface WorkflowProgressResponse {
   status: JobStatus
   current_step: StepType | null
   workflow: WorkflowSnapshot | null
+  workflow_status: 'available' | 'missing'
 }
 
 /** TODO(gen:api): app/schemas/research.py::ResearchMetrics 字段较多，按需展开。 */
@@ -489,6 +490,7 @@ export interface HotNewsAnalysisSummaryView {
 export interface HotNewsRankedItemView {
   rank: number
   news_id: string
+  title: string | null
   metrics: HotNewsMetricSnapshotView
   baseline: JsonObject | null
   hot_score: HotScoreView

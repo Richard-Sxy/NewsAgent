@@ -15,6 +15,23 @@ class Settings(BaseSettings):
     progress_stream_prefix: str = "news-writing:events"
     progress_stream_maxlen: int = Field(default=2000, ge=100, le=100000)
     progress_dedup_ttl_seconds: int = Field(default=86400, ge=60, le=604800)
+    hot_news_stream_prefix: str = "news-agent:hot-news:events"
+    hot_news_stream_maxlen: int = Field(default=1000, ge=100, le=100000)
+    hot_news_stream_ttl_seconds: int = Field(
+        default=259200,
+        ge=60,
+        le=2592000,
+    )
+    hot_news_stream_dedup_ttl_seconds: int = Field(
+        default=259200,
+        ge=60,
+        le=2592000,
+    )
+    hot_news_stream_publish_timeout_seconds: float = Field(
+        default=2.0,
+        ge=0.1,
+        le=10.0,
+    )
     outbox_batch_size: int = Field(default=100, ge=1, le=1000)
     outbox_max_attempts: int = Field(default=12, ge=1, le=100)
     outbox_poll_interval_seconds: float = Field(default=1.0, ge=0.1, le=30)

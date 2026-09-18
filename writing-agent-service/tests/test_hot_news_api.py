@@ -32,6 +32,7 @@ from app.services.hot_news_decision import (
     HotNewsDecisionConflictError,
     HotNewsDecisionTargetNotFoundError,
 )
+from app.services.hot_news_query import HotNewsQueryService
 
 
 TENANT_ID = uuid4()
@@ -65,6 +66,7 @@ def make_ranked_item() -> HotNewsRankedItemView:
     return HotNewsRankedItemView(
         rank=1,
         news_id="news-001",
+        title="AI 数据中心进入吉瓦时代",
         metrics=HotNewsMetricSnapshotView(
             news_id="news-001",
             content_type="article",
@@ -118,6 +120,64 @@ def make_detail() -> HotNewsRunDetailResponse:
             ),
         ),
     )
+
+
+def test_ranked_news_projects_title_from_analysis_input_snapshot() -> None:
+    run = SimpleNamespace(
+        payload_schema_version="2.0",
+        result_payload={
+            "ranked_news": [
+                {
+                    "rank": 1,
+                    "current": {
+                        "news_id": "news-001",
+                        "content_type": "article",
+                        "window_start": WINDOW_START,
+                        "window_end": WINDOW_END,
+                        "impressions": 1000,
+                        "clicks": 120,
+                        "unique_users": 90,
+                        "total_duration_seconds": 3600,
+                        "effective_consumptions": 80,
+                        "interactions": 25,
+                        "ctr": "0.12",
+                    },
+                    "hot_score": {
+                        "score": "0.8200",
+                        "click_component": "0.30",
+                        "consumption_component": "0.35",
+                        "interaction_component": "0.10",
+                        "growth_component": "0.07",
+                    },
+                }
+            ],
+            "analyzed_news": [
+                {
+                    "news_id": "news-001",
+                    "analysis_input": {
+                        "title": "AI 数据中心进入吉瓦时代",
+                    },
+                    "analysis": {
+                        "request_id": "req-1",
+                        "value": {
+                            "trend_assessment": "窗口内热度持续上升",
+                            "dominant_driver": "consumption",
+                            "attention_reasons": [],
+                            "operation_suggestions": [],
+                            "limitations": [],
+                            "evidence_news_ids": [],
+                            "overall_confidence": 0.72,
+                        },
+                    },
+                    "validated_at": COMPLETED_AT,
+                }
+            ],
+        },
+    )
+
+    items = HotNewsQueryService._parse_ranked_news(run)
+
+    assert items[0].title == "AI 数据中心进入吉瓦时代"
 
 
 def client_with(
@@ -258,6 +318,7 @@ def test_get_run_detail_returns_ranking_and_decisions() -> None:
     assert body["run"]["run_id"] == str(RUN_ID)
     item = body["ranked_news"][0]
     assert item["news_id"] == "news-001"
+    assert item["title"] == "AI 数据中心进入吉瓦时代"
     assert item["metrics"]["ctr"] == "0.12"
     assert item["hot_score"]["score"] == "0.8200"
     assert item["analysis"]["dominant_driver"] == "consumption"

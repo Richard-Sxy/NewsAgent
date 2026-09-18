@@ -15,6 +15,7 @@ from app.services.orchestrator import OrchestratorService
 from app.services.recovery import RecoveryService
 from app.services.outbox import OutboxService
 from app.services.event_reader import RedisProgressReader
+from app.services.hot_news_event_stream import RedisHotNewsEventStream
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
 from app.services.data_loop.orchestrator import DataLoopOrchestrator
@@ -433,6 +434,12 @@ async def get_recovery_service() -> RecoveryService:
 
 async def get_event_reader(request: Request) -> RedisProgressReader:
     return request.app.state.event_reader
+
+
+async def get_hot_news_event_stream(
+    request: Request,
+) -> RedisHotNewsEventStream:
+    return request.app.state.hot_news_event_stream
 
 
 async def get_orchestrator(request: Request) -> OrchestratorService:

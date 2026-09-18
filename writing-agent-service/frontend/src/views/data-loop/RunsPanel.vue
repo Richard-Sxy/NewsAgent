@@ -101,19 +101,21 @@ const decisionReason = ref('')
 
 const recovery = ref<RecoverDataLoopActivationResponse | null>(null)
 
-async function loadSnapshot(): Promise<void> {
+async function loadSnapshot(): Promise<boolean> {
   const id = workflowId.value.trim()
   if (!id) {
     toast.warn('请先填写工作流 ID')
-    return
+    return false
   }
   snapshotLoading.value = true
   snapshotError.value = null
   try {
     snapshot.value = await dataLoopApi.snapshot(id)
+    return true
   } catch (cause) {
     snapshotError.value = describeError(cause)
     snapshot.value = null
+    return false
   } finally {
     snapshotLoading.value = false
   }
@@ -128,6 +130,17 @@ async function submitRunDecision(): Promise<void> {
   const problem = requiredText(decisionReason.value, '决策原因')
   if (problem) {
     toast.warn(problem)
+    return
+  }
+
+  // Always refresh before submitting. This prevents a stale/closed workflow
+  // from producing a misleading 503 and tells the operator which phase is
+  // actionable.
+  if (!(await loadSnapshot()) || !snapshot.value) return
+  if (!snapshot.value.waiting_for_approval || snapshot.value.gate_passed !== true) {
+    toast.warn(
+      `当前阶段为“${snapshot.value.phase}”，门禁未处于人工审批阶段，暂不能提交决策`,
+    )
     return
   }
 

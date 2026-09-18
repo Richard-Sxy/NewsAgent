@@ -341,6 +341,9 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
             empty-text="暂无进度快照"
           >
             <template v-if="store.progress">
+              <p v-if="store.progress.workflow_status === 'missing'" class="na-notice">
+                Temporal 执行记录不存在；当前显示的是数据库任务状态。请先到“恢复”标签核对检查点并恢复任务，再提交人工决策。
+              </p>
               <dl class="na-defs">
                 <div>
                   <dt>工作流阶段</dt>

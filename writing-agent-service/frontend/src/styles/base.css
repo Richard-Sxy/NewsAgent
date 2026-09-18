@@ -413,6 +413,17 @@ pre {
   color: var(--na-text-muted);
 }
 
+.na-cell__title {
+  margin-bottom: 2px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.na-cell__sub--compact {
+  white-space: nowrap;
+  word-break: normal;
+}
+
 .na-required {
   color: var(--na-danger);
 }

@@ -42,7 +42,11 @@ from app.schemas.job import (
 from app.schemas.research import ResearchPackage
 from app.schemas.writing import ArticleDraft
 from app.services.job import JobNotFoundError, JobService
-from app.services.orchestrator import InvalidHumanDecisionError, OrchestratorService
+from app.services.orchestrator import (
+    InvalidHumanDecisionError,
+    OrchestratorService,
+    WorkflowExecutionNotFoundError,
+)
 from app.services.outbox import OutboxService
 from app.services.recovery import RecoveryNotAllowedError, RecoveryService
 from app.storage.s3 import S3ArtifactStore
@@ -248,6 +252,14 @@ async def get_progress(
     job = await _get_job_or_404(session, jobs, tenant_id, job_id)
     try:
         snapshot = await orchestrator.get_progress(job.temporal_workflow_id)
+    except WorkflowExecutionNotFoundError:
+        return WorkflowProgressResponse(
+            job_id=job.id,
+            status=job.status,
+            current_step=job.current_step,
+            workflow=None,
+            workflow_status="missing",
+        )
     except RPCError as exc:
         raise HTTPException(status_code=503, detail="Temporal 进度暂不可用") from exc
     return WorkflowProgressResponse(
@@ -255,6 +267,7 @@ async def get_progress(
         status=job.status,
         current_step=job.current_step,
         workflow=snapshot,
+        workflow_status="available",
     )
 
 
@@ -421,6 +434,11 @@ async def submit_decision(
         )
     except InvalidHumanDecisionError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
+    except WorkflowExecutionNotFoundError as exc:
+        raise HTTPException(
+            status_code=409,
+            detail="Temporal 工作流不存在；请先在恢复面板从检查点恢复任务，再提交人工决策",
+        ) from exc
     except RPCError as exc:
         raise HTTPException(status_code=503, detail="人工决策暂时无法提交") from exc
     return DecisionAcceptedResponse(job_id=job.id, gate=request.gate)

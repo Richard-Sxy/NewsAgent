@@ -1,0 +1,484 @@
+===== start 2026-09-12T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "partial_failed",
+  "target_date": "2026-09-12",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 0,
+    "skipped": 0,
+    "failed": 20,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260912A082OC00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A096PT00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A0AAW700",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A09NJC00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A0A1KM00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A098X200",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/RLV2026070615335500",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻正文为空。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A09PVJ00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A08UGA00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "新闻内容过短。"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A01X3600",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A0AMU500",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A09NJX00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A041ZS00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A04N6200",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A05HK800",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A06MUI00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A07UHJ00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A08HXY00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A08S5000",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260912A092CL00",
+        "title": "",
+        "collection_id": null,
+        "insert_len": 0,
+        "status": "failed",
+        "error": "[Errno 111] Connection refused"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "陶哲轩、邓煜等25位菲尔兹奖得主联合声明：AI正毁掉数学",
+      "url": "https://news.qq.com/rain/a/20260912A082OC00",
+      "publish_time": "2026-09-12 18:30:23"
+    },
+    {
+      "topic": "科技",
+      "title": "荣耀魔法画报事件最新进展：第三方机构证实涉事手机正常接打十次电话",
+      "url": "https://news.qq.com/rain/a/20260912A096PT00",
+      "publish_time": "2026-09-12 17:11:32"
+    },
+    {
+      "topic": "科技",
+      "title": "罗永浩炮轰苹果折叠屏新机的背后，手机为什么越卖越贵？",
+      "url": "https://news.qq.com/rain/a/20260912A0AAW700",
+      "publish_time": "2026-09-12 19:15:42"
+    },
+    {
+      "topic": "科技",
+      "title": "日企CEO发愿：2040年，到月球生产芯片",
+      "url": "https://news.qq.com/rain/a/20260912A09NJC00",
+      "publish_time": "2026-09-12 17:51:03"
+    },
+    {
+      "topic": "科技",
+      "title": "AI的吹哨人：辞职信有人收，但是警报呢？",
+      "url": "https://news.qq.com/rain/a/20260912A0A1KM00",
+      "publish_time": "2026-09-12 18:32:09"
+    },
+    {
+      "topic": "体育",
+      "title": "巴林男篮被打破防！赛后集体拒绝与中国男篮握手 郭士强举手抗议",
+      "url": "https://news.qq.com/rain/a/20260912A098X200",
+      "publish_time": "2026-09-12 20:01:31"
+    },
+    {
+      "topic": "体育",
+      "title": "中超第18轮补赛：津门虎1-0铁人，王秋明进球被吹，科尔多瓦破门",
+      "url": "https://news.qq.com/rain/a/RLV2026070615335500",
+      "publish_time": "2026-09-12 19:07:13"
+    },
+    {
+      "topic": "体育",
+      "title": "严重事故处理不当，多支车队宣布永久退出CHINA GT赛事",
+      "url": "https://news.qq.com/rain/a/20260912A09PVJ00",
+      "publish_time": "2026-09-12 18:12:50"
+    },
+    {
+      "topic": "体育",
+      "title": "宏远集体出街吃顺德美食！新外援刚来就入乡随俗，拖鞋一穿彻底融入",
+      "url": "https://news.qq.com/rain/a/20260912A08UGA00",
+      "publish_time": "2026-09-12 16:48:27"
+    },
+    {
+      "topic": "体育",
+      "title": "4-2！皇马4500万弃将戴帽 率领意甲劲旅获赛季首胜 终结开局3连败",
+      "url": "https://news.qq.com/rain/a/20260912A01X3600",
+      "publish_time": "2026-09-12 05:39:19"
+    },
+    {
+      "topic": "财经",
+      "title": "国际油价突破100美元大关，石油市场已达“转折点”？",
+      "url": "https://news.qq.com/rain/a/20260912A0AMU500",
+      "publish_time": "2026-09-12 20:01:54"
+    },
+    {
+      "topic": "财经",
+      "title": "国常会部署算力网建设，产业一线订单火热，算力调优付费意愿高",
+      "url": "https://news.qq.com/rain/a/20260912A09NJX00",
+      "publish_time": "2026-09-12 19:00:20"
+    },
+    {
+      "topic": "财经",
+      "title": "宁德时代启动A股史上最大回购",
+      "url": "https://news.qq.com/rain/a/20260912A041ZS00",
+      "publish_time": "2026-09-12 20:26:26"
+    },
+    {
+      "topic": "财经",
+      "title": "16家机构押注美联储9月加息，就连高盛也改口了",
+      "url": "https://news.qq.com/rain/a/20260912A04N6200",
+      "publish_time": "2026-09-12 16:34:10"
+    },
+    {
+      "topic": "财经",
+      "title": "花8万元，保证入职胖东来？",
+      "url": "https://news.qq.com/rain/a/20260912A05HK800",
+      "publish_time": "2026-09-12 16:55:18"
+    },
+    {
+      "topic": "汽车",
+      "title": "雷军开始摸着理想过河，理想守得住“自留地”吗？",
+      "url": "https://news.qq.com/rain/a/20260912A06MUI00",
+      "publish_time": "2026-09-12 16:16:16"
+    },
+    {
+      "topic": "汽车",
+      "title": "新能源路线之争胜负已分，但表演依然在继续",
+      "url": "https://news.qq.com/rain/a/20260912A07UHJ00",
+      "publish_time": "2026-09-12 16:17:31"
+    },
+    {
+      "topic": "汽车",
+      "title": "长安汽车，竟然少赚这么多",
+      "url": "https://news.qq.com/rain/a/20260912A08HXY00",
+      "publish_time": "2026-09-12 16:20:33"
+    },
+    {
+      "topic": "汽车",
+      "title": "小米澎程今日开启交付，雷军现身徐州为首批车主开车门、递钥匙；从SU7开始，为车主开车门已成“固定环节”",
+      "url": "https://news.qq.com/rain/a/20260912A08S5000",
+      "publish_time": "2026-09-12 16:41:10"
+    },
+    {
+      "topic": "汽车",
+      "title": "汽修人才结构性短缺，海外“挖角”凸显供给矛盾",
+      "url": "https://news.qq.com/rain/a/20260912A092CL00",
+      "publish_time": "2026-09-12 17:01:13"
+    }
+  ]
+}
+===== news ingest end, exit=1 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 0,
+  "skipped": 0,
+  "failed": 20,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260905A06F0L00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A06ZM900",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260904A0DQBG00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A06FB100",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0B8CY00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A09HQ000",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0840X00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A09BIK00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A09SAN00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A02WAQ00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A000S600",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260904A0DPSZ00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0AXVR00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0A5QJ00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A08N9U00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A03A3000",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A0BF3F00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A030EK00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A02AQA00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260905A00PPZ00",
+      "status": "failed",
+      "error": "[Errno 111] Connection refused"
+    }
+  ]
+}
+===== qa generate end, exit=1 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "failed",
+  "target_date": "2026-09-12",
+  "generated_at": "2026-09-12T20:30:15.232355+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 1,
+    "qa": 1,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "failed": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 0,
+    "status_counts": {},
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12277
+  },
+  "files": {
+    "json": "reports/daily-2026-09-12.json",
+    "markdown": "reports/daily-2026-09-12.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-12T20:30:15+08:00, exit=1 =====

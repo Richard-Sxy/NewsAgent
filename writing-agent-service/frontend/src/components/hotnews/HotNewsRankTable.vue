@@ -28,6 +28,19 @@ function toggle(newsId: string): void {
 function confidenceText(value: number): string {
   return `${Math.round(value * 100)}%`
 }
+
+function compactNewsId(value: string): string {
+  if (value.length <= 14) return value
+  return `${value.slice(0, 8)}…${value.slice(-5)}`
+}
+
+function contentTypeText(value: string): string {
+  const labels: Record<string, string> = {
+    article: '图文',
+    video: '视频',
+  }
+  return labels[value] ?? value
+}
 </script>
 
 <template>
@@ -35,8 +48,8 @@ function confidenceText(value: number): string {
     <thead>
       <tr>
         <th style="width: 48px">#</th>
-        <th>news_id</th>
-        <th style="width: 64px">类型</th>
+        <th style="width: 72px">类型</th>
+        <th style="min-width: 220px">新闻</th>
         <th style="width: 84px">曝光</th>
         <th style="width: 72px">点击</th>
         <th style="width: 72px">CTR</th>
@@ -49,8 +62,19 @@ function confidenceText(value: number): string {
       <template v-for="item in items" :key="item.news_id">
         <tr>
           <td>{{ item.rank }}</td>
-          <td class="na-mono">{{ item.news_id }}</td>
-          <td>{{ item.metrics.content_type }}</td>
+          <td>
+            <span class="na-badge na-badge--neutral">
+              {{ contentTypeText(item.metrics.content_type) }}
+            </span>
+          </td>
+          <td>
+            <div class="na-cell__title" :title="item.title ?? undefined">
+              {{ item.title || '未获取新闻标题' }}
+            </div>
+            <div class="na-cell__sub na-cell__sub--compact" :title="item.news_id">
+              {{ compactNewsId(item.news_id) }}
+            </div>
+          </td>
           <td>{{ item.metrics.impressions }}</td>
           <td>{{ item.metrics.clicks }}</td>
           <td class="na-mono">{{ item.metrics.ctr }}</td>

@@ -20,6 +20,7 @@ from app.config import get_settings
 from app.db.session import Database
 from app.services.orchestrator import OrchestratorService
 from app.services.event_reader import RedisProgressReader
+from app.services.hot_news_event_stream import RedisHotNewsEventStream
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
 from app.services.data_loop.orchestrator import DataLoopOrchestrator
@@ -44,6 +45,7 @@ async def lifespan(app: FastAPI):
     app.state.temporal = temporal
     app.state.redis = redis
     app.state.event_reader = RedisProgressReader(redis, settings)
+    app.state.hot_news_event_stream = RedisHotNewsEventStream(redis, settings)
     app.state.artifact_store = S3ArtifactStore(settings)
     app.state.evaluation_dataset_artifact_store = (
         S3EvaluationDatasetArtifactStore(settings)

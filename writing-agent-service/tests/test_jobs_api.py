@@ -19,6 +19,7 @@ from app.domain.job_status import JobStatus
 from app.main import app
 from app.workflows.contracts import WorkflowSnapshot
 from app.schemas.checkpoint import ResumePoint
+from app.services.orchestrator import WorkflowExecutionNotFoundError
 from tests.test_research_schema import valid_research_package
 
 
@@ -223,10 +224,56 @@ async def test_progress_and_human_decision(api_context) -> None:
 
     assert progress.status_code == 200
     assert progress.json()["workflow"]["waiting_gate"] == "research"
+    assert progress.json()["workflow_status"] == "available"
     assert decision.status_code == 202
     sent = orchestrator.submit_human_decision.await_args.args[1]
     assert sent.gate == "research"
     assert sent.action == "approve"
+
+
+@pytest.mark.asyncio
+async def test_missing_temporal_workflow_keeps_database_progress_visible(api_context) -> None:
+    tenant_id, user_id, stored_job, _, orchestrator, _ = api_context
+    stored_job.status = JobStatus.WAITING_HUMAN
+    orchestrator.get_progress.side_effect = WorkflowExecutionNotFoundError(
+        stored_job.temporal_workflow_id
+    )
+    client = httpx.AsyncClient(
+        transport=httpx.ASGITransport(app=app), base_url="http://test"
+    )
+
+    response = await client.get(
+        f"/api/v1/jobs/{stored_job.id}/progress",
+        headers=headers(tenant_id, user_id),
+    )
+    await client.aclose()
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "waiting_human"
+    assert response.json()["workflow"] is None
+    assert response.json()["workflow_status"] == "missing"
+
+
+@pytest.mark.asyncio
+async def test_decision_for_missing_temporal_workflow_returns_recovery_conflict(api_context) -> None:
+    tenant_id, user_id, stored_job, _, orchestrator, _ = api_context
+    orchestrator.submit_human_decision.side_effect = WorkflowExecutionNotFoundError(
+        stored_job.temporal_workflow_id
+    )
+    client = httpx.AsyncClient(
+        transport=httpx.ASGITransport(app=app), base_url="http://test"
+    )
+
+    response = await client.post(
+        f"/api/v1/jobs/{stored_job.id}/decisions",
+        headers=headers(tenant_id, user_id),
+        json={"gate": "research", "action": "approve"},
+    )
+    await client.aclose()
+
+    assert response.status_code == 409
+    assert "恢复面板" in response.json()["detail"]
+    orchestrator.submit_human_decision.assert_awaited_once()
 
 
 @pytest.mark.asyncio

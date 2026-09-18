@@ -7,10 +7,22 @@
 
 from __future__ import annotations
 
+import asyncio
+from collections.abc import AsyncIterator
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    Header,
+    HTTPException,
+    Path,
+    Query,
+    Request,
+    status,
+)
+from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from temporalio.service import RPCError
 
@@ -18,6 +30,7 @@ from app.api.dependencies import (
     DataLoopPrincipal,
     HotNewsPermission,
     get_hot_news_decision_service,
+    get_hot_news_event_stream,
     get_hot_news_query_service,
     get_hot_news_writing_handoff_service,
     get_session,
@@ -41,6 +54,12 @@ from app.services.hot_news_decision import (
     HotNewsDecisionTargetNotFoundError,
 )
 from app.services.hot_news_query import HotNewsQueryService
+from app.schemas.hot_news_events import HotNewsProgressEvent
+from app.services.hot_news_event_stream import (
+    HotNewsProgressReadError,
+    InvalidHotNewsStreamEventID,
+    RedisHotNewsEventStream,
+)
 from app.services.hot_news_writing_handoff import (
     HotNewsAnalysisNotFoundError,
     HotNewsWritingHandoffService,
@@ -62,6 +81,80 @@ HandoffPrincipal = Annotated[
     DataLoopPrincipal,
     Depends(require_hot_news_permission(HotNewsPermission.HANDOFF)),
 ]
+
+
+def format_hot_news_sse(
+    event: HotNewsProgressEvent,
+    retry_ms: int,
+) -> str:
+    data = event.model_dump_json()
+    return (
+        f"id: {event.event_id}\n"
+        f"event: {event.event}\n"
+        f"retry: {retry_ms}\n"
+        f"data: {data}\n\n"
+    )
+
+
+@router.get("/streams/{run_key}/events")
+async def stream_hot_news_events(
+    run_key: Annotated[
+        str,
+        Path(pattern=r"^hot-news-[0-9a-f]{64}$"),
+    ],
+    request: Request,
+    principal: ReadPrincipal,
+    last_event_id: str | None = Header(
+        default=None,
+        alias="Last-Event-ID",
+    ),
+    stream: RedisHotNewsEventStream = Depends(
+        get_hot_news_event_stream
+    ),
+) -> StreamingResponse:
+    """按热点运行幂等键推送短期进度；完整结果仍从 PostgreSQL API 获取。"""
+
+    try:
+        cursor = stream.validate_event_id(last_event_id)
+    except InvalidHotNewsStreamEventID as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    async def generate() -> AsyncIterator[str]:
+        current_id = cursor
+        while not await request.is_disconnected():
+            try:
+                events = await stream.read(
+                    tenant_id=str(principal.tenant_id),
+                    run_key=run_key,
+                    last_event_id=current_id,
+                )
+            except asyncio.CancelledError:
+                break
+            except HotNewsProgressReadError:
+                yield ": hot-news progress stream temporarily unavailable\n\n"
+                await asyncio.sleep(1)
+                continue
+            if not events:
+                yield ": heartbeat\n\n"
+                continue
+            for event in events:
+                if event.event_id is None:
+                    continue
+                current_id = event.event_id
+                yield format_hot_news_sse(
+                    event,
+                    request.app.state.settings.sse_retry_ms,
+                )
+
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache, no-transform",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @router.get("/runs", response_model=HotNewsRunListResponse)
