@@ -1,6 +1,6 @@
-NewsAgent 运营推送链路完善计划
+### 1.NewsAgent 运营推送链路完善计划
 
-1. 项目目标与边界
+## 1. 项目目标与边界
 
 当前项目的核心仍然是 Hot News Analysis Agent：根据行为指标发现热点，结合正文与相关新闻证据，解释热点原因并输出可信分析。
 
@@ -21,9 +21,9 @@ NewsAgent 运营推送链路完善计划
 
 项目可以模拟：用户画像服务、地域圈选服务、厂商推送平台和百万用户扇出。
 
-2. 模块划分
+## 2. 模块划分
 
-2.1 HotNewsAnalysisAgent
+## 2.1 HotNewsAnalysisAgent
 
 职责：回答“发生了什么、为什么变热、证据是什么、可能影响谁”。
 
@@ -41,7 +41,7 @@ class HotNewsAnalysisReport:
 
 这里的地域和人群只是新闻影响范围，不是具体用户集合。
 
-2.2 PushStrategyGenerator
+## 2.2 PushStrategyGenerator
 
 职责：把热点分析结果转换为运营建议，包括：
 
@@ -59,7 +59,7 @@ class HotNewsAnalysisReport:
 
 该模块可以使用 LLM，但只能生成“候选计划”，不能直接执行推送。
 
-2.3 PushPolicyValidator
+## 2.3 PushPolicyValidator
 
 职责：用确定性代码检查候选计划：
 
@@ -83,7 +83,7 @@ S/A 级计划是否要求人工审核；
 
 校验失败直接阻断，不允许静默降级后继续发送。
 
-2.4 EditorialApproval
+## 2.4 EditorialApproval
 
 运营人员可以通过、拒绝或修改计划。建议状态：
 
@@ -97,7 +97,7 @@ DRAFT
 
 需要记录 reviewer_id、审核时间、修改前后内容和拒绝原因，便于审计和后续评测。
 
-3. 核心领域对象
+## 3. 核心领域对象
 
 避免使用无约束的 target_audience: dict，建议结构化：
 
@@ -132,9 +132,9 @@ class PushPlan:
 
 strategy_version 用于说明本次计划采用哪一版运营规则；event_id 用于同事件去重；plan_id 用于审核、执行和效果回流关联。
 
-4. 最少需要对接的企业 RPC
+## 4. 最少需要对接的企业 RPC
 
-4.1 人群圈选 RPC
+## 4.1 人群圈选 RPC
 
 用途：根据运营条件创建人群包，返回 audience_id，不要向 Agent 返回大量用户 ID。
 
@@ -203,7 +203,7 @@ CreateAudienceResponse
 
 第一版可以实现 MockAudienceRpcClient，根据条件返回固定或计算出的估算人数。
 
-4.2 消息推送 RPC
+## 4.2 消息推送 RPC
 
 用途：把已经审核通过的计划提交给企业消息平台。
 
@@ -283,7 +283,7 @@ SubmitPushTaskResponse
 
 第一版只需要模拟任务受理、失败、超时和重复请求，不需要真的对接 APNs、华为或小米推送。
 
-4.3 推送结果查询或回调 RPC
+## 4.3 推送结果查询或回调 RPC
 
 用于把执行结果回流到运营平台，至少包含：
 
@@ -300,7 +300,7 @@ SubmitPushTaskResponse
 
 如果只做 MVP，也可以先用定时查询代替回调。
 
-5. Temporal、MQ 与 RPC 的分工
+## 5. Temporal、MQ 与 RPC 的分工
 
 Temporal：管理一次热点运营任务的长流程、等待人工审核、超时、重试和状态恢复。
 
@@ -318,7 +318,7 @@ tenant_id + event_id + strategy_version + audience_version + channel
 
 同一幂等键重复调用时，应返回原有任务，不得重复发送。
 
-6. 如何复用现有黄金评测集
+## 6. 如何复用现有黄金评测集
 
 现有热点分析黄金集继续评测：
 
@@ -358,7 +358,7 @@ reason_type 是否合规；
 
 不要要求生成文本与黄金答案逐字一致，重点比较约束字段、必选项、禁止项和证据引用。
 
-7. 下一步实施顺序
+## 7. 下一步实施顺序
 
 阶段一：固定契约
 
@@ -412,7 +412,7 @@ reason_type 是否合规；
 
 第一阶段只做离线回放或 shadow 模式，不真实触达用户。
 
-8. MVP 完成标准
+## 8. MVP 完成标准
 
 满足以下条件即可认为推送部分形成完整项目闭环：
 
@@ -432,7 +432,7 @@ Temporal 能从等待审核或 RPC 失败位置恢复；
 
 黄金集能够评测热点分析和运营策略两个层次。
 
-9. 暂时不需要实现
+## 9. 暂时不需要实现
 
 精确定位和用户位置采集；
 
