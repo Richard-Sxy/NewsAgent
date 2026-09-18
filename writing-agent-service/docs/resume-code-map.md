@@ -1,5 +1,7 @@
 # NewsAgent 简历能力与代码映射
 
+最后更新：2026-09-18
+
 本文把面向 Agent 开发岗的简历主线映射到当前仓库。它只用于规划与核对，
 不代表所有简历能力已经在企业环境落地。
 
@@ -62,8 +64,9 @@
 - `tests/test_hot_news_analysis.py`、`test_hot_news_agent_module.py`、
   `test_fastgpt_client.py`：结构化调用与失败路径验证。
 
-**状态：部分完成。** 本地结构化主链路已有代码；企业内部模型 RPC、真实 Prompt、
-鉴权配置和携真实服务的联调尚未完成，预设入口为 `app/clients/enterprise/`。
+**状态：仓库级主链路完成，真实服务验收待完成。** 严格 Schema、FastGPT 结构化 Runner、
+业务 Validator 和统一 Service 已实现；企业真实 Prompt/App、鉴权、质量评测和生产网络联调
+尚未完成。FastGPT 是外部模型应用基础设施，不应描述为本项目自研模型平台。
 
 ## 4. 有界、幂等且可恢复的热点运行
 
@@ -76,30 +79,37 @@
 - `app/workflows/hot_news.py`：有界 Temporal Workflow 及重试/超时策略。
 - `app/activities/hot_news.py`：Activity、心跳、错误分类和幂等重放。
 - `app/hot_news_bootstrap.py`、`app/hot_news_worker.py`：依赖装配与 Worker 注册。
+- `app/services/hot_news_schedule.py`、`app/hot_news_scheduler.py`：窗口 Dispatcher 与
+  Schedule 声明式管理。
 - `app/models/hot_news.py`、`app/services/hot_news_run_store.py`：运行快照与幂等持久化。
+- `app/api/hot_news.py`、`app/services/hot_news_event_stream.py`：查询、决策、转交和 SSE。
 - `alembic/versions/20260905_0007_hot_news_analysis_runs.py`：数据库迁移。
 - `tests/test_hot_news_orchestration.py`、`test_hot_news_activity.py`、
   `test_hot_news_workflow.py`：编排验证。
 
-**状态：部分完成。** Worker 与企业 Adapter 依赖装配已经存在；真实 PostgreSQL 迁移、
-企业 SDK Client、Schedule、监控告警和获授权环境端到端运行仍需完成。
+**状态：仓库级与本地依赖闭环完成，生产接入待完成。** Worker、窗口 Workflow、Schedule、
+运行持久化、查询/决策 API 和 SSE 已存在，并通过隔离依赖栈做过本地验证；企业 SDK、目标
+生产库迁移、真实 Schedule 注册、Gateway/IdP、监控告警和获授权环境 E2E 仍需完成。
 
 ## 5. 运营反馈 Data Loop
 
 **简历能力**：统一回流校验失败、低置信结果、运营纠正、误报漏报、检索错误和
 发布后聚合效果，生成可追溯的 `FeedbackCase` 并冻结版本化评测数据。
 
-**当前可复用代码**：
+**当前对应代码**：
 
 - `app/models/hot_news_decision.py`、`app/schemas/hot_news_decision.py`、
   `app/services/hot_news_decision.py`：接受、拒绝、暂缓和纠正决策。
 - `alembic/versions/20260907_0008_hot_news_decisions.py`：运营决策迁移。
 - `tests/test_hot_news_decision_service.py`：租户隔离、幂等和替代关系测试。
 - `app/services/hot_news_run_store.py`：可供 Feedback Case 引用的可信分析快照。
+- `app/services/data_loop/`：Feedback、标签审核、数据集冻结、评测、Gate、审批、激活和回滚。
+- `app/api/data_loop.py`、`app/workflows/data_loop.py`：人工入口与有界 Temporal 编排。
+- `app/models/analysis_feedback.py`、`evaluation_dataset.py`、`production_bundle.py`：持久化模型。
 
-**状态：预设为主。** 尚无统一 Feedback Case、失败自动汇聚、发布后 Outcome、
-脱敏去重和数据集冻结。统一规划入口为 `app/services/data_loop/`；未来 Schema、
-ORM、Repository、API 和 Workflow 仍按当前横向分层落位。
+**状态：仓库级闭环完成，本地 L2 已验证。** 校验失败、低置信、检索异常、运营决策和
+聚合效果可形成 Feedback Case；标签提交与独立二审、三层 Dataset 和不可变 Artifact 已有
+实现。真实运营数据、企业身份、生产对象存储和长期效果口径仍待验收。
 
 ## 6. 错误归因 Agent、离线评测与受控晋升
 
@@ -107,25 +117,24 @@ ORM、Repository、API 和 Workflow 仍按当前横向分层落位。
 Diff 与回归用例；在黄金集、新鲜 Bad Case 和高风险回归集上执行双基准评测，
 最终由人工决定晋升或回滚。
 
-**当前可复用基础**：
+**当前对应代码**：
 
-- `app/schemas/user_memory.py`、`app/services/memory_context.py`：作用域和历史上下文
-  解析模式。
-- `app/services/memory_promotion.py`：候选人工晋升的纯领域规则模式。
-- 现有热点 Workflow、Artifact 和 Outbox 可复用其幂等、版本化及审计模式。
+- `app/services/agents/error_attribution.py`：错误归因 Runner。
+- `app/services/data_loop/`：候选生成、三层回放、确定性 Gate、审批、激活和回滚。
+- `app/workflows/data_loop.py`：48 小时人工 Gate 与超时默认拒绝。
+- `app/services/memory_context.py`、`memory_promotion.py`：作用域上下文和人工经验晋升。
 
-上述用户 Memory 不是热点错误归因或配置晋升实现，不能直接计入该简历能力。
-
-**状态：预设。** 归因 Runner 将落到 `app/services/agents/`，评测与数据治理服务
-规划在 `app/services/data_loop/`，Temporal 编排仍落到 `app/activities/` 与
-`app/workflows/`，具体目标文件见该预设目录的 README。
+**状态：受控配置迭代闭环已实现并完成本地 L2 验证。** 当前迭代对象是 Prompt、热度规则、
+重排参数和输出 Schema，不包含大模型自动训练；真实 FastGPT、企业评测数据和生产环境
+晋升仍未验收，不能描述为“生产模型自动训练或自动上线”。
 
 ## 简历用词边界
 
 - 第 1～2 项可以描述为“完成仓库级核心链路与企业 RPC 防腐层”，但在真实联调前不能写
   “已接入腾讯数仓/内容中心”或生产效果数据。
 - 第 3～4 项可以描述为“构建/实现核心链路”，企业模型 RPC 和生产上线仍按真实状态说明。
-- 第 5～6 项在端到端闭环完成前只能描述为“设计并推进”。
+- 第 5～6 项可描述为“实现本地可回放的反馈、评测与受控晋升闭环”，但不能写成已接入
+  企业生产数据、自动训练大模型或自动上线。
 - FastGPT、爬虫和 QA 生成是本地实验基础设施，不应写成腾讯内部生产能力。
 - 指标、基线、热度和评测统计由确定性代码或 SQL 计算；Agent 只负责解释、归因、
   模式发现和候选生成。
