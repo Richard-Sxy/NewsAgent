@@ -1,18 +1,26 @@
 # Tencent News Crawler
 
-本项目用于自动发现腾讯新闻分类内容、抓取正文、使用 SQLite 去重，并将新闻导入 FastGPT 知识库。
+本项目用于从腾讯新闻公开页面与接口发现内容、抓取和清洗正文、使用 SQLite 管理幂等与
+重试，并将合格文本导入 FastGPT 知识库。它是 NewsAgent 的内容接入实验链路，不是企业
+内容中心，也不负责 C 端行为数据采集。
+
+> 状态更新：2026-09-18。分类发现、图文抓取、缓存、标题 NLP、FastGPT 入库、QA、报告和
+> 基础评测已经实现；企业生产接入尚未完成。当前每日任务仍以 6 个分类 feed 为主，sitemap
+> 尚未接入主链路，视频在分类发现阶段仍会被跳过，因此不能把当前结果描述为全量新闻覆盖。
 
 > - 企业级知识库容量与架构推演（8000 篇/天 × 10 年）：
 >   [`docs/knowledge-base-scale-design.md`](docs/knowledge-base-scale-design.md)
 > - 向量入库链路（正文如何进入 FastGPT、metadata、分片、训练状态与检索衔接）：
 >   [`docs/vector-ingest/README.md`](docs/vector-ingest/README.md)
+> - 入库覆盖率、视频缺口、sitemap 和召回优化现状：
+>   [`docs/news-ingest-recall-optimization.md`](docs/news-ingest-recall-optimization.md)
 
 ## 运行环境
 
 进入项目并激活虚拟环境：
 
 ```bash
-cd /home/shi/project/NewsAgent/tencent-news-crawler
+cd tencent-news-crawler
 source .venv/bin/activate
 ```
 
@@ -93,7 +101,8 @@ TITLE_NLP_REQUIRED=false
 
 ## 启动前检查
 
-每日任务依赖 FastGPT 和 AI Proxy。执行任务前检查服务：
+完整每日任务中的正文入库依赖 FastGPT，QA 生成与自动评测还依赖 AI Proxy/模型应用。
+按启用功能检查对应服务：
 
 ```bash
 curl --noproxy "*" -I http://127.0.0.1:3000
@@ -199,6 +208,9 @@ echo $?
 DAILY_EVALUATION_ENABLED=true
 DAILY_EVALUATION_LIMIT=20
 ```
+
+这里的自动评测主要衡量“已经成功入库的内容能否被检索或回答”，不能代替采集覆盖率。
+未发现、被过滤或未入库的新闻不会自然进入这套评测；采集召回应使用独立分母与抽样标注。
 
 ## 日志包装脚本
 
@@ -338,6 +350,9 @@ data/articles/<URL的SHA-256>.json
 SQLite仍然负责记录任务状态，正文缓存只负责保存新闻内容；删除缓存不会
 删除FastGPT知识库数据，但后续需要正文时会再次请求腾讯新闻。
 
+当前缓存主要覆盖图文正文。视频新闻的 ASR、画面概括和统一文本化由
+`writing-agent-service` 的视频知识入库模块承担，本爬虫每日发现链路尚未与其打通。
+
 ## 配置 cron
 
 检查 cron 服务：
@@ -410,3 +425,11 @@ FastGPT 或 AI Proxy 没有启动。先检查 3000 和 3010 端口。
 ### FastGPT 返回 `insertLen: 0`
 
 集合已经创建，但分片训练通常异步执行。应以 FastGPT 集合状态、训练队列和知识库检索结果为准。
+
+## 当前未完成项
+
+- 将 sitemap 发现接入每日任务，并建立可复算的采集覆盖率指标。
+- 将视频发现交给统一视频文本化链路，避免视频内容覆盖率为零。
+- 批量登记、受控并发、正文抓取限速和质量拒绝/网络失败分类。
+- 将内容保存与 FastGPT 索引任务解耦，补充训练卡住、失败重建和删除/更正语义。
+- 使用真实新闻样本持续评测标题实体、事件聚类、采集覆盖和检索质量。

@@ -4,6 +4,11 @@
 PostgreSQL / Redis / S3-MinIO）。本文件只记录**设计思路**，实现细节和完整清单见仓库
 根目录 `README.md` 与 `PROJECT_CONTEXT.md`。
 
+> 状态更新：2026-09-18。热点分析、查询 API/SSE、Temporal Worker/Schedule、研究写作、
+> Data Loop、配置晋升/回滚和 Memory 已形成仓库内实现与本地验证链路；企业 RPC、真实
+> FastGPT App、Gateway/IdP 和生产基础设施仍未完成验收。运营推送闭环见根目录
+> [`PushPlan.md`](../PushPlan.md)，当前尚未实现。
+
 ## 一、核心思路
 
 1. **用有边界的 Loop 组合系统，不做无限运行的大 Agent。**
@@ -47,7 +52,7 @@ PostgreSQL / Redis / S3-MinIO）。本文件只记录**设计思路**，实现�
 | `app/schemas/` | Pydantic 契约 | 成功结果必须是强类型，不退化自由文本 |
 | `app/models/` + `app/repositories/` + `alembic/` | ORM、仓储、迁移 | 独立聚合根、租户隔离、不可变快照 |
 | `app/domain/` | 错误、状态机、场景等纯领域逻辑 | 与基础设施解耦，可单测 |
-| `app/clients/` | FastGPT、知识库、CMS、企业 Adapter | 外部依赖收口在边界 |
+| `app/clients/` | FastGPT 模型调用、知识库、CMS、企业 Adapter | 外部依赖收口在边界 |
 | `app/retrieval/` | 关联新闻特征与确定性重排 | 检索是可重建投影，重排是规则 |
 | `app/api/` | 只读查询、运营决策、人工 Gate 入口 | 可信网关注入身份，权限最小化 |
 
@@ -55,11 +60,14 @@ PostgreSQL / Redis / S3-MinIO）。本文件只记录**设计思路**，实现�
 
 - 热点运行、热点事件、反馈、评测、生产 Bundle、Memory 各自独立聚合根，不挂在写作任务上。
 - 职责划分：PostgreSQL 存状态/快照/版本；S3/MinIO 存不可变报告与评测产物；
-  Redis 只做缓存与事件推送；FastGPT 只做检索投影，不是业务事实源。
+  Redis 只做缓存与事件推送；FastGPT 提供知识检索和结构化模型应用，但不是业务事实源。
 - 所有版本化资产（Prompt、热度配置、重排参数、Schema、模型）记录在 Production Bundle，
   支持双基准比较与回滚。
 
 ## 四、运行与验证
+
+先使用本机 Python 3.11 创建可用虚拟环境并安装 `pyproject.toml` 依赖。仓库内跟踪的
+`.venv` 可能来自其他操作系统，不应把它作为可移植运行环境。
 
 ```bash
 python -m pytest -o addopts="" -q                          # 默认全量回归
@@ -72,5 +80,13 @@ docker compose -f deploy/docker-compose.data-loop-e2e.yml up -d --build
 生产依赖（企业 RPC、网关/IdP、真实 FastGPT App、Schedule 注册）由部署侧接入；
 未配置时依赖工厂 fail-closed，不提供隐式假数据。
 
+最近一次记录的完整绿色基线是 2026-09-12 的 `671 passed, 6 skipped`。该数字是历史
+验证记录，不自动代表当前工作区；每次发布前仍需在依赖完整的环境重新执行全量回归、
+迁移检查和 opt-in 集成/E2E。
+
 热点本地 SQL 数仓模拟的表结构、Text2SQL 执行链路、配置和验证方法见
 [`docs/hot-news-sql-warehouse-demo.md`](docs/hot-news-sql-warehouse-demo.md)。
+
+当前能力、生产缺口和下一阶段以根目录
+[`PROJECT_SUMMARY.md`](../PROJECT_SUMMARY.md) 与
+[`PROJECT_CONTEXT.md`](../PROJECT_CONTEXT.md) 为准。
