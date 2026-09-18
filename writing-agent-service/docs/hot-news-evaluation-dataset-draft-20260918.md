@@ -11,17 +11,21 @@
 
 本批先构建 12 条候选：
 
-- Golden：6 条，覆盖政策、科技、民生、社会事件；
+- Golden：6 条，覆盖政策、科技、民生、社会事件； 
 - High-risk：6 条，优先覆盖标题容易误导、事实与推断容易混淆、需要谨慎引用的案例；
 - Fresh bad case：不在本文件手工指定，等 Data Loop 运行时从最近窗口自动冻结。
 
 正式冻结前需要把同一条候选关联到系统中的 `feedback_case_id`。目前的文章 ID 只是外部来源
 标识，不等于 NewsAgent 内部 `news_id`。
 
+## 运营策略规则
+
+
+
 ## A. Golden 候选
 
 | draft_id | source_article_id | 标题 | 热榜热度 | 建议覆盖 | 正文核验 |
-|---|---|---|---:|---|---|
+
 | G-001 | 20260819V0347I00 | 直击朱雀三号回收降落瞬间：火箭缓缓落下稳稳落地，现场掌声雷动 | 253万 | 科技突破、事件热度、事实证据 | [腾讯新闻](https://news.qq.com/rain/a/20260819V0347I00?id=20260819V0347I00&path=a&app=news&redirect_pc=1) |
 | G-002 | 20260818A0C0HV00 | 北京楼市新政后首周：二手住宅网签量增长10% | 232.3万 | 政策影响、指标引用、限制条件 | [腾讯新闻](https://news.qq.com/rain/a/20260818A0C0HV00?id=20260818A0C0HV00&path=a&app=news&redirect_pc=1) |
 | G-003 | 20260818A0BTZI00 | 激发下沉市场活力 释放县域消费潜能——多部门详解活跃县域消费18条举措 | 221.6万 | 政策解读、宏观指标、证据链 | [腾讯新闻](https://news.qq.com/rain/a/20260818A0BTZI00?id=20260818A0BTZI00&path=a&app=news&redirect_pc=1) |
@@ -36,7 +40,7 @@
 `forbidden_evidence_news_ids` 和 `must_state_limitation`。
 
 | draft_id | source_article_id | 标题 | 热榜热度 | 风险点 | 正文核验 |
-|---|---|---|---:|---|---|
+
 | R-001 | 20260819V04ZL100 | 河南周口一河道大量鱼类聚集，有市民徒手一小时抓几百斤，渔政制止 | 205.4万 | 标题数字、现场原因、不可把个案写成普遍现象 | [腾讯新闻](https://news.qq.com/rain/a/20260819V04ZL100?id=20260819V04ZL100&path=a&app=news&redirect_pc=1) |
 | R-002 | 20260819A05U5U00 | 视频丨51个赛项提前看！世界人形机器人运动会到底比什么？ | 210.5万 | 赛事信息和科技能力边界，避免把宣传语当作性能结论 | [腾讯新闻](https://news.qq.com/rain/a/20260819A05U5U00?id=20260819A05U5U00&path=a&app=news&redirect_pc=1) |
 | R-003 | 20260819A05HI900 | 独臂少年刘宸瑞，考入清华！ | 208.1万 | 个体励志故事，禁止扩大为因果或群体结论 | [腾讯新闻](https://news.qq.com/rain/a/20260819A05HI900?id=20260819A05HI900&path=a&app=news&redirect_pc=1) |
@@ -92,4 +96,3 @@ High-risk：至少 10 条，critical 案例覆盖率 100%
 
 - 腾讯新闻热榜候选列表（第三方页面展示的腾讯新闻榜单）：
   https://www.46.la/tool/tencent-hot-rank-tool
-- 正文来源链接见每条候选的“正文核验”列。

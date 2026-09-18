@@ -1,113 +1,58 @@
-# 1.NewsAgent 运营推送链路完善计划
+# NewsAgent 运营推送闭环实施计划
 
-## 1. 项目目标与边界
+最后更新：2026-09-18  
+状态：**待实现；当前阶段只做可审计的运营决策与模拟推送，不接真实百万级触达平台。**
 
-当前项目的核心仍然是 Hot News Analysis Agent：根据行为指标发现热点，结合正文与相关新闻证据，解释热点原因并输出可信分析。
+## 1. 目标与边界
 
-下一步建议把项目完善到“运营决策闭环”，而不是自己开发完整的百万级设备推送基础设施：
+NewsAgent 已能从行为指标发现热点、结合正文与关联报道生成可信分析。下一阶段是在现有
+热点运营链路后增加“候选推送计划 → 确定性校验 → 人工审核 → 企业 RPC → 效果回流”：
 
-热点排行
-→ 相关新闻检索与重排
-→ HotNewsAnalysisAgent
-→ 运营策略生成
-→ 确定性规则校验
-→ 人工审核
-→ RPC创建目标人群
-→ RPC提交推送任务
-→ MQ/推送平台执行
-→ 效果数据回流
+```text
+热点运行与分析报告
+→ PushStrategyGenerator 生成候选计划
+→ PushPolicyValidator 确定性校验
+→ 运营人员批准、修改或拒绝
+→ AudienceService 创建人群快照
+→ DeliveryService 提交推送任务
+→ 推送平台/MQ 执行
+→ 聚合效果回流 Feedback Case、Evaluation Dataset 和运营 Memory
+```
 
-项目需要真实实现：策略生成、规则校验、审核状态、RPC Adapter、任务状态和效果回流。
+本项目负责策略契约、校验、审核、幂等 RPC Adapter、状态恢复和效果回流；不自行建设
+用户画像平台、厂商通道或百万用户扇出系统。第一阶段只使用 Mock RPC 或 shadow 模式，
+不得真实触达用户。
 
-项目可以模拟：用户画像服务、地域圈选服务、厂商推送平台和百万用户扇出。
+## 2. 当前状态
 
-## 2. 模块划分
+### 已有可复用能力
 
-### 2.1 HotNewsAnalysisAgent
+- 热点排行、新闻内容查询、关联报道检索与重排。
+- 结构化热点分析 Agent、指标/证据/因果表述校验。
+- `analysis_runs`、热点事件生命周期、热点查询 API、SSE 和运营决策入口。
+- Temporal 有界 Workflow、人工 Signal、超时、有限重试、Checkpoint 与 Outbox。
+- Feedback Case、人工标注与独立二审、三层评测集、候选评测、人工晋升与回滚。
+- 租户隔离、幂等账本、运营 Memory 和不可变 Artifact 模式。
 
-职责：回答“发生了什么、为什么变热、证据是什么、可能影响谁”。
+### 尚未实现
 
-建议补充输出字段：
+- `AudienceRule`、`PushPlan`、审核记录、投递任务和效果回执领域模型。
+- `PushStrategyGenerator` 与 `PushPolicyValidator`。
+- 人群圈选、推送提交和结果查询/回调 RPC Port、Mock Client 与企业 Adapter。
+- 推送专用 Temporal Workflow、数据库迁移、API、前端页面和评测样本。
 
-class HotNewsAnalysisReport:
-    news_id: str
-    event_id: str
-    trend_summary: str
-    attention_reasons: tuple[AttentionReason, ...]
-    affected_region_codes: tuple[str, ...]
-    affected_groups: tuple[str, ...]
-    evidence_news_ids: tuple[str, ...]
-    limitations: tuple[str, ...]
+因此当前不能在简历或项目介绍中表述为“已实现自动推送”。
 
-这里的地域和人群只是新闻影响范围，不是具体用户集合。
+## 3. 最小领域契约
 
-### 2.2 PushStrategyGenerator
-
-职责：把热点分析结果转换为运营建议，包括：
-
-运营等级：S/A/B/C；
-
-推荐渠道：全站置顶、频道置顶、热榜、信息流、App 通知、消息盒子；
-
-目标人群条件：地域、兴趣、订阅、活跃状态；
-
-发送时间和失效时间；
-
-是否需要人工审核；
-
-是否需要建立专题或持续跟踪。
-
-该模块可以使用 LLM，但只能生成“候选计划”，不能直接执行推送。
-
-### 2.3 PushPolicyValidator
-
-职责：用确定性代码检查候选计划：
-
-news_id/event_id 是否与可信输入一致；
-
-证据是否来自允许集合；
-
-S/A 级计划是否要求人工审核；
-
-推送人群是否超出新闻影响范围；
-
-同一 event_id 是否已经推送过；
-
-是否超过用户、频道或事件频控；
-
-新闻是否已经过期；
-
-是否存在主体错位、风险标签或未确认信息；
-
-标题是否包含无证据的绝对化表达。
-
-校验失败直接阻断，不允许静默降级后继续发送。
-
-### 2.4 EditorialApproval
-
-运营人员可以通过、拒绝或修改计划。建议状态：
-
-DRAFT
-→ PENDING_REVIEW
-→ APPROVED / REJECTED
-→ AUDIENCE_RESOLVING
-→ READY_TO_DISPATCH
-→ DISPATCHING
-→ SENT / FAILED / EXPIRED
-
-需要记录 reviewer_id、审核时间、修改前后内容和拒绝原因，便于审计和后续评测。
-
-## 3. 核心领域对象
-
-避免使用无约束的 target_audience: dict，建议结构化：
-
+```python
 class AudienceRule:
-    region_codes: tuple[str, ...] = ()
-    interest_tags: tuple[str, ...] = ()
-    subscription_topics: tuple[str, ...] = ()
-    user_segments: tuple[str, ...] = ()
-    active_within_days: int | None = None
-    notification_enabled: bool = True
+    region_codes: tuple[str, ...]
+    interest_tags: tuple[str, ...]
+    subscription_topics: tuple[str, ...]
+    user_segments: tuple[str, ...]
+    active_within_days: int | None
+    notification_enabled: bool
 
 
 class PushPlan:
@@ -115,7 +60,7 @@ class PushPlan:
     tenant_id: str
     news_id: str
     event_id: str
-    priority: str
+    priority: str                 # S / A / B / C
     audience_rule: AudienceRule
     channels: tuple[str, ...]
     title: str
@@ -129,321 +74,70 @@ class PushPlan:
     evidence_news_ids: tuple[str, ...]
     strategy_version: str
     status: str
+```
 
-strategy_version 用于说明本次计划采用哪一版运营规则；event_id 用于同事件去重；plan_id 用于审核、执行和效果回流关联。
+状态机：
 
-## 4. 最少需要对接的企业 RPC
+```text
+DRAFT → PENDING_REVIEW → APPROVED / REJECTED
+APPROVED → AUDIENCE_RESOLVING → READY_TO_DISPATCH
+READY_TO_DISPATCH → DISPATCHING → SENT / FAILED / EXPIRED
+```
 
-### 4.1 人群圈选 RPC
+审核必须记录操作者、时间、理由以及修改前后的版本。LLM 只能生成候选计划，不能批准、
+扩大人群或直接提交推送。
 
-用途：根据运营条件创建人群包，返回 audience_id，不要向 Agent 返回大量用户 ID。
+## 4. 确定性安全规则
 
-CreateAudienceRequest
+`PushPolicyValidator` 至少检查：
 
-参数
+- `tenant_id/news_id/event_id` 与可信热点输入一致。
+- 证据 ID 是热点分析白名单的子集。
+- S/A 级、全站或 App 通知必须人工审核。
+- 人群规则不超出已确认地域、主题和租户范围。
+- 同事件、同策略、同人群版本、同渠道不重复发送。
+- 发送时间、失效时间和频控合法，过期计划直接阻断。
+- 风险标签、未确认事实、绝对化标题或证据不足时不得进入投递。
 
-含义
+校验失败必须进入明确失败状态，不允许静默降级后继续发送。
 
-tenant_id
+## 5. 企业 RPC 边界
 
-租户隔离
+### AudienceService
 
-request_id
+输入结构化人群条件，返回 `audience_id`、版本、估算人数和失效时间。Agent 不接收用户 ID
+明细。请求必须携带租户、追踪 ID 和幂等键。
 
-请求追踪标识
+### DeliveryService
 
-idempotency_key
+只接受已经审核并校验通过的计划，返回 `delivery_task_id` 和受理状态。推荐幂等维度：
 
-防止重复创建人群包
-
-news_id / event_id
-
-关联新闻和事件
-
-region_codes
-
-行政区编码，优先使用城市级编码
-
-interest_tags
-
-科技、财经、体育等兴趣标签
-
-subscription_topics
-
-用户明确订阅的主题
-
-user_segments
-
-新用户、活跃用户、付费用户等分群
-
-active_within_days
-
-最近多少天活跃
-
-notification_enabled
-
-是否已开启通知
-
-exclude_recently_reached
-
-是否排除近期已触达用户
-
-expire_at
-
-人群快照失效时间
-
-CreateAudienceResponse
-
-{
-  "audience_id": "audience-8821",
-  "audience_version": "v1",
-  "estimated_user_count": 320000,
-  "expire_at": "2026-09-18T20:00:00+08:00"
-}
-
-第一版可以实现 MockAudienceRpcClient，根据条件返回固定或计算出的估算人数。
-
-### 4.2 消息推送 RPC
-
-用途：把已经审核通过的计划提交给企业消息平台。
-
-SubmitPushTaskRequest
-
-参数
-
-含义
-
-tenant_id
-
-租户隔离
-
-idempotency_key
-
-防止重复创建推送任务
-
-plan_id
-
-关联运营计划
-
-news_id / event_id
-
-内容身份与事件去重
-
-audience_id / audience_version
-
-目标人群快照
-
-channels
-
-App Push、消息盒子、信息流等
-
-title / summary
-
-推送文案
-
-deep_link
-
-新闻详情页或专题页
-
-priority
-
-推送等级
-
-send_time
-
-计划发送时间
-
-expire_at
-
-超时后禁止继续发送
-
-frequency_limit
-
-频控参数
-
-strategy_version
-
-运营策略版本
-
-approved_by
-
-审核人
-
-trace_id
-
-全链路日志追踪
-
-SubmitPushTaskResponse
-
-{
-  "delivery_task_id": "push-task-10086",
-  "status": "ACCEPTED",
-  "accepted_at": "2026-09-18T10:30:00+08:00"
-}
-
-第一版只需要模拟任务受理、失败、超时和重复请求，不需要真的对接 APNs、华为或小米推送。
-
-### 4.3 推送结果查询或回调 RPC
-
-用于把执行结果回流到运营平台，至少包含：
-
-{
-  "delivery_task_id": "push-task-10086",
-  "status": "COMPLETED",
-  "targeted_users": 320000,
-  "delivered_users": 301200,
-  "opened_users": 48200,
-  "effective_read_users": 31500,
-  "negative_feedback_users": 320,
-  "notification_disabled_users": 85
-}
-
-如果只做 MVP，也可以先用定时查询代替回调。
-
-## 5. Temporal、MQ 与 RPC 的分工
-
-Temporal：管理一次热点运营任务的长流程、等待人工审核、超时、重试和状态恢复。
-
-RPC：同步创建人群包、提交推送任务、查询任务状态。
-
-MQ：推送平台内部的大规模用户分片、异步发送和重试。
-
-Outbox：保证“数据库状态已提交”和“推送任务消息已发布”的最终一致性。
-
-Temporal Workflow 的粒度是一份 PushPlan，不能为每个用户创建 Workflow。
-
-建议幂等键：
-
+```text
 tenant_id + event_id + strategy_version + audience_version + channel
+```
 
-同一幂等键重复调用时，应返回原有任务，不得重复发送。
+### DeliveryResult
 
-## 6. 如何复用现有黄金评测集
+回流目标人数、送达、打开、有效阅读、负反馈和关闭通知等聚合结果，不保存本地用户行为
+明细。MVP 可使用定时查询，生产可由回调或企业 MQ 传递。
 
-现有热点分析黄金集继续评测：
+## 6. 实施顺序
 
-热点结论是否正确；
+1. 定义 Pydantic Schema、状态枚举和策略版本契约。
+2. 实现确定性 Validator，并先覆盖重复、过期、越权、证据不足和高风险样例。
+3. 实现候选策略生成器；结构化输出必须经过 Validator。
+4. 新增 PostgreSQL 表、Repository、审核 API 和租户/角色权限。
+5. 定义 RPC Protocol，先实现 Mock Client 与故障分类，再接企业 SDK。
+6. 使用 Temporal 编排审核等待、人群创建、任务提交和结果查询；副作用调用有限重试。
+7. 扩展黄金集、前端评审页、效果回流和运营 Memory；先 shadow，人工验收后再讨论真实触达。
 
-指标引用是否正确；
+## 7. Definition of Done
 
-reason_type 是否合规；
+- 候选 `PushPlan` 为严格结构化输出，并绑定热点运行、事件、证据和策略版本。
+- 不可信、重复、过期、越权或证据不足计划被确定性阻断。
+- 高风险计划必须由具备权限且职责独立的运营人员批准。
+- Mock RPC 覆盖成功、重复、超时、限流、部分失败与不可重试错误。
+- Workflow 可从审核等待和可重试 RPC 故障处恢复，不产生第二次投递。
+- 回执可追溯至 `plan_id/news_id/event_id`，并只保存聚合效果。
+- 离线回放和 shadow 验收通过；未获单独生产授权时不得真实推送。
 
-证据新闻是否属于白名单；
-
-无证据时是否给出 limitation。
-
-在此基础上新增“运营策略黄金集”，每个样例增加：
-
-{
-  "allowed_priorities": ["A", "B"],
-  "required_channels": ["TECH_CHANNEL"],
-  "forbidden_channels": ["GLOBAL_PUSH"],
-  "required_audience_rules": {
-    "interest_tags": ["AI", "科技"]
-  },
-  "requires_review": true,
-  "must_reference_evidence": true,
-  "expected_policy_result": "PASS"
-}
-
-建议分四层评测：
-
-结构评测：字段、枚举、时间范围和 ID 是否合法。
-
-策略评测：优先级、渠道、人群和审核要求是否落在黄金允许范围。
-
-安全评测：重复事件、证据不足、过期新闻、越权人群是否被 Validator 阻断。
-
-链路评测：RPC 超时、重复请求、审核拒绝和推送失败后，状态是否正确恢复。
-
-不要要求生成文本与黄金答案逐字一致，重点比较约束字段、必选项、禁止项和证据引用。
-
-## 7. 下一步实施顺序
-
-阶段一：固定契约
-
-增加 event_id、影响地域和影响人群字段；
-
-定义 AudienceRule、PushPlan 和状态枚举；
-
-确定 S/A/B/C 对应的渠道和审核规则。
-
-阶段二：实现策略生成与校验
-
-实现 PushStrategyGenerator；
-
-实现确定性的 PushPolicyValidator；
-
-增加重复事件、过期时间、证据、频控和高风险阻断测试。
-
-阶段三：实现人工审核
-
-建立推送计划表和审核记录表；
-
-提供通过、拒绝、修改接口；
-
-保存修改前后内容和操作人。
-
-阶段四：实现 RPC Adapter
-
-定义 AudienceService 和 DeliveryService Protocol；
-
-先实现 Mock Client；
-
-覆盖成功、超时、限流、重复请求和服务不可用场景。
-
-阶段五：接入 Temporal 与 Outbox
-
-编排生成、校验、等待审核、人群创建、任务提交和回执；
-
-为 Activity 设置合理的超时与重试；
-
-对确定性业务错误设置为不可重试；
-
-使用 Outbox 记录待发送事件。
-
-阶段六：扩展评测与效果回流
-
-在现有黄金集上补充运营策略标签；
-
-增加 Validator 对抗样例和 RPC 故障样例；
-
-记录策略采纳率、人工修改率、有效阅读率和负反馈率；
-
-第一阶段只做离线回放或 shadow 模式，不真实触达用户。
-
-## 8. MVP 完成标准
-
-满足以下条件即可认为推送部分形成完整项目闭环：
-
-热点分析结果可以生成结构化 PushPlan；
-
-不可信、重复、过期或越权计划会被阻断；
-
-S/A 级计划必须经过人工审核；
-
-可以通过 Mock RPC 创建 audience_id 并提交推送任务；
-
-重复调用不会产生第二次任务；
-
-Temporal 能从等待审核或 RPC 失败位置恢复；
-
-推送结果能够关联回 plan_id/news_id/event_id；
-
-黄金集能够评测热点分析和运营策略两个层次。
-
-## 9. 暂时不需要实现
-
-精确定位和用户位置采集；
-
-真实百万级用户 ID 扇出；
-
-APNs、华为、小米等厂商通道；
-
-完整推荐算法或实时用户画像平台；
-
-自动绕过人工审核的全自动推送。
-
-项目最终定位：
-
-以热点分析 Agent 为核心，补充运营策略、规则校验、人工审核、企业 RPC 接口和效果回流，形成可演示、可评测、可恢复的新闻运营决策闭环。

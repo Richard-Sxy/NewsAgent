@@ -1,90 +1,81 @@
-# NewsAgent 已完成内容简述
+# NewsAgent 当前项目摘要
 
-本文简要说明 NewsAgent 当前**已经完成**的业务与技术内容，用于快速了解项目现状。
-详细的长期上下文见 `PROJECT_CONTEXT.md`，阅读路线见 `READING_PLAN/README.md`。
+最后更新：2026-09-18
 
-## 一、项目形态
+## 1. 项目定位
 
-一套消费企业已有行为数据、持续发现新闻热点、组合可信证据、辅助研究写作，并通过
-Data Loop / Model Loop 持续改进的新闻运营 Agent 系统。仓库由三部分组成：
+NewsAgent 是面向新闻运营的分析与辅助写作系统。它消费企业已有行为与内容数据，通过
+确定性指标发现热点，用知识库补充证据，再由 Agent 解释趋势、生成运营建议，并把人工
+反馈转为可审计的评测与配置迭代闭环。
 
-- `tencent-news-crawler`：腾讯新闻抓取、清洗、去重、FastGPT 知识入库与实验评测。
-- `writing-agent-service`：研究与辅助写作、热点分析、Data Loop / Model Loop、运营 Memory 后端。
-- `FastGPT`：知识库与模型应用基础设施（上游工程，非本项目自研业务）。
+统一关联键为 `news_id`。Python/SQL 负责权威指标、基线、排行和业务校验；LLM 只处理
+开放文本理解与表达。FastGPT 是外部知识库和模型应用基础设施，不是本项目自研能力。
 
-统一关联键为 `news_id`。权威指标、热度与排行由 Python/SQL 确定性计算，LLM 只做解释与表达。
+## 2. 当前已实现能力
 
-## 二、已完成的核心闭环
+### 内容与知识接入
 
-### 1. 新闻内容接入
+- 腾讯新闻发现、正文与元数据解析、清洗、质量校验、URL 幂等、缓存和失败重试。
+- 图文内容写入 FastGPT，并保留 `news_id`、来源和 `collection_id` 映射。
+- 视频内容支持 ASR、画面概括、统一文本化、内容充分性闸门和可降级入库；本地离线链路
+  已验证，企业 ASR/多模态网关仍待接入。
+- 新闻事件聚类、标题实体特征、离线召回实验和人工事件关系标注候选。
 
-- 腾讯新闻发现、抓取、正文/元数据解析、噪声过滤、质量校验。
-- URL 哈希本地缓存 + SQLite 入库状态与重试记录。
-- 正文与元数据写入 FastGPT，元数据携带 `news_id`，记录 `collection_id`。
+### 热点发现与可信分析
 
-### 2. 研究与辅助写作工作流
+- 企业数据 Port、防腐层和本地/SQL 模拟数据源；不在本地保存企业原始行为明细。
+- 按 `[window_start, window_end)` 聚合曝光、点击、有效消费、互动、CTR 和历史基线。
+- 可解释热度评分、排行、`news_id` 精确正文查询、FastGPT 召回和规则重排。
+- 结构化热点分析 Agent：InputBuilder → FastGPT Runner → Pydantic Report → Validator → Service。
+- 指标引用、证据白名单、新闻 ID、推断/事实边界和无证据 limitation 校验。
+- Text2SQL 候选查询支持 SQL AST/白名单/只读/行数与超时护栏；确定性模板仍是安全回退。
 
-- Research → Outline → 分章节写作 → Reviewer → 定点返工（最多三轮）→ 终稿 → CMS 发布。
-- 研究包、提纲、终稿人工确认节点。
-- 任务幂等、状态机、Checkpoint、不可变 Artifact、失败恢复、Outbox、Redis SSE。
+### 运行、运营与写作
 
-### 3. 热点发现与分析闭环
+- `analysis_runs` 不可变快照、热点事件去重/合并和生命周期管理。
+- Temporal 热点 Workflow、窗口 Dispatcher、Worker、Schedule 管理、超时和有限重试。
+- 热点榜单/详情、运营决策、SSE 进度流和向研究写作流程的幂等转交。
+- Research → Outline → 分章节写作 → Reviewer → 定点返工 → 人工终审 → CMS 的可恢复流程。
+- PostgreSQL Checkpoint、S3/MinIO Artifact、Outbox、Redis SSE 和 Mock CMS。
 
-- 按窗口读取企业行为数据，聚合指标、历史基线、热度评分与排行。
-- 按 `news_id` 精确读取正文，FastGPT 召回关联新闻并做确定性重排。
-- 热点分析 Agent：可信输入构造 → FastGPT 结构化调用 → 业务校验 → 统一 Service 入口。
-- 校验：输出 `news_id` 一致、指标引用白名单、证据 `news_id` 白名单、假设必须标记为推断。
-- 结果以 `analysis_runs` 不可变快照幂等持久化。
-- 热点事件去重/合并与生命周期（`emerging / active / cooling / closed`，`hot_events`）。
-- 热点运营 API：榜单/详情、运营决策、转交研究/写作（幂等）。
-- Temporal 热点 Workflow、Activity 重试边界、Worker 入口、Schedule 运维 CLI。
+### Data Loop、配置迭代与 Memory
 
-### 4. Data Loop / Model Loop
+- 校验失败、低置信、检索异常、人工拒绝和聚合发布效果统一进入 Feedback Case。
+- 强类型标签、提交人与独立审核人分离、不可变 Golden/Fresh/High-risk 数据集。
+- 候选、线上基线和上一实验三层回放，确定性 Gate、48 小时超时拒绝、人工激活与回滚。
+- Production Bundle、审批/激活账本、租户隔离、不可变 Artifact 和授权失败恢复。
+- 短期用户记忆、长期候选、长期记忆、人工晋升和作用域冲突解析。
 
-- 校验失败、低置信、检索异常、运营拒绝、发布效果统一转为 Feedback Case。
-- 强类型人工标签 + 独立二审（四眼分离）。
-- 按 cutoff 冻结不可变评测 Dataset：`golden / fresh_bad_case / high_risk_regression`。
-- 三层离线回放（候选 / 线上基线 / 上一实验）+ 确定性 Evaluation Gate。
-- Temporal 等待人工批准（48 小时超时默认不晋升），审批账本与激活账本分离。
-- 生产 Bundle 候选、评测、激活、回滚与授权故障恢复，全部幂等可重放。
-- Model Loop 只迭代 Prompt、热度配置、重排参数、输出 Schema，不自动训练大模型。
+## 3. 已验证范围
 
-### 5. 运营 Memory
+- 2026-09-12 曾完成 `671 passed, 6 skipped` 的默认回归基线。
+- Temporal time-skipping 验证了 48 小时无人审批默认拒绝。
+- 隔离 Compose 栈验证 PostgreSQL、Temporal、Redis、MinIO、API、Worker 和确定性 FastGPT
+  替身下的批准、拒绝、激活失败恢复、下一次运行与回滚路径。
+- 视频统一文本链路使用本地 faster-whisper 做过真实离线演练。
+- 当前迁移头仍为 `20260912_0015`。
 
-- 短期记忆（任务边界 + 有效期）、长期候选、长期记忆、晋升审批。
-- 运行时按租户/团队/板块/角色/用户作用域过滤，确定性冲突解析。
-- 模型可见上下文大小受控，未注入记忆单独留作审计。
+当前工作区不是新的绿色回归基线：仓库 `.venv` 解释器不可用，系统 Python 执行测试时又
+发现用户正在编辑的 `app/agents/hot_news_analysis.py` 存在缩进错误。因此新增改动在修复
+该文件并使用完整依赖环境复跑前，不能宣称全量测试通过。
 
-### 6. 内容侧桥接
+## 4. 尚未完成或未生产启用
 
-- 合并爬虫 JSON 正文缓存与 SQLite 台账，提供带 `collection_id` 的精确内容。
-- 本地语料确定性词面检索，作为 FastGPT 检索的离线回退。
+- 企业行为、基线、正文、检索 RPC 的真实 SDK 映射、数据水位和 SLA 联调。
+- 真实 FastGPT 热点 App 的质量验收、企业网关/IdP、生产凭据和网络治理。
+- 生产 Schedule 注册、目标数据库迁移演练、对象存储治理、告警、审计和完整 K8s 发布。
+- 热点评测集扩充与人工冻结；2026-09-18 新增的候选草稿仍待人工审核。
+- 运营推送闭环尚未实现：缺少 PushPlan、策略生成/校验、审核表、企业 RPC 和效果回执。
+- 真实厂商推送、百万用户扇出、完整画像平台和自动发布不在当前实现范围。
 
-## 三、离线数据与评测
+## 5. 当前优先级
 
-- 热点 Agent 种子评测集：30 条，覆盖明显热点、低样本、有效证据、主体冲突、
-  证据不足、安全边界六类。
-- 企业 RPC 故障演练场景：9 类。
-- 事件关系人工标注候选：300 对（100 对已标注，200 对待人工补标）。
-- 本地演示场景：5 条新闻的行为与历史数据。
-- 评测脚本：`evaluation/run_hot_news_eval.py`、`evaluation/run_fault_drills.py`。
+1. 修复当前热点分析文件的语法问题，并恢复可重复的完整测试环境。
+2. 人工审核并冻结首批热点 Golden/High-risk 评测样本。
+3. 按 `PushPlan.md` 先实现结构化候选计划和确定性安全校验，再建设审核与 Mock RPC。
+4. 继续企业 RPC、真实 FastGPT、网关/IdP 和生产基础设施联调。
 
-## 四、验证状态（2026-09-12）
+结论：热点分析、写作、Data Loop/配置迭代和 Memory 已形成较完整的本地工程闭环；项目
+距离生产使用的主要差距是企业依赖、真实数据与模型验收、生产治理，以及尚未实现的运营
+推送闭环。
 
-- 全服务默认回归：**671 passed, 6 skipped**（跳过项为 opt-in 集成/E2E）。
-- Temporal time-skipping L1：1 项通过。
-- 隔离 Compose 栈（PostgreSQL / Temporal / Redis / MinIO / FastGPT 替身）黑盒 Data Loop E2E：**5/5 通过**。
-- 迁移头 `20260912_0015`，`hot_events` 已在真实 PostgreSQL 建表。
-- Memory API 与热点转交写作 API 已在真实栈写入并回读验证。
-
-## 五、尚未生产启用的部分
-
-- 企业行为/基线/正文/检索 RPC Adapter、网关/IdP、真实 FastGPT App 质量验收。
-- `/api/v1/jobs`、`/api/v1/events` 尚未收口到统一网关鉴权。
-- Temporal Schedule 生产注册与热点 Worker 真实 Adapter 装配。
-- 目标生产库迁移演练、对象存储治理、K8s 清单、审计与告警。
-- 评测数据补齐（种子集 100 条、事件关系人工补标）与门禁阈值校准。
-- 视频 ASR/多模态、事件级运营界面、生产级 Text2SQL。
-
-> 结论：核心业务闭环（写作 + 热点 + Data Loop/Model Loop + Memory）已完成并通过真实依赖
-> 的本地端到端验证；距离生产上线主要差企业依赖接入、数据补齐与生产化治理。
