@@ -53,6 +53,7 @@ class Settings(BaseSettings):
     fastgpt_reviewer_app_id: str
     fastgpt_hot_news_app_id: str | None = None
     fastgpt_error_attribution_app_id: str | None = None
+    fastgpt_push_strategy_app_id: str | None = None
     fastgpt_supervisor_app_id: str | None = None
     # Text2SQL 兜底 SQL 生成 App；模板取数不依赖它。未配置时只有确定性模板可用。
     fastgpt_text2sql_app_id: str | None = None

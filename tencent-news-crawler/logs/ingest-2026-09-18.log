@@ -1,0 +1,486 @@
+===== start 2026-09-18T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-18",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260918A08TNQ00",
+        "title": "Claude，黑进了OpenAI",
+        "collection_id": "6aad2ed1851913fa439186aa",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09HWL00",
+        "title": "投资人想劝劝AI创业者，理性看待自己的估值吧",
+        "collection_id": "6aad2ed2851913fa439186ea",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A08M9G00",
+        "title": "iPhone 18首发日走访：黄牛都不看Pro，谁还在买",
+        "collection_id": "6aad2ed2851913fa4391872a",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A078UA00",
+        "title": "Figure租了30套房，让机器人挨家“考核家务”",
+        "collection_id": "6aad2ed2851913fa439187ad",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A07OQP00",
+        "title": "三星背水一战：泰勒厂点亮2nm试产线，特斯拉AI5成“翻身”关键",
+        "collection_id": "6aad2ed2851913fa43918801",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A0A5SY00",
+        "title": "再度无缘决赛！中国男篮20分不敌日本 创队史亚运最大输球分差",
+        "collection_id": "6aad2ed3851913fa43918855",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A0A95A00",
+        "title": "惨败日本二队郭士强会下课吗？除了杜锋还有谁能接手中国男篮",
+        "collection_id": "6aad2ed3851913fa43918895",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A0A1K900",
+        "title": "台风即将来袭国乒或受影响！亚运会官方回应：开43次会 已有预案",
+        "collection_id": "6aad2ed3851913fa439188ce",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A0A3UE00",
+        "title": "国乒“孤胆英雄”！17岁没排名小将险胜日本夺冠，此前15位队友输光",
+        "collection_id": "6aad2ed3851913fa4391890d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A08PIS00",
+        "title": "亚运会：乒乓球团体签位公布！国乒男队稳操胜券 女队迎战前世界冠军",
+        "collection_id": "6aad2ed4851913fa4391893d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A08VDQ00",
+        "title": "前8个月财政收入增速小幅放缓，支出端亟需“赶速度”",
+        "collection_id": "6aad2ed4851913fa43918975",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A08CLS00",
+        "title": "沃什加息，特朗普为何没翻脸？",
+        "collection_id": "6aad2ed4851913fa439189b1",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09OJZ00",
+        "title": "96岁的“股神”巴菲特正式卸任伯克希尔董事长，出任名誉董事长",
+        "collection_id": "6aad2ed4851913fa439189f4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09N2T00",
+        "title": "冯仑，被限制高消费",
+        "collection_id": "6aad2ed5851913fa43918a34",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A06USS00",
+        "title": "人民币升破6.7关口！多重因素构成强支撑 业内预计全年走势或“先升后稳”",
+        "collection_id": "6aad2ed5851913fa43918a6d",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09VDC00",
+        "title": "赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场",
+        "collection_id": "6aad2ed5851913fa43918aaf",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A0A1VL00",
+        "title": "宁德时代回应车企“自研电池”：会造车不一定会造电池",
+        "collection_id": "6aad2ed5851913fa43918aeb",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09VFC00",
+        "title": "玛莎拉蒂，想装上“华为心”",
+        "collection_id": "6aad2ed6851913fa43918b30",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A09TR700",
+        "title": "中国特供车反销德国老家 四环奥迪急了：要起诉进口商拦截",
+        "collection_id": "6aad2ed6851913fa43918b78",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A07J2U00",
+        "title": "特斯拉无人驾驶出租车亮相北京 博主：外观一眼极简 但确实非常震撼",
+        "collection_id": "6aad2ed6851913fa43918bc0",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "Claude，黑进了OpenAI",
+      "url": "https://news.qq.com/rain/a/20260918A08TNQ00",
+      "publish_time": "2026-09-18 19:39:31"
+    },
+    {
+      "topic": "科技",
+      "title": "投资人想劝劝AI创业者，理性看待自己的估值吧",
+      "url": "https://news.qq.com/rain/a/20260918A09HWL00",
+      "publish_time": "2026-09-18 19:04:02"
+    },
+    {
+      "topic": "科技",
+      "title": "iPhone 18首发日走访：黄牛都不看Pro，谁还在买",
+      "url": "https://news.qq.com/rain/a/20260918A08M9G00",
+      "publish_time": "2026-09-18 17:23:29"
+    },
+    {
+      "topic": "科技",
+      "title": "Figure租了30套房，让机器人挨家“考核家务”",
+      "url": "https://news.qq.com/rain/a/20260918A078UA00",
+      "publish_time": "2026-09-18 15:33:06"
+    },
+    {
+      "topic": "科技",
+      "title": "三星背水一战：泰勒厂点亮2nm试产线，特斯拉AI5成“翻身”关键",
+      "url": "https://news.qq.com/rain/a/20260918A07OQP00",
+      "publish_time": "2026-09-18 16:13:59"
+    },
+    {
+      "topic": "体育",
+      "title": "再度无缘决赛！中国男篮20分不敌日本 创队史亚运最大输球分差",
+      "url": "https://news.qq.com/rain/a/20260918A0A5SY00",
+      "publish_time": "2026-09-18 20:29:44"
+    },
+    {
+      "topic": "体育",
+      "title": "惨败日本二队郭士强会下课吗？除了杜锋还有谁能接手中国男篮",
+      "url": "https://news.qq.com/rain/a/20260918A0A95A00",
+      "publish_time": "2026-09-18 20:12:44"
+    },
+    {
+      "topic": "体育",
+      "title": "台风即将来袭国乒或受影响！亚运会官方回应：开43次会 已有预案",
+      "url": "https://news.qq.com/rain/a/20260918A0A1K900",
+      "publish_time": "2026-09-18 19:39:54"
+    },
+    {
+      "topic": "体育",
+      "title": "国乒“孤胆英雄”！17岁没排名小将险胜日本夺冠，此前15位队友输光",
+      "url": "https://news.qq.com/rain/a/20260918A0A3UE00",
+      "publish_time": "2026-09-18 19:49:31"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运会：乒乓球团体签位公布！国乒男队稳操胜券 女队迎战前世界冠军",
+      "url": "https://news.qq.com/rain/a/20260918A08PIS00",
+      "publish_time": "2026-09-18 17:26:19"
+    },
+    {
+      "topic": "财经",
+      "title": "前8个月财政收入增速小幅放缓，支出端亟需“赶速度”",
+      "url": "https://news.qq.com/rain/a/20260918A08VDQ00",
+      "publish_time": "2026-09-18 19:19:36"
+    },
+    {
+      "topic": "财经",
+      "title": "沃什加息，特朗普为何没翻脸？",
+      "url": "https://news.qq.com/rain/a/20260918A08CLS00",
+      "publish_time": "2026-09-18 19:12:39"
+    },
+    {
+      "topic": "财经",
+      "title": "96岁的“股神”巴菲特正式卸任伯克希尔董事长，出任名誉董事长",
+      "url": "https://news.qq.com/rain/a/20260918A09OJZ00",
+      "publish_time": "2026-09-18 18:58:21"
+    },
+    {
+      "topic": "财经",
+      "title": "冯仑，被限制高消费",
+      "url": "https://news.qq.com/rain/a/20260918A09N2T00",
+      "publish_time": "2026-09-18 18:41:10"
+    },
+    {
+      "topic": "财经",
+      "title": "人民币升破6.7关口！多重因素构成强支撑 全年走势或“先升后稳”",
+      "url": "https://news.qq.com/rain/a/20260918A06USS00",
+      "publish_time": "2026-09-18 17:11:17"
+    },
+    {
+      "topic": "汽车",
+      "title": "赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场",
+      "url": "https://news.qq.com/rain/a/20260918A09VDC00",
+      "publish_time": "2026-09-18 19:29:06"
+    },
+    {
+      "topic": "汽车",
+      "title": "宁德时代回应车企“自研电池”：会造车不一定会造电池",
+      "url": "https://news.qq.com/rain/a/20260918A0A1VL00",
+      "publish_time": "2026-09-18 19:58:26"
+    },
+    {
+      "topic": "汽车",
+      "title": "玛莎拉蒂，想装上“华为心”",
+      "url": "https://news.qq.com/rain/a/20260918A09VFC00",
+      "publish_time": "2026-09-18 19:38:11"
+    },
+    {
+      "topic": "汽车",
+      "title": "中国特供车反销德国老家 四环奥迪急了：要起诉进口商拦截",
+      "url": "https://news.qq.com/rain/a/20260918A09TR700",
+      "publish_time": "2026-09-18 19:10:19"
+    },
+    {
+      "topic": "汽车",
+      "title": "特斯拉无人驾驶出租车亮相北京 博主：外观一眼极简 但确实非常震撼",
+      "url": "https://news.qq.com/rain/a/20260918A07J2U00",
+      "publish_time": "2026-09-18 16:00:13"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260918A07J2U00",
+      "title": "特斯拉无人驾驶出租车亮相北京 博主：外观一眼极简 但确实非常震撼",
+      "status": "submitted",
+      "collection_id": "6aad2ed6851913fa43918bf8"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09TR700",
+      "title": "中国特供车反销德国老家 四环奥迪急了：要起诉进口商拦截",
+      "status": "submitted",
+      "collection_id": "6aad2ed6851913fa43918c30"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09VFC00",
+      "title": "玛莎拉蒂，想装上“华为心”",
+      "status": "submitted",
+      "collection_id": "6aad2ed6851913fa43918c60"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A0A1VL00",
+      "title": "宁德时代回应车企“自研电池”：会造车不一定会造电池",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918c90"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09VDC00",
+      "title": "赛力斯康波首度回应“问界单飞”，择机进入轿车、MPV市场",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918cc0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A06USS00",
+      "title": "人民币升破6.7关口！多重因素构成强支撑 业内预计全年走势或“先升后稳”",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918cf0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09N2T00",
+      "title": "冯仑，被限制高消费",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918d20"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09OJZ00",
+      "title": "96岁的“股神”巴菲特正式卸任伯克希尔董事长，出任名誉董事长",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918d50"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A08CLS00",
+      "title": "沃什加息，特朗普为何没翻脸？",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918d80"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A08VDQ00",
+      "title": "前8个月财政收入增速小幅放缓，支出端亟需“赶速度”",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918db0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A08PIS00",
+      "title": "亚运会：乒乓球团体签位公布！国乒男队稳操胜券 女队迎战前世界冠军",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918de0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A0A3UE00",
+      "title": "国乒“孤胆英雄”！17岁没排名小将险胜日本夺冠，此前15位队友输光",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918e0e"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A0A1K900",
+      "title": "台风即将来袭国乒或受影响！亚运会官方回应：开43次会 已有预案",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918e3b"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A0A95A00",
+      "title": "惨败日本二队郭士强会下课吗？除了杜锋还有谁能接手中国男篮",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918e69"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A0A5SY00",
+      "title": "再度无缘决赛！中国男篮20分不敌日本 创队史亚运最大输球分差",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918e96"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A07OQP00",
+      "title": "三星背水一战：泰勒厂点亮2nm试产线，特斯拉AI5成“翻身”关键",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918ec3"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A078UA00",
+      "title": "Figure租了30套房，让机器人挨家“考核家务”",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918ef0"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A08M9G00",
+      "title": "iPhone 18首发日走访：黄牛都不看Pro，谁还在买",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918f1d"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A09HWL00",
+      "title": "投资人想劝劝AI创业者，理性看待自己的估值吧",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918f4a"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A08TNQ00",
+      "title": "Claude，黑进了OpenAI",
+      "status": "submitted",
+      "collection_id": "6aad2ed7851913fa43918f77"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-18",
+  "generated_at": "2026-09-18T20:30:16.268227+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12394
+  },
+  "files": {
+    "json": "reports/daily-2026-09-18.json",
+    "markdown": "reports/daily-2026-09-18.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-18T20:30:16+08:00, exit=0 =====

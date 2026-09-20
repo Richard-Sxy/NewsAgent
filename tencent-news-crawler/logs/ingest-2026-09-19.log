@@ -1,0 +1,486 @@
+===== start 2026-09-19T20:30:01+08:00 =====
+===== news ingest start =====
+{
+  "status": "success",
+  "target_date": "2026-09-19",
+  "discovered": 20,
+  "unique": 20,
+  "sources": [
+    {
+      "topic": "科技",
+      "url": "https://news.qq.com/ch/tech/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "体育",
+      "url": "https://news.qq.com/ch/sports/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "财经",
+      "url": "https://news.qq.com/ch/finance/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "娱乐",
+      "url": "https://news.qq.com/ch/ent/",
+      "count": 0,
+      "status": "success"
+    },
+    {
+      "topic": "汽车",
+      "url": "https://news.qq.com/ch/auto/",
+      "count": 5,
+      "status": "success"
+    },
+    {
+      "topic": "教育",
+      "url": "https://news.qq.com/ch/edu/",
+      "count": 0,
+      "status": "success"
+    }
+  ],
+  "dry_run": false,
+  "ingest": {
+    "total": 20,
+    "succeeded": 20,
+    "skipped": 0,
+    "failed": 0,
+    "retry_exhausted": 0,
+    "items": [
+      {
+        "url": "https://news.qq.com/rain/a/20260919A051G100",
+        "title": "一颗钽电容，卡住算力交付",
+        "collection_id": "6aae8051851913fa4391b40f",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A0A0RX00",
+        "title": "马斯克批量收购破产公司ing，世界首富脑子是不一样",
+        "collection_id": "6aae8052851913fa4391b44b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A08UVH00",
+        "title": "北京对飞猪、同程、途家、美团酒旅立案调查",
+        "collection_id": "6aae8052851913fa4391b483",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09YGW00",
+        "title": "安世“分家”近一年内情：5.9万片/月海外晶圆断供，国内12英寸晶圆产能接棒",
+        "collection_id": "6aae8052851913fa4391b4ed",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A05JNZ00",
+        "title": "豆包手机的理想很美，但做到不容易",
+        "collection_id": "6aae8053851913fa4391b54b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09ULZ00",
+        "title": "亚运会开幕式被吐槽！媒体人热议：怎么能诡异成这样，无法理解",
+        "collection_id": "6aae8053851913fa4391b585",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A0A00I00",
+        "title": "松岛辉空：亚运会男单目标只有夺冠！男团只要发挥6成就能击败中国队",
+        "collection_id": "6aae8053851913fa4391b5cd",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09Y6T00",
+        "title": "历届最“轻量级”的亚运开幕式，与一个正在转身的名古屋和日本",
+        "collection_id": "6aae8053851913fa4391b605",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09X0E00",
+        "title": "离谱！亚运通勤班车迟到 国乒众将烈日下苦等几十分钟 球迷不满",
+        "collection_id": "6aae8054851913fa4391b641",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A08D6I00",
+        "title": "练得越狠输得越惨？惨败后前外教言论爆火 网友：已看透中国篮球",
+        "collection_id": "6aae8054851913fa4391b681",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A08IAY00",
+        "title": "西贝被曝两三个月内“彻底倒闭”，贾国龙或放弃股份？",
+        "collection_id": "6aae8054851913fa4391b6b8",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09NE500",
+        "title": "冯仑回应被“限高”",
+        "collection_id": "6aae8054851913fa4391b6f0",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A0A11Z00",
+        "title": "A股交易更活跃，投资者为何更谨慎？刘劲：仍待楼市和消费回暖",
+        "collection_id": "6aae8055851913fa4391b727",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09U7100",
+        "title": "餐饮品牌，集体“撤离”月饼市场？",
+        "collection_id": "6aae8055851913fa4391b775",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09ADS00",
+        "title": "砸数亿元回购自救！牛市“先锋队”急了，底部真的来了？",
+        "collection_id": "6aae8055851913fa4391b7ad",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A0968K00",
+        "title": "惊雷！国际车企巨头 发布盈利预警：全年利润率不超1%",
+        "collection_id": "6aae8056851913fa4391b7fa",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A05MF800",
+        "title": "21独家｜华为高层内部发声：问界并未完全脱钩，四界主导权整合",
+        "collection_id": "6aae8056851913fa4391b83b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A09VOR00",
+        "title": "乾崑智驾ADS 5 SE加持，东风风行星海V6上市，权益价9.99万起",
+        "collection_id": "6aae8056851913fa4391b87b",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260919A08MN400",
+        "title": "无资质也要造“油车”，零跑赔本赚吆喝？",
+        "collection_id": "6aae8056851913fa4391b8c4",
+        "insert_len": 0,
+        "status": "success"
+      },
+      {
+        "url": "https://news.qq.com/rain/a/20260918A02FPL00",
+        "title": "车企越自研电池，越能看见最大的难点在这里",
+        "collection_id": "6aae8057851913fa4391b91c",
+        "insert_len": 0,
+        "status": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "topic": "科技",
+      "title": "一颗钽电容，卡住算力交付",
+      "url": "https://news.qq.com/rain/a/20260919A051G100",
+      "publish_time": "2026-09-19 18:20:04"
+    },
+    {
+      "topic": "科技",
+      "title": "马斯克批量收购破产公司ing，世界首富脑子是不一样",
+      "url": "https://news.qq.com/rain/a/20260919A0A0RX00",
+      "publish_time": "2026-09-19 19:46:48"
+    },
+    {
+      "topic": "科技",
+      "title": "北京对飞猪、同程、途家、美团酒旅立案调查",
+      "url": "https://news.qq.com/rain/a/20260919A08UVH00",
+      "publish_time": "2026-09-19 17:57:17"
+    },
+    {
+      "topic": "科技",
+      "title": "安世“分家”近一年内情：5.9万片/月海外晶圆断供，国内12英寸晶圆产能接棒",
+      "url": "https://news.qq.com/rain/a/20260919A09YGW00",
+      "publish_time": "2026-09-19 19:31:20"
+    },
+    {
+      "topic": "科技",
+      "title": "豆包手机的理想很美，但做到不容易",
+      "url": "https://news.qq.com/rain/a/20260918A05JNZ00",
+      "publish_time": "2026-09-19 16:26:45"
+    },
+    {
+      "topic": "体育",
+      "title": "亚运会开幕式被吐槽！媒体人热议：怎么能诡异成这样，无法理解",
+      "url": "https://news.qq.com/rain/a/20260919A09ULZ00",
+      "publish_time": "2026-09-19 20:06:54"
+    },
+    {
+      "topic": "体育",
+      "title": "松岛辉空：亚运会男单目标只有夺冠！男团只要发挥6成就能击败中国队",
+      "url": "https://news.qq.com/rain/a/20260919A0A00I00",
+      "publish_time": "2026-09-19 19:41:57"
+    },
+    {
+      "topic": "体育",
+      "title": "历届最“轻量级”的亚运开幕式，与一个正在转身的名古屋和日本",
+      "url": "https://news.qq.com/rain/a/20260919A09Y6T00",
+      "publish_time": "2026-09-19 20:06:27"
+    },
+    {
+      "topic": "体育",
+      "title": "离谱！亚运通勤班车迟到 国乒众将烈日下苦等几十分钟 球迷不满",
+      "url": "https://news.qq.com/rain/a/20260919A09X0E00",
+      "publish_time": "2026-09-19 20:16:10"
+    },
+    {
+      "topic": "体育",
+      "title": "练得越狠输得越惨？惨败后前外教言论爆火 网友：已看透中国篮球",
+      "url": "https://news.qq.com/rain/a/20260919A08D6I00",
+      "publish_time": "2026-09-19 16:16:33"
+    },
+    {
+      "topic": "财经",
+      "title": "西贝被曝两三个月内“彻底倒闭”，贾国龙或放弃股份？",
+      "url": "https://news.qq.com/rain/a/20260919A08IAY00",
+      "publish_time": "2026-09-19 16:30:15"
+    },
+    {
+      "topic": "财经",
+      "title": "冯仑回应被“限高”",
+      "url": "https://news.qq.com/rain/a/20260919A09NE500",
+      "publish_time": "2026-09-19 18:40:50"
+    },
+    {
+      "topic": "财经",
+      "title": "A股交易更活跃，投资者为何更谨慎？刘劲：仍待楼市和消费回暖",
+      "url": "https://news.qq.com/rain/a/20260919A0A11Z00",
+      "publish_time": "2026-09-19 19:49:12"
+    },
+    {
+      "topic": "财经",
+      "title": "餐饮品牌，集体“撤离”月饼市场？",
+      "url": "https://news.qq.com/rain/a/20260919A09U7100",
+      "publish_time": "2026-09-19 19:46:23"
+    },
+    {
+      "topic": "财经",
+      "title": "砸数亿元回购自救！牛市“先锋队”急了，底部真的来了？",
+      "url": "https://news.qq.com/rain/a/20260919A09ADS00",
+      "publish_time": "2026-09-19 17:43:13"
+    },
+    {
+      "topic": "汽车",
+      "title": "惊雷！国际车企巨头 发布盈利预警：全年利润率不超1%",
+      "url": "https://news.qq.com/rain/a/20260919A0968K00",
+      "publish_time": "2026-09-19 17:30:12"
+    },
+    {
+      "topic": "汽车",
+      "title": "华为高层内部发声：问界并未完全脱钩，四界主导权整合",
+      "url": "https://news.qq.com/rain/a/20260919A05MF800",
+      "publish_time": "2026-09-19 11:55:47"
+    },
+    {
+      "topic": "汽车",
+      "title": "乾崑智驾ADS 5 SE加持，东风风行星海V6上市，权益价9.99万起",
+      "url": "https://news.qq.com/rain/a/20260919A09VOR00",
+      "publish_time": "2026-09-19 19:12:29"
+    },
+    {
+      "topic": "汽车",
+      "title": "无资质也要造“油车”，零跑赔本赚吆喝？",
+      "url": "https://news.qq.com/rain/a/20260919A08MN400",
+      "publish_time": "2026-09-19 16:42:09"
+    },
+    {
+      "topic": "汽车",
+      "title": "车企越自研电池，越能看见最大的难点在这里",
+      "url": "https://news.qq.com/rain/a/20260918A02FPL00",
+      "publish_time": "2026-09-19 16:38:24"
+    }
+  ]
+}
+===== news ingest end, exit=0 =====
+===== qa generate start =====
+{
+  "total": 20,
+  "submitted": 20,
+  "skipped": 0,
+  "failed": 0,
+  "retry_exhausted": 0,
+  "items": [
+    {
+      "url": "https://news.qq.com/rain/a/20260918A02FPL00",
+      "title": "车企越自研电池，越能看见最大的难点在这里",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391b951"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A08MN400",
+      "title": "无资质也要造“油车”，零跑赔本赚吆喝？",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391b992"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09VOR00",
+      "title": "乾崑智驾ADS 5 SE加持，东风风行星海V6上市，权益价9.99万起",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391b9c3"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A05MF800",
+      "title": "21独家｜华为高层内部发声：问界并未完全脱钩，四界主导权整合",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391b9f3"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A0968K00",
+      "title": "惊雷！国际车企巨头 发布盈利预警：全年利润率不超1%",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391ba23"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09ADS00",
+      "title": "砸数亿元回购自救！牛市“先锋队”急了，底部真的来了？",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391ba54"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09U7100",
+      "title": "餐饮品牌，集体“撤离”月饼市场？",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391ba84"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A0A11Z00",
+      "title": "A股交易更活跃，投资者为何更谨慎？刘劲：仍待楼市和消费回暖",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391bab4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09NE500",
+      "title": "冯仑回应被“限高”",
+      "status": "submitted",
+      "collection_id": "6aae8057851913fa4391bae4"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A08IAY00",
+      "title": "西贝被曝两三个月内“彻底倒闭”，贾国龙或放弃股份？",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bb14"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A08D6I00",
+      "title": "练得越狠输得越惨？惨败后前外教言论爆火 网友：已看透中国篮球",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bb44"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09X0E00",
+      "title": "离谱！亚运通勤班车迟到 国乒众将烈日下苦等几十分钟 球迷不满",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bb72"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09Y6T00",
+      "title": "历届最“轻量级”的亚运开幕式，与一个正在转身的名古屋和日本",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bb9f"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A0A00I00",
+      "title": "松岛辉空：亚运会男单目标只有夺冠！男团只要发挥6成就能击败中国队",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bbcc"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09ULZ00",
+      "title": "亚运会开幕式被吐槽！媒体人热议：怎么能诡异成这样，无法理解",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bbf9"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260918A05JNZ00",
+      "title": "豆包手机的理想很美，但做到不容易",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bc26"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A09YGW00",
+      "title": "安世“分家”近一年内情：5.9万片/月海外晶圆断供，国内12英寸晶圆产能接棒",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bc53"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A08UVH00",
+      "title": "北京对飞猪、同程、途家、美团酒旅立案调查",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bc80"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A0A0RX00",
+      "title": "马斯克批量收购破产公司ing，世界首富脑子是不一样",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bcad"
+    },
+    {
+      "url": "https://news.qq.com/rain/a/20260919A051G100",
+      "title": "一颗钽电容，卡住算力交付",
+      "status": "submitted",
+      "collection_id": "6aae8058851913fa4391bcda"
+    }
+  ]
+}
+===== qa generate end, exit=0 =====
+===== evaluation skipped (disabled) =====
+===== daily report start =====
+{
+  "status": "success",
+  "target_date": "2026-09-19",
+  "generated_at": "2026-09-19T20:30:16.816570+08:00",
+  "pipeline_exit_codes": {
+    "ingest": 0,
+    "qa": 0,
+    "evaluation": 0
+  },
+  "news": {
+    "total": 20,
+    "status_counts": {
+      "success": 20
+    },
+    "retry_exhausted": 0
+  },
+  "qa": {
+    "total": 20,
+    "status_counts": {
+      "submitted": 20
+    },
+    "not_submitted": 0,
+    "retry_exhausted": 0
+  },
+  "cache": {
+    "article_files": 12414
+  },
+  "files": {
+    "json": "reports/daily-2026-09-19.json",
+    "markdown": "reports/daily-2026-09-19.md"
+  }
+}
+===== daily report end, exit=0 =====
+===== end 2026-09-19T20:30:16+08:00, exit=0 =====
