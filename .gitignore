@@ -18,6 +18,10 @@ venv/
 dist/
 build/
 
+# Local FastGPT files retained after removing the vendored upstream source.
+# Includes generated dependencies and private local deployment configuration.
+/FastGPT-local-backup/
+
 # IDE / OS
 .idea/
 .vscode/

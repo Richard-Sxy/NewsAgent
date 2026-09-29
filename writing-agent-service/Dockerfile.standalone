@@ -1,0 +1,27 @@
+FROM python:3.11-slim AS runtime
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+RUN groupadd --system --gid 10001 app \
+    && useradd --system --uid 10001 --gid app --home-dir /app app
+
+COPY pyproject.toml ./
+COPY app ./app
+COPY examples ./examples
+COPY alembic ./alembic
+COPY alembic.ini ./
+
+# SQLAlchemy's async engine needs greenlet; keep this Compose-specific fix out
+# of the existing application dependency manifest while it is being edited.
+RUN pip install --upgrade pip \
+    && pip install . 'sqlalchemy[asyncio]>=2.0,<3'
+
+USER 10001:10001
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
