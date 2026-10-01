@@ -13,6 +13,7 @@ const navItems = [
   { path: '/hot-news', label: '热点运营' },
   { path: '/jobs', label: '写作任务' },
   { path: '/data-loop', label: 'Data Loop' },
+  { path: '/security-tests', label: '安全测试' },
 ]
 
 const currentTitle = computed(() => {

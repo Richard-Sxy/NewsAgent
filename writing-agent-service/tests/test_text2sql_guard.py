@@ -89,6 +89,10 @@ def test_accepts_numeric_limit_within_bound() -> None:
         ("SELECT news_id FROM dw.news_behavior_aggregate "
          "WHERE tenant_id = :tenant_id AND event_time >= :window_start "
          "AND event_time < :window_end", "LIMIT"),
+        ("SELECT news_id, :tenant_id AS requested_tenant "
+         "FROM dw.news_behavior_aggregate "
+         "WHERE event_time >= :window_start AND event_time < :window_end "
+         "LIMIT :row_limit", "bind tenant_id in a WHERE predicate"),
         ("SELECT news_id FROM dw.news_behavior_aggregate "
          "WHERE tenant_id = :tenant_id AND event_time >= :window_start "
          "AND event_time < :window_end LIMIT 100000", "max_rows"),

@@ -97,6 +97,7 @@ class SqlGuard:
         self._validate_forbidden_expressions(statement)
         self._validate_forbidden_functions(stripped)
         self._validate_placeholders(stripped)
+        self._validate_scope_predicates(statement)
         self._validate_limit(statement)
 
         return stripped
@@ -143,6 +144,49 @@ class SqlGuard:
         if missing:
             raise Text2SqlGuardError(
                 f"SQL is missing required parameters: {sorted(missing)}"
+            )
+
+    def _validate_scope_predicates(self, statement: exp.Select) -> None:
+        """Ensure tenant and time placeholders are bound in WHERE predicates.
+
+        Merely mentioning ``:tenant_id`` in a projection or a string is not a
+        scope restriction. The guard therefore requires the configured scope
+        columns and placeholders to occur in the same comparison expression.
+        """
+
+        where = statement.args.get("where")
+        if where is None:
+            raise Text2SqlGuardError("SQL must include tenant and time predicates")
+
+        comparisons = (
+            node
+            for node in where.walk()
+            if isinstance(node, (exp.EQ, exp.GT, exp.GTE, exp.LT, exp.LTE, exp.In))
+        )
+        tenant_bound = False
+        window_bound = False
+        for comparison in comparisons:
+            columns = {column.name for column in comparison.find_all(exp.Column)}
+            placeholders = {
+                placeholder.name
+                for placeholder in comparison.find_all(exp.Placeholder)
+            }
+            tenant_bound |= (
+                self.policy.tenant_column in columns
+                and "tenant_id" in placeholders
+            )
+            window_bound |= (
+                self.policy.window_column in columns
+                and bool(placeholders & {"window_start", "window_end"})
+            )
+
+        if not tenant_bound:
+            raise Text2SqlGuardError(
+                f"SQL must bind {self.policy.tenant_column} in a WHERE predicate"
+            )
+        if not window_bound:
+            raise Text2SqlGuardError(
+                f"SQL must bind {self.policy.window_column} to a window placeholder"
             )
 
     def _validate_limit(self, statement: exp.Select) -> None:

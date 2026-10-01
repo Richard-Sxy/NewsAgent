@@ -533,3 +533,39 @@ export interface RecordHotNewsDecisionResponse {
   status: string
   created: boolean
 }
+
+/* ---------------------------------------------------------------------- */
+/* Prompt Injection / Text2SQL dry-run 安全演练                            */
+/* ---------------------------------------------------------------------- */
+
+export interface PromptInjectionTestRequest {
+  scenario: string
+  operator_prompt: string
+  untrusted_news_content: string
+  candidate_sql: string
+}
+
+export type SecurityStageStatus = 'passed' | 'warning' | 'blocked' | 'skipped'
+export type SecurityDecision = 'allow_read_only' | 'blocked'
+export type SecurityRiskLevel = 'low' | 'medium' | 'high'
+
+export interface SecurityStageResult {
+  name: string
+  status: SecurityStageStatus
+  detail: string
+  evidence: string[]
+}
+
+export interface PromptInjectionTestResponse {
+  scenario: string
+  tenant_id: string
+  decision: SecurityDecision
+  risk_level: SecurityRiskLevel
+  sql_executed: boolean
+  sql_hash: string | null
+  normalized_sql: string | null
+  direct_injection_signals: string[]
+  indirect_injection_signals: string[]
+  guard_error: string | null
+  stages: SecurityStageResult[]
+}

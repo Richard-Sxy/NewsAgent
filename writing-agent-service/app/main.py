@@ -15,6 +15,7 @@ from app.api import (
     hot_news_router,
     jobs_router,
     memory_router,
+    security_tests_router,
 )
 from app.config import get_settings
 from app.db.session import Database
@@ -69,6 +70,7 @@ def create_app() -> FastAPI:
     application.include_router(data_loop_router)
     application.include_router(hot_news_router)
     application.include_router(memory_router)
+    application.include_router(security_tests_router)
 
     application.get("/health")(health)
     application.get("/ready")(ready)
