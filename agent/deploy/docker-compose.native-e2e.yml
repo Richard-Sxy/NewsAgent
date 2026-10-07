@@ -1,0 +1,233 @@
+name: news-agent-native-e2e
+
+# Independent local acceptance stack using Python-owned model and knowledge ports.
+# Bundle identity is provider-neutral and points at the Python model profile.
+x-native-env: &native-env
+  ENVIRONMENT: e2e
+  MODEL_RUNTIME_BACKEND: native
+  MODEL_RUNTIME_CONFIG_PATH: /app/deploy/model-runtime.local.yml
+  DATABASE_URL: postgresql+psycopg://newsagent_native:newsagent_native@postgres:5432/newsagent_native
+  REDIS_URL: redis://redis:6379/0
+  TEMPORAL_ADDRESS: temporal:7233
+  TEMPORAL_NAMESPACE: default
+  TEMPORAL_TASK_QUEUE: news-writing
+  TEMPORAL_HOT_NEWS_TASK_QUEUE: hot-news
+  HOT_NEWS_ANALYSIS_MAX_CONCURRENCY: "3"
+  TEMPORAL_DATA_LOOP_TASK_QUEUE: hot-news-data-loop
+  DATA_LOOP_GATEWAY_TOKEN: newsagent-native-local-token-not-for-production
+  KNOWLEDGE_INGEST_TOKEN: newsagent-native-knowledge-token-not-for-production
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: >-
+    [{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"native-e2e-prompt-v1","model_profile_id":"retired-native-field","model_version":"native-local-model-v1","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"}]
+  ARTIFACT_BUCKET: newsagent-native-artifacts
+  ARTIFACT_ENDPOINT: http://minio:9000
+  ARTIFACT_REGION: us-east-1
+  ARTIFACT_PREFIX: newsagent-native
+  ARTIFACT_SSE_ALGORITHM: none
+  AWS_ACCESS_KEY_ID: newsagent-native-minio
+  AWS_SECRET_ACCESS_KEY: newsagent-native-minio-secret
+  AWS_EC2_METADATA_DISABLED: "true"
+
+x-app-service: &app-service
+  image: news-agent/writing-agent-service:native-e2e
+  environment: *native-env
+  init: true
+  read_only: true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  networks: [native]
+
+services:
+  postgres:
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
+    environment:
+      POSTGRES_USER: newsagent_native
+      POSTGRES_PASSWORD: newsagent_native
+      POSTGRES_DB: newsagent_native
+    ports:
+      - "127.0.0.1:25432:5432"
+    volumes:
+      - native-postgres-data:/var/lib/postgresql/data
+    networks: [native]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U newsagent_native -d newsagent_native"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  temporal-postgres:
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: temporal
+    volumes:
+      - native-temporal-postgres-data:/var/lib/postgresql/data
+    networks: [native]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U temporal"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  temporal:
+    image: temporalio/auto-setup:1.27.2@sha256:b44cbfeb43dbeae42db113b44fb8414c3452f05643b3d6b1592f955277d73526
+    depends_on:
+      temporal-postgres:
+        condition: service_healthy
+    environment:
+      DB: postgres12
+      DB_PORT: "5432"
+      POSTGRES_USER: temporal
+      POSTGRES_PWD: temporal
+      POSTGRES_SEEDS: temporal-postgres
+    ports:
+      - "127.0.0.1:27233:7233"
+    networks: [native]
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "temporal:7233"]
+      interval: 3s
+      timeout: 5s
+      retries: 60
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf
+    networks: [native]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  minio:
+    image: minio/minio:latest@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: newsagent-native-minio
+      MINIO_ROOT_PASSWORD: newsagent-native-minio-secret
+    ports:
+      - "127.0.0.1:29000:9000"
+      - "127.0.0.1:29001:9001"
+    volumes:
+      - native-minio-data:/data
+    networks: [native]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  minio-init:
+    image: minio/mc:latest@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        mc alias set local http://minio:9000 newsagent-native-minio
+        newsagent-native-minio-secret &&
+        mc mb --ignore-existing local/newsagent-native-artifacts &&
+        mc version enable local/newsagent-native-artifacts
+    networks: [native]
+
+  migrate:
+    <<: *app-service
+    build:
+      context: ..
+      dockerfile: Dockerfile.e2e
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+
+  api:
+    <<: *app-service
+    environment:
+      <<: *native-env
+      LOCAL_SIMULATION_ENABLED: "1"
+      CONVERSATION_ENABLED: "1"
+      CONVERSATION_KNOWLEDGE_ENABLED: "1"
+      CONVERSATION_HOT_NEWS_QUERY_ENABLED: "1"
+      CONVERSATION_DATA_ANALYSIS_ENABLED: "1"
+      DATA_ANALYSIS_BACKEND: process
+      CONVERSATION_TURN_TIMEOUT_SECONDS: "120"
+      SQL_ASSISTANT_SCENARIOS_PATH: /app/deploy/text2sql-scenes.local.yml
+    volumes:
+      - ./text2sql-scenes.local.yml:/app/deploy/text2sql-scenes.local.yml:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      temporal:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    command: ["uvicorn", "examples.local_simulation:create_local_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "127.0.0.1:28000:8000"
+    restart: "on-failure:3"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 5s
+      timeout: 3s
+      retries: 40
+      start_period: 10s
+
+  hot-news-worker:
+    <<: *app-service
+    environment:
+      <<: *native-env
+      SQL_ASSISTANT_SCENARIOS_PATH: /app/deploy/text2sql-scenes.local.yml
+    volumes:
+      - ./text2sql-scenes.local.yml:/app/deploy/text2sql-scenes.local.yml:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+    command: ["python", "-m", "examples.native_hot_news_e2e_worker"]
+    restart: "on-failure:3"
+
+  writing-worker:
+    <<: *app-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    command: ["python", "-m", "app.worker"]
+    restart: "on-failure:3"
+
+  outbox-worker:
+    <<: *app-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "app.outbox_worker"]
+    restart: "on-failure:3"
+
+  test-runner:
+    <<: *app-service
+    profiles: [test]
+    environment:
+      <<: *native-env
+      PYTEST_ADDOPTS: -o cache_dir=/tmp/.pytest_cache
+    command: ["python", "-m", "pytest", "tests/test_native_hot_news_runtime.py", "-q"]
+
+volumes:
+  native-postgres-data:
+  native-temporal-postgres-data:
+  native-minio-data:
+
+networks:
+  native:

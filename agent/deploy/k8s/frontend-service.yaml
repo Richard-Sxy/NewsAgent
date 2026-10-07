@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: news-agent-frontend
+  namespace: news-agent
+  labels:
+    app.kubernetes.io/name: news-agent-frontend
+    app.kubernetes.io/part-of: news-agent
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: news-agent-frontend
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP

@@ -1,0 +1,13 @@
+# Public request scope only. Never add tokens, passwords, URLs or raw-key fields.
+# --config is explicit; the checker never discovers or loads .env files.
+schema_version: "1.0"
+tenant_id: "11111111-1111-4111-8111-111111111111"
+window_start: "2026-10-03T10:00:00+08:00"
+window_end: "2026-10-03T11:00:00+08:00"
+content_types: [article, video]
+max_rows: 200
+timeout_seconds: 3
+# Default: aggregate-only local fixture. A reviewed administrator plugin may
+# construct an approved NewsMetricSource using credentials from its existing
+# secret manager/environment. This YAML stores no credential values.
+source_factory: null

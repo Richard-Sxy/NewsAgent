@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "writing-agent-service"
+version = "0.1.0"
+description = "Checkpoint-based multi-agent news writing service"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "pydantic>=2.9,<3",
+    "pydantic-settings>=2.5,<3",
+    "httpx>=0.27,<1",
+    "PyYAML>=6,<7",
+
+    "sqlalchemy[asyncio]>=2.0,<3",
+    "alembic>=1.13,<2",
+    "psycopg[binary,pool]>=3.2,<4",
+    "sqlglot>=25,<31",
+
+    "temporalio>=1.8,<2",
+    "redis>=5.1,<6",
+    "boto3>=1.35,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "pytest-asyncio>=0.24,<1",
+]
+milvus = [
+    "pymilvus>=2.5,<3",
+]
+
+[project.scripts]
+writing-agent-worker = "app.worker:main"
+writing-agent-outbox-worker = "app.outbox_worker:main"
+writing-agent-data-loop-worker = "app.data_loop_worker:main"
+writing-agent-hot-news-worker = "app.hot_news_worker:main"
+writing-agent-hot-news-scheduler = "app.hot_news_scheduler:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+markers = [
+    "e2e: opt-in black-box tests requiring the dedicated dependency stack",
+    "integration: tests using real local infrastructure",
+    "live: tests calling explicitly configured non-stub external services",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]

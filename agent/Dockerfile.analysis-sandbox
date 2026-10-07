@@ -1,0 +1,9 @@
+# A separate image contains only the fixed, stdlib analysis implementation.
+# Build from agent/: docker build -f Dockerfile.analysis-sandbox -t news-agent/data-analysis:local .
+FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+
+COPY app/data_analysis/engine.py app/data_analysis/worker.py /opt/news-analysis/
+WORKDIR /tmp
+USER 65534:65534
+ENTRYPOINT []
+CMD ["python", "-I", "-S", "/opt/news-analysis/worker.py"]

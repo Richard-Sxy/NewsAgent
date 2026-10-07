@@ -1,0 +1,31 @@
+# Third overlay: native-e2e + analysis-demo + this file. New project and volumes
+# are required: a completed hot-news snapshot must never change its fixture.
+name: news-agent-enterprise-analysis-demo
+
+services:
+  postgres:
+    ports: !override ["127.0.0.1:25452:5432"]
+  temporal:
+    ports: !override ["127.0.0.1:27253:7233"]
+  minio:
+    ports: !override ["127.0.0.1:29200:9000", "127.0.0.1:29201:9001"]
+  migrate:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+  api:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+    ports: !override ["127.0.0.1:28020:8000"]
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: enterprise-v1
+  hot-news-worker:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: enterprise-v1
+  writing-worker:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+  outbox-worker:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+  test-runner:
+    image: news-agent/writing-agent-service:enterprise-analysis-demo
+
+# Port 28020 serves only aggregate synthetic fixtures and the deterministic
+# local model Port. The unchanged external analysis ingress supplies the worker.

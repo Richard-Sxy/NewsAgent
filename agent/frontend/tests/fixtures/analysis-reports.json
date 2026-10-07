@@ -1,0 +1,325 @@
+{
+  "overview": {
+    "algorithm_version": "news-analysis-v1",
+    "analysis": {
+      "totals": {
+        "clicks": 50,
+        "effective_consumptions": 17,
+        "impressions": 300,
+        "interactions": 8,
+        "total_duration_seconds": 340
+      },
+      "weighted_ctr": "0.1666666666666666666666666666666666666666666666666666666666666667"
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "单个时间窗口不支持趋势判断或因果归因。"
+    ],
+    "metric": "ctr",
+    "operation": "overview",
+    "schema_version": "1.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "403b680384da8cad0afc68888c4a943f70380f9b116af5b8a96a67161702dd85",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 39,
+      "input_sha256": "90007d6f0a01c1157dc1ba00d509423db4727d0a98ef0a8c107fcbd18df64eb0",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  },
+  "distribution": {
+    "algorithm_version": "news-analysis-v1",
+    "analysis": {
+      "count": 2,
+      "max": "0.2",
+      "mean": "0.15",
+      "median": "0.15",
+      "min": "0.1",
+      "p90": "0.2"
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "单个时间窗口不支持趋势判断或因果归因。"
+    ],
+    "metric": "ctr",
+    "operation": "distribution",
+    "schema_version": "1.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "403b680384da8cad0afc68888c4a943f70380f9b116af5b8a96a67161702dd85",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 36,
+      "input_sha256": "0d74bca93417796b3f6e291385aa7a4f03a9b6edda04afd671252dde1fbc4735",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  },
+  "compare": {
+    "algorithm_version": "news-analysis-v1",
+    "analysis": {
+      "absolute_difference": "0.1",
+      "highest": {
+        "news_id": "public-news-b",
+        "value": "0.2"
+      },
+      "lowest": {
+        "news_id": "public-news-a",
+        "value": "0.1"
+      },
+      "relative_change": "1"
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "单个时间窗口不支持趋势判断或因果归因。"
+    ],
+    "metric": "ctr",
+    "operation": "compare",
+    "schema_version": "1.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "403b680384da8cad0afc68888c4a943f70380f9b116af5b8a96a67161702dd85",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 36,
+      "input_sha256": "9904ce7c9a62d1bdbecf877a7e0bbc0227b8b1e0dfb8991d2eeea36b4352a34a",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  },
+  "quality": {
+    "algorithm_version": "news-analysis-v1",
+    "analysis": {
+      "clicks_above_impressions_news_ids": [],
+      "ctr_mismatch_news_ids": [],
+      "notes": [
+        "CTR 核对采用四位小数舍入容差 0.00005；零曝光时按现有快照约定核对 CTR 为 0。",
+        "点击数高于曝光数仅作为口径核对提示；重复点击、采集范围或事件定义可能影响比值，不能直接断言数据错误。"
+      ],
+      "zero_impression_news_ids": []
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "单个时间窗口不支持趋势判断或因果归因。"
+    ],
+    "metric": "ctr",
+    "operation": "quality",
+    "schema_version": "1.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "403b680384da8cad0afc68888c4a943f70380f9b116af5b8a96a67161702dd85",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 44,
+      "input_sha256": "88b3d4e59d683fdfadd4ae2c55a90ba927d4906aa11c8f4c8158535306ad0cf4",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  },
+  "baseline": {
+    "algorithm_version": "news-analysis-v2",
+    "analysis": {
+      "compared_count": 2,
+      "items": [
+        {
+          "absolute_change": "0.05",
+          "current_value": "0.1",
+          "news_id": "public-news-a",
+          "reference_value": "0.05",
+          "reference_version": "public-baseline-v1",
+          "relative_change": "1",
+          "sample_count": 3,
+          "status": "compared"
+        },
+        {
+          "absolute_change": "0.15",
+          "current_value": "0.2",
+          "news_id": "public-news-b",
+          "reference_value": "0.05",
+          "reference_version": "public-baseline-v1",
+          "relative_change": "3",
+          "sample_count": 3,
+          "status": "compared"
+        }
+      ],
+      "missing_baseline_news_ids": [],
+      "missing_metric_news_ids": []
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "直接比较已保存的参考字段；样本窗口、选取策略和 CTR 口径需核对，不能将 sample_count 一概当作历史窗口数。",
+      "参考字段可能是历史窗口均值或合成参考；不重算其 CTR，不将该比较当作实时趋势或因果证据。"
+    ],
+    "metric": "ctr",
+    "operation": "baseline",
+    "schema_version": "2.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "provenance": {
+        "selection_scope_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "workflow_version": "public-workflow-v1"
+      },
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "d9ebf521a930f2003b99141dbff9a7df45c1ea3a280708ad7aefb589ad1ac628",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 37,
+      "input_sha256": "f42ae33f85777d1cf057916e21836dcc6c5823b68e07a4a5e650cb48a7b03acc",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  },
+  "trend": {
+    "algorithm_version": "news-analysis-v2",
+    "analysis": {
+      "added_news_ids": [],
+      "aggregate": {
+        "absolute_change": "0.08333333333333333333333333333333333333333333333333333333333333337",
+        "current_value": "0.1666666666666666666666666666666666666666666666666666666666666667",
+        "method": "weighted_ctr",
+        "reference_value": "0.08333333333333333333333333333333333333333333333333333333333333333",
+        "relative_change": "1"
+      },
+      "gap_seconds": 0,
+      "items": [
+        {
+          "absolute_change": "0.05",
+          "current_value": "0.1",
+          "news_id": "public-news-a",
+          "reference_value": "0.05",
+          "relative_change": "1"
+        },
+        {
+          "absolute_change": "0.1",
+          "current_value": "0.2",
+          "news_id": "public-news-b",
+          "reference_value": "0.1",
+          "relative_change": "1"
+        }
+      ],
+      "matched_news_count": 2,
+      "removed_news_ids": []
+    },
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "仅比较两个窗口榜单中 news_id 相同且内容类型一致的交集；新增和退出榜单的新闻不参与聚合变化，不代表全量变化。",
+      "双窗口比较只描述已保存指标的变化，不能据此作因果归因或推断持续趋势。",
+      "gap_seconds 是参考窗口结束到当前窗口开始的间隔；大于 0 时窗口不连续。"
+    ],
+    "metric": "ctr",
+    "operation": "trend",
+    "schema_version": "2.0",
+    "source": {
+      "bundle_version": "public-fixture-v1",
+      "provenance": {
+        "selection_scope_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "workflow_version": "public-workflow-v1"
+      },
+      "reference": {
+        "bundle_version": "public-fixture-v1",
+        "provenance": {
+          "selection_scope_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "workflow_version": "public-workflow-v1"
+        },
+        "row_count": 2,
+        "run_id": "22222222-2222-4222-8222-222222222222",
+        "scope": "ranked_news_only",
+        "snapshot_sha256": "267dce63d88753b174fa7f5579bfec5d71acd6b393a90f15fc64d2f685862be3",
+        "window_end": "2026-10-03T15:00:00+00:00",
+        "window_start": "2026-10-03T14:00:00+00:00"
+      },
+      "row_count": 2,
+      "run_id": "11111111-1111-4111-8111-111111111111",
+      "scope": "ranked_news_only",
+      "snapshot_sha256": "f5450074aac448a28b29c83be0873980f6e52d30981c40b21822cceaaf814633",
+      "window_end": "2026-10-03T16:00:00+00:00",
+      "window_start": "2026-10-03T15:00:00+00:00"
+    },
+    "execution": {
+      "backend": "process",
+      "elapsed_ms": 34,
+      "input_sha256": "5f14ebe7718b6535530c88dacd64d088f0a2dca2e6db52f495e2fb0f9a84d259",
+      "limits": {
+        "timeout_seconds": 3,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": false
+      }
+    }
+  }
+}

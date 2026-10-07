@@ -1,0 +1,296 @@
+name: news-agent-standalone
+
+# NewsAgent owns its stateful dependencies and calls approved raw model endpoints.
+x-app-env: &app-env
+  ENVIRONMENT: docker
+  MODEL_RUNTIME_BACKEND: native
+  MODEL_RUNTIME_CONFIG_PATH: /app/deploy/model-runtime.yml
+  ENTERPRISE_MODEL_API_KEY: ${ENTERPRISE_MODEL_API_KEY:?set ENTERPRISE_MODEL_API_KEY}
+  ENTERPRISE_EMBEDDING_API_KEY: ${ENTERPRISE_EMBEDDING_API_KEY:?set ENTERPRISE_EMBEDDING_API_KEY}
+  DATABASE_URL: postgresql+psycopg://${WRITING_DB_USER:?set WRITING_DB_USER}:${WRITING_DB_PASSWORD:?set WRITING_DB_PASSWORD}@writing-postgres:5432/${WRITING_DB_NAME:?set WRITING_DB_NAME}
+  REDIS_URL: redis://redis:6379/0
+  TEMPORAL_ADDRESS: temporal:7233
+  TEMPORAL_NAMESPACE: default
+  TEMPORAL_TASK_QUEUE: news-writing
+  TEMPORAL_HOT_NEWS_TASK_QUEUE: hot-news
+  TEMPORAL_DATA_LOOP_TASK_QUEUE: hot-news-data-loop
+  DATA_LOOP_REPLAY_MAX_CONCURRENCY: ${DATA_LOOP_REPLAY_MAX_CONCURRENCY:-8}
+  DATA_LOOP_MAX_CASES_PER_COHORT: ${DATA_LOOP_MAX_CASES_PER_COHORT:-20}
+  DATA_LOOP_DATA_ANALYSIS_ENABLED: ${DATA_LOOP_DATA_ANALYSIS_ENABLED:-false}
+  DATA_ANALYSIS_BACKEND: ${DATA_ANALYSIS_BACKEND:-service}
+  DATA_ANALYSIS_SERVICE_URL: ${DATA_ANALYSIS_SERVICE_URL:-}
+  DATA_ANALYSIS_SERVICE_TOKEN: ${DATA_ANALYSIS_SERVICE_TOKEN:-}
+  DATA_ANALYSIS_MAX_ROWS: ${DATA_ANALYSIS_MAX_ROWS:-200}
+  DATA_ANALYSIS_TIMEOUT_SECONDS: ${DATA_ANALYSIS_TIMEOUT_SECONDS:-3}
+  DATA_ANALYSIS_MAX_CONCURRENCY: ${DATA_ANALYSIS_MAX_CONCURRENCY:-2}
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: ${HOT_NEWS_RUNTIME_MANIFEST_JSON:-[]}
+  HOT_NEWS_SCHEDULE_DEFINITIONS_JSON: ${HOT_NEWS_SCHEDULE_DEFINITIONS_JSON:-[]}
+  HOT_NEWS_DEPENDENCIES_FACTORY: ${HOT_NEWS_DEPENDENCIES_FACTORY:-}
+  DATA_LOOP_GATEWAY_TOKEN: ${DATA_LOOP_GATEWAY_TOKEN:?set DATA_LOOP_GATEWAY_TOKEN}
+  KNOWLEDGE_INGEST_TOKEN: ${KNOWLEDGE_INGEST_TOKEN:?set KNOWLEDGE_INGEST_TOKEN}
+  CMS_PUBLISH_URL: ${CMS_PUBLISH_URL:-http://mock-cms:8080/api/v1/publications}
+  CMS_PUBLISH_TOKEN: ${CMS_PUBLISH_TOKEN:-mock-cms-dev-token}
+  CMS_PUBLISH_TIMEOUT_SECONDS: ${CMS_PUBLISH_TIMEOUT_SECONDS:-30}
+  ARTIFACT_BUCKET: ${ARTIFACT_BUCKET:?set ARTIFACT_BUCKET}
+  ARTIFACT_ENDPOINT: http://minio:9000
+  ARTIFACT_REGION: us-east-1
+  ARTIFACT_PREFIX: news-writing
+  ARTIFACT_SSE_ALGORITHM: none
+  AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY:?set MINIO_ACCESS_KEY}
+  AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_KEY:?set MINIO_SECRET_KEY}
+  AWS_EC2_METADATA_DISABLED: "true"
+
+x-app-service: &app-service
+  image: news-agent/writing-agent-service:standalone
+  restart: unless-stopped
+  init: true
+  stop_grace_period: 30s
+  read_only: true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  environment: *app-env
+  volumes:
+    - ./model-runtime.enterprise.yml:/app/deploy/model-runtime.yml:ro
+  extra_hosts:
+    - host.docker.internal:host-gateway
+  networks: [news-agent]
+
+services:
+  writing-postgres:
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${WRITING_DB_USER:?set WRITING_DB_USER}
+      POSTGRES_PASSWORD: ${WRITING_DB_PASSWORD:?set WRITING_DB_PASSWORD}
+      POSTGRES_DB: ${WRITING_DB_NAME:?set WRITING_DB_NAME}
+    volumes:
+      - writing-postgres-data:/var/lib/postgresql/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${WRITING_DB_USER} -d ${WRITING_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  temporal-postgres:
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${TEMPORAL_DB_USER:?set TEMPORAL_DB_USER}
+      POSTGRES_PASSWORD: ${TEMPORAL_DB_PASSWORD:?set TEMPORAL_DB_PASSWORD}
+    volumes:
+      - temporal-postgres-data:/var/lib/postgresql/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${TEMPORAL_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  temporal:
+    image: temporalio/auto-setup:1.27.2@sha256:b44cbfeb43dbeae42db113b44fb8414c3452f05643b3d6b1592f955277d73526
+    restart: unless-stopped
+    depends_on:
+      temporal-postgres:
+        condition: service_healthy
+    environment:
+      DB: postgres12
+      DB_PORT: "5432"
+      POSTGRES_USER: ${TEMPORAL_DB_USER:?set TEMPORAL_DB_USER}
+      POSTGRES_PWD: ${TEMPORAL_DB_PASSWORD:?set TEMPORAL_DB_PASSWORD}
+      POSTGRES_SEEDS: temporal-postgres
+    ports:
+      - "127.0.0.1:${NEWSAGENT_TEMPORAL_PORT:-27233}:7233"
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "temporal:7233"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 10s
+
+  temporal-ui:
+    image: temporalio/ui:2.34.0@sha256:cb17ea423d76a8a19a269d0bcd81fc12eee1f6365acd2a56b590dafb35696a95
+    restart: unless-stopped
+    depends_on:
+      temporal:
+        condition: service_healthy
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      TEMPORAL_CORS_ORIGINS: http://localhost:${NEWSAGENT_TEMPORAL_UI_PORT:-28233}
+    ports:
+      - "127.0.0.1:${NEWSAGENT_TEMPORAL_UI_PORT:-28233}:8080"
+    networks: [news-agent]
+
+  redis:
+    image: redis:7-alpine@sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  minio:
+    image: minio/minio:latest@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY:?set MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY:?set MINIO_SECRET_KEY}
+    ports:
+      - "127.0.0.1:${NEWSAGENT_MINIO_PORT:-29000}:9000"
+      - "127.0.0.1:${NEWSAGENT_MINIO_CONSOLE_PORT:-29001}:9001"
+    volumes:
+      - minio-data:/data
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  minio-init:
+    image: minio/mc:latest@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:?set MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:?set MINIO_SECRET_KEY}
+      ARTIFACT_BUCKET: ${ARTIFACT_BUCKET:?set ARTIFACT_BUCKET}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        mc alias set local http://minio:9000 "$$MINIO_ACCESS_KEY" "$$MINIO_SECRET_KEY" &&
+        mc mb --ignore-existing "local/$$ARTIFACT_BUCKET" &&
+        mc version enable "local/$$ARTIFACT_BUCKET"
+    networks: [news-agent]
+
+  migrate:
+    <<: *app-service
+    build:
+      context: ..
+      dockerfile: Dockerfile.standalone
+    restart: "no"
+    depends_on:
+      writing-postgres:
+        condition: service_healthy
+    command: ["alembic", "upgrade", "head"]
+
+  api:
+    <<: *app-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      temporal:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:${NEWSAGENT_API_PORT:-28000}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  temporal-worker:
+    <<: *app-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    command: ["python", "-m", "app.worker"]
+
+  outbox-worker:
+    <<: *app-service
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "app.outbox_worker"]
+
+  data-loop-worker:
+    <<: *app-service
+    profiles: [data-loop]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    command: ["python", "-m", "app.data_loop_worker"]
+
+  hot-news-worker:
+    <<: *app-service
+    profiles: [hot-news]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "app.hot_news_worker"]
+
+  hot-news-scheduler:
+    <<: *app-service
+    profiles: [hot-news]
+    restart: "no"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      temporal:
+        condition: service_healthy
+      hot-news-worker:
+        condition: service_started
+    command: ["python", "-m", "app.hot_news_scheduler", "ensure"]
+
+  mock-cms:
+    build:
+      context: ./mock-cms
+      dockerfile: Dockerfile
+    image: news-agent/mock-cms:standalone
+    restart: unless-stopped
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    environment:
+      MOCK_CMS_TOKEN: ${CMS_PUBLISH_TOKEN:-mock-cms-dev-token}
+    ports:
+      - "127.0.0.1:${NEWSAGENT_MOCK_CMS_PORT:-28080}:8080"
+    networks: [news-agent]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  writing-postgres-data:
+  temporal-postgres-data:
+  redis-data:
+  minio-data:
+
+networks:
+  news-agent:

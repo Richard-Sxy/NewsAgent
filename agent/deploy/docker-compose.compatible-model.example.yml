@@ -1,0 +1,21 @@
+# Opt-in overlay, not loaded by the default local command.
+# Run in a NEW project (-p news-agent-model-demo) to preserve old Bundle/history.
+# Fill model-runtime.compatible.yml and replace CHANGE_ME_MODEL here to match it.
+x-compatible-model-env: &compatible-model-env
+  MODEL_RUNTIME_CONFIG_PATH: /app/deploy/model-runtime.compatible.yml
+  NEWSAGENT_MODEL_API_KEY: ${NEWSAGENT_MODEL_API_KEY:?Inject the model API key into the shell securely; do not commit it}
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: >-
+    [{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"compatible-hot-news-v1","model_profile_id":"compatible-model-profile-v1","model_version":"glm-5.3-flash","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"}]
+services:
+  api:
+    environment:
+      <<: *compatible-model-env
+      CONVERSATION_HOT_NEWS_QUERY_ENABLED: "1"
+      CONVERSATION_TURN_TIMEOUT_SECONDS: "120"
+    volumes:
+      - ./model-runtime.compatible.yml:/app/deploy/model-runtime.compatible.yml:ro
+  hot-news-worker:
+    environment:
+      <<: *compatible-model-env
+    volumes:
+      - ./model-runtime.compatible.yml:/app/deploy/model-runtime.compatible.yml:ro

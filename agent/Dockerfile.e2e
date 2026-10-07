@@ -1,0 +1,48 @@
+# Keep the readable tag, but pin its multi-platform manifest digest. Update the
+# tag and digest together through an explicit dependency-maintenance change.
+FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534 AS runtime
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+RUN groupadd --system --gid 10001 app \
+    && useradd --system --uid 10001 --gid app --home-dir /app app \
+    && mkdir -p /state \
+    && chown app:app /state
+
+COPY pyproject.toml ./
+COPY app ./app
+
+# Install the application and dependencies before copying test-only assets, so
+# editing a runbook fixture or E2E test does not force a full dependency fetch.
+RUN pip install --upgrade pip \
+    && pip install ".[dev]"
+
+COPY alembic ./alembic
+COPY alembic.ini ./
+COPY examples ./examples
+COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY evaluation ./evaluation
+COPY deploy/mock-cms ./deploy/mock-cms
+COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
+COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
+COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatible.example.yml
+COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
+COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
+COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
+COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
+COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
+COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
+COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
+COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
+COPY tests ./tests
+
+USER 10001:10001
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

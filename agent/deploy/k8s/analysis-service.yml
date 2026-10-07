@@ -1,0 +1,135 @@
+# Apply only after reviewing production security, certificate, token and capacity contracts.
+# Namespace and immutable image digest must be selected by the deployment owner.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: newsagent-analysis
+automountServiceAccountToken: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-analysis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newsagent-analysis
+  template:
+    metadata:
+      labels:
+        app: newsagent-analysis
+    spec:
+      serviceAccountName: newsagent-analysis
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: fixed-analysis
+          image: news-agent/analysis-service:local # Replace with a reviewed registry image@sha256 digest.
+          imagePullPolicy: Never # Example only; set IfNotPresent with the reviewed production image.
+          ports:
+            - name: https
+              containerPort: 8100
+          env:
+            - name: ANALYSIS_SERVICE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: newsagent-analysis-auth
+                  key: token
+            - name: ANALYSIS_SERVICE_ENVIRONMENT
+              value: production
+            - name: ANALYSIS_SERVICE_REQUIRE_LINUX_LIMITS
+              value: "true"
+            - name: ANALYSIS_SERVICE_TIMEOUT_SECONDS
+              value: "3"
+            - name: ANALYSIS_SERVICE_REQUEST_TIMEOUT_SECONDS
+              value: "5"
+            - name: ANALYSIS_SERVICE_MAX_ROWS
+              value: "200"
+            - name: ANALYSIS_SERVICE_MAX_INPUT_BYTES
+              value: "262144"
+            - name: ANALYSIS_SERVICE_MAX_OUTPUT_BYTES
+              value: "262144"
+            - name: ANALYSIS_SERVICE_MAX_CONCURRENCY
+              value: "2"
+            - name: ANALYSIS_SERVICE_MEMORY_MB
+              value: "128"
+            - name: ANALYSIS_SERVICE_TLS_CERTFILE
+              value: /run/analysis-tls/tls.crt
+            - name: ANALYSIS_SERVICE_TLS_KEYFILE
+              value: /run/analysis-tls/tls.key
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 192Mi
+            limits:
+              cpu: "1"
+              memory: 384Mi
+          readinessProbe:
+            # Authenticated /health is deliberately not exposed to kubelet.
+            tcpSocket:
+              port: https
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: https
+            periodSeconds: 20
+          volumeMounts:
+            - name: scratch
+              mountPath: /tmp
+            - name: tls
+              mountPath: /run/analysis-tls
+              readOnly: true
+      volumes:
+        - name: scratch
+          emptyDir:
+            medium: Memory
+            sizeLimit: 8Mi
+        - name: tls
+          secret:
+            secretName: newsagent-analysis-tls
+            defaultMode: 0440
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsagent-analysis
+spec:
+  selector:
+    app: newsagent-analysis
+  ports:
+    - name: https
+      port: 8100
+      targetPort: https
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: newsagent-analysis-isolation
+spec:
+  podSelector:
+    matchLabels:
+      app: newsagent-analysis
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: newsagent-api
+      ports:
+        - protocol: TCP
+          port: 8100
+  egress: []

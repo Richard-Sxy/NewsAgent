@@ -1,0 +1,24 @@
+# Fill names/descriptions/questions and add unique scenario IDs.
+# The v1 schema, metric meanings and compiler are frozen; do not invent columns.
+# Copy approved entries into text2sql-scenes.local.yml then refresh the page.
+schema_version: 1
+warehouse_schema_version: news-warehouse-v1
+model_scene: text2sql_assistant
+model_timeout_seconds: 15
+model_max_attempts: 2
+query_timeout_ms: 10000
+preview_ttl_seconds: 900
+scenarios:
+  - id: your-news-scenario
+    name: 在这里填写场景名称
+    description: 在这里填写该场景允许回答的新闻指标问题
+    result_mode: ranking # ranking (news rank) or trend (hourly summary)
+    default_sort: clicks
+    allowed_sort_metrics: [clicks, ctr, impressions, interactions, hot_score]
+    allowed_content_types: [article, video]
+    allowed_categories: [科技, 财经, 体育, 社会]
+    default_limit: 10
+    max_limit: 100
+    sample_questions:
+      - 查询点击量最高的前10条新闻
+      - 查询科技视频新闻点击率最高的前5条

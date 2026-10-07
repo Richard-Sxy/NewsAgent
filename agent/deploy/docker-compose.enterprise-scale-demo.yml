@@ -1,0 +1,41 @@
+# Third overlay: native-e2e + analysis-demo + this file. A fresh project and
+# immutable warehouse identity keep existing demonstrations reproducible.
+name: news-agent-enterprise-scale-demo
+
+services:
+  postgres:
+    ports: !override ["127.0.0.1:25462:5432"]
+  temporal:
+    ports: !override ["127.0.0.1:27263:7233"]
+  minio:
+    ports: !override ["127.0.0.1:29300:9000", "127.0.0.1:29301:9001"]
+  migrate:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+  api:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+    ports: !override ["127.0.0.1:28030:8000"]
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: enterprise-v2
+      SQL_ASSISTANT_NEWS_PER_TENANT: ${SQL_ASSISTANT_NEWS_PER_TENANT:-1200}
+      SQL_ASSISTANT_SCENARIOS_PATH: deploy/text2sql-scenes.enterprise-v2.yml
+  hot-news-worker:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: enterprise-v2
+      SQL_ASSISTANT_NEWS_PER_TENANT: ${SQL_ASSISTANT_NEWS_PER_TENANT:-1200}
+      SQL_ASSISTANT_SCENARIOS_PATH: deploy/text2sql-scenes.enterprise-v2.yml
+  writing-worker:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+  outbox-worker:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+  data-loop-worker:
+    extends:
+      file: docker-compose.native-e2e.yml
+      service: writing-worker
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+    command: ["python", "-m", "app.data_loop_worker"]
+  test-runner:
+    image: news-agent/writing-agent-service:enterprise-scale-demo
+
+# Size is frozen at first initialization. To select another tier, create a
+# different Compose project with separate volumes and free loopback ports.

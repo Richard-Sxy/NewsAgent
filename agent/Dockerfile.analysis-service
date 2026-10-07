@@ -1,0 +1,20 @@
+# Build from agent/: docker build -f Dockerfile.analysis-service -t news-agent/analysis-service:local .
+# This image contains only the fixed aggregate analysis implementation and HTTP entry point.
+FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+
+# Exact direct and transitive versions from the tested service runtime.
+RUN python -m pip install --no-cache-dir --disable-pip-version-check \
+    fastapi==0.141.1 uvicorn==0.48.0 pydantic-settings==2.14.1 \
+    pydantic==2.13.4 pydantic-core==2.46.4 starlette==1.6.0 \
+    typing-extensions==4.15.0 annotated-types==0.7.0 typing-inspection==0.4.2 \
+    python-dotenv==1.2.2 anyio==4.13.0 idna==3.18 click==8.4.1 h11==0.16.0 \
+    annotated-doc==0.0.4
+
+WORKDIR /opt/news-analysis
+COPY app/__init__.py ./app/__init__.py
+COPY app/data_analysis/__init__.py app/data_analysis/engine.py app/data_analysis/runner.py \
+    app/data_analysis/worker.py app/data_analysis/service.py ./app/data_analysis/
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+USER 65534:65534
+EXPOSE 8100
+ENTRYPOINT ["python", "-m", "app.data_analysis.service"]

@@ -1,0 +1,40 @@
+# Local E2E overlay only. Use a separate project, ports, image, and volumes.
+# Start the separate analysis-service Compose project first. Never merge its
+# complete Compose file into the native project: its project name is different.
+# Compose 2.24.4+ is required for !override; existing model demos stay running.
+name: news-agent-analysis-demo
+
+services:
+  postgres:
+    ports: !override ["127.0.0.1:25442:5432"]
+  temporal:
+    ports: !override ["127.0.0.1:27243:7233"]
+  minio:
+    ports: !override ["127.0.0.1:29100:9000", "127.0.0.1:29101:9001"]
+  migrate:
+    image: news-agent/writing-agent-service:analysis-demo
+  api:
+    image: news-agent/writing-agent-service:analysis-demo
+    ports: !override ["127.0.0.1:28010:8000"]
+    environment:
+      CONVERSATION_DATA_ANALYSIS_ENABLED: "1"
+      DATA_ANALYSIS_BACKEND: service
+      DATA_ANALYSIS_SERVICE_URL: http://analysis-gateway:8080/v1/analyze
+      DATA_ANALYSIS_SERVICE_TOKEN: ${ANALYSIS_SERVICE_TOKEN:?Inject the same dedicated local analysis service token}
+      DATA_ANALYSIS_SERVICE_ALLOW_INSECURE_HTTP: "1"
+      DATA_ANALYSIS_SERVICE_REQUIRE_OS_LIMITS: "1"
+      DATA_ANALYSIS_TIMEOUT_SECONDS: "6"
+    networks: [native, analysis-demo-ingress]
+  hot-news-worker:
+    image: news-agent/writing-agent-service:analysis-demo
+  writing-worker:
+    image: news-agent/writing-agent-service:analysis-demo
+  outbox-worker:
+    image: news-agent/writing-agent-service:analysis-demo
+  test-runner:
+    image: news-agent/writing-agent-service:analysis-demo
+
+networks:
+  analysis-demo-ingress:
+    external: true
+    name: newsagent-analysis-service_analysis-ingress

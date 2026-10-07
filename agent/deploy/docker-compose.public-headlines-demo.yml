@@ -1,0 +1,31 @@
+# Native E2E + analysis-demo + this overlay: separate v3 database and snapshots.
+name: news-agent-public-headlines-demo
+
+services:
+  postgres:
+    ports: !override ["127.0.0.1:25472:5432"]
+  temporal:
+    ports: !override ["127.0.0.1:27273:7233"]
+  minio:
+    ports: !override ["127.0.0.1:29400:9000", "127.0.0.1:29401:9001"]
+  migrate:
+    image: news-agent/writing-agent-service:public-headlines-demo
+  api:
+    image: news-agent/writing-agent-service:public-headlines-demo
+    ports: !override ["127.0.0.1:28040:8000"]
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: public-headlines-v3
+      SQL_ASSISTANT_NEWS_PER_TENANT: 1200
+      SQL_ASSISTANT_SCENARIOS_PATH: deploy/text2sql-scenes.public-headlines-v3.yml
+  hot-news-worker:
+    image: news-agent/writing-agent-service:public-headlines-demo
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: public-headlines-v3
+      SQL_ASSISTANT_NEWS_PER_TENANT: 1200
+      SQL_ASSISTANT_SCENARIOS_PATH: deploy/text2sql-scenes.public-headlines-v3.yml
+  writing-worker:
+    image: news-agent/writing-agent-service:public-headlines-demo
+  outbox-worker:
+    image: news-agent/writing-agent-service:public-headlines-demo
+  test-runner:
+    image: news-agent/writing-agent-service:public-headlines-demo

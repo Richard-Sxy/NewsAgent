@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="zh-CN" data-page-node-id="z9aiZFDFbvCFHvxBPMIeu4">
+<head data-page-node-id="r76D0xYADjuWnh3Vy5QX9K">
+  <meta charset="utf-8" data-page-node-id="Wgk9pvHrhH2BD67f3RFdtC">
+  <meta name="viewport" content="width=device-width,initial-scale=1" data-page-node-id="TGLGj2Kh0H0cPcGW5i7HiS">
+  <title>NewsAgent 运营总控制台</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --line: #dce2e8;
+      --line-soft: #eaecf0;
+      --text: #182230;
+      --muted: #667085;
+      --primary: #155eef;
+      --primary-soft: #e8eef7;
+      --ok: #067647;
+      --warn: #b54708;
+      --err: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; }
+    h1 { font-size: 22px; margin: 0 0 6px; font-weight: 600; }
+    h2 { font-size: 15px; margin: 0 0 10px; font-weight: 600; }
+    h3 { font-size: 13px; margin: 18px 0 8px; font-weight: 600; color: var(--muted); }
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .topbar { background: var(--card); border-bottom: 1px solid var(--line); padding: 14px 24px; position: sticky; top: 0; z-index: 20; }
+    .topbar-inner { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+    .brand { font-weight: 600; font-size: 16px; margin-right: auto; }
+    .brand small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+
+    label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+    input, select, textarea {
+      padding: 7px 10px; border: 1px solid #cbd5df; border-radius: 7px;
+      font: inherit; font-size: 13px; background: #fff; color: var(--text); min-width: 0;
+    }
+    textarea { resize: vertical; line-height: 1.6; min-height: 76px; }
+    button {
+      border: 0; border-radius: 7px; padding: 8px 14px; font: inherit; font-size: 13px;
+      font-weight: 600; cursor: pointer; background: var(--primary); color: #fff;
+    }
+    button.secondary { background: var(--primary-soft); color: #344054; }
+    button.ghost { background: transparent; color: var(--primary); border: 1px solid #c7d7fe; }
+    button.danger { background: var(--err); }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    button.sm { padding: 5px 10px; font-size: 12px; }
+
+    .shell { display: grid; grid-template-columns: 208px 1fr; gap: 20px; padding: 20px 24px 60px; align-items: start; }
+    .nav { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 8px; position: sticky; top: 96px; }
+    .nav button {
+      display: block; width: 100%; text-align: left; background: transparent; color: var(--text);
+      font-weight: 500; padding: 9px 12px; border-radius: 8px; margin-bottom: 2px; font-size: 13px;
+    }
+    .nav button.active { background: var(--primary); color: #fff; }
+    .nav .navnote { padding: 10px 12px 4px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line-soft); margin-top: 6px; }
+
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .metric { padding: 12px 14px; background: #f8fafc; border: 1px solid var(--line-soft); border-radius: 8px; }
+    .metric span { display: block; font-size: 12px; color: var(--muted); }
+    .metric strong { display: block; font-size: 19px; font-weight: 600; margin-top: 3px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+    th { font-size: 12px; color: var(--muted); font-weight: 600; background: #f8fafc; }
+    tbody tr.clickable { cursor: pointer; }
+    tbody tr.clickable:hover { background: #f8fafc; }
+    tbody tr.selected { background: #eff4ff; }
+
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; line-height: 1.7; }
+    .b-mock { background: #fef0c7; color: var(--warn); }
+    .b-live { background: #d1fadf; color: var(--ok); }
+    .b-gray { background: #e4e7ec; color: #475467; }
+    .b-blue { background: #d1e9ff; color: #175cd3; }
+    .b-red { background: #fee4e2; color: var(--err); }
+    .b-green { background: #d1fadf; color: var(--ok); }
+    .b-purple { background: #e9d7fe; color: #6941c6; }
+
+    .up { color: #b42318; } .down { color: #067647; }
+    .bar { height: 8px; background: #e4e7ec; border-radius: 8px; overflow: hidden; }
+    .bar span { display: block; height: 100%; background: var(--primary); transition: width .25s; }
+
+    .tag { display: inline-block; padding: 1px 7px; border: 1px solid var(--line); border-radius: 5px; font-size: 11px; color: var(--muted); margin-right: 4px; background: #fcfcfd; }
+    pre {
+      white-space: pre-wrap; word-break: break-word; background: #101828; color: #eaecf0;
+      padding: 12px 14px; border-radius: 8px; max-height: 280px; overflow: auto; font-size: 12px; margin: 0;
+    }
+    .log { max-height: 260px; overflow: auto; border: 1px solid var(--line-soft); border-radius: 8px; background: #fcfcfd; padding: 10px 12px; font-size: 12px; }
+    .log div { padding: 3px 0; border-bottom: 1px dashed var(--line-soft); }
+    .log div:last-child { border-bottom: 0; }
+    .msg { min-height: 22px; font-size: 13px; margin-top: 10px; }
+    .msg.error { color: var(--err); } .msg.ok { color: var(--ok); }
+    .split { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
+    .hidden { display: none !important; }
+    .kv { display: grid; grid-template-columns: 120px 1fr; gap: 4px 10px; font-size: 13px; }
+    .kv dt { color: var(--muted); } .kv dd { margin: 0; word-break: break-all; }
+    .claim { border: 1px solid var(--line-soft); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      .nav { position: static; display: flex; gap: 6px; overflow-x: auto; }
+      .nav button { width: auto; white-space: nowrap; }
+      .nav .navnote { display: none; }
+      .split, .grid2, .grid4, .grid5 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page-node-id="KAkoDLIpQTtXGBAFb07Ukb">
+
+<header class="topbar" data-page-node-id="4kS4TR7C4B1tqMDLJM2iEt">
+  <div class="topbar-inner" data-page-node-id="KhXvqInr5FcMh0nXrp2jRL">
+    <div class="brand" data-page-node-id="HZNOZj6PleIaP4DO1qGi8v">NewsAgent 运营总控制台<small data-page-node-id="IV38Kv9TzE8yG2n3cTw9hM">热点 · 写作 · Data Loop 三合一</small></div>
+    <label data-page-node-id="AUVKtbTDw4YsuAhnHqSXat">服务地址<input id="baseUrl" placeholder="留空表示同源" style="width:170px" data-page-node-id="3YDBtoCXMzLfpIBkeWuHQv"></label>
+    <label data-page-node-id="BLyHxAaaLkW9XjCB6Hunce">租户 ID<input id="tenantId" placeholder="Tenant UUID" style="width:220px" data-page-node-id="FqchR0hohpkbqysD181uzv"></label>
+    <label data-page-node-id="ZvW97c9EUpv0EMshl99lEZ">操作者 ID<input id="userId" placeholder="User UUID" style="width:220px" data-page-node-id="0ptP6CyZE3vRdYsNa8bFxv"></label>
+    <label data-page-node-id="kGfM0TPdt3y1AXVRv3tqnL">Data Loop 角色<input id="roles" value="data-loop:admin" style="width:210px" data-page-node-id="4zp03cIKmInUlaEfzP8q5X"></label>
+    <label data-page-node-id="hrnhhsaV05MAoSJJZmbBHf">网关令牌<input id="token" type="password" placeholder="data-loop gateway token" style="width:200px" data-page-node-id="Umx5kxzv0KvUqdYCjwCRsy"></label>
+    <button id="saveConfig" class="secondary" data-page-node-id="tBicEMkilrr7bzrg30QUbA">保存连接配置</button>
+  </div>
+</header>
+
+<div class="shell" data-page-node-id="pGxTiRatuDv2iTTe75tx4u">
+  <nav class="nav" data-page-node-id="rbdJd0SbP8KnWPOZyIytcp">
+    <button data-view="hot" class="active" data-page-node-id="bv7LRACSyEIcHvbCslpfQM">热点运营工作台</button>
+    <button data-view="job" data-page-node-id="FrIg3PvLFHPAZ7ZwpFN3j5">写作任务工作台</button>
+    <button data-view="loop" data-page-node-id="DmnFUxf8dgOkGcRTeeTGDv">Data Loop 评审台</button>
+    <div class="navnote" data-page-node-id="CTZS7mP9rCyVE32HHDrU7D">
+      热点模块当前使用内置示例数据，接口就绪后只需替换 <code data-page-node-id="5DOuP60yeMsUWB3EfCVdRY">loadHotNews()</code>。
+      写作与 Data Loop 直接调用真实 FastAPI 接口。
+    </div>
+  </nav>
+
+  <main data-page-node-id="wPF419dh5kPoNHJVnzBzbb">
+    <!-- ============ 热点运营工作台 ============ -->
+    <section id="view-hot" data-page-node-id="QVBpD0T1quQ2Cdk8AQkSGR">
+      <div class="card" data-page-node-id="cOfMWRsY0I7L8cjE8R0PFu">
+        <h1 data-page-node-id="wZx4LN4lX6SFLceQYflKMC">热点运营工作台 <span class="badge b-mock" data-page-node-id="5M24W3VGQ92q5MbCHi7k2R">示例数据</span></h1>
+        <p class="muted" data-page-node-id="vrqhW7CGZksF6RjMDvGesP">
+          当前数据来自前端内置 fixture，不是真实接口。<code data-page-node-id="1MZ3atdiIKq6X6HvIrCfEU">app/analytics</code> 已有指标聚合、热度评分、
+          排行榜和热点富化，但尚未暴露 HTTP 接口；接口补齐后本页只需改数据加载函数。
+        </p>
+        <div class="row" style="margin-top:14px" data-page-node-id="hEmVCaZ9THQgSSWDfu7ToC">
+          <label data-page-node-id="oZspLcldCr9aHZHtwM2GmT">时间窗口
+            <select id="hotWindow" data-page-node-id="vyrTPnn6eMFAQnMVkcUYiO">
+              <option value="1h" data-page-node-id="daykXyGgdEnEbvjFeDHtf1">最近 1 小时</option>
+              <option value="6h" selected data-page-node-id="lXFF8XeC1111OgxWj3jFNc">最近 6 小时</option>
+              <option value="24h" data-page-node-id="hGDKzZOmQy7tJj8EAYvrx9">最近 24 小时</option>
+            </select>
+          </label>
+          <label data-page-node-id="bfVJvSsTAY0rWXuCLJwwU8">内容类型
+            <select id="hotType" data-page-node-id="ScwV0CAix3Aqv6zxt1DIl2"><option value="all" data-page-node-id="FalixdFQ0CL5ASGyVphMF3">全部</option><option value="article" data-page-node-id="dspvXeq2xBP1JSz6AEpbTQ">图文</option><option value="video" data-page-node-id="r9A8ENam4fJpKQbB4WiAqD">视频</option></select>
+          </label>
+          <label data-page-node-id="WyIyukemL4YSUW64rVGUDP">频道
+            <select id="hotChannel" data-page-node-id="oHQcx5GhNQpqVK3D1pSGzH"><option value="all" data-page-node-id="7oEWiVdNp7G2FHEXoj1ci7">全部</option></select>
+          </label>
+          <button id="hotReload" class="secondary" data-page-node-id="TB0TOpXJLdLixWDPW4V3nI">重新生成示例数据</button>
+          <span class="muted" id="hotGenerated" data-page-node-id="rlFmFDWEaEGZT9L44ZE6dA"></span>
+        </div>
+      </div>
+
+      <div class="card" data-page-node-id="SfePm4fJsiKEpdxCzJgFNF">
+        <h2 data-page-node-id="hCIpgUMSrWSH21zH5LmHPU">热点榜</h2>
+        <table data-page-node-id="hHcUQwi1CeQqICQL3Cmdt2">
+          <thead data-page-node-id="8RthLWgjzOdXc4NTgNNz4g"><tr data-page-node-id="UVcEF50AxN0bt45PDc7TpC"><th style="width:42px" data-page-node-id="TfDtc6eALZjvDfeYJ32FFL">#</th><th data-page-node-id="s4yy7UiIFKpfkBgkYRsIvG">标题</th><th style="width:90px" data-page-node-id="EHjU3X7DDAAlLJJdpAGGpj">频道</th><th style="width:70px" data-page-node-id="A3e5nZEOFvFcG8CzJ3O1Ft">热度</th><th style="width:80px" data-page-node-id="Fa3xVkRAG5Ip1cNboX3jZk">CTR</th><th style="width:90px" data-page-node-id="lCUYFRrV3qbq4pBCSYOsOe">环比</th><th style="width:96px" data-page-node-id="CyvS8ByfpEunbsKKxy3m0j">置信度</th></tr></thead>
+          <tbody id="hotTable" data-page-node-id="MSKHvjDvSDuPvGqgMsNB6g"></tbody>
+        </table>
+      </div>
+
+      <div id="hotDetail" class="hidden" data-page-node-id="k5t9BzSwyE9WfJdpGRSjEk">
+        <div class="card" data-page-node-id="HxnnoLlrq3jJX7EYiOG6Xu">
+          <h2 id="hotTitle" data-page-node-id="FKtNuDrU4ev4yEIR2Hpdrb"></h2>
+          <div class="muted" id="hotMeta" style="margin-bottom:12px" data-page-node-id="g5Gn3EQNxw0Gd8GZw4VzU1"></div>
+          <div class="grid4" id="hotMetrics" data-page-node-id="2MegZEeCK2ufqTHpOiOnJA"></div>
+          <h3 data-page-node-id="KRbEsMHTAdA9AQwkgUjr7Z">热度趋势（12 点，窗口内等距采样）</h3>
+          <div id="hotTrend" data-page-node-id="njMzPKz2imxkxah16M6R6J"></div>
+          <h3 data-page-node-id="04LDkKOo5ZbRIfGuzBoALY">热度分量拆解</h3>
+          <div id="hotComponents" data-page-node-id="z8jddwAQgYZDS0efdtv9q7"></div>
+        </div>
+
+        <div class="card" data-page-node-id="vdBFqm3sgiOezRn3aWlu6v">
+          <h2 data-page-node-id="RFpi8p4DatLyfi3nCQy1zp">分析报告 Claim</h2>
+          <div id="hotClaims" data-page-node-id="LHdk8xlzl17v30OhgITZ6Q"></div>
+        </div>
+
+        <div class="card" data-page-node-id="N4PlM2xOvLrUu06nB40lBJ">
+          <h2 data-page-node-id="pzW0tPO3Fyu8MXXiCYtCIQ">证据新闻白名单</h2>
+          <table data-page-node-id="0T1av88gIaQqI3p6fRWS9i">
+            <thead data-page-node-id="hZUJVPsn9pXUmaRDP3vjdS"><tr data-page-node-id="w3opM4Cy3D4RLEJGYx2pne"><th style="width:200px" data-page-node-id="hEUeiudcvwW5LA7HbT4610">news_id</th><th data-page-node-id="yxgo919vbZ7jGv3bPovgEB">标题</th><th style="width:96px" data-page-node-id="ehrnUoO5MRIyLQWseCtI3O">来源</th><th style="width:120px" data-page-node-id="Fx1G60LWCjEXfLibnHOiSc">发布时间</th></tr></thead>
+            <tbody id="hotEvidence" data-page-node-id="hWlJZcD0P8VshapwaA01y1"></tbody>
+          </table>
+        </div>
+
+        <div class="card" data-page-node-id="7Ua0RuKJxxr6spmMLzkQkY">
+          <h2 data-page-node-id="lzM5QWWME3nrgpRraSGzLm">运营决策</h2>
+          <p class="muted" data-page-node-id="wlzLuOXtl2pC5GldB6111v">决策会写入本页本地记录。真实接口 <code data-page-node-id="6T6b7Uc1P7zQedbxZH5kHC">POST /api/v1/data-loop/operator-decisions</code> 已存在，待热点 run_id 与 news_id 打通后即可落库。</p>
+          <div class="row" style="margin-top:10px" data-page-node-id="AseWaEI3THdNuW8AfAYOZm">
+            <label style="flex:1 1 320px" data-page-node-id="5qqxLd3xSeZPdmSiFvSutd">决策理由<textarea id="hotReason" placeholder="例如：数据窗口内曝光异常，但缺少权威来源佐证，暂缓推送"></textarea></label>
+          </div>
+          <div class="row" style="margin-top:10px" data-page-node-id="MX30i2K6UXPS6sV19HCxwP">
+            <button id="hotAdopt" data-page-node-id="E8BFZ4bVVBZ6FL93ndgWLv">采用</button>
+            <button id="hotReject" class="danger" data-page-node-id="VFChdfGLsoBboccW8xgvgY">拒绝</button>
+            <button id="hotHold" class="secondary" data-page-node-id="CsqFOeQ9z4hPhBUVHknaqR">暂缓</button>
+          </div>
+          <div class="msg" id="hotMsg" data-page-node-id="7OJAa72kRaZezsjE6Wlv5O"></div>
+          <h3 data-page-node-id="zFWg4l7KyMsPxJxO8Mtx3u">本页决策记录</h3>
+          <div class="log" id="hotDecisionLog" data-page-node-id="KDwJBTW5kkkrZAeB8MCYzu"><div class="muted" data-page-node-id="oeadMseAk1Gh5FXxKtyEgd">暂无记录</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 写作任务工作台 ============ -->
+    <section id="view-job" class="hidden" data-page-node-id="HNuRYAmf0DfuWFYrzZ2X7w">
+      <div class="card" data-page-node-id="r59OzIbFGmcyu5MckZqpqI">
+        <h1 data-page-node-id="2Zq5qnrFKZ4Uxp7Kqqo4A4">写作任务工作台 <span class="badge b-live" data-page-node-id="63mVWMMF7PdHKHTftvAs0b">真实接口</span></h1>
+        <p class="muted" data-page-node-id="cee68wZJERa4Prj9nJVpI4">调用 <code data-page-node-id="XNgaEh8KzdGSaWEWYC6uPc">/api/v1/jobs</code>。租户 ID 通过 <code data-page-node-id="rkUbnFX2EXR1vlZ9BWwtky">X-Tenant-ID</code> 请求头传递，必填。</p>
+        <div class="grid2" style="margin-top:12px" data-page-node-id="M2z7GFCLyMNXWirLYm71d6">
+          <label data-page-node-id="sKUWmm2UJrbwwC7MiaqgLJ">选题 / 创作提示词<textarea id="jobTopic" placeholder="请基于知识库资料撰写一篇面向科技从业者的新闻综述，主题为人工智能大模型推动新闻行业智能化转型。"></textarea></label>
+          <div data-page-node-id="idy71tPshtmm0qF6u8cFyI">
+            <label data-page-node-id="njSzMjU6B8IvGFcvyg3PRE">场景
+              <select id="jobScenario" data-page-node-id="jjdESrkvtPbfHaqNM3vxr9"><option value="assisted_writing" data-page-node-id="XjEMP4l40vG5BD25zPxQF2">assisted_writing</option><option value="research_package" data-page-node-id="8ww6Da8JcERjvDDlOMLCMD">research_package</option></select>
+            </label>
+            <label style="margin-top:8px" data-page-node-id="iCwdJzZ9zZLsW9Hvwjkgct">幂等键<input id="jobIdemKey" data-page-node-id="aCrv0DEQqMTZDxTaZZP5Vi"></label>
+            <label style="margin-top:8px" data-page-node-id="gJMmCKee6FJ6C76g0o3FRb">附加要求 JSON<textarea id="jobReq" style="min-height:60px">{}</textarea></label>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px" data-page-node-id="lxwpUKO9dYLn2yKGiAf88y">
+          <button id="jobCreate" data-page-node-id="pxEdRwZ5aaDFDsIsADFPGu">创建任务</button>
+          <button id="jobListReload" class="secondary" data-page-node-id="IjtbZGnMVteaaPQ6ylawdE">刷新列表</button>
+          <span class="muted" id="jobListMeta" data-page-node-id="DU5FWXcI5AUs2N2To4zIv5"></span>
+        </div>
+        <div class="msg" id="jobMsg" data-page-node-id="nllI4tD7DfWdEqAy93p0Ug"></div>
+      </div>
+
+      <div class="card" data-page-node-id="fVjwQxKiWOS8jaTO6kuUzu">
+        <h2 data-page-node-id="o7rRemQJAFhhCAPKAZN4Lc">任务列表</h2>
+        <table data-page-node-id="4RwwAJhBOh6VsttL7EmPNS">
+          <thead data-page-node-id="UDnv2B8ArZqUJ8TRQmXVd8"><tr data-page-node-id="BoiJEWnKWPS4nJ9FMEvjGS"><th style="width:210px" data-page-node-id="g5Y1zZQeHChJjRkUD8RmbD">任务 ID</th><th data-page-node-id="TJPB9NYpnZ3qSqZ3IrWLH5">选题</th><th style="width:120px" data-page-node-id="DHTLgUWW2CMKZp85R5g3IP">状态</th><th style="width:96px" data-page-node-id="UQ1dazU6kX7OT0Nz3XITYs">步骤</th><th style="width:130px" data-page-node-id="jJSBynme1SBhPpJzuynfuM">进度</th><th style="width:150px" data-page-node-id="HBPcWGP2QEcDl4NuXFEZtN">操作</th></tr></thead>
+          <tbody id="jobTable" data-page-node-id="PnDxPZrWr0jyxEVLLFVADc"></tbody>
+        </table>
+        <div class="row" style="margin-top:12px" data-page-node-id="a6tPhAEOQkA2JjCdPByiFH">
+          <button id="jobPrev" class="ghost sm" data-page-node-id="Dehy0pqHVBHDZYnOlk2kAa">上一页</button>
+          <button id="jobNext" class="ghost sm" data-page-node-id="oHyNxQSuX3F4bt1la8Lcc3">下一页</button>
+          <span class="muted" id="jobPageInfo" data-page-node-id="N1QZCGgy7YEzEd1TiFmBcB"></span>
+        </div>
+      </div>
+
+      <div id="jobDetail" class="hidden" data-page-node-id="7hNPya6lCEaGb5GCIbOIFZ">
+        <div class="card" data-page-node-id="NINapwaauOPQwALwFFT6jN">
+          <h2 data-page-node-id="IQqMottMCH9F39j8iH7b3F">任务详情</h2>
+          <div class="grid5" id="jobMetrics" data-page-node-id="LDG6EKne97gF32kPxQmlRw"></div>
+          <div class="bar" style="margin-top:12px" data-page-node-id="dCZEJtRU5d3ruFYoCoFCRR"><span id="jobBar" style="width:0" data-page-node-id="ZEpmYJYXPoGssamBd28A8T"></span></div>
+          <dl class="kv" id="jobKv" style="margin-top:14px" data-page-node-id="Ks5oWzDgjZiWH84GU14UEI"></dl>
+          <div class="row" style="margin-top:12px" data-page-node-id="xUv3Zr8MO9DaLaACQBkUF6">
+            <button id="jobLoadRecovery" class="secondary sm" data-page-node-id="cWt3akqyioyKbIpujqYmoG">查看恢复计划</button>
+            <button id="jobLoadResearch" class="secondary sm" data-page-node-id="ztYWPsMz7kPDQBlHNJZEz8">查看 RAG 指标</button>
+            <button id="jobLoadPackage" class="secondary sm" data-page-node-id="g9oQ9NEID57U6O1Fsmglmc">查看资料包</button>
+            <button id="jobPublish" class="sm" data-page-node-id="bePpRhBVUvWBH4aYP7j1ii">发布</button>
+          </div>
+        </div>
+
+        <div class="card" data-page-node-id="F8AbWkiyChBxuDgB3wtFGp">
+          <h2 data-page-node-id="XrT4I1XaZ773icIEsH7lGT">实时事件流 <span class="muted" id="sseState" data-page-node-id="ApNB0NZwWdy2OlJPxPHe61">未连接</span></h2>
+          <p class="muted" data-page-node-id="sAt7BKmAz9zR1MscCoZVpG">
+            后端 SSE 要求 <code data-page-node-id="K2SUUwrik5ouu1yNiQ7g79">X-Tenant-ID</code> 请求头，浏览器原生 EventSource 不能自定义请求头，
+            因此这里用 fetch 流手动解析 SSE，并携带 <code data-page-node-id="yTQSwaL4pmNF2D2UlnOorU">Last-Event-ID</code> 做断线续传。
+          </p>
+          <div class="row" style="margin:10px 0" data-page-node-id="C7dFM9B5Jo5zhywCxvCpLg">
+            <button id="sseStart" class="sm" data-page-node-id="nPmnOz2NlYP3p6VKeNhIfK">开始订阅</button>
+            <button id="sseStop" class="secondary sm" data-page-node-id="j4VfGG7JVKD7TojxBGUBEM">停止订阅</button>
+          </div>
+          <div class="log" id="sseLog" data-page-node-id="7INmyXCcMlaFiUHbMwk0tn"><div class="muted" data-page-node-id="DC6fdGiHQI9p4F0GbDQnuE">尚未订阅</div></div>
+        </div>
+
+        <div class="card" data-page-node-id="4mt1cuCmkUcWiR5cvHnn3C">
+          <h2 data-page-node-id="5QQfzsDGqWNDtsoQh7B5DE">人工门禁决策</h2>
+          <div class="row" data-page-node-id="a1oQbV5umiT1yMovid4B6C">
+            <label data-page-node-id="DGO1M1Lou9bRWbLOf8r7mk">门禁
+              <select id="gateSel" data-page-node-id="8xwwrsCAj91B3nvOvrsiGv">
+                <option value="research" data-page-node-id="Sxagm8M99QPR5Ms6hEAaUo">research</option><option value="outline" data-page-node-id="wk5BB05lWQhaGgk1Sq0WHn">outline</option>
+                <option value="review" data-page-node-id="cXVd23Weh3RIGbvrnkIoav">review</option><option value="final" data-page-node-id="KL24dJ6uXGNldPCw6cs9iN">final</option>
+              </select>
+            </label>
+            <label data-page-node-id="TnYXoHdOw6Q5fTrtVxgGje">动作
+              <select id="gateAction" data-page-node-id="SCw4IGHRZUrcnah5LkKRBr">
+                <option value="approve" data-page-node-id="WAzZGibNCaP5vAPoKWOdEy">approve</option><option value="revise" data-page-node-id="5dhYxsqL96WGGrpqyLC2rM">revise</option>
+                <option value="research" data-page-node-id="dpAM0BxppPWgXgz70sTmjo">research</option><option value="cancel" data-page-node-id="1Q13qChfQw672JMOWtYXvi">cancel</option>
+              </select>
+            </label>
+            <label style="flex:1 1 280px" data-page-node-id="FLWd9DtSqHq3C0e3UdTb8R">补充说明<input id="gateInstruction" placeholder="退回时说明需要修改的内容" data-page-node-id="v6GHKECrafk0Y1RDW693nL"></label>
+            <button id="gateSubmit" data-page-node-id="5sY4rH72QCDAlk00sLD2xn">提交决策</button>
+          </div>
+          <div class="msg" id="gateMsg" data-page-node-id="bSPCNQ6u6sE7YaVX2PuNWu"></div>
+        </div>
+
+        <div class="card" data-page-node-id="ug2wAy0BsIFKAJ4Cs2OXl2">
+          <h2 data-page-node-id="WZKTG4T1BrVsfx5qy0tBsj">原始响应</h2>
+          <pre id="jobRaw" data-page-node-id="hC5KWngZG7dikHuo8q6n54">{}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Data Loop 评审台 ============ -->
+    <section id="view-loop" class="hidden" data-page-node-id="vSC2YaMTQJFNxbPqzbcaV6">
+      <div class="card" data-page-node-id="7oR3vxIxmguEUxSYEoxhC9">
+        <h1 data-page-node-id="wRIAHgwddpweoF3nx7vEoQ">Data Loop 评审台 <span class="badge b-live" data-page-node-id="FZztBZJxQu7Yus1vHBhMLr">真实接口</span></h1>
+        <p class="muted" data-page-node-id="H9flyNOytwocIDC054reBi">
+          调用 <code data-page-node-id="xtvkCS4fFUZBjAHv3IKIGj">/api/v1/data-loop</code>。该路由由可信网关做身份注入，需要
+          <code data-page-node-id="I4LnUzFdIH5Z5aLWPv4qo9">Authorization: Bearer</code>、<code data-page-node-id="vgdJu0AdzB83Aldutmm4yR">X-Tenant-ID</code>、<code data-page-node-id="zY3nVqIdNdXU9YDsanQLGA">X-User-ID</code>、
+          <code data-page-node-id="DstXcuQ7KnuFMG7ALWyTMq">X-Data-Loop-Roles</code> 四个请求头，缺任一都会被拒绝。
+          右上角配置保存后即生效。
+        </p>
+        <div class="row" style="margin-top:12px" data-page-node-id="2uEQJVzPfAJcrCEOyJ97nZ">
+          <button id="loopLoadCases" class="secondary" data-page-node-id="0kDVjdsdIF4iLUcoOTnBhe">加载反馈案例</button>
+          <button id="loopLoadBundle" class="secondary" data-page-node-id="VpUMQ8Jfe8tudXWgIdFqp0">查询生效 Bundle</button>
+          <label data-page-node-id="doHKJbEHhgLHtAUnjmkyHr">状态过滤
+            <select id="loopStatus" data-page-node-id="kcbEPu3y5AFeGMwGK37k2F"><option value="" data-page-node-id="7RzjOkffSLp9g4Bhu111GW">全部</option></select>
+          </label>
+        </div>
+        <div class="msg" id="loopMsg" data-page-node-id="kGapduMtqVw6fvpOgDeJsc"></div>
+      </div>
+
+      <div class="card" data-page-node-id="gumrSDPIXDLIMjac7KmaNL">
+        <h2 data-page-node-id="JLFGxjnAbo6FoDDCQiDnr9">反馈案例</h2>
+        <table data-page-node-id="e9PMxQuBaxaxN04TEtxFCn">
+          <thead data-page-node-id="ZONWhqaR9Kss41caSyFB6J"><tr data-page-node-id="v03qQ69eCKW37Ky6R4Mlkk"><th style="width:210px" data-page-node-id="6oHptSF06TYZoH5PZf6BTu">Case ID</th><th style="width:120px" data-page-node-id="bu11hAm51VMjdLumhbf7FS">问题类型</th><th style="width:88px" data-page-node-id="ZhyP2eMMqA5F5uJ9GXglF4">严重度</th><th style="width:100px" data-page-node-id="NSDgzsMoLRbUU3GWVUJbHr">状态</th><th style="width:190px" data-page-node-id="3grIoXj3qf8fQVvTiDD2QF">关联</th><th style="width:110px" data-page-node-id="23m3hFHsL9MlmvlSuAySyF">操作</th></tr></thead>
+          <tbody id="loopTable" data-page-node-id="Okh2eQ5gpzcwqo6iqxGr7H"></tbody>
+        </table>
+      </div>
+
+      <div class="split" data-page-node-id="z4jxoMGo97U42q0nrLjMij">
+        <div class="card" data-page-node-id="8mMBBDK2a8Sq75i2pBO1G0">
+          <h2 data-page-node-id="DTNgIbiY3DAN3HLDuKEH6g">提交 / 批准标签</h2>
+          <div class="row" style="flex-direction:column;align-items:stretch" data-page-node-id="HA31BmGYxtBjFAnmk1K4Vb">
+            <label data-page-node-id="L17TXblaz32tp2EAD3ANcZ">反馈案例 ID<input id="labelCaseId" data-page-node-id="S3OLIMAurNI9EqEgkZwP0k"></label>
+            <label data-page-node-id="ApI5zCmvCsPNvD2iFcjx1L">标签 ID（批准时必填）<input id="labelId" data-page-node-id="G3qUWsDs5QgyydJ7HG8MUh"></label>
+            <label data-page-node-id="mcUGItnmpbVA6Vjs7t0Bc3">期望版本（批准时必填）<input id="labelVersion" type="number" min="1" value="1" data-page-node-id="y381iyP7OQ3sBuVKjxJGRd"></label>
+            <label data-page-node-id="h0SQgn99PtGhZO5vBx8CAp">标签内容 JSON<textarea id="labelPayload">{"problem_type":"analysis_incorrect","correction":{"note":"示例"}}</textarea></label>
+          </div>
+          <div class="row" style="margin-top:10px" data-page-node-id="2QRtJO4M2Y5LhOE5uTeyI1">
+            <button id="labelSubmit" class="sm" data-page-node-id="HHC30ARZITcN3pwpeEzYcp">提交标签</button>
+            <button id="labelApprove" class="secondary sm" data-page-node-id="DMjWwwdlvA89lXjpjOM14L">批准标签</button>
+          </div>
+          <div class="msg" id="labelMsg" data-page-node-id="r95ETf9sD6x7tSk8JnggPu"></div>
+        </div>
+
+        <div class="card" data-page-node-id="K9a6RO74TpSUx5tjo5XOOQ">
+          <h2 data-page-node-id="cerfQOoUXExARq93GZkSGU">评测集冻结</h2>
+          <div class="grid2" data-page-node-id="N1GDfB14Bj1dgHK6kovfez">
+            <label data-page-node-id="3ndbGPufBDVMWywkw4MtKC">数据集名称<input id="dsName" value="hot-news-golden" data-page-node-id="qC8FKlha8pJ0kRuM8nR9Ue"></label>
+            <label data-page-node-id="flCoBjyyTagj98O5JPBlgE">版本<input id="dsVersion" value="2026-09-10" data-page-node-id="FujSFgB7eFbKcRSRS6DgLr"></label>
+            <label data-page-node-id="8Bg0myNVjGdXL8aC21I7Kr">层级
+              <select id="dsLayer" data-page-node-id="k7sGB4oBstUvFy2zikjwnG"><option value="golden" data-page-node-id="V0FllhWykQUHTDwJrJxsKb">golden</option><option value="fresh_bad_case" data-page-node-id="EM9b4GEFx9LwvvNnLG7NEH">fresh_bad_case</option><option value="high_risk_regression" data-page-node-id="Qxk5AixLloFnErDBNuU9ED">high_risk_regression</option></select>
+            </label>
+            <label data-page-node-id="mwMl3eTcaatd4PVvbek1Qm">截止时间（ISO 8601，带时区）<input id="dsCutoff" data-page-node-id="uwk7vtDk50MDzo1LRTB84r"></label>
+          </div>
+          <label style="margin-top:8px" data-page-node-id="QuVR4uTJnILdwnDzELjess">反馈案例 ID 列表（逗号分隔）<input id="dsCases" placeholder="从上方表格复制" data-page-node-id="9oYAc3PopeN2tQmQXCPdSh"></label>
+          <div class="row" style="margin-top:10px" data-page-node-id="2viiUYE6uI3FA0NTQK71Y1"><button id="dsFreeze" class="sm" data-page-node-id="X4KZkXPqtdRVjDgwvdSsza">冻结为不可变评测集</button></div>
+          <div class="msg" id="dsMsg" data-page-node-id="Aq1uoavlwzzdiSYbJFZXMd"></div>
+        </div>
+      </div>
+
+      <div class="split" data-page-node-id="Bw8u7E68GF3HKhvyOf4vQ8">
+        <div class="card" data-page-node-id="7dzWU9Y7OviqrlALOVqlma">
+          <h2 data-page-node-id="7rzfhAtu2eqhnjOCNShWqA">候选配置晋升</h2>
+          <div class="row" style="flex-direction:column;align-items:stretch" data-page-node-id="0xWRk5Btm7AMQ5OIkIaxxA">
+            <label data-page-node-id="GeFHZD4WeCHwxdeg99CXAh">基线 Bundle ID<input id="candBase" data-page-node-id="zdJBLv0YehqAYK1sotZpC8"></label>
+            <label data-page-node-id="22PeQr9bAkF60nQNh6KUhG">候选版本<input id="candVersion" value="hot-v2-candidate-1" data-page-node-id="74idt9J3BDbajUz7b62SJl"></label>
+            <label data-page-node-id="5GHiG0MEJAEdBqAshoKfEt">提案理由<textarea id="candReason" style="min-height:56px">提升热点归因准确率</textarea></label>
+            <label data-page-node-id="ARLQGz2ud5kmDTWxOUtWBO">配置 Spec JSON<textarea id="candSpec" style="min-height:110px">{}</textarea></label>
+            <label data-page-node-id="0ivt0mhu6aDub4itW8Gl0X">结构化 Diff JSON 数组<textarea id="candDiff" style="min-height:90px">[{"path":"hot_score.weight","before":"0.4","after":"0.5"}]</textarea></label>
+          </div>
+          <div class="row" style="margin-top:10px" data-page-node-id="YQyqdWLy4iItd9hkZbBbju"><button id="candPropose" class="sm" data-page-node-id="4kxbqe9EaeqnIVfqcPPR5U">提交候选配置</button></div>
+          <div class="msg" id="candMsg" data-page-node-id="c36oB2a5R7BpzEUHqKHLN1"></div>
+        </div>
+
+        <div class="card" data-page-node-id="nM3ow7BuGGl6BrQ2D4gfGi">
+          <h2 data-page-node-id="8jSrVthwsR01IxvI3res8J">生产 Bundle 回滚</h2>
+          <div class="row" style="flex-direction:column;align-items:stretch" data-page-node-id="WouglgFHNoNoDMy37FjGVa">
+            <label data-page-node-id="PMBk1yIbCzY4YmZWfZG3qj">目标 Bundle ID<input id="rbTarget" data-page-node-id="HBv09De0aetPwqKQkvQoDf"></label>
+            <label data-page-node-id="Db5ZrgTHglvureU31n6r1u">回滚理由<textarea id="rbReason" style="min-height:70px">线上指标退化，回滚至上一稳定版本</textarea></label>
+          </div>
+          <div class="row" style="margin-top:10px" data-page-node-id="ECZ05CIInxjovu4zX3g7Ni"><button id="rbSubmit" class="danger sm" data-page-node-id="bHWJAYnCLvgwIKctZ886m5">执行回滚</button></div>
+          <div class="msg" id="rbMsg" data-page-node-id="pw8hkwEyJ04D2GD0zglnbe"></div>
+          <h3 data-page-node-id="GAlt952jfqImvVUJSGtmVN">Data Loop 运行</h3>
+          <div class="row" style="flex-direction:column;align-items:stretch" data-page-node-id="CQG2JsPgjuok5KRnZQlqWE">
+            <label data-page-node-id="PrZqqGqH3xCCHvCIeaVjnH">工作流 ID<input id="runId" data-page-node-id="A85Wp9Fc8DmlTC2CMv3eU0"></label>
+            <label data-page-node-id="l5PswwYHq7rB7gMB9CArOO">决策
+              <select id="runDecision" data-page-node-id="ShQ7T1JpLFwbvOoY20ouSW"><option value="approve" data-page-node-id="e4vO6sPGvddCyaAGmb5Gz5">approve</option><option value="reject" data-page-node-id="HPQOJUQsoc7TqHLvjn6Zmj">reject</option></select>
+            </label>
+            <label data-page-node-id="ne3xy3mTf2hpW3v992qcCW">理由<input id="runReason" value="人工复核通过" data-page-node-id="h3y6tbFxZhDgmAVHhiXv0c"></label>
+          </div>
+          <div class="row" style="margin-top:10px" data-page-node-id="jUo5XRaa8VzDZeBsgO9QAN">
+            <button id="runSnapshot" class="secondary sm" data-page-node-id="Cx18pyLyopKwsgw672xl2E">查询快照</button>
+            <button id="runDecide" class="sm" data-page-node-id="nC5kw1B5qoOZRkXqsmLhHs">提交晋升决策</button>
+          </div>
+          <div class="msg" id="runMsg" data-page-node-id="7vFAJAr2NoH5h8pCIQBF2I"></div>
+        </div>
+      </div>
+
+      <div class="card" data-page-node-id="t8EUgHvmUsMDM9zCVryPXq">
+        <h2 data-page-node-id="5CDFPPomvtDddv68ZoXS44">原始响应</h2>
+        <pre id="loopRaw" data-page-node-id="u6RuSnfArzMLT71sZUeEbN">{}</pre>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+const CFG_KEY = "newsagent.console.config";
+const $ = (id) => document.getElementById(id);
+
+const state = {
+  baseUrl: "",
+  tenantId: "",
+  userId: "",
+  roles: "data-loop:admin",
+  token: "",
+  hot: { rows: [], selected: null, decisions: [] },
+  job: { items: [], offset: 0, limit: 10, total: 0, current: null, stream: null, lastEventId: "" },
+  loop: { cases: [] },
+};
+
+/* ---------------- 配置与通用请求 ---------------- */
+
+function loadConfig() {
+  try {
+    const raw = localStorage.getItem(CFG_KEY);
+    if (raw) Object.assign(state, JSON.parse(raw));
+  } catch (_) {}
+  $("baseUrl").value = state.baseUrl || "";
+  $("tenantId").value = state.tenantId || "";
+  $("userId").value = state.userId || "";
+  $("roles").value = state.roles || "data-loop:admin";
+  $("token").value = state.token || "";
+}
+
+function saveConfig() {
+  state.baseUrl = $("baseUrl").value.trim().replace(/\/+$/, "");
+  state.tenantId = $("tenantId").value.trim();
+  state.userId = $("userId").value.trim();
+  state.roles = $("roles").value.trim() || "data-loop:admin";
+  state.token = $("token").value.trim();
+  localStorage.setItem(CFG_KEY, JSON.stringify({
+    baseUrl: state.baseUrl, tenantId: state.tenantId,
+    userId: state.userId, roles: state.roles, token: state.token,
+  }));
+  return true;
+}
+
+function buildHeaders(kind, extra) {
+  const h = Object.assign({ "Content-Type": "application/json" }, extra || {});
+  if (state.tenantId) h["X-Tenant-ID"] = state.tenantId;
+  /* jobs 的写操作（POST /api/v1/jobs 依赖 get_user_id）与 data-loop 全部端点都需要 X-User-ID */
+  const uid = state.userId || (kind === "loop" ? state.tenantId : "");
+  if (uid) h["X-User-ID"] = uid;
+  if (kind === "loop") {
+    h["X-Data-Loop-Roles"] = state.roles;
+    if (state.token) h["Authorization"] = "Bearer " + state.token;
+  }
+  return h;
+}
+
+async function api(path, opts) {
+  const o = opts || {};
+  const res = await fetch(state.baseUrl + path, {
+    method: o.method || "GET",
+    headers: buildHeaders(o.kind, o.headers),
+    body: o.body === undefined ? undefined : JSON.stringify(o.body),
+    signal: o.signal,
+  });
+  const text = await res.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch (_) { data = text; }
+  if (!res.ok) {
+    const detail = data && data.detail ? JSON.stringify(data.detail) : (text || res.statusText);
+    throw new Error(res.status + " " + detail);
+  }
+  return data;
+}
+
+function setMsg(el, text, ok) {
+  el.textContent = text;
+  el.className = "msg " + (text ? (ok ? "ok" : "error") : "");
+}
+
+function uuid() {
+  if (crypto && crypto.randomUUID) return crypto.randomUUID();
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+  });
+}
+
+function esc(s) {
+  return String(s === null || s === undefined ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/* ---------------- 视图切换 ---------------- */
+
+document.querySelectorAll(".nav button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".nav button").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    ["hot", "job", "loop"].forEach((v) => {
+      $("view-" + v).classList.toggle("hidden", v !== btn.dataset.view);
+    });
+  });
+});
+
+/* ================= 模块一：热点运营工作台（示例数据） ================= */
+
+const CHANNELS = ["科技", "财经", "社会", "国际", "体育", "娱乐"];
+const TITLES = [
+  ["多地推进人工智能算力中心建设，地方专项债投向明确", "科技"],
+  ["央行发布三季度货币政策执行报告，强调逆周期调节", "财经"],
+  ["台风" + "“海燕”" + "登陆沿海地区，多地启动防台风二级响应", "社会"],
+  ["全球主要经济体就数字贸易规则达成框架性共识", "国际"],
+  ["国内新能源车企八月交付量集体回暖，出口占比创新高", "财经"],
+  ["国家医保目录调整启动，创新药申报数量明显增加", "社会"],
+  ["秋季学期起多省份推行中小学人工智能通识课", "科技"],
+  ["国际金价再创历史新高，避险资金持续流入", "财经"],
+  ["城市轨道交通新线开通，日均客运量突破千万人次", "社会"],
+  ["男子篮球亚洲杯预选赛收官，中国队锁定决赛圈席位", "体育"],
+];
+
+function mulberry32(seed) {
+  return function () {
+    seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function generateHotNews() {
+  const win = $("hotWindow").value;
+  const typeFilter = $("hotType").value;
+  const chFilter = $("hotChannel").value;
+  const rand = mulberry32(Date.now() % 100000);
+  const rows = [];
+
+  for (let i = 0; i < TITLES.length; i++) {
+    const [title, channel] = TITLES[i];
+    const content_type = i % 3 === 2 ? "video" : "article";
+    if (typeFilter !== "all" && content_type !== typeFilter) continue;
+    if (chFilter !== "all" && channel !== chFilter) continue;
+
+    const base = 40000 + Math.floor(rand() * 260000);
+    const impressions = Math.round(base * (win === "1h" ? 0.2 : win === "6h" ? 1 : 3.4));
+    const ctr = +(0.018 + rand() * 0.11).toFixed(4);
+    const clicks = Math.round(impressions * ctr);
+    const unique_users = Math.round(clicks * (0.72 + rand() * 0.2));
+    const hot_score = +(52 + rand() * 46).toFixed(1);
+    const delta = +((rand() - 0.35) * 180).toFixed(1);
+
+    const trend = [];
+    let v = Math.max(60, Math.round(hot_score * 0.35));
+    for (let p = 0; p < 12; p++) {
+      v = Math.max(40, Math.round(v + (rand() - 0.42) * 22));
+      trend.push(v);
+    }
+
+    const components = [
+      { key: "exposure_growth", label: "曝光增长", weight: 0.32, value: +(rand() * 100).toFixed(1) },
+      { key: "interaction_rate", label: "互动率", weight: 0.24, value: +(rand() * 100).toFixed(1) },
+      { key: "dwell_time", label: "停留时长", weight: 0.18, value: +(rand() * 100).toFixed(1) },
+      { key: "source_spread", label: "来源扩散", weight: 0.16, value: +(rand() * 100).toFixed(1) },
+      { key: "freshness", label: "时效衰减", weight: 0.10, value: +(rand() * 100).toFixed(1) },
+    ].sort((a, b) => b.value - a.value);
+
+    rows.push({
+      news_id: "nws_" + (100000 + i * 137) + "_" + win,
+      title, channel, content_type,
+      impressions, clicks, unique_users, ctr,
+      effective_consumptions: Math.round(clicks * (0.5 + rand() * 0.35)),
+      avg_dwell_seconds: Math.round(28 + rand() * 145),
+      completion_rate: +(0.3 + rand() * 0.55).toFixed(3),
+      interactions: Math.round(clicks * (0.01 + rand() * 0.06)),
+      interaction_rate: +(0.01 + rand() * 0.06).toFixed(4),
+      hot_score, delta, trend, components,
+      window: win,
+      confidence: ["high", "medium", "low"][Math.floor(rand() * 3)],
+      claims: buildClaims(title, ctr, impressions, delta, components),
+      evidence: buildEvidence(i, title, rand),
+    });
+  }
+  rows.sort((a, b) => b.hot_score - a.hot_score);
+  state.hot.rows = rows;
+  $("hotGenerated").textContent = "共 " + rows.length + " 条 · 窗口 " + win;
+  renderHotTable();
+  $("hotDetail").classList.add("hidden");
+  state.hot.selected = null;
+}
+
+function buildClaims(title, ctr, impressions, delta, components) {
+  const top = components[0];
+  return [
+    {
+      claim_type: "metric",
+      text: "该新闻在窗口内点击率为 " + (ctr * 100).toFixed(2) + "%，曝光量为 " + impressions.toLocaleString() + "，环比变化 " + delta + "%。",
+      metric_refs: ["ctr", "impressions", "delta_vs_baseline"],
+      evidence_news_ids: [],
+      confidence: 0.93,
+      limitations: [],
+    },
+    {
+      claim_type: "fact",
+      text: "标题所示事件已有多家来源报道，核心事实在时间、主体和地点上一致。",
+      metric_refs: [],
+      evidence_news_ids: ["EVID-1", "EVID-2"],
+      confidence: 0.71,
+      limitations: ["部分来源为二手转载，未找到一手权威文件原文"],
+    },
+    {
+      claim_type: "hypothesis",
+      text: "热度主要由" + top.label + "驱动，可能与" + title.slice(0, 12) + "相关议题的集中讨论有关。",
+      metric_refs: [top.key],
+      evidence_news_ids: ["EVID-3"],
+      confidence: 0.48,
+      limitations: ["相关性不等于因果，缺少对照维度验证", "样本窗口较短，未排除周期性波动"],
+    },
+  ];
+}
+
+function buildEvidence(seed, title, rand) {
+  const sources = ["腾讯新闻", "人民网", "新华社", "财新网", "界面新闻"];
+  const out = [];
+  for (let i = 0; i < 4; i++) {
+    out.push({
+      news_id: "nws_" + (900000 + seed * 31 + i * 7),
+      title: title.slice(0, 16) + " · 相关报道 " + (i + 1),
+      source: sources[(seed + i) % sources.length],
+      published_at: new Date(Date.now() - Math.floor(rand() * 20 + i) * 3600 * 1000).toISOString(),
+    });
+  }
+  return out;
+}
+
+function renderHotTable() {
+  const tb = $("hotTable");
+  if (!state.hot.rows.length) {
+    tb.innerHTML = '<tr><td colspan="7" class="muted">当前筛选条件下没有数据</td></tr>';
+    return;
+  }
+  tb.innerHTML = state.hot.rows.map((r, i) => {
+    const cls = r.news_id === state.hot.selected ? "clickable selected" : "clickable";
+    const d = r.delta >= 0 ? '<span class="up">+' + r.delta + '%</span>' : '<span class="down">' + r.delta + '%</span>';
+    const cb = r.confidence === "high" ? "b-green" : r.confidence === "medium" ? "b-blue" : "b-gray";
+    return '<tr class="' + cls + '" data-id="' + r.news_id + '">' +
+      '<td>' + (i + 1) + '</td>' +
+      '<td>' + esc(r.title) + ' <span class="tag">' + r.content_type + '</span></td>' +
+      '<td>' + esc(r.channel) + '</td>' +
+      '<td><strong>' + r.hot_score + '</strong></td>' +
+      '<td>' + (r.ctr * 100).toFixed(2) + '%</td>' +
+      '<td>' + d + '</td>' +
+      '<td><span class="badge ' + cb + '">' + r.confidence + '</span></td>' +
+      '</tr>';
+  }).join("");
+  tb.querySelectorAll("tr[data-id]").forEach((tr) => {
+    tr.addEventListener("click", () => selectHot(tr.dataset.id));
+  });
+}
+
+function selectHot(id) {
+  const r = state.hot.rows.find((x) => x.news_id === id);
+  if (!r) return;
+  state.hot.selected = id;
+  renderHotTable();
+  $("hotDetail").classList.remove("hidden");
+
+  $("hotTitle").textContent = r.title;
+  $("hotMeta").innerHTML =
+    '<span class="tag">news_id ' + esc(r.news_id) + '</span>' +
+    '<span class="tag">' + r.channel + '</span>' +
+    '<span class="tag">' + r.content_type + '</span>' +
+    '<span class="tag">窗口 ' + r.window + '</span>' +
+    '<span class="badge b-mock">示例数据</span>';
+
+  $("hotMetrics").innerHTML = [
+    ["曝光量", r.impressions.toLocaleString()],
+    ["点击量", r.clicks.toLocaleString()],
+    ["点击率", (r.ctr * 100).toFixed(2) + "%"],
+    ["独立用户", r.unique_users.toLocaleString()],
+    ["有效消费", r.effective_consumptions.toLocaleString()],
+    ["平均停留", r.avg_dwell_seconds + " 秒"],
+    ["完播/完成度", (r.completion_rate * 100).toFixed(1) + "%"],
+    ["互动率", (r.interaction_rate * 100).toFixed(2) + "%"],
+  ].map(([k, v]) => '<div class="metric"><span>' + k + '</span><strong>' + v + '</strong></div>').join("");
+
+  $("hotTrend").innerHTML = sparkline(r.trend);
+  $("hotComponents").innerHTML = r.components.map((c) =>
+    '<div style="margin-bottom:8px"><div class="row" style="justify-content:space-between">' +
+    '<span>' + c.label + ' <span class="tag">权重 ' + c.weight + '</span></span>' +
+    '<strong>' + c.value + '</strong></div>' +
+    '<div class="bar"><span style="width:' + c.value + '%"></span></div></div>'
+  ).join("");
+
+  $("hotClaims").innerHTML = r.claims.map((c) => {
+    const cb = c.claim_type === "metric" ? "b-blue" : c.claim_type === "fact" ? "b-green" : "b-purple";
+    const tl = c.claim_type === "metric" ? "指标" : c.claim_type === "fact" ? "事实" : "假设";
+    return '<div class="claim">' +
+      '<div class="row" style="justify-content:space-between"><span class="badge ' + cb + '">' + tl + '</span>' +
+      '<span class="muted">置信度 ' + c.confidence + '</span></div>' +
+      '<p style="margin:8px 0">' + esc(c.text) + '</p>' +
+      (c.metric_refs.length ? '<div class="muted">指标引用：' + c.metric_refs.map((m) => '<span class="tag">' + esc(m) + '</span>').join("") + '</div>' : "") +
+      (c.evidence_news_ids.length ? '<div class="muted">证据：' + c.evidence_news_ids.map((m) => '<span class="tag">' + esc(m) + '</span>').join("") + '</div>' : "") +
+      (c.limitations.length ? '<div class="muted">局限：' + c.limitations.map((m) => esc(m)).join("；") + '</div>' : "") +
+      '</div>';
+  }).join("");
+
+  $("hotEvidence").innerHTML = r.evidence.map((e) =>
+    '<tr><td><code>' + esc(e.news_id) + '</code></td><td>' + esc(e.title) + '</td><td>' + esc(e.source) + '</td><td>' + new Date(e.published_at).toLocaleString("zh-CN") + '</td></tr>'
+  ).join("");
+
+  renderDecisionLog();
+}
+
+function sparkline(points) {
+  const w = 640, h = 90, pad = 6;
+  const max = Math.max.apply(null, points), min = Math.min.apply(null, points);
+  const span = Math.max(1, max - min);
+  const step = (w - pad * 2) / (points.length - 1);
+  const coords = points.map((p, i) => [
+    pad + i * step,
+    h - pad - ((p - min) / span) * (h - pad * 2),
+  ]);
+  const line = coords.map((c, i) => (i ? "L" : "M") + c[0].toFixed(1) + " " + c[1].toFixed(1)).join(" ");
+  const area = line + " L" + coords[coords.length - 1][0].toFixed(1) + " " + (h - pad) + " L" + coords[0][0].toFixed(1) + " " + (h - pad) + " Z";
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" height="90" role="img" aria-label="热度趋势">' +
+    '<path d="' + area + '" fill="#eff4ff" stroke="none"/>' +
+    '<path d="' + line + '" fill="none" stroke="#155eef" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
+    points.map((p, i) => '<circle cx="' + coords[i][0].toFixed(1) + '" cy="' + coords[i][1].toFixed(1) + '" r="2.5" fill="#155eef"/>').join("") +
+    '</svg>';
+}
+
+function recordDecision(type) {
+  const r = state.hot.rows.find((x) => x.news_id === state.hot.selected);
+  if (!r) return;
+  const reason = $("hotReason").value.trim();
+  if (!reason) { setMsg($("hotMsg"), "请先填写决策理由", false); return; }
+  state.hot.decisions.unshift({
+    at: new Date().toLocaleString("zh-CN"),
+    news_id: r.news_id, type, reason,
+    idempotency_key: uuid(),
+  });
+  $("hotReason").value = "";
+  setMsg($("hotMsg"), "已在本地记录「" + type + "」。待 /operator-decisions 与热点 run_id 打通后可直接落库。", true);
+  renderDecisionLog();
+}
+
+function renderDecisionLog() {
+  const el = $("hotDecisionLog");
+  if (!state.hot.decisions.length) { el.innerHTML = '<div class="muted">暂无记录</div>'; return; }
+  el.innerHTML = state.hot.decisions.map((d) =>
+    '<div><strong>' + esc(d.type) + '</strong> · ' + esc(d.news_id) + '<br>' +
+    '<span class="muted">' + esc(d.reason) + '</span><br>' +
+    '<span class="muted">' + d.at + ' · idem ' + esc(d.idempotency_key) + '</span></div>'
+  ).join("");
+}
+
+/* ================= 模块二：写作任务工作台 ================= */
+
+const STEP_LABEL = {
+  research: "调研", outline: "提纲", section_draft: "章节写作",
+  assemble: "组装", review: "审核", section_revise: "章节返工", finalize: "定稿",
+};
+
+async function requireTenant() {
+  if (!state.tenantId) { throw new Error("请先在右上角填写租户 ID 并保存"); }
+}
+
+function statusBadge(s) {
+  const map = {
+    created: "b-gray", researching: "b-blue", research_review: "b-blue",
+    research_completed: "b-blue", outlining: "b-blue", outline_review: "b-blue",
+    drafting: "b-blue", assembling: "b-blue", reviewing: "b-blue", revising: "b-blue",
+    final_review: "b-blue", waiting_human: "b-red", final_approved: "b-green",
+    published: "b-green", failed: "b-red", cancelled: "b-gray",
+  };
+  return '<span class="badge ' + (map[s] || "b-gray") + '">' + esc(s) + '</span>';
+}
+
+async function createJob() {
+  saveConfig();
+  const msg = $("jobMsg");
+  try {
+    await requireTenant();
+    const topic = $("jobTopic").value.trim();
+    if (!topic) throw new Error("请填写选题");
+    let req = {};
+    try { req = JSON.parse($("jobReq").value.trim() || "{}"); }
+    catch (_) { throw new Error("附加要求必须是合法 JSON"); }
+    const body = {
+      topic,
+      scenario: $("jobScenario").value,
+      requirements: req,
+      idempotency_key: $("jobIdemKey").value.trim() || uuid(),
+    };
+    const res = await api("/api/v1/jobs", { method: "POST", kind: "job", body });
+    $("jobRaw").textContent = JSON.stringify(res, null, 2);
+    setMsg(msg, "任务已创建：" + res.id, true);
+    $("jobIdemKey").value = uuid();
+    state.job.current = res.id;
+    await loadJobList();
+    await loadJob(res.id);
+  } catch (e) {
+    setMsg(msg, "创建失败：" + e.message, false);
+  }
+}
+
+async function loadJobList() {
+  saveConfig();
+  const msg = $("jobMsg");
+  try {
+    await requireTenant();
+    const res = await api("/api/v1/jobs?limit=" + state.job.limit + "&offset=" + state.job.offset, { kind: "job" });
+    state.job.items = res.items || [];
+    state.job.total = res.total || 0;
+    $("jobListMeta").textContent = "共 " + state.job.total + " 条";
+    $("jobPageInfo").textContent = "offset " + state.job.offset + " / total " + state.job.total;
+    $("jobTable").innerHTML = state.job.items.length
+      ? state.job.items.map((j) =>
+          '<tr><td><code style="font-size:12px">' + esc(j.id) + '</code></td>' +
+          '<td>' + esc(j.topic.slice(0, 46)) + (j.topic.length > 46 ? "…" : "") + '</td>' +
+          '<td>' + statusBadge(j.status) + '</td>' +
+          '<td>' + esc(j.current_step ? (STEP_LABEL[j.current_step] || j.current_step) : "-") + '</td>' +
+          '<td><div class="bar"><span style="width:' + j.progress_percent + '%"></span></div>' +
+          '<span class="muted">' + j.progress_percent + '% · ' + j.sections_completed + '/' + j.sections_total + '</span></td>' +
+          '<td><button class="ghost sm" data-open="' + esc(j.id) + '">查看</button></td></tr>'
+        ).join("")
+      : '<tr><td colspan="6" class="muted">没有任务</td></tr>';
+    $("jobTable").querySelectorAll("button[data-open]").forEach((b) => {
+      b.addEventListener("click", () => loadJob(b.dataset.open));
+    });
+    setMsg(msg, "", true);
+  } catch (e) {
+    setMsg(msg, "加载失败：" + e.message, false);
+  }
+}
+
+async function loadJob(id) {
+  saveConfig();
+  try {
+    await requireTenant();
+    const j = await api("/api/v1/jobs/" + encodeURIComponent(id), { kind: "job" });
+    state.job.current = id;
+    $("jobDetail").classList.remove("hidden");
+    $("jobMetrics").innerHTML = [
+      ["状态", j.status],
+      ["当前步骤", j.current_step ? (STEP_LABEL[j.current_step] || j.current_step) : "-"],
+      ["进度", j.progress_percent + "%"],
+      ["章节", j.sections_completed + " / " + j.sections_total],
+      ["审核轮次", j.review_rounds + " / 3"],
+    ].map(([k, v]) => '<div class="metric"><span>' + k + '</span><strong>' + esc(v) + '</strong></div>').join("");
+    $("jobBar").style.width = j.progress_percent + "%";
+    $("jobKv").innerHTML =
+      "<dt>任务 ID</dt><dd>" + esc(j.id) + "</dd>" +
+      "<dt>租户 ID</dt><dd>" + esc(j.tenant_id) + "</dd>" +
+      "<dt>场景</dt><dd>" + esc(j.scenario) + "</dd>" +
+      "<dt>Workflow</dt><dd>" + esc(j.temporal_workflow_id) + "</dd>" +
+      "<dt>调研重试</dt><dd>" + j.research_retries + "</dd>" +
+      "<dt>创建 / 更新</dt><dd>" + new Date(j.created_at).toLocaleString("zh-CN") + " / " + new Date(j.updated_at).toLocaleString("zh-CN") + "</dd>";
+    $("jobRaw").textContent = JSON.stringify(j, null, 2);
+  } catch (e) {
+    setMsg($("jobMsg"), "加载任务失败：" + e.message, false);
+  }
+}
+
+async function jobAction(path, method, body, okText) {
+  saveConfig();
+  const msg = $("jobMsg");
+  try {
+    await requireTenant();
+    if (!state.job.current) throw new Error("请先选择一个任务");
+    const res = await api("/api/v1/jobs/" + encodeURIComponent(state.job.current) + path, { method, kind: "job", body });
+    $("jobRaw").textContent = JSON.stringify(res, null, 2);
+    setMsg(msg, okText, true);
+    loadJobList();
+    loadJob(state.job.current);
+  } catch (e) {
+    setMsg(msg, "操作失败：" + e.message, false);
+  }
+}
+
+/* --- 手动 SSE：EventSource 不支持自定义请求头，后端又要求 X-Tenant-ID --- */
+
+function startSse() {
+  saveConfig();
+  if (!state.tenantId) { setMsg($("jobMsg"), "请先填写租户 ID", false); return; }
+  if (!state.job.current) { setMsg($("jobMsg"), "请先选择一个任务", false); return; }
+  stopSse();
+  const controller = new AbortController();
+  state.job.stream = controller;
+  const jobId = state.job.current;
+  const logEl = $("sseLog");
+  logEl.innerHTML = "";
+
+  (async () => {
+    while (!controller.signal.aborted) {
+      try {
+        const headers = { "Accept": "text/event-stream" };
+        if (state.job.lastEventId) headers["Last-Event-ID"] = state.job.lastEventId;
+        const res = await fetch(state.baseUrl + "/api/v1/jobs/" + encodeURIComponent(jobId) + "/events", {
+          headers: buildHeaders("job", headers),
+          signal: controller.signal,
+        });
+        if (!res.ok) {
+          $("sseState").textContent = "连接失败 " + res.status;
+          if (res.status === 404) break;
+          await sleep(3000); continue;
+        }
+        $("sseState").textContent = "已连接";
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = "";
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          let idx;
+          while ((idx = buf.indexOf("\n\n")) !== -1) {
+            const chunk = buf.slice(0, idx);
+            buf = buf.slice(idx + 2);
+            handleSseChunk(chunk, logEl);
+          }
+        }
+        $("sseState").textContent = "流已关闭，正在重连";
+      } catch (e) {
+        if (controller.signal.aborted) break;
+        $("sseState").textContent = "连接中断，3 秒后重连";
+      }
+      if (!controller.signal.aborted) await sleep(3000);
+    }
+  })();
+}
+
+function handleSseChunk(chunk, logEl) {
+  const lines = chunk.split("\n");
+  let id = null, event = null, data = "";
+  for (const line of lines) {
+    if (line.startsWith(":")) continue;
+    if (line.startsWith("id:")) id = line.slice(3).trim();
+    else if (line.startsWith("event:")) event = line.slice(6).trim();
+    else if (line.startsWith("data:")) data += line.slice(5).trim();
+  }
+  if (id) state.job.lastEventId = id;
+  if (!data) return;
+  let payload = null;
+  try { payload = JSON.parse(data); } catch (_) { payload = { raw: data }; }
+  const first = logEl.firstChild;
+  const div = document.createElement("div");
+  div.innerHTML = '<span class="tag">' + esc(event || "message") + '</span> ' +
+    esc(payload && payload.message ? payload.message : (payload && payload.status ? payload.status : data.slice(0, 160))) +
+    (payload && payload.progress ? ' <span class="muted">' + payload.progress.percent + '%（' + payload.progress.completed + '/' + payload.progress.total + '）</span>' : "") +
+    ' <span class="muted">' + new Date().toLocaleTimeString("zh-CN") + '</span>';
+  logEl.insertBefore(div, first);
+  while (logEl.childNodes.length > 200) logEl.removeChild(logEl.lastChild);
+  if (payload && payload.progress) {
+    $("jobBar").style.width = payload.progress.percent + "%";
+  }
+  if (state.job.current && (event === "job.completed" || event === "job.waiting_human")) {
+    loadJob(state.job.current);
+  }
+}
+
+function stopSse() {
+  if (state.job.stream) { state.job.stream.abort(); state.job.stream = null; }
+  state.job.lastEventId = "";
+  $("sseState").textContent = "未连接";
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* ================= 模块三：Data Loop 评审台 ================= */
+
+async function loopLoadCases() {
+  saveConfig();
+  const msg = $("loopMsg");
+  try {
+    const st = $("loopStatus").value;
+    const qs = "?limit=100&offset=0" + (st ? "&statuses=" + encodeURIComponent(st) : "");
+    const res = await api("/api/v1/data-loop/feedback-cases" + qs, { kind: "loop" });
+    state.loop.cases = res.cases || [];
+    $("loopRaw").textContent = JSON.stringify(res, null, 2);
+    $("loopTable").innerHTML = state.loop.cases.length
+      ? state.loop.cases.map((c) =>
+          '<tr><td><code style="font-size:12px">' + esc(c.id || c.feedback_case_id || "-") + '</code></td>' +
+          '<td>' + esc(c.problem_type || "-") + '</td>' +
+          '<td>' + esc(c.severity || "-") + '</td>' +
+          '<td><span class="badge b-gray">' + esc(c.status || "-") + '</span></td>' +
+          '<td><span class="muted">' + esc(c.news_id || c.run_id || "-") + '</span></td>' +
+          '<td><button class="ghost sm" data-case="' + esc(c.id || c.feedback_case_id || "") + '">填入</button></td></tr>'
+        ).join("")
+      : '<tr><td colspan="6" class="muted">没有反馈案例</td></tr>';
+    $("loopTable").querySelectorAll("button[data-case]").forEach((b) => {
+      b.addEventListener("click", () => { $("labelCaseId").value = b.dataset.case; });
+    });
+    setMsg(msg, "已加载 " + state.loop.cases.length + " 条", true);
+  } catch (e) {
+    setMsg(msg, "加载失败：" + e.message, false);
+  }
+}
+
+async function loopLoadBundle() {
+  saveConfig();
+  try {
+    const res = await api("/api/v1/data-loop/production-bundles/active", { kind: "loop" });
+    $("loopRaw").textContent = JSON.stringify(res, null, 2);
+    if (res && res.bundle) {
+      $("candBase").value = res.bundle.id || "";
+      $("rbTarget").value = res.bundle.id || "";
+      setMsg($("loopMsg"), "生效 Bundle：" + (res.bundle.bundle_version || res.bundle.id), true);
+    } else {
+      setMsg($("loopMsg"), "当前没有生效 Bundle", false);
+    }
+  } catch (e) {
+    setMsg($("loopMsg"), "查询失败：" + e.message, false);
+  }
+}
+
+function parseJsonField(el, msgEl, label) {
+  try { return JSON.parse(el.value.trim() || "{}"); }
+  catch (_) { setMsg(msgEl, label + " 必须是合法 JSON", false); return null; }
+}
+
+async function loopPost(path, body, msgEl, okText, raw) {
+  saveConfig();
+  try {
+    const res = await api("/api/v1/data-loop" + path, { method: "POST", kind: "loop", body });
+    if (raw !== false) $("loopRaw").textContent = JSON.stringify(res, null, 2);
+    setMsg(msgEl, okText, true);
+    return res;
+  } catch (e) {
+    setMsg(msgEl, "失败：" + e.message, false);
+    return null;
+  }
+}
+
+/* ================= 事件绑定 ================= */
+
+$("saveConfig").addEventListener("click", () => {
+  saveConfig();
+  setMsg($("jobMsg"), "连接配置已保存到本地", true);
+});
+
+$("hotReload").addEventListener("click", generateHotNews);
+["hotWindow", "hotType", "hotChannel"].forEach((id) => $(id).addEventListener("change", generateHotNews));
+$("hotAdopt").addEventListener("click", () => recordDecision("采用"));
+$("hotReject").addEventListener("click", () => recordDecision("拒绝"));
+$("hotHold").addEventListener("click", () => recordDecision("暂缓"));
+
+$("jobCreate").addEventListener("click", createJob);
+$("jobListReload").addEventListener("click", loadJobList);
+$("jobPrev").addEventListener("click", () => {
+  state.job.offset = Math.max(0, state.job.offset - state.job.limit);
+  loadJobList();
+});
+$("jobNext").addEventListener("click", () => {
+  state.job.offset += state.job.limit;
+  loadJobList();
+});
+$("jobLoadRecovery").addEventListener("click", () => jobAction("/recovery", "GET", undefined, "已加载恢复计划"));
+$("jobLoadResearch").addEventListener("click", () => jobAction("/research-metrics", "GET", undefined, "已加载 RAG 指标"));
+$("jobLoadPackage").addEventListener("click", () => jobAction("/research-package", "GET", undefined, "已加载资料包"));
+$("jobPublish").addEventListener("click", () => jobAction("/publish", "POST", { channel: "default" }, "发布请求已提交"));
+$("gateSubmit").addEventListener("click", () => {
+  const body = {
+    gate: $("gateSel").value,
+    action: $("gateAction").value,
+    instruction: $("gateInstruction").value.trim() || null,
+  };
+  jobAction("/decisions", "POST", body, "决策已受理").then(() => setMsg($("gateMsg"), "决策已提交", true));
+});
+$("sseStart").addEventListener("click", startSse);
+$("sseStop").addEventListener("click", stopSse);
+
+$("loopLoadCases").addEventListener("click", loopLoadCases);
+$("loopLoadBundle").addEventListener("click", loopLoadBundle);
+
+$("labelSubmit").addEventListener("click", async () => {
+  const caseId = $("labelCaseId").value.trim();
+  if (!caseId) { setMsg($("labelMsg"), "请填写反馈案例 ID", false); return; }
+  const payload = parseJsonField($("labelPayload"), $("labelMsg"), "标签内容");
+  if (!payload) return;
+  await loopPost("/feedback-cases/" + encodeURIComponent(caseId) + "/labels",
+    Object.assign({ idempotency_key: uuid() }, payload), $("labelMsg"), "标签已提交");
+});
+
+$("labelApprove").addEventListener("click", async () => {
+  const caseId = $("labelCaseId").value.trim();
+  const labelId = $("labelId").value.trim();
+  if (!caseId || !labelId) { setMsg($("labelMsg"), "批准需要案例 ID 与标签 ID", false); return; }
+  await loopPost("/feedback-cases/" + encodeURIComponent(caseId) + "/labels/" + encodeURIComponent(labelId) + "/approve",
+    { expected_label_version: Number($("labelVersion").value || 1), idempotency_key: uuid() },
+    $("labelMsg"), "标签已批准");
+});
+
+$("dsFreeze").addEventListener("click", async () => {
+  const ids = $("dsCases").value.split(",").map((s) => s.trim()).filter(Boolean);
+  if (!ids.length) { setMsg($("dsMsg"), "请填写至少一个反馈案例 ID", false); return; }
+  const cutoff = $("dsCutoff").value.trim();
+  if (!cutoff) { setMsg($("dsMsg"), "请填写带时区的截止时间", false); return; }
+  await loopPost("/datasets/freeze", {
+    dataset_name: $("dsName").value.trim(),
+    dataset_version: $("dsVersion").value.trim(),
+    dataset_layer: $("dsLayer").value,
+    description: "由运营控制台冻结",
+    feedback_case_ids: ids,
+    source_cutoff_at: cutoff,
+    idempotency_key: uuid(),
+  }, $("dsMsg"), "评测集已冻结");
+});
+
+$("candPropose").addEventListener("click", async () => {
+  const spec = parseJsonField($("candSpec"), $("candMsg"), "配置 Spec");
+  if (!spec) return;
+  const diff = parseJsonField($("candDiff"), $("candMsg"), "结构化 Diff");
+  if (!diff || !Array.isArray(diff)) { setMsg($("candMsg"), "结构化 Diff 必须是 JSON 数组", false); return; }
+  if (!$("candBase").value.trim()) { setMsg($("candMsg"), "请先查询生效 Bundle 以取得基线 ID", false); return; }
+  await loopPost("/configuration-candidates", {
+    base_bundle_id: $("candBase").value.trim(),
+    candidate_version: $("candVersion").value.trim(),
+    proposed_spec: spec,
+    structured_diff: diff,
+    proposal_reason: $("candReason").value.trim(),
+    idempotency_key: uuid(),
+  }, $("candMsg"), "候选配置已提交");
+});
+
+$("rbSubmit").addEventListener("click", async () => {
+  if (!$("rbTarget").value.trim()) { setMsg($("rbMsg"), "请填写目标 Bundle ID", false); return; }
+  await loopPost("/production-bundles/rollback", {
+    target_bundle_id: $("rbTarget").value.trim(),
+    reason: $("rbReason").value.trim(),
+    idempotency_key: uuid(),
+  }, $("rbMsg"), "回滚已执行");
+});
+
+$("runSnapshot").addEventListener("click", async () => {
+  saveConfig();
+  const id = $("runId").value.trim();
+  if (!id) { setMsg($("runMsg"), "请填写工作流 ID", false); return; }
+  try {
+    const res = await api("/api/v1/data-loop/runs/" + encodeURIComponent(id), { kind: "loop" });
+    $("loopRaw").textContent = JSON.stringify(res, null, 2);
+    setMsg($("runMsg"), "阶段 " + res.phase + " · gate " + res.gate_passed + " · 待审批 " + res.waiting_for_approval, true);
+  } catch (e) { setMsg($("runMsg"), "查询失败：" + e.message, false); }
+});
+
+$("runDecide").addEventListener("click", async () => {
+  const id = $("runId").value.trim();
+  if (!id) { setMsg($("runMsg"), "请填写工作流 ID", false); return; }
+  await loopPost("/runs/" + encodeURIComponent(id) + "/decision", {
+    action: $("runDecision").value,
+    reason: $("runReason").value.trim(),
+    idempotency_key: uuid(),
+  }, $("runMsg"), "晋升决策已提交");
+});
+
+/* ================= 初始化 ================= */
+
+(function init() {
+  loadConfig();
+  $("hotChannel").innerHTML = '<option value="all">全部</option>' +
+    CHANNELS.map((c) => '<option value="' + c + '">' + c + '</option>').join("");
+  $("jobIdemKey").value = uuid();
+  $("dsCutoff").value = new Date().toISOString();
+  generateHotNews();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+# Independent development service; does not rebuild/restart the business stack.
+name: newsagent-analysis-service
+services:
+  analysis-service:
+    image: news-agent/analysis-service:local
+    build:
+      context: ..
+      dockerfile: Dockerfile.analysis-service
+    environment:
+      # Injection is mandatory. No .env file is read by the service.
+      ANALYSIS_SERVICE_TOKEN: ${ANALYSIS_SERVICE_TOKEN:?Inject an independent analysis service token}
+      ANALYSIS_SERVICE_ENVIRONMENT: development
+      ANALYSIS_SERVICE_REQUIRE_LINUX_LIMITS: "true"
+      ANALYSIS_SERVICE_TIMEOUT_SECONDS: "3"
+      ANALYSIS_SERVICE_REQUEST_TIMEOUT_SECONDS: "5"
+      ANALYSIS_SERVICE_MAX_ROWS: "200"
+      ANALYSIS_SERVICE_MAX_INPUT_BYTES: "262144"
+      ANALYSIS_SERVICE_MAX_OUTPUT_BYTES: "262144"
+      ANALYSIS_SERVICE_MAX_CONCURRENCY: "2"
+      ANALYSIS_SERVICE_MEMORY_MB: "128"
+    user: "65534:65534"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 32
+    mem_limit: 384m
+    cpus: 1
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=8m,uid=65534,gid=65534,mode=700
+    networks: [analysis-private]
+    logging:
+      driver: none
+    restart: "no"
+  analysis-gateway:
+    # Docker internal-only bridges do not provide host port forwarding. Only the
+    # fixed gateway joins an ingress bridge; the worker service stays isolated.
+    image: nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+    entrypoint: [nginx, -c, /etc/nginx/analysis-gateway.conf, -g, "daemon off;"]
+    depends_on: [analysis-service]
+    ports:
+      - "127.0.0.1:28100:8080"
+    volumes:
+      - ./analysis-gateway.nginx.conf:/etc/nginx/analysis-gateway.conf:ro
+    user: "101:101"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 16
+    mem_limit: 64m
+    cpus: 0.25
+    ulimits:
+      nofile:
+        soft: 64
+        hard: 64
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=8m,uid=101,gid=101,mode=700
+    networks: [analysis-ingress, analysis-private]
+    logging:
+      driver: none
+    restart: "no"
+networks:
+  analysis-private:
+    internal: true
+  analysis-ingress: {}

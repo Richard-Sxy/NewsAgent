@@ -1,0 +1,41 @@
+# Offline demo fallback. Use only an already-built, trusted local E2E image.
+# Tag its checked image ID locally, then pass that tag as E2E_DEPENDENCY_IMAGE.
+# Inspect the tag before building; never substitute an unverified remote image.
+ARG E2E_DEPENDENCY_IMAGE=news-agent/e2e-dependency-cache:local
+FROM ${E2E_DEPENDENCY_IMAGE} AS dependencies
+
+FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
+WORKDIR /app
+RUN groupadd --system --gid 10001 app \
+    && useradd --system --uid 10001 --gid app --home-dir /app app \
+    && mkdir -p /state && chown app:app /state
+# Retain dependencies only. No cached /app configuration, data or secrets survive.
+COPY --from=dependencies /usr/local /usr/local
+COPY pyproject.toml ./
+# Fail closed if the cached packages no longer satisfy this checkout's contract.
+RUN python -c 'import importlib.metadata as m, tomllib; from packaging.requirements import Requirement; p=tomllib.load(open("pyproject.toml","rb"))["project"]; requirements=[Requirement(value) for value in p["dependencies"]+p.get("optional-dependencies",{}).get("dev",[])]; assert all(m.version(r.name) in r.specifier for r in requirements if r.marker is None or r.marker.evaluate()), "cached dependency contract mismatch"' \
+    && python -m pip check
+COPY app ./app
+COPY alembic ./alembic
+COPY alembic.ini ./
+COPY examples ./examples
+COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY evaluation ./evaluation
+COPY deploy/mock-cms ./deploy/mock-cms
+COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
+COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
+COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatible.example.yml
+COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
+COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
+COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
+COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
+COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
+COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
+COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
+COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
+COPY tests ./tests
+USER 10001:10001
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

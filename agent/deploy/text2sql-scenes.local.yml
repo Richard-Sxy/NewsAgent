@@ -1,0 +1,40 @@
+# Editable scenario template. Do not edit the frozen warehouse v1 document.
+# After changes refresh the page; preview snapshots become invalid if their
+# scenario changes. Add new IDs instead of silently replacing released scenes.
+schema_version: 1
+warehouse_schema_version: news-warehouse-v1
+model_scene: text2sql_assistant
+model_timeout_seconds: 15
+model_max_attempts: 2
+query_timeout_ms: 10000
+preview_ttl_seconds: 900
+scenarios:
+  - id: news-ranking
+    name: 新闻指标排行
+    description: 按点击量、点击率、曝光、互动或演示热度查询新闻排行。
+    result_mode: ranking
+    default_sort: clicks
+    allowed_sort_metrics: [clicks, ctr, impressions, interactions, hot_score]
+    allowed_content_types: [article, video]
+    allowed_categories: [科技, 财经, 体育, 社会]
+    default_limit: 10
+    max_limit: 100
+    sample_questions:
+      - 查询点击量最高的前10条新闻
+      - 查询点击率最高的前5条视频新闻
+      - 查询科技新闻热度最高的前5条
+      - 查询互动最多的前5条体育新闻
+  - id: hourly-trend
+    name: 小时趋势
+    description: 按小时汇总页面确认的时间窗口内的曝光、点击、互动与热度。
+    result_mode: trend
+    default_sort: clicks
+    allowed_sort_metrics: [clicks, ctr, impressions, interactions, hot_score]
+    allowed_content_types: [article, video]
+    allowed_categories: [科技, 财经, 体育, 社会]
+    default_limit: 24
+    max_limit: 168
+    sample_questions:
+      - 查询新闻每小时的点击趋势
+      - 查询视频新闻每小时的曝光趋势
+      - 查询财经新闻的每小时互动趋势
