@@ -44,10 +44,8 @@ def normalize_question(question: str, *, max_chars: int = 1000) -> str:
         raise SqlAssistantQuestionError("查询问题为空或规范化后超过长度限制")
     return normalized
 
-"""Check visible and compact forms so Chinese spacing cannot split rules."""
+"""合并拆开的字母/删除全部的空白"""
 def question_signals(normalized_question: str) -> tuple[str, ...]:
-    # Join spelled-out ASCII words only for detection. Removing every space
-    # would join SELECT to its argument and erase the English word boundary.
     spelled = re.sub(
         r"(?<![A-Za-z])(?:[A-Za-z]\s+)+[A-Za-z](?![A-Za-z])",
         lambda match: re.sub(r"\s+", "", match.group()),
@@ -56,7 +54,7 @@ def question_signals(normalized_question: str) -> tuple[str, ...]:
     forms = (normalized_question, spelled, re.sub(r"\s+", "", normalized_question))
     return tuple(name for name, pattern in _SIGNALS if any(pattern.search(form) for form in forms))
 
-
+"""前端屏幕的输出内容。"""
 def screen_question(question: str) -> str:
     normalized = normalize_question(question)
     signals = question_signals(normalized)

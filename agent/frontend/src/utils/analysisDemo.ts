@@ -29,7 +29,7 @@ export interface EnterpriseDemoScenario {
   expected_signals: string[]
 }
 export interface EnterpriseDemoCatalog {
-  datasetProfile: 'enterprise-v1' | 'enterprise-v2' | 'public-headlines-v3'
+  datasetProfile: 'enterprise-v1' | 'enterprise-v2' | 'public-headlines-v3' | 'timeline-v4'
   datasetVersion: string
   datasetSha256: string
   schemaVersion?: string
@@ -42,6 +42,8 @@ export interface EnterpriseDemoCatalog {
   totalNewsCount: number
   totalMetricRowCount: number
   totalBaselineRowCount: number
+  windowStart: string
+  windowEnd: string
   hoursPerNews: number
   headlineCatalogCount?: number
   headlineCatalogSha256?: string
@@ -73,9 +75,16 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
       && dataset.window_start === '2026-10-03T00:00:00+08:00'
       && dataset.window_end === '2026-10-04T00:00:00+08:00') return null
   const profile = dataset.dataset_profile
-  if (profile !== 'enterprise-v1' && profile !== 'enterprise-v2' && profile !== 'public-headlines-v3') throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
+  if (profile !== 'enterprise-v1' && profile !== 'enterprise-v2' && profile !== 'public-headlines-v3' && profile !== 'timeline-v4') throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   const publicHeadlines = profile === 'public-headlines-v3'
-  const scaled = profile === 'enterprise-v2' || publicHeadlines
+  const timeline = profile === 'timeline-v4'
+  const scaled = profile === 'enterprise-v2' || publicHeadlines || timeline
+  const hours = timeline ? 720 : 24
+  const sampleStart = timeline ? '2026-09-10T00:00:00+08:00' : '2026-10-03T00:00:00+08:00'
+  const sampleEnd = timeline ? '2026-10-10T00:00:00+08:00' : '2026-10-04T00:00:00+08:00'
+  if (timeline && (dataset.window_start !== sampleStart || dataset.window_end !== sampleEnd)) {
+    throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
+  }
   const news = scaled ? dataset.news_per_tenant : 12
   if (typeof news !== 'number' || !Number.isInteger(news) || scaled && !(publicHeadlines ? [120, 1200] : [120, 1200, 12000]).includes(news)) {
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
@@ -89,9 +98,9 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
       || dataset.headline_date_start > dataset.headline_date_end)) {
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   }
-  const counts = { news_per_tenant: news, news_count: news, metric_row_count: news * 24,
-    baseline_row_count: news * 24, total_tenants: 2, total_news_count: news * 2,
-    total_metric_row_count: news * 48, total_baseline_row_count: news * 48, hours_per_news: 24 }
+  const counts = { news_per_tenant: news, news_count: news, metric_row_count: news * hours,
+    baseline_row_count: news * hours, total_tenants: 2, total_news_count: news * 2,
+    total_metric_row_count: news * hours * 2, total_baseline_row_count: news * hours * 2, hours_per_news: hours }
   if (Object.entries(counts).some(([key, expected]) => (scaled || key in dataset)
       && (!Number.isInteger(dataset[key]) || dataset[key] !== expected))) {
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
@@ -99,7 +108,7 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
   const schemaVersion = scaled ? dataset.schema_version : top.schema_version
   const schemaSha256 = scaled ? dataset.schema_sha256 : top.schema_sha256
   if (scaled || schemaVersion != null || schemaSha256 != null) {
-    if (schemaVersion !== (publicHeadlines ? 'news-warehouse-v3' : scaled ? 'news-warehouse-v2' : 'news-warehouse-v1')
+    if (schemaVersion !== (timeline ? 'news-warehouse-v4' : publicHeadlines ? 'news-warehouse-v3' : scaled ? 'news-warehouse-v2' : 'news-warehouse-v1')
         || typeof schemaSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(schemaSha256)
         || scaled && (top.schema_version !== schemaVersion || top.schema_sha256 !== schemaSha256)) {
       throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
@@ -125,17 +134,18 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
         || !Array.isArray(item.expected_signals) || item.expected_signals.length > 16
         || !item.expected_signals.every((value) => typeof value === 'string' && value.length <= 120)
         || !times.every((value) => typeof value === 'string'
-          && /^2026-10-0[34]T\d{2}:00:00\+08:00$/.test(value) && Number.isFinite(Date.parse(value)))
+          && /^\d{4}-\d{2}-\d{2}T\d{2}:00:00\+08:00$/.test(value) && Number.isFinite(Date.parse(value)))
         || Date.parse(item.current_end) - Date.parse(item.current_start) !== HOUR
         || Date.parse(item.current_start) - Date.parse(item.reference_start) < HOUR
-        || Date.parse(item.reference_start) < Date.parse('2026-10-03T00:00:00+08:00')
-        || Date.parse(item.current_end) > Date.parse('2026-10-04T00:00:00+08:00')) {
+        || Date.parse(item.reference_start) < Date.parse(sampleStart)
+        || Date.parse(item.current_end) > Date.parse(sampleEnd)) {
       throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
     }
     ids.add(item.id)
     return { ...item, expected_signals: [...item.expected_signals] }
   })
-  if (scaled && (ids.size !== SCALED_IDS.length || !SCALED_IDS.every((id) => ids.has(id)))) {
+  const expectedIds = timeline ? [...SCALED_IDS, "day-over-day", "week-over-week", "month-span"] : SCALED_IDS
+  if (scaled && (ids.size !== expectedIds.length || !expectedIds.every((id) => ids.has(id)))) {
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   }
   return { datasetProfile: profile, datasetVersion: dataset.dataset_version, datasetSha256: dataset.dataset_sha256,
@@ -143,7 +153,7 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
       ? { schemaVersion, schemaSha256 } : {}), newsPerTenant: news, newsCount: news,
     metricRowCount: counts.metric_row_count, baselineRowCount: counts.baseline_row_count, totalTenants: 2,
     totalNewsCount: counts.total_news_count, totalMetricRowCount: counts.total_metric_row_count,
-    totalBaselineRowCount: counts.total_baseline_row_count, hoursPerNews: 24, scenarios,
+    totalBaselineRowCount: counts.total_baseline_row_count, windowStart: sampleStart, windowEnd: sampleEnd, hoursPerNews: hours, scenarios,
     ...(publicHeadlines ? { headlineCatalogCount: dataset.headline_catalog_count as number,
       headlineCatalogSha256: dataset.headline_catalog_sha256 as string,
       headlineDateStart: dataset.headline_date_start as string, headlineDateEnd: dataset.headline_date_end as string } : {}) }
@@ -153,7 +163,7 @@ function catalogIdentity(catalog: EnterpriseDemoCatalog): unknown[] {
   return [catalog.datasetProfile, catalog.datasetVersion, catalog.datasetSha256, catalog.schemaVersion,
     catalog.schemaSha256, catalog.newsPerTenant, catalog.newsCount, catalog.metricRowCount,
     catalog.baselineRowCount, catalog.totalTenants, catalog.totalNewsCount, catalog.totalMetricRowCount,
-    catalog.totalBaselineRowCount, catalog.hoursPerNews, catalog.headlineCatalogCount,
+    catalog.totalBaselineRowCount, catalog.windowStart, catalog.windowEnd, catalog.hoursPerNews, catalog.headlineCatalogCount,
     catalog.headlineCatalogSha256, catalog.headlineDateStart, catalog.headlineDateEnd]
 }
 

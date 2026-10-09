@@ -1,0 +1,18 @@
+# Set KNOWLEDGE_SEARCH_CONFIG_PATH to this YAML's mounted absolute path.
+# API and hot-news Worker must use the same file and Embedding model configuration.
+schema_version: 1
+backend: milvus
+milvus:
+  uri: http://127.0.0.1:19530
+  database: default
+  # null for unauthenticated Milvus; otherwise name of a secret environment variable.
+  token_env: null
+  timeout_seconds: 5
+  collections:
+    hot: news_hot_v1
+    # Only enable these if the corresponding collections exist.
+    # warm: news_warm_v1
+    # cold: news_cold_v1
+  metric_type: IP
+  search_params:
+    ef: 96

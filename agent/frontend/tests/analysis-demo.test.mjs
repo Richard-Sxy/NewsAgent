@@ -661,3 +661,36 @@ test('public headline preparation panel labels real titles separately from synth
   const template = readFileSync(new URL('../src/components/conversation/AnalysisDemoPanel.vue', import.meta.url), 'utf8')
   assert.match(template, /标题发布日期与模拟指标窗口相互独立/)
 })
+
+function timelineConfig() {
+  const config = scaledConfig(1200)
+  config.schema_version = config.dataset.schema_version = 'news-warehouse-v4'
+  Object.assign(config.dataset, { dataset_profile: 'timeline-v4', dataset_version: 'news-timeline-20260910-20261009-v1',
+    window_start: '2026-09-10T00:00:00+08:00', window_end: '2026-10-10T00:00:00+08:00',
+    metric_row_count: 864000, baseline_row_count: 864000, total_metric_row_count: 1728000,
+    total_baseline_row_count: 1728000, hours_per_news: 720 })
+  const sample = config.dataset.enterprise_scenarios[0]
+  for (const id of ['day-over-day', 'week-over-week', 'month-span']) {
+    config.dataset.enterprise_scenarios.push({ ...sample, id, reference_start: '2026-09-10T19:00:00+08:00',
+      current_start: '2026-10-09T19:00:00+08:00', current_end: '2026-10-09T20:00:00+08:00' })
+  }
+  return config
+}
+
+test('thirty-day catalog accepts scale and rejects altered bounds or scenario windows', () => {
+  const config = timelineConfig()
+  const catalog = helper.enterpriseDemoCatalog(config)
+  assert.equal(catalog.hoursPerNews, 720)
+  assert.equal(catalog.metricRowCount, 864000)
+  assert.equal(catalog.scenarios.length, 13)
+  for (const mutate of [
+    (dataset) => { dataset.window_end = '2026-10-11T00:00:00+08:00' },
+    (dataset) => { dataset.hours_per_news = 24 },
+    (dataset) => { dataset.enterprise_scenarios[0].reference_start = '2026-09-09T00:00:00+08:00' },
+    (dataset) => { dataset.enterprise_scenarios[0].current_end = '2026-10-10T01:00:00+08:00' },
+  ]) {
+    const changed = structuredClone(config)
+    mutate(changed.dataset)
+    assert.throws(() => helper.enterpriseDemoCatalog(changed), helper.AnalysisDemoPreparationError)
+  }
+})

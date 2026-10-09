@@ -95,11 +95,17 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
     """
     dataset = config.get("dataset")
     if (type(dataset) is not dict or type(dataset.get("dataset_profile")) is not str
-            or dataset["dataset_profile"] not in {"enterprise-v1", "enterprise-v2", "public-headlines-v3"}):
+            or dataset["dataset_profile"] not in {"enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4"}):
         raise DemoError("demo_requires_enterprise_dataset_profile")
     try:
         public = dataset["dataset_profile"] == "public-headlines-v3"
-        scaled = dataset["dataset_profile"] in {"enterprise-v2", "public-headlines-v3"}
+        scaled = dataset["dataset_profile"] in {"enterprise-v2", "public-headlines-v3", "timeline-v4"}
+        timeline = dataset["dataset_profile"] == "timeline-v4"
+        hours = 720 if timeline else 24
+        sample_start = datetime.fromisoformat("2026-09-10T00:00:00+08:00") if timeline else _SAMPLE_START
+        sample_end = datetime.fromisoformat("2026-10-10T00:00:00+08:00") if timeline else _SAMPLE_END
+        if timeline and (dataset.get("window_start") != sample_start.isoformat() or dataset.get("window_end") != sample_end.isoformat()):
+            raise ValueError()
         version, digest = dataset["dataset_version"], dataset["dataset_sha256"]
         if (type(version) is not str or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", version)
                 or type(digest) is not str or not re.fullmatch(r"[0-9a-f]{64}", digest)):
@@ -110,15 +116,15 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
             if type(news_count) is not int or news_count not in ({120, 1200} if public else {120, 1200, 12000}):
                 raise ValueError()
             counts = {"news_per_tenant": news_count, "news_count": news_count,
-                      "metric_row_count": news_count * 24, "baseline_row_count": news_count * 24,
+                      "metric_row_count": news_count * hours, "baseline_row_count": news_count * hours,
                       "total_tenants": 2, "total_news_count": news_count * 2,
-                      "total_metric_row_count": news_count * 48, "total_baseline_row_count": news_count * 48,
-                      "hours_per_news": 24}
+                      "total_metric_row_count": news_count * hours * 2, "total_baseline_row_count": news_count * hours * 2,
+                      "hours_per_news": hours}
             if any(type(dataset.get(key)) is not int or dataset[key] != value for key, value in counts.items()):
                 raise ValueError()
             identity.update(counts)
             schema, schema_digest = dataset["schema_version"], dataset["schema_sha256"]
-            if (schema != ("news-warehouse-v3" if public else "news-warehouse-v2") or type(schema_digest) is not str
+            if (schema != ("news-warehouse-v4" if timeline else "news-warehouse-v3" if public else "news-warehouse-v2") or type(schema_digest) is not str
                     or not re.fullmatch(r"[0-9a-f]{64}", schema_digest)
                     or config.get("schema_version") != schema or config.get("schema_sha256") != schema_digest):
                 raise ValueError()
@@ -148,7 +154,7 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
             # Old v1 APIs did not publish the complete scale manifest.
             expected_counts = {"news_per_tenant": 12, "news_count": 12, "metric_row_count": 288,
                                "baseline_row_count": 288, "total_tenants": 2, "total_news_count": 24,
-                               "total_metric_row_count": 576, "total_baseline_row_count": 576, "hours_per_news": 24}
+                               "total_metric_row_count": 576, "total_baseline_row_count": 576, "hours_per_news": hours}
             for key in _SCALE_FIELDS:
                 if key in dataset:
                     if type(dataset[key]) is not int or dataset[key] != expected_counts[key]:
@@ -182,7 +188,7 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
                     raise ValueError()
                 dates.append(timestamp)
             reference, current, end = dates
-            if (not _SAMPLE_START <= reference or end > _SAMPLE_END
+            if (not sample_start <= reference or end > sample_end
                     or current - reference < timedelta(hours=1) or end - current != timedelta(hours=1)):
                 raise ValueError()
             if (type(entry["row_limit"]) is not int
@@ -197,7 +203,8 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
                            for value in expected)):
                 raise ValueError()
             scenarios.append(DemoScenario(**entry))
-        if scaled and ids != _SCALED_SCENARIO_IDS:
+        expected_ids = _SCALED_SCENARIO_IDS | {"day-over-day", "week-over-week", "month-span"} if timeline else _SCALED_SCENARIO_IDS
+        if scaled and ids != expected_ids:
             raise ValueError()
         return identity, tuple(scenarios)
     except Exception:

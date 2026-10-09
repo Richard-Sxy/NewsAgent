@@ -22,6 +22,7 @@ from app.api import (
 )
 from app.config import get_settings
 from app.knowledge.postgres_store import PostgresKnowledgeStore
+from app.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
 from app.knowledge.qa import NativeQAGenerationService
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.config_file import load_model_runtime_config
@@ -50,6 +51,7 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     database = Database(settings)
     model_ports = None
+    knowledge_search_index = None
     if settings.model_runtime_backend == "native":
         if settings.model_runtime_config_path is None:
             raise ValueError("MODEL_RUNTIME_CONFIG_PATH is required")
@@ -98,6 +100,12 @@ async def lifespan(app: FastAPI):
     app.state.cms_publisher = CmsPublisher(settings)
     analysis_runner = create_analysis_runner(settings) if settings.conversation_enabled else None
     try:
+        if model_ports is not None:
+            # 构建知识库查询索引
+            knowledge_search_index = build_knowledge_search_index(
+                config_path=settings.knowledge_search_config_path,
+                postgres_store=knowledge_store,
+            )
         if settings.conversation_enabled:
             binding = model_config.agent_scene("conversation")
             memory_binding = model_config.agent_scene("conversation_memory")
@@ -111,7 +119,7 @@ async def lifespan(app: FastAPI):
                     timeout_seconds=min(settings.conversation_turn_timeout_seconds, model_config.inference.timeout_seconds),
                 ),
                 tools=ConversationTools(
-                    hot_news=HotNewsQueryService(database=database), knowledge_store=knowledge_store,
+                    hot_news=HotNewsQueryService(database=database), knowledge_store=knowledge_search_index,
                     embedding=model_ports.embedding, embedding_version=model_config.embedding.model_routes[0],
                     knowledge_enabled=settings.conversation_knowledge_enabled,
                     analysis_runner=analysis_runner,
@@ -134,6 +142,7 @@ async def lifespan(app: FastAPI):
             )
         yield
     finally:
+        await close_knowledge_search_index(knowledge_search_index)
         if analysis_runner is not None and hasattr(analysis_runner, "close"):
             await analysis_runner.close()
         await redis.aclose()

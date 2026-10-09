@@ -76,7 +76,7 @@ class ConversationAgentService:
 
     async def prepare_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,
                            request_id: UUID, content: str):
-        """Claim before streaming headers, preserving normal ownership/conflict errors."""
+        """在流式标头之前声明，保留正常的所有权/冲突错误。"""
         claim = await self.repository.begin_turn(
             tenant_id=tenant_id, user_id=user_id, conversation_id=conversation_id,
             request_id=request_id, content=content, stale_after_seconds=int(self._timeout) + 30,
@@ -139,8 +139,9 @@ class ConversationAgentService:
                         if result.request_id:
                             model_ids.append(result.request_id)
                         plan = result.value
+                        # 如果意图是 respond 表示想回答，就回复内容。
+                        # 这边用正则匹配 re 正则函数类 \d 表示任意匹配字符 ｜ 表示或者 plan.answer 表示需要匹配的对象 re.I 表示忽略大小写匹配
                         if plan.action == "respond":
-                            # Authoritative numeric data is rendered below from snapshots by Python.
                             if re.search(r"\d|news_id|run_id|query_id|chunk_id", plan.answer, flags=re.I):
                                 answer = "解释文字未通过数字或引用约束；权威数据只显示本轮工具的原始快照。"
                             else:
@@ -149,8 +150,9 @@ class ConversationAgentService:
                         if len(traces) >= self._max_tool_calls:
                             answer = "本轮工具调用已达到上限，可以在下一轮继续明确追问。"
                             break
+                        # dumps 表示把 Python 对象转换成 JSON 字符串，这边的对象是 list = [name, arguments]
                         key = json.dumps([plan.tool_name, plan.arguments], ensure_ascii=False, sort_keys=True)
-                        tool_index = len(traces)
+                        tool_index = len(traces)  # 获取轨迹长度
                         await self._notify(on_event, "tool_started", {"index": tool_index, "name": plan.tool_name})
                         if key in seen_calls:
                             traces.append(ToolTrace(name=plan.tool_name, status="denied", attempts=0,
@@ -162,6 +164,7 @@ class ConversationAgentService:
                             seen_calls.add(key)
                             traces.append(ToolTrace(name=plan.tool_name, status="denied", attempts=0,
                                                     arguments={}, result={}, error_code="analysis_run_not_in_conversation"))
+                        # 如果工具调用名包含 热点新闻工具 和 日期 等信息。
                         elif plan.tool_name in {"list_hot_news", "read_hot_news"} and has_dated_news_request(content):
                             seen_calls.add(key)
                             traces.append(ToolTrace(name=plan.tool_name, status="denied", attempts=0,
@@ -208,6 +211,13 @@ class ConversationAgentService:
                             "index": tool_index, "name": trace.name, "status": trace.status,
                             "attempts": trace.attempts, "error_code": trace.error_code,
                         })
+                        if (trace.name == "query_hot_news" and trace.status != "completed"
+                                and trace.result.get("query_resolution")):
+                            # A validated semantic rejection already explains the
+                            # boundary. Render it below from the Python snapshot,
+                            # without another plan that can repeat or distort it.
+                            answer = "本轮查询未执行，具体条件和数据范围限制如下。"
+                            break
                 rendered = render_tool_results(traces)
                 if rendered:
                     answer = f"{answer}\n\n{rendered}"
@@ -215,8 +225,8 @@ class ConversationAgentService:
                     answer = f"【本地规则模拟，不代表企业模型质量】\n{answer}"
                 answer = answer[:30000]
         except asyncio.CancelledError:
-            # A caught cancellation permits bounded cleanup. Do not detach an untracked
-            # shielded database task; hard crashes/storage outages fall back to the lease.
+            # 捕获的取消允许有界清理。不要分离未跟踪的
+            # 屏蔽数据库任务；严重崩溃/存储中断归咎于租赁。
             await self._interrupt(tenant_id, user_id, conversation_id, claim.turn.id, traces, model_ids)
             raise
         except TimeoutError:
@@ -232,7 +242,7 @@ class ConversationAgentService:
                 model_ids.append(exc.request_id)
             error_code, answer = "model_unavailable", "模型服务暂不可用，本轮已停止，历史消息已保留。"
         except Exception:
-            # Never expose credential-bearing transport exceptions or raw model output.
+            # 切勿暴露带有凭据的传输异常或原始模型输出。
             error_code, answer = "conversation_unavailable", "本轮处理失败，历史消息已保留，没有自动发布或改变配置。"
         try:
             await self._notify(on_event, "phase", {"phase": "saving", "message": "正在保存本轮处理结果。"})
@@ -253,8 +263,8 @@ class ConversationAgentService:
                     model_request_ids=model_ids, error_code="interrupted",
                 )
         except (Exception, asyncio.CancelledError):
-            # If the original save already committed, repository CAS refuses to
-            # replace it. An unavailable database is recovered by the existing lease.
+            # 如果原始保存已提交，则存储库 CAS 拒绝
+            # 替换它。不可用的数据库将通过现有租约恢复。
             pass
 
     async def interrupt_unstarted_turn(self, *, tenant_id: str, user_id: str,
@@ -262,7 +272,7 @@ class ConversationAgentService:
         if claim.acquired:
             await self._interrupt(tenant_id, user_id, conversation_id, claim.turn.id, [], [])
 
-    """模型调用和重试函数。"""
+    """模型调用尝试，如果失败就尝试重试等待或者前端返回内容。"""
     async def _infer(self, payload, *, on_event: ProgressCallback | None = None, call: int = 1):
         for attempt in range(2):
             try:
@@ -298,16 +308,14 @@ class ConversationAgentService:
                 break
         return ToolTrace(name=plan.tool_name, status="failed", attempts=attempt, arguments=plan.arguments, result={}, error_code="tool_unavailable")
 
-    """执行查询 query """
+    """热点新闻查询 Agent"""
     async def _execute_query(self, plan, tenant_id, user_id, trace_id, allowed, partial, on_bound,
                              *, original_question: str):
-        # This command also persists/enqueues work. Do not apply read-tool retry
-        # or its ten-second timeout; the outer turn budget still bounds waiting.
+        # 此命令还保留/排队工作。不应用读取工具重试，或其十秒超时；外轮预算仍然限制等待。
         try:
             if not allowed:
                 raise ConversationToolDenied("hot_news_query_not_approved")
-            # The first planning model must not erase dates, sources or filters
-            # before the query-understanding Port gets the original request.
+            # 第一个规划模型不得删除日期、来源或过滤器，在查询理解端口获取原始请求之前。
             question = plan.arguments.get("question")
             if not isinstance(question, str) or question.strip() != original_question.strip():
                 return ToolTrace(name=plan.tool_name, status="denied", attempts=0,

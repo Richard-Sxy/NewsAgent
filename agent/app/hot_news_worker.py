@@ -14,7 +14,8 @@ from app.model_runtime.config_file import (
     validate_runtime_environment,
 )
 from app.model_runtime.factory import ModelRuntimePorts, build_model_runtime_ports
-from app.model_runtime.knowledge_factory import build_native_knowledge_search
+from app.model_runtime.knowledge_factory import build_native_knowledge_search, build_native_knowledge_index
+from app.knowledge.search_factory import close_knowledge_search_index
 from app.observability.hot_news import HotNewsRunMetrics
 from app.config import Settings, get_settings
 from app.db.session import Database
@@ -47,6 +48,7 @@ async def run_hot_news_worker(
     resolved_settings = settings or get_settings()
     native_ports: ModelRuntimePorts | None = None
     knowledge_database: Database | None = None
+    knowledge_index = None
     allowed_model_routes: tuple[str, ...] | None = None
     runtime = None
     try:
@@ -66,10 +68,15 @@ async def run_hot_news_worker(
                     config, environment=resolved_settings.environment
                 )
             knowledge_database = Database(resolved_settings)
+            knowledge_index = build_native_knowledge_index(
+                config=config, embedding=native_ports.embedding, database=knowledge_database,
+                config_path=resolved_settings.knowledge_search_config_path,
+            )
             knowledge_search = build_native_knowledge_search(
                 config=config,
                 embedding=native_ports.embedding,
                 database=knowledge_database,
+                index=knowledge_index,
             )
         prompt_registry = prompt_registry or config.prompt_registry()
         runtime = create_hot_news_worker_runtime(
@@ -104,6 +111,7 @@ async def run_hot_news_worker(
 
         await worker.run()
     finally:
+        await close_knowledge_search_index(knowledge_index)
         if runtime is not None:
             await runtime.close()
         if native_ports is not None:

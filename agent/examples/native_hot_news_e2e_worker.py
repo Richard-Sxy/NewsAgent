@@ -53,7 +53,7 @@ async def run() -> None:
             embedding_version=config.embedding.model_routes[0],
             embedding_batch_size=config.embedding.max_batch_size,
         )
-        scaled = sql_service.dataset_profile in {"enterprise-v2", "public-headlines-v3"}
+        scaled = sql_service.dataset_profile in {"enterprise-v2", "public-headlines-v3", "timeline-v4"}
         if not scaled:
             await seed_native_e2e_knowledge(dependencies, store=knowledge_store)
 

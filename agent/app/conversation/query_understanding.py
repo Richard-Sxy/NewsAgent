@@ -154,7 +154,6 @@ def _chinese_number(value: str) -> int:
 
 
 def _requirements(question: str) -> dict:
-    """Extract only detectable requirements; never claim full model validation."""
     text = screen_question(question)
     temporal = set()
     if re.search(r"今日|今天", text):
@@ -269,6 +268,7 @@ def _canonical_question(intent: SqlAssistantIntent) -> str:
 """聊天问题的前置语义校验，验证已知的原始要求，然后解决批准的时间范围。"""
 def resolve_query_understanding(original_question: str, proposal: QueryUnderstanding | dict, policy: QueryPolicy,
                                 now: datetime | None = None) -> QueryResolution:
+    # 模型时间校验
     zone = ZoneInfo(policy.timezone)
     start, end = policy.supported_window_start.astimezone(zone), policy.supported_window_end.astimezone(zone)
     proposal_fields = {}

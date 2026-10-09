@@ -7,16 +7,14 @@ from uuid import UUID
 
 from app.conversation.plan import ConversationPlan
 
-
+"""时间信息+新闻关键词匹配。"""
 def has_dated_news_request(message: str) -> bool:
-    """Explicit dates cannot be fulfilled by the unfiltered saved-run tools."""
     return has_requested_time(message) and any(
         word in message for word in ("新闻", "热点", "热门", "热榜", "榜单", "排行")
     )
 
-
+"""为了匹配：关键字(时间) 或者 2012-07-07 的信息内容。同时防止 UUID 做匹配。"""
 def has_requested_time(message: str) -> bool:
-    # A UUID can contain four digits followed by a hyphen; it is not a date.
     return bool(re.search(
         r"今日|今天|昨日|昨天|明天|前天|本周|上周|本月|上月|今早|今晚"
         r"|(?<![A-Za-z\d])\d{4}[-年/]\d{1,2}[-月/]\d{1,2}日?(?![A-Za-z\d-])", message,

@@ -17,7 +17,7 @@ _QUESTION = "查询点击量最高的前12条新闻"
 
 
 def validate_profile(value: str) -> str:
-    if type(value) is not str or value not in {CLASSIC_PROFILE, ENTERPRISE_PROFILE, "enterprise-v2", "public-headlines-v3"}:
+    if type(value) is not str or value not in {CLASSIC_PROFILE, ENTERPRISE_PROFILE, "enterprise-v2", "public-headlines-v3", "timeline-v4"}:
         raise ValueError("unsupported synthetic dataset profile")
     return value
 

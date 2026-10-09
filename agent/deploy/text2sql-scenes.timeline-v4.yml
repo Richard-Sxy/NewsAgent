@@ -1,0 +1,22 @@
+# Isolated timeline-v4 SQL configuration; v1–v3 instances keep their identities.
+schema_version: 1
+warehouse_schema_version: news-warehouse-v4
+model_scene: text2sql_assistant
+model_timeout_seconds: 15
+model_max_attempts: 2
+query_timeout_ms: 10000
+preview_ttl_seconds: 900
+scenarios:
+  - id: news-ranking
+    name: 30天热点新闻候选排行
+    description: 在30天热点合成数仓中取有界新闻候选；单次分析只覆盖同一运行的榜单。
+    result_mode: ranking
+    default_sort: clicks
+    allowed_sort_metrics: [clicks, ctr, impressions, interactions, hot_score]
+    allowed_content_types: [article, video]
+    allowed_categories: [科技, 财经, 体育, 社会]
+    default_limit: 100
+    max_limit: 100
+    sample_questions:
+      - 查询点击量最高的前100条新闻
+      - 查询点击率最高的前100条视频新闻

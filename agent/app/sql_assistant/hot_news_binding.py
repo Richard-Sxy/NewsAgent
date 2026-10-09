@@ -99,7 +99,8 @@ def build_hot_news_sql_scope(
         }:
             raise HotNewsSqlBindingError("Scaled SQL run requires its complete dataset identity")
         size = dataset_identity["news_per_tenant"]
-        profiles = {"enterprise-v2": ("news-warehouse-v2", (120, 1200, 12000)),
+        profiles = {"timeline-v4": ("news-warehouse-v4", (120, 1200, 12000)),
+                    "enterprise-v2": ("news-warehouse-v2", (120, 1200, 12000)),
                     "public-headlines-v3": ("news-warehouse-v3", (120, 1200))}
         profile = dataset_identity["dataset_profile"]
         approved = profiles.get(profile) if type(profile) is str else None

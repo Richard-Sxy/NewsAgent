@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 
 ConversationStatus = Literal["processing", "completed", "failed"]
+ConversationInputStatus = Literal["pending", "applied", "failed"]  # 执行循环尚未领取/已进入执行循环的输入快照/所属轮次超时、失败或中断
 ToolStatus = Literal["completed", "failed", "denied"]
 ConversationTitle = Annotated[
     str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)
@@ -30,6 +31,9 @@ class SendConversationMessageRequest(ConversationSchema):
     request_id: UUID
     content: MessageContent
 
+class AppendConversationInputRequest(ConversationSchema):
+    request_id: UUID
+    content: MessageContent
 
 class ToolTrace(ConversationSchema):
     name: str
@@ -46,6 +50,16 @@ class ConversationView(ConversationSchema):
     created_at: datetime
     updated_at: datetime
 
+class ConversationInputView(ConversationSchema):
+    id: UUID
+    turn_id: UUID
+    request_id: UUID
+    seq: int = Field(ge=1)
+    content: MessageContent
+    status: ConversationInputStatus
+    created_at: datetime
+    applied_at: datetime | None = None
+    error_code: str | None = None
 
 class ConversationTurnView(ConversationSchema):
     id: UUID
@@ -53,6 +67,7 @@ class ConversationTurnView(ConversationSchema):
     user_content: str
     assistant_content: AssistantContent | None = None
     status: ConversationStatus
+    inputs: list[ConversationInputView] = Field(default_factory=list)
     tools: list[ToolTrace] = Field(default_factory=list)
     model_request_ids: list[str] = Field(default_factory=list)
     runtime_metadata: dict[str, Any] = Field(default_factory=dict)

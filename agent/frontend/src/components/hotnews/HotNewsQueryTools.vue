@@ -23,6 +23,17 @@ const scenarios = computed(
 const selectedScenario = computed(() =>
   scenarios.value.find((scenario) => scenario.id === scenarioId.value),
 )
+const lastWindowStart = computed(() => configuration.value
+  ? localDateInput(new Date(Date.parse(configuration.value.dataset.window_end) - 3_600_000).toISOString()) : "")
+
+function selectRecentDay(daysAgo: number): void {
+  if (!configuration.value) return
+  const end = Date.parse(configuration.value.dataset.window_end)
+  const start = Math.max(Date.parse(configuration.value.dataset.window_start), end - (daysAgo * 24 + 1) * 3_600_000)
+  windowStart.value = localDateInput(new Date(start).toISOString())
+  validationError.value = ""
+}
+
 const windowEnd = computed(() => {
   const start = new Date(windowStart.value)
   return Number.isNaN(start.getTime())
@@ -70,6 +81,11 @@ function startAgent(): void {
     start.getMilliseconds()
   ) {
     validationError.value = '请选择整点开始时间，本地热点运行固定查询一个小时。'
+    return
+  }
+  if (configuration.value && (start.getTime() < Date.parse(configuration.value.dataset.window_start)
+    || start.getTime() + 3_600_000 > Date.parse(configuration.value.dataset.window_end))) {
+    validationError.value = '所选小时超出当前数据集范围。'
     return
   }
   emit('run', {
@@ -178,6 +194,10 @@ onMounted(loadConfiguration)
           <p class="na-muted query-tools__note">
             固定一个小时，按浏览器本地时区显示。租户由后端身份上下文绑定。
           </p>
+          <p class="na-muted">可用范围：{{ localDateInput(configuration.dataset.window_start).replace("T", " ") }} 至 {{ localDateInput(configuration.dataset.window_end).replace("T", " ") }}（结束不含） · {{ configuration.dataset.news_count.toLocaleString() }} 篇新闻 · {{ configuration.dataset.metric_row_count.toLocaleString() }} 条小时指标</p>
+          <div class="query-tools__examples">
+            <button v-for="day in [0, 1, 7, 29]" :key="day" class="na-btn" type="button" :disabled="disabled" @click="selectRecentDay(day)">{{ day === 0 ? "最新样本小时" : `${day}天前样本` }}</button>
+          </div>
           <div class="na-field">
             <label for="hot-news-window-start">开始时间（包含）</label><input
               id="hot-news-window-start"
@@ -185,6 +205,8 @@ onMounted(loadConfiguration)
               class="na-input"
               type="datetime-local"
               step="3600"
+              :min="localDateInput(configuration.dataset.window_start)"
+              :max="lastWindowStart"
               :disabled="disabled"
             >
           </div>

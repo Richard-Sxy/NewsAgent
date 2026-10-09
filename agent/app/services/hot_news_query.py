@@ -22,7 +22,7 @@ from app.schemas.hot_news_api import (
     HotScoreView,
 )
 
-"""为热点只读 API 提供运行列表与单运行详情。"""
+"""这便是数据库的调用查找。"""
 class HotNewsQueryService:
 
     def __init__(self, *, database: Database) -> None:

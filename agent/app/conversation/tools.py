@@ -60,7 +60,8 @@ class _Analyze(_Arguments):
             raise ValueError("reference_run_id is only accepted for trend")
         return self
 
-
+# 这边是分析数据的工具
+# 对已有榜单做 Python 确定性分析，包括概览、分布、比较、数据质量、基线对照和两个窗口的趋势比较。
 ANALYSIS_DESCRIPTION = {
     "name": "analyze_hot_news_data",
     "description": "确定性分析同租户已完成榜单；baseline对照已保存参考字段，trend只比较相同筛选规则的两个非重叠等长窗口的新闻交集；不接收代码/SQL/路径/身份",
@@ -70,6 +71,11 @@ ANALYSIS_DESCRIPTION = {
                   "metric": "impressions|clicks|ctr|hot_score|effective_consumptions|interactions|total_duration_seconds"},
 }
 
+# 这边是这个项目可以调用的工具。
+# capabilities 查看 Agent 能做什么、有哪些工具和审批边界。
+# list_hot_news 列出已经完成的热点运行，返回运行 ID、时间窗口等；不创建新查询。
+# read_hot_news 根据 run_id 读取某次运行的权威榜单和分析报告，也能只看见指定排名的新闻
+# search_knowledge 检索当前租户的新闻知识库，获取相关内容作为证据。
 TOOL_DESCRIPTIONS = [
     {"name": "capabilities", "description": "读取当前工具与人工审批边界", "arguments": {}},
     {"name": "list_hot_news", "description": "读取已完成的热点运行，不产生新SQL或新运行", "arguments": {"limit": "1..5"}},
@@ -113,7 +119,7 @@ class ConversationTools:
             return None
         return self._hot_news_query.description()
 
-    """"""
+    """执行热点新闻查询函数。"""
     async def execute_hot_news_query(self, *, arguments, tenant_id, user_id, trace_id,
                                      allowed: bool = False, on_bound=None):
         if not allowed or self.query_description(tenant_id) is None:
@@ -151,7 +157,7 @@ class ConversationTools:
             parsed = schemas[name].model_validate(arguments)
         except ValidationError as exc:
             raise ConversationToolDenied("tool_arguments_invalid") from exc
-        if name == "capabilities":
+        if name == "capabilities":   # 这边直接返回模版。
             return {
                 "tools": [item["name"] for item in self.descriptions],
                 "read_only": True,

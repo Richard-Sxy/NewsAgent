@@ -18,7 +18,7 @@ from app.retrieval.tiered_vector import (
     VectorTier,
 )
 
-
+"""这边是Milvus客户端的连接"""
 class MilvusTieredVectorIndex:
     REQUIRED_FIELDS = (
         "chunk_id",
@@ -42,16 +42,21 @@ class MilvusTieredVectorIndex:
         collections: Mapping[VectorTier, str],
         metric_type: str = "IP",
         search_params: Mapping[str, Any] | None = None,
+        timeout_seconds: float = 10.0,
     ) -> None:
-        missing = set(VectorTier) - set(collections)
-        if missing:
-            raise ValueError(f"missing Milvus collections for tiers: {missing}")
+        if not collections:
+            raise ValueError("Milvus requires at least one collection")
         if any(not name.strip() for name in collections.values()):
             raise ValueError("Milvus collection names cannot be empty")
         self._client = client
         self._collections = dict(collections)
         self._metric_type = metric_type
-        self._search_params = dict(search_params or {"ef": 96})
+        self._search_params = dict({"ef": 96} if search_params is None else search_params)
+        self._timeout = timeout_seconds
+
+    @property
+    def tiers(self) -> tuple[VectorTier, ...]:
+        return tuple(self._collections)
 
     @classmethod
     def connect(
@@ -62,10 +67,12 @@ class MilvusTieredVectorIndex:
         database: str,
         collections: Mapping[VectorTier, str],
         timeout_seconds: float = 10.0,
+        metric_type: str = "IP",
+        search_params: Mapping[str, Any] | None = None,
     ) -> "MilvusTieredVectorIndex":
         try:
             from pymilvus import MilvusClient
-        except ImportError as exc:  # pragma: no cover - environment dependent
+        except ImportError as exc:  # pragma：无覆盖 -依赖于环境
             raise RuntimeError(
                 "pymilvus is required; install the 'milvus' extra"
             ) from exc
@@ -75,7 +82,11 @@ class MilvusTieredVectorIndex:
             db_name=database,
             timeout=timeout_seconds,
         )
-        return cls(client, collections=collections)
+        return cls(client, collections=collections, metric_type=metric_type,
+                   search_params=search_params, timeout_seconds=timeout_seconds)
+
+    async def close(self) -> None:
+        await asyncio.to_thread(self._client.close)
 
     async def search(
         self,
@@ -95,6 +106,9 @@ class MilvusTieredVectorIndex:
             raise ValueError("query vector cannot be empty")
         if limit <= 0:
             raise ValueError("limit must be greater than 0")
+        # 聊天迭代所有层；未配置的层被明确禁用。
+        if tier not in self._collections:
+            return []
 
         filters = [
             f'tenant_id == "{tenant_id}"',
@@ -113,6 +127,7 @@ class MilvusTieredVectorIndex:
             anns_field="vector",
             filter=" and ".join(filters),
             limit=limit,
+            timeout=self._timeout,
             output_fields=[field for field in self.REQUIRED_FIELDS if field != "vector"],
             search_params={
                 "metric_type": self._metric_type,

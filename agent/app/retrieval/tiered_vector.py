@@ -18,7 +18,7 @@ from app.clients.knowledge_base import (
     RelatedNewsSearchQuery,
 )
 
-
+"""新闻分层标记，用于评价新闻热点分层的内容。"""
 class VectorTier(StrEnum):
     HOT = "hot"
     WARM = "warm"
@@ -27,7 +27,6 @@ class VectorTier(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class TierSearchPolicy:
-    """Versioned knobs used by one retrieval request."""
 
     version: str = "tiered-rrf-v1"
     rrf_k: int = 60

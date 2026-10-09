@@ -56,13 +56,20 @@ async def test_date_rejection_is_checkpointed_and_rendered_without_query_retry()
         QUESTION, json.loads(proposal), approved, now=datetime(2026, 10, 7, 4, tzinfo=timezone.utc)
     )
     assert resolution.reason_code == "time_coverage_unavailable"
-    service, repository, inference, _ = runtime()
+    async def repeats_query(request, count):
+        return RawInferenceResult(content=json.dumps({
+            "action": "tool", "tool_name": "query_hot_news", "arguments": {"question": QUESTION},
+        }))
+    service, repository, inference, _ = runtime(behavior=repeats_query)
     service._tools = tools = ResolutionTools(QueryResolutionError(resolution, request_id="understanding-test-request"))
     conversation = await repository.create(TENANT, USER, "date query")
     request = dict(tenant_id=TENANT, user_id=USER, conversation_id=conversation.id,
                    request_id=uuid4(), content=QUESTION, hot_news_query_allowed=True)
     turn = await service.send(**request)
     assert turn.status == "completed"
+    assert len(inference.calls) == 1
+    assert len(turn.tools) == 1
+    assert "解释文字未通过" not in turn.assistant_content
     assert len(tools.calls) == 1 and tools.calls[0]["question"] == QUESTION
     assert turn.tools[0].status == "failed"
     assert turn.tools[0].result["query_resolution"]["reason_code"] == "time_coverage_unavailable"

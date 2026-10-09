@@ -6,6 +6,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+ARG APP_EXTRAS=""
+
 RUN groupadd --system --gid 10001 app \
     && useradd --system --uid 10001 --gid app --home-dir /app app
 
@@ -18,7 +20,7 @@ COPY alembic.ini ./
 # SQLAlchemy's async engine needs greenlet; keep this Compose-specific fix out
 # of the existing application dependency manifest while it is being edited.
 RUN pip install --upgrade pip \
-    && pip install . 'sqlalchemy[asyncio]>=2.0,<3'
+    && pip install ".${APP_EXTRAS}" 'sqlalchemy[asyncio]>=2.0,<3'
 
 USER 10001:10001
 

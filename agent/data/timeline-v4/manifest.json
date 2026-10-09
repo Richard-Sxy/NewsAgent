@@ -1,0 +1,200 @@
+{
+  "schema_version": "news-warehouse-v4",
+  "schema_sha256": "d5758d7fd699eff3907574629cd9e5e4d5c09809d891fcf71efc17dfa6d2730e",
+  "synthetic": true,
+  "window_start": "2026-09-10T00:00:00+08:00",
+  "window_end": "2026-10-10T00:00:00+08:00",
+  "news_count": 1200,
+  "metric_row_count": 864000,
+  "baseline_row_count": 864000,
+  "total_tenants": 2,
+  "dataset_profile": "timeline-v4",
+  "dataset_version": "news-timeline-20260910-20261009-v1",
+  "dataset_sha256": "a91a890cdd1754f771e95cc4fb38b55baabb900c7a9f5713375a472b7699018c",
+  "enterprise_scenarios": [
+    {
+      "id": "steady",
+      "label": "稳定流量",
+      "description": "正常流量轻微波动，观察稳定同口径指标。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T00:00:00+08:00",
+      "current_start": "2026-10-09T01:00:00+08:00",
+      "current_end": "2026-10-09T02:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "stable_traffic"
+      ]
+    },
+    {
+      "id": "breaking",
+      "label": "突发流量增长",
+      "description": "部分新闻曝光和点击显著增加；数字变化不证明外部事件因果。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T02:00:00+08:00",
+      "current_start": "2026-10-09T03:00:00+08:00",
+      "current_end": "2026-10-09T04:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "clicks_growth",
+        "traffic_concentration"
+      ]
+    },
+    {
+      "id": "fatigue",
+      "label": "热度回落",
+      "description": "曝光与消费回落，比较同一组新闻的下降幅度。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T04:00:00+08:00",
+      "current_start": "2026-10-09T05:00:00+08:00",
+      "current_end": "2026-10-09T06:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "clicks_decline"
+      ]
+    },
+    {
+      "id": "funnel",
+      "label": "消费漏斗退化",
+      "description": "曝光增加，但点击率与有效消费比例降低；需分别核对分母。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T06:00:00+08:00",
+      "current_start": "2026-10-09T07:00:00+08:00",
+      "current_end": "2026-10-09T08:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "ctr_decline",
+        "effective_consumption_decline"
+      ]
+    },
+    {
+      "id": "content-mix",
+      "label": "内容流量结构变化",
+      "description": "图文与视频曝光占比改变，单篇点击率稳定；整体CTR采用次数加权。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T08:00:00+08:00",
+      "current_start": "2026-10-09T09:00:00+08:00",
+      "current_end": "2026-10-09T10:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "content_mix_change",
+        "weighted_ctr"
+      ]
+    },
+    {
+      "id": "low-volume",
+      "label": "零曝光与小样本",
+      "description": "包含零曝光、个位数曝光和高CTR小样本；不据此推断可靠性或因果。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T10:00:00+08:00",
+      "current_start": "2026-10-09T11:00:00+08:00",
+      "current_end": "2026-10-09T12:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "zero_impressions",
+        "small_sample"
+      ]
+    },
+    {
+      "id": "zero-baseline",
+      "label": "已知零基线",
+      "description": "基线明确保存为0，区别于未知或缺失；相对变化无有效分母。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T12:00:00+08:00",
+      "current_start": "2026-10-09T13:00:00+08:00",
+      "current_end": "2026-10-09T14:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "known_zero_baseline",
+        "undefined_relative_change"
+      ]
+    },
+    {
+      "id": "ranking-churn",
+      "label": "候选榜单进出",
+      "description": "相同点击量Top100候选产生进入和退出；只比较共同新闻，不代表全数仓新闻走势。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T14:00:00+08:00",
+      "current_start": "2026-10-09T15:00:00+08:00",
+      "current_end": "2026-10-09T16:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "cohort_change",
+        "matched_cohort_only"
+      ]
+    },
+    {
+      "id": "recovery-gap",
+      "label": "间隔窗口恢复",
+      "description": "比较16点与18点，明确中间有一小时空档；不声称连续走势。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T16:00:00+08:00",
+      "current_start": "2026-10-09T18:00:00+08:00",
+      "current_end": "2026-10-09T19:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "non_contiguous",
+        "clicks_recovery"
+      ]
+    },
+    {
+      "id": "precision",
+      "label": "大数精度",
+      "description": "合法计数超过JavaScript安全整数；Python和SQL保留精确整数与Decimal。",
+      "question": "查询点击量最高的前100条新闻",
+      "reference_start": "2026-10-09T20:00:00+08:00",
+      "current_start": "2026-10-09T21:00:00+08:00",
+      "current_end": "2026-10-09T22:00:00+08:00",
+      "row_limit": 100,
+      "expected_signals": [
+        "exact_large_integers"
+      ]
+    },
+    {
+      "id": "day-over-day",
+      "label": "跨日同小时",
+      "description": "比较同一小时的两个独立窗口；仅比较共同新闻，不推断中间连续走势或跨日去重人数。",
+      "question": "查询点击量最高的前100条新闻",
+      "row_limit": 100,
+      "reference_start": "2026-10-08T19:00:00+08:00",
+      "current_start": "2026-10-09T19:00:00+08:00",
+      "current_end": "2026-10-09T20:00:00+08:00",
+      "expected_signals": [
+        "daily_change",
+        "matched_cohort_only"
+      ]
+    },
+    {
+      "id": "week-over-week",
+      "label": "跨周同小时",
+      "description": "比较同一小时的两个独立窗口；仅比较共同新闻，不推断中间连续走势或跨日去重人数。",
+      "question": "查询点击量最高的前100条新闻",
+      "row_limit": 100,
+      "reference_start": "2026-10-02T19:00:00+08:00",
+      "current_start": "2026-10-09T19:00:00+08:00",
+      "current_end": "2026-10-09T20:00:00+08:00",
+      "expected_signals": [
+        "weekly_change",
+        "matched_cohort_only"
+      ]
+    },
+    {
+      "id": "month-span",
+      "label": "月内首尾窗口",
+      "description": "比较同一小时的两个独立窗口；仅比较共同新闻，不推断中间连续走势或跨日去重人数。",
+      "question": "查询点击量最高的前100条新闻",
+      "row_limit": 100,
+      "reference_start": "2026-09-10T19:00:00+08:00",
+      "current_start": "2026-10-09T19:00:00+08:00",
+      "current_end": "2026-10-09T20:00:00+08:00",
+      "expected_signals": [
+        "long_range_change",
+        "matched_cohort_only"
+      ]
+    }
+  ],
+  "news_per_tenant": 1200,
+  "hours_per_news": 720,
+  "total_news_count": 2400,
+  "total_metric_row_count": 1728000,
+  "total_baseline_row_count": 1728000
+}

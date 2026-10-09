@@ -1,0 +1,19 @@
+# Overlay for docker-compose.standalone.yml; does not create/modify Milvus data.
+services:
+  migrate:
+    build:
+      args:
+        APP_EXTRAS: "[milvus]"
+  api:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.yml
+      CONVERSATION_KNOWLEDGE_ENABLED: "true"
+      MILVUS_TOKEN: ${MILVUS_TOKEN:-}
+    volumes:
+      - ./knowledge-search.milvus.yml:/app/deploy/knowledge-search.yml:ro
+  hot-news-worker:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.yml
+      MILVUS_TOKEN: ${MILVUS_TOKEN:-}
+    volumes:
+      - ./knowledge-search.milvus.yml:/app/deploy/knowledge-search.yml:ro

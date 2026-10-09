@@ -337,11 +337,11 @@ class PostgresConversationRepository:
         tools: list[ToolTrace],
         model_request_ids: list[str],
     ) -> ConversationTurnView:
-        """Commit terminal tool traces while preserving the original request claim.
+        """提交终端工具跟踪，同时保留原始请求声明。
 
-        The owned conversation lock serializes checkpoints with expiry recovery
-        and finalization. Existing trace/model-ID prefixes cannot be rewritten.
-        This does not re-acquire interrupted work or resume tool execution.
+        拥有的会话锁通过过期恢复来序列化检查点
+        和最终确定。现有的跟踪/模型 ID 前缀无法重写。
+        这不会重新获取中断的工作或恢复工具执行。
         """
         serialized_tools = [
             ToolTrace.model_validate(trace).model_dump(mode="json") for trace in tools
@@ -368,6 +368,7 @@ class PostgresConversationRepository:
             await session.flush()
             return ConversationTurnView.model_validate(turn)
 
+    """保存工具链路，用户和会话信息，工具调用记录等内容。"""
     async def finish_turn(
         self,
         tenant_id: str,
@@ -386,6 +387,7 @@ class PostgresConversationRepository:
             ToolTrace.model_validate(trace).model_dump(mode="json")
             for trace in tools
         ]
+        # 这边取数据库调用内容
         async with self._database.session() as session:
             conversation = await self._require_conversation(
                 session, tenant_id, user_id, conversation_id
@@ -436,6 +438,7 @@ class PostgresConversationRepository:
         conversation = await self._get_conversation(
             session, tenant_id, user_id, conversation_id, for_update=True
         )
+        # 这边加一层异常报错
         if conversation is None:
             raise ConversationNotFound("conversation not found")
         return conversation
@@ -450,6 +453,7 @@ class PostgresConversationRepository:
         for_update: bool,
         include_deleted: bool = False,
     ) -> ConversationRecord | None:
+        # 从 PostgreSQL 当中获取 Conversation 对话记录
         query = select(ConversationRecord).where(
             ConversationRecord.tenant_id == tenant_id,
             ConversationRecord.user_id == user_id,

@@ -31,6 +31,11 @@ from app.sql_assistant.public_headlines import (
     iter_public_rows, validate_public_news_count,
 )
 
+from app.sql_assistant.timeline_profiles import (
+    TIMELINE_PROFILE, START as TIMELINE_START, END as TIMELINE_END, HOURS as TIMELINE_HOURS,
+    iter_timeline_rows, timeline_manifest,
+)
+
 SCHEMA_VERSION = "news-warehouse-v1"
 SCHEMA_SHA256 = "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0"
 SCHEMA_PATH = Path(__file__).resolve().parents[2] / "docs" / "sql-warehouse-schema-v1.md"
@@ -40,7 +45,9 @@ SCHEMA_PATH_V2 = SCHEMA_PATH.with_name("sql-warehouse-schema-v2.md")
 SCHEMA_VERSION_V3 = "news-warehouse-v3"
 SCHEMA_SHA256_V3 = "ac6982fcb42a3b9efe29db8c9a4524eebc51a2144ab8dbc78c69e91e458614b6"
 SCHEMA_PATH_V3 = SCHEMA_PATH.with_name("sql-warehouse-schema-v3.md")
-STREAMED_PROFILES = frozenset({SCALED_PROFILE, PUBLIC_HEADLINES_PROFILE})
+SCHEMA_PATH_V4 = SCHEMA_PATH.with_name("sql-warehouse-schema-v4.md")
+SCHEMA_SHA256_V4 = "d5758d7fd699eff3907574629cd9e5e4d5c09809d891fcf71efc17dfa6d2730e"
+STREAMED_PROFILES = frozenset({SCALED_PROFILE, PUBLIC_HEADLINES_PROFILE, TIMELINE_PROFILE})
 DEMO_TENANT_ID = UUID("11111111-1111-4111-8111-111111111111")
 ISOLATION_TENANT_ID = UUID("33333333-3333-4333-8333-333333333333")
 WINDOW_START = datetime(2026, 10, 3, tzinfo=timezone(timedelta(hours=8)))
@@ -67,8 +74,15 @@ class WarehouseContract:
     path: Path
 
 
+def dataset_window(profile: str = CLASSIC_PROFILE):
+    validate_profile(profile)
+    return (TIMELINE_START, TIMELINE_END) if profile == TIMELINE_PROFILE else (WINDOW_START, WINDOW_END)
+
+
 def warehouse_contract(profile: str = CLASSIC_PROFILE) -> WarehouseContract:
     validate_profile(profile)
+    if profile == TIMELINE_PROFILE:
+        return WarehouseContract("news-warehouse-v4", SCHEMA_SHA256_V4, SCHEMA_PATH_V4)
     if profile == PUBLIC_HEADLINES_PROFILE:
         return WarehouseContract(SCHEMA_VERSION_V3, SCHEMA_SHA256_V3, SCHEMA_PATH_V3)
     return (WarehouseContract(SCHEMA_VERSION_V2, SCHEMA_SHA256_V2, SCHEMA_PATH_V2)
@@ -136,10 +150,12 @@ def profile_news_count(profile: str, news_per_tenant: int) -> int:
     validate_profile(profile)
     if profile == PUBLIC_HEADLINES_PROFILE:
         return validate_public_news_count(news_per_tenant)
-    return validate_news_count(news_per_tenant) if profile == SCALED_PROFILE else 12
+    return validate_news_count(news_per_tenant) if profile in {SCALED_PROFILE, TIMELINE_PROFILE} else 12
 
 
 def streamed_manifest(profile: str, news_per_tenant: int) -> dict[str, Any]:
+    if profile == TIMELINE_PROFILE:
+        return timeline_manifest(news_per_tenant)
     if profile == PUBLIC_HEADLINES_PROFILE:
         return public_manifest(news_per_tenant)
     if profile == SCALED_PROFILE:
@@ -153,15 +169,17 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
     verify_schema_contract(profile)
     contract = warehouse_contract(profile)
     count = profile_news_count(profile, news_per_tenant)
+    start, end = dataset_window(profile)
+    hours = TIMELINE_HOURS if profile == TIMELINE_PROFILE else 24
     info = {
         "schema_version": contract.version,
         "schema_sha256": contract.sha256,
         "synthetic": True,
-        "window_start": WINDOW_START.isoformat(),
-        "window_end": WINDOW_END.isoformat(),
+        "window_start": start.isoformat(),
+        "window_end": end.isoformat(),
         "news_count": count,
-        "metric_row_count": count * 24,
-        "baseline_row_count": count * 24,
+        "metric_row_count": count * hours,
+        "baseline_row_count": count * hours,
         "total_tenants": 2,
         "dataset_profile": profile,
     }
@@ -170,8 +188,8 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
     if profile in STREAMED_PROFILES:
         manifest = streamed_manifest(profile, count)
         info.update({key: manifest[key] for key in ("dataset_version", "dataset_sha256", "enterprise_scenarios")})
-        info.update(news_per_tenant=count, hours_per_news=24, total_news_count=count * 2,
-                    total_metric_row_count=count * 48, total_baseline_row_count=count * 48)
+        info.update(news_per_tenant=count, hours_per_news=hours, total_news_count=count * 2,
+                    total_metric_row_count=count * hours * 2, total_baseline_row_count=count * hours * 2)
     if profile == PUBLIC_HEADLINES_PROFILE:
         catalog = public_catalog()
         dates = [datetime.fromisoformat(article["published_at"]) for article in catalog["articles"]]
@@ -186,7 +204,7 @@ def demo_news_ids(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = DEFA
     validate_profile(profile)
     if profile == PUBLIC_HEADLINES_PROFILE:
         return public_news_ids(news_per_tenant)
-    return scaled_news_ids(news_per_tenant) if profile == SCALED_PROFILE else tuple(f"demo-news-{index:03d}" for index in range(1, 13))
+    return scaled_news_ids(news_per_tenant) if profile in {SCALED_PROFILE, TIMELINE_PROFILE} else tuple(f"demo-news-{index:03d}" for index in range(1, 13))
 
 
 _DDL = (
@@ -368,7 +386,8 @@ def _scaled_batches(table: str, news_per_tenant: int, *, batch_size: int = 500,
     if type(batch_size) is not int or not 1 <= batch_size <= 500:
         raise ValueError("scaled fixture batch must contain 1 to 500 rows")
     batch = []
-    iterator = iter_public_rows if dataset_profile == PUBLIC_HEADLINES_PROFILE else iter_scaled_rows
+    iterator = (iter_timeline_rows if dataset_profile == TIMELINE_PROFILE else
+                iter_public_rows if dataset_profile == PUBLIC_HEADLINES_PROFILE else iter_scaled_rows)
     if dataset_profile not in STREAMED_PROFILES:
         raise ValueError("profile does not use streamed rows")
     for row in iterator(table, news_per_tenant):

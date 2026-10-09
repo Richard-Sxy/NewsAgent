@@ -42,22 +42,22 @@ class StreamingConversation:
         self._query_allowed = hot_news_query_allowed
 
     async def iter_events(self) -> AsyncIterator[str]:
-        # Fewer than 40 progress events are possible under the configured finite
-        # model/tool budgets. Bound the queue anyway, including terminal output.
+        # 在配置的有限条件下，可能发生的进度事件少于 40 个
+        # 模型/工具预算。无论如何都要限制队列，包括终端输出。
         queue: asyncio.Queue[tuple[str, dict]] = asyncio.Queue(maxsize=64)
         run_started = False
 
         async def publish(name: str, data: dict):
-            # Progress carries only server-controlled phase/tool summaries. A
-            # stalled consumer must not accumulate unbounded generated content.
+        # 进度仅包含服务器控制的阶段/工具摘要。
+        # 停滞的消费者不得积累无限制的生成内容。
             queue.put_nowait((name, data))
 
         async def run():
             nonlocal run_started
             run_started = True
             try:
-                # The model/tool loop keeps its original budget. The extra ten
-                # seconds bounds history/final DB persistence outside that loop.
+                # 模型/工具循环保持其原始预算。额外的十个
+                # 秒将历史记录/最终数据库持久性限制在该循环之外。
                 async with asyncio.timeout(self._service.turn_timeout_seconds + 10):
                     turn = await self._service.run_turn(
                         tenant_id=self._tenant_id, user_id=self._user_id,
@@ -77,8 +77,8 @@ class StreamingConversation:
                 # Never reflect database/transport credentials or raw model data.
                 await queue.put(("error", {"code": "stream_unavailable", "message": "本轮响应暂不可用，请刷新历史确认原请求。"}))
 
-        # Nothing is launched in the constructor/preflight. The response body owns
-        # this task and always awaits cancellation when the connection is closed.
+        # 构造函数/预检中没有启动任何内容。响应主体拥有
+        # 该任务在连接关闭时始终等待取消。
         task = asyncio.create_task(run(), name=f"conversation-stream-{self._claim.turn.id}")
         try:
             yield encode_event("accepted", {

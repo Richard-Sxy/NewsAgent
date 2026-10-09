@@ -17,7 +17,7 @@ from app.schemas.sql_assistant import SqlAssistantPreviewRequest
 from app.services.hot_news_query import HotNewsQueryService
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError, screen_question
 from app.sql_assistant.scenarios import load_sql_scenarios
-from app.sql_assistant.warehouse import WINDOW_START
+from app.sql_assistant.warehouse import WINDOW_START, dataset_window
 from examples.hot_news_e2e_support import E2E_TENANT_ID
 
 """连续失败熔断；冷却后半开放一次探测，成功即复位。"""
@@ -62,7 +62,7 @@ class LocalConversationHotNewsQuery:
             raise ValueError("conversation hot-news query requires a ranking scenario")
         self._state = state
         self._scenario = scenario.id
-        self._start = WINDOW_START + timedelta(hours=settings.conversation_hot_news_query_hour)
+        self._start = dataset_window(getattr(settings, "sql_assistant_dataset_profile", "classic-v1"))[1] - timedelta(days=1) + timedelta(hours=settings.conversation_hot_news_query_hour)
         self._end = self._start + timedelta(hours=1)
         self._policy = QueryPolicy(
             scenario=scenario, default_limit=min(5, scenario.max_limit),
@@ -85,8 +85,8 @@ class LocalConversationHotNewsQuery:
     def available_for(self, tenant_id):
         return tenant_id == E2E_TENANT_ID
 
+    """"""
     async def _understand(self, *, question, tenant_id):
-        # Inspect the raw input before any model is allowed to normalize it.
         try:
             screened = screen_question(question)
         except SqlAssistantQuestionError:

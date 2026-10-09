@@ -1,0 +1,243 @@
+{
+  "run_id": "6823908c0f9d449883aa09e5ed62151c",
+  "created_at": "2026-10-09T05:49:08.815038+00:00",
+  "base_url": "http://api:8000",
+  "runtime": {
+    "model_provider": "openai_compatible",
+    "model_route": "glm-5.3-flash",
+    "prompt_version": "compatible-conversation-v2-query-errors-v2",
+    "query_enabled": false,
+    "query_scope": null,
+    "data_analysis": {
+      "name": "analyze_hot_news_data",
+      "description": "确定性分析同租户已完成榜单；baseline对照已保存参考字段，trend只比较相同筛选规则的两个非重叠等长窗口的新闻交集；不接收代码/SQL/路径/身份",
+      "arguments": {
+        "run_id": "UUID from current conversation tool results",
+        "operation": "overview|distribution|compare|quality|baseline|trend",
+        "reference_run_id": "required only for trend; earlier UUID from current conversation tool results",
+        "metric": "impressions|clicks|ctr|hot_score|effective_consumptions|interactions|total_duration_seconds"
+      },
+      "execution_backend": "process",
+      "resource_limits": {
+        "timeout_seconds": 3.0,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": true
+      }
+    }
+  },
+  "users": 10,
+  "rounds": 1,
+  "transport": "sse",
+  "workload": "mixed",
+  "client_peak_inflight": 10,
+  "burst_seconds": 10.109,
+  "attempted_turns": 10,
+  "completed_turns": 10,
+  "clean_completed_turns": 10,
+  "tool_errors": {},
+  "completed_turns_per_second": 0.989,
+  "statuses": {
+    "completed": 10
+  },
+  "http_statuses": {
+    "200": 10
+  },
+  "errors": {},
+  "latency_seconds_all": {
+    "p50": 2.337,
+    "p95": 10.108,
+    "p99": 10.108,
+    "max": 10.108
+  },
+  "latency_seconds_completed": {
+    "p50": 2.337,
+    "p95": 10.108,
+    "p99": 10.108,
+    "max": 10.108
+  },
+  "first_event_seconds": {
+    "p50": 0.028,
+    "p95": 0.032,
+    "p99": 0.032,
+    "max": 0.032
+  },
+  "first_answer_seconds": {
+    "p50": 2.337,
+    "p95": 10.107,
+    "p99": 10.107,
+    "max": 10.107
+  },
+  "scenarios": {
+    "你好": {
+      "statuses": {
+        "completed": 5
+      },
+      "latency_seconds": {
+        "p50": 1.783,
+        "p95": 2.337,
+        "p99": 2.337,
+        "max": 2.337
+      }
+    },
+    "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。": {
+      "statuses": {
+        "completed": 5
+      },
+      "latency_seconds": {
+        "p50": 7.943,
+        "p95": 10.108,
+        "p99": 10.108,
+        "max": 10.108
+      }
+    }
+  },
+  "verification_passes": {
+    "history": 10,
+    "replay": 10,
+    "other_user_denied": 10,
+    "other_tenant_denied": 10
+  },
+  "samples": [
+    {
+      "user_index": 2,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.02542741700017359,
+      "first_answer_seconds": 1.7827617090006243,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 1.7832682090011076
+    },
+    {
+      "user_index": 4,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.02812291699956404,
+      "first_answer_seconds": 1.783027793000656,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 1.7834491680005158
+    },
+    {
+      "user_index": 6,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.027746749998186715,
+      "first_answer_seconds": 1.7829852510003548,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 1.7833481679990655
+    },
+    {
+      "user_index": 0,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.014057874999707565,
+      "first_answer_seconds": 2.336549751002167,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.3372740850027185
+    },
+    {
+      "user_index": 8,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.03161129100044491,
+      "first_answer_seconds": 2.3352356670002337,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.336326750999433
+    },
+    {
+      "user_index": 1,
+      "round": 0,
+      "scenario": "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.025437290998524986,
+      "first_answer_seconds": 5.524403334999079,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 5.525616334998631
+    },
+    {
+      "user_index": 5,
+      "round": 0,
+      "scenario": "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.02771358300014981,
+      "first_answer_seconds": 7.7478284610006085,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 7.7487202110023645
+    },
+    {
+      "user_index": 3,
+      "round": 0,
+      "scenario": "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.024929041999712354,
+      "first_answer_seconds": 7.941636670002481,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 7.9427502950020425
+    },
+    {
+      "user_index": 9,
+      "round": 0,
+      "scenario": "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.02766291700027068,
+      "first_answer_seconds": 9.714211962000263,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 9.714607378999062
+    },
+    {
+      "user_index": 7,
+      "round": 0,
+      "scenario": "读取已完成的热点报告，使用 list_hot_news 和 read_hot_news，不创建新查询。",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.027761375000409316,
+      "first_answer_seconds": 10.10689808800089,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 10.107842088000325
+    }
+  ],
+  "limitations": [
+    "client inflight is not server/model concurrency",
+    "burst test is not sustained capacity",
+    "no new hot-news workflow, writing, knowledge search or context compaction load",
+    "synthetic users share one tenant; different-tenant access denial is checked",
+    "SSE answer is emitted after validation/persistence, not raw model TTFT"
+  ]
+}

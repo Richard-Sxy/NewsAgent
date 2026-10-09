@@ -44,7 +44,7 @@ class SqlScenariosConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     schema_version: Literal[1]
-    warehouse_schema_version: Literal["news-warehouse-v1", "news-warehouse-v2", "news-warehouse-v3"]
+    warehouse_schema_version: Literal["news-warehouse-v1", "news-warehouse-v2", "news-warehouse-v3", "news-warehouse-v4"]
     model_scene: Literal["text2sql_assistant"] = "text2sql_assistant"
     model_timeout_seconds: float = Field(default=15, ge=1, le=15)
     model_max_attempts: int = Field(default=2, ge=1, le=2)

@@ -56,7 +56,7 @@ class EndpointConfig(BaseModel):
             raise ValueError("local model provider cannot declare remote connection")
         return self
 
-
+"""模型执行的配置"""
 class ModelRuntimeConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 

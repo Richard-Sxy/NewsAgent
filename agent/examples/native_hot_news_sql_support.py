@@ -46,6 +46,7 @@ from app.sql_assistant.warehouse import (
     demo_news_ids,
     warehouse_contract,
     STREAMED_PROFILES,
+    dataset_window,
 )
 from app.sql_assistant.public_headlines import PUBLIC_HEADLINES_PROFILE, public_article
 
@@ -109,12 +110,13 @@ def _aware_time(value: Any) -> datetime:
     return result
 
 
-def _validate_window(start: datetime, end: datetime) -> None:
+def _validate_window(start: datetime, end: datetime, profile: str = "classic-v1") -> None:
     if end - start != timedelta(hours=1):
         raise HotNewsDataQualityError("SQL hot-news simulation requires exactly one hourly bucket; hourly UV cannot be summed")
     if start.minute or start.second or start.microsecond or end.minute or end.second or end.microsecond:
         raise HotNewsDataQualityError("SQL hot-news simulation window must align to full hours")
-    if start < WINDOW_START or end > WINDOW_END:
+    sample_start, sample_end = dataset_window(profile)
+    if start < sample_start or end > sample_end:
         raise HotNewsDataQualityError("SQL hot-news simulation window is outside the frozen synthetic dataset")
 
 
@@ -175,7 +177,7 @@ class SqlHotNewsDetailRepository:
         self, *, window_start: datetime, window_end: datetime, news_ids: tuple[str, ...]
     ) -> tuple[Mapping[str, Any], ...]:
         verify_schema_contract(self.dataset_profile)
-        _validate_window(window_start, window_end)
+        _validate_window(window_start, window_end, self.dataset_profile)
         requested = tuple(dict.fromkeys(news_ids))
         if not set(requested) <= self._allowed_ids:
             raise HotNewsDataQualityError("SQL hot-news requested an unknown synthetic news_id")
@@ -260,7 +262,8 @@ class SqlHotNewsContentRepository:
         else:
             requested = tuple(item for item in requested if item in DEMO_NEWS_IDS)
             rows = await self.details.fetch_details(
-                window_start=WINDOW_START, window_end=WINDOW_START + timedelta(hours=1), news_ids=requested,
+                window_start=dataset_window(getattr(self.details, "dataset_profile", "classic-v1"))[0],
+                window_end=dataset_window(getattr(self.details, "dataset_profile", "classic-v1"))[0] + timedelta(hours=1), news_ids=requested,
             )
         contents: dict[str, NewsContent] = {}
         for row in rows:
@@ -313,7 +316,7 @@ class SqlAssistantHotNewsMetricSource:
         self.execute_for_run = execute_for_run
         self.window_start = _aware_time(preview.parameters["window_start"])
         self.window_end = _aware_time(preview.parameters["window_end"])
-        _validate_window(self.window_start, self.window_end)
+        _validate_window(self.window_start, self.window_end, self.dataset_profile)
         if str(preview.parameters["tenant_id"]) != self.tenant_id:
             raise HotNewsDataQualityError("SQL hot-news preview tenant mismatch")
         self._snapshots: tuple[NewsMetricSnapshot, ...] | None = None
@@ -377,7 +380,8 @@ class SqlAssistantHotNewsMetricSource:
             baselines[(news_id, content_type)] = SqlNewsMetricBaseline(
                 news_id=news_id, content_type=content_type, sample_count=1,
                 ctr=baseline_values["clicks"] / baseline_values["impressions"] if baseline_values["impressions"] else Decimal(0),
-                reference_version=("synthetic-hourly-baseline-v3" if self.dataset_profile == PUBLIC_HEADLINES_PROFILE
+                reference_version=("synthetic-hourly-baseline-v4" if self.dataset_profile == "timeline-v4" else
+                                   "synthetic-hourly-baseline-v3" if self.dataset_profile == PUBLIC_HEADLINES_PROFILE
                                    else "synthetic-hourly-baseline-v2" if self.dataset_profile == SCALED_PROFILE
                                    else "synthetic-hourly-baseline-v1"),
                 **baseline_values,
@@ -500,7 +504,8 @@ async def seed_native_sql_knowledge(dependencies: NativeHotNewsSqlDependencies, 
     documents = tuple(KnowledgeDocument(
         document_id=f"news:{news_id}", title=contents[news_id].title,
         text=contents[news_id].body, media_type=contents[news_id].content_type.value,
-        text_source=("public-headline-reference-v3" if profile == PUBLIC_HEADLINES_PROFILE else
+        text_source=("synthetic-sql-warehouse-v4" if profile == "timeline-v4" else
+                     "public-headline-reference-v3" if profile == PUBLIC_HEADLINES_PROFILE else
                      "synthetic-sql-warehouse-v2" if profile == SCALED_PROFILE else "synthetic-sql-warehouse-v1"),
         source_url=contents[news_id].source_url,
         metadata={"news_id": news_id, "content_version": "1", "warehouse_schema_version": contract.version,

@@ -128,6 +128,7 @@ class LengthBasedContext:
             count = len(self.turns) - keep
             older = self.turns[:count]
             summary = await self._summarize([item[1] for item in older], model_ids)
+
             memory = ConversationMemory(summary=summary, through=older[-1][0],
                 compressed_turns=self.memory.compressed_turns + count,
                 tools=self._references([*self.memory.tools, *(tool for _, turn in older for tool in turn["tools"])]))
@@ -192,11 +193,13 @@ class LengthBasedContext:
 
     async def _summarize(self, turns, model_ids):
         summary = self.memory.summary
-        # Tool snapshots are handled separately by deterministic code. Text is
-        # split into bounded fragments even for a single very long old answer.
+        # 工具结果快照由确定性代码单独处理，不交给模型总结。
+        # 对话文本会拆成长度受限的片段。
+        # 即使有一条很长的历史答复，也会拆分处理。
         text = "\n".join(json.dumps({"user": turn["user"], "assistant": turn["assistant"]},
                                   ensure_ascii=False) for turn in turns)
         while text:
+            # 选取本次要处理的片段长度。
             width = min(len(text), max(100, (self.max_chars - 2 * self.summary_chars - 1000) // 2))
             payload = {"previous_summary": summary, "conversation_fragment": text[:width],
                        "max_summary_chars": self.summary_chars}

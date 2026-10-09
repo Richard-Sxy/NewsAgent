@@ -162,6 +162,7 @@ onBeforeUnmount(() => { disposed = true; catalogController?.abort(); cancelPrepa
       <template v-if="catalog">
         <p class="na-muted">{{ scaleSummary }}</p>
         <p class="na-muted">{{ aggregateSummary }}</p>
+        <p class="na-muted">指标覆盖 {{ catalog.windowStart.slice(0, 10) }} 至 {{ catalog.windowEnd.slice(0, 10) }}（结束不含），每篇 {{ catalog.hoursPerNews }} 个小时桶。</p>
         <p v-if="catalog.datasetProfile === 'public-headlines-v3'" class="na-notice">
           标题采自公开报道（{{ catalog.headlineDateStart }} 至 {{ catalog.headlineDateEnd }}），指标仍为10月3日的模拟数据。
           标题发布日期与模拟指标窗口相互独立，不能解释为这些报道的真实用户行为。

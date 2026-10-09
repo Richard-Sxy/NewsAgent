@@ -1,0 +1,1478 @@
+{
+  "run_id": "5dfb18cf54a141bc81bd026d93ebdaf0",
+  "created_at": "2026-10-09T05:45:37.508035+00:00",
+  "base_url": "http://api:8000",
+  "runtime": {
+    "model_provider": "openai_compatible",
+    "model_route": "glm-5.3-flash",
+    "prompt_version": "compatible-conversation-v2-query-errors-v2",
+    "query_enabled": false,
+    "query_scope": null,
+    "data_analysis": {
+      "name": "analyze_hot_news_data",
+      "description": "确定性分析同租户已完成榜单；baseline对照已保存参考字段，trend只比较相同筛选规则的两个非重叠等长窗口的新闻交集；不接收代码/SQL/路径/身份",
+      "arguments": {
+        "run_id": "UUID from current conversation tool results",
+        "operation": "overview|distribution|compare|quality|baseline|trend",
+        "reference_run_id": "required only for trend; earlier UUID from current conversation tool results",
+        "metric": "impressions|clicks|ctr|hot_score|effective_consumptions|interactions|total_duration_seconds"
+      },
+      "execution_backend": "process",
+      "resource_limits": {
+        "timeout_seconds": 3.0,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": true
+      }
+    }
+  },
+  "users": 100,
+  "rounds": 1,
+  "transport": "sse",
+  "workload": "mixed",
+  "client_peak_inflight": 100,
+  "burst_seconds": 10.449,
+  "attempted_turns": 100,
+  "completed_turns": 64,
+  "completed_turns_per_second": 6.125,
+  "statuses": {
+    "completed": 64,
+    "failed": 36
+  },
+  "http_statuses": {
+    "200": 100
+  },
+  "errors": {
+    "model_unavailable": 36
+  },
+  "latency_seconds_all": {
+    "p50": 2.776,
+    "p95": 7.341,
+    "p99": 9.322,
+    "max": 10.443
+  },
+  "latency_seconds_completed": {
+    "p50": 4.228,
+    "p95": 7.941,
+    "p99": 10.443,
+    "max": 10.443
+  },
+  "first_event_seconds": {
+    "p50": 0.353,
+    "p95": 0.775,
+    "p99": 0.796,
+    "max": 0.801
+  },
+  "first_answer_seconds": {
+    "p50": 2.774,
+    "p95": 7.336,
+    "p99": 9.32,
+    "max": 10.441
+  },
+  "scenarios": {
+    "你好": {
+      "statuses": {
+        "completed": 30,
+        "failed": 20
+      },
+      "latency_seconds": {
+        "p50": 2.294,
+        "p95": 4.843,
+        "p99": 5.384,
+        "max": 5.384
+      }
+    },
+    "查看最近热点": {
+      "statuses": {
+        "failed": 16,
+        "completed": 34
+      },
+      "latency_seconds": {
+        "p50": 4.501,
+        "p95": 8.501,
+        "p99": 10.443,
+        "max": 10.443
+      }
+    }
+  },
+  "verification_passes": {
+    "history": 100,
+    "replay": 100,
+    "other_user_denied": 100,
+    "other_tenant_denied": 100
+  },
+  "samples": [
+    {
+      "user_index": 0,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.018854750000173226,
+      "first_answer_seconds": 1.747811125998851,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 1.7487038340004801
+    },
+    {
+      "user_index": 50,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.3608871670003282,
+      "first_answer_seconds": 1.831428584002424,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.8318301260005683
+    },
+    {
+      "user_index": 76,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.5260385840010713,
+      "first_answer_seconds": 1.828630501000589,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.8289315010006248
+    },
+    {
+      "user_index": 58,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4115713760002109,
+      "first_answer_seconds": 1.8308446679984627,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.8311810009981855
+    },
+    {
+      "user_index": 57,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4049114590015961,
+      "first_answer_seconds": 1.8313606680021621,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.8315754590003053
+    },
+    {
+      "user_index": 64,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.45486308299950906,
+      "first_answer_seconds": 1.9042816670007596,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.904773042002489
+    },
+    {
+      "user_index": 99,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7955244170007063,
+      "first_answer_seconds": 1.9007120839996787,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.9009752509991813
+    },
+    {
+      "user_index": 65,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4494037500007835,
+      "first_answer_seconds": 1.9049845419976918,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.905322750997584
+    },
+    {
+      "user_index": 62,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4364819170004921,
+      "first_answer_seconds": 1.9054277089999232,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 1.9058732089979458
+    },
+    {
+      "user_index": 46,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.32887162499901024,
+      "first_answer_seconds": 2.0312479179992806,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.032945792998362
+    },
+    {
+      "user_index": 91,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7516070829988166,
+      "first_answer_seconds": 2.0276728339995316,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.028204458998516
+    },
+    {
+      "user_index": 67,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4656368340001791,
+      "first_answer_seconds": 2.031088918000023,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.031644751001295
+    },
+    {
+      "user_index": 66,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.46569641699898057,
+      "first_answer_seconds": 2.0313340009997773,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.032028542998887
+    },
+    {
+      "user_index": 71,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.5195117509974807,
+      "first_answer_seconds": 2.0308457510000153,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0317147099995054
+    },
+    {
+      "user_index": 74,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.5190877499990165,
+      "first_answer_seconds": 2.03363550100039,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.034237126001244
+    },
+    {
+      "user_index": 83,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.714572542001406,
+      "first_answer_seconds": 2.033225251001568,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.034015459001239
+    },
+    {
+      "user_index": 80,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.5562288340006489,
+      "first_answer_seconds": 2.0337151259991515,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.03469216799931
+    },
+    {
+      "user_index": 63,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.44233770800201455,
+      "first_answer_seconds": 2.0358236669999314,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0370482090002042
+    },
+    {
+      "user_index": 92,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7582425000000512,
+      "first_answer_seconds": 2.032485458999872,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0339367930027947
+    },
+    {
+      "user_index": 68,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.47160325000004377,
+      "first_answer_seconds": 2.036832834000961,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0376455840014387
+    },
+    {
+      "user_index": 73,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.50044737600183,
+      "first_answer_seconds": 2.036389376000443,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.037682001002395
+    },
+    {
+      "user_index": 95,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7753929589998734,
+      "first_answer_seconds": 2.033866001002025,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0359947930010094
+    },
+    {
+      "user_index": 96,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7801969590000226,
+      "first_answer_seconds": 2.033839209998405,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0364198349998333
+    },
+    {
+      "user_index": 79,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.5499604579999868,
+      "first_answer_seconds": 2.038488458998472,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.038987666997855
+    },
+    {
+      "user_index": 54,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.38751837499876274,
+      "first_answer_seconds": 2.041998208998848,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.042688666999311
+    },
+    {
+      "user_index": 72,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4916487920017971,
+      "first_answer_seconds": 2.040031792999798,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.041059668001253
+    },
+    {
+      "user_index": 52,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.3743418339981872,
+      "first_answer_seconds": 2.0426558760009357,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.043983917999867
+    },
+    {
+      "user_index": 88,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7433322500000941,
+      "first_answer_seconds": 2.0468756260015653,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.048612251001032
+    },
+    {
+      "user_index": 70,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.4920338759984588,
+      "first_answer_seconds": 2.0494709179984056,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0512281259980227
+    },
+    {
+      "user_index": 93,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7644080419995589,
+      "first_answer_seconds": 2.047296542998083,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0489667510009895
+    },
+    {
+      "user_index": 53,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.3798692500022298,
+      "first_answer_seconds": 2.0537903340009507,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0544486670005426
+    },
+    {
+      "user_index": 89,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7430724170008034,
+      "first_answer_seconds": 2.0496797099985997,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.0507384599986835
+    },
+    {
+      "user_index": 10,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.14606329199887114,
+      "first_answer_seconds": 2.0651988760000677,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.0659880839994003
+    },
+    {
+      "user_index": 2,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.08313450000059674,
+      "first_answer_seconds": 2.0679655429994455,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.068627001001005
+    },
+    {
+      "user_index": 82,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.6887300839989621,
+      "first_answer_seconds": 2.1147839179975563,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.115642292999837
+    },
+    {
+      "user_index": 98,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.8014813340014371,
+      "first_answer_seconds": 2.112836750999122,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.114347375998477
+    },
+    {
+      "user_index": 69,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.47719100000176695,
+      "first_answer_seconds": 2.1179236259995378,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.1185958339992794
+    },
+    {
+      "user_index": 26,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.17767616699711652,
+      "first_answer_seconds": 2.1237691679998534,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.124613417996443
+    },
+    {
+      "user_index": 86,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.7241718330005824,
+      "first_answer_seconds": 2.1167641669999284,
+      "model_calls": 0,
+      "tool_errors": [],
+      "seconds": 2.1180790010002966
+    },
+    {
+      "user_index": 5,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "failed",
+      "error_code": "model_unavailable",
+      "first_event_seconds": 0.0893505419990106,
+      "first_answer_seconds": 2.192082875997585,
+      "model_calls": 1,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 2.1937689179976587
+    },
+    {
+      "user_index": 36,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2385118340025656,
+      "first_answer_seconds": 2.2928763760028232,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.294112543000665
+    },
+    {
+      "user_index": 6,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.09634725000069011,
+      "first_answer_seconds": 2.4822869599993282,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.4854044179992343
+    },
+    {
+      "user_index": 4,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.08930670799963991,
+      "first_answer_seconds": 2.4822119179989386,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.4873906259999785
+    },
+    {
+      "user_index": 40,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2753112089994829,
+      "first_answer_seconds": 2.520212460000039,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.5212395009984903
+    },
+    {
+      "user_index": 34,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2282801670007757,
+      "first_answer_seconds": 2.5237730010012456,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.525204583998857
+    },
+    {
+      "user_index": 12,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.1457302080016234,
+      "first_answer_seconds": 2.530581543000153,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.531604501000402
+    },
+    {
+      "user_index": 44,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.3174237500024901,
+      "first_answer_seconds": 2.673436376000609,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.674898168002983
+    },
+    {
+      "user_index": 30,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.20554133400219143,
+      "first_answer_seconds": 2.7123043760002474,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.713584876000823
+    },
+    {
+      "user_index": 20,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.1837630000009085,
+      "first_answer_seconds": 2.7148467090009945,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.7158208760010893
+    },
+    {
+      "user_index": 14,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.15498845799811534,
+      "first_answer_seconds": 2.774487083999702,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.775964833999751
+    },
+    {
+      "user_index": 32,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.214739125000051,
+      "first_answer_seconds": 2.8673111259995494,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 2.869147043002158
+    },
+    {
+      "user_index": 90,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.7518924169999082,
+      "first_answer_seconds": 3.023992501999601,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.025729668999702
+    },
+    {
+      "user_index": 60,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.42860516699875006,
+      "first_answer_seconds": 3.0293074599976535,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.030654959999083
+    },
+    {
+      "user_index": 8,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.10221679199821665,
+      "first_answer_seconds": 3.0601591269987694,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.0612560019981174
+    },
+    {
+      "user_index": 38,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.323691625999345,
+      "first_answer_seconds": 3.0582098349987064,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.0590944190007576
+    },
+    {
+      "user_index": 78,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.5352520419983193,
+      "first_answer_seconds": 3.086714959998062,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.0878325429985125
+    },
+    {
+      "user_index": 28,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.22891458300000522,
+      "first_answer_seconds": 3.171370543001103,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.172460334997595
+    },
+    {
+      "user_index": 22,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.15415562499765656,
+      "first_answer_seconds": 3.237079085000005,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.238738834999822
+    },
+    {
+      "user_index": 18,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.16809366699817474,
+      "first_answer_seconds": 3.463353750998067,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.464972042998852
+    },
+    {
+      "user_index": 29,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.23402824999720906,
+      "first_answer_seconds": 3.79482283499965,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 3.7970062929998676
+    },
+    {
+      "user_index": 16,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.16835112599801505,
+      "first_answer_seconds": 3.796041293997405,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 3.8001632939995034
+    },
+    {
+      "user_index": 37,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2449943749998056,
+      "first_answer_seconds": 3.797878043998935,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 3.799622376998741
+    },
+    {
+      "user_index": 51,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.3802577089991246,
+      "first_answer_seconds": 3.8277175440016435,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 3.82939004400032
+    },
+    {
+      "user_index": 17,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.16770508400077233,
+      "first_answer_seconds": 4.026142544000322,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.030008669000381
+    },
+    {
+      "user_index": 35,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.23336679200292565,
+      "first_answer_seconds": 4.138441668001178,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.142315335000603
+    },
+    {
+      "user_index": 9,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.09558066700265044,
+      "first_answer_seconds": 4.184330251999199,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.186701044000074
+    },
+    {
+      "user_index": 61,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.4282994579989463,
+      "first_answer_seconds": 4.180656751999777,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.1825368350000645
+    },
+    {
+      "user_index": 85,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.714487042001565,
+      "first_answer_seconds": 4.225349127002119,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.227954877002048
+    },
+    {
+      "user_index": 94,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.7757280839978193,
+      "first_answer_seconds": 4.472775626996736,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 4.47613050200016
+    },
+    {
+      "user_index": 59,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.4170451249992766,
+      "first_answer_seconds": 4.499108336000063,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.5009672519991
+    },
+    {
+      "user_index": 48,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.34360537599786767,
+      "first_answer_seconds": 4.502478168997186,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 4.503944877997128
+    },
+    {
+      "user_index": 87,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.7306468339993444,
+      "first_answer_seconds": 4.7003578360017855,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.703886503000831
+    },
+    {
+      "user_index": 84,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.7146341669977119,
+      "first_answer_seconds": 4.832339835997118,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 4.834106335998513
+    },
+    {
+      "user_index": 24,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.16708708299847785,
+      "first_answer_seconds": 4.841338584999903,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 4.842786459998024
+    },
+    {
+      "user_index": 45,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.32285637599852635,
+      "first_answer_seconds": 4.9607437109989405,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 4.9621151279970945
+    },
+    {
+      "user_index": 3,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.08923254099863698,
+      "first_answer_seconds": 5.046076959999482,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.047353001998999
+    },
+    {
+      "user_index": 56,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.3978853340013302,
+      "first_answer_seconds": 5.130132169000717,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 5.131861377001769
+    },
+    {
+      "user_index": 7,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.09561870799734606,
+      "first_answer_seconds": 5.379959918998793,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.382868377000705
+    },
+    {
+      "user_index": 39,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.26645933400141075,
+      "first_answer_seconds": 5.379361044000689,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.381956836001336
+    },
+    {
+      "user_index": 42,
+      "round": 0,
+      "scenario": "你好",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.296831084000587,
+      "first_answer_seconds": 5.3816931689980265,
+      "model_calls": 1,
+      "tool_errors": [],
+      "seconds": 5.383884502000001
+    },
+    {
+      "user_index": 11,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.14606945799823734,
+      "first_answer_seconds": 5.407144126998901,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.4097650020012225
+    },
+    {
+      "user_index": 55,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.3924288339985651,
+      "first_answer_seconds": 5.667439126998943,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.672081794000405
+    },
+    {
+      "user_index": 13,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.10866750000059255,
+      "first_answer_seconds": 5.929065293999884,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.932508876998327
+    },
+    {
+      "user_index": 97,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.7845396249977057,
+      "first_answer_seconds": 5.922671668999101,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.925094127000193
+    },
+    {
+      "user_index": 47,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.33451679200152284,
+      "first_answer_seconds": 5.948549794000428,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.951098752000689
+    },
+    {
+      "user_index": 75,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.5127358749996347,
+      "first_answer_seconds": 5.947704876998614,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.9497685019996425
+    },
+    {
+      "user_index": 23,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.1617805829991994,
+      "first_answer_seconds": 5.956035627001256,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 5.958084043999406
+    },
+    {
+      "user_index": 81,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.5667787920028786,
+      "first_answer_seconds": 6.011939669002459,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.014738877001946
+    },
+    {
+      "user_index": 21,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.14452854100090917,
+      "first_answer_seconds": 6.114777959999628,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.1166432940008235
+    },
+    {
+      "user_index": 31,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.1991177499985497,
+      "first_answer_seconds": 6.134382626998558,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.136064627000451
+    },
+    {
+      "user_index": 41,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2830024590002722,
+      "first_answer_seconds": 6.208048377000523,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.210425752000447
+    },
+    {
+      "user_index": 49,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.3530640829994809,
+      "first_answer_seconds": 6.30948654399981,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.311222377000377
+    },
+    {
+      "user_index": 77,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.5303084590013896,
+      "first_answer_seconds": 6.434590544002276,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 6.436332544002653
+    },
+    {
+      "user_index": 27,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.21547120899776928,
+      "first_answer_seconds": 6.725000377999095,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 6.728578794998612
+    },
+    {
+      "user_index": 15,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.14571745799912605,
+      "first_answer_seconds": 7.335900628000672,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 7.341166043999692
+    },
+    {
+      "user_index": 19,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.1783498340009828,
+      "first_answer_seconds": 7.912127294999664,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 7.913855129001604
+    },
+    {
+      "user_index": 1,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.08307058299760683,
+      "first_answer_seconds": 7.94005962799929,
+      "model_calls": 2,
+      "tool_errors": [
+        "hot_news_query_not_approved_or_invalid"
+      ],
+      "seconds": 7.941378627998347
+    },
+    {
+      "user_index": 33,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.22114487599901622,
+      "first_answer_seconds": 8.497876086999895,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 8.50101992099735
+    },
+    {
+      "user_index": 25,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2219874170004914,
+      "first_answer_seconds": 9.320007170997997,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 9.321690628999932
+    },
+    {
+      "user_index": 43,
+      "round": 0,
+      "scenario": "查看最近热点",
+      "http_status": 200,
+      "status": "completed",
+      "error_code": null,
+      "first_event_seconds": 0.2965282510012912,
+      "first_answer_seconds": 10.440827755002829,
+      "model_calls": 3,
+      "tool_errors": [],
+      "seconds": 10.4429742550019
+    }
+  ],
+  "limitations": [
+    "client inflight is not server/model concurrency",
+    "burst test is not sustained capacity",
+    "no new hot-news workflow, writing, knowledge search or context compaction load",
+    "synthetic users share one tenant; different-tenant access denial is checked",
+    "SSE answer is emitted after validation/persistence, not raw model TTFT"
+  ]
+}

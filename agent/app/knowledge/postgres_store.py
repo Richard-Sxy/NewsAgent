@@ -73,7 +73,7 @@ _chunks = Table(
     ),
 )
 
-
+""" 这边调用PostgreSQL去存储中间信息。 """
 class PostgresKnowledgeStore:
     def __init__(
         self,
@@ -250,6 +250,7 @@ class PostgresKnowledgeStore:
                 )
         return IngestReport(tuple(outcomes))
 
+    """这边是在PostgreSQL当中查询新闻标题。"""
     async def search(
         self,
         *,

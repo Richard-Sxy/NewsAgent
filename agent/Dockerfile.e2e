@@ -38,6 +38,8 @@ COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.pub
 COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
 COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
 COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+COPY docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
+COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
 COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
 COPY tests ./tests
 

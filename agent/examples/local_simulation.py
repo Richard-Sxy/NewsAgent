@@ -53,7 +53,7 @@ from app.sql_assistant.bootstrap import build_local_hot_news_sql_service
 from app.sql_assistant.hot_news_binding import build_hot_news_sql_scope
 from app.sql_assistant.scenarios import load_sql_scenarios
 from app.sql_assistant.service import SqlAssistantError
-from app.sql_assistant.warehouse import WINDOW_START, WINDOW_END
+from app.sql_assistant.warehouse import WINDOW_START, WINDOW_END, dataset_window, STREAMED_PROFILES
 
 
 LOCAL_BUNDLE_VERSION = "local-simulation-bundle-v1"
@@ -143,14 +143,15 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
     if str(principal.tenant_id) != E2E_TENANT_ID:
         raise HTTPException(status_code=403, detail="local scenario tenant required")
 
+    sample_start, sample_end = dataset_window(state.settings.sql_assistant_dataset_profile)
     body = body or SqlAssistantPreviewRequest(
         question="按点击量取前5条新闻", scenario_id="news-ranking",
-        window_start=WINDOW_START, window_end=WINDOW_START + timedelta(hours=1),
+        window_start=sample_start, window_end=sample_start + timedelta(hours=1),
     )
     if body.window_end - body.window_start != timedelta(hours=1):
         raise HTTPException(status_code=422, detail="热点本地模拟请选择恰好1小时，小时去重用户数不能跨小时相加")
-    if body.window_start < WINDOW_START or body.window_end > WINDOW_END:
-        raise HTTPException(status_code=422, detail="窗口必须位于2026-10-03的合成样本内")
+    if body.window_start < sample_start or body.window_end > sample_end:
+        raise HTTPException(status_code=422, detail="窗口必须位于当前数据集公布的合成样本范围内")
 
     settings = state.settings
     try:
@@ -206,7 +207,7 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
             window_start=body.window_start, window_end=body.window_end,
             schema_sha256=tool.contract.sha256, production_bundle_version=active.bundle_version,
             warehouse_schema_version=tool.contract.version,
-            dataset_identity=tool.dataset_identity() if tool.dataset_profile in {"enterprise-v2", "public-headlines-v3"} else None,
+            dataset_identity=tool.dataset_identity() if tool.dataset_profile in STREAMED_PROFILES else None,
             model_scene=config.model_scene,
             user_id=str(principal.user_id),
             scenario={"scene": scene.model_dump(mode="json"),
