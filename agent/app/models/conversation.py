@@ -196,4 +196,4 @@ class ConversationInputRecord(Base):
 
     turn: Mapped["ConversationTurnRecord"] = relationship(
         back_populates="inputs",
-    )
+    )    # 做一个关联：底层仍需查询数据库，只是 ORM 帮你组织查询和结果，具体何时查询取决于加载配置
