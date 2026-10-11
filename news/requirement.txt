@@ -1,0 +1,20 @@
+# News crawling, NLP and retrieval experiments (Python 3.11 recommended).
+# From this directory: python3.11 -m pip install -r requirement.txt
+# Includes optional NLP/experiment packages; this is not a lockfile.
+# Reuse existing manifests so crawler container dependencies remain unchanged.
+-r requirements-nlp.txt
+
+# Redis-backed heat tracking (service/redis_heat_tracker.py).
+redis>=5.1,<6
+
+# Offline retrieval experiments (experiments/).
+# Compatible with the existing transformers <5 / huggingface-hub <1 bounds.
+sentence-transformers==3.4.1
+numpy
+hnswlib
+faiss-cpu
+
+# LTP and SentenceTransformer weights must be downloaded or supplied separately.
+# CUDA users must install the appropriate PyTorch build for their environment.
+# The existing requirements.txt remains the lightweight crawler manifest;
+# requirements-nlp.txt includes it and adds the title NLP dependencies.

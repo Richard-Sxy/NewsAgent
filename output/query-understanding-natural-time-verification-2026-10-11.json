@@ -1,0 +1,92 @@
+{
+  "verified_date": "2026-10-11",
+  "frontend": "http://127.0.0.1:5175",
+  "image": "sha256:e58c617b456682603be66ea1f9073c112cdc5482277e4830379d9de74c6e84ac",
+  "understanding_model": {
+    "provider": "openai_compatible",
+    "model_route": "glm-5.3-flash",
+    "prompt_version": "native-query-understanding-v4"
+  },
+  "cases": [
+    {
+      "conversation_id": "16f36433-65a3-433a-a130-c4ab9ec89377",
+      "request_id": "d9332340-6f5e-42bc-8268-8d86fe3c5e74",
+      "question": "10月9号早上八点到九点热度最高的前五条新闻，帮我总结一下。",
+      "turn_status": "completed",
+      "tool_status": "completed",
+      "error_code": null,
+      "resolution_status": "ready",
+      "reason_code": "ready",
+      "understanding_model_request_id": "2026101113242310ba6bcc03cf4e3b",
+      "run_id": "69bc9b8a-be03-429a-9a6c-2e33ab631c7d",
+      "sql_query_id": "b0efd05c-1cdc-4f35-a890-c4b8000d380c",
+      "window_start": "2026-10-09T08:00:00+08:00",
+      "window_end": "2026-10-09T09:00:00+08:00",
+      "items": 5,
+      "summary_present": true,
+      "understanding_model": {
+        "provider": "openai_compatible",
+        "model_route": "glm-5.3-flash",
+        "prompt_version": "native-query-understanding-v4"
+      }
+    },
+    {
+      "conversation_id": "da0ff79a-d411-42e7-9551-b2533feb734e",
+      "request_id": "eff1a3f2-4f82-4edd-8918-f0212c57b817",
+      "question": "前天晚上八点到九点热度最高的前五条新闻，帮我总结一下。",
+      "turn_status": "completed",
+      "tool_status": "completed",
+      "error_code": null,
+      "resolution_status": "ready",
+      "reason_code": "ready",
+      "understanding_model_request_id": "20261011132428c0bea0bda2124223",
+      "run_id": "ff8f6c5a-4bfc-4378-933f-1ffb8254dbff",
+      "sql_query_id": "3a0ae1dc-6b53-4557-a497-9440d262e0cd",
+      "window_start": "2026-10-09T20:00:00+08:00",
+      "window_end": "2026-10-09T21:00:00+08:00",
+      "items": 5,
+      "summary_present": true,
+      "understanding_model": {
+        "provider": "openai_compatible",
+        "model_route": "glm-5.3-flash",
+        "prompt_version": "native-query-understanding-v4"
+      }
+    },
+    {
+      "conversation_id": "219a27dc-a3cb-4d7d-938d-092ef7545046",
+      "request_id": "ecc9075c-6f44-402a-8b17-34773eaf7f0f",
+      "question": "查询10月10号早上八点到九点的热点新闻",
+      "turn_status": "completed",
+      "tool_status": "failed",
+      "error_code": "query_invalid_proposal",
+      "resolution_status": "unsupported",
+      "reason_code": "invalid_proposal",
+      "understanding_model_request_id": "2026101113243230f114e26d314a63",
+      "no_sql_or_workflow": true
+    },
+    {
+      "conversation_id": "8c27f896-cd99-4ed9-ba9f-1b617194a6ed",
+      "request_id": "58c91f8f-5f56-4d11-a6fd-86f600697e49",
+      "question": "查询昨天早上八点到九点点击量超过100的新闻",
+      "turn_status": "completed",
+      "tool_status": "failed",
+      "error_code": "query_unsupported_condition",
+      "resolution_status": "unsupported",
+      "reason_code": "unsupported_condition",
+      "understanding_model_request_id": "202610111324373cef39f283174cd6",
+      "no_sql_or_workflow": true
+    },
+    {
+      "conversation_id": "6a76ad7d-9668-4927-a4b7-ed65f7ee6172",
+      "request_id": "c9d1ba29-b310-4beb-9d81-c259c712eaa9",
+      "question": "查询昨天8点到9点和9点到10点的热点新闻",
+      "turn_status": "completed",
+      "tool_status": "failed",
+      "error_code": "query_ambiguous_requirements",
+      "resolution_status": "clarify",
+      "reason_code": "ambiguous_requirements",
+      "understanding_model_request_id": "202610111324451baddfe026b74ab3",
+      "no_sql_or_workflow": true
+    }
+  ]
+}

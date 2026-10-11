@@ -27,3 +27,10 @@ build/
 .vscode/
 .DS_Store
 .workbuddy/
+
+# User-approved endpoint configuration; credentials still belong in injected env.
+/agent/deploy/model-runtime.compatible.yml
+
+# rag
+rag-recall-demo/
+tmp/

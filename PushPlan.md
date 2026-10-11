@@ -1,7 +1,11 @@
 # NewsAgent 运营推送闭环实施计划
 
-最后更新：2026-09-18  
-状态：**待实现；当前阶段只做可审计的运营决策与模拟推送，不接真实百万级触达平台。**
+最后核对：2026-10-04（原计划制定于2026-09-18）
+
+状态：**推送Schema、候选生成服务、确定性Validator与单测已存在；持久审批、策略集与投递运行链路待实现。第一阶段目标为模拟/shadow，不接真实百万级触达平台。**
+
+运营策略研究、策略卡、审批回流契约、当前Temporal调用链与长期实施顺序见
+[运营审批驱动的DataLoop文档集](agent/docs/data-loop/README.md)。其中清楚区分一次建议审批、标签二审、通用策略审核与配置发布；本计划中的RPC与专属Workflow仍为待建方案。
 
 ## 1. 目标与边界
 
@@ -32,12 +36,15 @@ NewsAgent 已能从行为指标发现热点、结合正文与关联报道生成�
 - `analysis_runs`、热点事件生命周期、热点查询 API、SSE 和运营决策入口。
 - Temporal 有界 Workflow、人工 Signal、超时、有限重试、Checkpoint 与 Outbox。
 - Feedback Case、人工标注与独立二审、三层评测集、候选评测、人工晋升与回滚。
-- 租户隔离、幂等账本、运营 Memory 和不可变 Artifact 模式。
+- 租户隔离、幂等账本、热点运行/决策历史和不可变 Artifact 模式；个人Memory不能直接替代团队运营策略库。
+- `agent/app/schemas/push.py` 中 `AudienceRule/PushPlan/PushStrategyCandidate`。
+- `PushStrategyInputBuilder/PushStrategyService`、`PushStrategyAgentRunner` 与 `PushPolicyValidator`，当前仅为未接API/Workflow的服务及单测。
 
 ### 尚未实现
 
-- `AudienceRule`、`PushPlan`、审核记录、投递任务和效果回执领域模型。
-- `PushStrategyGenerator` 与 `PushPolicyValidator`。
+- PushPlan持久化、修订与审核记录、投递任务和效果回执领域模型。
+- 候选生成器/Validator的原生模型装配和运行链路；完整审批revision/hash绑定、实际频控与原子去重。
+- 团队运营策略注册表、四类决定回流、策略独立审核/激活与下一建议复用。
 - 人群圈选、推送提交和结果查询/回调 RPC Port、Mock Client 与企业 Adapter。
 - 推送专用 Temporal Workflow、数据库迁移、API、前端页面和评测样本。
 
@@ -93,9 +100,9 @@ READY_TO_DISPATCH → DISPATCHING → SENT / FAILED / EXPIRED
 
 - `tenant_id/news_id/event_id` 与可信热点输入一致。
 - 证据 ID 是热点分析白名单的子集。
-- S/A 级、全站或 App 通知必须人工审核。
+- 当前Validator至少要求S/A、全站、App/SMS审核；本窗口目标为所有建议均由运营批准具体revision/hash及有效期，低风险PASSED不能替代批准。
 - 人群规则不超出已确认地域、主题和租户范围。
-- 同事件、同策略、同人群版本、同渠道不重复发送。
+- 同事件增量、同策略、同人群版本、同渠道不重复发送；合法的新进展以新修订/投递意图区分。
 - 发送时间、失效时间和频控合法，过期计划直接阻断。
 - 风险标签、未确认事实、绝对化标题或证据不足时不得进入投递。
 
@@ -113,8 +120,10 @@ READY_TO_DISPATCH → DISPATCHING → SENT / FAILED / EXPIRED
 只接受已经审核并校验通过的计划，返回 `delivery_task_id` 和受理状态。推荐幂等维度：
 
 ```text
-tenant_id + event_id + strategy_version + audience_version + channel
+tenant_id + event_id + event_update_version + strategy_version + audience_version + channel
 ```
+
+投递提交使用独立delivery_intent_id作为稳定幂等键并绑定上述业务维度；不能以整条事件的永久去重阻断合法后续进展。
 
 ### DeliveryResult
 
@@ -123,9 +132,9 @@ tenant_id + event_id + strategy_version + audience_version + channel
 
 ## 6. 实施顺序
 
-1. 定义 Pydantic Schema、状态枚举和策略版本契约。
-2. 实现确定性 Validator，并先覆盖重复、过期、越权、证据不足和高风险样例。
-3. 实现候选策略生成器；结构化输出必须经过 Validator。
+1. 已有Pydantic候选Schema与状态枚举；补齐持久审核、修订和策略集版本契约。
+2. 已有Validator与单测；补真实频控、原子去重和所有建议的完整审批绑定，不能把低风险PASSED当作已批准。
+3. 已有候选生成服务；补原生模型/Prompt装配和API/Workflow接入，结构化输出继续经过Validator。
 4. 新增 PostgreSQL 表、Repository、审核 API 和租户/角色权限。
 5. 定义 RPC Protocol，先实现 Mock Client 与故障分类，再接企业 SDK。
 6. 使用 Temporal 编排审核等待、人群创建、任务提交和结果查询；副作用调用有限重试。
@@ -135,9 +144,8 @@ tenant_id + event_id + strategy_version + audience_version + channel
 
 - 候选 `PushPlan` 为严格结构化输出，并绑定热点运行、事件、证据和策略版本。
 - 不可信、重复、过期、越权或证据不足计划被确定性阻断。
-- 高风险计划必须由具备权限且职责独立的运营人员批准。
+- 所有建议必须由具备权限的运营人员批准具体revision/hash及有效期；高风险审批另要求相应职责分离。
 - Mock RPC 覆盖成功、重复、超时、限流、部分失败与不可重试错误。
 - Workflow 可从审核等待和可重试 RPC 故障处恢复，不产生第二次投递。
 - 回执可追溯至 `plan_id/news_id/event_id`，并只保存聚合效果。
 - 离线回放和 shadow 验收通过；未获单独生产授权时不得真实推送。
-

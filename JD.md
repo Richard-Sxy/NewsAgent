@@ -83,7 +83,7 @@
 → news_id 精确读取正文
 → 关联新闻召回与重排
 → HotNewsAnalysisInput
-→ FastGPT 结构化模型调用
+→ Python Agent 结构化模型调用
 → HotNewsAnalysisValidator
 → 趋势、关注原因与运营建议
 ```
@@ -164,7 +164,7 @@ SELECT
 - `writing-agent-service/app/schemas/text2sql.py`：只读 Schema、生成请求和候选 SQL 的强类型
   契约；模型只看到允许暴露的表结构和指标语义。
 - `writing-agent-service/app/services/agents/text2sql.py::Text2SqlAgentRunner`：通过
-  `FastGPTClient.run_structured` 生成候选 SQL，但不负责执行。
+  `StructuredAgentClient.run` 生成候选 SQL，但不负责执行。
 - `writing-agent-service/app/analytics/text2sql_metric_source.py::Text2SqlNewsMetricSource`：
   参数化模板优先，模板不能覆盖时才使用 Text2SQL；两条路径共用 Guard 和结果映射。
 - `writing-agent-service/app/analytics/sql_guard.py::SqlGuard`：使用 SQLGlot AST 限制单条

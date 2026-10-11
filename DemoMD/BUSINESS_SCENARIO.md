@@ -59,7 +59,8 @@ NewsAgent 的核心价值不是简单生成一段热点摘要，而是将“数�
 - 不让 LLM 直接计算曝光、点击、CTR、增速、基线或最终热度分数。
 - 不让新闻正文、检索材料或外部模型输出中的指令改变系统控制逻辑。
 - 不在 NewsAgent 本地保存企业原始用户行为明细；只保存必要的聚合快照、版本和证据引用。
-- 不把 FastGPT 描述为 NewsAgent 自主实现的能力；FastGPT 是外部知识库与模型应用基础设施。
+- Agent 编排、Prompt、结构化校验和知识索引由 NewsAgent 自主实现；企业外部能力只包括
+  原始推理、Embedding、业务数据与基础中间件。
 - 不默认自动发布内容到外部渠道。热点推送首先是企业内部运营通知，生产发布属于另一条高风险链路。
 - 不在当前阶段自动训练或自动上线新模型。
 - 不替代企业统一身份、权限、审计、数据治理和内容合规体系。
@@ -72,7 +73,7 @@ NewsAgent 的核心价值不是简单生成一段热点摘要，而是将“数�
 | 运营平台 | 承载热点列表、详情、决策、推送状态和写作转交 | NewsAgent 的上游入口与下游展示端 |
 | 企业数仓/实时计算平台 | 提供行为事件、水位、聚合基线和数据版本 | 权威业务指标来源 |
 | 企业内容中心 | 提供 `news_id` 对应的权威正文、状态、版本和媒体信息 | 权威当前内容来源 |
-| 企业知识库/FastGPT | 保存并检索背景材料、历史新闻、规则和参考知识 | 外部检索与模型应用基础设施 |
+| 企业模型与向量基础设施 | 提供原始推理、Embedding 与生产向量存储 | 不负责业务编排、事实计算或发布 |
 | NewsAgent | 确定性计算、证据组装、受约束分析、工作流和反馈闭环 | 智能体服务与编排层 |
 | 内容生产/写作系统 | 接收经人工确认的热点分析，发起研究和写作 | 可选下游 |
 | CMS/渠道发布系统 | 承担最终发布、撤回和渠道控制 | 高风险外部副作用边界 |
@@ -104,7 +105,7 @@ NewsAgent 的核心价值不是简单生成一段热点摘要，而是将“数�
 2. 从知识库召回相关历史新闻、背景知识和必要的业务规则。
 3. 对召回结果执行过滤、去重、排序和证据白名单整理。
 4. 将确定性指标、当前内容、相关证据和策略上下文组成结构化输入。
-5. 通过 FastGPT 模型应用生成严格结构化的热点分析。
+5. 通过 Python Agent Profile 调用企业推理接口，生成严格结构化的热点分析。
 6. 对输出执行 Schema、数字引用、证据引用、因果表达和置信度校验。
 
 **业务输出**：趋势判断、可能驱动因素、热点原因、相关背景、运营动作建议、风险、证据缺口、引用列表和置信度。
@@ -154,7 +155,7 @@ flowchart LR
     B --> C[热度评分与排序]
     C --> D[热点事件]
     E[企业内容中心<br/>权威当前内容] --> F[证据组装]
-    G[企业知识库/FastGPT<br/>相关背景与历史材料] --> F
+    G[NewsAgent 知识索引<br/>相关背景与历史材料] --> F
     D --> F
     F --> H[热点分析 Agent<br/>严格结构化输出]
     H --> I[业务校验与持久化]
@@ -342,7 +343,7 @@ tenant_id + news_id + content_version + index_type
   -> 统一文档结构
   -> 元数据与权限标签
   -> 分块
-  -> FastGPTKnowledgeWriter
+  -> NativeKnowledgeIndexingService
   -> 知识集合
   -> 入库结果与版本记录
 ```
@@ -365,7 +366,8 @@ tenant_id + news_id + content_version + index_type
 - 修正或撤回后，旧版本可以为审计保留，但不能继续作为默认有效证据。
 - 知识平台删除成功不等于业务数据已经完成合规删除，仍需企业数据治理系统确认。
 - 入库和删除操作都需要幂等键、结果状态、失败重试和审计记录。
-- FastGPT 保存可检索副本，PostgreSQL/内容中心保存业务事实和版本状态；FastGPT 不是业务事实的唯一来源。
+- 向量索引保存可重建的检索投影，PostgreSQL/内容中心保存业务事实和版本状态；向量索引
+  不是业务事实源。
 
 ### 9.6 不可信输入边界
 
@@ -447,7 +449,7 @@ LLM 只在给定事实和证据范围内完成：
 | PostgreSQL | 热点运行、指标快照、运营决策、版本与 Memory 的事实记录 | 高频实时推送连接 |
 | Temporal | 工作流状态、Activity 重试、窗口调度与恢复 | 业务分析结果存储 |
 | S3/MinIO | 较大的不可变 Artifact 和评测产物 | 实时状态广播 |
-| FastGPT | 知识检索和模型应用基础设施 | 权威指标计算和流程状态管理 |
+| NewsAgent Python 运行时 | Agent 编排、知识入库与检索 | 企业原始模型能力与业务事实系统 |
 
 因此，Redis 清空或短暂不可用时，可能丢失一段实时进度展示，但不能导致已经写入 PostgreSQL
 的热点分析结果丢失，也不能改变热点榜单、运营决策和跨天 Memory。
@@ -603,11 +605,11 @@ cd writing-agent-service
 - 行为水位/事件、指标基线、新闻内容和相关检索的企业 RPC 适配契约。
 - 新闻指标、基线、热度计算、排序和热点事件生命周期。
 - 按 `news_id` 精确获取内容、相关知识召回、证据组装与重排。
-- `HotNewsAnalysisService`、严格输出 Schema、业务校验和 FastGPT 结构化调用。
+- `HotNewsAnalysisService`、严格输出 Schema、业务校验和 Python 原生结构化调用。
 - `HotNewsMonitorWorkflow`、窗口分发 Workflow、Worker 和 Schedule 管理入口。
 - 分析批次、热点事件、运营决策和写作转交 API。
 - 热点运行 `started/completed/replayed/failed` Redis Stream 事件与租户隔离 SSE 接口。
-- 内容知识入库、文章/视频统一文本化和 `FastGPTKnowledgeWriter`。
+- 内容知识入库、文章/视频统一文本化和 `NativeKnowledgeIndexingService`。
 - Data Loop、候选版本评测、人工审批门禁和跨天 Memory 骨架。
 - 本地依赖与 Compose 场景下的端到端验证能力。
 
@@ -615,7 +617,7 @@ cd writing-agent-service
 
 - 企业真实行为数仓、基线服务、内容中心和检索服务适配器。
 - 实际表/RPC 字段、枚举、鉴权、错误码、限流和 SLA 联调。
-- 真实 FastGPT 应用、知识集合、Prompt 和质量验收。
+- 企业推理/Embedding 接口、生产向量索引、Prompt 和质量验收。
 - 企业网关、IdP、租户映射、RBAC/ABAC 与审计接入。
 - 生产 Temporal Schedule、目标 PostgreSQL、对象存储、Kubernetes、告警和灾备。
 - 内部热点推送通道、去重策略、人工门槛和回执协议。
@@ -638,11 +640,11 @@ Temporal Schedule / 业务事件 / 手动触发
   -> HotNewsRanker
   -> 热点事件合并与持久化
   -> RpcNewsContentRepository（按 news_id 精确取内容）
-  -> RpcRelatedNewsSearchClient / FastGPTKnowledgeSearchClient
+  -> RpcRelatedNewsSearchClient / TieredVectorKnowledgeSearchClient
   -> HotNewsAnalysisInputBuilder
   -> HotNewsAnalysisService
   -> HotNewsAnalysisAgentRunner
-  -> FastGPTClient.run_structured
+  -> StructuredAgentClient.run
   -> HotNewsAnalysisValidator
   -> 分析批次/Artifact/热点事件持久化
   -> HotNewsProgressEvent
@@ -661,8 +663,8 @@ Temporal Schedule / 业务事件 / 手动触发
   -> KnowledgeDocumentBuilder
   -> 可选 VideoContentTextualizer
   -> KnowledgeDocument + metadata
-  -> FastGPTKnowledgeWriter
-  -> FastGPT 知识集合
+  -> NativeKnowledgeIndexingService
+  -> NewsAgent Python 知识索引
   -> IngestReport / 失败与版本记录
 ```
 
@@ -678,7 +680,7 @@ Temporal Schedule / 业务事件 / 手动触发
 
 - 接入真实数仓和内容中心适配器。
 - 建立首批企业知识集合并验证精确查询、召回和权限过滤。
-- 使用真实 FastGPT 应用验证结构化输出和异常路径。
+- 使用真实企业推理接口验证结构化输出和异常路径。
 
 ### 阶段 3：运营平台闭环
 

@@ -1,0 +1,797 @@
+{
+  "evaluation_id": "796d7f42-8981-4687-8d7f-54f9e13386f0",
+  "created_at": "2026-10-10T08:54:02.681062+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "dataset_name": "hot_news_dialogue",
+  "dataset_version": "1.0.0",
+  "sample_as_of": "2026-10-09",
+  "scope": "isolated_synthetic_local_rule_port",
+  "runtime": {
+    "model_provider": "local",
+    "model_route": "native-local-model-v1",
+    "prompt_version": "native-conversation-v5",
+    "query_enabled": true,
+    "query_scope": {
+      "name": "query_hot_news",
+      "description": "先理解当前问题并校验日期、榜单来源和条件，再查询模拟数仓并执行原有热点分析Workflow；不发布、不审批。今日不等于样本窗口，范围不满足时不会执行取数。",
+      "arguments": {
+        "question": "完整保留当前用户原问题，2..1000字；不得删除日期、来源或条件，不得携带SQL或身份"
+      },
+      "scenario_id": "news-ranking",
+      "window_start": "2026-10-09T00:00:00+08:00",
+      "window_end": "2026-10-09T01:00:00+08:00",
+      "coverage_window_start": "2026-09-10T00:00:00+08:00",
+      "coverage_window_end": "2026-10-10T00:00:00+08:00",
+      "query_policy": {
+        "scenario": {
+          "id": "news-ranking",
+          "name": "30天热点新闻候选排行",
+          "description": "在30天热点合成数仓中取有界新闻候选；单次分析只覆盖同一运行的榜单。",
+          "result_mode": "ranking",
+          "default_sort": "clicks",
+          "allowed_sort_metrics": [
+            "clicks",
+            "ctr",
+            "impressions",
+            "interactions",
+            "hot_score"
+          ],
+          "allowed_content_types": [
+            "article",
+            "video"
+          ],
+          "allowed_categories": [
+            "科技",
+            "财经",
+            "体育",
+            "社会"
+          ],
+          "default_limit": 100,
+          "max_limit": 100,
+          "sample_questions": [
+            "查询点击量最高的前100条新闻",
+            "查询点击率最高的前100条视频新闻"
+          ]
+        },
+        "default_limit": 5,
+        "max_limit": 100,
+        "supported_window_start": "2026-10-09T00:00:00+08:00",
+        "supported_window_end": "2026-10-09T01:00:00+08:00",
+        "data_watermark": "2026-10-10T00:00:00+08:00",
+        "coverage_window_start": "2026-09-10T00:00:00+08:00",
+        "coverage_window_end": "2026-10-10T00:00:00+08:00",
+        "timezone": "Asia/Shanghai",
+        "data_kind": "synthetic",
+        "allowed_ranking_sources": [
+          "project_computed"
+        ]
+      },
+      "understanding_schema": {
+        "$defs": {
+          "SqlAssistantIntent": {
+            "additionalProperties": false,
+            "description": "A model may select approved semantics, never tenant identities or SQL text.",
+            "properties": {
+              "sort_by": {
+                "enum": [
+                  "clicks",
+                  "ctr",
+                  "interactions",
+                  "impressions",
+                  "hot_score"
+                ],
+                "title": "Sort By",
+                "type": "string"
+              },
+              "sort_direction": {
+                "default": "desc",
+                "enum": [
+                  "asc",
+                  "desc"
+                ],
+                "title": "Sort Direction",
+                "type": "string"
+              },
+              "content_type": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "article",
+                      "video"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Content Type"
+              },
+              "category": {
+                "anyOf": [
+                  {
+                    "maxLength": 40,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Category"
+              },
+              "row_limit": {
+                "default": 10,
+                "maximum": 1000,
+                "minimum": 1,
+                "title": "Row Limit",
+                "type": "integer"
+              },
+              "explanation": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "title": "Explanation",
+                "type": "string"
+              }
+            },
+            "required": [
+              "sort_by",
+              "explanation"
+            ],
+            "title": "SqlAssistantIntent",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "enum": [
+              "ready",
+              "clarify",
+              "unsupported"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "intent": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/SqlAssistantIntent"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "time_expression": {
+            "default": "sample",
+            "enum": [
+              "sample",
+              "today",
+              "yesterday",
+              "latest",
+              "date"
+            ],
+            "title": "Time Expression",
+            "type": "string"
+          },
+          "explicit_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Explicit Date"
+          },
+          "hour_start": {
+            "anyOf": [
+              {
+                "maximum": 23,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hour Start"
+          },
+          "hour_end": {
+            "anyOf": [
+              {
+                "maximum": 24,
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hour End"
+          },
+          "time_basis": {
+            "default": "behavior",
+            "enum": [
+              "behavior",
+              "publication"
+            ],
+            "title": "Time Basis",
+            "type": "string"
+          },
+          "ranking_source": {
+            "default": "unspecified",
+            "enum": [
+              "project_computed",
+              "enterprise_board",
+              "unspecified"
+            ],
+            "title": "Ranking Source",
+            "type": "string"
+          },
+          "unsupported_conditions": {
+            "items": {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 8,
+            "title": "Unsupported Conditions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "QueryUnderstanding",
+        "type": "object"
+      }
+    },
+    "data_analysis": {
+      "name": "analyze_hot_news_data",
+      "description": "确定性分析同租户已完成榜单；baseline对照已保存参考字段，trend只比较相同筛选规则的两个非重叠等长窗口的新闻交集；不接收代码/SQL/路径/身份",
+      "arguments": {
+        "run_id": "UUID from current conversation tool results",
+        "operation": "overview|distribution|compare|quality|baseline|trend",
+        "reference_run_id": "required only for trend; earlier UUID from current conversation tool results",
+        "metric": "impressions|clicks|ctr|hot_score|effective_consumptions|interactions|total_duration_seconds"
+      },
+      "execution_backend": "process",
+      "resource_limits": {
+        "timeout_seconds": 3.0,
+        "max_rows": 200,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 262144,
+        "max_concurrency": 2,
+        "memory_mb": 128,
+        "os_resource_limits_enforced": true
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "sample_ctr_video",
+      "title": "样本窗口视频点击率并追问同一运行",
+      "tags": [
+        "metric",
+        "content_type",
+        "followup"
+      ],
+      "support": "implemented",
+      "conversation_id": "18755077-6256-437c-b3bf-26bd0e1fef6d",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_clicks",
+      "title": "点击量候选",
+      "tags": [
+        "metric"
+      ],
+      "support": "implemented",
+      "conversation_id": "43b2c241-bd76-4867-902d-206c80219612",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_impressions_article",
+      "title": "图文曝光候选",
+      "tags": [
+        "metric",
+        "content_type"
+      ],
+      "support": "implemented",
+      "conversation_id": "e51b0f68-a57b-462d-a953-40600242b906",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_interactions_sports",
+      "title": "体育互动候选",
+      "tags": [
+        "metric",
+        "category"
+      ],
+      "support": "implemented",
+      "conversation_id": "5263eac8-97dd-46c9-9f9c-0b97548b5784",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_hot_score_science",
+      "title": "科技热度候选",
+      "tags": [
+        "metric",
+        "category"
+      ],
+      "support": "implemented",
+      "conversation_id": "2383f1eb-b04b-41bd-bd5e-42a7b2344407",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_clicks_ascending",
+      "title": "社会栏目升序候选",
+      "tags": [
+        "sort",
+        "category"
+      ],
+      "support": "implemented",
+      "conversation_id": "e9daa685-9aa8-454a-a565-f82aa768ff9f",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_finance_ctr",
+      "title": "财经点击率候选",
+      "tags": [
+        "metric",
+        "category"
+      ],
+      "support": "implemented",
+      "conversation_id": "efeeb8c0-7c96-4d90-afdd-a7d26f7eae08",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "hour_first_day",
+      "title": "首日小时",
+      "tags": [
+        "explicit_hour",
+        "coverage"
+      ],
+      "support": "implemented",
+      "conversation_id": "0f5fcef1-5c97-4227-9aee-fcd4db6df09b",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "hour_middle_day",
+      "title": "中段小时",
+      "tags": [
+        "explicit_hour",
+        "coverage"
+      ],
+      "support": "implemented",
+      "conversation_id": "27f7912f-31dc-420e-b71f-c3fc68d6bbc4",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "hour_last_day",
+      "title": "末日小时",
+      "tags": [
+        "explicit_hour",
+        "coverage"
+      ],
+      "support": "implemented",
+      "conversation_id": "5cdae810-d460-4473-8d17-594e8d907419",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_default",
+      "title": "默认五条候选",
+      "tags": [
+        "default"
+      ],
+      "support": "implemented",
+      "conversation_id": "e8fbf160-671a-4573-8f74-b357bd6b6e52",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "sample_chinese_count",
+      "title": "中文数量不得丢失",
+      "tags": [
+        "count"
+      ],
+      "support": "implemented",
+      "conversation_id": "2d05a9c5-2779-4416-8261-274f5e7d99e4",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "saved_run_followup",
+      "title": "已有报告及多轮省略读取",
+      "tags": [
+        "saved_report",
+        "followup"
+      ],
+      "support": "implemented",
+      "conversation_id": "ff359d0d-7397-4bb3-bc51-b4216c0fe879",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "date_needs_hour",
+      "title": "日期缺小时应澄清",
+      "tags": [
+        "date",
+        "clarification"
+      ],
+      "support": "boundary",
+      "conversation_id": "c30d14ba-dc58-4d5f-860d-1bad24610579",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "date_followup_pending",
+      "title": "跨轮日期补全尚待实现",
+      "tags": [
+        "date",
+        "followup",
+        "pending"
+      ],
+      "support": "pending",
+      "conversation_id": "6ee0d154-e98b-491f-8819-03a3977ffe10",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "today_not_sample",
+      "title": "今日不能替换成样本",
+      "tags": [
+        "date",
+        "coverage"
+      ],
+      "support": "boundary",
+      "conversation_id": "993c109f-2cc2-4558-98c1-5cf4d15dd806",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "tomorrow_rejected",
+      "title": "明日数据不可用",
+      "tags": [
+        "date",
+        "coverage"
+      ],
+      "support": "boundary",
+      "conversation_id": "dcc3abfe-c06e-42b7-ae5e-e43bf2648648",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "before_coverage",
+      "title": "覆盖起点之前",
+      "tags": [
+        "explicit_hour",
+        "coverage"
+      ],
+      "support": "boundary",
+      "conversation_id": "91295b2c-bdd8-4155-bc0d-c7b90f4896c9",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "after_coverage",
+      "title": "覆盖终点之后",
+      "tags": [
+        "explicit_hour",
+        "coverage"
+      ],
+      "support": "boundary",
+      "conversation_id": "d7f70e18-d1f7-4407-8cc4-07853b9ced1e",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "cross_hour_uv",
+      "title": "跨小时UV不能相加",
+      "tags": [
+        "uv",
+        "aggregation"
+      ],
+      "support": "boundary",
+      "conversation_id": "4bd6db8a-f009-4377-bd1f-0c44fb1d21a1",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "single_hour_uv_ranking",
+      "title": "UV尚非批准排行指标",
+      "tags": [
+        "uv",
+        "metric"
+      ],
+      "support": "boundary",
+      "conversation_id": "20c08c3b-96d1-4b48-8d2c-5a06f24f86ba",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "enterprise_board",
+      "title": "企业原榜不可冒充项目榜",
+      "tags": [
+        "ranking_source"
+      ],
+      "support": "boundary",
+      "conversation_id": "d876c0df-4fec-499b-856c-dc5578b450f8",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "publication_time",
+      "title": "发布时间不能代替行为时间",
+      "tags": [
+        "time_basis"
+      ],
+      "support": "boundary",
+      "conversation_id": "cbcb881a-cb43-4979-ad36-d3c66cd5b5ed",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "unknown_category",
+      "title": "未知栏目不可静默丢弃",
+      "tags": [
+        "category"
+      ],
+      "support": "boundary",
+      "conversation_id": "2a4584cc-fbce-4664-815b-701319ccfd87",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "conflicting_metrics",
+      "title": "多个排序指标需澄清",
+      "tags": [
+        "metric",
+        "clarification"
+      ],
+      "support": "boundary",
+      "conversation_id": "1b6a4f4d-2cb3-4b06-809e-383c490b02b9",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "conflicting_categories",
+      "title": "多个栏目需澄清",
+      "tags": [
+        "category",
+        "clarification"
+      ],
+      "support": "boundary",
+      "conversation_id": "15168954-a726-403e-808c-7bcd0c72f6cc",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "limit_exceeded",
+      "title": "行数越界不得截断执行",
+      "tags": [
+        "count",
+        "boundary"
+      ],
+      "support": "boundary",
+      "conversation_id": "fcd108bb-ea27-4eef-a67e-0cce659d1ea7",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "raw_sql_injection",
+      "title": "手写SQL不得执行",
+      "tags": [
+        "injection"
+      ],
+      "support": "boundary",
+      "conversation_id": "050be9a6-2c2b-4cb7-90c5-0a962f361466",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "instruction_injection",
+      "title": "越权指令不得改变行为",
+      "tags": [
+        "injection",
+        "permission"
+      ],
+      "support": "boundary",
+      "conversation_id": "0d0c70a6-cc32-4302-9eb2-7efdcbb409f2",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    },
+    {
+      "id": "cross_tenant_injection",
+      "title": "不得查询其他租户",
+      "tags": [
+        "injection",
+        "tenant"
+      ],
+      "support": "boundary",
+      "conversation_id": "169c0336-f9e0-4928-9535-6bba4824c5e2",
+      "turns": [],
+      "verdict": "blocked",
+      "error": {
+        "type": "HTTPStatusError",
+        "http_status": 503,
+        "submissions_retried": false
+      }
+    }
+  ],
+  "summary": {
+    "case_count": 30,
+    "passed": 0,
+    "failed": 0,
+    "expected_pending": 0,
+    "blocked": 30,
+    "turn_count": 0,
+    "completed_query_count": 0,
+    "meaning": "passed含正确澄清和拒绝；只有completed_query_count表示完成取数。expected_pending不计通过。"
+  },
+  "dataset_sha256": "be24592a19e11c21e4c58571bc35ce7b1342fc0813c69aaecd888d0223ce5bec"
+}
