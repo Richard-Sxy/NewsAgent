@@ -157,7 +157,8 @@ class AnalysisFeedbackCaseRecord(TimestampMixin, Base):
             "news_id",
         ),
         CheckConstraint(
-            "source_type IN ('operator_rejected', 'operator_corrected', "
+            "source_type IN ('operator_accepted', 'operator_deferred', "
+            "'operator_rejected', 'operator_corrected', "
             "'validation_failed', 'low_confidence', 'retrieval_error', "
             "'post_publish_outcome')",
             name="source_type_valid",

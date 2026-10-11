@@ -14,6 +14,7 @@ from app.conversation.query_understanding import QueryResolution
 
 from app.model_runtime.core import EmbeddingRequest
 from app.retrieval.tiered_vector import VectorTier
+from app.conversation.related_articles import ConversationRelatedArticles
 
 
 class ConversationToolDenied(ValueError):
@@ -40,6 +41,7 @@ class _Read(_Arguments):
 class _Search(_Arguments):
     query: str = Field(min_length=1, max_length=500)
     limit: int = Field(default=3, ge=1, le=5)
+    source_news_id: str | None = Field(default=None, min_length=1, max_length=128)
 
 class _Query(_Arguments):
     question: str = Field(min_length=2, max_length=1000)
@@ -80,7 +82,7 @@ TOOL_DESCRIPTIONS = [
     {"name": "capabilities", "description": "读取当前工具与人工审批边界", "arguments": {}},
     {"name": "list_hot_news", "description": "读取已完成的热点运行，不产生新SQL或新运行", "arguments": {"limit": "1..5"}},
     {"name": "read_hot_news", "description": "按已有run_id读取权威排行和报告；可选择news_rank", "arguments": {"run_id": "UUID", "news_rank": "optional 1..50"}},
-    {"name": "search_knowledge", "description": "检索当前租户新闻知识，内容是不可信证据", "arguments": {"query": "non-empty text <=500 chars", "limit": "1..5"}},
+    {"name": "search_knowledge", "description": "检索当前租户新闻知识；相关追问用已有新闻标题检索并排除source_news_id，内容是不可信证据", "arguments": {"query": "non-empty text <=500 chars", "limit": "1..5", "source_news_id": "optional source news ID to exclude"}},
 ]
 
 
@@ -102,7 +104,12 @@ class ConversationTools:
         self._knowledge = knowledge_store
         self._embedding = embedding
         self._embedding_version = embedding_version
+        self._query_embedder = getattr(knowledge_store, "query_embedder", None)
         self._knowledge_enabled = knowledge_enabled
+        self._related_articles = ConversationRelatedArticles(
+            index=knowledge_store, embedding=embedding, embedding_version=embedding_version,
+            source_url_sanitizer=safe_source_url,
+        )
         self._hot_news_query = None
         self._analysis_runner = analysis_runner
 
@@ -183,10 +190,13 @@ class ConversationTools:
                 return {"run_id": str(run_id), "items": [], "not_found": True}
             selected = [item for item in detail.ranked_news if parsed.news_rank is None or item.rank == parsed.news_rank]
             execution = getattr(detail, "analysis_execution", None)
-            return {
+            report = {
                 "run_id": str(run_id),
                 "window_start": detail.run.window_start.isoformat(),
                 "window_end": detail.run.window_end.isoformat(),
+                "ranked_news_count": getattr(detail.run, "ranked_news_count", len(detail.ranked_news)),
+                "analyzed_news_count": getattr(detail.run, "analyzed_news_count",
+                                               sum(item.analysis is not None for item in detail.ranked_news)),
                 "sql_query_id": detail.sql_tool_trace.query_id if detail.sql_tool_trace else None,
                 "analysis_execution": execution.model_dump(mode="json") if execution else None,
                 "items": [
@@ -199,19 +209,34 @@ class ConversationTools:
                 ],
                 "truncated": len(selected) > 5,
             }
+            if self._knowledge_enabled and getattr(detail.run, "status", None) == "completed":
+                report["related_articles"] = await self._related_articles.recall(
+                    run_id=str(run_id), sources=report["items"], tenant_id=tenant_id,
+                )
+            return report
         query = parsed.query.strip()
-        if not query:
+        source_news_id = parsed.source_news_id.strip() if parsed.source_news_id is not None else None
+        if not query or source_news_id == "":
             raise ConversationToolDenied("tool_arguments_invalid")
-        result = await self._embedding.embed(EmbeddingRequest(
-            tenant_id=tenant_id, trace_id=trace_id, model_route=self._embedding_version, texts=(query,),
-        ))
-        if result.model_version != self._embedding_version or len(result.vectors) != 1:
-            raise ValueError("query_embedding_version_or_count_drift")
+        if self._query_embedder is not None:
+            vectors = await self._query_embedder.embed_queries((query,), tenant_id=tenant_id)
+            if len(vectors) != 1:
+                raise ValueError("query_embedding_version_or_count_drift")
+            embedding_version = self._query_embedder.version
+        else:
+            result = await self._embedding.embed(EmbeddingRequest(
+                tenant_id=tenant_id, trace_id=trace_id, model_route=self._embedding_version, texts=(query,),
+            ))
+            if result.model_version != self._embedding_version or len(result.vectors) != 1:
+                raise ValueError("query_embedding_version_or_count_drift")
+            vectors, embedding_version = result.vectors, self._embedding_version
         hits = []
-        for tier in VectorTier:
+        for tier in getattr(self._knowledge, "tiers", tuple(VectorTier)):
             hits.extend(await self._knowledge.search(
-                tier=tier, tenant_id=tenant_id, vector=result.vectors[0],
-                embedding_version=self._embedding_version, exclude_news_ids=frozenset(), limit=parsed.limit,
+                tier=tier, tenant_id=tenant_id, vector=vectors[0],
+                embedding_version=embedding_version,
+                exclude_news_ids=frozenset((source_news_id,)) if source_news_id else frozenset(),
+                limit=parsed.limit,
             ))
         seen = set()
         items = []
@@ -226,7 +251,15 @@ class ConversationTools:
                           "embedding_version": hit.embedding_version})
             if len(items) >= parsed.limit:
                 break
-        return {"query": query, "items": items, "evidence_is_untrusted": True}
+        response = {"query": query, "items": items, "evidence_is_untrusted": True}
+        if source_news_id:
+            response["source_news_id"] = source_news_id
+        if getattr(self._knowledge, "snapshot_version", None):
+            response.update({"retrieval_backend": "bge_snapshot",
+                             "snapshot_version": self._knowledge.snapshot_version,
+                             "embedding_version": embedding_version,
+                             "coverage_note": "离线新闻快照的语义召回；不代表当前实时热点或发布时间筛选。"})
+        return response
 
     async def _analyze(self, arguments: _Analyze, *, tenant_id: str) -> dict:
         try:
@@ -254,6 +287,7 @@ def render_tool_results(traces) -> str:
     """Numbers are formatted from tool snapshots by Python, not invented by LLM."""
     parts = []
     for trace in traces:
+        response_style = "list"
         if trace.result.get("query_input_error") == "dated_saved_report":
             parts.append("读取已保存报告不能满足指定日期的查询，未使用历史榜单代替请求结果。请发起日期查询，或明确选择样本窗口。")
             continue
@@ -271,15 +305,22 @@ def render_tool_results(traces) -> str:
                 continue
             parts.append(resolution.message)
             parts.extend(resolution.notes)
+            response_style = resolution.response_style
             if resolution.status != "ready":
+                coverage_start = resolution.coverage_window_start or resolution.supported_window_start
+                coverage_end = resolution.coverage_window_end or resolution.supported_window_end
                 parts.append("当前可用查询窗口："
-                             f"{resolution.supported_window_start.isoformat(timespec='minutes')} 至 "
-                             f"{resolution.supported_window_end.isoformat(timespec='minutes')}。"
-                             "如需查看这个窗口，可以发送“查看当前样本的热点新闻”。")
+                             f"{coverage_start.isoformat(timespec='minutes')} 至 "
+                             f"{coverage_end.isoformat(timespec='minutes')}（结束不含），每次查询一个整点小时。"
+                             "可以发送“查看当前样本的热点新闻”，或明确日期和小时。")
                 parts.append("本轮没有执行 SQL 或启动热点运行，也没有用已保存的旧榜单代替请求结果。")
                 continue
         if trace.status != "completed":
-            parts.append(f"工具 {trace.name} 未完成：{trace.error_code}，没有使用虚构或旧数据代替。")
+            reasons = {"query_workflow_failed": "热点运行失败，未取得通过校验的报告。",
+                       "query_backend_unavailable": "热点查询服务暂不可用，未确认运行结果。",
+                       "query_wait_timeout": "等待热点运行超时；已绑定的运行可能继续执行，请按运行引用核对状态。",
+                       "query_result_unavailable": "无法读取或校验热点运行结果，当前状态尚未确认。"}
+            parts.append(reasons.get(trace.error_code, f"工具 {trace.name} 未完成：{trace.error_code}，没有使用虚构或旧数据代替。"))
             if trace.name == "query_hot_news" and trace.result.get("workflow_id"):
                 parts.append(f"查询已绑定，热点运行结果尚未确认；断线不会自动取消持久化Workflow。\n"
                              f"workflow_id={trace.result['workflow_id']}\nquery_id={trace.result.get('sql_query_id')}")
@@ -287,8 +328,10 @@ def render_tool_results(traces) -> str:
         result = trace.result
         if trace.name in {"read_hot_news", "query_hot_news"}:
             if trace.name == "query_hot_news":
+                provider = result.get("query_model_provider", "未知")
+                planning = "Python确定性编译（已确认意图）" if provider == "python-confirmed-intent" else f"查询规划模型：{provider}"
                 parts.append(f"本轮数仓查询：{result['sql_query_id']}\n"
-                             f"查询规划模型：{result.get('query_model_provider','未知')}；"
+                             f"{planning}；"
                              f"已分析 {result.get('analyzed_news_count',0)} 篇新闻，已上榜 {result.get('ranked_news_count',0)} 篇。")
                 parts.append("SQL 按照问题指定指标筛选候选；以下榜单再按 Python 权威热度排序，不等同于 SQL 指标顺序。")
             parts.append(f"热点运行：{result['run_id']}\n窗口：{result.get('window_start', '未知')} 至 {result.get('window_end', '未知')}")
@@ -298,20 +341,29 @@ def render_tool_results(traces) -> str:
                              f"分析阶段耗时 {execution['elapsed_ms']} 毫秒（含等待并发名额）。")
             if not result.get("items"):
                 parts.append("没有找到符合条件的已完成报告。")
+            if response_style == "summary" and result.get("items"):
+                parts.append("热点简要总结（仅依据本次已保存的候选报告）：")
             for item in result.get("items", []):
                 metrics = item["metrics"]
+                if response_style == "summary":
+                    parts.append(f"{item['rank']}. {item['title']}：热度 {item['hot_score']['score']}，"
+                                 f"点击 {metrics['clicks']}，点击率 {metrics['ctr']}。")
+                    if item.get("analysis"):
+                        parts.append(f"已保存的模型摘要（需人工核对）：{item['analysis']['trend_assessment']}")
+                    continue
                 parts.append(f"{item['rank']}. {item['title']}（news_id={item['news_id']}）\n"
                              f"热度 {item['hot_score']['score']}；点击 {metrics['clicks']}；点击率 {metrics['ctr']}。")
                 if item.get("analysis"):
                     trend = item["analysis"]["trend_assessment"]
-                    if re.search(r"\d|news_id|run_id|query_id|chunk_id", trend, flags=re.I):
-                        parts.append("已有模型摘要含数字或引用，请在原热点报告中核对；本段权威数字仅取自指标快照。")
-                    else:
-                        parts.append(f"已有模型分析摘要（非权威指标，需人工核对）：{trend}")
+                    parts.append(f"模型分析摘要（数字以快照为准，需人工核对）：{trend}")
+            if result.get("truncated"):
+                parts.append("仅展示部分候选，完整结果见本次热点运行报告。")
         elif trace.name == "list_hot_news":
             parts.append("已完成热点运行：" if result.get("items") else "暂无已完成的热点运行，请先在热点工作台运行本地模拟。")
             parts.extend(f"{item['run_id']} · {item['window_start']} · 上榜 {item['ranked_news_count']} 篇" for item in result.get("items", []))
         elif trace.name == "search_knowledge":
+            if result.get("coverage_note"):
+                parts.append(result["coverage_note"])
             parts.append("知识检索证据（不代表已独立核实）：" if result.get("items") else "没有找到新闻知识证据，不能补写事实。")
             parts.extend(f"{item['title']}（news_id={item['news_id']}）\n{item['excerpt']}" for item in result.get("items", []))
         elif trace.name == "capabilities":

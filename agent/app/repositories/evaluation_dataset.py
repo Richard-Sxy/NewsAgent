@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Protocol
 from uuid import UUID, uuid4
 
-from sqlalchemy import func, select, update
+from sqlalchemy import and_, func, or_, select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -28,6 +28,10 @@ from app.schemas.evaluation_dataset import (
     EvaluationDatasetReference,
     EvaluationExpectedLabel,
     EvaluationSourceLineage,
+)
+from app.schemas.operations_feedback import (
+    LEGACY_OPERATOR_ERROR_SOURCES,
+    OPERATOR_FEEDBACK_SOURCES,
 )
 
 
@@ -152,7 +156,18 @@ class PostgresEvaluationDatasetRepository:
                 AnalysisFeedbackLabelRecord.approved_at <= source_cutoff_at,
                 AnalysisFeedbackLabelRecord.label_version
                 == latest_approved_version,
-                AnalysisFeedbackLabelRecord.verdict != "not_evaluable",
+                AnalysisFeedbackLabelRecord.verdict.in_(
+                    ("incorrect", "partially_correct")
+                ),
+                or_(
+                    AnalysisFeedbackCaseRecord.source_type.not_in(OPERATOR_FEEDBACK_SOURCES),
+                    AnalysisFeedbackCaseRecord.source_reference["operator_feedback"]["category"].astext
+                    == "analysis_error",
+                    and_(
+                        AnalysisFeedbackCaseRecord.source_type.in_(LEGACY_OPERATOR_ERROR_SOURCES),
+                        AnalysisFeedbackCaseRecord.source_reference["operator_feedback"].astext.is_(None),
+                    ),
+                ),
             )
             .order_by(AnalysisFeedbackCaseRecord.id)
             .limit(limit)

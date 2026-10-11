@@ -46,7 +46,18 @@ export interface ConversationRuntime {
   model_route: string
   prompt_version: string
   query_enabled: boolean
-  query_scope: { scenario_id: string; window_start: string; window_end: string } | null
+  query_scope: {
+    scenario_id: string
+    window_start: string
+    window_end: string
+    coverage_window_start?: string
+    coverage_window_end?: string
+    understanding_model?: {
+      provider: 'local' | 'openai_compatible'
+      model_route?: string
+      prompt_version?: string
+    }
+  } | null
   data_analysis?: {
     name: string
     execution_backend: 'process' | 'docker' | 'service'

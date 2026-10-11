@@ -55,6 +55,9 @@ class Settings(BaseSettings):
     conversation_knowledge_enabled: bool = False
     # Only attached by the isolated E2E application; trusted admin is also required.
     conversation_hot_news_query_enabled: bool = False
+    # Optional existing endpoint YAML for query understanding only; other scenes
+    # continue to use MODEL_RUNTIME_CONFIG_PATH and their approved Bundle.
+    conversation_query_understanding_config_path: str | None = None
     conversation_data_analysis_enabled: bool = False
     data_loop_data_analysis_enabled: bool = False
     data_analysis_backend: Literal["process", "docker", "service"] = "process"

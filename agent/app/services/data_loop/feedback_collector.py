@@ -30,6 +30,7 @@ from app.schemas.analysis_feedback import (
     SubmitAnalysisFeedbackLabelCommand,
 )
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
+from app.schemas.operations_feedback import OperationsFeedback
 
 
 class AnalysisFeedbackTargetNotFoundError(LookupError):
@@ -249,7 +250,7 @@ class AnalysisFeedbackCollector:
         feedback_case_id: UUID | None = None,
     ) -> FeedbackCaseWriteOutcome:
         """
-        从拒绝/纠正决策构造 Case。
+        从四类运营决策构造待标注 Case，运营判断不自动成为评测标签。
 
         ``correction_payload`` 故意不会进入 Case 或标签；纠正内容
         必须另行通过 ``SubmitAnalysisFeedbackLabelCommand`` 验证。
@@ -267,18 +268,22 @@ class AnalysisFeedbackCollector:
             raise AnalysisFeedbackTargetNotFoundError(
                 "运营决策或热点分析记忆不存在"
             )
-        if decision.decision_type not in {"rejected", "corrected"}:
-            raise ValueError(
-                "only rejected or corrected decisions create feedback cases"
-            )
         if decision.id is None:
             raise ValueError("persisted operator decision requires id")
 
-        source_type: FeedbackSource = (
-            "operator_rejected"
-            if decision.decision_type == "rejected"
-            else "operator_corrected"
+        source_type: FeedbackSource = {
+            "accepted": "operator_accepted", "rejected": "operator_rejected",
+            "deferred": "operator_deferred", "corrected": "operator_corrected",
+        }[decision.decision_type]
+        operator_feedback = (
+            None if decision.operator_feedback is None
+            else OperationsFeedback.model_validate(decision.operator_feedback)
         )
+        if operator_feedback is not None:
+            if operator_feedback.category != "analysis_error":
+                problem_type = "other"
+        elif decision.decision_type in {"accepted", "deferred"}:
+            problem_type, severity = "other", "low"
         return await self.collect_from_analysis_memory(
             session,
             tenant_id=normalized_tenant_id,
@@ -293,6 +298,7 @@ class AnalysisFeedbackCollector:
                 request_id=memory.model_request_id,
                 diagnostic_code=decision.decision_type,
                 diagnostic_summary=decision.reason.strip()[:1000],
+                operator_feedback=operator_feedback,
             ),
             occurred_at=occurred_at,
             idempotency_key=(

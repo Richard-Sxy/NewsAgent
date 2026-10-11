@@ -11,6 +11,11 @@ from uuid import UUID, uuid4
 from pydantic import TypeAdapter
 from sqlalchemy import select, tuple_
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.models.conversation import ConversationInputRecord
+from app.schemas.conversation import (
+    AppendConversationInputRequest,
+    ConversationInputView,
+)
 
 from app.db.session import Database
 from app.models.conversation import ConversationRecord, ConversationTurnRecord
@@ -39,6 +44,15 @@ class TurnClaim:
     turn: ConversationTurnView
     acquired: bool
 
+"""
+    执行循环准备结束时，数据库告诉它'结束'还是'继续'
+    turn: 已完成并保存的轮次；需要继续时为 None
+    inputs: 刚发现的补充消息，继续交个执行循环继续处理
+"""
+@dataclass(frozen=True)
+class TurnAdvance:
+    turn: ConversationTurnView | None
+    inputs: list[ConversationInputView]
 
 class PostgresConversationRepository:
     def __init__(self, database: Database) -> None:
@@ -61,6 +75,193 @@ class PostgresConversationRepository:
             await session.flush()
             return ConversationView.model_validate(conversation)
 
+    async def enqueue_input(
+        self,
+        *,
+        tenant_id: str,
+        user_id: str,
+        conversation_id: UUID,
+        turn_id: UUID,
+        request_id: UUID,
+        content: str,
+        max_inputs: int,
+        max_input_chars: int,
+        stale_after_seconds: int,
+    ) -> ConversationInputView:
+        content = AppendConversationInputRequest(
+            request_id=request_id,
+            content=content,
+        ).content
+
+        defaults = {
+            "max_inputs": max_inputs,
+            "max_input_chars": max_input_chars,
+            "input_stale_after_seconds": stale_after_seconds,
+        }
+        if any(type(value) is not int or value <= 0 for value in defaults.values()):
+            raise ValueError("input limits must be positive integers")
+
+        async with self._database.session() as session:
+            # 复用现有的会话行锁，同时校验租户、用户和会话所有权
+            conversation = await self._require_conversation(session, tenant_id, user_id, conversation_id)
+            # 幂等重试优先判断：即使轮次已经结束，也返回原受理记录。
+            result = await session.execute(self._input_query(tenant_id, user_id, conversation_id).where(
+                ConversationInputRecord.request_id == request_id,
+            ))
+            existing = result.scalar_one_or_none()
+            if existing is not None:
+                if existing.turn_id != turn_id or existing.content != content:
+                    raise ConversationConflict("input request_id belongs to different content or turn")
+                return ConversationInputView.model_validate(existing)
+            # 原消息与普通消息不能共用一个 request_id
+            result = await session.execute(self._turn_query(tenant_id, user_id, conversation_id).where(ConversationInputRecord.id == turn_id))
+            turn = result.scalar_one_or_none()
+            if turn is None:
+                raise ConversationNotFound("conversation turn not found")
+            if turn.status != "processing":
+                raise ConversationConflict("turn no longer accepts inputs")
+            # 优先使用轮次创建时冻结的限制，避免不同进程配置不一致
+            limits = {
+                name: turn.runtime_metadata.get(name, fallback)
+                for name, fallback in defaults.items()
+            }
+            if any(type(value) is not int or value <= 0 for value in limits.values()):
+                raise ConversationConflict("invalid turn input limits")
+            
+            now = datetime.now(timezone.utc)
+            stale_before = now - timedelta(seconds=limits["input_stale_after_seconds"])
+            if turn.created_at <= stale_before:
+                raise ConversationConflict("turn input deadline expired")
+            if len(turn.inputs) >= limits["max_inputs"]:
+                raise ConversationConflict("turn input count exceeded")
+
+            total_chars = (len(turn.user_content) + sum(len(item.content) for item in turn.inputs) + len(content))
+            if total_chars > limits["max_input_chars"]:
+                raise ConversationConflict("turn input length exceeded")
+
+            item = ConversationInputRecord(
+                id=uuid4(),
+                tenant_id=tenant_id,
+                user_id=user_id,
+                conversation_id=conversation_id,
+                turn_id=turn_id,
+                request_id=request_id,
+                seq=max((value.seq for value in turn.inputs), default=0) + 1,
+                content=content,
+                status="pending",
+                create_at=now,
+                applied_at=None,
+                error_code=None,
+            )
+            turn.inputs.append(item)
+            session.add(item)
+            conversation.updated_at = now
+            await session.flush()
+            return ConversationInputView.model_validate(item)
+
+    async def claim_inputs(
+        self,
+        *,
+        tenant_id: str,
+        user_id: str,
+        conversation_id: UUID,
+        turn_id: UUID,
+        request_id: UUID,
+    ) -> list[ConversationInputView]:
+        async with self._database.session as session:
+            conversation = await self._require_conversation(
+                session, tenant_id, user_id, conversation_id,
+            )
+            turn = await self._require_processing_turn(
+                session,
+                tenant_id=tenant_id,
+                user_id=user_id,
+                conversation_id=conversation_id,
+                turn_id=turn_id,
+                request_id=request_id,
+            )
+
+            now = datetime.now(timezone.utc)
+            claimed = self._claim_pending_inputs(turn, now)
+            if claimed:
+                conversation.updated_at = now
+
+            await session.flush()
+            return [
+                ConversationInputView.model_validate(item)
+                for item in claimed
+            ]
+
+    async def finish_or_claim(
+        self,
+        *,
+        tenant_id: str,
+        user_id: str,
+        conversation_id: UUID,
+        turn_id: UUID,
+        request_id: UUID,
+        expected_input_seq: int,
+        assistant_content: str,
+        tools: list[ToolTrace],
+        model_request_ids: list[str],
+    ) -> TurnAdvance:
+        if type(expected_input_seq) is not int or expected_input_seq < 0:
+            raise ValueError("expected_inpt_seq must be a nonnegative integer")
+        assistant_content = TypeAdapter(AssistantContent).validate_python(assistant_content)
+        serialized_tools = [
+            ToolTrace.model_validate(item).model_dump(mode="json")
+            for item in tools
+        ]
+
+        async with self._database.session() as session:
+            conversation = await self._require_conversation(session, tenant_id, user_id, conversation_id)
+            turn = await self._require_processing_turn(
+                session,
+                tenant_id=tenant_id,
+                user_id=user_id,
+                conversation_id=conversation_id,
+                turn_id=turn_id,
+                request_id=request_id,
+            )
+
+            applied_seq = max((item.seq for item in turn.inputs if item.status == "applied"), default=0)
+            if expected_input_seq > applied_seq:
+                raise ConversationConflict("input snapshot is ahead of storage")
+
+            self._validate_checkpoint_prefix(turn, serialized_tools, model_request_ids)
+            turn.tools = serialized_tools
+            turn.model_request_ids = list(model_request_ids)
+            now = datetime.now(timezone.utc)
+
+            # 既检查未领取消息，也检查已领取但不再当前快照中的消息
+            additions = [item for item in turn.inputs if item.status == "applied" and item.seq > expected_input_seq]
+            additions.extend(self._claim_pending_inputs(turn, now))
+            additions.sort(key=lambda item: item.seq)
+
+            conversation.updated_at = now
+            if additions:
+                await session.flush()
+                return TurnAdvance(
+                    turn=None,
+                    inputs=[
+                        ConversationInputView.model_validate(iter)
+                        for item in additions
+                    ]
+                )
+            self._write_terminal(
+                turn,
+                now=now,
+                assistant_content=assistant_content,
+                tools=serialized_tools,
+                model_request_ids=model_request_ids,
+                error_code=None,
+            )
+            await session.flush()
+            return TurnAdvance(
+                turn=ConversationInputView.model_validate(turn),
+                inputs=[],
+            )
+        
     async def list(
         self, tenant_id: str, user_id: str, limit: int = 20
     ) -> list[ConversationView]:
@@ -279,6 +480,11 @@ class PostgresConversationRepository:
             )
             now = datetime.now(timezone.utc)
             stale_before = now - timedelta(seconds=stale_after_seconds)
+            input_result = await session.execute(
+                self._input_query(tenant_id, user_id, conversation_id).where(ConversationInputRecord.request_id == request_id)
+            )
+            if input_result.scalar_one_or_none() is not None:
+                raise ConversationConflict("request_id already belongs to an input")
             query = self._turn_query(tenant_id, user_id, conversation_id)
             result = await session.execute(
                 query.where(ConversationTurnRecord.request_id == request_id)
@@ -321,6 +527,7 @@ class PostgresConversationRepository:
                 runtime_metadata=deepcopy(runtime_metadata or {}),
                 created_at=now,
                 completed_at=None,
+                inputs=[],
             )
             session.add(turn)
             conversation.updated_at = now
@@ -476,11 +683,94 @@ class PostgresConversationRepository:
 
     @staticmethod
     def _interrupt(turn: ConversationTurnRecord, now: datetime) -> None:
+        # 打断单轮对话轮次
         turn.status = "failed"
         turn.error_code = "interrupted"
         turn.completed_at = now
+        PostgresConversationRepository._fail_inputs(turn, "interrapt")
 
     @staticmethod
     def _validate_limit(limit: int) -> None:
         if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 200:
             raise ValueError("limit must be an integer between 1 and 200")
+
+    async def _require_processing_turn(
+        self,
+        session: AsyncSession,
+        *,
+        tenant_id: str,
+        user_id: str,
+        conversation_id: UUID,
+        turn_id: UUID,
+        request_id: UUID,
+    ) -> ConversationTurnRecord:
+        result = await session.execute(
+            self._turn_query(tenant_id, user_id, conversation_id).where(
+                ConversationTurnRecord.id == turn_id,
+                ConversationTurnRecord.request_id == request_id,
+            )
+        )
+        turn = result.scalar_one_or_none()
+        if turn is None:
+            raise ConversationNotFound("conversation request claim not found")
+        if turn.status != "processing":
+            raise ConversationConflict("turn is no longer processing")
+        return turn
+        
+
+    @staticmethod
+    def _input_query(
+        tenant_id: str,
+        user_id: str,
+        conversation_id: UUID
+    ):
+        return select(ConversationInputRecord).where(
+            ConversationInputRecord.tenant_id == tenant_id,
+            ConversationInputRecord.user_id == user_id,
+            ConversationInputRecord.conversation_id == conversation_id,
+        )
+
+    @staticmethod
+    def _claim_pending_inputs(
+        turn: ConversationTurnRecord,
+        now: datetime
+    ) -> list[ConversationTurnRecord]:
+        claimed = sorted(
+            (item for item in turn.inputs if item.status == "pending"),
+            key=lambda item: item.seq,
+        )
+        for item in claimed:
+            item.status = "applied"
+            item.applied_at = now
+        return claimed
+
+    @staticmethod
+    def _fail_inputs(
+        turn: ConversationInputRecord,
+        error_code: str,
+    ) -> None:
+        for item in turn.inputs:
+            if item.status in {"pending", "applied"}:
+                item.status = "failed"
+                item.error_code = error_code
+
+    def _write_terminal(
+        self,
+        turn: ConversationTurnRecord,
+        *,
+        now: datetime,
+        assistant_content: str | None,
+        tools: list[dict[str, Any]],
+        model_request_ids: list[str],
+        error_code: str | None,
+    ) -> None:
+        self._validate_checkpoint_prefix(turn, tools, model_request_ids)
+        turn.assistant_content = assistant_content
+        turn.tools = tools
+        turn.model_request_ids = model_request_ids
+        turn.error_code = error_code
+        turn.status = "failed" if error_code is not None else "completed"
+        turn.completed_at = now
+
+        if error_code is not None:
+            self._fail_inputs(turn, error_code)    

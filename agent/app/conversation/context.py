@@ -10,12 +10,13 @@ from typing import Any
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
+from app.conversation.input_state import TurnInputSnapshot
 
 from app.domain.errors import AgentOutputValidationError
 from app.model_runtime.http import ModelTransportError
 
 
-POLICY_VERSION = "conversation-length-v2"
+POLICY_VERSION = "conversation-length-v3-inputs"
 
 
 def json_chars(value: Any) -> int:
@@ -81,6 +82,7 @@ class LengthBasedContext:
                              turn_id=claim.turn.id, request_id=claim.turn.request_id)
         self.memory = await self.repository.load_memory(tenant_id, user_id, conversation_id)
         cursor = self.memory.through
+        before = ContextCursor(created_at=claim.turn.created_at, id=claim.turn.id)
         while True:
             page = await self.repository.context_page(
                 tenant_id, user_id, conversation_id, after=cursor,

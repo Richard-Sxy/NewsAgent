@@ -1,0 +1,1064 @@
+{
+  "dataset_name": "hot-news-operations-synthetic-high_risk",
+  "dataset_version": "2026-10-10.synthetic-v1",
+  "schema_version": "1.0",
+  "description": "全部为合成情景和程序预期，待人工复核；只评测分析Schema/驱动/证据/指标/限制，不证明运营策略效果。",
+  "cases": [
+    {
+      "case_id": "syn-125935d32be90ef2107c",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸市网传跨河通道将临时关闭",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-01",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-125935d32be90ef2107c",
+        "title": "（虚构）雾岸市网传跨河通道将临时关闭",
+        "summary": "合成新闻情景；不对应真实新闻。虚构雾岸市社交平台出现通道关闭截图，但找不到发布主体和公告编号。；模拟交通服务中心当前公开页面没有对应公告，关闭时间及路段均未知。；截图包含检修字样，但关闭安排仍无可核验出处。；模拟重评条件是取得可核验公告；没有真实通知任务。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构雾岸市社交平台出现通道关闭截图，但找不到发布主体和公告编号。；模拟交通服务中心当前公开页面没有对应公告，关闭时间及路段均未知。；截图包含检修字样，但关闭安排仍无可核验出处。；模拟重评条件是取得可核验公告；没有真实通知任务。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-125935d32be90ef2107c",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构雾岸市社交平台出现通道关闭截图，但找不到发布主体和公告编号。；模拟交通服务中心当前公开页面没有对应公告，关闭时间及路段均未知。；截图包含检修字样，但关闭安排仍无可核验出处。；模拟重评条件是取得可核验公告；没有真实通知任务。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-125935d32be90ef2107c"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-125935d32be90ef2107c"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-79500d3d6e9927f2658e",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸市自媒体刊登通道检修截图",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-01",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-79500d3d6e9927f2658e",
+        "title": "（虚构）雾岸市自媒体刊登通道检修截图",
+        "summary": "合成新闻情景；不对应真实新闻。虚构自媒体仅引用匿名截图，模拟交通服务中心未确认关闭安排。；截图只写可能检修，未写永久关闭；原帖真实性也未确认。；没有证据支持关闭时间、规模或居民迁移影响。；模拟截图未列公告编号，机构名称与项目名称均为虚构。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构自媒体仅引用匿名截图，模拟交通服务中心未确认关闭安排。；截图只写可能检修，未写永久关闭；原帖真实性也未确认。；没有证据支持关闭时间、规模或居民迁移影响。；模拟截图未列公告编号，机构名称与项目名称均为虚构。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-79500d3d6e9927f2658e",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构自媒体仅引用匿名截图，模拟交通服务中心未确认关闭安排。；截图只写可能检修，未写永久关闭；原帖真实性也未确认。；没有证据支持关闭时间、规模或居民迁移影响。；模拟截图未列公告编号，机构名称与项目名称均为虚构。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-79500d3d6e9927f2658e"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-79500d3d6e9927f2658e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-6ca23d1c6d9ab062fd67",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）云杉市山麓片区垃圾收运调整",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-03",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-6ca23d1c6d9ab062fd67",
+        "title": "（虚构）云杉市山麓片区垃圾收运调整",
+        "summary": "合成新闻情景；不对应真实新闻。虚构云杉市公共服务社确认山麓片区收运时间改变。；企业模拟人群服务没有山麓片区的映射版本，无法核验受众范围。；禁止使用个人浏览记录自行推定住址或输出用户名单。；公告内容、日期和来源已核验，但目标人群映射仍缺失，没有真实通知任务。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构云杉市公共服务社确认山麓片区收运时间改变。；企业模拟人群服务没有山麓片区的映射版本，无法核验受众范围。；禁止使用个人浏览记录自行推定住址或输出用户名单。；公告内容、日期和来源已核验，但目标人群映射仍缺失，没有真实通知任务。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-6ca23d1c6d9ab062fd67",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构云杉市公共服务社确认山麓片区收运时间改变。；企业模拟人群服务没有山麓片区的映射版本，无法核验受众范围。；禁止使用个人浏览记录自行推定住址或输出用户名单。；公告内容、日期和来源已核验，但目标人群映射仍缺失，没有真实通知任务。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-6ca23d1c6d9ab062fd67"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-6ca23d1c6d9ab062fd67"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-01f7e5afbd57c0602535",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）云杉市山麓片区提醒拟覆盖三个片区",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-03",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-01f7e5afbd57c0602535",
+        "title": "（虚构）云杉市山麓片区提醒拟覆盖三个片区",
+        "summary": "合成新闻情景；不对应真实新闻。模拟公告只涉及山麓片区；谷口、南林片区不受影响。；模拟获准人群版本明确三个片区边界，并支持排除未受影响片区。；候选包含三个片区；正文明确写明只有山麓片区受影响。；更改受众需重新审核，本例没有实际发送。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。模拟公告只涉及山麓片区；谷口、南林片区不受影响。；模拟获准人群版本明确三个片区边界，并支持排除未受影响片区。；候选包含三个片区；正文明确写明只有山麓片区受影响。；更改受众需重新审核，本例没有实际发送。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-01f7e5afbd57c0602535",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "模拟公告只涉及山麓片区；谷口、南林片区不受影响。；模拟获准人群版本明确三个片区边界，并支持排除未受影响片区。；候选包含三个片区；正文明确写明只有山麓片区受影响。；更改受众需重新审核，本例没有实际发送。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-01f7e5afbd57c0602535"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-01f7e5afbd57c0602535"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-b676f44b6b87f3c29f31",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）青岚经济研究社宏观解读专题尚无偏好快照",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-04",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-b676f44b6b87f3c29f31",
+        "title": "（虚构）青岚经济研究社宏观解读专题尚无偏好快照",
+        "summary": "合成新闻情景；不对应真实新闻。虚构青岚经济研究社发布宏观解读专题，引用的模拟统计口径可核验，内容非紧急且不含投资建议。；模拟偏好服务暂不可用，不能核验哪些人当前订阅该类别。；候选没有权限使用缓存过期快照替代最新撤销状态。；本例不允许扩大访问或保存企业用户明细。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构青岚经济研究社发布宏观解读专题，引用的模拟统计口径可核验，内容非紧急且不含投资建议。；模拟偏好服务暂不可用，不能核验哪些人当前订阅该类别。；候选没有权限使用缓存过期快照替代最新撤销状态。；本例不允许扩大访问或保存企业用户明细。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-b676f44b6b87f3c29f31",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构青岚经济研究社发布宏观解读专题，引用的模拟统计口径可核验，内容非紧急且不含投资建议。；模拟偏好服务暂不可用，不能核验哪些人当前订阅该类别。；候选没有权限使用缓存过期快照替代最新撤销状态。；本例不允许扩大访问或保存企业用户明细。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-b676f44b6b87f3c29f31"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-b676f44b6b87f3c29f31"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-efd99fa0bd7254bca0ac",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）青岚经济研究社宏观解读拟覆盖产业科技订阅",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-04",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-efd99fa0bd7254bca0ac",
+        "title": "（虚构）青岚经济研究社宏观解读拟覆盖产业科技订阅",
+        "summary": "合成新闻情景；不对应真实新闻。模拟偏好合同将宏观解读、产业科技两个类别分开，当前类别授权均可核验。；虚构研究社新稿只解释宏观统计口径，不包含产业科技内容，也不提供投资建议。；现有模拟订阅合同没有产业科技订阅者同意接收宏观解读通知的记录。；模拟投递合同规定受众变更须重新审核；本例未发送。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。模拟偏好合同将宏观解读、产业科技两个类别分开，当前类别授权均可核验。；虚构研究社新稿只解释宏观统计口径，不包含产业科技内容，也不提供投资建议。；现有模拟订阅合同没有产业科技订阅者同意接收宏观解读通知的记录。；模拟投递合同规定受众变更须重新审核；本例未发送。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-efd99fa0bd7254bca0ac",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "模拟偏好合同将宏观解读、产业科技两个类别分开，当前类别授权均可核验。；虚构研究社新稿只解释宏观统计口径，不包含产业科技内容，也不提供投资建议。；现有模拟订阅合同没有产业科技订阅者同意接收宏观解读通知的记录。；模拟投递合同规定受众变更须重新审核；本例未发送。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-efd99fa0bd7254bca0ac"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-efd99fa0bd7254bca0ac"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-3b15d4ed5d795421d76a",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）青岚读书会凌晨发布长篇回顾",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-06",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-3b15d4ed5d795421d76a",
+        "title": "（虚构）青岚读书会凌晨发布长篇回顾",
+        "summary": "合成新闻情景；不对应真实新闻。虚构长篇回顾没有新增事件或服务变化，原稿与来源发布日期可核验。；本地模拟偏好假设：此组读者选择23时至次日7时不接收普通通知。；当前模拟时间为0时10分，回顾次日上午仍有阅读价值。；该静默区间只是本地测试假设，不是腾讯或行业标准。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构长篇回顾没有新增事件或服务变化，原稿与来源发布日期可核验。；本地模拟偏好假设：此组读者选择23时至次日7时不接收普通通知。；当前模拟时间为0时10分，回顾次日上午仍有阅读价值。；该静默区间只是本地测试假设，不是腾讯或行业标准。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-3b15d4ed5d795421d76a",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构长篇回顾没有新增事件或服务变化，原稿与来源发布日期可核验。；本地模拟偏好假设：此组读者选择23时至次日7时不接收普通通知。；当前模拟时间为0时10分，回顾次日上午仍有阅读价值。；该静默区间只是本地测试假设，不是腾讯或行业标准。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-3b15d4ed5d795421d76a"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-3b15d4ed5d795421d76a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-a0caa59e18117539e2bc",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）云岭联赛半决赛的双时区赛前预告",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-06",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-a0caa59e18117539e2bc",
+        "title": "（虚构）云岭联赛半决赛的双时区赛前预告",
+        "summary": "合成新闻情景；不对应真实新闻。虚构云岭室内球类联赛公告写明半决赛在模拟2026年10月11日UTC1时开赛，即北京时间9时。；模拟目标订阅读者使用北京时间，普通赛前提醒许可窗口从8时开始。；公告同时给出UTC1时与北京时间9时，两个时刻指向同一场半决赛。；提醒许可窗口仅为本地模拟偏好，未执行通知，也没有真实比赛或比分。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构云岭室内球类联赛公告写明半决赛在模拟2026年10月11日UTC1时开赛，即北京时间9时。；模拟目标订阅读者使用北京时间，普通赛前提醒许可窗口从8时开始。；公告同时给出UTC1时与北京时间9时，两个时刻指向同一场半决赛。；提醒许可窗口仅为本地模拟偏好，未执行通知，也没有真实比赛或比分。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-a0caa59e18117539e2bc",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构云岭室内球类联赛公告写明半决赛在模拟2026年10月11日UTC1时开赛，即北京时间9时。；模拟目标订阅读者使用北京时间，普通赛前提醒许可窗口从8时开始。；公告同时给出UTC1时与北京时间9时，两个时刻指向同一场半决赛。；提醒许可窗口仅为本地模拟偏好，未执行通知，也没有真实比赛或比分。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-a0caa59e18117539e2bc"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-a0caa59e18117539e2bc"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-9d7ba1e05b912cd5cb9a",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸市图书借阅指南遇模拟冷却期",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-07",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-9d7ba1e05b912cd5cb9a",
+        "title": "（虚构）雾岸市图书借阅指南遇模拟冷却期",
+        "summary": "合成新闻情景；不对应真实新闻。虚构图书借阅指南列明现行借阅条件与资料出处，没有紧急变化，次日仍适用。；本地模拟假设：同一文化主题的普通通知至少间隔60分钟。；模拟上一建议投递状态不作为事实；本例只给定冷却预算服务返回剩余15分钟。；60分钟间隔与15分钟剩余均为本地契约输入，不代表真实投递记录。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构图书借阅指南列明现行借阅条件与资料出处，没有紧急变化，次日仍适用。；本地模拟假设：同一文化主题的普通通知至少间隔60分钟。；模拟上一建议投递状态不作为事实；本例只给定冷却预算服务返回剩余15分钟。；60分钟间隔与15分钟剩余均为本地契约输入，不代表真实投递记录。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-9d7ba1e05b912cd5cb9a",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构图书借阅指南列明现行借阅条件与资料出处，没有紧急变化，次日仍适用。；本地模拟假设：同一文化主题的普通通知至少间隔60分钟。；模拟上一建议投递状态不作为事实；本例只给定冷却预算服务返回剩余15分钟。；60分钟间隔与15分钟剩余均为本地契约输入，不代表真实投递记录。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-9d7ba1e05b912cd5cb9a"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-9d7ba1e05b912cd5cb9a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-7a8dfe6b91790df5e421",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸市三篇借阅问答拟连续通知",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-07",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-7a8dfe6b91790df5e421",
+        "title": "（虚构）雾岸市三篇借阅问答拟连续通知",
+        "summary": "合成新闻情景；不对应真实新闻。三篇虚构问答都围绕同一借阅规则，没有紧急变化。；模拟订阅者同意固定阅读窗口的摘要通知，未选择逐篇提醒。；候选分别申请三条通知，主要事实可合并成一条摘要。；没有实际发送次数或效果，合并建议还需独立审核。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。三篇虚构问答都围绕同一借阅规则，没有紧急变化。；模拟订阅者同意固定阅读窗口的摘要通知，未选择逐篇提醒。；候选分别申请三条通知，主要事实可合并成一条摘要。；没有实际发送次数或效果，合并建议还需独立审核。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-7a8dfe6b91790df5e421",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "三篇虚构问答都围绕同一借阅规则，没有紧急变化。；模拟订阅者同意固定阅读窗口的摘要通知，未选择逐篇提醒。；候选分别申请三条通知，主要事实可合并成一条摘要。；没有实际发送次数或效果，合并建议还需独立审核。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-7a8dfe6b91790df5e421"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-7a8dfe6b91790df5e421"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-16d2cc3e4a9ee19bb0ce",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）青岚便民社提醒渠道状态未知",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-09",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-16d2cc3e4a9ee19bb0ce",
+        "title": "（虚构）青岚便民社提醒渠道状态未知",
+        "summary": "合成新闻情景；不对应真实新闻。虚构青岚便民社发布预约规则变更，事实已确认。；模拟渠道偏好服务未返回有效版本，当前可用频道未知。；仅有内容来源可核验，模拟合同未提供当前频道许可或设备展示状态。；只有内容快照，没有真实投递请求。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构青岚便民社发布预约规则变更，事实已确认。；模拟渠道偏好服务未返回有效版本，当前可用频道未知。；仅有内容来源可核验，模拟合同未提供当前频道许可或设备展示状态。；只有内容快照，没有真实投递请求。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-16d2cc3e4a9ee19bb0ce",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构青岚便民社发布预约规则变更，事实已确认。；模拟渠道偏好服务未返回有效版本，当前可用频道未知。；仅有内容来源可核验，模拟合同未提供当前频道许可或设备展示状态。；只有内容快照，没有真实投递请求。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-16d2cc3e4a9ee19bb0ce"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-16d2cc3e4a9ee19bb0ce"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-92fcdb6f90c450e935c7",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）青岚便民社提醒拟展示个人预约事项",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-09",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-92fcdb6f90c450e935c7",
+        "title": "（虚构）青岚便民社提醒拟展示个人预约事项",
+        "summary": "合成新闻情景；不对应真实新闻。本地模拟预约状态用于展示测试，不含任何真实姓名或用户记录。；候选锁屏文案包含虚构个人的体检项目与预约时刻。；模拟偏好仅允许不展示个人事项的普通提醒，详细事项须登录后查看。；模拟偏好允许一般预约规则提醒，但未许可在锁屏展示具体体检事项。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。本地模拟预约状态用于展示测试，不含任何真实姓名或用户记录。；候选锁屏文案包含虚构个人的体检项目与预约时刻。；模拟偏好仅允许不展示个人事项的普通提醒，详细事项须登录后查看。；模拟偏好允许一般预约规则提醒，但未许可在锁屏展示具体体检事项。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-92fcdb6f90c450e935c7",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "本地模拟预约状态用于展示测试，不含任何真实姓名或用户记录。；候选锁屏文案包含虚构个人的体检项目与预约时刻。；模拟偏好仅允许不展示个人事项的普通提醒，详细事项须登录后查看。；模拟偏好允许一般预约规则提醒，但未许可在锁屏展示具体体检事项。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-92fcdb6f90c450e935c7"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-92fcdb6f90c450e935c7"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-5427e3a75f2b4639d2e4",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸读书专题摘要尚未到选定窗口",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-10",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-5427e3a75f2b4639d2e4",
+        "title": "（虚构）雾岸读书专题摘要尚未到选定窗口",
+        "summary": "合成新闻情景；不对应真实新闻。虚构三篇读书专题稿件的原文、出处和日期可核验，没有突发事件或紧急服务变化。；本地模拟偏好选择每日19时摘要；当前为17时。；阅读价值截至次日仍成立，不需要提前打断。；19时窗口是显式本地假设，不是企业统一发送时间。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构三篇读书专题稿件的原文、出处和日期可核验，没有突发事件或紧急服务变化。；本地模拟偏好选择每日19时摘要；当前为17时。；阅读价值截至次日仍成立，不需要提前打断。；19时窗口是显式本地假设，不是企业统一发送时间。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-5427e3a75f2b4639d2e4",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构三篇读书专题稿件的原文、出处和日期可核验，没有突发事件或紧急服务变化。；本地模拟偏好选择每日19时摘要；当前为17时。；阅读价值截至次日仍成立，不需要提前打断。；19时窗口是显式本地假设，不是企业统一发送时间。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-5427e3a75f2b4639d2e4"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-5427e3a75f2b4639d2e4"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-d6c23952718dc3018c98",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）雾岸市两项办事规则的摘要候选",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-10",
+        "high_risk",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-d6c23952718dc3018c98",
+        "title": "（虚构）雾岸市两项办事规则的摘要候选",
+        "summary": "合成新闻情景；不对应真实新闻。虚构公告甲只适用老城片区，公告乙只适用线上预约申请。；两份模拟公告分别列出来源机构、适用范围及申请限制。；候选摘要标题却写全城所有办事者无需预约即可办理。；没有正式政策统一变更，本例未发送。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构公告甲只适用老城片区，公告乙只适用线上预约申请。；两份模拟公告分别列出来源机构、适用范围及申请限制。；候选摘要标题却写全城所有办事者无需预约即可办理。；没有正式政策统一变更，本例未发送。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-d6c23952718dc3018c98",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构公告甲只适用老城片区，公告乙只适用线上预约申请。；两份模拟公告分别列出来源机构、适用范围及申请限制。；候选摘要标题却写全城所有办事者无需预约即可办理。；没有正式政策统一变更，本例未发送。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-d6c23952718dc3018c98"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-d6c23952718dc3018c98"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-6ce0c95ec80add85c8bf",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥研究社撤稿后的平台状态待查证",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-11",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-6ce0c95ec80add85c8bf",
+        "title": "（虚构）星桥研究社撤稿后的平台状态待查证",
+        "summary": "合成新闻情景；不对应真实新闻。虚构研究社已撤回一篇方法稿，内容台账明确标为撤回。；模拟平台只返回请求已受理，未给出任何已展示通知的撤回回执。；内容台账只有正文状态，设备展示与通知撤回状态均未被证实。；本例未调用真实平台，也没有真实用户触达记录。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构研究社已撤回一篇方法稿，内容台账明确标为撤回。；模拟平台只返回请求已受理，未给出任何已展示通知的撤回回执。；内容台账只有正文状态，设备展示与通知撤回状态均未被证实。；本例未调用真实平台，也没有真实用户触达记录。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-6ce0c95ec80add85c8bf",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构研究社已撤回一篇方法稿，内容台账明确标为撤回。；模拟平台只返回请求已受理，未给出任何已展示通知的撤回回执。；内容台账只有正文状态，设备展示与通知撤回状态均未被证实。；本例未调用真实平台，也没有真实用户触达记录。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-6ce0c95ec80add85c8bf"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-6ce0c95ec80add85c8bf"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-51f9103daed3a767f13b",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥研究社撤稿后的内容与通知状态",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-11",
+        "high_risk",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-51f9103daed3a767f13b",
+        "title": "（虚构）星桥研究社撤稿后的内容与通知状态",
+        "summary": "合成新闻情景；不对应真实新闻。虚构研究社撤回正文，模拟内容服务已更新撤回状态。；模拟平台没有通知撤回能力证明，也没有投递或撤回回执。；删除文章不能证明已经展示的设备通知消失。；内容服务状态与设备通知状态属于两个独立接口，当前只提供前者的模拟响应。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构研究社撤回正文，模拟内容服务已更新撤回状态。；模拟平台没有通知撤回能力证明，也没有投递或撤回回执。；删除文章不能证明已经展示的设备通知消失。；内容服务状态与设备通知状态属于两个独立接口，当前只提供前者的模拟响应。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-51f9103daed3a767f13b",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构研究社撤回正文，模拟内容服务已更新撤回状态。；模拟平台没有通知撤回能力证明，也没有投递或撤回回执。；删除文章不能证明已经展示的设备通知消失。；内容服务状态与设备通知状态属于两个独立接口，当前只提供前者的模拟响应。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-51f9103daed3a767f13b"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-51f9103daed3a767f13b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7dc4eb5080fc40d14ce3",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7dc4eb5080fc40d14ce3",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构澜芯企业季度披露，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：论坛猜测企业巨额亏损，没有正式报表。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-596558e424c6a29e6e03",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7dc4eb5080fc40d14ce3",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7dc4eb5080fc40d14ce3",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构澜芯企业季度披露影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：论坛猜测企业巨额亏损，没有正式报表。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-4095ec80f849963e9adb",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-e539dbbe6303100f2dc2",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e539dbbe6303100f2dc2",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": true,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-5f9732f003d47bd8b6c2",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-e539dbbe6303100f2dc2",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e539dbbe6303100f2dc2",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-2852c9accda14159386f",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec651c4ca70f2b446882",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec651c4ca70f2b446882",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：新增分业务数据，说明一次性费用及审计状态。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增分业务数据，说明一次性费用及审计状态。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-cd7799e81eac4e4fe3ef",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec651c4ca70f2b446882",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec651c4ca70f2b446882",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增分业务数据，说明一次性费用及审计状态。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-be62c09ce5be69147694",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-758d4c8f0916f4ea8ab8",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-758d4c8f0916f4ea8ab8",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构澜芯企业季度披露背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：研报转述同一报表，未披露新的经营事实。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-7770467f1ae6ae80aa9b",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-758d4c8f0916f4ea8ab8",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-758d4c8f0916f4ea8ab8",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构澜芯企业季度披露重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：研报转述同一报表，未披露新的经营事实。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-137cb84ae77db3cbdc51",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c4cc89b7456757414eac",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c4cc89b7456757414eac",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-5556ab55e6db2d283c66",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c4cc89b7456757414eac",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c4cc89b7456757414eac",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构澜芯企业季度披露旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-89c0637e9a16b9329f42",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0e70ac62639db656c3c0",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0e70ac62639db656c3c0",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：企业更正费用单位，旧稿金额放大，真实口径需重算。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：企业更正费用单位，旧稿金额放大，真实口径需重算。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-9df3cb97b08803cc7aa2",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "企业更正费用单位，旧稿金额放大，真实口径需重算。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0e70ac62639db656c3c0",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0e70ac62639db656c3c0",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。；新增分业务数据，说明一次性费用及审计状态。；研报转述同一报表，未披露新的经营事实。；旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。；企业更正费用单位，旧稿金额放大，真实口径需重算。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澜芯企业季度披露：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：企业更正费用单位，旧稿金额放大，真实口径需重算。；全部为虚构新闻情景。",
+        "title": "虚构澜芯企业季度披露"
+      },
+      "case_id": "evo-c425c615edc078fcce83",
+      "event_id": "synthetic-event-bec905f38e2d8466e617",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "论坛猜测企业巨额亏损，没有正式报表。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构企业披露营收增长但净利润下降，不能等同经营全面改善。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "新增分业务数据，说明一次性费用及审计状态。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "研报转述同一报表，未披露新的经营事实。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧季报仍高热，新季度信息尚未发布，不宜冒充最新财报。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "企业更正费用单位，旧稿金额放大，真实口径需重算。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-bec905f38e2d8466e617",
+      "story_title": "虚构澜芯企业季度披露",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2aced7b7ab8c440122c5",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2aced7b7ab8c440122c5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构衡浦公司债券兑付，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：投资者帖称已发生违约，托管方没有结算记录。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-035f572c5361c7d3e641",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2aced7b7ab8c440122c5",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2aced7b7ab8c440122c5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构衡浦公司债券兑付影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：投资者帖称已发生违约，托管方没有结算记录。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-729c99a70b413aa67aac",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b028ae6b170c9423e2f8",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b028ae6b170c9423e2f8",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": true,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构发行人确认进入约定兑付日，尚不等于投资者到账。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-f17a764b5b27dfc2aef7",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b028ae6b170c9423e2f8",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b028ae6b170c9423e2f8",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构发行人确认进入约定兑付日，尚不等于投资者到账。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-1743de7f7a42bf60101a",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4529e2798254caa9ec35",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4529e2798254caa9ec35",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：托管方公布结算完成记录与适用债券批次。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：托管方公布结算完成记录与适用债券批次。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-9f16419db178d95ad7fe",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4529e2798254caa9ec35",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4529e2798254caa9ec35",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：托管方公布结算完成记录与适用债券批次。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-91c09ed3ffe2960e7166",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-184c2667aa63df31765c",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-184c2667aa63df31765c",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：旧兑付公告再传播，没有新增批次或到账证据。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-92b7502c7f9028eeb2d8",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-184c2667aa63df31765c",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-184c2667aa63df31765c",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构衡浦公司债券兑付重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：旧兑付公告再传播，没有新增批次或到账证据。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-1d1b82749a7ce38f3ec4",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-92d537c73ef1e816c6c1",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-92d537c73ef1e816c6c1",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：本次兑付观察期结束，不把旧消息包装为即时交易信号。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-eaf98a41ec60586b4bf8",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "本次兑付观察期结束，不把旧消息包装为即时交易信号。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-92d537c73ef1e816c6c1",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-92d537c73ef1e816c6c1",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构衡浦公司债券兑付旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：本次兑付观察期结束，不把旧消息包装为即时交易信号。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-3ac780c5402d33fb06e0",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "本次兑付观察期结束，不把旧消息包装为即时交易信号。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-278345c3b290c6752462",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-278345c3b290c6752462",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：托管方更正批次编号，部分旧稿指向另一只债券。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：托管方更正批次编号，部分旧稿指向另一只债券。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-44a2a35d1102a8a41fe5",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "本次兑付观察期结束，不把旧消息包装为即时交易信号。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方更正批次编号，部分旧稿指向另一只债券。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-278345c3b290c6752462",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-278345c3b290c6752462",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。；托管方公布结算完成记录与适用债券批次。；旧兑付公告再传播，没有新增批次或到账证据。；本次兑付观察期结束，不把旧消息包装为即时交易信号。；托管方更正批次编号，部分旧稿指向另一只债券。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构衡浦公司债券兑付：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：托管方更正批次编号，部分旧稿指向另一只债券。；全部为虚构新闻情景。",
+        "title": "虚构衡浦公司债券兑付"
+      },
+      "case_id": "evo-894b9ce25aa69f6fe15f",
+      "event_id": "synthetic-event-ca9b25b0197b97bb8005",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "投资者帖称已发生违约，托管方没有结算记录。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构发行人确认进入约定兑付日，尚不等于投资者到账。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方公布结算完成记录与适用债券批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "旧兑付公告再传播，没有新增批次或到账证据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "本次兑付观察期结束，不把旧消息包装为即时交易信号。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "托管方更正批次编号，部分旧稿指向另一只债券。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ca9b25b0197b97bb8005",
+      "story_title": "虚构衡浦公司债券兑付",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-713ac802751bc62a0e1e",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-713ac802751bc62a0e1e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构沐舟行业价格调查，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：单店报价被说成行业价格全面上涨，样本不完整。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-240d865c99a8f6fe0f87",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-713ac802751bc62a0e1e",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-713ac802751bc62a0e1e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构沐舟行业价格调查影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：单店报价被说成行业价格全面上涨，样本不完整。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-0b48e4be925b16f0b9a6",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-16539298d2abe191353d",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-16539298d2abe191353d",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": true,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构调查报告公布样本地区和期间，只反映样本变化。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-fdf2893b6f54889e4f42",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-16539298d2abe191353d",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-16539298d2abe191353d",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构调查报告公布样本地区和期间，只反映样本变化。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-0f911b9406889afb6da0",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-72dcbaa8e14eea40069b",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-72dcbaa8e14eea40069b",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：增补更多地区并披露样本差异，不能直接作全国因果推断。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：增补更多地区并披露样本差异，不能直接作全国因果推断。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-1d49b32616ae0587a3bd",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-72dcbaa8e14eea40069b",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-72dcbaa8e14eea40069b",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：增补更多地区并披露样本差异，不能直接作全国因果推断。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-39494fd94d16de90c13e",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0644269bd46593a6ee23",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0644269bd46593a6ee23",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构沐舟行业价格调查背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：多家媒体转引同一调查，没有新增价格记录。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-11d30a18d74da6f231bc",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0644269bd46593a6ee23",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0644269bd46593a6ee23",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构沐舟行业价格调查重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：多家媒体转引同一调查，没有新增价格记录。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-e9adcee406839f9510a6",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ab997e9fb8d9db8a7e01",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ab997e9fb8d9db8a7e01",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：促销季结束，旧调查不代表当前成交价。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：促销季结束，旧调查不代表当前成交价。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-3653759604303cbab050",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "促销季结束，旧调查不代表当前成交价。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ab997e9fb8d9db8a7e01",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ab997e9fb8d9db8a7e01",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构沐舟行业价格调查旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：促销季结束，旧调查不代表当前成交价。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-bec9f3859861b034d3d5",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "促销季结束，旧调查不代表当前成交价。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8781494a65ebfab41cdc",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8781494a65ebfab41cdc",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：调查方更正同比与环比标签，方向解释随口径改变。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：调查方更正同比与环比标签，方向解释随口径改变。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-421c6d6dadbe7438d375",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "促销季结束，旧调查不代表当前成交价。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "调查方更正同比与环比标签，方向解释随口径改变。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8781494a65ebfab41cdc",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8781494a65ebfab41cdc",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。；增补更多地区并披露样本差异，不能直接作全国因果推断。；多家媒体转引同一调查，没有新增价格记录。；促销季结束，旧调查不代表当前成交价。；调查方更正同比与环比标签，方向解释随口径改变。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构沐舟行业价格调查：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：调查方更正同比与环比标签，方向解释随口径改变。；全部为虚构新闻情景。",
+        "title": "虚构沐舟行业价格调查"
+      },
+      "case_id": "evo-577f261b6996081fc878",
+      "event_id": "synthetic-event-f16b8ab09e2ef448bf88",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "单店报价被说成行业价格全面上涨，样本不完整。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "虚构调查报告公布样本地区和期间，只反映样本变化。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "增补更多地区并披露样本差异，不能直接作全国因果推断。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "多家媒体转引同一调查，没有新增价格记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "促销季结束，旧调查不代表当前成交价。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ff40b7091fb5299d7d3c",
+          "text": "调查方更正同比与环比标签，方向解释随口径改变。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注财经主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "财务口径",
+          "公告归因",
+          "避免投资收益承诺"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ff40b7091fb5299d7d3c",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-17c42682fca0675e962a"
+      },
+      "scope_sha256": "896c6499822daf5f8daa49297cb2739f3aac5b8905f127426f322c655e9c5a9a",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-f16b8ab09e2ef448bf88",
+      "story_title": "虚构沐舟行业价格调查",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

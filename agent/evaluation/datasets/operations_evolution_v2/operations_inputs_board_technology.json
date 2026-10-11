@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8fd1a69c264bca7bc8de",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8fd1a69c264bca7bc8de",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构星梭终端系统升级，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：社区截图称所有设备已获升级，厂商未发布支持清单。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-7e85469bf9d0c81b84a3",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8fd1a69c264bca7bc8de",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8fd1a69c264bca7bc8de",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构星梭终端系统升级影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：社区截图称所有设备已获升级，厂商未发布支持清单。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-c61bf01ee72bcb9c0fd2",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ddbc370975cf529142ec",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ddbc370975cf529142ec",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构厂商确认小规模测试，仅支持列出的设备版本。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-4676cbfe87e598619453",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ddbc370975cf529142ec",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ddbc370975cf529142ec",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构厂商确认小规模测试，仅支持列出的设备版本。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-6fc603ec1e05643d6005",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5f2fc9d26fc513cca17",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5f2fc9d26fc513cca17",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：新增兼容列表与已知问题，说明回退条件。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增兼容列表与已知问题，说明回退条件。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-89b73d8a9c75e69c2f0d",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5f2fc9d26fc513cca17",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5f2fc9d26fc513cca17",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增兼容列表与已知问题，说明回退条件。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-0be5d6653ac53786356d",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c6eb622eae52bf079b57",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c6eb622eae52bf079b57",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构星梭终端系统升级背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：测评转载发布会信息，没有独立兼容测试。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-7210dbba6fca0f4efe29",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c6eb622eae52bf079b57",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c6eb622eae52bf079b57",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构星梭终端系统升级重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：测评转载发布会信息，没有独立兼容测试。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-d83f61c00453fe38d355",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8d4c3cdefc747fa2036b",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8d4c3cdefc747fa2036b",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构星梭终端系统升级：旧测试招募结束，旧报名链接失效。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：旧测试招募结束，旧报名链接失效。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-bf15bf795d10218a7f6e",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试招募结束，旧报名链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8d4c3cdefc747fa2036b",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8d4c3cdefc747fa2036b",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构星梭终端系统升级旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：旧测试招募结束，旧报名链接失效。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-057831914c1cdb3d2e2c",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试招募结束，旧报名链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-42b723db65902ab5bd6e",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-42b723db65902ab5bd6e",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：厂商更正支持版本号，旧稿把测试版写成稳定版。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-221d1bcbe7fb0c06df50",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试招募结束，旧报名链接失效。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "厂商更正支持版本号，旧稿把测试版写成稳定版。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-42b723db65902ab5bd6e",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-42b723db65902ab5bd6e",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构星梭终端系统升级：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：厂商更正支持版本号，旧稿把测试版写成稳定版。；全部为虚构新闻情景。",
+        "title": "虚构星梭终端系统升级"
+      },
+      "case_id": "evo-b261b27ba38fa8180407",
+      "event_id": "synthetic-event-64341d8276f7b401f129",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "社区截图称所有设备已获升级，厂商未发布支持清单。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构厂商确认小规模测试，仅支持列出的设备版本。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增兼容列表与已知问题，说明回退条件。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "测评转载发布会信息，没有独立兼容测试。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试招募结束，旧报名链接失效。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "厂商更正支持版本号，旧稿把测试版写成稳定版。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-64341d8276f7b401f129",
+      "story_title": "虚构星梭终端系统升级",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-09c7643c3787c7507f87",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-09c7643c3787c7507f87",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构浅湾软件安全补丁，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名账号称存在高危漏洞，没有复现或维护方公告。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-3e5d01d1a2cd230052e5",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-09c7643c3787c7507f87",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-09c7643c3787c7507f87",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构浅湾软件安全补丁影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名账号称存在高危漏洞，没有复现或维护方公告。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-dedc7371ffbc022156e1",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-33be6b18038845219654",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-33be6b18038845219654",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构维护方确认特定版本受影响，未说明其他版本也有问题。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-caaf1b2533d98e7c2652",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-33be6b18038845219654",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-33be6b18038845219654",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构维护方确认特定版本受影响，未说明其他版本也有问题。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-7545b2e711715f7dcfeb",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3ce70437d024f89e09fb",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3ce70437d024f89e09fb",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：补丁与缓解说明发布，影响范围以维护方文档为准。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：补丁与缓解说明发布，影响范围以维护方文档为准。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-23ca38b3147d05580915",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3ce70437d024f89e09fb",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3ce70437d024f89e09fb",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：补丁与缓解说明发布，影响范围以维护方文档为准。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-eb5fe0a0ff2275ea9fc6",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5fefa0875c1c98282d92",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5fefa0875c1c98282d92",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：旧漏洞截图被重新发布，没有新增受影响版本。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-fc4d83560556ba9fd4dd",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5fefa0875c1c98282d92",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5fefa0875c1c98282d92",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构浅湾软件安全补丁重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：旧漏洞截图被重新发布，没有新增受影响版本。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-ed9f93ad56578c5463d8",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-58479a0bb178556029d2",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-58479a0bb178556029d2",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-dda1656dfe5918228f70",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-58479a0bb178556029d2",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-58479a0bb178556029d2",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构浅湾软件安全补丁旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-11159b39c7d5bc6ea502",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-47ae56ca057abe0c7d5f",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-47ae56ca057abe0c7d5f",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：维护方更正组件名称，旧稿把客户端问题误写成服务端问题。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-6645a1ebf53af8574303",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "维护方更正组件名称，旧稿把客户端问题误写成服务端问题。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-47ae56ca057abe0c7d5f",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-47ae56ca057abe0c7d5f",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构浅湾软件安全补丁：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：维护方更正组件名称，旧稿把客户端问题误写成服务端问题。；全部为虚构新闻情景。",
+        "title": "虚构浅湾软件安全补丁"
+      },
+      "case_id": "evo-d08471e1749fb8fb7227",
+      "event_id": "synthetic-event-827e0a7d46e2b0c2d471",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "匿名账号称存在高危漏洞，没有复现或维护方公告。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构维护方确认特定版本受影响，未说明其他版本也有问题。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁与缓解说明发布，影响范围以维护方文档为准。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧漏洞截图被重新发布，没有新增受影响版本。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "维护方更正组件名称，旧稿把客户端问题误写成服务端问题。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-827e0a7d46e2b0c2d471",
+      "story_title": "虚构浅湾软件安全补丁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97f1372a1b79bf0e6f23",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97f1372a1b79bf0e6f23",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构远墨人工智能测试报告，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：宣传帖声称系统解决全部任务，没有测试设置。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-8f681a0a506617eb474e",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97f1372a1b79bf0e6f23",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97f1372a1b79bf0e6f23",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构远墨人工智能测试报告影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：宣传帖声称系统解决全部任务，没有测试设置。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-54c28bb44525c3678431",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-6092a85d1bb7ec3ff2b0",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6092a85d1bb7ec3ff2b0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：虚构实验室公开任务集和限制，只在限定任务比较。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构实验室公开任务集和限制，只在限定任务比较。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-74e10bb65aeb29729f6c",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-6092a85d1bb7ec3ff2b0",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6092a85d1bb7ec3ff2b0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：虚构实验室公开任务集和限制，只在限定任务比较。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构实验室公开任务集和限制，只在限定任务比较。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-50ebec35eae2aa5a524a",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5786e965029321518f88",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5786e965029321518f88",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：新增失败样本和独立复测，区分能力改善与统计波动。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增失败样本和独立复测，区分能力改善与统计波动。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-195ae16df00025d36e5f",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5786e965029321518f88",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5786e965029321518f88",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增失败样本和独立复测，区分能力改善与统计波动。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-a575e57df699cd285549",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0ef7a522750a35228f2c",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0ef7a522750a35228f2c",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：转载引用同一分数，没有新的复测数据。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-847032ce8317487c43f5",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0ef7a522750a35228f2c",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0ef7a522750a35228f2c",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构远墨人工智能测试报告重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：转载引用同一分数，没有新的复测数据。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-e79796f660cbc70cd59f",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-87af1831ecc194aa4780",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-87af1831ecc194aa4780",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：旧测试使用过时版本，不能当最新产品能力。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：旧测试使用过时版本，不能当最新产品能力。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-1922576aadc815487c0a",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试使用过时版本，不能当最新产品能力。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-87af1831ecc194aa4780",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-87af1831ecc194aa4780",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构远墨人工智能测试报告旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：旧测试使用过时版本，不能当最新产品能力。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-335c1f79446430d6f9f7",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试使用过时版本，不能当最新产品能力。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-11f27006acc88e7af464",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-11f27006acc88e7af464",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：实验室更正评测分母，旧稿通过率需重新计算。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：实验室更正评测分母，旧稿通过率需重新计算。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-e2dc7d295c06d2275cd2",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试使用过时版本，不能当最新产品能力。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "实验室更正评测分母，旧稿通过率需重新计算。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-11f27006acc88e7af464",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-11f27006acc88e7af464",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构远墨人工智能测试报告：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：实验室更正评测分母，旧稿通过率需重新计算。；全部为虚构新闻情景。",
+        "title": "虚构远墨人工智能测试报告"
+      },
+      "case_id": "evo-3c93a0d0bc1882e6e134",
+      "event_id": "synthetic-event-3c9b1851ec98b26aee5a",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "宣传帖声称系统解决全部任务，没有测试设置。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "虚构实验室公开任务集和限制，只在限定任务比较。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "新增失败样本和独立复测，区分能力改善与统计波动。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "转载引用同一分数，没有新的复测数据。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "旧测试使用过时版本，不能当最新产品能力。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-008189cea20032c41267",
+          "text": "实验室更正评测分母，旧稿通过率需重新计算。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注科技主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "测试与正式上线区分",
+          "版本兼容",
+          "漏洞披露"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-008189cea20032c41267",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-c7f4156e7b21b34d2bd0"
+      },
+      "scope_sha256": "b3713b25f913550a63795158d8be18570c1e497f85d5a9c813b08ffa98332c3e",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-3c9b1851ec98b26aee5a",
+      "story_title": "虚构远墨人工智能测试报告",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

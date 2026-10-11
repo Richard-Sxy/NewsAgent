@@ -1,0 +1,69 @@
+{
+  "dataset_version": "2026-10-10.synthetic-v1",
+  "synthetic": true,
+  "annotation_status": "generated_pending_review",
+  "case_count": 48,
+  "independent_event_groups": 24,
+  "layers": {
+    "golden": 24,
+    "high_risk": 16,
+    "fresh_bad_case": 8
+  },
+  "decisions": {
+    "accepted": 12,
+    "rejected": 13,
+    "deferred": 10,
+    "corrected": 13
+  },
+  "categories": {
+    "positive_example": 12,
+    "editorial_judgment": 8,
+    "analysis_error": 10,
+    "strategy_judgment": 18
+  },
+  "strategies": {
+    "OPS-01": 4,
+    "OPS-02": 4,
+    "OPS-03": 4,
+    "OPS-04": 4,
+    "OPS-05": 4,
+    "OPS-06": 4,
+    "OPS-07": 4,
+    "OPS-08": 4,
+    "OPS-09": 4,
+    "OPS-10": 4,
+    "OPS-11": 4,
+    "OPS-12": 4
+  },
+  "catalog_sha256": "d73a4d858528ab046b73b35008146691541ac4aae7e40528a1894c49f5be456c",
+  "files": {
+    "operations_cases.json": {
+      "sha256": "e8b618044e95353bade3d6057e33986d4514e8e475780edba3a25d97cb2cfd18",
+      "bytes": 271970
+    },
+    "hot_news_analysis_all.json": {
+      "sha256": "208de24e33a32a8f8aa6408f76ce29b63b23b3c9b918dc0e0964eea69e15d96a",
+      "bytes": 152888
+    },
+    "hot_news_analysis_golden.json": {
+      "sha256": "c4a21e1132f23b94c812b42ecc3771b120645dd99e241bd94d12262f97fc5af8",
+      "bytes": 75133
+    },
+    "hot_news_analysis_fresh_bad_case.json": {
+      "sha256": "26b79e5439f0b48ba9acef7d2a01e7822a2621bc394c4a50abe17b200730b460",
+      "bytes": 27422
+    },
+    "hot_news_analysis_high_risk.json": {
+      "sha256": "aad10689a5c21c3cf311cd813a4e38044b43672d169a3ad5a9188b4630fdde83",
+      "bytes": 50973
+    },
+    "operations_inputs.json": {
+      "sha256": "ae7d343290a8e54fb023281613fbbde35d6a0e8dd03688cb3ff58d1e96b30897",
+      "bytes": 164831
+    },
+    "operations_casebook.md": {
+      "sha256": "1d710e4b9d45b21a63362a7f93207166600e49950e8b1b2e5da601dd745d50c1",
+      "bytes": 72856
+    }
+  }
+}

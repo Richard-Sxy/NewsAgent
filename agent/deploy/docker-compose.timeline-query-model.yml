@@ -1,0 +1,10 @@
+# Opt in to the existing configured endpoint for query understanding only.
+# Add after native-e2e.yml and timeline-demo.yml; inject the existing key through
+# the environment. Do not print Compose's expanded configuration or store keys.
+services:
+  api:
+    environment:
+      CONVERSATION_QUERY_UNDERSTANDING_CONFIG_PATH: /app/deploy/model-runtime.compatible.yml
+      NEWSAGENT_MODEL_API_KEY: ${NEWSAGENT_MODEL_API_KEY:?Inject the existing model API key securely}
+    volumes:
+      - ./model-runtime.compatible.yml:/app/deploy/model-runtime.compatible.yml:ro

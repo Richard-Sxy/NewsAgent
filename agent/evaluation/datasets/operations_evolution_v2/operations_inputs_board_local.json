@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1aeb0393051fee1c6b47",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1aeb0393051fee1c6b47",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构澄岚南区供水维护，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：居民群称全城停水，供水单位没有正式范围。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-5e4189cb87d1b0fc8356",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1aeb0393051fee1c6b47",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1aeb0393051fee1c6b47",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构澄岚南区供水维护影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：居民群称全城停水，供水单位没有正式范围。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-1f622f44aa5c16083ae0",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c29bdc284af094e20af7",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c29bdc284af094e20af7",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：虚构供水单位确认仅南区两条街道维护。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构供水单位确认仅南区两条街道维护。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-9ff8f928ea8dd6687566",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c29bdc284af094e20af7",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c29bdc284af094e20af7",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：虚构供水单位确认仅南区两条街道维护。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构供水单位确认仅南区两条街道维护。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-68ccd56e4487fc575e47",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-d59521a8c78ae5c0e598",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d59521a8c78ae5c0e598",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:00:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：新增临时取水点和预计复核时点。",
+        "send_after": "2026-10-08T00:00:00Z",
+        "summary": "当前进展：新增临时取水点和预计复核时点。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-2546d995b6ae458360ff",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-d59521a8c78ae5c0e598",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d59521a8c78ae5c0e598",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增临时取水点和预计复核时点。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-8da773475108ca67ab56",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a80d2eb20c0b270e3c9d",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a80d2eb20c0b270e3c9d",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构澄岚南区供水维护背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧维护图再次转载，范围与计划没有变化。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-cf9b0fe901743cc13539",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a80d2eb20c0b270e3c9d",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a80d2eb20c0b270e3c9d",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构澄岚南区供水维护重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧维护图再次转载，范围与计划没有变化。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-b5902ca5ecde74b3855b",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97e8d9334dcba83f2c77",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97e8d9334dcba83f2c77",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：维护已结束，旧停水提醒仍有点击但不再适用。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：维护已结束，旧停水提醒仍有点击但不再适用。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-908be4f457b3d3771c4a",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "维护已结束，旧停水提醒仍有点击但不再适用。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97e8d9334dcba83f2c77",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97e8d9334dcba83f2c77",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构澄岚南区供水维护旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：维护已结束，旧停水提醒仍有点击但不再适用。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-22ee9d5d35f60d91e834",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "维护已结束，旧停水提醒仍有点击但不再适用。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-35be63e1f3f06c4a9e21",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-35be63e1f3f06c4a9e21",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：供水单位更正街道名称，旧稿误伤不受影响区域。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：供水单位更正街道名称，旧稿误伤不受影响区域。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-ae8790c848e77e9132e5",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "维护已结束，旧停水提醒仍有点击但不再适用。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "供水单位更正街道名称，旧稿误伤不受影响区域。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-35be63e1f3f06c4a9e21",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-35be63e1f3f06c4a9e21",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。；新增临时取水点和预计复核时点。；旧维护图再次转载，范围与计划没有变化。；维护已结束，旧停水提醒仍有点击但不再适用。；供水单位更正街道名称，旧稿误伤不受影响区域。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澄岚南区供水维护：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：供水单位更正街道名称，旧稿误伤不受影响区域。；全部为虚构新闻情景。",
+        "title": "虚构澄岚南区供水维护"
+      },
+      "case_id": "evo-eb0ebba065d9d0006504",
+      "event_id": "synthetic-event-e3753f7e0c4a4d03d0f6",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "居民群称全城停水，供水单位没有正式范围。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构供水单位确认仅南区两条街道维护。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时取水点和预计复核时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧维护图再次转载，范围与计划没有变化。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "维护已结束，旧停水提醒仍有点击但不再适用。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "供水单位更正街道名称，旧稿误伤不受影响区域。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-e3753f7e0c4a4d03d0f6",
+      "story_title": "虚构澄岚南区供水维护",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-64a7bb3103dcd09c34f5",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-64a7bb3103dcd09c34f5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构白汀公交线路调整，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：截图称所有公交停运，运营方未发布通知。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-8aeb060a1326e8c86208",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-64a7bb3103dcd09c34f5",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-64a7bb3103dcd09c34f5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构白汀公交线路调整影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：截图称所有公交停运，运营方未发布通知。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-79cd67e864b9c9c6858a",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-ca3e102dc9f2afcabb80",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ca3e102dc9f2afcabb80",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构白汀公交线路调整：虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构运营方确认仅一条线路绕行，其他线路正常。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-8345a96dd11f010c0950",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-ca3e102dc9f2afcabb80",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ca3e102dc9f2afcabb80",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构白汀公交线路调整：虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构运营方确认仅一条线路绕行，其他线路正常。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-ddb733dfd4c4f9928ced",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fc45a07765983582503a",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fc45a07765983582503a",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构白汀公交线路调整：新增临时站点和无障碍接驳说明。",
+        "send_after": "2026-10-09T00:00:00Z",
+        "summary": "当前进展：新增临时站点和无障碍接驳说明。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-c1cb6e62535bd54c904f",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fc45a07765983582503a",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fc45a07765983582503a",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构白汀公交线路调整：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增临时站点和无障碍接驳说明。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-928db601417f242ecaac",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e9c46af1737785b3d926",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e9c46af1737785b3d926",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构白汀公交线路调整背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：转载旧绕行图，没有新增停靠点。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-bffe7c76da751ec160c6",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e9c46af1737785b3d926",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e9c46af1737785b3d926",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构白汀公交线路调整重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：转载旧绕行图，没有新增停靠点。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-78535c8590b5db64ee0d",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-4c097de6b42495bab078",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4c097de6b42495bab078",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构白汀公交线路调整：绕行结束，旧路线查询链接已更新。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：绕行结束，旧路线查询链接已更新。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-2a7453bc3cedc45d2e07",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "绕行结束，旧路线查询链接已更新。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-4c097de6b42495bab078",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4c097de6b42495bab078",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构白汀公交线路调整旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：绕行结束，旧路线查询链接已更新。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-24bd215478d11eff8723",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "绕行结束，旧路线查询链接已更新。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-411fa1bc84b6142076c8",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-411fa1bc84b6142076c8",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构白汀公交线路调整：运营方更正临时站点方向，旧稿把返程站写成去程站。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：运营方更正临时站点方向，旧稿把返程站写成去程站。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-3c4df98e2b9c096dd873",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "绕行结束，旧路线查询链接已更新。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "运营方更正临时站点方向，旧稿把返程站写成去程站。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-411fa1bc84b6142076c8",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-411fa1bc84b6142076c8",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。；新增临时站点和无障碍接驳说明。；转载旧绕行图，没有新增停靠点。；绕行结束，旧路线查询链接已更新。；运营方更正临时站点方向，旧稿把返程站写成去程站。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构白汀公交线路调整：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：运营方更正临时站点方向，旧稿把返程站写成去程站。；全部为虚构新闻情景。",
+        "title": "虚构白汀公交线路调整"
+      },
+      "case_id": "evo-cc5024899024f703291b",
+      "event_id": "synthetic-event-d246faac1aa50463daf4",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "截图称所有公交停运，运营方未发布通知。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构运营方确认仅一条线路绕行，其他线路正常。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "新增临时站点和无障碍接驳说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "转载旧绕行图，没有新增停靠点。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "绕行结束，旧路线查询链接已更新。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "运营方更正临时站点方向，旧稿把返程站写成去程站。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-d246faac1aa50463daf4",
+      "story_title": "虚构白汀公交线路调整",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-3f4f3b8b0d7986aa24e3",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3f4f3b8b0d7986aa24e3",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构青涧社区体育馆预约，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：群聊称体育馆永久免费，无正式预约规则。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-380da0b587e41f9a8b3a",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-3f4f3b8b0d7986aa24e3",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3f4f3b8b0d7986aa24e3",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构青涧社区体育馆预约影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：群聊称体育馆永久免费，无正式预约规则。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-1f74478e9d87fc4f8f61",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0422b9dc0f0754583b3b",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0422b9dc0f0754583b3b",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：虚构场馆确认仅试开放时段免费，需提前预约。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构场馆确认仅试开放时段免费，需提前预约。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-10444a906ef2115a0d49",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0422b9dc0f0754583b3b",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0422b9dc0f0754583b3b",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：虚构场馆确认仅试开放时段免费，需提前预约。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构场馆确认仅试开放时段免费，需提前预约。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-d08d355b9913d9c21907",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d193f27fe298cb290616",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d193f27fe298cb290616",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：增加家庭场次并披露可预约名额。",
+        "send_after": "2026-10-10T00:00:00Z",
+        "summary": "当前进展：增加家庭场次并披露可预约名额。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-582c68135017e82e6d82",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d193f27fe298cb290616",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d193f27fe298cb290616",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：增加家庭场次并披露可预约名额。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-bf2ca103fdd3112dd5b5",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-738f9901a110a609cf85",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-738f9901a110a609cf85",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：旧免费宣传再次出现，没有新增名额。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-9d4cade2cb8afb3a5fd3",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-738f9901a110a609cf85",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-738f9901a110a609cf85",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构青涧社区体育馆预约重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：旧免费宣传再次出现，没有新增名额。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-b37e91870435c3e51b3a",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c7e453c6749f0afd5a87",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c7e453c6749f0afd5a87",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：试开放结束，旧预约入口关闭。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：试开放结束，旧预约入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-7e9bd01624a4cb457441",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "试开放结束，旧预约入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c7e453c6749f0afd5a87",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c7e453c6749f0afd5a87",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构青涧社区体育馆预约旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：试开放结束，旧预约入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-bc6653826226dfa58a92",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "试开放结束，旧预约入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-f41a7e5543de9c359153",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f41a7e5543de9c359153",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：场馆更正适用年龄，旧稿把儿童场写成全龄场。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-2b93639d28700dbbedac",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "试开放结束，旧预约入口关闭。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "场馆更正适用年龄，旧稿把儿童场写成全龄场。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-f41a7e5543de9c359153",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f41a7e5543de9c359153",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。；增加家庭场次并披露可预约名额。；旧免费宣传再次出现，没有新增名额。；试开放结束，旧预约入口关闭。；场馆更正适用年龄，旧稿把儿童场写成全龄场。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构青涧社区体育馆预约：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：场馆更正适用年龄，旧稿把儿童场写成全龄场。；全部为虚构新闻情景。",
+        "title": "虚构青涧社区体育馆预约"
+      },
+      "case_id": "evo-633161b5f68f7a2037fb",
+      "event_id": "synthetic-event-b11924e983b9406a332f",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "群聊称体育馆永久免费，无正式预约规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "虚构场馆确认仅试开放时段免费，需提前预约。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "增加家庭场次并披露可预约名额。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "旧免费宣传再次出现，没有新增名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "试开放结束，旧预约入口关闭。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-b98be0f0af4a13ec5cf6",
+          "text": "场馆更正适用年龄，旧稿把儿童场写成全龄场。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注本地主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "本地",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟本地运营员",
+        "risk_focus": [
+          "地域精准",
+          "办事时效",
+          "替代路径"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-b98be0f0af4a13ec5cf6",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-a3f16480289cf69ba025"
+      },
+      "scope_sha256": "22adaf9bc360d7d5aac85a73bbfccd53082daf7f66790e1c7783b98a570b34de",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-b11924e983b9406a332f",
+      "story_title": "虚构青涧社区体育馆预约",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

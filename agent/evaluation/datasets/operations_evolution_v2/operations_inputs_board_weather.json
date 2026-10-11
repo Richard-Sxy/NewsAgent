@@ -1,0 +1,4368 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-9558ae92d9545954abde",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9558ae92d9545954abde",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构岚浦沿海大风预警，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称全省停航，气象与交通部门尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-a1a3aa2fe5c8cf6a4a02",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-9558ae92d9545954abde",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9558ae92d9545954abde",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构岚浦沿海大风预警影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称全省停航，气象与交通部门尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-4706bdbe8654a1f3eac2",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-632121bc631be4c311ae",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-632121bc631be4c311ae",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构预警只覆盖岚浦沿海，并给出有效时段。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-97df9a88a53c2dfac4e3",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-632121bc631be4c311ae",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-632121bc631be4c311ae",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构预警只覆盖岚浦沿海，并给出有效时段。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-abcb0cf5d996f85ef313",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1d57d3ac4ce8b8f278b2",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1d57d3ac4ce8b8f278b2",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：预警更新影响区域，交通方另行公布航线安排。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：预警更新影响区域，交通方另行公布航线安排。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-5ac19595826fb4bc635b",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1d57d3ac4ce8b8f278b2",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1d57d3ac4ce8b8f278b2",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：预警更新影响区域，交通方另行公布航线安排。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-c0cf52eaae3b0777d083",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-76c2cd1266bf34aa79c3",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-76c2cd1266bf34aa79c3",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧预警图重新传播，没有新增区域。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-c94d4fcf160eb4efdcf5",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-76c2cd1266bf34aa79c3",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-76c2cd1266bf34aa79c3",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构岚浦沿海大风预警重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧预警图重新传播，没有新增区域。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-272f35676d6c14b18f88",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2d15c79c2e5fbdc80629",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2d15c79c2e5fbdc80629",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：预警已解除，旧高热图不应继续作为当前风险提示。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：预警已解除，旧高热图不应继续作为当前风险提示。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-47cd20c7c6ae17d3e8be",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警已解除，旧高热图不应继续作为当前风险提示。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2d15c79c2e5fbdc80629",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2d15c79c2e5fbdc80629",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构岚浦沿海大风预警旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：预警已解除，旧高热图不应继续作为当前风险提示。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-b281d332029e27f39365",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警已解除，旧高热图不应继续作为当前风险提示。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-50a60ac337974aa5817a",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-50a60ac337974aa5817a",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：气象方更正区域代码，旧稿误把内陆县列入范围。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-0e77d2ee3ab29053f5cb",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警已解除，旧高热图不应继续作为当前风险提示。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "气象方更正区域代码，旧稿误把内陆县列入范围。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-50a60ac337974aa5817a",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-50a60ac337974aa5817a",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构岚浦沿海大风预警：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：气象方更正区域代码，旧稿误把内陆县列入范围。；全部为虚构新闻情景。",
+        "title": "虚构岚浦沿海大风预警"
+      },
+      "case_id": "evo-c92e5aed3d2296198bd9",
+      "event_id": "synthetic-event-748ca1a40f183cec7465",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "群聊称全省停航，气象与交通部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构预警只覆盖岚浦沿海，并给出有效时段。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警更新影响区域，交通方另行公布航线安排。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧预警图重新传播，没有新增区域。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警已解除，旧高热图不应继续作为当前风险提示。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "气象方更正区域代码，旧稿误把内陆县列入范围。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-748ca1a40f183cec7465",
+      "story_title": "虚构岚浦沿海大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fc26b7ba7577f4443ea3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fc26b7ba7577f4443ea3",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构青潭城区强降雨，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：短视频称城区将全面淹没，没有可信预测依据。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-648192d64f472877ba07",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fc26b7ba7577f4443ea3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fc26b7ba7577f4443ea3",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构青潭城区强降雨影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：短视频称城区将全面淹没，没有可信预测依据。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-cd38ed1c32f4d50f13ba",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c1e09176edbe543f3f3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c1e09176edbe543f3f3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-7055858c0a493c7f10f5",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c1e09176edbe543f3f3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c1e09176edbe543f3f3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-c003048d237b25278c16",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-45ef3a64c3762a194166",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-45ef3a64c3762a194166",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：新增预警更新时间及交通部门确认的封闭路段。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增预警更新时间及交通部门确认的封闭路段。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-f93892fd9cde964e7e34",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-45ef3a64c3762a194166",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-45ef3a64c3762a194166",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增预警更新时间及交通部门确认的封闭路段。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-aa30a9aa4f73b869d980",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a3bed8f45ebb45cec90b",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a3bed8f45ebb45cec90b",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构青潭城区强降雨背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：旧积水照片再次上传，没有新增封路信息。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-a023137f94bf41e2e5de",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a3bed8f45ebb45cec90b",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a3bed8f45ebb45cec90b",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构青潭城区强降雨重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：旧积水照片再次上传，没有新增封路信息。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-14f461c4c9ca33fc150d",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-92836eff164c1e8e17c0",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-92836eff164c1e8e17c0",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构青潭城区强降雨：预警解除且路段恢复，旧绕行提示失效。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：预警解除且路段恢复，旧绕行提示失效。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-f8dabd261985c2225f4e",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警解除且路段恢复，旧绕行提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-92836eff164c1e8e17c0",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-92836eff164c1e8e17c0",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构青潭城区强降雨旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：预警解除且路段恢复，旧绕行提示失效。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-2cd32bc41f1a7349ba4e",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警解除且路段恢复，旧绕行提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-85ce0f5d8b2415a04347",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-85ce0f5d8b2415a04347",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：交通方更正路段方向，旧稿把对向车道也列为关闭。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-abdce5827835285ddaca",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警解除且路段恢复，旧绕行提示失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "交通方更正路段方向，旧稿把对向车道也列为关闭。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-85ce0f5d8b2415a04347",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-85ce0f5d8b2415a04347",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构青潭城区强降雨：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：交通方更正路段方向，旧稿把对向车道也列为关闭。；全部为虚构新闻情景。",
+        "title": "虚构青潭城区强降雨"
+      },
+      "case_id": "evo-817f808cb4f4dda68b79",
+      "event_id": "synthetic-event-febd6fb450c2615999ac",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "短视频称城区将全面淹没，没有可信预测依据。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布特定城区降雨预警，影响程度仍需观察。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "新增预警更新时间及交通部门确认的封闭路段。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧积水照片再次上传，没有新增封路信息。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警解除且路段恢复，旧绕行提示失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "交通方更正路段方向，旧稿把对向车道也列为关闭。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-febd6fb450c2615999ac",
+      "story_title": "虚构青潭城区强降雨",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9cccf719379e3af9bc3e",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9cccf719379e3af9bc3e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构望溪高温服务安排，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：匿名帖称所有活动取消，组织方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-f367a7d1d5b227fd2da0",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9cccf719379e3af9bc3e",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9cccf719379e3af9bc3e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构望溪高温服务安排影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：匿名帖称所有活动取消，组织方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-f3654aebdbbd3a4a8e3e",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-2f944e4dea1b25617cb0",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2f944e4dea1b25617cb0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构气象机构发布限定区域预警，活动安排以各主办方为准。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-a3aaed3f36bc8ca81cfc",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-2f944e4dea1b25617cb0",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2f944e4dea1b25617cb0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构气象机构发布限定区域预警，活动安排以各主办方为准。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-7d939ae1192498c60446",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2cc589ee2b48d81a0053",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2cc589ee2b48d81a0053",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：主办方公布延后场次与公共服务点开放时间。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：主办方公布延后场次与公共服务点开放时间。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-beb7c1c9cd47a10824be",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2cc589ee2b48d81a0053",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2cc589ee2b48d81a0053",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：主办方公布延后场次与公共服务点开放时间。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-bad80eac276b94e598e1",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c8a98c78c510ed790f59",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c8a98c78c510ed790f59",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构望溪高温服务安排背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：旧高温截图转发，没有新的活动变更。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-9dfe0af6a9af638b5275",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c8a98c78c510ed790f59",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c8a98c78c510ed790f59",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构望溪高温服务安排重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：旧高温截图转发，没有新的活动变更。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-bf3d1f5fb43a3e65a7af",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9e4feae8c3ba11fd74dc",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9e4feae8c3ba11fd74dc",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构望溪高温服务安排：预警结束且活动完成，旧延期通知失效。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：预警结束且活动完成，旧延期通知失效。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-c8902c0c00af6dee6178",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警结束且活动完成，旧延期通知失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9e4feae8c3ba11fd74dc",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9e4feae8c3ba11fd74dc",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构望溪高温服务安排旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：预警结束且活动完成，旧延期通知失效。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-93343197fb3b6a57f129",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警结束且活动完成，旧延期通知失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14027ce63aaa12136663",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14027ce63aaa12136663",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：主办方更正开放时间，旧稿把内部准备时段写成公众时段。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-ab0a274f14b8dedea07d",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警结束且活动完成，旧延期通知失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方更正开放时间，旧稿把内部准备时段写成公众时段。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14027ce63aaa12136663",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14027ce63aaa12136663",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构望溪高温服务安排：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：主办方更正开放时间，旧稿把内部准备时段写成公众时段。；全部为虚构新闻情景。",
+        "title": "虚构望溪高温服务安排"
+      },
+      "case_id": "evo-bd8bf8081cae3343c593",
+      "event_id": "synthetic-event-2d4e37f1003f68f5f805",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "匿名帖称所有活动取消，组织方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "虚构气象机构发布限定区域预警，活动安排以各主办方为准。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方公布延后场次与公共服务点开放时间。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "旧高温截图转发，没有新的活动变更。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "预警结束且活动完成，旧延期通知失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-9b189b7dce9eda656c51",
+          "text": "主办方更正开放时间，旧稿把内部准备时段写成公众时段。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注天气主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "预警来源",
+          "区域时效",
+          "解除与更新"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-9b189b7dce9eda656c51",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-3065a0d0d30284b27a2c"
+      },
+      "scope_sha256": "66d2f901cc0eaf68a826eec79eff06e8304f1729985da49e41fbf07675ea3398",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-2d4e37f1003f68f5f805",
+      "story_title": "虚构望溪高温服务安排",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-765fb011a10af3d9e96a",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-765fb011a10af3d9e96a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构清岚健康中心预约，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称服务面向全城免费，没有中心公告。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-3522a94284d08adc4637",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-765fb011a10af3d9e96a",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-765fb011a10af3d9e96a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构清岚健康中心预约影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称服务面向全城免费，没有中心公告。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-2b8c617881bb5cedf94b",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d4c70e915b229a46d6f",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d4c70e915b229a46d6f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-853ddf2d1ea545d4c149",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d4c70e915b229a46d6f",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d4c70e915b229a46d6f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-64f99fc3626b6e14e403",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8040c9fc49aab3a28d0c",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8040c9fc49aab3a28d0c",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：新增预约时段和无障碍咨询入口。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增预约时段和无障碍咨询入口。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-82d3e46b2eb97adadb3d",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8040c9fc49aab3a28d0c",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8040c9fc49aab3a28d0c",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增预约时段和无障碍咨询入口。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-dff9fbc049050abe3083",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a88c4ba368d9cd759a26",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a88c4ba368d9cd759a26",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构清岚健康中心预约背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧服务海报再次传播，没有新增时段。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-2ee80559c648baabd8e0",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a88c4ba368d9cd759a26",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a88c4ba368d9cd759a26",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构清岚健康中心预约重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧服务海报再次传播，没有新增时段。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-a2d9727c41187a6ffc6c",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-e44a1cfc694e896180f2",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e44a1cfc694e896180f2",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构清岚健康中心预约：预约批次结束，旧入口关闭。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：预约批次结束，旧入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-03228241b8d1ba7cd98c",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "预约批次结束，旧入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-e44a1cfc694e896180f2",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e44a1cfc694e896180f2",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构清岚健康中心预约旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：预约批次结束，旧入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-d4f4628b6a1bb59d57f4",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "预约批次结束，旧入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0c5d41df876da16468eb",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0c5d41df876da16468eb",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：中心更正服务项目名称，旧稿把咨询写成治疗。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：中心更正服务项目名称，旧稿把咨询写成治疗。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-74fb6b71fe58e3f8d765",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "预约批次结束，旧入口关闭。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "中心更正服务项目名称，旧稿把咨询写成治疗。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0c5d41df876da16468eb",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0c5d41df876da16468eb",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。；新增预约时段和无障碍咨询入口。；旧服务海报再次传播，没有新增时段。；预约批次结束，旧入口关闭。；中心更正服务项目名称，旧稿把咨询写成治疗。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构清岚健康中心预约：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：中心更正服务项目名称，旧稿把咨询写成治疗。；全部为虚构新闻情景。",
+        "title": "虚构清岚健康中心预约"
+      },
+      "case_id": "evo-d9f0ee9dac356a9da7fd",
+      "event_id": "synthetic-event-4d913e154cc26402d718",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "群聊称服务面向全城免费，没有中心公告。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增预约时段和无障碍咨询入口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧服务海报再次传播，没有新增时段。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "预约批次结束，旧入口关闭。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "中心更正服务项目名称，旧稿把咨询写成治疗。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-4d913e154cc26402d718",
+      "story_title": "虚构清岚健康中心预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d3d7ed2ffd87b615bd9",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d3d7ed2ffd87b615bd9",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构远汀健康观察研究，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：短视频把初步观察称为治愈证明，没有研究原文。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-6a0ac188c47b7b803bb2",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d3d7ed2ffd87b615bd9",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d3d7ed2ffd87b615bd9",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构远汀健康观察研究影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：短视频把初步观察称为治愈证明，没有研究原文。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-d4fb84221abe4375d89e",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b2a59e7278c752f2854",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b2a59e7278c752f2854",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构研究团队公开观察性结果，不能证明疗效或因果。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-ebef5d24dc9cb20c398b",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b2a59e7278c752f2854",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b2a59e7278c752f2854",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构研究团队公开观察性结果，不能证明疗效或因果。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-27706f3b082a37ab659f",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6a5a775a90db2089132b",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6a5a775a90db2089132b",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：新增研究限制和同行评议状态，结论仍限于样本。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增研究限制和同行评议状态，结论仍限于样本。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-31e91e23bca2d21ff288",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6a5a775a90db2089132b",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6a5a775a90db2089132b",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增研究限制和同行评议状态，结论仍限于样本。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-fb9713aac77a5824307f",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-cd728bc26271b9e960cc",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cd728bc26271b9e960cc",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构远汀健康观察研究背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：转载同一结果，没有新增试验数据。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-989212b7ff0b79a70e2b",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-cd728bc26271b9e960cc",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cd728bc26271b9e960cc",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构远汀健康观察研究重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：转载同一结果，没有新增试验数据。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-8334c51ed0b997806322",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-f6c2c43b59dd22df6e0f",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f6c2c43b59dd22df6e0f",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构远汀健康观察研究：旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：旧摘要被脱离研究时期传播，不能当最新诊疗建议。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-cb8fd4436640c6e1ac0a",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧摘要被脱离研究时期传播，不能当最新诊疗建议。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-f6c2c43b59dd22df6e0f",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f6c2c43b59dd22df6e0f",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构远汀健康观察研究旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：旧摘要被脱离研究时期传播，不能当最新诊疗建议。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-b896ef20277d3a66469f",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧摘要被脱离研究时期传播，不能当最新诊疗建议。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8a459315547866add8e9",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8a459315547866add8e9",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：团队更正样本分母，旧稿效果比例需重新计算。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：团队更正样本分母，旧稿效果比例需重新计算。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-bd74b235180c2be5b073",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧摘要被脱离研究时期传播，不能当最新诊疗建议。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "团队更正样本分母，旧稿效果比例需重新计算。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8a459315547866add8e9",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8a459315547866add8e9",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。；新增研究限制和同行评议状态，结论仍限于样本。；转载同一结果，没有新增试验数据。；旧摘要被脱离研究时期传播，不能当最新诊疗建议。；团队更正样本分母，旧稿效果比例需重新计算。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构远汀健康观察研究：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：团队更正样本分母，旧稿效果比例需重新计算。；全部为虚构新闻情景。",
+        "title": "虚构远汀健康观察研究"
+      },
+      "case_id": "evo-991fb8c9de239049f401",
+      "event_id": "synthetic-event-fc5d36027ecac928526c",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "短视频把初步观察称为治愈证明，没有研究原文。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构研究团队公开观察性结果，不能证明疗效或因果。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "新增研究限制和同行评议状态，结论仍限于样本。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "转载同一结果，没有新增试验数据。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧摘要被脱离研究时期传播，不能当最新诊疗建议。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "团队更正样本分母，旧稿效果比例需重新计算。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-fc5d36027ecac928526c",
+      "story_title": "虚构远汀健康观察研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c70821e7989130d1d97",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c70821e7989130d1d97",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构海竹设备检查通知，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：匿名帖称所有设备危险，厂商没有确认批次。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-ef8dcaa91ddbe0025ec4",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c70821e7989130d1d97",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c70821e7989130d1d97",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构海竹设备检查通知影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：匿名帖称所有设备危险，厂商没有确认批次。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-e76186be802ef44324b7",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b47cc9e90202295a9336",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b47cc9e90202295a9336",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构厂商确认指定批次进行检查，其他批次无此公告。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-ad85ca4f983454ea9be8",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b47cc9e90202295a9336",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b47cc9e90202295a9336",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构厂商确认指定批次进行检查，其他批次无此公告。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-867042bb22fafebe6677",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-60bc8389fc2f9813f867",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-60bc8389fc2f9813f867",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：公布批次核对入口和客服安排，不收集个人健康明细。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：公布批次核对入口和客服安排，不收集个人健康明细。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-c3cd1a08d74daf1447d7",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-60bc8389fc2f9813f867",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-60bc8389fc2f9813f867",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：公布批次核对入口和客服安排，不收集个人健康明细。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-48b7a65040ea5e907bae",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-43a4a0e88cbd4f270e8e",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-43a4a0e88cbd4f270e8e",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构海竹设备检查通知背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：旧检查通告换标题转载，没有新增批次。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-a07fa4ea4fb4a3374bb7",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-43a4a0e88cbd4f270e8e",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-43a4a0e88cbd4f270e8e",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构海竹设备检查通知重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：旧检查通告换标题转载，没有新增批次。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-a91ff5afb85e355ce653",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2e0dce01f1b3b56c37c5",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2e0dce01f1b3b56c37c5",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构海竹设备检查通知：检查批次已处理，旧登记链接失效。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：检查批次已处理，旧登记链接失效。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-a66a4628e2f49cd35b18",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "检查批次已处理，旧登记链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2e0dce01f1b3b56c37c5",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2e0dce01f1b3b56c37c5",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构海竹设备检查通知旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：检查批次已处理，旧登记链接失效。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-ab63c1d8e80d13954c09",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "检查批次已处理，旧登记链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0d17d10eaecedc4b9d32",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0d17d10eaecedc4b9d32",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：厂商更正批次编码，旧稿把另一型号列入范围。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：厂商更正批次编码，旧稿把另一型号列入范围。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-a7142e10cfd3b5ec5dd2",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "检查批次已处理，旧登记链接失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "厂商更正批次编码，旧稿把另一型号列入范围。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0d17d10eaecedc4b9d32",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0d17d10eaecedc4b9d32",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。；公布批次核对入口和客服安排，不收集个人健康明细。；旧检查通告换标题转载，没有新增批次。；检查批次已处理，旧登记链接失效。；厂商更正批次编码，旧稿把另一型号列入范围。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构海竹设备检查通知：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：厂商更正批次编码，旧稿把另一型号列入范围。；全部为虚构新闻情景。",
+        "title": "虚构海竹设备检查通知"
+      },
+      "case_id": "evo-8c397a8f227f005dc8c2",
+      "event_id": "synthetic-event-8541b0d1c810327f91e0",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "匿名帖称所有设备危险，厂商没有确认批次。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "虚构厂商确认指定批次进行检查，其他批次无此公告。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "公布批次核对入口和客服安排，不收集个人健康明细。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "旧检查通告换标题转载，没有新增批次。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "检查批次已处理，旧登记链接失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-ec7993a90e76b5d71d6b",
+          "text": "厂商更正批次编码，旧稿把另一型号列入范围。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注健康主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "研究与诊疗区分",
+          "证据等级",
+          "服务预约"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-ec7993a90e76b5d71d6b",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-7be73f795209b8cedec1"
+      },
+      "scope_sha256": "602719722aa1a30c54c399b0594d3cb6d35cc6f2c18ac25a12593d1072e98ee6",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8541b0d1c810327f91e0",
+      "story_title": "虚构海竹设备检查通知",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

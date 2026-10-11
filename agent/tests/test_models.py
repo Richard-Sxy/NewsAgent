@@ -30,6 +30,7 @@ def test_all_checkpoint_tables_are_registered() -> None:
         "promotion_decisions",
         "conversations",
         "conversation_turns",
+        "conversation_inputs",
     }
 
 

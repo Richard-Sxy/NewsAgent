@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 import { dataLoopApi } from '@/api'
 import type {
@@ -9,6 +9,8 @@ import type {
   FeedbackSeverity,
   JsonObject,
   OperatorDecisionResponse,
+  OperationsFeedbackCategory,
+  OperationsReasonCode,
   RecordOperatorDecisionRequest,
 } from '@/api'
 import NaJsonBlock from '@/components/NaJsonBlock.vue'
@@ -18,7 +20,20 @@ import { useConfirmStore } from '@/stores/confirm'
 import { useToastStore } from '@/stores/toast'
 import { describeError } from '@/utils/errors'
 import { newIdempotencyKey } from '@/utils/format'
-import { decisionTypeLabel, problemTypeLabel, severityLabel } from '@/utils/labels'
+import {
+  decisionTypeLabel,
+  operationsFeedbackCategoryLabel,
+  operationsReasonLabel,
+  problemTypeLabel,
+  severityLabel,
+} from '@/utils/labels'
+import {
+  defaultOperationsCategory,
+  defaultOperationsSeverity,
+  OPERATIONS_FEEDBACK_CATEGORIES,
+  OPERATIONS_REASON_CODES,
+  readOperationsFeedback,
+} from '@/utils/operationsFeedback'
 import { firstError, jsonText, parseJson, requiredText } from '@/utils/validate'
 
 const toast = useToastStore()
@@ -48,10 +63,21 @@ const decisionType = ref<DecisionType>('rejected')
 const reason = ref('')
 const correctionPayload = ref('')
 const problemType = ref<FeedbackProblemType>('analysis_incorrect')
-const severity = ref<FeedbackSeverity>('medium')
+const feedbackCategory = ref<OperationsFeedbackCategory>(defaultOperationsCategory(decisionType.value))
+const reasonCodes = ref<OperationsReasonCode[]>([])
+const severity = ref<FeedbackSeverity>(defaultOperationsSeverity(feedbackCategory.value))
+const severityEdited = ref(false)
 const supersedes = ref('')
 
 const result = ref<OperatorDecisionResponse | null>(null)
+
+watch(decisionType, (value) => {
+  feedbackCategory.value = defaultOperationsCategory(value)
+  reasonCodes.value = []
+})
+watch(feedbackCategory, (value) => {
+  if (!severityEdited.value) severity.value = defaultOperationsSeverity(value)
+})
 
 const recentCases = ref<FeedbackCase[]>([])
 const casesLoading = ref(false)
@@ -78,7 +104,11 @@ function applyCase(event: Event): void {
   runId.value = picked.run_id ?? ''
   newsId.value = picked.news_id
   problemType.value = picked.problem_type
+  const feedback = readOperationsFeedback(picked.source_reference)
+  feedbackCategory.value = feedback?.category ?? defaultOperationsCategory(decisionType.value)
+  reasonCodes.value = feedback ? [...feedback.reason_codes] : []
   severity.value = picked.severity
+  severityEdited.value = true
 }
 
 async function submit(): Promise<void> {
@@ -87,6 +117,7 @@ async function submit(): Promise<void> {
     requiredText(runId.value, 'run_id'),
     requiredText(newsId.value, 'news_id'),
     requiredText(reason.value, '原因'),
+    reasonCodes.value.length === 0 ? '请至少选择一项反馈理由' : null,
     needsCorrection ? jsonText(correctionPayload.value, '修正载荷') : null,
   )
   if (problem) {
@@ -96,7 +127,7 @@ async function submit(): Promise<void> {
 
   const confirmed = await dialog.ask({
     title: '确认记录该运营决策？',
-    description: `${decisionTypeLabel(decisionType.value)}：${newsId.value.trim()}。决策会进入数据回流链路。`,
+    description: `${decisionTypeLabel(decisionType.value)}：${newsId.value.trim()}。将生成待标注案例，评测结论仍需独立标注与二审；运营决策不代表推送许可。`,
     confirmText: '确认记录',
     danger: decisionType.value === 'rejected',
   })
@@ -112,8 +143,13 @@ async function submit(): Promise<void> {
       : {},
     idempotency_key: newIdempotencyKey('operator-decision'),
     supersedes_decision_id: supersedes.value.trim() || null,
-    feedback_problem_type: problemType.value,
+    feedback_problem_type: feedbackCategory.value === 'analysis_error' ? problemType.value : 'other',
     feedback_severity: severity.value,
+    operator_feedback: {
+      schema_version: 'operations-feedback-v1',
+      category: feedbackCategory.value,
+      reason_codes: [...reasonCodes.value],
+    },
   }
 
   const outcome = await run(() => dataLoopApi.recordOperatorDecision(body), {
@@ -124,6 +160,7 @@ async function submit(): Promise<void> {
   result.value = outcome
   reason.value = ''
   correctionPayload.value = ''
+  reasonCodes.value = []
 }
 
 onMounted(loadRecentCases)
@@ -136,6 +173,8 @@ onMounted(loadRecentCases)
         <h2>记录运营决策</h2>
         <span class="na-badge na-badge--live">POST /data-loop/operator-decisions</span>
       </div>
+
+      <p class="na-muted">采纳、驳回、延后和修正均可沉淀为待标注案例。运营判断与评测标签分开记录，完成独立标注和二审后才可入集；这里不会授权推送。</p>
 
       <div class="na-row">
         <div class="na-field na-field--grow">
@@ -158,6 +197,14 @@ onMounted(loadRecentCases)
           </select>
         </div>
         <div class="na-field na-field--fixed">
+          <label for="feedback-category">反馈分类</label>
+          <select id="feedback-category" v-model="feedbackCategory" class="na-select">
+            <option v-for="value in OPERATIONS_FEEDBACK_CATEGORIES" :key="value" :value="value">
+              {{ operationsFeedbackCategoryLabel(value) }}
+            </option>
+          </select>
+        </div>
+        <div v-if="feedbackCategory === 'analysis_error'" class="na-field na-field--fixed">
           <label for="problem-type">问题类型</label>
           <select id="problem-type" v-model="problemType" class="na-select">
             <option v-for="value in PROBLEM_TYPES" :key="value" :value="value">
@@ -167,11 +214,23 @@ onMounted(loadRecentCases)
         </div>
         <div class="na-field na-field--fixed">
           <label for="severity">严重度</label>
-          <select id="severity" v-model="severity" class="na-select">
+          <select id="severity" v-model="severity" class="na-select" @change="severityEdited = true">
             <option v-for="value in SEVERITIES" :key="value" :value="value">
               {{ severityLabel(value) }}
             </option>
           </select>
+        </div>
+      </div>
+
+      <div class="na-field">
+        <span id="feedback-reasons" class="na-muted">反馈理由（至少一项，可多选）</span>
+        <div class="na-row" role="group" aria-labelledby="feedback-reasons">
+          <div v-for="code in OPERATIONS_REASON_CODES" :key="code" class="na-field na-field--check">
+            <label>
+              <input v-model="reasonCodes" type="checkbox" :value="code">
+              {{ operationsReasonLabel(code) }}
+            </label>
+          </div>
         </div>
       </div>
 
@@ -212,7 +271,7 @@ onMounted(loadRecentCases)
         </button>
       </div>
 
-      <p class="na-muted">选择一条最近的反馈案例，自动填充 run_id、news_id、问题类型与严重度。</p>
+      <p class="na-muted">选择一条最近的反馈案例，自动填充运行、新闻、问题和严重度；已有运营分类与理由也会带入，提交前请核对。</p>
 
       <NaStateBlock
         :loading="casesLoading && recentCases.length === 0"

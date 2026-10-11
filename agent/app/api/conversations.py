@@ -15,6 +15,7 @@ from app.repositories.conversation import ConversationConflict, ConversationNotF
 from app.schemas.conversation import (ConversationDetailResponse, ConversationListResponse,
                                       ConversationTurnView, ConversationView, CreateConversationRequest,
                                       SendConversationMessageRequest)
+from app.schemas.conversation import (AppendConversationInputRequest, ConversationInputView,)
 
 
 router = APIRouter(prefix="/api/v1/conversations", tags=["conversations"])
@@ -151,3 +152,32 @@ async def stream_message(conversation_id: UUID, body: SendConversationMessageReq
     )
     return ConversationStreamingResponse(stream.iter_events(), media_type="text/event-stream",
                                          headers={"Cache-Control": "no-cache, no-store", "X-Accel-Buffering": "no"})
+
+@router.post(
+    "/{conversation_id}/turns/{turn_id}/inputs",
+    response_model=ConversationInputView,
+    status_code=202,
+)
+async def append_turn_input(
+    conversation_id: UUID,
+    turn_id: UUID,
+    body: AppendConversationInputRequest,
+    request: Request,
+    principal: Principal,
+):
+    try:
+        async with asyncio.timeout(10):
+            return await service(request).submit_input(
+                tenant_id=str(principal.tenant_id),
+                user_id=str(principal.user_id),
+                conversation_id=conversation_id,
+                turn_id=turn_id,
+                request_id=body.request_id,
+                content=body.content,
+            )
+    except ConversationNotFound as exc:
+        raise HTTPException(status_code=404, detail="conversation or turn not found",) from exc
+    except ConversationConflict as exc:
+        raise HTTPException(status_code=409, detail=("input conflicts with an existing request, exceeds limits, or targets a finished or expired turn"),) from exc
+    except (SQLAlchemyError, TimeoutError) as exc:
+        raise HTTPException(status_code=503, detail="conversation storage unavailable",) from exc

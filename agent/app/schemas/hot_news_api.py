@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.domain.job_scenario import JobScenario
 from app.schemas.analysis_feedback import FeedbackProblemType, FeedbackSeverity
 from app.schemas.hot_news_decision import DecisionType
+from app.schemas.operations_feedback import OperationsFeedback
 from app.schemas.sql_assistant import HotNewsSqlToolTrace
 from app.schemas.job import WritingJobResponse
 
@@ -116,6 +117,7 @@ class HotNewsDecisionView(BaseModel):
     idempotency_key: str
     supersedes_decision_id: UUID | None
     created_at: datetime
+    operator_feedback: OperationsFeedback | None = None
 
 
 class HotNewsAnalysisExecutionView(BaseModel):
@@ -156,6 +158,7 @@ class RecordHotNewsDecisionRequest(BaseModel):
     supersedes_decision_id: UUID | None = None
     feedback_problem_type: FeedbackProblemType = "analysis_incorrect"
     feedback_severity: FeedbackSeverity = "medium"
+    operator_feedback: OperationsFeedback | None = None
 
 
 class RecordHotNewsDecisionResponse(BaseModel):

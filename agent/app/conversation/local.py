@@ -112,7 +112,10 @@ def local_conversation_plan(payload: dict) -> str:
         reference = next((item for item in ordered[1:] if item["end"] <= current["start"]), None)
         return [current, reference] if reference else [current]
 
-    if any(word in message.lower() for word in ("删除", "drop ", "发布", "修改配置", "系统指令", "忽略规则", "执行命令", "密钥")):
+    # Publication filters are query semantics; keep them in the original tool
+    # question for the resolver to reject. A separate publish action still blocks.
+    action_text = re.sub(r"发布(?:的|时间|日期)", "", message.lower())
+    if any(word in action_text for word in ("删除", "drop ", "发布", "修改配置", "系统指令", "忽略规则", "执行命令", "密钥")):
         return respond("聊天工具只有只读权限，不能删除数据、运行命令、修改配置或发布内容。请使用既有人工审批流程。")
     if not tools and message.startswith("读取热点运行"):
         match = re.fullmatch(r"读取热点运行 ([0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12})", message)
@@ -141,10 +144,26 @@ def local_conversation_plan(payload: dict) -> str:
         if latest["name"] == "analyze_hot_news_data":
             return respond("已通过隔离执行器完成确定性分析。结果仅覆盖所关联的热点榜单，数值、范围和数据质量提示见计算快照。")
         if latest["name"] == "query_hot_news":
+            if latest["result"].get("query_resolution", {}).get("response_style") == "summary":
+                return respond("已根据本次查询的已保存报告整理热点摘要。时间、候选范围和权威指标见下方。")
             return respond("本轮已按问题查询模拟数仓，并复用热点分析链路。以下展示取数与分析的已保存结果；当前解释仍为规则模拟。")
         if latest["name"] == "list_hot_news" and latest["result"].get("items"):
             return call("read_hot_news", run_id=latest["result"]["items"][0]["run_id"])
         return respond("以下内容来自同一租户的已完成运行或新闻知识；指标保持工具快照原值。")
+    if (not has_requested_date and any(word in message for word in ("相关", "关联"))
+            and any(word in message for word in ("第一", "第1", "这条", "它", "该新闻"))):
+        if not any(tool["name"] == "search_knowledge" for tool in payload.get("available_tools", [])):
+            return respond("当前没有新闻知识检索权限，无法召回相关新闻。")
+        for turn in reversed(history):
+            for trace in reversed(turn.get("tools", [])):
+                if trace["name"] not in {"read_hot_news", "query_hot_news"} or trace["status"] != "completed":
+                    continue
+                items = trace.get("result", {}).get("items", [])
+                source = next((item for item in items if item.get("rank") == 1), None)
+                if source and source.get("title") and source.get("news_id"):
+                    return call("search_knowledge", query=source["title"][:500],
+                                source_news_id=source["news_id"], limit=3)
+        return respond("当前对话没有可关联的新闻标题和来源，请先查看热点，再追问第一条的相关新闻。")
     if has_dated_news_request(message) and not query_available:
         return respond("当前权限只支持读取已保存的热点报告，不能按指定日期发起新查询；已有报告不能冒充该日期的热点。")
     if wants_analysis:

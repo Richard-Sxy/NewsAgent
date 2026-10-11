@@ -115,8 +115,9 @@ API和热点Worker必须一起切换，不能只改API，否则数仓规划与�
 
 - `CONVERSATION_HOT_NEWS_QUERY_ENABLED` 默认false，仅本地Compose显式true。
 - `CONVERSATION_HOT_NEWS_QUERY_SCENARIO` 默认`news-ranking`，必须是已批准ranking场景。
-- `CONVERSATION_HOT_NEWS_QUERY_HOUR` 默认0，范围0..23，固定一天内单整小时；服务端选取，
-  模型和浏览器不得改变。跨小时UV不可相加。
+- `CONVERSATION_HOT_NEWS_QUERY_HOUR` 默认0，范围0..23，选择样本末日的默认整点小时。
+  `SQL_ASSISTANT_DATASET_PROFILE` 提供完整样本覆盖；明确日期和小时可在覆盖内选取，
+  由Python核对模型未更改条件。每次仍是单小时，跨小时UV不可相加。
 - `CONVERSATION_TURN_TIMEOUT_SECONDS` 本地120秒；默认工具预算3，流预算150秒；
   SQL场景本身有15秒模型、10秒只读SQL上限。聊天等待受总预算限制，Workflow可能继续运行。
 - 本地会话Prompt绑定`native-conversation-v5`，真实模板为`compatible-conversation-v5`；

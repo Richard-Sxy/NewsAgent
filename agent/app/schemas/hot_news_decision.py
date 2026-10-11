@@ -5,6 +5,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from app.schemas.operations_feedback import OperationsFeedback
+
 DecisionType = Literal[
     "accepted",
     "rejected",
@@ -23,6 +25,7 @@ class RecordHotNewsDecisionCommand(BaseModel):
     correction_payload: dict[str, Any] = Field(default_factory=dict)
     idempotency_key: str = Field(min_length=1, max_length=128)
     supersedes_decision_id: UUID | None = None
+    operator_feedback: OperationsFeedback | None = None
 
     @model_validator(mode="after")
     def validate_correction(self):

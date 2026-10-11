@@ -208,7 +208,9 @@ export interface ProgressEvent {
 export type DecisionType = 'accepted' | 'rejected' | 'deferred' | 'corrected'
 
 export type FeedbackSource =
+  | 'operator_accepted'
   | 'operator_rejected'
+  | 'operator_deferred'
   | 'operator_corrected'
   | 'validation_failed'
   | 'low_confidence'
@@ -232,6 +234,36 @@ export type FeedbackProblemType =
   | 'other'
 
 export type FeedbackSeverity = 'low' | 'medium' | 'high' | 'critical'
+
+export type OperationsFeedbackCategory =
+  | 'analysis_error'
+  | 'editorial_judgment'
+  | 'strategy_judgment'
+  | 'positive_example'
+
+export type OperationsReasonCode =
+  | 'analysis_supported'
+  | 'useful_recommendation'
+  | 'insufficient_evidence'
+  | 'fact_or_attribution_error'
+  | 'low_public_value'
+  | 'audience_mismatch'
+  | 'no_material_update'
+  | 'duplicate_event'
+  | 'frequency_budget_exhausted'
+  | 'timing_inappropriate'
+  | 'content_expired'
+  | 'copy_misleading'
+  | 'channel_or_consent_mismatch'
+  | 'risk_requires_escalation'
+  | 'other_with_explanation'
+
+/** 运营判断只作为待标注素材，不能代替独立复核的评测标签。 */
+export interface OperationsFeedback {
+  schema_version?: 'operations-feedback-v1'
+  category: OperationsFeedbackCategory
+  reason_codes: OperationsReasonCode[]
+}
 
 /** StartDataLoopRequest.window_start / window_end 必须是带时区的 ISO 8601。 */
 export interface StartDataLoopRequest {
@@ -304,6 +336,7 @@ export interface RecordOperatorDecisionRequest {
   supersedes_decision_id?: string | null
   feedback_problem_type?: FeedbackProblemType
   feedback_severity?: FeedbackSeverity
+  operator_feedback?: OperationsFeedback | null
 }
 
 export interface OperatorDecisionResponse {
@@ -333,7 +366,7 @@ export interface FeedbackCase {
   idempotency_key: string
   analysis_input_snapshot: JsonObject
   analysis_output_snapshot: JsonObject | null
-  source_reference: JsonObject
+  source_reference: JsonObject & { operator_feedback?: OperationsFeedback | null }
 }
 
 export interface FeedbackCaseListResponse {
@@ -564,6 +597,7 @@ export interface RecordHotNewsDecisionRequest {
   supersedes_decision_id: string | null
   feedback_problem_type: FeedbackProblemType
   feedback_severity: FeedbackSeverity
+  operator_feedback?: OperationsFeedback | null
 }
 
 export interface RecordHotNewsDecisionResponse {

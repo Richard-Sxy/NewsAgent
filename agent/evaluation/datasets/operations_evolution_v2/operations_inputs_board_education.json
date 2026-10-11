@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-622047b155546a3f5647",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-622047b155546a3f5647",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构澄溪技能考试报名，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：社群称考试取消，组织机构尚未发布通知。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-d6ca881d5152c98d173d",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-622047b155546a3f5647",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-622047b155546a3f5647",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构澄溪技能考试报名影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：社群称考试取消，组织机构尚未发布通知。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-d29937ffea7f757555ac",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a0c30821fa0db52b6d2f",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a0c30821fa0db52b6d2f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构机构确认仅调整报名时间，考试仍按计划准备。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-75ac638adb62810e3992",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a0c30821fa0db52b6d2f",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a0c30821fa0db52b6d2f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构机构确认仅调整报名时间，考试仍按计划准备。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-f71e3b4a7c49809c1727",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c77e06f478a75e4b9b50",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c77e06f478a75e4b9b50",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "unknown",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：公布资格核验和补交材料窗口。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：公布资格核验和补交材料窗口。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-d91a72d69d41585bd3f7",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c77e06f478a75e4b9b50",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c77e06f478a75e4b9b50",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：公布资格核验和补交材料窗口。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-d224e5208d134652b871",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8e37ed70d1284402e40a",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8e37ed70d1284402e40a",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构澄溪技能考试报名背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧报名通知再次转载，没有新增资格条件。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-4927f79bd5bc9880fa54",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8e37ed70d1284402e40a",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8e37ed70d1284402e40a",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构澄溪技能考试报名重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧报名通知再次转载，没有新增资格条件。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-5a26882b9c500f97f807",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1ecc30bb6877d55e26b1",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1ecc30bb6877d55e26b1",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：报名结束，旧入口不可提交。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：报名结束，旧入口不可提交。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-fc5a77cb9225fbb843a5",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "报名结束，旧入口不可提交。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1ecc30bb6877d55e26b1",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1ecc30bb6877d55e26b1",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构澄溪技能考试报名旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：报名结束，旧入口不可提交。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-dd08d59d36481eb5a4eb",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "报名结束，旧入口不可提交。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1c0d0d19322ffa37066d",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1c0d0d19322ffa37066d",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：机构更正适用批次，旧稿把补报名写成所有考生报名。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：机构更正适用批次，旧稿把补报名写成所有考生报名。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-aa6336bf97e47f178df1",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "报名结束，旧入口不可提交。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "机构更正适用批次，旧稿把补报名写成所有考生报名。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1c0d0d19322ffa37066d",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1c0d0d19322ffa37066d",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。；旧报名通知再次转载，没有新增资格条件。；报名结束，旧入口不可提交。；机构更正适用批次，旧稿把补报名写成所有考生报名。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构澄溪技能考试报名：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：机构更正适用批次，旧稿把补报名写成所有考生报名。；全部为虚构新闻情景。",
+        "title": "虚构澄溪技能考试报名"
+      },
+      "case_id": "evo-4a4ed942bc7ef510033c",
+      "event_id": "synthetic-event-8e164f669b059f62e7c5",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "社群称考试取消，组织机构尚未发布通知。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构机构确认仅调整报名时间，考试仍按计划准备。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "公布资格核验和补交材料窗口。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧报名通知再次转载，没有新增资格条件。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "报名结束，旧入口不可提交。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "机构更正适用批次，旧稿把补报名写成所有考生报名。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8e164f669b059f62e7c5",
+      "story_title": "虚构澄溪技能考试报名",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-13e9fcf03c84e101370c",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-13e9fcf03c84e101370c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构星河学校开放日，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：家长群称开放日等同录取承诺，学校未确认。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-4d5959c01ca39dd58e95",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-13e9fcf03c84e101370c",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-13e9fcf03c84e101370c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构星河学校开放日影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：家长群称开放日等同录取承诺，学校未确认。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-b55c034d158837f38571",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c992ed697d0b6d9f025f",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c992ed697d0b6d9f025f",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构星河学校开放日：虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构学校说明开放日仅供了解课程，不授予录取资格。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-766456a37f34770bbb6f",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c992ed697d0b6d9f025f",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c992ed697d0b6d9f025f",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构星河学校开放日：虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构学校说明开放日仅供了解课程，不授予录取资格。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-d3d90db14b5536c95f90",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8045da8e36ceb1f1598e",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8045da8e36ceb1f1598e",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "unknown",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构星河学校开放日：增加线上场次和无障碍预约说明。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：增加线上场次和无障碍预约说明。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-35bc00d020e1838c2aff",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8045da8e36ceb1f1598e",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8045da8e36ceb1f1598e",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构星河学校开放日：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：增加线上场次和无障碍预约说明。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-7fc1afb9a00bd10ce0b5",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-75826cc70e4900793986",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-75826cc70e4900793986",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构星河学校开放日背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：重复转发同一海报，没有新招生安排。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-1564a070b328a68b01e9",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-75826cc70e4900793986",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-75826cc70e4900793986",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构星河学校开放日重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：重复转发同一海报，没有新招生安排。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-ea455419b50cf21f9f25",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-d5f255d437a7f0d6eb44",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d5f255d437a7f0d6eb44",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构星河学校开放日：开放日已结束，旧预约提示失效。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：开放日已结束，旧预约提示失效。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-d4189f8dd8e74e8191be",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "开放日已结束，旧预约提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-d5f255d437a7f0d6eb44",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d5f255d437a7f0d6eb44",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构星河学校开放日旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：开放日已结束，旧预约提示失效。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-8de765bb484f14433b50",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "开放日已结束，旧预约提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a33e9c1fd84a3f36651b",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a33e9c1fd84a3f36651b",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构星河学校开放日：学校更正预约年级，旧稿混淆两个学段。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：学校更正预约年级，旧稿混淆两个学段。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-6228f66c81db6038f45f",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "开放日已结束，旧预约提示失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "学校更正预约年级，旧稿混淆两个学段。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a33e9c1fd84a3f36651b",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a33e9c1fd84a3f36651b",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。；重复转发同一海报，没有新招生安排。；开放日已结束，旧预约提示失效。；学校更正预约年级，旧稿混淆两个学段。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构星河学校开放日：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：学校更正预约年级，旧稿混淆两个学段。；全部为虚构新闻情景。",
+        "title": "虚构星河学校开放日"
+      },
+      "case_id": "evo-f0c99f45caa48b63a41f",
+      "event_id": "synthetic-event-ed4bda73d2dab0500675",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "家长群称开放日等同录取承诺，学校未确认。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构学校说明开放日仅供了解课程，不授予录取资格。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "增加线上场次和无障碍预约说明。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "重复转发同一海报，没有新招生安排。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "开放日已结束，旧预约提示失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "学校更正预约年级，旧稿混淆两个学段。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ed4bda73d2dab0500675",
+      "story_title": "虚构星河学校开放日",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-410d8aa8a09cfa027d33",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-410d8aa8a09cfa027d33",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构青桥助学项目，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：转发帖称所有学生自动获资助，没有项目规则。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-771e254df9eeed240593",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-410d8aa8a09cfa027d33",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-410d8aa8a09cfa027d33",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构青桥助学项目影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：转发帖称所有学生自动获资助，没有项目规则。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-6e95cebf4f3f0a119747",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-79ac97f1a4c5edaac825",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-79ac97f1a4c5edaac825",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构青桥助学项目：虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构项目公布申请范围和审核程序，结果尚未确定。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-68a618071a3b3575321d",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-79ac97f1a4c5edaac825",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-79ac97f1a4c5edaac825",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构青桥助学项目：虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构项目公布申请范围和审核程序，结果尚未确定。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-b6a048626cf175aeb023",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-640ad1e83fb4e187310d",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-640ad1e83fb4e187310d",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "unknown",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构青桥助学项目：新增材料补交渠道，公开聚合进度而非学生名单。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增材料补交渠道，公开聚合进度而非学生名单。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-bb967524949a4ff6c7e3",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-640ad1e83fb4e187310d",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-640ad1e83fb4e187310d",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构青桥助学项目：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增材料补交渠道，公开聚合进度而非学生名单。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-cd0eb97ba5e817f739c3",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-0c144da71fbae928eb54",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0c144da71fbae928eb54",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构青桥助学项目背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：旧规则换标题传播，没有新增额度。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-743ca37dce43629d377f",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-0c144da71fbae928eb54",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0c144da71fbae928eb54",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构青桥助学项目重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：旧规则换标题传播，没有新增额度。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-01e8c7cffd1e1a2cf2c2",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-aee6804090e16a10d85f",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-aee6804090e16a10d85f",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构青桥助学项目：本批审核结束，旧申请入口关闭。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：本批审核结束，旧申请入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-eb2e740952ff11107317",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "本批审核结束，旧申请入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-aee6804090e16a10d85f",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-aee6804090e16a10d85f",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构青桥助学项目旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：本批审核结束，旧申请入口关闭。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-6a75bf621a6740056c81",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "本批审核结束，旧申请入口关闭。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-39a02b936498d520de7b",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-39a02b936498d520de7b",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构青桥助学项目：项目方更正材料名称，旧稿要求了不必要的私人信息。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：项目方更正材料名称，旧稿要求了不必要的私人信息。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-20661f3436da84b8f043",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "本批审核结束，旧申请入口关闭。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "项目方更正材料名称，旧稿要求了不必要的私人信息。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-39a02b936498d520de7b",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-39a02b936498d520de7b",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。；旧规则换标题传播，没有新增额度。；本批审核结束，旧申请入口关闭。；项目方更正材料名称，旧稿要求了不必要的私人信息。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fictional-affected-area"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构青桥助学项目：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：项目方更正材料名称，旧稿要求了不必要的私人信息。；全部为虚构新闻情景。",
+        "title": "虚构青桥助学项目"
+      },
+      "case_id": "evo-fb4a55195711aed8ec59",
+      "event_id": "synthetic-event-ab9fe171280dbc3faf39",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "转发帖称所有学生自动获资助，没有项目规则。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "虚构项目公布申请范围和审核程序，结果尚未确定。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "新增材料补交渠道，公开聚合进度而非学生名单。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "旧规则换标题传播，没有新增额度。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "本批审核结束，旧申请入口关闭。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-498460269c10b906a676",
+          "text": "项目方更正材料名称，旧稿要求了不必要的私人信息。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注教育主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "报名条件",
+          "未成年人隐私",
+          "日期与机构归因"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-498460269c10b906a676",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-e5de32bc4bc32e57f148"
+      },
+      "scope_sha256": "2d5f9c68df9d8c931d82aef7e0cfde81f6f8e6e72d8bc2792720d22dd827bacf",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-ab9fe171280dbc3faf39",
+      "story_title": "虚构青桥助学项目",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

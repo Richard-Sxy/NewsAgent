@@ -18,7 +18,8 @@ from app.schemas.sql_assistant import (
 )
 from app.sql_assistant.audit import QuerySnapshotStore
 from app.sql_assistant.guard import SqlAssistantGuard
-from app.sql_assistant.planner import compile_query, screen_question, validate_intent
+from app.sql_assistant.planner import compile_query, local_query_intent, screen_question, validate_intent
+from app.sql_assistant.input_boundary import SqlAssistantQuestionError
 from app.sql_assistant.scenarios import SqlScenario, load_sql_scenarios
 from app.sql_assistant.warehouse import (
     demo_dataset_info, get_text2sql_schema, verify_schema_contract,
@@ -123,39 +124,71 @@ class SqlAssistantService:
         question = screen_question(request.question)
         stages = [SqlAssistantStage(name="input_boundary", detail="身份由网关注入；问题只用于选择批准的查询指标和过滤条件")]
         query_id = str(uuid4())
-        payload = {
-            "question": question, "scenario": scenario.model_dump(mode="json"),
-            "schema_ddl": get_text2sql_schema(self.dataset_profile).render_ddl(), "schema_version": self.contract.version,
-            "window_policy": "时间范围由服务端确认；不得输出租户、SQL、时间或数据值。",
-        }
-        result = None
-        # Retries stay here for this short interactive read workflow. The HTTP
-        # adapter does not retry, so attempts cannot multiply with Temporal.
-        with model_request_context(tenant_id=tenant_id, trace_id=f"sql-assistant-{query_id}"):
-            for attempt in range(1, config.model_max_attempts + 1):
-                try:
-                    async with asyncio.timeout(config.model_timeout_seconds):
-                        # 调用 run_structured() 要求输出 SqlAssistantIntent。
-                        result = await self.agent.run_structured(
-                            app_id="python:sql-assistant-v1", payload=payload,
-                            output_type=SqlAssistantIntent, mode=config.model_scene,
-                        )
-                    break
-                except Exception as exc:
-                    retryable = isinstance(exc, TimeoutError) or bool(getattr(exc, "retryable", False))
-                    if not retryable or attempt == config.model_max_attempts:
-                        if retryable:
-                            raise SqlAssistantError("模型暂不可用，请稍后重试；当前没有执行 SQL", 503) from exc
-                        raise
-                    await asyncio.sleep(0.25 * attempt)
-        if result is None:
-            raise SqlAssistantError("模型未生成查询计划", 502)
-        intent = result.value
+        model_request_id = None
+        planning_provider = self.model_provider
+        if expected_intent is not None:
+            # This keyword belongs to the internal semantic gate, not the API.
+            # Revalidate even model_copy/model_construct instances, then parse
+            # the compiler-owned question independently before trusting slots.
+            intent = SqlAssistantIntent.model_validate(expected_intent.model_dump())
+            validate_intent(intent, scenario)
+            try:
+                independently_parsed = local_query_intent({
+                    "question": question, "scenario": scenario.model_dump(mode="json"),
+                })
+            except SqlAssistantQuestionError as exc:
+                raise self._confirmed_intent_error(request) from exc
+            # A singleton scene imposes the same mandatory filter whether the
+            # upstream canonical question already spells it out or omits it.
+            for field, allowed in (("content_type", scenario.allowed_content_types),
+                                   ("category", scenario.allowed_categories)):
+                if len(allowed) == 1:
+                    if getattr(intent, field) is None:
+                        intent = intent.model_copy(update={field: allowed[0]})
+                    if getattr(independently_parsed, field) is None:
+                        independently_parsed = independently_parsed.model_copy(update={field: allowed[0]})
+            fields = ("sort_by", "sort_direction", "content_type", "category", "row_limit")
+            if any(getattr(intent, field) != getattr(independently_parsed, field) for field in fields):
+                raise self._confirmed_intent_error(request)
+            planning_provider = "python-confirmed-intent"
+            stages.append(SqlAssistantStage(
+                name="intent_confirmed", detail="Python 独立复核已确认的查询条件；直接编译 SQL，没有再次调用模型规划",
+                elapsed_ms=int((monotonic() - started) * 1000), attempts=0,
+            ))
+        else:
+            payload = {
+                "question": question, "scenario": scenario.model_dump(mode="json"),
+                "schema_ddl": get_text2sql_schema(self.dataset_profile).render_ddl(), "schema_version": self.contract.version,
+                "window_policy": "时间范围由服务端确认；不得输出租户、SQL、时间或数据值。",
+            }
+            result = None
+            # Retries stay here for this short interactive read workflow. The
+            # HTTP adapter does not retry or multiply attempts with Temporal.
+            with model_request_context(tenant_id=tenant_id, trace_id=f"sql-assistant-{query_id}"):
+                for attempt in range(1, config.model_max_attempts + 1):
+                    try:
+                        async with asyncio.timeout(config.model_timeout_seconds):
+                            result = await self.agent.run_structured(
+                                app_id="python:sql-assistant-v1", payload=payload,
+                                output_type=SqlAssistantIntent, mode=config.model_scene,
+                            )
+                        break
+                    except Exception as exc:
+                        retryable = isinstance(exc, TimeoutError) or bool(getattr(exc, "retryable", False))
+                        if not retryable or attempt == config.model_max_attempts:
+                            if retryable:
+                                raise SqlAssistantError("模型暂不可用，请稍后重试；当前没有执行 SQL", 503) from exc
+                            raise
+                        await asyncio.sleep(0.25 * attempt)
+            if result is None:
+                raise SqlAssistantError("模型未生成查询计划", 502)
+            intent = result.value
+            model_request_id = result.request_id
+            stages.append(SqlAssistantStage(
+                name="model_planning", detail=f"{self.model_provider} 生成受限查询计划；没有接触数据库或企业真实记录",
+                elapsed_ms=int((monotonic() - started) * 1000), attempts=attempt,
+            ))
         validate_intent(intent, scenario)
-        stages.append(SqlAssistantStage(
-            name="model_planning", detail=f"{self.model_provider} 生成受限查询计划；没有接触数据库或企业真实记录",
-            elapsed_ms=int((monotonic() - started) * 1000), attempts=attempt,
-        ))
         params: dict[str, str | int] = {
             "tenant_id": tenant_id, "window_start": request.window_start.isoformat(),
             "window_end": request.window_end.isoformat(), "row_limit": intent.row_limit,
@@ -173,20 +206,6 @@ class SqlAssistantService:
             params["category"] = intent.category
         if len(scenario.allowed_categories) not in (1, 4) and intent.category is None:
             raise SqlAssistantError("当前场景请在问题中指定一个允许的栏目")
-        if expected_intent is not None:
-            # The upstream semantic gate is authoritative for required slots.
-            # A second model must not silently change a metric or drop a filter.
-            validate_intent(expected_intent, scenario)
-            fields = ("sort_by", "sort_direction", "content_type", "category", "row_limit")
-            if any(getattr(intent, field) != getattr(expected_intent, field) for field in fields):
-                from app.conversation.query_understanding import QueryResolution, QueryResolutionError
-
-                raise QueryResolutionError(QueryResolution(
-                    status="unsupported", reason_code="query_intent_mismatch",
-                    message="查询计划与已确认条件不一致，未执行取数。",
-                    supported_window_start=request.window_start,
-                    supported_window_end=request.window_end,
-                ), request_id=result.request_id)
         sql = compile_query(intent, scenario)
         self.guard.validate(sql, params)
         stages.append(SqlAssistantStage(name="sql_guard", detail="参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过"))
@@ -196,7 +215,7 @@ class SqlAssistantService:
             sql=sql, parameters=params, sql_hash=sha256(sql.encode()).hexdigest(),
             schema_version=self.contract.version, schema_sha256=self.contract.sha256,
             explanation=f"{intent.explanation} 时间以已确认的整点窗口为准；SQL 热度仅是候选召回分，热点最终热度由 Python 规则计算。",
-            model_request_id=result.request_id, model_provider=self.model_provider,
+            model_request_id=model_request_id, model_provider=planning_provider,
             expires_at=datetime.now(timezone.utc) + timedelta(seconds=config.preview_ttl_seconds), stages=stages,
         )
         snapshot = {
@@ -210,6 +229,17 @@ class SqlAssistantService:
         snapshot["fingerprint"] = _snapshot_fingerprint(snapshot)
         await self.store.save(snapshot)
         return preview
+
+    @staticmethod
+    def _confirmed_intent_error(request: SqlAssistantPreviewRequest):
+        from app.conversation.query_understanding import QueryResolution, QueryResolutionError
+
+        return QueryResolutionError(QueryResolution(
+            status="unsupported", reason_code="query_intent_mismatch",
+            message="查询问句与已确认条件不一致，未执行取数。",
+            supported_window_start=request.window_start,
+            supported_window_end=request.window_end,
+        ))
 
     async def execute(self, query_id: str, *, tenant_id: str, user_id: str) -> SqlAssistantResult:
         return await self._execute(query_id, tenant_id=tenant_id, user_id=user_id)

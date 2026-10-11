@@ -37,6 +37,7 @@ import { useConfirmStore } from '@/stores/confirm'
 import { useToastStore } from '@/stores/toast'
 import AnalysisDemoPanel from '@/components/conversation/AnalysisDemoPanel.vue'
 import AnalysisResultCard from '@/components/conversation/AnalysisResultCard.vue'
+import RelatedArticlesPanel from '@/components/conversation/RelatedArticlesPanel.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -597,14 +598,23 @@ onBeforeUnmount(() => {
       <p class="na-muted na-chat__context">
         安全事件流实时展示处理阶段和工具状态；答复经完整校验并保存后分段传输。
       </p>
-      <p v-if="runtimeInfo?.model_provider === 'local'" class="na-notice">
+      <p v-if="runtimeInfo?.query_scope?.understanding_model?.provider === 'openai_compatible'" class="na-notice">
+        查询理解使用 {{ runtimeInfo.query_scope.understanding_model.model_route }}，支持自然日期与口语时间；Python 校验查询范围和权限。
+        其他环节{{ runtimeInfo.model_provider === 'local' ? '使用本地确定性替身' : '使用已配置模型接口' }}，数仓仍为合成样本。
+      </p>
+      <p v-else-if="runtimeInfo?.model_provider === 'local'" class="na-notice">
         当前使用本地确定性替身验证交互链路，不代表企业模型质量。
       </p>
       <p v-else-if="runtimeInfo?.model_provider === 'openai_compatible'" class="na-notice">
         兼容模型接口模式 · {{ runtimeInfo.model_route }}。数仓仍为合成样本，接口配置不代表模型质量已验收。
       </p>
       <p v-if="runtimeInfo?.query_enabled && runtimeInfo.query_scope" class="na-muted">
-        未指定日期时使用固定样本窗口，默认场景 {{ runtimeInfo.query_scope.scenario_id }}：
+        <template v-if="runtimeInfo.query_scope.coverage_window_start && runtimeInfo.query_scope.coverage_window_end">
+          数据覆盖 {{ formatDateTime(runtimeInfo.query_scope.coverage_window_start) }} 至
+          {{ formatDateTime(runtimeInfo.query_scope.coverage_window_end) }}（结束时间不包含）。
+          可用自然语言指定其中一个整点小时，例如“10月9号早上八点到九点的热点新闻，帮我总结一下”。
+        </template>
+        未指定日期时使用样本窗口，默认场景 {{ runtimeInfo.query_scope.scenario_id }}：
         {{ formatDateTime(runtimeInfo.query_scope.window_start) }} 至
         {{ formatDateTime(runtimeInfo.query_scope.window_end) }}。
         请求“今日热点”会核对数据范围；样本不覆盖今天时会明确提示。当前样本不提供实时今日新闻。
@@ -651,6 +661,7 @@ onBeforeUnmount(() => {
             <p v-if="turn.error_code" class="na-muted">错误码：{{ turn.error_code }}</p>
             <template v-if="turn.status === 'completed'">
               <AnalysisResultCard v-for="(tool, index) in turn.tools" :key="`analysis-${turn.id}-${index}`" :trace="tool" />
+              <RelatedArticlesPanel :tools="turn.tools" />
             </template>
             <details v-if="turn.tools.length" class="na-chat__tools">
               <summary>查看工具调用记录（{{ turn.tools.length }}）</summary>

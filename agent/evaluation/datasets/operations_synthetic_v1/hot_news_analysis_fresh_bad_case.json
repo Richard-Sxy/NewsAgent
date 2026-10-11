@@ -1,0 +1,536 @@
+{
+  "dataset_name": "hot-news-operations-synthetic-fresh_bad_case",
+  "dataset_version": "2026-10-10.synthetic-v1",
+  "schema_version": "1.0",
+  "description": "全部为合成情景和程序预期，待人工复核；只评测分析Schema/驱动/证据/指标/限制，不证明运营策略效果。",
+  "cases": [
+    {
+      "case_id": "syn-d31cd61aa14f17ebff2e",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）云杉市仓库警情尚未公布受伤人数",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-02",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-d31cd61aa14f17ebff2e",
+        "title": "（虚构）云杉市仓库警情尚未公布受伤人数",
+        "summary": "合成新闻情景；不对应真实新闻。虚构云杉市应急信息站的模拟通报确认一处仓库发生火情。；通报明确人数正在核实，未发布任何受伤人数。；关联旧稿报道的是另一区域的历史事件，不可作为当前人数证据。；模拟通报没有附伤者名单、伤情统计或医疗机构确认。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构云杉市应急信息站的模拟通报确认一处仓库发生火情。；通报明确人数正在核实，未发布任何受伤人数。；关联旧稿报道的是另一区域的历史事件，不可作为当前人数证据。；模拟通报没有附伤者名单、伤情统计或医疗机构确认。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-d31cd61aa14f17ebff2e",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构云杉市应急信息站的模拟通报确认一处仓库发生火情。；通报明确人数正在核实，未发布任何受伤人数。；关联旧稿报道的是另一区域的历史事件，不可作为当前人数证据。；模拟通报没有附伤者名单、伤情统计或医疗机构确认。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-d31cd61aa14f17ebff2e"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-d31cd61aa14f17ebff2e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-b55c4b94062f971cc1b0",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）云杉市仓库警情与异地演练材料",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-02",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-b55c4b94062f971cc1b0",
+        "title": "（虚构）云杉市仓库警情与异地演练材料",
+        "summary": "合成新闻情景；不对应真实新闻。模拟应急信息站确认火情发生，但没有说明火情原因。；虚构青岚市救援站旧稿谈的是演练，不是云杉市当前事件。；当前证据中没有起火原因鉴定结论。；两份材料的发布主体、地点和事件日期不同，均为虚构场景资料。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。模拟应急信息站确认火情发生，但没有说明火情原因。；虚构青岚市救援站旧稿谈的是演练，不是云杉市当前事件。；当前证据中没有起火原因鉴定结论。；两份材料的发布主体、地点和事件日期不同，均为虚构场景资料。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-b55c4b94062f971cc1b0",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "模拟应急信息站确认火情发生，但没有说明火情原因。；虚构青岚市救援站旧稿谈的是演练，不是云杉市当前事件。；当前证据中没有起火原因鉴定结论。；两份材料的发布主体、地点和事件日期不同，均为虚构场景资料。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-b55c4b94062f971cc1b0"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-b55c4b94062f971cc1b0"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-1f5f32925bdae3886354",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥杯小组赛和决赛的比赛资料",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-05",
+        "fresh_bad_case",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-1f5f32925bdae3886354",
+        "title": "（虚构）星桥杯小组赛和决赛的比赛资料",
+        "summary": "合成新闻情景；不对应真实新闻。虚构星桥杯小组赛在模拟10月3日举行，队伍为松队和岭队。；决赛在10月9日举行，队伍为松队和湾队，阶段与对手均不同。；两篇标题都有松队，但原文时间、对手和阶段可明确区分。；两场比赛均有独立日期和赛事阶段标识，所有队伍及比赛均虚构。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构星桥杯小组赛在模拟10月3日举行，队伍为松队和岭队。；决赛在10月9日举行，队伍为松队和湾队，阶段与对手均不同。；两篇标题都有松队，但原文时间、对手和阶段可明确区分。；两场比赛均有独立日期和赛事阶段标识，所有队伍及比赛均虚构。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-1f5f32925bdae3886354",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构星桥杯小组赛在模拟10月3日举行，队伍为松队和岭队。；决赛在10月9日举行，队伍为松队和湾队，阶段与对手均不同。；两篇标题都有松队，但原文时间、对手和阶段可明确区分。；两场比赛均有独立日期和赛事阶段标识，所有队伍及比赛均虚构。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-1f5f32925bdae3886354"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-1f5f32925bdae3886354"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-1c470d5a2ff2feffe28b",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥研究社同一成果发布会的两篇报道",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-05",
+        "fresh_bad_case",
+        "consumption"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-1c470d5a2ff2feffe28b",
+        "title": "（虚构）星桥研究社同一成果发布会的两篇报道",
+        "summary": "合成新闻情景；不对应真实新闻。两篇模拟报道都对应星桥研究社10月8日同一成果发布会。；原文时间、地点、发布材料编号相同，第二篇仅更换标题与排版。；没有新增成果或第二次发布会；news_id不同不改变现实事件身份。；两篇材料都引用相同编号的发布会文件，未提供另一场活动的记录。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。两篇模拟报道都对应星桥研究社10月8日同一成果发布会。；原文时间、地点、发布材料编号相同，第二篇仅更换标题与排版。；没有新增成果或第二次发布会；news_id不同不改变现实事件身份。；两篇材料都引用相同编号的发布会文件，未提供另一场活动的记录。",
+        "content_type": "article",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.355,
+        "metrics": {
+          "impressions": 4000,
+          "clicks": 400,
+          "ctr": 0.1,
+          "unique_users": 800,
+          "effective_consumptions": 360,
+          "interactions": 18
+        },
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "interaction": 0.01,
+          "growth": 0.0
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-1c470d5a2ff2feffe28b",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "两篇模拟报道都对应星桥研究社10月8日同一成果发布会。；原文时间、地点、发布材料编号相同，第二篇仅更换标题与排版。；没有新增成果或第二次发布会；news_id不同不改变现实事件身份。；两篇材料都引用相同编号的发布会文件，未提供另一场活动的记录。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-1c470d5a2ff2feffe28b"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-1c470d5a2ff2feffe28b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-e98bcf9ec694486190d1",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥实验室材料测试线方案评审",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-08",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-e98bcf9ec694486190d1",
+        "title": "（虚构）星桥实验室材料测试线方案评审",
+        "summary": "合成新闻情景；不对应真实新闻。虚构星桥实验室公开材料写拟建设测试线，仍在方案评审阶段。；没有开工、投产或性能达标记录，也没有最终资金确认。；评审材料只提供规划指标，没有实际测试报告或产线运行记录。；所有机构、项目和记录均为虚构场景资料，当前项目状态仍为方案评审。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。虚构星桥实验室公开材料写拟建设测试线，仍在方案评审阶段。；没有开工、投产或性能达标记录，也没有最终资金确认。；评审材料只提供规划指标，没有实际测试报告或产线运行记录。；所有机构、项目和记录均为虚构场景资料，当前项目状态仍为方案评审。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-e98bcf9ec694486190d1",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "虚构星桥实验室公开材料写拟建设测试线，仍在方案评审阶段。；没有开工、投产或性能达标记录，也没有最终资金确认。；评审材料只提供规划指标，没有实际测试报告或产线运行记录。；所有机构、项目和记录均为虚构场景资料，当前项目状态仍为方案评审。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-e98bcf9ec694486190d1"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-e98bcf9ec694486190d1"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-fdb0b1b859cafa4831a5",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥实验室说明稿的历史合成阅读观察",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-08",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-fdb0b1b859cafa4831a5",
+        "title": "（虚构）星桥实验室说明稿的历史合成阅读观察",
+        "summary": "合成新闻情景；不对应真实新闻。本地历史推送观察模拟窗口为2026年10月1日和10月2日各UTC0时至1时；两窗模拟点击次数分别为100和150。；两窗模拟曝光次数分别为1000和1500，按各窗分母计算的CTR均为10%。；这些历史合成观察与2026年10月10日UTC0时至1时的当前热点聚合窗口独立，不能用于替代当前热点指标。；历史材料没有实验分流、对照组或用户选择记录，外部原因未知。；所谓推送观察仅为本地合成数据，没有真实发送、送达或读者态度测量。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。本地历史推送观察模拟窗口为2026年10月1日和10月2日各UTC0时至1时；两窗模拟点击次数分别为100和150。；两窗模拟曝光次数分别为1000和1500，按各窗分母计算的CTR均为10%。；这些历史合成观察与2026年10月10日UTC0时至1时的当前热点聚合窗口独立，不能用于替代当前热点指标。；历史材料没有实验分流、对照组或用户选择记录，外部原因未知。；所谓推送观察仅为本地合成数据，没有真实发送、送达或读者态度测量。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-fdb0b1b859cafa4831a5",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "本地历史推送观察模拟窗口为2026年10月1日和10月2日各UTC0时至1时；两窗模拟点击次数分别为100和150。；两窗模拟曝光次数分别为1000和1500，按各窗分母计算的CTR均为10%。；这些历史合成观察与2026年10月10日UTC0时至1时的当前热点聚合窗口独立，不能用于替代当前热点指标。；历史材料没有实验分流、对照组或用户选择记录，外部原因未知。；所谓推送观察仅为本地合成数据，没有真实发送、送达或读者态度测量。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-fdb0b1b859cafa4831a5"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-fdb0b1b859cafa4831a5"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-786cd6c6d244a8b7db2d",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥专题两篇报道的历史合成CTR",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-12",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-786cd6c6d244a8b7db2d",
+        "title": "（虚构）星桥专题两篇报道的历史合成CTR",
+        "summary": "合成新闻情景；不对应真实新闻。本地历史推送观察模拟窗口为2026年10月3日UTC0时至1时，合成报道甲曝光100次、点击50次，CTR为50%。；同一历史合成窗口报道乙曝光900次、点击90次，CTR为10%。；同口径历史合成总曝光1000次、总点击140次，汇总CTR为14%。；该历史窗口与2026年10月10日UTC0时至1时当前热点聚合窗口独立，这组数值不能替代当前热点指标。；数据不含原始用户明细，也没有真实投递或实验结果。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。本地历史推送观察模拟窗口为2026年10月3日UTC0时至1时，合成报道甲曝光100次、点击50次，CTR为50%。；同一历史合成窗口报道乙曝光900次、点击90次，CTR为10%。；同口径历史合成总曝光1000次、总点击140次，汇总CTR为14%。；该历史窗口与2026年10月10日UTC0时至1时当前热点聚合窗口独立，这组数值不能替代当前热点指标。；数据不含原始用户明细，也没有真实投递或实验结果。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-786cd6c6d244a8b7db2d",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "本地历史推送观察模拟窗口为2026年10月3日UTC0时至1时，合成报道甲曝光100次、点击50次，CTR为50%。；同一历史合成窗口报道乙曝光900次、点击90次，CTR为10%。；同口径历史合成总曝光1000次、总点击140次，汇总CTR为14%。；该历史窗口与2026年10月10日UTC0时至1时当前热点聚合窗口独立，这组数值不能替代当前热点指标。；数据不含原始用户明细，也没有真实投递或实验结果。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-786cd6c6d244a8b7db2d"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-786cd6c6d244a8b7db2d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    },
+    {
+      "case_id": "syn-d44c7c317af0bc72bcc1",
+      "description": "合成分析契约评测；运营判断另行评测。（虚构）星桥专题两个历史合成观察窗口",
+      "tags": [
+        "synthetic",
+        "pending_review",
+        "OPS-12",
+        "fresh_bad_case",
+        "growth"
+      ],
+      "analysis_input": {
+        "news_id": "synthetic-syn-d44c7c317af0bc72bcc1",
+        "title": "（虚构）星桥专题两个历史合成观察窗口",
+        "summary": "合成新闻情景；不对应真实新闻。本地历史推送观察模拟旧窗为2026年10月1日UTC0时至1时，合成曝光1000次、点击100次。；模拟新窗为2026年10月2日UTC0时至1时，合成曝光1000次、点击150次，两窗CTR为10%和15%，相差5个百分点。；两窗属于独立的历史合成观察，与2026年10月10日UTC0时至1时当前热点聚合窗口无关，不能替代当前指标。；历史材料没有实验分流、对照组、真实发送或真实用户效果观测。；模拟审核合同没有给予策略自动上线或全站扩大受众的授权。",
+        "content_excerpt": "以下为模拟情景事实，业务设定不代表腾讯新闻内部规则。本地历史推送观察模拟旧窗为2026年10月1日UTC0时至1时，合成曝光1000次、点击100次。；模拟新窗为2026年10月2日UTC0时至1时，合成曝光1000次、点击150次，两窗CTR为10%和15%，相差5个百分点。；两窗属于独立的历史合成观察，与2026年10月10日UTC0时至1时当前热点聚合窗口无关，不能替代当前指标。；历史材料没有实验分流、对照组、真实发送或真实用户效果观测。；模拟审核合同没有给予策略自动上线或全站扩大受众的授权。",
+        "content_type": "video",
+        "window_start": "2026-10-10T00:00:00Z",
+        "window_end": "2026-10-10T01:00:00Z",
+        "hot_score": 0.18663636363636363,
+        "metrics": {
+          "impressions": 10000,
+          "clicks": 100,
+          "ctr": 0.01,
+          "unique_users": 200,
+          "effective_consumptions": 10,
+          "interactions": 0
+        },
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "interaction": 0.0,
+          "growth": 0.14863636363636365
+        },
+        "related_news": [
+          {
+            "news_id": "synthetic-evidence-syn-d44c7c317af0bc72bcc1",
+            "title": "合成情景事实记录（非外部新闻来源）",
+            "excerpt": "本地历史推送观察模拟旧窗为2026年10月1日UTC0时至1时，合成曝光1000次、点击100次。；模拟新窗为2026年10月2日UTC0时至1时，合成曝光1000次、点击150次，两窗CTR为10%和15%，相差5个百分点。；两窗属于独立的历史合成观察，与2026年10月10日UTC0时至1时当前热点聚合窗口无关，不能替代当前指标。；历史材料没有实验分流、对照组、真实发送或真实用户效果观测。；模拟审核合同没有给予策略自动上线或全站扩大受众的授权。",
+            "source_url": null,
+            "published_at": "2026-10-10T00:00:00Z",
+            "final_score": 1.0,
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ]
+          }
+        ],
+        "analysis_policy_version": "synthetic-operations-analysis-v1",
+        "memory_context": null
+      },
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "required_evidence_news_ids": [
+          "synthetic-evidence-syn-d44c7c317af0bc72bcc1"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-syn-d44c7c317af0bc72bcc1"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ],
+        "must_state_limitation": true
+      }
+    }
+  ]
+}

@@ -273,4 +273,5 @@ class HotNewsQueryService:
             idempotency_key=item.idempotency_key,
             supersedes_decision_id=item.supersedes_decision_id,
             created_at=item.created_at,
+            operator_feedback=item.operator_feedback,
         )

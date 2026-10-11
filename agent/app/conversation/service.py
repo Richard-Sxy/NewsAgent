@@ -11,12 +11,14 @@ import json
 import re
 from collections.abc import Awaitable, Callable
 from uuid import UUID
+from fastapi import HTTPException
 
 from app.conversation.plan import ConversationPlan
 from app.conversation.local import has_dated_news_request
 from app.conversation.query_understanding import QueryResolutionError
 from app.conversation.context import LengthBasedContext, ContextBudgetExceeded, POLICY_VERSION
 from app.conversation.tools import ConversationToolDenied, TOOL_DESCRIPTIONS, render_tool_results
+from app.conversation.related_articles import related_article_deadline
 from app.data_analysis.runner import AnalysisExecutionError
 from app.domain.errors import AgentOutputValidationError, HotNewsPersistenceError
 from app.model_runtime.agent_client import model_request_context
@@ -28,13 +30,21 @@ from app.sql_assistant.input_boundary import SqlAssistantQuestionError
 
 ProgressCallback = Callable[[str, dict], Awaitable[None]]
 
-
+"""对话Agent服务链路"""
 class ConversationAgentService:
     def __init__(self, *, repository, model, tools, context_max_chars: int = 32000,
                  context_recent_chars: int = 12000, context_summary_chars: int = 4000,
                  context_threshold_ratio: float = 0.8, context_max_compaction_attempts: int = 2,
-                 max_tool_calls: int = 3, turn_timeout_seconds: float = 60, local_simulation: bool = False,
+                 max_tool_calls: int = 3, max_planning_steps: int = 8, max_inputs: int = 3, max_inputs_chars: str = 8000,
+                 turn_timeout_seconds: float = 60, local_simulation: bool = False,
                  runtime_metadata: dict | None = None):
+        limits = {
+            "max_planning_steps": max_planning_steps,
+            "max_inputs": max_inputs,
+            "max_input_chars": max_inputs_chars,
+        }
+        if any(type(value) is not int or value <= 0 for value in limits.values()):
+            raise ValueError("conversation input must be positive integers")
         self.repository = repository
         self._model = model
         self._tools = tools
@@ -96,6 +106,7 @@ class ConversationAgentService:
         model_ids = []
         error_code = None
         answer = ""
+        turn_deadline = asyncio.get_running_loop().time() + self._timeout
         try:
             async with asyncio.timeout(self._timeout):
                 await self._notify(on_event, "phase", {"phase": "history", "message": "正在恢复本会话上下文。"})
@@ -112,7 +123,7 @@ class ConversationAgentService:
                     await self._notify(on_event, event, data)
                 def input_payload():
                     return {"message": content, "history": [],
-                            "tool_results": [item.model_dump(mode="json") for item in traces],
+                            "tool_results": [self._model_trace(item) for item in traces],
                             "available_tools": available, "tools_remaining": self._max_tool_calls - len(traces)}
                 def measure(history):
                     payload = input_payload()
@@ -143,7 +154,8 @@ class ConversationAgentService:
                         # 这边用正则匹配 re 正则函数类 \d 表示任意匹配字符 ｜ 表示或者 plan.answer 表示需要匹配的对象 re.I 表示忽略大小写匹配
                         if plan.action == "respond":
                             if re.search(r"\d|news_id|run_id|query_id|chunk_id", plan.answer, flags=re.I):
-                                answer = "解释文字未通过数字或引用约束；权威数据只显示本轮工具的原始快照。"
+                                answer = ("以下为本轮工具结果的权威数据快照，模型文字说明因包含数字已省略。"
+                                          if traces else "本轮回答包含未经工具核实的数字，已按安全约束省略。")
                             else:
                                 answer = plan.answer
                             break
@@ -188,11 +200,12 @@ class ConversationAgentService:
 
                             traces[tool_index] = await self._execute_query(
                                 plan, tenant_id, user_id, str(claim.turn.id), hot_news_query_allowed,
-                                partial, remember_binding, original_question=content,
+                                partial, remember_binding, original_question=content, deadline=turn_deadline,
                             )
                         else:
                             seen_calls.add(key)
-                            traces.append(await self._execute(plan, tenant_id, str(claim.turn.id), on_event=on_event))
+                            traces.append(await self._execute(plan, tenant_id, str(claim.turn.id),
+                                                              on_event=on_event, deadline=turn_deadline))
                         trace = traces[-1]
                         understanding_id = trace.result.get("understanding_model_request_id")
                         if isinstance(understanding_id, str) and understanding_id and understanding_id not in model_ids:
@@ -222,7 +235,13 @@ class ConversationAgentService:
                 if rendered:
                     answer = f"{answer}\n\n{rendered}"
                 if self._local:
-                    answer = f"【本地规则模拟，不代表企业模型质量】\n{answer}"
+                    query_description = getattr(self._tools, "query_description", lambda _: None)(tenant_id) or {}
+                    query_model = query_description.get("understanding_model", {})
+                    mixed_query = (any(trace.name == "query_hot_news" for trace in traces)
+                                   and query_model.get("provider") == "openai_compatible")
+                    notice = ("查询理解使用已配置大模型，其余本地演示环节采用规则模拟"
+                              if mixed_query else "本地规则模拟，不代表企业模型质量")
+                    answer = f"【{notice}】\n{answer}"
                 answer = answer[:30000]
         except asyncio.CancelledError:
             # 捕获的取消允许有界清理。不要分离未跟踪的
@@ -285,11 +304,14 @@ class ConversationAgentService:
                                                       "message": "模型暂时不可用，进行一次有界重试。"})
                 await asyncio.sleep(0.1)
 
-    async def _execute(self, plan, tenant_id: str, trace_id: str, *, on_event: ProgressCallback | None = None):
+    async def _execute(self, plan, tenant_id: str, trace_id: str, *, on_event: ProgressCallback | None = None,
+                       deadline: float | None = None):
         for attempt in range(1, 3):
             try:
-                result = await asyncio.wait_for(self._tools.execute(name=plan.tool_name, arguments=plan.arguments,
-                                                                    tenant_id=tenant_id, trace_id=trace_id), timeout=10)
+                tool_deadline = asyncio.get_running_loop().time() + 10
+                with related_article_deadline(min(deadline, tool_deadline) if deadline else tool_deadline):
+                    result = await asyncio.wait_for(self._tools.execute(name=plan.tool_name, arguments=plan.arguments,
+                                                                        tenant_id=tenant_id, trace_id=trace_id), timeout=10)
                 return ToolTrace(name=plan.tool_name, status="completed", attempts=attempt, arguments=plan.arguments, result=result)
             except ConversationToolDenied:
                 return ToolTrace(name=plan.tool_name, status="denied", attempts=attempt, arguments={}, result={}, error_code="tool_not_allowed_or_invalid")
@@ -310,7 +332,7 @@ class ConversationAgentService:
 
     """热点新闻查询 Agent"""
     async def _execute_query(self, plan, tenant_id, user_id, trace_id, allowed, partial, on_bound,
-                             *, original_question: str):
+                             *, original_question: str, deadline: float | None = None):
         # 此命令还保留/排队工作。不应用读取工具重试，或其十秒超时；外轮预算仍然限制等待。
         try:
             if not allowed:
@@ -321,8 +343,10 @@ class ConversationAgentService:
                 return ToolTrace(name=plan.tool_name, status="denied", attempts=0,
                                  arguments={}, result={"query_input_error": "question_mismatch"},
                                  error_code="query_question_mismatch")
-            result = await self._tools.execute_hot_news_query(arguments=plan.arguments, tenant_id=tenant_id,
-                user_id=user_id, trace_id=trace_id, allowed=allowed, on_bound=on_bound)
+            # 这边执行热点新闻查询
+            with related_article_deadline(deadline):
+                result = await self._tools.execute_hot_news_query(arguments=plan.arguments, tenant_id=tenant_id,
+                    user_id=user_id, trace_id=trace_id, allowed=allowed, on_bound=on_bound)
             return ToolTrace(name=plan.tool_name, status="completed", attempts=1,
                              arguments=plan.arguments, result=result)
         except QueryResolutionError as exc:
@@ -340,15 +364,28 @@ class ConversationAgentService:
         except ConversationToolDenied:
             return ToolTrace(name=plan.tool_name, status="denied", attempts=1,
                              arguments={}, result={}, error_code="hot_news_query_not_approved_or_invalid")
+        except HTTPException as exc:
+            code = {502: "query_workflow_failed", 503: "query_backend_unavailable",
+                    504: "query_wait_timeout"}.get(exc.status_code, "query_request_rejected")
+            return ToolTrace(name=plan.tool_name, status="failed", attempts=1,
+                             arguments=plan.arguments, result=dict(partial), error_code=code)
         except Exception:
             return ToolTrace(name=plan.tool_name, status="failed", attempts=1,
                              arguments=plan.arguments, result=dict(partial),
-                             error_code="query_in_progress" if partial else "hot_news_query_unavailable")
+                             error_code="query_result_unavailable" if partial else "hot_news_query_unavailable")
 
     @staticmethod
     async def _notify(callback: ProgressCallback | None, event: str, data: dict):
         if callback is not None:
             await callback(event, data)
+
+    @staticmethod
+    def _model_trace(trace):
+        """Automatic excerpt cards belong to the saved UI projection, not the planner budget."""
+        projected = trace.model_dump(mode="json")
+        if trace.name in {"read_hot_news", "query_hot_news"}:
+            projected["result"].pop("related_articles", None)
+        return projected
 
     @staticmethod
     def _context_trace(trace):

@@ -16,17 +16,19 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, StringConstrai
 from app.schemas.sql_assistant import SqlAssistantIntent
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError, screen_question
 from app.sql_assistant.planner import local_query_intent, validate_intent
+from app.sql_assistant.presentation import ResponseStyle, extract_query_presentation
 from app.sql_assistant.scenarios import SqlScenario
+from app.conversation.query_time import extract_query_time
 
 
 Condition = Annotated[str, StringConstraints(min_length=1, max_length=120)]
-TimeExpression = Literal["sample", "today", "yesterday", "latest", "date"]
+TimeExpression = Literal["sample", "today", "yesterday", "day_before_yesterday", "latest", "date"]
 RankingSource = Literal["project_computed", "enterprise_board", "unspecified"]
 ResolutionCode = Literal["ready", "input_boundary", "invalid_proposal", "unsupported_condition", "ambiguous_requirements",
                          "time_semantic_drift", "source_semantic_drift", "ranking_source_unavailable", "local_syntax",
                          "model_unresolved", "intent_not_approved", "intent_semantic_drift", "latest_window_unavailable",
                          "no_complete_hour", "time_coverage_unavailable", "window_not_approved",
-                         "query_intent_mismatch", "semantic_mismatch"]
+                         "query_intent_mismatch", "semantic_mismatch", "presentation_semantic_drift"]
 
 
 class QueryUnderstanding(BaseModel):
@@ -36,8 +38,11 @@ class QueryUnderstanding(BaseModel):
     intent: SqlAssistantIntent | None = None
     time_expression: TimeExpression = "sample"
     explicit_date: date | None = None
+    hour_start: int | None = Field(default=None, ge=0, le=23)
+    hour_end: int | None = Field(default=None, ge=1, le=24)
     time_basis: Literal["behavior", "publication"] = "behavior"
     ranking_source: RankingSource = "unspecified"
+    response_style: ResponseStyle = "list"
     unsupported_conditions: list[Condition] = Field(default_factory=list, max_length=8)
 
     @model_validator(mode="after")
@@ -46,6 +51,8 @@ class QueryUnderstanding(BaseModel):
             raise ValueError("ready requires an intent and no unsupported conditions")
         if (self.time_expression == "date") != (self.explicit_date is not None):
             raise ValueError("explicit_date is required only for a date expression")
+        if (self.hour_start is None) != (self.hour_end is None):
+            raise ValueError("hour bounds must be supplied together")
         return self
 
 
@@ -60,6 +67,8 @@ class QueryPolicy(BaseModel):
     supported_window_start: AwareDatetime
     supported_window_end: AwareDatetime
     data_watermark: AwareDatetime | None = None
+    coverage_window_start: AwareDatetime | None = None
+    coverage_window_end: AwareDatetime | None = None
     timezone: str = Field(default="Asia/Shanghai", min_length=1, max_length=80)
     data_kind: Literal["synthetic", "enterprise"] = "synthetic"
     allowed_ranking_sources: tuple[Literal["project_computed", "enterprise_board"], ...] = ("project_computed",)
@@ -76,7 +85,14 @@ class QueryPolicy(BaseModel):
             raise ValueError("policy limits exceed the approved scenario")
         if self.supported_window_end - self.supported_window_start != timedelta(hours=1):
             raise ValueError("the current adapter supports one complete hour only")
-        for value in (self.supported_window_start, self.supported_window_end, self.data_watermark):
+        if (self.coverage_window_start is None) != (self.coverage_window_end is None):
+            raise ValueError("coverage bounds must be supplied together")
+        if self.coverage_window_start is not None and not (
+            self.coverage_window_start <= self.supported_window_start < self.supported_window_end <= self.coverage_window_end
+        ):
+            raise ValueError("default hourly window must lie within warehouse coverage")
+        for value in (self.supported_window_start, self.supported_window_end, self.data_watermark,
+                      self.coverage_window_start, self.coverage_window_end):
             if value is not None and (value.minute or value.second or value.microsecond):
                 raise ValueError("policy windows and complete watermark must align to hours")
         if not self.allowed_ranking_sources or len(set(self.allowed_ranking_sources)) != len(self.allowed_ranking_sources):
@@ -96,10 +112,13 @@ class QueryResolution(BaseModel):
     explicit_date: date | None = None
     time_basis: Literal["behavior", "publication"] = "behavior"
     ranking_source: RankingSource = "project_computed"
+    response_style: ResponseStyle = "list"
     requested_window_start: AwareDatetime | None = None
     requested_window_end: AwareDatetime | None = None
     supported_window_start: AwareDatetime
     supported_window_end: AwareDatetime
+    coverage_window_start: AwareDatetime | None = None
+    coverage_window_end: AwareDatetime | None = None
     notes: list[Annotated[str, StringConstraints(min_length=1, max_length=500)]] = Field(default_factory=list, max_length=8)
 
     def require_ready(self):
@@ -117,8 +136,10 @@ class QueryResolutionError(ValueError):
         super().__init__(resolution.message)
 
 
-_DATE = re.compile(r"(?<!\d)(\d{4})[-年/](\d{1,2})[-月/](\d{1,2})日?(?!\d)")
-_TEMPORAL = re.compile(r"今日|今天|昨日|昨天|最新|最近热点|最近热榜|当前样本|演示样本|样本窗口|模拟样本")
+class QueryRequirementsError(ValueError):
+    """Invalid date/count language requires clarification, not a safety denial."""
+
+
 _ENTERPRISE = re.compile(r"官方|企业原榜|内部榜|原始榜单|腾讯新闻|腾讯(?:热榜|榜单)|微信|微博|百度|抖音|热搜|(?<![A-Za-z_])(?:tencent|wechat)(?![A-Za-z_])", re.I)
 _PROJECT = re.compile(r"NewsAgent(?:计算)?榜|项目计算榜|项目榜|计算榜", re.I)
 _METRICS = {"点击率": "ctr", "ctr": "ctr", "点击量": "clicks", "点击数": "clicks", "点击": "clicks",
@@ -153,24 +174,18 @@ def _chinese_number(value: str) -> int:
     return total + current
 
 
-def _requirements(question: str) -> dict:
-    text = screen_question(question)
-    temporal = set()
-    if re.search(r"今日|今天", text):
-        temporal.add("today")
-    if re.search(r"昨日|昨天", text):
-        temporal.add("yesterday")
-    if re.search(r"最新|最近热点|最近热榜", text):
-        temporal.add("latest")
-    if re.search(r"当前样本|演示样本|样本窗口|模拟样本", text):
-        temporal.add("sample")
-    dates = []
-    for match in _DATE.finditer(text):
-        dates.append(date(*(int(value) for value in match.groups())))
-    if dates:
-        temporal.add("date")
+def _requirements(question: str, *, now: datetime | None = None, timezone_name: str = "Asia/Shanghai") -> dict:
+    presentation = extract_query_presentation(screen_question(question))
+    time_requirements = extract_query_time(presentation.query_text,
+                                          now=now or datetime.now(timezone.utc), timezone=timezone_name)
+    text = time_requirements.query_text
+    temporal = set(time_requirements.time_expressions)
+    dates, hours = list(time_requirements.dates), list(time_requirements.hours)
+    try:
+        counts = {_chinese_number(match.group(1)) for match in [*_LIMIT.finditer(text), *_COUNT.finditer(text)]}
+    except ValueError as exc:
+        raise QueryRequirementsError("invalid date or count") from exc
     metrics = {_METRICS[match.group().lower()] for match in _METRIC_PATTERN.finditer(text)}
-    counts = {_chinese_number(match.group(1)) for match in [*_LIMIT.finditer(text), *_COUNT.finditer(text)]}
     categories = {value for value in ("科技", "财经", "体育", "社会") if value in text}
     content = set()
     if re.search(r"图文|(?<![A-Za-z])article(?![A-Za-z])", text, re.I):
@@ -182,7 +197,7 @@ def _requirements(question: str) -> dict:
         sources.add("enterprise_board")
     if _PROJECT.search(text):
         sources.add("project_computed")
-    unsupported = []
+    unsupported = list(time_requirements.unsupported_conditions)
     # These are warehouse/adapter limits, independent of which inference Port
     # proposed the plan. Other unknown semantics rely on a model declining and
     # on quality evaluations; the finite local vocabulary adds a stricter check.
@@ -192,33 +207,34 @@ def _requirements(question: str) -> dict:
         (r"超过|大于|小于|不少于|不低于|不超过|低于|至少|至多|排除|不含|除了|不要|不看|不包括|不是|非(?:科技|财经|体育|社会|图文|视频)", "threshold_or_exclusion"),
         (r"收入|销售额|订单|利润|用户画像|地区|城市|性别|年龄|正文|作者|转发|评论|点赞|阅读时长|有效消费|消费时长|UV|用户数|人数|effective_consumptions|duration|(?<![A-Za-z_])(?:author|category|content_type|region|age|gender)(?![A-Za-z_])", "unsupported_dimension_or_metric"),
         (r"对比|同比|环比|增长|平均|去重|中位|分位|占比|趋势|每小时|逐小时", "unsupported_aggregation"),
-        (r"明天|前天|本周|上周|本月|上月|过去|最近\s*\d|近\s*\d|今早|今晚|实时|\d+\s*(?:小时|天|分钟)", "unsupported_time_range"),
+        (r"明天|本周|上周|本月|上月|过去|最近\s*\d|近\s*\d|实时|\d+\s*(?:小时|天|分钟)", "unsupported_time_range"),
         (r"娱乐|军事|汽车|健康|教育|游戏|国际", "unsupported_category"),
     ):
         if re.search(pattern, text, re.I):
             unsupported.append(code)
-    remaining_numbers = _COUNT.sub("", _LIMIT.sub("", _DATE.sub("", text)))
+    remaining_numbers = _COUNT.sub("", _LIMIT.sub("", text))
     if re.search(r"\d", remaining_numbers):
         unsupported.append("unassigned_number")
-    return dict(text=text, temporal=temporal, dates=dates, metrics=metrics, counts=counts,
-                categories=categories, content=content, sources=sources, unsupported=unsupported,
+    return dict(text=text, response_style=presentation.response_style, temporal=temporal, dates=dates, metrics=metrics, counts=counts,
+                categories=categories, content=content, sources=sources, unsupported=unsupported, hours=hours,
                 publication=bool(re.search(r"发布|刊发|published_at|publish_time|publication_time", text)),
+                time_clarification=(time_requirements.requires_clarification
+                                    and not {"invalid_hour_window", "unsupported_time_range"}.intersection(unsupported)),
+                time_assumptions=time_requirements.assumptions,
                 ascending=bool(re.search(r"最低|最少|升序|从低到高", text)),
                 descending=bool(re.search(r"最高|最多|降序|从高到低", text)))
 
 
 def _local_text(requirements: dict) -> str:
-    text = _DATE.sub("", requirements["text"])
-    text = text.replace("最近热点", "热点").replace("最近热榜", "热榜")
-    text = _TEMPORAL.sub("", text)
+    text = requirements["text"]
     text = _PROJECT.sub("", text)
     # Only fixed courtesy phrases and representation aliases are removed.
     # Unknown filters and conditions remain for the old finite parser to reject.
-    prefixes = r"^(?:你好|您好|请问|你能(?:否)?告诉我|能(?:不能|否)?告诉我|告诉我|我想知道|请给我|给我|麻烦你|麻烦|能否|可以|请|有哪些)[，,、\s]*"
+    prefixes = r"^(?:你好|您好|请问|你能(?:否)?告诉我|能(?:不能|否)?告诉我|告诉我|我想知道|我想看看|我想看|请给我|给我|麻烦你|麻烦|能不能|能否|可以|请你|请|有哪些)[，,、\s]*"
     while re.search(prefixes, text):
         text = re.sub(prefixes, "", text)
     text = re.sub(r"(?:有哪些|有哪几条|有什么|是什么|有哪些新闻)(?:吗|呢|呀)?[?？。!！\s]*$", "", text)
-    text = re.sub(r"(?:吗|呢|吧)[?？。!！\s]*$", "", text)
+    text = re.sub(r"(?:吗|呢|吧|呀|啊|呗)[?？。!！\s]*$", "", text)
     for before, after in (("热门", "热点"), ("热榜", "热点排行"), ("排行榜", "排行"), ("榜单", "排行"), ("点击数", "点击量"), ("看一下", "查看"), ("列出", "展示")):
         text = text.replace(before, after)
     for before, after in (("clicks", "点击量"), ("impressions", "曝光量"), ("interactions", "互动量"), ("hot_score", "热度分")):
@@ -234,28 +250,37 @@ def _local_text(requirements: dict) -> str:
 
 
 def local_query_understanding(payload: dict) -> str:
-    """Return bounded deterministic JSON; no SQL, clock or data access."""
+    """返回有界确定性 JSON; 没有 SQL、时钟或数据访问。"""
     policy_data = payload.get("policy")
     policy = QueryPolicy.model_validate(policy_data) if policy_data is not None else None
     scenario = policy.scenario if policy else SqlScenario.model_validate(payload["scenario"])
     scenario = scenario.model_copy(update={"default_limit": policy.default_limit if policy else min(5, scenario.max_limit)})
     try:
-        requirements = _requirements(payload["question"])
+        context = payload.get("temporal_context", {})
+        clock = datetime.fromisoformat(context["server_now"]) if "server_now" in context else None
+        requirements = _requirements(payload["question"], now=clock,
+                                     timezone_name=policy.timezone if policy else "Asia/Shanghai")
+    except QueryRequirementsError:
+        return QueryUnderstanding(status="clarify", unsupported_conditions=["invalid_date_or_count"]).model_dump_json()
     except (SqlAssistantQuestionError, ValueError):
         return QueryUnderstanding(status="unsupported", unsupported_conditions=["input_boundary"]).model_dump_json()
     temporal = requirements["temporal"]
-    fields = dict(time_expression=next(iter(temporal)) if len(temporal) == 1 else "sample",
+    if requirements["time_clarification"]:
+        return QueryUnderstanding(status="clarify", unsupported_conditions=["ambiguous_time"]).model_dump_json()
+    fields = dict(response_style=requirements["response_style"], time_expression=next(iter(temporal)) if len(temporal) == 1 else "sample",
                   explicit_date=requirements["dates"][0] if temporal == {"date"} else None,
+                  hour_start=requirements["hours"][0][0] if len(requirements["hours"]) == 1 and not requirements["unsupported"] else None,
+                  hour_end=requirements["hours"][0][1] if len(requirements["hours"]) == 1 and not requirements["unsupported"] else None,
                   time_basis="publication" if requirements["publication"] else "behavior",
                   ranking_source=next(iter(requirements["sources"])) if len(requirements["sources"]) == 1 else "unspecified")
-    if len(temporal) > 1 or len(set(requirements["dates"])) > 1 or any(len(requirements[key]) > 1 for key in ("metrics", "counts", "categories", "content", "sources")):
+    if len(temporal) > 1 or len(set(requirements["dates"])) > 1 or len(requirements["hours"]) > 1 or any(len(requirements[key]) > 1 for key in ("metrics", "counts", "categories", "content", "sources")):
         return QueryUnderstanding(status="clarify", **fields).model_dump_json()
     if requirements["unsupported"] or fields["ranking_source"] == "enterprise_board":
         return QueryUnderstanding(status="unsupported", unsupported_conditions=requirements["unsupported"] or ["enterprise_board"], **fields).model_dump_json()
     try:
         intent = local_query_intent({"question": _local_text(requirements), "scenario": scenario.model_dump(mode="json")})
     except SqlAssistantQuestionError:
-        return QueryUnderstanding(status="unsupported", unsupported_conditions=["local_syntax"], **fields).model_dump_json()
+        return QueryUnderstanding(status="clarify", unsupported_conditions=["local_syntax"], **fields).model_dump_json()
     return QueryUnderstanding(status="ready", intent=intent, **fields).model_dump_json()
 
 
@@ -270,17 +295,28 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
                                 now: datetime | None = None) -> QueryResolution:
     # 模型时间校验
     zone = ZoneInfo(policy.timezone)
+    clock = now or datetime.now(timezone.utc)
+    if clock.tzinfo is None or clock.utcoffset() is None:
+        raise ValueError("query clock must be timezone aware")
+    clock = clock.astimezone(zone)
     start, end = policy.supported_window_start.astimezone(zone), policy.supported_window_end.astimezone(zone)
+    ranged = policy.coverage_window_start is not None
+    coverage_start = (policy.coverage_window_start or start).astimezone(zone)
+    coverage_end = (policy.coverage_window_end or end).astimezone(zone)
     proposal_fields = {}
     requested = {}
 
     def resolved(status, code, message, **extras):
         return QueryResolution(status=status, reason_code=code, message=message,
                                supported_window_start=start, supported_window_end=end,
+                               coverage_window_start=coverage_start if ranged else None,
+                               coverage_window_end=coverage_end if ranged else None,
                                **proposal_fields, **requested, **extras)
 
     try:
-        requirements = _requirements(original_question)
+        requirements = _requirements(original_question, now=clock, timezone_name=policy.timezone)
+    except QueryRequirementsError:
+        return resolved("clarify", "ambiguous_requirements", "日期或数量无法明确解析，请使用有效日期和一个整数条数；没有执行查询。")
     except (SqlAssistantQuestionError, ValueError):
         return resolved("unsupported", "input_boundary", "该问题未通过只读查询输入校验，没有执行查询。")
     try:
@@ -289,23 +325,43 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
         return resolved("unsupported", "invalid_proposal", "查询理解结果未通过结构校验，没有执行查询。")
     proposal_fields = {"time_expression": proposal.time_expression, "explicit_date": proposal.explicit_date,
                        "time_basis": proposal.time_basis,
+                       "response_style": proposal.response_style,
                        "ranking_source": "project_computed" if proposal.ranking_source == "unspecified" else proposal.ranking_source}
+    if requirements["time_clarification"]:
+        return resolved("clarify", "ambiguous_requirements", "已识别查询请求，但日期或小时仍有歧义，请补充具体哪一天或哪个小时；不要求固定日期格式，没有执行查询。")
     if requirements["unsupported"] or proposal.time_basis == "publication":
         return resolved("unsupported", "unsupported_condition", "当前聚合查询不支持问题中的时间口径、来源、条件、维度或统计方式，没有执行查询。")
-    if len(requirements["temporal"]) > 1 or len(set(requirements["dates"])) > 1 or any(len(requirements[key]) > 1 for key in ("metrics", "counts", "categories", "content", "sources")) or (requirements["ascending"] and requirements["descending"]):
+    if len(requirements["temporal"]) > 1 or len(set(requirements["dates"])) > 1 or len(requirements["hours"]) > 1 or any(len(requirements[key]) > 1 for key in ("metrics", "counts", "categories", "content", "sources")) or (requirements["ascending"] and requirements["descending"]):
         return resolved("clarify", "ambiguous_requirements", "问题包含多个时间、指标、筛选、数量或排序要求，请明确一种查询口径。")
     expected_time = next(iter(requirements["temporal"]), "sample")
     expected_date = requirements["dates"][0] if expected_time == "date" else None
+    relative_days = {"today": 0, "yesterday": 1, "day_before_yesterday": 2}
+    relative_date = (clock.date() - timedelta(days=relative_days[expected_time])
+                     if expected_time in relative_days else None)
+    normalized_date = None
+    # A model may spell a relative day as its exact calendar equivalent. Prove
+    # that equivalence using the original question and the same server clock;
+    # never use dataset coverage to repair a wrong model date.
+    if (relative_date is not None and proposal.time_expression == "date"
+            and proposal.explicit_date == relative_date):
+        normalized_date = proposal.explicit_date
+        proposal = proposal.model_copy(update={"time_expression": expected_time, "explicit_date": None})
+        proposal_fields.update(time_expression=expected_time, explicit_date=None)
     if proposal.time_expression != expected_time or proposal.explicit_date != expected_date:
         return resolved("unsupported", "time_semantic_drift", "查询理解遗漏或改变了原问题的时间条件，没有执行查询。")
+    expected_hours = requirements["hours"][0] if requirements["hours"] else (None, None)
+    if (proposal.hour_start, proposal.hour_end) != expected_hours:
+        return resolved("unsupported", "time_semantic_drift", "查询理解遗漏或改变了原问题的小时条件，没有执行查询。")
     if requirements["sources"] and proposal.ranking_source not in requirements["sources"]:
         return resolved("unsupported", "source_semantic_drift", "查询理解遗漏或改变了原问题的榜单来源，没有执行查询。")
     if proposal_fields["ranking_source"] not in policy.allowed_ranking_sources or proposal_fields["ranking_source"] != "project_computed":
         return resolved("unsupported", "ranking_source_unavailable", "当前仅接通项目计算榜，企业原榜尚未接入，没有执行查询。")
     if proposal.status != "ready" or proposal.unsupported_conditions:
         code = "local_syntax" if "local_syntax" in proposal.unsupported_conditions else "model_unresolved"
-        message = "本地有限规则尚不能完整理解该问法，请保留指标和条件改用示例问法。" if code == "local_syntax" else "查询理解尚未确认全部条件，请明确查询要求；没有执行查询。"
+        message = "尚不能确认这句话的全部查询条件，请明确新闻范围、指标或数量；这是理解澄清，未判定为提示词注入，也没有执行查询。" if code == "local_syntax" else "模型尚不能确认全部查询条件，可以用自然语言补充哪一天、哪个小时或筛选范围；无需固定日期格式，没有执行查询。"
         return resolved(proposal.status if proposal.status != "ready" else "unsupported", code, message)
+    if proposal.response_style != requirements["response_style"]:
+        return resolved("clarify", "presentation_semantic_drift", "查询理解改变了原问题的展示要求，请确认需要榜单还是简要总结；没有执行查询。")
     intent = proposal.intent
     try:
         validate_intent(intent, policy.scenario)
@@ -334,19 +390,31 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
     if intent.category is None and len(policy.scenario.allowed_categories) == 1:
         defaults["category"] = policy.scenario.allowed_categories[0]
     intent = intent.model_copy(update=defaults)
-    clock = now or datetime.now(timezone.utc)
-    if clock.tzinfo is None or clock.utcoffset() is None:
-        raise ValueError("query clock must be timezone aware")
-    clock = clock.astimezone(zone)
     watermark = (policy.data_watermark or end).astimezone(zone)
-    if expected_time in {"sample", "latest"}:
+    if proposal.hour_start is not None:
+        target = (relative_date if relative_date is not None else expected_date if expected_time == "date"
+                  else (min(watermark, coverage_end) - timedelta(hours=1)).date()
+                  if expected_time == "latest" else start.date())
+        requested_start = datetime.combine(target, datetime.min.time(), tzinfo=zone) + timedelta(hours=proposal.hour_start)
+        requested_end = requested_start + timedelta(hours=1)
+    elif expected_time in {"sample", "latest"}:
         requested_start, requested_end = start, end
-        if expected_time == "latest" and watermark != end:
+        if ranged and expected_time == "latest":
+            requested_end = min(watermark, coverage_end)
+            requested_start = requested_end - timedelta(hours=1)
+        elif expected_time == "latest" and watermark != end:
             return resolved("unsupported", "latest_window_unavailable", "最新完整数据窗口不在当前批准窗口内，没有自动替换查询范围。")
     else:
-        target = clock.date() if expected_time == "today" else clock.date() - timedelta(days=1) if expected_time == "yesterday" else expected_date
+        target = relative_date if relative_date is not None else expected_date
         requested_start = datetime.combine(target, datetime.min.time(), tzinfo=zone)
         requested_end = requested_start + timedelta(days=1)
+        if ranged:
+            requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
+            if requested_start < coverage_start or requested_start >= min(watermark, coverage_end):
+                return resolved("unsupported", "time_coverage_unavailable", "该日期不在当前完整样本覆盖内，没有替换为其他日期。")
+            example_start = max(requested_start, coverage_start)
+            return resolved("clarify", "ambiguous_requirements", "已识别新闻查询和展示意图；热点分析每次取一个整点小时，请补充开始和结束小时，"
+                            f"例如“{example_start:%Y-%m-%d %H:%M}至{example_start + timedelta(hours=1):%H:%M}点击量前5条新闻”。")
         if expected_time == "today":
             completed_hour = clock.replace(minute=0, second=0, microsecond=0)
             requested_end = min(completed_hour, watermark) if watermark > requested_start else completed_hour
@@ -354,10 +422,10 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
         if requested_start >= requested_end:
             return resolved("clarify", "no_complete_hour", "当前日期尚无完整小时可供查询，请稍后查询或明确选择演示样本。")
     requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
-    if watermark < requested_end or requested_start < start or requested_end > end:
+    if watermark < requested_end or requested_start < coverage_start or requested_end > coverage_end:
         sample = "合成样本" if policy.data_kind == "synthetic" else "批准数据"
-        return resolved("unsupported", "time_coverage_unavailable", f"请求的时间范围不在当前完整数据覆盖内；当前{sample}仅覆盖{start:%Y-%m-%d %H:%M}至{end:%H:%M}（{policy.timezone}）。没有查询今日实时数据，也没有自动替换为样本。")
-    if (requested_start, requested_end) != (start, end):
+        return resolved("unsupported", "time_coverage_unavailable", f"请求的时间范围不在当前完整数据覆盖内；当前{sample}仅覆盖{coverage_start:%Y-%m-%d %H:%M}至{coverage_end:%Y-%m-%d %H:%M}（{policy.timezone}）。没有查询今日实时数据，也没有自动替换为样本。")
+    if not ranged and (requested_start, requested_end) != (start, end):
         return resolved("unsupported", "window_not_approved", "当前热点接口只批准一个完整小时，不能直接执行全天或其他窗口查询；跨小时UV不能相加。")
     labels = {"clicks": "点击量", "ctr": "点击率", "impressions": "曝光量", "interactions": "互动量", "hot_score": "SQL候选热度分"}
     notes = ["按行为指标发生时间取数，不代表该时段发布的全部新闻。",
@@ -369,6 +437,11 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
         notes.append("最新指当前数据源可用的完整样本窗口，不等于当前日期的实时新闻。")
     if expected_time == "today":
         notes.append(f"今日仅指截至完整数据水位{requested_end:%H:%M}的范围，不是全天；当前时刻为{clock:%H:%M}。")
+    if proposal.response_style == "summary":
+        notes.append("按已验证的候选报告提供简要总结，展示要求不改变SQL指标、筛选或查询范围。")
+    notes.extend(dict.fromkeys(requirements["time_assumptions"]))
+    if normalized_date is not None:
+        notes.append(f"相对日期已按同一服务端时钟核对为{normalized_date:%Y-%m-%d}，保留原问的时间口径。")
     sample = "合成样本" if policy.data_kind == "synthetic" else "批准数据"
-    message = f"本次使用项目计算榜，查询{sample}{start:%Y-%m-%d %H:%M}至{end:%H:%M}（{policy.timezone}），按{labels[intent.sort_by]}选取最多{intent.row_limit}条候选，再由Python计算权威热度排行。"
+    message = f"本次使用项目计算榜，查询{sample}{requested_start:%Y-%m-%d %H:%M}至{requested_end:%H:%M}（{policy.timezone}），按{labels[intent.sort_by]}选取最多{intent.row_limit}条候选，再由Python计算权威热度排行。"
     return resolved("ready", "ready", message, intent=intent, canonical_question=_canonical_question(intent), notes=notes)

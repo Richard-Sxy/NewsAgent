@@ -9,14 +9,14 @@ from uuid import uuid4
 
 import pytest
 from pydantic import ValidationError
-from sqlalchemy import MetaData, Table
+from sqlalchemy import MetaData, Table, UniqueConstraint
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.schema import CreateIndex, CreateTable
 from sqlalchemy.sql import operators
 from sqlalchemy.sql.elements import Null
 
 from app.db.base import Base
-from app.models.conversation import ConversationRecord, ConversationTurnRecord
+from app.models.conversation import ConversationInputRecord, ConversationRecord, ConversationTurnRecord
 from app.repositories.conversation import (
     ConversationConflict,
     ConversationNotFound,
@@ -110,7 +110,7 @@ class FakeSession:
 
 class FakeDatabase:
     def __init__(self):
-        self.records = {ConversationRecord: [], ConversationTurnRecord: []}
+        self.records = {ConversationRecord: [], ConversationTurnRecord: [], ConversationInputRecord: []}
         self.locks = {}
         self.lock_queries = []
         self.commits = 0
@@ -410,12 +410,19 @@ def test_migration_adds_only_conversation_tables_with_matching_constraints():
             self.metadata = MetaData(naming_convention=Base.metadata.naming_convention)
             self.indexes = {}
             self.drops = []
+            self.executions = []
+
+        def execute(self, statement):
+            self.executions.append(statement)
 
         def create_table(self, name, *columns):
             Table(name, self.metadata, *columns)
 
         def create_index(self, name, table, columns, **kwargs):
             self.indexes[name] = (table, columns, kwargs)
+
+        def create_unique_constraint(self, name, table, columns, **kwargs):
+            self.metadata.tables[table].append_constraint(UniqueConstraint(*columns, name=name))
 
         def add_column(self, table, column):
             self.metadata.tables[table].append_column(column)
@@ -425,6 +432,9 @@ def test_migration_adds_only_conversation_tables_with_matching_constraints():
 
         def drop_index(self, name, **kwargs):
             self.drops.append(("index", name))
+
+        def drop_constraint(self, name, table, **kwargs):
+            self.drops.append(("constraint", name))
 
         def drop_table(self, name):
             self.drops.append(("table", name))
@@ -448,18 +458,32 @@ def test_migration_adds_only_conversation_tables_with_matching_constraints():
     deletion_module.op = operations
     assert deletion_module.down_revision == memory_module.revision
     deletion_module.upgrade()
-    for model in (ConversationRecord, ConversationTurnRecord):
+    inputs_path = path.with_name("20261010_0022_conversation_inputs.py")
+    inputs_spec = importlib.util.spec_from_file_location("conversation_inputs_migration", inputs_path)
+    inputs_module = importlib.util.module_from_spec(inputs_spec)
+    inputs_spec.loader.exec_module(inputs_module)
+    inputs_module.op = operations
+    # 0021 (operations feedback) only touches non-conversation tables and stays out of scope here.
+    assert inputs_module.down_revision == "20261010_0021"
+    inputs_module.upgrade()
+    assert set(operations.metadata.tables) == {"conversations", "conversation_turns", "conversation_inputs"}
+    for model in (ConversationRecord, ConversationTurnRecord, ConversationInputRecord):
         expected = str(CreateTable(model.__table__).compile(dialect=postgresql.dialect()))
         actual = str(CreateTable(operations.metadata.tables[model.__tablename__]).compile(dialect=postgresql.dialect()))
         # Additive migrations append columns after existing timestamps; compare
-        # semantic DDL clauses without imposing physical column order.
-        expected = sorted(expected.splitlines())
-        actual = sorted(actual.splitlines())
+        # semantic DDL clauses without imposing physical column order or the
+        # trailing comma of whichever element happens to render last.
+        expected = sorted(line.rstrip(", ") for line in expected.splitlines())
+        actual = sorted(line.rstrip(", ") for line in actual.splitlines())
         assert actual == expected
     assert operations.indexes["uq_conversation_turns_processing"][2]["unique"] is True
+    inputs_module.downgrade()
+    assert ("index", "ix_conversation_inputs_owner_turn") in operations.drops
+    assert ("constraint", "uq_conversation_turns_owner_id") in operations.drops
     deletion_module.downgrade()
     assert ("column", "deleted_at") in operations.drops
     memory_module.downgrade()
     assert ("column", "context_memory") in operations.drops
     module.downgrade()
-    assert [name for kind, name in operations.drops if kind == "table"] == ["conversation_turns", "conversations"]
+    assert [name for kind, name in operations.drops if kind == "table"] == [
+        "conversation_inputs", "conversation_turns", "conversations"]

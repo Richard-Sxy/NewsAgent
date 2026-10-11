@@ -31,6 +31,7 @@ from app.schemas.evaluation_dataset import (
     FreezeEvaluationDatasetResult,
     FrozenEvaluationCase,
 )
+from app.schemas.operations_feedback import is_fresh_bad_case_eligible
 
 
 class EvaluationDatasetNotReadyError(ValueError):
@@ -412,6 +413,15 @@ class EvaluationDatasetFreezer:
 
         cases: list[FrozenEvaluationCase] = []
         for snapshot in sorted(snapshots, key=lambda item: str(item.feedback_case_id)):
+            if command.dataset_layer == "fresh_bad_case" and not is_fresh_bad_case_eligible(
+                verdict=snapshot.expected.verdict,
+                source_type=snapshot.lineage.source_type,
+                source_reference=snapshot.lineage.source_reference,
+            ):
+                raise EvaluationDatasetNotReadyError(
+                    f"feedback case {snapshot.feedback_case_id} is not a reviewed analysis error; "
+                    "positive, editorial and strategy judgments cannot enter fresh_bad_case"
+                )
             if snapshot.tenant_id != command.tenant_id:
                 raise EvaluationDatasetNotReadyError(
                     "repository returned a cross-tenant feedback case"

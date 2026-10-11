@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2e30309e4418c9d88036",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2e30309e4418c9d88036",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构洛汐港航线中断，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：未署名视频称港口全面关闭，运营方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-c3613c6ce95ef2b61a18",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2e30309e4418c9d88036",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2e30309e4418c9d88036",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构洛汐港航线中断影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：未署名视频称港口全面关闭，运营方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-34a0c48019940973ccb4",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-66c97c62bd7ca73094dc",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-66c97c62bd7ca73094dc",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构港口通告确认仅一条客运航线暂停，货运未停。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-01e8fa4384f3e5dd7aa7",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-66c97c62bd7ca73094dc",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-66c97c62bd7ca73094dc",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构港口通告确认仅一条客运航线暂停，货运未停。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-76108e3da694d2ce2e97",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5ecfa6ccbe960ce1a53d",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5ecfa6ccbe960ce1a53d",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：运营方公布替代码头和下一轮评估时点。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：运营方公布替代码头和下一轮评估时点。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-fe44bfede93a0f596176",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5ecfa6ccbe960ce1a53d",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5ecfa6ccbe960ce1a53d",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：运营方公布替代码头和下一轮评估时点。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-e4b9f6fcec999dbb1dc9",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-65e054f99105d795bc1e",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-65e054f99105d795bc1e",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构洛汐港航线中断背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧画面被再次转载，暂停范围没有扩大。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-bae18f8b284a09fa1c62",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-65e054f99105d795bc1e",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-65e054f99105d795bc1e",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构洛汐港航线中断重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧画面被再次转载，暂停范围没有扩大。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-9250150092500f52576b",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c71234e8439b250c6e1d",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c71234e8439b250c6e1d",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构洛汐港航线中断：航线已恢复，旧停航通知仍被转发。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：航线已恢复，旧停航通知仍被转发。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-3c3ce3c1d8e6b4a46883",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "航线已恢复，旧停航通知仍被转发。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c71234e8439b250c6e1d",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c71234e8439b250c6e1d",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构洛汐港航线中断旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：航线已恢复，旧停航通知仍被转发。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-a9093f570d24e469228e",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "航线已恢复，旧停航通知仍被转发。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-cd3ee2a2f188d68fd687",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cd3ee2a2f188d68fd687",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：运营方更正恢复时刻的时区，旧译文早了数小时。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：运营方更正恢复时刻的时区，旧译文早了数小时。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-76af9141fc9f94bbe0a3",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "航线已恢复，旧停航通知仍被转发。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方更正恢复时刻的时区，旧译文早了数小时。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-cd3ee2a2f188d68fd687",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cd3ee2a2f188d68fd687",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。；旧画面被再次转载，暂停范围没有扩大。；航线已恢复，旧停航通知仍被转发。；运营方更正恢复时刻的时区，旧译文早了数小时。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构洛汐港航线中断：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：运营方更正恢复时刻的时区，旧译文早了数小时。；全部为虚构新闻情景。",
+        "title": "虚构洛汐港航线中断"
+      },
+      "case_id": "evo-e9351e0a421869037e5f",
+      "event_id": "synthetic-event-8a27df518d09fec96b62",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "未署名视频称港口全面关闭，运营方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构港口通告确认仅一条客运航线暂停，货运未停。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方公布替代码头和下一轮评估时点。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "旧画面被再次转载，暂停范围没有扩大。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "航线已恢复，旧停航通知仍被转发。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "运营方更正恢复时刻的时区，旧译文早了数小时。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-8a27df518d09fec96b62",
+      "story_title": "虚构洛汐港航线中断",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-af827384b15ae9f18524",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-af827384b15ae9f18524",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构双岸城市文化交流协议，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名帖称协议已生效，双方尚未发布文本。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-532aa8a57615e8146946",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-af827384b15ae9f18524",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-af827384b15ae9f18524",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构双岸城市文化交流协议影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名帖称协议已生效，双方尚未发布文本。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-95a68858c01aceb533a3",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-468ed31a05a0199faaa3",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-468ed31a05a0199faaa3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：两座虚构城市公布签署文本，说明后续仍需执行安排。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-c852ea6a3f668e0089e1",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-468ed31a05a0199faaa3",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-468ed31a05a0199faaa3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：两座虚构城市公布签署文本，说明后续仍需执行安排。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-840ad5d5b0a2336f2b45",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe16594dd1f0618118d1",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe16594dd1f0618118d1",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：首批交流项目名单和申请限制公布。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：首批交流项目名单和申请限制公布。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-ce36df60e6f02a3a037a",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe16594dd1f0618118d1",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe16594dd1f0618118d1",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：首批交流项目名单和申请限制公布。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-865f9a66eb921688d903",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4461d1810ddae2d89cd2",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4461d1810ddae2d89cd2",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：评论文章重复签署消息，没有新增执行项目。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-9f613a655e8c27665962",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4461d1810ddae2d89cd2",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4461d1810ddae2d89cd2",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构双岸城市文化交流协议重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：评论文章重复签署消息，没有新增执行项目。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-1f432c9d6d4493f62a4e",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-82368dc073c9a84beddb",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-82368dc073c9a84beddb",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：首批申请截止，旧申请提示不再可行动。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：首批申请截止，旧申请提示不再可行动。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-7f27d19d96d1308f3b65",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批申请截止，旧申请提示不再可行动。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-82368dc073c9a84beddb",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-82368dc073c9a84beddb",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构双岸城市文化交流协议旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：首批申请截止，旧申请提示不再可行动。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-0f0eb87a8478ef2f06a8",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批申请截止，旧申请提示不再可行动。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7ee83c570d24574a7d95",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7ee83c570d24574a7d95",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：双方更正交流名额的口径，旧稿把项目数写成人数。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：双方更正交流名额的口径，旧稿把项目数写成人数。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-3ccf2605f44458fc81e9",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批申请截止，旧申请提示不再可行动。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "双方更正交流名额的口径，旧稿把项目数写成人数。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7ee83c570d24574a7d95",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7ee83c570d24574a7d95",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。；评论文章重复签署消息，没有新增执行项目。；首批申请截止，旧申请提示不再可行动。；双方更正交流名额的口径，旧稿把项目数写成人数。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构双岸城市文化交流协议：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：双方更正交流名额的口径，旧稿把项目数写成人数。；全部为虚构新闻情景。",
+        "title": "虚构双岸城市文化交流协议"
+      },
+      "case_id": "evo-b47258eb8d20a01651cb",
+      "event_id": "synthetic-event-55ef98ba7a2501917a3b",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "匿名帖称协议已生效，双方尚未发布文本。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "两座虚构城市公布签署文本，说明后续仍需执行安排。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批交流项目名单和申请限制公布。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "评论文章重复签署消息，没有新增执行项目。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "首批申请截止，旧申请提示不再可行动。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "双方更正交流名额的口径，旧稿把项目数写成人数。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-55ef98ba7a2501917a3b",
+      "story_title": "虚构双岸城市文化交流协议",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-fe1a5b81143fd1727594",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe1a5b81143fd1727594",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构北岚机场转机流程，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：游客帖称全部转机要求取消，机场未证实。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-c28e928039782b607af1",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-fe1a5b81143fd1727594",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe1a5b81143fd1727594",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构北岚机场转机流程影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：游客帖称全部转机要求取消，机场未证实。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-6abb7fc7cc012c208d2d",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d03d95c3dda20dc3da52",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d03d95c3dda20dc3da52",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构机场确认只有指定航站楼流程简化，其他流程照旧。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-f25ab063411183a964eb",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d03d95c3dda20dc3da52",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d03d95c3dda20dc3da52",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构机场确认只有指定航站楼流程简化，其他流程照旧。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-d17ac80ca5d0090e6e01",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4874ff7494aad9dc10d1",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4874ff7494aad9dc10d1",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：新增引导图并说明特殊旅客的办理位置。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增引导图并说明特殊旅客的办理位置。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-2807799c1842910ce7d6",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4874ff7494aad9dc10d1",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4874ff7494aad9dc10d1",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增引导图并说明特殊旅客的办理位置。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-037773f167df72731736",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-b511f5c463390583440b",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b511f5c463390583440b",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构北岚机场转机流程背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：不同语言转载同一引导图，没有新手续。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-41bedaf16439f3371585",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-b511f5c463390583440b",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b511f5c463390583440b",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构北岚机场转机流程重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：不同语言转载同一引导图，没有新手续。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-1234155058b84963adfe",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a17b3f22e5573d81b7a3",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a17b3f22e5573d81b7a3",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构北岚机场转机流程：试运行结束，旧流程图已被新版本替代。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：试运行结束，旧流程图已被新版本替代。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-5d6ec5590b16286a4e78",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "试运行结束，旧流程图已被新版本替代。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-a17b3f22e5573d81b7a3",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a17b3f22e5573d81b7a3",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构北岚机场转机流程旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：试运行结束，旧流程图已被新版本替代。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-07edf91b62d0098e088d",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "试运行结束，旧流程图已被新版本替代。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0b0e7137c0167ff3d850",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0b0e7137c0167ff3d850",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：机场更正办理楼层，译稿把到达层误写成出发层。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：机场更正办理楼层，译稿把到达层误写成出发层。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-86864975e7a6dcf34f8e",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "试运行结束，旧流程图已被新版本替代。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "机场更正办理楼层，译稿把到达层误写成出发层。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0b0e7137c0167ff3d850",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0b0e7137c0167ff3d850",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。；不同语言转载同一引导图，没有新手续。；试运行结束，旧流程图已被新版本替代。；机场更正办理楼层，译稿把到达层误写成出发层。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构北岚机场转机流程：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：机场更正办理楼层，译稿把到达层误写成出发层。；全部为虚构新闻情景。",
+        "title": "虚构北岚机场转机流程"
+      },
+      "case_id": "evo-2c5d3899b62041839f1f",
+      "event_id": "synthetic-event-62fb3a22b5c99a7a87cf",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "游客帖称全部转机要求取消，机场未证实。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "虚构机场确认只有指定航站楼流程简化，其他流程照旧。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "新增引导图并说明特殊旅客的办理位置。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "不同语言转载同一引导图，没有新手续。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "试运行结束，旧流程图已被新版本替代。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-e4356d1f7dbe1783f180",
+          "text": "机场更正办理楼层，译稿把到达层误写成出发层。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注国际主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "多方归因",
+          "影响地区",
+          "翻译和时差"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e4356d1f7dbe1783f180",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-9fad3952a5ddde57b289"
+      },
+      "scope_sha256": "cda32c6996930da19ffff73447f508d4eb25105763c14cb20e6f507fe58db56d",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-62fb3a22b5c99a7a87cf",
+      "story_title": "虚构北岚机场转机流程",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

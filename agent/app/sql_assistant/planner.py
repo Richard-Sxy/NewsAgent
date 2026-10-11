@@ -4,6 +4,7 @@ import re
 
 from app.schemas.sql_assistant import SqlAssistantIntent
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError, screen_question
+from app.sql_assistant.presentation import extract_query_presentation
 from app.sql_assistant.scenarios import SqlScenario
 
 """加载的字符"""
@@ -32,7 +33,7 @@ def _validate_local_vocabulary(question: str) -> None:
 
 def local_query_intent(payload: dict) -> SqlAssistantIntent:
     """Deliberately limited, reproducible simulation; unsupported questions fail."""
-    question = screen_question(payload["question"])
+    question = extract_query_presentation(screen_question(payload["question"])).query_text
     scenario = SqlScenario.model_validate(payload["scenario"])
     if not re.search(r"新闻|图文|视频|热点|科技|财经|体育|社会|点击|曝光|互动|热度|趋势", question):
         raise SqlAssistantQuestionError("本地模拟支持新闻排行与小时趋势，请使用页面中的示例问题")
@@ -40,7 +41,7 @@ def local_query_intent(payload: dict) -> SqlAssistantIntent:
         raise SqlAssistantQuestionError("该问题包含 v1 聚合视图未提供的指标或维度")
     if re.search(r"标题|关键词|来源|包含|匹配|发布|发布时间|\bsource\b", question, re.I):
         raise SqlAssistantQuestionError("本地 v1 只支持内容类型和栏目过滤，不支持标题、来源或发布时间过滤")
-    if re.search(r"今天|昨日|昨天|本周|上周|本月|上月|最近|过去|近\s*\d+|\d+\s*(?:小时|天|分钟)|\d{4}[-年/]", question):
+    if re.search(r"今日|今天|昨日|昨天|本周|上周|本月|上月|最近|过去|近\s*\d+|\d+\s*(?:小时|天|分钟)|\d{4}[-年/]", question):
         raise SqlAssistantQuestionError("本地 v1 请在页面明确选择时间范围，问题中不要另设相对时间或日期")
     if re.search(r"超过|大于|小于|不少于|不低于|不超过|低于|至少|至多|排除|不含|除了|对比|同比|环比|增长|平均|去重|人数|用户数|中位|分位|占比", question):
         raise SqlAssistantQuestionError("本地 v1 暂不支持阈值过滤、排除、对比或其他统计口径，请使用排行/小时趋势模板")

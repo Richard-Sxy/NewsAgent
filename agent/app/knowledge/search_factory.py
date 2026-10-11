@@ -4,6 +4,7 @@ import os
 
 from app.clients.enterprise.milvus_vector import MilvusTieredVectorIndex
 from app.knowledge.search_config import load_knowledge_search_config
+from app.model_runtime.query_embedding import ModelQueryEmbedder
 
 """这边读取YAML配置文件,判断是连接 Postgre 还是连接 Miluvs"""
 def build_knowledge_search_index(*, config_path: str | None, postgres_store):
@@ -12,12 +13,14 @@ def build_knowledge_search_index(*, config_path: str | None, postgres_store):
     config = load_knowledge_search_config(config_path)
     if config.backend == "postgres":
         return postgres_store
+    if config.backend == "bge_snapshot":
+        from app.retrieval.bge_snapshot import BgeSnapshotVectorIndex
+
+        return BgeSnapshotVectorIndex.connect(config.bge_snapshot)
     connection = config.milvus
     token = None
     if connection.token_env:
         token = os.environ.get(connection.token_env)
-        if not token or not token.strip():
-            raise ValueError("Milvus token environment variable is missing or em")
         if not token or not token.strip():
             raise ValueError("Milvus token environment variable is missing or empty")
     return MilvusTieredVectorIndex.connect(
@@ -28,5 +31,15 @@ def build_knowledge_search_index(*, config_path: str | None, postgres_store):
 
 
 async def close_knowledge_search_index(index) -> None:
-    if isinstance(index, MilvusTieredVectorIndex):
+    from app.retrieval.bge_snapshot import BgeSnapshotVectorIndex
+
+    if isinstance(index, (MilvusTieredVectorIndex, BgeSnapshotVectorIndex)):
         await index.close()
+
+
+def build_knowledge_query_embedder(*, index, embedding, embedding_version: str):
+    """Keep prebuilt BGE vectors paired with the matching local query encoder."""
+    query_embedder = getattr(index, "query_embedder", None)
+    if query_embedder is not None:
+        return query_embedder
+    return ModelQueryEmbedder(embedding, version=embedding_version)

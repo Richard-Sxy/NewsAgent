@@ -363,7 +363,7 @@ async def test_model_numeric_fabrication_is_blocked_while_python_analysis_surviv
     response = await send(service, conversation, "统计最近热点")
     assert response.status == "completed" and response.tools[-1].status == "completed"
     assert "999999" not in response.assistant_content and "fake" not in response.assistant_content
-    assert "数字或引用约束" in response.assistant_content
+    assert "因包含数字已省略" in response.assistant_content
     assert "点击 280" in response.assistant_content
 
 

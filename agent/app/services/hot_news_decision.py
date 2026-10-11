@@ -12,7 +12,12 @@ from app.models.hot_news_decision import HotNewsDecision
 from app.schemas.hot_news_decision import RecordHotNewsDecisionCommand
 from app.schemas.analysis_feedback import FeedbackProblemType, FeedbackSeverity
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
-from app.services.data_loop.feedback_collector import AnalysisFeedbackCollector
+from app.services.data_loop.feedback_collector import (
+    AnalysisFeedbackCollector,
+    AnalysisFeedbackConflictError,
+    AnalysisFeedbackPersistenceError,
+    AnalysisFeedbackTargetNotFoundError,
+)
 from app.services.hot_news_run_store import PostgresHotNewsRunStore
 
 
@@ -82,6 +87,10 @@ class HotNewsDecisionService:
             "operator_id": operator_id,
             "idempotency_key": command.idempotency_key,
             "supersedes_decision_id": command.supersedes_decision_id,
+            "operator_feedback": (
+                command.operator_feedback.model_dump(mode="json")
+                if command.operator_feedback is not None else None
+            ),
         }
 
         try:
@@ -124,6 +133,7 @@ class HotNewsDecisionService:
                         decision=decision,
                         problem_type=feedback_problem_type,
                         severity=feedback_severity,
+                        include_all=True,
                     )
                     return decision, True
 
@@ -166,6 +176,12 @@ class HotNewsDecisionService:
             HotNewsDecisionPersistenceError,
         ):
             raise
+        except AnalysisFeedbackTargetNotFoundError as exc:
+            raise HotNewsDecisionTargetNotFoundError(str(exc)) from exc
+        except AnalysisFeedbackConflictError as exc:
+            raise HotNewsDecisionConflictError(str(exc)) from exc
+        except AnalysisFeedbackPersistenceError as exc:
+            raise HotNewsDecisionPersistenceError(str(exc)) from exc
         except SQLAlchemyError as exc:
             raise HotNewsDecisionPersistenceError(
                 "保存热点决策失败"
@@ -180,10 +196,17 @@ class HotNewsDecisionService:
         decision: HotNewsDecision,
         problem_type: FeedbackProblemType,
         severity: FeedbackSeverity,
+        include_all: bool = False,
     ) -> None:
         """Keep decision + feedback in the same database transaction."""
 
-        if decision.decision_type not in {"rejected", "corrected"}:
+        if (
+            not include_all
+            and decision.decision_type in {"accepted", "deferred"}
+            and decision.operator_feedback is None
+        ):
+            # Historical requests do not silently backfill a case with an old
+            # recording timestamp. New decisions collect atomically on insert.
             return
         # Use the persisted decision event time. A retry of the same decision
         # must produce byte-identical feedback content instead of a new hash.
@@ -192,6 +215,11 @@ class HotNewsDecisionService:
             analysis_memory.run_idempotency_key
             or f"analysis-run:{analysis_memory.run_id}"
         )
+        if decision.operator_feedback is not None:
+            if decision.operator_feedback["category"] != "analysis_error":
+                problem_type = "other"
+        elif decision.decision_type in {"accepted", "deferred"}:
+            problem_type, severity = "other", "low"
         await self._feedback_collector.collect_from_operator_decision(
             session,
             tenant_id=tenant_id,
@@ -225,4 +253,8 @@ class HotNewsDecisionService:
             == command.idempotency_key
             and existing.supersedes_decision_id
             == command.supersedes_decision_id
+            and existing.operator_feedback == (
+                command.operator_feedback.model_dump(mode="json")
+                if command.operator_feedback is not None else None
+            )
         )

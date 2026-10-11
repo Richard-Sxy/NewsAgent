@@ -50,7 +50,7 @@ const prefillLoading = ref(false)
 async function loadLabeledCases(): Promise<void> {
   prefillLoading.value = true
   try {
-    const page = await dataLoopApi.listFeedbackCases({ status: ['labeled'], limit: 50 })
+    const page = await dataLoopApi.listFeedbackCases({ statuses: ['labeled'], limit: 50 })
     if (page.cases.length === 0) {
       toast.info('没有状态为「已标注」的反馈案例可带入')
       return

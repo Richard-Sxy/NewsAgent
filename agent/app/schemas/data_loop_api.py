@@ -19,6 +19,7 @@ from app.schemas.evaluation_dataset import (
     EvaluationDatasetReference,
 )
 from app.schemas.hot_news_decision import DecisionType
+from app.schemas.operations_feedback import OperationsFeedback
 from app.schemas.production_bundle import (
     CandidateEvaluationRun,
     ConfigurationCandidate,
@@ -135,6 +136,7 @@ class RecordOperatorDecisionRequest(BaseModel):
     supersedes_decision_id: UUID | None = None
     feedback_problem_type: FeedbackProblemType = "analysis_incorrect"
     feedback_severity: FeedbackSeverity = "medium"
+    operator_feedback: OperationsFeedback | None = None
 
     @model_validator(mode="after")
     def validate_correction(self) -> Self:

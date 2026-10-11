@@ -36,8 +36,9 @@ def test_chat_uses_bound_sql_workflow_and_analysis_then_followup_replay(client):
     query = turn["tools"][0]
     assert query["name"] == "query_hot_news" and query["status"] == "completed", turn
     result = query["result"]
-    assert result["query_model_request_id"] and result["analysis_model_request_ids"]
-    assert result["query_model_provider"] == "local"
+    assert result["understanding_model_request_id"] and result["analysis_model_request_ids"]
+    assert result["query_model_request_id"] is None
+    assert result["query_model_provider"] == "python-confirmed-intent"
     assert result["items"] and all(item["metrics"]["content_type"] == "video" for item in result["items"])
     assert result["parameters"]["content_type"] == "video"
     assert "SELECT" in result["sql"] and "dw.news_behavior_aggregate" in result["sql"]

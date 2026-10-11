@@ -1,0 +1,5300 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网传所有居民都可领取补助，试点机关尚未公布条件。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ff162aa8745d3f65ccee",
+        "related_news": [
+          {
+            "excerpt": "网传所有居民都可领取补助，试点机关尚未公布条件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ff162aa8745d3f65ccee",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网传所有居民都可领取补助，试点机关尚未公布条件。",
+        "title": "澄岚市公共服务补助试点",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-c4f61c7162401017804f",
+      "description": "合成主线分析契约；运营判断单独评测。澄岚市公共服务补助试点",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-f8083b866d6de8742e6b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-ff162aa8745d3f65ccee"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网传所有居民都可领取补助，试点机关尚未公布条件。；虚构试点公告确认仅面向登记的社区服务机构，个人不能直接申领。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1a79435769cb0127ae3b",
+        "related_news": [
+          {
+            "excerpt": "网传所有居民都可领取补助，试点机关尚未公布条件。；虚构试点公告确认仅面向登记的社区服务机构，个人不能直接申领。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1a79435769cb0127ae3b",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网传所有居民都可领取补助，试点机关尚未公布条件。；虚构试点公告确认仅面向登记的社区服务机构，个人不能直接申领。",
+        "title": "澄岚市公共服务补助试点",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-c94ec891655951331346",
+      "description": "合成主线分析契约；运营判断单独评测。澄岚市公共服务补助试点",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-98d81e83767915a9efe1"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1a79435769cb0127ae3b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社交账号称图书证即将全面收费，没有可核验文件。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2cbf8676a73fa905633d",
+        "related_news": [
+          {
+            "excerpt": "社交账号称图书证即将全面收费，没有可核验文件。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2cbf8676a73fa905633d",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社交账号称图书证即将全面收费，没有可核验文件。",
+        "title": "青汀县公共图书服务改革",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-56a651a151113ee9202d",
+      "description": "合成主线分析契约；运营判断单独评测。青汀县公共图书服务改革",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-31f7b439797543364210"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-2cbf8676a73fa905633d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社交账号称图书证即将全面收费，没有可核验文件。；虚构县馆确认基础借阅仍免费，付费仅是自愿配送项目。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1987b6ddd12bde359f35",
+        "related_news": [
+          {
+            "excerpt": "社交账号称图书证即将全面收费，没有可核验文件。；虚构县馆确认基础借阅仍免费，付费仅是自愿配送项目。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1987b6ddd12bde359f35",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社交账号称图书证即将全面收费，没有可核验文件。；虚构县馆确认基础借阅仍免费，付费仅是自愿配送项目。",
+        "title": "青汀县公共图书服务改革",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-e921aaa5fde550ab78fd",
+      "description": "合成主线分析契约；运营判断单独评测。青汀县公共图书服务改革",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-cbf5ddad41143250f1a5"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1987b6ddd12bde359f35"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。传言所有线下窗口停办，服务中心仅说将测试预约。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14c0601a27995a123aef",
+        "related_news": [
+          {
+            "excerpt": "传言所有线下窗口停办，服务中心仅说将测试预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14c0601a27995a123aef",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。传言所有线下窗口停办，服务中心仅说将测试预约。",
+        "title": "望海区办事预约调整",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-56a44b45b5422681814c",
+      "description": "合成主线分析契约；运营判断单独评测。望海区办事预约调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-ebd0e90c48f12b65c5a9"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-14c0601a27995a123aef"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。传言所有线下窗口停办，服务中心仅说将测试预约。；虚构服务中心确认只调整两类预约业务，紧急窗口保留。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-d3bd9dbe173f36bf75b7",
+        "related_news": [
+          {
+            "excerpt": "传言所有线下窗口停办，服务中心仅说将测试预约。；虚构服务中心确认只调整两类预约业务，紧急窗口保留。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3bd9dbe173f36bf75b7",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。传言所有线下窗口停办，服务中心仅说将测试预约。；虚构服务中心确认只调整两类预约业务，紧急窗口保留。",
+        "title": "望海区办事预约调整",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-1f8416bfe5cda902685c",
+      "description": "合成主线分析契约；运营判断单独评测。望海区办事预约调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-9fc083be7e820cda10c6"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-d3bd9dbe173f36bf75b7"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2e30309e4418c9d88036",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2e30309e4418c9d88036",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-c3613c6ce95ef2b61a18",
+      "description": "合成主线分析契约；运营判断单独评测。虚构洛汐港航线中断",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-3bbcb3f5b1f95756c4d2"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-2e30309e4418c9d88036"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-66c97c62bd7ca73094dc",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-66c97c62bd7ca73094dc",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-76108e3da694d2ce2e97",
+      "description": "合成主线分析契约；运营判断单独评测。虚构洛汐港航线中断",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-5bbfa4b4bb60091c0b41"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-66c97c62bd7ca73094dc"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-5ecfa6ccbe960ce1a53d",
+        "related_news": [
+          {
+            "excerpt": "未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5ecfa6ccbe960ce1a53d",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。未署名视频称港口全面关闭，运营方尚未确认。；虚构港口通告确认仅一条客运航线暂停，货运未停。；运营方公布替代码头和下一轮评估时点。",
+        "title": "虚构洛汐港航线中断",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "case_id": "evo-fe44bfede93a0f596176",
+      "description": "合成主线分析契约；运营判断单独评测。虚构洛汐港航线中断",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-858b1420a2b38603991a"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-5ecfa6ccbe960ce1a53d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-af827384b15ae9f18524",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-af827384b15ae9f18524",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-532aa8a57615e8146946",
+      "description": "合成主线分析契约；运营判断单独评测。虚构双岸城市文化交流协议",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-4a0de2a388109af2b82d"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-af827384b15ae9f18524"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-468ed31a05a0199faaa3",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-468ed31a05a0199faaa3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-840ad5d5b0a2336f2b45",
+      "description": "合成主线分析契约；运营判断单独评测。虚构双岸城市文化交流协议",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-f0138f4445ff3faa240e"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-468ed31a05a0199faaa3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe16594dd1f0618118d1",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe16594dd1f0618118d1",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称协议已生效，双方尚未发布文本。；两座虚构城市公布签署文本，说明后续仍需执行安排。；首批交流项目名单和申请限制公布。",
+        "title": "虚构双岸城市文化交流协议",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "case_id": "evo-ce36df60e6f02a3a037a",
+      "description": "合成主线分析契约；运营判断单独评测。虚构双岸城市文化交流协议",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-a2734e473a46d27468f4"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-fe16594dd1f0618118d1"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-fe1a5b81143fd1727594",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe1a5b81143fd1727594",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-c28e928039782b607af1",
+      "description": "合成主线分析契约；运营判断单独评测。虚构北岚机场转机流程",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-ed4d6b9f8105a822a8da"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-fe1a5b81143fd1727594"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d03d95c3dda20dc3da52",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d03d95c3dda20dc3da52",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-d17ac80ca5d0090e6e01",
+      "description": "合成主线分析契约；运营判断单独评测。虚构北岚机场转机流程",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-20969cc389bcd605877b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-d03d95c3dda20dc3da52"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4874ff7494aad9dc10d1",
+        "related_news": [
+          {
+            "excerpt": "游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4874ff7494aad9dc10d1",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。游客帖称全部转机要求取消，机场未证实。；虚构机场确认只有指定航站楼流程简化，其他流程照旧。；新增引导图并说明特殊旅客的办理位置。",
+        "title": "虚构北岚机场转机流程",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "case_id": "evo-2807799c1842910ce7d6",
+      "description": "合成主线分析契约；运营判断单独评测。虚构北岚机场转机流程",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-e86bc50bf86e778f4356"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-4874ff7494aad9dc10d1"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7dc4eb5080fc40d14ce3",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7dc4eb5080fc40d14ce3",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-596558e424c6a29e6e03",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澜芯企业季度披露",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-571ff938ddbf5ad0d427"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-7dc4eb5080fc40d14ce3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-e539dbbe6303100f2dc2",
+        "related_news": [
+          {
+            "excerpt": "论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e539dbbe6303100f2dc2",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛猜测企业巨额亏损，没有正式报表。；虚构企业披露营收增长但净利润下降，不能等同经营全面改善。",
+        "title": "虚构澜芯企业季度披露",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-2852c9accda14159386f",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澜芯企业季度披露",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-12f105558152f92a82f8"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-e539dbbe6303100f2dc2"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2aced7b7ab8c440122c5",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2aced7b7ab8c440122c5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-035f572c5361c7d3e641",
+      "description": "合成主线分析契约；运营判断单独评测。虚构衡浦公司债券兑付",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-3a86da1bfee05ee768a4"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-2aced7b7ab8c440122c5"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b028ae6b170c9423e2f8",
+        "related_news": [
+          {
+            "excerpt": "投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b028ae6b170c9423e2f8",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。投资者帖称已发生违约，托管方没有结算记录。；虚构发行人确认进入约定兑付日，尚不等于投资者到账。",
+        "title": "虚构衡浦公司债券兑付",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-1743de7f7a42bf60101a",
+      "description": "合成主线分析契约；运营判断单独评测。虚构衡浦公司债券兑付",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-ea594d9f7ddb2b89fa41"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-b028ae6b170c9423e2f8"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-713ac802751bc62a0e1e",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-713ac802751bc62a0e1e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-240d865c99a8f6fe0f87",
+      "description": "合成主线分析契约；运营判断单独评测。虚构沐舟行业价格调查",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-e99a1a7169f583d134a2"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-713ac802751bc62a0e1e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-16539298d2abe191353d",
+        "related_news": [
+          {
+            "excerpt": "单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-16539298d2abe191353d",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。单店报价被说成行业价格全面上涨，样本不完整。；虚构调查报告公布样本地区和期间，只反映样本变化。",
+        "title": "虚构沐舟行业价格调查",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-0f911b9406889afb6da0",
+      "description": "合成主线分析契约；运营判断单独评测。虚构沐舟行业价格调查",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-c90c354f7cf04a52c67f"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-16539298d2abe191353d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8fd1a69c264bca7bc8de",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8fd1a69c264bca7bc8de",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-7e85469bf9d0c81b84a3",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星梭终端系统升级",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-442b6299b3834f10d069"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8fd1a69c264bca7bc8de"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ddbc370975cf529142ec",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ddbc370975cf529142ec",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-6fc603ec1e05643d6005",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星梭终端系统升级",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-451c02810554e1f001ef"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-ddbc370975cf529142ec"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-42b723db65902ab5bd6e",
+        "related_news": [
+          {
+            "excerpt": "社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-42b723db65902ab5bd6e",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社区截图称所有设备已获升级，厂商未发布支持清单。；虚构厂商确认小规模测试，仅支持列出的设备版本。；新增兼容列表与已知问题，说明回退条件。；测评转载发布会信息，没有独立兼容测试。；旧测试招募结束，旧报名链接失效。；厂商更正支持版本号，旧稿把测试版写成稳定版。",
+        "title": "虚构星梭终端系统升级",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "case_id": "evo-221d1bcbe7fb0c06df50",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星梭终端系统升级",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-df94f6cd6a877df3ed07"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-42b723db65902ab5bd6e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-09c7643c3787c7507f87",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-09c7643c3787c7507f87",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-3e5d01d1a2cd230052e5",
+      "description": "合成主线分析契约；运营判断单独评测。虚构浅湾软件安全补丁",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-b4aec231096b1b7e4669"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-09c7643c3787c7507f87"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-33be6b18038845219654",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-33be6b18038845219654",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-7545b2e711715f7dcfeb",
+      "description": "合成主线分析契约；运营判断单独评测。虚构浅湾软件安全补丁",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-bf7bca4a5cb17c91aa65"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-33be6b18038845219654"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-47ae56ca057abe0c7d5f",
+        "related_news": [
+          {
+            "excerpt": "匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-47ae56ca057abe0c7d5f",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名账号称存在高危漏洞，没有复现或维护方公告。；虚构维护方确认特定版本受影响，未说明其他版本也有问题。；补丁与缓解说明发布，影响范围以维护方文档为准。；旧漏洞截图被重新发布，没有新增受影响版本。；补丁提醒已覆盖目标群体，重复全站推送会增加疲劳。；维护方更正组件名称，旧稿把客户端问题误写成服务端问题。",
+        "title": "虚构浅湾软件安全补丁",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "case_id": "evo-6645a1ebf53af8574303",
+      "description": "合成主线分析契约；运营判断单独评测。虚构浅湾软件安全补丁",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-73e7f86b4f5718fd3dc3"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-47ae56ca057abe0c7d5f"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97f1372a1b79bf0e6f23",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97f1372a1b79bf0e6f23",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-8f681a0a506617eb474e",
+      "description": "合成主线分析契约；运营判断单独评测。虚构远墨人工智能测试报告",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-b2f1473252235fa92d07"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-97f1372a1b79bf0e6f23"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-6092a85d1bb7ec3ff2b0",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6092a85d1bb7ec3ff2b0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-50ebec35eae2aa5a524a",
+      "description": "合成主线分析契约；运营判断单独评测。虚构远墨人工智能测试报告",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-4f42fa750a8655f7ae65"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-6092a85d1bb7ec3ff2b0"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-11f27006acc88e7af464",
+        "related_news": [
+          {
+            "excerpt": "宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-11f27006acc88e7af464",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。宣传帖声称系统解决全部任务，没有测试设置。；虚构实验室公开任务集和限制，只在限定任务比较。；新增失败样本和独立复测，区分能力改善与统计波动。；转载引用同一分数，没有新的复测数据。；旧测试使用过时版本，不能当最新产品能力。；实验室更正评测分母，旧稿通过率需重新计算。",
+        "title": "虚构远墨人工智能测试报告",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "case_id": "evo-e2dc7d295c06d2275cd2",
+      "description": "合成主线分析契约；运营判断单独评测。虚构远墨人工智能测试报告",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-7f62e67e16bee8d7cff2"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-11f27006acc88e7af464"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8b68f56b27aaa1d5212a",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8b68f56b27aaa1d5212a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-690be2324d1a68b3e636",
+      "description": "合成主线分析契约；运营判断单独评测。虚构安岚社区临时疏散",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-eb62c20f86842e0e17c5"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8b68f56b27aaa1d5212a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c6a539ce93a3b2b58d70",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c6a539ce93a3b2b58d70",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-957a2fbd7456590524fa",
+      "description": "合成主线分析契约；运营判断单独评测。虚构安岚社区临时疏散",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-fafa771cd83d1ec839b1"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-c6a539ce93a3b2b58d70"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-800488554c6828573a1b",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-800488554c6828573a1b",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-6a99d122dc563479dd4c",
+      "description": "合成主线分析契约；运营判断单独评测。虚构清禾公益项目审查",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-fe2dad00c229b0a12d16"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-800488554c6828573a1b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5427771b53f34b7a302a",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5427771b53f34b7a302a",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-e93502f80561215ef97b",
+      "description": "合成主线分析契约；运营判断单独评测。虚构清禾公益项目审查",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-6070c9eab6f7ff747eb0"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-5427771b53f34b7a302a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a307ee1ca77e4c36e9db",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a307ee1ca77e4c36e9db",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-cfe98f5f200e9ccbcf0b",
+      "description": "合成主线分析契约；运营判断单独评测。虚构鸣溪宠物救助站搬迁",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-b2b8fc72f5ed7f4213b5"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-a307ee1ca77e4c36e9db"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6097bb7ec42e345b09f9",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6097bb7ec42e345b09f9",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-7e8644319611664695eb",
+      "description": "合成主线分析契约；运营判断单独评测。虚构鸣溪宠物救助站搬迁",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-18258e55b0596c0e445c"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-6097bb7ec42e345b09f9"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1aeb0393051fee1c6b47",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1aeb0393051fee1c6b47",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-5e4189cb87d1b0fc8356",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澄岚南区供水维护",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-c779fbb9ae7a4e99d8ca"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1aeb0393051fee1c6b47"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-c29bdc284af094e20af7",
+        "related_news": [
+          {
+            "excerpt": "居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c29bdc284af094e20af7",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。居民群称全城停水，供水单位没有正式范围。；虚构供水单位确认仅南区两条街道维护。",
+        "title": "虚构澄岚南区供水维护",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-68ccd56e4487fc575e47",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澄岚南区供水维护",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-8ff7239c95a41ddc7ed0"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-c29bdc284af094e20af7"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-64a7bb3103dcd09c34f5",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-64a7bb3103dcd09c34f5",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-8aeb060a1326e8c86208",
+      "description": "合成主线分析契约；运营判断单独评测。虚构白汀公交线路调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-527f2773e6380c1260c8"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-64a7bb3103dcd09c34f5"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-ca3e102dc9f2afcabb80",
+        "related_news": [
+          {
+            "excerpt": "截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ca3e102dc9f2afcabb80",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。截图称所有公交停运，运营方未发布通知。；虚构运营方确认仅一条线路绕行，其他线路正常。",
+        "title": "虚构白汀公交线路调整",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-ddb733dfd4c4f9928ced",
+      "description": "合成主线分析契约；运营判断单独评测。虚构白汀公交线路调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-23755bcc53e45456617f"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-ca3e102dc9f2afcabb80"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-3f4f3b8b0d7986aa24e3",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3f4f3b8b0d7986aa24e3",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-380da0b587e41f9a8b3a",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青涧社区体育馆预约",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-836f20fae7e723476dbd"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-3f4f3b8b0d7986aa24e3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-0422b9dc0f0754583b3b",
+        "related_news": [
+          {
+            "excerpt": "群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0422b9dc0f0754583b3b",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称体育馆永久免费，无正式预约规则。；虚构场馆确认仅试开放时段免费，需提前预约。",
+        "title": "虚构青涧社区体育馆预约",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-d08d355b9913d9c21907",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青涧社区体育馆预约",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-59d7df7f48c83fc80b22"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-0422b9dc0f0754583b3b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。球迷帖称比赛取消，赛事方未发布安排。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-e50cd3c846123393ea5e",
+        "related_news": [
+          {
+            "excerpt": "球迷帖称比赛取消，赛事方未发布安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e50cd3c846123393ea5e",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。球迷帖称比赛取消，赛事方未发布安排。",
+        "title": "虚构岚港联赛决赛",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-4d414798c0c7fd483a22",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚港联赛决赛",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-343b784bf7e20c5ed08f"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-e50cd3c846123393ea5e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。球迷帖称比赛取消，赛事方未发布安排。；虚构赛事方确认比赛延迟，尚未取消。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8ada1142eb9c59e219df",
+        "related_news": [
+          {
+            "excerpt": "球迷帖称比赛取消，赛事方未发布安排。；虚构赛事方确认比赛延迟，尚未取消。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8ada1142eb9c59e219df",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。球迷帖称比赛取消，赛事方未发布安排。；虚构赛事方确认比赛延迟，尚未取消。",
+        "title": "虚构岚港联赛决赛",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-848081d8c8bd57162e3c",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚港联赛决赛",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-25110e9d6979a4b0525b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8ada1142eb9c59e219df"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。现场帖称新纪录诞生，成绩尚未经官方审核。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-37af24e79416dd0e7d6d",
+        "related_news": [
+          {
+            "excerpt": "现场帖称新纪录诞生，成绩尚未经官方审核。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-37af24e79416dd0e7d6d",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。现场帖称新纪录诞生，成绩尚未经官方审核。",
+        "title": "虚构云桥田径赛纪录",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-577177918be0c841dc07",
+      "description": "合成主线分析契约；运营判断单独评测。虚构云桥田径赛纪录",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-f708111792efd300d55e"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-37af24e79416dd0e7d6d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。现场帖称新纪录诞生，成绩尚未经官方审核。；虚构赛事方公布临时成绩，纪录认证仍待审核。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6516100839f1f364d05e",
+        "related_news": [
+          {
+            "excerpt": "现场帖称新纪录诞生，成绩尚未经官方审核。；虚构赛事方公布临时成绩，纪录认证仍待审核。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6516100839f1f364d05e",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。现场帖称新纪录诞生，成绩尚未经官方审核。；虚构赛事方公布临时成绩，纪录认证仍待审核。",
+        "title": "虚构云桥田径赛纪录",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-e84cb41b68b37053058e",
+      "description": "合成主线分析契约；运营判断单独评测。虚构云桥田径赛纪录",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-5a0488f64c64a9c2af8f"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-6516100839f1f364d05e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称球队永久迁走，没有球队或场馆公告。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9dd61d33993eec17e43b",
+        "related_news": [
+          {
+            "excerpt": "论坛称球队永久迁走，没有球队或场馆公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9dd61d33993eec17e43b",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称球队永久迁走，没有球队或场馆公告。",
+        "title": "虚构海隅球队主场调整",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-01071e7b250c74de16b3",
+      "description": "合成主线分析契约；运营判断单独评测。虚构海隅球队主场调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-0014c326c804b3be888e"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-9dd61d33993eec17e43b"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称球队永久迁走，没有球队或场馆公告。；虚构球队确认一次主场改址，赛季安排未整体改变。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-eb2fd1007f74d013ef21",
+        "related_news": [
+          {
+            "excerpt": "论坛称球队永久迁走，没有球队或场馆公告。；虚构球队确认一次主场改址，赛季安排未整体改变。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-eb2fd1007f74d013ef21",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称球队永久迁走，没有球队或场馆公告。；虚构球队确认一次主场改址，赛季安排未整体改变。",
+        "title": "虚构海隅球队主场调整",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-eb935bfb5900377ed3f5",
+      "description": "合成主线分析契约；运营判断单独评测。虚构海隅球队主场调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-b3e1b9415bc82c9e5e72"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-eb2fd1007f74d013ef21"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称首映取消，主办方尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-36a7138cba53ea83ec6a",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称首映取消，主办方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-36a7138cba53ea83ec6a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称首映取消，主办方尚未确认。",
+        "title": "虚构汐光影展首映调整",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-7bf8f41309090808e110",
+      "description": "合成主线分析契约；运营判断单独评测。虚构汐光影展首映调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-cfecefaa9ddfd62ada8d"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-36a7138cba53ea83ec6a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称首映取消，主办方尚未确认。；虚构主办方确认首映延期，其他单元正常。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-397a5b4e9cdcde941474",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称首映取消，主办方尚未确认。；虚构主办方确认首映延期，其他单元正常。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-397a5b4e9cdcde941474",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称首映取消，主办方尚未确认。；虚构主办方确认首映延期，其他单元正常。",
+        "title": "虚构汐光影展首映调整",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-4919d4d23fc4d5668ea1",
+      "description": "合成主线分析契约；运营判断单独评测。虚构汐光影展首映调整",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-058d907bba1e9ff21132"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-397a5b4e9cdcde941474"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。饭圈帖猜测成员退出，没有乐团声明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-70fa464cf0623c92a613",
+        "related_news": [
+          {
+            "excerpt": "饭圈帖猜测成员退出，没有乐团声明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-70fa464cf0623c92a613",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。饭圈帖猜测成员退出，没有乐团声明。",
+        "title": "虚构云霁乐团公益演出",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-8efefb29e5dcf03201ae",
+      "description": "合成主线分析契约；运营判断单独评测。虚构云霁乐团公益演出",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-017b3e77d88bf6a2900d"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-70fa464cf0623c92a613"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。饭圈帖猜测成员退出，没有乐团声明。；虚构乐团确认临时替补，仅涉及一场演出。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-f2c6561b35e572c40fb9",
+        "related_news": [
+          {
+            "excerpt": "饭圈帖猜测成员退出，没有乐团声明。；虚构乐团确认临时替补，仅涉及一场演出。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f2c6561b35e572c40fb9",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。饭圈帖猜测成员退出，没有乐团声明。；虚构乐团确认临时替补，仅涉及一场演出。",
+        "title": "虚构云霁乐团公益演出",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-2fdfdbfec7157d8c1278",
+      "description": "合成主线分析契约；运营判断单独评测。虚构云霁乐团公益演出",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-bcdcc6506d689c1e71fc"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-f2c6561b35e572c40fb9"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。剪辑视频声称全平台免费，没有版权方公告。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-5d2b1edab77159441350",
+        "related_news": [
+          {
+            "excerpt": "剪辑视频声称全平台免费，没有版权方公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5d2b1edab77159441350",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。剪辑视频声称全平台免费，没有版权方公告。",
+        "title": "虚构墨岸纪录片上线",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-2428887df88b502a7d3e",
+      "description": "合成主线分析契约；运营判断单独评测。虚构墨岸纪录片上线",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-0345f2c339f2a2e99029"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-5d2b1edab77159441350"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。剪辑视频声称全平台免费，没有版权方公告。；虚构版权方确认指定平台限期试看，正片权益另行说明。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-8bbf90151917bf0d7bc3",
+        "related_news": [
+          {
+            "excerpt": "剪辑视频声称全平台免费，没有版权方公告。；虚构版权方确认指定平台限期试看，正片权益另行说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8bbf90151917bf0d7bc3",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。剪辑视频声称全平台免费，没有版权方公告。；虚构版权方确认指定平台限期试看，正片权益另行说明。",
+        "title": "虚构墨岸纪录片上线",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-ccefdc1fe7ead0bde281",
+      "description": "合成主线分析契约；运营判断单独评测。虚构墨岸纪录片上线",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-8c86ba212abf576f5b2b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8bbf90151917bf0d7bc3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b649055d7b9d80cdffb",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b649055d7b9d80cdffb",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-19458c4a35e4bba4917f",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青瓷馆专题展",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-156c5168a1ddbcb843ac"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1b649055d7b9d80cdffb"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-5b46a39434c66a46515f",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5b46a39434c66a46515f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-b29af51b8d58b94c5b8d",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青瓷馆专题展",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-e5038f5bbefd796bccce"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-5b46a39434c66a46515f"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a05d79ac56298b4ba92c",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a05d79ac56298b4ba92c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-2d0fff3d1f45e73109b8",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚书古籍数字化",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-33b0876357ec75ec9bdf"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-a05d79ac56298b4ba92c"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1b880ec2216993c97f81",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b880ec2216993c97f81",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-86b179b95ab31785913e",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚书古籍数字化",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-7813d431ac0f5c20c0fa"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1b880ec2216993c97f81"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3e8843a40f57fc7472b5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3e8843a40f57fc7472b5",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-79f1b94391d321a245c5",
+      "description": "合成主线分析契约；运营判断单独评测。虚构溪原遗址研究",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-6fe3038e8ae4a2df7083"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-3e8843a40f57fc7472b5"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-46cdcf623741b99bada5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-46cdcf623741b99bada5",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-6f37401255a5f94ff132",
+      "description": "合成主线分析契约；运营判断单独评测。虚构溪原遗址研究",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-f9e2b159a37912ee533b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-46cdcf623741b99bada5"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-622047b155546a3f5647",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-622047b155546a3f5647",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-d6ca881d5152c98d173d",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澄溪技能考试报名",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-11048de67b67c62e6f33"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-622047b155546a3f5647"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a0c30821fa0db52b6d2f",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a0c30821fa0db52b6d2f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-f71e3b4a7c49809c1727",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澄溪技能考试报名",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-a4023d16d4fe2bdea8a5"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-a0c30821fa0db52b6d2f"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c77e06f478a75e4b9b50",
+        "related_news": [
+          {
+            "excerpt": "社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c77e06f478a75e4b9b50",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。社群称考试取消，组织机构尚未发布通知。；虚构机构确认仅调整报名时间，考试仍按计划准备。；公布资格核验和补交材料窗口。",
+        "title": "虚构澄溪技能考试报名",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "case_id": "evo-d91a72d69d41585bd3f7",
+      "description": "合成主线分析契约；运营判断单独评测。虚构澄溪技能考试报名",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-6a3bc51a16ad4e92459b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-c77e06f478a75e4b9b50"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-13e9fcf03c84e101370c",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-13e9fcf03c84e101370c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-4d5959c01ca39dd58e95",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星河学校开放日",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-d11ae4185ee2d57e61a3"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-13e9fcf03c84e101370c"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-c992ed697d0b6d9f025f",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c992ed697d0b6d9f025f",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-d3d90db14b5536c95f90",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星河学校开放日",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-b731aaf655aa56d3360f"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-c992ed697d0b6d9f025f"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8045da8e36ceb1f1598e",
+        "related_news": [
+          {
+            "excerpt": "家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8045da8e36ceb1f1598e",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。家长群称开放日等同录取承诺，学校未确认。；虚构学校说明开放日仅供了解课程，不授予录取资格。；增加线上场次和无障碍预约说明。",
+        "title": "虚构星河学校开放日",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "case_id": "evo-35bc00d020e1838c2aff",
+      "description": "合成主线分析契约；运营判断单独评测。虚构星河学校开放日",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-ac322670ba230aca7128"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8045da8e36ceb1f1598e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-410d8aa8a09cfa027d33",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-410d8aa8a09cfa027d33",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-771e254df9eeed240593",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青桥助学项目",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-c67cba603566f81fbfa0"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-410d8aa8a09cfa027d33"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-79ac97f1a4c5edaac825",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-79ac97f1a4c5edaac825",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-b6a048626cf175aeb023",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青桥助学项目",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-5a02c04c4c237edd9f4e"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-79ac97f1a4c5edaac825"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-640ad1e83fb4e187310d",
+        "related_news": [
+          {
+            "excerpt": "转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-640ad1e83fb4e187310d",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称所有学生自动获资助，没有项目规则。；虚构项目公布申请范围和审核程序，结果尚未确定。；新增材料补交渠道，公开聚合进度而非学生名单。",
+        "title": "虚构青桥助学项目",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "case_id": "evo-bb967524949a4ff6c7e3",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青桥助学项目",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-a404c2bc43fe143413c3"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-640ad1e83fb4e187310d"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-765fb011a10af3d9e96a",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-765fb011a10af3d9e96a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-3522a94284d08adc4637",
+      "description": "合成主线分析契约；运营判断单独评测。虚构清岚健康中心预约",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-79ec6b453b270e0efeab"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-765fb011a10af3d9e96a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d4c70e915b229a46d6f",
+        "related_news": [
+          {
+            "excerpt": "群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d4c70e915b229a46d6f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称服务面向全城免费，没有中心公告。；虚构中心确认只面向登记社区的预约服务，不提供诊疗承诺。",
+        "title": "虚构清岚健康中心预约",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-64f99fc3626b6e14e403",
+      "description": "合成主线分析契约；运营判断单独评测。虚构清岚健康中心预约",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-7c1603e6cbd0091a860d"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-7d4c70e915b229a46d6f"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-7d3d7ed2ffd87b615bd9",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7d3d7ed2ffd87b615bd9",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-6a0ac188c47b7b803bb2",
+      "description": "合成主线分析契约；运营判断单独评测。虚构远汀健康观察研究",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-cf6cee3ee137ad29c7c3"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-7d3d7ed2ffd87b615bd9"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b2a59e7278c752f2854",
+        "related_news": [
+          {
+            "excerpt": "短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b2a59e7278c752f2854",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频把初步观察称为治愈证明，没有研究原文。；虚构研究团队公开观察性结果，不能证明疗效或因果。",
+        "title": "虚构远汀健康观察研究",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-27706f3b082a37ab659f",
+      "description": "合成主线分析契约；运营判断单独评测。虚构远汀健康观察研究",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-0be8ab8e045580565f34"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-1b2a59e7278c752f2854"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c70821e7989130d1d97",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c70821e7989130d1d97",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-ef8dcaa91ddbe0025ec4",
+      "description": "合成主线分析契约；运营判断单独评测。虚构海竹设备检查通知",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-1943ccc2c80e0c63d07e"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8c70821e7989130d1d97"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-b47cc9e90202295a9336",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b47cc9e90202295a9336",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有设备危险，厂商没有确认批次。；虚构厂商确认指定批次进行检查，其他批次无此公告。",
+        "title": "虚构海竹设备检查通知",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-867042bb22fafebe6677",
+      "description": "合成主线分析契约；运营判断单独评测。虚构海竹设备检查通知",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-de412466834188911b27"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-b47cc9e90202295a9336"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-9558ae92d9545954abde",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9558ae92d9545954abde",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "case_id": "evo-a1a3aa2fe5c8cf6a4a02",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚浦沿海大风预警",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "click"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-19a20cd64651a3b23176"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-9558ae92d9545954abde"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-632121bc631be4c311ae",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-632121bc631be4c311ae",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "case_id": "evo-abcb0cf5d996f85ef313",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚浦沿海大风预警",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-1fdc7f80bbb43afee7ba"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-632121bc631be4c311ae"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-50a60ac337974aa5817a",
+        "related_news": [
+          {
+            "excerpt": "群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-50a60ac337974aa5817a",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称全省停航，气象与交通部门尚未确认。；虚构预警只覆盖岚浦沿海，并给出有效时段。；预警更新影响区域，交通方另行公布航线安排。；旧预警图重新传播，没有新增区域。；预警已解除，旧高热图不应继续作为当前风险提示。；气象方更正区域代码，旧稿误把内陆县列入范围。",
+        "title": "虚构岚浦沿海大风预警",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "case_id": "evo-0e77d2ee3ab29053f5cb",
+      "description": "合成主线分析契约；运营判断单独评测。虚构岚浦沿海大风预警",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-f2368b121e17719801d0"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-50a60ac337974aa5817a"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fc26b7ba7577f4443ea3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fc26b7ba7577f4443ea3",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "case_id": "evo-648192d64f472877ba07",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青潭城区强降雨",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "consumption"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-e45d00fb33ad2d2b392a"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-fc26b7ba7577f4443ea3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8c1e09176edbe543f3f3",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c1e09176edbe543f3f3",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "case_id": "evo-c003048d237b25278c16",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青潭城区强降雨",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-094dfbc4a07eb0c1e542"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-8c1e09176edbe543f3f3"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-85ce0f5d8b2415a04347",
+        "related_news": [
+          {
+            "excerpt": "短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-85ce0f5d8b2415a04347",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。短视频称城区将全面淹没，没有可信预测依据。；虚构气象机构发布特定城区降雨预警，影响程度仍需观察。；新增预警更新时间及交通部门确认的封闭路段。；旧积水照片再次上传，没有新增封路信息。；预警解除且路段恢复，旧绕行提示失效。；交通方更正路段方向，旧稿把对向车道也列为关闭。",
+        "title": "虚构青潭城区强降雨",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "case_id": "evo-abdce5827835285ddaca",
+      "description": "合成主线分析契约；运营判断单独评测。虚构青潭城区强降雨",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-99af5f15290f57d0dc9b"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-85ce0f5d8b2415a04347"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9cccf719379e3af9bc3e",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9cccf719379e3af9bc3e",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "case_id": "evo-f367a7d1d5b227fd2da0",
+      "description": "合成主线分析契约；运营判断单独评测。虚构望溪高温服务安排",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "interaction"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-c3d76e758bfb49e39ce3"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-9cccf719379e3af9bc3e"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-2f944e4dea1b25617cb0",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2f944e4dea1b25617cb0",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "case_id": "evo-7d939ae1192498c60446",
+      "description": "合成主线分析契约；运营判断单独评测。虚构望溪高温服务安排",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-5ed2676f4e01932541c7"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-2f944e4dea1b25617cb0"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14027ce63aaa12136663",
+        "related_news": [
+          {
+            "excerpt": "匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14027ce63aaa12136663",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖称所有活动取消，组织方尚未确认。；虚构气象机构发布限定区域预警，活动安排以各主办方为准。；主办方公布延后场次与公共服务点开放时间。；旧高温截图转发，没有新的活动变更。；预警结束且活动完成，旧延期通知失效。；主办方更正开放时间，旧稿把内部准备时段写成公众时段。",
+        "title": "虚构望溪高温服务安排",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "case_id": "evo-ab0a274f14b8dedea07d",
+      "description": "合成主线分析契约；运营判断单独评测。虚构望溪高温服务安排",
+      "expected": {
+        "allowed_dominant_drivers": [
+          "growth"
+        ],
+        "forbidden_evidence_news_ids": [
+          "unprovided-22317eb96f0078bc7cb4"
+        ],
+        "must_state_limitation": true,
+        "required_evidence_news_ids": [
+          "synthetic-evidence-14027ce63aaa12136663"
+        ],
+        "required_metric_keys": [
+          "ctr",
+          "hot_score"
+        ]
+      },
+      "tags": [
+        "synthetic",
+        "pending_review"
+      ]
+    }
+  ],
+  "dataset_name": "hot-news-operations-evolution-all-high_risk",
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "description": "虚构主线与程序参考预期，待人工复核；分析合同评测与运营决策/真实效果分别报告。",
+  "schema_version": "1.0"
+}

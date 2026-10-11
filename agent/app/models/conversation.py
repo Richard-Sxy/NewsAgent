@@ -128,6 +128,14 @@ class ConversationTurnRecord(Base):
         passive_deletes=True,
     )
 
+"""
+    这段是插入的文本的输入(关键字段):
+        turn_id: 补充给哪一轮对话
+        request_id: 客户端请求编号，防止重试时重复保存
+        seq: 这一轮内补充消息的顺序，从 1 开始递增
+        status: pending 等待领取 applied 已加入输入快照 failed 所属轮次失败或中断
+        applied_at: 执行循环领取这条补充的时间 
+"""
 class ConversationInputRecord(Base):
     __tablename__ = "conversation_inputs"
     __table_args__ = (
@@ -140,7 +148,7 @@ class ConversationInputRecord(Base):
                 "conversation_turns.id",
             ],
             name="fk_conversation_inputs_owner_turn",
-            ondelete="CASADE",
+            ondelete="CASCADE",
         ),
         UniqueConstraint(
             "conversation_id",

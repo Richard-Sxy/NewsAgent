@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b649055d7b9d80cdffb",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b649055d7b9d80cdffb",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构青瓷馆专题展，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：自媒体称发现孤品，没有馆方鉴定资料。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-19458c4a35e4bba4917f",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b649055d7b9d80cdffb",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b649055d7b9d80cdffb",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构青瓷馆专题展影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：自媒体称发现孤品，没有馆方鉴定资料。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-98f3110090bd7d3d9d5a",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-5b46a39434c66a46515f",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5b46a39434c66a46515f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：虚构馆方确认举办专题展，展品归属仍按展签说明。 本例为非紧急文化信息，放入站内专题更新。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构馆方确认举办专题展，展品归属仍按展签说明。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-649d5829769096f2356f",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-5b46a39434c66a46515f",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5b46a39434c66a46515f",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：虚构馆方确认举办专题展，展品归属仍按展签说明。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构馆方确认举办专题展，展品归属仍按展签说明。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-b29af51b8d58b94c5b8d",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-e5446f79892aae0f8836",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e5446f79892aae0f8836",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：新增研究说明和开放预约时段。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增研究说明和开放预约时段。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-28dd93a7d2491665a6eb",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-e5446f79892aae0f8836",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e5446f79892aae0f8836",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增研究说明和开放预约时段。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-ec5e2329441e44b94790",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-50a66d27f368dadb4969",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-50a66d27f368dadb4969",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构青瓷馆专题展背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧展品照片再次流传，没有新增鉴定结论。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-e1706ec59e9978385519",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-50a66d27f368dadb4969",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-50a66d27f368dadb4969",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构青瓷馆专题展重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧展品照片再次流传，没有新增鉴定结论。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-26a16b3008a4ee1ce4d3",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-17e21232df97a48f2830",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-17e21232df97a48f2830",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构青瓷馆专题展：展期结束，旧预约链接关闭。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：展期结束，旧预约链接关闭。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-084d8cbf422db478f53d",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "展期结束，旧预约链接关闭。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-17e21232df97a48f2830",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-17e21232df97a48f2830",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构青瓷馆专题展旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：展期结束，旧预约链接关闭。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-5eaaec3179433f9c51ae",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "展期结束，旧预约链接关闭。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9b23da7e5323d075ae14",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b23da7e5323d075ae14",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：馆方更正年代范围，旧稿把推测年代写成确定年代。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：馆方更正年代范围，旧稿把推测年代写成确定年代。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-0f15aa1ea5bb4f5f8c75",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "展期结束，旧预约链接关闭。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "馆方更正年代范围，旧稿把推测年代写成确定年代。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9b23da7e5323d075ae14",
+        "related_news": [
+          {
+            "excerpt": "自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b23da7e5323d075ae14",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。自媒体称发现孤品，没有馆方鉴定资料。；虚构馆方确认举办专题展，展品归属仍按展签说明。；新增研究说明和开放预约时段。；旧展品照片再次流传，没有新增鉴定结论。；展期结束，旧预约链接关闭。；馆方更正年代范围，旧稿把推测年代写成确定年代。",
+        "title": "虚构青瓷馆专题展",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构青瓷馆专题展：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：馆方更正年代范围，旧稿把推测年代写成确定年代。；全部为虚构新闻情景。",
+        "title": "虚构青瓷馆专题展"
+      },
+      "case_id": "evo-c8af25d58d67c1b7ddeb",
+      "event_id": "synthetic-event-314dcd683148f338d813",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "自媒体称发现孤品，没有馆方鉴定资料。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构馆方确认举办专题展，展品归属仍按展签说明。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增研究说明和开放预约时段。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧展品照片再次流传，没有新增鉴定结论。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "展期结束，旧预约链接关闭。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "馆方更正年代范围，旧稿把推测年代写成确定年代。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-314dcd683148f338d813",
+      "story_title": "虚构青瓷馆专题展",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a05d79ac56298b4ba92c",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a05d79ac56298b4ba92c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构岚书古籍数字化，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：论坛称全部馆藏已开放下载，没有平台说明。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-2d0fff3d1f45e73109b8",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a05d79ac56298b4ba92c",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a05d79ac56298b4ba92c",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构岚书古籍数字化影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：论坛称全部馆藏已开放下载，没有平台说明。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-7fe3dbe481cb3196bc64",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1b880ec2216993c97f81",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b880ec2216993c97f81",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：虚构图书馆确认首批目录上线，部分内容仅馆内阅览。 本例为非紧急文化信息，放入站内专题更新。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-34c765080f05f513758d",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1b880ec2216993c97f81",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b880ec2216993c97f81",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：虚构图书馆确认首批目录上线，部分内容仅馆内阅览。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-86b179b95ab31785913e",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0aeba53c64caf32480b8",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0aeba53c64caf32480b8",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：新增检索字段和授权可下载批次。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增检索字段和授权可下载批次。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-8a068286ab43e8184b53",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-0aeba53c64caf32480b8",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-0aeba53c64caf32480b8",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：新增检索字段和授权可下载批次。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-332ba2447bf013dfe98d",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-711a1aa849ac45cda66b",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-711a1aa849ac45cda66b",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构岚书古籍数字化背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：转载同一目录，没有新增公开册数。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-d28da94f431635d23602",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-711a1aa849ac45cda66b",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-711a1aa849ac45cda66b",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构岚书古籍数字化重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：转载同一目录，没有新增公开册数。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-59e742b7d68a62f8e183",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6de83a03ddc3b6075f61",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6de83a03ddc3b6075f61",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构岚书古籍数字化：测试入口停用，旧下载指引失效。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：测试入口停用，旧下载指引失效。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-b402381f660011340ed8",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "测试入口停用，旧下载指引失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6de83a03ddc3b6075f61",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6de83a03ddc3b6075f61",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构岚书古籍数字化旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：测试入口停用，旧下载指引失效。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-e4aa488881af306f0771",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "测试入口停用，旧下载指引失效。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9693fee367ab8255bef5",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9693fee367ab8255bef5",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：图书馆更正册与卷的计量口径，旧稿数量需调整。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：图书馆更正册与卷的计量口径，旧稿数量需调整。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-58d0b414506a8370230d",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "测试入口停用，旧下载指引失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "图书馆更正册与卷的计量口径，旧稿数量需调整。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9693fee367ab8255bef5",
+        "related_news": [
+          {
+            "excerpt": "论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9693fee367ab8255bef5",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。论坛称全部馆藏已开放下载，没有平台说明。；虚构图书馆确认首批目录上线，部分内容仅馆内阅览。；新增检索字段和授权可下载批次。；转载同一目录，没有新增公开册数。；测试入口停用，旧下载指引失效。；图书馆更正册与卷的计量口径，旧稿数量需调整。",
+        "title": "虚构岚书古籍数字化",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构岚书古籍数字化：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：图书馆更正册与卷的计量口径，旧稿数量需调整。；全部为虚构新闻情景。",
+        "title": "虚构岚书古籍数字化"
+      },
+      "case_id": "evo-ddb8f7c8fecac6317d2d",
+      "event_id": "synthetic-event-da128cf6f66b58ffdafd",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "论坛称全部馆藏已开放下载，没有平台说明。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构图书馆确认首批目录上线，部分内容仅馆内阅览。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增检索字段和授权可下载批次。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "转载同一目录，没有新增公开册数。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "测试入口停用，旧下载指引失效。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "图书馆更正册与卷的计量口径，旧稿数量需调整。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-da128cf6f66b58ffdafd",
+      "story_title": "虚构岚书古籍数字化",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3e8843a40f57fc7472b5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3e8843a40f57fc7472b5",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构溪原遗址研究，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：网帖直接断言遗址用途，研究团队尚无结论。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-79f1b94391d321a245c5",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3e8843a40f57fc7472b5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3e8843a40f57fc7472b5",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构溪原遗址研究影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：网帖直接断言遗址用途，研究团队尚无结论。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-473342fed557e94cfac7",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-46cdcf623741b99bada5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-46cdcf623741b99bada5",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：虚构团队公布现场记录，说明用途仍为待验证假设。 本例为非紧急文化信息，放入站内专题更新。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构团队公布现场记录，说明用途仍为待验证假设。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-64e41d6cbbde7ae056b1",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-46cdcf623741b99bada5",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-46cdcf623741b99bada5",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：虚构团队公布现场记录，说明用途仍为待验证假设。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构团队公布现场记录，说明用途仍为待验证假设。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-6f37401255a5f94ff132",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-82bcb407b281f12eed63",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-82bcb407b281f12eed63",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：新增测年结果及误差范围，不能跳过学术限定。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增测年结果及误差范围，不能跳过学术限定。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-2eab281886bed32cc4f5",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-82bcb407b281f12eed63",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-82bcb407b281f12eed63",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：新增测年结果及误差范围，不能跳过学术限定。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-8ebce3838a85e03e0da0",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-cdec11ae40048a4d7758",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cdec11ae40048a4d7758",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构溪原遗址研究背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：评论重复同一假设，没有新测年或出土记录。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-52cd18a69a9276efbc5b",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-cdec11ae40048a4d7758",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cdec11ae40048a4d7758",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构溪原遗址研究重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：评论重复同一假设，没有新测年或出土记录。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-bff02c8abb4c27bc6aa6",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-35102b79a6633a537447",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-35102b79a6633a537447",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构溪原遗址研究：旧发掘开放日结束，不宜继续推旧参观安排。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：旧发掘开放日结束，不宜继续推旧参观安排。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-f5d9fa4b30f2cd9a6155",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧发掘开放日结束，不宜继续推旧参观安排。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-35102b79a6633a537447",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-35102b79a6633a537447",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构溪原遗址研究旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：旧发掘开放日结束，不宜继续推旧参观安排。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-d70ae1f098a3657eaced",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧发掘开放日结束，不宜继续推旧参观安排。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-cf51ed8f1ea77db30451",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cf51ed8f1ea77db30451",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：团队更正样本编号，旧稿引用了不相关测年结果。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：团队更正样本编号，旧稿引用了不相关测年结果。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-508630c94ddf2c8ee035",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧发掘开放日结束，不宜继续推旧参观安排。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "团队更正样本编号，旧稿引用了不相关测年结果。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-cf51ed8f1ea77db30451",
+        "related_news": [
+          {
+            "excerpt": "网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-cf51ed8f1ea77db30451",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。网帖直接断言遗址用途，研究团队尚无结论。；虚构团队公布现场记录，说明用途仍为待验证假设。；新增测年结果及误差范围，不能跳过学术限定。；评论重复同一假设，没有新测年或出土记录。；旧发掘开放日结束，不宜继续推旧参观安排。；团队更正样本编号，旧稿引用了不相关测年结果。",
+        "title": "虚构溪原遗址研究",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构溪原遗址研究：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：团队更正样本编号，旧稿引用了不相关测年结果。；全部为虚构新闻情景。",
+        "title": "虚构溪原遗址研究"
+      },
+      "case_id": "evo-749442142ba206013b99",
+      "event_id": "synthetic-event-e33e2cf6180089765a9e",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "网帖直接断言遗址用途，研究团队尚无结论。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "虚构团队公布现场记录，说明用途仍为待验证假设。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "新增测年结果及误差范围，不能跳过学术限定。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "评论重复同一假设，没有新测年或出土记录。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "旧发掘开放日结束，不宜继续推旧参观安排。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-5d9b5f15c151d17f74a3",
+          "text": "团队更正样本编号，旧稿引用了不相关测年结果。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注文化主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "出处与归属",
+          "学术不确定性",
+          "活动信息"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-5d9b5f15c151d17f74a3",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-6167c272e68f90678534"
+      },
+      "scope_sha256": "531a8de820305af0175ef5f0297c28bc9d6fb684e71801b170e5dd4d29c8b865",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-e33e2cf6180089765a9e",
+      "story_title": "虚构溪原遗址研究",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

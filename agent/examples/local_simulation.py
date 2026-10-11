@@ -99,12 +99,32 @@ def create_local_app() -> FastAPI:
                 model_config=application.state.model_config,
                 model_ports=application.state.model_ports,
             )
-            if settings.conversation_enabled and settings.conversation_hot_news_query_enabled:
-                from examples.conversation_hot_news import LocalConversationHotNewsQuery
-                application.state.conversation_service.enable_hot_news_query(
-                    LocalConversationHotNewsQuery(application.state),
-                )
-            yield
+            understanding_ports = None
+            try:
+                if settings.conversation_enabled and settings.conversation_hot_news_query_enabled:
+                    from examples.conversation_hot_news import LocalConversationHotNewsQuery
+                    from app.model_runtime.query_understanding import (
+                        build_query_understanding_client, load_query_understanding_endpoint_config,
+                    )
+                    understanding_agent, understanding_metadata, understanding_timeout = None, None, None
+                    if settings.conversation_query_understanding_config_path:
+                        endpoint_config = load_query_understanding_endpoint_config(
+                            settings.conversation_query_understanding_config_path,
+                            prompts_config=application.state.model_config,
+                        )
+                        understanding_agent, understanding_ports, understanding_metadata = build_query_understanding_client(
+                            prompts_config=application.state.model_config, endpoint_config=endpoint_config,
+                            environment=settings.environment,
+                        )
+                        understanding_timeout = endpoint_config.inference.timeout_seconds
+                    application.state.conversation_service.enable_hot_news_query(
+                        LocalConversationHotNewsQuery(application.state, understanding_agent=understanding_agent,
+                            understanding_metadata=understanding_metadata, understanding_timeout=understanding_timeout),
+                    )
+                yield
+            finally:
+                if understanding_ports is not None:
+                    await understanding_ports.close()
 
     app.router.lifespan_context = local_lifespan
     return app
@@ -130,7 +150,7 @@ async def run_local_hot_news(
 
     return await execute_local_hot_news_query(state=request.app.state, principal=principal, body=body)
 
-"""Sql请求/校验原则/Sql意图->输出请求"""
+""" Sql请求/校验原则/Sql意图->输出请求 """
 async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
                                      body: SqlAssistantPreviewRequest | None = None,
                                      on_bound=None,
@@ -143,13 +163,13 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
     if str(principal.tenant_id) != E2E_TENANT_ID:
         raise HTTPException(status_code=403, detail="local scenario tenant required")
 
-    sample_start, sample_end = dataset_window(state.settings.sql_assistant_dataset_profile)
+    if body is not None and body.window_end - body.window_start != timedelta(hours=1):
+        raise HTTPException(status_code=422, detail="热点本地模拟请选择恰好1小时，小时去重用户数不能跨小时相加")
+    sample_start, sample_end = dataset_window(getattr(state.settings, "sql_assistant_dataset_profile", "classic-v1"))
     body = body or SqlAssistantPreviewRequest(
         question="按点击量取前5条新闻", scenario_id="news-ranking",
         window_start=sample_start, window_end=sample_start + timedelta(hours=1),
     )
-    if body.window_end - body.window_start != timedelta(hours=1):
-        raise HTTPException(status_code=422, detail="热点本地模拟请选择恰好1小时，小时去重用户数不能跨小时相加")
     if body.window_start < sample_start or body.window_end > sample_end:
         raise HTTPException(status_code=422, detail="窗口必须位于当前数据集公布的合成样本范围内")
 

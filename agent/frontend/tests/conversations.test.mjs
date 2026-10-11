@@ -108,6 +108,7 @@ async function harness(t, overrides = {}, selectedId = 'a', controls = {}) {
     }) },
     '@/components/conversation/AnalysisDemoPanel.vue': { default: {} },
     '@/components/conversation/AnalysisResultCard.vue': { default: {} },
+    '@/components/conversation/RelatedArticlesPanel.vue': { default: {} },
   }).default
   let scope = vue.effectScope()
   const state = scope.run(() => component.setup({}, { expose: () => {} }))

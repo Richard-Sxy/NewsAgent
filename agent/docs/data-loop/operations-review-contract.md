@@ -1,6 +1,6 @@
 # 运营审批与反馈契约
 
-日期：2026-10-04。第1节描述当前代码，第2节之后为待实现的领域设计；不修改现有 API 枚举或业务 Schema。
+日期：2026-10-04；当前回流事实更新于2026-10-10。第1节描述当前代码，第2节之后为待实现的领域设计。四类决定回流和可选分类已实现，部署迁移与验证见[运营反馈扩充](operations-feedback-expansion.md)。
 
 ## 1. 当前运营真正审批什么
 
@@ -12,13 +12,13 @@ HotNewsView / HotNewsDecisionForm
 → HotNewsDecisionService.record_decision
 → PostgresHotNewsRunStore.get_analysis_memory(tenant_id, run_id, news_id)
 → PostgreSQL hot_news_decisions
-→ rejected/corrected：同事务 AnalysisFeedbackCollector.collect_from_operator_decision
+→ 新 accepted/rejected/deferred/corrected：同事务 AnalysisFeedbackCollector.collect_from_operator_decision
 → feedback_cases → 人工标签提交/独立二审 → 可冻结的评测样本
 ```
 
 DataLoop 页的 `/api/v1/data-loop/operator-decisions` 复用同一服务。现有动作是 `accepted/rejected/deferred/corrected`；没有 `plan_id` 或完整投递计划，采纳不会发送通知，延后没有持久的到期重评任务。`correction_payload` 不自动成为评测标签，仍需强类型标注和二审。
 
-当前反馈默认可以分类为 `analysis_incorrect`。后续接运营策略时，必须先分清模型分析错误、编辑选择和策略不适配；不能把“今天频控已满”标为模型事实错误。
+可选 `operator_feedback` 使用版本化分类与理由码，区分分析错误、编辑判断、策略判断与正向案例。显式非分析错误归为 `other`；旧格式采纳/延后缺省为 `other/low`，旧驳回/修正保留原语义与哈希。所有新案例仍须独立标注和二审；采纳本身不证明模型正确或效果提升。Fresh自动选样与新手动冻结均排除正向或纯业务判断，只接受二审的 `incorrect/partially_correct` 分析错误。旧采纳/延后的请求重放不静默回补历史。
 
 ## 2. 建议的审批对象
 

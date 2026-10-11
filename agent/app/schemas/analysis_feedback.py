@@ -11,7 +11,10 @@ from pydantic import (
     StringConstraints,
     field_validator,
     model_validator,
+    model_serializer,
 )
+
+from app.schemas.operations_feedback import OperationsFeedback
 
 from app.schemas.hot_news import (
     DriverType,
@@ -47,6 +50,8 @@ IdempotencyKey = Annotated[
 ]
 
 FeedbackSource = Literal[
+    "operator_accepted",
+    "operator_deferred",
     "operator_rejected",
     "operator_corrected",
     "validation_failed",
@@ -165,6 +170,16 @@ class FeedbackSourceReference(BaseModel):
     request_id: NonBlank256 | None = None
     diagnostic_code: NonBlank128 | None = None
     diagnostic_summary: NonBlank1000 | None = None
+    operator_feedback: OperationsFeedback | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_reference(self, handler):
+        # Preserve canonical JSON and hashes of historical cases. Existing null
+        # fields remain present; only the newly introduced absent field is omitted.
+        value = handler(self)
+        if self.operator_feedback is None:
+            value.pop("operator_feedback", None)
+        return value
 
 
 class AnalysisFeedbackCasePayload(BaseModel):

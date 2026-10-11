@@ -1,0 +1,13 @@
+# Relative paths are resolved against this YAML, independent of the process cwd.
+# Bind the public offline corpus to one explicitly approved local tenant.
+schema_version: 1
+backend: bge_snapshot
+bge_snapshot:
+  package_dir: ../../rag-recall-demo
+  tenant_id: 11111111-1111-4111-8111-111111111111
+  snapshot_version: news-bge-export-v1
+  device: cpu
+  chunk_pool: 200
+  ef: 256
+  max_query_chars: 2000
+  model_batch_size: 8

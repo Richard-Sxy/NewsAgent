@@ -1,0 +1,4374 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8b68f56b27aaa1d5212a",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8b68f56b27aaa1d5212a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "待核验线索：虚构安岚社区临时疏散，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称某楼存在危险，现场主管部门尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-690be2324d1a68b3e636",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8b68f56b27aaa1d5212a",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8b68f56b27aaa1d5212a",
+            "published_at": "2026-10-08T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T00:00:00Z",
+        "window_start": "2026-10-07T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T00:55:00Z",
+        "notification_copy": "已完全证实：虚构安岚社区临时疏散影响所有人！",
+        "send_after": "2026-10-08T00:05:00Z",
+        "summary": "当前进展：群聊称某楼存在危险，现场主管部门尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-6839ce978c77ad69f454",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-08T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c6a539ce93a3b2b58d70",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c6a539ce93a3b2b58d70",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-ced8542ebea645354ad2",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-c6a539ce93a3b2b58d70",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-c6a539ce93a3b2b58d70",
+            "published_at": "2026-10-08T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T01:00:00Z",
+        "window_start": "2026-10-08T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T01:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。",
+        "send_after": "2026-10-08T01:05:00Z",
+        "summary": "当前进展：虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-957a2fbd7456590524fa",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        }
+      ],
+      "observed_at": "2026-10-08T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3684c8fbf4d5c32b6373",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3684c8fbf4d5c32b6373",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：新增安置点和返回评估安排，不公开居民个人资料。",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增安置点和返回评估安排，不公开居民个人资料。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-d462e13fdff0137dfa40",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-3684c8fbf4d5c32b6373",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3684c8fbf4d5c32b6373",
+            "published_at": "2026-10-08T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T02:00:00Z",
+        "window_start": "2026-10-08T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T02:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-08T02:05:00Z",
+        "summary": "当前进展：新增安置点和返回评估安排，不公开居民个人资料。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-0af85cbf704e84d0aaeb",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        }
+      ],
+      "observed_at": "2026-10-08T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-48d5c7fad0b9cc2c5b24",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-48d5c7fad0b9cc2c5b24",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:00:00Z",
+        "notification_copy": "虚构安岚社区临时疏散背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-08T23:00:00Z",
+        "summary": "当前进展：旧现场照片重新传播，没有新的风险区。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-629747b9c1bf9e1008ea",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-48d5c7fad0b9cc2c5b24",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-48d5c7fad0b9cc2c5b24",
+            "published_at": "2026-10-08T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T03:00:00Z",
+        "window_start": "2026-10-08T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:55:00Z",
+        "notification_copy": "刚刚：虚构安岚社区临时疏散重大新消息！",
+        "send_after": "2026-10-08T03:05:00Z",
+        "summary": "当前进展：旧现场照片重新传播，没有新的风险区。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-92df9182f7a21e2eb10d",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        }
+      ],
+      "observed_at": "2026-10-08T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4126c763606ef1eee331",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4126c763606ef1eee331",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：临时检查结束，居民已返回，旧疏散提示失效。",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：临时检查结束，居民已返回，旧疏散提示失效。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-86f6cd2625724ce87e9b",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "临时检查结束，居民已返回，旧疏散提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-4126c763606ef1eee331",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-4126c763606ef1eee331",
+            "published_at": "2026-10-08T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T04:00:00Z",
+        "window_start": "2026-10-08T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T03:00:00Z",
+        "notification_copy": "即刻办理：虚构安岚社区临时疏散旧入口依然开放！",
+        "send_after": "2026-10-08T02:00:00Z",
+        "summary": "当前进展：临时检查结束，居民已返回，旧疏散提示失效。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-0805dc4b282ebfc1a213",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "临时检查结束，居民已返回，旧疏散提示失效。"
+        }
+      ],
+      "observed_at": "2026-10-08T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97d428d68c56bcdcb025",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97d428d68c56bcdcb025",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：公告更正楼栋编号，旧文指向了不相关建筑。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：公告更正楼栋编号，旧文指向了不相关建筑。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-675774413f47b6166382",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "临时检查结束，居民已返回，旧疏散提示失效。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公告更正楼栋编号，旧文指向了不相关建筑。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-97d428d68c56bcdcb025",
+        "related_news": [
+          {
+            "excerpt": "群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-97d428d68c56bcdcb025",
+            "published_at": "2026-10-08T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。群聊称某楼存在危险，现场主管部门尚未确认。；虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。；新增安置点和返回评估安排，不公开居民个人资料。；旧现场照片重新传播，没有新的风险区。；临时检查结束，居民已返回，旧疏散提示失效。；公告更正楼栋编号，旧文指向了不相关建筑。",
+        "title": "虚构安岚社区临时疏散",
+        "window_end": "2026-10-08T05:00:00Z",
+        "window_start": "2026-10-08T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-08T05:55:00Z",
+        "notification_copy": "虚构安岚社区临时疏散：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-08T05:05:00Z",
+        "summary": "当前进展：公告更正楼栋编号，旧文指向了不相关建筑。；全部为虚构新闻情景。",
+        "title": "虚构安岚社区临时疏散"
+      },
+      "case_id": "evo-88683c33661541e14176",
+      "event_id": "synthetic-event-cca8355001c2679ff50c",
+      "history": [
+        {
+          "available_at": "2026-10-08T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "群聊称某楼存在危险，现场主管部门尚未确认。"
+        },
+        {
+          "available_at": "2026-10-08T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构现场公告确认一处检查区临时疏散，不代表整个社区有危险。"
+        },
+        {
+          "available_at": "2026-10-08T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "新增安置点和返回评估安排，不公开居民个人资料。"
+        },
+        {
+          "available_at": "2026-10-08T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "旧现场照片重新传播，没有新的风险区。"
+        },
+        {
+          "available_at": "2026-10-08T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "临时检查结束，居民已返回，旧疏散提示失效。"
+        },
+        {
+          "available_at": "2026-10-08T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公告更正楼栋编号，旧文指向了不相关建筑。"
+        }
+      ],
+      "observed_at": "2026-10-08T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-cca8355001c2679ff50c",
+      "story_title": "虚构安岚社区临时疏散",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-800488554c6828573a1b",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-800488554c6828573a1b",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "待核验线索：虚构清禾公益项目审查，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名帖指控负责人违法，尚无正式调查结论。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-6a99d122dc563479dd4c",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-800488554c6828573a1b",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-800488554c6828573a1b",
+            "published_at": "2026-10-09T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T00:00:00Z",
+        "window_start": "2026-10-08T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T00:55:00Z",
+        "notification_copy": "已完全证实：虚构清禾公益项目审查影响所有人！",
+        "send_after": "2026-10-09T00:05:00Z",
+        "summary": "当前进展：匿名帖指控负责人违法，尚无正式调查结论。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-f80b094611a1ad4f8c80",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        }
+      ],
+      "observed_at": "2026-10-09T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5427771b53f34b7a302a",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5427771b53f34b7a302a",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "审查开始等同于违法结论成立。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "审查已坐实违法，负责人须承担全部责任。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构项目方确认资金接受审查，不能写成违法已坐实。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-ca79546dee31313df0f0",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5427771b53f34b7a302a",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5427771b53f34b7a302a",
+            "published_at": "2026-10-09T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T01:00:00Z",
+        "window_start": "2026-10-09T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T01:55:00Z",
+        "notification_copy": "虚构清禾公益项目审查：虚构项目方确认资金接受审查，不能写成违法已坐实。",
+        "send_after": "2026-10-09T01:05:00Z",
+        "summary": "当前进展：虚构项目方确认资金接受审查，不能写成违法已坐实。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-e93502f80561215ef97b",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        }
+      ],
+      "observed_at": "2026-10-09T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ea2bf3a0afbec8017cc",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ea2bf3a0afbec8017cc",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构清禾公益项目审查：审查方披露已核对范围及未决事项，相关方回应被记录。",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：审查方披露已核对范围及未决事项，相关方回应被记录。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-4ecb129b9905daf1a929",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ea2bf3a0afbec8017cc",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ea2bf3a0afbec8017cc",
+            "published_at": "2026-10-09T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T02:00:00Z",
+        "window_start": "2026-10-09T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T02:55:00Z",
+        "notification_copy": "虚构清禾公益项目审查：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-09T02:05:00Z",
+        "summary": "当前进展：审查方披露已核对范围及未决事项，相关方回应被记录。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-cf7533299b5dc4a13d1c",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        }
+      ],
+      "observed_at": "2026-10-09T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-60369eb25b486a060763",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-60369eb25b486a060763",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:00:00Z",
+        "notification_copy": "虚构清禾公益项目审查背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-09T23:00:00Z",
+        "summary": "当前进展：评论重复同一指控，没有新证据或回应。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-28e937f4545d1fe9b0e7",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+        "content_type": "video",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-60369eb25b486a060763",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-60369eb25b486a060763",
+            "published_at": "2026-10-09T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T03:00:00Z",
+        "window_start": "2026-10-09T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:55:00Z",
+        "notification_copy": "刚刚：虚构清禾公益项目审查重大新消息！",
+        "send_after": "2026-10-09T03:05:00Z",
+        "summary": "当前进展：评论重复同一指控，没有新证据或回应。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-998e6908c4709dcb1722",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        }
+      ],
+      "observed_at": "2026-10-09T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-3df9b2ad7e94c8687f5c",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3df9b2ad7e94c8687f5c",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "虚构清禾公益项目审查：审查阶段结束，旧帖不能伪装成刚发生的指控。",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：审查阶段结束，旧帖不能伪装成刚发生的指控。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-f0971022ff93917c04fc",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查阶段结束，旧帖不能伪装成刚发生的指控。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-3df9b2ad7e94c8687f5c",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-3df9b2ad7e94c8687f5c",
+            "published_at": "2026-10-09T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T04:00:00Z",
+        "window_start": "2026-10-09T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T03:00:00Z",
+        "notification_copy": "即刻办理：虚构清禾公益项目审查旧入口依然开放！",
+        "send_after": "2026-10-09T02:00:00Z",
+        "summary": "当前进展：审查阶段结束，旧帖不能伪装成刚发生的指控。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-7a881967aca3b5257c8f",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查阶段结束，旧帖不能伪装成刚发生的指控。"
+        }
+      ],
+      "observed_at": "2026-10-09T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-88515fd59cfc1bb77fde",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-88515fd59cfc1bb77fde",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构清禾公益项目审查：审查方更正一笔款项分类，旧稿误当作个人支出。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：审查方更正一笔款项分类，旧稿误当作个人支出。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-c7a49428cec2c2f6d9f0",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查阶段结束，旧帖不能伪装成刚发生的指控。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方更正一笔款项分类，旧稿误当作个人支出。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-88515fd59cfc1bb77fde",
+        "related_news": [
+          {
+            "excerpt": "匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-88515fd59cfc1bb77fde",
+            "published_at": "2026-10-09T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。匿名帖指控负责人违法，尚无正式调查结论。；虚构项目方确认资金接受审查，不能写成违法已坐实。；审查方披露已核对范围及未决事项，相关方回应被记录。；评论重复同一指控，没有新证据或回应。；审查阶段结束，旧帖不能伪装成刚发生的指控。；审查方更正一笔款项分类，旧稿误当作个人支出。",
+        "title": "虚构清禾公益项目审查",
+        "window_end": "2026-10-09T05:00:00Z",
+        "window_start": "2026-10-09T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-09T05:55:00Z",
+        "notification_copy": "虚构清禾公益项目审查：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-09T05:05:00Z",
+        "summary": "当前进展：审查方更正一笔款项分类，旧稿误当作个人支出。；全部为虚构新闻情景。",
+        "title": "虚构清禾公益项目审查"
+      },
+      "case_id": "evo-ed9eb174d8fc67a4db48",
+      "event_id": "synthetic-event-aadf870767cc482eedd5",
+      "history": [
+        {
+          "available_at": "2026-10-09T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "匿名帖指控负责人违法，尚无正式调查结论。"
+        },
+        {
+          "available_at": "2026-10-09T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构项目方确认资金接受审查，不能写成违法已坐实。"
+        },
+        {
+          "available_at": "2026-10-09T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方披露已核对范围及未决事项，相关方回应被记录。"
+        },
+        {
+          "available_at": "2026-10-09T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "评论重复同一指控，没有新证据或回应。"
+        },
+        {
+          "available_at": "2026-10-09T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查阶段结束，旧帖不能伪装成刚发生的指控。"
+        },
+        {
+          "available_at": "2026-10-09T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "审查方更正一笔款项分类，旧稿误当作个人支出。"
+        }
+      ],
+      "observed_at": "2026-10-09T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-aadf870767cc482eedd5",
+      "story_title": "虚构清禾公益项目审查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a307ee1ca77e4c36e9db",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a307ee1ca77e4c36e9db",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "待核验线索：虚构鸣溪宠物救助站搬迁，未经核验的内容暂不作为事实通知。",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：转发帖称救助站永久关闭，站方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-cfe98f5f200e9ccbcf0b",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a307ee1ca77e4c36e9db",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a307ee1ca77e4c36e9db",
+            "published_at": "2026-10-10T00:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T00:00:00Z",
+        "window_start": "2026-10-09T23:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅凭点击增长即可确定网传说法属实，并扩大到所有地区。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T00:55:00Z",
+        "notification_copy": "已完全证实：虚构鸣溪宠物救助站搬迁影响所有人！",
+        "send_after": "2026-10-10T00:05:00Z",
+        "summary": "当前进展：转发帖称救助站永久关闭，站方尚未确认。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-92ba530d9e651acb533d",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        }
+      ],
+      "observed_at": "2026-10-10T00:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 1,
+      "stage_name": "emerging",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6097bb7ec42e345b09f9",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6097bb7ec42e345b09f9",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：虚构站方确认临时搬迁，已有动物照护未中断。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构站方确认临时搬迁，已有动物照护未中断。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-1272ca163cab5ef96c2e",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6097bb7ec42e345b09f9",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6097bb7ec42e345b09f9",
+            "published_at": "2026-10-10T01:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T01:00:00Z",
+        "window_start": "2026-10-10T00:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T01:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：虚构站方确认临时搬迁，已有动物照护未中断。",
+        "send_after": "2026-10-10T01:05:00Z",
+        "summary": "当前进展：虚构站方确认临时搬迁，已有动物照护未中断。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-7e8644319611664695eb",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        }
+      ],
+      "observed_at": "2026-10-10T01:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 2,
+      "stage_name": "confirmed",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9d8e9e823b9eb0556ff1",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9d8e9e823b9eb0556ff1",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：公布新地址、预约规则和领养审核流程。",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：公布新地址、预约规则和领养审核流程。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-6962f81e8379d62e35ec",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-9d8e9e823b9eb0556ff1",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9d8e9e823b9eb0556ff1",
+            "published_at": "2026-10-10T02:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T02:00:00Z",
+        "window_start": "2026-10-10T01:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "新增信息证明所有未决事项均已解决，热度变化证明效果提升。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T02:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：全部问题已解决，效果已经提升！",
+        "send_after": "2026-10-10T02:05:00Z",
+        "summary": "当前进展：公布新地址、预约规则和领养审核流程。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-2ff99956c5126ebd08a0",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        }
+      ],
+      "observed_at": "2026-10-10T02:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 3,
+      "stage_name": "developing",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-44fb1fd9c14e8f4a3d3e",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-44fb1fd9c14e8f4a3d3e",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-11T01:00:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁背景梳理，拟合并进明日专题；当前独立通知额度不足。",
+        "send_after": "2026-10-10T23:00:00Z",
+        "summary": "当前进展：换标题转载同一搬迁公告，没有新增领养名额。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-79066146553286f61625",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+        "content_type": "video",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-44fb1fd9c14e8f4a3d3e",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-44fb1fd9c14e8f4a3d3e",
+            "published_at": "2026-10-10T03:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T03:00:00Z",
+        "window_start": "2026-10-10T02:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:55:00Z",
+        "notification_copy": "刚刚：虚构鸣溪宠物救助站搬迁重大新消息！",
+        "send_after": "2026-10-10T03:05:00Z",
+        "summary": "当前进展：换标题转载同一搬迁公告，没有新增领养名额。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-8b997c1ed8e8b8ccb8d6",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        }
+      ],
+      "observed_at": "2026-10-10T03:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 4,
+      "stage_name": "repeat",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-d3f8954fe3bf87dd951a",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f8954fe3bf87dd951a",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：搬迁完成，旧地址和临时志愿报名链接失效。",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：搬迁完成，旧地址和临时志愿报名链接失效。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-ebaea58958dffcd0526d",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "搬迁完成，旧地址和临时志愿报名链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-d3f8954fe3bf87dd951a",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f8954fe3bf87dd951a",
+            "published_at": "2026-10-10T04:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T04:00:00Z",
+        "window_start": "2026-10-10T03:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T03:00:00Z",
+        "notification_copy": "即刻办理：虚构鸣溪宠物救助站搬迁旧入口依然开放！",
+        "send_after": "2026-10-10T02:00:00Z",
+        "summary": "当前进展：搬迁完成，旧地址和临时志愿报名链接失效。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-085686f9263a43728010",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "搬迁完成，旧地址和临时志愿报名链接失效。"
+        }
+      ],
+      "observed_at": "2026-10-10T04:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 5,
+      "stage_name": "cooling",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-b692becf45df045442b7",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b692becf45df045442b7",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "仅解释当前已提供的事实与聚合指标，不推断真实效果或因果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：站方更正访客开放时间，旧稿把照护时段写成开放时段。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-27532e1be9a2986c351a",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "搬迁完成，旧地址和临时志愿报名链接失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "站方更正访客开放时间，旧稿把照护时段写成开放时段。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-evolution-v2",
+        "content_excerpt": "以下仅为截至观察时间的虚构事实；不代表企业数据或生产规则。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+        "content_type": "article",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-b692becf45df045442b7",
+        "related_news": [
+          {
+            "excerpt": "转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-b692becf45df045442b7",
+            "published_at": "2026-10-10T05:00:00Z",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线截至本阶段的事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "合成新闻主线当前已知事实；不对应真实新闻。转发帖称救助站永久关闭，站方尚未确认。；虚构站方确认临时搬迁，已有动物照护未中断。；公布新地址、预约规则和领养审核流程。；换标题转载同一搬迁公告，没有新增领养名额。；搬迁完成，旧地址和临时志愿报名链接失效。；站方更正访客开放时间，旧稿把照护时段写成开放时段。",
+        "title": "虚构鸣溪宠物救助站搬迁",
+        "window_end": "2026-10-10T05:00:00Z",
+        "window_start": "2026-10-10T04:00:00Z"
+      },
+      "candidate": {
+        "analysis_claim": "更正不影响旧表述，可继续按之前的范围和口径表达。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-10T05:55:00Z",
+        "notification_copy": "虚构鸣溪宠物救助站搬迁：继续沿用旧口径，不展示更正。",
+        "send_after": "2026-10-10T05:05:00Z",
+        "summary": "当前进展：站方更正访客开放时间，旧稿把照护时段写成开放时段。；全部为虚构新闻情景。",
+        "title": "虚构鸣溪宠物救助站搬迁"
+      },
+      "case_id": "evo-4900121e09d0d895dfa8",
+      "event_id": "synthetic-event-2a8ce5e7783739a28778",
+      "history": [
+        {
+          "available_at": "2026-10-10T00:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "转发帖称救助站永久关闭，站方尚未确认。"
+        },
+        {
+          "available_at": "2026-10-10T01:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "虚构站方确认临时搬迁，已有动物照护未中断。"
+        },
+        {
+          "available_at": "2026-10-10T02:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "公布新地址、预约规则和领养审核流程。"
+        },
+        {
+          "available_at": "2026-10-10T03:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "换标题转载同一搬迁公告，没有新增领养名额。"
+        },
+        {
+          "available_at": "2026-10-10T04:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "搬迁完成，旧地址和临时志愿报名链接失效。"
+        },
+        {
+          "available_at": "2026-10-10T05:00:00+00:00",
+          "source_url": "synthetic://operations-evolution-v2/synthetic-board-71f2e91c06113462d072",
+          "text": "站方更正访客开放时间，旧稿把照护时段写成开放时段。"
+        }
+      ],
+      "observed_at": "2026-10-10T05:00:00+00:00",
+      "scope": {
+        "applicable_scenarios": [
+          "待核验线索",
+          "确认与进展",
+          "重复与过期",
+          "更正跟进"
+        ],
+        "audience_summary": "明确关注社会主题且当前授权有效的模拟用户；地域事项只覆盖受影响区域。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "有效信息触达",
+          "重要增量覆盖",
+          "降低重复打扰",
+          "更正透明度"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "未核实指控",
+          "隐私保护",
+          "公共服务与因果边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-71f2e91c06113462d072",
+        "tenant_id": "synthetic-tenant-7c47ab589c8ae4b6dc8c",
+        "user_id": "synthetic-operator-849705c962ca8632ab4b"
+      },
+      "scope_sha256": "14ad979ed284dcb16fd6ba6ac464bf429cc42ce53886d8598bfa84ee0a9e6610",
+      "stage_index": 6,
+      "stage_name": "corrected",
+      "story_id": "synthetic-story-2a8ce5e7783739a28778",
+      "story_title": "虚构鸣溪宠物救助站搬迁",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true
+}

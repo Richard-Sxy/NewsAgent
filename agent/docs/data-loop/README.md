@@ -14,6 +14,9 @@
 | [Temporal 链路与稳定性](temporal-chain-and-reliability.md) | 当前真实调用链、目标编排、恢复与跨天状态 |
 | [实施与验收清单](implementation-backlog.md) | 按什么顺序补断点，哪些测试能证明完成 |
 | [数据分析接入](dataset-analysis-integration.md) | 固定分析 Activity、完整运行证据、持久回执、审批展示与测试 |
+| [运营反馈扩充](operations-feedback-expansion.md) | 四类决定回流、结构化分类与理由、独立标注、Fresh 防污染和迁移 |
+| [合成运营数据集](synthetic-operations-dataset.md) | 无真实反馈时的48例模拟编辑意见、24事件分组、分析评测投影和离线评分 |
+| [板块与主线评测集](operations-evolution-dataset.md) | 12板块、36条主线、216新闻快照、432运营候选，以及盲评、分组门禁和断点续跑 |
 
 项目背景实际位于 [DemoMD/PROJECT_CONTEXT.md](../../../DemoMD/PROJECT_CONTEXT.md)，长期工程参考位于 [DemoMD/TAOTIAN.md](../../../DemoMD/TAOTIAN.md)。旧目录名 `writing-agent-service/` 已迁到 `agent/`，不恢复历史框架客户端。
 
@@ -37,7 +40,7 @@ Observation：当时的新闻/事件/指标/证据与候选建议快照
 | 能力 | 当前代码事实 | 本窗口的目标 |
 |---|---|---|
 | 热点运营决定 | 已支持采纳、驳回、延后、修正；对象是分析建议 | 扩展为针对完整推送建议修订版的审批 |
-| 回流 | 驳回/修正原子生成 FeedbackCase；采纳/延后只保存决定 | 完整记录四类决定，区分编辑判断、策略判断与模型错误 |
+| 回流 | 新采纳/驳回/延后/修正决定原子生成待标注 FeedbackCase；可选结构化分类与理由 | 接真实团队反馈、历史显式回补和迟到标签消费；仅二审确认错误进入 Fresh |
 | 候选推送 | PushPlan Schema、生成器、确定性 Validator 与单测存在 | 接持久化、审批 UI 与专属有界 Workflow |
 | DataLoop | 已有标签二审、三层集、回放、Gate、48 小时审批和配置激活/回滚 | 复用治理能力，补策略领域与迟到反馈消费 |
 | 长期策略 | 没有团队策略注册表；个人 Memory 不能替代 | 租户/运营团队作用域、人工审核、策略集版本与撤销 |

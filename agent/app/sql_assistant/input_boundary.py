@@ -32,13 +32,17 @@ _SIGNALS = (
     )),
 )
 
-"""拒绝隐藏控制文本；折叠全角表格而不隐藏意图。"""
+"""拒绝隐藏字符文本。"""
 def normalize_question(question: str, *, max_chars: int = 1000) -> str:
+    # 问题长度限制
     if not isinstance(question, str) or not 1 <= len(question) <= max_chars:
         raise SqlAssistantQuestionError(f"查询问题必须是1至{max_chars}字符的文本")
+    # 规范化后问题 将兼容字符转换成统一形式 比方说 "S E L E C T" -> "SELECT"  1️⃣ -> 1
     normalized = unicodedata.normalize("NFKC", question)
+    # 获取当前字符的 Unicode 分类(Lu大写字母 Lo其他字母 Nd十进制数字 Cc控制字符 Cf格式字符)
     if any(unicodedata.category(char).startswith("C") and char not in "\t\r\n" for char in normalized):
         raise SqlAssistantQuestionError("查询问题包含不可见或控制字符，请使用可见文本")
+    # 匹配一个或多个连续空白，包括空格、换行、制表符 -> 变成一个空格，删除首位的空白
     normalized = re.sub(r"\s+", " ", normalized).strip()
     if not normalized or len(normalized) > max_chars:
         raise SqlAssistantQuestionError("查询问题为空或规范化后超过长度限制")
@@ -56,8 +60,8 @@ def question_signals(normalized_question: str) -> tuple[str, ...]:
 
 """前端屏幕的输出内容。"""
 def screen_question(question: str) -> str:
-    normalized = normalize_question(question)
-    signals = question_signals(normalized)
+    normalized = normalize_question(question) # 屏蔽不可见字符/控制输入长度限制
+    signals = question_signals(normalized)    # 合并拆开的字母/删除全部空白
     if "raw_sql" in signals:
         raise SqlAssistantQuestionError("请输入新闻指标问题，不提交手写 SQL")
     if signals:

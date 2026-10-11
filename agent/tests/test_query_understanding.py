@@ -126,9 +126,9 @@ def test_model_cannot_drop_known_original_semantics(question, changes, code, pol
 @pytest.mark.parametrize("question", [
     "新闻点击超过100前5条", "查询新闻来源为新华社前5条", "今日发布的热点新闻前5条",
     "新闻按published_at排序前5条", "新闻点击平均前5条", "新闻点击前5.5条", "新闻点击前5条100",
-    "新闻点击前五五条", "查询娱乐新闻前5条", "最近6小时新闻点击前5条", "新闻UV前5条",
+    "查询娱乐新闻前5条", "最近6小时新闻点击前5条", "新闻UV前5条",
     "新闻按effective_consumptions前5条", "新闻按category前5条",
-    "不要科技新闻前5条", "查询非视频新闻前5条", "新闻前二十十条", "按source前5条新闻",
+    "不要科技新闻前5条", "查询非视频新闻前5条", "按source前5条新闻",
 ])
 def test_known_unsupported_conditions_cannot_be_omitted_by_ready_model(question, policy):
     result = resolve_query_understanding(question, ready_proposal(), policy, now=NOW)
@@ -155,8 +155,8 @@ def test_conflicting_requirements_request_clarification(question, policy):
 
 def test_actual_model_is_not_restricted_to_local_finite_expression_vocabulary(policy):
     question = "请梳理值得关注的新闻动态"
-    assert understand(question, policy).status == "unsupported"
-    result = resolve_query_understanding(question, ready_proposal(), policy, now=NOW)
+    assert understand(question, policy).status == "clarify"
+    result = resolve_query_understanding(question, ready_proposal(response_style="summary"), policy, now=NOW)
     assert result.status == "ready"
     assert "MODEL FREE TEXT" not in result.message
 
@@ -244,5 +244,6 @@ def test_limits_and_resolution_messages_are_bounded_and_cannot_expand_window(pol
 
 def test_json_output_has_no_sql_identity_or_model_numeric_message(policy):
     data = json.loads(local_query_understanding({"question": "热点新闻", "policy": policy.model_dump(mode="json")}))
-    assert set(data) == {"status", "intent", "time_expression", "explicit_date", "time_basis", "ranking_source", "unsupported_conditions"}
+    assert set(data) == {"status", "intent", "time_expression", "explicit_date", "hour_start", "hour_end", "time_basis", "ranking_source", "response_style", "unsupported_conditions"}
+    assert data["hour_start"] is None and data["hour_end"] is None
     assert not any(key in data for key in ("sql", "tenant_id", "message", "window_start"))

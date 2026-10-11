@@ -50,6 +50,10 @@ def decision_for(
         "decision_type": request.decision_type,
         "reason": request.reason,
         "correction_payload": request.correction_payload,
+        "operator_feedback": (
+            None if request.operator_feedback is None
+            else request.operator_feedback.model_dump(mode="json")
+        ),
         "operator_id": operator_id,
         "idempotency_key": request.idempotency_key,
         "supersedes_decision_id": request.supersedes_decision_id,
@@ -58,7 +62,7 @@ def decision_for(
     return HotNewsDecision(**values)
 
 
-def service_with_results(*results, memory=object()):
+def service_with_results(*results, memory=...):
     session = SimpleNamespace(
         execute=AsyncMock(
             side_effect=[ScalarResult(result) for result in results]
@@ -69,12 +73,15 @@ def service_with_results(*results, memory=object()):
     async def open_session():
         yield session
 
+    if memory is ...:
+        memory = SimpleNamespace(run_id=uuid4(), run_idempotency_key=None)
     memory_store = SimpleNamespace(
         get_analysis_memory=AsyncMock(return_value=memory)
     )
     service = HotNewsDecisionService(
         database=SimpleNamespace(session=open_session),
         memory_store=memory_store,
+        feedback_collector=SimpleNamespace(collect_from_operator_decision=AsyncMock()),
     )
     return service, session, memory_store
 
@@ -243,10 +250,10 @@ async def test_rejected_decision_collects_feedback_in_same_transaction():
 
 
 @pytest.mark.asyncio
-async def test_accepted_decision_does_not_create_feedback_case():
+async def test_accepted_decision_creates_unlabeled_feedback_in_same_session():
     request = command()
     inserted = decision_for(request)
-    service, _, _ = service_with_results(inserted)
+    service, session, _ = service_with_results(inserted)
     service._feedback_collector = SimpleNamespace(
         collect_from_operator_decision=AsyncMock()
     )
@@ -257,4 +264,8 @@ async def test_accepted_decision_does_not_create_feedback_case():
         command=request,
     )
 
-    service._feedback_collector.collect_from_operator_decision.assert_not_awaited()
+    call = service._feedback_collector.collect_from_operator_decision.await_args
+    assert call.args == (session,)
+    assert call.kwargs["decision"] is inserted
+    assert call.kwargs["problem_type"] == "other"
+    assert call.kwargs["severity"] == "low"

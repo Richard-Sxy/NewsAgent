@@ -6,10 +6,9 @@ from __future__ import annotations
 
 from app.db.session import Database
 from app.knowledge.postgres_store import PostgresKnowledgeStore
-from app.knowledge.search_factory import build_knowledge_search_index
+from app.knowledge.search_factory import build_knowledge_search_index, build_knowledge_query_embedder
 from app.model_runtime.config_file import ModelRuntimeConfig
 from app.model_runtime.core import EmbeddingPort
-from app.model_runtime.query_embedding import ModelQueryEmbedder
 from app.retrieval.tiered_vector import (
     TieredVectorKnowledgeSearchClient,
     VectorTier,
@@ -31,15 +30,18 @@ def build_native_knowledge_index(
     return build_knowledge_search_index(config_path=config_path, postgres_store=index)
 
 def build_native_knowledge_search(
-    *, config: ModelRuntimeConfig, embedding: EmbeddingPort, database: Database,
+    *, config: ModelRuntimeConfig | None, embedding: EmbeddingPort | None, database: Database | None,
     index=None,
 ) -> TieredVectorKnowledgeSearchClient:
     if index is None:
+        if config is None or embedding is None or database is None:
+            raise ValueError("native knowledge config, embedding and database are required without an index")
         index = build_native_knowledge_index(config=config, embedding=embedding, database=database)
     tiers = getattr(index, "tiers", (VectorTier.HOT,))
     return TieredVectorKnowledgeSearchClient(
-        embedder=ModelQueryEmbedder(
-            embedding, version=config.embedding.model_routes[0]
+        embedder=build_knowledge_query_embedder(
+            index=index, embedding=embedding,
+            embedding_version=config.embedding.model_routes[0] if config else "",
         ),
         index=index,
         tiers=tiers,

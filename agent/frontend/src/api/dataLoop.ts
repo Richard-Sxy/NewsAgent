@@ -6,6 +6,7 @@ import type {
   DataLoopDecisionResponse,
   DataLoopSnapshotResponse,
   FeedbackCaseListResponse,
+  FeedbackStatus,
   FeedbackLabelListResponse,
   FeedbackLabelResponse,
   FreezeDatasetRequest,
@@ -28,7 +29,8 @@ import type {
 const BASE = '/api/v1/data-loop'
 
 export interface ListFeedbackCasesQuery {
-  status?: string[]
+  statuses?: FeedbackStatus[]
+  offset?: number
   limit?: number
 }
 
@@ -75,7 +77,11 @@ export const dataLoopApi = {
 
   listFeedbackCases(query: ListFeedbackCasesQuery = {}) {
     return request<FeedbackCaseListResponse>(`${BASE}/feedback-cases`, {
-      query: { status: query.status?.length ? query.status : undefined, limit: query.limit },
+      query: {
+        statuses: query.statuses?.length ? query.statuses : undefined,
+        offset: query.offset,
+        limit: query.limit,
+      },
     })
   },
 

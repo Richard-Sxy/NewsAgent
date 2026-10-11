@@ -5,6 +5,8 @@ import type {
   FeedbackSource,
   FeedbackStatus,
   JobStatus,
+  OperationsFeedbackCategory,
+  OperationsReasonCode,
   ProgressEventName,
   StepType,
 } from '@/api'
@@ -84,7 +86,9 @@ export const EVENT_LABELS: Record<ProgressEventName, string> = {
 }
 
 export const FEEDBACK_SOURCE_LABELS: Record<FeedbackSource, string> = {
+  operator_accepted: '运营采纳',
   operator_rejected: '运营驳回',
+  operator_deferred: '运营延后',
   operator_corrected: '运营修正',
   validation_failed: '校验失败',
   low_confidence: '低置信度',
@@ -112,6 +116,39 @@ export const DECISION_TYPE_LABELS: Record<DecisionType, string> = {
   rejected: '驳回',
   deferred: '延后',
   corrected: '修正',
+}
+
+export const OPERATIONS_FEEDBACK_CATEGORY_LABELS: Record<OperationsFeedbackCategory, string> = {
+  analysis_error: '分析错误',
+  editorial_judgment: '编辑判断',
+  strategy_judgment: '运营策略判断',
+  positive_example: '正向参考案例',
+}
+
+export const OPERATIONS_REASON_LABELS: Record<OperationsReasonCode, string> = {
+  analysis_supported: '分析有充分支撑',
+  useful_recommendation: '建议可供执行',
+  insufficient_evidence: '证据不足',
+  fact_or_attribution_error: '事实或归因有误',
+  low_public_value: '公共价值不足',
+  audience_mismatch: '不适合目标受众',
+  no_material_update: '没有实质新增信息',
+  duplicate_event: '重复事件',
+  frequency_budget_exhausted: '触达频次或预算已用尽',
+  timing_inappropriate: '时机不合适',
+  content_expired: '内容已过时',
+  copy_misleading: '文案容易误导',
+  channel_or_consent_mismatch: '渠道或用户授权不匹配',
+  risk_requires_escalation: '风险需升级处理',
+  other_with_explanation: '其他（请在原因中说明）',
+}
+
+export function operationsFeedbackCategoryLabel(category: string): string {
+  return OPERATIONS_FEEDBACK_CATEGORY_LABELS[category as OperationsFeedbackCategory] ?? category
+}
+
+export function operationsReasonLabel(code: string): string {
+  return OPERATIONS_REASON_LABELS[code as OperationsReasonCode] ?? code
 }
 
 export function eventLabel(name: string): string {

@@ -20,10 +20,13 @@ import {
   feedbackSourceLabel,
   feedbackStatusLabel,
   feedbackStatusTone,
+  operationsFeedbackCategoryLabel,
+  operationsReasonLabel,
   problemTypeLabel,
   severityLabel,
   severityTone,
 } from '@/utils/labels'
+import { readOperationsFeedback } from '@/utils/operationsFeedback'
 import { jsonText, parseJson } from '@/utils/validate'
 
 const toast = useToastStore()
@@ -42,9 +45,22 @@ const cases = ref<FeedbackCase[]>([])
 const listLoading = ref(false)
 const listError = ref<string | null>(null)
 const statusFilter = ref<FeedbackStatus | ''>('')
+const PAGE_SIZE = 50
+const pageOffset = ref(0)
+const hasNextPage = ref(false)
 
 const selectedId = ref<string | null>(null)
 const selected = computed(() => cases.value.find((item) => item.id === selectedId.value) ?? null)
+const selectedFeedback = computed(() =>
+  selected.value ? readOperationsFeedback(selected.value.source_reference) : null,
+)
+
+function caseClassification(item: FeedbackCase): string {
+  const feedback = readOperationsFeedback(item.source_reference)
+  return feedback
+    ? operationsFeedbackCategoryLabel(feedback.category)
+    : problemTypeLabel(item.problem_type)
+}
 
 const labels = ref<JsonObject[]>([])
 const labelsLoading = ref(false)
@@ -55,16 +71,19 @@ const expectedPreviousVersion = ref('')
 const approveVersions = ref<Record<string, string>>({})
 const reviewReasons = ref<Record<string, string>>({})
 
-async function reload(): Promise<void> {
+async function reload(offset = pageOffset.value): Promise<void> {
   listLoading.value = true
   listError.value = null
   try {
     const page = await dataLoopApi.listFeedbackCases({
-      ...(statusFilter.value ? { status: [statusFilter.value] } : {}),
-      limit: 50,
+      ...(statusFilter.value ? { statuses: [statusFilter.value] } : {}),
+      offset,
+      limit: PAGE_SIZE + 1,
     })
-    cases.value = page.cases
-    if (selectedId.value && !page.cases.some((item) => item.id === selectedId.value)) {
+    cases.value = page.cases.slice(0, PAGE_SIZE)
+    pageOffset.value = offset
+    hasNextPage.value = page.cases.length > PAGE_SIZE
+    if (selectedId.value && !cases.value.some((item) => item.id === selectedId.value)) {
       selectedId.value = null
     }
   } catch (cause) {
@@ -230,7 +249,7 @@ async function reviewLabel(
   await loadLabels(current.id)
 }
 
-onMounted(reload)
+onMounted(() => reload())
 </script>
 
 <template>
@@ -238,7 +257,7 @@ onMounted(reload)
     <section class="na-card">
       <div class="na-card__head">
         <h2>反馈案例</h2>
-        <button class="na-btn" type="button" :disabled="listLoading" @click="reload">
+        <button class="na-btn" type="button" :disabled="listLoading" @click="reload()">
           {{ listLoading ? '加载中…' : '刷新' }}
         </button>
       </div>
@@ -246,7 +265,7 @@ onMounted(reload)
       <div class="na-row">
         <div class="na-field na-field--grow">
           <label for="case-status">状态筛选</label>
-          <select id="case-status" v-model="statusFilter" class="na-select" @change="reload">
+          <select id="case-status" v-model="statusFilter" class="na-select" :disabled="listLoading" @change="reload(0)">
             <option value="">全部状态</option>
             <option v-for="value in STATUS_OPTIONS" :key="value" :value="value">
               {{ feedbackStatusLabel(value) }}
@@ -266,7 +285,7 @@ onMounted(reload)
           <thead>
             <tr>
               <th>news_id</th>
-              <th style="width: 108px">问题类型</th>
+              <th style="width: 108px">反馈分类 / 问题</th>
               <th style="width: 76px">严重度</th>
               <th style="width: 88px">状态</th>
               <th style="width: 138px">记录时间</th>
@@ -283,7 +302,7 @@ onMounted(reload)
                 <div class="na-mono">{{ item.news_id }}</div>
                 <div class="na-cell__sub">{{ feedbackSourceLabel(item.source_type) }}</div>
               </td>
-              <td>{{ problemTypeLabel(item.problem_type) }}</td>
+              <td>{{ caseClassification(item) }}</td>
               <td>
                 <span class="na-badge" :class="`na-badge--${severityTone(item.severity)}`">
                   {{ severityLabel(item.severity) }}
@@ -299,6 +318,15 @@ onMounted(reload)
           </tbody>
         </table>
       </NaStateBlock>
+
+      <div class="na-pager">
+        <span class="na-muted">第 {{ Math.floor(pageOffset / PAGE_SIZE) + 1 }} 页 · 本页 {{ cases.length }} 条</span>
+        <div class="na-pager__actions">
+          <button class="na-btn" type="button" :disabled="listLoading || pageOffset === 0" @click="reload(0)">首页</button>
+          <button class="na-btn" type="button" :disabled="listLoading || pageOffset === 0" @click="reload(Math.max(0, pageOffset - PAGE_SIZE))">上一页</button>
+          <button class="na-btn" type="button" :disabled="listLoading || !hasNextPage" @click="reload(pageOffset + PAGE_SIZE)">下一页</button>
+        </div>
+      </div>
     </section>
 
     <section class="na-card">
@@ -330,6 +358,16 @@ onMounted(reload)
               <dt>问题类型</dt>
               <dd>{{ problemTypeLabel(selected.problem_type) }}</dd>
             </div>
+            <template v-if="selectedFeedback">
+              <div>
+                <dt>运营反馈分类</dt>
+                <dd>{{ operationsFeedbackCategoryLabel(selectedFeedback.category) }}</dd>
+              </div>
+              <div>
+                <dt>运营反馈理由</dt>
+                <dd>{{ selectedFeedback.reason_codes.map(operationsReasonLabel).join('、') }}</dd>
+              </div>
+            </template>
             <div>
               <dt>发生时间</dt>
               <dd>{{ formatDateTime(selected.occurred_at) }}</dd>
@@ -339,6 +377,8 @@ onMounted(reload)
               <dd class="na-mono">{{ selected.content_sha256 }}</dd>
             </div>
           </dl>
+
+          <p v-if="selectedFeedback" class="na-muted">运营决定仅是反馈素材，不代表模型分析正确或已获推送许可。请独立标注并由另一人完成二审，再选择相应评测集。</p>
 
           <NaJsonBlock :value="selected.analysis_input_snapshot" label="分析输入快照" />
           <NaJsonBlock :value="selected.analysis_output_snapshot" label="分析输出快照" />

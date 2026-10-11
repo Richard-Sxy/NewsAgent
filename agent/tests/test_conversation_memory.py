@@ -5,7 +5,7 @@ from uuid import uuid4
 
 import pytest
 
-from app.conversation.context import ContextCursor, ConversationMemory, json_chars
+from app.conversation.context import ContextCursor, ConversationMemory, POLICY_VERSION, json_chars
 from app.conversation.service import ConversationAgentService
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.core import RawInferenceResult
@@ -267,7 +267,7 @@ async def test_v1_cache_is_reused_until_a_successful_v2_compaction():
     assert repo.memories[conversation.id] == legacy and len(repo.memory_saves) == saves
     await seed(repo, conversation, [("新背景" * 1000, "新答复" * 1000, []) for _ in range(2)])
     assert (await chat(service, conversation, "继续")).status == "completed"
-    assert repo.memories[conversation.id].policy_version == "conversation-length-v2"
+    assert repo.memories[conversation.id].policy_version == POLICY_VERSION
     assert repo.memories[conversation.id].through.key() > legacy.through.key()
     assert all(request_chars(request) <= 10000 for request in inference.calls)
 

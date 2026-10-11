@@ -8,6 +8,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+ARG APP_EXTRAS=""
+
+# hnswlib builds a C++ extension on the slim Python image. Keep its build
+# dependency conditional so the default lightweight E2E image is unchanged.
+RUN case "${APP_EXTRAS}" in *bge-snapshot*) \
+      apt-get update \
+      && apt-get install -y --no-install-recommends g++ \
+      && rm -rf /var/lib/apt/lists/* ;; \
+    esac
+
 RUN groupadd --system --gid 10001 app \
     && useradd --system --uid 10001 --gid app --home-dir /app app \
     && mkdir -p /state \
@@ -19,17 +29,19 @@ COPY app ./app
 # Install the application and dependencies before copying test-only assets, so
 # editing a runbook fixture or E2E test does not force a full dependency fetch.
 RUN pip install --upgrade pip \
-    && pip install ".[dev]"
+    && pip install ".[dev${APP_EXTRAS}]"
 
 COPY alembic ./alembic
 COPY alembic.ini ./
 COPY examples ./examples
 COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY tools/query_news_recall.py ./tools/query_news_recall.py
 COPY evaluation ./evaluation
 COPY deploy/mock-cms ./deploy/mock-cms
 COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
 COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
 COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatible.example.yml
+COPY deploy/knowledge-search.bge-snapshot.yml ./deploy/knowledge-search.bge-snapshot.yml
 COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
 COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
 COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml

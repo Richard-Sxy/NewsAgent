@@ -53,6 +53,10 @@ class HotNewsDecision(TimestampMixin, Base):
             "('accepted', 'rejected', 'deferred', 'corrected')",
             name="valid_decision_type",
         ),
+        CheckConstraint(
+            "operator_feedback IS NULL OR jsonb_typeof(operator_feedback) = 'object'",
+            name="operator_feedback_object",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -90,6 +94,10 @@ class HotNewsDecision(TimestampMixin, Base):
         JSONB,
         default=dict,
         nullable=False,
+    )
+
+    operator_feedback: Mapped[dict | None] = mapped_column(
+        JSONB(none_as_null=True), nullable=True,
     )
 
     operator_id: Mapped[str] = mapped_column(

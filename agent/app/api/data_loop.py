@@ -358,6 +358,7 @@ async def record_operator_decision(
                 correction_payload=request.correction_payload,
                 idempotency_key=request.idempotency_key,
                 supersedes_decision_id=request.supersedes_decision_id,
+                operator_feedback=request.operator_feedback,
             ),
             feedback_problem_type=request.feedback_problem_type,
             feedback_severity=request.feedback_severity,
