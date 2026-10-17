@@ -11,25 +11,25 @@ from uuid import uuid4
 
 import pytest
 
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.news_content import InMemoryNewsContentRepository, NewsContent
-from app.audience.taxonomy import TopicCatalog
+from app.modules.audience.taxonomy import TopicCatalog
 from app.domain.errors import HotNewsDataQualityError
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
-from app.model_runtime.hot_news import local_hot_news_prompts
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.hot_news.analysis.runner import local_hot_news_prompts
 from app.model_runtime.local_inference import LocalHotNewsInference
-from app.reader_profiles.contracts import (
+from app.modules.reader_profiles.contracts import (
     PROFILE_POLICY_VERSION, ReaderInterestSummary, ReaderProfileBatch, ReaderProfileProviderError,
     ReaderProfileSummary, ReaderTopic, reader_profile_query_fingerprint,
 )
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
+from app.modules.hot_news.application.hot_news_orchestration import (
     EmptyHotNewsBaselineProvider, HotNewsOrchestrationPolicy, HotNewsOrchestrationService, HotNewsRunRequest,
 )
-from app.services.hot_news_query import HotNewsQueryService
-from app.services.hot_news_run_store import PostgresHotNewsRunStore
-from app.services.push_strategy import PushStrategyInputBuilder
-from examples.hot_news_demo import build_ranking, load_scenario
+from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
+from app.modules.hot_news.adapters.hot_news_run_store import PostgresHotNewsRunStore
+from app.modules.data_loop.push_strategy import PushStrategyInputBuilder
+from simulation.hot_news_demo import build_ranking, load_scenario
 from tests.test_behavior_hot_news_integration import active_service
 from tests.test_hot_news_orchestration import START, END
 from tests.test_native_hot_news_runtime import native_spec
@@ -370,12 +370,12 @@ def test_reader_prompt_is_explicit_and_legacy_assets_are_unchanged():
 
 @pytest.mark.asyncio
 async def test_manual_query_freezes_reader_digest_before_claiming_sql_and_starting_workflow(sql_harness, monkeypatch):
-    import examples.local_simulation as shared
+    import simulation.local_simulation as shared
     from app.api.dependencies import DataLoopPrincipal, HotNewsPermission
     from app.schemas.sql_assistant import SqlAssistantPreviewRequest
     from app.sql_assistant.warehouse import WINDOW_START
     from app.workflows.contracts import HotNewsActivityOutcome
-    from examples.hot_news_e2e_support import E2E_TENANT_ID
+    from simulation.hot_news_e2e_support import E2E_TENANT_ID
 
     spec = native_spec(analysis_prompt_version=PROMPT)
     monkeypatch.setattr(shared, "PostgresProductionBundleRepository", lambda _: SimpleNamespace(
@@ -407,7 +407,7 @@ async def test_manual_query_freezes_reader_digest_before_claiming_sql_and_starti
 
 @pytest.mark.asyncio
 async def test_worker_runtime_closes_reader_service_even_if_knowledge_close_fails():
-    from app.hot_news_bootstrap import NativeHotNewsRuntime
+    from app.bootstrap.hot_news import NativeHotNewsRuntime
     knowledge = SimpleNamespace(close=AsyncMock(side_effect=OSError("test close failure")))
     aggregates = SimpleNamespace(close=AsyncMock())
     with pytest.raises(OSError, match="test close failure"):

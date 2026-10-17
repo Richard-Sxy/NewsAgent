@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.receipts import (
+from app.modules.conversation.receipts import (
     CapabilityEntityType,
     CapabilityReceipt,
     CapabilityReceiptStatus,

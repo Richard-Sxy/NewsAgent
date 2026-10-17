@@ -12,23 +12,23 @@ from uuid import UUID, uuid4
 
 import pytest
 
-import app.services.active_bundle_hot_news as active_module
+import app.modules.hot_news.application.active_bundle_hot_news as active_module
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.news_content import InMemoryNewsContentRepository, NewsContent
-from app.behavior_tags.runtime import BehaviorRetrievalContext
-from app.behavior_tags.tagging import TopicPolicy
+from app.modules.behavior_tags.runtime import BehaviorRetrievalContext
+from app.modules.behavior_tags.tagging import TopicPolicy
 from app.clients.knowledge_base import RelatedNews
 from app.domain.errors import AgentOutputValidationError, HotNewsDataQualityError
-from app.services.active_bundle_hot_news import ActiveProductionBundleHotNewsService, HotNewsRunDependencies
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.active_bundle_hot_news import ActiveProductionBundleHotNewsService, HotNewsRunDependencies
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
+from app.modules.hot_news.application.hot_news_orchestration import (
     EmptyHotNewsBaselineProvider, HotNewsOrchestrationPolicy, HotNewsOrchestrationService,
     HotNewsRunRequest, HotNewsRunResult,
 )
-from app.services.hot_news_query import HotNewsQueryService
-from app.services.hot_news_run_store import PostgresHotNewsRunStore
-from examples.hot_news_demo import build_ranking, load_scenario
+from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
+from app.modules.hot_news.adapters.hot_news_run_store import PostgresHotNewsRunStore
+from simulation.hot_news_demo import build_ranking, load_scenario
 from tests.test_hot_news_orchestration import START, END, RecordingRunner
 from tests.test_production_bundle import active_bundle
 from tests.test_sql_assistant_service import harness as sql_harness
@@ -223,7 +223,7 @@ async def test_concurrent_windows_get_separate_frozen_contexts(monkeypatch):
 @pytest.mark.asyncio
 async def test_scheduler_refuses_enable_or_unpause_until_window_context_can_be_frozen(monkeypatch):
     import app.hot_news_scheduler as scheduler
-    from app.services.hot_news_schedule import HotNewsScheduleConfigError
+    from app.modules.hot_news.application.hot_news_schedule import HotNewsScheduleConfigError
     settings = SimpleNamespace(behavior_tags_enabled=True, hot_news_schedule_definitions_json="configured")
     monkeypatch.setattr(scheduler, "get_settings", lambda: settings)
     monkeypatch.setattr(scheduler, "parse_schedule_definitions", lambda _: [object()])
@@ -238,12 +238,12 @@ async def test_scheduler_refuses_enable_or_unpause_until_window_context_can_be_f
 
 @pytest.mark.asyncio
 async def test_local_query_freezes_context_before_sql_claim_and_workflow(sql_harness, monkeypatch):
-    import examples.local_simulation as shared
+    import simulation.local_simulation as shared
     from app.api.dependencies import DataLoopPrincipal, HotNewsPermission
     from app.schemas.sql_assistant import SqlAssistantPreviewRequest
     from app.sql_assistant.warehouse import WINDOW_START
     from app.workflows.contracts import HotNewsActivityOutcome
-    from examples.hot_news_e2e_support import E2E_TENANT_ID
+    from simulation.hot_news_e2e_support import E2E_TENANT_ID
     from tests.test_native_hot_news_runtime import native_spec
 
     spec = native_spec()

@@ -19,7 +19,7 @@ from app.schemas.conversation import (
 
 from app.db.session import Database
 from app.models.conversation import ConversationRecord, ConversationTurnRecord
-from app.conversation.context import ContextCursor, ConversationMemory
+from app.modules.conversation.context import ContextCursor, ConversationMemory
 from app.schemas.conversation import (
     AssistantContent,
     ConversationDetailResponse,

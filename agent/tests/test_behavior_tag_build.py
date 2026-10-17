@@ -9,10 +9,10 @@ import sqlite3
 
 import pytest
 
-from app.audience.taxonomy import Topic, TopicCatalog
-from app.behavior_tags import build
-from app.behavior_tags.source import WarehouseSource
-from app.behavior_tags.tagging import TopicPolicy, TopicRule
+from app.modules.audience.taxonomy import Topic, TopicCatalog
+from app.modules.behavior_tags import build
+from app.modules.behavior_tags.source import WarehouseSource
+from app.modules.behavior_tags.tagging import TopicPolicy, TopicRule
 
 
 START = datetime(2026, 10, 1, tzinfo=UTC)

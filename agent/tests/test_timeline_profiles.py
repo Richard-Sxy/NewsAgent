@@ -7,7 +7,7 @@ import pytest
 from app.sql_assistant.timeline_profiles import START, END, HOURS, iter_timeline_rows, timeline_manifest
 from app.sql_assistant.warehouse import demo_dataset_info, dataset_window, verify_schema_contract
 from app.sql_assistant.scaled_profiles import scaled_manifest
-from examples.native_hot_news_sql_support import _validate_window
+from simulation.native_hot_news_sql_support import _validate_window
 from examples.data_analysis_demo import _catalog, DemoError
 
 

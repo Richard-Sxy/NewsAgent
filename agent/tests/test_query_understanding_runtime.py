@@ -14,7 +14,7 @@ import httpx
 import pytest
 import yaml
 
-from app.conversation.query_understanding import (
+from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryResolutionError, QueryUnderstanding,
     resolve_query_understanding,
 )

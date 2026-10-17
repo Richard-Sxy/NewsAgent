@@ -11,8 +11,8 @@ import pytest
 
 from app.api.dependencies import get_data_loop_gateway_token
 from app.api.reader_profiles import router
-from app.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderProfileBatch, ReaderProfileProviderError
-from app.reader_profiles.factory import build_reader_profile_service
+from app.modules.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderProfileBatch, ReaderProfileProviderError
+from app.modules.reader_profiles.factory import build_reader_profile_service
 from tests.test_reader_profile_client_service import (
     NOW, OTHER_TENANT, RELEASE, TENANT, batch_payload, catalog,
 )
@@ -80,7 +80,7 @@ def taxonomy_path(tmp_path):
 
 @pytest.fixture
 def package(tmp_path):
-    from app.reader_profiles.build import build_package
+    from app.modules.reader_profiles.build import build_package
     from tests.test_reader_profile_build import write_source
     source = write_source(tmp_path / "source")
     target = tmp_path / "reader-package"
@@ -199,7 +199,7 @@ def test_disabled_factory_reads_no_package_or_other_configuration():
     {"environment": "unconfigured"},
 ])
 def test_factory_checks_all_common_options_before_creating_http_client(taxonomy_path, monkeypatch, change):
-    import app.reader_profiles.client as client_module
+    import app.modules.reader_profiles.client as client_module
     called = []
     def constructor(**_options):
         called.append(True)
@@ -215,7 +215,7 @@ def test_factory_checks_all_common_options_before_creating_http_client(taxonomy_
     {"reader_profile_taxonomy_path": None}, {"reader_profile_source_release_sha256": None},
 ])
 def test_enterprise_factory_requires_token_taxonomy_and_release_before_client(taxonomy_path, monkeypatch, change):
-    import app.reader_profiles.client as client_module
+    import app.modules.reader_profiles.client as client_module
     calls = []
     monkeypatch.setattr(client_module, "HttpNewsReaderProfileClient", lambda **_kwargs: calls.append(True))
     options = dict(reader_profile_taxonomy_path=taxonomy_path)
@@ -226,7 +226,7 @@ def test_enterprise_factory_requires_token_taxonomy_and_release_before_client(ta
 
 
 def test_enterprise_factory_rejects_draft_taxonomy_before_creating_client(tmp_path, monkeypatch):
-    import app.reader_profiles.client as client_module
+    import app.modules.reader_profiles.client as client_module
     target = tmp_path / "draft.json"
     target.write_text(json.dumps(catalog("draft").model_dump(mode="json")), encoding="utf-8")
     calls = []
@@ -278,7 +278,7 @@ def test_local_factory_rejects_missing_package_release_or_policy_mismatch(packag
 
 
 def test_local_factory_rejects_production_before_reading_package(monkeypatch):
-    import app.reader_profiles.local as local_module
+    import app.modules.reader_profiles.local as local_module
     calls = []
     monkeypatch.setattr(local_module, "LocalNewsReaderProfileClient", lambda *_args, **_kwargs: calls.append(True))
     with pytest.raises(ValueError):

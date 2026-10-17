@@ -9,17 +9,17 @@ import httpx
 import pytest
 from pydantic import SecretStr, ValidationError
 
-from app.audience.client import HttpAudienceProfileClient
-from app.audience.contracts import (
+from app.modules.audience.client import HttpAudienceProfileClient
+from app.modules.audience.contracts import (
     AudienceProviderError,
     AudienceQuery,
     AudienceSelection,
     AudienceSnapshot,
     audience_query_fingerprint,
 )
-from app.audience.factory import build_audience_client
-from app.audience.local import LocalAudienceProfileClient
-from app.audience.taxonomy import Topic, TopicCatalog
+from app.modules.audience.factory import build_audience_client
+from app.modules.audience.local import LocalAudienceProfileClient
+from app.modules.audience.taxonomy import Topic, TopicCatalog
 
 
 NOW = datetime(2026, 10, 16, 8, tzinfo=UTC)

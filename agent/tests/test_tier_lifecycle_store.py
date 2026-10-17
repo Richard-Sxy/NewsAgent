@@ -16,7 +16,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import Session
 
-from app.knowledge.tier_lifecycle_store import (
+from app.modules.knowledge.tier_lifecycle_store import (
     TierLifecycleStore, _metadata, projection_chunk_id,
 )
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier

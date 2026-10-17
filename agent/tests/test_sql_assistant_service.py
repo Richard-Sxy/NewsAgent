@@ -175,7 +175,7 @@ async def test_preview_only_plans_then_execute_binds_trusted_scope(harness):
 
 
 def hot_news_request(value):
-    from app.services.hot_news_orchestration import HotNewsRunRequest
+    from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
     return HotNewsRunRequest(
         tenant_id=TENANT, window_start=datetime.fromisoformat(value.parameters["window_start"]),
         window_end=datetime.fromisoformat(value.parameters["window_end"]), production_bundle_version="bundle-v1",

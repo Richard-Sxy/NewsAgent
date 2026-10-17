@@ -9,15 +9,15 @@ import pytest
 from pydantic import ValidationError
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import EnrichedHotNews
-from app.analytics.hot_score import HotScoreResult
-from app.analytics.metrics import NewsMetricSnapshot
+from app.modules.hot_news.analysis.hot_news_enrichment import EnrichedHotNews
+from app.modules.hot_news.scoring.hot_score import HotScoreResult
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
 from app.analytics.news_content import NewsContent
-from app.analytics.ranking import RankedHotNews
+from app.modules.hot_news.scoring.ranking import RankedHotNews
 from app.model_runtime.result import AgentResult
 from app.clients.knowledge_base import RelatedNews
 from app.domain.errors import AgentOutputValidationError
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     AnalysisReason,
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
@@ -28,8 +28,8 @@ from app.schemas.hot_news import (
     RelatedNewsContext,
     RelatedNewsEvidence,
 )
-from app.retrieval.related_news_reranker import RerankRelatedNews
-from app.services.hot_news_analysis import (
+from app.modules.hot_news.analysis.related_news_reranker import RerankRelatedNews
+from app.modules.hot_news.analysis.hot_news_analysis import (
     HotNewsAnalysisInputBuilder,
     HotNewsAnalysisService,
     HotNewsAnalysisValidator,

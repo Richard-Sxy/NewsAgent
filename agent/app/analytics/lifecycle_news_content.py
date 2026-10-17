@@ -12,7 +12,7 @@ from sqlalchemy import and_, select
 
 from app.analytics.entities import ContentType
 from app.analytics.news_content import NewsContent
-from app.knowledge.tier_lifecycle_store import _jobs, _news
+from app.modules.knowledge.tier_lifecycle_store import _jobs, _news
 
 
 class LifecycleNewsContentRepository:

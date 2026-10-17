@@ -28,7 +28,7 @@ from zoneinfo import ZoneInfo
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.knowledge.native_indexing import split_text
+from app.modules.knowledge.native_indexing import split_text
 from app.retrieval.bge_snapshot import (
     BGE_DIMENSIONS,
     _CORPUS_PATH,

@@ -11,21 +11,21 @@ import pytest
 
 from app.api.audience import get_audience_service
 from app.api.dependencies import get_data_loop_gateway_token
-from app.audience.contracts import (
+from app.modules.audience.contracts import (
     AudienceProviderError, AudienceSelection, AudienceSnapshot, audience_query_fingerprint,
 )
-from app.audience.local import LocalAudienceProfileClient
-from app.audience.service import (
+from app.modules.audience.local import LocalAudienceProfileClient
+from app.modules.audience.service import (
     AudiencePreviewService, AudienceSelectionError, AudienceSnapshotError, AudienceTargetNotFound,
 )
-from app.audience.taxonomy import load_topic_catalog
+from app.modules.audience.taxonomy import load_topic_catalog
 from app.main import create_app
 
 ROOT = Path(__file__).resolve().parents[1]
 NOW = datetime(2026, 10, 16, 8, tzinfo=timezone.utc)
 TENANT, RUN, USER = uuid4(), uuid4(), uuid4()
 NEWS = "news-audience-demo-1"
-CATALOG = load_topic_catalog(ROOT / "deploy/audience-topics.local.yml")
+CATALOG = load_topic_catalog(ROOT.parent / "deploy/audience-topics.local.yml")
 
 
 def selection(**updates):

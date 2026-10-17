@@ -10,22 +10,22 @@ from uuid import UUID, uuid4
 
 import pytest
 
-from app.data_analysis.engine import analyze
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
+from app.modules.data_analysis.engine import analyze
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
 from app.domain.errors import HotNewsPersistenceError
-from app.schemas.evaluation_dataset import (
+from app.modules.data_loop.contracts.evaluation_dataset import (
     EvaluationDatasetManifest,
     EvaluationExpectedLabel,
     EvaluationSourceLineage,
     FrozenEvaluationCase,
     canonical_json_sha256,
 )
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
-from app.schemas.hot_news_api import (
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
+from app.modules.hot_news.contracts.hot_news_api import (
     HotNewsMetricSnapshotView, HotNewsRankedItemView, HotNewsRunDetailResponse,
     HotNewsRunSummary, HotScoreView,
 )
-from app.services.data_loop.dataset_analysis import (
+from app.modules.data_loop.dataset_analysis import (
     DATASET_ANALYSIS_REPORT_VERSION,
     DataLoopDatasetAnalysisService,
 )

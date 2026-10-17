@@ -13,9 +13,9 @@ from sqlalchemy.exc import OperationalError
 from starlette.requests import ClientDisconnect
 
 from app.api.conversations import ConversationStreamingResponse, router
-from app.conversation.service import ConversationAgentService
-from app.conversation.context import ConversationMemory
-from app.conversation.streaming import StreamingConversation, encode_event
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.context import ConversationMemory
+from app.modules.conversation.streaming import StreamingConversation, encode_event
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import RawInferenceResult, StructuredInferenceService

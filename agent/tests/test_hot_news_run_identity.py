@@ -4,7 +4,7 @@ from types import SimpleNamespace
 import pytest
 
 from app.domain.errors import HotNewsDataQualityError
-from app.services.hot_news_run_store import PostgresHotNewsRunStore
+from app.modules.hot_news.adapters.hot_news_run_store import PostgresHotNewsRunStore
 
 
 START = datetime(2026, 9, 10, 8, tzinfo=timezone.utc)

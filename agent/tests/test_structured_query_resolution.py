@@ -4,10 +4,10 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.conversation.query_understanding import QueryPolicy, QueryResolutionError, QueryUnderstanding
-from app.conversation.structured_query_resolution import resolve_structured_query as resolve
+from app.modules.conversation.query_understanding import QueryPolicy, QueryResolutionError, QueryUnderstanding
+from app.modules.conversation.structured_query_resolution import resolve_structured_query as resolve
 from app.sql_assistant.scenarios import SqlScenario
-from examples.conversation_hot_news import LocalConversationHotNewsQuery
+from simulation.conversation_hot_news import LocalConversationHotNewsQuery
 
 
 QUESTION = "你好，请你帮我查询9.19日八点到九点的热点新闻。"
@@ -38,7 +38,7 @@ def proposal(**changes):
 
 
 def test_original_phrase_reaches_structured_resolution_without_regex(policy, monkeypatch):
-    monkeypatch.setattr("app.conversation.query_understanding._requirements",
+    monkeypatch.setattr("app.modules.conversation.query_understanding._requirements",
                         lambda *a, **k: pytest.fail("raw-question regex must not run"))
     result = resolve(QUESTION, proposal(), policy, now=NOW).require_ready()
     assert result.requested_window_start.isoformat() == "2026-09-19T08:00:00+08:00"
@@ -103,7 +103,7 @@ async def test_basic_input_only_before_model_and_structured_rejection_after(poli
 
 @pytest.mark.asyncio
 async def test_configured_model_adapter_uses_fields_and_preserves_original_question(policy, monkeypatch):
-    monkeypatch.setattr("app.conversation.query_understanding._requirements",
+    monkeypatch.setattr("app.modules.conversation.query_understanding._requirements",
                         lambda *a, **k: pytest.fail("raw-question matching must not run"))
     client = SimpleNamespace(run_structured=AsyncMock(return_value=SimpleNamespace(
         value=QueryUnderstanding.model_validate(proposal()), request_id="configured-model-call")))

@@ -21,7 +21,7 @@
 
 ## 2. 数据包范围与默认配置
 
-默认数据包已生成，位于仓库根目录的 `output/warehouse/tencent-news-v7-20261014/`。实际生成参数、文件行数和校验摘要以其中的 `manifest.json` 为准。
+默认数据包已生成，位于仓库根目录的 `var/warehouse/tencent-news-v7-20261014/`。实际生成参数、文件行数和校验摘要以其中的 `manifest.json` 为准。
 
 | 项目 | 当前实现 |
 | --- | --- |
@@ -73,7 +73,7 @@ Manifest 另记录 DDL、生成器源文件及 `warehouse.sql` 的 SHA-256，标
 
 数据集摘要为 `67ad183c97df43318564fa8bb8ca541ba138f04e1a7b41469f205051146db91a`，生成器摘要为 `9434164476df8a512cc19a0113f94c07e01dc3f773b6bb1e615a5f631ce84638`，DDL 摘要为 `30c4bde75e3b4f5da6f2d2be48a58d726050281dff7c1554fecc1429d6198560`。33600 是独立 PostgreSQL 导入后的视图结果，不是另一个持久表或额外用户行为数据。
 
-验收后另保存 [validation.json](../../output/warehouse/tencent-news-v7-20261014/validation.json) 与 [postgres-observed.json](../../output/warehouse/tencent-news-v7-20261014/postgres-observed.json)，记录验收范围、数据集摘要及数据库只读观察结果。这两个文件属于验收旁证，由验收过程写入，不是生成器每次自动产生的文件。
+验收后另保存 [validation.json](../../var/warehouse/tencent-news-v7-20261014/validation.json) 与 [postgres-observed.json](../../var/warehouse/tencent-news-v7-20261014/postgres-observed.json)，记录验收范围、数据集摘要及数据库只读观察结果。这两个文件属于验收旁证，由验收过程写入，不是生成器每次自动产生的文件。
 
 ## 3. 业务维度
 
@@ -305,7 +305,7 @@ v7 为每个 `withdraw/restrict/correct` 事件生成四类任务：
 
 ```bash
 python3 agent/tools/generate_tencent_news_warehouse.py \
-  --output output/warehouse/tencent-news-v7-20261014 \
+  --output var/warehouse/tencent-news-v7-20261014 \
   --news-per-tenant 120 \
   --days 7 \
   --start-date 2026-10-07 \
@@ -321,7 +321,7 @@ python3 agent/tools/generate_tencent_news_warehouse.py \
 ```bash
 createdb newsagent_sim_v7_20261014
 psql -X -v ON_ERROR_STOP=1 -d newsagent_sim_v7_20261014 \
-  -f output/warehouse/tencent-news-v7-20261014/warehouse.sql
+  -f var/warehouse/tencent-news-v7-20261014/warehouse.sql
 psql -X -v ON_ERROR_STOP=1 -d newsagent_sim_v7_20261014 \
   -f agent/docs/sql/tencent-news-simulation-v7-checks.sql
 ```
@@ -388,7 +388,7 @@ python3 -m pytest tests/test_tencent_news_warehouse_simulation.py -q
 
 新增专项测试覆盖表合同、同租户关联、确定性重建、最后小时桶与小时计数对账、UV 重叠、零值与空基线、窗口修订、生命周期任务版本、COPY 转义及导出冲突/失败清理。2026-10-14 的当前源码专项运行 41 项通过；相关既有数仓、语料和 retention 回归通过，其中 3 项依赖型测试跳过。
 
-本次正式 `warehouse.sql` 已在全新的隔离 PostgreSQL 16 数据库成功导入，`agent/docs/sql/tencent-news-simulation-v7-checks.sql` 实际执行通过，核对了渠道/小时与已导出 5 分钟的可加指标、UV 边界、内容/窗口门禁、基线历史覆盖、清理任务范围及 18 列投影。检查脚本用 `BEGIN READ ONLY` 执行可信运营检查，含 `DO` 块，不属于模型可执行 SQL 白名单。重复导入在任何数据写入前因 `schema news_sim_v7 already exists` 拒绝，`psql` 退出码为 3；随后再次只读核对行数不变，兼容视图中撤稿/受限内容泄漏数为 0，记录见 [验收文件](../../output/warehouse/tencent-news-v7-20261014/validation.json)。临时 PostgreSQL 容器已停止并自动移除，现有服务与真实向量库未改动。
+本次正式 `warehouse.sql` 已在全新的隔离 PostgreSQL 16 数据库成功导入，`agent/docs/sql/tencent-news-simulation-v7-checks.sql` 实际执行通过，核对了渠道/小时与已导出 5 分钟的可加指标、UV 边界、内容/窗口门禁、基线历史覆盖、清理任务范围及 18 列投影。检查脚本用 `BEGIN READ ONLY` 执行可信运营检查，含 `DO` 块，不属于模型可执行 SQL 白名单。重复导入在任何数据写入前因 `schema news_sim_v7 already exists` 拒绝，`psql` 退出码为 3；随后再次只读核对行数不变，兼容视图中撤稿/受限内容泄漏数为 0，记录见 [验收文件](../../var/warehouse/tencent-news-v7-20261014/validation.json)。临时 PostgreSQL 容器已停止并自动移除，现有服务与真实向量库未改动。
 
 上述结果验证合成数据的确定性、关系约束、聚合与隔离导入，不代表企业真实数据口径、全部业务场景统计、模型质量、生产流式能力或真实撤稿删除验收。
 

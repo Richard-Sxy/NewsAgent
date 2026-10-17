@@ -5,7 +5,7 @@
 ## 数据来源与版本
 
 - 原文入口：`news/data/local_recall/articles-v1/*.json`，共 441 篇缓存。保留原 `news_id`、标题、完整正文、内容版本、HTTPS 来源链接和发布时间。
-- 关联检索入口：只读 `rag-recall-demo` BGE 快照，共 12,187 个新闻 ID、36,379 个片段，向量维度 1024。原文缓存与快照交集 393 篇；正文至少 300 字并排除 7 个标题/时间不一致的 ID 后有 319 篇，按 ID 排序冻结其中 120 篇。
+- 关联检索入口：只读 `var/knowledge-snapshots/rag-recall-demo` BGE 快照，共 12,187 个新闻 ID、36,379 个片段，向量维度 1024。原文缓存与快照交集 393 篇；正文至少 300 字并排除 7 个标题/时间不一致的 ID 后有 319 篇，按 ID 排序冻结其中 120 篇。
 - 冻结产物：`agent/data/corpus-news-v6/catalog.json`，SHA-256 `bb6e550a3881091355dcc7e5e866a184f62f77b41f0100b1f9bdfeb56c49bc3d`。每篇保留原文件路径和 SHA-256，可追溯到缓存。运行期不再依赖可变原缓存。
 - 数据集：`corpus-v6` / `news-corpus-real-content-120-v1`，数据身份 SHA-256 `0d89cc86cb2b6fa195334acdf2ecfd3efebf2f174bfeb23afe709c2159f1b8ff`。
 - 数仓契约：`agent/docs/sql-warehouse-schema-v6.md`，版本 `news-warehouse-v6`，SHA-256 `bb4fb8fb45113b250ac953beb6c7789fe9a519d98c130d78c50b4277802480b7`。旧版本及旧演示历史保留。

@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.ruff_cache/
 
 # Virtual environments
 .venv/
@@ -48,6 +49,16 @@ tmp/
 # Crawler-generated incremental article cache; rebuildable from crawling.
 /news/data/incremental/
 
+# Local run packages under var/ (rebuildable bulk data; manifests/contracts stay tracked).
+/var/behavior-tags/**/*.jsonl
+/var/behavior-tags/**/*.sqlite
+/var/behavior-tags/.*.building-*/
+/var/reader-profiles/**/*.sqlite
+/var/reader-profiles/.*.building-*/
+/var/warehouse/**/*.jsonl
+/var/warehouse/**/warehouse.sql
+/var/knowledge-snapshots/
+
 # Rebuildable local synthetic behavior packages; keep small manifests/reports.
 /output/behavior-tags/**/label_index.sqlite
 /output/behavior-tags/**/*.jsonl
@@ -56,3 +67,8 @@ tmp/
 # Rebuildable news-reader aggregates; retain manifests and scoring policies.
 /output/reader-profiles/**/*.sqlite
 /output/reader-profiles/.*.building-*/
+
+# Migrated bulk run packages under the data root (rebuildable; catalogs stay tracked).
+/var/agent/data/news-bge-incremental-*/
+/var/agent/data/.news-bge-incremental-*/
+/var/news/data/incremental/

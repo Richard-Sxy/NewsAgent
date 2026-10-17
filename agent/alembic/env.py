@@ -7,6 +7,18 @@ from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 import app.models  # noqa: F401 - 注册全部 ORM 模型
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
 from app.db.base import Base
 
 config = context.config

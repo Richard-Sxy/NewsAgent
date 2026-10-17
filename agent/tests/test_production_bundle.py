@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pytest
 
-from app.schemas.production_bundle import (
+from app.modules.data_loop.contracts.production_bundle import (
     ActivateCandidateCommand,
     ApproveCandidateCommand,
     CohortGateThreshold,
@@ -18,7 +18,7 @@ from app.schemas.production_bundle import (
     RecordCandidateEvaluationCommand,
     RollbackProductionBundleCommand,
 )
-from app.services.production_bundle import (
+from app.modules.data_loop.production_bundle import (
     ProductionBundleDomainService,
     ProductionBundleRuleViolation,
     bundle_spec_sha256,

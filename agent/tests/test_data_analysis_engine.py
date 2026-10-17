@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from app.data_analysis.engine import (
+from app.modules.data_analysis.engine import (
     AnalysisInputError,
     MAX_INTEGER,
     analyze,

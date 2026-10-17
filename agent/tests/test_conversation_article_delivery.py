@@ -11,15 +11,15 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app.api.conversations import router
-from app.conversation.related_articles import (
+from app.modules.conversation.related_articles import (
     ConversationRelatedArticles,
     related_article_deadline,
 )
-from app.conversation.streaming import StreamingConversation
-from app.conversation.tools import ConversationTools, safe_source_url
+from app.modules.conversation.streaming import StreamingConversation
+from app.modules.conversation.tools import ConversationTools, safe_source_url
 from app.model_runtime.core import RawInferenceResult
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
-from app.schemas.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
+from app.modules.hot_news.contracts.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
 from tests.test_conversation_agent import RUN, TENANT, USER, headers, runtime
 
 

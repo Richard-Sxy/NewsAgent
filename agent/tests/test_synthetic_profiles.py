@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.config import Settings
 from app.clients.enterprise.sql_warehouse import SqlQuery
-from app.data_analysis.engine import analyze
+from app.modules.data_analysis.engine import analyze
 from app.sql_assistant import warehouse
 from app.sql_assistant.service import SqlAssistantService
 from app.sql_assistant.synthetic_profiles import (

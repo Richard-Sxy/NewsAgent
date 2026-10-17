@@ -14,9 +14,9 @@ import pytest
 import yaml
 
 from app.analytics.entities import ContentType
-from app.analytics.metric_source import HotNewsMetricQuery
-from app.analytics.metrics import NewsMetricSnapshot
-from app.data_analysis.acceptance import AggregateContractError, AcceptanceRequest, run_aggregate_acceptance
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
+from app.modules.data_analysis.acceptance import AggregateContractError, AcceptanceRequest, run_aggregate_acceptance
 from tools import check_analysis_data_contract as cli
 
 

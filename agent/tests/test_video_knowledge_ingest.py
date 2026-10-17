@@ -19,12 +19,12 @@ from app.analytics.video_textualization import (
     VideoSummary,
     VideoTextualizationPolicy,
 )
-from app.knowledge.document import (
+from app.modules.knowledge.document import (
     InMemoryKnowledgeBaseWriter,
     IngestReport,
     IngestStatus,
 )
-from app.knowledge.ingest import (
+from app.modules.knowledge.ingest import (
     ContentIngestPolicy,
     ContentIngestService,
     build_document_id,

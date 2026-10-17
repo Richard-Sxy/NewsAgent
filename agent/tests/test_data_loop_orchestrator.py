@@ -6,14 +6,14 @@ import pytest
 from temporalio.client import WorkflowUpdateFailedError
 from temporalio.exceptions import WorkflowAlreadyStartedError
 
-from app.services.data_loop.orchestrator import (
+from app.modules.data_loop.orchestrator import (
     DATA_LOOP_REQUEST_FINGERPRINT_MEMO_KEY,
     DataLoopActivationRecoveryNotAllowedError,
     DataLoopDecisionNotAllowedError,
     DataLoopOrchestrator,
     DataLoopStartConflictError,
 )
-from app.workflows.data_loop_contracts import (
+from app.modules.data_loop.workflow_contracts import (
     DataLoopActivationRecoveryContext,
     DataLoopActivationRecoveryRequest,
     DataLoopDecisionUpdateResult,

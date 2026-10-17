@@ -9,10 +9,10 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.tools import ConversationToolDenied, ConversationTools
-from app.data_analysis.factory import create_analysis_runner
-from app.data_analysis.projection import AnalysisProjectionError, project_dataset, selection_scope
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
+from app.modules.conversation.tools import ConversationToolDenied, ConversationTools
+from app.modules.data_analysis.factory import create_analysis_runner
+from app.modules.data_analysis.projection import AnalysisProjectionError, project_dataset, selection_scope
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
 from app.schemas.sql_assistant import HotNewsSqlToolTrace, SqlAssistantPreview, SqlAssistantResult
 from tests.test_conversation_agent import runtime
 from tests.test_conversation_data_analysis import TENANT, USER, RUN, saved_detail, public_settings

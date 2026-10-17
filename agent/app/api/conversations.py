@@ -12,10 +12,10 @@ from temporalio.service import RPCError, RPCStatusCode
 
 from app.api.dependencies import (DataLoopPrincipal, HotNewsPermission, WritingPermission,
                                   DataLoopPermission, MemoryPermission, require_hot_news_permission)
-from app.conversation.streaming import StreamingConversation
-from app.conversation.receipt_reads import ReceiptReadCoordinator
-from app.conversation.tools import ConversationToolDenied
-from app.services.data_loop.orchestrator import DataLoopWorkflowAccessError
+from app.modules.conversation.streaming import StreamingConversation
+from app.modules.conversation.receipt_reads import ReceiptReadCoordinator
+from app.modules.conversation.tools import ConversationToolDenied
+from app.modules.data_loop.orchestrator import DataLoopWorkflowAccessError
 from app.repositories.conversation import ConversationConflict, ConversationNotFound
 from app.schemas.conversation import (ConversationDetailResponse, ConversationListResponse,
                                       ConversationTurnView, ConversationView, CreateConversationRequest,

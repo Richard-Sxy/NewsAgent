@@ -12,6 +12,7 @@ RUN groupadd --system --gid 10001 app \
 COPY pyproject.toml ./
 COPY app ./app
 COPY examples ./examples
+COPY simulation ./simulation
 COPY alembic ./alembic
 COPY alembic.ini ./
 

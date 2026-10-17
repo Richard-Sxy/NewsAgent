@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 
 import pytest
 
-from app.services.hot_news_orchestration import HotNewsRunRequest
+from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
 from app.sql_assistant.hot_news_binding import HotNewsSqlBindingStore, HotNewsSqlBindingError, build_hot_news_sql_scope
 from app.sql_assistant.warehouse import SCHEMA_SHA256, WINDOW_START
 

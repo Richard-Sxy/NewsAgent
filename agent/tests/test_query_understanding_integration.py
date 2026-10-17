@@ -11,7 +11,7 @@ from uuid import UUID
 import httpx
 import pytest
 
-from app.conversation.query_understanding import (
+from app.modules.conversation.query_understanding import (
     QueryResolutionError, QueryUnderstanding, local_query_understanding,
     resolve_query_understanding,
 )
@@ -24,8 +24,8 @@ from app.schemas.sql_assistant import SqlAssistantIntent, SqlAssistantPreviewReq
 from app.sql_assistant.input_boundary import screen_question
 from app.sql_assistant.service import SqlAssistantService
 from app.sql_assistant.warehouse import WINDOW_START
-from examples.conversation_hot_news import LocalConversationHotNewsQuery
-from examples.hot_news_e2e_support import E2E_TENANT_ID
+from simulation.conversation_hot_news import LocalConversationHotNewsQuery
+from simulation.hot_news_e2e_support import E2E_TENANT_ID
 from tests.test_sql_assistant_service import (
     MemorySnapshots, RecordingWarehouse,
     harness as sql_harness, modify_config,
@@ -90,7 +90,7 @@ def request(question="查询新闻按点击量从高到低前5条"):
 ])
 async def test_unresolved_question_never_reaches_sql_or_workflow_or_breaker(monkeypatch, question, reason):
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     inference = RecordingInference()
     adapter = adapter_for(native_model(inference))
     for _ in range(4):
@@ -115,7 +115,7 @@ async def test_model_cannot_execute_first_of_multiple_requested_hours(
     monkeypatch, question, time_expression, explicit_date,
 ):
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     model_proposal = QueryUnderstanding(
         status="ready", intent=SqlAssistantIntent(sort_by="clicks", row_limit=5, explanation="仅选择第一个窗口"),
         time_expression=time_expression, explicit_date=explicit_date, hour_start=0, hour_end=1,
@@ -147,7 +147,7 @@ async def test_model_cannot_execute_first_of_multiple_requested_hours(
 ])
 async def test_only_basic_text_checks_run_before_understanding_model(monkeypatch, question):
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     inference = RecordingInference()
     adapter = adapter_for(native_model(inference))
     with pytest.raises(QueryResolutionError) as caught:
@@ -187,7 +187,7 @@ async def test_dedicated_model_failure_never_falls_back_or_reaches_sql(monkeypat
     dedicated = SimpleNamespace(run_structured=AsyncMock(side_effect=error))
     adapter = adapter_for(native_model(inference), understanding_agent=dedicated)
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     with pytest.raises(type(error)):
         await adapter.execute(question="热点新闻", tenant_id=E2E_TENANT_ID, user_id=USER, on_bound=None)
     assert inference.requests == []
@@ -238,8 +238,8 @@ async def test_ready_local_port_hands_canonical_conditions_to_original_sql_servi
     async def on_bound(metadata):
         bound.append(metadata)
 
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
-    monkeypatch.setattr("examples.conversation_hot_news.HotNewsQueryService",
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setattr("simulation.conversation_hot_news.HotNewsQueryService",
                         lambda **_: SimpleNamespace(get_run_detail=get_detail))
     result = await adapter.execute(question=question, tenant_id=E2E_TENANT_ID, user_id=USER, on_bound=on_bound)
     assert [item.scene for item in inference.requests] == ["query_understanding"]
@@ -304,7 +304,7 @@ async def test_comparison_applies_after_server_narrows_omitted_model_filters(sql
 @pytest.mark.parametrize("malformed", [{}, {"status": "ready", "intent": None}, {"sql": "private-output"}])
 async def test_invalid_model_structure_has_python_resolution_and_no_sql(monkeypatch, malformed):
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     adapter = adapter_for(native_model(RecordingInference(proposal=malformed)))
     with pytest.raises(QueryResolutionError) as caught:
         await adapter.execute(question="查询新闻", tenant_id=E2E_TENANT_ID, user_id=USER, on_bound=None)
@@ -321,7 +321,7 @@ async def test_compatible_http_uses_same_schema_and_server_gate_without_real_net
     requests = []
     canonical = []
     query = AsyncMock()
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
 
     def reply(request):
         body = json.loads(request.content)
@@ -391,8 +391,8 @@ async def test_compatible_confirmed_plan_does_not_request_a_second_model(monkeyp
             return SimpleNamespace(run=SimpleNamespace(status="completed"), ranked_news=[],
                                    sql_tool_trace=SimpleNamespace(query_id=previews[0].query_id, preview=previews[0]))
 
-        monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
-        monkeypatch.setattr("examples.conversation_hot_news.HotNewsQueryService",
+        monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+        monkeypatch.setattr("simulation.conversation_hot_news.HotNewsQueryService",
                             lambda **_: SimpleNamespace(get_run_detail=get_detail))
         result = await adapter.execute(question=QUESTION, tenant_id=E2E_TENANT_ID, user_id=USER, on_bound=None)
     assert len(calls) == 1
@@ -407,7 +407,7 @@ async def test_compatible_confirmed_plan_does_not_request_a_second_model(monkeyp
 
 @pytest.mark.asyncio
 async def test_shared_command_forwards_expected_intent_and_preserves_error_before_binding(sql_harness, monkeypatch):
-    import examples.local_simulation as shared
+    import simulation.local_simulation as shared
     from app.api.dependencies import DataLoopPrincipal, HotNewsPermission
     from tests.test_native_hot_news_runtime import native_spec
 
@@ -469,7 +469,7 @@ async def test_semantic_error_from_sql_is_neutral_and_preserves_original_resolut
     mismatch = resolution.model_copy(update={"status": "unsupported", "reason_code": "query_intent_mismatch",
                                              "message": "查询计划与已确认条件不一致，未执行取数。"})
     query = AsyncMock(side_effect=QueryResolutionError(mismatch))
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     adapter._breaker.record_failure()
     with pytest.raises(QueryResolutionError) as caught:
         await adapter.execute(question=QUESTION, tenant_id=E2E_TENANT_ID, user_id=USER, on_bound=None)

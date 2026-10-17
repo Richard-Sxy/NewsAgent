@@ -28,18 +28,18 @@ from sqlalchemy.engine import make_url  # noqa: E402
 
 from app.config import Settings  # noqa: E402
 from app.db.session import Database  # noqa: E402
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry  # noqa: E402
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry  # noqa: E402
 from app.model_runtime.config_file import load_model_runtime_config  # noqa: E402
-from app.repositories.evaluation_dataset import PostgresEvaluationDatasetRepository  # noqa: E402
-from app.repositories.production_bundle import PostgresProductionBundleRepository  # noqa: E402
-from app.schemas.analysis_feedback import (  # noqa: E402
+from app.modules.data_loop.persistence.evaluation_dataset_repository import PostgresEvaluationDatasetRepository  # noqa: E402
+from app.modules.data_loop.persistence.production_bundle_repository import PostgresProductionBundleRepository  # noqa: E402
+from app.modules.data_loop.contracts.analysis_feedback import (  # noqa: E402
     ApproveAnalysisFeedbackLabelCommand, CollectAnalysisFeedbackCommand,
     FeedbackSourceReference, SubmitAnalysisFeedbackLabelCommand,
 )
-from app.schemas.evaluation_dataset import FreezeEvaluationDatasetCommand, FreezeEvaluationDatasetResult  # noqa: E402
+from app.modules.data_loop.contracts.evaluation_dataset import FreezeEvaluationDatasetCommand, FreezeEvaluationDatasetResult  # noqa: E402
 from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport, HotNewsMetrics, HotScoreComponents  # noqa: E402
-from app.services.data_loop.dataset_freezer import EvaluationDatasetFreezer, S3EvaluationDatasetArtifactStore  # noqa: E402
-from app.services.data_loop.feedback_collector import AnalysisFeedbackCollector  # noqa: E402
+from app.modules.data_loop.dataset_freezer import EvaluationDatasetFreezer, S3EvaluationDatasetArtifactStore  # noqa: E402
+from app.modules.data_loop.feedback_collector import AnalysisFeedbackCollector  # noqa: E402
 
 
 PREFIX = "conversation-demo-fixture-v1"

@@ -18,8 +18,8 @@ from app.domain.job_scenario import JobScenario
 from app.domain.job_status import JobStatus
 from app.main import app
 from app.workflows.contracts import WorkflowSnapshot
-from app.schemas.checkpoint import ResumePoint
-from app.services.orchestrator import WorkflowExecutionNotFoundError
+from app.modules.writing.contracts.checkpoint import ResumePoint
+from app.modules.writing.orchestrator import WorkflowExecutionNotFoundError
 from tests.test_research_schema import valid_research_package
 
 

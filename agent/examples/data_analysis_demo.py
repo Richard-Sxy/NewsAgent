@@ -20,11 +20,11 @@ from uuid import UUID, uuid4
 
 import httpx
 
-from app.data_analysis.engine import validate_request
-from app.data_analysis.projection import project_dataset
-from app.data_analysis.runner import AnalysisRunner, _json_bytes, _reject_constant, _unique_object
+from app.modules.data_analysis.engine import validate_request
+from app.modules.data_analysis.projection import project_dataset
+from app.modules.data_analysis.runner import AnalysisRunner, _json_bytes, _reject_constant, _unique_object
 from app.schemas.conversation import ConversationTurnView, ConversationView
-from app.schemas.hot_news_api import HotNewsRunDetailResponse
+from app.modules.hot_news.contracts.hot_news_api import HotNewsRunDetailResponse
 
 
 DEFAULT_BASE_URL = "http://127.0.0.1:28010"

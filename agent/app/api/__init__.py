@@ -1,8 +1,8 @@
-from app.api.jobs import router as jobs_router
-from app.api.events import router as events_router
-from app.api.data_loop import router as data_loop_router
-from app.api.hot_news import router as hot_news_router
-from app.api.memory import router as memory_router
+from app.modules.writing.jobs import router as jobs_router
+from app.modules.writing.events import router as events_router
+from app.modules.data_loop.api import router as data_loop_router
+from app.modules.hot_news.api import router as hot_news_router
+from app.modules.memory.api import router as memory_router
 from app.api.security_tests import router as security_tests_router
 from app.api.knowledge import router as knowledge_router
 from app.api.conversations import router as conversations_router

@@ -13,15 +13,15 @@ import json
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_score import HotScoreCalculator
-from app.evaluation.hot_news import (
+from app.modules.hot_news.scoring.hot_score import HotScoreCalculator
+from app.modules.data_loop.evaluation.hot_news import (
     ExpectedHotNewsAnalysis, HotNewsEvaluationCase, HotNewsEvaluationDataset,
 )
-from app.schemas.evaluation_dataset import canonical_json_sha256
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents, RelatedNewsEvidence
-from app.schemas.hot_news_decision import DecisionType
-from app.schemas.operations_feedback import OperationsReasonCode, OperationsFeedbackCategory, is_fresh_bad_case_eligible
-from app.schemas.push import AudienceRule, PushChannel
+from app.modules.data_loop.contracts.evaluation_dataset import canonical_json_sha256
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents, RelatedNewsEvidence
+from app.modules.hot_news.contracts.hot_news_decision import DecisionType
+from app.modules.data_loop.contracts.operations_feedback import OperationsReasonCode, OperationsFeedbackCategory, is_fresh_bad_case_eligible
+from app.modules.data_loop.contracts.push import AudienceRule, PushChannel
 from evaluation.operations_synthetic import metric_snapshot, metrics_view, validate_metrics
 
 

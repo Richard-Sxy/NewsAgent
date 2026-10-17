@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from app.behavior_tags.runtime import LocalBehaviorRuntime
+from app.modules.behavior_tags.runtime import LocalBehaviorRuntime
 
 
 def inspect(package: Path, report_path: Path, tests_path: Path) -> dict:

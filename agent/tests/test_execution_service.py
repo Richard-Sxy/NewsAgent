@@ -6,7 +6,7 @@ import pytest
 
 from app.domain.execution import AgentType, ExecutionStatus, StepType
 from app.domain.job_status import JobStatus
-from app.services.execution import ExecutionService
+from app.modules.writing.execution import ExecutionService
 
 
 def scalar_result(value):

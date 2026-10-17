@@ -38,17 +38,17 @@
 
 ```sh
 cd agent
-python -m app.behavior_tags.build \
-  --source-dir ../output/warehouse/real-news-v8-20261014 \
-  --source-dir ../output/warehouse/tencent-news-v7-20261014 \
+python -m app.modules.behavior_tags.build \
+  --source-dir ../var/warehouse/real-news-v8-20261014 \
+  --source-dir ../var/warehouse/tencent-news-v7-20261014 \
   --source-dir profile:classic-v1 --source-dir profile:enterprise-v1 \
   --source-dir profile:enterprise-v2 --source-dir profile:public-headlines-v3 \
   --source-dir profile:timeline-v4 --source-dir profile:timeline-v5 \
   --source-dir profile:corpus-v6 \
-  --output-dir ../output/behavior-tags/local-merged-v1-20261016 \
+  --output-dir ../var/behavior-tags/local-merged-v1-20261016 \
   --users-per-tenant 600 --seed 20261016 --days 31
-python -m app.behavior_tags.query \
-  --package ../output/behavior-tags/local-merged-v1-20261016 \
+python -m app.modules.behavior_tags.query \
+  --package ../var/behavior-tags/local-merged-v1-20261016 \
   --tenant-id 11111111-1111-4111-8111-111111111111 \
   --window-start 2026-10-13T00:00:00+08:00 \
   --window-end 2026-10-14T20:00:00+08:00 \
@@ -63,7 +63,7 @@ API 入口为 `GET /api/v1/behavior-tags/topics` 和 `POST /api/v1/behavior-tags
 
 ## 完整调用链与配置
 
-离线入口 `app.behavior_tags.build` → `merge.load_merged_source` 分源适配，v8 调用 `source.load_warehouse_source` 校验与门禁 → 内容去重、最新生命周期拦截、场景保留 → `tagging.tag_article/behavior_labels` 生成可解释标签 → 合成事件和按日画像 → JSONL/`label_index.sqlite`/Manifest。外部依赖仅为本地冻结数仓、已有版本化生成器、Python、PyYAML/Pydantic/SQLite；不调用模型、网络或企业个人行为服务。
+离线入口 `app.modules.behavior_tags.build` → `merge.load_merged_source` 分源适配，v8 调用 `source.load_warehouse_source` 校验与门禁 → 内容去重、最新生命周期拦截、场景保留 → `tagging.tag_article/behavior_labels` 生成可解释标签 → 合成事件和按日画像 → JSONL/`label_index.sqlite`/Manifest。外部依赖仅为本地冻结数仓、已有版本化生成器、Python、PyYAML/Pydantic/SQLite；不调用模型、网络或企业个人行为服务。
 
 每个模拟日只使用当天开始前已经闭合的源指标分布；没有历史时记录 `unconditioned_synthetic_prior`。每条取样引用早于事件时点。曝光记录渠道、设备和发生小时，画像由事件计算渠道/设备计数、活跃时段、点击/阅读/互动/负反馈计数，兴趣分按三天半衰期衰减后归一化。
 
@@ -112,7 +112,7 @@ Schedule 动态窗口仍缺少“执行时冻结画像上下文”的 Activity�
 
 ## 本次实际产物与验证（2026-10-16）
 
-正式包：`output/behavior-tags/local-merged-v1-20261016`，约 6.6 GiB；大 JSONL 与 SQLite 已按可重建产物加入 Git ignore，Manifest 和紧凑报告可单独查看。目录为只读运行输入，请新建输出目录重新构建，不要就地编辑。
+正式包：`var/behavior-tags/local-merged-v1-20261016`，约 6.6 GiB；大 JSONL 与 SQLite 已按可重建产物加入 Git ignore，Manifest 和紧凑报告可单独查看。目录为只读运行输入，请新建输出目录重新构建，不要就地编辑。
 
 | 产物 | 实际数量 |
 |---|---:|
@@ -125,8 +125,8 @@ Schedule 动态窗口仍缺少“执行时冻结画像上下文”的 Activity�
 
 12 根主题与 72 个细分共 84 项，实际内容覆盖 83 项，`military.history` 无依据而保持空白。事件含 138,244 次曝光、76,267 次点击、76,267 次详情访问、12,531 次互动、3,582 次负反馈以及 1,200 次画像初始化；这些仅为合成事件数，不是数仓原人数或平台行为总量。
 
-验证证据为 `output/behavior-tags/verification-20261016.json`，包含完整目录覆盖、行为标签公式样例、去个人标识的画像样例和多主题检索结果。`agent/tools/inspect_behavior_package.py` 是复查入口：加载并校验包 → SQLite 完整性检查 → 标签/来源分布 → 事件时序与历史取样引用 → 画像截止时点 → 参数化检索 → JSON 报告。该检查不调用模型或网络，原 UV 不参与加总。
+验证证据为 `var/behavior-tags/verification-20261016.json`，包含完整目录覆盖、行为标签公式样例、去个人标识的画像样例和多主题检索结果。`agent/tools/inspect_behavior_package.py` 是复查入口：加载并校验包 → SQLite 完整性检查 → 标签/来源分布 → 事件时序与历史取样引用 → 画像截止时点 → 参数化检索 → JSON 报告。该检查不调用模型或网络，原 UV 不参与加总。
 
-主验证集合 393 项全部通过，见 `output/behavior-tags/tests-20261016.xml`；另补充本地启动/SQL/运行身份/Schedule 相关 34 项通过、1 项跳过。最新 runtime/API 26 项再次通过。前端 typecheck、ESLint、生产构建和相关组件 21 项通过；全量前端检查尚有两条既有端口断言（28000 与公开配置 28070）及一条沙箱监听 EPERM 未通过，不改这些独立配置。
+主验证集合 393 项全部通过，见 `var/behavior-tags/tests-20261016.xml`；另补充本地启动/SQL/运行身份/Schedule 相关 34 项通过、1 项跳过。最新 runtime/API 26 项再次通过。前端 typecheck、ESLint、生产构建和相关组件 21 项通过；全量前端检查尚有两条既有端口断言（28000 与公开配置 28070）及一条沙箱监听 EPERM 未通过，不改这些独立配置。
 
 单页 PDF 由 `output/diagrams/render_behavior_tags_20261016.py` 读取 Manifest 与验证报告生成；已确认一页并渲染检查中文与排版。当前企业正式目录、授权聚合画像接口、效果评测、Schedule 动态冻结仍是 TODO；既有实例没有重启。

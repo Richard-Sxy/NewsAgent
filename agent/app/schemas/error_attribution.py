@@ -7,7 +7,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from app.schemas.evaluation_dataset import FrozenEvaluationCase
+from app.modules.data_loop.contracts.evaluation_dataset import FrozenEvaluationCase
 
 
 ErrorAttributionCategory = Literal[

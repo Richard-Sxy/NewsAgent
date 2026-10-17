@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from app.warehouse_simulation import real_news_catalog as catalog
+from simulation.warehouse_simulation import real_news_catalog as catalog
 
 
 @pytest.fixture(scope="module")

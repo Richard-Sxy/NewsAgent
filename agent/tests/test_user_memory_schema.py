@@ -4,7 +4,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.user_memory import (
+from app.modules.memory.contracts.user_memory import (
     LongTermMemoryCandidate,
     LongTermUserMemory,
     MemorySourceRef,

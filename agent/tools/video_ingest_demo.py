@@ -51,8 +51,8 @@ from app.analytics.video_textualization import (  # noqa: E402
     VideoContentTextualizer,
     VideoTextualizationPolicy,
 )
-from app.knowledge.document import InMemoryKnowledgeBaseWriter  # noqa: E402
-from app.knowledge.ingest import (  # noqa: E402
+from app.modules.knowledge.document import InMemoryKnowledgeBaseWriter  # noqa: E402
+from app.modules.knowledge.ingest import (  # noqa: E402
     ContentIngestPolicy,
     ContentIngestService,
 )

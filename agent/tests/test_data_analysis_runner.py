@@ -10,9 +10,9 @@ import sys
 
 import pytest
 
-from app.data_analysis.engine import analyze, validate_request
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
-import app.data_analysis.runner as runner_module
+from app.modules.data_analysis.engine import analyze, validate_request
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
+import app.modules.data_analysis.runner as runner_module
 
 
 def request(operation="overview") -> dict:

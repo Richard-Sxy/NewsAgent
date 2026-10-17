@@ -7,9 +7,9 @@ import threading
 
 import pytest
 
-from app.reader_profiles import build
-from app.reader_profiles.contracts import ReaderProfileProviderError, ReaderProfileQuery
-from app.reader_profiles.local import LocalNewsReaderProfileClient
+from app.modules.reader_profiles import build
+from app.modules.reader_profiles.contracts import ReaderProfileProviderError, ReaderProfileQuery
+from app.modules.reader_profiles.local import LocalNewsReaderProfileClient
 from tests.test_reader_profile_build import OTHER, TENANT, event, get_row, seal, stamp, write_source
 
 

@@ -17,9 +17,9 @@ from typing import Literal, Protocol
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.model_runtime.core import PromptRegistry, PromptSpec, StructuredInferenceService
-from app.schemas.evaluation_dataset import canonical_json_sha256
-from app.schemas.hot_news_decision import DecisionType
-from app.schemas.operations_feedback import OperationsFeedback
+from app.modules.data_loop.contracts.evaluation_dataset import canonical_json_sha256
+from app.modules.hot_news.contracts.hot_news_decision import DecisionType
+from app.modules.data_loop.contracts.operations_feedback import OperationsFeedback
 from evaluation.operations_evolution import OperationsEvolutionDataset, blind_input
 
 

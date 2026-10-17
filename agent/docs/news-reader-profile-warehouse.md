@@ -19,7 +19,7 @@
   → LocalNewsReaderProfileClient → ReaderProfileService → 热点分析/运营查询
 ```
 
-本次已有输入目录为 `output/behavior-tags/local-merged-v1-20261016`。其 manifest 声明
+本次已有输入目录为 `var/behavior-tags/local-merged-v1-20261016`。其 manifest 声明
 2,474 条内容标签、308,091 条合成事件、1,200 个合成用户的初始化，模拟范围是
 `2026-09-13T12:00:00Z` 至 `2026-10-14T12:00:00Z`。这些数量是该冻结本地包的规模，
 不能作为企业规模、真实访问人数或查询延时的证明。
@@ -236,9 +236,9 @@ builder 从 simulation 起点向上取整到完整小时，再按该宽度切窗
 发布示例（输出目录必须尚不存在）：
 
 ```bash
-PYTHONPATH=agent /opt/homebrew/bin/python3.11 -m app.reader_profiles.build \
-  --behavior-package output/behavior-tags/local-merged-v1-20261016 \
-  --output-dir output/reader-profiles/local-readers-v1-20261017 \
+PYTHONPATH=agent /opt/homebrew/bin/python3.11 -m app.modules.reader_profiles.build \
+  --behavior-package var/behavior-tags/local-merged-v1-20261016 \
+  --output-dir var/reader-profiles/local-readers-v1-20261017 \
   --window-hours 1 --top-k 20
 ```
 

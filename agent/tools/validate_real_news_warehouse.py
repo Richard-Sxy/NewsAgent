@@ -88,7 +88,7 @@ def validate_package(directory: Path) -> dict[str, Any]:
     # A rewritten manifest cannot authorize a different article roster. Bind it
     # to the independently frozen source identity, then verify its full schema.
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from app.warehouse_simulation.real_news_catalog import CATALOG_SHA256, load_catalog
+    from simulation.warehouse_simulation.real_news_catalog import CATALOG_SHA256, load_catalog
 
     if manifest["catalog_sha256"] != CATALOG_SHA256:
         raise ValueError("catalog differs from the independently frozen real-news identity")

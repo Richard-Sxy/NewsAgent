@@ -5,10 +5,10 @@ import asyncio
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from app.analytics.data_source import BehaviorDataSource
+from app.modules.hot_news.scoring.data_source import BehaviorDataSource
 from app.analytics.news_content import NewsContentRepository
-from app.behavior_tags.runtime import build_behavior_runtime
-from app.reader_profiles.factory import build_reader_profile_service
+from app.modules.behavior_tags.runtime import build_behavior_runtime
+from app.modules.reader_profiles.factory import build_reader_profile_service
 from app.clients.knowledge_base import KnowledgeSearchClient
 from app.model_runtime.core import InferencePort, PromptRegistry
 from app.model_runtime.config_file import (
@@ -17,20 +17,20 @@ from app.model_runtime.config_file import (
 )
 from app.model_runtime.factory import ModelRuntimePorts, build_model_runtime_ports
 from app.model_runtime.knowledge_factory import build_native_knowledge_search, build_native_knowledge_index
-from app.knowledge.search_factory import close_knowledge_search_index
+from app.modules.knowledge.search_factory import close_knowledge_search_index
 from app.observability.hot_news import HotNewsRunMetrics
 from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import Settings, get_settings
 from app.db.session import Database
-from app.hot_news_bootstrap import create_hot_news_worker_runtime
-from app.hot_news_dependencies import build_hot_news_dependencies
-from app.services.hot_news_orchestration import (
+from app.bootstrap.hot_news import create_hot_news_worker_runtime
+from app.bootstrap.hot_news_dependencies import build_hot_news_dependencies
+from app.modules.hot_news.application.hot_news_orchestration import (
     HotNewsBaselineProvider,
     HotNewsOrchestrationPolicy,
 )
-from app.services.active_bundle_hot_news import HotNewsRunDependenciesFactory
-from app.workflows.hot_news import (
+from app.modules.hot_news.application.active_bundle_hot_news import HotNewsRunDependenciesFactory
+from app.modules.hot_news.workflows.hot_news import (
     HotNewsMonitorWorkflow,
     HotNewsWindowDispatcherWorkflow,
 )

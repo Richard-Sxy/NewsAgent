@@ -94,7 +94,7 @@ discover_sitemap_window CLI
 这些数字仅表示发现数量；每篇最终必须由正文 metadata 单独验证。
 
 冻结发现入口：
-`news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery/discovery_manifest.json`，
+`var/news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery/discovery_manifest.json`，
 SHA-256 `ef73ed136d5c91353b60d696913a6a9828ca841fd3ab48db8b3eb66100fc2b03`。
 原 v1 Manifest 摘要仍为
 `13ffd2d5a4145a4f68cd5ba25fead17340fc7d7a70e0efa02632e75ae58fdcee`。
@@ -112,28 +112,28 @@ SHA-256 `ef73ed136d5c91353b60d696913a6a9828ca841fd3ab48db8b3eb66100fc2b03`。
 ```bash
 PYTHONPATH=news python3.11 -m experiments.discover_sitemap_window \
   --start-date 2026-10-07 --end-date 2026-10-14 \
-  --output-dir news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery \
+  --output-dir var/news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery \
   --max-sitemaps 150 --workers 4 --target-per-day 2000
 
 PYTHONPATH=news python3.11 -m experiments.collect_incremental_news \
   --start-date 2026-10-07 --end-date 2026-10-14 \
-  --output-dir news/data/incremental/2026-10-07_2026-10-14-v2 \
-  --seed-manifest news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json \
+  --output-dir var/news/data/incremental/2026-10-07_2026-10-14-v2 \
+  --seed-manifest var/news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json \
   --seed-manifest-sha256 13ffd2d5a4145a4f68cd5ba25fead17340fc7d7a70e0efa02632e75ae58fdcee \
-  --discovery-manifest news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery/discovery_manifest.json \
+  --discovery-manifest var/news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery/discovery_manifest.json \
   --target-per-day 1000 --workers 8 --request-interval 0.1
 
 # NEWSAGENT_KNOWLEDGE_TOKEN 由本地环境安全注入，不在命令、日志或回执中输出。
 python3.11 agent/tools/import_news_cache.py \
-  --manifest news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json \
+  --manifest var/news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json \
   --tenant-id 11111111-1111-4111-8111-111111111111 \
   --base-url http://127.0.0.1:28070 \
   --report output/news-bulk-import-2026-10-15/knowledge-report.json
 
 python3.11 agent/tools/build_incremental_news_index.py \
-  --articles-dir news/data/incremental/2026-10-07_2026-10-14-v2/articles \
-  --base-package agent/data/news-bge-incremental-20261014-v1 \
-  --output-package agent/data/news-bge-incremental-20261014-v2 \
+  --articles-dir var/news/data/incremental/2026-10-07_2026-10-14-v2/articles \
+  --base-package var/agent/data/news-bge-incremental-20261014-v1 \
+  --output-package var/agent/data/news-bge-incremental-20261014-v2 \
   --snapshot-version news-bge-incremental-20261014-v2 \
   --expected-manifest-sha256 f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4 \
   --device mps --precision float16 --batch-size 8 --threads 4
@@ -168,9 +168,9 @@ BGE/HNSW；两种向量不混用。当前 SQL 热点候选仍使用冻结 corpus
 
 ```bash
 python3.11 agent/tools/verify_bulk_news_index.py \
-  --manifest news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json \
-  --package agent/data/news-bge-incremental-20261014-v2 \
-  --base-package agent/data/news-bge-incremental-20261014-v1 \
+  --manifest var/news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json \
+  --package var/agent/data/news-bge-incremental-20261014-v2 \
+  --base-package var/agent/data/news-bge-incremental-20261014-v1 \
   --expected-manifest-sha256 f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4 \
   --expected-base-manifest-sha256 edf9d5f6cd9b05f8d1c5eeece8c47424bcfdeaf6d569b02f4d5619a042b27733 \
   --receipt output/news-bulk-import-2026-10-15/index-verification.json

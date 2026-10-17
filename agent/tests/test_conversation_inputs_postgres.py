@@ -9,7 +9,7 @@ from uuid import uuid4
 
 import pytest
 
-from app.conversation.service import ConversationAgentService
+from app.modules.conversation.service import ConversationAgentService
 from app.model_runtime.core import RawInferenceResult
 from app.repositories.conversation import ConversationConflict, ConversationNotFound, PostgresConversationRepository
 from tests.test_conversation_agent import runtime

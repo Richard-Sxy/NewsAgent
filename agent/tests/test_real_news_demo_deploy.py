@@ -35,7 +35,7 @@ def source_root(tmp_path, module):
         "deploy/bge-demo.frontend.json", "frontend/Dockerfile.conversation-hooks.cached",
         "frontend/dist/index.html"]
     for name in names:
-        path = root / name
+        path = (root.parent if name.startswith("deploy/") else root) / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("fixture\n")
     for directory in ("examples", "alembic", "tests"):
@@ -55,7 +55,7 @@ def source_root(tmp_path, module):
     for name in ("SHA256SUMS", "data/experiments/offline_recall_fg/chunks.jsonl",
         "data/experiments/offline_recall_fg/embeddings.npy", "data/experiments/offline_recall_fg/index.bin",
         "data/models/bge-large-zh-v1.5/modules.json"):
-        path = root.parent / "rag-recall-demo" / name
+        path = root.parent / "var/knowledge-snapshots/rag-recall-demo" / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("immutable fixture\n")
     return root
@@ -71,12 +71,12 @@ def test_incremental_index_is_an_explicit_last_overlay_and_requires_built_packag
         agent_root=source_root, model="local", api_port=28070, web_port=5179, skip_build=True),
         environ={}, incremental_news_index=True)
     command = instance.compose_command("up", "-d", "api")
-    assert command[-5:] == ["-f", str(source_root / "deploy" / module.INCREMENTAL_OVERLAY), "up", "-d", "api"]
+    assert command[-5:] == ["-f", str(source_root.parent / "deploy" / module.INCREMENTAL_OVERLAY), "up", "-d", "api"]
     with pytest.raises(module.DeploymentError, match="incremental"):
         instance._validate_files()
     for name in (f"deploy/{module.INCREMENTAL_OVERLAY}", f"deploy/{module.INCREMENTAL_CONFIG}",
                  f"{module.INCREMENTAL_PACKAGE}/SHA256SUMS", f"{module.INCREMENTAL_PACKAGE}/build_report.json"):
-        path = source_root / name
+        path = (source_root.parent if name.startswith("deploy/") else source_root) / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("fixture")
     instance._validate_files()
@@ -88,7 +88,7 @@ def test_bulk_index_uses_a_separate_version_without_replacing_v1(module, source_
         agent_root=source_root, model="local", api_port=28070, web_port=5179, skip_build=True),
         environ={}, incremental_news_index=True, incremental_news_version="v2")
     command = instance.compose_command("up", "-d", "api")
-    assert command[-5:] == ["-f", str(source_root / "deploy/docker-compose.bulk-news-demo.yml"), "up", "-d", "api"]
+    assert command[-5:] == ["-f", str(source_root.parent / "deploy/docker-compose.bulk-news-demo.yml"), "up", "-d", "api"]
     assert instance.index_package.endswith("-v2")
     with pytest.raises(module.DeploymentError, match="v2"):
         instance._validate_files()
@@ -275,7 +275,7 @@ ComposeLoader.add_constructor("!reset", lambda loader, node: None)
 
 
 def test_overlay_keeps_current_sources_readonly_fixed_profile_and_offline_dist_build():
-    config = yaml.load((AGENT_ROOT / "deploy/docker-compose.real-news-demo.yml").read_text(), Loader=ComposeLoader)
+    config = yaml.load((AGENT_ROOT.parent / "deploy/docker-compose.real-news-demo.yml").read_text(), Loader=ComposeLoader)
     assert config["name"] == "news-agent-real-news-demo"
     assert "volumes" not in config and "networks" not in config  # no external/shared names
     services = config["services"]
@@ -289,13 +289,13 @@ def test_overlay_keeps_current_sources_readonly_fixed_profile_and_offline_dist_b
         assert env["SQL_ASSISTANT_SCENARIOS_PATH"].endswith("text2sql-scenes.corpus-v6.yml")
         assert env["MODEL_RUNTIME_CONFIG_PATH"].endswith("conversation-hooks.model-runtime.local.yml")
         for directory in ("app", "examples", "docs", "data"):
-            assert f"../{directory}:/app/{directory}:ro" in service["volumes"]
+            assert f"../agent/{directory}:/app/{directory}:ro" in service["volumes"]
         assert all(v.endswith(":ro") for v in service["volumes"])
     assert services["migrate"]["build"] is None
-    assert "../alembic:/app/alembic:ro" in services["migrate"]["volumes"]
-    assert "../tests:/app/tests:ro" in services["test-runner"]["volumes"]
+    assert "../agent/alembic:/app/alembic:ro" in services["migrate"]["volumes"]
+    assert "../agent/tests:/app/tests:ro" in services["test-runner"]["volumes"]
     web = services["web"]
-    assert web["build"] == {"context": "../frontend/dist", "dockerfile": "../Dockerfile.conversation-hooks.cached",
+    assert web["build"] == {"context": "../agent/frontend/dist", "dockerfile": "../agent/Dockerfile.conversation-hooks.cached",
         "network": "none", "args": {"WEB_RUNTIME_IMAGE": "news-agent/frontend:conversation-hooks-demo"}}
     assert web["ports"] == ["127.0.0.1:${NEWSAGENT_REAL_WEB_PORT:-5179}:8080"]
     assert services["api"]["ports"] == ["127.0.0.1:${NEWSAGENT_REAL_API_PORT:-28070}:8000"]

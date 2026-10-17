@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from app.evaluation.fault_drill import (
+from app.modules.data_loop.evaluation.fault_drill import (
     FaultDrillRunner,
     load_fault_drill_dataset,
 )

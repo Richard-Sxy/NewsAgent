@@ -1,0 +1,20 @@
+# Apply after the existing local demo overlays. Build the package first.
+# API and Worker must read the identical immutable package for run binding.
+x-behavior-environment: &behavior-environment
+  BEHAVIOR_TAGS_ENABLED: "true"
+  BEHAVIOR_TAGS_PACKAGE_PATH: /app/local-behavior-package
+  BEHAVIOR_TAGS_COHORT_ID: ${BEHAVIOR_TAGS_COHORT_ID:-all}
+  BEHAVIOR_TAGS_MAX_BONUS: "0.08"
+
+services:
+  api:
+    environment:
+      <<: *behavior-environment
+      AUDIENCE_ENABLED: "true"
+      AUDIENCE_BACKEND: behavior_package
+    volumes:
+      - ../var/behavior-tags/local-merged-v1-20261016:/app/local-behavior-package:ro
+  hot-news-worker:
+    environment: *behavior-environment
+    volumes:
+      - ../var/behavior-tags/local-merged-v1-20261016:/app/local-behavior-package:ro

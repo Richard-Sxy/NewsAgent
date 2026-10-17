@@ -1,4 +1,4 @@
-from examples.hot_news_demo import build_ranking, load_scenario, render_ranking
+from simulation.hot_news_demo import build_ranking, load_scenario, render_ranking
 
 """加载示例场景，构建新闻排行榜，并渲染输出"""
 def test_demo_builds_expected_hot_news_ranking() -> None:

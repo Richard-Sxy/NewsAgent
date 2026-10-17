@@ -17,7 +17,7 @@ from app.sql_assistant.hot_news_binding import HotNewsSqlBindingError
 from app.sql_assistant.scaled_profiles import TABLES, iter_scaled_rows
 from app.sql_assistant.service import SqlAssistantError, SqlAssistantService
 from examples.data_analysis_demo import _catalog, DemoError
-from examples.native_hot_news_sql_support import SqlHotNewsContentRepository
+from simulation.native_hot_news_sql_support import SqlHotNewsContentRepository
 from tests.test_hot_news_sql_binding import scope
 from tests.test_sql_assistant_service import MemorySnapshots, RecordingAgent, RecordingWarehouse, TENANT, USER, request
 

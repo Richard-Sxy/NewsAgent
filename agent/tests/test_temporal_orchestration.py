@@ -4,14 +4,14 @@ import pytest
 from temporalio.converter import DataConverter
 from temporalio.exceptions import ApplicationError
 
-from app.activities.news_steps import NewsStepActivities
+from app.modules.writing.news_steps import NewsStepActivities
 from app.workflows.contracts import (
     HumanDecision,
     NewsWritingInput,
     StepCommand,
     StepOutcome,
 )
-from app.workflows.news_writing import NewsWritingWorkflow
+from app.modules.writing.news_writing import NewsWritingWorkflow
 
 """ 测试代码 """
 @pytest.mark.asyncio
@@ -341,7 +341,7 @@ async def test_research_recoveries_isolate_all_checkpoints_and_replay_the_same_b
         return checkpoints[command.step_key]
 
     monkeypatch.setattr(
-        "app.workflows.news_writing.workflow.execute_activity", execute_activity,
+        "app.modules.writing.news_writing.workflow.execute_activity", execute_activity,
     )
 
     async def run_branch(namespace: str):

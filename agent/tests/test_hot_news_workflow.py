@@ -4,9 +4,9 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from temporalio.converter import DataConverter
 
-from app.services.hot_news_orchestration import HotNewsRunRequest
+from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
 from app.workflows.contracts import HotNewsActivityOutcome
-from app.workflows.hot_news import (
+from app.modules.hot_news.workflows.hot_news import (
     HOT_NEWS_WORKFLOW_NAME,
     HotNewsMonitorWorkflow,
 )
@@ -56,7 +56,7 @@ async def test_workflow_executes_one_bounded_activity() -> None:
     execute_activity = AsyncMock(return_value=expected)
 
     with patch(
-        "app.workflows.hot_news.workflow.execute_activity",
+        "app.modules.hot_news.workflows.hot_news.workflow.execute_activity",
         execute_activity,
     ):
         result = await HotNewsMonitorWorkflow().run(request)

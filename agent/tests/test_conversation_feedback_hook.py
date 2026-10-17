@@ -10,15 +10,15 @@ import pytest
 from pydantic import ValidationError
 from sqlalchemy.dialects.postgresql import Insert
 
-import app.conversation.feedback_hooks as hook_module
-import app.services.data_loop.feedback_collector as collector_module
-from app.conversation.feedback_hooks import (
+import app.modules.conversation.feedback_hooks as hook_module
+import app.modules.data_loop.feedback_collector as collector_module
+from app.modules.conversation.feedback_hooks import (
     ConversationFeedbackHooks, DRAFT_REASON_PREFIX, FEEDBACK_CONFIRMATION_NOTICE,
 )
-from app.models.hot_news_decision import HotNewsDecision
-from app.repositories.analysis_feedback import PostgresAnalysisFeedbackRepository
-from app.services.data_loop.feedback_collector import AnalysisFeedbackCollector, AnalysisFeedbackPersistenceError
-from app.services.hot_news_decision import (
+from app.modules.hot_news.persistence.hot_news_decision import HotNewsDecision
+from app.modules.data_loop.persistence.analysis_feedback_repository import PostgresAnalysisFeedbackRepository
+from app.modules.data_loop.feedback_collector import AnalysisFeedbackCollector, AnalysisFeedbackPersistenceError
+from app.modules.hot_news.application.hot_news_decision import (
     HotNewsDecisionConflictError, HotNewsDecisionService, HotNewsDecisionTargetNotFoundError,
 )
 from tests.test_hot_news_writing_handoff import make_memory

@@ -7,14 +7,14 @@ import httpx
 import pytest
 from redis.exceptions import ConnectionError
 
-from app.api.hot_news import format_hot_news_sse
+from app.modules.hot_news.api import format_hot_news_sse
 from app.api.dependencies import (
     get_data_loop_gateway_token,
     get_hot_news_event_stream,
 )
 from app.main import create_app
-from app.schemas.hot_news_events import HotNewsProgressEvent
-from app.services.hot_news_event_stream import (
+from app.modules.hot_news.contracts.hot_news_events import HotNewsProgressEvent
+from app.modules.hot_news.application.hot_news_event_stream import (
     HotNewsProgressPublishError,
     HotNewsProgressReadError,
     InvalidHotNewsStreamEventID,

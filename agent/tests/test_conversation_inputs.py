@@ -11,9 +11,9 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app.api.conversations import router
-from app.conversation.input_state import TurnInputSnapshot
-from app.conversation.service import ConversationAgentService
-from app.conversation.streaming import StreamingConversation
+from app.modules.conversation.input_state import TurnInputSnapshot
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.streaming import StreamingConversation
 from app.models.conversation import ConversationTurnRecord
 from app.model_runtime.core import RawInferenceResult
 from app.repositories.conversation import ConversationConflict, ConversationNotFound, PostgresConversationRepository

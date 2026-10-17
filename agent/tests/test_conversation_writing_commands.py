@@ -8,11 +8,11 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.receipts import CapabilityReceipt
-from app.conversation.writing import ConversationWritingCommands, ConversationWritingConflict
+from app.modules.conversation.receipts import CapabilityReceipt
+from app.modules.conversation.writing import ConversationWritingCommands, ConversationWritingConflict
 from app.domain.job_scenario import JobScenario
 from app.domain.job_status import JobStatus
-from app.services.outbox import OutboxService
+from app.modules.writing.outbox import OutboxService
 
 
 TENANT = str(uuid4())

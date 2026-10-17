@@ -5,10 +5,10 @@ from decimal import Decimal
 
 import pytest
 
-from app.analytics.baseline import NewsMetricBaseline
+from app.modules.hot_news.scoring.baseline import NewsMetricBaseline
 from app.analytics.entities import ContentType
-from app.analytics.metrics import NewsMetricSnapshot
-from app.analytics.ranking import HotNewsRanker
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
+from app.modules.hot_news.scoring.ranking import HotNewsRanker
 
 
 START = datetime(2026, 9, 3, tzinfo=timezone.utc)

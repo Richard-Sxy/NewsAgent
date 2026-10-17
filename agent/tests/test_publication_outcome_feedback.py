@@ -5,17 +5,17 @@ from uuid import UUID
 
 import pytest
 
-from app.schemas.analysis_feedback import (
+from app.modules.data_loop.contracts.analysis_feedback import (
     PublicationOutcome,
     PublicationOutcomeMetrics,
     RecordPublicationOutcomeCommand,
 )
-from app.services.data_loop.feedback_collector import (
+from app.modules.data_loop.feedback_collector import (
     AnalysisFeedbackTargetNotFoundError,
     FeedbackCaseWriteOutcome,
     PublicationOutcomeWriteOutcome,
 )
-from app.services.data_loop.publication_outcome import (
+from app.modules.data_loop.publication_outcome import (
     PublicationOutcomeFeedbackPolicy,
     PublicationOutcomeFeedbackService,
 )

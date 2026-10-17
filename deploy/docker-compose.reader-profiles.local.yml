@@ -1,0 +1,40 @@
+# Use with docker-compose.native-e2e.yml under a NEW project/database.
+# Existing active bundles are never silently upgraded to the new Prompt.
+# Corpus-v6 runtime assembly template: use an explicit covered one-hour window.
+# Base classic IDs are not the merged synthetic namespace; v8 remains a CLI smoke
+# source rather than an online SQL profile. This overlay has not been launched.
+name: news-agent-reader-profiles-local
+
+x-reader-environment: &reader-environment
+  READER_PROFILE_ENABLED: "true"
+  READER_PROFILE_BACKEND: local_package
+  READER_PROFILE_PACKAGE_PATH: /app/local-reader-profiles
+  READER_PROFILE_TIMEOUT_SECONDS: "3"
+  READER_PROFILE_RUN_TIMEOUT_SECONDS: "5"
+  READER_PROFILE_CACHE_TTL_SECONDS: "30"
+  READER_PROFILE_MAX_INFLIGHT: "16"
+  BEHAVIOR_TAGS_ENABLED: "false"
+  SQL_ASSISTANT_DATASET_PROFILE: corpus-v6
+  SQL_ASSISTANT_NEWS_PER_TENANT: "120"
+  SQL_ASSISTANT_SCENARIOS_PATH: /app/deploy/text2sql-scenes.corpus-v6.yml
+  MODEL_RUNTIME_CONFIG_PATH: /app/deploy/model-runtime.reader-profiles.local.yml
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: >-
+    [{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"native-e2e-prompt-v3-reader-profiles","model_profile_id":"retired-native-field","model_version":"native-local-model-v1","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"}]
+
+services:
+  api:
+    environment: *reader-environment
+    volumes:
+      - ../agent/docs:/app/docs:ro
+      - ../agent/data:/app/data:ro
+      - ./text2sql-scenes.corpus-v6.yml:/app/deploy/text2sql-scenes.corpus-v6.yml:ro
+      - ../var/reader-profiles/local-readers-v1-20261017:/app/local-reader-profiles:ro
+      - ./model-runtime.reader-profiles.local.yml:/app/deploy/model-runtime.reader-profiles.local.yml:ro
+  hot-news-worker:
+    environment: *reader-environment
+    volumes:
+      - ../agent/docs:/app/docs:ro
+      - ../agent/data:/app/data:ro
+      - ./text2sql-scenes.corpus-v6.yml:/app/deploy/text2sql-scenes.corpus-v6.yml:ro
+      - ../var/reader-profiles/local-readers-v1-20261017:/app/local-reader-profiles:ro
+      - ./model-runtime.reader-profiles.local.yml:/app/deploy/model-runtime.reader-profiles.local.yml:ro

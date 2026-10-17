@@ -12,11 +12,11 @@ import pytest
 from pydantic import ValidationError
 
 from app.config import Settings
-from app.conversation.streaming import StreamingConversation
-from app.conversation.tools import ConversationToolDenied, ConversationTools
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
+from app.modules.conversation.streaming import StreamingConversation
+from app.modules.conversation.tools import ConversationToolDenied, ConversationTools
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
 from app.model_runtime.core import RawInferenceResult
-from app.schemas.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
+from app.modules.hot_news.contracts.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
 from tests.test_conversation_agent import RUN, TENANT, USER, runtime
 from tests.test_conversation_stream import MemoryRepository, answer, collect
 

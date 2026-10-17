@@ -12,18 +12,18 @@ from app.schemas.error_attribution import (
     ErrorAttributionInput,
     ErrorAttributionReport,
 )
-from app.schemas.evaluation_dataset import (
+from app.modules.data_loop.contracts.evaluation_dataset import (
     EvaluationExpectedLabel,
     EvaluationSourceLineage,
     FrozenEvaluationCase,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsMetrics,
     HotScoreComponents,
     RelatedNewsEvidence,
 )
-from app.services.agents.error_attribution import (
+from app.modules.data_loop.agents.error_attribution import (
     ErrorAttributionAgentRunner,
 )
 

@@ -6,8 +6,8 @@ from unittest.mock import AsyncMock
 import pytest
 from temporalio.exceptions import ApplicationError
 
-from app.activities.data_loop import DataLoopActivities
-from app.workflows.data_loop import (
+from app.modules.data_loop.activities import DataLoopActivities
+from app.modules.data_loop.workflows import (
     DATA_LOOP_ACTIVITY_HEARTBEAT_TIMEOUT,
     DATA_LOOP_ACTIVATION_RECOVERY_WORKFLOW_NAME,
     DATA_LOOP_APPROVAL_TIMEOUT,
@@ -16,7 +16,7 @@ from app.workflows.data_loop import (
     HotNewsDataLoopActivationRecoveryWorkflow,
     HotNewsDataLoopWorkflow,
 )
-from app.workflows.data_loop_contracts import (
+from app.modules.data_loop.workflow_contracts import (
     DataLoopActivationRecoveryRequest,
     DataLoopDecisionUpdate,
     DataLoopHumanDecision,
@@ -31,7 +31,7 @@ from app.workflows.data_loop_contracts import (
 def legacy_history_patch(monkeypatch):
     """Pure Workflow tests default to a pre-patch history."""
     patched = lambda _patch_id: False
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", patched)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", patched)
 
 
 def request() -> DataLoopRunRequest:
@@ -165,7 +165,7 @@ async def test_patched_analysis_joins_approval_chain_with_small_refs(monkeypatch
         patch_ids.append(patch_id)
         return True
 
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", patched)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", patched)
     summary = {"source_run_count": 1, "analyzed_run_count": 1, "case_count": 2,
                "covered_case_count": 2, "unavailable_case_count": 0}
     workflow = HotNewsDataLoopWorkflow()
@@ -215,7 +215,7 @@ async def test_patched_analysis_joins_approval_chain_with_small_refs(monkeypatch
 async def test_optional_analysis_never_bypasses_gate_or_approval(
     monkeypatch, analysis_status, gate_passed,
 ) -> None:
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", lambda _: True)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", lambda _: True)
     disabled = analysis_status == "disabled"
     artifact_uri = "s3://bucket/disabled-analysis.json" if disabled else None
     artifact_sha256 = "c" * 64 if disabled else None
@@ -266,7 +266,7 @@ async def test_optional_analysis_never_bypasses_gate_or_approval(
 
 @pytest.mark.asyncio
 async def test_dataset_analysis_cancellation_propagates(monkeypatch) -> None:
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", lambda _: True)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", lambda _: True)
     workflow = HotNewsDataLoopWorkflow()
     workflow._execute = AsyncMock(side_effect=[
         outcome("freeze-dataset-v1", dataset_id="dataset-1"),
@@ -337,7 +337,7 @@ async def test_dataset_analysis_cancellation_propagates(monkeypatch) -> None:
 async def test_invalid_analysis_receipt_degrades_without_large_payload(
     monkeypatch, values,
 ) -> None:
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", lambda _: True)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", lambda _: True)
     workflow = HotNewsDataLoopWorkflow()
     workflow._execute = AsyncMock(side_effect=[
         outcome("freeze-dataset-v1", dataset_id="dataset-1"),
@@ -357,7 +357,7 @@ async def test_invalid_analysis_receipt_degrades_without_large_payload(
 
 @pytest.mark.asyncio
 async def test_degraded_analysis_preserves_valid_partial_report(monkeypatch) -> None:
-    monkeypatch.setattr("app.workflows.data_loop.workflow.patched", lambda _: True)
+    monkeypatch.setattr("app.modules.data_loop.workflows.workflow.patched", lambda _: True)
     summary = {
         "case_count": 2, "source_run_count": 2, "analyzed_run_count": 1,
         "covered_case_count": 1, "unavailable_case_count": 1,
@@ -590,7 +590,7 @@ async def test_activation_recovery_reuses_original_activation_ledger_key(
         ]
     )
     monkeypatch.setattr(
-        "app.workflows.data_loop.workflow.execute_activity",
+        "app.modules.data_loop.workflows.workflow.execute_activity",
         execute_activity,
     )
     decision = DataLoopHumanDecision(
@@ -639,7 +639,7 @@ async def test_activation_recovery_never_activates_if_approval_replay_fails(
         side_effect=RuntimeError("approval ledger is unavailable")
     )
     monkeypatch.setattr(
-        "app.workflows.data_loop.workflow.execute_activity",
+        "app.modules.data_loop.workflows.workflow.execute_activity",
         execute_activity,
     )
     recovery = DataLoopActivationRecoveryRequest(

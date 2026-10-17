@@ -6,7 +6,7 @@ import shutil
 
 import pytest
 
-from app.warehouse_simulation.real_news import RealNewsSimulationConfig, export_dataset
+from simulation.warehouse_simulation.real_news import RealNewsSimulationConfig, export_dataset
 from tools.validate_real_news_warehouse import validate_package
 
 

@@ -11,7 +11,7 @@ Temporal Worker 写向量；聊天、热点关联召回和检索测试 API 共�
 
 ```bash
 python3.11 agent/tools/replay_tier_lifecycle.py \
-  --config agent/deploy/knowledge-lifecycle.local.example.yml \
+  --config deploy/knowledge-lifecycle.local.example.yml \
   --output-dir output/tier-lifecycle-my-first-run
 ```
 
@@ -30,8 +30,8 @@ python3.11 agent/tools/replay_tier_lifecycle.py \
 | 配置入口 | 文件与作用 |
 | --- | --- |
 | `MODEL_RUNTIME_CONFIG_PATH` | 沿用模型配置，填写企业推理及 Embedding 端点、鉴权环境变量名、路由和实际维度 |
-| `KNOWLEDGE_SEARCH_CONFIG_PATH` | 从 `agent/deploy/knowledge-search.tiered.example.yml` 复制，填写向量地址、库、三集合和索引搜索参数 |
-| `KNOWLEDGE_LIFECYCLE_CONFIG_PATH` | 从 `agent/deploy/knowledge-lifecycle.enterprise.example.yml` 复制，填写分层、切片、查询和任务策略 |
+| `KNOWLEDGE_SEARCH_CONFIG_PATH` | 从 `deploy/knowledge-search.tiered.example.yml` 复制，填写向量地址、库、三集合和索引搜索参数 |
+| `KNOWLEDGE_LIFECYCLE_CONFIG_PATH` | 从 `deploy/knowledge-lifecycle.enterprise.example.yml` 复制，填写分层、切片、查询和任务策略 |
 
 企业模板中的 `null` 必须填写；不能直接启动。密钥值只由环境或企业密钥系统提供。
 本地生命周期模板的秒级阈值仅用于演示，不作为企业默认值。

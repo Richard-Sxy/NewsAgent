@@ -12,7 +12,7 @@ from app.sql_assistant.timeline_rich_profiles import (
 from app.sql_assistant.warehouse import (
     SCHEMA_SHA256_V5, demo_dataset_info, dataset_window, verify_schema_contract,
 )
-from examples.native_hot_news_sql_support import _validate_window
+from simulation.native_hot_news_sql_support import _validate_window
 
 
 def test_timeline_v5_boundaries_and_counters():

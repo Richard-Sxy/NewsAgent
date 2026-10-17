@@ -161,12 +161,12 @@ async def test_real_temporal_dispatch_index_migrate_and_withdraw_in_isolated_pos
     from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
     from temporalio.client import Client
     from temporalio.worker import Worker
-    from app.knowledge.document import KnowledgeDocument
-    from app.knowledge.tier_lifecycle import KnowledgeLifecycleService
-    from app.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
-    from app.knowledge.tier_lifecycle_index import GuardedTieredIndex
-    from app.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
-    from app.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata
+    from app.modules.knowledge.document import KnowledgeDocument
+    from app.modules.knowledge.tier_lifecycle import KnowledgeLifecycleService
+    from app.modules.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
+    from app.modules.knowledge.tier_lifecycle_index import GuardedTieredIndex
+    from app.modules.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
+    from app.modules.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata
     from app.model_runtime.core import EmbeddingRequest
     from app.model_runtime.local_embedding import LocalHashEmbedding
     from app.retrieval.tiered_vector import VectorTier

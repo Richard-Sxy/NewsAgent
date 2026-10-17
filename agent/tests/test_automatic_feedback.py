@@ -8,17 +8,17 @@ import pytest
 
 from app.model_runtime.result import AgentResult
 from app.domain.errors import HotNewsAnalysisAttemptError
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
     HotNewsMetrics,
     HotScoreComponents,
 )
-from app.schemas.hot_news_memory import HotNewsAnalysisMemory
-from app.services.data_loop.automatic_feedback import (
+from app.modules.hot_news.contracts.hot_news_memory import HotNewsAnalysisMemory
+from app.modules.data_loop.automatic_feedback import (
     AutomaticHotNewsFeedbackSink,
 )
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     AnalyzedHotNews,
     HotNewsRunRequest,
     HotNewsRunResult,

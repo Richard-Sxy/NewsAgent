@@ -12,12 +12,12 @@ import pytest
 
 from app.analytics.entities import ContentType
 from app.analytics.news_content import NewsContent
-from app.audience.behavior_package import BehaviorPackageAudienceClient
-from app.audience.contracts import AudienceProviderError, AudienceQuery, AudienceSelection
-from app.behavior_tags.runtime import LocalBehaviorRuntime, build_behavior_runtime
-from app.behavior_tags.tagging import load_topic_policy
+from app.modules.audience.behavior_package import BehaviorPackageAudienceClient
+from app.modules.audience.contracts import AudienceProviderError, AudienceQuery, AudienceSelection
+from app.modules.behavior_tags.runtime import LocalBehaviorRuntime, build_behavior_runtime
+from app.modules.behavior_tags.tagging import load_topic_policy
 from app.clients.knowledge_base import RelatedNews
-from app.retrieval.related_news_reranker import RerankRelatedNews
+from app.modules.hot_news.analysis.related_news_reranker import RerankRelatedNews
 
 TENANT = "11111111-1111-4111-8111-111111111111"
 START = datetime(2026, 10, 1, tzinfo=timezone.utc)

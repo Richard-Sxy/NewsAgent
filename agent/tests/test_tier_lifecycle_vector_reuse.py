@@ -11,9 +11,9 @@ from copy import deepcopy
 import pytest
 from sqlalchemy import update
 
-from app.knowledge.tier_lifecycle import KnowledgeLifecycleService
-from app.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
-from app.knowledge.tier_lifecycle_store import _jobs, _news
+from app.modules.knowledge.tier_lifecycle import KnowledgeLifecycleService
+from app.modules.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
+from app.modules.knowledge.tier_lifecycle_store import _jobs, _news
 from app.model_runtime.core import EmbeddingResult
 from app.retrieval.tiered_vector import VectorTier
 from tests.test_tier_lifecycle_runtime import (

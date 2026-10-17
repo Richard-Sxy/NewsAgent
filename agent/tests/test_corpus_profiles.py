@@ -87,8 +87,13 @@ def test_exact_original_cache_id_body_hash_and_timestamps(catalog):
 
 def test_catalog_ids_are_in_the_same_read_only_bge_package(catalog):
     repository_root = Path(__file__).resolve().parents[2]
-    chunks_path = repository_root / catalog["selection"]["bge_corpus_path"]
-    manifest_path = repository_root / "rag-recall-demo/SHA256SUMS"
+    recorded = catalog["selection"]["bge_corpus_path"]
+    # 冻结目录记录的是迁移前根路径；2026-10-17 起只读包位于 var/knowledge-snapshots/。
+    if recorded.startswith("rag-recall-demo/"):
+        chunks_path = repository_root / "var/knowledge-snapshots" / recorded
+    else:
+        chunks_path = repository_root / recorded
+    manifest_path = repository_root / "var/knowledge-snapshots/rag-recall-demo/SHA256SUMS"
     if not chunks_path.is_file() or not manifest_path.is_file():
         pytest.skip("read-only BGE package is an optional local dependency")
     assert sha256(manifest_path.read_bytes()).hexdigest() == corpus.BGE_MANIFEST_DIGEST

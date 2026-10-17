@@ -7,9 +7,9 @@ from app.model_runtime.result import AgentResult
 from app.domain.errors import ArtifactStoreError
 from app.domain.execution import ArtifactType, StepType
 from app.domain.job_status import JobStatus
-from app.schemas.checkpoint import ArtifactDescriptor
-from app.schemas.research import ResearchPackage
-from app.services.artifact_pipeline import ArtifactPipeline
+from app.modules.writing.contracts.checkpoint import ArtifactDescriptor
+from app.modules.writing.contracts.research import ResearchPackage
+from app.modules.writing.artifact_pipeline import ArtifactPipeline
 
 
 @pytest.mark.asyncio

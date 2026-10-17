@@ -10,8 +10,8 @@ import httpx
 import pytest
 from temporalio.service import RPCError, RPCStatusCode
 
-from app.conversation.receipt_reads import ReceiptReadCoordinator, ReceiptReadUnavailable
-from app.conversation.tools import ConversationToolDenied, HOOK_REGISTRY
+from app.modules.conversation.receipt_reads import ReceiptReadCoordinator, ReceiptReadUnavailable
+from app.modules.conversation.tools import ConversationToolDenied, HOOK_REGISTRY
 from tests.test_conversation_capability_integration import receipt_client
 from tests.test_conversation_tools_writing import tools_with_reader, JOB_ID, TENANT
 
@@ -251,10 +251,10 @@ async def test_http_same_tenant_users_share_read_but_403_disabled_and_cross_tena
 
 @pytest.mark.asyncio
 async def test_api_lifespan_closes_receipt_cache_before_dependency_cleanup(monkeypatch):
-    import app.main as main
+    import app.bootstrap.api_lifespan as main
     settings = SimpleNamespace(model_runtime_backend="unused", temporal_address="unused",
         temporal_namespace="unused", redis_url="unused", conversation_enabled=False,
-        conversation_async_admission_enabled=False)
+        conversation_async_admission_enabled=False, audience_enabled=False)
     database = SimpleNamespace(close=AsyncMock())
     redis = SimpleNamespace(aclose=AsyncMock())
     monkeypatch.setattr(main, "get_settings", lambda: settings)

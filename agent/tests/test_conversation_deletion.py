@@ -13,8 +13,8 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.exc import SQLAlchemyError
 
 from app.api.conversations import router
-from app.conversation.context import ContextCursor, ConversationMemory
-from app.conversation.service import ConversationAgentService
+from app.modules.conversation.context import ContextCursor, ConversationMemory
+from app.modules.conversation.service import ConversationAgentService
 from app.models.conversation import ConversationRecord, ConversationTurnRecord
 from app.repositories.conversation import ConversationConflict, ConversationNotFound
 from app.schemas.conversation import ToolTrace

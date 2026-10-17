@@ -17,21 +17,21 @@ from app.api.dependencies import (
     HotNewsPermission,
     get_hot_news_decision_service,
 )
-from app.models.analysis_feedback import AnalysisFeedbackCaseRecord
-from app.models.hot_news_decision import HotNewsDecision
-from app.repositories.analysis_feedback import PostgresAnalysisFeedbackRepository
-from app.repositories.evaluation_dataset import PostgresEvaluationDatasetRepository
-from app.schemas.hot_news_decision import RecordHotNewsDecisionCommand
-from app.schemas.analysis_feedback import FeedbackSourceReference
-from app.schemas.operations_feedback import is_fresh_bad_case_eligible
-from app.services.data_loop.dataset_freezer import EvaluationDatasetNotReadyError
-from app.services.data_loop.feedback_collector import (
+from app.modules.data_loop.persistence.analysis_feedback import AnalysisFeedbackCaseRecord
+from app.modules.hot_news.persistence.hot_news_decision import HotNewsDecision
+from app.modules.data_loop.persistence.analysis_feedback_repository import PostgresAnalysisFeedbackRepository
+from app.modules.data_loop.persistence.evaluation_dataset_repository import PostgresEvaluationDatasetRepository
+from app.modules.hot_news.contracts.hot_news_decision import RecordHotNewsDecisionCommand
+from app.modules.data_loop.contracts.analysis_feedback import FeedbackSourceReference
+from app.modules.data_loop.contracts.operations_feedback import is_fresh_bad_case_eligible
+from app.modules.data_loop.dataset_freezer import EvaluationDatasetNotReadyError
+from app.modules.data_loop.feedback_collector import (
     AnalysisFeedbackCollector,
     AnalysisFeedbackConflictError,
     AnalysisFeedbackPersistenceError,
     AnalysisFeedbackTargetNotFoundError,
 )
-from app.services.hot_news_decision import (
+from app.modules.hot_news.application.hot_news_decision import (
     HotNewsDecisionConflictError,
     HotNewsDecisionService,
 )

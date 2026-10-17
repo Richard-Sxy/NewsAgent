@@ -8,7 +8,7 @@ import pytest
 from botocore.exceptions import ClientError
 
 from app.domain.errors import ArtifactIntegrityError, ArtifactStoreError
-from app.services.data_loop.artifacts import S3DataLoopArtifactStore
+from app.modules.data_loop.artifacts import S3DataLoopArtifactStore
 
 
 def _settings():

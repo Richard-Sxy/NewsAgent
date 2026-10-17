@@ -25,7 +25,7 @@ if __package__ in {None, ""}:
 
 from app.analytics.entities import ContentType
 from app.analytics.metrics import NewsMetricSnapshot
-from app.data_analysis.acceptance import AcceptanceRequest, run_aggregate_acceptance
+from app.modules.data_analysis.acceptance import AcceptanceRequest, run_aggregate_acceptance
 
 
 _CONFIG_KEYS = frozenset({

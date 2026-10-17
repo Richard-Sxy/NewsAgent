@@ -10,7 +10,7 @@ from datetime import timedelta
 import pytest
 from temporalio.client import ScheduleAlreadyRunningError
 
-from app.services.hot_news_schedule import (
+from app.modules.hot_news.application.hot_news_schedule import (
     HotNewsScheduleConfigError,
     HotNewsScheduleDefinition,
     build_schedule,
@@ -19,7 +19,7 @@ from app.services.hot_news_schedule import (
     schedule_id_for,
 )
 from app.workflows.contracts import HotNewsWindowDispatchRequest
-from app.workflows.hot_news import HOT_NEWS_DISPATCH_WORKFLOW_NAME
+from app.modules.hot_news.workflows.hot_news import HOT_NEWS_DISPATCH_WORKFLOW_NAME
 
 TASK_QUEUE = "hot-news"
 

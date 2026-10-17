@@ -8,9 +8,9 @@ from app.model_runtime.agent_client import NativeStructuredAgentClient, model_re
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.factory import build_model_runtime_ports
-from app.schemas.review import ReviewInput
-from app.schemas.writing import ArticleAssemblyInput, SectionWritingInput
-from app.services.agents import ResearchAgentRunner, ReviewerAgentRunner, WriterAgentRunner
+from app.modules.writing.contracts.review import ReviewInput
+from app.modules.writing.contracts.writing import ArticleAssemblyInput, SectionWritingInput
+from app.modules.writing.agents import ResearchAgentRunner, ReviewerAgentRunner, WriterAgentRunner
 
 
 @pytest.mark.asyncio

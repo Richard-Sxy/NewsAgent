@@ -13,15 +13,15 @@ from fastapi.testclient import TestClient
 from unittest.mock import AsyncMock
 
 from app.api.conversations import router
-from app.conversation.service import ConversationAgentService
-from app.conversation.tools import ConversationTools, ConversationToolDenied
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.tools import ConversationTools, ConversationToolDenied
 from app.model_runtime.agent_client import NativeStructuredAgentClient
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.factory import build_model_runtime_ports
 from app.model_runtime.http import OpenAICompatibleInferenceClient
-from examples.conversation_hot_news import LocalConversationHotNewsQuery
+from simulation.conversation_hot_news import LocalConversationHotNewsQuery
 from tests.test_conversation_agent import Repository, Tools, TENANT, USER, RUN, runtime, headers
 
 

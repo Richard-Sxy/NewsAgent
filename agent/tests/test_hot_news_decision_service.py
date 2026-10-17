@@ -6,9 +6,9 @@ from uuid import uuid4
 import pytest
 from sqlalchemy.dialects import postgresql
 
-from app.models.hot_news_decision import HotNewsDecision
-from app.schemas.hot_news_decision import RecordHotNewsDecisionCommand
-from app.services.hot_news_decision import (
+from app.modules.hot_news.persistence.hot_news_decision import HotNewsDecision
+from app.modules.hot_news.contracts.hot_news_decision import RecordHotNewsDecisionCommand
+from app.modules.hot_news.application.hot_news_decision import (
     HotNewsDecisionConflictError,
     HotNewsDecisionService,
     HotNewsDecisionTargetNotFoundError,

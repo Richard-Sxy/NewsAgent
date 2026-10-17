@@ -21,14 +21,14 @@ from app.api.dependencies import (
 from app.domain.job_scenario import JobScenario
 from app.domain.job_status import JobStatus
 from app.main import create_app
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
     HotNewsMetrics,
     HotScoreComponents,
 )
-from app.schemas.hot_news_memory import HotNewsAnalysisMemory
-from app.services.hot_news_writing_handoff import (
+from app.modules.hot_news.contracts.hot_news_memory import HotNewsAnalysisMemory
+from app.modules.hot_news.application.hot_news_writing_handoff import (
     HANDOFF_IDEMPOTENCY_PREFIX,
     HotNewsAnalysisNotFoundError,
     HotNewsWritingHandoffOutcome,

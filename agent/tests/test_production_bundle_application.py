@@ -3,12 +3,12 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-import app.services.production_bundle as bundle_module
-from app.schemas.production_bundle import (
+import app.modules.data_loop.production_bundle as bundle_module
+from app.modules.data_loop.contracts.production_bundle import (
     ActivateCandidateCommand,
     ApproveCandidateCommand,
 )
-from app.services.production_bundle import (
+from app.modules.data_loop.production_bundle import (
     ProductionBundleApplicationService,
     ProductionBundleConflictError,
     ProductionBundleDomainService,

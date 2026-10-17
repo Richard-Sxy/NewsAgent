@@ -6,8 +6,8 @@ from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import get_settings
 from app.db.session import Database
-from app.services.event_publisher import RedisProgressPublisher
-from app.services.outbox import OutboxRelay
+from app.modules.writing.event_publisher import RedisProgressPublisher
+from app.modules.writing.outbox import OutboxRelay
 
 
 @telemetry_process("newsagent-outbox-worker")

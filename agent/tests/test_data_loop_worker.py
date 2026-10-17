@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, patch
 import pytest
 
 from app.data_loop_worker import run_data_loop_worker
-from app.workflows.data_loop import (
+from app.modules.data_loop.workflows import (
     HotNewsDataLoopActivationRecoveryWorkflow,
     HotNewsDataLoopWorkflow,
 )

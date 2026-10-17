@@ -1,4 +1,4 @@
-# writing-agent-service
+# NewsAgent Agent 服务（`agent/`）
 
 NewsAgent 的独立 Python 后端，负责热点分析、研究写作、知识入库与检索、Data Loop、
 配置晋升和跨运行 Memory。技术栈为 Python 3.11、FastAPI、Temporal、PostgreSQL、Redis
@@ -20,16 +20,21 @@ Prompt、Agent 编排、结构化解析、业务校验、知识分块、索引�
 
 | 目录 | 职责 |
 | --- | --- |
+| `app/bootstrap/` | 启动装配：API lifespan、写作/热点 Worker 运行时、热点依赖工厂 |
+| `app/modules/hot_news/` | 热点业务模块：contracts/persistence、scoring（指标基线热度排行）、analysis（富化/Runner/校验）、application（运行/查询/决定/转交）、adapters（RunStore）、workflows |
+| `app/modules/{writing,data_loop,memory}/` | 写作（Workflow/Checkpoint/Gate/产物）、Data Loop（反馈/评测/数据集/Bundle/审批）、Memory（上下文/晋升/仓储） |
+| `app/modules/{conversation,knowledge,audience,behavior_tags,reader_profiles,data_analysis}/` | 其余业务模块：对话、知识、受众预览、行为标签、读者画像与数据分析 |
+| `simulation/` | 本地模拟装配：本地 API 工厂、E2E Worker、SQL/知识支持、场景工厂、模拟数仓与数据（examples/ 只保留纯演示脚本） |
+| `var/` | 本地运行数据根目录：行为标签/读者画像运行包、数仓数据包与只读知识快照（manifest/合同文件入库，批量数据忽略） |
 | `app/model_runtime/` | YAML、Prompt Registry、推理/Embedding Port、HTTP Adapter、本地替身 |
-| `app/knowledge/` | 文档规范化、切片、Embedding、索引台账和 QA |
-| `app/services/agents/`、`app/agents/` | 写作与热点 Agent Runner |
-| `app/analytics/` | 指标、基线、热度、排行与确定性重排 |
-| `app/workflows/`、`app/activities/` | Temporal Workflow 与 Activity |
+| `app/services/`、`app/agents/` | 旧导入路径兼容 shim、安全测试 harness 与热点分析 Agent 入口 |
+| `app/analytics/` | 共享分析词汇表（entities/news_content/sql_guard）与旧路径兼容再导出 |
+| `app/workflows/`、`app/activities/` | 通用工作流契约与知识生命周期 Workflow/Activity |
+| `deploy/`（仓库根） | Compose、Dockerfile、K8s、监控与模拟 CMS 部署资产（`agent/deploy` 保留兼容链接） |
 | `app/api/` | 查询、人工 Gate、知识入库和本地模拟 API |
-| `app/models/`、`app/repositories/`、`alembic/` | ORM、仓储和数据库迁移 |
+| `app/models/`、`app/repositories/`、`alembic/` | ORM 惰性聚合入口、对话仓储和数据库迁移 |
 | `app/retrieval/` | 分层向量召回、过滤和证据约束 |
 | `app/sql_assistant/` | 本地 Text2SQL 意图编译、严格 SQL 护栏、只读数仓与查询快照 |
-| `app/reader_profiles/` | 单新闻访客聚合画像、企业 HTTPS Port、窗口校验与有界缓存 |
 
 ## 本地全链路
 

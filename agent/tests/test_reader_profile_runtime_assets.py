@@ -8,14 +8,14 @@ from pydantic import TypeAdapter
 import pytest
 import yaml
 
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.factory import build_model_runtime_ports
-from app.model_runtime.hot_news import HOT_NEWS_SCENE, local_hot_news_prompts
-from app.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderInterestSummary, ReaderProfileSummary
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
-from app.schemas.production_bundle import ProductionBundleSpec
-from app.services.hot_news_analysis import HotNewsAnalysisValidator
+from app.modules.hot_news.analysis.runner import HOT_NEWS_SCENE, local_hot_news_prompts
+from app.modules.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderInterestSummary, ReaderProfileSummary
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
+from app.modules.data_loop.contracts.production_bundle import ProductionBundleSpec
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisValidator
 
 
 DEPLOY = Path(__file__).resolve().parents[1] / "deploy"
@@ -53,9 +53,9 @@ async def test_actual_overlay_bundle_builds_and_runs_registered_local_reader_inf
     assert environment["SQL_ASSISTANT_DATASET_PROFILE"] == "corpus-v6"
     assert environment["SQL_ASSISTANT_NEWS_PER_TENANT"] == "120"
     assert environment["SQL_ASSISTANT_SCENARIOS_PATH"] == "/app/deploy/text2sql-scenes.corpus-v6.yml"
-    required_mounts = {"../docs:/app/docs:ro", "../data:/app/data:ro",
+    required_mounts = {"../agent/docs:/app/docs:ro", "../agent/data:/app/data:ro",
         "./text2sql-scenes.corpus-v6.yml:/app/deploy/text2sql-scenes.corpus-v6.yml:ro",
-        "../../output/reader-profiles/local-readers-v1-20261017:/app/local-reader-profiles:ro",
+        "../var/reader-profiles/local-readers-v1-20261017:/app/local-reader-profiles:ro",
         "./model-runtime.reader-profiles.local.yml:/app/deploy/model-runtime.reader-profiles.local.yml:ro"}
     for name in ("api", "hot-news-worker"):
         assert required_mounts <= set(overlay["services"][name]["volumes"])

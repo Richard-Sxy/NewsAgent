@@ -4,8 +4,8 @@ from decimal import Decimal
 import pytest
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_score import HotScoreCalculator, HotScoreConfig
-from app.analytics.metrics import NewsMetricSnapshot
+from app.modules.hot_news.scoring.hot_score import HotScoreCalculator, HotScoreConfig
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
 
 
 START = datetime(2026, 9, 3, tzinfo=timezone.utc)

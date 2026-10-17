@@ -8,9 +8,9 @@ import sqlite3
 
 import pytest
 
-from app.behavior_tags.build import GENERATOR_VERSION
-from app.behavior_tags.tagging import load_topic_policy
-from app.reader_profiles import build
+from app.modules.behavior_tags.build import GENERATOR_VERSION
+from app.modules.behavior_tags.tagging import load_topic_policy
+from app.modules.reader_profiles import build
 
 TENANT = "11111111-1111-4111-8111-111111111111"
 OTHER = "33333333-3333-4333-8333-333333333333"

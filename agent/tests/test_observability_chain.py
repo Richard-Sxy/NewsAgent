@@ -183,8 +183,8 @@ async def test_swallowed_domain_failure_still_fails_span(capture):
 
 @pytest.mark.asyncio
 async def test_query_and_confirmed_hook_denials_are_visible_without_exporting_arguments(capture):
-    from app.conversation.service import ConversationAgentService
-    from app.conversation.tools import ConversationToolDenied
+    from app.modules.conversation.service import ConversationAgentService
+    from app.modules.conversation.tools import ConversationToolDenied
     exporter, _, _ = capture
     service = object.__new__(ConversationAgentService)
     service._tools = SimpleNamespace(execute=AsyncMock(side_effect=ConversationToolDenied("SECRET")))
@@ -204,8 +204,8 @@ async def test_query_and_confirmed_hook_denials_are_visible_without_exporting_ar
 
 @pytest.mark.asyncio
 async def test_outbox_context_survives_database_envelope_and_redis_projection(capture):
-    from app.schemas.events import ProgressEvent
-    from app.services.outbox import OutboxService, OutboxRelay
+    from app.modules.writing.contracts.events import ProgressEvent
+    from app.modules.writing.outbox import OutboxService, OutboxRelay
     from tests.test_outbox import outbox_event, relay_settings
     exporter, _, tracer = capture
     row = outbox_event()

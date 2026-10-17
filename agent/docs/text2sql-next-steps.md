@@ -38,8 +38,8 @@ import sqlglot
 from sqlglot import exp
 from sqlglot.errors import SqlglotError
 
-from app.analytics.metric_source import HotNewsMetricQuery
-from app.analytics.text2sql_metric_source import (
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.text2sql_metric_source import (
     HotNewsMetricSqlTemplate,
     TemplateNotApplicableError,
 )
@@ -187,8 +187,8 @@ class QuestionResolutionV2(BaseModel):
 及 Temporal；代码依赖沿用 sqlglot、Pydantic、SQLAlchemy，不引入 Agent 框架。
 
 现有配置入口：
-[text2sql-scenes.local.yml](/Users/shi/Project/myProject/NewsAgent/agent/deploy/text2sql-scenes.local.yml)、
-[model-runtime.local.yml](/Users/shi/Project/myProject/NewsAgent/agent/deploy/model-runtime.local.yml)、
+[text2sql-scenes.local.yml](/Users/shi/Project/myProject/NewsAgent/deploy/text2sql-scenes.local.yml)、
+[model-runtime.local.yml](/Users/shi/Project/myProject/NewsAgent/deploy/model-runtime.local.yml)、
 [config.py](/Users/shi/Project/myProject/NewsAgent/agent/app/config.py)
 中的 `text2sql_max_rows/text2sql_timeout_ms`。指标合同版本与配额配置尚待设计，不能把
 文档草案当作已生效的配置。

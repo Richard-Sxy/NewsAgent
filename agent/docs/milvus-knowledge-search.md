@@ -7,7 +7,7 @@ Milvus YAML 配置。未设置路径时保留原 PostgreSQL 检索；指定 Milv
 
 ## 配置与启动
 
-复制 `agent/deploy/knowledge-search.milvus.example.yml` 为部署私有配置，填写地址和集合：
+复制 `deploy/knowledge-search.milvus.example.yml` 为部署私有配置，填写地址和集合：
 
 ```yaml
 schema_version: 1
@@ -42,13 +42,13 @@ export CONVERSATION_KNOWLEDGE_ENABLED=true
 API 和热点 Worker 必须使用同一检索 YAML 以及同一 Embedding 模型路由/维度。
 YAML 在启动时加载，修改后重启相关进程。
 
-Compose：将实际文件保存为 `agent/deploy/knowledge-search.milvus.yml`，在已有部署命令上
-追加 `-f agent/deploy/docker-compose.milvus-search.yml`（放在基础配置之后）。Overlay
+Compose：将实际文件保存为 `deploy/knowledge-search.milvus.yml`，在已有部署命令上
+追加 `-f deploy/docker-compose.milvus-search.yml`（放在基础配置之后）。Overlay
 给 `migrate` 的共享镜像构建启用 `[milvus]`，给 API/热点 Worker 挂载 YAML 并设置路径。
 先构建共享镜像，再重建 API 和热点 Worker；不会自动启动或写入 Milvus。认证变量名默认
 `MILVUS_TOKEN`，若 YAML 使用其他名字，也要传递相应变量。Docker 中 `127.0.0.1` 指容器
 自身；连接宿主机可使用 `http://host.docker.internal:19530`，远端则填实际可达地址。
-专用 `examples.native_hot_news_e2e_worker` 仍显式使用隔离 PostgreSQL 样本，不能当作
+专用 `simulation.native_hot_news_e2e_worker` 仍显式使用隔离 PostgreSQL 样本，不能当作
 标准 Milvus Worker 的验收。
 
 ## 现有 collection 契约

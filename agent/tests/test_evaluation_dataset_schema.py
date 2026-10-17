@@ -4,18 +4,18 @@ from uuid import UUID
 import pytest
 from pydantic import ValidationError
 
-from app.models.evaluation_dataset import (
+from app.modules.data_loop.persistence.evaluation_dataset import (
     EvaluationDatasetCaseRecord,
     EvaluationDatasetRecord,
 )
-from app.schemas.evaluation_dataset import (
+from app.modules.data_loop.contracts.evaluation_dataset import (
     EvaluationDatasetManifest,
     EvaluationExpectedLabel,
     EvaluationSourceLineage,
     FrozenEvaluationCase,
     canonical_json_sha256,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsMetrics,
     HotScoreComponents,

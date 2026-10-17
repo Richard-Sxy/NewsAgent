@@ -19,7 +19,7 @@ from app.api.dependencies import (
     get_hot_news_query_service,
 )
 from app.main import create_app
-from app.schemas.hot_news_api import (
+from app.modules.hot_news.contracts.hot_news_api import (
     HotNewsAnalysisSummaryView,
     HotNewsDecisionView,
     HotNewsMetricSnapshotView,
@@ -28,11 +28,11 @@ from app.schemas.hot_news_api import (
     HotNewsRunSummary,
     HotScoreView,
 )
-from app.services.hot_news_decision import (
+from app.modules.hot_news.application.hot_news_decision import (
     HotNewsDecisionConflictError,
     HotNewsDecisionTargetNotFoundError,
 )
-from app.services.hot_news_query import HotNewsQueryService
+from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
 
 
 TENANT_ID = uuid4()

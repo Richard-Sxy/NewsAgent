@@ -6,12 +6,12 @@ from uuid import uuid4
 
 import pytest
 
-from app.conversation.local import has_dated_news_request, local_conversation_plan
-from app.conversation.query_understanding import (
+from app.modules.conversation.local import has_dated_news_request, local_conversation_plan
+from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryResolutionError, local_query_understanding,
     resolve_query_understanding,
 )
-from app.conversation.tools import render_tool_results
+from app.modules.conversation.tools import render_tool_results
 from app.model_runtime.core import RawInferenceResult
 from app.schemas.conversation import ToolTrace
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError

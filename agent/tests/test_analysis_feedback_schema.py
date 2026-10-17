@@ -4,7 +4,7 @@ from uuid import UUID
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.analysis_feedback import (
+from app.modules.data_loop.contracts.analysis_feedback import (
     AnalysisFeedbackLabel,
     CollectAnalysisFeedbackCommand,
     FeedbackSourceReference,
@@ -12,7 +12,7 @@ from app.schemas.analysis_feedback import (
     RecordPublicationOutcomeCommand,
     SubmitAnalysisFeedbackLabelCommand,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
     HotNewsMetrics,

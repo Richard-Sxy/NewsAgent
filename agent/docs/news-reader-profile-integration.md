@@ -21,14 +21,14 @@
 
 ## 完整调用链
 
-离线入口为 `python -m app.reader_profiles.build`。`build._read_source` 检验 manifest 自校验与三份相关输入的 SHA、大小、行数及新闻绑定，
+离线入口为 `python -m app.modules.reader_profiles.build`。`build._read_source` 检验 manifest 自校验与三份相关输入的 SHA、大小、行数及新闻绑定，
 随后在窗口开始前维护长短期兴趣状态，按目标文章排除自身历史、计算访客与同租户基准，再写 `reader_profiles.sqlite`、`policy.json` 和 `manifest.json`。
 未将个人事件、用户 ID 或逐人兴趣写入新包。
 
 在线入口有三类：
 
 1. `POST /api/v1/reader-profiles/query`：网关身份提供 tenant，body 只收新闻集合与有时区窗口；返回聚合快照。
-2. 本地热点运行 API：`examples.local_simulation` 冻结包/服务、租户与窗口身份，生成 `HotNewsRunRequest.reader_profile_context_sha256`。
+2. 本地热点运行 API：`simulation.local_simulation` 冻结包/服务、租户与窗口身份，生成 `HotNewsRunRequest.reader_profile_context_sha256`。
 3. 手工运行 CLI：`examples.start_hot_news_workflow` 使用同样的服务工厂生成上下文；Temporal 将冻结请求交给热点 Worker。
    此旧示例默认 classic 的全天窗口，与当前 1 小时包不兼容；不能直接用它代替上面的真实包 smoke。
 
@@ -57,9 +57,9 @@ summary 与 `reader_profile_trace` 共同绑定 release、query fingerprint、sn
 在仓库根目录运行：
 
 ```bash
-PYTHONPATH=agent python -m app.reader_profiles.build \
-  --behavior-package output/behavior-tags/local-merged-v1-20261016 \
-  --output-dir output/reader-profiles/local-readers-v1-20261017 \
+PYTHONPATH=agent python -m app.modules.reader_profiles.build \
+  --behavior-package var/behavior-tags/local-merged-v1-20261016 \
+  --output-dir var/reader-profiles/local-readers-v1-20261017 \
   --window-hours 1 --top-k 20
 ```
 
@@ -71,11 +71,11 @@ PYTHONPATH=agent python -m app.reader_profiles.build \
 
 ```bash
 PYTHONPATH=agent python -m examples.reader_profile_query_smoke \
-  --package output/reader-profiles/local-readers-v1-20261017 \
-  --output output/reader-profiles/local-readers-v1-20261017/query-smoke.json
+  --package var/reader-profiles/local-readers-v1-20261017 \
+  --output var/reader-profiles/local-readers-v1-20261017/query-smoke.json
 
 PYTHONPATH=agent python -m examples.reader_profile_hot_news_smoke \
-  --output output/reader-profiles/local-readers-v1-20261017-smoke.json
+  --output var/reader-profiles/local-readers-v1-20261017-smoke.json
 ```
 
 前者使用真实包、缓存与进程内鉴权 HTTP 路由，检查索引计划和无个人明细输出；不启动监听端口。

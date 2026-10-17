@@ -96,7 +96,7 @@ class BgeDemoDeployment:
             files.append("docker-compose.timeline-query-model.yml")
         command = ["docker", "compose", "--env-file", os.devnull, "-p", PROJECT]
         for file in files:
-            command.extend(("-f", str(self.root / "deploy" / file)))
+            command.extend(("-f", str(self.root.parent / "deploy" / file)))
         return [*command, *args]
 
     def _environment(self, runtime: bool) -> dict:
@@ -203,21 +203,21 @@ class BgeDemoDeployment:
             raise DeploymentError("最小磁盘余量必须位于 2–1024 GiB。")
         required = [
             "Dockerfile.e2e", "Dockerfile.e2e.dockerignore",
-            "deploy/docker-compose.native-e2e.yml", "deploy/docker-compose.bge-snapshot.yml",
-            "deploy/docker-compose.bge-demo.yml", "deploy/knowledge-search.bge-snapshot.yml",
-            "deploy/bge-demo.nginx.conf", "deploy/bge-demo.frontend.json",
-            "deploy/text2sql-scenes.timeline-v4.yml", "frontend/Dockerfile.bge-demo",
+            "../deploy/docker-compose.native-e2e.yml", "../deploy/docker-compose.bge-snapshot.yml",
+            "../deploy/docker-compose.bge-demo.yml", "../deploy/knowledge-search.bge-snapshot.yml",
+            "../deploy/bge-demo.nginx.conf", "../deploy/bge-demo.frontend.json",
+            "../deploy/text2sql-scenes.timeline-v4.yml", "frontend/Dockerfile.bge-demo",
             "frontend/Dockerfile.bge-demo.dockerignore", "frontend/package-lock.json",
         ]
         if o.model == "compatible":
-            required.extend(("deploy/docker-compose.timeline-query-model.yml", "deploy/model-runtime.compatible.yml"))
+            required.extend(("../deploy/docker-compose.timeline-query-model.yml", "../deploy/model-runtime.compatible.yml"))
         missing = [name for name in required if not (self.root / name).is_file()]
-        package = self.root.parent / "rag-recall-demo"
+        package = self.root.parent / "var/knowledge-snapshots/rag-recall-demo"
         package_files = ("SHA256SUMS", "data/experiments/offline_recall_fg/chunks.jsonl",
                          "data/experiments/offline_recall_fg/embeddings.npy",
                          "data/experiments/offline_recall_fg/index.bin",
                          "data/models/bge-large-zh-v1.5/modules.json")
-        missing.extend(f"../rag-recall-demo/{name}" for name in package_files if not (package / name).is_file())
+        missing.extend(f"../var/knowledge-snapshots/rag-recall-demo/{name}" for name in package_files if not (package / name).is_file())
         if missing:
             raise DeploymentError("缺少部署文件：" + "、".join(missing) +
                                   "。企业模式沿用已有 model-runtime.compatible.yml；本脚本不读取或生成其中的配置。")

@@ -8,10 +8,10 @@ from unittest.mock import AsyncMock, Mock
 import pytest
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.lifecycle_news_content import LifecycleNewsContentRepository, guard_run_dependencies
 from app.analytics.news_content import InMemoryNewsContentRepository
-from app.services.active_bundle_hot_news import HotNewsRunDependencies
+from app.modules.hot_news.application.active_bundle_hot_news import HotNewsRunDependencies
 from tests.test_tier_lifecycle_runtime import runtime, document, index_document, NOW, TENANT
 
 

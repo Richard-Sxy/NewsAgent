@@ -10,9 +10,9 @@ from app.model_runtime.http import ModelTransportError
 from app.domain.errors import AgentOutputValidationError
 from app.domain.job_status import JobStatus
 from app.domain.execution import ArtifactType, StepType
-from app.schemas.research import ResearchPackage
-from app.services.execution import PreparedExecution
-from app.services.news_step_handler import NewsStepHandler
+from app.modules.writing.contracts.research import ResearchPackage
+from app.modules.writing.execution import PreparedExecution
+from app.modules.writing.news_step_handler import NewsStepHandler
 from app.workflows.contracts import StepCommand
 
 

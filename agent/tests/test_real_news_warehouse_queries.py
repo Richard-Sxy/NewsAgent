@@ -10,8 +10,8 @@ import sys
 
 import pytest
 
-from app.warehouse_simulation import queries as q
-from app.warehouse_simulation.real_news_catalog import load_catalog
+from simulation.warehouse_simulation import queries as q
+from simulation.warehouse_simulation.real_news_catalog import load_catalog
 
 
 @pytest.fixture(scope="module")

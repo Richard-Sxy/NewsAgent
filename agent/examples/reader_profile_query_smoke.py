@@ -19,9 +19,9 @@ import httpx
 
 from app.api.dependencies import get_data_loop_gateway_token
 from app.api.reader_profiles import router
-from app.reader_profiles.contracts import ReaderProfileQuery
-from app.reader_profiles.local import LocalNewsReaderProfileClient
-from app.reader_profiles.service import ReaderProfileService
+from app.modules.reader_profiles.contracts import ReaderProfileQuery
+from app.modules.reader_profiles.local import LocalNewsReaderProfileClient
+from app.modules.reader_profiles.service import ReaderProfileService
 
 
 def timings(samples):

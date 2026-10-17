@@ -6,7 +6,7 @@ import argparse
 import asyncio
 from pathlib import Path
 
-from app.evaluation.fault_drill import (
+from app.modules.data_loop.evaluation.fault_drill import (
     FaultDrillRunner,
     load_fault_drill_dataset,
 )

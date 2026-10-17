@@ -67,7 +67,7 @@ output/conversation-hooks/frontend-simplified-chat.jpg与frontend-simplified-eva
 
 ```sh
 docker build --pull=false -f agent/frontend/Dockerfile.conversation-hooks.cached -t news-agent/frontend:conversation-hooks-demo agent/frontend/dist
-docker compose --env-file /dev/null -p news-agent-bge-demo -f agent/deploy/docker-compose.native-e2e.yml -f agent/deploy/docker-compose.bge-snapshot.yml -f agent/deploy/docker-compose.bge-demo.yml -f agent/deploy/docker-compose.conversation-hooks-bge-demo.yml up -d --no-deps web
+docker compose --env-file /dev/null -p news-agent-bge-demo -f deploy/docker-compose.native-e2e.yml -f deploy/docker-compose.bge-snapshot.yml -f deploy/docker-compose.bge-demo.yml -f deploy/docker-compose.conversation-hooks-bge-demo.yml up -d --no-deps web
 ```
 
 ## 未完成 TODO

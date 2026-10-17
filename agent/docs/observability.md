@@ -121,9 +121,9 @@ Grafana 为本地匿名 Editor，以便 Explore/Trace 跳转；没有默认管�
 以下在仓库根目录执行。`--env-file /dev/null` 避免 Compose 隐式读取应用 `.env`。
 
 ```bash
-docker compose --env-file /dev/null -f agent/deploy/docker-compose.observability.yml config --quiet
-docker compose --env-file /dev/null -f agent/deploy/docker-compose.observability.yml up -d
-python3 agent/deploy/observability/smoke.py
+docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml config --quiet
+docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml up -d
+python3 deploy/observability/smoke.py
 ```
 
 打开 [Grafana 看板](http://127.0.0.1:23000/d/newsagent-observability) 与
@@ -156,13 +156,13 @@ python3 -m pytest agent/tests/test_observability_telemetry.py agent/tests/test_o
   agent/tests/test_model_observability.py agent/tests/test_observability_chain.py agent/tests/test_observability_deploy.py
 
 # 真实组件校验（仓库根目录；一次性容器不会启动依赖服务）
-docker compose --env-file /dev/null -f agent/deploy/docker-compose.observability.yml \
+docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml \
   run --no-deps --rm otel-collector validate --config=/etc/otelcol/config.yml
-docker compose --env-file /dev/null -f agent/deploy/docker-compose.observability.yml \
+docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml \
   run --no-deps --rm --entrypoint /bin/promtool prometheus check rules /etc/prometheus/alerts.yml
 
 # 停止且只清理这个独立栈；tmpfs 遥测随之清空
-docker compose --env-file /dev/null -f agent/deploy/docker-compose.observability.yml down
+docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml down
 ```
 
 ## 指标与查询契约

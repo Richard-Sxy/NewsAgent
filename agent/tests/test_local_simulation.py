@@ -5,7 +5,7 @@ from fastapi.testclient import TestClient
 
 from app.api.dependencies import get_data_loop_gateway_token
 from app.main import create_app
-from examples.local_simulation import create_local_app
+from simulation.local_simulation import create_local_app
 
 
 PATH = "/api/v1/local-simulation/hot-news/run"

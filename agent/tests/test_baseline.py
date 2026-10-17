@@ -5,9 +5,9 @@ from decimal import Decimal
 
 import pytest
 
-from app.analytics.baseline import BaselineCalculator
+from app.modules.hot_news.scoring.baseline import BaselineCalculator
 from app.analytics.entities import ContentType
-from app.analytics.metrics import NewsMetricSnapshot
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
 
 
 START = datetime(2026, 9, 1, tzinfo=timezone.utc)

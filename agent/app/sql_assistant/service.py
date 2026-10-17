@@ -29,7 +29,7 @@ from app.sql_assistant.warehouse import (
 from app.sql_assistant.synthetic_profiles import CLASSIC_PROFILE, validate_profile
 
 if TYPE_CHECKING:
-    from app.services.hot_news_orchestration import HotNewsRunRequest
+    from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
     from app.sql_assistant.hot_news_binding import HotNewsSqlBindingStore
 
 
@@ -232,7 +232,7 @@ class SqlAssistantService:
 
     @staticmethod
     def _confirmed_intent_error(request: SqlAssistantPreviewRequest):
-        from app.conversation.query_understanding import QueryResolution, QueryResolutionError
+        from app.modules.conversation.query_understanding import QueryResolution, QueryResolutionError
 
         return QueryResolutionError(QueryResolution(
             status="unsupported", reason_code="query_intent_mismatch",

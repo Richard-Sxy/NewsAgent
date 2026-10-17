@@ -13,9 +13,9 @@ from fastapi import FastAPI, HTTPException
 from pydantic import ValidationError
 
 from app.api.conversations import router
-from app.conversation.service import ConversationAgentService
-from app.conversation.tools import ConversationTools
-from app.conversation.writing import ConversationWritingCommands, ConversationWritingConflict
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.tools import ConversationTools
+from app.modules.conversation.writing import ConversationWritingCommands, ConversationWritingConflict
 from app.domain.job_status import JobStatus
 from app.model_runtime.core import RawInferenceResult
 from app.repositories.conversation import ConversationConflict, ConversationNotFound, PostgresConversationRepository
@@ -298,7 +298,7 @@ async def test_confirmation_deadline_and_finished_turn_prevent_late_start(monkey
         if name == "tool_finished" and data["index"] == 0:
             _, confirmation = await persisted_proposal(repository, identity)
             proposals.append(confirmation)
-            monkeypatch.setattr("app.conversation.service.confirmation_expired", lambda _: True)
+            monkeypatch.setattr("app.modules.conversation.service.confirmation_expired", lambda _: True)
             with pytest.raises(ConversationConflict):
                 await submit_confirmation(service, claim, identity, confirmation)
     await service.run_turn(**identity, claim=claim, permissions=ADMIN, on_event=event)

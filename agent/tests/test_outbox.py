@@ -8,11 +8,11 @@ import pytest
 
 from app.domain.execution import ArtifactType, ExecutionStatus, StepType
 from app.domain.job_status import JobStatus
-from app.models.artifact import WritingArtifact
-from app.models.outbox import OutboxEvent
-from app.models.step import WritingStep
-from app.services.event_publisher import ProgressPublishError
-from app.services.outbox import OutboxRelay, OutboxService
+from app.modules.writing.persistence.artifact import WritingArtifact
+from app.modules.writing.persistence.outbox import OutboxEvent
+from app.modules.writing.persistence.step import WritingStep
+from app.modules.writing.event_publisher import ProgressPublishError
+from app.modules.writing.outbox import OutboxRelay, OutboxService
 
 
 @pytest.mark.asyncio

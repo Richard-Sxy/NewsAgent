@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from app.conversation.query_understanding import QueryUnderstanding
+from app.modules.conversation.query_understanding import QueryUnderstanding
 from app.model_runtime.config_file import load_model_runtime_config
 
 

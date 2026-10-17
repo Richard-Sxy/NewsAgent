@@ -6,7 +6,7 @@ from app.domain.errors import (
     AgentOutputValidationError,
     HotNewsAnalysisAttemptError,
 )
-from app.services.hot_news_analysis import HotNewsAnalysisService
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisService
 
 
 @pytest.mark.asyncio

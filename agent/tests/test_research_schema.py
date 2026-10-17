@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.research import ResearchPackage
+from app.modules.writing.contracts.research import ResearchPackage
 
 
 def valid_research_package() -> dict:

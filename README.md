@@ -171,7 +171,7 @@ npm run build
 
 ## 企业配置
 
-参考 `agent/deploy/model-runtime.enterprise.example.yml`。YAML 保存经审批的
+参考 `deploy/model-runtime.enterprise.example.yml`。YAML 保存经审批的
 接口 URL、模型路由、Prompt、Embedding 维度、超时和批量限制；密钥由
 `ENTERPRISE_MODEL_API_KEY` 与 `ENTERPRISE_EMBEDDING_API_KEY` 注入。
 

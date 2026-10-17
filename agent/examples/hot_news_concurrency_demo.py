@@ -10,16 +10,16 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.factory import build_model_runtime_ports
-from app.model_runtime.hot_news import NativeHotNewsAnalysisRunner
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
-from app.services.hot_news_analysis_batch import HotNewsAnalysisBatch
-from app.services.hot_news_orchestration import HotNewsOrchestrationService, HotNewsRunRequest
-from examples.hot_news_e2e_support import build_hot_news_e2e_dependencies
-from examples.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
+from app.modules.hot_news.analysis.runner import NativeHotNewsAnalysisRunner
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
+from app.modules.hot_news.analysis.hot_news_analysis_batch import HotNewsAnalysisBatch
+from app.modules.hot_news.application.hot_news_orchestration import HotNewsOrchestrationService, HotNewsRunRequest
+from simulation.hot_news_e2e_support import build_hot_news_e2e_dependencies
+from simulation.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
 
 
 async def compare(*, concurrency: int = 3, delay_ms: int = 100) -> dict:

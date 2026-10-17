@@ -11,12 +11,12 @@ from app.api.dependencies import (
     get_data_loop_gateway_token,
 )
 from app.main import create_app
-from app.services.data_loop.orchestrator import (
+from app.modules.data_loop.orchestrator import (
     DataLoopActivationRecoveryNotAllowedError,
     DataLoopDecisionNotAllowedError,
     DataLoopStartConflictError,
 )
-from app.workflows.data_loop_contracts import (
+from app.modules.data_loop.workflow_contracts import (
     DataLoopDecisionUpdateResult,
     DataLoopWorkflowSnapshot,
 )

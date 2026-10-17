@@ -3,7 +3,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from app.knowledge.tier_lifecycle_index import GuardedTieredIndex
+from app.modules.knowledge.tier_lifecycle_index import GuardedTieredIndex
 from app.retrieval.tiered_vector import ChunkVectorRecord, VectorSearchHit, VectorTier
 
 

@@ -18,7 +18,7 @@ from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.engine import make_url
 
 from app.config import Settings
-from app.conversation.service import ConversationAgentService
+from app.modules.conversation.service import ConversationAgentService
 from app.db.base import Base
 from app.db.session import Database
 from app.repositories.conversation import PostgresConversationRepository

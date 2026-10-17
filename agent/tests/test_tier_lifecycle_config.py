@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 import pytest
 import yaml
 
-from app.knowledge.tier_lifecycle_config import (
+from app.modules.knowledge.tier_lifecycle_config import (
     KnowledgeLifecycleConfig,
     load_knowledge_lifecycle_config,
 )

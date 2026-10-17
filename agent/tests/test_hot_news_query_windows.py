@@ -5,7 +5,7 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.conversation.query_understanding import (
+from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryUnderstanding, local_query_understanding, resolve_query_understanding,
 )
 from app.sql_assistant.scenarios import load_sql_scenarios
@@ -81,7 +81,7 @@ def test_model_cannot_drop_or_add_hour_condition(policy):
 
 def test_publication_filter_reaches_query_boundary_without_losing_condition(policy):
     import json
-    from app.conversation.local import local_conversation_plan
+    from app.modules.conversation.local import local_conversation_plan
     question = '查询2026-10-09发布的点击量最高前5条新闻'
     plan = json.loads(local_conversation_plan({'message': question, 'available_tools': [{'name': 'query_hot_news'}]}))
     assert plan['tool_name'] == 'query_hot_news'
@@ -98,7 +98,7 @@ def test_publication_filter_reaches_query_boundary_without_losing_condition(poli
 ])
 def test_publication_filter_never_authorizes_a_separate_mutation(question):
     import json
-    from app.conversation.local import local_conversation_plan
+    from app.modules.conversation.local import local_conversation_plan
     plan = json.loads(local_conversation_plan({'message': question, 'available_tools': [{'name': 'query_hot_news'}]}))
     assert plan['action'] == 'respond'
     assert plan['tool_name'] is None
@@ -108,7 +108,7 @@ def test_publication_filter_never_authorizes_a_separate_mutation(question):
 @pytest.mark.asyncio
 async def test_adapter_passes_resolved_window_to_shared_hot_news_command(monkeypatch, policy):
     import sys
-    from examples.conversation_hot_news import LocalConversationHotNewsQuery
+    from simulation.conversation_hot_news import LocalConversationHotNewsQuery
     from tests.test_data_analysis_demo import prepared_query_adapter, prepared_detail
     from uuid import uuid4
     adapter=prepared_query_adapter()
@@ -120,8 +120,8 @@ async def test_adapter_passes_resolved_window_to_shared_hot_news_command(monkeyp
         sql_query_id=detail.sql_tool_trace.query_id,status='completed',
         production_bundle_version=detail.run.production_bundle_version,analyzed_news_count=5)
     execute=AsyncMock(return_value=result)
-    monkeypatch.setitem(sys.modules,'examples.local_simulation',SimpleNamespace(execute_local_hot_news_query=execute))
-    monkeypatch.setattr('examples.conversation_hot_news.HotNewsQueryService',lambda **_:SimpleNamespace(get_run_detail=AsyncMock(return_value=detail)))
+    monkeypatch.setitem(sys.modules,'simulation.local_simulation',SimpleNamespace(execute_local_hot_news_query=execute))
+    monkeypatch.setattr('simulation.conversation_hot_news.HotNewsQueryService',lambda **_:SimpleNamespace(get_run_detail=AsyncMock(return_value=detail)))
     response=await adapter.execute(question='original',tenant_id='11111111-1111-4111-8111-111111111111',user_id='22222222-2222-4222-8222-222222222222',on_bound=None)
     request=execute.await_args.kwargs['body']
     assert request.window_start==resolution.requested_window_start

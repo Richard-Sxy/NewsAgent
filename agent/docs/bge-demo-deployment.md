@@ -1,6 +1,6 @@
 # 独立 BGE 演示：从启动到聊天展示
 
-本教程把当前代码部署到新的本地 Docker 项目。默认沿用已经配置的企业模型做查询理解；热点指标、SQL 校验和热度由 Python/SQL 计算，其余分析模型使用本地测试 Port。BGE 使用 `rag-recall-demo/` 中的真实离线模型和新闻索引。合成运营数据与本地模型不能作为企业模型质量验收。
+本教程把当前代码部署到新的本地 Docker 项目。默认沿用已经配置的企业模型做查询理解；热点指标、SQL 校验和热度由 Python/SQL 计算，其余分析模型使用本地测试 Port。BGE 使用 `var/knowledge-snapshots/rag-recall-demo/` 中的真实离线模型和新闻索引。合成运营数据与本地模型不能作为企业模型质量验收。
 
 全部脚本命令从仓库根目录 `/Users/shi/Project/myProject/NewsAgent` 执行。前端会构建为独立 Nginx 容器，不需要另外运行 `npm run dev`。
 
@@ -35,7 +35,7 @@
 
 准备宿主 Python 3.9+、Docker Desktop 和 Docker Compose 2.24.4+。脚本只用标准库；镜像内应用使用 Python 3.11，前端也在镜像内构建，无需另外安装 Node/npm。脚本默认要求宿主磁盘至少空余 **10 GiB**、Docker 至少分配 **6 GiB** 内存；这些是启动预算，不是容量保证。第一次构建需要访问镜像仓库、Debian 和 Python/npm 包仓库，PyTorch 等依赖及 hnswlib 编译会花费时间。
 
-仓库中需保留完整 `rag-recall-demo/`、本教程对应的部署文件，以及已经配置好的 `agent/deploy/model-runtime.compatible.yml`。脚本只检查企业配置文件是否存在，不读取、输出或生成其内容；API 启动时由已有专用配置加载器读取连接和查询模型绑定。
+仓库中需保留完整 `var/knowledge-snapshots/rag-recall-demo/`、本教程对应的部署文件，以及已经配置好的 `deploy/model-runtime.compatible.yml`。脚本只检查企业配置文件是否存在，不读取、输出或生成其内容；API 启动时由已有专用配置加载器读取连接和查询模型绑定。
 
 ```bash
 cd /Users/shi/Project/myProject/NewsAgent

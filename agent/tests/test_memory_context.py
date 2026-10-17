@@ -1,14 +1,14 @@
 from datetime import datetime, timedelta, timezone
 from uuid import UUID, uuid4
 
-from app.schemas.user_memory import (
+from app.modules.memory.contracts.user_memory import (
     LongTermUserMemory,
     MemorySourceRef,
     ShortTermUserMemory,
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_context import UserMemoryContextResolver
+from app.modules.memory.memory_context import UserMemoryContextResolver
 
 
 NOW = datetime(2026, 9, 7, 10, tzinfo=timezone.utc)

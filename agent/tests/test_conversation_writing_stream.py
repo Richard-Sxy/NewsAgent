@@ -6,7 +6,7 @@ import json
 import pytest
 from sqlalchemy.exc import OperationalError
 
-from app.conversation.streaming import StreamingConversation
+from app.modules.conversation.streaming import StreamingConversation
 from app.repositories.conversation import PostgresConversationRepository
 from tests.test_conversation_writing_confirm import (
     ADMIN, QUESTION, persisted_proposal, prepare_writing, submit_confirmation, writing_harness,

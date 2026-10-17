@@ -10,9 +10,9 @@ from fastapi import APIRouter, Header, HTTPException, Request
 from pydantic import AwareDatetime, BaseModel, Field
 from pydantic import SecretStr
 
-from app.knowledge.document import KnowledgeDocument
-from app.knowledge.postgres_store import PostgresKnowledgeStore
-from app.knowledge.tier_lifecycle_query import LifecycleQueryTimeout, LifecycleQueryUnavailable
+from app.modules.knowledge.document import KnowledgeDocument
+from app.modules.knowledge.postgres_store import PostgresKnowledgeStore
+from app.modules.knowledge.tier_lifecycle_query import LifecycleQueryTimeout, LifecycleQueryUnavailable
 
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["knowledge"])

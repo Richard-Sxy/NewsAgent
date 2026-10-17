@@ -4,7 +4,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.push import (
+from app.modules.data_loop.contracts.push import (
     AudienceRule,
     AudienceScope,
     PushChannel,
@@ -14,7 +14,7 @@ from app.schemas.push import (
     PushPolicyDecision,
     PushPriority,
 )
-from app.services.push_policy import PushPolicyValidator
+from app.modules.data_loop.push_policy import PushPolicyValidator
 
 
 NOW = datetime(2026, 9, 19, 8, tzinfo=timezone.utc)

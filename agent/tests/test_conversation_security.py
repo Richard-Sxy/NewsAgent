@@ -8,12 +8,12 @@ from uuid import UUID
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.plan import ConversationPlan
-from app.conversation.tools import ConversationToolDenied, ConversationTools, render_tool_results, safe_source_url
+from app.modules.conversation.plan import ConversationPlan
+from app.modules.conversation.tools import ConversationToolDenied, ConversationTools, render_tool_results, safe_source_url
 from app.model_runtime.core import EmbeddingResult
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
 from app.schemas.conversation import ToolTrace
-from app.schemas.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
+from app.modules.hot_news.contracts.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
 
 
 RUN_ID = "11111111-1111-4111-8111-111111111111"

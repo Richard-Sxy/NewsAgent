@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from app.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
+from app.modules.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import EmbeddingRequest
 from app.model_runtime.factory import build_model_runtime_ports

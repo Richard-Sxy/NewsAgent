@@ -7,8 +7,8 @@ from redis.exceptions import ConnectionError
 
 from app.domain.execution import StepType
 from app.domain.job_status import JobStatus
-from app.schemas.events import ProgressEvent
-from app.services.event_publisher import ProgressPublishError, RedisProgressPublisher
+from app.modules.writing.contracts.events import ProgressEvent
+from app.modules.writing.event_publisher import ProgressPublishError, RedisProgressPublisher
 
 
 class FakeRedis:

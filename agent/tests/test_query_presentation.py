@@ -6,11 +6,11 @@ from types import SimpleNamespace
 
 import pytest
 
-from app.conversation.local import local_conversation_plan
-from app.conversation.query_understanding import (
+from app.modules.conversation.local import local_conversation_plan
+from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryUnderstanding, local_query_understanding, resolve_query_understanding,
 )
-from app.conversation.tools import render_tool_results
+from app.modules.conversation.tools import render_tool_results
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError, screen_question
 from app.sql_assistant.planner import compile_query, local_query_intent
 from app.sql_assistant.scenarios import load_sql_scenarios

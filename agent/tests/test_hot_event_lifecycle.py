@@ -9,16 +9,16 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.schemas.hot_event import (
+from app.modules.hot_news.contracts.hot_event import (
     HotEventLifecyclePolicy,
     HotEventObservation,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsMetrics,
     HotScoreComponents,
 )
-from app.services.hot_event_lifecycle import HotEventLifecycleService
+from app.modules.hot_news.application.hot_event_lifecycle import HotEventLifecycleService
 
 
 NOW = datetime(2026, 9, 12, 10, 0, tzinfo=timezone.utc)

@@ -4,8 +4,8 @@ import pytest
 from sqlalchemy.exc import OperationalError
 from temporalio.exceptions import ApplicationError
 
-from app.activities.data_loop import DataLoopActivities
-from app.workflows.data_loop_contracts import DataLoopStepCommand
+from app.modules.data_loop.activities import DataLoopActivities
+from app.modules.data_loop.workflow_contracts import DataLoopStepCommand
 
 
 @pytest.mark.asyncio  # 这个注解表示 在pytest配置的模式下 默认是strict的 必须要配置这个注解

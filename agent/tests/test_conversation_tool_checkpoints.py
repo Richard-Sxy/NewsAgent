@@ -9,8 +9,8 @@ from uuid import uuid4
 import pytest
 from sqlalchemy.exc import OperationalError
 
-from app.conversation.plan import ConversationPlan
-from app.conversation.service import ConversationAgentService
+from app.modules.conversation.plan import ConversationPlan
+from app.modules.conversation.service import ConversationAgentService
 from app.models.conversation import ConversationTurnRecord
 from app.model_runtime.core import RawInferenceResult
 from app.repositories.conversation import ConversationConflict, ConversationNotFound, PostgresConversationRepository

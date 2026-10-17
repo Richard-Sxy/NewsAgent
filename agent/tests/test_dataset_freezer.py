@@ -6,11 +6,11 @@ from uuid import UUID
 import pytest
 from sqlalchemy.dialects import postgresql
 
-from app.repositories.evaluation_dataset import (
+from app.modules.data_loop.persistence.evaluation_dataset_repository import (
     EvaluationDatasetConflictError,
     PostgresEvaluationDatasetRepository,
 )
-from app.schemas.evaluation_dataset import (
+from app.modules.data_loop.contracts.evaluation_dataset import (
     ApprovedFeedbackSnapshot,
     EvaluationDatasetArtifactReceipt,
     EvaluationDatasetCaseIndex,
@@ -19,13 +19,13 @@ from app.schemas.evaluation_dataset import (
     EvaluationSourceLineage,
     FreezeEvaluationDatasetCommand,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsMetrics,
     HotScoreComponents,
     RelatedNewsEvidence,
 )
-from app.services.data_loop.dataset_freezer import (
+from app.modules.data_loop.dataset_freezer import (
     EvaluationDatasetFreezer,
     EvaluationDatasetIntegrityError,
     EvaluationDatasetNotReadyError,

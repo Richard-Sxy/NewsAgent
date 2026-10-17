@@ -5,12 +5,12 @@ from uuid import UUID
 
 import pytest
 
-from app.schemas.hot_news import PromptMemoryContext
-from app.schemas.user_memory import ResolvedMemoryContext
-from app.services.memory_aware_hot_news_analysis import (
+from app.modules.hot_news.contracts.hot_news import PromptMemoryContext
+from app.modules.memory.contracts.user_memory import ResolvedMemoryContext
+from app.modules.hot_news.analysis.memory_aware_hot_news_analysis import (
     MemoryAwareHotNewsAnalysisService,
 )
-from app.services.memory_prompt import MemoryPromptBuildResult
+from app.modules.memory.memory_prompt import MemoryPromptBuildResult
 
 
 NOW = datetime(2026, 9, 8, 10, tzinfo=timezone.utc)

@@ -14,17 +14,17 @@ import httpx
 import pytest
 from fastapi import HTTPException
 
-from app.conversation.local import local_conversation_plan
-from app.conversation.plan import ConversationPlan
-from app.conversation.tools import ANALYSIS_DESCRIPTION, ConversationToolDenied
+from app.modules.conversation.local import local_conversation_plan
+from app.modules.conversation.plan import ConversationPlan
+from app.modules.conversation.tools import ANALYSIS_DESCRIPTION, ConversationToolDenied
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.local_inference import LocalHotNewsInference
-from app.data_analysis.engine import analyze
-from app.data_analysis.runner import AnalysisRunner, _json_bytes
-from app.schemas.hot_news_api import HotNewsRunDetailResponse, HotNewsRunSummary
-from examples.conversation_hot_news import LocalConversationHotNewsQuery, _HotNewsQueryBreaker
+from app.modules.data_analysis.engine import analyze
+from app.modules.data_analysis.runner import AnalysisRunner, _json_bytes
+from app.modules.hot_news.contracts.hot_news_api import HotNewsRunDetailResponse, HotNewsRunSummary
+from simulation.conversation_hot_news import LocalConversationHotNewsQuery, _HotNewsQueryBreaker
 from examples.data_analysis_demo import (
     CURRENT_END, CURRENT_START, DEFAULT_BASE_URL, DEMO_TENANT, DEMO_USER, OPERATIONS,
     QUESTION, REFERENCE_START, DataAnalysisDemo, DemoError, approved_base_url,
@@ -519,7 +519,7 @@ def test_local_read_rejects_partial_or_extra_instruction_text(suffix):
 
 def test_breaker_counts_server_failures_allows_only_one_half_open_probe_and_resets(monkeypatch):
     clock = [100.0]
-    monkeypatch.setattr("examples.conversation_hot_news.time.monotonic", lambda: clock[0])
+    monkeypatch.setattr("simulation.conversation_hot_news.time.monotonic", lambda: clock[0])
     breaker = _HotNewsQueryBreaker(failure_threshold=2, open_seconds=10)
     breaker.record_failure()
     breaker.check()
@@ -555,7 +555,7 @@ async def test_adapter_failures_use_working_breaker_and_success_resets_before_re
     # Replace the lazy shared-command import without initializing any app Settings.
     import sys
     query = AsyncMock(side_effect=HTTPException(status_code=status, detail="private transport"))
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     adapter = prepared_query_adapter()
     adapter._breaker = _HotNewsQueryBreaker(failure_threshold=2)
     for _ in range(2):
@@ -570,7 +570,7 @@ async def test_adapter_failures_use_working_breaker_and_success_resets_before_re
     query.return_value = SimpleNamespace(run_id=source.run.run_id, workflow_id=source.run.idempotency_key,
                                         sql_query_id=source.sql_tool_trace.query_id, status="completed",
                                         production_bundle_version=source.run.production_bundle_version, analyzed_news_count=0)
-    monkeypatch.setattr("examples.conversation_hot_news.HotNewsQueryService", lambda **_kwargs: SimpleNamespace(get_run_detail=AsyncMock(return_value=source)))
+    monkeypatch.setattr("simulation.conversation_hot_news.HotNewsQueryService", lambda **_kwargs: SimpleNamespace(get_run_detail=AsyncMock(return_value=source)))
     result = await adapter.execute(question=QUESTION, tenant_id=DEMO_TENANT, user_id=DEMO_USER, on_bound=None)
     assert result["run_id"] == str(source.run.run_id)
     assert adapter._breaker._failures == 0 and adapter._breaker._opened_at is None
@@ -581,7 +581,7 @@ async def test_adapter_failures_use_working_breaker_and_success_resets_before_re
 async def test_adapter_neutral_or_cancelled_half_open_probe_does_not_stick(monkeypatch, error):
     import sys
     query = AsyncMock(side_effect=error)
-    monkeypatch.setitem(sys.modules, "examples.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
+    monkeypatch.setitem(sys.modules, "simulation.local_simulation", SimpleNamespace(execute_local_hot_news_query=query))
     adapter = prepared_query_adapter()
     adapter._breaker = _HotNewsQueryBreaker(failure_threshold=1)
     adapter._breaker.record_failure()

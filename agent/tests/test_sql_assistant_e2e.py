@@ -9,7 +9,7 @@ import httpx
 import pytest
 
 from app.sql_assistant.warehouse import DEMO_TENANT_ID, SCHEMA_SHA256, ISOLATION_TENANT_ID
-from examples.hot_news_e2e_support import E2E_TENANT_ID
+from simulation.hot_news_e2e_support import E2E_TENANT_ID
 
 BASE = os.environ.get("SQL_ASSISTANT_E2E_BASE_URL", "")
 pytestmark = pytest.mark.skipif(not BASE, reason="set SQL_ASSISTANT_E2E_BASE_URL for isolated hot-news HTTP acceptance")

@@ -14,15 +14,15 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from app.knowledge.document import KnowledgeDocument
-from app.knowledge.tier_lifecycle import KnowledgeLifecycleService
-from app.knowledge.tier_lifecycle_config import (
+from app.modules.knowledge.document import KnowledgeDocument
+from app.modules.knowledge.tier_lifecycle import KnowledgeLifecycleService
+from app.modules.knowledge.tier_lifecycle_config import (
     KnowledgeLifecycleConfig, load_knowledge_lifecycle_config,
 )
-from app.knowledge.tier_lifecycle_index import GuardedTieredIndex
-from app.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
-from app.knowledge.tier_lifecycle_query import LifecycleKnowledgeSearch, LifecycleQueryUnavailable
-from app.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata
+from app.modules.knowledge.tier_lifecycle_index import GuardedTieredIndex
+from app.modules.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
+from app.modules.knowledge.tier_lifecycle_query import LifecycleKnowledgeSearch, LifecycleQueryUnavailable
+from app.modules.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata
 from app.model_runtime.core import EmbeddingResult
 from app.retrieval.tiered_vector import VectorTier
 
@@ -124,7 +124,7 @@ async def test_oversize_projection_fails_before_chunk_allocation_and_embedding(r
         document=document(text="超长正文" * 20), now=NOW)
     def unexpected_split(*args, **kwargs):
         pytest.fail("over-budget document must be rejected before allocating chunks")
-    monkeypatch.setattr("app.knowledge.tier_lifecycle.split_text", unexpected_split)
+    monkeypatch.setattr("app.modules.knowledge.tier_lifecycle.split_text", unexpected_split)
     with pytest.raises(ValueError, match="memory budget"):
         await runtime.service.process_job(tenant_id=TENANT, job_id=job["job_id"])
     assert runtime.embedding.calls == 0
@@ -205,7 +205,7 @@ async def test_withdrawal_blocks_all_tiers_before_physical_cleanup_and_cannot_be
     await runtime.service.process_job(tenant_id=TENANT, job_id=migration["job_id"])
     # Recreate a delayed old SDK write in the HOT collection.
     old_jobs = await runtime.ledger.obsolete_jobs(tenant_id=TENANT, news_id="story")
-    from app.knowledge.tier_lifecycle import record_from_dict
+    from app.modules.knowledge.tier_lifecycle import record_from_dict
     await runtime.raw_index.upsert(
         tier=VectorTier.HOT, records=[record_from_dict(record) for record in old_jobs[0]["records"]],
     )

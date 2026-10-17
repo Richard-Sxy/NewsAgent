@@ -10,7 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.warehouse_simulation.real_news_catalog import CATALOG_PATH, freeze_catalog
+from simulation.warehouse_simulation.real_news_catalog import CATALOG_PATH, freeze_catalog
 
 
 def main(argv: list[str] | None = None) -> int:

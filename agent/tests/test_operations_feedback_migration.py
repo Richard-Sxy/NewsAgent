@@ -8,8 +8,8 @@ from alembic.migration import MigrationContext
 from alembic.operations import Operations
 
 from app.db.base import Base
-from app.models.analysis_feedback import AnalysisFeedbackCaseRecord
-from app.models.hot_news_decision import HotNewsDecision
+from app.modules.data_loop.persistence.analysis_feedback import AnalysisFeedbackCaseRecord
+from app.modules.hot_news.persistence.hot_news_decision import HotNewsDecision
 
 
 def migration_sql(direction):

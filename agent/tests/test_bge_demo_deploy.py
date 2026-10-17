@@ -47,7 +47,8 @@ def deployment_module():
 @pytest.fixture
 def agent_root(tmp_path):
     root = tmp_path / "agent"
-    deploy = root / "deploy"
+    root.mkdir(parents=True)
+    deploy = root.parent / "deploy"
     deploy.mkdir(parents=True)
     for name in (*BASE_OVERLAYS, MODEL_OVERLAY):
         (deploy / name).write_text("services: {}\n", encoding="utf-8")
@@ -65,11 +66,11 @@ def agent_root(tmp_path):
     (root / "frontend/package-lock.json").write_text("{}\n", encoding="utf-8")
     (deploy / "bge-demo.nginx.conf").write_text("fixture\n", encoding="utf-8")
     (deploy / "bge-demo.frontend.json").write_text("{}\n", encoding="utf-8")
-    (root.parent / "rag-recall-demo").mkdir()
+    (root.parent / "var/knowledge-snapshots/rag-recall-demo").mkdir(parents=True)
     for name in ("SHA256SUMS", "data/experiments/offline_recall_fg/chunks.jsonl",
                  "data/experiments/offline_recall_fg/embeddings.npy",
                  "data/experiments/offline_recall_fg/index.bin", "data/models/bge-large-zh-v1.5/modules.json"):
-        path = root.parent / "rag-recall-demo" / name
+        path = root.parent / "var/knowledge-snapshots/rag-recall-demo" / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("fixture\n", encoding="utf-8")
     return root
@@ -241,7 +242,7 @@ def test_preflight_checks_compatible_file_existence_without_reading_it_or_env_fi
     monkeypatch.setattr(deployment_module.getpass, "getpass", lambda *args: pytest.fail("provided model key must not be requested again"))
     instance.check()
     assert mutating_calls(harness) == []
-    (agent_root / "deploy/model-runtime.compatible.yml").unlink()
+    (agent_root.parent / "deploy/model-runtime.compatible.yml").unlink()
     with pytest.raises(deployment_module.DeploymentError, match="model-runtime.compatible.yml"):
         instance.check()
 
@@ -628,12 +629,12 @@ def read_compose(path):
 
 
 def test_demo_compose_keeps_bge_index_mounted_read_only_and_exposes_only_local_ports():
-    bge = read_compose(AGENT_ROOT / "deploy/docker-compose.bge-snapshot.yml")
-    demo = read_compose(AGENT_ROOT / "deploy/docker-compose.bge-demo.yml")
+    bge = read_compose(AGENT_ROOT.parent / "deploy/docker-compose.bge-snapshot.yml")
+    demo = read_compose(AGENT_ROOT.parent / "deploy/docker-compose.bge-demo.yml")
     for service in ("api", "hot-news-worker"):
         projection = bge["services"][service]
         assert projection["environment"]["KNOWLEDGE_SEARCH_CONFIG_PATH"] == "/app/deploy/knowledge-search.bge-snapshot.yml"
-        assert "../../rag-recall-demo:/rag-recall-demo:ro" in projection["volumes"]
+        assert "../var/knowledge-snapshots/rag-recall-demo:/app/var/knowledge-snapshots/rag-recall-demo:ro" in projection["volumes"]
         assert "./knowledge-search.bge-snapshot.yml:/app/deploy/knowledge-search.bge-snapshot.yml:ro" in projection["volumes"]
     assert str(bge["services"]["api"]["environment"]["CONVERSATION_KNOWLEDGE_ENABLED"]).lower() in {"true", "1"}
     assert "web" in demo["services"] and "data-loop-worker" in demo["services"]
@@ -648,8 +649,8 @@ def test_demo_compose_keeps_bge_index_mounted_read_only_and_exposes_only_local_p
 
 
 def test_local_gateway_replaces_client_identity_and_preserves_one_sse_request():
-    config = (AGENT_ROOT / "deploy/bge-demo.nginx.conf").read_text(encoding="utf-8")
-    runtime = json.loads((AGENT_ROOT / "deploy/bge-demo.frontend.json").read_text(encoding="utf-8"))
+    config = (AGENT_ROOT.parent / "deploy/bge-demo.nginx.conf").read_text(encoding="utf-8")
+    runtime = json.loads((AGENT_ROOT.parent / "deploy/bge-demo.frontend.json").read_text(encoding="utf-8"))
     headers = dict(re.findall(r'proxy_set_header\s+([\w-]+)\s+"([^"\n]*)";', config))
     assert headers["Authorization"] == "Bearer newsagent-native-local-token-not-for-production"
     assert headers["X-Tenant-ID"] == "11111111-1111-4111-8111-111111111111"

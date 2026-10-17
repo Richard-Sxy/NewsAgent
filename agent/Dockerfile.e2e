@@ -23,8 +23,8 @@ RUN groupadd --system --gid 10001 app \
     && mkdir -p /state \
     && chown app:app /state
 
-COPY pyproject.toml ./
-COPY app ./app
+COPY agent/pyproject.toml ./
+COPY agent/app ./app
 
 # Install the application and dependencies before copying test-only assets, so
 # editing a runbook fixture or E2E test does not force a full dependency fetch.
@@ -36,14 +36,15 @@ RUN pip install --upgrade pip \
        esac \
     && pip install ".[dev${APP_EXTRAS}]"
 
-COPY alembic ./alembic
-COPY alembic.ini ./
-COPY examples ./examples
-COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
-COPY tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
-COPY tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
-COPY tools/query_news_recall.py ./tools/query_news_recall.py
-COPY evaluation ./evaluation
+COPY agent/alembic ./alembic
+COPY agent/alembic.ini ./
+COPY agent/examples ./examples
+COPY agent/simulation ./simulation
+COPY agent/tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY agent/tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
+COPY agent/tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
+COPY agent/tools/query_news_recall.py ./tools/query_news_recall.py
+COPY agent/evaluation ./evaluation
 COPY deploy/mock-cms ./deploy/mock-cms
 COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
 COPY deploy/model-runtime.reader-profiles.local.yml ./deploy/model-runtime.reader-profiles.local.yml
@@ -60,13 +61,13 @@ COPY deploy/behavior-topic-policy.local.yml ./deploy/behavior-topic-policy.local
 COPY deploy/docker-compose.behavior-tags.local.yml ./deploy/docker-compose.behavior-tags.local.yml
 COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
 COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
-COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
-COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
-COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
-COPY docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
+COPY agent/docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
+COPY agent/docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
+COPY agent/docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+COPY agent/docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
 COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
-COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
-COPY tests ./tests
+COPY agent/data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
+COPY agent/tests ./tests
 
 USER 10001:10001
 

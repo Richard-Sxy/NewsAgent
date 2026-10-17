@@ -6,8 +6,8 @@ import json
 
 import pytest
 
-from app.behavior_tags import merge
-from app.behavior_tags.source import WarehouseSource, WarehouseSourceError
+from app.modules.behavior_tags import merge
+from app.modules.behavior_tags.source import WarehouseSource, WarehouseSourceError
 
 TENANT = "11111111-1111-4111-8111-111111111111"
 START = datetime.fromisoformat("2026-10-07T00:00:00+08:00")

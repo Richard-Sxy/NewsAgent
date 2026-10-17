@@ -5,7 +5,7 @@ from datetime import date, datetime
 
 import pytest
 
-from app.conversation.query_time import extract_query_time
+from app.modules.conversation.query_time import extract_query_time
 
 
 NOW = datetime.fromisoformat("2026-10-10T10:30:00+08:00")

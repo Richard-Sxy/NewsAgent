@@ -9,13 +9,13 @@ import httpx
 from pydantic import SecretStr, ValidationError
 import pytest
 
-from app.audience.taxonomy import Topic, TopicCatalog
-from app.reader_profiles.client import HttpNewsReaderProfileClient
-from app.reader_profiles.contracts import (
+from app.modules.audience.taxonomy import Topic, TopicCatalog
+from app.modules.reader_profiles.client import HttpNewsReaderProfileClient
+from app.modules.reader_profiles.contracts import (
     IDENTITY_POLICY_VERSION, PROFILE_POLICY_VERSION, ReaderProfileBatch, ReaderProfileProviderError,
     ReaderProfileQuery, ReaderProfileSummary, reader_profile_query_fingerprint,
 )
-from app.reader_profiles.service import ReaderProfileService
+from app.modules.reader_profiles.service import ReaderProfileService
 
 
 NOW = datetime(2026, 10, 17, 8, tzinfo=UTC)

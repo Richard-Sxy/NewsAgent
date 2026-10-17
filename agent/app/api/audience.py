@@ -6,8 +6,8 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Path, Request, Response
 
 from app.api.dependencies import DataLoopPrincipal, HotNewsPermission, require_hot_news_permission
-from app.audience.contracts import AudienceProviderError, AudienceSelection
-from app.audience.service import (
+from app.modules.audience.contracts import AudienceProviderError, AudienceSelection
+from app.modules.audience.service import (
     AudiencePreview, AudiencePreviewService, AudienceSelectionError,
     AudienceSnapshotError, AudienceTargetNotFound,
 )

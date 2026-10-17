@@ -2,7 +2,7 @@
 
 该子项目负责分类发现、正文抓取、清洗、URL 幂等、缓存、标题 NLP、失败重试和每日任务。
 合格内容通过 NewsAgent 自有知识 API 入库；切片、Embedding、索引与 QA 由
-`writing-agent-service` 的 Python 实现完成。
+`agent/` 的 Python 实现完成。
 
 ## 调用链
 
@@ -23,7 +23,7 @@ SQLite 只保存本地幂等、重试、标题分析和文档 ID，不作为主�
 ## 安装与配置
 
 ```bash
-cd tencent-news-crawler
+cd news
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

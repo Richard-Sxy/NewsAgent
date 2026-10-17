@@ -5,15 +5,15 @@ from unittest.mock import AsyncMock, Mock
 
 import pytest
 
-import app.services.active_bundle_hot_news as module
+import app.modules.hot_news.application.active_bundle_hot_news as module
 from app.domain.errors import HotNewsDataQualityError
-from app.services.active_bundle_hot_news import (
+from app.modules.hot_news.application.active_bundle_hot_news import (
     ActiveProductionBundleHotNewsService,
 )
-from app.repositories.production_bundle import (
+from app.modules.data_loop.persistence.production_bundle_repository import (
     ProductionBundleDataCorruptedError,
 )
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     HotNewsOrchestrationPolicy,
     HotNewsRunRequest,
 )

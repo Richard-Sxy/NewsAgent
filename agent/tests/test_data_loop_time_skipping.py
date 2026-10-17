@@ -13,12 +13,12 @@ from temporalio.api.enums.v1 import EventType
 from temporalio.testing import WorkflowEnvironment
 from temporalio.worker import Worker
 
-from app.activities.data_loop import DataLoopActivities
-from app.workflows.data_loop import (
+from app.modules.data_loop.activities import DataLoopActivities
+from app.modules.data_loop.workflows import (
     DATA_LOOP_APPROVAL_TIMEOUT,
     HotNewsDataLoopWorkflow,
 )
-from app.workflows.data_loop_contracts import (
+from app.modules.data_loop.workflow_contracts import (
     DataLoopRunRequest,
     DataLoopStepCommand,
     DataLoopStepOutcome,

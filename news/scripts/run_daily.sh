@@ -2,7 +2,7 @@
 
 set -u
 
-PROJECT_DIR="/home/shi/project/NewsAgent/tencent-news-crawler"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOG_DIR="${PROJECT_DIR}/logs"
 RUN_DATE="$(date +%F)"
 LOG_FILE="${LOG_DIR}/ingest-${RUN_DATE}.log"
@@ -37,33 +37,6 @@ QA_EXIT_CODE=$?
 echo "===== qa generate end, exit=${QA_EXIT_CODE} =====" \
     >> "${LOG_FILE}"
 
-EVALUATION_ENABLED="$(
-    "${PROJECT_DIR}/.venv/bin/python" -c \
-    'from config import settings; print(str(settings.daily_evaluation_enabled).lower())'
-)"
-
-if [ "${EVALUATION_ENABLED}" = "true" ]; then
-    echo "===== evaluation start =====" >> "${LOG_FILE}"
-    "${PROJECT_DIR}/.venv/bin/python" \
-        -m scripts.evaluate_qa \
-        --questions "$(
-            "${PROJECT_DIR}/.venv/bin/python" -c \
-            'from config import settings; print(settings.evaluation_questions_path)'
-        )" \
-        --output "reports/evaluation-${RUN_DATE}.json" \
-        --limit "$(
-            "${PROJECT_DIR}/.venv/bin/python" -c \
-            'from config import settings; print(settings.daily_evaluation_limit)'
-        )" \
-        >> "${LOG_FILE}" 2>&1
-    EVALUATION_EXIT_CODE=$?
-    echo "===== evaluation end, exit=${EVALUATION_EXIT_CODE} =====" \
-        >> "${LOG_FILE}"
-else
-    EVALUATION_EXIT_CODE=0
-    echo "===== evaluation skipped (disabled) =====" >> "${LOG_FILE}"
-fi
-
 echo "===== daily report start =====" \
     >> "${LOG_FILE}"
 
@@ -72,7 +45,6 @@ echo "===== daily report start =====" \
     --date "${RUN_DATE}" \
     --ingest-exit-code "${INGEST_EXIT_CODE}" \
     --qa-exit-code "${QA_EXIT_CODE}" \
-    --evaluation-exit-code "${EVALUATION_EXIT_CODE}" \
     >> "${LOG_FILE}" 2>&1
 
 REPORT_EXIT_CODE=$?
@@ -82,7 +54,6 @@ echo "===== daily report end, exit=${REPORT_EXIT_CODE} =====" \
 
 if [ "${INGEST_EXIT_CODE}" -ne 0 ] \
     || [ "${QA_EXIT_CODE}" -ne 0 ] \
-    || [ "${EVALUATION_EXIT_CODE}" -ne 0 ] \
     || [ "${REPORT_EXIT_CODE}" -ne 0 ]; then
     EXIT_CODE=1
 else

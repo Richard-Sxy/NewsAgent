@@ -7,8 +7,8 @@ import json
 
 import pytest
 
-from app.behavior_tags import source
-from app.behavior_tags.source import WarehouseSourceError, load_warehouse_source
+from app.modules.behavior_tags import source
+from app.modules.behavior_tags.source import WarehouseSourceError, load_warehouse_source
 
 
 TENANTS = ("11111111-1111-4111-8111-111111111111", "33333333-3333-4333-8333-333333333333")

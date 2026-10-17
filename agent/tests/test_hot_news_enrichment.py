@@ -3,11 +3,11 @@ from datetime import datetime
 
 import pytest
 
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.entities import ContentType
 from app.analytics.news_content import InMemoryNewsContentRepository, NewsContent
 from app.clients.knowledge_base import RelatedNews, RelatedNewsSearchQuery
-from examples.hot_news_demo import build_ranking, load_scenario
+from simulation.hot_news_demo import build_ranking, load_scenario
 
 
 @dataclass

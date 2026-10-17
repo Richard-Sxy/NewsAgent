@@ -16,9 +16,9 @@ import httpx
 from pydantic import SecretStr
 import pytest
 
-from app.data_analysis.engine import analyze, validate_request
-from app.data_analysis.remote import RemoteAnalysisRunner
-from app.data_analysis.runner import _json_bytes
+from app.modules.data_analysis.engine import analyze, validate_request
+from app.modules.data_analysis.remote import RemoteAnalysisRunner
+from app.modules.data_analysis.runner import _json_bytes
 
 
 pytestmark = [

@@ -15,7 +15,7 @@ import pytest
 import yaml
 
 from app.config import Settings
-from app.knowledge.search_config import load_knowledge_search_config
+from app.modules.knowledge.search_config import load_knowledge_search_config
 from app.model_runtime.config_file import (
     load_model_runtime_config,
     validate_runtime_environment,
@@ -23,7 +23,7 @@ from app.model_runtime.config_file import (
 
 
 ROOT = Path(__file__).resolve().parents[2]
-K8S = ROOT / "k8s"
+K8S = ROOT / "deploy" / "k8s"
 
 
 @pytest.fixture(scope="module")

@@ -8,7 +8,7 @@ import pytest
 
 from app.config import Settings
 from app.domain.errors import HotNewsDataQualityError
-from app.services.hot_news_query import HotNewsQueryService
+from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
 from app.sql_assistant.corpus_profiles import CORPUS_PROFILE, corpus_article, corpus_news_ids
 from app.sql_assistant.hot_news_binding import HotNewsSqlBindingError, build_hot_news_sql_scope
 from app.sql_assistant.planner import local_query_intent
@@ -19,8 +19,8 @@ from app.sql_assistant.warehouse import (
     get_text2sql_schema, verify_schema_contract, warehouse_contract,
 )
 from examples.data_analysis_demo import DemoError, _catalog
-from examples.native_hot_news_sql_support import SqlHotNewsContentRepository
-from examples import native_hot_news_sql_support as sql_support
+from simulation.native_hot_news_sql_support import SqlHotNewsContentRepository
+from simulation import native_hot_news_sql_support as sql_support
 
 
 TENANT = str(DEMO_TENANT_ID)

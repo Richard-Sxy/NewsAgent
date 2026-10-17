@@ -10,26 +10,26 @@ import pytest
 from temporalio.converter import DataConverter
 from sqlalchemy.dialects import postgresql
 
-from app.analytics.baseline import NewsMetricBaseline
-from app.analytics.data_source import InMemoryBehaviorDataSource
+from app.modules.hot_news.scoring.baseline import NewsMetricBaseline
+from app.modules.hot_news.scoring.data_source import InMemoryBehaviorDataSource
 from app.analytics.entities import BehaviorRecord, ContentType, EventType
-from app.analytics.hot_news_enrichment import EnrichedHotNews
+from app.modules.hot_news.analysis.hot_news_enrichment import EnrichedHotNews
 from app.analytics.news_content import NewsContent
 from app.model_runtime.result import AgentResult
 from app.domain.errors import HotNewsDataQualityError
-from app.schemas.hot_news import HotNewsAnalysisReport
-from app.services.hot_news_analysis import (
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisReport
+from app.modules.hot_news.analysis.hot_news_analysis import (
     HotNewsAnalysisInputBuilder,
     HotNewsAnalysisService,
     HotNewsAnalysisValidator,
 )
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     EmptyHotNewsBaselineProvider,
     HotNewsOrchestrationPolicy,
     HotNewsOrchestrationService,
     HotNewsRunRequest,
 )
-from app.services.hot_news_run_store import PostgresHotNewsRunStore
+from app.modules.hot_news.adapters.hot_news_run_store import PostgresHotNewsRunStore
 
 
 START = datetime(2026, 9, 4, 10, tzinfo=timezone.utc)

@@ -8,29 +8,29 @@ from dataclasses import dataclass
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from app.activities.data_loop import DataLoopActivities, DataLoopStepHandler
+from app.modules.data_loop.activities import DataLoopActivities, DataLoopStepHandler
 from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import Settings, get_settings
-from app.data_analysis.factory import create_analysis_runner
+from app.modules.data_analysis.factory import create_analysis_runner
 from app.db.session import Database
 from app.model_runtime.agent_client import NativeStructuredAgentClient
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.factory import ModelRuntimePorts, build_model_runtime_ports
-from app.services.agents.error_attribution import ErrorAttributionAgentRunner
-from app.services.data_loop.artifacts import S3DataLoopArtifactStore
-from app.services.data_loop.dataset_analysis import DataLoopDatasetAnalysisService
-from app.services.data_loop.dataset_freezer import (
+from app.modules.data_loop.agents.error_attribution import ErrorAttributionAgentRunner
+from app.modules.data_loop.artifacts import S3DataLoopArtifactStore
+from app.modules.data_loop.dataset_analysis import DataLoopDatasetAnalysisService
+from app.modules.data_loop.dataset_freezer import (
     S3EvaluationDatasetArtifactStore,
 )
-from app.services.data_loop.offline_replay import (
+from app.modules.data_loop.offline_replay import (
     HotNewsOfflineReplayService,
 )
-from app.services.data_loop.step_handler import HotNewsDataLoopStepHandler
-from app.services.hot_news_query import HotNewsQueryService
-from app.workflows.data_loop import (
+from app.modules.data_loop.step_handler import HotNewsDataLoopStepHandler
+from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
+from app.modules.data_loop.workflows import (
     HotNewsDataLoopActivationRecoveryWorkflow,
     HotNewsDataLoopWorkflow,
 )

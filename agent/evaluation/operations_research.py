@@ -19,12 +19,12 @@ from urllib.parse import urlsplit
 from pydantic import AwareDatetime, Field, model_validator
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_score import HotScoreCalculator
-from app.evaluation.hot_news import (
+from app.modules.hot_news.scoring.hot_score import HotScoreCalculator
+from app.modules.data_loop.evaluation.hot_news import (
     ExpectedHotNewsAnalysis, HotNewsEvaluationCase, HotNewsEvaluationDataset,
 )
-from app.schemas.evaluation_dataset import canonical_json_sha256
-from app.schemas.hot_news import (
+from app.modules.data_loop.contracts.evaluation_dataset import canonical_json_sha256
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents, RelatedNewsEvidence,
 )
 from evaluation.operations_evolution import (

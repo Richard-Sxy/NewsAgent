@@ -3,14 +3,14 @@ from uuid import UUID
 
 import pytest
 
-from app.schemas.user_memory import (
+from app.modules.memory.contracts.user_memory import (
     MemorySourceRef,
     ResolvedMemoryContext,
     ResolvedMemoryItem,
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_prompt import MemoryPromptInputBuilder
+from app.modules.memory.memory_prompt import MemoryPromptInputBuilder
 
 
 NOW = datetime(2026, 9, 8, 10, tzinfo=timezone.utc)

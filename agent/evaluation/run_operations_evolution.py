@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 import tempfile
 
-from app.schemas.evaluation_dataset import canonical_json_sha256
+from app.modules.data_loop.contracts.evaluation_dataset import canonical_json_sha256
 from evaluation.operations_evolution import (
     DEFAULT_CATALOG, DEFAULT_OUTPUT, OperationsEvolutionDataset,
     build_dataset, load_catalog, summary, verify_artifact_hashes, write_artifacts,

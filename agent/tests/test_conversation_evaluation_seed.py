@@ -9,15 +9,15 @@ from uuid import uuid4
 import pytest
 
 import tools.seed_conversation_evaluation_demo as seed
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
 from app.model_runtime.core import PromptRegistry, PromptSpec
-from app.model_runtime.hot_news import HOT_NEWS_SCENE
-from app.models.analysis_feedback import AnalysisFeedbackCaseRecord, AnalysisFeedbackLabelRecord
-from app.repositories.analysis_feedback import PostgresAnalysisFeedbackRepository
-from app.repositories.evaluation_dataset import PostgresEvaluationDatasetRepository
-from app.schemas.analysis_feedback import AnalysisFeedbackCase, AnalysisFeedbackLabel
-from app.schemas.evaluation_dataset import EvaluationDatasetArtifactReceipt, EvaluationDatasetReference
-from app.services.data_loop.feedback_collector import build_feedback_content_sha256
+from app.modules.hot_news.analysis.runner import HOT_NEWS_SCENE
+from app.modules.data_loop.persistence.analysis_feedback import AnalysisFeedbackCaseRecord, AnalysisFeedbackLabelRecord
+from app.modules.data_loop.persistence.analysis_feedback_repository import PostgresAnalysisFeedbackRepository
+from app.modules.data_loop.persistence.evaluation_dataset_repository import PostgresEvaluationDatasetRepository
+from app.modules.data_loop.contracts.analysis_feedback import AnalysisFeedbackCase, AnalysisFeedbackLabel
+from app.modules.data_loop.contracts.evaluation_dataset import EvaluationDatasetArtifactReceipt, EvaluationDatasetReference
+from app.modules.data_loop.feedback_collector import build_feedback_content_sha256
 from tests.test_production_bundle import active_bundle
 
 

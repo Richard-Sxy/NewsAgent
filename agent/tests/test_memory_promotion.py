@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pytest
 
-from app.schemas.user_memory import (
+from app.modules.memory.contracts.user_memory import (
     LongTermMemoryCandidate,
     LongTermUserMemory,
     MemorySourceRef,
@@ -11,7 +11,7 @@ from app.schemas.user_memory import (
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_promotion import (
+from app.modules.memory.memory_promotion import (
     MemoryPromotionRejectedError,
     MemoryPromotionService,
 )

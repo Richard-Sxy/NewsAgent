@@ -9,11 +9,11 @@ from temporalio.service import RPCError, RPCStatusCode
 
 import app.worker as worker_module
 from app.config import Settings
-from app.conversation.admission_contracts import AdmissionConflictError, request_admission_id
-from app.conversation.admission_workflows import ADMISSION_WORKFLOWS
-from app.conversation.writing import ConversationWritingConflict, ConversationWritingReader
-from app.workflows.data_loop_contracts import DataLoopWorkflowSnapshot
-from app.services.production_bundle import ProductionBundleRuleViolation
+from app.modules.conversation.admission_contracts import AdmissionConflictError, request_admission_id
+from app.modules.conversation.admission_workflows import ADMISSION_WORKFLOWS
+from app.modules.conversation.writing import ConversationWritingConflict, ConversationWritingReader
+from app.modules.data_loop.workflow_contracts import DataLoopWorkflowSnapshot
+from app.modules.data_loop.production_bundle import ProductionBundleRuleViolation
 from tests.test_conversation_writing_commands import runtime, start
 from tests.test_conversation_tools_writing import Jobs, Database
 from tests.test_conversation_dataloop_hook import harness, TENANT

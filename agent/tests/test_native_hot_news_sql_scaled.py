@@ -9,17 +9,17 @@ from types import SimpleNamespace
 
 import pytest
 
-from app.analytics.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
 from app.domain.errors import HotNewsDataQualityError
-from app.knowledge.document import IngestOutcome, IngestReport, IngestStatus
-from app.knowledge.native_indexing import split_text
+from app.modules.knowledge.document import IngestOutcome, IngestReport, IngestStatus
+from app.modules.knowledge.native_indexing import split_text
 from app.model_runtime.core import EmbeddingRequest
 from app.model_runtime.local_embedding import LocalHashEmbedding
 from app.retrieval.tiered_vector import VectorTier
 from app.schemas.sql_assistant import SqlAssistantPreview, SqlAssistantResult
 from app.sql_assistant.warehouse import DEMO_TENANT_ID, ISOLATION_TENANT_ID, WINDOW_START, warehouse_contract
-from examples.native_hot_news_e2e_worker import ProfileScopedKnowledgeIndex
-from examples.native_hot_news_sql_support import (
+from simulation.native_hot_news_e2e_worker import ProfileScopedKnowledgeIndex
+from simulation.native_hot_news_sql_support import (
     SqlHotNewsContentRepository, SqlHotNewsDetailRepository,
     build_native_hot_news_sql_dependencies, seed_native_sql_knowledge,
 )
@@ -280,7 +280,7 @@ async def test_real_scaled_postgres_content_and_restart_embedding_skip():
     if news_per_tenant < 1200:
         pytest.skip("this identity-above-1000 acceptance requires at least 1200 news per tenant")
     from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
-    from app.knowledge.postgres_store import PostgresKnowledgeStore, _metadata
+    from app.modules.knowledge.postgres_store import PostgresKnowledgeStore, _metadata
     from app.sql_assistant.warehouse import initialize_demo_warehouse
 
     engine = create_async_engine(url)

@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.review import ReviewInput, ReviewReport
+from app.modules.writing.contracts.review import ReviewInput, ReviewReport
 from tests.test_research_schema import valid_research_package
 from tests.test_writing_schema import valid_outline, valid_section
 

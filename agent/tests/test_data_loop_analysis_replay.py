@@ -18,9 +18,9 @@ from temporalio.client import Client
 from temporalio.worker import Replayer, Worker
 
 with workflow.unsafe.imports_passed_through():
-    from app.activities.data_loop import DataLoopActivities
-    from app.workflows.data_loop import DATA_LOOP_WORKFLOW_NAME, HotNewsDataLoopWorkflow
-    from app.workflows.data_loop_contracts import (
+    from app.modules.data_loop.activities import DataLoopActivities
+    from app.modules.data_loop.workflows import DATA_LOOP_WORKFLOW_NAME, HotNewsDataLoopWorkflow
+    from app.modules.data_loop.workflow_contracts import (
         DataLoopRunRequest,
         DataLoopStepCommand,
         DataLoopStepOutcome,

@@ -9,9 +9,9 @@ from types import SimpleNamespace
 import httpx
 import pytest
 
-from app.data_analysis.engine import analyze, validate_request
-from app.data_analysis.runner import AnalysisRunner, _json_bytes
-from app.data_analysis.service import AnalysisServiceSettings, create_app
+from app.modules.data_analysis.engine import analyze, validate_request
+from app.modules.data_analysis.runner import AnalysisRunner, _json_bytes
+from app.modules.data_analysis.service import AnalysisServiceSettings, create_app
 
 
 TOKEN = "independent-test-token"
@@ -388,10 +388,10 @@ def test_settings_do_not_read_env_file(tmp_path, monkeypatch):
 
 def test_production_requires_linux_os_limits(monkeypatch):
     certificates = {"tls_certfile": "/run/analysis-tls/tls.crt", "tls_keyfile": "/run/analysis-tls/tls.key"}
-    monkeypatch.setattr("app.data_analysis.service.sys.platform", "darwin")
+    monkeypatch.setattr("app.modules.data_analysis.service.sys.platform", "darwin")
     with pytest.raises(ValueError, match="Linux"):
         config(environment="production", **certificates)
-    monkeypatch.setattr("app.data_analysis.service.sys.platform", "linux")
+    monkeypatch.setattr("app.modules.data_analysis.service.sys.platform", "linux")
     assert config(environment="production", **certificates).require_linux_limits is True
     with pytest.raises(ValueError, match="Linux"):
         config(environment="production", require_linux_limits=False, **certificates)
@@ -404,7 +404,7 @@ def test_production_requires_linux_os_limits(monkeypatch):
     {"tls_keyfile": "/run/analysis-tls/tls.key"},
 ])
 def test_production_rejects_plaintext_or_incomplete_tls_before_start(monkeypatch, certificates):
-    monkeypatch.setattr("app.data_analysis.service.sys.platform", "linux")
+    monkeypatch.setattr("app.modules.data_analysis.service.sys.platform", "linux")
     with pytest.raises(ValueError, match="TLS"):
         config(environment="production", **certificates)
 
@@ -417,7 +417,7 @@ def test_invalid_configuration_errors_hide_secret_input():
 
 
 def test_main_disables_access_logs(monkeypatch):
-    from app.data_analysis import service
+    from app.modules.data_analysis import service
     import uvicorn
 
     captured = {}
@@ -431,7 +431,7 @@ def test_main_disables_access_logs(monkeypatch):
 
 
 def test_main_passes_tls_paths_to_server_without_reading_certificates(monkeypatch):
-    from app.data_analysis import service
+    from app.modules.data_analysis import service
     import uvicorn
 
     settings = AnalysisServiceSettings(

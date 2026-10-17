@@ -101,7 +101,7 @@ M1/M2 在 5174 + native-e2e 验证；M4 使用含 data-loop-worker 的 bge-demo 
 
 ```sh
 docker build --pull=false --build-arg E2E_DEPENDENCY_IMAGE=news-agent/conversation-hooks-bge-dependencies:20261013 -f agent/Dockerfile.e2e.cached -t news-agent/conversation-hooks-bge-demo:local agent
-docker compose --env-file /dev/null -p news-agent-bge-demo -f agent/deploy/docker-compose.native-e2e.yml -f agent/deploy/docker-compose.bge-snapshot.yml -f agent/deploy/docker-compose.bge-demo.yml -f agent/deploy/docker-compose.conversation-hooks-bge-demo.yml up -d --no-deps api writing-worker hot-news-worker data-loop-worker
+docker compose --env-file /dev/null -p news-agent-bge-demo -f deploy/docker-compose.native-e2e.yml -f deploy/docker-compose.bge-snapshot.yml -f deploy/docker-compose.bge-demo.yml -f deploy/docker-compose.conversation-hooks-bge-demo.yml up -d --no-deps api writing-worker hot-news-worker data-loop-worker
 ```
 
 演示步骤：写一篇 AI 芯片周报 → 确认 → 写作卡片 → 同一任务资料人工 Gate；记住我关注科技 →

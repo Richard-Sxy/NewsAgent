@@ -11,9 +11,9 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app.api.conversations import router
-from app.conversation.service import ConversationAgentService
-from app.conversation.context import ContextCursor, ConversationMemory
-from app.conversation.tools import ConversationToolDenied
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.context import ContextCursor, ConversationMemory
+from app.modules.conversation.tools import ConversationToolDenied
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import RawInferenceResult, StructuredInferenceService

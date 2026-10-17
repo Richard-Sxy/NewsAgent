@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 from app.analytics.entities import BehaviorRecord, ContentType, EventType
-from app.analytics.metrics import NewsMetricCalculator
+from app.modules.hot_news.scoring.metrics import NewsMetricCalculator
 
 
 WINDOW_START = datetime(2026, 9, 2, 10, 0, tzinfo=timezone.utc)

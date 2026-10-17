@@ -8,11 +8,11 @@ import pytest
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.analytics.entities import ContentType
-from app.analytics.metric_source import HotNewsMetricQuery
-from app.analytics.ranking import HotNewsRanker
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.ranking import HotNewsRanker
 from app.clients.enterprise.sql_warehouse import SqlQuery
 from app.domain.errors import HotNewsDataQualityError
-from app.knowledge.document import InMemoryKnowledgeBaseWriter
+from app.modules.knowledge.document import InMemoryKnowledgeBaseWriter
 from app.schemas.sql_assistant import SqlAssistantIntent, SqlAssistantPreview, SqlAssistantResult
 from app.sql_assistant.planner import compile_query
 from app.sql_assistant.scenarios import load_sql_scenarios
@@ -20,7 +20,7 @@ from app.sql_assistant.warehouse import (
     DEMO_TENANT_ID, SCHEMA_SHA256, SCHEMA_VERSION, WINDOW_START,
     LocalPostgresSqlWarehouseClient, _fixture_rows, initialize_demo_warehouse,
 )
-from examples.native_hot_news_sql_support import (
+from simulation.native_hot_news_sql_support import (
     DEMO_NEWS_IDS, SqlAssistantHotNewsMetricSource, SqlHotNewsContentRepository,
     build_native_hot_news_sql_dependencies, seed_native_sql_knowledge,
 )

@@ -1,0 +1,30 @@
+# Overlay for docker-compose.native-e2e.yml. No image or production bundle is
+# activated by saving this file. Build the E2E image with the optional BGE extra.
+services:
+  migrate:
+    build:
+      args:
+        APP_EXTRAS: ",bge-snapshot"
+  api:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.bge-snapshot.yml
+      CONVERSATION_KNOWLEDGE_ENABLED: "true"
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      USE_TF: "0"
+      USE_FLAX: "0"
+      OMP_NUM_THREADS: "2"
+    volumes:
+      - ./knowledge-search.bge-snapshot.yml:/app/deploy/knowledge-search.bge-snapshot.yml:ro
+      - ../var/knowledge-snapshots/rag-recall-demo:/app/var/knowledge-snapshots/rag-recall-demo:ro
+  hot-news-worker:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.bge-snapshot.yml
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      USE_TF: "0"
+      USE_FLAX: "0"
+      OMP_NUM_THREADS: "2"
+    volumes:
+      - ./knowledge-search.bge-snapshot.yml:/app/deploy/knowledge-search.bge-snapshot.yml:ro
+      - ../var/knowledge-snapshots/rag-recall-demo:/app/var/knowledge-snapshots/rag-recall-demo:ro

@@ -11,9 +11,9 @@ from temporalio.client import Client
 from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
 from temporalio.worker import Worker, Replayer
 
-from app.conversation.admission import AdmissionActivities, AdmissionService
-from app.conversation.admission_contracts import AdmissionRequest, request_admission_id, tenant_admission_id
-from app.conversation.admission_workflows import ADMISSION_WORKFLOWS
+from app.modules.conversation.admission import AdmissionActivities, AdmissionService
+from app.modules.conversation.admission_contracts import AdmissionRequest, request_admission_id, tenant_admission_id
+from app.modules.conversation.admission_workflows import ADMISSION_WORKFLOWS
 from tests.test_conversation_admission import job
 
 

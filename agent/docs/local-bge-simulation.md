@@ -1,12 +1,12 @@
 # 完整本地模拟：一键启动与展示
 
-本入口固定使用 **local 模式**，查询理解、热点分析和写作模型均使用本地测试 Port；不需要企业 API Key，也不需要 `model-runtime.compatible.yml`。新闻指标来自确定性合成数仓，相关新闻使用 `rag-recall-demo/` 中真实的本地 BGE 模型与 HNSW 索引。
+本入口固定使用 **local 模式**，查询理解、热点分析和写作模型均使用本地测试 Port；不需要企业 API Key，也不需要 `model-runtime.compatible.yml`。新闻指标来自确定性合成数仓，相关新闻使用 `var/knowledge-snapshots/rag-recall-demo/` 中真实的本地 BGE 模型与 HNSW 索引。
 
 PostgreSQL、Redis、Temporal、MinIO、API、Worker 和前端在启动时都作为真实容器运行。规则模型用于验证项目调用链，不能作为企业模型质量验收。第一次构建仍需联网下载基础镜像、Python/npm 依赖并编译 hnswlib；新闻检索模型和索引使用已有本地包。
 
 ## 复制这段开始
 
-先打开 Docker Desktop，确认引擎可用。准备宿主 Python 3.9+、Docker Compose 2.24.4+、完整仓库和 `rag-recall-demo/`；镜像内应用使用 Python 3.11。默认预检要求宿主磁盘空余至少 **10 GiB**、Docker 内存至少 **6 GiB**。
+先打开 Docker Desktop，确认引擎可用。准备宿主 Python 3.9+、Docker Compose 2.24.4+、完整仓库和 `var/knowledge-snapshots/rag-recall-demo/`；镜像内应用使用 Python 3.11。默认预检要求宿主磁盘空余至少 **10 GiB**、Docker 内存至少 **6 GiB**。
 
 ```bash
 cd /Users/shi/Project/myProject/NewsAgent

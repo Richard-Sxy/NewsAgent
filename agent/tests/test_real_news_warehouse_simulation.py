@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from app.warehouse_simulation import real_news as warehouse
+from simulation.warehouse_simulation import real_news as warehouse
 
 
 @pytest.fixture(scope="module")

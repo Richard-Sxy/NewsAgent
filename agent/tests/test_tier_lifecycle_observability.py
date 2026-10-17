@@ -9,8 +9,8 @@ from pydantic import SecretStr
 import pytest
 
 from app.api.knowledge import router
-from app.knowledge.tier_lifecycle_index import GuardedTieredIndex
-from app.knowledge.tier_lifecycle_query import (
+from app.modules.knowledge.tier_lifecycle_index import GuardedTieredIndex
+from app.modules.knowledge.tier_lifecycle_query import (
     LifecycleKnowledgeSearch, LifecycleQueryTimeout, LifecycleQueryUnavailable,
 )
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
@@ -50,7 +50,7 @@ def hit(chunk):
 @pytest.mark.asyncio
 async def test_trace_decomposes_every_refill_using_request_local_clocks(monkeypatch):
     clock = [0.0]
-    monkeypatch.setattr("app.knowledge.tier_lifecycle_index.perf_counter", lambda: clock[0])
+    monkeypatch.setattr("app.modules.knowledge.tier_lifecycle_index.perf_counter", lambda: clock[0])
     rows = [hit("old-1"), hit("old-2"), hit("new-1"), hit("new-2")]
     class Backend:
         async def search(self, **kwargs):

@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.query_understanding import (
+from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryResolution, QueryResolutionError, QueryUnderstanding,
     local_query_understanding, resolve_query_understanding,
 )

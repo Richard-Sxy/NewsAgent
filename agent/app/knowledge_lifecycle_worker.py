@@ -21,8 +21,8 @@ from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import get_settings
 from app.db.session import Database
-from app.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
-from app.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
+from app.modules.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
+from app.modules.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.factory import build_model_runtime_ports
 from app.workflows.knowledge_lifecycle import KnowledgeIndexWorkflow, KnowledgeReconcileWorkflow

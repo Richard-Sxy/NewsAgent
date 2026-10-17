@@ -7,7 +7,7 @@ import json
 import pytest
 from pydantic import ValidationError
 
-from app.evaluation.hot_news import load_evaluation_dataset
+from app.modules.data_loop.evaluation.hot_news import load_evaluation_dataset
 from evaluation.operations_evolution_eval import EvolutionPrediction, score_predictions
 from evaluation.operations_research import (
     DEFAULT_CATALOG, OperationsResearchCatalog, OperationsResearchDataset, VERSION,

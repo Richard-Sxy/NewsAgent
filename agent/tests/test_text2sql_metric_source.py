@@ -8,10 +8,10 @@ from unittest.mock import AsyncMock
 import pytest
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import EnrichedHotNews
-from app.analytics.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.analysis.hot_news_enrichment import EnrichedHotNews
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
 from app.analytics.news_content import NewsContent
-from app.analytics.text2sql_metric_source import (
+from app.modules.hot_news.scoring.text2sql_metric_source import (
     Text2SqlNewsMetricSource,
     aggregate_metric_template,
 )
@@ -21,19 +21,19 @@ from app.clients.enterprise.sql_warehouse import (
 )
 from app.model_runtime.result import AgentResult
 from app.domain.errors import HotNewsDataQualityError, Text2SqlGuardError
-from app.schemas.hot_news import HotNewsAnalysisReport
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisReport
 from app.schemas.text2sql import (
     Text2SqlColumn,
     Text2SqlPlan,
     Text2SqlSchema,
     Text2SqlTable,
 )
-from app.services.hot_news_analysis import (
+from app.modules.hot_news.analysis.hot_news_analysis import (
     HotNewsAnalysisInputBuilder,
     HotNewsAnalysisService,
     HotNewsAnalysisValidator,
 )
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     EmptyHotNewsBaselineProvider,
     HotNewsOrchestrationPolicy,
     HotNewsOrchestrationService,
@@ -355,7 +355,7 @@ def test_orchestration_requires_exactly_one_metric_source() -> None:
 
 
 def test_bootstrap_factory_accepts_python_generator() -> None:
-    import app.hot_news_bootstrap as bootstrap
+    import app.bootstrap.hot_news as bootstrap
 
     generator = object()
 
@@ -377,7 +377,7 @@ def test_bootstrap_factory_accepts_python_generator() -> None:
 
 
 def test_bootstrap_factory_without_app_keeps_template_only() -> None:
-    import app.hot_news_bootstrap as bootstrap
+    import app.bootstrap.hot_news as bootstrap
 
     source = bootstrap.create_text2sql_metric_source(
         SimpleNamespace(

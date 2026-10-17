@@ -13,10 +13,10 @@ import pytest
 
 from app.api.behavior_tags import router
 from app.api.dependencies import get_data_loop_gateway_token
-from app.audience.behavior_package import BehaviorPackageAudienceClient
-from app.audience.contracts import AudienceProviderError, AudienceQuery, AudienceSelection
-from app.behavior_tags.runtime import LocalBehaviorRuntime
-from app.behavior_tags.tagging import load_topic_policy
+from app.modules.audience.behavior_package import BehaviorPackageAudienceClient
+from app.modules.audience.contracts import AudienceProviderError, AudienceQuery, AudienceSelection
+from app.modules.behavior_tags.runtime import LocalBehaviorRuntime
+from app.modules.behavior_tags.tagging import load_topic_policy
 
 
 TENANT = "11111111-1111-4111-8111-111111111111"

@@ -5,10 +5,10 @@ from uuid import uuid4
 
 import pytest
 
-import app.services.memory_promotion_application as application_module
-from app.repositories.user_memory import PostgresUserMemoryRepository
-from app.schemas.user_memory import PromoteMemoryCandidateCommand
-from app.services.memory_promotion_application import (
+import app.modules.memory.memory_promotion_application as application_module
+from app.modules.memory.persistence.user_memory_repository import PostgresUserMemoryRepository
+from app.modules.memory.contracts.user_memory import PromoteMemoryCandidateCommand
+from app.modules.memory.memory_promotion_application import (
     MemoryPromotionApplicationService,
     MemoryPromotionConflictError,
     MemoryPromotionPersistenceError,

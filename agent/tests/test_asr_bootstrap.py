@@ -11,7 +11,7 @@ from app.clients.enterprise.tencent_asr import (
     StaticHeaderSigner,
     Tc3RequestSigner,
 )
-from app.knowledge.bootstrap import VideoIngestSettings, build_asr_rpc
+from app.modules.knowledge.bootstrap import VideoIngestSettings, build_asr_rpc
 
 
 def make_settings(**overrides) -> VideoIngestSettings:

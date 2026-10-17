@@ -5,13 +5,13 @@ from uuid import uuid4
 import pytest
 
 from app.model_runtime.result import AgentResult
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
     HotNewsMetrics,
     HotScoreComponents,
 )
-from app.schemas.push import (
+from app.modules.data_loop.contracts.push import (
     AudienceRule,
     PushChannel,
     PushPolicyContext,
@@ -20,9 +20,9 @@ from app.schemas.push import (
     PushStrategyCandidate,
     PushStrategyInput,
 )
-from app.services.agents.push_strategy import PushStrategyAgentRunner
-from app.services.push_policy import PushPolicyValidator
-from app.services.push_strategy import PushStrategyInputBuilder, PushStrategyService
+from app.modules.data_loop.agents.push_strategy import PushStrategyAgentRunner
+from app.modules.data_loop.push_policy import PushPolicyValidator
+from app.modules.data_loop.push_strategy import PushStrategyInputBuilder, PushStrategyService
 
 
 NOW = datetime(2026, 9, 19, 8, tzinfo=timezone.utc)

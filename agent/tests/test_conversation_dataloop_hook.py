@@ -12,21 +12,21 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 
-import app.conversation.dataloop_hooks as hook_module
-import app.services.production_bundle as bundle_module
-from app.conversation.dataloop_hooks import (
+import app.modules.conversation.dataloop_hooks as hook_module
+import app.modules.data_loop.production_bundle as bundle_module
+from app.modules.conversation.dataloop_hooks import (
     BundleCandidateArguments, ConversationDataLoopHooks, DataLoopCatalog, DataLoopHookUnavailable,
 )
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.core import PromptRegistry, PromptSpec
-from app.model_runtime.hot_news import HOT_NEWS_SCENE
-from app.repositories.evaluation_dataset import PostgresEvaluationDatasetRepository
-from app.repositories.production_bundle import PostgresProductionBundleRepository
-from app.schemas.evaluation_dataset import EvaluationDatasetCaseIndex, EvaluationDatasetReference
-from app.services.data_loop.orchestrator import DataLoopOrchestrator, DataLoopWorkflowAccessError
-from app.services.production_bundle import ProductionBundleApplicationService, ProductionBundleRuleViolation
-from app.workflows.data_loop_contracts import DataLoopWorkflowSnapshot
+from app.modules.hot_news.analysis.runner import HOT_NEWS_SCENE
+from app.modules.data_loop.persistence.evaluation_dataset_repository import PostgresEvaluationDatasetRepository
+from app.modules.data_loop.persistence.production_bundle_repository import PostgresProductionBundleRepository
+from app.modules.data_loop.contracts.evaluation_dataset import EvaluationDatasetCaseIndex, EvaluationDatasetReference
+from app.modules.data_loop.orchestrator import DataLoopOrchestrator, DataLoopWorkflowAccessError
+from app.modules.data_loop.production_bundle import ProductionBundleApplicationService, ProductionBundleRuleViolation
+from app.modules.data_loop.workflow_contracts import DataLoopWorkflowSnapshot
 from tests.test_production_bundle import active_bundle, spec
 
 

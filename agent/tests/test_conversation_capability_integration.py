@@ -12,17 +12,17 @@ from fastapi.testclient import TestClient
 from temporalio.service import RPCError, RPCStatusCode
 
 from app.api.conversations import router
-from app.conversation.candidate_templates import candidate_templates
-from app.conversation.receipts import CapabilityReceipt
-from app.conversation.service import ConversationAgentService
-from app.conversation.tools import ConversationToolDenied, ConversationTools, HOOK_REGISTRY
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.conversation.candidate_templates import candidate_templates
+from app.modules.conversation.receipts import CapabilityReceipt
+from app.modules.conversation.service import ConversationAgentService
+from app.modules.conversation.tools import ConversationToolDenied, ConversationTools, HOOK_REGISTRY
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.core import PromptRegistry, PromptSpec, RawInferenceResult
-from app.model_runtime.hot_news import HOT_NEWS_SCENE
+from app.modules.hot_news.analysis.runner import HOT_NEWS_SCENE
 from app.repositories.conversation import PostgresConversationRepository
 from app.schemas.conversation import ToolTrace
-from app.services.data_loop.orchestrator import DataLoopWorkflowAccessError
+from app.modules.data_loop.orchestrator import DataLoopWorkflowAccessError
 from tests.test_conversation_agent import TENANT, USER, runtime
 from tests.test_conversation_feedback_hook import feedback_harness
 from tests.test_conversation_store import FakeDatabase

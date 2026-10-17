@@ -11,8 +11,8 @@ from uuid import uuid4
 import pytest
 
 from app.clients.enterprise.milvus_vector import MilvusTieredVectorIndex
-from app.knowledge.search_config import load_knowledge_search_config
-from app.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
+from app.modules.knowledge.search_config import load_knowledge_search_config
+from app.modules.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
 from app.retrieval.tiered_vector import ChunkVectorRecord, VectorTier
 
 

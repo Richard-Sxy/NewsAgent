@@ -18,7 +18,7 @@ from sqlalchemy import BigInteger, DateTime, create_engine, inspect, select, tex
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.exc import DBAPIError, IntegrityError
 
-from app.knowledge.tier_lifecycle_store import _jobs, _metadata, _news, _vectors
+from app.modules.knowledge.tier_lifecycle_store import _jobs, _metadata, _news, _vectors
 
 
 TABLE_NAMES = {"tier_lifecycle_news", "tier_lifecycle_jobs", "tier_lifecycle_vectors"}

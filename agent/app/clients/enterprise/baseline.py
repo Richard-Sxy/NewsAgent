@@ -16,10 +16,10 @@ from app.clients.enterprise.common import (
     RpcDeadlineBudget,
     RpcResponseMeta,
 )
-from app.analytics.baseline import NewsMetricBaseline
+from app.modules.hot_news.scoring.baseline import NewsMetricBaseline
 from app.analytics.entities import ContentType
 from app.domain.errors import HotNewsDataQualityError
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     HotNewsBaselineProvider,
     MetricKey,
 )

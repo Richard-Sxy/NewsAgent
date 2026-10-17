@@ -353,7 +353,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--start-date", type=date.fromisoformat, default=date(2026, 10, 7))
     parser.add_argument("--end-date", type=date.fromisoformat, default=date(2026, 10, 14))
-    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parents[1] / "data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery")
+    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parents[2] / "var/news/data/incremental/2026-10-07_2026-10-14-v2/sitemap-discovery")
     parser.add_argument("--max-sitemaps", type=int, default=150)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--target-per-day", type=int, default=2000)

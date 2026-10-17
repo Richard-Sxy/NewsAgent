@@ -5,8 +5,8 @@ from uuid import uuid4
 
 import pytest
 
-from app.conversation.context import ContextCursor, ConversationMemory, POLICY_VERSION, json_chars
-from app.conversation.service import ConversationAgentService
+from app.modules.conversation.context import ContextCursor, ConversationMemory, POLICY_VERSION, json_chars
+from app.modules.conversation.service import ConversationAgentService
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.core import RawInferenceResult
 from app.repositories.conversation import ConversationConflict, ConversationNotFound

@@ -5,9 +5,9 @@ from uuid import uuid4
 import pytest
 from sqlalchemy.exc import SQLAlchemyError
 
-import app.services.memory_context_application as application_module
-from app.repositories.user_memory import PostgresUserMemoryRepository
-from app.schemas.user_memory import (
+import app.modules.memory.memory_context_application as application_module
+from app.modules.memory.persistence.user_memory_repository import PostgresUserMemoryRepository
+from app.modules.memory.contracts.user_memory import (
     LongTermUserMemory,
     MemorySourceRef,
     ResolvedMemoryContext,
@@ -15,8 +15,8 @@ from app.schemas.user_memory import (
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_context import UserMemoryContextResolver
-from app.services.memory_context_application import (
+from app.modules.memory.memory_context import UserMemoryContextResolver
+from app.modules.memory.memory_context_application import (
     MemoryContextApplicationService,
     MemoryContextPersistenceError,
 )

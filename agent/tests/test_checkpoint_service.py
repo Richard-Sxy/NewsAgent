@@ -7,13 +7,13 @@ from pydantic import ValidationError
 
 from app.domain.execution import AgentType, ArtifactType, ExecutionStatus, StepType
 from app.domain.job_status import JobStatus
-from app.models.agent_run import AgentRun
-from app.models.artifact import WritingArtifact
-from app.models.job import WritingJob
-from app.models.step import WritingStep
-from app.schemas.checkpoint import CheckpointCommit, FailureCommit
-from app.schemas.events import ProgressEvent
-from app.services.checkpoint import CheckpointError, CheckpointService
+from app.modules.writing.persistence.agent_run import AgentRun
+from app.modules.writing.persistence.artifact import WritingArtifact
+from app.modules.writing.persistence.job import WritingJob
+from app.modules.writing.persistence.step import WritingStep
+from app.modules.writing.contracts.checkpoint import CheckpointCommit, FailureCommit
+from app.modules.writing.contracts.events import ProgressEvent
+from app.modules.writing.checkpoint import CheckpointError, CheckpointService
 
 
 def build_context():

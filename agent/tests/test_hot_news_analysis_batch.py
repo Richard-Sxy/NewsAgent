@@ -6,7 +6,7 @@ from types import SimpleNamespace
 import pytest
 
 from app.model_runtime.http import ModelTransportError
-from app.services.hot_news_analysis_batch import HotNewsAnalysisBatch
+from app.modules.hot_news.analysis.hot_news_analysis_batch import HotNewsAnalysisBatch
 
 
 @pytest.mark.asyncio

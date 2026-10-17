@@ -7,14 +7,14 @@ import asyncio
 import json
 from pathlib import Path
 
-from app.evaluation.hot_news import (
+from app.modules.data_loop.evaluation.hot_news import (
     HotNewsEvaluationService,
     load_evaluation_dataset,
 )
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.factory import build_model_runtime_ports
-from app.model_runtime.hot_news import NativeHotNewsAnalysisRunner
+from app.modules.hot_news.analysis.runner import NativeHotNewsAnalysisRunner
 
 
 DEFAULT_DATASET = (

@@ -7,8 +7,8 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.data_analysis.engine import analyze, validate_request
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
+from app.modules.data_analysis.engine import analyze, validate_request
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner
 
 
 def row(news_id="shared", rank=1, **changes):

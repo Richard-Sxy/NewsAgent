@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 
 from fastapi.testclient import TestClient
 
-import app.api.data_loop as data_loop_api_module
+import app.modules.data_loop.api as data_loop_api_module
 from app.api.dependencies import (
     DataLoopPermission,
     get_analysis_feedback_collector,
@@ -16,9 +16,9 @@ from app.api.dependencies import (
     get_session,
 )
 from app.main import create_app
-from app.services.data_loop.feedback_collector import FeedbackLabelWriteOutcome
-from app.services.production_bundle import CandidateWriteOutcome
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.feedback_collector import FeedbackLabelWriteOutcome
+from app.modules.data_loop.production_bundle import CandidateWriteOutcome
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
 from tests.test_feedback_collector import pending_label
 from tests.test_dataset_freezer import (
     CASE_A,
@@ -33,7 +33,7 @@ from tests.test_production_bundle import (
     evaluation_command,
     proposal,
 )
-from app.services.production_bundle import ProductionBundleDomainService
+from app.modules.data_loop.production_bundle import ProductionBundleDomainService
 
 
 TENANT_ID = UUID("11111111-1111-4111-8111-111111111111")

@@ -34,11 +34,11 @@ OVERLAYS = (
 )
 INCREMENTAL_OVERLAY = "docker-compose.incremental-news-demo.yml"
 INCREMENTAL_CONFIG = "knowledge-search.incremental-20261014-v1.yml"
-INCREMENTAL_PACKAGE = "data/news-bge-incremental-20261014-v1"
+INCREMENTAL_PACKAGE = "../var/agent/data/news-bge-incremental-20261014-v1"
 INCREMENTAL_INDEX_VERSIONS = {
     "v1": (INCREMENTAL_OVERLAY, INCREMENTAL_CONFIG, INCREMENTAL_PACKAGE),
     "v2": ("docker-compose.bulk-news-demo.yml", "knowledge-search.incremental-20261014-v2.yml",
-           "data/news-bge-incremental-20261014-v2"),
+           "../var/agent/data/news-bge-incremental-20261014-v2"),
 }
 CATALOG = "data/corpus-news-v6/catalog.json"
 SCHEMA = "docs/sql-warehouse-schema-v6.md"
@@ -88,7 +88,7 @@ class RealNewsDemoDeployment(BgeDemoDeployment):
         command = ["docker", "compose", "--env-file", os.devnull, "-p", PROJECT]
         overlays = (*OVERLAYS, self.index_overlay) if self.incremental_news_index else OVERLAYS
         for name in overlays:
-            command.extend(("-f", str(self.root / "deploy" / name)))
+            command.extend(("-f", str(self.root.parent / "deploy" / name)))
         return [*command, *args]
 
     def _validate_files(self) -> None:
@@ -99,19 +99,19 @@ class RealNewsDemoDeployment(BgeDemoDeployment):
             raise DeploymentError("API/前端端口必须不同，并位于 1024–65535。")
         if not 2 <= o.min_free_gib <= 1024:
             raise DeploymentError("最小磁盘余量必须位于 2–1024 GiB。")
-        required = [*(f"deploy/{name}" for name in OVERLAYS), CATALOG, SCHEMA,
+        required = [*(f"../deploy/{name}" for name in OVERLAYS), CATALOG, SCHEMA,
             "app/sql_assistant/corpus_profiles.py", "app/sql_assistant/warehouse.py",
-            "deploy/text2sql-scenes.corpus-v6.yml", "deploy/conversation-hooks.model-runtime.local.yml",
-            "deploy/knowledge-search.bge-snapshot.yml", "deploy/bge-demo.nginx.conf",
-            "deploy/bge-demo.frontend.json", "frontend/Dockerfile.conversation-hooks.cached"]
+            "../deploy/text2sql-scenes.corpus-v6.yml", "../deploy/conversation-hooks.model-runtime.local.yml",
+            "../deploy/knowledge-search.bge-snapshot.yml", "../deploy/bge-demo.nginx.conf",
+            "../deploy/bge-demo.frontend.json", "frontend/Dockerfile.conversation-hooks.cached"]
         if not o.skip_build:
             required.append("frontend/dist/index.html")
         if self.incremental_news_index:
-            required.extend((f"deploy/{self.index_overlay}", f"deploy/{self.index_config}",
+            required.extend((f"../deploy/{self.index_overlay}", f"../deploy/{self.index_config}",
                              f"{self.index_package}/SHA256SUMS", f"{self.index_package}/build_report.json"))
         missing = [p for p in required if not (self.root / p).is_file()]
-        package = self.root.parent / "rag-recall-demo"
-        missing.extend(f"../rag-recall-demo/{p}" for p in (
+        package = self.root.parent / "var/knowledge-snapshots/rag-recall-demo"
+        missing.extend(f"../var/knowledge-snapshots/rag-recall-demo/{p}" for p in (
             "SHA256SUMS", "data/experiments/offline_recall_fg/chunks.jsonl",
             "data/experiments/offline_recall_fg/embeddings.npy", "data/experiments/offline_recall_fg/index.bin",
             "data/models/bge-large-zh-v1.5/modules.json") if not (package / p).is_file())

@@ -5,16 +5,16 @@ from uuid import UUID
 import pytest
 from sqlalchemy.exc import SQLAlchemyError
 
-import app.services.memory_write_application as application_module
-from app.repositories.user_memory import PostgresUserMemoryRepository
-from app.schemas.user_memory import (
+import app.modules.memory.memory_write_application as application_module
+from app.modules.memory.persistence.user_memory_repository import PostgresUserMemoryRepository
+from app.modules.memory.contracts.user_memory import (
     CreateShortTermMemoryCommand,
     MemorySourceRef,
     ProposeLongTermMemoryCommand,
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_write_application import (
+from app.modules.memory.memory_write_application import (
     MemoryWriteApplicationService,
     MemoryWriteConflictError,
     MemoryWritePersistenceError,

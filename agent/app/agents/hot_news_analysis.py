@@ -2,8 +2,8 @@
 
 from dataclasses import dataclass
 
-from app.analytics.hot_news_enrichment import EnrichedHotNews
-from app.retrieval.related_news_reranker import RerankRelatedNews
+from app.modules.hot_news.analysis.hot_news_enrichment import EnrichedHotNews
+from app.modules.hot_news.analysis.related_news_reranker import RerankRelatedNews
 
 
 @dataclass(frozen=True, slots=True)

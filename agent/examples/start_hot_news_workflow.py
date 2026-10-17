@@ -8,15 +8,15 @@ from temporalio.client import Client
 from temporalio.common import WorkflowIDReusePolicy
 
 from app.config import get_settings
-from app.behavior_tags.runtime import build_behavior_runtime
-from app.reader_profiles.factory import build_reader_profile_service
-from app.services.hot_news_orchestration import HotNewsRunRequest
+from app.modules.behavior_tags.runtime import build_behavior_runtime
+from app.modules.reader_profiles.factory import build_reader_profile_service
+from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
 from app.workflows.contracts import HotNewsActivityOutcome
-from app.workflows.hot_news import (
+from app.modules.hot_news.workflows.hot_news import (
     HOT_NEWS_WORKFLOW_NAME,
     HotNewsMonitorWorkflow,
 )
-from examples.hot_news_e2e_support import (
+from simulation.hot_news_e2e_support import (
     build_hot_news_e2e_dependencies,
 )
 

@@ -9,27 +9,27 @@ import pytest
 
 from app.domain.errors import AgentOutputValidationError
 from app.config import Settings
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
 from app.model_runtime.core import InferenceRequest, RawInferenceResult
-from app.model_runtime.hot_news import local_hot_news_prompts
+from app.modules.hot_news.analysis.runner import local_hot_news_prompts
 from app.model_runtime.local_inference import LocalHotNewsInference
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.factory import build_model_runtime_ports
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
-from app.schemas.production_bundle import ProductionBundleSpec
-from app.services.hot_news_analysis import (
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents
+from app.modules.data_loop.contracts.production_bundle import ProductionBundleSpec
+from app.modules.hot_news.analysis.hot_news_analysis import (
     HotNewsAnalysisInputBuilder,
     HotNewsAnalysisService,
     HotNewsAnalysisValidator,
 )
-from app.services.hot_news_orchestration import (
+from app.modules.hot_news.application.hot_news_orchestration import (
     HotNewsOrchestrationService,
     HotNewsRunRequest,
 )
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
-from examples.hot_news_e2e_support import build_hot_news_e2e_dependencies
-from examples.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
+from simulation.hot_news_e2e_support import build_hot_news_e2e_dependencies
+from simulation.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
 
 
 LOCAL_MODEL_CONFIG = Path(__file__).resolve().parents[1] / "deploy/model-runtime.local.yml"
@@ -54,7 +54,7 @@ def native_spec(**updates: str) -> ProductionBundleSpec:
 @pytest.mark.asyncio
 @pytest.mark.parametrize("concurrency", [1, 3])
 async def test_native_hot_news_runs_full_domain_chain(concurrency) -> None:
-    from app.services.hot_news_analysis_batch import HotNewsAnalysisBatch
+    from app.modules.hot_news.analysis.hot_news_analysis_batch import HotNewsAnalysisBatch
     scenario = build_hot_news_e2e_dependencies()
     config = load_model_runtime_config(LOCAL_MODEL_CONFIG)
     ports = build_model_runtime_ports(config, environment="e2e")

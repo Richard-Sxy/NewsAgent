@@ -14,9 +14,9 @@ import pytest
 from sqlalchemy import JSON, MetaData, create_engine, event, select
 from sqlalchemy.orm import Session
 
-from app.knowledge.document import IngestStatus, KnowledgeDocument
-from app.knowledge.native_indexing import NativeKnowledgeIndexingService
-from app.knowledge.postgres_store import PostgresKnowledgeStore, _chunks, _documents, _metadata
+from app.modules.knowledge.document import IngestStatus, KnowledgeDocument
+from app.modules.knowledge.native_indexing import NativeKnowledgeIndexingService
+from app.modules.knowledge.postgres_store import PostgresKnowledgeStore, _chunks, _documents, _metadata
 from app.model_runtime.core import EmbeddingResult
 from app.retrieval.in_memory_index import InMemoryTieredVectorIndex
 from app.retrieval.tiered_vector import VectorTier

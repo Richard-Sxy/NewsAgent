@@ -12,7 +12,7 @@ from app.domain.errors import AgentOutputValidationError, HotNewsAnalysisAttempt
 from app.model_runtime.result import AgentResult
 from app.observability import telemetry
 from app.observability.settings import ObservabilitySettings
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
 from tests.test_hot_news_agent_module import analysis_input, enriched_hot_news, valid_report
 
 

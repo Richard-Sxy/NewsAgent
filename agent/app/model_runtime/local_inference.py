@@ -8,23 +8,23 @@ import json
 from hashlib import sha256
 
 from app.model_runtime.core import InferenceRequest, RawInferenceResult
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     AnalysisReason,
     HotNewsAnalysisInput,
     HotNewsAnalysisReport,
     OperationSuggestion,
 )
 from app.schemas.error_attribution import ErrorAttributionInput, ErrorAttributionReport
-from app.schemas.research import ResearchPackage
-from app.schemas.review import ReviewInput, ReviewReport
-from app.schemas.writing import (
+from app.modules.writing.contracts.research import ResearchPackage
+from app.modules.writing.contracts.review import ReviewInput, ReviewReport
+from app.modules.writing.contracts.writing import (
     ArticleAssemblyInput,
     ArticleDraft,
     ArticleOutline,
     ArticleSection,
     SectionWritingInput,
 )
-from app.knowledge.qa import QAGenerationOutput
+from app.modules.knowledge.qa import QAGenerationOutput
 
 
 class LocalHotNewsInference:
@@ -120,15 +120,15 @@ class LocalHotNewsInference:
     @staticmethod
     def _complete_other_scene(scene: str, payload: dict) -> str:
         if scene == "conversation_memory":
-            from app.conversation.local import local_conversation_summary
+            from app.modules.conversation.local import local_conversation_summary
 
             return local_conversation_summary(payload)
         if scene == "conversation":
-            from app.conversation.local import local_conversation_plan
+            from app.modules.conversation.local import local_conversation_plan
 
             return local_conversation_plan(payload)
         if scene == "query_understanding":
-            from app.conversation.query_understanding import local_query_understanding
+            from app.modules.conversation.query_understanding import local_query_understanding
 
             return local_query_understanding(payload)
         if scene == "text2sql_assistant":

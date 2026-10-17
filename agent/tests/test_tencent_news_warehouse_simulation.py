@@ -10,7 +10,7 @@ from uuid import UUID
 
 import pytest
 
-from app.warehouse_simulation import tencent_news as warehouse
+from simulation.warehouse_simulation import tencent_news as warehouse
 
 
 ADDITIVE_METRICS = (

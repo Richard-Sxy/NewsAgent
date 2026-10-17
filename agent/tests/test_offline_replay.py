@@ -4,10 +4,10 @@ from uuid import UUID
 import pytest
 
 from app.model_runtime.result import AgentResult
-from app.schemas.evaluation_dataset import EvaluationDatasetManifest
-from app.schemas.hot_news import AnalysisReason, HotNewsAnalysisReport
-from app.schemas.production_bundle import ProductionBundleSpec
-from app.services.data_loop.offline_replay import HotNewsOfflineReplayService
+from app.modules.data_loop.contracts.evaluation_dataset import EvaluationDatasetManifest
+from app.modules.hot_news.contracts.hot_news import AnalysisReason, HotNewsAnalysisReport
+from app.modules.data_loop.contracts.production_bundle import ProductionBundleSpec
+from app.modules.data_loop.offline_replay import HotNewsOfflineReplayService
 from tests.test_evaluation_dataset_schema import CASE_A, frozen_case
 
 

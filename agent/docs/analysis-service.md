@@ -54,7 +54,7 @@ SQL、脚本、文件路径或模块名。服务不加载业务 Settings、数�
 | `ANALYSIS_SERVICE_MEMORY_MB` | 128；每个 Linux worker AS 限制，范围 32–4096 |
 | `ANALYSIS_SERVICE_TLS_CERTFILE` / `ANALYSIS_SERVICE_TLS_KEYFILE` | 开发默认不配置；生产必须配置成对的非空路径，否则启动拒绝；生产模板从证书 Secret 只读挂载 |
 
-启动入口是 `python -m app.data_analysis.service`，固定监听 `0.0.0.0:8100`，仅一个
+启动入口是 `python -m app.modules.data_analysis.service`，固定监听 `0.0.0.0:8100`，仅一个
 Uvicorn worker，关闭 access log、代理头信任、Server header 和交互式 API 文档。
 生产服务自身拒绝未配置 TLS 的明文启动，不仅依赖 API 客户端或部署模板。
 `GET /health` 也必须鉴权。token 与业务模型密钥独立；worker 的环境仍由现有 Runner

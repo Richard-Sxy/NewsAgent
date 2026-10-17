@@ -5,9 +5,9 @@ from unittest.mock import AsyncMock
 import pytest
 from temporalio.exceptions import ApplicationError
 
-from app.activities.hot_news import HotNewsActivities
+from app.modules.hot_news.workflows.activities import HotNewsActivities
 from app.domain.errors import HotNewsAnalysisAttemptError, HotNewsPersistenceError
-from app.services.hot_news_orchestration import HotNewsRunRequest
+from app.modules.hot_news.application.hot_news_orchestration import HotNewsRunRequest
 from app.workflows.contracts import HotNewsActivityOutcome
 
 

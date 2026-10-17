@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from app.analytics.data_source import BehaviorQuery, InMemoryBehaviorDataSource
+from app.modules.hot_news.scoring.data_source import BehaviorQuery, InMemoryBehaviorDataSource
 from app.analytics.entities import BehaviorRecord, ContentType, EventType
 
 

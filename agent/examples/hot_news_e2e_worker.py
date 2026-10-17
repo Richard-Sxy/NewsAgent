@@ -3,7 +3,7 @@
 import asyncio
 
 from app.hot_news_worker import run_hot_news_worker
-from examples.hot_news_e2e_support import (
+from simulation.hot_news_e2e_support import (
     build_hot_news_e2e_dependencies,
 )
 from examples.hot_news_e2e_knowledge import (

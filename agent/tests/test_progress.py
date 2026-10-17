@@ -6,8 +6,8 @@ from pydantic import ValidationError
 
 from app.domain.execution import StepType
 from app.domain.job_status import JobStatus
-from app.schemas.events import ProgressEvent
-from app.services.progress import (
+from app.modules.writing.contracts.events import ProgressEvent
+from app.modules.writing.progress import (
     InvalidProgressInput,
     ProgressCalculator,
     ProgressContext,

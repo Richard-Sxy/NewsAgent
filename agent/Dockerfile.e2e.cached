@@ -12,18 +12,19 @@ RUN groupadd --system --gid 10001 app \
     && mkdir -p /state && chown app:app /state
 # Retain dependencies only. No cached /app configuration, data or secrets survive.
 COPY --from=dependencies /usr/local /usr/local
-COPY pyproject.toml ./
+COPY agent/pyproject.toml ./
 # Fail closed if the cached packages no longer satisfy this checkout's contract.
 RUN python -c 'import importlib.metadata as m, tomllib; from packaging.requirements import Requirement; p=tomllib.load(open("pyproject.toml","rb"))["project"]; requirements=[Requirement(value) for value in p["dependencies"]+p.get("optional-dependencies",{}).get("dev",[])]; assert all(m.version(r.name) in r.specifier for r in requirements if r.marker is None or r.marker.evaluate()), "cached dependency contract mismatch"' \
     && python -m pip check
-COPY app ./app
-COPY alembic ./alembic
-COPY alembic.ini ./
-COPY examples ./examples
-COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
-COPY tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
-COPY tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
-COPY evaluation ./evaluation
+COPY agent/app ./app
+COPY agent/alembic ./alembic
+COPY agent/alembic.ini ./
+COPY agent/examples ./examples
+COPY agent/simulation ./simulation
+COPY agent/tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY agent/tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
+COPY agent/tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
+COPY agent/evaluation ./evaluation
 COPY deploy/mock-cms ./deploy/mock-cms
 COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
 COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
@@ -33,13 +34,13 @@ COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
 COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
 COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
 COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
-COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
-COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
-COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
-COPY docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
+COPY agent/docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
+COPY agent/docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
+COPY agent/docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+COPY agent/docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
 COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
-COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
-COPY tests ./tests
+COPY agent/data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
+COPY agent/tests ./tests
 USER 10001:10001
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

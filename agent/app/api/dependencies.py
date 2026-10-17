@@ -12,40 +12,40 @@ from pydantic import SecretStr
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import Database
-from app.services.job import JobService
-from app.services.orchestrator import OrchestratorService
-from app.services.recovery import RecoveryService
-from app.services.outbox import OutboxService
-from app.services.event_reader import RedisProgressReader
-from app.services.hot_news_event_stream import RedisHotNewsEventStream
+from app.modules.writing.job import JobService
+from app.modules.writing.orchestrator import OrchestratorService
+from app.modules.writing.recovery import RecoveryService
+from app.modules.writing.outbox import OutboxService
+from app.modules.writing.event_reader import RedisProgressReader
+from app.modules.hot_news.application.hot_news_event_stream import RedisHotNewsEventStream
 from app.storage.s3 import S3ArtifactStore
 from app.clients.cms import CmsPublisher
-from app.services.data_loop.orchestrator import DataLoopOrchestrator
-from app.services.data_loop.artifacts import DataLoopArtifactStore
-from app.services.data_loop.feedback_collector import AnalysisFeedbackCollector
-from app.services.data_loop.dataset_freezer import (
+from app.modules.data_loop.orchestrator import DataLoopOrchestrator
+from app.modules.data_loop.artifacts import DataLoopArtifactStore
+from app.modules.data_loop.feedback_collector import AnalysisFeedbackCollector
+from app.modules.data_loop.dataset_freezer import (
     EvaluationDatasetArtifactStore,
 )
-from app.services.production_bundle import ProductionBundleApplicationService
-from app.services.hot_news_decision import HotNewsDecisionService
-from app.services.hot_news_run_store import PostgresHotNewsRunStore
-from app.services.data_loop.publication_outcome import (
+from app.modules.data_loop.production_bundle import ProductionBundleApplicationService
+from app.modules.hot_news.application.hot_news_decision import HotNewsDecisionService
+from app.modules.hot_news.adapters.hot_news_run_store import PostgresHotNewsRunStore
+from app.modules.data_loop.publication_outcome import (
     PublicationOutcomeFeedbackService,
 )
-from app.model_runtime.bundle_runtime import NativeProductionBundleRuntimeRegistry
-from app.model_runtime.bundle_contract import UnsupportedProductionBundleRuntimeError
+from app.modules.data_loop.bundle_runtime import NativeProductionBundleRuntimeRegistry
+from app.modules.data_loop.bundle_contract import UnsupportedProductionBundleRuntimeError
 from app.model_runtime.config_file import (
     load_model_runtime_config,
     validate_runtime_environment,
 )
-from app.services.memory_context_application import (
+from app.modules.memory.memory_context_application import (
     MemoryContextApplicationService,
 )
-from app.services.memory_promotion_application import (
+from app.modules.memory.memory_promotion_application import (
     MemoryPromotionApplicationService,
 )
-from app.services.memory_write_application import MemoryWriteApplicationService
-from app.services.hot_news_writing_handoff import (
+from app.modules.memory.memory_write_application import MemoryWriteApplicationService
+from app.modules.hot_news.application.hot_news_writing_handoff import (
     HotNewsWritingHandoffService,
 )
 
@@ -594,7 +594,7 @@ async def get_publication_outcome_feedback_service(
 async def get_hot_news_query_service(request: Request):
     """热点控制台的只读查询服务；延迟导入避免 API 启动环路。"""
 
-    from app.services.hot_news_query import HotNewsQueryService
+    from app.modules.hot_news.application.hot_news_query import HotNewsQueryService
 
     database: Database = request.app.state.database
     return HotNewsQueryService(database=database)

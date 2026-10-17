@@ -8,7 +8,7 @@ import pytest
 from botocore.exceptions import ClientError
 
 from app.domain.errors import ArtifactStoreError
-from app.services.data_loop.dataset_freezer import (
+from app.modules.data_loop.dataset_freezer import (
     EvaluationDatasetIntegrityError,
     S3EvaluationDatasetArtifactStore,
 )

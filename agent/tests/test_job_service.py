@@ -6,10 +6,10 @@ import pytest
 from pydantic import ValidationError
 
 from app.domain.job_scenario import JobScenario
-from app.schemas.job import CreateWritingJobRequest
+from app.modules.writing.contracts.job import CreateWritingJobRequest
 from app.domain.job_status import JobStatus
-from app.services.job import JobNotFoundError, JobService
-from app.services.outbox import OutboxService
+from app.modules.writing.job import JobNotFoundError, JobService
+from app.modules.writing.outbox import OutboxService
 
 
 def result(*, scalar=None, scalar_one=None):

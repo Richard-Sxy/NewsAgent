@@ -8,8 +8,8 @@ import pytest
 from pydantic import ValidationError
 from sqlalchemy.sql import operators
 
-import app.services.memory_write_application as writer_module
-from app.conversation.memory_hooks import (
+import app.modules.memory.memory_write_application as writer_module
+from app.modules.conversation.memory_hooks import (
     CANDIDATE_TTL,
     MEMORY_POLICY_VERSION,
     SHORT_TERM_TTL,
@@ -17,12 +17,12 @@ from app.conversation.memory_hooks import (
     MemoryHookArguments,
     MemoryHookSourceNotFoundError,
 )
-from app.conversation.receipts import CapabilityReceipt
+from app.modules.conversation.receipts import CapabilityReceipt
 from app.models.conversation import ConversationTurnRecord
-from app.models.user_memory import LongTermMemoryCandidateRecord, ShortTermUserMemoryRecord
-from app.repositories.user_memory import PostgresUserMemoryRepository
-from app.schemas.user_memory import UserMemoryScope
-from app.services.memory_write_application import MemoryWriteApplicationService, MemoryWriteConflictError
+from app.modules.memory.persistence.user_memory import LongTermMemoryCandidateRecord, ShortTermUserMemoryRecord
+from app.modules.memory.persistence.user_memory_repository import PostgresUserMemoryRepository
+from app.modules.memory.contracts.user_memory import UserMemoryScope
+from app.modules.memory.memory_write_application import MemoryWriteApplicationService, MemoryWriteConflictError
 
 
 TENANT = str(uuid4())

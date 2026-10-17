@@ -4,12 +4,12 @@ from uuid import UUID
 
 import pytest
 
-import app.services.data_loop.feedback_collector as collector_module
-from app.models.hot_news_decision import HotNewsDecision
-from app.repositories.analysis_feedback import (
+import app.modules.data_loop.feedback_collector as collector_module
+from app.modules.hot_news.persistence.hot_news_decision import HotNewsDecision
+from app.modules.data_loop.persistence.analysis_feedback_repository import (
     PostgresAnalysisFeedbackRepository,
 )
-from app.schemas.analysis_feedback import (
+from app.modules.data_loop.contracts.analysis_feedback import (
     AnalysisFeedbackCase,
     AnalysisFeedbackLabel,
     ApproveAnalysisFeedbackLabelCommand,
@@ -19,8 +19,8 @@ from app.schemas.analysis_feedback import (
     RequestChangesAnalysisFeedbackLabelCommand,
     SubmitAnalysisFeedbackLabelCommand,
 )
-from app.schemas.hot_news_memory import HotNewsAnalysisMemory
-from app.services.data_loop.feedback_collector import (
+from app.modules.hot_news.contracts.hot_news_memory import HotNewsAnalysisMemory
+from app.modules.data_loop.feedback_collector import (
     AnalysisFeedbackCollector,
     AnalysisFeedbackConflictError,
     AnalysisFeedbackTargetNotFoundError,

@@ -6,7 +6,7 @@ import pytest
 
 from app.model_runtime.result import AgentResult
 from app.schemas.text2sql import Text2SqlGenerationInput, Text2SqlPlan
-from app.services.agents.text2sql import Text2SqlAgentRunner
+from app.modules.hot_news.analysis.text2sql_agent import Text2SqlAgentRunner
 
 
 def generation_input() -> Text2SqlGenerationInput:

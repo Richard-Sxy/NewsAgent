@@ -4,7 +4,7 @@ from copy import deepcopy
 from pydantic import ValidationError
 import pytest
 
-from app.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderProfileSummary
+from app.modules.reader_profiles.contracts import PROFILE_POLICY_VERSION, ReaderProfileSummary
 
 
 def payload(*, source_mode="synthetic", policy=PROFILE_POLICY_VERSION, long=720, short=24):

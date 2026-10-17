@@ -7,15 +7,15 @@ from datetime import UTC, datetime
 import pytest
 
 from app.clients.knowledge_base import RelatedNewsSearchQuery
-from app.knowledge.document import IngestStatus, KnowledgeDocument
-from app.knowledge.native_indexing import NativeKnowledgeIndexingService, split_text
+from app.modules.knowledge.document import IngestStatus, KnowledgeDocument
+from app.modules.knowledge.native_indexing import NativeKnowledgeIndexingService, split_text
 from app.model_runtime.core import EmbeddingRequest, EmbeddingResult
 from app.model_runtime.local_embedding import LocalHashEmbedding
 from app.model_runtime.query_embedding import ModelQueryEmbedder
 from app.retrieval.in_memory_index import InMemoryTieredVectorIndex
 from app.retrieval.tiered_vector import TieredVectorKnowledgeSearchClient, VectorTier
-from examples.hot_news_e2e_support import build_hot_news_e2e_dependencies
-from examples.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
+from simulation.hot_news_e2e_support import build_hot_news_e2e_dependencies
+from simulation.native_hot_news_e2e_knowledge import build_native_e2e_knowledge_search
 
 
 def document(*, version: int = 1, text: str = "人工智能算力持续增长") -> KnowledgeDocument:

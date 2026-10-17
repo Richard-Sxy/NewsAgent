@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field
 
 from app.api.dependencies import DataLoopPrincipal, HotNewsPermission, require_hot_news_permission
-from app.reader_profiles.contracts import Identifier, ReaderProfileProviderError, ReaderProfileQuery
+from app.modules.reader_profiles.contracts import Identifier, ReaderProfileProviderError, ReaderProfileQuery
 
 router = APIRouter(prefix="/api/v1/reader-profiles", tags=["news-reader-profiles"])
 ReadPrincipal = Annotated[DataLoopPrincipal, Depends(require_hot_news_permission(HotNewsPermission.READ))]

@@ -3,7 +3,7 @@
 import pytest
 from pydantic import ValidationError
 
-from app.conversation.query_understanding import QueryResolutionError
+from app.modules.conversation.query_understanding import QueryResolutionError
 from app.domain.errors import Text2SqlGuardError
 from app.schemas.sql_assistant import SqlAssistantIntent
 from app.sql_assistant import service as service_module

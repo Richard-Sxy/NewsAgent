@@ -21,7 +21,7 @@ from app.api.dependencies import (
     get_session,
 )
 from app.main import create_app
-from app.schemas.user_memory import (
+from app.modules.memory.contracts.user_memory import (
     LongTermMemoryCandidate,
     LongTermUserMemory,
     MemorySourceRef,
@@ -30,12 +30,12 @@ from app.schemas.user_memory import (
     UserMemoryContent,
     UserMemoryScope,
 )
-from app.services.memory_write_application import (
+from app.modules.memory.memory_write_application import (
     MemoryCandidateWriteOutcome,
     MemoryWriteConflictError,
     ShortTermMemoryWriteOutcome,
 )
-from app.services.memory_promotion_application import (
+from app.modules.memory.memory_promotion_application import (
     MemoryPromotionOutcome,
     MemoryPromotionTargetNotFoundError,
 )

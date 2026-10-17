@@ -6,7 +6,7 @@ from pydantic import ValidationError
 import pytest
 import yaml
 
-from app.audience.taxonomy import MAX_CATALOG_BYTES, MAX_TOPICS, Topic, TopicCatalog, load_topic_catalog
+from app.modules.audience.taxonomy import MAX_CATALOG_BYTES, MAX_TOPICS, Topic, TopicCatalog, load_topic_catalog
 
 
 DEPLOY = Path(__file__).resolve().parents[1] / "deploy"

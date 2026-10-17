@@ -3,7 +3,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock
 
 import pytest
-from app.main import app, health, metrics, ready, research_package_console, review_console
+from app.main import app, health, metrics, ready
 
 
 class FakeDatabase:
@@ -80,31 +80,3 @@ async def test_metrics_exposes_business_and_outbox_gauges() -> None:
     response = await metrics(request)
     assert b'news_agent_jobs{status="published"} 3' in response.body
     assert b'news_agent_outbox_events{status="pending"} 1' in response.body
-
-
-def test_review_console_is_served() -> None:
-    response = review_console()
-    html = response.path.read_text(encoding="utf-8")
-
-    assert any(getattr(route, "path", None) == "/review" for route in app.routes)
-    assert response.status_code == 200
-    assert "NewsAgent 最小审核台" in html
-    assert "通过研究并继续" in html
-    assert "RAG 质量指标" in html
-    assert "下载 Markdown" in html
-    assert "创建并开始执行" in html
-    assert "editorial_prompt" in html
-    assert "补充研究后继续" in html
-
-
-def test_research_package_console_is_registered_with_demo_mode() -> None:
-    response = research_package_console()
-    html = response.path.read_text(encoding="utf-8")
-
-    assert any(
-        getattr(route, "path", None) == "/research-package" for route in app.routes
-    )
-    assert "NewsAgent · 运营资料包" in html
-    assert "关键事实" in html
-    assert "证据冲突" in html
-    assert "查看演示" in html

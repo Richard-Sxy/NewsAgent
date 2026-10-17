@@ -1,13 +1,13 @@
 from uuid import uuid4
 
-from app.schemas.production_bundle import (
+from app.modules.data_loop.contracts.production_bundle import (
     CohortGateThreshold,
     EvaluationCohortMetrics,
     EvaluationGatePolicy,
     EvaluationMetricSet,
     EvaluationSuiteMetrics,
 )
-from app.services.data_loop.evaluation_gate import EvaluationGate
+from app.modules.data_loop.evaluation_gate import EvaluationGate
 
 
 def metric_set(

@@ -17,7 +17,7 @@ def main() -> int:
     try:
         deployment._ensure_model_key()
         command = deployment.compose_command(runtime=True)
-        command.extend(("-f", str(root / "deploy/docker-compose.structured-query-demo.yml")))
+        command.extend(("-f", str(root.parent / "deploy/docker-compose.structured-query-demo.yml")))
         deployment._run([*command, "config", "--quiet"], runtime=True, timeout=15)
         deployment._run([*command, "up", "-d", "--no-deps", "--no-build", "--pull", "never",
                          "--force-recreate", "api"], runtime=True, timeout=120, capture=False)

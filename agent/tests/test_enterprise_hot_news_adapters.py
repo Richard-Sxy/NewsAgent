@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from app.analytics.data_source import BehaviorQuery
+from app.modules.hot_news.scoring.data_source import BehaviorQuery
 from app.analytics.entities import ContentType, EventType
 from app.clients.enterprise.baseline import (
     MetricBaselinePage,

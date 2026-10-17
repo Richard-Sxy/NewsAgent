@@ -16,11 +16,11 @@ import yaml
 
 from app.api.knowledge import router
 from app.clients.enterprise.milvus_vector import MilvusTieredVectorIndex
-from app.conversation.tools import ConversationTools
-from app.knowledge.document import KnowledgeDocument
-from app.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
-from app.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
-from app.knowledge.tier_lifecycle_store import _metadata
+from app.modules.conversation.tools import ConversationTools
+from app.modules.knowledge.document import KnowledgeDocument
+from app.modules.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
+from app.modules.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
+from app.modules.knowledge.tier_lifecycle_store import _metadata
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.knowledge_factory import build_native_knowledge_index, build_native_knowledge_search
 from app.model_runtime.local_embedding import LocalHashEmbedding

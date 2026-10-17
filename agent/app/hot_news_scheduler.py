@@ -23,7 +23,7 @@ from temporalio.client import Client
 from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import get_settings
-from app.services.hot_news_schedule import (
+from app.modules.hot_news.application.hot_news_schedule import (
     HotNewsScheduleConfigError,
     ensure_schedules,
     parse_schedule_definitions,

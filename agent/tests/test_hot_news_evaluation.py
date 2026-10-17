@@ -3,11 +3,11 @@ from pathlib import Path
 import pytest
 
 from app.model_runtime.result import AgentResult
-from app.evaluation.hot_news import (
+from app.modules.data_loop.evaluation.hot_news import (
     HotNewsEvaluationService,
     load_evaluation_dataset,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     AnalysisReason,
     HotNewsAnalysisReport,
     RelatedNewsContext,

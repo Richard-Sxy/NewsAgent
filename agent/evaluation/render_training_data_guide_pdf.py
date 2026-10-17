@@ -295,7 +295,7 @@ def build_examples():
 
 
 def validate_examples(ex):
-    from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
+    from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
     from app.model_runtime.core import PromptRegistry, PromptSpec, StructuredInferenceService
     inp = HotNewsAnalysisInput.model_validate(ex["input"])
     report = HotNewsAnalysisReport.model_validate(ex["target"])
@@ -338,10 +338,10 @@ def validate_business(ex, python):
 import json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path.cwd() / 'agent'))
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
 from app.model_runtime.result import AgentResult
-from app.services.hot_news_analysis import HotNewsAnalysisValidator
-from app.evaluation.hot_news import HotNewsEvaluationDataset
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisValidator
+from app.modules.data_loop.evaluation.hot_news import HotNewsEvaluationDataset
 data = json.load(sys.stdin)
 inp = HotNewsAnalysisInput.model_validate(data['input'])
 out = HotNewsAnalysisReport.model_validate(data['target'])
@@ -472,7 +472,7 @@ def build_remaining_pages(ex, validation):
                 "files": [{"path": name, "file_sha256": sha256((pretty(value) + "\n").encode()).hexdigest()}
                           for name, value in payload_files.items()]}
     exporter = '''import json
-from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
 
 # 拟新增导出函数；service注入获准的PromptRegistry与模型Port。
 def to_sft_row(case, service, prompt_version):

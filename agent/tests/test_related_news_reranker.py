@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 from app.analytics.entities import ContentType
 from app.analytics.news_content import NewsContent
 from app.clients.knowledge_base import RelatedNews
-from app.retrieval.related_news_reranker import RelatedNewsReranker
+from app.modules.hot_news.analysis.related_news_reranker import RelatedNewsReranker
 
 
 def build_source() -> NewsContent:

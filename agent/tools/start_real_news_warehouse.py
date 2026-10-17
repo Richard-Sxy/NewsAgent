@@ -28,8 +28,8 @@ if TOOLS_DIR not in sys.path:
 from validate_real_news_warehouse import TABLES, validate_package
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-COMPOSE_PATH = Path(__file__).resolve().parents[1] / "deploy/docker-compose.real-news-warehouse-v8.yml"
-DEFAULT_DATASET = REPOSITORY_ROOT / "output/warehouse/real-news-v8-20261014"
+COMPOSE_PATH = REPOSITORY_ROOT / "deploy/docker-compose.real-news-warehouse-v8.yml"
+DEFAULT_DATASET = REPOSITORY_ROOT / "var/warehouse/real-news-v8-20261014"
 PROJECT = "newsagent-real-news-warehouse-v8"
 VOLUME = "newsagent-real-news-warehouse-v8-pgdata"
 DATASET_LABEL = "org.newsagent.dataset_sha256"

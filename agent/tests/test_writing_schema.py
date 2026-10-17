@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.writing import (
+from app.modules.writing.contracts.writing import (
     ArticleAssemblyInput,
     ArticleDraft,
     ArticleOutline,

@@ -92,7 +92,7 @@ python3.11 agent/tools/query_real_news_warehouse.py --query windows --hour 2026-
 
 # 只看SQL及绑定参数，不连接数据库；可将实际查询保存到全新目录
 python3.11 agent/tools/query_real_news_warehouse.py --query ranking --show-sql
-python3.11 agent/tools/query_real_news_warehouse.py --query hourly --output output/warehouse/my-first-query
+python3.11 agent/tools/query_real_news_warehouse.py --query hourly --output var/warehouse/my-first-query
 ```
 
 `ranking` 支持 clicks、ctr、detail_page_views、detail_visitors、interactions 五个排序字段。
@@ -223,7 +223,7 @@ Validator 核对身份、指标 key 和证据引用等规则，不是完整事�
 `--show-sql` 不连接数据库。已有输出目录拒绝覆盖。
 
 测试入口：`agent/tests/test_real_news_warehouse_queries.py`；真实库示例与拒绝结果保存在
-`output/warehouse/real-news-query-20261015/`。PDF由单独渲染脚本读取这些结果与源代码中现有热度规则，
+`var/warehouse/real-news-query-20261015/`。PDF由单独渲染脚本读取这些结果与源代码中现有热度规则，
 使用 ReportLab、中文字体和 Poppler；生成后检查一页、字体与排版。
 
 本次验收：**37项测试通过（包含本地PostgreSQL集成）**；保存11组实际查询，覆盖全部7类模板、
@@ -241,7 +241,7 @@ NEWSAGENT_RUN_V8_QUERY_INTEGRATION=1 PYTHONPATH=agent python3.11 -m pytest \
 
 # 单页图由真实查询证据和源码中默认热度权重生成，不导入完整Agent运行时
 python3 agent/evaluation/render_hot_news_sql_chain_pdf.py \
-  --evidence output/warehouse/real-news-query-20261015 \
+  --evidence var/warehouse/real-news-query-20261015 \
   --output output/pdf/NewsAgent_SQL查询与热点全链路_2026-10-15.pdf
 ```
 

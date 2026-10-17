@@ -104,16 +104,16 @@ UV 使用临时数学区间的集合并集，五分钟、渠道、小时、每�
 ```bash
 # 1. 生成到全新目录，已有目录会阻断，所有表流式写出
 PYTHONDONTWRITEBYTECODE=1 python3.11 agent/tools/generate_real_news_warehouse.py \
-  --output output/warehouse/real-news-v8-20261014
+  --output var/warehouse/real-news-v8-20261014
 
 # 2. 全包摘要、真实内容和隐私字段校验
 PYTHONDONTWRITEBYTECODE=1 python3.11 agent/tools/validate_real_news_warehouse.py \
-  output/warehouse/real-news-v8-20261014 \
-  --report output/warehouse/real-news-v8-20261014/validation.json
+  var/warehouse/real-news-v8-20261014 \
+  --report var/warehouse/real-news-v8-20261014/validation.json
 
 # 3. 独立本地 PostgreSQL；不修改现有 Agent / 数据库 / Docker 服务
 PYTHONDONTWRITEBYTECODE=1 python3.11 agent/tools/start_real_news_warehouse.py \
-  --dataset output/warehouse/real-news-v8-20261014 --wait-seconds 300
+  --dataset var/warehouse/real-news-v8-20261014 --wait-seconds 300
 ```
 
 公开本地演示连接为 `postgresql://news_demo:local-v8-only@127.0.0.1:28438/news_demo`。

@@ -74,7 +74,7 @@ run-scoped 指标源 → `HotNewsOrchestrationService.run` → Python/SQL 指标
 `HotNewsDecisionService.record_decision` → 决策和反馈在同一数据库事务保存。当前新建的
 采纳、延后、驳回、修正均会回流；旧采纳/延后事件重放不静默补填案例。
 
-本地新查询只由 `examples.local_simulation.create_local_app` 在隔离 E2E 环境、显式
+本地新查询只由 `simulation.local_simulation.create_local_app` 在隔离 E2E 环境、显式
 开关和获准租户/角色下装配。生产 `app.main.create_app` 不挂本地模拟路由。
 SQL 指标排序用于挑选候选，最终榜单使用 Python 权威热度；本地小时 UV 不跨小时相加。
 

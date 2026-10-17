@@ -6,10 +6,10 @@ import json
 import pytest
 from pydantic import ValidationError
 
-from app.evaluation.hot_news import HotNewsEvaluationService, load_evaluation_dataset
+from app.modules.data_loop.evaluation.hot_news import HotNewsEvaluationService, load_evaluation_dataset
 from app.model_runtime.core import RawInferenceResult
 from app.model_runtime.result import AgentResult
-from app.schemas.hot_news import HotNewsAnalysisReport
+from app.modules.hot_news.contracts.hot_news import HotNewsAnalysisReport
 from evaluation.operations_evolution import (
     OperationsEvolutionCatalog, OperationsEvolutionDataset,
     analysis_projection, blind_input, build_dataset, load_catalog, summary,

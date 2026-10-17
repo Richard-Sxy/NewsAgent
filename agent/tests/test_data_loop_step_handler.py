@@ -6,23 +6,23 @@ from uuid import UUID
 
 import pytest
 
-import app.services.data_loop.step_handler as handler_module
-from app.schemas.production_bundle import (
+import app.modules.data_loop.step_handler as handler_module
+from app.modules.data_loop.contracts.production_bundle import (
     EvaluationCohortMetrics,
     EvaluationMetricSet,
     EvaluationSuiteMetrics,
 )
-from app.services.data_loop.artifacts import DataLoopArtifactReceipt
-from app.services.data_loop.offline_replay import OfflineReplayResult
-from app.services.data_loop.step_handler import (
+from app.modules.data_loop.artifacts import DataLoopArtifactReceipt
+from app.modules.data_loop.offline_replay import OfflineReplayResult
+from app.modules.data_loop.step_handler import (
     EvaluationGatePolicyRegistry,
     HotNewsDataLoopStepHandler,
 )
-from app.services.production_bundle import (
+from app.modules.data_loop.production_bundle import (
     ProductionBundleDomainService,
     ProductionBundleRuleViolation,
 )
-from app.workflows.data_loop_contracts import DataLoopStepCommand
+from app.modules.data_loop.workflow_contracts import DataLoopStepCommand
 from tests.test_dataset_freezer import (
     CASE_A,
     FakeArtifactStore,

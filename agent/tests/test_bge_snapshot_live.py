@@ -8,17 +8,17 @@ from uuid import uuid4
 
 import pytest
 
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
-from app.conversation.tools import ConversationTools
-from app.conversation.streaming import StreamingConversation
-from app.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.conversation.tools import ConversationTools
+from app.modules.conversation.streaming import StreamingConversation
+from app.modules.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
 from app.model_runtime.knowledge_factory import build_native_knowledge_search
 from app.clients.knowledge_base import RelatedNewsSearchQuery
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder
 from tests.test_hot_news_enrichment import content_repository_from_scenario
 from tests.test_conversation_agent import RUN, USER, runtime
 from tests.test_conversation_article_delivery import HotNews, decode_events
-from examples.hot_news_demo import build_ranking, load_scenario
+from simulation.hot_news_demo import build_ranking, load_scenario
 
 
 pytestmark = [pytest.mark.integration, pytest.mark.skipif(

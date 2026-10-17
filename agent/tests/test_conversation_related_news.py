@@ -2,7 +2,7 @@
 
 import json
 
-from app.conversation.local import local_conversation_plan
+from app.modules.conversation.local import local_conversation_plan
 
 
 def plan(message, *, history=None, knowledge=True):

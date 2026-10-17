@@ -8,7 +8,7 @@ from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
 from temporalio.service import RPCError, RPCStatusCode
 
 from app.domain.job_scenario import JobScenario
-from app.services.orchestrator import (
+from app.modules.writing.orchestrator import (
     OrchestratorService,
     WorkflowExecutionNotFoundError,
 )

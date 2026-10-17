@@ -17,7 +17,7 @@
 | 2026-10-13 | 120 |
 | 2026-10-14 | 120 |
 
-冻结采集入口为 `news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json`，
+冻结采集入口为 `var/news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json`，
 SHA-256 为 `13ffd2d5a4145a4f68cd5ba25fead17340fc7d7a70e0efa02632e75ae58fdcee`。
 正文位于同目录 `articles/`；列表原始响应、请求参数、响应摘要、候选和失败均有独立审计。
 采集范围截至 10 月 14 日采集时点，不包括采集之后新发布的文章。
@@ -71,20 +71,20 @@ PostgreSQL 入库仍调用现有 `native-local-embedding-v1` 测试 Port，只�
 # 从仓库根目录执行；已冻结/启用的版本不继续扩充，后续增量请选择新目录版本。
 PYTHONPATH=news python3.11 -m experiments.collect_incremental_news \
   --start-date 2026-10-07 --end-date 2026-10-14 \
-  --output-dir news/data/incremental/2026-10-07_2026-10-14-v1
+  --output-dir var/news/data/incremental/2026-10-07_2026-10-14-v1
 
 # NEWSAGENT_KNOWLEDGE_TOKEN 由本地安全环境设置，不在命令或报告中输出。
 python3.11 agent/tools/import_news_cache.py \
-  --manifest news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json \
+  --manifest var/news/data/incremental/2026-10-07_2026-10-14-v1/manifest.json \
   --base-url http://127.0.0.1:28070 \
   --tenant-id 11111111-1111-4111-8111-111111111111 \
   --report output/news-import-2026-10-14/knowledge-report.json
 
 # 新包拒绝覆盖；失败可用完全相同参数加 --resume 继续。
 python3.11 agent/tools/build_incremental_news_index.py \
-  --articles-dir news/data/incremental/2026-10-07_2026-10-14-v1/articles \
-  --base-package rag-recall-demo \
-  --output-package agent/data/news-bge-incremental-20261014-v1 \
+  --articles-dir var/news/data/incremental/2026-10-07_2026-10-14-v1/articles \
+  --base-package var/knowledge-snapshots/rag-recall-demo \
+  --output-package var/agent/data/news-bge-incremental-20261014-v1 \
   --snapshot-version news-bge-incremental-20261014-v1 \
   --threads 4 --batch-size 16 --device mps
 

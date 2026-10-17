@@ -18,18 +18,18 @@ from pathlib import Path
 import sqlite3
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
-from app.analytics.metrics import NewsMetricSnapshot
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
 from app.analytics.news_content import InMemoryNewsContentRepository, NewsContent
-from app.analytics.ranking import HotNewsRanker
+from app.modules.hot_news.scoring.ranking import HotNewsRanker
 from app.model_runtime.core import StructuredInferenceService
-from app.model_runtime.hot_news import NativeHotNewsAnalysisRunner, local_hot_news_prompts
+from app.modules.hot_news.analysis.runner import NativeHotNewsAnalysisRunner, local_hot_news_prompts
 from app.model_runtime.local_inference import LocalHotNewsInference
-from app.reader_profiles.contracts import ReaderProfileSummary
-from app.reader_profiles.local import LocalNewsReaderProfileClient
-from app.reader_profiles.service import ReaderProfileService
-from app.services.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
-from app.services.hot_news_orchestration import (
+from app.modules.reader_profiles.contracts import ReaderProfileSummary
+from app.modules.reader_profiles.local import LocalNewsReaderProfileClient
+from app.modules.reader_profiles.service import ReaderProfileService
+from app.modules.hot_news.analysis.hot_news_analysis import HotNewsAnalysisInputBuilder, HotNewsAnalysisService, HotNewsAnalysisValidator
+from app.modules.hot_news.application.hot_news_orchestration import (
     EmptyHotNewsBaselineProvider, HotNewsOrchestrationPolicy, HotNewsOrchestrationService, HotNewsRunRequest,
 )
 

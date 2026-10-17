@@ -8,9 +8,9 @@ import json
 import httpx
 import pytest
 
-from app.data_analysis.engine import analyze, validate_request
-from app.data_analysis.remote import RemoteAnalysisRunner
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner, _json_bytes
+from app.modules.data_analysis.engine import analyze, validate_request
+from app.modules.data_analysis.remote import RemoteAnalysisRunner
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner, _json_bytes
 
 
 TOKEN = "independent-test-token"
@@ -116,7 +116,7 @@ async def test_success_canonicalizes_request_and_preserves_service_execution(ope
 @pytest.mark.asyncio
 @pytest.mark.parametrize("operation", ["trend", "baseline"])
 async def test_remote_service_v2_complete_port_to_actual_worker_chain(operation):
-    from app.data_analysis.service import AnalysisServiceSettings, create_app
+    from app.modules.data_analysis.service import AnalysisServiceSettings, create_app
 
     data = request_v2(operation)
     app = create_app(AnalysisServiceSettings(token=TOKEN))
@@ -411,7 +411,7 @@ async def test_owned_client_disables_proxy_redirects_and_closes(monkeypatch):
         captured.update(kwargs)
         return real_client(**kwargs)
 
-    monkeypatch.setattr("app.data_analysis.remote.httpx.AsyncClient", build_client)
+    monkeypatch.setattr("app.modules.data_analysis.remote.httpx.AsyncClient", build_client)
     runner = RemoteAnalysisRunner(url=URL, token=TOKEN)
     assert captured["trust_env"] is False and captured["follow_redirects"] is False
     await runner.close()

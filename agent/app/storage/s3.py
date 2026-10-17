@@ -16,7 +16,7 @@ from app.observability.decorators import traced
 from app.config import Settings
 from app.domain.errors import ArtifactIntegrityError, ArtifactStoreError
 from app.domain.execution import ArtifactType
-from app.schemas.checkpoint import ArtifactDescriptor
+from app.modules.writing.contracts.checkpoint import ArtifactDescriptor
 
 
 class S3ArtifactStore:

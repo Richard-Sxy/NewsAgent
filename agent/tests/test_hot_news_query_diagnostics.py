@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock
 import pytest
 from fastapi import HTTPException
 
-from app.conversation.tools import ConversationTools, render_tool_results
+from app.modules.conversation.tools import ConversationTools, render_tool_results
 from app.schemas.conversation import ToolTrace
 from tests.test_conversation_agent import RUN, TENANT, USER, runtime
 from tests.test_conversation_hot_news_query import QueryTools, prepared

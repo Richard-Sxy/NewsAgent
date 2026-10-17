@@ -18,7 +18,7 @@ NewsAgent 是独立 Python Agent 项目。Agent 应用层、Prompt/模型版本�
 历史名称保留用于已有数据库升级和决策追溯，不属于可执行依赖。
 
 实现与配置说明见
-[`writing-agent-service/docs/python-runtime.md`](../writing-agent-service/docs/python-runtime.md)。
+[`agent/docs/python-runtime.md`](../agent/docs/python-runtime.md)。
 
 ## 2. 项目目标与数据边界
 
@@ -34,9 +34,9 @@ NewsAgent 不是单纯写作机器人，而是新闻运营 Agent 系统：消费
 
 ## 3. 仓库组成
 
-- `writing-agent-service`：FastAPI、Temporal、PostgreSQL、Redis、S3/MinIO、Python Agent、
+- `agent`：FastAPI、Temporal、PostgreSQL、Redis、S3/MinIO、Python Agent、
   Python 知识运行时、Data Loop、Memory、API 和 Vue 运营前端。
-- `tencent-news-crawler`：腾讯新闻发现、抓取、清洗、缓存、去重、失败重试、标题特征、
+- `news`：腾讯新闻发现、抓取、清洗、缓存、去重、失败重试、标题特征、
   事件聚类和 NewsAgent 知识 API 客户端。
 - `DemoMD`：业务场景、演示脚本、设计摘要和长期参考。
 
@@ -123,7 +123,7 @@ SQL演示hot_score只挑选候选，最终热度沿用Python四分量公式。�
 复用，失败不回退旧内存数据。企业适配、真实跨小时去重与持续调度语义仍未验收。
 
 完整文件调用链、配置与测试见
-[`text2sql-local-demo.md`](../writing-agent-service/docs/text2sql-local-demo.md)。
+[`text2sql-local-demo.md`](../agent/docs/text2sql-local-demo.md)。
 
 ### Data / Configuration Loop
 
@@ -201,7 +201,7 @@ Agent 不可自主：修改生产 Prompt/规则/模型，发布外部内容，�
 - 浏览器实测 `/sql-assistant`：视频点击率排行5行、财经小时趋势24行；修改查询范围后
   旧快照失效。默认样本窗口为北京时间2026-10-03全天，不依赖企业接口。
 - 主演示租户与既有网关一致：`11111111-1111-4111-8111-111111111111`。
-- 冻结文档 `writing-agent-service/docs/sql-warehouse-schema-v1.md` 权限444，SHA-256
+- 冻结文档 `agent/docs/sql-warehouse-schema-v1.md` 权限444，SHA-256
   `e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0`。
 - 企业模型/数仓验收仍未完成；失败尝试完整审计、审计保留策略、生产只读账号/配额、
   生产签名式审计和并发执行单飞仍是后续项，不属于本地展示已完成范围。
@@ -473,14 +473,15 @@ classic-v1、enterprise-v1/v2、public-headlines-v3、timeline-v4/v5、corpus-v6
 
 具体构建入口、只读 API/CLI、调用链、功能验证与企业 TODO 见
 `agent/docs/local-behavior-tags.md`。正式本地派生包位于
-`output/behavior-tags/local-merged-v1-20261016`，冻结输入保持不变，未重启已有实例。
+`var/behavior-tags/local-merged-v1-20261016`（2026-10-17 目录重构时由 `output/` 迁至 `var/` 运行数据根，
+manifest/policy 仍入库），冻结输入保持不变，未重启已有实例。
 
 ## 22. 单新闻访问人群聚合与热点分析接入（2026-10-17）
 
 用户要求实现“热点新闻 → 该新闻访问用户主要标签 → 推送主题分析”，并允许补充模拟数仓细节。
 已新增 `agent/app/reader_profiles`：从已有独立合成事件构建去重新闻访客及访问前长期/短期兴趣，
 再生成仅含聚合的不可变包。个人行为仍限合成数据，企业原始个人明细不落入本地。
-正式包位于 `output/reader-profiles/local-readers-v1-20261017`，包含 52,718 条新闻小时画像、
+正式包位于 `var/reader-profiles/local-readers-v1-20261017`（2026-10-17 由 `output/` 迁至 `var/`），包含 52,718 条新闻小时画像、
 1,488 个租户窗口覆盖记录与 2,474 条内容绑定；源为 308,091 条事件和 1,200 个合成身份。
 
 在线以 Python Port 接本地只读 SQLite 或企业固定 HTTPS 聚合服务；每批最多 20 篇、
@@ -496,3 +497,22 @@ Top1的5位合成读者已通过 Service/Enrichment/InputBuilder 定点验证。
 整栈页面尚待启动验收，v8 尚未注册完整在线 SQL 场景。
 当前功能、字段、测试与完整调用链见 `agent/docs/news-reader-profile-integration.md` 与
 `agent/docs/news-reader-profile-warehouse.md`；未重启已有实例。
+
+## 23. 目录架构重构（2026-10-17 用户确认执行）
+
+按"业务模块、共享基础设施、启动装配"重组目录，四批完成并保持原有运行链路与业务契约：
+
+- `agent/app/modules/`：`hot_news`、`writing`、`data_loop`、`memory`、`conversation`、`knowledge`、
+  `audience`、`behavior_tags`、`reader_profiles`、`data_analysis` 各自持有 contracts/persistence/
+  application/adapters/workflows；旧导入路径保留薄 shim/代理，内部代码统一使用新路径。
+- `agent/app/bootstrap/`：API lifespan、写作/热点 Worker 运行时与热点依赖工厂；`app/main.py` 为薄入口。
+- `agent/simulation/`：本地模拟装配与模拟数仓；`examples/` 仅保留演示脚本。
+- 仓库根 `deploy/`：Compose、Docker、K8s（含独立分析服务清单）、监控与模拟 CMS；`agent/deploy`
+  为兼容链接。e2e 镜像构建上下文改为仓库根。
+- 运行数据根 `var/`：行为标签/读者画像运行包、数仓数据包、只读 BGE 知识快照与增量爬虫缓存；
+  manifest/合同文件仍入库，批量数据忽略。数仓目录可用 `WAREHOUSE_DATASET_DIR` 覆盖。
+- `app/evaluation` 的确定性评测核心迁入 `data_loop/evaluation`；外层 `evaluation/` 保留离线命令与样本。
+- 旧 HTML 控制台（review/research-package/console）已由 Vue 工作台覆盖并移除。
+
+验收：后端 pytest 4541 passed/107 skipped（含删除 2 个控制台测试），爬虫 226 passed；
+未新增企业接口合同或规模验收，本重构不替代这些后续验证。

@@ -7,19 +7,19 @@ from uuid import UUID
 import pytest
 from pydantic import ValidationError
 
-import app.services.data_loop.step_handler as handler_module
+import app.modules.data_loop.step_handler as handler_module
 import app.data_loop_worker as worker_module
-from app.activities.data_loop import DataLoopActivities
+from app.modules.data_loop.activities import DataLoopActivities
 from app.api.dependencies import DataLoopPermission, get_data_loop_artifact_store
 from app.config import Settings
-from app.data_analysis.factory import create_analysis_runner
+from app.modules.data_analysis.factory import create_analysis_runner
 from app.data_loop_worker import DataLoopWorkerRuntime
 from app.domain.errors import ArtifactIntegrityError
-from app.schemas.evaluation_dataset import canonical_json_bytes, canonical_json_sha256
-from app.services.data_loop.artifacts import DataLoopArtifactReceipt
-from app.services.data_loop.dataset_analysis import DATASET_ANALYSIS_REPORT_VERSION
-from app.services.production_bundle import ProductionBundleRuleViolation
-from app.workflows.data_loop_contracts import DataLoopStepCommand, DataLoopWorkflowSnapshot
+from app.modules.data_loop.contracts.evaluation_dataset import canonical_json_bytes, canonical_json_sha256
+from app.modules.data_loop.artifacts import DataLoopArtifactReceipt
+from app.modules.data_loop.dataset_analysis import DATASET_ANALYSIS_REPORT_VERSION
+from app.modules.data_loop.production_bundle import ProductionBundleRuleViolation
+from app.modules.data_loop.workflow_contracts import DataLoopStepCommand, DataLoopWorkflowSnapshot
 from tests.test_data_loop_api import TENANT_ID, client_with
 from tests.test_data_loop_step_handler import handler
 from tests.test_data_loop_step_handler import FakeDatabase
@@ -144,7 +144,7 @@ def test_dataloop_only_backend_cannot_bypass_runtime_safety(changes, message):
 def test_factory_enables_dataloop_independently_of_conversation():
     settings = Settings(_env_file=None, **SETTINGS_BASE, environment="test",
                         conversation_data_analysis_enabled=False, data_loop_data_analysis_enabled=True)
-    with patch("app.data_analysis.factory.AnalysisRunner") as factory:
+    with patch("app.modules.data_analysis.factory.AnalysisRunner") as factory:
         assert create_analysis_runner(settings) is None
         assert create_analysis_runner(settings, enabled=settings.data_loop_data_analysis_enabled) is factory.return_value
         assert factory.call_args.kwargs["max_rows"] == settings.data_analysis_max_rows

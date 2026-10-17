@@ -6,7 +6,7 @@ import pytest
 
 from app.domain.execution import StepType
 from app.domain.job_status import JobStatus
-from app.services.job_state import JobStateHandler
+from app.modules.writing.job_state import JobStateHandler
 from app.workflows.contracts import JobStateCommand
 
 

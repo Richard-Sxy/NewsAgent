@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from app.behavior_tags.tagging import (
+from app.modules.behavior_tags.tagging import (
     BEHAVIOR_RULE_VERSION, MAX_POLICY_BYTES, TopicPolicy, behavior_labels,
     load_topic_policy, tag_article,
 )

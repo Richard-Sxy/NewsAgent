@@ -9,7 +9,7 @@ import runpy
 
 import pytest
 
-from app.data_analysis.engine import AnalysisInputError, MAX_INTEGER, analyze, validate_request
+from app.modules.data_analysis.engine import AnalysisInputError, MAX_INTEGER, analyze, validate_request
 
 
 def row(news_id: str = "one", rank: int = 1, **changes: object) -> dict:
@@ -499,7 +499,7 @@ def test_v2_rejects_fractional_second_boundaries(factory, field: str) -> None:
 
 
 def test_v2_engine_remains_runpy_loadable_with_only_standard_library() -> None:
-    namespace = runpy.run_path(str(Path(__file__).parents[1] / "app/data_analysis/engine.py"))
+    namespace = runpy.run_path(str(Path(__file__).parents[1] / "app/modules/data_analysis/engine.py"))
 
     assert namespace["analyze"](trend_request()) == analyze(trend_request())
 

@@ -11,15 +11,15 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app.api.conversations import router
-from app.conversation.local import local_conversation_plan
-from app.conversation.plan import ConversationPlan
-from app.conversation.tools import ConversationToolDenied, ConversationTools, HOOK_REGISTRY
-from app.conversation.writing import ConversationWritingReader
+from app.modules.conversation.local import local_conversation_plan
+from app.modules.conversation.plan import ConversationPlan
+from app.modules.conversation.tools import ConversationToolDenied, ConversationTools, HOOK_REGISTRY
+from app.modules.conversation.writing import ConversationWritingReader
 from app.domain.execution import StepType
 from app.domain.job_scenario import JobScenario
 from app.domain.job_status import JobStatus
 from app.model_runtime.core import RawInferenceResult
-from app.services.job import JobNotFoundError
+from app.modules.writing.job import JobNotFoundError
 from tests.test_conversation_agent import TENANT, USER, runtime
 
 

@@ -8,12 +8,24 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.schema import CreateTable
 
 import app.models  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
+import app.modules.hot_news.persistence  # noqa: F401 - 注册热点 ORM
+import app.modules.writing.persistence  # noqa: F401 - 注册写作 ORM
+import app.modules.data_loop.persistence  # noqa: F401 - 注册 Data Loop ORM
+import app.modules.memory.persistence  # noqa: F401 - 注册 Memory ORM
 from app.db.base import Base
-from app.models.analysis_feedback import AnalysisFeedbackCaseRecord
-from app.repositories.analysis_feedback import (
+from app.modules.data_loop.persistence.analysis_feedback import AnalysisFeedbackCaseRecord
+from app.modules.data_loop.persistence.analysis_feedback_repository import (
     PostgresAnalysisFeedbackRepository,
 )
-from app.schemas.analysis_feedback import AnalysisFeedbackCase
+from app.modules.data_loop.contracts.analysis_feedback import AnalysisFeedbackCase
 from tests.test_analysis_feedback_schema import NOW, failed_case_values
 
 

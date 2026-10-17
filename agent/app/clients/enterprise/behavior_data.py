@@ -14,7 +14,7 @@ from app.clients.enterprise.common import (
     RpcDeadlineBudget,
     RpcResponseMeta,
 )
-from app.analytics.data_source import BehaviorDataSource, BehaviorQuery
+from app.modules.hot_news.scoring.data_source import BehaviorDataSource, BehaviorQuery
 from app.analytics.entities import BehaviorRecord, ContentType, EventType
 from app.domain.errors import HotNewsDataQualityError
 

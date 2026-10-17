@@ -14,16 +14,16 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_score import HotScoreCalculator
-from app.analytics.metrics import NewsMetricSnapshot
-from app.evaluation.hot_news import (
+from app.modules.hot_news.scoring.hot_score import HotScoreCalculator
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
+from app.modules.data_loop.evaluation.hot_news import (
     ExpectedHotNewsAnalysis, HotNewsEvaluationCase, HotNewsEvaluationDataset,
 )
-from app.schemas.hot_news import (
+from app.modules.hot_news.contracts.hot_news import (
     HotNewsAnalysisInput, HotNewsMetrics, HotScoreComponents, RelatedNewsEvidence,
 )
-from app.schemas.hot_news_decision import DecisionType
-from app.schemas.operations_feedback import OperationsFeedback, is_fresh_bad_case_eligible
+from app.modules.hot_news.contracts.hot_news_decision import DecisionType
+from app.modules.data_loop.contracts.operations_feedback import OperationsFeedback, is_fresh_bad_case_eligible
 
 
 VERSION = "2026-10-10.synthetic-v1"

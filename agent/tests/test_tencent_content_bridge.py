@@ -5,10 +5,10 @@ import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app.analytics.corpus_knowledge_search import CorpusKnowledgeSearchClient
+from app.modules.hot_news.analysis.corpus_knowledge_search import CorpusKnowledgeSearchClient
 from app.analytics.entities import ContentType
 from app.analytics.news_content import InMemoryNewsContentRepository, NewsContent
-from app.analytics.tencent_content_bridge import TencentIngestContentRepository
+from app.modules.hot_news.analysis.tencent_content_bridge import TencentIngestContentRepository
 from app.clients.knowledge_base import RelatedNewsSearchQuery
 
 

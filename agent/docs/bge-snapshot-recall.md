@@ -2,7 +2,7 @@
 
 实际启动、部署和聊天卡片展示请先按 [独立 BGE 演示部署教程](bge-demo-deployment.md) 操作。
 
-`rag-recall-demo/` 的向量库已作为 NewsAgent 原生只读检索 backend 接入。
+`var/knowledge-snapshots/rag-recall-demo/` 的向量库已作为 NewsAgent 原生只读检索 backend 接入。
 热点榜单继续由企业/合成数仓的聚合指标和 Python 热度规则产生，快照负责主题检索和
 热点上榜之后的相关新闻召回。它没有实时热度或日期筛选能力。
 
@@ -10,14 +10,14 @@
 
 | 文件 | 内容与用途 |
 | --- | --- |
-| `rag-recall-demo/experiments/query_bge_snapshot.py` | 原离线查询参考：固定 BGE query instruction、归一化、HNSW IP、按文章去重；应用没有将该脚本作为运行时依赖 |
+| `var/knowledge-snapshots/rag-recall-demo/experiments/query_bge_snapshot.py` | 原离线查询参考：固定 BGE query instruction、归一化、HNSW IP、按文章去重；应用没有将该脚本作为运行时依赖 |
 | `data/experiments/offline_recall_fg/chunks.jsonl` | 36,379 个新闻片段，12,187 个不同 `news_id`；HNSW label 是文件行号 |
 | `data/experiments/offline_recall_fg/embeddings.npy` | `(36379, 1024)` float32 归一化向量；与 JSONL 行一一对应 |
 | `data/experiments/offline_recall_fg/index.bin` | 同版本 HNSW 内积索引 |
 | `data/models/bge-large-zh-v1.5/` | 本地模型、tokenizer、Pooling 与 Normalize 配置 |
 | `SHA256SUMS` | 模型和语料的哈希清单，用于完整性验证和检索身份绑定 |
 
-路径以 `rag-recall-demo/` 为起点。当前清单 SHA-256 为
+路径以 `var/knowledge-snapshots/rag-recall-demo/` 为起点。当前清单 SHA-256 为
 `e68c268dadcf434d81c5e397e578321b1c614215d42a81a5ae82848ba4901dab`。
 查询 Embedding 版本是 `bge-large-zh-v1.5:e68c268dadcf434d`，切片 ID 使用完整清单摘要和行号。
 `(news_id, chunk_index)` 有重复，不能当作唯一切片键。

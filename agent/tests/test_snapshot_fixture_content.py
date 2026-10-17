@@ -7,13 +7,13 @@ from unittest.mock import AsyncMock
 import pytest
 
 from app.analytics.entities import ContentType
-from app.analytics.hot_news_enrichment import HotNewsEnrichmentService
+from app.modules.hot_news.analysis.hot_news_enrichment import HotNewsEnrichmentService
 from app.analytics.news_content import NewsContent
 from app.domain.errors import HotNewsDataQualityError
 from app.sql_assistant.warehouse import DEMO_TENANT_ID, demo_news_ids
-from examples.hot_news_demo import build_ranking, load_scenario
-from examples.native_hot_news_e2e_worker import ProfileScopedContentRepository
-from examples.native_hot_news_sql_support import SqlHotNewsContentRepository, SqlHotNewsDetailRepository
+from simulation.hot_news_demo import build_ranking, load_scenario
+from simulation.native_hot_news_e2e_worker import ProfileScopedContentRepository
+from simulation.native_hot_news_sql_support import SqlHotNewsContentRepository, SqlHotNewsDetailRepository
 from app.clients.knowledge_base import RelatedNews
 
 

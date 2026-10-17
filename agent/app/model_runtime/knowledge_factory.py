@@ -5,8 +5,8 @@
 from __future__ import annotations
 
 from app.db.session import Database
-from app.knowledge.postgres_store import PostgresKnowledgeStore
-from app.knowledge.search_factory import build_knowledge_search_index, build_knowledge_query_embedder
+from app.modules.knowledge.postgres_store import PostgresKnowledgeStore
+from app.modules.knowledge.search_factory import build_knowledge_search_index, build_knowledge_query_embedder
 from app.model_runtime.config_file import ModelRuntimeConfig
 from app.model_runtime.core import EmbeddingPort
 from app.retrieval.tiered_vector import (
@@ -24,7 +24,7 @@ def build_native_knowledge_index(
     environment: str = "production",
 ):
     if lifecycle_config_path:
-        from app.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
+        from app.modules.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
         return build_lifecycle_runtime(lifecycle_config_path=lifecycle_config_path,
             search_config_path=config_path, model_config=config, embedding=embedding,
             database=database, environment=environment).index

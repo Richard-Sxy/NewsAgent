@@ -12,20 +12,20 @@ from temporalio.converter import DataConverter
 from temporalio.exceptions import ApplicationError
 from temporalio.service import RPCError, RPCStatusCode
 
-import app.conversation.admission as admission_module
-import app.conversation.admission_workflows as workflow_module
-from app.conversation.admission import (
+import app.modules.conversation.admission as admission_module
+import app.modules.conversation.admission_workflows as workflow_module
+from app.modules.conversation.admission import (
     AdmissionActivities, AdmissionConflictError, AdmissionService, admission_result,
     evaluation_payload, writing_fingerprint,
 )
-from app.conversation.admission_contracts import (
+from app.modules.conversation.admission_contracts import (
     ADMISSION_BOOTSTRAP_LIMIT, ADMISSION_FINGERPRINT_MEMO, ADMISSION_TENANT_MEMO,
     AdmissionRequest, AdmissionTicket, TenantAdmissionState, request_admission_id, tenant_admission_id,
 )
-from app.conversation.admission_workflows import AdmissionRequestWorkflow, TenantAdmissionWorkflow, START_RETRY
-from app.workflows.data_loop_contracts import DataLoopRunRequest
+from app.modules.conversation.admission_workflows import AdmissionRequestWorkflow, TenantAdmissionWorkflow, START_RETRY
+from app.modules.data_loop.workflow_contracts import DataLoopRunRequest
 from tests.test_conversation_writing_commands import job_for
-from app.schemas.job import CreateWritingJobRequest
+from app.modules.writing.contracts.job import CreateWritingJobRequest
 
 
 TENANT = str(uuid4())
@@ -165,7 +165,7 @@ async def test_client_returns_real_queued_acceptance_without_business_wait():
 @pytest.mark.asyncio
 async def test_evaluation_admission_preserves_business_workflow_id_and_bounded_payload():
     value = evaluation()
-    from app.services.data_loop.orchestrator import DataLoopOrchestrator
+    from app.modules.data_loop.orchestrator import DataLoopOrchestrator
     handle = SimpleNamespace(describe=AsyncMock(return_value=description(
         fingerprint=DataLoopOrchestrator.request_fingerprint(value))),
         execute_update=AsyncMock(return_value={"state": "queued", "admission_accepted": True}))
@@ -318,7 +318,7 @@ async def test_dispatch_retry_does_not_restart_existing_business_workflow(monkey
 
 @pytest.mark.asyncio
 async def test_evaluation_dispatch_reuses_existing_service_and_enforces_fingerprint():
-    from app.services.data_loop.orchestrator import DataLoopOrchestrator
+    from app.modules.data_loop.orchestrator import DataLoopOrchestrator
     value = evaluation()
     instance = activities()
     admission = AdmissionRequest(TENANT, "evaluation", DataLoopOrchestrator.workflow_id(value),

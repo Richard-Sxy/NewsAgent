@@ -8,7 +8,7 @@ from uuid import UUID
 
 import pytest
 
-from app.conversation.context import (
+from app.modules.conversation.context import (
     ContextBudgetExceeded,
     ContextCursor,
     ConversationMemory,

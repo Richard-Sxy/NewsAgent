@@ -25,8 +25,8 @@ sys.path.insert(0, str(AGENT_ROOT))
 from app.analytics.entities import ContentType  # noqa: E402
 from app.analytics.news_content import NewsContent  # noqa: E402
 from app.clients.knowledge_base import RelatedNewsSearchQuery  # noqa: E402
-from app.knowledge.search_config import load_knowledge_search_config  # noqa: E402
-from app.knowledge.search_factory import (  # noqa: E402
+from app.modules.knowledge.search_config import load_knowledge_search_config  # noqa: E402
+from app.modules.knowledge.search_factory import (  # noqa: E402
     build_knowledge_search_index,
     close_knowledge_search_index,
 )
@@ -34,7 +34,7 @@ from app.model_runtime.knowledge_factory import build_native_knowledge_search  #
 from app.retrieval.related_news_reranker import RelatedNewsReranker  # noqa: E402
 
 
-DEFAULT_CONFIG = AGENT_ROOT / "deploy" / "knowledge-search.bge-snapshot.yml"
+DEFAULT_CONFIG = AGENT_ROOT.parent / "deploy" / "knowledge-search.bge-snapshot.yml"
 QUERY_ID = "news-recall-cli"
 QUERY_SOURCE_ID = "__query__:news-recall-cli"
 

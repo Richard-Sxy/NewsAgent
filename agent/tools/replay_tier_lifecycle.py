@@ -25,13 +25,13 @@ AGENT_ROOT = Path(__file__).resolve().parents[1]
 if str(AGENT_ROOT) not in sys.path:
     sys.path.insert(0, str(AGENT_ROOT))
 
-from app.knowledge.document import KnowledgeDocument
-from app.knowledge.tier_lifecycle import KnowledgeLifecycleService
-from app.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
-from app.knowledge.tier_lifecycle_index import GuardedTieredIndex
-from app.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
-from app.knowledge.tier_lifecycle_query import LifecycleKnowledgeSearch
-from app.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata, _vectors
+from app.modules.knowledge.document import KnowledgeDocument
+from app.modules.knowledge.tier_lifecycle import KnowledgeLifecycleService
+from app.modules.knowledge.tier_lifecycle_config import load_knowledge_lifecycle_config
+from app.modules.knowledge.tier_lifecycle_index import GuardedTieredIndex
+from app.modules.knowledge.tier_lifecycle_local_index import LocalLifecycleVectorIndex
+from app.modules.knowledge.tier_lifecycle_query import LifecycleKnowledgeSearch
+from app.modules.knowledge.tier_lifecycle_store import TierLifecycleStore, _metadata, _vectors
 from app.model_runtime.local_embedding import LocalHashEmbedding
 from app.model_runtime.query_embedding import ModelQueryEmbedder
 from app.retrieval.tiered_vector import VectorTier

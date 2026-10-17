@@ -3,14 +3,14 @@ import asyncio
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from app.activities.news_steps import NewsStepActivities, StateHandler, StepHandler
+from app.modules.writing.news_steps import NewsStepActivities, StateHandler, StepHandler
 from app.bootstrap import create_worker_runtime
 from app.observability.process import telemetry_process
 from app.observability.temporal import temporal_interceptors
 from app.config import Settings, get_settings
-from app.workflows.news_writing import NewsWritingWorkflow
-from app.conversation.admission import AdmissionActivities
-from app.conversation.admission_workflows import ADMISSION_WORKFLOWS
+from app.modules.writing.news_writing import NewsWritingWorkflow
+from app.modules.conversation.admission import AdmissionActivities
+from app.modules.conversation.admission_workflows import ADMISSION_WORKFLOWS
 from app.db.session import Database
 
 """ Temporal 任务执行 Worker """

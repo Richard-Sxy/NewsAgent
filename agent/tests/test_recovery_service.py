@@ -5,9 +5,9 @@ import pytest
 
 from app.domain.execution import ArtifactType, ExecutionStatus
 from app.domain.job_status import JobStatus
-from app.models.artifact import WritingArtifact
-from app.schemas.checkpoint import ResumePoint
-from app.services.recovery import RecoveryService
+from app.modules.writing.persistence.artifact import WritingArtifact
+from app.modules.writing.contracts.checkpoint import ResumePoint
+from app.modules.writing.recovery import RecoveryService
 
 
 @pytest.mark.asyncio

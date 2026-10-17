@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
 from app.api.dependencies import DataLoopPrincipal, HotNewsPermission, require_hot_news_permission
-from app.behavior_tags.runtime import LocalBehaviorRuntime
+from app.modules.behavior_tags.runtime import LocalBehaviorRuntime
 
 router = APIRouter(prefix="/api/v1/behavior-tags", tags=["local-behavior-tags"])
 ReadPrincipal = Annotated[DataLoopPrincipal, Depends(require_hot_news_permission(HotNewsPermission.READ))]

@@ -6,11 +6,11 @@ from types import SimpleNamespace
 import pytest
 from redis.exceptions import ConnectionError
 
-from app.api.events import format_sse
+from app.modules.writing.events import format_sse
 from app.domain.execution import StepType
 from app.domain.job_status import JobStatus
-from app.schemas.events import ProgressEvent
-from app.services.event_reader import (
+from app.modules.writing.contracts.events import ProgressEvent
+from app.modules.writing.event_reader import (
     InvalidStreamEventID,
     ProgressReadError,
     RedisProgressReader,

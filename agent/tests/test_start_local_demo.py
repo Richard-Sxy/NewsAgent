@@ -84,8 +84,8 @@ def test_actual_local_check_needs_no_enterprise_config_or_key(starter, agent_roo
     backend = sys.modules[starter.deployment_main.__module__]
     constructor = backend.BgeDemoDeployment
     instances, harnesses = [], []
-    (agent_root / "deploy/model-runtime.compatible.yml").unlink()
-    (agent_root / "deploy/docker-compose.timeline-query-model.yml").unlink()
+    (agent_root.parent / "deploy/model-runtime.compatible.yml").unlink()
+    (agent_root.parent / "deploy/docker-compose.timeline-query-model.yml").unlink()
 
     def create(options):
         assert options.model == "local"

@@ -17,10 +17,10 @@ import json
 from typing import Any
 
 from app.analytics.entities import ContentType
-from app.analytics.metric_source import HotNewsMetricQuery
-from app.analytics.metrics import NewsMetricSnapshot
-from app.data_analysis.acceptance import run_aggregate_acceptance
-from app.data_analysis.runner import AnalysisExecutionError, AnalysisRunner, _json_bytes
+from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.metrics import NewsMetricSnapshot
+from app.modules.data_analysis.acceptance import run_aggregate_acceptance
+from app.modules.data_analysis.runner import AnalysisExecutionError, AnalysisRunner, _json_bytes
 
 
 CONTRACT_VERSION = "enterprise-analysis-contracts-v1"

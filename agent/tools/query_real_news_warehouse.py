@@ -10,7 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.warehouse_simulation.queries import (
+from simulation.warehouse_simulation.queries import (
     DEFAULT_DATASET, DEFAULT_NEWS_ID, QUERY_NAMES, SORT_METRICS, TENANTS,
     QueryRequest, _json_friendly, compile_query, run_query,
 )

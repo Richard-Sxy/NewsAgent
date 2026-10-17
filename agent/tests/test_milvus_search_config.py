@@ -9,9 +9,9 @@ import pytest
 
 from app.clients.enterprise.milvus_vector import MilvusTieredVectorIndex
 from app.clients.knowledge_base import RelatedNewsSearchQuery
-from app.conversation.tools import ConversationTools
-from app.knowledge.search_config import load_knowledge_search_config
-from app.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
+from app.modules.conversation.tools import ConversationTools
+from app.modules.knowledge.search_config import load_knowledge_search_config
+from app.modules.knowledge.search_factory import build_knowledge_search_index, close_knowledge_search_index
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.knowledge_factory import build_native_knowledge_search
 from app.model_runtime.local_embedding import LocalHashEmbedding
