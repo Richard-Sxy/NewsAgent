@@ -36,8 +36,17 @@ rag-recall-demo/
 tmp/
 
 # Generated local BGE packages contain model weights and rebuildable vectors.
+# Includes leading-dot working/interrupted build dirs.
 /agent/data/news-bge-incremental-*/
-/agent/data/.news-bge-incremental-*.building/
+/agent/data/.news-bge-incremental-*/
+
+# Generated warehouse data packages; keep small contract/manifest files
+# (schema.sql, validation.json, scenarios.json, catalog.json, preview.json).
+/output/warehouse/**/*.jsonl
+/output/warehouse/**/warehouse.sql
+
+# Crawler-generated incremental article cache; rebuildable from crawling.
+/news/data/incremental/
 
 # Rebuildable local synthetic behavior packages; keep small manifests/reports.
 /output/behavior-tags/**/label_index.sqlite
