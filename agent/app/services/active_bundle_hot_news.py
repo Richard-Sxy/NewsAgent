@@ -3,7 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-from typing import Awaitable, Callable
+from typing import TYPE_CHECKING, Awaitable, Callable
+
+if TYPE_CHECKING:
+    from app.behavior_tags.runtime import BehaviorRetrievalContext, LocalBehaviorRuntime
+    from app.reader_profiles.service import ReaderProfileService
 
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -74,12 +78,17 @@ class ActiveProductionBundleHotNewsService:
         metric_source: NewsMetricSource | None = None,
         run_dependencies_factory: HotNewsRunDependenciesFactory | None = None,
         analysis_max_concurrency: int = 1,
+        behavior_runtime: LocalBehaviorRuntime | None = None,
+        reader_profile_service: ReaderProfileService | None = None,
     ) -> None:
         self._database = database
         self._runtime_registry = runtime_registry
         self._behavior_data_source = behavior_data_source
         self._metric_source = metric_source
         self._baseline_provider = baseline_provider
+        self._content_repository = content_repository
+        self._behavior_runtime = behavior_runtime
+        self._reader_profile_service = reader_profile_service
         self._enrichment_service = HotNewsEnrichmentService(
             content_repository=content_repository,
             knowledge_search=knowledge_search,
@@ -92,6 +101,8 @@ class ActiveProductionBundleHotNewsService:
 
     async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:
         request.validate()
+        behavior_context = self._behavior_context(request)
+        self._validate_reader_context(request)
         try:
             async with self._database.session() as session:
                 active = await PostgresProductionBundleRepository(
@@ -115,6 +126,10 @@ class ActiveProductionBundleHotNewsService:
                 "run request does not target the currently active production "
                 "bundle"
             )
+
+        allowed_reader_prompts = getattr(self._reader_profile_service, "allowed_analysis_prompt_versions", frozenset())
+        if allowed_reader_prompts and active.spec.analysis_prompt_version not in allowed_reader_prompts:
+            raise HotNewsDataQualityError("reader profiles require an approved analysis prompt version")
 
         self._runtime_registry.ensure_supported(active.spec)
         dependencies = None
@@ -141,9 +156,12 @@ class ActiveProductionBundleHotNewsService:
             metric_source=dependencies.metric_source if dependencies is not None else self._metric_source,
             baseline_provider=dependencies.baseline_provider if dependencies is not None else self._baseline_provider,
             enrichment_service=HotNewsEnrichmentService(
-                content_repository=dependencies.content_repository,
+                content_repository=dependencies.content_repository if dependencies is not None else self._content_repository,
                 knowledge_search=self._knowledge_search,
-            ) if dependencies is not None else self._enrichment_service,
+                behavior_context=behavior_context,
+                reader_profile_service=self._reader_profile_service,
+                reader_profile_window=(request.window_start, request.window_end),
+            ) if dependencies is not None or behavior_context is not None or self._reader_profile_service is not None else self._enrichment_service,
             analysis_service=analysis_service,
             policy=policy,
             analysis_batch=self._analysis_batch,
@@ -154,3 +172,37 @@ class ActiveProductionBundleHotNewsService:
             trace["scope_sha256"] = request.sql_query_scope_sha256
             result = replace(result, sql_tool_trace=trace)
         return result
+
+    def _behavior_context(self, request: HotNewsRunRequest) -> BehaviorRetrievalContext | None:
+        """Reject legacy/unbound work rather than reuse its key with new evidence."""
+        if self._behavior_runtime is None:
+            if request.retrieval_context_sha256 is not None:
+                raise HotNewsDataQualityError("behavior retrieval runtime is not configured for this request")
+            return None
+        if request.retrieval_context_sha256 is None:
+            raise HotNewsDataQualityError("behavior retrieval requires a frozen request context digest")
+        try:
+            context = self._behavior_runtime.context_for_window(
+                tenant_id=request.tenant_id, window_start=request.window_start, window_end=request.window_end,
+            )
+        except (ValueError, OSError) as exc:
+            raise HotNewsDataQualityError("behavior retrieval context is unavailable for this tenant/window") from exc
+        if context.identity_sha256 != request.retrieval_context_sha256 or context.tenant_id != request.tenant_id:
+            raise HotNewsDataQualityError("behavior retrieval context differs from the frozen run request")
+        return context
+
+    def _validate_reader_context(self, request: HotNewsRunRequest) -> None:
+        if self._reader_profile_service is None:
+            if request.reader_profile_context_sha256 is not None:
+                raise HotNewsDataQualityError("reader profile service is not configured for this request")
+            return
+        if request.reader_profile_context_sha256 is None:
+            raise HotNewsDataQualityError("reader profile requires a frozen request context digest")
+        try:
+            digest = self._reader_profile_service.context_identity_for_window(
+                tenant_id=request.tenant_id, window_start=request.window_start, window_end=request.window_end,
+            )
+        except (ValueError, OSError) as exc:
+            raise HotNewsDataQualityError("reader profile context is unavailable for this tenant/window") from exc
+        if digest != request.reader_profile_context_sha256:
+            raise HotNewsDataQualityError("reader profile context differs from the frozen run request")

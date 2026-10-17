@@ -214,6 +214,18 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
 
     try:
         tool = state.sql_assistant
+        behavior_runtime = getattr(state, "behavior_tags_runtime", None)
+        if getattr(settings, "behavior_tags_enabled", False) and behavior_runtime is None:
+            raise ValueError("behavior retrieval runtime is not configured")
+        behavior_context = behavior_runtime.context_for_window(
+            tenant_id=E2E_TENANT_ID, window_start=body.window_start, window_end=body.window_end,
+        ) if behavior_runtime is not None else None
+        reader_service = getattr(state, "reader_profile_service", None)
+        if getattr(settings, "reader_profile_enabled", False) and reader_service is None:
+            raise ValueError("reader profile service is not configured")
+        reader_context = reader_service.context_identity_for_window(
+            tenant_id=E2E_TENANT_ID, window_start=body.window_start, window_end=body.window_end,
+        ) if reader_service is not None else None
         config = load_sql_scenarios(settings.sql_assistant_scenarios_path)
         try:
             scene = config.resolve(body.scenario_id)
@@ -247,6 +259,8 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
             tenant_id=E2E_TENANT_ID, window_start=body.window_start, window_end=body.window_end,
             production_bundle_version=active.bundle_version, workflow_version=HOT_NEWS_WORKFLOW_NAME,
             sql_query_id=preview.query_id, sql_query_user_id=str(principal.user_id), sql_query_scope_sha256=scope,
+            retrieval_context_sha256=behavior_context.identity_sha256 if behavior_context is not None else None,
+            reader_profile_context_sha256=reader_context,
         )
         run_request.validate()
         binding = await tool.hot_news_bindings.get_or_claim(

@@ -10,7 +10,9 @@ import re
 from urllib.parse import urlsplit
 
 import httpx
+from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
 
+from app.observability.decorators import traced
 from .engine import AnalysisInputError, validate_request
 from .runner import (
     AnalysisExecutionError, AnalysisRunner, _json_bytes, _reject_constant,
@@ -81,6 +83,7 @@ class RemoteAnalysisRunner:
         if self._owns_client:
             await self._client.aclose()
 
+    @traced("data_analysis.remote")
     async def run(self, request: dict) -> dict:
         deadline = asyncio.get_running_loop().time() + self.timeout_seconds
         try:
@@ -103,13 +106,15 @@ class RemoteAnalysisRunner:
         if self._occupied >= self.max_concurrency:
             raise AnalysisExecutionError("service_busy")
         self._occupied += 1
+        trace_headers = {}
+        TraceContextTextMapPropagator().inject(trace_headers)
         try:
             async with asyncio.timeout_at(deadline):
                 async with self._client.stream(
                     "POST", self._url, content=payload,
                     headers={"Authorization": "Bearer " + self._token,
                              "Content-Type": "application/json", "Accept": "application/json",
-                             "Accept-Encoding": "identity"},
+                             "Accept-Encoding": "identity", **trace_headers},
                     follow_redirects=False, timeout=self.timeout_seconds,
                 ) as response:
                     if response.status_code != 200:

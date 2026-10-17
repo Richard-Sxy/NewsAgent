@@ -6,6 +6,7 @@ import type {
   DataLoopDecisionResponse,
   DataLoopSnapshotResponse,
   FeedbackCaseListResponse,
+  FeedbackCase,
   FeedbackStatus,
   FeedbackLabelListResponse,
   FeedbackLabelResponse,
@@ -47,7 +48,7 @@ export const dataLoopApi = {
   },
 
   snapshot(workflowId: string) {
-    return request<DataLoopSnapshotResponse>(`${BASE}/runs/${workflowId}`)
+    return request<DataLoopSnapshotResponse>(`${BASE}/runs/${encodeURIComponent(workflowId)}`)
   },
 
   datasetAnalysis(workflowId: string) {
@@ -83,6 +84,10 @@ export const dataLoopApi = {
         limit: query.limit,
       },
     })
+  },
+
+  getFeedbackCase(feedbackCaseId: string) {
+    return request<{ case: FeedbackCase }>(`${BASE}/feedback-cases/${encodeURIComponent(feedbackCaseId)}`)
   },
 
   submitLabel(feedbackCaseId: string, body: SubmitFeedbackLabelRequest) {
@@ -145,6 +150,6 @@ export const dataLoopApi = {
   },
 
   getCandidate(candidateId: string) {
-    return request<CandidateResponse>(`${BASE}/configuration-candidates/${candidateId}`)
+    return request<CandidateResponse>(`${BASE}/configuration-candidates/${encodeURIComponent(candidateId)}`)
   },
 }

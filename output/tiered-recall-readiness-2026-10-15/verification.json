@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-15",
+  "scope": "本轮运行的本地相关回归测试与只读健康检查；不是完整生产验收",
+  "test_workdir": "/Users/shi/Project/myProject/NewsAgent/agent",
+  "test_python": "/opt/homebrew/bin/python3.11",
+  "test_runs": [
+    {
+      "args": ["-m", "pytest", "-o", "addopts=", "-q", "tests/test_tiered_vector_retrieval.py", "tests/test_native_knowledge_indexing.py", "tests/test_milvus_vector_index.py", "tests/test_bge_snapshot_index.py", "tests/test_milvus_search_config.py", "tests/test_bge_snapshot_wiring.py", "tests/test_model_runtime_config_and_http.py"],
+      "exit_code": 0,
+      "passed": 66,
+      "elapsed_seconds": 1.49
+    },
+    {
+      "args": ["-m", "pytest", "-o", "addopts=", "-q", "tests/test_native_hot_news_runtime.py", "tests/test_hot_news_orchestration.py", "tests/test_hot_news_workflow.py", "tests/test_hot_news_analysis_attempt.py", "tests/test_hot_news_sql_binding.py", "tests/test_conversation_hot_news_query.py"],
+      "exit_code": 0,
+      "passed": 46,
+      "elapsed_seconds": 1.38,
+      "warnings": ["Starlette TestClient/httpx弃用提示；本轮测试未失败"]
+    }
+  ],
+  "health_check": {
+    "url": "http://127.0.0.1:28070/ready",
+    "http_status": 200,
+    "body": {"status": "ready", "checks": {"postgres": "ok", "redis": "ok", "temporal": "ok"}},
+    "boundary": "只验证API与依赖健康，不证明Worker全部队列有poller或新业务运行成功"
+  },
+  "assessment": {
+    "can_start": "固定数据、固定模型、固定检索入口的静态召回延时基线",
+    "not_verified_this_turn": ["新发起一轮浏览器到Worker的完整业务运行", "企业模型和向量服务真实调用", "生产长稳与故障恢复", "动态三层内容生命周期端到端验收"],
+    "remaining_implementation": ["PG文档状态与持久向量索引任务联动", "跨层有效版本、投影与撤稿校验", "复制验证后条件激活再清理的可靠迁移", "聊天与热点检索策略统一", "动态事件回放、恢复和混合负载验收"],
+    "previous_turn_boundary": "上一轮交付为实施指导和参数工作表，不代表这些TODO已实现"
+  }
+}

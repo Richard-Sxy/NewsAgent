@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "date": "2026-10-15",
+  "scope": "news lifecycle implementation; enterprise Milvus deployment and performance not verified",
+  "backend_suite": {
+    "command": "python3.11 -m pytest -o addopts='' -q",
+    "cwd": "agent",
+    "passed": 3803,
+    "skipped": 100,
+    "warnings": 3,
+    "elapsed_seconds": 45.34
+  },
+  "real_postgres_and_temporal": {
+    "passed": 7,
+    "elapsed_seconds": 1.87,
+    "environment": "existing local Docker services; randomized isolated PostgreSQL schemas and Temporal queues",
+    "tests": [
+      "tests/test_tier_lifecycle_store.py::test_real_postgres_concurrent_same_revision_has_one_accepted_job",
+      "tests/test_tier_lifecycle_worker.py::test_real_temporal_dispatch_index_migrate_and_withdraw_in_isolated_postgres_schema",
+      "tests/test_tier_lifecycle_migration.py"
+    ],
+    "existing_business_tables_changed": false
+  },
+  "replay": {
+    "command": "python3.11 agent/tools/replay_tier_lifecycle.py --config agent/deploy/knowledge-lifecycle.local.example.yml --output-dir output/tier-lifecycle-replay-final-20261015",
+    "report": "../tier-lifecycle-replay-final-20261015/report.json",
+    "checks": 35,
+    "ann_performance": false,
+    "enterprise_model_quality": false
+  },
+  "alembic_head": "20261015_0023",
+  "git_diff_check": "passed",
+  "remaining": [
+    "Fill and version enterprise configuration; provision three Milvus collections and deploy API/workers consistently",
+    "Validate enterprise model and Milvus read/write/filter/consistency/timeout behavior and sustained load",
+    "QA child projections are explicitly rejected while lifecycle is enabled",
+    "Historical manifest retention/archival, capacity optimization and cross-replica rate limiting"
+  ]
+}

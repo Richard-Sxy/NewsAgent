@@ -546,10 +546,51 @@ export interface HotNewsRankedItemView {
   rank: number
   news_id: string
   title: string | null
+  content_excerpt?: string
+  retrieval_trace?: Record<string, unknown> | null
+  reader_profile_summary?: NewsReaderProfileSummary | null
+  reader_profile_trace?: Record<string, unknown> | null
   metrics: HotNewsMetricSnapshotView
   baseline: JsonObject | null
   hot_score: HotScoreView
   analysis: HotNewsAnalysisSummaryView | null
+}
+
+export interface NewsReaderTopic {
+  topic_id: string
+  reader_count: number
+  share_all: string
+  share_profiled: string
+  baseline_reader_count: number
+  baseline_profiled_count: number
+  baseline_share: string
+  lift: string | null
+  low_sample: boolean
+}
+
+export interface NewsReaderInterest {
+  lookback_hours: number
+  profiled_reader_count: number
+  unknown_reader_count: number
+  cold_start_reader_count: number
+  baseline_profiled_count: number
+  topics: NewsReaderTopic[]
+}
+
+export interface NewsReaderProfileSummary {
+  news_id: string
+  source_mode: 'synthetic' | 'enterprise'
+  taxonomy_version: string
+  profile_policy_version: string
+  reader_count: number
+  long_term: NewsReaderInterest
+  short_term: NewsReaderInterest
+  profile_cutoff: string
+  trigger_article_excluded: boolean
+  count_method: 'exact_synthetic_distinct' | 'enterprise_exact_distinct' | 'enterprise_approx_distinct'
+  error_bound: string | null
+  status: 'complete' | 'empty'
+  limitations: string[]
 }
 
 export interface HotNewsDecisionView {

@@ -1,0 +1,776 @@
+{
+  "run_id": "1f1e418d749b4e91997a2edb28cbee99",
+  "created_at": "2026-10-13T05:04:15.880257+00:00",
+  "base_url": "http://api:8000",
+  "scope": "conversation_async_hooks",
+  "tenants": [
+    {
+      "tenant_index": 0,
+      "peak_observed_active_count": 2,
+      "queued_samples": 10,
+      "verification": {
+        "three_confirmed_requests": true,
+        "authoritative_count_observed": true,
+        "budget_not_exceeded": true,
+        "queue_observed": true,
+        "distinct_admission_references": true,
+        "all_receipts_observed": true,
+        "fifo_queue_positions_nonincreasing": true
+      },
+      "queue_references": [
+        {
+          "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+          "queue_position": 2
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 3
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 3
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+          "queue_position": 2
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+          "queue_position": 1
+        }
+      ],
+      "admission_states": {
+        "queued": 10,
+        "running": 8
+      }
+    },
+    {
+      "tenant_index": 1,
+      "peak_observed_active_count": 2,
+      "queued_samples": 9,
+      "verification": {
+        "three_confirmed_requests": true,
+        "authoritative_count_observed": true,
+        "budget_not_exceeded": true,
+        "queue_observed": true,
+        "distinct_admission_references": true,
+        "all_receipts_observed": true,
+        "fifo_queue_positions_nonincreasing": true
+      },
+      "queue_references": [
+        {
+          "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+          "queue_position": 2
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 3
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 3
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+          "queue_position": 2
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 1
+        },
+        {
+          "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+          "queue_position": 1
+        }
+      ],
+      "admission_states": {
+        "queued": 9,
+        "granted": 1,
+        "running": 8
+      }
+    }
+  ],
+  "attempted_requests": 6,
+  "confirmed_requests": 6,
+  "completed_turns": 6,
+  "elapsed_seconds": 15.816,
+  "turn_latency_seconds": {
+    "p50": 0.533,
+    "p95": 0.544,
+    "max": 0.544
+  },
+  "confirmation_latency_seconds": {
+    "p50": 0.136,
+    "p95": 0.14,
+    "max": 0.14
+  },
+  "verification_passed": true,
+  "failed_or_inconclusive_checks": [],
+  "samples": [
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "conversation_id": "9b726793-4fe8-4f39-b303-38198e0bbbc1",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.13574483300180873,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "workflow_id": "news-writing:569994e9-f3c2-4015-9420-21650ff87682:ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.508
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "conversation_id": "76ba615a-f446-483f-802e-af7919dab26d",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.13585104099911405,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "workflow_id": "news-writing:a300a35a-5ac6-4a9b-91da-b94d972e93f3:13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.525
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "conversation_id": "bb34c381-04c0-4b3f-9e2a-e6fd231993cd",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.1351782080018893,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "workflow_id": "news-writing:569994e9-f3c2-4015-9420-21650ff87682:bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "admission": {
+        "state": "queued",
+        "queue_position": 2,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.533
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "conversation_id": "0a8ad838-3da8-4b14-8259-c31f0215c0b1",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.1388921250036219,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "workflow_id": "news-writing:a300a35a-5ac6-4a9b-91da-b94d972e93f3:550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "admission": {
+        "state": "queued",
+        "queue_position": 2,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.541
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "conversation_id": "87c9ed8e-2bb8-4529-a900-bff537402ef4",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.13961495900002774,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "workflow_id": "news-writing:569994e9-f3c2-4015-9420-21650ff87682:7695676b-642b-489a-93dd-008c33826eb0",
+      "admission": {
+        "state": "queued",
+        "queue_position": 3,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.543
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "conversation_id": "e4000edf-6564-4c9d-adfd-5e0fe491b250",
+      "outcome": "completed",
+      "confirmation_accepted": true,
+      "confirmation_seconds": 0.13897158399777254,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "workflow_id": "news-writing:a300a35a-5ac6-4a9b-91da-b94d972e93f3:4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "admission": {
+        "state": "queued",
+        "queue_position": 3,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      },
+      "error_code": null,
+      "seconds": 0.544
+    }
+  ],
+  "receipt_observations": [
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "seconds": 0.545,
+      "admission": {
+        "state": "queued",
+        "queue_position": 3,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "seconds": 0.545,
+      "admission": {
+        "state": "queued",
+        "queue_position": 3,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "seconds": 0.545,
+      "admission": {
+        "state": "queued",
+        "queue_position": 2,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "seconds": 0.544,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "seconds": 0.545,
+      "admission": {
+        "state": "queued",
+        "queue_position": 2,
+        "active_count": null,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "seconds": 0.545,
+      "admission": {
+        "state": "granted",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "seconds": 3.603,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "seconds": 3.606,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "seconds": 3.604,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "seconds": 3.606,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "seconds": 3.599,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "seconds": 3.605,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "seconds": 6.664,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "seconds": 6.664,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "seconds": 6.664,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "seconds": 6.665,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "seconds": 6.665,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "seconds": 6.662,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "seconds": 9.705,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "seconds": 9.702,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "seconds": 9.707,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "seconds": 9.707,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "seconds": 9.706,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "seconds": 9.706,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "seconds": 12.762,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 2,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "seconds": 12.763,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 0,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "seconds": 12.764,
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de",
+        "workflow_accepted": false,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "seconds": 12.76,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 1,
+      "user_index": 2,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "seconds": 12.763,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    },
+    {
+      "tenant_index": 0,
+      "user_index": 1,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "seconds": 12.763,
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2",
+        "workflow_accepted": true,
+        "admission_accepted": true
+      }
+    }
+  ],
+  "resource_snapshot": {
+    "containers": [
+      {
+        "name": "news-agent-bge-demo-api-1",
+        "cpu_percent": 0.22,
+        "memory_percent": 9.79,
+        "pids": 20,
+        "memory_usage": "767.4MiB / 7.653GiB"
+      },
+      {
+        "name": "news-agent-bge-demo-writing-worker-1",
+        "cpu_percent": 0.01,
+        "memory_percent": 1.73,
+        "pids": 14,
+        "memory_usage": "135.9MiB / 7.653GiB"
+      },
+      {
+        "name": "news-agent-bge-demo-data-loop-worker-1",
+        "cpu_percent": 0.0,
+        "memory_percent": 1.78,
+        "pids": 14,
+        "memory_usage": "139.8MiB / 7.653GiB"
+      },
+      {
+        "name": "news-agent-bge-demo-hot-news-worker-1",
+        "cpu_percent": 0.01,
+        "memory_percent": 7.96,
+        "pids": 18,
+        "memory_usage": "623.9MiB / 7.653GiB"
+      },
+      {
+        "name": "news-agent-bge-demo-postgres-1",
+        "cpu_percent": 0.08,
+        "memory_percent": 2.13,
+        "pids": 9,
+        "memory_usage": "167MiB / 7.653GiB"
+      },
+      {
+        "name": "news-agent-bge-demo-temporal-1",
+        "cpu_percent": 5.78,
+        "memory_percent": 1.69,
+        "pids": 18,
+        "memory_usage": "132.4MiB / 7.653GiB"
+      }
+    ],
+    "scope": "external Docker aggregate snapshot; not continuous peak sampling"
+  },
+  "generated_test_data_retained": true,
+  "limitations": [
+    "Local rule simulation does not establish enterprise model quality.",
+    "Budget covers conversation async hooks; page/API and legacy workflows are outside this claim.",
+    "FIFO checks reference order and nonincreasing positions; this run does not approve human gates to drain the queue.",
+    "Fast terminal workflows can make queue evidence inconclusive; absent evidence never counts as passing.",
+    "Observed concurrency and optional resource snapshot do not establish sustained production capacity."
+  ]
+}

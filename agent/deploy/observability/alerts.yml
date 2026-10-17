@@ -1,0 +1,68 @@
+groups:
+  - name: newsagent-model
+    rules:
+      - alert: NewsAgentModelErrorRate
+        expr: |
+          (sum by (model_scene, model_route) (rate(newsagent_model_calls_total{newsagent_outcome="error"}[5m]))
+          / clamp_min(sum by (model_scene, model_route) (rate(newsagent_model_calls_total[5m])), 0.001)) > 0.05
+          and on (model_scene, model_route)
+          sum by (model_scene, model_route) (increase(newsagent_model_calls_total[5m])) >= 5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "模型调用失败率超过 5%（5 分钟至少 5 次调用）"
+          description: "按场景和路由检查 newsagent.stage 与 error.type，再从结构化日志跳转 trace。"
+          runbook_url: "/d/newsagent-observability"
+      - alert: NewsAgentModelSlow
+        expr: |
+          histogram_quantile(0.95, sum by (le, model_scene, model_route)
+            (rate(newsagent_model_duration_seconds_bucket[5m]))) > 30
+          and on (model_scene, model_route)
+          sum by (model_scene, model_route) (increase(newsagent_model_duration_seconds_count[5m])) >= 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "模型调用 p95 超过 30 秒"
+          description: "检查 model.http.request 和 model.inference 时长；阈值仅为本地初始值，按企业基线调整。"
+      - alert: NewsAgentModelValidationFailed
+        expr: |
+          sum by (model_scene, newsagent_stage, error_type)
+            (increase(newsagent_model_calls_total{newsagent_outcome="error",newsagent_stage=~"schema_validation|model_binding|response_decode|response_validation"}[10m])) >= 3
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "10 分钟内至少 3 次模型输出契约失败"
+          description: "检查 prompt/schema/model profile 版本和 validator；禁止凭报错自动修改生产配置。"
+      - alert: NewsAgentBusinessValidationFailed
+        expr: |
+          sum by (newsagent_operation, error_kind)
+            (increase(newsagent_operation_calls_total{newsagent_stage="business_validation",newsagent_outcome="error"}[10m])) >= 3
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "10 分钟内至少 3 次业务可信性校验失败"
+          description: "即使 model.calls 为成功，证据、指标或写作契约仍可能失败；按 error.kind 和版本检查 model.business_validate。"
+  - name: newsagent-telemetry
+    rules:
+      - alert: NewsAgentTelemetryBackendDown
+        expr: up{job=~"newsagent|otel-collector|tempo|loki"} == 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "可观测组件抓取失败"
+          description: "先检查 Collector/backends，避免把采集链丢失当作业务恢复。"
+      - alert: NewsAgentTelemetryExportFailed
+        expr: |
+          sum by (exporter) (increase(otelcol_exporter_send_failed_spans[5m])) > 0
+          or sum by (exporter) (increase(otelcol_exporter_send_failed_log_records[5m])) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Collector 向下游发送失败"
+          description: "检查本地有界 tmpfs 是否已满、下游状态、Collector 队列和重试；本地无持久队列，停机不会补发。"

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "in-process ASGI API + SQLite exact vectors + LocalHashEmbedding; no TCP, enterprise model, Milvus, or ANN performance claim",
+  "seeded_active_tiers": [
+    "hot",
+    "warm",
+    "cold"
+  ],
+  "measured_requests": 30,
+  "warmup_requests": 3,
+  "configured_concurrency": 3,
+  "readiness_scope": "database_and_vector_contract_only",
+  "trace_components_per_tier": 30
+}

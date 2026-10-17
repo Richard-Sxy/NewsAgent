@@ -1,0 +1,13 @@
+# Add after docker-compose.real-news-demo.yml for the same isolated local stack.
+# This changes only public-news recall. The frozen SQL metrics corpus is v6.
+services:
+  api:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.incremental-20261014-v1.yml
+    volumes:
+      - ./knowledge-search.incremental-20261014-v1.yml:/app/deploy/knowledge-search.incremental-20261014-v1.yml:ro
+  hot-news-worker:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.incremental-20261014-v1.yml
+    volumes:
+      - ./knowledge-search.incremental-20261014-v1.yml:/app/deploy/knowledge-search.incremental-20261014-v1.yml:ro

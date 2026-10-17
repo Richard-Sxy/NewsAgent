@@ -17,6 +17,7 @@ from sqlalchemy import (
     Table,
     Text,
     delete,
+    func,
     insert,
     select,
     text,
@@ -24,6 +25,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import JSONB
 
+from app.observability.decorators import traced
 from app.db.session import Database
 from app.knowledge.document import (
     IngestOutcome,
@@ -31,7 +33,7 @@ from app.knowledge.document import (
     IngestStatus,
     KnowledgeDocument,
 )
-from app.knowledge.native_indexing import split_text
+from app.knowledge.native_indexing import require_embedding_dimension, split_text
 from app.model_runtime.core import EmbeddingPort, EmbeddingRequest
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
 
@@ -119,6 +121,7 @@ class PostgresKnowledgeStore:
             ).mappings().first()
         return dict(row) if row is not None else None
 
+    @traced("knowledge.ingest")
     async def upsert_documents(
         self,
         *,
@@ -152,6 +155,7 @@ class PostgresKnowledgeStore:
                 overlap=self._overlap,
             )
             vectors: list[tuple[float, ...]] = []
+            dimension = None
             identity = sha256(
                 f"{tenant_id}\x1f{document.document_id}\x1f{content_version}".encode("utf-8")
             ).hexdigest()
@@ -167,10 +171,19 @@ class PostgresKnowledgeStore:
                 )
                 if result.model_version != self.embedding_version or len(result.vectors) != len(batch):
                     raise ValueError("knowledge embedding version or count drifted")
+                dimension = require_embedding_dimension(result.vectors, expected=dimension)
                 vectors.extend(result.vectors)
             lock_digest = sha256(f"{tenant_id}\x1f{document.document_id}".encode("utf-8")).digest()
             lock_key = int.from_bytes(lock_digest[:8], "big", signed=True)
+            dimension_digest = sha256(
+                f"knowledge-dimensions\x1f{tenant_id}\x1f{self.embedding_version}".encode("utf-8")
+            ).digest()
+            dimension_lock_key = int.from_bytes(dimension_digest[:8], "big", signed=True)
             async with self._database.session() as session:
+                # Different documents share one embedding space. Serialize this
+                # check/write so concurrent first documents cannot establish
+                # incompatible dimensions for the same tenant and model route.
+                await session.execute(text("SELECT pg_advisory_xact_lock(:key)"), {"key": dimension_lock_key})
                 await session.execute(text("SELECT pg_advisory_xact_lock(:key)"), {"key": lock_key})
                 existing = (
                     await session.execute(
@@ -193,6 +206,16 @@ class PostgresKnowledgeStore:
                             IngestOutcome(document.document_id, IngestStatus.FAILED, detail="changed content requires a newer version")
                         )
                         continue
+                indexed_dimensions = (
+                    await session.execute(
+                        select(func.jsonb_array_length(_chunks.c.vector)).where(
+                            _chunks.c.tenant_id == tenant_id,
+                            _chunks.c.embedding_version == self.embedding_version,
+                        ).distinct().limit(2)
+                    )
+                ).scalars().all()
+                if indexed_dimensions and indexed_dimensions != [dimension]:
+                    raise ValueError("knowledge embedding dimensions differ from the stored index")
                 values = {
                     "tenant_id": tenant_id,
                     "document_id": document.document_id,
@@ -251,6 +274,7 @@ class PostgresKnowledgeStore:
         return IngestReport(tuple(outcomes))
 
     """这边是在PostgreSQL当中查询新闻标题。"""
+    @traced("knowledge.search")
     async def search(
         self,
         *,

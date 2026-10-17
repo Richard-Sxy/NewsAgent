@@ -114,7 +114,14 @@ class PostgresConversationRepository:
                     raise ConversationConflict("input request_id belongs to different content or turn")
                 return ConversationInputView.model_validate(existing)
             # 原消息与普通消息不能共用一个 request_id
-            result = await session.execute(self._turn_query(tenant_id, user_id, conversation_id).where(ConversationInputRecord.id == turn_id))
+            result = await session.execute(self._turn_query(tenant_id, user_id, conversation_id).where(
+                ConversationTurnRecord.request_id == request_id,
+            ))
+            if result.scalar_one_or_none() is not None:
+                raise ConversationConflict("request_id already belongs to a message")
+            result = await session.execute(self._turn_query(tenant_id, user_id, conversation_id).where(
+                ConversationTurnRecord.id == turn_id,
+            ))
             turn = result.scalar_one_or_none()
             if turn is None:
                 raise ConversationNotFound("conversation turn not found")
@@ -149,7 +156,7 @@ class PostgresConversationRepository:
                 seq=max((value.seq for value in turn.inputs), default=0) + 1,
                 content=content,
                 status="pending",
-                create_at=now,
+                created_at=now,
                 applied_at=None,
                 error_code=None,
             )
@@ -168,7 +175,7 @@ class PostgresConversationRepository:
         turn_id: UUID,
         request_id: UUID,
     ) -> list[ConversationInputView]:
-        async with self._database.session as session:
+        async with self._database.session() as session:
             conversation = await self._require_conversation(
                 session, tenant_id, user_id, conversation_id,
             )
@@ -244,7 +251,7 @@ class PostgresConversationRepository:
                 return TurnAdvance(
                     turn=None,
                     inputs=[
-                        ConversationInputView.model_validate(iter)
+                        ConversationInputView.model_validate(item)
                         for item in additions
                     ]
                 )
@@ -258,7 +265,7 @@ class PostgresConversationRepository:
             )
             await session.flush()
             return TurnAdvance(
-                turn=ConversationInputView.model_validate(turn),
+                turn=ConversationTurnView.model_validate(turn),
                 inputs=[],
             )
         
@@ -609,14 +616,10 @@ class PostgresConversationRepository:
                 raise ConversationNotFound("conversation turn not found")
             if turn.status != "processing":
                 raise ConversationConflict("only a processing turn can be finished")
-            self._validate_checkpoint_prefix(turn, serialized_tools, model_request_ids)
             now = datetime.now(timezone.utc)
-            turn.assistant_content = assistant_content
-            turn.tools = serialized_tools
-            turn.model_request_ids = list(model_request_ids)
-            turn.error_code = error_code
-            turn.status = "failed" if error_code is not None else "completed"
-            turn.completed_at = now
+            self._write_terminal(turn, now=now, assistant_content=assistant_content,
+                                 tools=serialized_tools, model_request_ids=model_request_ids,
+                                 error_code=error_code)
             conversation.updated_at = now
             await session.flush()
             return ConversationTurnView.model_validate(turn)
@@ -687,7 +690,7 @@ class PostgresConversationRepository:
         turn.status = "failed"
         turn.error_code = "interrupted"
         turn.completed_at = now
-        PostgresConversationRepository._fail_inputs(turn, "interrapt")
+        PostgresConversationRepository._fail_inputs(turn, "interrupted")
 
     @staticmethod
     def _validate_limit(limit: int) -> None:
@@ -734,7 +737,7 @@ class PostgresConversationRepository:
     def _claim_pending_inputs(
         turn: ConversationTurnRecord,
         now: datetime
-    ) -> list[ConversationTurnRecord]:
+    ) -> list[ConversationInputRecord]:
         claimed = sorted(
             (item for item in turn.inputs if item.status == "pending"),
             key=lambda item: item.seq,
@@ -746,7 +749,7 @@ class PostgresConversationRepository:
 
     @staticmethod
     def _fail_inputs(
-        turn: ConversationInputRecord,
+        turn: ConversationTurnRecord,
         error_code: str,
     ) -> None:
         for item in turn.inputs:
@@ -773,4 +776,4 @@ class PostgresConversationRepository:
         turn.completed_at = now
 
         if error_code is not None:
-            self._fail_inputs(turn, error_code)    
+            self._fail_inputs(turn, error_code)

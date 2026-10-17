@@ -1,0 +1,1645 @@
+
+> newsagent-frontend@0.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: admission projection retains authoritative queue integers, including imported active jobs above the budget
+ok 1 - admission projection retains authoritative queue integers, including imported active jobs above the budget
+  ---
+  duration_ms: 0.889666
+  ...
+# Subtest: writing job cards render a real stored job in queue without asserting business Workflow start
+ok 2 - writing job cards render a real stored job in queue without asserting business Workflow start
+  ---
+  duration_ms: 144.35925
+  ...
+# Subtest: queued evaluation requests preserve gray all-null receipts and expose no business link or fictitious evaluation row
+ok 3 - queued evaluation requests preserve gray all-null receipts and expose no business link or fictitious evaluation row
+  ---
+  duration_ms: 115.230875
+  ...
+# Subtest: an immutable queued evaluation card gains a live business link only after an authoritative accepted receipt
+ok 4 - an immutable queued evaluation card gains a live business link only after an authoritative accepted receipt
+  ---
+  duration_ms: 30.113333
+  ...
+# Subtest: only completed server traces with a valid admission acknowledgment may project a queued planned evaluation ID
+ok 5 - only completed server traces with a valid admission acknowledgment may project a queued planned evaluation ID
+  ---
+  duration_ms: 0.310958
+  ...
+# Subtest: denied writing traces retain only a verified committed job after an authoritative admission rejection
+ok 6 - denied writing traces retain only a verified committed job after an authoritative admission rejection
+  ---
+  duration_ms: 0.302209
+  ...
+# Subtest: a rejected writing request keeps the saved job link and explains the refusal without a started claim
+ok 7 - a rejected writing request keeps the saved job link and explains the refusal without a started claim
+  ---
+  duration_ms: 26.168166
+  ...
+# Subtest: a denied evaluation admission shows the refusal without promoting its planned Workflow into a business entity
+ok 8 - a denied evaluation admission shows the refusal without promoting its planned Workflow into a business entity
+  ---
+  duration_ms: 24.202584
+  ...
+# Subtest: canonical unknown admission snapshots preserve diagnostic codes and nullable budget without implying a start
+ok 9 - canonical unknown admission snapshots preserve diagnostic codes and nullable budget without implying a start
+  ---
+  duration_ms: 2.025583
+  ...
+# Subtest: confirmation acceptance ends the user operation while keeping queue acceptance distinct from business start
+ok 10 - confirmation acceptance ends the user operation while keeping queue acceptance distinct from business start
+  ---
+  duration_ms: 1.450167
+  ...
+# Subtest: writing card polling uses the new authenticated receipt route once per entity and observes queue progression
+ok 11 - writing card polling uses the new authenticated receipt route once per entity and observes queue progression
+  ---
+  duration_ms: 46.174583
+  ...
+# Subtest: queued evaluation polling uses admission-aware receipts until business acceptance and stops at an admission terminal state
+ok 12 - queued evaluation polling uses admission-aware receipts until business acceptance and stops at an admission terminal state
+  ---
+  duration_ms: 24.018834
+  ...
+# Subtest: only the authenticated live read may retain a tenant-verified unknown planned evaluation without business acceptance
+ok 13 - only the authenticated live read may retain a tenant-verified unknown planned evaluation without business acceptance
+  ---
+  duration_ms: 10.222584
+  ...
+# Subtest: live unknown reads reject mismatched IDs, missing acceptance flags, noncanonical admission, or non-null business fields
+ok 14 - live unknown reads reject mismatched IDs, missing acceptance flags, noncanonical admission, or non-null business fields
+  ---
+  duration_ms: 110.895166
+  ...
+# Subtest: live unknown evaluation cards display the saved queue separately from safe diagnostics without a business link
+ok 15 - live unknown evaluation cards display the saved queue separately from safe diagnostics without a business link
+  ---
+  duration_ms: 8.982333
+  ...
+# Subtest: receipt APIs encode identifiers and send no browser identity, queue budget, or business-start mutation
+ok 16 - receipt APIs encode identifiers and send no browser identity, queue budget, or business-start mutation
+  ---
+  duration_ms: 2.819084
+  ...
+# Subtest: prepare uses exactly two fixed synthetic windows and real reads in a new conversation
+ok 17 - prepare uses exactly two fixed synthetic windows and real reads in a new conversation
+  ---
+  duration_ms: 2.64125
+  ...
+# Subtest: run, window, source and failed-read rejection stops downstream work without retry
+    # Subtest: incomplete
+    ok 1 - incomplete
+      ---
+      duration_ms: 18.5995
+      ...
+    # Subtest: window
+    ok 2 - window
+      ---
+      duration_ms: 0.383708
+      ...
+    # Subtest: empty
+    ok 3 - empty
+      ---
+      duration_ms: 0.291167
+      ...
+    # Subtest: same-run
+    ok 4 - same-run
+      ---
+      duration_ms: 0.184042
+      ...
+    # Subtest: read-denied
+    ok 5 - read-denied
+      ---
+      duration_ms: 0.579875
+      ...
+    # Subtest: fake-read
+    ok 6 - fake-read
+      ---
+      duration_ms: 0.527541
+      ...
+    # Subtest: analysis
+    ok 7 - analysis
+      ---
+      duration_ms: 2.631583
+      ...
+    1..7
+ok 18 - run, window, source and failed-read rejection stops downstream work without retry
+  ---
+  duration_ms: 31.11525
+  ...
+# Subtest: transport failure is not retried and cancellation prevents late downstream writes
+ok 19 - transport failure is not retried and cancellation prevents late downstream writes
+  ---
+  duration_ms: 23.718958
+  ...
+# Subtest: cancel during conversation creation or first read prevents remaining source writes
+    # Subtest: create
+    ok 1 - create
+      ---
+      duration_ms: 13.109334
+      ...
+    # Subtest: read
+    ok 2 - read
+      ---
+      duration_ms: 5.598417
+      ...
+    1..2
+ok 20 - cancel during conversation creation or first read prevents remaining source writes
+  ---
+  duration_ms: 19.238083
+  ...
+# Subtest: read receipt must match the exact request, target run and window
+    # Subtest: request
+    ok 1 - request
+      ---
+      duration_ms: 0.164
+      ...
+    # Subtest: run
+    ok 2 - run
+      ---
+      duration_ms: 0.129916
+      ...
+    # Subtest: window
+    ok 3 - window
+      ---
+      duration_ms: 0.076083
+      ...
+    1..3
+ok 21 - read receipt must match the exact request, target run and window
+  ---
+  duration_ms: 0.527792
+  ...
+# Subtest: public headline catalog keeps v3 identity and only supports sizes covered by actual titles
+ok 22 - public headline catalog keeps v3 identity and only supports sizes covered by actual titles
+  ---
+  duration_ms: 1.096458
+  ...
+# Subtest: public headline preparation stops before submission if the title catalog changes
+ok 23 - public headline preparation stops before submission if the title catalog changes
+  ---
+  duration_ms: 0.481083
+  ...
+# Subtest: scaled catalog accepts only approved sizes and exact two-tenant, 24-hour counts with Top100 coverage
+ok 24 - scaled catalog accepts only approved sizes and exact two-tenant, 24-hour counts with Top100 coverage
+  ---
+  duration_ms: 0.60675
+  ...
+# Subtest: scaled preparation keeps both complete Top100 snapshots and the existing five-news read summary
+ok 25 - scaled preparation keeps both complete Top100 snapshots and the existing five-news read summary
+  ---
+  duration_ms: 10.215667
+  ...
+# Subtest: scaled preparation refuses changed profile, size, schema, version, hash or selected case before submitting
+ok 26 - scaled preparation refuses changed profile, size, schema, version, hash or selected case before submitting
+  ---
+  duration_ms: 0.901
+  ...
+# Subtest: enterprise catalog accepts fixed case pairs, including gaps, and rejects unsafe or ambiguous configuration
+ok 27 - enterprise catalog accepts fixed case pairs, including gaps, and rejects unsafe or ambiguous configuration
+  ---
+  duration_ms: 0.296958
+  ...
+# Subtest: enterprise preparation refreshes dataset identity and binds the selected query, windows and real receipts
+ok 28 - enterprise preparation refreshes dataset identity and binds the selected query, windows and real receipts
+  ---
+  duration_ms: 0.248667
+  ...
+# Subtest: changing enterprise data or returning a different SQL scope stops before creating a conversation
+ok 29 - changing enterprise data or returning a different SQL scope stops before creating a conversation
+  ---
+  duration_ms: 0.130667
+  ...
+# Subtest: results require completed analyze receipts and display actual execution and provenance
+ok 30 - results require completed analyze receipts and display actual execution and provenance
+  ---
+  duration_ms: 0.584083
+  ...
+# Subtest: all six real Python worker report shapes render with display-only decimal rounding
+ok 31 - all six real Python worker report shapes render with display-only decimal rounding
+  ---
+  duration_ms: 0.386667
+  ...
+# Subtest: six operations format decimals without changing reports, retain missing values and unsafe integer fallback
+ok 32 - six operations format decimals without changing reports, retain missing values and unsafe integer fallback
+  ---
+  duration_ms: 0.752167
+  ...
+# Subtest: reference values and means use two decimal places while scores use four and relative changes use percent
+ok 33 - reference values and means use two decimal places while scores use four and relative changes use percent
+  ---
+  duration_ms: 0.636125
+  ...
+# Subtest: prepare UI requires every authorization flag and also respects parent busy state
+ok 34 - prepare UI requires every authorization flag and also respects parent busy state
+  ---
+  duration_ms: 162.202209
+  ...
+# Subtest: prepare UI rejects concurrent clicks and routes only after completed real preparation
+ok 35 - prepare UI rejects concurrent clicks and routes only after completed real preparation
+  ---
+  duration_ms: 96.065125
+  ...
+# Subtest: switching conversations or leaving prevents late route and cancels the signal
+    # Subtest: switch
+    ok 1 - switch
+      ---
+      duration_ms: 17.98
+      ...
+    # Subtest: leave
+    ok 2 - leave
+      ---
+      duration_ms: 33.251541
+      ...
+    # Subtest: cancel
+    ok 3 - cancel
+      ---
+      duration_ms: 23.177083
+      ...
+    1..3
+ok 36 - switching conversations or leaving prevents late route and cancels the signal
+  ---
+  duration_ms: 74.618292
+  ...
+# Subtest: conflict error stays explicit and does not disclose transport details or retry
+ok 37 - conflict error stays explicit and does not disclose transport details or retry
+  ---
+  duration_ms: 24.95125
+  ...
+# Subtest: preparation handler cannot fall back during catalog loading, errors or unknown enterprise selection
+ok 38 - preparation handler cannot fall back during catalog loading, errors or unknown enterprise selection
+  ---
+  duration_ms: 157.283667
+  ...
+# Subtest: catalog refresh keeps a valid selected enterprise case
+ok 39 - catalog refresh keeps a valid selected enterprise case
+  ---
+  duration_ms: 24.021291
+  ...
+# Subtest: scaled preparation panel shows per-tenant and total volumes with actual aggregate counts
+ok 40 - scaled preparation panel shows per-tenant and total volumes with actual aggregate counts
+  ---
+  duration_ms: 57.459416
+  ...
+# Subtest: public headline preparation panel labels real titles separately from synthetic aggregates
+ok 41 - public headline preparation panel labels real titles separately from synthetic aggregates
+  ---
+  duration_ms: 28.447
+  ...
+# Subtest: thirty-day catalog accepts scale and rejects altered bounds or scenario windows
+ok 42 - thirty-day catalog accepts scale and rejects altered bounds or scenario windows
+  ---
+  duration_ms: 0.322708
+  ...
+# Subtest: UTF-8 split at every byte, CRLF, multiline data and heartbeats retain exact safe text
+ok 43 - UTF-8 split at every byte, CRLF, multiline data and heartbeats retain exact safe text
+  ---
+  duration_ms: 171.62025
+  ...
+# Subtest: saved writing proposal and execution traces arrive before terminal done, with immutable consecutive tool indexes
+ok 44 - saved writing proposal and execution traces arrive before terminal done, with immutable consecutive tool indexes
+  ---
+  duration_ms: 86.024167
+  ...
+# Subtest: enriched tool traces reject malformed fields and mismatches against the saved event metadata
+ok 45 - enriched tool traces reject malformed fields and mismatches against the saved event metadata
+  ---
+  duration_ms: 494.392958
+  ...
+# Subtest: a delta callback is visible while done is still waiting on the network
+ok 46 - a delta callback is visible while done is still waiting on the network
+  ---
+  duration_ms: 46.883125
+  ...
+# Subtest: JSON authorization and pre-stream errors preserve status and broadcast gateway failure
+    # Subtest: 401
+    ok 1 - 401
+      ---
+      duration_ms: 47.78725
+      ...
+    # Subtest: 403
+    ok 2 - 403
+      ---
+      duration_ms: 6.819
+      ...
+    # Subtest: 404
+    ok 3 - 404
+      ---
+      duration_ms: 41.6505
+      ...
+    # Subtest: 409
+    ok 4 - 409
+      ---
+      duration_ms: 40.405708
+      ...
+    # Subtest: 422
+    ok 5 - 422
+      ---
+      duration_ms: 12.811875
+      ...
+    # Subtest: 429
+    ok 6 - 429
+      ---
+      duration_ms: 43.116583
+      ...
+    # Subtest: 503
+    ok 7 - 503
+      ---
+      duration_ms: 30.597125
+      ...
+    1..7
+ok 47 - JSON authorization and pre-stream errors preserve status and broadcast gateway failure
+  ---
+  duration_ms: 224.277583
+  ...
+# Subtest: an HTML login fallback is not parsed as a successful event stream
+ok 48 - an HTML login fallback is not parsed as a successful event stream
+  ---
+  duration_ms: 9.742292
+  ...
+# Subtest: a stream ending without done fails without automatically replaying the POST
+ok 49 - a stream ending without done fails without automatically replaying the POST
+  ---
+  duration_ms: 44.590167
+  ...
+# Subtest: saved terminal replay returns the same audited answer without planning or tool events
+ok 50 - saved terminal replay returns the same audited answer without planning or tool events
+  ---
+  duration_ms: 28.924084
+  ...
+# Subtest: duplicate, reordered or mismatched response events fail closed
+    # Subtest: duplicate
+    ok 1 - duplicate
+      ---
+      duration_ms: 15.494125
+      ...
+    # Subtest: reordered
+    ok 2 - reordered
+      ---
+      duration_ms: 64.60825
+      ...
+    # Subtest: wrong_request
+    ok 3 - wrong_request
+      ---
+      duration_ms: 5.2515
+      ...
+    # Subtest: wrong_turn
+    ok 4 - wrong_turn
+      ---
+      duration_ms: 30.075583
+      ...
+    # Subtest: delta_before_accept
+    ok 5 - delta_before_accept
+      ---
+      duration_ms: 9.27825
+      ...
+    # Subtest: duplicate_accept
+    ok 6 - duplicate_accept
+      ---
+      duration_ms: 15.517208
+      ...
+    # Subtest: answer_mismatch
+    ok 7 - answer_mismatch
+      ---
+      duration_ms: 22.225125
+      ...
+    # Subtest: nonterminal_done
+    ok 8 - nonterminal_done
+      ---
+      duration_ms: 53.322458
+      ...
+    # Subtest: wrong_done
+    ok 9 - wrong_done
+      ---
+      duration_ms: 37.956
+      ...
+    # Subtest: unknown_event
+    ok 10 - unknown_event
+      ---
+      duration_ms: 21.586791
+      ...
+    # Subtest: duplicate_done
+    ok 11 - duplicate_done
+      ---
+      duration_ms: 10.3955
+      ...
+    # Subtest: tool_without_start
+    ok 12 - tool_without_start
+      ---
+      duration_ms: 18.667083
+      ...
+    1..12
+ok 51 - duplicate, reordered or mismatched response events fail closed
+  ---
+  duration_ms: 306.136208
+  ...
+# Subtest: server error events preserve explicit failure instead of accepting partial answer as final
+ok 52 - server error events preserve explicit failure instead of accepting partial answer as final
+  ---
+  duration_ms: 6.261834
+  ...
+# Subtest: invalid UTF-8, malformed JSON and oversized unfinished frames are bounded failures
+    # Subtest: utf8
+    ok 1 - utf8
+      ---
+      duration_ms: 18.852166
+      ...
+    # Subtest: truncated_utf8
+    ok 2 - truncated_utf8
+      ---
+      duration_ms: 6.789459
+      ...
+    # Subtest: json
+    ok 3 - json
+      ---
+      duration_ms: 19.193708
+      ...
+    # Subtest: buffer
+    ok 4 - buffer
+      ---
+      duration_ms: 8.054667
+      ...
+    1..4
+ok 53 - invalid UTF-8, malformed JSON and oversized unfinished frames are bounded failures
+  ---
+  duration_ms: 53.3085
+  ...
+# Subtest: caller cancellation and deadline stop the fetch stream
+    # Subtest: caller cancellation
+    ok 1 - caller cancellation
+      ---
+      duration_ms: 6.000917
+      ...
+    # Subtest: deadline
+    ok 2 - deadline
+      ---
+      duration_ms: 19.602375
+      ...
+    1..2
+ok 54 - caller cancellation and deadline stop the fetch stream
+  ---
+  duration_ms: 25.871042
+  ...
+# Subtest: published maximum budget accepts six tools and over 1880 valid events in one network chunk
+ok 55 - published maximum budget accepts six tools and over 1880 valid events in one network chunk
+  ---
+  duration_ms: 15.931417
+  ...
+# Subtest: a seventh tool or third attempt exceeds the published finite budget
+    # Subtest: seventh_terminal_tool
+    ok 1 - seventh_terminal_tool
+      ---
+      duration_ms: 11.244708
+      ...
+    # Subtest: seventh_started_tool
+    ok 2 - seventh_started_tool
+      ---
+      duration_ms: 5.73975
+      ...
+    # Subtest: third_finished_attempt
+    ok 3 - third_finished_attempt
+      ---
+      duration_ms: 12.492333
+      ...
+    # Subtest: third_terminal_attempt
+    ok 4 - third_terminal_attempt
+      ---
+      duration_ms: 14.226083
+      ...
+    1..4
+ok 56 - a seventh tool or third attempt exceeds the published finite budget
+  ---
+  duration_ms: 44.162084
+  ...
+# Subtest: model mode comes from authenticated backend runtime, not the frontend simulation flag
+ok 57 - model mode comes from authenticated backend runtime, not the frontend simulation flag
+  ---
+  duration_ms: 565.086542
+  ...
+# Subtest: runtime fetch failure stays unknown instead of claiming a real model connection
+ok 58 - runtime fetch failure stays unknown instead of claiming a real model connection
+  ---
+  duration_ms: 150.4085
+  ...
+# Subtest: main capability descriptions come only from runtime permissions and preserve an accurate READ-only scope
+ok 59 - main capability descriptions come only from runtime permissions and preserve an accurate READ-only scope
+  ---
+  duration_ms: 98.460375
+  ...
+# Subtest: natural example 看看热点新闻 fills only the draft until the user sends
+ok 60 - natural example 看看热点新闻 fills only the draft until the user sends
+  ---
+  duration_ms: 133.589542
+  ...
+# Subtest: natural example 今日热点 fills only the draft until the user sends
+ok 61 - natural example 今日热点 fills only the draft until the user sends
+  ---
+  duration_ms: 59.968625
+  ...
+# Subtest: natural examples keep the existing questions and respect message and deletion locks
+ok 62 - natural examples keep the existing questions and respect message and deletion locks
+  ---
+  duration_ms: 53.553458
+  ...
+# Subtest: analysis examples only fill a draft and preparation locks sends and conversation creation
+ok 63 - analysis examples only fill a draft and preparation locks sends and conversation creation
+  ---
+  duration_ms: 93.80275
+  ...
+# Subtest: prepared conversation routing respects the origin and load guards
+ok 64 - prepared conversation routing respects the origin and load guards
+  ---
+  duration_ms: 69.715084
+  ...
+# Subtest: demo preparation passes cancellation to existing conversation transport without identity headers
+ok 65 - demo preparation passes cancellation to existing conversation transport without identity headers
+  ---
+  duration_ms: 5.932459
+  ...
+# Subtest: conversation API reuses request authentication and allows 120 seconds for messages
+ok 66 - conversation API reuses request authentication and allows 120 seconds for messages
+  ---
+  duration_ms: 2.733291
+  ...
+# Subtest: duplicate submits are locked and an uncertain network retry keeps its request ID and content
+ok 67 - duplicate submits are locked and an uncertain network retry keeps its request ID and content
+  ---
+  duration_ms: 51.555834
+  ...
+# Subtest: 429 and 409 explain retry behavior while retaining the original request
+    # Subtest: 429
+    ok 1 - 429
+      ---
+      duration_ms: 26.752625
+      ...
+    # Subtest: 409
+    ok 2 - 409
+      ---
+      duration_ms: 16.860333
+      ...
+    1..2
+ok 68 - 429 and 409 explain retry behavior while retaining the original request
+  ---
+  duration_ms: 44.3905
+  ...
+# Subtest: a late message response cannot overwrite a different selected conversation
+ok 69 - a late message response cannot overwrite a different selected conversation
+  ---
+  duration_ms: 28.58975
+  ...
+# Subtest: out-of-order history responses respect the current route query
+ok 70 - out-of-order history responses respect the current route query
+  ---
+  duration_ms: 23.548125
+  ...
+# Subtest: refresh recovers the original result and a late response does not erase a newer pending request
+ok 71 - refresh recovers the original result and a late response does not erase a newer pending request
+  ---
+  duration_ms: 17.5235
+  ...
+# Subtest: a failed business turn remains in history and an explicit new message receives a new request ID
+ok 72 - a failed business turn remains in history and an explicit new message receives a new request ID
+  ---
+  duration_ms: 20.70225
+  ...
+# Subtest: route history recovers processing state and prevents another send
+ok 73 - route history recovers processing state and prevents another send
+  ---
+  duration_ms: 19.148416
+  ...
+# Subtest: a stale processing response cannot regress a terminal turn recovered from history
+ok 74 - a stale processing response cannot regress a terminal turn recovered from history
+  ---
+  duration_ms: 14.4535
+  ...
+# Subtest: an arbitrary route ID cannot expose dictionary prototype members as pending messages
+ok 75 - an arbitrary route ID cannot expose dictionary prototype members as pending messages
+  ---
+  duration_ms: 13.139542
+  ...
+# Subtest: a first message creates a conversation and restores the route without storing messages
+ok 76 - a first message creates a conversation and restores the route without storing messages
+  ---
+  duration_ms: 21.917916
+  ...
+# Subtest: phase, tool progress and safe answer text appear before done without committing a turn
+ok 77 - phase, tool progress and safe answer text appear before done without committing a turn
+  ---
+  duration_ms: 20.1575
+  ...
+# Subtest: unmount cancels the stream and SPA remount retains the same uncertain request ID
+ok 78 - unmount cancels the stream and SPA remount retains the same uncertain request ID
+  ---
+  duration_ms: 14.953541
+  ...
+# Subtest: late stream deltas and done cannot overwrite a turn already recovered by GET
+ok 79 - late stream deltas and done cannot overwrite a turn already recovered by GET
+  ---
+  duration_ms: 12.487833
+  ...
+# Subtest: terminal replay progress is labeled as restoring a saved reply
+ok 80 - terminal replay progress is labeled as restoring a saved reply
+  ---
+  duration_ms: 25.244
+  ...
+# Subtest: delete and restore encode IDs and reuse gateway authentication without a request body
+ok 81 - delete and restore encode IDs and reuse gateway authentication without a request body
+  ---
+  duration_ms: 1.950959
+  ...
+# Subtest: delete requires confirmation and updates the page only after the server succeeds
+ok 82 - delete requires confirmation and updates the page only after the server succeeds
+  ---
+  duration_ms: 21.629916
+  ...
+# Subtest: cancelling delete leaves list, selection and draft unchanged
+ok 83 - cancelling delete leaves list, selection and draft unchanged
+  ---
+  duration_ms: 15.328292
+  ...
+# Subtest: 409 and uncertain transport errors keep local state and explain how to confirm the result
+    # Subtest: ApiError
+    ok 1 - ApiError
+      ---
+      duration_ms: 24.487292
+      ...
+    # Subtest: TypeError
+    ok 2 - TypeError
+      ---
+      duration_ms: 26.379458
+      ...
+    1..2
+ok 84 - 409 and uncertain transport errors keep local state and explain how to confirm the result
+  ---
+  duration_ms: 51.573416
+  ...
+# Subtest: deleting the last current conversation clears its route, history, retryable outbox and drafts
+ok 85 - deleting the last current conversation clears its route, history, retryable outbox and drafts
+  ---
+  duration_ms: 36.438584
+  ...
+# Subtest: deleting another conversation preserves the current history, route and draft
+ok 86 - deleting another conversation preserves the current history, route and draft
+  ---
+  duration_ms: 36.948
+  ...
+# Subtest: creating a new conversation after deletion keeps the old ID hidden through delayed responses and refresh
+ok 87 - creating a new conversation after deletion keeps the old ID hidden through delayed responses and refresh
+  ---
+  duration_ms: 13.612375
+  ...
+# Subtest: the undo notice does not repeat the deleted title above the conversation list
+ok 88 - the undo notice does not repeat the deleted title above the conversation list
+  ---
+  duration_ms: 0.071417
+  ...
+# Subtest: late list, GET, events and navigation cannot resurrect a successfully deleted conversation
+ok 89 - late list, GET, events and navigation cannot resurrect a successfully deleted conversation
+  ---
+  duration_ms: 30.327417
+  ...
+# Subtest: a pending confirmation prevents duplicate mutations and rechecks busy state before DELETE
+ok 90 - a pending confirmation prevents duplicate mutations and rechecks busy state before DELETE
+  ---
+  duration_ms: 35.463625
+  ...
+# Subtest: local streams lock only their own deletion while server processing, create and preparation also lock
+ok 91 - local streams lock only their own deletion while server processing, create and preparation also lock
+  ---
+  duration_ms: 48.192667
+  ...
+# Subtest: undo restores the hidden conversation without replacing an existing current conversation or its draft
+ok 92 - undo restores the hidden conversation without replacing an existing current conversation or its draft
+  ---
+  duration_ms: 34.918833
+  ...
+# Subtest: undo failure keeps its retry action; successful undo opens the conversation when the list was empty
+ok 93 - undo failure keeps its retry action; successful undo opens the conversation when the list was empty
+  ---
+  duration_ms: 28.861791
+  ...
+# Subtest: conversation selection and deletion use sibling buttons, preserving accessible independent actions
+ok 94 - conversation selection and deletion use sibling buttons, preserving accessible independent actions
+  ---
+  duration_ms: 0.453583
+  ...
+# Subtest: saved writing tool traces render while the stream is processing and survive as final immutable history
+ok 95 - saved writing tool traces render while the stream is processing and survive as final immutable history
+  ---
+  duration_ms: 20.148541
+  ...
+# Subtest: writing confirmation surfaces come only from saved traces in pending streams or restored processing histories
+ok 96 - writing confirmation surfaces come only from saved traces in pending streams or restored processing histories
+  ---
+  duration_ms: 0.424167
+  ...
+# Subtest: evaluation receipts bind to the accepted Workflow ID and do not invent an evaluation row
+ok 97 - evaluation receipts bind to the accepted Workflow ID and do not invent an evaluation row
+  ---
+  duration_ms: 88.705333
+  ...
+# Subtest: evaluation cards keep original snapshots apart from the latest gate and display a real row only after it exists
+ok 98 - evaluation cards keep original snapshots apart from the latest gate and display a real row only after it exists
+  ---
+  duration_ms: 71.400875
+  ...
+# Subtest: canonical Workflow selectors reject injection and mismatched IDs while preserving historical run selectors
+ok 99 - canonical Workflow selectors reject injection and mismatched IDs while preserving historical run selectors
+  ---
+  duration_ms: 0.781292
+  ...
+# Subtest: snapshot API terminal phases are deterministic and preserve the policy from the saved receipt
+ok 100 - snapshot API terminal phases are deterministic and preserve the policy from the saved receipt
+  ---
+  duration_ms: 0.177625
+  ...
+# Subtest: evaluation polling shares one Workflow read, uses 15 seconds, pauses on hidden pages and stops on terminal snapshots
+ok 101 - evaluation polling shares one Workflow read, uses 15 seconds, pauses on hidden pages and stops on terminal snapshots
+  ---
+  duration_ms: 13.960833
+  ...
+# Subtest: evaluation polling stops after three consecutive read failures and manual refresh resumes with the same Workflow
+ok 102 - evaluation polling stops after three consecutive read failures and manual refresh resumes with the same Workflow
+  ---
+  duration_ms: 2.286791
+  ...
+# Subtest: the evaluation composable reads the existing snapshot API, retains saved policy and cleans its shared subscription
+ok 103 - the evaluation composable reads the existing snapshot API, retains saved policy and cleans its shared subscription
+  ---
+  duration_ms: 25.887459
+  ...
+# Subtest: Data Loop confirmation suggestions permit only a candidate UUID; Python fields carry datasets, window and approved policy
+ok 104 - Data Loop confirmation suggestions permit only a candidate UUID; Python fields carry datasets, window and approved policy
+  ---
+  duration_ms: 0.390083
+  ...
+# Subtest: candidate confirmations accept only server-admitted model/prompt versions and refuse model specs or unassessable reranker changes
+ok 105 - candidate confirmations accept only server-admitted model/prompt versions and refuse model specs or unassessable reranker changes
+  ---
+  duration_ms: 0.259625
+  ...
+# Subtest: safe denied capability outcomes show only validated unpersisted receipts and a bounded text reason
+ok 106 - safe denied capability outcomes show only validated unpersisted receipts and a bounded text reason
+  ---
+  duration_ms: 0.164
+  ...
+# Subtest: Data Loop deep links route to the actual matching run or candidate panel and preserve selectors
+ok 107 - Data Loop deep links route to the actual matching run or candidate panel and preserve selectors
+  ---
+  duration_ms: 25.488916
+  ...
+# Subtest: run and candidate panels load real linked snapshots and reject late or mismatched results
+ok 108 - run and candidate panels load real linked snapshots and reject late or mismatched results
+  ---
+  duration_ms: 215.749709
+  ...
+# Subtest: reference and mean decimals round exactly to at most two places, including negative and carry cases
+ok 109 - reference and mean decimals round exactly to at most two places, including negative and carry cases
+  ---
+  duration_ms: 6.995625
+  ...
+# Subtest: ratio percentages use two places with exact decimal point shift and no floating-point coercion
+ok 110 - ratio percentages use two places with exact decimal point shift and no floating-point coercion
+  ---
+  duration_ms: 0.637417
+  ...
+# Subtest: missing and invalid values stay missing while unsafe JSON integers refer to the authoritative result
+ok 111 - missing and invalid values stay missing while unsafe JSON integers refer to the authoritative result
+  ---
+  duration_ms: 0.163333
+  ...
+# Subtest: SQL cells format by semantic column and keep identifiers, headlines and source text intact
+ok 112 - SQL cells format by semantic column and keep identifiers, headlines and source text intact
+  ---
+  duration_ms: 0.407125
+  ...
+# Subtest: the actual hot-news table renders the headline first and formats metric strings on display
+ok 113 - the actual hot-news table renders the headline first and formats metric strings on display
+  ---
+  duration_ms: 382.722125
+  ...
+# Subtest: development loads the YAML into server settings and proxy identity headers
+ok 114 - development loads the YAML into server settings and proxy identity headers
+  ---
+  duration_ms: 8.637833
+  ...
+# Subtest: environment fields override YAML settings without mutating the supplied environment
+ok 115 - environment fields override YAML settings without mutating the supplied environment
+  ---
+  duration_ms: 1.358083
+  ...
+# Subtest: empty environment identity fields explicitly remove the corresponding YAML headers
+    # Subtest: VITE_DEV_TENANT_ID
+    ok 1 - VITE_DEV_TENANT_ID
+      ---
+      duration_ms: 2.529
+      ...
+    # Subtest: VITE_DEV_USER_ID
+    ok 2 - VITE_DEV_USER_ID
+      ---
+      duration_ms: 0.747375
+      ...
+    # Subtest: VITE_DEV_HOT_NEWS_ROLES
+    ok 3 - VITE_DEV_HOT_NEWS_ROLES
+      ---
+      duration_ms: 5.315209
+      ...
+    # Subtest: VITE_DEV_DATA_LOOP_ROLES
+    ok 4 - VITE_DEV_DATA_LOOP_ROLES
+      ---
+      duration_ms: 1.669542
+      ...
+    # Subtest: VITE_DEV_GATEWAY_TOKEN
+    ok 5 - VITE_DEV_GATEWAY_TOKEN
+      ---
+      duration_ms: 1.172583
+      ...
+    1..5
+ok 116 - empty environment identity fields explicitly remove the corresponding YAML headers
+  ---
+  duration_ms: 11.924334
+  ...
+# Subtest: the gateway switch disables every identity header
+    # Subtest: YAML disabled
+    ok 1 - YAML disabled
+      ---
+      duration_ms: 0.940125
+      ...
+    # Subtest: environment disabled
+    ok 2 - environment disabled
+      ---
+      duration_ms: 2.757208
+      ...
+    1..2
+ok 117 - the gateway switch disables every identity header
+  ---
+  duration_ms: 4.011666
+  ...
+# Subtest: approved role arrays and comma-separated environment roles retain the existing header format
+ok 118 - approved role arrays and comma-separated environment roles retain the existing header format
+  ---
+  duration_ms: 0.903709
+  ...
+# Subtest: builds, previews, and non-development serves never load local identity or simulation
+    # Subtest: {"command":"build","mode":"production"}
+    ok 1 - {"command":"build","mode":"production"}
+      ---
+      duration_ms: 5.120333
+      ...
+    # Subtest: {"command":"build","mode":"development"}
+    ok 2 - {"command":"build","mode":"development"}
+      ---
+      duration_ms: 0.802542
+      ...
+    # Subtest: {"command":"serve","mode":"production"}
+    ok 3 - {"command":"serve","mode":"production"}
+      ---
+      duration_ms: 1.478
+      ...
+    # Subtest: {"command":"serve","mode":"staging"}
+    ok 4 - {"command":"serve","mode":"staging"}
+      ---
+      duration_ms: 1.081416
+      ...
+    # Subtest: {"command":"serve","mode":"production","isPreview":true}
+    ok 5 - {"command":"serve","mode":"production","isPreview":true}
+      ---
+      duration_ms: 0.601166
+      ...
+    # Subtest: {"command":"serve","mode":"development","isPreview":true}
+    ok 6 - {"command":"serve","mode":"development","isPreview":true}
+      ---
+      duration_ms: 0.653667
+      ...
+    1..6
+ok 119 - builds, previews, and non-development serves never load local identity or simulation
+  ---
+  duration_ms: 10.207333
+  ...
+# Subtest: non-development proxy targets and router bases retain explicit environment overrides
+ok 120 - non-development proxy targets and router bases retain explicit environment overrides
+  ---
+  duration_ms: 0.205792
+  ...
+# Subtest: development requires its local configuration file
+ok 121 - development requires its local configuration file
+  ---
+  duration_ms: 0.221083
+  ...
+# Subtest: the parser rejects ambiguous YAML and invalid configuration values
+    # Subtest: invalid YAML
+    ok 1 - invalid YAML
+      ---
+      duration_ms: 0.297334
+      ...
+    # Subtest: non-object root
+    ok 2 - non-object root
+      ---
+      duration_ms: 0.111583
+      ...
+    # Subtest: missing root field
+    ok 3 - missing root field
+      ---
+      duration_ms: 0.091583
+      ...
+    # Subtest: missing gateway token
+    ok 4 - missing gateway token
+      ---
+      duration_ms: 0.094792
+      ...
+    # Subtest: non-object nested section
+    ok 5 - non-object nested section
+      ---
+      duration_ms: 0.077625
+      ...
+    # Subtest: unknown root field
+    ok 6 - unknown root field
+      ---
+      duration_ms: 0.146958
+      ...
+    # Subtest: unknown nested field
+    ok 7 - unknown nested field
+      ---
+      duration_ms: 0.0845
+      ...
+    # Subtest: duplicate field
+    ok 8 - duplicate field
+      ---
+      duration_ms: 0.110042
+      ...
+    # Subtest: unsupported schema
+    ok 9 - unsupported schema
+      ---
+      duration_ms: 0.081791
+      ...
+    # Subtest: string schema
+    ok 10 - string schema
+      ---
+      duration_ms: 0.07275
+      ...
+    # Subtest: string port
+    ok 11 - string port
+      ---
+      duration_ms: 0.076708
+      ...
+    # Subtest: zero port
+    ok 12 - zero port
+      ---
+      duration_ms: 0.074292
+      ...
+    # Subtest: port above range
+    ok 13 - port above range
+      ---
+      duration_ms: 0.072583
+      ...
+    # Subtest: fractional port
+    ok 14 - fractional port
+      ---
+      duration_ms: 0.090292
+      ...
+    # Subtest: non-string host
+    ok 15 - non-string host
+      ---
+      duration_ms: 0.070667
+      ...
+    # Subtest: non-string target
+    ok 16 - non-string target
+      ---
+      duration_ms: 0.071166
+      ...
+    # Subtest: simulation string boolean
+    ok 17 - simulation string boolean
+      ---
+      duration_ms: 0.073708
+      ...
+    # Subtest: simulation numeric boolean
+    ok 18 - simulation numeric boolean
+      ---
+      duration_ms: 0.090792
+      ...
+    # Subtest: gateway string boolean
+    ok 19 - gateway string boolean
+      ---
+      duration_ms: 0.148167
+      ...
+    # Subtest: invalid tenant UUID
+    ok 20 - invalid tenant UUID
+      ---
+      duration_ms: 0.088125
+      ...
+    # Subtest: invalid user UUID
+    ok 21 - invalid user UUID
+      ---
+      duration_ms: 0.075625
+      ...
+    # Subtest: roles must be arrays
+    ok 22 - roles must be arrays
+      ---
+      duration_ms: 39.609292
+      ...
+    # Subtest: roles must contain strings
+    ok 23 - roles must contain strings
+      ---
+      duration_ms: 3.835792
+      ...
+    # Subtest: role header delimiter
+    ok 24 - role header delimiter
+      ---
+      duration_ms: 0.434208
+      ...
+    # Subtest: unknown hot-news role
+    ok 25 - unknown hot-news role
+      ---
+      duration_ms: 0.464708
+      ...
+    # Subtest: role from another service
+    ok 26 - role from another service
+      ---
+      duration_ms: 0.400125
+      ...
+    # Subtest: unknown data-loop role
+    ok 27 - unknown data-loop role
+      ---
+      duration_ms: 0.124875
+      ...
+    # Subtest: role line break
+    ok 28 - role line break
+      ---
+      duration_ms: 0.114333
+      ...
+    # Subtest: token must be a string
+    ok 29 - token must be a string
+      ---
+      duration_ms: 0.090334
+      ...
+    # Subtest: token line break
+    ok 30 - token line break
+      ---
+      duration_ms: 0.075667
+      ...
+    1..30
+ok 122 - the parser rejects ambiguous YAML and invalid configuration values
+  ---
+  duration_ms: 50.793208
+  ...
+# Subtest: invalid environment overrides fail instead of falling back to YAML
+    # Subtest: VITE_DEV_PORT
+    ok 1 - VITE_DEV_PORT
+      ---
+      duration_ms: 2.588875
+      ...
+    # Subtest: VITE_DEV_PORT
+    ok 2 - VITE_DEV_PORT
+      ---
+      duration_ms: 1.180541
+      ...
+    # Subtest: VITE_DEV_PORT
+    ok 3 - VITE_DEV_PORT
+      ---
+      duration_ms: 0.787417
+      ...
+    # Subtest: VITE_DEV_PORT
+    ok 4 - VITE_DEV_PORT
+      ---
+      duration_ms: 0.527084
+      ...
+    # Subtest: VITE_LOCAL_SIMULATION
+    ok 5 - VITE_LOCAL_SIMULATION
+      ---
+      duration_ms: 1.585875
+      ...
+    # Subtest: VITE_DEV_GATEWAY_ENABLED
+    ok 6 - VITE_DEV_GATEWAY_ENABLED
+      ---
+      duration_ms: 0.917583
+      ...
+    # Subtest: VITE_DEV_TENANT_ID
+    ok 7 - VITE_DEV_TENANT_ID
+      ---
+      duration_ms: 1.094208
+      ...
+    # Subtest: VITE_DEV_USER_ID
+    ok 8 - VITE_DEV_USER_ID
+      ---
+      duration_ms: 1.898666
+      ...
+    # Subtest: VITE_DEV_HOT_NEWS_ROLES
+    ok 9 - VITE_DEV_HOT_NEWS_ROLES
+      ---
+      duration_ms: 1.067209
+      ...
+    # Subtest: VITE_DEV_HOT_NEWS_ROLES
+    ok 10 - VITE_DEV_HOT_NEWS_ROLES
+      ---
+      duration_ms: 0.500083
+      ...
+    # Subtest: VITE_DEV_DATA_LOOP_ROLES
+    ok 11 - VITE_DEV_DATA_LOOP_ROLES
+      ---
+      duration_ms: 0.579333
+      ...
+    # Subtest: VITE_DEV_DATA_LOOP_ROLES
+    ok 12 - VITE_DEV_DATA_LOOP_ROLES
+      ---
+      duration_ms: 0.725541
+      ...
+    # Subtest: VITE_DEV_GATEWAY_TOKEN
+    ok 13 - VITE_DEV_GATEWAY_TOKEN
+      ---
+      duration_ms: 0.616
+      ...
+    1..13
+ok 123 - invalid environment overrides fail instead of falling back to YAML
+  ---
+  duration_ms: 14.878125
+  ...
+# Subtest: identity proxies accept IPv4, IPv6, and localhost loopback targets
+    # Subtest: 127.0.0.1
+    ok 1 - 127.0.0.1
+      ---
+      duration_ms: 0.095209
+      ...
+    # Subtest: localhost
+    ok 2 - localhost
+      ---
+      duration_ms: 0.09175
+      ...
+    # Subtest: ::1
+    ok 3 - ::1
+      ---
+      duration_ms: 0.031416
+      ...
+    1..3
+ok 124 - identity proxies accept IPv4, IPv6, and localhost loopback targets
+  ---
+  duration_ms: 0.355167
+  ...
+# Subtest: identity proxies reject remote or wildcard listeners and unsafe proxy targets
+    # Subtest: true → http://127.0.0.1:28000
+    ok 1 - true → http://127.0.0.1:28000
+      ---
+      duration_ms: 0.050166
+      ...
+    # Subtest: 0.0.0.0 → http://127.0.0.1:28000
+    ok 2 - 0.0.0.0 → http://127.0.0.1:28000
+      ---
+      duration_ms: 0.0285
+      ...
+    # Subtest: :: → http://127.0.0.1:28000
+    ok 3 - :: → http://127.0.0.1:28000
+      ---
+      duration_ms: 0.028583
+      ...
+    # Subtest: example.test → http://127.0.0.1:28000
+    ok 4 - example.test → http://127.0.0.1:28000
+      ---
+      duration_ms: 0.024625
+      ...
+    # Subtest: 127.0.0.1 → http://example.test:28000
+    ok 5 - 127.0.0.1 → http://example.test:28000
+      ---
+      duration_ms: 0.025334
+      ...
+    # Subtest: 127.0.0.1 → http://127.0.0.1.example.test:28000
+    ok 6 - 127.0.0.1 → http://127.0.0.1.example.test:28000
+      ---
+      duration_ms: 0.026041
+      ...
+    # Subtest: 127.0.0.1 → ftp://127.0.0.1:28000
+    ok 7 - 127.0.0.1 → ftp://127.0.0.1:28000
+      ---
+      duration_ms: 0.026334
+      ...
+    # Subtest: 127.0.0.1 → http://public-user:public-password@127.0.0.1:28000
+    ok 8 - 127.0.0.1 → http://public-user:public-password@127.0.0.1:28000
+      ---
+      duration_ms: 0.027708
+      ...
+    1..8
+ok 125 - identity proxies reject remote or wildcard listeners and unsafe proxy targets
+  ---
+  duration_ms: 0.398875
+  ...
+# Subtest: configuration error messages do not reveal rejected header values
+ok 126 - configuration error messages do not reveal rejected header values
+  ---
+  duration_ms: 0.732375
+  ...
+# Subtest: proxies without injected identity preserve non-loopback compatibility
+ok 127 - proxies without injected identity preserve non-loopback compatibility
+  ---
+  duration_ms: 0.035583
+  ...
+# Subtest: components/hotnews/HotNewsDecisionForm.vue: all decisions submit business feedback without claiming a reviewed verdict
+ok 128 - components/hotnews/HotNewsDecisionForm.vue: all decisions submit business feedback without claiming a reviewed verdict
+  ---
+  duration_ms: 235.792167
+  ...
+# Subtest: components/hotnews/HotNewsDecisionForm.vue: an editorial rejection preserves explicit risk severity and is not an analysis error
+ok 129 - components/hotnews/HotNewsDecisionForm.vue: an editorial rejection preserves explicit risk severity and is not an analysis error
+  ---
+  duration_ms: 65.094959
+  ...
+# Subtest: components/hotnews/HotNewsDecisionForm.vue: required reason codes, correction JSON and cancellation prevent mutations
+ok 130 - components/hotnews/HotNewsDecisionForm.vue: required reason codes, correction JSON and cancellation prevent mutations
+  ---
+  duration_ms: 80.003375
+  ...
+# Subtest: views/data-loop/DecisionsPanel.vue: all decisions submit business feedback without claiming a reviewed verdict
+ok 131 - views/data-loop/DecisionsPanel.vue: all decisions submit business feedback without claiming a reviewed verdict
+  ---
+  duration_ms: 77.717917
+  ...
+# Subtest: views/data-loop/DecisionsPanel.vue: an editorial rejection preserves explicit risk severity and is not an analysis error
+ok 132 - views/data-loop/DecisionsPanel.vue: an editorial rejection preserves explicit risk severity and is not an analysis error
+  ---
+  duration_ms: 57.753875
+  ...
+# Subtest: views/data-loop/DecisionsPanel.vue: required reason codes, correction JSON and cancellation prevent mutations
+ok 133 - views/data-loop/DecisionsPanel.vue: required reason codes, correction JSON and cancellation prevent mutations
+  ---
+  duration_ms: 24.032542
+  ...
+# Subtest: case prefill carries operator classification without synthesizing a label
+ok 134 - case prefill carries operator classification without synthesizing a label
+  ---
+  duration_ms: 114.859291
+  ...
+# Subtest: feedback case pagination loads beyond 50 and uses the selected status on every page
+ok 135 - feedback case pagination loads beyond 50 and uses the selected status on every page
+  ---
+  duration_ms: 67.379459
+  ...
+# Subtest: feedback API emits statuses and offset using the backend query contract
+ok 136 - feedback API emits statuses and offset using the backend query contract
+  ---
+  duration_ms: 19.811958
+  ...
+# Subtest: operator classification display is optional for legacy or malformed source references
+ok 137 - operator classification display is optional for legacy or malformed source references
+  ---
+  duration_ms: 0.142208
+  ...
+# Subtest: memory card renders all receipt states and bound metadata without approval actions
+ok 138 - memory card renders all receipt states and bound metadata without approval actions
+  ---
+  duration_ms: 4.668875
+  ...
+# Subtest: feedback_case card renders all receipt states and bound metadata without approval actions
+ok 139 - feedback_case card renders all receipt states and bound metadata without approval actions
+  ---
+  duration_ms: 1.153375
+  ...
+# Subtest: long-term memory candidates explicitly remain unpromoted and never link to a nonexistent management page
+ok 140 - long-term memory candidates explicitly remain unpromoted and never link to a nonexistent management page
+  ---
+  duration_ms: 12.791542
+  ...
+# Subtest: expired memory candidates use the authoritative effective status and do not claim a pending promotion
+ok 141 - expired memory candidates use the authoritative effective status and do not claim a pending promotion
+  ---
+  duration_ms: 0.46925
+  ...
+# Subtest: saved feedback cards render truthful rejection and draft semantics while escaping content
+ok 142 - saved feedback cards render truthful rejection and draft semantics while escaping content
+  ---
+  duration_ms: 1.563875
+  ...
+# Subtest: tool receipt extraction binds memories and cases by canonical entity ID and ignores model text
+ok 143 - tool receipt extraction binds memories and cases by canonical entity ID and ignores model text
+  ---
+  duration_ms: 6.130834
+  ...
+# Subtest: unknown receipts fall back to read-only JSON and cannot expose approval or arbitrary navigation
+ok 144 - unknown receipts fall back to read-only JSON and cannot expose approval or arbitrary navigation
+  ---
+  duration_ms: 3.010125
+  ...
+# Subtest: generic feedback confirmation accepts only saved hook snapshots, whitelisted problem types and text fields
+ok 145 - generic feedback confirmation accepts only saved hook snapshots, whitelisted problem types and text fields
+  ---
+  duration_ms: 6.234875
+  ...
+# Subtest: generic confirmation renders server text fields, explicit rejection notice and permission-controlled saving
+ok 146 - generic confirmation renders server text fields, explicit rejection notice and permission-controlled saving
+  ---
+  duration_ms: 124.686667
+  ...
+# Subtest: generic confirmations deduplicate input clicks, retain immutable suggestions, expire and cancel through the existing input channel
+ok 147 - generic confirmations deduplicate input clicks, retain immutable suggestions, expire and cancel through the existing input channel
+  ---
+  duration_ms: 225.863875
+  ...
+# Subtest: feedback links read the exact case independently of list pagination and fail truthfully for unavailable targets
+ok 148 - feedback links read the exact case independently of list pagination and fail truthfully for unavailable targets
+  ---
+  duration_ms: 110.605333
+  ...
+# Subtest: feedback detail API encodes its target and reuses existing authentication
+ok 149 - feedback detail API encodes its target and reuses existing authentication
+  ---
+  duration_ms: 14.995208
+  ...
+# Subtest: saved hot-news results project bound source groups and bounded article evidence
+ok 150 - saved hot-news results project bound source groups and bounded article evidence
+  ---
+  duration_ms: 0.911041
+  ...
+# Subtest: historical and malformed results do not create cards or parse assistant/model text
+ok 151 - historical and malformed results do not create cards or parse assistant/model text
+  ---
+  duration_ms: 0.355084
+  ...
+# Subtest: automatic articles must belong to the saved source list and exact run
+ok 152 - automatic articles must belong to the saved source list and exact run
+  ---
+  duration_ms: 0.065458
+  ...
+# Subtest: source exclusion, per-source article deduplication and three-by-three bounds
+ok 153 - source exclusion, per-source article deduplication and three-by-three bounds
+  ---
+  duration_ms: 0.371584
+  ...
+# Subtest: search results share source groups, retain source title, and recover failed automatic recalls
+ok 154 - search results share source groups, retain source title, and recover failed automatic recalls
+  ---
+  duration_ms: 0.270583
+  ...
+# Subtest: ordinary knowledge searches work without a hot-news run and group by query or source
+ok 155 - ordinary knowledge searches work without a hot-news run and group by query or source
+  ---
+  duration_ms: 0.091458
+  ...
+# Subtest: unsafe URLs never become links while valid HTTP(S) sources remain navigable
+ok 156 - unsafe URLs never become links while valid HTTP(S) sources remain navigable
+  ---
+  duration_ms: 0.220416
+  ...
+# Subtest: Unicode excerpts stay within 600 characters and preview expands from 300 characters
+ok 157 - Unicode excerpts stay within 600 characters and preview expands from 300 characters
+  ---
+  duration_ms: 0.113125
+  ...
+# Subtest: missing fields and invalid dates retain honest unknown states without inventing metadata
+ok 158 - missing fields and invalid dates retain honest unknown states without inventing metadata
+  ---
+  duration_ms: 0.188917
+  ...
+# Subtest: Vue renders untrusted titles and excerpts as text with safe links and missing provenance labels
+ok 159 - Vue renders untrusted titles and excerpts as text with safe links and missing provenance labels
+  ---
+  duration_ms: 222.911541
+  ...
+# Subtest: empty completed and failed recalls render distinct notices; old histories render no panel
+ok 160 - empty completed and failed recalls render distinct notices; old histories render no panel
+  ---
+  duration_ms: 133.20325
+  ...
+# Subtest: panel expansion toggles one article and tracks subsequent tool props
+ok 161 - panel expansion toggles one article and tracks subsequent tool props
+  ---
+  duration_ms: 14.374209
+  ...
+# Subtest: chat panel is attached to saved completed turn tools before the tool log and absent from pending SSE
+ok 162 - chat panel is attached to saved completed turn tools before the tool log and absent from pending SSE
+  ---
+  duration_ms: 44.737667
+  ...
+# Subtest: terminal turn duration is derived from persisted timestamps
+ok 163 - terminal turn duration is derived from persisted timestamps
+  ---
+  duration_ms: 0.621125
+  ...
+# Subtest: timezone offsets are normalized before subtracting
+ok 164 - timezone offsets are normalized before subtracting
+  ---
+  duration_ms: 0.052958
+  ...
+# Subtest: processing or incomplete turns expose no duration
+ok 165 - processing or incomplete turns expose no duration
+  ---
+  duration_ms: 0.045791
+  ...
+# Subtest: malformed or inverted timestamps are rejected
+ok 166 - malformed or inverted timestamps are rejected
+  ---
+  duration_ms: 0.046125
+  ...
+# Subtest: duration renders with exactly one decimal place
+ok 167 - duration renders with exactly one decimal place
+  ---
+  duration_ms: 0.057458
+  ...
+# Subtest: invalid durations never render
+ok 168 - invalid durations never render
+  ---
+  duration_ms: 0.038833
+  ...
+# Subtest: chat view renders the duration footer inside the assistant bubble
+ok 169 - chat view renders the duration footer inside the assistant bubble
+  ---
+  duration_ms: 0.123917
+  ...
+# Subtest: the real Vite configuration loads the default YAML for development
+ok 170 - the real Vite configuration loads the default YAML for development
+  ---
+  duration_ms: 122.154166
+  ...
+# Subtest: resolved CLI host overrides cannot expose a proxy with injected identity
+    # Subtest: 0.0.0.0
+    ok 1 - 0.0.0.0
+      ---
+      duration_ms: 25.597208
+      ...
+    # Subtest: true
+    ok 2 - true
+      ---
+      duration_ms: 25.000875
+      ...
+    1..2
+ok 171 - resolved CLI host overrides cannot expose a proxy with injected identity
+  ---
+  duration_ms: 51.037791
+  ...
+# Subtest: old private dotenv settings cannot override YAML while explicit environment overrides still work
+ok 172 - old private dotenv settings cannot override YAML while explicit environment overrides still work
+  ---
+  duration_ms: 37.93075
+  ...
+# Subtest: real build and preview resolution omit local identity and simulation in every mode
+    # Subtest: build/production/preview=false
+    ok 1 - build/production/preview=false
+      ---
+      duration_ms: 33.558125
+      ...
+    # Subtest: build/development/preview=false
+    ok 2 - build/development/preview=false
+      ---
+      duration_ms: 13.611208
+      ...
+    # Subtest: serve/production/preview=true
+    ok 3 - serve/production/preview=true
+      ---
+      duration_ms: 14.239
+      ...
+    # Subtest: serve/development/preview=true
+    ok 4 - serve/development/preview=true
+      ---
+      duration_ms: 17.041375
+      ...
+    1..4
+ok 173 - real build and preview resolution omit local identity and simulation in every mode
+  ---
+  duration_ms: 79.228708
+  ...
+# Subtest: production and development builds never include local YAML or private environment canaries
+    # Subtest: production
+    ok 1 - production
+      ---
+      duration_ms: 420.228875
+      ...
+    # Subtest: development
+    ok 2 - development
+      ---
+      duration_ms: 208.821417
+      ...
+    1..2
+ok 174 - production and development builds never include local YAML or private environment canaries
+  ---
+  duration_ms: 629.44
+  ...
+# Subtest: the live development server hides Node configuration, filters browser env, and injects proxy headers
+ok 175 - the live development server hides Node configuration, filters browser env, and injects proxy headers
+  ---
+  duration_ms: 59.728833
+  ...
+# Subtest: confirmation projection accepts only deterministic completed hook snapshots with a valid unpersisted receipt
+ok 176 - confirmation projection accepts only deterministic completed hook snapshots with a valid unpersisted receipt
+  ---
+  duration_ms: 2.300459
+  ...
+# Subtest: confirmation outcomes and pending input restoration disable old proposals from saved evidence
+ok 177 - confirmation outcomes and pending input restoration disable old proposals from saved evidence
+  ---
+  duration_ms: 0.584458
+  ...
+# Subtest: receipt panel keeps the saved proposal immutable and shows the later accepted job as a separate card
+ok 178 - receipt panel keeps the saved proposal immutable and shows the later accepted job as a separate card
+  ---
+  duration_ms: 62.211458
+  ...
+# Subtest: confirmation card actually renders immutable model suggestions as escaped text and hides action controls without permission
+ok 179 - confirmation card actually renders immutable model suggestions as escaped text and hides action controls without permission
+  ---
+  duration_ms: 156.246542
+  ...
+# Subtest: double clicks produce one input submission with the fixed request UUID and structured token
+ok 180 - double clicks produce one input submission with the fixed request UUID and structured token
+  ---
+  duration_ms: 37.491584
+  ...
+# Subtest: transport uncertainty retries the same action and ID while terminal/permission rejection invalidates confirmation
+ok 181 - transport uncertainty retries the same action and ID while terminal/permission rejection invalidates confirmation
+  ---
+  duration_ms: 82.631709
+  ...
+# Subtest: expiry timers revoke confirmation, terminal outcomes prevent execution, and re-describe only restores a draft
+ok 182 - expiry timers revoke confirmation, terminal outcomes prevent execution, and re-describe only restores a draft
+  ---
+  duration_ms: 38.703958
+  ...
+# Subtest: active re-describe first cancels using the same input channel, then restores the original draft without a new turn
+ok 183 - active re-describe first cancels using the same input channel, then restores the original draft without a new turn
+  ---
+  duration_ms: 11.575375
+  ...
+# Subtest: component unmount clears expiry timer and ignores a late input response after conversation navigation
+ok 184 - component unmount clears expiry timer and ignores a late input response after conversation navigation
+  ---
+  duration_ms: 5.881416
+  ...
+# Subtest: confirmation API reuses the existing authenticated append-input endpoint without passing identity or suggestion edits
+ok 185 - confirmation API reuses the existing authenticated append-input endpoint without passing identity or suggestion edits
+  ---
+  duration_ms: 3.153959
+  ...
+# Subtest: base receipt card actually renders all three states with IDs, version, timestamp and safe navigation
+ok 186 - base receipt card actually renders all three states with IDs, version, timestamp and safe navigation
+  ---
+  duration_ms: 28.415666
+  ...
+# Subtest: unknown and malformed receipts render escaped read-only JSON without navigation or executable HTML
+ok 187 - unknown and malformed receipts render escaped read-only JSON without navigation or executable HTML
+  ---
+  duration_ms: 0.611125
+  ...
+# Subtest: receipt links reject external routes, encoded traversal, backslashes and mismatched job IDs
+ok 188 - receipt links reject external routes, encoded traversal, backslashes and mismatched job IDs
+  ---
+  duration_ms: 1.923584
+  ...
+# Subtest: all receipt entity routes and selectors exactly match the backend allowlist
+ok 189 - all receipt entity routes and selectors exactly match the backend allowlist
+  ---
+  duration_ms: 0.139208
+  ...
+# Subtest: pending gates remain visible from persisted job state when Workflow snapshots are missing
+ok 190 - pending gates remain visible from persisted job state when Workflow snapshots are missing
+  ---
+  duration_ms: 0.133167
+  ...
+# Subtest: receipt projection uses only completed tool snapshots and binds job data by receipt entity ID
+ok 191 - receipt projection uses only completed tool snapshots and binds job data by receipt entity ID
+  ---
+  duration_ms: 0.475625
+  ...
+# Subtest: writing card renders immutable original snapshot and current state separately, with no approval action
+ok 192 - writing card renders immutable original snapshot and current state separately, with no approval action
+  ---
+  duration_ms: 75.193292
+  ...
+# Subtest: writing card renders an explicit unknown state and a refresh action after repeated read failures
+ok 193 - writing card renders an explicit unknown state and a refresh action after repeated read failures
+  ---
+  duration_ms: 43.761959
+  ...
+# Subtest: polling is shared by entity, pauses when hidden, resumes when visible and cleans up on last unmount
+ok 194 - polling is shared by entity, pauses when hidden, resumes when visible and cleans up on last unmount
+  ---
+  duration_ms: 15.328
+  ...
+# Subtest: terminal snapshots do not restart automatic polling; a fresh page restores only unfinished histories
+ok 195 - terminal snapshots do not restart automatic polling; a fresh page restores only unfinished histories
+  ---
+  duration_ms: 13.417458
+  ...
+# Subtest: three consecutive failures downgrade and stop; manual refresh deduplicates and restores a successful poll
+ok 196 - three consecutive failures downgrade and stop; manual refresh deduplicates and restores a successful poll
+  ---
+  duration_ms: 1.801542
+  ...
+# Subtest: late in-flight reads cannot notify unmounted cards or create orphan timers; remount shares the existing read
+ok 197 - late in-flight reads cannot notify unmounted cards or create orphan timers; remount shares the existing read
+  ---
+  duration_ms: 0.873208
+  ...
+# Subtest: a newer saved snapshot remains authoritative when an older in-flight response arrives
+ok 198 - a newer saved snapshot remains authoritative when an older in-flight response arrives
+  ---
+  duration_ms: 1.129334
+  ...
+# Subtest: JobsView opens valid deep links directly outside filters, rejects non-UUID or duplicate query IDs and clears on navigation
+ok 199 - JobsView opens valid deep links directly outside filters, rejects non-UUID or duplicate query IDs and clears on navigation
+  ---
+  duration_ms: 16.11775
+  ...
+1..199
+# tests 322
+# suites 0
+# pass 322
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3142.055125

@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
+from app.observability.database import instrument_engine
 from app.config import Settings
 
 class Database:
@@ -21,6 +22,7 @@ class Database:
             max_overflow=20,
             pool_recycle=1800,
         )
+        instrument_engine(self.engine.sync_engine)
         # Session 连接池
         self.session_factory = async_sessionmaker(
             bind=self.engine,

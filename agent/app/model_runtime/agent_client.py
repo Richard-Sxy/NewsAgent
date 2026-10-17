@@ -14,9 +14,10 @@ from pydantic import BaseModel
 
 from app.domain.errors import AgentOutputValidationError
 from app.model_runtime.config_file import ModelRuntimeConfig
-from app.model_runtime.core import StructuredInferenceService, StructuredOutputError
+from app.model_runtime.core import StructuredInferenceService, StructuredOutputError, model_telemetry_attributes
 from app.model_runtime.http import build_chat_completions_payload
 from app.model_runtime.result import AgentResult
+from app.observability.telemetry import operation
 
 
 OutputT = TypeVar("OutputT", bound=BaseModel)
@@ -119,23 +120,30 @@ class NativeStructuredAgentClient:
             f"{context[0]}\x1f{context[1]}\x1f{mode}\x1f{encoded}".encode("utf-8")
         ).hexdigest()
         try:
-            # 底层调用 run() 完成结构化推理。
-            result = await self._service.run(
-                tenant_id=context[0],
-                trace_id=context[1],
-                idempotency_key=f"agent-{identity}",
-                scene=binding.scene,
-                prompt_version=binding.prompt_version,
-                model_route=binding.model_route,
-                payload=input_data,
-                output_type=output_type,
-                output_defaults=output_defaults,
-                timeout_seconds=self._timeout_seconds,
-            )
+            with operation("agent.model.call", attributes=model_telemetry_attributes(
+                scene=binding.scene, prompt_version=binding.prompt_version,
+                model_route=binding.model_route, output_type=output_type,
+            )):
+                # 底层调用 run() 完成结构化推理。
+                result = await self._service.run(
+                    tenant_id=context[0],
+                    trace_id=context[1],
+                    idempotency_key=f"agent-{identity}",
+                    scene=binding.scene,
+                    prompt_version=binding.prompt_version,
+                    model_route=binding.model_route,
+                    payload=input_data,
+                    output_type=output_type,
+                    output_defaults=output_defaults,
+                    timeout_seconds=self._timeout_seconds,
+                )
         except StructuredOutputError as exc:
-            raise AgentOutputValidationError(
+            error = AgentOutputValidationError(
                 str(exc), raw_content=exc.raw_content, request_id=exc.request_id
-            ) from exc
+            )
+            error.failure_stage = exc.failure_stage
+            error.failure_kind = exc.failure_kind
+            raise error from exc
         # 封装成 AgentResult 返回。
         return AgentResult(
             value=result.value,

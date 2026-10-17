@@ -1,0 +1,31 @@
+# Local demonstration taxonomy; extra leaves are proposals, not enterprise labels.
+# This draft is not approved for production use. IDs are stable API/UI values.
+schema_version: 1
+taxonomy_version: news-interest-demo-v1
+status: draft
+topics:
+  - {topic_id: tech, name: 科技, provenance: user_confirmed}
+  - {topic_id: tech.nature, name: 自然, parent_topic_id: tech, provenance: user_confirmed}
+  - {topic_id: tech.space, name: 航天, parent_topic_id: tech, provenance: draft_extension}
+  - {topic_id: tech.digital, name: 数码, parent_topic_id: tech, provenance: draft_extension}
+  - {topic_id: tech.science, name: 科学研究, parent_topic_id: tech, provenance: draft_extension}
+  - {topic_id: finance, name: 财经, provenance: user_confirmed}
+  - {topic_id: finance.macro, name: 宏观, parent_topic_id: finance, provenance: draft_extension}
+  - {topic_id: finance.industry, name: 产业, parent_topic_id: finance, provenance: draft_extension}
+  - {topic_id: finance.markets, name: 金融市场, parent_topic_id: finance, provenance: draft_extension}
+  - {topic_id: finance.companies, name: 公司, parent_topic_id: finance, provenance: draft_extension}
+  - {topic_id: ai, name: AI, provenance: user_confirmed}
+  - {topic_id: ai.foundation-models, name: 大模型, parent_topic_id: ai, provenance: draft_extension}
+  - {topic_id: ai.applications, name: 应用, parent_topic_id: ai, provenance: draft_extension}
+  - {topic_id: ai.infrastructure, name: 算力基础设施, parent_topic_id: ai, provenance: draft_extension}
+  - {topic_id: ai.research, name: 研究进展, parent_topic_id: ai, provenance: draft_extension}
+  - {topic_id: military, name: 军事, provenance: user_confirmed}
+  - {topic_id: military.defense, name: 国防, parent_topic_id: military, provenance: draft_extension}
+  - {topic_id: military.equipment, name: 装备, parent_topic_id: military, provenance: draft_extension}
+  - {topic_id: military.exercises, name: 演训, parent_topic_id: military, provenance: draft_extension}
+  - {topic_id: military.history, name: 军事历史, parent_topic_id: military, provenance: draft_extension}
+  - {topic_id: education, name: 教育, provenance: user_confirmed}
+  - {topic_id: education.basic, name: 基础教育, parent_topic_id: education, provenance: draft_extension}
+  - {topic_id: education.gaokao, name: 高考, parent_topic_id: education, provenance: draft_extension}
+  - {topic_id: education.higher, name: 高等教育, parent_topic_id: education, provenance: draft_extension}
+  - {topic_id: education.vocational, name: 职业教育, parent_topic_id: education, provenance: draft_extension}

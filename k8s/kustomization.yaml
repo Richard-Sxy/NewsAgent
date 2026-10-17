@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: news-agent
+resources:
+  - namespace.yml
+  - production.yml
+
+# 配置内容变化会生成新名称，引用它的 Deployment 自动滚动更新。
+configMapGenerator:
+  - name: newsagent-settings
+    envs:
+      - config/application.env.example
+  - name: newsagent-runtime
+    files:
+      - model-runtime.yml=config/model-runtime.yml
+      - knowledge-search.yml=config/knowledge-search.yml
+  - name: newsagent-frontend
+    files:
+      - config.json=config/frontend.json
+
+images:
+  - name: newsagent-api
+    newName: registry.example.invalid/newsagent/api
+    newTag: replace-me
+  - name: newsagent-worker
+    newName: registry.example.invalid/newsagent/worker
+    newTag: replace-me
+  - name: newsagent-frontend
+    newName: registry.example.invalid/newsagent/frontend
+    newTag: replace-me

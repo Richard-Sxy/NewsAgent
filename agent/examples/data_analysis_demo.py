@@ -95,12 +95,13 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
     """
     dataset = config.get("dataset")
     if (type(dataset) is not dict or type(dataset.get("dataset_profile")) is not str
-            or dataset["dataset_profile"] not in {"enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4"}):
+            or dataset["dataset_profile"] not in {"enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6"}):
         raise DemoError("demo_requires_enterprise_dataset_profile")
     try:
         public = dataset["dataset_profile"] == "public-headlines-v3"
-        scaled = dataset["dataset_profile"] in {"enterprise-v2", "public-headlines-v3", "timeline-v4"}
-        timeline = dataset["dataset_profile"] == "timeline-v4"
+        corpus = dataset["dataset_profile"] == "corpus-v6"
+        scaled = dataset["dataset_profile"] in {"enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6"}
+        timeline = dataset["dataset_profile"] in {"timeline-v4", "timeline-v5", "corpus-v6"}
         hours = 720 if timeline else 24
         sample_start = datetime.fromisoformat("2026-09-10T00:00:00+08:00") if timeline else _SAMPLE_START
         sample_end = datetime.fromisoformat("2026-10-10T00:00:00+08:00") if timeline else _SAMPLE_END
@@ -113,7 +114,7 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
         identity = {key: dataset[key] for key in ("dataset_profile", "dataset_version", "dataset_sha256")}
         if scaled:
             news_count = dataset["news_per_tenant"]
-            if type(news_count) is not int or news_count not in ({120, 1200} if public else {120, 1200, 12000}):
+            if type(news_count) is not int or news_count not in ({120} if corpus else {120, 1200} if public else {120, 1200, 12000}):
                 raise ValueError()
             counts = {"news_per_tenant": news_count, "news_count": news_count,
                       "metric_row_count": news_count * hours, "baseline_row_count": news_count * hours,
@@ -124,11 +125,26 @@ def _catalog(config: dict) -> tuple[dict, tuple[DemoScenario, ...]]:
                 raise ValueError()
             identity.update(counts)
             schema, schema_digest = dataset["schema_version"], dataset["schema_sha256"]
-            if (schema != ("news-warehouse-v4" if timeline else "news-warehouse-v3" if public else "news-warehouse-v2") or type(schema_digest) is not str
+            expected_schema = ("news-warehouse-v6" if corpus else
+                               "news-warehouse-v5" if dataset["dataset_profile"] == "timeline-v5" else
+                               "news-warehouse-v4" if timeline else
+                               "news-warehouse-v3" if public else "news-warehouse-v2")
+            if (schema != expected_schema or type(schema_digest) is not str
                     or not re.fullmatch(r"[0-9a-f]{64}", schema_digest)
                     or config.get("schema_version") != schema or config.get("schema_sha256") != schema_digest):
                 raise ValueError()
             identity.update(schema_version=schema, schema_sha256=schema_digest)
+            if corpus:
+                digest = dataset.get("corpus_catalog_sha256")
+                if (type(digest) is not str or not re.fullmatch(r"[0-9a-f]{64}", digest)
+                        or type(dataset.get("corpus_count")) is not int or dataset["corpus_count"] != 120
+                        or dataset.get("news_content_source") != "tencent-news-cache"
+                        or dataset.get("metric_data_synthetic") is not True
+                        or dataset.get("category_data_synthetic") is not True):
+                    raise ValueError()
+                identity.update(corpus_catalog_sha256=digest, corpus_count=120,
+                                news_content_source="tencent-news-cache", metric_data_synthetic=True,
+                                category_data_synthetic=True)
             if public:
                 catalog_count = dataset["headline_catalog_count"]
                 catalog_sha256 = dataset["headline_catalog_sha256"]

@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "measurement": {
+    "total": 30,
+    "succeeded": 30,
+    "failed": 0,
+    "error_rate": 0.0,
+    "http_status_counts": {
+      "200": 30
+    },
+    "error_type_counts": {},
+    "elapsed_ms": 46.042292000493035,
+    "completed_requests_per_second": 651.5748607753661
+  },
+  "warmup": {
+    "total": 3,
+    "succeeded": 3,
+    "failed": 0,
+    "error_rate": 0.0,
+    "http_status_counts": {
+      "200": 3
+    },
+    "error_type_counts": {},
+    "elapsed_ms": 5.783749977126718,
+    "included_in_percentiles": false
+  },
+  "percentile_method": "R-7 linear interpolation: sorted values at index (n - 1) * p; empty = null",
+  "latency_population": "successful measurement requests only",
+  "latency_ms": {
+    "client_wall_ms": {
+      "count": 30,
+      "p50": 4.480708506889641,
+      "p95": 4.864512795757036,
+      "p99": 4.94855894066859
+    },
+    "server_total_ms": {
+      "count": 30,
+      "p50": 4.141958503169008,
+      "p95": 4.513453943945933,
+      "p99": 4.603085818525869
+    },
+    "queue_ms": {
+      "count": 30,
+      "p50": 0.004290996002964675,
+      "p95": 0.005674836575053631,
+      "p99": 0.00761372910346836
+    },
+    "embedding_ms": {
+      "count": 30,
+      "p50": 0.015354002243839204,
+      "p95": 0.019347951456438747,
+      "p99": 0.02028755290666595
+    },
+    "final_gate_ms": {
+      "count": 30,
+      "p50": 0.17558300169184804,
+      "p95": 0.2928938847617246,
+      "p99": 0.4365935680107215
+    },
+    "fusion_ms": {
+      "count": 30,
+      "p50": 0.0028124923119321465,
+      "p95": 0.003539251338224857,
+      "p99": 0.0037080026231706142
+    }
+  },
+  "tiers": {
+    "hot": {
+      "vector_search_ms": {
+        "count": 30,
+        "p50": 0.12316698848735541,
+        "p95": 0.28366891492623814,
+        "p99": 0.3273914393503219
+      },
+      "state_gate_ms": {
+        "count": 30,
+        "p50": 0.14954200014472008,
+        "p95": 0.21487050253199397,
+        "p99": 0.2669681786210277
+      },
+      "filter_ms": {
+        "count": 30,
+        "p50": 0.000667001586407423,
+        "p95": 0.000924845517147332,
+        "p99": 0.0010887376265600324
+      },
+      "search_and_gate_ms": {
+        "count": 30,
+        "p50": 0.28154198662377894,
+        "p95": 0.4454934591194613,
+        "p99": 0.5036699990159832
+      }
+    },
+    "warm": {
+      "vector_search_ms": {
+        "count": 30,
+        "p50": 0.118729003588669,
+        "p95": 0.2530289522837847,
+        "p99": 0.27005081909010187
+      },
+      "state_gate_ms": {
+        "count": 30,
+        "p50": 0.150562496855855,
+        "p95": 0.24493765522493044,
+        "p99": 0.27650124015053734
+      },
+      "filter_ms": {
+        "count": 30,
+        "p50": 0.0006660120561718941,
+        "p95": 0.0007500057108700275,
+        "p99": 0.0007791208918206394
+      },
+      "search_and_gate_ms": {
+        "count": 30,
+        "p50": 0.27522898744791746,
+        "p95": 0.41863301012199367,
+        "p99": 0.43982889532344416
+      }
+    },
+    "cold": {
+      "vector_search_ms": {
+        "count": 30,
+        "p50": 0.12112499098293483,
+        "p95": 0.1695667029707691,
+        "p99": 0.20849467895459387
+      },
+      "state_gate_ms": {
+        "count": 30,
+        "p50": 0.1513539900770411,
+        "p95": 0.24630000698380167,
+        "p99": 0.2567539253504947
+      },
+      "filter_ms": {
+        "count": 30,
+        "p50": 0.0006659975042566657,
+        "p95": 0.0007315524271689354,
+        "p99": 0.0007500057108700275
+      },
+      "search_and_gate_ms": {
+        "count": 30,
+        "p50": 0.27929150382988155,
+        "p95": 0.37805220636073494,
+        "p99": 0.3897267486900091
+      }
+    }
+  },
+  "missing_metrics": "null percentiles and count=0; partial coverage uses only observed values",
+  "scope": "Closed-loop HTTP benchmark; no automatic retry; no relevance labels or fixed-QPS model"
+}

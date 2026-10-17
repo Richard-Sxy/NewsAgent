@@ -4,6 +4,9 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Protocol
 
+from app.model_runtime.core import model_attempt_context
+from app.observability.telemetry import operation
+from app.observability.decorators import traced
 from app.analytics.hot_news_enrichment import EnrichedHotNews
 from app.model_runtime.result import AgentResult
 from app.domain.errors import (
@@ -103,6 +106,10 @@ class HotNewsAnalysisInputBuilder:
             related_news=related_news,
             analysis_policy_version=self.policy_version,
             memory_context=memory_context,
+            reader_profile_summary=(
+                item.reader_profile_summary.model_copy(deep=True)
+                if item.reader_profile_summary is not None else None
+            ),
         )
 
 
@@ -133,11 +140,13 @@ class HotNewsAnalysisValidator:
 
         try:
             # 必须与可信输入完全一致
+            check = "news_id_mismatch"
             self._validate_news_id(
                 analysis_input=analysis_input,
                 report=report,
             )
             # 模型只能声明使用本次实际注入的 Memory。
+            check = "memory_reference"
             self._validate_applied_memory_ids(
                 analysis_input=analysis_input,
                 report=report,
@@ -154,26 +163,32 @@ class HotNewsAnalysisValidator:
                 for key in analysis_input.score_components.model_dump()
             )
             # 没有相关新闻证据时限制输出
+            check = "evidence_missing"
             self._validate_no_evidence_case(
                 report=report,
                 allowed_evidence_ids=allowed_evidence_ids,
             )
             # 检查所有 evidence ID
+            check = "evidence_reference"
             self._validate_evidence_ids(
                 report=report,
                 allowed_evidence_ids=allowed_evidence_ids,
             )
             # 检查 attention reason
+            check = "attention_reason"
             self._validate_attention_reasons(
                 report=report,
                 allowed_metric_keys=allowed_metric_keys,
             )
         except ValueError as exc:
-            raise AgentOutputValidationError(
+            error = AgentOutputValidationError(
                 str(exc),
                 raw_content=result.raw_content,
                 request_id=result.request_id,
-            ) from exc
+            )
+            error.failure_stage = "business_validation"
+            error.failure_kind = check
+            raise error from exc
 
     def _validate_news_id(
         self,
@@ -404,6 +419,7 @@ class HotNewsAnalysisService:
         )
         return execution.analysis
 
+    @traced("hot_news.analysis")
     async def analyze_with_snapshot(
         self,
         item: EnrichedHotNews,
@@ -433,11 +449,16 @@ class HotNewsAnalysisService:
                     "没有可用证据时改用 limitations 说明，不要引用其他 id。"
                 )
             try:
-                result = await self.runner.run(analysis_input, feedback=feedback)
-                self.validator.validate(
-                    analysis_input=input_snapshot,
-                    result=result,
-                )
+                with model_attempt_context(attempt=attempt):
+                    result = await self.runner.run(analysis_input, feedback=feedback)
+                with operation("model.business_validate", attributes={
+                    "newsagent.attempt": attempt,
+                    "model.provider_request_id": result.request_id,
+                }):
+                    self.validator.validate(
+                        analysis_input=input_snapshot,
+                        result=result,
+                    )
                 break
             except AgentOutputValidationError as exc:
                 last_error = exc
@@ -445,12 +466,15 @@ class HotNewsAnalysisService:
                     # Preserve only the bounded trusted input plus model-call
                     # metadata. The Activity-level feedback sink persists it
                     # independently from a successful analysis run.
-                    raise HotNewsAnalysisAttemptError(
+                    error = HotNewsAnalysisAttemptError(
                         str(exc),
                         analysis_input=input_snapshot,
                         raw_content=exc.raw_content,
                         request_id=exc.request_id,
-                    ) from exc
+                    )
+                    error.failure_stage = getattr(exc, "failure_stage", "business_validation")
+                    error.failure_kind = getattr(exc, "failure_kind", "business_validation")
+                    raise error from exc
 
         # 返回执行结果
         return HotNewsAnalysisExecution(

@@ -16,7 +16,7 @@ from examples.native_hot_news_sql_support import build_native_hot_news_sql_depen
 from app.services.active_bundle_hot_news import HotNewsRunDependencies
 from app.sql_assistant.bootstrap import build_local_hot_news_sql_service
 from app.domain.errors import HotNewsDataQualityError
-from app.sql_assistant.warehouse import DEMO_TENANT_ID, ISOLATION_TENANT_ID, demo_news_ids
+from app.sql_assistant.warehouse import DEMO_TENANT_ID, ISOLATION_TENANT_ID, STREAMED_PROFILES, demo_news_ids
 
 
 class ProfileScopedKnowledgeIndex:
@@ -84,7 +84,7 @@ async def run() -> None:
             embedding_version=config.embedding.model_routes[0],
             embedding_batch_size=config.embedding.max_batch_size,
         )
-        scaled = sql_service.dataset_profile in {"enterprise-v2", "public-headlines-v3", "timeline-v4"}
+        scaled = sql_service.dataset_profile in STREAMED_PROFILES
         if not scaled:
             await seed_native_e2e_knowledge(dependencies, store=knowledge_store)
 

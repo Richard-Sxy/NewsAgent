@@ -1,0 +1,102 @@
+{
+  "annotation_status": "generated_pending_review",
+  "board_count": 12,
+  "boards": {
+    "culture": {
+      "board_name": "文化",
+      "case_count": 12
+    },
+    "domestic": {
+      "board_name": "国内",
+      "case_count": 12
+    },
+    "education": {
+      "board_name": "教育",
+      "case_count": 12
+    },
+    "entertainment": {
+      "board_name": "娱乐",
+      "case_count": 12
+    },
+    "finance": {
+      "board_name": "财经",
+      "case_count": 12
+    },
+    "health": {
+      "board_name": "健康",
+      "case_count": 12
+    },
+    "international": {
+      "board_name": "国际",
+      "case_count": 12
+    },
+    "local": {
+      "board_name": "地方",
+      "case_count": 12
+    },
+    "society": {
+      "board_name": "社会",
+      "case_count": 12
+    },
+    "sports": {
+      "board_name": "体育",
+      "case_count": 12
+    },
+    "technology": {
+      "board_name": "科技",
+      "case_count": 12
+    },
+    "weather": {
+      "board_name": "天气",
+      "case_count": 12
+    }
+  },
+  "case_count": 144,
+  "categories": {
+    "analysis_error": 50,
+    "editorial_judgment": 14,
+    "positive_example": 66,
+    "strategy_judgment": 14
+  },
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "decisions": {
+    "accepted": 66,
+    "corrected": 48,
+    "deferred": 8,
+    "rejected": 22
+  },
+  "independent_story_count": 36,
+  "limitations": [
+    "public_sources_inform_design_not_news_verification",
+    "synthetic_metrics_and_news_facts",
+    "generated_labels_pending_human_review",
+    "not_executed",
+    "no_causal_delivery_effect",
+    "manual_rubric_not_automatically_scored",
+    "template_holdout_not_real_news_generalization"
+  ],
+  "operator_count": 12,
+  "reason_codes": {
+    "analysis_supported": 66,
+    "audience_mismatch": 4,
+    "channel_or_consent_mismatch": 2,
+    "content_expired": 7,
+    "copy_misleading": 44,
+    "duplicate_event": 6,
+    "fact_or_attribution_error": 49,
+    "frequency_budget_exhausted": 1,
+    "insufficient_evidence": 12,
+    "no_material_update": 6,
+    "risk_requires_escalation": 9,
+    "timing_inappropriate": 2,
+    "useful_recommendation": 66
+  },
+  "research_source_count": 13,
+  "splits": {
+    "development": 48,
+    "test": 48,
+    "validation": 48
+  },
+  "synthetic": true,
+  "unique_news_snapshot_count": 72
+}

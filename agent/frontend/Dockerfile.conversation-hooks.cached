@@ -1,0 +1,4 @@
+# Offline acceptance only: trusted local Nginx image + already validated dist.
+ARG WEB_RUNTIME_IMAGE=news-agent/conversation-hooks-web-base:20261013
+FROM ${WEB_RUNTIME_IMAGE}
+COPY . /usr/share/nginx/html

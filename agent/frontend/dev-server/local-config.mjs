@@ -25,6 +25,8 @@ const DATA_LOOP_ROLES = new Set([
   'data-loop:rollback',
   'data-loop:admin',
 ])
+const WRITING_ROLES = new Set(['writing:read', 'writing:admin'])
+const MEMORY_ROLES = new Set(['memory:read', 'memory:write', 'memory:approve', 'memory:admin'])
 
 function fail(field) {
   // Report field names only: a malformed token must never appear in logs.
@@ -113,8 +115,8 @@ export function parseLocalDevYaml(source) {
   const proxy = object(config.proxy, ['target'], 'proxy')
   const simulation = object(config.simulation, ['enabled'], 'simulation')
   const gateway = object(
-    config.gateway,
-    ['enabled', 'tenant_id', 'user_id', 'hot_news_roles', 'data_loop_roles', 'token'],
+    { writing_roles: [], memory_roles: [], ...config.gateway },
+    ['enabled', 'tenant_id', 'user_id', 'hot_news_roles', 'data_loop_roles', 'writing_roles', 'memory_roles', 'token'],
     'gateway',
   )
   return {
@@ -128,6 +130,8 @@ export function parseLocalDevYaml(source) {
       user_id: uuid(gateway.user_id, 'gateway.user_id', true),
       hot_news_roles: roles(gateway.hot_news_roles, HOT_NEWS_ROLES, 'gateway.hot_news_roles'),
       data_loop_roles: roles(gateway.data_loop_roles, DATA_LOOP_ROLES, 'gateway.data_loop_roles'),
+      writing_roles: roles(gateway.writing_roles, WRITING_ROLES, 'gateway.writing_roles'),
+      memory_roles: roles(gateway.memory_roles, MEMORY_ROLES, 'gateway.memory_roles'),
       token: text(gateway.token, 'gateway.token', { allowEmpty: true }),
     },
   }
@@ -236,6 +240,10 @@ export function loadLocalDevSettings({
   if (user) settings.identityHeaders['X-User-ID'] = user
   if (hotRoles.length) settings.identityHeaders['X-Hot-News-Roles'] = hotRoles.join(',')
   if (dataRoles.length) settings.identityHeaders['X-Data-Loop-Roles'] = dataRoles.join(',')
+  const writingRoles = environmentRoles(env, 'VITE_DEV_WRITING_ROLES', config.gateway.writing_roles, WRITING_ROLES)
+  if (writingRoles.length) settings.identityHeaders['X-Writing-Roles'] = writingRoles.join(',')
+  const memoryRoles = environmentRoles(env, 'VITE_DEV_MEMORY_ROLES', config.gateway.memory_roles, MEMORY_ROLES)
+  if (memoryRoles.length) settings.identityHeaders['X-Memory-Roles'] = memoryRoles.join(',')
   if (token) settings.identityHeaders.Authorization = `Bearer ${token}`
   assertLocalDevBoundary(settings)
   return settings

@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "label": "真实新闻 · 模拟指标 · 查询候选，非权威热度",
+  "query": "hourly",
+  "diagnostic_only": false,
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "identity": {
+    "dataset_version": "real-news-business-warehouse-v8-20261014",
+    "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+    "manifest_sha256": "19f6a4be43fd5acc06d518398c6f4058686a11fb7eba4bff423aedc86040bb8d",
+    "catalog_sha256": "1af51f4fba5f190829d255fe8ee2ce2328811f09102af6d9e814e2b49d4353f0",
+    "schema_sha256": "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073",
+    "table_columns_sha256": "0fb8cc7db2de46e69868f4f822bf105a19d794f706f7a1b8430a118a07cbb1c7",
+    "query_catalog_version": "v8-readonly-query-catalog-v1",
+    "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+  },
+  "parameters": {
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "hour": "2026-10-14T19:00:00+08:00",
+    "news_id": "20260903A05YQE00"
+  },
+  "gate": {
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "event_time": "2026-10-14T19:00:00+08:00",
+    "snapshot_revision": 2,
+    "window_end": "2026-10-14T20:00:00+08:00",
+    "watermark_at": "2026-10-14T20:10:00+08:00",
+    "snapshot_at": "2026-10-14T20:15:00+08:00",
+    "completeness": "corrected",
+    "quality_status": "passed",
+    "policy_version": "sim-click-attributed-reading-v8.1"
+  },
+  "transaction": {
+    "isolation": "repeatable_read",
+    "read_only": true,
+    "statement_timeout_ms": 10000,
+    "lock_timeout_ms": 2000
+  },
+  "row_limit": 1,
+  "row_count": 1,
+  "rows": [
+    {
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20260903A05YQE00",
+      "title": "WorkBuddy开放平台上线，AI办公迎来硬件入口之争",
+      "category": "科技",
+      "source_url": "https://news.qq.com/rain/a/20260903A05YQE00",
+      "publish_time": "2026-09-03T12:18:15+08:00",
+      "content_sha256": "fa81c93c8f95e95b1463a7ad480f7c4cff5b4a090c7c1ebefb6acda451f5ebe2",
+      "event_time": "2026-10-14T19:00:00+08:00",
+      "snapshot_revision": 2,
+      "impressions": 1323,
+      "clicks": 81,
+      "unique_users": 41,
+      "detail_page_views": 401,
+      "direct_page_views": 341,
+      "detail_visitors": 245,
+      "total_duration_seconds": 12926,
+      "effective_consumptions": 42,
+      "interactions": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "favorites": 0,
+      "negative_feedback": 0,
+      "ctr": "0.06122448979591836735",
+      "uv_method": "temporary_interval_union_v8.1",
+      "watermark_at": "2026-10-14T20:10:00+08:00",
+      "snapshot_at": "2026-10-14T20:15:00+08:00",
+      "completeness": "corrected",
+      "quality_status": "passed",
+      "average_duration_per_detail_view": "32.2344139650872818"
+    }
+  ],
+  "matched_rows": 1,
+  "truncated": false,
+  "omitted_rows": 0,
+  "sql_sha256": "d14cd0d21c28e40976e1999f48423f894340a74230434c5001143ad850a19be3",
+  "news_content_synthetic": false,
+  "metric_data_synthetic": true,
+  "daily_coverage_policy": "stored per-news daily UV; partial and excluded hours remain visible; UV never summed",
+  "integration_status": "standalone_query_examples_not_connected_to_agent"
+}

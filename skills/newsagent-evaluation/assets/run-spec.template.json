@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "draft_not_frozen",
+  "run_id": null,
+  "question": null,
+  "targets": [],
+  "chains": [],
+  "scope": {"entry": null, "exit": null, "include": [], "exclude": [], "allowed_claims": []},
+  "authorization": {"basis": null, "environment": null, "allowed_side_effects": [], "production_mutation": false},
+  "code": {"repository_root": null, "git_head": null, "relevant_tracked_diff_sha256": null, "untracked_code_sha256": [], "dependency_versions": {}, "image_digest": null},
+  "data": {"source_kind": null, "human_review_status": null, "files_byte_sha256": [], "canonical_hashes": [], "case_ids_reference": null, "event_groups_reference": null, "split": null, "cohorts": [], "denominator": null, "as_of": null, "window_start": null, "window_end": null, "timezone": "Asia/Shanghai", "watermark_reference": null},
+  "runtime": {"inference": null, "embedding": null, "warehouse": null, "content": null, "index": null, "workflow": null, "annotators": null, "safe_config_sha256": null, "credential_env_names": [], "credential_values_included": false},
+  "versions": {"current_bundle": null, "candidate_bundle": null, "previous_experiment_bundle": null, "prompts": [], "schema": null, "validator": null, "heat_rule": null, "baseline_rule": null, "rerank_asset": null, "chunking": null, "embedding_model": null, "index_package": null, "sql_contract": null, "sql_compiler": null},
+  "scoring": {"oracle": null, "formula_reference": null, "numeric_tolerance": null, "failure_denominator_rule": null, "unknown_labels_rule": "block_affected_quality_scoring", "critical_groups": [], "thresholds": {"status": "unapproved", "policy_version": null, "policy_sha256": null, "approval_reference": null}, "repetitions": null, "seed": null},
+  "budget": {"max_model_calls": null, "max_seconds": null, "max_concurrency": null, "max_cost": null, "cost_unit": null, "max_safe_submission_retries": 1, "stop_conditions": []},
+  "execution": {"commands": [], "output_directory": null, "resume_identity": null},
+  "not_applicable_with_reason": {},
+  "unresolved": []
+}

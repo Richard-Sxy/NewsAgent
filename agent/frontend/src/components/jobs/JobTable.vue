@@ -30,7 +30,6 @@ defineEmits<{ (event: 'select', jobId: string): void }>()
       >
         <td>
           <div>{{ job.topic }}</div>
-          <div class="na-cell__sub">{{ job.id }}</div>
         </td>
         <td>
           <span class="na-badge" :class="`na-badge--${jobStatusTone(job.status)}`">

@@ -1,0 +1,179 @@
+{
+  "before_sha256": "3a20b2d50ef9eb5cea280005141f3d7bdd71acfa163c7275de2b915955240f21",
+  "changes": [
+    {
+      "path": "agent/app/services/active_bundle_hot_news.py",
+      "old_line": 99,
+      "new_line": 102,
+      "label": "code",
+      "expected": "async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "candidates": [
+        102
+      ],
+      "original_document_lines": [
+        75,
+        181
+      ]
+    },
+    {
+      "path": "agent/app/services/hot_news_orchestration.py",
+      "old_line": 216,
+      "new_line": 227,
+      "label": "code",
+      "expected": "async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "candidates": [
+        227
+      ],
+      "original_document_lines": [
+        77
+      ]
+    },
+    {
+      "path": "agent/app/analytics/hot_news_enrichment.py",
+      "old_line": 51,
+      "new_line": 71,
+      "label": "code",
+      "expected": "async def enrich(",
+      "candidates": [
+        71
+      ],
+      "original_document_lines": [
+        83
+      ]
+    },
+    {
+      "path": "agent/app/services/hot_news_analysis.py",
+      "old_line": 419,
+      "new_line": 423,
+      "label": "code",
+      "expected": "async def analyze_with_snapshot(",
+      "candidates": [
+        423
+      ],
+      "original_document_lines": [
+        85
+      ]
+    },
+    {
+      "path": "agent/app/services/hot_news_query.py",
+      "old_line": 59,
+      "new_line": 60,
+      "label": "code",
+      "expected": "async def get_run_detail(",
+      "candidates": [
+        60
+      ],
+      "original_document_lines": [
+        89,
+        402
+      ]
+    },
+    {
+      "path": "agent/app/services/active_bundle_hot_news.py",
+      "old_line": 99,
+      "new_line": 102,
+      "label": "code",
+      "expected": "async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "candidates": [
+        102
+      ],
+      "original_document_lines": [
+        75,
+        181
+      ]
+    },
+    {
+      "path": "agent/app/services/hot_news_query.py",
+      "old_line": 59,
+      "new_line": 60,
+      "label": "code",
+      "expected": "async def get_run_detail(",
+      "candidates": [
+        60
+      ],
+      "original_document_lines": [
+        89,
+        402
+      ]
+    },
+    {
+      "path": "agent/app/main.py",
+      "old_line": 65,
+      "new_line": 66,
+      "label": "main.py#L65",
+      "expected": "async def _business_lifespan(app: FastAPI):",
+      "candidates": [
+        66
+      ],
+      "original_document_lines": [
+        418
+      ]
+    },
+    {
+      "path": "agent/app/main.py",
+      "old_line": 244,
+      "new_line": 252,
+      "label": "main.py#L244",
+      "expected": "def create_app() -> FastAPI:",
+      "candidates": [
+        252
+      ],
+      "original_document_lines": [
+        418
+      ]
+    },
+    {
+      "path": "agent/app/hot_news_worker.py",
+      "old_line": 38,
+      "new_line": 39,
+      "label": "hot_news_worker.py#L38",
+      "expected": "async def run_hot_news_worker(",
+      "candidates": [
+        39
+      ],
+      "original_document_lines": [
+        418
+      ]
+    },
+    {
+      "path": "agent/app/main.py",
+      "old_line": 146,
+      "new_line": 152,
+      "label": "API 装配",
+      "expected": "if settings.knowledge_lifecycle_config_path:",
+      "candidates": [
+        152
+      ],
+      "original_document_lines": [
+        430
+      ]
+    },
+    {
+      "path": "agent/app/behavior_tags/build.py",
+      "old_line": 304,
+      "new_line": 303,
+      "label": "build_package()",
+      "expected": "def build_package(source_dir: str | Path | list[str | Path] | tuple[str | Path, ...], output_dir: str | Path, *, policy_path: str | Path | None = None,",
+      "candidates": [
+        303
+      ],
+      "original_document_lines": [
+        434
+      ]
+    },
+    {
+      "path": "agent/app/services/active_bundle_hot_news.py",
+      "old_line": 166,
+      "new_line": 176,
+      "label": "ActiveProductionBundleHotNewsService._behavior_context()",
+      "expected": "def _behavior_context(self, request: HotNewsRunRequest) -> BehaviorRetrievalContext | None:",
+      "candidates": [
+        176
+      ],
+      "original_document_lines": [
+        434
+      ]
+    }
+  ],
+  "unresolved": []
+}

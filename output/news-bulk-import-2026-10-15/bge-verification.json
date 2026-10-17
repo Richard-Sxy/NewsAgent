@@ -1,0 +1,39 @@
+{
+  "status": "verified",
+  "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "base_manifest_unchanged": true,
+  "v1_news_manifest_unchanged": true,
+  "v2_news_manifest_unchanged": true,
+  "input_news_covered": 8000,
+  "total_articles": 20187,
+  "total_chunks": 50252,
+  "stored_dtype": "float32",
+  "dimensions": 1024,
+  "all_vectors_normalized": true,
+  "base_chunk_bytes_preserved": true,
+  "base_vectors_preserved_exactly": true,
+  "embedding_inference": {
+    "device": "mps",
+    "precision": "float16",
+    "stored_vector_dtype": "float32",
+    "max_sequence_length": 512,
+    "batch_size": 8,
+    "plan_version": "length-sorted-batches-v1",
+    "checkpoint_batches": 1529,
+    "normalization": "l2-float32"
+  },
+  "hnsw_readback": {
+    "labels_contiguous": true,
+    "row_count": 50252,
+    "checked_vector_labels": [
+      0,
+      38025,
+      38026,
+      40000,
+      45000,
+      50251
+    ],
+    "sample_vectors_preserved_exactly": true,
+    "new_vector_nearest_distance": -1.1920928955078125e-07
+  }
+}

@@ -1,0 +1,1107 @@
+{
+  "functional_smoke_only": true,
+  "enterprise_quality_validation": false,
+  "source_mode": "synthetic",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "window_start": "2026-10-14T11:00:00+00:00",
+  "window_end": "2026-10-14T12:00:00+00:00",
+  "reader_package": "/Users/shi/Project/myProject/NewsAgent/output/reader-profiles/local-readers-v1-20261017",
+  "reader_source_release_sha256": "03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5",
+  "source_warehouse": "/Users/shi/Project/myProject/NewsAgent/output/warehouse/real-news-v8-20261014",
+  "source_warehouse_dataset": "real-news-business-warehouse-v8-20261014",
+  "verified_warehouse_files": {
+    "dim_news": "821f1cccb40d6a122d3a71af4f5751cdc2cd5535e4c9e63a4b4457c00f2b5307",
+    "news_metric_hourly": "5f4c53400b6f8d74c4736ad9f306bf4ae257ae706c45ccc73b8d1c398d3192e8",
+    "window_snapshot": "bb735ec825044ca339c96e733e69f4ecdcfbd5421c1c0b1773bd540327df53ca"
+  },
+  "run_key": "hot-news-2593abbd015e8d8d1bd79f56ef9dda0350cf8caa85dc4d98d573bc36f3066ad5",
+  "reader_context_sha256": "6b2fd75c4851a52e3510d416e0250d30762101ac5ebec6f03a14938993903699",
+  "same_ranking_and_metrics": true,
+  "model_received_reader_profiles": 2,
+  "prompt_version": "native-e2e-prompt-v3-reader-profiles",
+  "limitations": [
+    "全部读者是合成样例；不代表企业用户、真实触达或推送效果。",
+    "行为事件与原仓小时指标独立模拟，reader_count不等同或反推原仓detail_visitors。",
+    "仅选择最终小时两条有访问、正文哈希匹配的新闻；没有执行全榜检索或性能验收。",
+    "关联新闻证据为空、历史热度基线为空；所有方向建议仅供人工核查，不发送推送。"
+  ],
+  "items": [
+    {
+      "news_id": "20261010A08B2K00",
+      "title": "争议话题方向彻底走偏：东门健男不是日本人，袁永彬也不是中国人",
+      "hot_score": 0.3173005750044405,
+      "metrics": {
+        "impressions": 35403,
+        "clicks": 3447,
+        "ctr": 0.09736463011609185,
+        "unique_users": 2473,
+        "effective_consumptions": 2201,
+        "interactions": 711
+      },
+      "reader_profile_summary": {
+        "news_id": "20261010A08B2K00",
+        "source_mode": "synthetic",
+        "taxonomy_version": "news-behavior-topics-demo-v1",
+        "profile_policy_version": "prewindow-exclude-trigger-interest-v1",
+        "content_sha256": "e16a738f7109557b0dda3d23484b74526c26a35e096e3964bdaa393ba2641ea2",
+        "content_topic_ids": [
+          "culture",
+          "culture.history",
+          "international",
+          "international.americas",
+          "international.asia"
+        ],
+        "reader_count": 1,
+        "long_term": {
+          "lookback_hours": 720,
+          "profiled_reader_count": 1,
+          "unknown_reader_count": 0,
+          "cold_start_reader_count": 0,
+          "baseline_profiled_count": 540,
+          "topics": [
+            {
+              "topic_id": "auto",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 291,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.53888889",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 224,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.41481481",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.arts",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 64,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.11851852",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.literature",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 131,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.24259259",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.travel",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 60,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.11111111",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 236,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.43703704",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.campus",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 126,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.23333333",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.higher",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 159,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.29444444",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.policy",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 10,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.01851852",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 109,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.20185185",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.drama",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 17,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.03148148",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.film",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 34,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.06296296",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.people",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 69,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.12777778",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 488,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.90370370",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.banking",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 148,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.27407407",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "health",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 155,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.28703704",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "health.medicine",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 147,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.27222222",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "health.science",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 15,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.02777778",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 308,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.57037037",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.americas",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 178,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.32962963",
+              "lift": null,
+              "low_sample": true
+            }
+          ]
+        },
+        "short_term": {
+          "lookback_hours": 24,
+          "profiled_reader_count": 1,
+          "unknown_reader_count": 0,
+          "cold_start_reader_count": 0,
+          "baseline_profiled_count": 511,
+          "topics": [
+            {
+              "topic_id": "auto",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 177,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.34637965",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.electric",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 111,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.21722114",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.intelligent",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 92,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.18003914",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.products",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 128,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.25048924",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 148,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.28962818",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.arts",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 53,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.10371820",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.literature",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 83,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.16242661",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "culture.travel",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 55,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.10763209",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 152,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.29745597",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.campus",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 92,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.18003914",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.higher",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 120,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.23483366",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "education.policy",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 14,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.02739726",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 96,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.18786693",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.drama",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 20,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.03913894",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.film",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 35,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.06849315",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "entertainment.people",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 65,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.12720157",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 310,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.60665362",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.banking",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 102,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.19960861",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.consumption",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 115,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.22504892",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "health",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 106,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.20743640",
+              "lift": null,
+              "low_sample": true
+            }
+          ]
+        },
+        "profile_cutoff": "2026-10-14T11:00:00Z",
+        "trigger_article_excluded": true,
+        "reader_definition": "detail-view-distinct-v1",
+        "identity_policy_version": "synthetic-user-id-tenant-scoped-v1",
+        "count_method": "exact_synthetic_distinct",
+        "error_bound": null,
+        "status": "complete",
+        "limitations": [
+          "synthetic readers only; not enterprise audience or delivery eligibility",
+          "interest membership uses normalized positive score >= 0.2; multi-label shares do not sum to one"
+        ]
+      },
+      "reader_profile_trace": {
+        "source_mode": "synthetic",
+        "snapshot_id": "dce3aaa127d271475357f2df8bc1364486a0dfc44ededf204f50b8294cead3f9",
+        "source_release_sha256": "03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5",
+        "query_fingerprint": "9f3770fa5a056f2e0846a2fcfac96e33c22a0bb7a6faf18a1ec0578c8d99cd81",
+        "source_revision": 1,
+        "taxonomy_version": "news-behavior-topics-demo-v1",
+        "profile_policy_version": "prewindow-exclude-trigger-interest-v1",
+        "window_start": "2026-10-14T11:00:00+00:00",
+        "window_end": "2026-10-14T12:00:00+00:00",
+        "watermark": "2026-10-14T12:00:00+00:00",
+        "generated_at": "2026-10-14T12:35:00+00:00",
+        "expires_at": null,
+        "topic_names": {
+          "finance": "财经",
+          "finance.consumption": "消费",
+          "finance.banking": "银行金融",
+          "education": "教育",
+          "education.higher": "高等教育",
+          "education.policy": "教育政策",
+          "education.campus": "校园",
+          "auto": "汽车",
+          "auto.electric": "新能源汽车",
+          "auto.intelligent": "智能驾驶",
+          "auto.products": "车型产品",
+          "entertainment": "娱乐",
+          "entertainment.film": "电影",
+          "entertainment.drama": "影视剧",
+          "entertainment.people": "文娱人物",
+          "international": "国际",
+          "international.asia": "亚洲",
+          "international.americas": "美洲",
+          "health": "健康",
+          "health.medicine": "医疗",
+          "health.science": "医学研究",
+          "culture": "文化",
+          "culture.literature": "文学阅读",
+          "culture.arts": "艺术",
+          "culture.travel": "人文旅游",
+          "culture.history": "历史"
+        }
+      },
+      "operation_suggestions": [
+        {
+          "action": "将这条新闻留在人工观察列表。",
+          "rationale": "本地端到端验收数据，不触发自动发布。",
+          "priority": "low",
+          "metric_keys": [
+            "hot_score"
+          ],
+          "evidence_news_ids": []
+        },
+        {
+          "action": "人工核查合成样例读者的长期兴趣方向：auto、culture。",
+          "rationale": "本新闻去重读者 1 位，长期有画像 1 位；auto：1 位、全体读者占比 100.00%；culture：1 位、全体读者占比 100.00%。多标签可重叠；仅供人工审核，不自动选人或推送，不预测CTR或提升。",
+          "priority": "low",
+          "metric_keys": [],
+          "evidence_news_ids": []
+        },
+        {
+          "action": "人工核查合成样例读者的短期兴趣方向：auto、auto.electric。",
+          "rationale": "本新闻去重读者 1 位，短期有画像 1 位；auto：1 位、全体读者占比 100.00%；auto.electric：1 位、全体读者占比 100.00%。多标签可重叠；仅供人工审核，不自动选人或推送，不预测CTR或提升。",
+          "priority": "low",
+          "metric_keys": [],
+          "evidence_news_ids": []
+        }
+      ],
+      "limitations": [
+        "本结果由本地确定性推理替身产生，不代表真实模型判断。",
+        "合成读者画像仅用于功能演示，不代表真实用户、真实触达人数或企业效果验收。",
+        "长期主题有低支持样本或缺少可用lift，不能据此判断偏好提升。",
+        "短期主题有低支持样本或缺少可用lift，不能据此判断偏好提升。",
+        "synthetic readers only; not enterprise audience or delivery eligibility",
+        "interest membership uses normalized positive score >= 0.2; multi-label shares do not sum to one"
+      ]
+    },
+    {
+      "news_id": "20260822A05S7V00",
+      "title": "领克召回7.4万辆汽车，激光雷达故障动摇车主信任",
+      "hot_score": 0.26168485217079956,
+      "metrics": {
+        "impressions": 20466,
+        "clicks": 1992,
+        "ctr": 0.09733216065669892,
+        "unique_users": 1403,
+        "effective_consumptions": 608,
+        "interactions": 382
+      },
+      "reader_profile_summary": {
+        "news_id": "20260822A05S7V00",
+        "source_mode": "synthetic",
+        "taxonomy_version": "news-behavior-topics-demo-v1",
+        "profile_policy_version": "prewindow-exclude-trigger-interest-v1",
+        "content_sha256": "9d74c49dd5f78302af8f7418af250b559a222b9897e9cc8bb6e9cd698b66837a",
+        "content_topic_ids": [
+          "auto",
+          "auto.intelligent",
+          "auto.products",
+          "society",
+          "society.law",
+          "tech",
+          "tech.chips"
+        ],
+        "reader_count": 1,
+        "long_term": {
+          "lookback_hours": 720,
+          "profiled_reader_count": 1,
+          "unknown_reader_count": 0,
+          "cold_start_reader_count": 0,
+          "baseline_profiled_count": 540,
+          "topics": [
+            {
+              "topic_id": "ai",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 364,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.67407407",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "ai.ecosystem",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 330,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.61111111",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "ai.models",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 191,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.35370370",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 287,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.53148148",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.electric",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 171,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.31666667",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.products",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 196,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.36296296",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 488,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.90370370",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.consumption",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 216,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.40000000",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.industry",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 170,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.31481481",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.macro",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 29,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.05370370",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 309,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.57222222",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.americas",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 182,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.33703704",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.asia",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 123,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.22777778",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.europe",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 157,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.29074074",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 439,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.81296296",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.events",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 20,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.03703704",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.football",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 82,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.15185185",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.racket",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 64,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.11851852",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "tech",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 436,
+              "baseline_profiled_count": 540,
+              "baseline_share": "0.80740741",
+              "lift": null,
+              "low_sample": true
+            }
+          ]
+        },
+        "short_term": {
+          "lookback_hours": 24,
+          "profiled_reader_count": 1,
+          "unknown_reader_count": 0,
+          "cold_start_reader_count": 0,
+          "baseline_profiled_count": 511,
+          "topics": [
+            {
+              "topic_id": "ai",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 223,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.43639922",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "ai.ecosystem",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 201,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.39334638",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 176,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.34442270",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.electric",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 111,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.21722114",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "auto.products",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 127,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.24853229",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 310,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.60665362",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.industry",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 115,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.22504892",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "finance.macro",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 23,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.04500978",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 201,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.39334638",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.asia",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 95,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.18590998",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "international.europe",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 96,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.18786693",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 242,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.47358121",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.events",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 23,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.04500978",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.football",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 62,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.12133072",
+              "lift": null,
+              "low_sample": true
+            },
+            {
+              "topic_id": "sports.racket",
+              "reader_count": 1,
+              "share_all": "1.00000000",
+              "share_profiled": "1.00000000",
+              "baseline_reader_count": 55,
+              "baseline_profiled_count": 511,
+              "baseline_share": "0.10763209",
+              "lift": null,
+              "low_sample": true
+            }
+          ]
+        },
+        "profile_cutoff": "2026-10-14T11:00:00Z",
+        "trigger_article_excluded": true,
+        "reader_definition": "detail-view-distinct-v1",
+        "identity_policy_version": "synthetic-user-id-tenant-scoped-v1",
+        "count_method": "exact_synthetic_distinct",
+        "error_bound": null,
+        "status": "complete",
+        "limitations": [
+          "synthetic readers only; not enterprise audience or delivery eligibility",
+          "interest membership uses normalized positive score >= 0.2; multi-label shares do not sum to one"
+        ]
+      },
+      "reader_profile_trace": {
+        "source_mode": "synthetic",
+        "snapshot_id": "dce3aaa127d271475357f2df8bc1364486a0dfc44ededf204f50b8294cead3f9",
+        "source_release_sha256": "03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5",
+        "query_fingerprint": "9f3770fa5a056f2e0846a2fcfac96e33c22a0bb7a6faf18a1ec0578c8d99cd81",
+        "source_revision": 1,
+        "taxonomy_version": "news-behavior-topics-demo-v1",
+        "profile_policy_version": "prewindow-exclude-trigger-interest-v1",
+        "window_start": "2026-10-14T11:00:00+00:00",
+        "window_end": "2026-10-14T12:00:00+00:00",
+        "watermark": "2026-10-14T12:00:00+00:00",
+        "generated_at": "2026-10-14T12:35:00+00:00",
+        "expires_at": null,
+        "topic_names": {
+          "tech": "科技",
+          "tech.chips": "芯片",
+          "finance": "财经",
+          "finance.macro": "宏观",
+          "finance.industry": "产业",
+          "finance.consumption": "消费",
+          "ai": "AI",
+          "ai.models": "大模型",
+          "ai.ecosystem": "生态",
+          "sports": "体育",
+          "sports.football": "足球",
+          "sports.racket": "乒羽网球",
+          "sports.events": "综合赛事",
+          "auto": "汽车",
+          "auto.electric": "新能源汽车",
+          "auto.intelligent": "智能驾驶",
+          "auto.products": "车型产品",
+          "society": "社会",
+          "society.law": "法治",
+          "international": "国际",
+          "international.asia": "亚洲",
+          "international.europe": "欧洲",
+          "international.americas": "美洲"
+        }
+      },
+      "operation_suggestions": [
+        {
+          "action": "将这条新闻留在人工观察列表。",
+          "rationale": "本地端到端验收数据，不触发自动发布。",
+          "priority": "low",
+          "metric_keys": [
+            "hot_score"
+          ],
+          "evidence_news_ids": []
+        },
+        {
+          "action": "人工核查合成样例读者的长期兴趣方向：ai、ai.ecosystem。",
+          "rationale": "本新闻去重读者 1 位，长期有画像 1 位；ai：1 位、全体读者占比 100.00%；ai.ecosystem：1 位、全体读者占比 100.00%。多标签可重叠；仅供人工审核，不自动选人或推送，不预测CTR或提升。",
+          "priority": "low",
+          "metric_keys": [],
+          "evidence_news_ids": []
+        },
+        {
+          "action": "人工核查合成样例读者的短期兴趣方向：ai、ai.ecosystem。",
+          "rationale": "本新闻去重读者 1 位，短期有画像 1 位；ai：1 位、全体读者占比 100.00%；ai.ecosystem：1 位、全体读者占比 100.00%。多标签可重叠；仅供人工审核，不自动选人或推送，不预测CTR或提升。",
+          "priority": "low",
+          "metric_keys": [],
+          "evidence_news_ids": []
+        }
+      ],
+      "limitations": [
+        "本结果由本地确定性推理替身产生，不代表真实模型判断。",
+        "合成读者画像仅用于功能演示，不代表真实用户、真实触达人数或企业效果验收。",
+        "长期主题有低支持样本或缺少可用lift，不能据此判断偏好提升。",
+        "短期主题有低支持样本或缺少可用lift，不能据此判断偏好提升。",
+        "synthetic readers only; not enterprise audience or delivery eligibility",
+        "interest membership uses normalized positive score >= 0.2; multi-label shares do not sum to one"
+      ]
+    }
+  ]
+}

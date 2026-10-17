@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "label": "真实新闻 · 模拟指标 · 查询候选，非权威热度",
+  "query": "windows",
+  "diagnostic_only": true,
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "identity": {
+    "dataset_version": "real-news-business-warehouse-v8-20261014",
+    "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+    "manifest_sha256": "19f6a4be43fd5acc06d518398c6f4058686a11fb7eba4bff423aedc86040bb8d",
+    "catalog_sha256": "1af51f4fba5f190829d255fe8ee2ce2328811f09102af6d9e814e2b49d4353f0",
+    "schema_sha256": "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073",
+    "table_columns_sha256": "0fb8cc7db2de46e69868f4f822bf105a19d794f706f7a1b8430a118a07cbb1c7",
+    "query_catalog_version": "v8-readonly-query-catalog-v1",
+    "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+  },
+  "parameters": {
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "hour": "2026-10-14T18:00:00+08:00"
+  },
+  "gate": {
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "event_time": "2026-10-14T18:00:00+08:00",
+    "snapshot_revision": 2,
+    "window_end": "2026-10-14T19:00:00+08:00",
+    "watermark_at": "2026-10-14T18:45:00+08:00",
+    "snapshot_at": "2026-10-14T20:25:00+08:00",
+    "completeness": "incomplete",
+    "quality_status": "pending",
+    "policy_version": "sim-click-attributed-reading-v8.1"
+  },
+  "transaction": {
+    "isolation": "repeatable_read",
+    "read_only": true,
+    "statement_timeout_ms": 10000,
+    "lock_timeout_ms": 2000
+  },
+  "row_limit": 4,
+  "row_count": 2,
+  "rows": [
+    {
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "event_time": "2026-10-14T18:00:00+08:00",
+      "snapshot_revision": 2,
+      "window_end": "2026-10-14T19:00:00+08:00",
+      "watermark_at": "2026-10-14T18:45:00+08:00",
+      "snapshot_at": "2026-10-14T20:25:00+08:00",
+      "completeness": "incomplete",
+      "quality_status": "pending",
+      "policy_version": "sim-click-attributed-reading-v8.1",
+      "is_latest": true,
+      "matched_rows": 2,
+      "diagnostic_only": true
+    },
+    {
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "event_time": "2026-10-14T18:00:00+08:00",
+      "snapshot_revision": 1,
+      "window_end": "2026-10-14T19:00:00+08:00",
+      "watermark_at": "2026-10-14T19:10:00+08:00",
+      "snapshot_at": "2026-10-14T19:15:00+08:00",
+      "completeness": "complete",
+      "quality_status": "passed",
+      "policy_version": "sim-click-attributed-reading-v8.1",
+      "is_latest": false,
+      "matched_rows": 2,
+      "diagnostic_only": true
+    }
+  ],
+  "matched_rows": 2,
+  "truncated": false,
+  "omitted_rows": 0,
+  "sql_sha256": "addcd897551ee905836a0778cb83b49b0740f313a68f08a16444788a1c49667b",
+  "news_content_synthetic": false,
+  "metric_data_synthetic": true,
+  "daily_coverage_policy": "stored per-news daily UV; partial and excluded hours remain visible; UV never summed",
+  "integration_status": "standalone_query_examples_not_connected_to_agent"
+}

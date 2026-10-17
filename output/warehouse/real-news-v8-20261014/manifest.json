@@ -1,0 +1,296 @@
+{
+  "dataset_version": "real-news-business-warehouse-v8-20261014",
+  "schema": "news_sim_v8",
+  "config": {
+    "start_at": "2026-09-30T00:00:00+08:00",
+    "closed_hours": 356,
+    "seed": 20261014
+  },
+  "tenants": [
+    "11111111-1111-4111-8111-111111111111",
+    "33333333-3333-4333-8333-333333333333"
+  ],
+  "real_article_count": 661,
+  "catalog_count": 661,
+  "catalog_sha256": "1af51f4fba5f190829d255fe8ee2ce2328811f09102af6d9e814e2b49d4353f0",
+  "catalog_loader_sha256": "f7e81d97cf0217544b14a600c3a0fd6583b3dcf5ce1e0835e653b0afb33c3e91",
+  "schema_sha256": "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073",
+  "generator_sha256": "5be0f4905d6daf1b5c731d70410b911a61b1990b86d7e18793402b7f86f531b2",
+  "closed_window_start": "2026-09-30T00:00:00+08:00",
+  "closed_window_end": "2026-10-14T20:00:00+08:00",
+  "historical_window_start": "2026-09-30T00:00:00+08:00",
+  "historical_window_end": "2026-10-14T20:00:00+08:00",
+  "start": "2026-09-30T00:00:00+08:00",
+  "end": "2026-10-14T20:00:00+08:00",
+  "asof": "2026-10-14T20:35:00+08:00",
+  "open_window_start": "2026-10-14T20:00:00+08:00",
+  "tables": {
+    "dim_behavior_policy": {
+      "rows": 2,
+      "sha256": "2dee91c29c7f9b5215952578f6ee7a3d8d9506ef87f7bfb5e576840b8e64a373",
+      "columns": [
+        "tenant_id",
+        "policy_version",
+        "click_definition",
+        "uv_definition",
+        "pv_definition",
+        "effective_definition",
+        "metric_data_synthetic"
+      ]
+    },
+    "dim_channel": {
+      "rows": 12,
+      "sha256": "de9b15db3d7896cada55d78d9ba1c275996419018e197d905dfb2703ea8ebf5f",
+      "columns": [
+        "tenant_id",
+        "channel_id",
+        "channel_name",
+        "platform",
+        "dimension_data_synthetic"
+      ]
+    },
+    "dim_news": {
+      "rows": 1322,
+      "sha256": "821f1cccb40d6a122d3a71af4f5751cdc2cd5535e4c9e63a4b4457c00f2b5307",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "title",
+        "content",
+        "source_url",
+        "content_type",
+        "category",
+        "category_data_synthetic",
+        "source",
+        "publish_time",
+        "publish_time_raw",
+        "source_content_version",
+        "content_version",
+        "fixture_content_version",
+        "content_sha256",
+        "source_file",
+        "source_sha256",
+        "source_package",
+        "source_manifest_sha256",
+        "source_html_sha256",
+        "news_content_synthetic",
+        "metric_data_synthetic",
+        "lifecycle_data_synthetic",
+        "lifecycle_scenario",
+        "status",
+        "lifecycle_revision",
+        "status_effective_at"
+      ]
+    },
+    "window_snapshot": {
+      "rows": 718,
+      "sha256": "bb735ec825044ca339c96e733e69f4ecdcfbd5421c1c0b1773bd540327df53ca",
+      "columns": [
+        "tenant_id",
+        "event_time",
+        "snapshot_revision",
+        "window_end",
+        "watermark_at",
+        "snapshot_at",
+        "completeness",
+        "quality_status",
+        "policy_version",
+        "metric_data_synthetic"
+      ]
+    },
+    "news_metric_5min": {
+      "rows": 1739966,
+      "sha256": "e15b0b2a6b6b0fc5708f4d686035c8202b603dc8aa7071ba6a0dc1336ae5fccb",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "event_time",
+        "snapshot_revision",
+        "impressions",
+        "clicks",
+        "detail_page_views",
+        "direct_page_views",
+        "total_duration_seconds",
+        "effective_consumptions",
+        "interactions",
+        "likes",
+        "comments",
+        "shares",
+        "favorites",
+        "negative_feedback",
+        "unique_users",
+        "detail_visitors"
+      ]
+    },
+    "news_metric_channel_hourly": {
+      "rows": 438036,
+      "sha256": "00062a250628ac6aac2f2d5d495f79ad526fbcb3a5e7d920d5ef653c17342041",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "event_time",
+        "snapshot_revision",
+        "channel_id",
+        "impressions",
+        "clicks",
+        "detail_page_views",
+        "direct_page_views",
+        "total_duration_seconds",
+        "effective_consumptions",
+        "interactions",
+        "likes",
+        "comments",
+        "shares",
+        "favorites",
+        "negative_feedback",
+        "unique_users",
+        "detail_visitors"
+      ]
+    },
+    "news_metric_hourly": {
+      "rows": 146012,
+      "sha256": "5f4c53400b6f8d74c4736ad9f306bf4ae257ae706c45ccc73b8d1c398d3192e8",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "event_time",
+        "snapshot_revision",
+        "impressions",
+        "clicks",
+        "detail_page_views",
+        "direct_page_views",
+        "total_duration_seconds",
+        "effective_consumptions",
+        "interactions",
+        "likes",
+        "comments",
+        "shares",
+        "favorites",
+        "negative_feedback",
+        "unique_users",
+        "detail_visitors",
+        "uv_method",
+        "policy_version"
+      ]
+    },
+    "news_metric_daily": {
+      "rows": 6980,
+      "sha256": "6e73b563869699e789b87daf84ab440c98165a4f6cb94043db1fb32c3106e45a",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "stat_date",
+        "impressions",
+        "clicks",
+        "detail_page_views",
+        "direct_page_views",
+        "total_duration_seconds",
+        "effective_consumptions",
+        "interactions",
+        "likes",
+        "comments",
+        "shares",
+        "favorites",
+        "negative_feedback",
+        "unique_users",
+        "detail_visitors",
+        "coverage_start",
+        "coverage_end",
+        "observed_hours",
+        "completeness",
+        "excluded_hours",
+        "snapshot_revision",
+        "uv_method",
+        "policy_version"
+      ]
+    },
+    "news_metric_baseline_hourly": {
+      "rows": 143368,
+      "sha256": "88fef81e76eaa6375517846538daeb2b886851cd9c6b59f0e5953aeff469255e",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "event_time",
+        "sample_count",
+        "baseline_version",
+        "baseline_impressions",
+        "baseline_clicks",
+        "baseline_effective_consumptions",
+        "baseline_interactions"
+      ]
+    },
+    "content_change_event": {
+      "rows": 84,
+      "sha256": "b12bea5b725847eb0c9fe31ad7d43327ff86d54b510e884f93b7e87fb9378ec5",
+      "columns": [
+        "tenant_id",
+        "event_id",
+        "news_id",
+        "event_type",
+        "from_version",
+        "to_version",
+        "lifecycle_revision",
+        "new_status",
+        "effective_at",
+        "received_at",
+        "reason_code",
+        "lifecycle_data_synthetic"
+      ]
+    },
+    "content_tombstone": {
+      "rows": 56,
+      "sha256": "6a6d0f160373d7fbe1b3667f18ed56bb7c18873179cace82129255f61a908797",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "event_id",
+        "blocked_through_version",
+        "lifecycle_revision",
+        "status",
+        "effective_at",
+        "lifecycle_data_synthetic"
+      ]
+    },
+    "index_cleanup_task": {
+      "rows": 336,
+      "sha256": "cbab81bab99025c12759349c4cfefda5c94e9b5bd3b1e8bd2e379e706fa37be3",
+      "columns": [
+        "tenant_id",
+        "task_id",
+        "event_id",
+        "news_id",
+        "target",
+        "action",
+        "through_version",
+        "status",
+        "attempt_count",
+        "mapping_required",
+        "lifecycle_data_synthetic",
+        "created_at"
+      ]
+    }
+  },
+  "warehouse_sql_sha256": "ba6b4ba655a2251a2160350edf17803ff3b590e7b172dd5e39ea0886e3f5387e",
+  "news_content_synthetic": false,
+  "metric_data_synthetic": true,
+  "category_data_synthetic": true,
+  "lifecycle_data_synthetic": true,
+  "content_provenance": "catalog preserves cached source IDs, title, body, URL and publication metadata",
+  "metric_provenance": {
+    "generator": "deterministic aggregate simulator",
+    "policy_version": "sim-click-attributed-reading-v8.1",
+    "uv_method": "temporary_interval_union_v8.1",
+    "unique_users": "click UV",
+    "detail_visitors": "independent successful-detail-access UV",
+    "detail_page_views": "successful detail opens including direct access; may exceed clicks",
+    "effective_consumptions": "click-attributed effective article reads",
+    "event_storage": "aggregate only; temporary audience intervals never saved"
+  },
+  "lifecycle_provenance": {
+    "main_tenant": "all real articles remain published",
+    "isolated_tenant": "hypothetical simulation only",
+    "cleanup_execution": "none; all tasks pending, no external adapter"
+  },
+  "integration_status": "standalone_fixture_not_connected_to_agent_or_vector_store",
+  "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
+}

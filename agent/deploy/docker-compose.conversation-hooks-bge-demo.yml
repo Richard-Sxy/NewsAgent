@@ -1,0 +1,38 @@
+# Add last to native-e2e + bge-snapshot + bge-demo; local-only candidate fixture.
+# Existing production Bundle and business approval state are preserved.
+x-conversation-hooks: &conversation-hooks
+  MODEL_RUNTIME_CONFIG_PATH: /app/deploy/conversation-hooks.model-runtime.local.yml
+  CONVERSATION_TURN_TIMEOUT_SECONDS: "60"
+  CONVERSATION_ASYNC_ADMISSION_ENABLED: "true"
+  CONVERSATION_ASYNC_ADMISSION_BUDGET: "2"
+  CONVERSATION_ASYNC_ADMISSION_QUEUE_LIMIT: "100"
+  HOT_NEWS_RUNTIME_MANIFEST_JSON: >-
+    [{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"native-e2e-prompt-v1","model_profile_id":"retired-native-field","model_version":"native-local-model-v1","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"},{"metric_definition_version":"e2e-metrics-v1","hot_score_policy_version":"e2e-hot-score-v1","reranker_policy_version":"e2e-reranker-v1","analysis_prompt_version":"conversation-demo-candidate-v1","model_profile_id":"retired-native-field","model_version":"native-local-model-v1","output_schema_version":"e2e-output-schema-v1","validator_version":"e2e-validator-v1","memory_resolver_policy_version":"e2e-memory-resolver-v1"}]
+services:
+  web:
+    image: news-agent/frontend:conversation-hooks-demo
+  api:
+    image: news-agent/conversation-hooks-bge-demo:local
+    environment: *conversation-hooks
+    volumes:
+      - ./conversation-hooks.model-runtime.local.yml:/app/deploy/conversation-hooks.model-runtime.local.yml:ro
+  writing-worker:
+    image: news-agent/conversation-hooks-bge-demo:local
+    environment: *conversation-hooks
+    volumes:
+      - ./conversation-hooks.model-runtime.local.yml:/app/deploy/conversation-hooks.model-runtime.local.yml:ro
+  data-loop-worker:
+    image: news-agent/conversation-hooks-bge-demo:local
+    environment: *conversation-hooks
+    volumes:
+      - ./conversation-hooks.model-runtime.local.yml:/app/deploy/conversation-hooks.model-runtime.local.yml:ro
+  hot-news-worker:
+    image: news-agent/conversation-hooks-bge-demo:local
+    environment: *conversation-hooks
+    volumes:
+      - ./conversation-hooks.model-runtime.local.yml:/app/deploy/conversation-hooks.model-runtime.local.yml:ro
+  test-runner:
+    image: news-agent/conversation-hooks-bge-demo:local
+    environment: *conversation-hooks
+    volumes:
+      - ./conversation-hooks.model-runtime.local.yml:/app/deploy/conversation-hooks.model-runtime.local.yml:ro

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { dataLoopApi } from '@/api'
 import type { CandidateResponse, JsonObject, ProposeCandidateRequest } from '@/api'
@@ -8,10 +9,12 @@ import { useAsyncTask } from '@/composables/useAsyncTask'
 import { useConfirmStore } from '@/stores/confirm'
 import { useToastStore } from '@/stores/toast'
 import { describeError } from '@/utils/errors'
+import { writingJobId } from '@/utils/capabilityReceipts'
 import { newIdempotencyKey } from '@/utils/format'
 import { firstError, jsonText, parseJson, requiredText } from '@/utils/validate'
 
 const toast = useToastStore()
+const route = useRoute()
 const dialog = useConfirmStore()
 const { pending, run } = useAsyncTask()
 
@@ -63,8 +66,35 @@ async function submitProposal(): Promise<void> {
 
 const lookupId = ref('')
 const lookupResult = ref<CandidateResponse | null>(null)
+const currentCandidate = computed(() => {
+  if (lookupError.value) return null
+  if (lookupId.value) return lookupResult.value?.candidate.id === lookupId.value.trim() ? lookupResult.value.candidate : null
+  return createResult.value?.candidate ?? null
+})
+const statusLabels: Record<string, string> = {
+  pending_evaluation: '待评测', evaluation_passed: '评测通过', evaluation_failed: '评测未通过',
+  approved: '已批准', rejected: '已驳回', activated: '已激活',
+}
+const currentStatus = computed(() => {
+  const status = currentCandidate.value?.status
+  return typeof status === 'string' ? statusLabels[status] ?? '状态待确认' : '状态待确认'
+})
+const changes = computed(() => {
+  const diff = currentCandidate.value?.structured_diff
+  return Array.isArray(diff) ? diff.filter((item): item is JsonObject => !!item && typeof item === 'object' && !Array.isArray(item)) : []
+})
+const assetLabels: Record<string, string> = {
+  metric_definition: '指标口径', hot_score_policy: '热度规则', reranker_policy: '重排规则',
+  analysis_prompt: '分析 Prompt', model_profile: '模型配置', model: '模型', output_schema: '输出格式',
+  validator: '校验规则', memory_resolver_policy: '记忆规则',
+}
+function assetLabel(value: unknown): string {
+  return typeof value === 'string' ? assetLabels[value] ?? value : '配置'
+}
 const lookupLoading = ref(false)
 const lookupError = ref<string | null>(null)
+let lookupRequest = 0
+let disposed = false
 
 async function lookup(): Promise<void> {
   const id = lookupId.value.trim()
@@ -73,101 +103,120 @@ async function lookup(): Promise<void> {
     return
   }
   lookupLoading.value = true
+  const sequence = ++lookupRequest
   lookupError.value = null
   try {
-    lookupResult.value = await dataLoopApi.getCandidate(id)
+    const response = await dataLoopApi.getCandidate(id)
+    if (disposed || sequence !== lookupRequest || lookupId.value.trim() !== id) return
+    if (response.candidate?.id !== id) throw new Error('候选响应与链接目标不一致')
+    lookupResult.value = response
   } catch (cause) {
-    lookupError.value = describeError(cause)
-    lookupResult.value = null
+    if (!disposed && sequence === lookupRequest) { lookupError.value = describeError(cause); lookupResult.value = null }
   } finally {
-    lookupLoading.value = false
+    if (!disposed && sequence === lookupRequest) lookupLoading.value = false
   }
 }
+
+watch(() => route.query.candidate_id, (value) => {
+  if (value === undefined) return
+  ++lookupRequest
+  lookupResult.value = null
+  lookupError.value = null
+  lookupLoading.value = false
+  lookupId.value = ''
+  const id = writingJobId(value)
+  if (!id) { lookupError.value = '链接中的候选 ID 不合法。'; return }
+  lookupId.value = id
+  void lookup()
+}, { immediate: true })
+onBeforeUnmount(() => { disposed = true; ++lookupRequest })
 </script>
 
 <template>
-  <div class="na-grid na-grid--detail">
-    <section class="na-card">
-      <div class="na-card__head">
-        <h2>提交配置候选</h2>
-        <span class="na-badge na-badge--live">POST /configuration-candidates</span>
-      </div>
-
+  <section class="na-card">
+    <div class="na-card__head">
+      <h2>候选配置</h2>
+      <span v-if="currentCandidate" class="na-badge">{{ currentStatus }}</span>
+    </div>
+    <details class="na-disclosure" :open="!lookupId && !currentCandidate">
+      <summary>查找候选</summary>
       <div class="na-row">
         <div class="na-field na-field--grow">
-          <label for="base-bundle">基线生产包 ID</label>
-          <input id="base-bundle" v-model="baseBundleId" class="na-input" autocomplete="off">
-        </div>
-        <div class="na-field na-field--fixed">
-          <label for="candidate-version">候选版本</label>
-          <input id="candidate-version" v-model="candidateVersion" class="na-input" autocomplete="off">
-        </div>
-      </div>
-
-      <div class="na-field">
-        <label for="proposal-reason">提案原因</label>
-        <input id="proposal-reason" v-model="proposalReason" class="na-input">
-      </div>
-
-      <div class="na-field">
-        <label for="proposed-spec">候选规格（JSON 对象）</label>
-        <textarea
-          id="proposed-spec"
-          v-model="proposedSpec"
-          class="na-textarea"
-          placeholder="粘贴 ProductionBundleSpec"
-        />
-      </div>
-
-      <div class="na-field">
-        <label for="structured-diff">结构化差异（JSON 数组）</label>
-        <textarea
-          id="structured-diff"
-          v-model="structuredDiff"
-          class="na-textarea"
-          placeholder="[{&quot;path&quot;: &quot;retrieval.top_k&quot;, &quot;from&quot;: 8, &quot;to&quot;: 12}]"
-        />
-      </div>
-
-      <div class="na-row na-row--end">
-        <button class="na-btn na-btn--primary" type="button" :disabled="pending" @click="submitProposal">
-          {{ pending ? '提交中…' : '提交候选' }}
-        </button>
-      </div>
-
-      <NaJsonBlock v-if="createResult" :value="createResult" label="提交结果" />
-    </section>
-
-    <section class="na-card">
-      <div class="na-card__head">
-        <h2>查询候选详情</h2>
-        <span class="na-badge">GET /configuration-candidates/{'{candidate_id}'}</span>
-      </div>
-
-      <div class="na-row">
-        <div class="na-field na-field--grow">
-          <label for="candidate-lookup">候选 ID</label>
-          <input
-            id="candidate-lookup"
-            v-model="lookupId"
-            class="na-input"
-            autocomplete="off"
-            @keyup.enter="lookup"
-          >
+          <label for="candidate-lookup">候选编号</label>
+          <input id="candidate-lookup" v-model="lookupId" class="na-input" autocomplete="off" @keyup.enter="lookup">
         </div>
         <div class="na-field na-field--action">
-          <button class="na-btn" type="button" :disabled="lookupLoading" @click="lookup">查询</button>
+          <button class="na-btn" type="button" :disabled="lookupLoading" @click="lookup">{{ lookupLoading ? '查询中…' : '查询' }}</button>
         </div>
       </div>
+    </details>
+    <p v-if="lookupError" class="na-message na-message--error" role="alert">{{ lookupError }}</p>
+    <template v-if="currentCandidate">
+      <dl class="na-defs">
+        <div><dt>版本</dt><dd>{{ currentCandidate.candidate_version }}</dd></div>
+        <div><dt>提案原因</dt><dd>{{ currentCandidate.proposal_reason }}</dd></div>
+      </dl>
+      <h3>变更内容</h3>
+      <ul>
+        <li v-for="(change, index) in changes" :key="index">
+          {{ assetLabel(change.asset) }}：{{ change.before_version }} → {{ change.after_version }}
+          <p v-if="change.reason" class="na-muted">{{ change.reason }}</p>
+        </li>
+      </ul>
+      <p class="na-muted">候选配置需要评测和人工批准后才能生效。</p>
+      <details class="na-disclosure">
+        <summary>查看完整配置与变更证据</summary>
+        <NaJsonBlock :value="lookupResult ?? createResult" label="候选完整详情" :collapsed-height="380" />
+      </details>
+    </template>
+    <p v-else-if="!lookupError" class="na-muted">从对话中的候选卡片进入，或填写编号查询。</p>
+  </section>
 
-      <p v-if="lookupError" class="na-message na-message--error">{{ lookupError }}</p>
-      <NaJsonBlock
-        v-if="lookupResult"
-        :value="lookupResult"
-        label="候选详情"
-        :collapsed-height="380"
+  <details class="na-card na-disclosure">
+    <summary>高级操作：手动提交候选</summary>
+    <p class="na-muted">日常测试可在对话中选择已注册的模型或 Prompt 预设。这里保留完整配置入口。</p>
+    <div class="na-row">
+      <div class="na-field na-field--grow">
+        <label for="base-bundle">基线生产包 ID</label>
+        <input id="base-bundle" v-model="baseBundleId" class="na-input" autocomplete="off">
+      </div>
+      <div class="na-field na-field--fixed">
+        <label for="candidate-version">候选版本</label>
+        <input id="candidate-version" v-model="candidateVersion" class="na-input" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="na-field">
+      <label for="proposal-reason">提案原因</label>
+      <input id="proposal-reason" v-model="proposalReason" class="na-input">
+    </div>
+
+    <div class="na-field">
+      <label for="proposed-spec">候选规格（JSON 对象）</label>
+      <textarea
+        id="proposed-spec"
+        v-model="proposedSpec"
+        class="na-textarea"
+        placeholder="粘贴 ProductionBundleSpec"
       />
-      <p v-else-if="!lookupError" class="na-muted">输入候选 ID 后查询其状态与差异。</p>
-    </section>
-  </div>
+    </div>
+
+    <div class="na-field">
+      <label for="structured-diff">结构化差异（JSON 数组）</label>
+      <textarea
+        id="structured-diff"
+        v-model="structuredDiff"
+        class="na-textarea"
+        placeholder="[{&quot;asset&quot;: &quot;analysis_prompt&quot;, &quot;before_version&quot;: &quot;v1&quot;, &quot;after_version&quot;: &quot;v2&quot;, &quot;reason&quot;: &quot;补充证据要求&quot;}]"
+      />
+    </div>
+
+    <div class="na-row na-row--end">
+      <button class="na-btn na-btn--primary" type="button" :disabled="pending" @click="submitProposal">
+        {{ pending ? '提交中…' : '提交候选' }}
+      </button>
+    </div>
+
+    <details v-if="createResult" class="na-disclosure"><summary>提交结果详情</summary><NaJsonBlock :value="createResult" label="提交结果" /></details>
+  </details>
 </template>

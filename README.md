@@ -4,6 +4,17 @@ NewsAgent 是一套独立的 Python 新闻运营 Agent 系统：采集新闻内�
 内容数据，确定性计算热点，组合可信证据，辅助研究写作，并通过反馈、评测与人工审批持续
 改进。
 
+企业落地场景是腾讯新闻运营：企业侧根据每个用户访问的新闻主题与细分主题维护兴趣标签，
+由既有推荐和推送平台服务用户。NewsAgent 连接热点研判与运营决策，在已完成新闻分析中
+选择主题标签，查询企业去重聚合受众和通知资格，生成待人工决策的受众预览。企业用户标签
+算法、接收者名单和真实投递保留在企业系统；本地使用相同接口的合成标签人群演示。
+主题目录、接口合同、执行计划和配置见[腾讯新闻主题受众接入](agent/docs/enterprise-audience-implementation.md)。
+本地联调已支持多版本数仓统一装载、可解释新闻行为标签、合成兴趣画像与热点相关新闻重排，
+构建命令、只读检索 API、数据边界和运行配置见[本地行为标签说明](agent/docs/local-behavior-tags.md)。
+多智能体分工、企业价值、事件与受众研判卡、评测分层及后续路线统一见
+[新闻运营架构与评测说明](agent/docs/news-operations-agent-design.md)。受众预估是确定性服务，
+当前仅生成待人工评估的预览，不表示新增自主圈人 Agent 或已接通真实投递。
+
 项目不依赖第三方 Agent/知识库框架作为运行时。外部模型能力仅为企业内部的
 OpenAI-compatible Chat Completions 与 Embeddings 接口；Agent 编排、Prompt 版本、结构化
 校验、知识分块、索引、QA 与发布门禁均在本仓库实现。
@@ -34,6 +45,8 @@ OpenAI-compatible Chat Completions 与 Embeddings 接口；Agent 编排、Prompt
 
 ### 研究写作
 
+研究写作由运营按需启动，不是每次受众预览的必经流程。
+
 ```text
 Research → 人工确认研究包 → Outline → 人工确认提纲
   → 分章节写作 → 组装 → Reviewer
@@ -60,12 +73,32 @@ Research → 人工确认研究包 → Outline → 人工确认提纲
   → Golden / Fresh bad case / High-risk 数据集
   → 当前与候选 Bundle 离线回放
   → 确定性 Evaluation Gate
-  → 人工 approve → 人工 activate / rollback
+  → 人工发布审批 → 既有 Workflow 按批准结果激活 / 显式回滚
 ```
 
 模型不能自行改变 Prompt、热度规则、模型版本或生产配置。
 
 ## 本地全链路启动
+
+完整本地模拟（查询和分析均使用本地测试 Port，BGE 使用真实快照）可直接启动：
+
+```bash
+python3 agent/tools/start_local_demo.py
+```
+
+它会部署前端、后端、所有 Worker 和基础依赖，无需企业模型密钥或单独运行 Vite。
+预检、恢复、停止与业务验证见 [完整本地模拟启动说明](agent/docs/local-bge-simulation.md)。
+
+需要沿用企业查询理解模型展示热点对话与 BGE 相关新闻时，使用以下部署入口：
+
+```bash
+python3 agent/tools/deploy_bge_demo.py --check
+python3 agent/tools/deploy_bge_demo.py
+```
+
+该入口部署前端、API、Worker 和基础依赖，沿用已有企业查询理解配置，聊天入口为
+`http://127.0.0.1:5178/chat`。准备环境、每个阶段的作用、更新、停止及排查步骤见
+[项目启动与部署教程](agent/docs/bge-demo-deployment.md)。以下是原生基础演示的手工入口。
 
 需要 Docker Desktop、Node.js 20.19+。
 

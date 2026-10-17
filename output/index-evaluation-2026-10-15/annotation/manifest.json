@@ -1,0 +1,69 @@
+{
+  "all_grades_are_null": true,
+  "all_reviewers_are_null": true,
+  "annotation_pairs": 576,
+  "annotation_pool_scope": "source_manifest_only",
+  "articles_manifest": "/Users/shi/Project/myProject/NewsAgent/news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json",
+  "articles_manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+  "as_of": "2026-10-14T23:59:59+08:00",
+  "draft_input": "/Users/shi/Project/myProject/NewsAgent/output/index-evaluation-2026-10-15/annotation/query_drafts.json",
+  "draft_input_sha256": "66a2df9f847930bec3efa9f22b7644fa1af9d5fe05d4c7f3bc4f2888cf0daef5",
+  "eligible_original_articles": 8000,
+  "full_article_evidence_count": 511,
+  "generated_at": "2026-10-15T06:43:26.640829+00:00",
+  "index_articles": 20187,
+  "index_assets_sha256": {
+    "data/experiments/offline_recall_fg/chunks.jsonl": "a0bf8d479604fb75dd5512825d645a309c87686f878ac44cfb4aa078b40829a5",
+    "data/experiments/offline_recall_fg/embeddings.npy": "a9f1e4e200c39d7ce94fd10a5b7eb02470929928b7702c28adbdf10af927b950"
+  },
+  "index_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "index_package": "/Users/shi/Project/myProject/NewsAgent/agent/data/news-bge-incremental-20261014-v2",
+  "index_rows": 50252,
+  "index_total": 20187,
+  "inherited_noneligible_duplicate_news_chunk_indices": 13554,
+  "limitations": [
+    "Draft questions are source-informed assistant drafts, not real user traffic or independent gold queries.",
+    "All grades, reviewers, expected_empty, event groups and splits remain unassigned; do not score these files.",
+    "A source seed and stored-source-vector similarity are candidate-generation provenance, never relevance truth.",
+    "Candidate pools are limited to the verified original-article manifest, a subset of the full index.",
+    "Inherited noneligible index rows may repeat export-local (news_id,chunk_index); row labels remain distinct and those articles are excluded from annotation pools.",
+    "Pools are incomplete; random/topic candidates are unjudged and are not certified negatives.",
+    "Related tasks exclude every chunk of the same news_id and exact source document hashes; near-duplicate source copies still need review.",
+    "No-answer candidates require human search and corpus coverage confirmation; none is declared unanswerable.",
+    "Two independent blinded judgments, adjudication, event grouping and temporal split freezing are still required.",
+    "Publication and contents reproduce public source records; annotation must check contradictions and eligibility at as_of."
+  ],
+  "output_sha256": {
+    "annotation_tasks.jsonl": "e31a52fdce3966ab02282bac9182e2d23ea8f359353b1b185ee15e0e306ec46f",
+    "candidate_provenance.jsonl": "ae86dea559cc7d1cc73a9533e96fc12aa3dd22f34cd8e03a665eb63734ef5f74",
+    "evidence.jsonl": "7a4cdabd7ba5d80f9574a9bf49d01fcb48642f6f227fe723381c03c95d0ecf72",
+    "queries.jsonl": "5554e304825654b33971ab51c708fa4e2a092bdc1abe58e50aa206cda62aca3f"
+  },
+  "pool_size_per_query": 16,
+  "query_count": 36,
+  "query_counts": {
+    "no_answer_candidate": 4,
+    "question_search": 16,
+    "related_news": 16
+  },
+  "query_dense_embeddings_computed": false,
+  "random_seed": 20261015,
+  "schema_version": "retrieval-annotation-draft-v1",
+  "semantic_quality_score_computed": false,
+  "snapshot_version": "news-bge-incremental-20261014-v2",
+  "source_counts_by_date": {
+    "2026-10-07": 2,
+    "2026-10-08": 2,
+    "2026-10-09": 2,
+    "2026-10-10": 2,
+    "2026-10-11": 2,
+    "2026-10-12": 2,
+    "2026-10-13": 2,
+    "2026-10-14": 2
+  },
+  "source_quota_per_day": 2,
+  "source_vector_candidate_proposals_enabled": true,
+  "source_verified_full_body": 8000,
+  "status": "pending_human_annotation",
+  "test_split_created": false
+}

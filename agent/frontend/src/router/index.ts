@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', redirect: '/jobs' },
+  { path: '/', redirect: '/chat' },
   {
     path: '/chat',
     name: 'chat',
@@ -25,7 +25,7 @@ const routes: RouteRecordRaw[] = [
     // Data Loop 有 17 个端点，平铺在一页会失控，按职责拆成六个子面板。
     path: '/data-loop',
     component: () => import('@/views/DataLoopView.vue'),
-    redirect: { name: 'data-loop-feedback' },
+    redirect: (to) => ({ name: to.query.workflow_id ? 'data-loop-runs' : to.query.candidate_id ? 'data-loop-candidates' : 'data-loop-feedback', query: to.query }),
     meta: { title: 'Data Loop 评审台' },
     children: [
       {

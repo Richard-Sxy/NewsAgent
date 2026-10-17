@@ -1,0 +1,23 @@
+✔ catalog keeps a coherent two-level hierarchy and rejects duplicate, orphan, and third-level topics (1.467083ms)
+✔ response binding accepts server-normalized set order but rejects wrong news, selection, counts or dispatch claims (5.219833ms)
+✔ API encodes route IDs and sends only the selection through the shared cookie client (7.3495ms)
+✔ panel loads only on demand, renders hierarchy, and sends exclusive include/exclude selection (30.334625ms)
+✔ new request clears old counts and selection changes cancel pending work, ignoring late responses (9.475666ms)
+✔ changing runId invalidates the directory and ignores a late estimate (8.378166ms)
+✔ changing newsId invalidates the directory and ignores a late estimate (12.8165ms)
+✔ directory refresh and unmount ignore late data rather than resurrecting prior state (5.980166ms)
+✔ backend permission and unavailable errors show safe business messages without upstream details (22.6585ms)
+✔ expired server snapshot is explicitly stale; no frontend sum or substitution of counts (4.947333ms)
+✔ a valid estimate expires in place when its server deadline passes (6.243375ms)
+✔ late prior estimates cannot clear a newer request or replace its result (4.108542ms)
+✔ selected topics are bounded by the same ten-item limit as the backend (4.05625ms)
+✔ rendered initial panel is an opt-in preview with no send control or automatic request (36.503958ms)
+✔ rendered estimate shows parent and subtopic choices, source labels, server counts and review boundaries (20.781ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 442.923291

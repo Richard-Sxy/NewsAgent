@@ -1,0 +1,62 @@
+NewsAgent 热点分析判断依据与提示词交付说明
+核对日期：2026-10-16；时区：Asia/Shanghai。
+
+一、交付用途
+hot-news-analysis.system-prompt.txt 是可复制的候选系统提示词，兼容当前单篇 HotNewsAnalysisInput/HotNewsAnalysisReport 字段；没有注册或激活到运行配置、PromptRegistry、Production Bundle。
+current-repository-prompts.json 逐项摘录仓库本地配置、兼容配置、企业示例和本地代码中热点场景的原文与版本；摘录不证明某版本在企业生产环境生效。
+example-input.json 使用真实缓存新闻正文片段与冻结 v8 模拟指标。新闻并非合成，行为指标不代表实际流量。该示例只用于演示输入和渲染，不表示 v8 已经接入热点 Workflow。
+schema-valid-example-report.json 是手写的 Schema/Validator 样例，不是模型生成报告。
+rendered-messages.json 是调用当前 StructuredInferenceService.render_input 得到的完整 system/user 消息，不会调用模型。
+
+二、判断依据的现状
+单篇报告模型明确收到：news_id、标题/摘要/正文片段、内容类型、窗口、当前六项指标、总热度和四分量、最多5条关联证据、策略版本、可选记忆。
+原始历史均值、真实历史样本数、短期环比和历史峰值没有进入单篇模型输入。基线影响已被压缩到增长分量，不能还原成原始增幅，growth=0也不能区分缺失与下降。
+会话 analyze_hot_news_data 工具已支持 baseline（已保存参考字段对照）和 trend（两个已完成运行的共同新闻比较）。trend要求身份、版本和选择规则可比、窗口等长且不重叠，但不保证是相邻小时，也不代表全站趋势。工具结果目前不自动注入单篇 HotNewsAnalysisInput。
+历史高点仍需明确回看范围与指标口径后单独实现。前三天同小时是独立 v8 的基线选样规则，不应强行假设为所有已保存运行的真实来源。
+
+三、当前运行调用链
+会话 query_hot_news / 调度入口
+→ 受限取数与身份、窗口校验
+→ NewsMetricSnapshot + baseline_provider
+→ HotNewsRanker.rank / HotScoreCalculator.calculate
+→ news_id正文查询、关联检索与重排
+→ HotNewsAnalysisInputBuilder.build
+→ NativeHotNewsAnalysisRunner.run
+→ PromptRegistry.resolve(scene="hot_news_analysis", version=所选版本)
+→ StructuredInferenceService.render_input
+→ system=提示词+输出JSON Schema，user=输入JSON
+→ InferencePort / OpenAI-compatible模型HTTP接口或隔离本地替身
+→ JSON解析、Pydantic HotNewsAnalysisReport
+→ HotNewsAnalysisValidator
+→ 同一运行报告保存、API/会话/页面展示。
+
+会话分析支线：同会话已完成运行 → analyze_hot_news_data(operation=baseline|trend) → Python确定性分析 → 会话解释与权威快照。它与单篇报告的模型输入是不同链路。
+
+四、配置与外部依赖
+实际配置入口是 MODEL_RUNTIME_CONFIG_PATH；选定 Prompt 还受 scene、analysis_prompt_version、model_route、Production Bundle 与注册表约束。文件存在不等于已被进程选用。本次不读取 .env，不访问企业模型、Embedding或企业原始用户数据。
+默认热度权重是点击0.30、有效消费0.35、互动0.20、增长0.15；候选提示词只解释已提供结果，不承担指标或评分计算。
+模型消息由当前 Python 代码拼装。HTTP层可按配置采用 none/json_object/json_schema；json_schema模式会传 strict=true，但可用性仍取决于实际模型接口。Pydantic和业务校验不能由提示词替代。
+制图依赖 ReportLab；PDF页数/文本检查用pypdf，渲染与排版检查用Poppler。图为一页A3横版中文PDF。
+
+五、校验范围
+本交付进行离线输入/输出Schema校验、system/user分离校验，以及身份不符、越界证据、无证据却无limitations、越界memory_id等拒绝检查。具体结果见verification.json。
+这些检查验证消息接线和确定性规则，不验证企业模型是否服从新提示词。未把本地确定性替身结果描述为模型质量验收。
+现有代码的业务校验可检查新闻身份、证据ID、记忆ID、部分指标键和缺证据限制；并不能保证自由文本中的每个数字、每条因果判断、趋势判断和所有建议语义都真实。
+
+六、后续TODO
+1. 对候选提示词做真实模型离线评测，覆盖growth=0多义、短期/峰值缺失、小样本、无证据、正文指令注入与模拟来源标注。
+2. 为原始基线、样本数、短期比较、历史高点设计版本化输入字段、计算口径与证据键；先由SQL/Python计算，再供报告模型引用。
+3. 若将会话baseline/trend结果转交单篇报告，校验同租户、同运行来源、相同口径、窗口与覆盖范围；保持缺失为未知。
+4. 需要使用候选版本时，按项目现有版本化和评测发布流程注册，不覆盖现有Prompt/Bundle。
+
+七、公开方法参考
+OpenAI Docs：指令、上下文分隔、输出格式和例子。
+https://developers.openai.com/api/docs/guides/prompt-engineering
+OpenAI Docs：结构化输出仍可能包含内容错误，需要独立校验与评测。
+https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses
+
+测试入口与产物
+离线交付校验结果：verification.json；输入/输出Schema：input.schema.json、output.schema.json。
+PDF复现入口：在包含ReportLab与pypdf的Python环境运行 output/hot-news-analysis-guide-20261016/render_pdf.py；随后用pdftoppm渲染检查。
+现有项目回归入口：PYTHONPATH=agent python3.11 -m pytest agent/tests/test_native_hot_news_runtime.py agent/tests/test_hot_news_analysis_attempt.py -q
+源文件与SHA摘要、候选Prompt摘要和交付文件清单：manifest.json。

@@ -1,0 +1,271 @@
+{
+  "$defs": {
+    "AnalysisReason": {
+      "additionalProperties": false,
+      "description": "一条可追溯的热点关注原因。",
+      "properties": {
+        "reason_type": {
+          "enum": [
+            "metric",
+            "evidence",
+            "hypothesis"
+          ],
+          "title": "Reason Type",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "metric_keys": {
+          "items": {
+            "enum": [
+              "impressions",
+              "clicks",
+              "ctr",
+              "unique_users",
+              "effective_consumptions",
+              "interactions",
+              "hot_score",
+              "click_component",
+              "consumption_component",
+              "interaction_component",
+              "growth_component"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Metric Keys",
+          "type": "array"
+        },
+        "evidence_news_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Evidence News Ids",
+          "type": "array"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "certainty": {
+          "enum": [
+            "observed",
+            "inferred"
+          ],
+          "title": "Certainty",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason_type",
+        "statement",
+        "confidence",
+        "certainty"
+      ],
+      "title": "AnalysisReason",
+      "type": "object"
+    },
+    "OperationSuggestion": {
+      "additionalProperties": false,
+      "description": "供运营人员审核的建议，不代表自动执行。",
+      "properties": {
+        "action": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Action",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "metric_keys": {
+          "items": {
+            "enum": [
+              "impressions",
+              "clicks",
+              "ctr",
+              "unique_users",
+              "effective_consumptions",
+              "interactions",
+              "hot_score",
+              "click_component",
+              "consumption_component",
+              "interaction_component",
+              "growth_component"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Metric Keys",
+          "type": "array"
+        },
+        "evidence_news_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Evidence News Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "action",
+        "rationale",
+        "priority"
+      ],
+      "title": "OperationSuggestion",
+      "type": "object"
+    },
+    "RelatedNewsContext": {
+      "additionalProperties": false,
+      "description": "由输入证据支持的事件背景，不允许自由生成来源。",
+      "properties": {
+        "statement": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        },
+        "evidence_news_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Evidence News Ids",
+          "type": "array"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "statement",
+        "evidence_news_ids",
+        "confidence"
+      ],
+      "title": "RelatedNewsContext",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "热点分析的结构化结果；成功结果不得退化为自由文本。",
+  "properties": {
+    "news_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "News Id",
+      "type": "string"
+    },
+    "trend_assessment": {
+      "maxLength": 1500,
+      "minLength": 1,
+      "title": "Trend Assessment",
+      "type": "string"
+    },
+    "dominant_driver": {
+      "enum": [
+        "click",
+        "consumption",
+        "interaction",
+        "growth",
+        "insufficient_data"
+      ],
+      "title": "Dominant Driver",
+      "type": "string"
+    },
+    "attention_reasons": {
+      "items": {
+        "$ref": "#/$defs/AnalysisReason"
+      },
+      "maxItems": 10,
+      "title": "Attention Reasons",
+      "type": "array"
+    },
+    "related_contexts": {
+      "items": {
+        "$ref": "#/$defs/RelatedNewsContext"
+      },
+      "maxItems": 10,
+      "title": "Related Contexts",
+      "type": "array"
+    },
+    "operation_suggestions": {
+      "items": {
+        "$ref": "#/$defs/OperationSuggestion"
+      },
+      "maxItems": 10,
+      "title": "Operation Suggestions",
+      "type": "array"
+    },
+    "evidence_news_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Evidence News Ids",
+      "type": "array"
+    },
+    "applied_memory_ids": {
+      "description": "本次报告实际使用的 memory_context.items[].memory_id；未使用记忆时必须为空",
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 20,
+      "title": "Applied Memory Ids",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "overall_confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Overall Confidence",
+      "type": "number"
+    },
+    "output_schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Output Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "news_id",
+    "trend_assessment",
+    "dominant_driver",
+    "applied_memory_ids",
+    "overall_confidence"
+  ],
+  "title": "HotNewsAnalysisReport",
+  "type": "object"
+}

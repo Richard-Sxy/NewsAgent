@@ -11,7 +11,10 @@ from pydantic import (
     Field,
     HttpUrl,
     JsonValue,
+    model_validator,
 )
+
+from app.reader_profiles.contracts import ReaderProfileSummary
 
 from app.schemas.user_memory import (
     MemoryKind,
@@ -125,6 +128,17 @@ class HotNewsAnalysisInput(BaseModel):
     related_news: list[RelatedNewsEvidence] = Field(default_factory=list, max_length=5)
     analysis_policy_version: str = Field(min_length=1, max_length=64)
     memory_context: PromptMemoryContext | None = None
+    reader_profile_summary: ReaderProfileSummary | None = None
+
+    @model_validator(mode="after")
+    def validate_reader_scope(self) -> "HotNewsAnalysisInput":
+        summary = self.reader_profile_summary
+        if summary is not None and (
+            summary.news_id != self.news_id or not summary.trigger_article_excluded
+            or summary.profile_cutoff > self.window_start
+        ):
+            raise ValueError("reader profile summary differs from the analysis news/window")
+        return self
 
 
 class AnalysisReason(BaseModel):

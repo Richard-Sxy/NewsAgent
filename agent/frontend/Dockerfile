@@ -14,6 +14,8 @@ COPY package.json package-lock.json* ./
 RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
 COPY tsconfig.json vite.config.ts index.html ./
+# Vite 静态导入配置解析器；只复制解析器，不把本地身份 local.yml 打进镜像。
+COPY dev-server/local-config.mjs dev-server/local-config.d.mts ./dev-server/
 COPY public ./public
 COPY src ./src
 COPY nginx ./nginx

@@ -12,6 +12,7 @@ from decimal import Decimal
 from hashlib import sha256
 from typing import Any, Literal, Mapping
 
+from app.observability.decorators import traced
 from app.analytics.entities import ContentType
 from app.analytics.metrics import (
     BASE_METRIC_KEYS,
@@ -185,6 +186,7 @@ class Text2SqlNewsMetricSource:
         batch = await self.fetch_batch(query)
         return list(batch.snapshots)
 
+    @traced("sql.metric_source")
     async def fetch_batch(
         self,
         query: HotNewsMetricQuery,

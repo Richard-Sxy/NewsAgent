@@ -1,0 +1,43 @@
+
+> newsagent-frontend@0.1.0 build
+> npm run typecheck && vite build
+
+
+> newsagent-frontend@0.1.0 typecheck
+> vue-tsc --noEmit -p tsconfig.json
+
+vite v5.4.21 building for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                            0.59 kB │ gzip:  0.36 kB
+dist/assets/HotNewsView-C2ZPZSmp.css                                       2.14 kB │ gzip:  0.63 kB
+dist/assets/index-DKcR1JmK.css                                             9.49 kB │ gzip:  2.41 kB
+dist/assets/ChatView-BeuJB-0v.css                                         12.77 kB │ gzip:  2.58 kB
+dist/assets/NotFoundView-CwRg3shB.js                                       0.48 kB │ gzip:  0.44 kB │ map:   0.85 kB
+dist/assets/download-BBhLKoiX.js                                           0.52 kB │ gzip:  0.36 kB │ map:   1.84 kB
+dist/assets/_plugin-vue_export-helper-3bmJqFfs.js                          0.58 kB │ gzip:  0.37 kB │ map:   2.09 kB
+dist/assets/NaStateBlock.vue_vue_type_script_setup_true_lang-CsayJXL5.js   0.65 kB │ gzip:  0.43 kB │ map:   1.28 kB
+dist/assets/operationsFeedback-Lln-rbyO.js                                 0.67 kB │ gzip:  0.40 kB │ map:   2.70 kB
+dist/assets/DataLoopView-BrO7b9eJ.js                                       0.83 kB │ gzip:  0.57 kB │ map:   1.65 kB
+dist/assets/useAsyncTask-3kqvuqye.js                                       1.31 kB │ gzip:  0.87 kB │ map:   4.29 kB
+dist/assets/validate-DFWyWuCV.js                                           1.47 kB │ gzip:  0.86 kB │ map:   5.70 kB
+dist/assets/dataLoop-DFdsCacS.js                                           1.68 kB │ gzip:  0.56 kB │ map:   6.90 kB
+dist/assets/format-DeqeeKef.js                                             2.26 kB │ gzip:  1.17 kB │ map:   7.64 kB
+dist/assets/errors-CjpthJXf.js                                             2.72 kB │ gzip:  1.67 kB │ map:   9.79 kB
+dist/assets/labels-CcjD8See.js                                             2.97 kB │ gzip:  1.86 kB │ map:   9.08 kB
+dist/assets/BundlesPanel-ChVBb0MX.js                                       4.17 kB │ gzip:  2.00 kB │ map:  10.61 kB
+dist/assets/DatasetsPanel-BUmxzjaU.js                                      5.15 kB │ gzip:  2.44 kB │ map:  13.15 kB
+dist/assets/CandidatesPanel-CBedZGCM.js                                    6.35 kB │ gzip:  3.19 kB │ map:  16.05 kB
+dist/assets/SecurityTestsView-C0WuVjZh.js                                  6.44 kB │ gzip:  3.30 kB │ map:  14.57 kB
+dist/assets/DecisionsPanel-BWQ7d20l.js                                     7.52 kB │ gzip:  3.52 kB │ map:  19.18 kB
+dist/assets/capabilityReceipts-BV4JWBSn.js                                 7.63 kB │ gzip:  2.71 kB │ map:  24.58 kB
+dist/assets/index-Bgs8n-K-.js                                             10.22 kB │ gzip:  4.60 kB │ map:  22.15 kB
+dist/assets/FeedbackCasesPanel-CVGP6gj8.js                                11.23 kB │ gzip:  4.76 kB │ map:  32.91 kB
+dist/assets/RunsPanel-BnQ_tfnV.js                                         11.44 kB │ gzip:  4.74 kB │ map:  28.19 kB
+dist/assets/HotNewsView-BDrQKQ8Y.js                                       27.43 kB │ gzip: 10.72 kB │ map:  70.45 kB
+dist/assets/JobsView-DBRgUTWc.js                                          28.88 kB │ gzip: 10.61 kB │ map:  86.40 kB
+dist/assets/ChatView-BOgvkxCl.js                                          88.69 kB │ gzip: 31.77 kB │ map: 275.16 kB
+dist/assets/vendor-vue-DWbA3LMX.js                                        98.93 kB │ gzip: 38.55 kB │ map: 825.31 kB
+✓ built in 1.15s

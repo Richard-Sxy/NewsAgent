@@ -1,0 +1,12 @@
+# Add last to real-news-demo; replaces recall only after the v2 package is built.
+services:
+  api:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.incremental-20261014-v2.yml
+    volumes:
+      - ./knowledge-search.incremental-20261014-v2.yml:/app/deploy/knowledge-search.incremental-20261014-v2.yml:ro
+  hot-news-worker:
+    environment:
+      KNOWLEDGE_SEARCH_CONFIG_PATH: /app/deploy/knowledge-search.incremental-20261014-v2.yml
+    volumes:
+      - ./knowledge-search.incremental-20261014-v2.yml:/app/deploy/knowledge-search.incremental-20261014-v2.yml:ro

@@ -5,10 +5,12 @@ import { hotNewsApi } from '@/api/hotNews'
 import type { SqlAssistantConfig, SqlAssistantPreviewRequest } from '@/api/sqlAssistant'
 import { useAsyncTask } from '@/composables/useAsyncTask'
 import { downloadBlob } from '@/utils/download'
+import { enterpriseDemoCatalog } from '@/utils/analysisDemo'
 
 const props = defineProps<{ running: boolean }>()
 const emit = defineEmits<{ run: [request: SqlAssistantPreviewRequest] }>()
 const configuration = ref<SqlAssistantConfig | null>(null)
+const corpusContent = computed(() => configuration.value?.dataset.dataset_profile === 'corpus-v6')
 const question = ref('')
 const scenarioId = ref('')
 const windowStart = ref('')
@@ -50,7 +52,12 @@ function localDateInput(value: string): string {
 
 async function loadConfiguration(): Promise<void> {
   if (disabled.value) return
-  const value = await run(() => hotNewsApi.localSqlConfig(), {
+  const value = await run(async () => {
+    const config = await hotNewsApi.localSqlConfig()
+    // Reject unknown profiles and verify the frozen corpus before describing it as real.
+    enterpriseDemoCatalog(config)
+    return config
+  }, {
     failure: '热点 SQL 工具配置读取失败',
   })
   if (!value) return
@@ -136,6 +143,11 @@ onMounted(loadConfiguration)
     <p v-if="configuration?.dataset.dataset_profile === 'public-headlines-v3'" class="na-notice">
       新闻标题来自公开报道（{{ configuration.dataset.headline_date_start }} 至 {{ configuration.dataset.headline_date_end }}）。
       行为指标与基线使用10月3日的模拟窗口，与标题发布日期相互独立，不能解释为这些报道的真实用户行为。
+    </p>
+    <p v-if="corpusContent" class="na-notice">
+      真实新闻内容 · 模拟运营指标。标题、正文、来源链接与发布时间来自腾讯新闻历史缓存，并与离线知识库对应。
+      新闻发布日期与下方模拟指标窗口相互独立，不能解释为这些报道的真实用户行为或今日热点。
+      栏目是版本化演示分类，本目录全部为图文；视频查询可能没有候选。本地推理仅用于测试。
     </p>
     <div v-if="!configuration">
       <p class="na-muted">

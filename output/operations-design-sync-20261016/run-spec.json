@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "status": "frozen_for_offline_checks",
+  "frozen_at": "2026-10-16T10:15:03.110079+00:00",
+  "question": "新版主题受众业务定位与现有离线资产、组件契约是否一致",
+  "targets": [
+    "deterministic_regression",
+    "artifact_integrity",
+    "frontend_component_contract"
+  ],
+  "scope": {
+    "entry": "existing read-only dataset CLIs, unittest and node:test",
+    "exit": "native test summaries and artifact-hash reports",
+    "exclude": [
+      "enterprise HTTP",
+      "live database",
+      "Temporal execution",
+      "LLM",
+      "deployment",
+      "approval",
+      "dispatch"
+    ],
+    "allowed_claims": [
+      "only the executed offline assertions and package integrity"
+    ]
+  },
+  "authorization": {
+    "basis": "用户要求同步最新运营建议相关内容；离线可逆核对",
+    "production_mutation": false,
+    "allowed_side_effects": [
+      "new audit files in this directory"
+    ]
+  },
+  "code": {
+    "git_head": "5f4ed32cde3f4fe7f9b324b24b5efa221b598ce4",
+    "relevant_tracked_diff_sha256": "b34837acb1f89ad35277419eb581f39d3d6e94b64c42e7574a84dd231a3a3071",
+    "files_byte_sha256": {
+      "agent/app/api/audience.py": "9d9308abe5f1d3d3d4effe74a0e9eb24cb301711578474794caf6bce336386d9",
+      "agent/app/audience/__init__.py": "4e017fb52d1fedfad7870550d9a25d442206f6e337f6617b0f66b98fd1b036ab",
+      "agent/app/audience/client.py": "b04c196fb625eb1805d9c4f062d32aec37a3892cc05824b349d9d818d15f7f32",
+      "agent/app/audience/contracts.py": "37fc4812413163b96a98dfea4deec8234304f60626d34d1c6903fb90beb39da7",
+      "agent/app/audience/factory.py": "ee2151ee843c2b063130e08e4b88bc1976550f237f98fdcfae3354318213885f",
+      "agent/app/audience/local.py": "5a122716cfc4bab33a8522de3876b9bcf5d9e2d602127089b40d795ff94d6068",
+      "agent/app/audience/service.py": "143dd2990d1bb3ca5d056780fe54b320a0ab19be158ed5e91304da5fbd9f01cf",
+      "agent/app/audience/taxonomy.py": "f8f237702f1524135ff4f99e15305ca3e95fdab88f551cec18a571825ad585ea",
+      "agent/app/config.py": "b2cc085f8bdd38f13f46a127be3f3eb0caef0fc470b20024e1dedc19d7c9c80d",
+      "agent/app/main.py": "e65b6c7df29b21027c29eb07ae8d4cf7ccba4d21b6b47355ed4c32224b021a69",
+      "agent/app/observability/telemetry.py": "69971530ecc66aece4077912b904b4c72b380421ef6dd38c89b4cccbc2ed5d99",
+      "agent/app/schemas/hot_news.py": "13bc91b365bb063de7d1583f579eaa47421ddae01c6c0fdb390dd7f0930d5de5",
+      "agent/deploy/audience-topics.local.yml": "b8c20a55c36d79c4343c0878444fca39268847a2360d6327c4320d83ee8025cf",
+      "agent/evaluation/__init__.py": "518037f00a758bc836feb2e106fba660c94d6781f084182134b0fc06fe1b6f1f",
+      "agent/evaluation/data_writing_dataset.py": "89ad028f3fd4ce4d635325f4147106e78929b820ecd0c7da251ba59f03e533bb",
+      "agent/evaluation/datasets/data_writing_august_2026_v1/inputs.jsonl": "ac54a4e4babbe0c54d2fcf70868f93f38cfbd7aad6b126ceaa187e4b1eca9d41",
+      "agent/evaluation/datasets/data_writing_august_2026_v1/labels.jsonl": "e9c2105dc5e9e96f6ad124e0de9bf36aee0c444e1b80861c3fd458eeb74ffc2b",
+      "agent/evaluation/datasets/data_writing_august_2026_v1/manifest.json": "50dec43755fa4087a14a8a940dc62a68cd5d5328912f56dc77aefb971518f2c0",
+      "agent/evaluation/datasets/data_writing_august_2026_v1/seed.json": "8238b4672d7ab9ca4353c19f62a71a269a86e9b9ebd3b53c8ae2d116464b8611",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_all.json": "45b17c3756e0bab6f74bcd077ae531a0b619c9c6435447dc3ff9375552b14f72",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_development.json": "6b453e3fc637296368e08b9fffed5c58cc2e8885f9e5726e070d1975f781a2ae",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_development_fresh_bad_case.json": "ff93cb44c3bfd4cc3ac18de603744e45a3e9751e50a0e48af732c8ba14b657d1",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_development_golden.json": "38f9abc9ae7f0b7fb3fc114b887aaa21f84c19bfd7ad4f28f129778e0b477575",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_development_high_risk.json": "7bf88bb866f74ab4661f442d6d5cad0f026df5ae3e57d8492f6095fc39b6ae24",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_fresh_bad_case.json": "c6e817f727e055cb3ef13ffcf10dfceb223595767bf3f81adc5372ae105b5332",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_golden.json": "21abbe45848448bd20e15271683ce5c313293a4e92e9ff64251f6224fffa655d",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_high_risk.json": "1e21b651bb25e2cb761d341ee5adb14dbc16df41b5501896b12bb10c2c649562",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_test.json": "60a3b9a278bfda37b778b93b66975d64f2186670d0ce89e6a8c53dd84b8627f7",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_test_fresh_bad_case.json": "8180e651f0346ad33cd97d4c546ec8a94808142835b176104f786ff5571e6549",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_test_golden.json": "97768c60f8fedb21deba802cb77157f2fc53263478bdd7fd264fd85dd9e3c29b",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_test_high_risk.json": "04b623cff02f4f45f1217cb7f6d90b5168bdd7a99b31a1ba31cace1442557211",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_validation.json": "0aae63c1145e4b379b8ef370f9fcc09158f522537e09f68c692fa078fd0d93f1",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_validation_fresh_bad_case.json": "4f4d7618bee29dede2c757aa8cca8a68855b5c122debadacf01d9cca136e1abe",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_validation_golden.json": "b7ac90c692a07de0aca571ffcc6f5d1d6bebc4710f7235688e78d1ff34cdd3e9",
+      "agent/evaluation/datasets/operations_evolution_v2/hot_news_analysis_validation_high_risk.json": "67e80f96ce7523db74cf18af6a63e292fa8ed0674dc721fea57a42490b1727db",
+      "agent/evaluation/datasets/operations_evolution_v2/manifest.json": "43327231025ed903b0a97da1d004ab126eb110bce4c5635311000a332dec5a93",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_cases.json": "c207fd2d45ba71bda850ae60c196ba4fe5ce48201e1639dbfeba7383ba83008f",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs.json": "93c943e1a571efe8d9ed6cc177ac6604a486bf197ad102a148f05dfb0c262105",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_culture.json": "c8bf513b5fb73304529b61109c20eb967b49e3cc74e85f4b73a621139acb67d6",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_domestic.json": "12e2be105bc5b88541b789914460cd3d102551903e0bd8159f7d059746ef6ef3",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_education.json": "40c495fe0424ebb4c9abc5b51d0114d44dae191996dd871faa812d62d3e39d21",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_entertainment.json": "6af6ff7989f3bc610f0619bad14f4d2225f58120feec9beb092b26132269ff1d",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_finance.json": "e6202b1dbb42eec9ced5543000ead9674948ee51dcad5e0619ff404b87f89662",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_health.json": "584feed6e6546edf2bdff78e246782e95229aaddfadd5ba25c807ff553a6d6b4",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_international.json": "8cd29a895bb4801bac892e234be04d8e4d0a64ffeaaf4fca33e0c95ccd651fea",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_local.json": "76aff08eeb3d856eeb1c139174c4c20cd81e06a942720ffe5f6e35abac028a1f",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_society.json": "9fad58dc6766ca30f2e9d8bfb534e64726256045b0effb8e0ca7e2248003534e",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_sports.json": "13431cb3346509e228f8feefe91cb814c9788736ef9933da0233c4382f92f5b6",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_technology.json": "edaa0e1498113bf627f2dcf7ef40220f0656f8df0fe1c5c25d29bd7fe59bd9ec",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_board_weather.json": "8f2f70d5f470b2aa855d9663b01a9910002bfe3098798b1d9e4275134b0d25d1",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_development.json": "be03e086c7d57dc7aa02e43f57336c2b0cf4ce18254acc2a3ffd2ccbd6b4b2ac",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_test.json": "80c74a62b5043e9dcd5f2f49cb52b3257f3b293376f8bf7bcfa99d5cba65ad35",
+      "agent/evaluation/datasets/operations_evolution_v2/operations_inputs_validation.json": "b825f2967ac5044687b8d06b10f5297e9893d6296fb531af4a91da28dca49357",
+      "agent/evaluation/datasets/operations_evolution_v2/summary.json": "6531fc68de7bde4d746b391cb5d28b0f19c89a0c2ccfd8f73d84241fee419353",
+      "agent/evaluation/operations_evolution.py": "13c35c34e0d8875ea2b72d54bb30485e9a524de3dad14ea7301c31d967b6638a",
+      "agent/evaluation/operations_evolution_eval.py": "e261a160de236a65048564518816fea2ab5078f1f105ffc5e2a8865f6138be89",
+      "agent/evaluation/operations_evolution_seed.py": "68994f50c2a71899425d83e5ee19ffcd1050adf0c128164df145dbcc625cf429",
+      "agent/evaluation/operations_research.py": "444d16e54b4bcac870017964a99bcd3f491631dbabf365d66383d6fd635164db",
+      "agent/evaluation/operations_research_seed.py": "acc0701b2b1457dd8a21a429dbd355b062b4236d94fd846e0e02d96943517517",
+      "agent/evaluation/operations_synthetic.py": "079c1b060075dc4bf0d082ffd90757f4044d6621d8da40530537621674163ac7",
+      "agent/evaluation/render_concurrency_pdf.py": "0f092e830684d0bbb9d100540cb581d1b99194657ab955f5108680a0728a3eb7",
+      "agent/evaluation/render_data_writing_preview.py": "9ef7b3f1ecc54b393476b6fe7e301b40f5d0daf1da61057194c0ae2900d6aab7",
+      "agent/evaluation/render_feed_hot_board_pdf.py": "468eb7475dbc6fed26ba8184fa1324ab40937ed2945b3aac3d3baf4d9f41f454",
+      "agent/evaluation/render_hot_news_query_pdf.py": "9e63aceff7eb8bc2e0a93959df8d030e50d9fd2d84a5def4a4b9892785da730d",
+      "agent/evaluation/render_hot_news_sql_chain_pdf.py": "2e4b219f91f3be71cbbe1caf1d8558cda4829dfaace1f0e522463c8fd177acc2",
+      "agent/evaluation/render_index_evaluation_pdf.py": "1536e4b4a9e1e47462203d18be24a2c3997ae9d2aeae6e5f1f97c88a239f9275",
+      "agent/evaluation/render_news_bulk_import_pdf.py": "c7363e481e40581ee350c039524d3eefe21db1b073efea1997b2634f1388a27a",
+      "agent/evaluation/render_news_statistics_foundation_pdf.py": "68799de891ee82080e961ef6616f054c27d66d184ea7414082167fac56106ec2",
+      "agent/evaluation/render_observability_pdf.py": "ed3ab3d98952fc119426f35f76e9757d28341fd6f669485f2d923841afa80e8d",
+      "agent/evaluation/render_operations_pdf.py": "3db275da383d3a65781070884354c28d6b07031e788fe5ea7d57db71383e9811",
+      "agent/evaluation/render_real_news_warehouse_pdf.py": "e63a5e4e98e869de3a5295b626861a9df18eab3ba3707fa08e5859a4e8f0dfbb",
+      "agent/evaluation/render_tencent_warehouse_architecture_pdf.py": "da587888e348b392c98d16c3104fe4e799ffc4e5a2d63bbfb2656cd4d430fed5",
+      "agent/evaluation/render_tencent_warehouse_poster.py": "57d9892f3a0d505420c8242a560d066377625266a10ae9852e7cc4b0012658b2",
+      "agent/evaluation/render_training_data_guide_pdf.py": "539c20c45f6a1e00bc6038b573ca06df5e62ed214a8d8c08fdd4ebeaf13f22fa",
+      "agent/evaluation/render_warehouse_uv_principles_pdf.py": "0e9fadecacfcc0076c74a1a433b87bdf864a1e656bd250fe449f10ac29953c4d",
+      "agent/evaluation/run_fault_drills.py": "4bf690fc39cb98babe52c719b1ef15ce212af20860983d85d8e9863ad1da7c3e",
+      "agent/evaluation/run_hot_news_dialogue.py": "9cb4f1e1cc8ee1f07b3c21aa13472cc9911b1c5aa60d1a61dda52671d9388bb3",
+      "agent/evaluation/run_hot_news_eval.py": "1534439c9931bda4d0775a6db37eab8718ab03b9ca9a01bdb3885e55ac0a9a28",
+      "agent/evaluation/run_operations_evolution.py": "dc2073a24e8d9b99137a1b2fab994f94a6bdaccd45d7b8ec81e31e124b5604e9",
+      "agent/evaluation/run_operations_research.py": "34764e57dc770f84bc4ba70ea920c6b4f82910606b2695aeb64e4cc0bf314212",
+      "agent/evaluation/run_operations_synthetic.py": "ea34c25c801ca5073bedb791eacc471a48b75942bbb9dae7959ed3cb1e4486a5",
+      "agent/frontend/package-lock.json": "c4b7842014b3a99ac1ec2d005bda794336ff97f9997266aaf9d99638f683b556",
+      "agent/frontend/src/api/audience.ts": "39448077cebb3adfc817fe533ccbd17a2d4352adb1924ea3bddc5bb46cea2e3c",
+      "agent/frontend/src/components/hotnews/AudiencePreviewPanel.vue": "dfb8e525056f6bb156b079beec7e2df6981236070cb9bde990780081de1921f8",
+      "agent/frontend/tests/audience-preview.test.mjs": "442646c976c2f864de3c5ae8b4b859b3c869d3b87d4b71dd44e343bdbc83baf4",
+      "agent/tests/test_audience_client.py": "7b6f4af540b978f2e55941d37fb133fd3fd3589d62fca001336f39e9faee1368",
+      "agent/tests/test_audience_preview.py": "b1a5c4579f6b09cb450c6f77a4ce14ba4ecd4bac7da1ccd622caea52f54ec108",
+      "agent/tests/test_audience_runtime.py": "3da69831acf51f72485967638d500c5c9da7ce677a79b04fa8fda0b30257584a",
+      "agent/tests/test_audience_taxonomy.py": "348fdf125f31c7be8752bea691a3580f4d0d0860b4ad066813021155ff949eea",
+      "agent/tests/test_data_writing_august_sample.py": "dbb483b5b29cf4fbd716eb1213785b5b8bc69c1ce3b21e42990a3c62114040b3",
+      "agent/tests/test_data_writing_dataset.py": "8a4750cccc34ea7d442969bcd7aa44b630ed875d29d577390b15d39dcce37f08"
+    },
+    "dependency_versions": {
+      "pydantic": "2.13.5",
+      "PyYAML": null,
+      "pytest": null,
+      "httpx": null,
+      "fastapi": null,
+      "reportlab": "4.4.9"
+    },
+    "python": "/Users/shi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "python_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "fingerprint_scope": "selected directly relevant source/data files; not a production image identity"
+  },
+  "data": {
+    "writing_cases": 27,
+    "writing_event_groups": 9,
+    "evolution_judgments": 432,
+    "review_status": "draft/human labels pending; no model scoring",
+    "as_of": "each original case timestamp retained; not replaced by execution date",
+    "timezone": "Asia/Shanghai"
+  },
+  "runtime": {
+    "inference": "not_used",
+    "embedding": "not_used",
+    "warehouse": "not_used",
+    "workflow": "not_used",
+    "audience": "front-end fixture only; no enterprise service",
+    "dotenv": "not loaded",
+    "credential_values_included": false
+  },
+  "scoring": {
+    "oracle": "existing unittest/node assertions and byte-for-byte artifact checks",
+    "acceptance": "all selected checks exit 0 and no frozen-file drift",
+    "quality_thresholds": "not applicable; no model or business quality score",
+    "repetitions": 1,
+    "failure_denominator_rule": "all planned checks retained; missing dependency is blocked"
+  },
+  "budget": {
+    "max_model_calls": 0,
+    "max_seconds_per_command": 120,
+    "max_concurrency": 1,
+    "stop_conditions": [
+      "source/data drift blocks overall acceptance",
+      "timeout retained as execution failure"
+    ]
+  },
+  "execution": {
+    "commands": [
+      {
+        "name": "writing_unit",
+        "argv": [
+          "/Users/shi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_data_writing*.py"
+        ],
+        "cwd": "/Users/shi/Project/myProject/NewsAgent/agent"
+      },
+      {
+        "name": "writing_artifacts",
+        "argv": [
+          "/Users/shi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "-m",
+          "evaluation.data_writing_dataset",
+          "--seed",
+          "evaluation/datasets/data_writing_august_2026_v1/seed.json",
+          "--output-dir",
+          "evaluation/datasets/data_writing_august_2026_v1",
+          "--check"
+        ],
+        "cwd": "/Users/shi/Project/myProject/NewsAgent/agent"
+      },
+      {
+        "name": "evolution_artifacts",
+        "argv": [
+          "/Users/shi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "-m",
+          "evaluation.run_operations_evolution",
+          "validate",
+          "--verify-artifacts"
+        ],
+        "cwd": "/Users/shi/Project/myProject/NewsAgent/agent"
+      },
+      {
+        "name": "audience_frontend",
+        "argv": [
+          "/Users/shi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "tests/audience-preview.test.mjs"
+        ],
+        "cwd": "/Users/shi/Project/myProject/NewsAgent/agent/frontend"
+      }
+    ]
+  },
+  "not_run": {
+    "audience_backend_contract": "current selected interpreters lack pytest/httpx/fastapi; no dependency installation",
+    "model_quality": "no approved labels/model run selected",
+    "enterprise_contract": "no real endpoint selected",
+    "business_effect": "no live operations trial selected"
+  }
+}

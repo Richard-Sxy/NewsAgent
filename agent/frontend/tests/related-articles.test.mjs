@@ -204,7 +204,20 @@ test('panel expansion toggles one article and tracks subsequent tool props', () 
 })
 
 test('chat panel is attached to saved completed turn tools before the tool log and absent from pending SSE', () => {
-  assert.match(viewSource, /<template v-if="turn\.status === 'completed'">[\s\S]*?<RelatedArticlesPanel :tools="turn\.tools" \/>[\s\S]*?<\/template>\s*<details v-if="turn\.tools\.length"/)
+  const panels = []
+  const logs = []
+  const directive = (node, name) => node.props?.find((prop) => prop.name === name)?.exp?.content
+  function visit(node, ancestors = []) {
+    if (node.type === 1 && node.tag === 'RelatedArticlesPanel') panels.push({ node, ancestors })
+    if (node.type === 1 && node.tag === 'details' && node.props?.some((prop) => prop.name === 'class'
+      && prop.value?.content.split(/\s+/).includes('na-chat__tools'))) logs.push(node)
+    for (const child of node.children ?? []) visit(child, [...ancestors, node])
+  }
+  visit(parse(viewSource).descriptor.template.ast)
+  assert.equal(panels.length, 1)
+  assert.equal(panels[0].node.props.find((prop) => prop.name === 'bind' && prop.arg?.content === 'tools')?.exp?.content, 'turn.tools')
+  assert.ok(panels[0].ancestors.some((node) => directive(node, 'if') === "turn.status === 'completed'"))
+  assert.ok(panels[0].node.loc.start.offset < logs[0].loc.start.offset)
   const pendingTemplate = viewSource.slice(viewSource.indexOf('<article v-if="pendingVisible && pending"'))
   assert.ok(!pendingTemplate.includes('<RelatedArticlesPanel'))
   assert.ok(!panelSource.includes('v-html'))

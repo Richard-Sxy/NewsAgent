@@ -7,6 +7,8 @@ from temporalio.worker import Worker
 
 from app.analytics.data_source import BehaviorDataSource
 from app.analytics.news_content import NewsContentRepository
+from app.behavior_tags.runtime import build_behavior_runtime
+from app.reader_profiles.factory import build_reader_profile_service
 from app.clients.knowledge_base import KnowledgeSearchClient
 from app.model_runtime.core import InferencePort, PromptRegistry
 from app.model_runtime.config_file import (
@@ -17,6 +19,8 @@ from app.model_runtime.factory import ModelRuntimePorts, build_model_runtime_por
 from app.model_runtime.knowledge_factory import build_native_knowledge_search, build_native_knowledge_index
 from app.knowledge.search_factory import close_knowledge_search_index
 from app.observability.hot_news import HotNewsRunMetrics
+from app.observability.process import telemetry_process
+from app.observability.temporal import temporal_interceptors
 from app.config import Settings, get_settings
 from app.db.session import Database
 from app.hot_news_bootstrap import create_hot_news_worker_runtime
@@ -31,6 +35,7 @@ from app.workflows.hot_news import (
     HotNewsWindowDispatcherWorkflow,
 )
 
+@telemetry_process("newsagent-hot-news-worker")
 async def run_hot_news_worker(
     *,
     behavior_data_source: BehaviorDataSource,
@@ -51,6 +56,7 @@ async def run_hot_news_worker(
     knowledge_index = None
     allowed_model_routes: tuple[str, ...] | None = None
     runtime = None
+    reader_profile_service = None
     try:
         if resolved_settings.model_runtime_config_path is None:
             raise ValueError("MODEL_RUNTIME_CONFIG_PATH is required")
@@ -62,7 +68,7 @@ async def run_hot_news_worker(
                 config, environment=resolved_settings.environment
             )
             inference_port = native_ports.inference
-        if knowledge_search is None:
+        if knowledge_search is None or resolved_settings.knowledge_lifecycle_config_path:
             if native_ports is None:
                 native_ports = build_model_runtime_ports(
                     config, environment=resolved_settings.environment
@@ -71,6 +77,8 @@ async def run_hot_news_worker(
             knowledge_index = build_native_knowledge_index(
                 config=config, embedding=native_ports.embedding, database=knowledge_database,
                 config_path=resolved_settings.knowledge_search_config_path,
+                lifecycle_config_path=resolved_settings.knowledge_lifecycle_config_path,
+                environment=resolved_settings.environment,
             )
             knowledge_search = build_native_knowledge_search(
                 config=config,
@@ -78,7 +86,18 @@ async def run_hot_news_worker(
                 database=knowledge_database,
                 index=knowledge_index,
             )
+        if resolved_settings.knowledge_lifecycle_config_path:
+            await knowledge_index.lifecycle_runtime.validate()
+            from app.analytics.lifecycle_news_content import (
+                LifecycleNewsContentRepository, guard_run_dependencies,
+            )
+            content_repository = LifecycleNewsContentRepository(database=knowledge_database)
+            run_dependencies_factory = guard_run_dependencies(
+                run_dependencies_factory, content_repository=content_repository,
+            )
         prompt_registry = prompt_registry or config.prompt_registry()
+        behavior_runtime = build_behavior_runtime(resolved_settings)
+        reader_profile_service = build_reader_profile_service(resolved_settings)
         runtime = create_hot_news_worker_runtime(
             resolved_settings,
             behavior_data_source=behavior_data_source,
@@ -91,10 +110,13 @@ async def run_hot_news_worker(
             prompt_registry=prompt_registry,
             allowed_model_routes=allowed_model_routes,
             run_dependencies_factory=run_dependencies_factory,
+            behavior_runtime=behavior_runtime,
+            reader_profile_service=reader_profile_service,
         )
         client = await Client.connect(
             resolved_settings.temporal_address,
             namespace=resolved_settings.temporal_namespace,
+            interceptors=temporal_interceptors(),
         )
 
         worker = Worker(
@@ -114,6 +136,8 @@ async def run_hot_news_worker(
         await close_knowledge_search_index(knowledge_index)
         if runtime is not None:
             await runtime.close()
+        elif reader_profile_service is not None:
+            await reader_profile_service.close()
         if native_ports is not None:
             await native_ports.close()
         if knowledge_database is not None:

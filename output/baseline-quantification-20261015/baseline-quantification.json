@@ -1,0 +1,520 @@
+{
+  "report_version": "offline-baseline-quantification-v1",
+  "report_date": "2026-10-15",
+  "execution_kind": "offline_existing_hot_score_calculator",
+  "agent_run": false,
+  "news_content_synthetic": false,
+  "metric_data_synthetic": true,
+  "label": "真实新闻；模拟行为指标；离线复算；不是Agent运行或真实新闻热度验收",
+  "dataset_identity": {
+    "dataset_version": "real-news-business-warehouse-v8-20261014",
+    "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+    "manifest_sha256": "19f6a4be43fd5acc06d518398c6f4058686a11fb7eba4bff423aedc86040bb8d",
+    "catalog_sha256": "1af51f4fba5f190829d255fe8ee2ce2328811f09102af6d9e814e2b49d4353f0",
+    "schema_sha256": "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073",
+    "tenant_id": "11111111-1111-4111-8111-111111111111"
+  },
+  "source_integrity": {
+    "news_metric_hourly": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/warehouse/real-news-v8-20261014/news_metric_hourly.jsonl",
+      "sha256": "5f4c53400b6f8d74c4736ad9f306bf4ae257ae706c45ccc73b8d1c398d3192e8",
+      "rows": 146012,
+      "matches_frozen_manifest": true
+    },
+    "news_metric_baseline_hourly": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/warehouse/real-news-v8-20261014/news_metric_baseline_hourly.jsonl",
+      "sha256": "88fef81e76eaa6375517846538daeb2b886851cd9c6b59f0e5953aeff469255e",
+      "rows": 143368,
+      "matches_frozen_manifest": true
+    },
+    "window_snapshot": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/warehouse/real-news-v8-20261014/window_snapshot.jsonl",
+      "sha256": "bb735ec825044ca339c96e733e69f4ecdcfbd5421c1c0b1773bd540327df53ca",
+      "rows": 718,
+      "matches_frozen_manifest": true
+    }
+  },
+  "code_sources": {
+    "agent/app/analytics/hot_score.py": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/hot_score.py",
+      "sha256": "4c3c225c1f09a4a50e4279e8599deab7a41c72d256294847e71228b4a3d425bb"
+    },
+    "agent/app/analytics/metrics.py": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/metrics.py",
+      "sha256": "7c9ddfe0fc859ffd6f60622f2b80c3e67770bae309c8bf589870fe98be2754b8"
+    },
+    "agent/app/warehouse_simulation/real_news.py": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/agent/app/warehouse_simulation/real_news.py",
+      "sha256": "5be0f4905d6daf1b5c731d70410b911a61b1990b86d7e18793402b7f86f531b2"
+    },
+    "agent/app/warehouse_simulation/queries.py": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/agent/app/warehouse_simulation/queries.py",
+      "sha256": "d4f4188fc324beb5faab79f857e885d2f44785f5b594f25d0fcc0c17c11e8830"
+    },
+    "agent/app/warehouse_simulation/real_news_catalog.py": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/agent/app/warehouse_simulation/real_news_catalog.py",
+      "sha256": "f7e81d97cf0217544b14a600c3a0fd6583b3dcf5ce1e0835e653b0afb33c3e91"
+    }
+  },
+  "decimal_precision": 50,
+  "calculator": "app.analytics.hot_score.HotScoreCalculator.calculate",
+  "configuration": "HotScoreConfig() existing defaults",
+  "weights": {
+    "click_weight": "0.30",
+    "effective_consumption_weight": "0.35",
+    "interaction_weight": "0.20",
+    "growth_weight": "0.15"
+  },
+  "weight_display_percent": {
+    "clicks": 30,
+    "effective_consumptions": 35,
+    "interactions": 20,
+    "growth": 15
+  },
+  "baseline_method": {
+    "version": "sim-prior-3-available-days-same-hour-v8.1",
+    "sample_selection": "Same tenant and news ID at T-24,T-48,T-72 hours; only qualified complete/corrected history; missing days skipped without extending the search.",
+    "mean": "Arithmetic mean per metric, Decimal ROUND_HALF_UP to 0.01; sample_count=0 stores NULL.",
+    "activity": "clicks + click-attributed effective_consumptions + interactions; event activity, not deduplicated people",
+    "scoring": "Positive activity growth g is compressed as g/(1+g), then multiplied by existing 0.15; no positive reward for missing/zero/declining baseline.",
+    "score_without_growth": "Same HotScoreCalculator and unchanged default weights, with baseline=None solely to suppress the growth contribution; no weight redistribution.",
+    "click_growth_not_activity_growth": true,
+    "baseline_table_sha256": "88fef81e76eaa6375517846538daeb2b886851cd9c6b59f0e5953aeff469255e"
+  },
+  "examples": [
+    {
+      "example_id": "agriculture_17",
+      "kind": "ordinary_simulated_fluctuation",
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20260903A06YIL00",
+      "title": "从实验室到田埂头，大学生用两天“解码”智慧农业",
+      "source_url": "https://news.qq.com/rain/a/20260903A06YIL00",
+      "event_time": "2026-10-14T17:00:00+08:00",
+      "content_sha256": "abecde0fc77e13d846e49ac09d3e473fe069ab1eae377f601512abfe1dc3b01a",
+      "current": {
+        "impressions": 7600,
+        "clicks": 700,
+        "effective_consumptions": 421,
+        "interactions": 86
+      },
+      "current_snapshot_support": {
+        "unique_users": 473,
+        "total_duration_seconds": 31346,
+        "uv_method": "temporary_interval_union_v8.1"
+      },
+      "baseline": {
+        "sample_count": 3,
+        "baseline_version": "sim-prior-3-available-days-same-hour-v8.1",
+        "impressions": "6788.00",
+        "clicks": "627.00",
+        "effective_consumptions": "376.67",
+        "interactions": "68.00"
+      },
+      "history": [
+        {
+          "event_time": "2026-10-11T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 6651,
+          "clicks": 602,
+          "effective_consumptions": 362,
+          "interactions": 65,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-12T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 7180,
+          "clicks": 676,
+          "effective_consumptions": 407,
+          "interactions": 80,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-13T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 6533,
+          "clicks": 603,
+          "effective_consumptions": 361,
+          "interactions": 59,
+          "quality_status": "passed",
+          "completeness": "complete"
+        }
+      ],
+      "qualified_gate": {
+        "completeness": "complete",
+        "event_time": "2026-10-14T17:00:00+08:00",
+        "metric_data_synthetic": true,
+        "policy_version": "sim-click-attributed-reading-v8.1",
+        "quality_status": "passed",
+        "snapshot_at": "2026-10-14T18:15:00+08:00",
+        "snapshot_revision": 1,
+        "tenant_id": "11111111-1111-4111-8111-111111111111",
+        "watermark_at": "2026-10-14T18:10:00+08:00",
+        "window_end": "2026-10-14T18:00:00+08:00"
+      },
+      "computed": {
+        "activity_current": "1207",
+        "activity_baseline": "1071.67",
+        "activity_growth_rate": "0.12627954500919126223557625015163249881026808625790",
+        "activity_growth_percent": "12.627954500919126223557625015163249881026808625790",
+        "growth_score": "0.11212096106048053024026512013256006628003314001657",
+        "score": "0.29580482999480154571931267713352321484261754757456",
+        "score_without_growth": "0.27898668583572946618327290911363920490061257657207",
+        "score_difference": "0.01681814415907207953603976801988400994200497100249",
+        "growth_component": "0.016818144159072079536039768019884009942004971002486",
+        "score_difference_matches_growth_component_within_1e-26": true
+      },
+      "display_points": {
+        "clicks": "2.7631578947368421052631578947368421052631578947368",
+        "effective_consumptions": "21.050000000000000000000000000000000000000000000000",
+        "interactions": "4.0855106888361045130641330166270783847980997624704",
+        "growth": "1.6818144159072079536039768019884009942004971002486",
+        "total": "29.580482999480154571931267713352321484261754757456",
+        "total_without_growth": "27.898668583572946618327290911363920490061257657207"
+      },
+      "news_content_synthetic": false,
+      "metric_data_synthetic": true
+    },
+    {
+      "example_id": "audi_a3_17",
+      "kind": "higher_volume_lower_growth",
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20261008A07CK200",
+      "title": "改款奥迪A3试驾：座舱与辅助驾驶升级，驾驶质感依旧熟悉",
+      "source_url": "https://news.qq.com/rain/a/20261008A07CK200",
+      "event_time": "2026-10-14T17:00:00+08:00",
+      "content_sha256": "a261fd7b9c5b347a1895adeda00e5c6bb7c33ce5d43dd5d23f203730097f0c1d",
+      "current": {
+        "impressions": 13178,
+        "clicks": 1250,
+        "effective_consumptions": 786,
+        "interactions": 205
+      },
+      "current_snapshot_support": {
+        "unique_users": 875,
+        "total_duration_seconds": 48809,
+        "uv_method": "temporary_interval_union_v8.1"
+      },
+      "baseline": {
+        "sample_count": 3,
+        "baseline_version": "sim-prior-3-available-days-same-hour-v8.1",
+        "impressions": "12761.67",
+        "clicks": "1228.00",
+        "effective_consumptions": "769.33",
+        "interactions": "203.67"
+      },
+      "history": [
+        {
+          "event_time": "2026-10-11T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 12763,
+          "clicks": 1224,
+          "effective_consumptions": 768,
+          "interactions": 201,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-12T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 13154,
+          "clicks": 1254,
+          "effective_consumptions": 786,
+          "interactions": 215,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-13T17:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 12368,
+          "clicks": 1206,
+          "effective_consumptions": 754,
+          "interactions": 195,
+          "quality_status": "passed",
+          "completeness": "complete"
+        }
+      ],
+      "qualified_gate": {
+        "completeness": "complete",
+        "event_time": "2026-10-14T17:00:00+08:00",
+        "metric_data_synthetic": true,
+        "policy_version": "sim-click-attributed-reading-v8.1",
+        "quality_status": "passed",
+        "snapshot_at": "2026-10-14T18:15:00+08:00",
+        "snapshot_revision": 1,
+        "tenant_id": "11111111-1111-4111-8111-111111111111",
+        "watermark_at": "2026-10-14T18:10:00+08:00",
+        "window_end": "2026-10-14T18:00:00+08:00"
+      },
+      "computed": {
+        "activity_current": "2241",
+        "activity_baseline": "2201.00",
+        "activity_growth_rate": "0.018173557473875511131303952748750567923671058609723",
+        "activity_growth_percent": "1.8173557473875511131303952748750567923671058609723",
+        "growth_score": "0.017849174475680499776885319053993752788933511825079",
+        "score": "0.30337674448394956086812605394803537052022256907863",
+        "score_without_growth": "0.30069936831259748590159325608993630760188254230487",
+        "score_difference": "0.00267737617135207496653279785809906291834002677376",
+        "growth_component": "0.0026773761713520749665327978580990629183400267737618",
+        "score_difference_matches_growth_component_within_1e-26": true
+      },
+      "display_points": {
+        "clicks": "2.8456518439823949005918955835483381393231142813780",
+        "effective_consumptions": "22.008000",
+        "interactions": "5.2162849872773536895674300254452926208651399491094",
+        "growth": "0.26773761713520749665327978580990629183400267737618",
+        "total": "30.337674448394956086812605394803537052022256907863",
+        "total_without_growth": "30.069936831259748590159325608993630760188254230487"
+      },
+      "news_content_synthetic": false,
+      "metric_data_synthetic": true
+    },
+    {
+      "example_id": "workbuddy_19",
+      "kind": "late_correction_stress_case",
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20260903A05YQE00",
+      "title": "WorkBuddy开放平台上线，AI办公迎来硬件入口之争",
+      "source_url": "https://news.qq.com/rain/a/20260903A05YQE00",
+      "event_time": "2026-10-14T19:00:00+08:00",
+      "content_sha256": "fa81c93c8f95e95b1463a7ad480f7c4cff5b4a090c7c1ebefb6acda451f5ebe2",
+      "current": {
+        "impressions": 1323,
+        "clicks": 81,
+        "effective_consumptions": 42,
+        "interactions": 0
+      },
+      "current_snapshot_support": {
+        "unique_users": 41,
+        "total_duration_seconds": 12926,
+        "uv_method": "temporary_interval_union_v8.1"
+      },
+      "baseline": {
+        "sample_count": 3,
+        "baseline_version": "sim-prior-3-available-days-same-hour-v8.1",
+        "impressions": "720.00",
+        "clicks": "18.00",
+        "effective_consumptions": "0.00",
+        "interactions": "0.00"
+      },
+      "history": [
+        {
+          "event_time": "2026-10-11T19:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 717,
+          "clicks": 18,
+          "effective_consumptions": 0,
+          "interactions": 0,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-12T19:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 696,
+          "clicks": 18,
+          "effective_consumptions": 0,
+          "interactions": 0,
+          "quality_status": "passed",
+          "completeness": "complete"
+        },
+        {
+          "event_time": "2026-10-13T19:00:00+08:00",
+          "snapshot_revision": 1,
+          "impressions": 747,
+          "clicks": 18,
+          "effective_consumptions": 0,
+          "interactions": 0,
+          "quality_status": "passed",
+          "completeness": "complete"
+        }
+      ],
+      "qualified_gate": {
+        "completeness": "corrected",
+        "event_time": "2026-10-14T19:00:00+08:00",
+        "metric_data_synthetic": true,
+        "policy_version": "sim-click-attributed-reading-v8.1",
+        "quality_status": "passed",
+        "snapshot_at": "2026-10-14T20:15:00+08:00",
+        "snapshot_revision": 2,
+        "tenant_id": "11111111-1111-4111-8111-111111111111",
+        "watermark_at": "2026-10-14T20:10:00+08:00",
+        "window_end": "2026-10-14T20:00:00+08:00"
+      },
+      "computed": {
+        "activity_current": "123",
+        "activity_baseline": "18.00",
+        "activity_growth_rate": "5.8333333333333333333333333333333333333333333333333",
+        "activity_growth_percent": "583.33333333333333333333333333333333333333333333333",
+        "growth_score": "0.85365853658536585365853658536585365853658536585366",
+        "score": "0.32789760890806186973434360193942075475176520472688",
+        "score_without_growth": "0.19984882842025699168556311413454270597127739984883",
+        "score_difference": "0.12804878048780487804878048780487804878048780487805",
+        "growth_component": "0.12804878048780487804878048780487804878048780487805",
+        "score_difference_matches_growth_component_within_1e-26": true
+      },
+      "display_points": {
+        "clicks": "1.8367346938775510204081632653061224489795918367347",
+        "effective_consumptions": "18.148148148148148148148148148148148148148148148148",
+        "interactions": "0.00",
+        "growth": "12.804878048780487804878048780487804878048780487805",
+        "total": "32.789760890806186973434360193942075475176520472688",
+        "total_without_growth": "19.984882842025699168556311413454270597127739984883"
+      },
+      "news_content_synthetic": false,
+      "metric_data_synthetic": true,
+      "stress_boundary": {
+        "uncorrected_revision_1": {
+          "impressions": 693,
+          "clicks": 18,
+          "effective_consumptions": 0,
+          "interactions": 0
+        },
+        "uncorrected_gate": {
+          "completeness": "incomplete",
+          "event_time": "2026-10-14T19:00:00+08:00",
+          "metric_data_synthetic": true,
+          "policy_version": "sim-click-attributed-reading-v8.1",
+          "quality_status": "pending",
+          "snapshot_at": "2026-10-14T20:05:00+08:00",
+          "snapshot_revision": 1,
+          "tenant_id": "11111111-1111-4111-8111-111111111111",
+          "watermark_at": "2026-10-14T19:45:00+08:00",
+          "window_end": "2026-10-14T20:00:00+08:00"
+        },
+        "revision_2_delta": {
+          "impressions": 630,
+          "clicks": 63,
+          "effective_consumptions": 42,
+          "interactions": 0
+        },
+        "mechanism": "All articles receive deterministic last-three-bucket late additions in revision 2; this example is not evidence of a real traffic spike.",
+        "business_query_uses_revision_2_only": true,
+        "uncorrected_activity": 18
+      }
+    }
+  ],
+  "growth_sensitivity": [
+    {
+      "activity_growth_percent": 0,
+      "activity_growth_rate": "0",
+      "growth_score": "0",
+      "growth_component": "0.00",
+      "growth_display_points": "0.00",
+      "kind": "formula_only_not_an_article_or_observed_metric"
+    },
+    {
+      "activity_growth_percent": 20,
+      "activity_growth_rate": "0.2",
+      "growth_score": "0.16666666666666666666666666666666666666666666666667",
+      "growth_component": "0.025000000000000000000000000000000000000000000000000",
+      "growth_display_points": "2.5000000000000000000000000000000000000000000000000",
+      "kind": "formula_only_not_an_article_or_observed_metric"
+    },
+    {
+      "activity_growth_percent": 100,
+      "activity_growth_rate": "1",
+      "growth_score": "0.5",
+      "growth_component": "0.075",
+      "growth_display_points": "7.500",
+      "kind": "formula_only_not_an_article_or_observed_metric"
+    },
+    {
+      "activity_growth_percent": 200,
+      "activity_growth_rate": "2",
+      "growth_score": "0.66666666666666666666666666666666666666666666666667",
+      "growth_component": "0.10000000000000000000000000000000000000000000000000",
+      "growth_display_points": "10.000000000000000000000000000000000000000000000000",
+      "kind": "formula_only_not_an_article_or_observed_metric"
+    },
+    {
+      "activity_growth_percent": 900,
+      "activity_growth_rate": "9",
+      "growth_score": "0.9",
+      "growth_component": "0.135",
+      "growth_display_points": "13.500",
+      "kind": "formula_only_not_an_article_or_observed_metric"
+    }
+  ],
+  "boundaries": [
+    {
+      "case": "missing_history",
+      "authority_growth_score": "0",
+      "authority_growth_component": "0.00",
+      "growth_display_points": "0.00",
+      "policy": "Missing or nonpositive baseline receives no growth reward; a decline does not subtract heat.",
+      "reported_activity_growth_rate": null
+    },
+    {
+      "case": "zero_baseline",
+      "authority_growth_score": "0",
+      "authority_growth_component": "0.00",
+      "growth_display_points": "0.00",
+      "policy": "Missing or nonpositive baseline receives no growth reward; a decline does not subtract heat.",
+      "reported_activity_growth_rate": null
+    },
+    {
+      "case": "declining_activity",
+      "authority_growth_score": "0",
+      "authority_growth_component": "0.00",
+      "growth_display_points": "0.00",
+      "policy": "Missing or nonpositive baseline receives no growth reward; a decline does not subtract heat.",
+      "reported_activity_growth_rate": "-0.5"
+    }
+  ],
+  "verification": {
+    "frozen_source_digests_and_row_counts": true,
+    "all_three_historical_means_match_frozen_baseline": true,
+    "qualified_latest_revision_used": true,
+    "score_difference_tolerance": "1e-26",
+    "sensitivity_points_checked": true,
+    "project_core_tests": {
+      "result": "17 passed",
+      "entry": "PYTHONPATH=agent python3.11 -m pytest agent/tests/test_baseline.py agent/tests/test_hot_score.py agent/tests/test_ranking.py -q"
+    },
+    "live_local_postgres_main_example": {
+      "result": "passed",
+      "news_id": "20260903A06YIL00",
+      "event_time": "2026-10-14T17:00:00+08:00",
+      "snapshot_revision": 1,
+      "current_matches_frozen": true,
+      "baseline_matches_frozen": true,
+      "read_only": true,
+      "scope": "existing run_query baseline catalog; local isolated demo PostgreSQL; no Agent run"
+    }
+  },
+  "limitations": [
+    "All behavior data are simulated aggregates, not enterprise user behavior or actual article popularity.",
+    "Three same-hour days are a short baseline; there is no holiday/weekend stratification, exposure normalization, seasonal model or uncertainty threshold.",
+    "The 19:00 WorkBuddy result is deliberately driven by synthetic late corrections; do not describe it as an actual emerging hotspot.",
+    "The baseline SQL query exposes click-only growth; the existing calculator uses composite activity growth. They are different measures."
+  ],
+  "todo": [
+    "Connect and verify v8 through explicit Agent data Ports in a later task; current runtime still uses its prior dataset.",
+    "Confirm enterprise baseline comparability, minimum samples and approved metric definitions before production use.",
+    "Validate real content withdrawal, vector-index denial and cleanup separately; this report performs no cleanup or publication."
+  ],
+  "reproduction_chain": {
+    "upstream": "Frozen local v8 hourly/baseline/window JSONL and catalog; independent fixed read-only SQL spot-check against local PostgreSQL",
+    "transform": "Full SHA/row-count verification -> latest qualified revision -> prior 1/2/3 days same hour -> per-metric rounded means",
+    "core": "NewsMetricSnapshot + NewsMetricReference -> unchanged HotScoreCalculator(HotScoreConfig()) -> Decimal per-component calculation",
+    "downstream": "Aggregate-only quantification JSON -> ReportLab Canvas single-page Chinese PDF",
+    "external_dependencies": "Project Python runtime + Decimal; ReportLab; pypdf and Poppler; no model inference, embedding or enterprise data call",
+    "configuration": "Main demo tenant; v8 frozen dataset; Beijing time 2026-10-14 17:00 and 19:00; defaults 30/35/20/15; display score*100",
+    "todo": "v8 Agent adapter preserving real n and NULL; approved comparability and low-volume policy; ranking requires the complete bounded candidate pool"
+  },
+  "agent_usage_chain": {
+    "existing": "SQL candidates/same-hour supplemental metrics -> NewsMetricSnapshot + baseline provider -> identity/sample validation -> HotNewsRanker.rank -> HotScoreCalculator.calculate -> content/related evidence -> model explanation/validator -> same analysis_runs output",
+    "v8_status": "standalone query and offline reproduction; not yet registered with current Agent",
+    "missing_baseline_adapter": "n=0 means omit baseline key; preserve NULL growth and missing status, do not construct sample_count=0 baseline",
+    "rank_in_this_report": null,
+    "absolute_hot_threshold_implemented": false,
+    "pv_uv_used_in_growth": false,
+    "positive_sample_count_required_for_present_baseline": true,
+    "statistical_minimum_sample_policy_implemented": false,
+    "sample_size_confidence_weight_implemented": false
+  }
+}

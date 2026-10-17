@@ -19,7 +19,7 @@ from app.conversation.streaming import StreamingConversation, encode_event
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.config_file import load_model_runtime_config
 from app.model_runtime.core import RawInferenceResult, StructuredInferenceService
-from app.repositories.conversation import ConversationConflict, ConversationNotFound, TurnClaim
+from app.repositories.conversation import ConversationConflict, ConversationNotFound, TurnAdvance, TurnClaim
 from app.schemas.conversation import ConversationDetailResponse, ConversationTurnView, ConversationView, ToolTrace
 
 
@@ -135,6 +135,14 @@ class MemoryRepository:
                 turn.completed_at = datetime.now(timezone.utc)
                 return turn.model_copy(deep=True)
         raise ConversationNotFound()
+
+    async def claim_inputs(self, **kwargs):
+        return []
+
+    async def finish_or_claim(self, **kwargs):
+        kwargs.pop("request_id")
+        kwargs.pop("expected_input_seq")
+        return TurnAdvance(turn=await self.finish_turn(**kwargs, error_code=None), inputs=[])
 
 
 class Inference:

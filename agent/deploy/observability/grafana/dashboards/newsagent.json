@@ -1,0 +1,546 @@
+{
+  "uid": "newsagent-observability",
+  "title": "NewsAgent 全链路与模型定位",
+  "tags": [
+    "newsagent",
+    "observability",
+    "local-only"
+  ],
+  "schemaVersion": 41,
+  "version": 1,
+  "timezone": "browser",
+  "refresh": "10s",
+  "editable": false,
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "service",
+        "label": "服务",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "newsagent-prometheus"
+        },
+        "query": {
+          "query": "label_values(target_info, service_name)",
+          "refId": "service"
+        },
+        "refresh": 1,
+        "includeAll": true,
+        "allValue": ".+",
+        "multi": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": []
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "定位顺序：入口 Trace → Activity → 工具/检索 → 模型阶段 → 业务校验",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 3
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "**先确认采集链健康，再定位业务失败。** 模型 `success` 只代表推理/JSON/Schema 通过，可信性仍看业务校验。日志详情点击 TraceID；Trace 的 Logs 图标回查同 trace 日志。无数据表示尚未启用 SDK 或没有调用，不能视为成功。此栈仅供本地，数据暂存有界内存，停止即清空。"
+      }
+    },
+    {
+      "id": 2,
+      "title": "模型调用速率",
+      "type": "stat",
+      "gridPos": {
+        "x": 0,
+        "y": 3,
+        "w": 6,
+        "h": 4
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value"
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(newsagent_model_calls_total{service_name=~\"$service\"}[$__rate_interval]))",
+          "legendFormat": "",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "模型错误比例",
+      "type": "stat",
+      "gridPos": {
+        "x": 6,
+        "y": 3,
+        "w": 6,
+        "h": 4
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value"
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(newsagent_model_calls_total{service_name=~\"$service\",newsagent_outcome=\"error\"}[$__rate_interval])) / clamp_min(sum(rate(newsagent_model_calls_total{service_name=~\"$service\"}[$__rate_interval])), 0.001)",
+          "legendFormat": "",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "模型时延 p95",
+      "type": "stat",
+      "gridPos": {
+        "x": 12,
+        "y": 3,
+        "w": 6,
+        "h": 4
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value"
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(newsagent_model_duration_seconds_bucket{service_name=~\"$service\"}[$__rate_interval])))",
+          "legendFormat": "",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Token 使用速率（类型分开）",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 18,
+        "y": 3,
+        "w": 6,
+        "h": 4
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (gen_ai_token_type) (rate(newsagent_model_tokens_total{service_name=~\"$service\"}[$__rate_interval]))",
+          "legendFormat": "{{gen_ai_token_type}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "模型错误阶段与分类",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 7,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (model_scene, newsagent_stage, error_type) (rate(newsagent_model_calls_total{service_name=~\"$service\",newsagent_outcome=\"error\"}[$__rate_interval]))",
+          "legendFormat": "{{model_scene}} / {{newsagent_stage}} / {{error_type}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "模型时延 p95（场景 / 路由）",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 7,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum by (le, model_scene, model_route) (rate(newsagent_model_duration_seconds_bucket{service_name=~\"$service\"}[$__rate_interval])))",
+          "legendFormat": "{{model_scene}} / {{model_route}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "业务校验失败：推理成功仍可能不可信",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 14,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (newsagent_operation, error_type) (rate(newsagent_operation_calls_total{service_name=~\"$service\",newsagent_operation=~\".*validat.*\",newsagent_outcome=\"error\"}[$__rate_interval]))",
+          "legendFormat": "{{newsagent_operation}} / {{error_type}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "全链路阶段时延 p95",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 14,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum by (le, newsagent_operation) (rate(newsagent_operation_duration_seconds_bucket{service_name=~\"$service\"}[$__rate_interval])))",
+          "legendFormat": "{{newsagent_operation}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Activity / 工具 / 检索错误",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 21,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (newsagent_operation, error_type) (rate(newsagent_operation_calls_total{service_name=~\"$service\",newsagent_outcome=\"error\"}[$__rate_interval]))",
+          "legendFormat": "{{newsagent_operation}} / {{error_type}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "采集链健康：1 = 抓取成功",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 21,
+        "w": 12,
+        "h": 7
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "newsagent-prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "up{job=~\"newsagent|otel-collector|tempo|loki\"}",
+          "legendFormat": "{{job}}",
+          "range": true
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "日志：展开结构化属性与 TraceID",
+      "type": "logs",
+      "gridPos": {
+        "x": 0,
+        "y": 28,
+        "w": 24,
+        "h": 9
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "newsagent-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "{service_name=~\"$service\"}",
+          "queryType": "range"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "错误 Trace：点击进入瀑布与 Logs",
+      "type": "table",
+      "gridPos": {
+        "x": 0,
+        "y": 37,
+        "w": 24,
+        "h": 8
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true
+      },
+      "datasource": {
+        "type": "tempo",
+        "uid": "newsagent-tempo"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "traceqlSearch",
+          "query": "{ resource.service.name =~ \"$service\" && status = error }",
+          "limit": 20,
+          "tableType": "traces"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "各阶段判断",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 45,
+        "w": 24,
+        "h": 4
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "`prompt_render`：模板/输入绑定；`inference`：模型 Port 或 HTTP；`timeout / connection / rate_limit / http_error`：供应端/网络；`response_decode`：JSON；`schema_validation`：结构；`model_binding`：路由/版本；`hot_news.analysis.validate`：指标/证据/因果可信性。用 span 版本和受控错误码归因，不采集正文、Prompt、模型回答或异常原文。"
+      }
+    }
+  ],
+  "links": [
+    {
+      "title": "Prometheus 告警（默认端口）",
+      "url": "http://127.0.0.1:29090/alerts",
+      "targetBlank": true
+    }
+  ]
+}

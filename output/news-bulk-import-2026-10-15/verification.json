@@ -1,0 +1,43 @@
+{
+  "status": "verified",
+  "verified_at": "2026-10-15T03:44:29.670539+00:00",
+  "manifest_path": "/Users/shi/Project/myProject/NewsAgent/news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json",
+  "manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+  "v1_manifest_sha256": "13ffd2d5a4145a4f68cd5ba25fead17340fc7d7a70e0efa02632e75ae58fdcee",
+  "documents": 8000,
+  "counts_by_date": {
+    "2026-10-07": 1000,
+    "2026-10-08": 1000,
+    "2026-10-09": 1000,
+    "2026-10-10": 1000,
+    "2026-10-11": 1000,
+    "2026-10-12": 1000,
+    "2026-10-13": 1000,
+    "2026-10-14": 1000
+  },
+  "seed_files_unchanged": 541,
+  "pending": false,
+  "methods": [
+    "collector_frozen_article_and_discovery_hash_checks",
+    "independent_API_loader",
+    "independent_BGE_loader",
+    "541_seed_files_byte_comparison"
+  ],
+  "api_manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+  "bge_manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+  "postgres_roster_verification": {
+    "documents": 8000,
+    "chunk_documents": 8000,
+    "chunks": 13873,
+    "counts_by_date": {
+      "2026-10-07": 1000,
+      "2026-10-13": 1000,
+      "2026-10-09": 1000,
+      "2026-10-14": 1000,
+      "2026-10-11": 1000,
+      "2026-10-08": 1000,
+      "2026-10-12": 1000,
+      "2026-10-10": 1000
+    }
+  }
+}

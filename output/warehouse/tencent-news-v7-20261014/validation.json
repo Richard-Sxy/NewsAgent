@@ -1,0 +1,40 @@
+{
+  "verification_date": "2026-10-14",
+  "dataset_sha256": "67ad183c97df43318564fa8bb8ca541ba138f04e1a7b41469f205051146db91a",
+  "new_unit_contract_tests": {
+    "passed": 41,
+    "failed": 0
+  },
+  "existing_warehouse_corpus_retention_regression": {
+    "result": "passed",
+    "opt_in_integration_skipped": 3
+  },
+  "postgresql_version": 16,
+  "database_scope": "temporary isolated PostgreSQL with network disabled; no existing service or vector store changed",
+  "fresh_sql_import": "passed",
+  "readonly_reconciliation_checks": "passed",
+  "duplicate_schema_import": {
+    "result": "rejected before data writes",
+    "psql_exit_code": 3,
+    "reason": "schema news_sim_v7 already exists"
+  },
+  "source_and_schema_snapshots": "hashes verified",
+  "observed": {
+    "schema": "news_sim_v7",
+    "news_count": 240,
+    "channel_hourly_count": 122400,
+    "hourly_count": 40800,
+    "five_minute_count": 22320,
+    "baseline_count": 40560,
+    "eligible_complete_count": 33600,
+    "cleanup_pending_count": 240,
+    "blocked_content_in_eligible_view": 0
+  },
+  "not_verified": [
+    "enterprise contracts",
+    "real continuous ingestion",
+    "Agent/Temporal integration",
+    "vector cleanup execution",
+    "enterprise model quality"
+  ]
+}

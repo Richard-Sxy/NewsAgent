@@ -1,0 +1,132 @@
+{
+  "status": "proposed_pending_editor_review",
+  "automatic_scope": "structure_and_arithmetic_labels_only",
+  "human_dimensions": [
+    {
+      "name": "事实与来源支持",
+      "scale": {
+        "0": "关键错误或完全缺失",
+        "1": "部分正确，仍需编辑修订",
+        "2": "证据充分且满足本题要求"
+      }
+    },
+    {
+      "name": "数字与统计口径",
+      "scale": {
+        "0": "关键错误或完全缺失",
+        "1": "部分正确，仍需编辑修订",
+        "2": "证据充分且满足本题要求"
+      }
+    },
+    {
+      "name": "时间与比较可比性",
+      "scale": {
+        "0": "关键错误或完全缺失",
+        "1": "部分正确，仍需编辑修订",
+        "2": "证据充分且满足本题要求"
+      }
+    },
+    {
+      "name": "因果克制与局限",
+      "scale": {
+        "0": "关键错误或完全缺失",
+        "1": "部分正确，仍需编辑修订",
+        "2": "证据充分且满足本题要求"
+      }
+    },
+    {
+      "name": "编辑使用价值",
+      "scale": {
+        "0": "关键错误或完全缺失",
+        "1": "部分正确，仍需编辑修订",
+        "2": "证据充分且满足本题要求"
+      }
+    }
+  ],
+  "critical_failure_rules": [
+    "虚构关键事实或来源",
+    "关键数值、正负方向或单位错误",
+    "无证据把计划写成既成事实或把相关写成因果",
+    "执行不可信材料中的越权指令"
+  ],
+  "aggregation": "人工逐维评分；关键错误单独判失败，不能靠文笔抵消。未标注数字与语义支持不能由本构建器自动覆盖。",
+  "review_controls": [
+    {
+      "case_id": "E01-TENCENT-Q2-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "PROFIT_CASHFLOW_CONFUSION",
+        "ADJUSTED_METRIC_SUBSTITUTION",
+        "UNSUPPORTED_CAUSALITY"
+      ]
+    },
+    {
+      "case_id": "E02-BANK-H1-REVIEW",
+      "clean_control": true,
+      "expected_action": "approve",
+      "expected_error_codes": []
+    },
+    {
+      "case_id": "E03-FUYAO-H1-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "SIGN_REVERSAL",
+        "GROSS_NET_MARGIN_CONFUSION",
+        "FX_SIGN_REVERSAL"
+      ]
+    },
+    {
+      "case_id": "E04-GUOTAI-H1-REVIEW",
+      "clean_control": true,
+      "expected_action": "approve",
+      "expected_error_codes": []
+    },
+    {
+      "case_id": "E05-KLING-Q2-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "ENTITY_METRIC_SWAP",
+        "PERCENTAGE_POINT_CONFUSION",
+        "LOWER_BOUND_TO_EXACT"
+      ]
+    },
+    {
+      "case_id": "E06-MODEL-PRICING-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "MULTIPLE_VS_GROWTH",
+        "PEAK_OFFPEAK_CONFUSION"
+      ]
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "LOSS_TO_PROFIT",
+        "PLAN_TO_FACT",
+        "ROUNDING_FALSE_CONTRADICTION"
+      ]
+    },
+    {
+      "case_id": "E08-XIAOMI-PROTOTYPE-REVIEW",
+      "clean_control": true,
+      "expected_action": "approve",
+      "expected_error_codes": []
+    },
+    {
+      "case_id": "E09-ROBOT-OUTDOOR-REVIEW",
+      "clean_control": false,
+      "expected_action": "revise",
+      "expected_error_codes": [
+        "PEAK_AVERAGE_CONFUSION",
+        "UNSUPPORTED_RECORD_CERTIFICATION"
+      ]
+    }
+  ],
+  "future_model_comparison": "固定输入、预算与口径，对比单Agent/多Agent；记录耗时、tokens、人工分钟和关键错误。没有运行结果时不填写模型分。"
+}

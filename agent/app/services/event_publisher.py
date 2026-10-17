@@ -5,6 +5,7 @@ import hashlib
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
 
+from app.observability.decorators import traced
 from app.config import Settings
 from app.schemas.events import ProgressEvent
 
@@ -34,6 +35,7 @@ class RedisProgressPublisher:
         self.maxlen = settings.progress_stream_maxlen
         self.dedup_ttl = settings.progress_dedup_ttl_seconds
 
+    @traced("redis.publish")
     async def publish(self, event: ProgressEvent) -> ProgressEvent | None:
         """发布成功返回带 Stream ID 的事件；重复事件返回 None。"""
         stream_key = self.stream_key(event.tenant_id, event.job_id)

@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "checks": {
+    "candidate_prompt_within_configuration_budget": true,
+    "input_schema_valid": true,
+    "report_schema_valid": true,
+    "sample_report_passes_existing_business_validator": true,
+    "system_user_context_separated": true,
+    "runtime_output_schema_appended": true,
+    "reject_mismatched_news_id": true,
+    "reject_unknown_evidence_id": true,
+    "reject_missing_limitations_without_related_evidence": true,
+    "reject_unknown_memory_id": true,
+    "current_input_rejects_unregistered_peak_field": true,
+    "report_rejects_extra_fields": true,
+    "validation_feedback_wrapper_rendered": true
+  },
+  "check_count": 13,
+  "model_called": false,
+  "runtime_activated": false,
+  "semantic_model_evaluation": "not performed",
+  "sample_kind": "handwritten schema fixture, not model response",
+  "limitations": [
+    "existing validator does not verify every number or causal/trend statement in free text",
+    "local deterministic inference does not evaluate candidate natural-language prompt quality"
+  ],
+  "pdf_verification": {
+    "pages": 1,
+    "text_check": "passed",
+    "chinese_fonts_and_layout": "rendered with Poppler and visually checked",
+    "pdf_sha256": "3d24868fe7177e88f956d29d8c4f8a6e7717227952363c66d179553bc4e4f2f1",
+    "preview_sha256": "bdf4abc1338b4769932e0cd782a731a73cbd3406ed6f1c36c152b8cbf0f5c459"
+  },
+  "candidate_business_review": "passed: no mandatory changes identified against current Schema and missing-history semantics"
+}

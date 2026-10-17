@@ -1,0 +1,63 @@
+# Standalone local fixture only. These are public demo credentials, not enterprise secrets.
+# The immutable import runs once on an empty new volume and contains BEGIN/COMMIT.
+name: newsagent-real-news-warehouse-v8
+
+services:
+  warehouse:
+    image: postgres:16
+    restart: "no"
+    environment:
+      POSTGRES_USER: news_demo
+      POSTGRES_PASSWORD: local-v8-only
+      POSTGRES_DB: news_demo
+      TZ: Asia/Shanghai
+      PGTZ: Asia/Shanghai
+    command:
+      - postgres
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - maintenance_work_mem=64MB
+      - -c
+      - max_wal_size=1GB
+    ports:
+      - "127.0.0.1:28438:5432"
+    volumes:
+      - type: volume
+        source: warehouse-data
+        target: /var/lib/postgresql/data
+      - type: bind
+        source: ${REAL_NEWS_WAREHOUSE_DATASET:?Use start_real_news_warehouse.py to select a verified dataset}/warehouse.sql
+        target: /docker-entrypoint-initdb.d/010-warehouse.sql
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      - warehouse-bridge
+    mem_limit: 1g
+    memswap_limit: 1g
+    cpus: 1.0
+    shm_size: 128m
+    healthcheck:
+      # The initdb temporary server only listens on Unix sockets. TCP readiness
+      # means the atomic import completed and the final server started.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U news_demo -d news_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 120
+      start_period: 5s
+
+volumes:
+  warehouse-data:
+    name: newsagent-real-news-warehouse-v8-pgdata
+    labels:
+      org.newsagent.dataset_sha256: ${REAL_NEWS_WAREHOUSE_DATASET_SHA256:?Verified dataset digest required}
+
+networks:
+  # Internal-only bridges can silently suppress Docker host port publication.
+  # A separate bridge keeps this fixture apart from the existing Agent networks;
+  # its only published PostgreSQL endpoint remains bound to host loopback.
+  warehouse-bridge:
+    name: newsagent-real-news-warehouse-v8-bridge
+    driver: bridge
+    internal: false

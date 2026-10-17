@@ -1,0 +1,1328 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-598da5ead7bf4ce9eaaa",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-598da5ead7bf4ce9eaaa",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "某饮食已经证实可治愈疾病，停药即可。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "某饮食已经证实可治愈疾病，停药即可。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-196eb30e1e61a9fd4ce3",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-598da5ead7bf4ce9eaaa",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-598da5ead7bf4ce9eaaa",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构岸芷健康观察｜虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-1e92ccc7c0e652bed63b",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8c1c06554be701fd8827",
+        "related_news": [
+          {
+            "excerpt": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c1c06554be701fd8827",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "title": "虚构汀兰咨询服务",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "新增时段证明可治愈，所有人都能参加。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-community-members"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "新增时段证明可治愈，所有人都能参加。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "title": "虚构汀兰咨询服务"
+      },
+      "case_id": "research-22cd6785c56870e3a9d0",
+      "event_id": "synthetic-event-efd5686a610230d99fa8",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-efd5686a610230d99fa8",
+      "story_title": "虚构汀兰咨询服务",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e2b2d5103d8e7d3cf2b6",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e2b2d5103d8e7d3cf2b6",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构岸芷健康观察｜虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-3e179e769d68e1c70197",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7ecb60511eb630888a68",
+        "related_news": [
+          {
+            "excerpt": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7ecb60511eb630888a68",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "title": "虚构竹影科普短视频",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "账号自称医生即足以推荐商品治病。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "账号自称医生即足以推荐商品治病。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "title": "虚构竹影科普短视频"
+      },
+      "case_id": "research-54e8fd1fc827874eae81",
+      "event_id": "synthetic-event-cbe2056b68d6fd8e8144",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-cbe2056b68d6fd8e8144",
+      "story_title": "虚构竹影科普短视频",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e2b2d5103d8e7d3cf2b6",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e2b2d5103d8e7d3cf2b6",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "补充随访说明所有人都能获得疗效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "补充随访说明所有人都能获得疗效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-74a0c8f0424e3a5a21d4",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-8c1c06554be701fd8827",
+        "related_news": [
+          {
+            "excerpt": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8c1c06554be701fd8827",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。；虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "title": "虚构汀兰咨询服务",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-community-members"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构汀兰咨询服务｜虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。",
+        "title": "虚构汀兰咨询服务"
+      },
+      "case_id": "research-772acbcf71965cf82ccf",
+      "event_id": "synthetic-event-efd5686a610230d99fa8",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构中心增加无障碍咨询时段，仍不提供诊疗服务，未扩大登记范围。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-efd5686a610230d99fa8",
+      "story_title": "虚构汀兰咨询服务",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2fb201be51faf642a3ee",
+        "related_news": [
+          {
+            "excerpt": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fb201be51faf642a3ee",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "title": "虚构汀兰咨询服务",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-community-members"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构汀兰咨询服务｜虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "title": "虚构汀兰咨询服务"
+      },
+      "case_id": "research-819616c860f1c653c8b3",
+      "event_id": "synthetic-event-efd5686a610230d99fa8",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-efd5686a610230d99fa8",
+      "story_title": "虚构汀兰咨询服务",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7ecb60511eb630888a68",
+        "related_news": [
+          {
+            "excerpt": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7ecb60511eb630888a68",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "title": "虚构竹影科普短视频",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构竹影科普短视频｜虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。",
+        "title": "虚构竹影科普短视频"
+      },
+      "case_id": "research-b2cc8c814e0c0900d0d6",
+      "event_id": "synthetic-event-cbe2056b68d6fd8e8144",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-cbe2056b68d6fd8e8144",
+      "story_title": "虚构竹影科普短视频",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-2fb201be51faf642a3ee",
+        "related_news": [
+          {
+            "excerpt": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fb201be51faf642a3ee",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "title": "虚构汀兰咨询服务",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "免费咨询等于确诊治疗，对全城推广。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-community-members"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "免费咨询等于确诊治疗，对全城推广。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。",
+        "title": "虚构汀兰咨询服务"
+      },
+      "case_id": "research-d983ec94824484be267a",
+      "event_id": "synthetic-event-efd5686a610230d99fa8",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-785c08a4a79ea62aee1f",
+          "text": "虚构社区公布健康咨询预约，不提供诊断或治疗，只有本社区登记人群可预约。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-efd5686a610230d99fa8",
+      "story_title": "虚构汀兰咨询服务",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5267b20ce68a78a40ede",
+        "related_news": [
+          {
+            "excerpt": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5267b20ce68a78a40ede",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "title": "虚构竹影科普短视频",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构竹影科普短视频｜虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "title": "虚构竹影科普短视频"
+      },
+      "case_id": "research-e919f89894bcc4f05f51",
+      "event_id": "synthetic-event-cbe2056b68d6fd8e8144",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-cbe2056b68d6fd8e8144",
+      "story_title": "虚构竹影科普短视频",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5267b20ce68a78a40ede",
+        "related_news": [
+          {
+            "excerpt": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5267b20ce68a78a40ede",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。；虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "title": "虚构竹影科普短视频",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "已认证等于商品有效，隐藏商业推广。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "已认证等于商品有效，隐藏商业推广。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。",
+        "title": "虚构竹影科普短视频"
+      },
+      "case_id": "research-ef380808bb293f49792c",
+      "event_id": "synthetic-event-cbe2056b68d6fd8e8144",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构视频账号专业资质尚未核验，附商品购买入口，疗效说法缺研究原文。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-aafe362407356ba9577c",
+          "text": "虚构平台核验专业身份，但商品推广仍存在，科普事实并不能证明商品疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-cbe2056b68d6fd8e8144",
+      "story_title": "虚构竹影科普短视频",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

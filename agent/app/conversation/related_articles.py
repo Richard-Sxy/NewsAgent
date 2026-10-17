@@ -8,6 +8,7 @@ from contextvars import ContextVar
 from datetime import datetime
 from typing import Callable
 
+from app.observability.decorators import traced
 from app.clients.knowledge_base import RelatedNewsSearchQuery
 from app.knowledge.search_factory import build_knowledge_query_embedder
 from app.retrieval.tiered_vector import TieredVectorKnowledgeSearchClient, VectorTier
@@ -45,6 +46,7 @@ class ConversationRelatedArticles:
         self._limit = articles_per_source
         self._excerpt_chars = excerpt_chars
 
+    @traced("retrieval.related")
     async def recall(self, *, run_id: str, sources: list[dict], tenant_id: str) -> list[dict]:
         groups = []
         queries = []
@@ -87,7 +89,7 @@ class ConversationRelatedArticles:
                     index=self._index, embedding=self._embedding,
                     embedding_version=self._embedding_version,
                 )
-                search = TieredVectorKnowledgeSearchClient(
+                search = getattr(self._index, "lifecycle_query", None) or TieredVectorKnowledgeSearchClient(
                     embedder=embedder, index=self._index,
                     tiers=getattr(self._index, "tiers", (VectorTier.HOT,)),
                 )

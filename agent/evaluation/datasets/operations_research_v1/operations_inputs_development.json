@@ -1,0 +1,5278 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-184ec3bb154a0efee011",
+        "related_news": [
+          {
+            "excerpt": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-184ec3bb154a0efee011",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "title": "虚构芦湾大风预警",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "继续转发旧全域预警截图，不展示解除。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "继续转发旧全域预警截图，不展示解除。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "title": "虚构芦湾大风预警"
+      },
+      "case_id": "research-04981815abda53b21539",
+      "event_id": "synthetic-event-18ad377349b7a4728450",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构芦湾大风预警",
+          "虚构南汐降雨出行",
+          "虚构榆川高温预警"
+        ],
+        "audience_summary": "关注天气的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "权威预警",
+          "地区有效期",
+          "解除与其他部门决定"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45e98cc372e34e1d50c",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c78cd5350d843f21802b"
+      },
+      "scope_sha256": "300afeeed9f5d646e7f175810d7bd51b63348c7f6f3048971040c11c8ae5929e",
+      "story_id": "synthetic-story-18ad377349b7a4728450",
+      "story_title": "虚构芦湾大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b035b82a03a911f3a91",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b035b82a03a911f3a91",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构港桥跨境通行声明｜虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-08fa215d8e9e85501209",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-15e3761dd6e4a46324c4",
+        "related_news": [
+          {
+            "excerpt": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-15e3761dd6e4a46324c4",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "title": "虚构衡溪报名批次",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-ordinary-batch-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构衡溪报名批次｜虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "title": "虚构衡溪报名批次"
+      },
+      "case_id": "research-12f07abb6bae45052ec1",
+      "event_id": "synthetic-event-f832502089acc4fc1a56",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构衡溪报名批次",
+          "虚构青林志愿咨询",
+          "虚构竹泉教育服务回顾"
+        ],
+        "audience_summary": "关注教育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "年度省份批次",
+          "招生条件",
+          "参考信息与隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-3960a5d848021f5f7544",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-568e8156ba331b77c514"
+      },
+      "scope_sha256": "9f34f1766f8bff3ddff34a0d72249cd1d5199fbf5486679e172a44cf8d787ca3",
+      "story_id": "synthetic-story-f832502089acc4fc1a56",
+      "story_title": "虚构衡溪报名批次",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-598da5ead7bf4ce9eaaa",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-598da5ead7bf4ce9eaaa",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "某饮食已经证实可治愈疾病，停药即可。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "某饮食已经证实可治愈疾病，停药即可。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-196eb30e1e61a9fd4ce3",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d3f03b3525520644d007",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f03b3525520644d007",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "北京时间当晚16:00即将开赛。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "北京时间当晚16:00即将开赛。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-1a9762e69a58c86dfdbf",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-598da5ead7bf4ce9eaaa",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-598da5ead7bf4ce9eaaa",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构岸芷健康观察｜虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-1e92ccc7c0e652bed63b",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-47270d81535fc88d4c84",
+        "related_news": [
+          {
+            "excerpt": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-47270d81535fc88d4c84",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "title": "虚构芦湾大风预警",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构芦湾大风预警｜虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "title": "虚构芦湾大风预警"
+      },
+      "case_id": "research-27914a0c47fd292c2e82",
+      "event_id": "synthetic-event-18ad377349b7a4728450",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构芦湾大风预警",
+          "虚构南汐降雨出行",
+          "虚构榆川高温预警"
+        ],
+        "audience_summary": "关注天气的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "权威预警",
+          "地区有效期",
+          "解除与其他部门决定"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45e98cc372e34e1d50c",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c78cd5350d843f21802b"
+      },
+      "scope_sha256": "300afeeed9f5d646e7f175810d7bd51b63348c7f6f3048971040c11c8ae5929e",
+      "story_id": "synthetic-story-18ad377349b7a4728450",
+      "story_title": "虚构芦湾大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-ca17eb57ca7a040f41c9",
+        "related_news": [
+          {
+            "excerpt": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ca17eb57ca7a040f41c9",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "title": "虚构澄原公共服务试点",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "全国新政今日全面生效，所有居民立刻办理。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-residents"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "全国新政今日全面生效，所有居民立刻办理。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "title": "虚构澄原公共服务试点"
+      },
+      "case_id": "research-28570f34af2e5da82876",
+      "event_id": "synthetic-event-bd6b986fb92c87035c35",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澄原公共服务试点",
+          "虚构云堤证照问答专题",
+          "虚构枫湾恢复服务"
+        ],
+        "audience_summary": "关注国内的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国内",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国内运营员",
+        "risk_focus": [
+          "政策效力",
+          "适用范围",
+          "办事价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-4df13247eac1ee23685a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-69e6603e0fe67807743f"
+      },
+      "scope_sha256": "c65fe8b898b4cd1586136264dc3068c2813b115b71781d5c0ff8c904e8932efa",
+      "story_id": "synthetic-story-bd6b986fb92c87035c35",
+      "story_title": "虚构澄原公共服务试点",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14f075819c366ab7b61d",
+        "related_news": [
+          {
+            "excerpt": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14f075819c366ab7b61d",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "title": "虚构曜芯实验室演示",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "所有设备性能领先十倍，已经全面量产。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "所有设备性能领先十倍，已经全面量产。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "title": "虚构曜芯实验室演示"
+      },
+      "case_id": "research-285b552a82f0b9b06e62",
+      "event_id": "synthetic-event-853488924387bd7485c7",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构曜芯实验室演示",
+          "虚构青杉AI发布会视频",
+          "虚构流羽软件试用"
+        ],
+        "audience_summary": "关注科技的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "研究阶段",
+          "比较条件",
+          "AI标识和输入边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-cb2e0806aa6c80e1d252",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c0c2b3dcfe7ede10ae60"
+      },
+      "scope_sha256": "a5fbd1162fc3d0be083cfa889fd574c2297c5ef9957a3b518b2bfc6cd7e56ceb",
+      "story_id": "synthetic-story-853488924387bd7485c7",
+      "story_title": "虚构曜芯实验室演示",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a2a121246e803930b7ef",
+        "related_news": [
+          {
+            "excerpt": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a2a121246e803930b7ef",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "title": "虚构曜芯实验室演示",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构曜芯实验室演示｜虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "title": "虚构曜芯实验室演示"
+      },
+      "case_id": "research-2ed283a8432b0b26ef65",
+      "event_id": "synthetic-event-853488924387bd7485c7",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构曜芯实验室演示",
+          "虚构青杉AI发布会视频",
+          "虚构流羽软件试用"
+        ],
+        "audience_summary": "关注科技的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "研究阶段",
+          "比较条件",
+          "AI标识和输入边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-cb2e0806aa6c80e1d252",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c0c2b3dcfe7ede10ae60"
+      },
+      "scope_sha256": "a5fbd1162fc3d0be083cfa889fd574c2297c5ef9957a3b518b2bfc6cd7e56ceb",
+      "story_id": "synthetic-story-853488924387bd7485c7",
+      "story_title": "虚构曜芯实验室演示",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ada5004cc943ce7044f",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ada5004cc943ce7044f",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构映河事件调查｜虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-3182646ee791db621090",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-47270d81535fc88d4c84",
+        "related_news": [
+          {
+            "excerpt": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-47270d81535fc88d4c84",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "title": "虚构芦湾大风预警",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "全省均受同级预警，推给全国。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "全省均受同级预警，推给全国。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。",
+        "title": "虚构芦湾大风预警"
+      },
+      "case_id": "research-327678a6dea7f131ffba",
+      "event_id": "synthetic-event-18ad377349b7a4728450",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构芦湾大风预警",
+          "虚构南汐降雨出行",
+          "虚构榆川高温预警"
+        ],
+        "audience_summary": "关注天气的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "权威预警",
+          "地区有效期",
+          "解除与其他部门决定"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45e98cc372e34e1d50c",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c78cd5350d843f21802b"
+      },
+      "scope_sha256": "300afeeed9f5d646e7f175810d7bd51b63348c7f6f3048971040c11c8ae5929e",
+      "story_id": "synthetic-story-18ad377349b7a4728450",
+      "story_title": "虚构芦湾大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e2b2d5103d8e7d3cf2b6",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e2b2d5103d8e7d3cf2b6",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构岸芷健康观察｜虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-3e179e769d68e1c70197",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-15e3761dd6e4a46324c4",
+        "related_news": [
+          {
+            "excerpt": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-15e3761dd6e4a46324c4",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "title": "虚构衡溪报名批次",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "全国所有批次都能补报名。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-ordinary-batch-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "全国所有批次都能补报名。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。",
+        "title": "虚构衡溪报名批次"
+      },
+      "case_id": "research-40033744626de3392785",
+      "event_id": "synthetic-event-f832502089acc4fc1a56",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构衡溪报名批次",
+          "虚构青林志愿咨询",
+          "虚构竹泉教育服务回顾"
+        ],
+        "audience_summary": "关注教育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "年度省份批次",
+          "招生条件",
+          "参考信息与隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-3960a5d848021f5f7544",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-568e8156ba331b77c514"
+      },
+      "scope_sha256": "9f34f1766f8bff3ddff34a0d72249cd1d5199fbf5486679e172a44cf8d787ca3",
+      "story_id": "synthetic-story-f832502089acc4fc1a56",
+      "story_title": "虚构衡溪报名批次",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-06f8c55c1e6e0339ca27",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-06f8c55c1e6e0339ca27",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构澜舟公司财报｜虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-47b1306b083220dc706d",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec0d3e894c8384a1f40c",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec0d3e894c8384a1f40c",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "集团净利率增长5%。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "集团净利率增长5%。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-4948f4934c412f43cffd",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-43610557eac251eeb3a5",
+        "related_news": [
+          {
+            "excerpt": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-43610557eac251eeb3a5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "title": "虚构听澜古建筑复原",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构听澜古建筑复原｜虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "title": "虚构听澜古建筑复原"
+      },
+      "case_id": "research-55effa70f7596352074e",
+      "event_id": "synthetic-event-d1859e39e5ae089f4882",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构听澜古建筑复原",
+          "虚构松泉文化对谈",
+          "虚构轻舟博物馆数字导览"
+        ],
+        "audience_summary": "关注文化的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "知识解释",
+          "来源关联",
+          "复原与事实",
+          "长内容价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-356192f4a49448547f9a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-f06ec6f85da9dc64b504"
+      },
+      "scope_sha256": "aef54584fa621c68d20e44de614ff648be0550b7e6d1f537a814bc70329dff5f",
+      "story_id": "synthetic-story-d1859e39e5ae089f4882",
+      "story_title": "虚构听澜古建筑复原",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7146a976bde707f8d6ec",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7146a976bde707f8d6ec",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "新访谈再拆成五条同义通知占满首页。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-5769fefa8486cd0d5d18",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7146a976bde707f8d6ec",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7146a976bde707f8d6ec",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构远树新作发布｜虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-5814683b242acf9a6967",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b035b82a03a911f3a91",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b035b82a03a911f3a91",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "双方共同确认所有人员可通行。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "双方共同确认所有人员可通行。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-714118e2ca43f83ac277",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e2b2d5103d8e7d3cf2b6",
+        "related_news": [
+          {
+            "excerpt": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e2b2d5103d8e7d3cf2b6",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。；虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "补充随访说明所有人都能获得疗效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "补充随访说明所有人都能获得疗效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。",
+        "title": "虚构岸芷健康观察"
+      },
+      "case_id": "research-74a0c8f0424e3a5a21d4",
+      "event_id": "synthetic-event-ee70b769b14a7f5d8561",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究为小样本观察性研究，仅报告饮食与某指标相关，未测试治疗有效性。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-cbf6ce5edc199e447eda",
+          "text": "虚构研究补充混杂因素和随访限制，结果仍不足以证明因果或临床疗效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构岸芷健康观察",
+          "虚构竹影科普短视频",
+          "虚构汀兰咨询服务"
+        ],
+        "audience_summary": "关注健康的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "健康",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟健康运营员",
+        "risk_focus": [
+          "证据等级",
+          "科普与诊疗",
+          "资质和利益冲突"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-30f7260cceb7a14a3fac",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-682b28e8fc9e1b3e3444"
+      },
+      "scope_sha256": "7a1e1c478c80c521eaddaf74a0e909a50b662f7370cf8033fe2f866410230622",
+      "story_id": "synthetic-story-ee70b769b14a7f5d8561",
+      "story_title": "虚构岸芷健康观察",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-464e1d8e35dd7a02e1fe",
+        "related_news": [
+          {
+            "excerpt": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-464e1d8e35dd7a02e1fe",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "title": "虚构衡溪报名批次",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-ordinary-batch-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构衡溪报名批次｜虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "title": "虚构衡溪报名批次"
+      },
+      "case_id": "research-751a6c4f24734503d830",
+      "event_id": "synthetic-event-f832502089acc4fc1a56",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构衡溪报名批次",
+          "虚构青林志愿咨询",
+          "虚构竹泉教育服务回顾"
+        ],
+        "audience_summary": "关注教育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "年度省份批次",
+          "招生条件",
+          "参考信息与隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-3960a5d848021f5f7544",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-568e8156ba331b77c514"
+      },
+      "scope_sha256": "9f34f1766f8bff3ddff34a0d72249cd1d5199fbf5486679e172a44cf8d787ca3",
+      "story_id": "synthetic-story-f832502089acc4fc1a56",
+      "story_title": "虚构衡溪报名批次",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2fff9995b6c73e9bc24e",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fff9995b6c73e9bc24e",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构海星联赛改期｜虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-7699d988b2cea01e2f81",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9b6e14b998d7f8673736",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b6e14b998d7f8673736",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "让同一公告五篇同义稿同时占首页首屏。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-771dc2a4ae22559fc988",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d3f03b3525520644d007",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f03b3525520644d007",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构海星联赛改期｜虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-7e44ab47721caf552469",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e26087423f36588a8ae5",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e26087423f36588a8ae5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "继续向全站发送旧绕行行动通知。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-815a0bafd8be88ee904b",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5eb87e275c2c0fa3155",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5eb87e275c2c0fa3155",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构港桥跨境通行声明｜虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-840bcda1bb4b2a26659b",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e26087423f36588a8ae5",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e26087423f36588a8ae5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构溪洲公交绕行｜虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-89fed3a77b55e44e61bf",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6d8dc6d5fec574736cb1",
+        "related_news": [
+          {
+            "excerpt": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6d8dc6d5fec574736cb1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "title": "虚构听澜古建筑复原",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "AI复原就是完整历史原貌，无需标识。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "AI复原就是完整历史原貌，无需标识。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "title": "虚构听澜古建筑复原"
+      },
+      "case_id": "research-8ce6db754e8eeb751857",
+      "event_id": "synthetic-event-d1859e39e5ae089f4882",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构听澜古建筑复原",
+          "虚构松泉文化对谈",
+          "虚构轻舟博物馆数字导览"
+        ],
+        "audience_summary": "关注文化的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "知识解释",
+          "来源关联",
+          "复原与事实",
+          "长内容价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-356192f4a49448547f9a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-f06ec6f85da9dc64b504"
+      },
+      "scope_sha256": "aef54584fa621c68d20e44de614ff648be0550b7e6d1f537a814bc70329dff5f",
+      "story_id": "synthetic-story-d1859e39e5ae089f4882",
+      "story_title": "虚构听澜古建筑复原",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-59d478aed24d9fce219b",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-59d478aed24d9fce219b",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构映河事件调查｜虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-97296e4d95064c927dd6",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-06f8c55c1e6e0339ca27",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-06f8c55c1e6e0339ca27",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "集团整体利润已经上涨25%。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "集团整体利润已经上涨25%。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-9f6b6b935323365e1b59",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-f7c0f15a1ce118cc5635",
+        "related_news": [
+          {
+            "excerpt": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f7c0f15a1ce118cc5635",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "title": "虚构澄原公共服务试点",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-residents"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构澄原公共服务试点｜虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "title": "虚构澄原公共服务试点"
+      },
+      "case_id": "research-a3a4f92bafa430d5db62",
+      "event_id": "synthetic-event-bd6b986fb92c87035c35",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澄原公共服务试点",
+          "虚构云堤证照问答专题",
+          "虚构枫湾恢复服务"
+        ],
+        "audience_summary": "关注国内的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国内",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国内运营员",
+        "risk_focus": [
+          "政策效力",
+          "适用范围",
+          "办事价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-4df13247eac1ee23685a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-69e6603e0fe67807743f"
+      },
+      "scope_sha256": "c65fe8b898b4cd1586136264dc3068c2813b115b71781d5c0ff8c904e8932efa",
+      "story_id": "synthetic-story-bd6b986fb92c87035c35",
+      "story_title": "虚构澄原公共服务试点",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-f7c0f15a1ce118cc5635",
+        "related_news": [
+          {
+            "excerpt": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f7c0f15a1ce118cc5635",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。；虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "title": "虚构澄原公共服务试点",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "新政全国覆盖，人人自动享受待遇。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-residents"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "新政全国覆盖，人人自动享受待遇。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。",
+        "title": "虚构澄原公共服务试点"
+      },
+      "case_id": "research-a8e63e6e0a87fca18c07",
+      "event_id": "synthetic-event-bd6b986fb92c87035c35",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门发布正式通知：仅两区登记居民可从下周一办理，其他地区不适用。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澄原公共服务试点",
+          "虚构云堤证照问答专题",
+          "虚构枫湾恢复服务"
+        ],
+        "audience_summary": "关注国内的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国内",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国内运营员",
+        "risk_focus": [
+          "政策效力",
+          "适用范围",
+          "办事价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-4df13247eac1ee23685a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-69e6603e0fe67807743f"
+      },
+      "scope_sha256": "c65fe8b898b4cd1586136264dc3068c2813b115b71781d5c0ff8c904e8932efa",
+      "story_id": "synthetic-story-bd6b986fb92c87035c35",
+      "story_title": "虚构澄原公共服务试点",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-184ec3bb154a0efee011",
+        "related_news": [
+          {
+            "excerpt": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-184ec3bb154a0efee011",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。；虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "title": "虚构芦湾大风预警",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构芦湾大风预警｜虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。",
+        "title": "虚构芦湾大风预警"
+      },
+      "case_id": "research-ab836132ff6b7be52dba",
+      "event_id": "synthetic-event-18ad377349b7a4728450",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天09:00发布沿海甲乙两县大风蓝色预警，有效至15:00，其他地区不在范围。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6227ce5c6abb3a7a4983",
+          "text": "虚构芦湾气象台今天13:00解除甲县预警，乙县蓝色预警延长至18:00；旧截图不再代表两县当前状态。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构芦湾大风预警",
+          "虚构南汐降雨出行",
+          "虚构榆川高温预警"
+        ],
+        "audience_summary": "关注天气的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "天气",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟天气运营员",
+        "risk_focus": [
+          "权威预警",
+          "地区有效期",
+          "解除与其他部门决定"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45e98cc372e34e1d50c",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c78cd5350d843f21802b"
+      },
+      "scope_sha256": "300afeeed9f5d646e7f175810d7bd51b63348c7f6f3048971040c11c8ae5929e",
+      "story_id": "synthetic-story-18ad377349b7a4728450",
+      "story_title": "虚构芦湾大风预警",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-ca17eb57ca7a040f41c9",
+        "related_news": [
+          {
+            "excerpt": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ca17eb57ca7a040f41c9",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "title": "虚构澄原公共服务试点",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-registered-residents"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构澄原公共服务试点｜虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。",
+        "title": "虚构澄原公共服务试点"
+      },
+      "case_id": "research-afbff8ac476adfc19a61",
+      "event_id": "synthetic-event-bd6b986fb92c87035c35",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-648520552430cc335fa1",
+          "text": "虚构部门公开征求意见稿，仅讨论澄原两区试点，未公布生效日。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澄原公共服务试点",
+          "虚构云堤证照问答专题",
+          "虚构枫湾恢复服务"
+        ],
+        "audience_summary": "关注国内的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国内",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国内运营员",
+        "risk_focus": [
+          "政策效力",
+          "适用范围",
+          "办事价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-4df13247eac1ee23685a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-69e6603e0fe67807743f"
+      },
+      "scope_sha256": "c65fe8b898b4cd1586136264dc3068c2813b115b71781d5c0ff8c904e8932efa",
+      "story_id": "synthetic-story-bd6b986fb92c87035c35",
+      "story_title": "虚构澄原公共服务试点",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2fff9995b6c73e9bc24e",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fff9995b6c73e9bc24e",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "比赛照旧今晚开踢，不必提示延期。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "比赛照旧今晚开踢，不必提示延期。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-b1933d32ac4e734ec563",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec0d3e894c8384a1f40c",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec0d3e894c8384a1f40c",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构澜舟公司财报｜虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-b19f49f146726c5060df",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-464e1d8e35dd7a02e1fe",
+        "related_news": [
+          {
+            "excerpt": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-464e1d8e35dd7a02e1fe",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。；虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "title": "虚构衡溪报名批次",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "截止后仍承诺可点击旧链接补报。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-ordinary-batch-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "截止后仍承诺可点击旧链接补报。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。",
+        "title": "虚构衡溪报名批次"
+      },
+      "case_id": "research-b6464e42ff6d6bc6b0d5",
+      "event_id": "synthetic-event-f832502089acc4fc1a56",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构省级机构公告仅限本省普通批次补报名，截止今天18:00；提前批不适用。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-72e035d233512e4563ba",
+          "text": "虚构机构公告本批已截止，后续批次未公布，旧入口不能提交。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构衡溪报名批次",
+          "虚构青林志愿咨询",
+          "虚构竹泉教育服务回顾"
+        ],
+        "audience_summary": "关注教育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "教育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟教育运营员",
+        "risk_focus": [
+          "年度省份批次",
+          "招生条件",
+          "参考信息与隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-3960a5d848021f5f7544",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-568e8156ba331b77c514"
+      },
+      "scope_sha256": "9f34f1766f8bff3ddff34a0d72249cd1d5199fbf5486679e172a44cf8d787ca3",
+      "story_id": "synthetic-story-f832502089acc4fc1a56",
+      "story_title": "虚构衡溪报名批次",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9b6e14b998d7f8673736",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b6e14b998d7f8673736",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构远树新作发布｜虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-ba7af4dd6563f75e1b3b",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ada5004cc943ce7044f",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ada5004cc943ce7044f",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "部分核查足以确定所有指控均属实。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "部分核查足以确定所有指控均属实。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-bc63a2951f538bdcd9cb",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe177f4c46984a7ed0f1",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe177f4c46984a7ed0f1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "计划向全站主动通知：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-c18b656864ae5a561c49",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-43610557eac251eeb3a5",
+        "related_news": [
+          {
+            "excerpt": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-43610557eac251eeb3a5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。；虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "title": "虚构听澜古建筑复原",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "一处发现证明所有复原细节均为史实。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "一处发现证明所有复原细节均为史实。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。",
+        "title": "虚构听澜古建筑复原"
+      },
+      "case_id": "research-cf18fbe54ddab1ecd320",
+      "event_id": "synthetic-event-d1859e39e5ae089f4882",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构团队新增考古记录，只支持一处结构改动，其他复原细节仍是推测。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构听澜古建筑复原",
+          "虚构松泉文化对谈",
+          "虚构轻舟博物馆数字导览"
+        ],
+        "audience_summary": "关注文化的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "知识解释",
+          "来源关联",
+          "复原与事实",
+          "长内容价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-356192f4a49448547f9a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-f06ec6f85da9dc64b504"
+      },
+      "scope_sha256": "aef54584fa621c68d20e44de614ff648be0550b7e6d1f537a814bc70329dff5f",
+      "story_id": "synthetic-story-d1859e39e5ae089f4882",
+      "story_title": "虚构听澜古建筑复原",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-a2a121246e803930b7ef",
+        "related_news": [
+          {
+            "excerpt": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a2a121246e803930b7ef",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。；虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "title": "虚构曜芯实验室演示",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "处理时间减少40%等于能耗下降40%，全球第一。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "处理时间减少40%等于能耗下降40%，全球第一。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。",
+        "title": "虚构曜芯实验室演示"
+      },
+      "case_id": "research-d61c7234761b5f962edc",
+      "event_id": "synthetic-event-853488924387bd7485c7",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构团队补充限制：仅在测试任务减少40%处理时间，不等于节能40%或全行业领先。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构曜芯实验室演示",
+          "虚构青杉AI发布会视频",
+          "虚构流羽软件试用"
+        ],
+        "audience_summary": "关注科技的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "研究阶段",
+          "比较条件",
+          "AI标识和输入边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-cb2e0806aa6c80e1d252",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c0c2b3dcfe7ede10ae60"
+      },
+      "scope_sha256": "a5fbd1162fc3d0be083cfa889fd574c2297c5ef9957a3b518b2bfc6cd7e56ceb",
+      "story_id": "synthetic-story-853488924387bd7485c7",
+      "story_title": "虚构曜芯实验室演示",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5eb87e275c2c0fa3155",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5eb87e275c2c0fa3155",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "全面开放旅游，忽略仅限货运的原文。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "全面开放旅游，忽略仅限货运的原文。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-d9d571ee51c86a582f33",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6d8dc6d5fec574736cb1",
+        "related_news": [
+          {
+            "excerpt": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6d8dc6d5fec574736cb1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "title": "虚构听澜古建筑复原",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "culture"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构听澜古建筑复原｜虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。",
+        "title": "虚构听澜古建筑复原"
+      },
+      "case_id": "research-db81ce90b5983bf84f32",
+      "event_id": "synthetic-event-d1859e39e5ae089f4882",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-74fd1de5a1500392fd9b",
+          "text": "虚构博物馆发布有出处的数字复原，标注推测部分；原貌没有完整考古证据。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构听澜古建筑复原",
+          "虚构松泉文化对谈",
+          "虚构轻舟博物馆数字导览"
+        ],
+        "audience_summary": "关注文化的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "文化",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟文化运营员",
+        "risk_focus": [
+          "知识解释",
+          "来源关联",
+          "复原与事实",
+          "长内容价值"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-356192f4a49448547f9a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-f06ec6f85da9dc64b504"
+      },
+      "scope_sha256": "aef54584fa621c68d20e44de614ff648be0550b7e6d1f537a814bc70329dff5f",
+      "story_id": "synthetic-story-d1859e39e5ae089f4882",
+      "story_title": "虚构听澜古建筑复原",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-14f075819c366ab7b61d",
+        "related_news": [
+          {
+            "excerpt": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-14f075819c366ab7b61d",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "title": "虚构曜芯实验室演示",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "technology"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构曜芯实验室演示｜虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。",
+        "title": "虚构曜芯实验室演示"
+      },
+      "case_id": "research-e11c46bc32917d75da1f",
+      "event_id": "synthetic-event-853488924387bd7485c7",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-45a68fbf7fd4a786f739",
+          "text": "虚构厂商在指定设备和离线数据集展示性能，未提供跨设备测试或量产证明。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构曜芯实验室演示",
+          "虚构青杉AI发布会视频",
+          "虚构流羽软件试用"
+        ],
+        "audience_summary": "关注科技的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "科技",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟科技运营员",
+        "risk_focus": [
+          "研究阶段",
+          "比较条件",
+          "AI标识和输入边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-cb2e0806aa6c80e1d252",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-c0c2b3dcfe7ede10ae60"
+      },
+      "scope_sha256": "a5fbd1162fc3d0be083cfa889fd574c2297c5ef9957a3b518b2bfc6cd7e56ceb",
+      "story_id": "synthetic-story-853488924387bd7485c7",
+      "story_title": "虚构曜芯实验室演示",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe177f4c46984a7ed0f1",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe177f4c46984a7ed0f1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构溪洲公交绕行｜虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-eac875c30d84a90fd774",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-59d478aed24d9fce219b",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-59d478aed24d9fce219b",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "已证实全部违法，负责人有罪。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "已证实全部违法，负责人有罪。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-f0b77e8270c76c91c2e8",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

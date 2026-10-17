@@ -5,12 +5,17 @@ from typing import Annotated
 from uuid import UUID
 
 from anyio import CancelScope
-from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response
+from fastapi import APIRouter, Depends, Header, HTTPException, Path, Query, Request, Response
 from fastapi.responses import StreamingResponse
 from sqlalchemy.exc import SQLAlchemyError
+from temporalio.service import RPCError, RPCStatusCode
 
-from app.api.dependencies import DataLoopPrincipal, HotNewsPermission, require_hot_news_permission
+from app.api.dependencies import (DataLoopPrincipal, HotNewsPermission, WritingPermission,
+                                  DataLoopPermission, MemoryPermission, require_hot_news_permission)
 from app.conversation.streaming import StreamingConversation
+from app.conversation.receipt_reads import ReceiptReadCoordinator
+from app.conversation.tools import ConversationToolDenied
+from app.services.data_loop.orchestrator import DataLoopWorkflowAccessError
 from app.repositories.conversation import ConversationConflict, ConversationNotFound
 from app.schemas.conversation import (ConversationDetailResponse, ConversationListResponse,
                                       ConversationTurnView, ConversationView, CreateConversationRequest,
@@ -19,7 +24,24 @@ from app.schemas.conversation import (AppendConversationInputRequest, Conversati
 
 
 router = APIRouter(prefix="/api/v1/conversations", tags=["conversations"])
-Principal = Annotated[DataLoopPrincipal, Depends(require_hot_news_permission(HotNewsPermission.READ))]
+async def get_conversation_principal(
+    principal: Annotated[DataLoopPrincipal, Depends(require_hot_news_permission(HotNewsPermission.READ))],
+    writing_roles: Annotated[str | None, Header(alias="X-Writing-Roles")] = None,
+    data_loop_roles: Annotated[str | None, Header(alias="X-Data-Loop-Roles")] = None,
+    memory_roles: Annotated[str | None, Header(alias="X-Memory-Roles")] = None,
+) -> DataLoopPrincipal:
+    # The gateway authenticates once and asserts independent role groups. Never
+    # accept a permission from the wrong header or from the model/request body.
+    permissions = set(principal.permissions) & {item.value for item in HotNewsPermission}
+    for value, enum in ((writing_roles, WritingPermission), (data_loop_roles, DataLoopPermission),
+                        (memory_roles, MemoryPermission)):
+        permissions.update(item.strip() for item in (value or "").split(",")
+                           if item.strip() in {permission.value for permission in enum})
+    return DataLoopPrincipal(tenant_id=principal.tenant_id, user_id=principal.user_id,
+                            permissions=frozenset(permissions))
+
+
+Principal = Annotated[DataLoopPrincipal, Depends(get_conversation_principal)]
 
 
 class ConversationStreamingResponse(StreamingResponse):
@@ -43,7 +65,49 @@ def service(request: Request):
 @router.get("/runtime")
 async def conversation_runtime(request: Request, principal: Principal):
     return service(request).runtime_info(tenant_id=str(principal.tenant_id),
-        hot_news_query_allowed=HotNewsPermission.ADMIN.value in principal.permissions)
+        hot_news_query_allowed=HotNewsPermission.ADMIN.value in principal.permissions,
+        permissions=principal.permissions)
+
+
+async def _receipt_snapshot(request: Request, principal: DataLoopPrincipal, name: str, arguments: dict):
+    """Read through the same tenant-scoped HookSpec as chat, including admission."""
+    try:
+        async with asyncio.timeout(10):
+            tools = service(request)._tools
+            reads = getattr(request.app.state, "conversation_receipt_reads", None)
+            if reads is None:
+                reads = request.app.state.conversation_receipt_reads = ReceiptReadCoordinator()
+            result = await reads.read(tools=tools, name=name, arguments=arguments,
+                tenant_id=str(principal.tenant_id), user_id=str(principal.user_id),
+                permissions=principal.permissions)
+    except ConversationToolDenied as exc:
+        code = 403 if str(exc) == "hook_permission_denied" else 503
+        raise HTTPException(status_code=code, detail="receipt read is not available") from exc
+    except DataLoopWorkflowAccessError as exc:
+        raise HTTPException(status_code=404, detail="receipt entity not found") from exc
+    except RPCError as exc:
+        code = 404 if exc.status == RPCStatusCode.NOT_FOUND else 503
+        raise HTTPException(status_code=code, detail="receipt status unavailable") from exc
+    except (SQLAlchemyError, TimeoutError) as exc:
+        raise HTTPException(status_code=503, detail="receipt status unavailable") from exc
+    if result.get("not_found"):
+        raise HTTPException(status_code=404, detail="receipt entity not found")
+    return result
+
+
+@router.get("/receipts/writing-jobs/{job_id}")
+async def writing_receipt_snapshot(job_id: UUID, request: Request, response: Response, principal: Principal):
+    response.headers["Cache-Control"] = "private, no-store"
+    return await _receipt_snapshot(request, principal, "writing_job_status", {"job_id": str(job_id)})
+
+
+@router.get("/receipts/evaluation-runs/{workflow_id}")
+async def evaluation_receipt_snapshot(
+    workflow_id: Annotated[str, Path(pattern=r"^hot-news-data-loop-[0-9a-f]{64}$")],
+    request: Request, response: Response, principal: Principal,
+):
+    response.headers["Cache-Control"] = "private, no-store"
+    return await _receipt_snapshot(request, principal, "evaluation_status", {"workflow_id": workflow_id})
 
 
 @router.get("", response_model=ConversationListResponse)
@@ -116,7 +180,8 @@ async def send_message(conversation_id: UUID, body: SendConversationMessageReque
     try:
         return await service(request).send(tenant_id=str(principal.tenant_id), user_id=str(principal.user_id),
                                            conversation_id=conversation_id, request_id=body.request_id, content=body.content,
-                                           hot_news_query_allowed=HotNewsPermission.ADMIN.value in principal.permissions)
+                                           hot_news_query_allowed=HotNewsPermission.ADMIN.value in principal.permissions,
+                                           permissions=principal.permissions)
     except ConversationNotFound as exc:
         raise HTTPException(status_code=404, detail="conversation not found") from exc
     except ConversationConflict as exc:
@@ -149,6 +214,7 @@ async def stream_message(conversation_id: UUID, body: SendConversationMessageReq
         heartbeat_seconds=getattr(settings, "conversation_stream_heartbeat_seconds", 10),
         chunk_chars=getattr(settings, "conversation_stream_chunk_chars", 128),
         hot_news_query_allowed=HotNewsPermission.ADMIN.value in principal.permissions,
+        permissions=principal.permissions,
     )
     return ConversationStreamingResponse(stream.iter_events(), media_type="text/event-stream",
                                          headers={"Cache-Control": "no-cache, no-store", "X-Accel-Buffering": "no"})
@@ -174,6 +240,7 @@ async def append_turn_input(
                 turn_id=turn_id,
                 request_id=body.request_id,
                 content=body.content,
+                permissions=principal.permissions,
             )
     except ConversationNotFound as exc:
         raise HTTPException(status_code=404, detail="conversation or turn not found",) from exc

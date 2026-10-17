@@ -34,3 +34,16 @@ build/
 # rag
 rag-recall-demo/
 tmp/
+
+# Generated local BGE packages contain model weights and rebuildable vectors.
+/agent/data/news-bge-incremental-*/
+/agent/data/.news-bge-incremental-*.building/
+
+# Rebuildable local synthetic behavior packages; keep small manifests/reports.
+/output/behavior-tags/**/label_index.sqlite
+/output/behavior-tags/**/*.jsonl
+/output/behavior-tags/.*.building-*/
+
+# Rebuildable news-reader aggregates; retain manifests and scoring policies.
+/output/reader-profiles/**/*.sqlite
+/output/reader-profiles/.*.building-*/

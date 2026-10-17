@@ -1,0 +1,1320 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5da2563bec4713e159db",
+        "related_news": [
+          {
+            "excerpt": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5da2563bec4713e159db",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "title": "虚构霁川并购传闻",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "独家确认合并成功，建议马上买入必涨。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "独家确认合并成功，建议马上买入必涨。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "title": "虚构霁川并购传闻"
+      },
+      "case_id": "research-3d2e970b98ff0ac0c227",
+      "event_id": "synthetic-event-33e3c262d09a1860c910",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-33e3c262d09a1860c910",
+      "story_title": "虚构霁川并购传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-06f8c55c1e6e0339ca27",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-06f8c55c1e6e0339ca27",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构澜舟公司财报｜虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-47b1306b083220dc706d",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec0d3e894c8384a1f40c",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec0d3e894c8384a1f40c",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "集团净利率增长5%。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "集团净利率增长5%。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-4948f4934c412f43cffd",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-22b07cbe8f7514c242a8",
+        "related_news": [
+          {
+            "excerpt": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-22b07cbe8f7514c242a8",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "title": "虚构财经图解改版",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构财经图解改版｜虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "title": "虚构财经图解改版"
+      },
+      "case_id": "research-78ceb7be92fc41ae4d9a",
+      "event_id": "synthetic-event-a6093fc16639346ab6b4",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-a6093fc16639346ab6b4",
+      "story_title": "虚构财经图解改版",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-85099a2b220a1dfccf41",
+        "related_news": [
+          {
+            "excerpt": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-85099a2b220a1dfccf41",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "title": "虚构财经图解改版",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构财经图解改版｜虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "title": "虚构财经图解改版"
+      },
+      "case_id": "research-7b8222481a8670acdf4d",
+      "event_id": "synthetic-event-a6093fc16639346ab6b4",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-a6093fc16639346ab6b4",
+      "story_title": "虚构财经图解改版",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-06f8c55c1e6e0339ca27",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-06f8c55c1e6e0339ca27",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。；虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "集团整体利润已经上涨25%。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "集团整体利润已经上涨25%。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-9f6b6b935323365e1b59",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公司更正附表：上述为单业务毛利率，不代表集团毛利率或净利润变化。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ec0d3e894c8384a1f40c",
+        "related_news": [
+          {
+            "excerpt": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ec0d3e894c8384a1f40c",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构澜舟公司财报｜虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。",
+        "title": "虚构澜舟公司财报"
+      },
+      "case_id": "research-b19f49f146726c5060df",
+      "event_id": "synthetic-event-35beb23ad29be10106a4",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-95df3f2b112781eb3feb",
+          "text": "虚构公告显示毛利率从20%到25%，是提高5个百分点，相对增幅25%；不是净利率。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-35beb23ad29be10106a4",
+      "story_title": "虚构澜舟公司财报",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-089dc71da6bbea393fa5",
+        "related_news": [
+          {
+            "excerpt": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-089dc71da6bbea393fa5",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "title": "虚构霁川并购传闻",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构霁川并购传闻｜虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "title": "虚构霁川并购传闻"
+      },
+      "case_id": "research-bf3b150b91eb42ccb389",
+      "event_id": "synthetic-event-33e3c262d09a1860c910",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-33e3c262d09a1860c910",
+      "story_title": "虚构霁川并购传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-85099a2b220a1dfccf41",
+        "related_news": [
+          {
+            "excerpt": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-85099a2b220a1dfccf41",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。；虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "title": "虚构财经图解改版",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "完读下降也能证明新版全面有效，立即上线规则。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "完读下降也能证明新版全面有效，立即上线规则。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。",
+        "title": "虚构财经图解改版"
+      },
+      "case_id": "research-c1d30d1ebae666f0110a",
+      "event_id": "synthetic-event-a6093fc16639346ab6b4",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构分析补充发现完读率下降，尚无同口径对照；只能列观察结果和待验假设。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-a6093fc16639346ab6b4",
+      "story_title": "虚构财经图解改版",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-089dc71da6bbea393fa5",
+        "related_news": [
+          {
+            "excerpt": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-089dc71da6bbea393fa5",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。；虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "title": "虚构霁川并购传闻",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "初步接洽等于获批，股票收益确定。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "初步接洽等于获批，股票收益确定。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。",
+        "title": "虚构霁川并购传闻"
+      },
+      "case_id": "research-d8119d4dcebcd7c2ece7",
+      "event_id": "synthetic-event-33e3c262d09a1860c910",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "虚构公司正式公告仅开展初步接洽，尚无协议或审批结果。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-33e3c262d09a1860c910",
+      "story_title": "虚构霁川并购传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-5da2563bec4713e159db",
+        "related_news": [
+          {
+            "excerpt": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-5da2563bec4713e159db",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "title": "虚构霁川并购传闻",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构霁川并购传闻｜社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。",
+        "title": "虚构霁川并购传闻"
+      },
+      "case_id": "research-e54b3a97583a958be6cf",
+      "event_id": "synthetic-event-33e3c262d09a1860c910",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-0932ffb5f6f5ce2f1713",
+          "text": "社交账号称虚构两家公司即将合并，公开文件未确认，也没有具名采访。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-33e3c262d09a1860c910",
+      "story_title": "虚构霁川并购传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-22b07cbe8f7514c242a8",
+        "related_news": [
+          {
+            "excerpt": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-22b07cbe8f7514c242a8",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "title": "虚构财经图解改版",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "点击率增加证明图解改版使留存提高。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "finance"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "点击率增加证明图解改版使留存提高。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。",
+        "title": "虚构财经图解改版"
+      },
+      "case_id": "research-f6ade4b6bacf184b3536",
+      "event_id": "synthetic-event-a6093fc16639346ab6b4",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5e4ba188bf9618706f96",
+          "text": "虚构图解的点击率变高，但曝光位置、用户群和样本期间同时变动，没有随机实验。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构澜舟公司财报",
+          "虚构霁川并购传闻",
+          "虚构财经图解改版"
+        ],
+        "audience_summary": "关注财经的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "财经",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟财经运营员",
+        "risk_focus": [
+          "统计口径",
+          "百分比与百分点",
+          "投资表达边界"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-e85c968569ea0ae7dbea",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-0fc3da9b08225080a44c"
+      },
+      "scope_sha256": "5124c1749acdb9650f9cbf2d1a8825a6a04a54e29c0bda016f171943d9c132ff",
+      "story_id": "synthetic-story-a6093fc16639346ab6b4",
+      "story_title": "虚构财经图解改版",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

@@ -1,0 +1,105 @@
+[
+  {
+    "scenario_id": "sim-case-00",
+    "name": "常规消费",
+    "news_id": "sim-tn-v7-00001",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-01",
+    "name": "撤稿后立即屏蔽",
+    "news_id": "sim-tn-v7-00002",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-02",
+    "name": "权限受限",
+    "news_id": "sim-tn-v7-00003",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-03",
+    "name": "正文更正与旧版本清理",
+    "news_id": "sim-tn-v7-00004",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-04",
+    "name": "事件升温",
+    "news_id": "sim-tn-v7-00005",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-05",
+    "name": "事件回落",
+    "news_id": "sim-tn-v7-00006",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-06",
+    "name": "低样本",
+    "news_id": "sim-tn-v7-00007",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-07",
+    "name": "零点击",
+    "news_id": "sim-tn-v7-00008",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-08",
+    "name": "曝光升高点击不同比增长",
+    "news_id": "sim-tn-v7-00009",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-09",
+    "name": "有效消费退化",
+    "news_id": "sim-tn-v7-00010",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-10",
+    "name": "负反馈升高",
+    "news_id": "sim-tn-v7-00011",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "sim-case-11",
+    "name": "事实核查专题",
+    "news_id": "sim-tn-v7-00012",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "late-correction",
+    "name": "最后闭合小时迟到修订",
+    "window_start": "2026-10-13T23:00:00+08:00",
+    "revisions": [
+      1,
+      2
+    ],
+    "synthetic": true
+  },
+  {
+    "scenario_id": "open-window",
+    "name": "进行中窗口禁止进入完整小时榜",
+    "window_start": "2026-10-14T00:00:00+08:00",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "cross-channel-uv",
+    "name": "同小时跨渠道去重人数不能相加",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "missing-baseline",
+    "name": "历史样本不足保留NULL与样本数",
+    "synthetic": true
+  },
+  {
+    "scenario_id": "original-board",
+    "name": "原榜保序、并列与过滤后保留名次",
+    "synthetic": true
+  }
+]

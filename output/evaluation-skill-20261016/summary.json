@@ -1,0 +1,35 @@
+{
+  "scope": "skill_creation_and_offline_contract_validation_only",
+  "business_runtime_modified": false,
+  "enterprise_model_called": false,
+  "production_mutated": false,
+  "skill_validation": "passed",
+  "references": "passed",
+  "template_json": "passed",
+  "contract_tests_root": 138,
+  "contract_tests_delegated": 89,
+  "independent_forward_scenarios": 2,
+  "forward_scenarios": [
+    "interrupted_hot_news_evaluation_with_missing_runtime_identity",
+    "bundle_name_change_plus_ann_probe_without_human_relevance_labels"
+  ],
+  "static_audit": "corrected frontend dotenv, freeze/approval semantics, workflow call order, module execution wrapper",
+  "offline_validations_final": {
+    "hot_news_dataset": 60,
+    "dialogue_cases": 30,
+    "dialogue_turns": 33,
+    "operations_evolution_cases": 432,
+    "operations_research_cases": 144,
+    "data_writing_cases": 27,
+    "fault_scenarios_passed": 9
+  },
+  "initial_wrapper_error": "runpy without alter_sys caused __main__ annotation resolution error; corrected documentation, preserved first log and verified corrected call",
+  "skill_files_sha256": {
+    "skills/newsagent-evaluation/SKILL.md": "615bc68f48fdc826556c26403cbb08f49ffdc149a1fdf952985d009e47952427",
+    "skills/newsagent-evaluation/references/chain-map.md": "b59be5fe28c47ff0a72ce29a23b3284031e213345c3ccaabcebacf4fd2ced8fd",
+    "skills/newsagent-evaluation/references/commands.md": "7eb59079bbb9ffd8a40e842db62d2660b922516517050a9dadb5ff3886fbd1ab",
+    "skills/newsagent-evaluation/references/execution-contract.md": "6fd30057124e4810ddbed774fcde8b700d97a77d38f7e5209f044923be1111b3",
+    "skills/newsagent-evaluation/agents/openai.yaml": "2028dcecf89c031a3dabfdafe8e1684122147b1e49d806d365ea0a8fef08c477",
+    "skills/newsagent-evaluation/assets/run-spec.template.json": "77bf0b8bdbbfde02c9285e3fd366406250a0797f0b3f290b476142c3988d3657"
+  }
+}

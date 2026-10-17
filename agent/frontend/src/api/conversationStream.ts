@@ -1,5 +1,5 @@
 import { ApiError, buildUrl } from '@/api/http'
-import type { ConversationTurn, SendConversationMessage } from '@/api/conversations'
+import type { ConversationToolTrace, ConversationTurn, SendConversationMessage } from '@/api/conversations'
 
 export type ConversationStreamEvent =
   | {
@@ -24,6 +24,7 @@ export type ConversationStreamEvent =
         status: 'completed' | 'failed' | 'denied'
         attempts: number
         error_code: string | null
+        trace?: ConversationToolTrace
       }
     }
   | {
@@ -87,6 +88,17 @@ function nullableString(value: unknown): string | null {
   return value === null ? null : string(value)
 }
 
+function toolTrace(value: unknown): ConversationToolTrace {
+  const trace = record(value)
+  string(trace.name, 100)
+  toolStatus(trace.status)
+  integer(trace.attempts, 2)
+  record(trace.arguments)
+  record(trace.result)
+  nullableString(trace.error_code)
+  return trace as unknown as ConversationToolTrace
+}
+
 function terminalTurn(value: unknown): ConversationTurn {
   const turn = record(value)
   string(turn.id, 100)
@@ -100,15 +112,7 @@ function terminalTurn(value: unknown): ConversationTurn {
   if (!Array.isArray(turn.model_request_ids) || turn.model_request_ids.length > 128) protocolError()
   turn.model_request_ids.forEach((value) => string(value))
   if (!Array.isArray(turn.tools) || turn.tools.length > 6) protocolError()
-  for (const item of turn.tools) {
-    const trace = record(item)
-    string(trace.name, 100)
-    toolStatus(trace.status)
-    integer(trace.attempts, 2)
-    record(trace.arguments)
-    record(trace.result)
-    nullableString(trace.error_code)
-  }
+  turn.tools.forEach(toolTrace)
   return turn as unknown as ConversationTurn
 }
 
@@ -231,6 +235,9 @@ export async function streamConversationMessage(
         const current = tools.get(index)
         if (!current || current.finished || current.name !== toolName) protocolError()
         current.finished = true
+        const trace = data.trace === undefined ? undefined : toolTrace(data.trace)
+        if (trace && (trace.name !== toolName || trace.status !== data.status || trace.attempts !== data.attempts
+          || trace.error_code !== data.error_code)) protocolError()
         options.onEvent({
           type: 'tool_finished',
           data: {
@@ -239,6 +246,7 @@ export async function streamConversationMessage(
             status: toolStatus(data.status),
             attempts: integer(data.attempts, 2),
             error_code: nullableString(data.error_code),
+            ...(trace ? { trace } : {}),
           },
         })
       } else if (name === 'answer_delta') {

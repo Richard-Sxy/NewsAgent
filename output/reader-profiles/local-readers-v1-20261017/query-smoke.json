@@ -1,0 +1,60 @@
+{
+  "probe_version": "local-reader-aggregate-functional-v1",
+  "source_mode": "synthetic",
+  "source_release_sha256": "03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5",
+  "scope": {
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "window_start": "2026-10-14T11:00:00+00:00",
+    "window_end": "2026-10-14T12:00:00+00:00",
+    "news_count": 20
+  },
+  "package_counts": {
+    "content_bindings": 2474,
+    "covered_windows": 1488,
+    "reader_profiles": 52718
+  },
+  "source_event_rows": 308091,
+  "startup_hash_verification_ms": 198.443,
+  "uncached_local_aggregate_port": {
+    "samples": 30,
+    "p50_ms": 3.12,
+    "p95_ms": 3.588
+  },
+  "validated_cache_hits": {
+    "samples": 30,
+    "p50_ms": 2.589,
+    "p95_ms": 2.627
+  },
+  "sqlite_query_plan": [
+    "SEARCH reader_profiles USING INDEX sqlite_autoindex_reader_profiles_1 (tenant_id=? AND news_id=? AND window_start=? AND window_end=?)"
+  ],
+  "api_status": 200,
+  "permission_denied_status": 403,
+  "reader_counts": {
+    "20260819A02V9O00": 1,
+    "20260819A09ODV00": 1,
+    "20260822A05S7V00": 1,
+    "20260903A05JSG00": 1,
+    "20260903A06XH100": 1,
+    "20261007A033CD00": 1,
+    "20261009A0C6MC00": 1,
+    "20261010A04FWM00": 1,
+    "20261010A08B2K00": 1,
+    "20261011A09PY300": 1,
+    "20261012A09K2W00": 1,
+    "20261012A0BLV200": 1,
+    "20261012A0C4S900": 1,
+    "20261013A0C5V300": 1,
+    "20261013A0E0BU00": 1,
+    "synthetic:classic-v1:demo-news-009": 1,
+    "synthetic:enterprise-v1:demo-news-004": 1,
+    "synthetic:enterprise-v2:scale-news-000027": 1,
+    "synthetic:enterprise-v2:scale-news-000050": 1,
+    "synthetic:enterprise-v2:scale-news-000051": 1
+  },
+  "limitations": [
+    "Local synthetic aggregate reads only; OS page cache is uncontrolled.",
+    "Startup includes full aggregate artifact hash verification; timings exclude startup.",
+    "Does not measure enterprise network, production concurrency, model latency or million-reader workloads."
+  ]
+}

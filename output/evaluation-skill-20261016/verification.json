@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-10-16T07:07:28.403103+00:00",
+  "cwd": "/Users/shi/Project/myProject/NewsAgent/agent",
+  "interpreter": "/opt/homebrew/opt/python@3.11/bin/python3.11",
+  "tests": [
+    "tests/test_hot_news_evaluation.py",
+    "tests/test_hot_news_dialogue_eval.py",
+    "tests/test_retrieval_judgment_scoring.py",
+    "tests/test_retrieval_judgments.py",
+    "tests/test_bge_ann_evaluation.py",
+    "tests/test_data_analysis_engine.py",
+    "tests/test_data_writing_august_sample.py"
+  ],
+  "pytest_args": [
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider",
+    "-q"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 0.688,
+  "dotenv_read_guard": true,
+  "scope": "local_contract_tests_only_not_enterprise_quality",
+  "log": "offline-contract-tests.txt"
+}

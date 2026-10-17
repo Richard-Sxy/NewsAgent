@@ -15,6 +15,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from starlette.requests import ClientDisconnect
 from starlette.responses import JSONResponse
 
+from app.observability.telemetry import configure_telemetry
+from app.observability.web import TelemetryMiddleware
 from .engine import AnalysisInputError, validate_request
 from .runner import (
     AnalysisExecutionError, AnalysisRunner, _json_bytes, _reject_constant,
@@ -143,11 +145,13 @@ def create_app(
     async def lifespan(_app: FastAPI):
         nonlocal accepting
         accepting = True
+        telemetry = configure_telemetry("newsagent-analysis-service")
         try:
             yield
         finally:
             accepting = False
             interrupted = await _cancel_tasks(tuple(active))
+            await asyncio.to_thread(telemetry.shutdown)
             if interrupted:
                 raise asyncio.CancelledError
 
@@ -155,6 +159,8 @@ def create_app(
         title="Private aggregate analysis", docs_url=None, redoc_url=None,
         openapi_url=None, lifespan=lifespan,
     )
+
+    app.add_middleware(TelemetryMiddleware)
 
     def authorized(request: Request) -> bool:
         values = request.headers.getlist("authorization")

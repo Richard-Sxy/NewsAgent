@@ -1,0 +1,45 @@
+# 每次发布在 API/Worker 更新前单独执行，不能做每个 Pod 的 initContainer。
+# 数据库迁移凭据可独立管理，不给 API 常驻进程授予 DDL 权限。
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: newsagent-migrate
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-migrate
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: migrate
+          image: newsagent-api:base
+          workingDir: /app
+          command: [alembic, upgrade, head]
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef: {name: newsagent-migration-secrets, key: DATABASE_URL}
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: "1", memory: 1Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: tmp
+          emptyDir: {sizeLimit: 64Mi}

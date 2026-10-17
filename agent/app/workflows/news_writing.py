@@ -1,5 +1,6 @@
 """研究与写作流程。编排研究、人工确认、提纲、逐节系所、组装、审核和定点返工；审批轮次最多三轮。研究资料包场景在研究后完成结束。"""
 
+import hashlib
 from datetime import timedelta
 
 from temporalio import workflow
@@ -98,6 +99,11 @@ class NewsWritingWorkflow:
                 return await self._cancelled_result(request)
             if decision.action != "approve":
                 return await self._waiting_result(request, "研究返工已达到上限")
+        # A supplemental-research recovery already consumes the research
+        # revision. Its result still requires the same explicit human approval
+        # as an ordinary research package before any downstream step can run.
+        if decision.action != "approve":
+            return await self._waiting_result(request, "研究返工已达到上限")
         if request.scenario == "research_package":
             await self._transition_state(request, "research_completed")
             self._phase = "research_completed"
@@ -274,7 +280,7 @@ class NewsWritingWorkflow:
                 tenant_id=request.tenant_id,
                 job_id=request.job_id,
                 step_type=step_type,
-                step_key=step_key,
+                step_key=self._checkpoint_key(request, step_key),
                 attempt=attempt,
                 inputs=inputs,
             ),
@@ -286,6 +292,28 @@ class NewsWritingWorkflow:
         self._completed_steps += 1
         self._last_artifact_uri = result.artifact_uri
         return result
+
+    @staticmethod
+    def _checkpoint_key(request: NewsWritingInput, step_key: str) -> str:
+        namespace = request.recovery_checkpoint_namespace
+        if namespace is None:
+            # Ordinary checkpoint recovery and legacy Workflow inputs preserve
+            # their original keys and recorded Activity command sequence.
+            return step_key
+        if request.recovery_action != "research" or (
+            len(namespace) != 64
+            or any(character not in "0123456789abcdef" for character in namespace)
+        ):
+            raise ValueError("invalid research recovery checkpoint namespace")
+        # Include the whole research branch, not only the first package: old
+        # outline revisions, review rounds and final articles must not replay
+        # after the operator explicitly asks for fresh evidence.
+        key = f"{step_key}:recovery:{namespace}"
+        if len(key) > 150:
+            # Leave room in the 160-character AgentRun idempotency field for
+            # the attempt suffix even if the model supplies a long section ID.
+            key = f"{hashlib.sha256(step_key.encode('utf-8')).hexdigest()}:recovery:{namespace}"
+        return key
 
     # 等待人工请求
     async def _wait_for_human(self, gate: str) -> HumanDecision:

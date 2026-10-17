@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from hashlib import sha256
 from zoneinfo import ZoneInfo
 
 import httpx
@@ -39,8 +40,11 @@ class NewsAgentKnowledgeClient:
         text: str,
         metadata: dict | None,
     ) -> dict:
+        document_id = f"news-{article.news_id}"
+        if len(document_id) > 160:
+            document_id = f"news-{sha256(article.news_id.encode('utf-8')).hexdigest()}"
         return {
-            "document_id": f"news-{article.news_id}"[:160],
+            "document_id": document_id,
             "news_id": article.news_id,
             "content_version": 1,
             "title": article.title,

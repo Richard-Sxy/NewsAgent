@@ -28,8 +28,11 @@ const catalogError = ref<string | null>(null)
 const catalogReady = ref(false)
 const selectedScenarioId = ref('')
 const selectedScenario = computed(() => catalog.value?.scenarios.find((item) => item.id === selectedScenarioId.value))
+const corpusContent = computed(() => catalog.value?.datasetProfile === 'corpus-v6')
 const scaleSummary = computed(() => catalog.value
-  ? `每租户 ${catalog.value.newsPerTenant.toLocaleString('zh-CN')} 篇 · 共 ${catalog.value.totalNewsCount.toLocaleString('zh-CN')} 篇${catalog.value.datasetProfile === 'public-headlines-v3' ? '公开标题新闻记录' : '合成新闻'} · ${catalog.value.totalTenants} 个租户`
+  ? corpusContent.value
+    ? `${catalog.value.corpusCount} 篇真实新闻 · 每租户 ${catalog.value.newsPerTenant} 条，共 ${catalog.value.totalNewsCount} 条新闻记录 · ${catalog.value.totalTenants} 个租户`
+    : `每租户 ${catalog.value.newsPerTenant.toLocaleString('zh-CN')} 篇 · 共 ${catalog.value.totalNewsCount.toLocaleString('zh-CN')} 篇${catalog.value.datasetProfile === 'public-headlines-v3' ? '公开标题新闻记录' : '合成新闻'} · ${catalog.value.totalTenants} 个租户`
   : '')
 const aggregateSummary = computed(() => catalog.value
   ? `每篇 ${catalog.value.hoursPerNews} 小时；指标 ${catalog.value.totalMetricRowCount.toLocaleString('zh-CN')} 条，基线 ${catalog.value.totalBaselineRowCount.toLocaleString('zh-CN')} 条（两租户合计）。`
@@ -160,12 +163,18 @@ onBeforeUnmount(() => { disposed = true; catalogController?.abort(); cancelPrepa
     </div>
     <div v-if="localDemoMode" class="na-analysis-demo__prepare">
       <template v-if="catalog">
+        <p v-if="corpusContent" class="na-notice">真实新闻内容 · 模拟运营指标</p>
         <p class="na-muted">{{ scaleSummary }}</p>
         <p class="na-muted">{{ aggregateSummary }}</p>
         <p class="na-muted">指标覆盖 {{ catalog.windowStart.slice(0, 10) }} 至 {{ catalog.windowEnd.slice(0, 10) }}（结束不含），每篇 {{ catalog.hoursPerNews }} 个小时桶。</p>
         <p v-if="catalog.datasetProfile === 'public-headlines-v3'" class="na-notice">
           标题采自公开报道（{{ catalog.headlineDateStart }} 至 {{ catalog.headlineDateEnd }}），指标仍为10月3日的模拟数据。
           标题发布日期与模拟指标窗口相互独立，不能解释为这些报道的真实用户行为。
+        </p>
+        <p v-if="corpusContent" class="na-muted">
+          标题、正文、来源链接与发布时间来自腾讯新闻历史缓存，并与离线知识库对应。
+          新闻发布日期与模拟指标窗口相互独立，不能解释为这些报道的真实用户行为或今日热点。
+          栏目是版本化演示分类；本目录全部为图文，视频查询可能没有候选。
         </p>
         <label class="na-analysis-demo__scenario">
           企业情形模拟
@@ -191,8 +200,8 @@ onBeforeUnmount(() => { disposed = true; catalogController?.abort(); cancelPrepa
       <p class="na-muted">基线使用已存参考字段；趋势需读取两个兼容窗口，实际可比性由分析校验。</p>
       <p v-if="localDemoMode" class="na-muted">
         {{ catalog ? '所选情形采用目录中的固定窗口与相同取数口径。' : '标准演示采用10月3日22–23时与23–24时。' }}
-        准备会创建或复用两个合成热点运行，并在新会话读取来源。完成后由你发送分析问题。
-        合成情形用于核对计算行为，不能证明企业采集完整性或模型质量。
+        准备会创建或复用两个模拟指标窗口的热点运行，并在新会话读取来源。完成后由你发送分析问题。
+        运营指标与基线为模拟数据，本地推理仅用于测试，不能证明企业采集完整性或模型质量。
       </p>
     </details>
     <p v-if="progress" class="na-muted" role="status">{{ progress }}</p>

@@ -12,6 +12,7 @@ import boto3
 from botocore.client import BaseClient
 from botocore.exceptions import BotoCoreError, ClientError
 
+from app.observability.decorators import traced
 from app.config import Settings
 from app.domain.errors import ArtifactIntegrityError, ArtifactStoreError
 from app.domain.execution import ArtifactType
@@ -44,6 +45,7 @@ class S3ArtifactStore:
             region_name=settings.artifact_region,
         )
 
+    @traced("artifact.put")
     async def put_json(
         self,
         *,
@@ -80,6 +82,7 @@ class S3ArtifactStore:
             metadata=metadata or {},
         )
 
+    @traced("artifact.get")
     async def get_json(
         self,
         *,

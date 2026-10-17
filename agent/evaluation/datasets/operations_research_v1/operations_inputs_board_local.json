@@ -1,0 +1,1324 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-40a29bf3906f964ddba2",
+        "related_news": [
+          {
+            "excerpt": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-40a29bf3906f964ddba2",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "title": "虚构星原服务预约",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-service-eligible"
+          ]
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构星原服务预约｜虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "title": "虚构星原服务预约"
+      },
+      "case_id": "research-5be310617db674f66e90",
+      "event_id": "synthetic-event-ec2ca3c944d458eb3a88",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-ec2ca3c944d458eb3a88",
+      "story_title": "虚构星原服务预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e26087423f36588a8ae5",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e26087423f36588a8ae5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "继续向全站发送旧绕行行动通知。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-815a0bafd8be88ee904b",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-e26087423f36588a8ae5",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e26087423f36588a8ae5",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。；虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构溪洲公交绕行｜虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-89fed3a77b55e44e61bf",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认东段恢复，旧绕行路线不再适用；中段新增临时停靠说明。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-40a29bf3906f964ddba2",
+        "related_news": [
+          {
+            "excerpt": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-40a29bf3906f964ddba2",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。；虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "title": "虚构星原服务预约",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-service-eligible"
+          ]
+        },
+        "channel": "sms",
+        "conditions": {
+          "consent": "revoked",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "同意撤销后仍用短信再次通知。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。",
+        "title": "虚构星原服务预约"
+      },
+      "case_id": "research-8edc1f5863a9e73970c1",
+      "event_id": "synthetic-event-ec2ca3c944d458eb3a88",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构部门补充一个现场窗口，办理条件未变；用户已撤销主动通知同意。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-ec2ca3c944d458eb3a88",
+      "story_title": "虚构星原服务预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-f642bfbc9b0ca60cd892",
+        "related_news": [
+          {
+            "excerpt": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f642bfbc9b0ca60cd892",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "title": "虚构星原服务预约",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-service-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": true,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构星原服务预约｜虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "title": "虚构星原服务预约"
+      },
+      "case_id": "research-97ba1e8bf2297e29f9d0",
+      "event_id": "synthetic-event-ec2ca3c944d458eb3a88",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-ec2ca3c944d458eb3a88",
+      "story_title": "虚构星原服务预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-f642bfbc9b0ca60cd892",
+        "related_news": [
+          {
+            "excerpt": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-f642bfbc9b0ca60cd892",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "title": "虚构星原服务预约",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": [
+            "fixture-local-service-eligible"
+          ]
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": true,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "无视本次静默时段立即发通知。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。",
+        "title": "虚构星原服务预约"
+      },
+      "case_id": "research-a7ee93970fa09d568914",
+      "event_id": "synthetic-event-ec2ca3c944d458eb3a88",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-a4ed0c73d1f001f52f4a",
+          "text": "虚构办事点开通预约，提供线上和无障碍电话渠道，只有本区居民可办理。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-ec2ca3c944d458eb3a88",
+      "story_title": "虚构星原服务预约",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-05d8a4c8222c1eb2c55b",
+        "related_news": [
+          {
+            "excerpt": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-05d8a4c8222c1eb2c55b",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "title": "虚构泉湾城市漫步专题",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "额度已用尽仍连续发三条同义通知。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "title": "虚构泉湾城市漫步专题"
+      },
+      "case_id": "research-b3d29c11f471d0a60879",
+      "event_id": "synthetic-event-9de21b73ceaf681a6a63",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-9de21b73ceaf681a6a63",
+      "story_title": "虚构泉湾城市漫步专题",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-947c034af2295d378656",
+        "related_news": [
+          {
+            "excerpt": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-947c034af2295d378656",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "title": "虚构泉湾城市漫步专题",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "为提高点击每天重复群发同一路线。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "title": "虚构泉湾城市漫步专题"
+      },
+      "case_id": "research-bcafc702930fc9e6312c",
+      "event_id": "synthetic-event-9de21b73ceaf681a6a63",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-9de21b73ceaf681a6a63",
+      "story_title": "虚构泉湾城市漫步专题",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe177f4c46984a7ed0f1",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe177f4c46984a7ed0f1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "all_users",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "计划向全站主动通知：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-c18b656864ae5a561c49",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-05d8a4c8222c1eb2c55b",
+        "related_news": [
+          {
+            "excerpt": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-05d8a4c8222c1eb2c55b",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。；虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "title": "虚构泉湾城市漫步专题",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "exhausted",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构泉湾城市漫步专题｜虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。",
+        "title": "虚构泉湾城市漫步专题"
+      },
+      "case_id": "research-e35463b226209883bbc6",
+      "event_id": "synthetic-event-9de21b73ceaf681a6a63",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构主办方增加线上讲解，当前主动通知额度已用尽，站内访问仍可用。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-9de21b73ceaf681a6a63",
+      "story_title": "虚构泉湾城市漫步专题",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-947c034af2295d378656",
+        "related_news": [
+          {
+            "excerpt": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-947c034af2295d378656",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "title": "虚构泉湾城市漫步专题",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构泉湾城市漫步专题｜虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。",
+        "title": "虚构泉湾城市漫步专题"
+      },
+      "case_id": "research-e83a7dd10447116acd5b",
+      "event_id": "synthetic-event-9de21b73ceaf681a6a63",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-ec4e8cae2f83655c6016",
+          "text": "虚构专题提供可核实的步行路线和无障碍说明，非紧急内容，适合站内图文。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-9de21b73ceaf681a6a63",
+      "story_title": "虚构泉湾城市漫步专题",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-fe177f4c46984a7ed0f1",
+        "related_news": [
+          {
+            "excerpt": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-fe177f4c46984a7ed0f1",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [
+            "fixture-affected-region"
+          ],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构溪洲公交绕行｜虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。",
+        "title": "虚构溪洲公交绕行"
+      },
+      "case_id": "research-eac875c30d84a90fd774",
+      "event_id": "synthetic-event-cf0b5eda510bbb183ff0",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-15693ee54199d457080b",
+          "text": "虚构公交部门确认只影响溪洲东段两站，西段正常运营；已公布替代站点。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构溪洲公交绕行",
+          "虚构星原服务预约",
+          "虚构泉湾城市漫步专题"
+        ],
+        "audience_summary": "关注地方的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "地方",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟地方运营员",
+        "risk_focus": [
+          "地理范围",
+          "恢复信息",
+          "服务可达性和分发渠道"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-66c075bdfe43c06c7c4a",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-cb3c65402e0124485b6c"
+      },
+      "scope_sha256": "f7e2fd37a42876c768484b7e70f2cdfc16a93b00baf935dc2da0f89e06f6983e",
+      "story_id": "synthetic-story-cf0b5eda510bbb183ff0",
+      "story_title": "虚构溪洲公交绕行",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

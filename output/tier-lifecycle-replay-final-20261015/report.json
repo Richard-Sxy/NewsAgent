@@ -1,0 +1,1099 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "tenant_id": "tier-replay-synthetic",
+  "business_clock_start": "2026-10-15T12:00:00+00:00",
+  "config": {
+    "schema_version": 1,
+    "policy_version": "local-tier-lifecycle-v1",
+    "embedding_version": "native-local-embedding-v1",
+    "expected_embedding_dimensions": 32,
+    "chunking_version": "chars-overlap-local-v1",
+    "chunk_chars": 800,
+    "chunk_overlap": 80,
+    "max_chunks_per_document": 256,
+    "max_vector_coordinates_per_document": 65536,
+    "embedding_batch_size": 16,
+    "vector_batch_size": 64,
+    "hot_max_age_seconds": 120.0,
+    "cold_min_age_seconds": 480.0,
+    "reheat_hold_seconds": 180.0,
+    "migration_interval_seconds": 10.0,
+    "scan_batch_size": 100,
+    "dispatch_interval_seconds": 1.0,
+    "max_attempts": 3,
+    "retry_initial_interval_seconds": 1.0,
+    "retry_max_interval_seconds": 10.0,
+    "activity_timeout_seconds": 60.0,
+    "workflow_timeout_seconds": 300.0,
+    "task_queue": "knowledge-lifecycle-local",
+    "query_candidate_limit": 20,
+    "query_max_candidates": 80,
+    "query_refill_factor": 2,
+    "query_request_timeout_seconds": 10.0,
+    "query_rrf_k": 60,
+    "query_weights": {
+      "hot": 1.0,
+      "warm": 1.0,
+      "cold": 1.0
+    },
+    "query_max_concurrency": 4,
+    "max_search_rows": 50000
+  },
+  "measurement_scope": {
+    "model": "local deterministic hash embedding",
+    "index": "SQLite persisted vectors with exact inner-product scan",
+    "network_calls": false,
+    "temporal_dispatch_exercised": false,
+    "ann_performance": false,
+    "enterprise_model_quality": false,
+    "postgres_concurrency": false,
+    "timing_clock": "real monotonic perf_counter; business age uses explicit UTC clock"
+  },
+  "database_path": "/Users/shi/Project/myProject/NewsAgent/output/tier-lifecycle-replay-final-20261015/lifecycle.sqlite3",
+  "steps": [
+    {
+      "name": "seed_three_tiers",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "42c3c623d747446eb9f9d3a96593fcf9",
+          "current_job_id": "42c3c623d747446eb9f9d3a96593fcf9",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "current_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "current_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-cold",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "2a5356c20636177c81e86341565a443b2e8b62ace0a71748c21eba7cb3555c0d"
+        },
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "dc1567f9699dab74e4316a5e685f41d797254f498d416d03878f449180dba378"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "b0240003e1d9ef75773f1197d04891d317a70edb0e65fc336103c752894c80f5"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.018499995348975062,
+        "embedding_ms": 0.03041699528694153,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.6869590142741799,
+            "hits": 1
+          },
+          "warm": {
+            "search_and_gate_ms": 0.2981249999720603,
+            "hits": 1
+          },
+          "cold": {
+            "search_and_gate_ms": 0.3542079939506948,
+            "hits": 1
+          }
+        },
+        "fusion_ms": 0.006792019121348858,
+        "final_gate_ms": 0.19295798847451806,
+        "total_ms": 1.6745419998187572,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "correction_pending_hides_old",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 2,
+          "status": "pending",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "2c9565f62d944ec3907886ec73642800",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "current_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "current_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 0
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "dc1567f9699dab74e4316a5e685f41d797254f498d416d03878f449180dba378"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "b0240003e1d9ef75773f1197d04891d317a70edb0e65fc336103c752894c80f5"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.007041991921141744,
+        "embedding_ms": 0.024416018277406693,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.2857919898815453,
+            "hits": 1
+          },
+          "warm": {
+            "search_and_gate_ms": 0.2979580021928996,
+            "hits": 1
+          },
+          "cold": {
+            "search_and_gate_ms": 0.27895899256691337,
+            "hits": 0
+          }
+        },
+        "fusion_ms": 0.0040000013541430235,
+        "final_gate_ms": 0.2699169854167849,
+        "total_ms": 1.2383749999571592,
+        "returned_news": 2
+      }
+    },
+    {
+      "name": "correction_ready_after_restart",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "2c9565f62d944ec3907886ec73642800",
+          "current_job_id": "2c9565f62d944ec3907886ec73642800",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "current_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "current_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "e431514f050b661859b9ec5e7021aa0557f4c0e60db2267445caed388936d56e"
+        },
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "dc1567f9699dab74e4316a5e685f41d797254f498d416d03878f449180dba378"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "b0240003e1d9ef75773f1197d04891d317a70edb0e65fc336103c752894c80f5"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.01908399281091988,
+        "embedding_ms": 0.043790991185233,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.7871660054661334,
+            "hits": 1
+          },
+          "warm": {
+            "search_and_gate_ms": 0.3636669716797769,
+            "hits": 1
+          },
+          "cold": {
+            "search_and_gate_ms": 0.42162497993558645,
+            "hits": 1
+          }
+        },
+        "fusion_ms": 0.0050000089686363935,
+        "final_gate_ms": 0.21866700262762606,
+        "total_ms": 1.9515840103849769,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "cold_news_reheated_to_hot",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "c34a10f223074985b694ab2fc544191a",
+          "current_job_id": "c34a10f223074985b694ab2fc544191a",
+          "hold_until": "2026-10-15T12:03:00+00:00"
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "current_job_id": "44b3c7df5849479bb47089f1cd454e0a",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "current_job_id": "24494a8b92614cfcafee0b79277a6a83",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 2,
+        "warm": 1,
+        "cold": 0
+      },
+      "physical_vector_counts": {
+        "hot": 2,
+        "warm": 1,
+        "cold": 0
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "dc1567f9699dab74e4316a5e685f41d797254f498d416d03878f449180dba378"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "b0240003e1d9ef75773f1197d04891d317a70edb0e65fc336103c752894c80f5"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "hot",
+          "chunk_id": "cfe967cb11f0fb52049faa99bb544a8ce455efc6174965e8f41c564b2d225c50"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.02645901986397803,
+        "embedding_ms": 0.04654098302125931,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.47733300016261637,
+            "hits": 2
+          },
+          "warm": {
+            "search_and_gate_ms": 0.46195799950510263,
+            "hits": 1
+          },
+          "cold": {
+            "search_and_gate_ms": 0.26545801665633917,
+            "hits": 0
+          }
+        },
+        "fusion_ms": 0.01087499549612403,
+        "final_gate_ms": 0.705457990989089,
+        "total_ms": 2.122417005011812,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "age_hot_to_warm",
+      "business_time": "2026-10-15T12:04:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "current_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "934b0303eca9423eb2fdb1d628eef2ef",
+          "current_job_id": "934b0303eca9423eb2fdb1d628eef2ef",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 1,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 1,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "1af02c5eae535f9c49a84ef553864831137cc831b1cd1e8651650373b798710f"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "3d70e8dfed8db3ea36d8e2a2f9aaba91ca3f3252e333fde196ce8cb83d6b35e4"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.019875005818903446,
+        "embedding_ms": 0.028750015189871192,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.14279098832048476,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.3112909907940775,
+            "hits": 1
+          },
+          "cold": {
+            "search_and_gate_ms": 0.4304580215830356,
+            "hits": 2
+          }
+        },
+        "fusion_ms": 0.004375004209578037,
+        "final_gate_ms": 0.19370901281945407,
+        "total_ms": 1.2109170202165842,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "age_warm_to_cold",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "current_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "current_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "a7dd1430ae5ab1c5a110112b9afb18272f34c531646f18be893fe095c0776781"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "3d70e8dfed8db3ea36d8e2a2f9aaba91ca3f3252e333fde196ce8cb83d6b35e4"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.014874996850267053,
+        "embedding_ms": 0.03241602098569274,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.14570800703950226,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.12408301699906588,
+            "hits": 0
+          },
+          "cold": {
+            "search_and_gate_ms": 0.5238750018179417,
+            "hits": 3
+          }
+        },
+        "fusion_ms": 0.0043330073822289705,
+        "final_gate_ms": 0.19829199300147593,
+        "total_ms": 1.118083018809557,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "reheat_hold_expired",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "current_job_id": "fd038d78900e4c6db5df7e1665e1dd11",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "current_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "a7dd1430ae5ab1c5a110112b9afb18272f34c531646f18be893fe095c0776781"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "3d70e8dfed8db3ea36d8e2a2f9aaba91ca3f3252e333fde196ce8cb83d6b35e4"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.018624996300786734,
+        "embedding_ms": 0.042750005377456546,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.15920901205390692,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.12304200208745897,
+            "hits": 0
+          },
+          "cold": {
+            "search_and_gate_ms": 0.39037500391714275,
+            "hits": 3
+          }
+        },
+        "fusion_ms": 0.004417001036927104,
+        "final_gate_ms": 0.1925830147229135,
+        "total_ms": 1.0105000110343099,
+        "returned_news": 3
+      }
+    },
+    {
+      "name": "withdraw_blocks_before_cleanup",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "10ec2fe6826e45e89815b69bab7c17bb",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "current_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "a7dd1430ae5ab1c5a110112b9afb18272f34c531646f18be893fe095c0776781"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.0145830272231251,
+        "embedding_ms": 0.03258298966102302,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.1619580143596977,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.1230000052601099,
+            "hits": 0
+          },
+          "cold": {
+            "search_and_gate_ms": 0.370291993021965,
+            "hits": 2
+          }
+        },
+        "fusion_ms": 0.0036669953260570765,
+        "final_gate_ms": 0.2501250128261745,
+        "total_ms": 1.0532080195844173,
+        "returned_news": 2
+      }
+    },
+    {
+      "name": "withdraw_complete",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "10ec2fe6826e45e89815b69bab7c17bb",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "current_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "a7dd1430ae5ab1c5a110112b9afb18272f34c531646f18be893fe095c0776781"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.018457998521625996,
+        "embedding_ms": 0.03770901821553707,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.7810409879311919,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.5132080113980919,
+            "hits": 0
+          },
+          "cold": {
+            "search_and_gate_ms": 0.6803329742979258,
+            "hits": 2
+          }
+        },
+        "fusion_ms": 0.0048749789129942656,
+        "final_gate_ms": 0.2708749962039292,
+        "total_ms": 2.468124992446974,
+        "returned_news": 2
+      }
+    },
+    {
+      "name": "final_restart_preserves_serving_state",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "10ec2fe6826e45e89815b69bab7c17bb",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "current_job_id": "27a907f87b8a463fafb6a0363ab758e4",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "current_job_id": "c7b16678969d451baaecfb2c49ad4187",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "a7dd1430ae5ab1c5a110112b9afb18272f34c531646f18be893fe095c0776781"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "8853a1dd661735dc3fa8c27d6f2b607ec291f1cca5195206774a4b071aec6397"
+        }
+      ],
+      "trace": {
+        "policy_version": "local-tier-lifecycle-v1",
+        "queue_ms": 0.011832977179437876,
+        "embedding_ms": 0.03866699989885092,
+        "tiers": {
+          "hot": {
+            "search_and_gate_ms": 0.6728339940309525,
+            "hits": 0
+          },
+          "warm": {
+            "search_and_gate_ms": 0.35187500179745257,
+            "hits": 0
+          },
+          "cold": {
+            "search_and_gate_ms": 0.8168749918695539,
+            "hits": 2
+          }
+        },
+        "fusion_ms": 0.004250003257766366,
+        "final_gate_ms": 0.20654097897931933,
+        "total_ms": 2.2286659805104136,
+        "returned_news": 2
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "job_complete:upsert:seed-hot:1",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-warm:1",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:1",
+      "passed": true
+    },
+    {
+      "name": "one_seed_article_in_each_tier",
+      "passed": true
+    },
+    {
+      "name": "seed_query_returns_all_three",
+      "passed": true
+    },
+    {
+      "name": "duplicate_content_reuses_job",
+      "passed": true
+    },
+    {
+      "name": "old_revision_hidden_before_reindex",
+      "passed": true
+    },
+    {
+      "name": "pending_job_and_news_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "pending_job_payload_survives_restart",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:2",
+      "passed": true
+    },
+    {
+      "name": "corrected_news_returns_only_v2",
+      "passed": true
+    },
+    {
+      "name": "out_of_order_content_rejected",
+      "passed": true
+    },
+    {
+      "name": "same_revision_changed_body_rejected",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-cold:3",
+      "passed": true
+    },
+    {
+      "name": "reheated_news_has_one_hot_result",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-hot:2",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-warm:2",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-cold:4",
+      "passed": true
+    },
+    {
+      "name": "seed_hot_aged_to_warm",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-hot:3",
+      "passed": true
+    },
+    {
+      "name": "seed_hot_aged_to_cold",
+      "passed": true
+    },
+    {
+      "name": "reheat_hold_resumes_age_policy",
+      "passed": true
+    },
+    {
+      "name": "withdraw_test_has_vectors_before_cleanup",
+      "passed": true
+    },
+    {
+      "name": "withdraw_gate_is_immediate",
+      "passed": true
+    },
+    {
+      "name": "job_complete:retract:seed-cold:5",
+      "passed": true
+    },
+    {
+      "name": "duplicate_withdraw_reuses_job",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:2",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_rejects_old_content",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_cannot_reheat",
+      "passed": true
+    },
+    {
+      "name": "withdraw_cleanup_removes_physical_vectors",
+      "passed": true
+    },
+    {
+      "name": "final_state_survives_restart",
+      "passed": true
+    },
+    {
+      "name": "physical_projections_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "query_results_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_stays_absent_after_restart",
+      "passed": true
+    },
+    {
+      "name": "tenant_isolation",
+      "passed": true
+    }
+  ],
+  "final_active_news_counts": {
+    "hot": 0,
+    "warm": 0,
+    "cold": 2
+  }
+}

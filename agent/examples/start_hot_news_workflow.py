@@ -8,6 +8,8 @@ from temporalio.client import Client
 from temporalio.common import WorkflowIDReusePolicy
 
 from app.config import get_settings
+from app.behavior_tags.runtime import build_behavior_runtime
+from app.reader_profiles.factory import build_reader_profile_service
 from app.services.hot_news_orchestration import HotNewsRunRequest
 from app.workflows.contracts import HotNewsActivityOutcome
 from app.workflows.hot_news import (
@@ -21,6 +23,19 @@ from examples.hot_news_e2e_support import (
 async def run() -> None:
     settings = get_settings()
     dependencies = build_hot_news_e2e_dependencies()
+    behavior_runtime = build_behavior_runtime(settings)
+    behavior_context = behavior_runtime.context_for_window(
+        tenant_id=dependencies.tenant_id, window_start=dependencies.window_start,
+        window_end=dependencies.window_end,
+    ) if behavior_runtime is not None else None
+    reader_service = build_reader_profile_service(settings)
+    try:
+        reader_context = reader_service.context_identity_for_window(
+            tenant_id=dependencies.tenant_id, window_start=dependencies.window_start, window_end=dependencies.window_end,
+        ) if reader_service is not None else None
+    finally:
+        if reader_service is not None:
+            await reader_service.close()
 
     request = HotNewsRunRequest(
         tenant_id=dependencies.tenant_id,
@@ -30,6 +45,8 @@ async def run() -> None:
             dependencies.production_bundle_version
         ),
         workflow_version=HOT_NEWS_WORKFLOW_NAME,
+        retrieval_context_sha256=behavior_context.identity_sha256 if behavior_context is not None else None,
+        reader_profile_context_sha256=reader_context,
     )
     request.validate()
 

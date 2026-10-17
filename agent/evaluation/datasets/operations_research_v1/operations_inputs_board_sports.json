@@ -1,0 +1,1320 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1cb3da0a1c153ed6f321",
+        "related_news": [
+          {
+            "excerpt": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1cb3da0a1c153ed6f321",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "title": "虚构岚海杯进行中",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "继续以2比1作为官方最终赛果。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-live-score"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "继续以2比1作为官方最终赛果。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "title": "虚构岚海杯进行中"
+      },
+      "case_id": "research-0f0e4ce3af1245abb3d8",
+      "event_id": "synthetic-event-b7899b8f5c8d40f38172",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-b7899b8f5c8d40f38172",
+      "story_title": "虚构岚海杯进行中",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d3f03b3525520644d007",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f03b3525520644d007",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "北京时间当晚16:00即将开赛。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "北京时间当晚16:00即将开赛。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-1a9762e69a58c86dfdbf",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-e18827e751f603221042",
+        "related_news": [
+          {
+            "excerpt": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e18827e751f603221042",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "title": "虚构松岚战术解析",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-analysis-vs-fandom"
+          ],
+          "user_segments": []
+        },
+        "channel": "in_app",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "revoked"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构松岚战术解析｜虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "title": "虚构松岚战术解析"
+      },
+      "case_id": "research-2ac7c44fa4ed84aa6444",
+      "event_id": "synthetic-event-34073a3ea67e975d77ae",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-34073a3ea67e975d77ae",
+      "story_title": "虚构松岚战术解析",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-623ab58418dc31565530",
+        "related_news": [
+          {
+            "excerpt": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-623ab58418dc31565530",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "title": "虚构松岚战术解析",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-analysis-vs-fandom"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构松岚战术解析｜虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "title": "虚构松岚战术解析"
+      },
+      "case_id": "research-68878a8a8c8e55812860",
+      "event_id": "synthetic-event-34073a3ea67e975d77ae",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-34073a3ea67e975d77ae",
+      "story_title": "虚构松岚战术解析",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2fff9995b6c73e9bc24e",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fff9995b6c73e9bc24e",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构海星联赛改期｜虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-7699d988b2cea01e2f81",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d3f03b3525520644d007",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d3f03b3525520644d007",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构海星联赛改期｜虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-7e44ab47721caf552469",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-39ea92d896f9a0c2e64b",
+        "related_news": [
+          {
+            "excerpt": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-39ea92d896f9a0c2e64b",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "title": "虚构岚海杯进行中",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-live-score"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构岚海杯进行中｜虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "title": "虚构岚海杯进行中"
+      },
+      "case_id": "research-986eabaa2fe1368fa6d2",
+      "event_id": "synthetic-event-b7899b8f5c8d40f38172",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-b7899b8f5c8d40f38172",
+      "story_title": "虚构岚海杯进行中",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1cb3da0a1c153ed6f321",
+        "related_news": [
+          {
+            "excerpt": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1cb3da0a1c153ed6f321",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。；虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "title": "虚构岚海杯进行中",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-live-score"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构岚海杯进行中｜虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。",
+        "title": "虚构岚海杯进行中"
+      },
+      "case_id": "research-9f387d41fb07487fe12f",
+      "event_id": "synthetic-event-b7899b8f5c8d40f38172",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛会最终记录2比2，比赛已结束；暂态比分不是最终比分。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-b7899b8f5c8d40f38172",
+      "story_title": "虚构岚海杯进行中",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-2fff9995b6c73e9bc24e",
+        "related_news": [
+          {
+            "excerpt": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-2fff9995b6c73e9bc24e",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。；虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "比赛照旧今晚开踢，不必提示延期。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-kickoff-time"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "比赛照旧今晚开踢，不必提示延期。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。",
+        "title": "虚构海星联赛改期"
+      },
+      "case_id": "research-b1933d32ac4e734ec563",
+      "event_id": "synthetic-event-6885a78030fc0a3c5105",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会公告比赛为UTC 16:00，即北京时间次日00:00，旧预告北京时间20:00作废。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-1f8e0262c3517a1f4f03",
+          "text": "虚构赛会因场地原因宣布延期，新的开赛时间尚未确定，旧倒计时失效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-6885a78030fc0a3c5105",
+      "story_title": "虚构海星联赛改期",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-623ab58418dc31565530",
+        "related_news": [
+          {
+            "excerpt": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-623ab58418dc31565530",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "title": "虚构松岚战术解析",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-analysis-vs-fandom"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "重复比分快讯代替新战术解读。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。",
+        "title": "虚构松岚战术解析"
+      },
+      "case_id": "research-e11a8073eda3abd707a5",
+      "event_id": "synthetic-event-34073a3ea67e975d77ae",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-34073a3ea67e975d77ae",
+      "story_title": "虚构松岚战术解析",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-39ea92d896f9a0c2e64b",
+        "related_news": [
+          {
+            "excerpt": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-39ea92d896f9a0c2e64b",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "title": "虚构岚海杯进行中",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "2比1已夺冠，发布终场捷报。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-live-score"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "active"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "2比1已夺冠，发布终场捷报。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。",
+        "title": "虚构岚海杯进行中"
+      },
+      "case_id": "research-f14134f631a49b1fa6b6",
+      "event_id": "synthetic-event-b7899b8f5c8d40f38172",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-05313d362c4792a4b316",
+          "text": "虚构赛事官方记录比赛进行到第60分钟，比分2比1，尚未结束。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-b7899b8f5c8d40f38172",
+      "story_title": "虚构岚海杯进行中",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-e18827e751f603221042",
+        "related_news": [
+          {
+            "excerpt": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-e18827e751f603221042",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。；虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "title": "虚构松岚战术解析",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [
+            "research-sports-analysis-vs-fandom"
+          ],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "revoked"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "订阅撤销不影响继续发送球队通知。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。",
+        "title": "虚构松岚战术解析"
+      },
+      "case_id": "research-fc8dadf510f960d3b1a1",
+      "event_id": "synthetic-event-34073a3ea67e975d77ae",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队发布可核实的战术分析，只有关注该队用户订阅有效；无争议的新赛况。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5860440ccaa091432fda",
+          "text": "虚构球队新增训练公开课，当前用户已撤销该队主题订阅，通知同意仍有效。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构海星联赛改期",
+          "虚构岚海杯进行中",
+          "虚构松岚战术解析"
+        ],
+        "audience_summary": "关注体育的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "体育",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟体育运营员",
+        "risk_focus": [
+          "赛况状态",
+          "时间转换",
+          "订阅和专题增量"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-88f073087c7646c11603",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-fd30c2b0edc3aeb4c390"
+      },
+      "scope_sha256": "3d35b9f9fea18ed7e60de72cbb51fdeff3228496db94043c274d36fdaf5198ab",
+      "story_id": "synthetic-story-34073a3ea67e975d77ae",
+      "story_title": "虚构松岚战术解析",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

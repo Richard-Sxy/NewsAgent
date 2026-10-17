@@ -1,0 +1,5 @@
+# Apply last to the existing BGE project's base, snapshot, demo and query-model
+# overlays. Only the API image changes; keep warehouse volumes and workers.
+services:
+  api:
+    image: news-agent/writing-agent-service:bge-query-understanding-v5

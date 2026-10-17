@@ -1,0 +1,81 @@
+{
+  "plan_name": "enterprise-rpc-and-agent-boundary",
+  "plan_version": "2026-09-09.v1",
+  "total_scenarios": 9,
+  "passed_scenarios": 9,
+  "pass_rate": 1.0,
+  "cases": [
+    {
+      "scenario_id": "behavior-rpc-timeout",
+      "passed": true,
+      "actual_error_type": "EnterpriseRpcTimeoutError",
+      "actual_retryable": true,
+      "actual_action": "retry_once",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "content-rpc-unavailable",
+      "passed": true,
+      "actual_error_type": "EnterpriseRpcUnavailableError",
+      "actual_retryable": true,
+      "actual_action": "retry_once",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "retrieval-rate-limited",
+      "passed": true,
+      "actual_error_type": "EnterpriseRpcRateLimitError",
+      "actual_retryable": true,
+      "actual_action": "retry_once",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "rpc-authentication-rejected",
+      "passed": true,
+      "actual_error_type": "EnterpriseRpcAuthenticationError",
+      "actual_retryable": false,
+      "actual_action": "block_and_alert",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "behavior-watermark-incomplete",
+      "passed": true,
+      "actual_error_type": "HotNewsDataQualityError",
+      "actual_retryable": false,
+      "actual_action": "block_and_alert",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "baseline-version-drift",
+      "passed": true,
+      "actual_error_type": "HotNewsDataQualityError",
+      "actual_retryable": false,
+      "actual_action": "block_and_alert",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "content-partial-response",
+      "passed": true,
+      "actual_error_type": "EnterpriseRpcResponseError",
+      "actual_retryable": false,
+      "actual_action": "block_and_alert",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "model-hallucinated-evidence",
+      "passed": true,
+      "actual_error_type": "AgentOutputValidationError",
+      "actual_retryable": false,
+      "actual_action": "block_and_alert",
+      "metric_recorded": true
+    },
+    {
+      "scenario_id": "postgres-transient-failure",
+      "passed": true,
+      "actual_error_type": "HotNewsPersistenceError",
+      "actual_retryable": true,
+      "actual_action": "retry_once",
+      "metric_recorded": true
+    }
+  ]
+}

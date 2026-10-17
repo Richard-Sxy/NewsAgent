@@ -1,0 +1,105 @@
+{
+  "status": "dataset_valid",
+  "dataset_version": "2026-10-10.synthetic-evolution-v2",
+  "synthetic": true,
+  "annotation_status": "generated_pending_review",
+  "case_count": 432,
+  "board_count": 12,
+  "operator_count": 12,
+  "independent_story_count": 36,
+  "stage_count": 216,
+  "unique_news_snapshot_count": 216,
+  "splits": {
+    "development": 144,
+    "test": 144,
+    "validation": 144
+  },
+  "layers": {
+    "fresh_bad_case": 73,
+    "golden": 239,
+    "high_risk": 120
+  },
+  "decisions": {
+    "accepted": 86,
+    "corrected": 115,
+    "deferred": 81,
+    "rejected": 150
+  },
+  "categories": {
+    "analysis_error": 109,
+    "editorial_judgment": 72,
+    "positive_example": 86,
+    "strategy_judgment": 165
+  },
+  "boards": {
+    "体育": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "健康": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "国内": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "国际": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "天气": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "娱乐": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "教育": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "文化": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "本地": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "社会": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "科技": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    },
+    "财经": {
+      "development": 12,
+      "test": 12,
+      "validation": 12
+    }
+  },
+  "limitations": [
+    "synthetic_pending_review",
+    "no_formal_run_or_approved_label",
+    "not_executed",
+    "decision_reference_is_not_unique_business_truth",
+    "no_measured_or_causal_delivery_effect",
+    "story_split_is_synthetic_template_holdout_not_real_generalization",
+    "contrast_candidates_reuse_same_stage_analysis_snapshot"
+  ]
+}

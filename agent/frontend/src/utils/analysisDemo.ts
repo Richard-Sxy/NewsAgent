@@ -29,7 +29,7 @@ export interface EnterpriseDemoScenario {
   expected_signals: string[]
 }
 export interface EnterpriseDemoCatalog {
-  datasetProfile: 'enterprise-v1' | 'enterprise-v2' | 'public-headlines-v3' | 'timeline-v4'
+  datasetProfile: 'enterprise-v1' | 'enterprise-v2' | 'public-headlines-v3' | 'timeline-v4' | 'corpus-v6'
   datasetVersion: string
   datasetSha256: string
   schemaVersion?: string
@@ -49,6 +49,11 @@ export interface EnterpriseDemoCatalog {
   headlineCatalogSha256?: string
   headlineDateStart?: string
   headlineDateEnd?: string
+  corpusCatalogSha256?: string
+  corpusCount?: number
+  newsContentSource?: 'tencent-news-cache'
+  metricDataSynthetic?: true
+  categoryDataSynthetic?: true
   scenarios: EnterpriseDemoScenario[]
 }
 type DemoWindow = { window_start: string; window_end: string }
@@ -75,9 +80,11 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
       && dataset.window_start === '2026-10-03T00:00:00+08:00'
       && dataset.window_end === '2026-10-04T00:00:00+08:00') return null
   const profile = dataset.dataset_profile
-  if (profile !== 'enterprise-v1' && profile !== 'enterprise-v2' && profile !== 'public-headlines-v3' && profile !== 'timeline-v4') throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
+  if (profile !== 'enterprise-v1' && profile !== 'enterprise-v2' && profile !== 'public-headlines-v3'
+      && profile !== 'timeline-v4' && profile !== 'corpus-v6') throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   const publicHeadlines = profile === 'public-headlines-v3'
-  const timeline = profile === 'timeline-v4'
+  const corpus = profile === 'corpus-v6'
+  const timeline = profile === 'timeline-v4' || corpus
   const scaled = profile === 'enterprise-v2' || publicHeadlines || timeline
   const hours = timeline ? 720 : 24
   const sampleStart = timeline ? '2026-09-10T00:00:00+08:00' : '2026-10-03T00:00:00+08:00'
@@ -86,7 +93,14 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   }
   const news = scaled ? dataset.news_per_tenant : 12
-  if (typeof news !== 'number' || !Number.isInteger(news) || scaled && !(publicHeadlines ? [120, 1200] : [120, 1200, 12000]).includes(news)) {
+  if (typeof news !== 'number' || !Number.isInteger(news)
+      || scaled && !(corpus ? [120] : publicHeadlines ? [120, 1200] : [120, 1200, 12000]).includes(news)) {
+    throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
+  }
+  if (corpus && (dataset.corpus_count !== 120
+      || typeof dataset.corpus_catalog_sha256 !== 'string' || !/^[a-f0-9]{64}$/.test(dataset.corpus_catalog_sha256)
+      || dataset.news_content_source !== 'tencent-news-cache'
+      || dataset.metric_data_synthetic !== true || dataset.category_data_synthetic !== true)) {
     throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
   }
   if (publicHeadlines && (typeof dataset.headline_catalog_count !== 'number'
@@ -108,7 +122,7 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
   const schemaVersion = scaled ? dataset.schema_version : top.schema_version
   const schemaSha256 = scaled ? dataset.schema_sha256 : top.schema_sha256
   if (scaled || schemaVersion != null || schemaSha256 != null) {
-    if (schemaVersion !== (timeline ? 'news-warehouse-v4' : publicHeadlines ? 'news-warehouse-v3' : scaled ? 'news-warehouse-v2' : 'news-warehouse-v1')
+    if (schemaVersion !== (corpus ? 'news-warehouse-v6' : timeline ? 'news-warehouse-v4' : publicHeadlines ? 'news-warehouse-v3' : scaled ? 'news-warehouse-v2' : 'news-warehouse-v1')
         || typeof schemaSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(schemaSha256)
         || scaled && (top.schema_version !== schemaVersion || top.schema_sha256 !== schemaSha256)) {
       throw new AnalysisDemoPreparationError('scenario_catalog_invalid')
@@ -156,7 +170,10 @@ export function enterpriseDemoCatalog(config: unknown): EnterpriseDemoCatalog | 
     totalBaselineRowCount: counts.total_baseline_row_count, windowStart: sampleStart, windowEnd: sampleEnd, hoursPerNews: hours, scenarios,
     ...(publicHeadlines ? { headlineCatalogCount: dataset.headline_catalog_count as number,
       headlineCatalogSha256: dataset.headline_catalog_sha256 as string,
-      headlineDateStart: dataset.headline_date_start as string, headlineDateEnd: dataset.headline_date_end as string } : {}) }
+      headlineDateStart: dataset.headline_date_start as string, headlineDateEnd: dataset.headline_date_end as string } : {}),
+    ...(corpus ? { corpusCatalogSha256: dataset.corpus_catalog_sha256 as string, corpusCount: 120,
+      newsContentSource: 'tencent-news-cache' as const, metricDataSynthetic: true as const,
+      categoryDataSynthetic: true as const } : {}) }
 }
 
 function catalogIdentity(catalog: EnterpriseDemoCatalog): unknown[] {
@@ -164,7 +181,9 @@ function catalogIdentity(catalog: EnterpriseDemoCatalog): unknown[] {
     catalog.schemaSha256, catalog.newsPerTenant, catalog.newsCount, catalog.metricRowCount,
     catalog.baselineRowCount, catalog.totalTenants, catalog.totalNewsCount, catalog.totalMetricRowCount,
     catalog.totalBaselineRowCount, catalog.windowStart, catalog.windowEnd, catalog.hoursPerNews, catalog.headlineCatalogCount,
-    catalog.headlineCatalogSha256, catalog.headlineDateStart, catalog.headlineDateEnd]
+    catalog.headlineCatalogSha256, catalog.headlineDateStart, catalog.headlineDateEnd,
+    catalog.corpusCatalogSha256, catalog.corpusCount, catalog.newsContentSource,
+    catalog.metricDataSynthetic, catalog.categoryDataSynthetic]
 }
 
 export class AnalysisDemoPreparationError extends Error {
@@ -267,7 +286,7 @@ export async function prepareAnalysisDemo(options: {
   }
   const runIds: string[] = []
   for (const [index, window] of windows.entries()) {
-    onProgress?.(`正在创建或复用第 ${index + 1} 个合成热点窗口…`)
+    onProgress?.(`正在创建或复用第 ${index + 1} 个模拟指标窗口…`)
     const result = await waitActive(() => hotNews.runLocalSimulation({
       question, scenario_id: 'news-ranking', ...window,
     }), signal)

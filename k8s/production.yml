@@ -1,0 +1,391 @@
+# 应通过 kubectl apply -k k8s 渲染，禁止单独 apply 本文件。
+# Secret、企业中间件和鉴权 Gateway 均由部署平台提供。
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: newsagent
+automountServiceAccountToken: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-api
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-api}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxSurge: 1, maxUnavailable: 0}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-api
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 60
+      # TKE 开通 TCR 免密拉取；否则在这里和各 Worker/前端 Pod 添加 imagePullSecrets。
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: api
+          image: newsagent-api:base
+          imagePullPolicy: IfNotPresent
+          command: [uvicorn, "app.main:app", --host, "0.0.0.0", --port, "8000", --timeout-graceful-shutdown, "45"]
+          ports: [{name: http, containerPort: 8000}]
+          envFrom:
+            - configMapRef: {name: newsagent-settings}
+            - secretRef: {name: newsagent-secrets}
+          volumeMounts:
+            - {name: runtime, mountPath: /etc/newsagent/runtime, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+          startupProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 60
+          livenessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec: {command: [python, -c, "import time; time.sleep(5)"]}
+          resources:
+            requests: {cpu: 250m, memory: 512Mi}
+            limits: {cpu: "2", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+      volumes:
+        - name: runtime
+          configMap: {name: newsagent-runtime}
+        - name: tmp
+          emptyDir: {sizeLimit: 128Mi}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels: {app.kubernetes.io/name: newsagent-api}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsagent-api
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/name: newsagent-api}
+  ports: [{name: http, port: 8000, targetPort: http}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-writing-worker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-writing-worker}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-writing-worker
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 120
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: worker
+          image: newsagent-worker:base
+          command: [python, -m, app.worker]
+          envFrom:
+            - configMapRef: {name: newsagent-settings}
+            - secretRef: {name: newsagent-secrets}
+          volumeMounts:
+            - {name: runtime, mountPath: /etc/newsagent/runtime, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+          resources:
+            requests: {cpu: 250m, memory: 512Mi}
+            limits: {cpu: "2", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+      volumes:
+        - name: runtime
+          configMap: {name: newsagent-runtime}
+        - name: tmp
+          emptyDir: {sizeLimit: 128Mi}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-outbox-worker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-outbox-worker}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-outbox-worker
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 60
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: worker
+          image: newsagent-worker:base
+          command: [python, -m, app.outbox_worker]
+          envFrom:
+            - configMapRef: {name: newsagent-settings}
+            - secretRef: {name: newsagent-secrets}
+          volumeMounts:
+            - {name: tmp, mountPath: /tmp}
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: "1", memory: 512Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+      volumes:
+        - name: tmp
+          emptyDir: {sizeLimit: 64Mi}
+---
+# 企业依赖工厂 + 完整可执行 Bundle 就绪后，修改 replicas 再发布。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-hot-news-worker
+spec:
+  replicas: 0
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-hot-news-worker}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-hot-news-worker
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 120
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: worker
+          image: newsagent-worker:base
+          command: [python, -m, app.hot_news_worker]
+          envFrom:
+            - configMapRef: {name: newsagent-settings}
+            - secretRef: {name: newsagent-secrets}
+          volumeMounts:
+            - {name: runtime, mountPath: /etc/newsagent/runtime, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+          resources:
+            requests: {cpu: 500m, memory: 1Gi}
+            limits: {cpu: "2", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+      volumes:
+        - name: runtime
+          configMap: {name: newsagent-runtime}
+        - name: tmp
+          emptyDir: {sizeLimit: 128Mi}
+---
+# 完整可执行 Bundle 就绪后才启用；不自动批准、激活配置或创建 Schedule。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-data-loop-worker
+spec:
+  replicas: 0
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-data-loop-worker}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-data-loop-worker
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 120
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: worker
+          image: newsagent-worker:base
+          command: [python, -m, app.data_loop_worker]
+          envFrom:
+            - configMapRef: {name: newsagent-settings}
+            - secretRef: {name: newsagent-secrets}
+          volumeMounts:
+            - {name: runtime, mountPath: /etc/newsagent/runtime, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+          resources:
+            requests: {cpu: 500m, memory: 1Gi}
+            limits: {cpu: "2", memory: 2Gi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+      volumes:
+        - name: runtime
+          configMap: {name: newsagent-runtime}
+        - name: tmp
+          emptyDir: {sizeLimit: 128Mi}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newsagent-frontend
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-frontend}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxSurge: 1, maxUnavailable: 0}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: newsagent-frontend
+        app.kubernetes.io/part-of: newsagent
+    spec:
+      serviceAccountName: newsagent
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: frontend
+          image: newsagent-frontend:base
+          ports: [{name: http, containerPort: 8080}]
+          readinessProbe:
+            httpGet: {path: /healthz, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet: {path: /healthz, port: http}
+            periodSeconds: 20
+            timeoutSeconds: 3
+          lifecycle:
+            preStop:
+              exec: {command: [sh, -c, "sleep 5"]}
+          resources:
+            requests: {cpu: 50m, memory: 64Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: config, mountPath: /usr/share/nginx/html/config.json, subPath: config.json, readOnly: true}
+            - {name: cache, mountPath: /var/cache/nginx}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: config
+          configMap: {name: newsagent-frontend}
+        - name: cache
+          emptyDir: {sizeLimit: 64Mi}
+        - name: tmp
+          emptyDir: {sizeLimit: 64Mi}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels: {app.kubernetes.io/name: newsagent-frontend}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsagent-frontend
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/name: newsagent-frontend}
+  ports: [{name: http, port: 80, targetPort: http}]
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: newsagent-api
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-api}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: newsagent-frontend
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels: {app.kubernetes.io/name: newsagent-frontend}
+---
+# 需 TKE CNI/NetworkPolicy 实际支持并启用。只允许本命名空间可信 Gateway 入站。
+# 采集器入库、监控也通过 Gateway；不限制企业依赖出站，网段由平台侧治理。
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: newsagent-api-from-gateway
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: newsagent-api}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: newsagent-gateway}
+      ports: [{protocol: TCP, port: 8000}]

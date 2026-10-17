@@ -142,4 +142,6 @@ class NativeProductionBundleRuntimeRegistry:
             tenant_id=tenant_id,
             prompt_version=spec.analysis_prompt_version,
             model_route=spec.model_version,
+            model_profile_id=spec.model_profile_id,
+            output_schema_version=spec.output_schema_version,
         )

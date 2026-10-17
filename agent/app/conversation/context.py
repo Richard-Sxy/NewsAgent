@@ -90,7 +90,7 @@ class LengthBasedContext:
             )
             for turn in page:
                 cursor = ContextCursor(created_at=turn.created_at, id=turn.id)
-                self.turns.append((cursor, {"user": turn.user_content,
+                self.turns.append((cursor, {"user": TurnInputSnapshot.from_turn(turn).message(),
                     "assistant": turn.assistant_content or "",
                     "tools": [self.project(trace) for trace in turn.tools]}))
                 await self.fit(budget=budget, model_ids=model_ids, traces=[], notify=notify, measure=measure)
@@ -159,7 +159,10 @@ class LengthBasedContext:
         retained, seen = [], set()
         for tool in reversed(tools):
             if tool.get("status") != "completed" or tool.get("name") not in {
-                "list_hot_news", "read_hot_news", "query_hot_news", "analyze_hot_news_data"
+                "list_hot_news", "read_hot_news", "query_hot_news", "analyze_hot_news_data",
+                "list_writing_jobs", "writing_job_status", "start_writing_intent",
+                "save_short_term_memory", "propose_long_term_memory", "memory_status", "save_feedback_case",
+                "start_data_loop", "evaluation_status", "propose_bundle_candidate",
             }:
                 continue
             item = deepcopy(tool)
@@ -171,6 +174,34 @@ class LengthBasedContext:
             elif item["name"] == "analyze_hot_news_data":
                 original = item["result"].get("source", {})
                 item["result"] = {"source": {**source(original), "reference": source(original.get("reference", {}))}}
+            elif item["name"] == "list_writing_jobs":
+                item["result"] = {"items": [{key: row[key] for key in ("id", "topic") if key in row}
+                                            for row in item["result"].get("items", [])]}
+            elif item["name"] in {"writing_job_status", "start_writing_intent"}:
+                job = item["result"].get("job", {})
+                if not job:
+                    continue
+                item["result"] = {"job": {key: job[key] for key in ("id", "topic") if key in job}}
+            elif item["name"] in {"save_short_term_memory", "propose_long_term_memory", "memory_status"}:
+                memory = item["result"].get("memory")
+                if not memory:
+                    continue
+                item["result"] = {"memory": {key: memory[key] for key in ("id", "tier")}}
+            elif item["name"] == "save_feedback_case":
+                feedback = item["result"].get("feedback")
+                if not feedback:
+                    continue
+                item["result"] = {"feedback": {key: feedback[key] for key in ("case_id", "run_id", "news_id")}}
+            elif item["name"] in {"start_data_loop", "evaluation_status"}:
+                run = item["result"].get("run", {})
+                if not run.get("workflow_id"):
+                    continue
+                item["result"] = {"run": {"workflow_id": run["workflow_id"]}}
+            elif item["name"] == "propose_bundle_candidate":
+                candidate = item["result"].get("candidate", {})
+                if not candidate.get("candidate_id"):
+                    continue
+                item["result"] = {"candidate": {"candidate_id": candidate["candidate_id"]}}
             if item["name"] in {"read_hot_news", "query_hot_news"}:
                 # Long titles do not displace trustworthy identities.
                 item["result"]["items"] = [{**row, "title": row.get("title", "")[:120]}

@@ -9,6 +9,10 @@ import * as vue from 'vue'
 
 const apiSource = readFileSync(new URL('../src/api/conversations.ts', import.meta.url), 'utf8')
 const viewSource = readFileSync(new URL('../src/views/ChatView.vue', import.meta.url), 'utf8')
+const turnDurationModule = loadModule(
+  readFileSync(new URL('../src/utils/turnDuration.ts', import.meta.url), 'utf8'),
+  {},
+)
 
 class ApiError extends Error {
   constructor(status, detail = 'test error') {
@@ -80,6 +84,7 @@ async function harness(t, overrides = {}, selectedId = 'a', controls = {}) {
     detail: async (id) => ({ conversation: conversation(id), turns: [] }),
     remove: async () => undefined,
     restore: async (id) => conversation(id),
+    appendInput: async (_conversationId, turnId, body) => ({ turn_id: turnId, request_id: body.request_id, status: 'pending' }),
     sendStream: async (_id, request) => turn(request.request_id),
     ...overrides,
   }
@@ -98,6 +103,8 @@ async function harness(t, overrides = {}, selectedId = 'a', controls = {}) {
     '@/api/conversations': { conversationsApi: api },
     '@/utils/errors': { describeError: (cause) => cause.message },
     '@/utils/format': { formatDateTime: (value) => value },
+    '@/utils/turnDuration': turnDurationModule,
+    '@/utils/conversationPresentation': { preferCapabilityCards: () => false },
     '@/stores/confirm': { useConfirmStore: () => ({ ask: async (options) => {
       confirmations.push(options)
       return controls.confirm ? controls.confirm(options) : true
@@ -109,6 +116,7 @@ async function harness(t, overrides = {}, selectedId = 'a', controls = {}) {
     '@/components/conversation/AnalysisDemoPanel.vue': { default: {} },
     '@/components/conversation/AnalysisResultCard.vue': { default: {} },
     '@/components/conversation/RelatedArticlesPanel.vue': { default: {} },
+    '@/components/conversation/CapabilityReceiptsPanel.vue': { default: {} },
   }).default
   let scope = vue.effectScope()
   const state = scope.run(() => component.setup({}, { expose: () => {} }))
@@ -161,6 +169,55 @@ test('runtime fetch failure stays unknown instead of claiming a real model conne
   assert.equal(state.runtimeInfo.value, null)
   assert.match(state.runtimeError.value, /无法确认/)
   assert.ok(!state.runtimeError.value.includes('private failure'))
+})
+
+test('opening the chat starts with an empty draft while an explicit conversation link restores history', async (t) => {
+  const blank = await harness(t, {}, '')
+  await blank.mount()
+  assert.equal(blank.state.selectedConversationId.value, null)
+  assert.equal(blank.state.draft.value, '')
+  assert.equal(blank.state.conversations.value.length, 2)
+  const linked = await harness(t, {}, 'a')
+  await linked.mount()
+  assert.equal(linked.state.selectedConversationId.value, 'a')
+  assert.equal(linked.state.conversation.value.id, 'a')
+})
+
+test('quick examples follow runtime permissions and only fill the draft', async (t) => {
+  let sent = 0
+  let created = 0
+  const { state, mount } = await harness(t, {
+    runtime: async () => ({ available_tools: ['list_hot_news'], query_enabled: false }),
+    create: async () => { created++; return conversation('new') },
+    sendStream: async (_id, request) => { sent++; return turn(request.request_id) },
+  }, '')
+  await mount()
+  assert.deepEqual(state.quickExamples.value.map((item) => item.label), ['读取热点报告'])
+  state.runtimeInfo.value = { available_tools: ['query_hot_news', 'start_writing_intent', 'save_short_term_memory', 'list_writing_jobs'] }
+  assert.deepEqual(state.quickExamples.value.map((item) => item.label), ['看看热点', '写一篇文章', '记住我的偏好', '查看写作任务'])
+  state.useExample(state.quickExamples.value[1].content)
+  assert.match(state.draft.value, /800字/)
+  assert.equal(created, 0)
+  assert.equal(sent, 0)
+})
+
+test('main capability descriptions come only from runtime permissions and preserve an accurate READ-only scope', async (t) => {
+  const { state, mount } = await harness(t, { runtime: async () => ({ query_enabled: false, query_scope: null,
+    available_tools: ['list_recent_hot_news_runs', 'read_hot_news', 'search_related_articles'] }) })
+  await mount()
+  assert.deepEqual(state.approvedCapabilities.value, [])
+  assert.deepEqual(state.confirmationCapabilities.value, [])
+  assert.match(state.newsSummary.value, /已保存的热点报告/)
+  assert.doesNotMatch(state.newsSummary.value, /查询数仓/)
+  state.runtimeInfo.value = { query_enabled: true, available_tools: ['writing_job_status', 'start_writing_intent',
+    'save_short_term_memory', 'propose_long_term_memory', 'save_feedback_case', 'start_data_loop', 'evaluation_status', 'approve'] }
+  assert.deepEqual(state.approvedCapabilities.value, ['查询写作任务与进度', '发起写作', '保存短期记忆', '提交长期记忆候选',
+    '记录分析驳回反馈', '发起评测', '查询评测状态'])
+  assert.deepEqual(state.confirmationCapabilities.value, ['写作', '分析驳回反馈', '评测'])
+  assert.match(state.newsSummary.value, /查询数仓/)
+  assert.ok(!state.approvedCapabilities.value.includes('提交配置候选'), 'unregistered candidate templates must not be advertised')
+  assert.match(viewSource, /任务审批在对应工作台完成/)
+  assert.match(viewSource, /长期记忆候选等待人工晋升后才生效/)
 })
 
 for (const example of ['看看热点新闻', '今日热点']) {
@@ -720,6 +777,42 @@ test('deleting another conversation preserves the current history, route and dra
   assert.deepEqual(state.conversations.value.map((item) => item.id), ['a'])
 })
 
+test('creating a new conversation after deletion keeps the old ID hidden through delayed responses and refresh', async (t) => {
+  const oldList = deferred()
+  const oldDetail = deferred()
+  let lists = 0
+  let details = 0
+  const { state, route, mount } = await harness(t, {
+    list: async () => ++lists === 2 ? oldList.promise : { items: [conversation('a'), conversation('b')] },
+    detail: async (id) => id === 'a' && ++details > 1
+      ? oldDetail.promise : { conversation: conversation(id), turns: [] },
+  })
+  await mount()
+  const listing = state.loadConversations()
+  const loading = state.loadDetail('a')
+  await state.deleteConversation(conversation('a'))
+  assert.equal(await state.createConversation(), 'new-conversation')
+  oldList.resolve({ items: [conversation('a'), conversation('b')] })
+  oldDetail.resolve({ conversation: conversation('a'), turns: [turn('old-history')] })
+  await Promise.all([listing, loading])
+  await settle()
+  assert.equal(route.query.conversation, 'new-conversation')
+  assert.equal(state.conversation.value.id, 'new-conversation')
+  assert.deepEqual(state.turns.value, [])
+  assert.equal(state.conversations.value.some((item) => item.id === 'a'), false)
+  await state.loadConversations()
+  assert.equal(state.conversations.value.some((item) => item.id === 'a'), false)
+  assert.equal(state.deletedConversationIds.has('a'), true)
+  assert.equal(state.lastDeletedConversation.value.id, 'a')
+})
+
+test('the undo notice does not repeat the deleted title above the conversation list', () => {
+  const { descriptor } = parse(viewSource)
+  assert.ok(descriptor.template.content.includes('会话已删除，历史记录保留，可撤销本次删除。'))
+  assert.equal(descriptor.template.content.includes('lastDeletedConversation.title'), false)
+  assert.ok(descriptor.template.content.includes('@click="undoConversationDeletion"'))
+})
+
 test('late list, GET, events and navigation cannot resurrect a successfully deleted conversation', async (t) => {
   const oldList = deferred()
   const oldDetail = deferred()
@@ -885,4 +978,54 @@ test('conversation selection and deletion use sibling buttons, preserving access
   visit(descriptor.template.ast)
   assert.ok(deletionButton)
   assert.ok(deletionButton.props.some((prop) => prop.name === 'bind' && prop.arg?.content === 'aria-label'))
+})
+
+test('saved writing tool traces render while the stream is processing and survive as final immutable history', async (t) => {
+  const completion = deferred()
+  let streamEvent
+  const { state, mount } = await harness(t, {
+    runtime: async () => ({ available_tools: ['start_writing_intent'], query_enabled: false, query_scope: null }),
+    sendStream: (_id, _request, options) => { streamEvent = options.onEvent; return completion.promise },
+  })
+  await mount()
+  state.draft.value = '写一篇 AI 芯片周报'
+  const sending = state.sendMessage()
+  await settle()
+  const entry = state.pending.value
+  const processing = turn(entry.request.request_id, '', 'processing')
+  state.turns.value = [processing]
+  const saved = { name: 'start_writing_intent', status: 'completed', attempts: 1, arguments: {},
+    result: { confirmation: { token: 'opaque' } }, error_code: null }
+  streamEvent({ type: 'accepted', data: { turn_id: processing.id, request_id: entry.request.request_id, replayed: false, status: 'processing' } })
+  streamEvent({ type: 'tool_started', data: { index: 0, name: saved.name } })
+  streamEvent({ type: 'tool_finished', data: { index: 0, name: saved.name, status: 'completed', attempts: 1, error_code: null, trace: saved } })
+  assert.deepEqual(entry.savedTools, [saved])
+  assert.deepEqual(state.turns.value[0].tools, [saved])
+  assert.equal(state.writingEnabled.value, true)
+  assert.equal(state.pendingVisible.value, true)
+  state.redescribeWriting('修改为解释型周报')
+  assert.equal(state.draft.value, '修改为解释型周报')
+  const finished = { ...processing, status: 'completed', assistant_content: '已启动', tools: [saved], completed_at: '2026-10-04T00:00:01Z' }
+  completion.resolve(finished)
+  await sending
+  assert.equal(state.pending.value, undefined)
+  assert.deepEqual(state.turns.value, [finished])
+  assert.equal(state.draft.value, '修改为解释型周报')
+})
+
+test('writing confirmation surfaces come only from saved traces in pending streams or restored processing histories', () => {
+  const { descriptor } = parse(viewSource)
+  const panels = []
+  function visit(node) {
+    if (node.type === 1 && node.tag === 'CapabilityReceiptsPanel') panels.push(node)
+    for (const child of node.children ?? []) visit(child)
+  }
+  visit(descriptor.template.ast)
+  assert.equal(panels.length, 2)
+  const binding = (node, name) => node.props.find((prop) => prop.name === 'bind' && prop.arg?.content === name)?.exp?.content
+  assert.equal(binding(panels[0], 'tools'), 'turn.tools')
+  assert.equal(binding(panels[1], 'tools'), 'pending.savedTools')
+  assert.equal(binding(panels[0], 'active'), "turn.status === 'processing'")
+  assert.equal(binding(panels[1], 'active'), "pending.state === 'sending'")
+  assert.equal(binding(panels[0], 'writing-enabled'), 'writingEnabled')
 })

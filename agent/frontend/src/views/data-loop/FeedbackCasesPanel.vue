@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { dataLoopApi } from '@/api'
 import type {
@@ -28,8 +29,10 @@ import {
 } from '@/utils/labels'
 import { readOperationsFeedback } from '@/utils/operationsFeedback'
 import { jsonText, parseJson } from '@/utils/validate'
+import { writingJobId } from '@/utils/capabilityReceipts'
 
 const toast = useToastStore()
+const route = useRoute()
 const dialog = useConfirmStore()
 const { pending, run } = useAsyncTask()
 
@@ -50,7 +53,13 @@ const pageOffset = ref(0)
 const hasNextPage = ref(false)
 
 const selectedId = ref<string | null>(null)
-const selected = computed(() => cases.value.find((item) => item.id === selectedId.value) ?? null)
+const linkedCase = ref<FeedbackCase | null>(null)
+const linkedLoading = ref(false)
+const linkedError = ref<string | null>(null)
+let linkedRequest = 0
+let disposed = false
+const selected = computed(() => linkedCase.value?.id === selectedId.value ? linkedCase.value
+  : cases.value.find((item) => item.id === selectedId.value) ?? null)
 const selectedFeedback = computed(() =>
   selected.value ? readOperationsFeedback(selected.value.source_reference) : null,
 )
@@ -83,7 +92,7 @@ async function reload(offset = pageOffset.value): Promise<void> {
     cases.value = page.cases.slice(0, PAGE_SIZE)
     pageOffset.value = offset
     hasNextPage.value = page.cases.length > PAGE_SIZE
-    if (selectedId.value && !cases.value.some((item) => item.id === selectedId.value)) {
+    if (selectedId.value && linkedCase.value?.id !== selectedId.value && !cases.value.some((item) => item.id === selectedId.value)) {
       selectedId.value = null
     }
   } catch (cause) {
@@ -98,12 +107,14 @@ async function loadLabels(caseId: string): Promise<void> {
   labelsError.value = null
   try {
     const response = await dataLoopApi.listLabels(caseId)
+    if (disposed || selectedId.value !== caseId) return
     labels.value = response.labels
   } catch (cause) {
+    if (disposed || selectedId.value !== caseId) return
     labelsError.value = describeError(cause)
     labels.value = []
   } finally {
-    labelsLoading.value = false
+    if (!disposed && selectedId.value === caseId) labelsLoading.value = false
   }
 }
 
@@ -115,10 +126,42 @@ function pickCase(item: FeedbackCase): void {
   void loadLabels(item.id)
 }
 
+watch(() => route.query.case_id, async (value) => {
+  const sequence = ++linkedRequest
+  linkedCase.value = null
+  linkedError.value = null
+  linkedLoading.value = false
+  labels.value = []
+  labelsLoading.value = false
+  labelsError.value = null
+  if (value === undefined) return
+  const id = writingJobId(value)
+  selectedId.value = null
+  if (!id) { linkedError.value = '链接中的案例 ID 不合法，请从列表选择。'; return }
+  linkedLoading.value = true
+  try {
+    const response = await dataLoopApi.getFeedbackCase(id)
+    if (disposed || sequence !== linkedRequest) return
+    if (response.case?.id !== id) throw new Error('反馈案例响应与链接目标不一致')
+    linkedCase.value = response.case
+    pickCase(response.case)
+  } catch (cause) {
+    if (!disposed && sequence === linkedRequest) linkedError.value = describeError(cause)
+  } finally {
+    if (!disposed && sequence === linkedRequest) linkedLoading.value = false
+  }
+}, { immediate: true })
+onBeforeUnmount(() => { disposed = true; ++linkedRequest })
+
 /** 标签结构由后端定义，这里做保守探测，取不到就让运营手填版本号。 */
 function labelId(label: JsonObject): string {
   const value = label.id ?? label.label_id
   return typeof value === 'string' ? value : ''
+}
+
+function labelVerdict(label: JsonObject): string {
+  const labels: Record<string, string> = { correct: '分析正确', incorrect: '分析有误', partially_correct: '部分正确', not_evaluable: '无法评测' }
+  return typeof label.verdict === 'string' ? labels[label.verdict] ?? label.verdict : '待核对'
 }
 
 function labelVersion(label: JsonObject): number | null {
@@ -253,7 +296,7 @@ onMounted(() => reload())
 </script>
 
 <template>
-  <div class="na-grid na-grid--detail">
+  <div class="na-grid na-grid--detail feedback-workspace">
     <section class="na-card">
       <div class="na-card__head">
         <h2>反馈案例</h2>
@@ -281,42 +324,44 @@ onMounted(() => reload())
         empty-text="暂无反馈案例"
         loading-text="加载反馈案例…"
       >
-        <table class="na-table">
-          <thead>
-            <tr>
-              <th>news_id</th>
-              <th style="width: 108px">反馈分类 / 问题</th>
-              <th style="width: 76px">严重度</th>
-              <th style="width: 88px">状态</th>
-              <th style="width: 138px">记录时间</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="item in cases"
-              :key="item.id"
-              :class="{ 'is-selected': item.id === selectedId }"
-              @click="pickCase(item)"
-            >
-              <td>
-                <div class="na-mono">{{ item.news_id }}</div>
-                <div class="na-cell__sub">{{ feedbackSourceLabel(item.source_type) }}</div>
-              </td>
-              <td>{{ caseClassification(item) }}</td>
-              <td>
-                <span class="na-badge" :class="`na-badge--${severityTone(item.severity)}`">
-                  {{ severityLabel(item.severity) }}
-                </span>
-              </td>
-              <td>
-                <span class="na-badge" :class="`na-badge--${feedbackStatusTone(item.status)}`">
-                  {{ feedbackStatusLabel(item.status) }}
-                </span>
-              </td>
-              <td class="na-muted">{{ formatDateTime(item.recorded_at) }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="na-table-wrap" tabindex="0" aria-label="反馈案例列表，可横向滚动">
+          <table class="na-table feedback-cases-table">
+            <thead>
+              <tr>
+                <th>关联新闻</th>
+                <th style="width: 108px">反馈分类 / 问题</th>
+                <th style="width: 76px">严重度</th>
+                <th style="width: 88px">状态</th>
+                <th style="width: 138px">记录时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="item in cases"
+                :key="item.id"
+                :class="{ 'is-selected': item.id === selectedId }"
+                @click="pickCase(item)"
+              >
+                <td>
+                  <div class="na-mono">{{ item.news_id }}</div>
+                  <div class="na-cell__sub">{{ feedbackSourceLabel(item.source_type) }}</div>
+                </td>
+                <td>{{ caseClassification(item) }}</td>
+                <td>
+                  <span class="na-badge" :class="`na-badge--${severityTone(item.severity)}`">
+                    {{ severityLabel(item.severity) }}
+                  </span>
+                </td>
+                <td>
+                  <span class="na-badge" :class="`na-badge--${feedbackStatusTone(item.status)}`">
+                    {{ feedbackStatusLabel(item.status) }}
+                  </span>
+                </td>
+                <td class="na-muted">{{ formatDateTime(item.recorded_at) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </NaStateBlock>
 
       <div class="na-pager">
@@ -332,57 +377,34 @@ onMounted(() => reload())
     <section class="na-card">
       <div class="na-card__head">
         <h2>案例详情与标注</h2>
-        <span v-if="selected" class="na-badge">{{ selected.production_bundle_version }}</span>
+        <span v-if="selected" class="na-badge" :class="`na-badge--${feedbackStatusTone(selected.status)}`">{{ feedbackStatusLabel(selected.status) }}</span>
       </div>
 
-      <NaStateBlock :empty="!selected" empty-text="从左侧选择一个反馈案例">
+      <NaStateBlock :loading="linkedLoading" :error="linkedError" :empty="!selected" empty-text="从左侧选择一个反馈案例">
         <template v-if="selected">
           <dl class="na-defs">
-            <div>
-              <dt>案例 ID</dt>
-              <dd class="na-mono">{{ selected.id }}</dd>
-            </div>
-            <div>
-              <dt>run_id</dt>
-              <dd class="na-mono">{{ selected.run_id ?? '-' }}</dd>
-            </div>
-            <div>
-              <dt>news_id</dt>
-              <dd class="na-mono">{{ selected.news_id }}</dd>
-            </div>
-            <div>
-              <dt>来源</dt>
-              <dd>{{ feedbackSourceLabel(selected.source_type) }}</dd>
-            </div>
-            <div>
-              <dt>问题类型</dt>
-              <dd>{{ problemTypeLabel(selected.problem_type) }}</dd>
-            </div>
+            <div><dt>关联新闻</dt><dd>{{ selected.news_id }}</dd></div>
+            <div><dt>问题类型</dt><dd>{{ problemTypeLabel(selected.problem_type) }}</dd></div>
             <template v-if="selectedFeedback">
-              <div>
-                <dt>运营反馈分类</dt>
-                <dd>{{ operationsFeedbackCategoryLabel(selectedFeedback.category) }}</dd>
-              </div>
-              <div>
-                <dt>运营反馈理由</dt>
-                <dd>{{ selectedFeedback.reason_codes.map(operationsReasonLabel).join('、') }}</dd>
-              </div>
+              <div><dt>反馈分类</dt><dd>{{ operationsFeedbackCategoryLabel(selectedFeedback.category) }}</dd></div>
+              <div><dt>反馈理由</dt><dd>{{ selectedFeedback.reason_codes.map(operationsReasonLabel).join('、') }}</dd></div>
             </template>
-            <div>
-              <dt>发生时间</dt>
-              <dd>{{ formatDateTime(selected.occurred_at) }}</dd>
-            </div>
-            <div>
-              <dt>内容摘要</dt>
-              <dd class="na-mono">{{ selected.content_sha256 }}</dd>
-            </div>
+            <div><dt>发生时间</dt><dd>{{ formatDateTime(selected.occurred_at) }}</dd></div>
           </dl>
-
-          <p v-if="selectedFeedback" class="na-muted">运营决定仅是反馈素材，不代表模型分析正确或已获推送许可。请独立标注并由另一人完成二审，再选择相应评测集。</p>
-
-          <NaJsonBlock :value="selected.analysis_input_snapshot" label="分析输入快照" />
-          <NaJsonBlock :value="selected.analysis_output_snapshot" label="分析输出快照" />
-          <NaJsonBlock :value="selected.source_reference" label="来源引用" />
+          <p v-if="selectedFeedback" class="na-notice">反馈尚需独立标注和另一人二审，才可用于评测。</p>
+          <details class="na-disclosure">
+            <summary>查看原始证据与来源</summary>
+            <dl class="na-defs">
+              <div><dt>案例编号</dt><dd class="na-mono">{{ selected.id }}</dd></div>
+              <div><dt>来源运行</dt><dd class="na-mono">{{ selected.run_id ?? '-' }}</dd></div>
+              <div><dt>来源类型</dt><dd>{{ feedbackSourceLabel(selected.source_type) }}</dd></div>
+              <div><dt>配置版本</dt><dd>{{ selected.production_bundle_version }}</dd></div>
+              <div><dt>内容校验值</dt><dd class="na-mono">{{ selected.content_sha256 }}</dd></div>
+            </dl>
+            <NaJsonBlock :value="selected.analysis_input_snapshot" label="分析输入快照" />
+            <NaJsonBlock :value="selected.analysis_output_snapshot" label="分析输出快照" />
+            <NaJsonBlock :value="selected.source_reference" label="来源引用" />
+          </details>
 
           <h3>已有标签</h3>
           <NaStateBlock
@@ -391,94 +413,126 @@ onMounted(() => reload())
             :empty="labels.length === 0"
             empty-text="该案例还没有标签"
           >
-            <table class="na-table">
-              <thead>
-                <tr>
-                  <th>标签 ID</th>
-                  <th style="width: 84px">版本</th>
-                  <th style="width: 320px">审批 / 二审</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(label, index) in labels" :key="labelId(label) || `label-${index}`">
-                  <td class="na-mono">{{ labelId(label) || '(缺少 id)' }}</td>
-                  <td>{{ labelVersion(label) ?? '-' }}</td>
-                  <td>
-                    <div class="na-row">
-                      <input
-                        v-model="approveVersions[labelId(label)]"
-                        class="na-input na-input--narrow"
-                        :placeholder="String(labelVersion(label) ?? '版本')"
-                        inputmode="numeric"
-                      >
-                      <input
-                        v-model="reviewReasons[labelId(label)]"
-                        class="na-input na-field--grow"
-                        placeholder="审核意见（退回必填）"
-                        maxlength="1000"
-                      >
-                    </div>
-                    <div class="na-row">
-                      <button
-                        class="na-btn"
-                        type="button"
-                        :disabled="pending"
-                        @click="approveLabel(label)"
-                      >
-                        审批
-                      </button>
-                      <button
-                        class="na-btn"
-                        type="button"
-                        :disabled="pending"
-                        @click="reviewLabel(label, 'approve')"
-                      >
-                        二审通过
-                      </button>
-                      <button
-                        class="na-btn na-btn--danger"
-                        type="button"
-                        :disabled="pending"
-                        @click="reviewLabel(label, 'request_changes')"
-                      >
-                        退回修改
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="na-table-wrap" tabindex="0" aria-label="标签审批与二审列表，可横向滚动">
+              <table class="na-table feedback-labels-table">
+                <thead>
+                  <tr>
+                    <th>标签内容</th>
+                    <th style="width: 84px">版本</th>
+                    <th style="width: 320px">审批 / 二审</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(label, index) in labels" :key="labelId(label) || `label-${index}`">
+                    <td>
+                      <div>{{ labelVerdict(label) }}</div>
+                      <p v-if="label.operator_comment">{{ label.operator_comment }}</p>
+                      <details class="na-disclosure"><summary>完整标签与证据要求</summary><NaJsonBlock :value="label" label="完整标签" /></details>
+                    </td>
+                    <td>{{ labelVersion(label) ?? '-' }}</td>
+                    <td>
+                      <div class="na-row">
+                        <input
+                          v-model="approveVersions[labelId(label)]"
+                          class="na-input na-input--narrow"
+                          :placeholder="String(labelVersion(label) ?? '版本')"
+                          inputmode="numeric"
+                        >
+                        <input
+                          v-model="reviewReasons[labelId(label)]"
+                          class="na-input na-field--grow"
+                          placeholder="审核意见（退回必填）"
+                          maxlength="1000"
+                        >
+                      </div>
+                      <div class="na-row">
+                        <button
+                          class="na-btn"
+                          type="button"
+                          :disabled="pending"
+                          @click="approveLabel(label)"
+                        >
+                          审批
+                        </button>
+                        <button
+                          class="na-btn"
+                          type="button"
+                          :disabled="pending"
+                          @click="reviewLabel(label, 'approve')"
+                        >
+                          二审通过
+                        </button>
+                        <button
+                          class="na-btn na-btn--danger"
+                          type="button"
+                          :disabled="pending"
+                          @click="reviewLabel(label, 'request_changes')"
+                        >
+                          退回修改
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </NaStateBlock>
 
-          <h3>新增标签</h3>
-          <div class="na-field">
-            <label for="label-content">标签内容（JSON 对象，字段由后端定义）</label>
-            <textarea
-              id="label-content"
-              v-model="labelContent"
-              class="na-textarea"
-              placeholder="例如：{&quot;label_type&quot;: &quot;evidence_missing&quot;, &quot;notes&quot;: &quot;缺少二级来源&quot;}"
-            />
-          </div>
-          <div class="na-row">
-            <div class="na-field na-field--fixed">
-              <label for="label-version">期望上一版本（可选）</label>
-              <input
-                id="label-version"
-                v-model="expectedPreviousVersion"
-                class="na-input"
-                inputmode="numeric"
-                placeholder="乐观锁版本号"
-              >
+          <details class="na-disclosure">
+            <summary>新增标签</summary>
+            <div class="na-field">
+              <label for="label-content">完整标签（JSON）</label>
+              <textarea
+                id="label-content"
+                v-model="labelContent"
+                class="na-textarea"
+                placeholder="例如：{&quot;verdict&quot;: &quot;not_evaluable&quot;, &quot;operator_comment&quot;: &quot;证据不足，暂不参与评测&quot;}"
+              />
             </div>
-            <div class="na-field na-field--action">
-              <button class="na-btn na-btn--primary" type="button" :disabled="pending" @click="submitLabel">
-                提交标签
-              </button>
+            <div class="na-row">
+              <div class="na-field na-field--fixed">
+                <label for="label-version">期望上一版本（可选）</label>
+                <input
+                  id="label-version"
+                  v-model="expectedPreviousVersion"
+                  class="na-input"
+                  inputmode="numeric"
+                  placeholder="已有标签的版本号"
+                >
+              </div>
+              <div class="na-field na-field--action">
+                <button class="na-btn na-btn--primary" type="button" :disabled="pending" @click="submitLabel">
+                  提交标签
+                </button>
+              </div>
             </div>
-          </div>
+          </details>
         </template>
       </NaStateBlock>
     </section>
   </div>
 </template>
+
+<style scoped>
+.feedback-workspace > .na-card {
+  min-width: 0;
+}
+
+.feedback-cases-table {
+  min-width: 700px;
+}
+
+.feedback-cases-table th:first-child,
+.feedback-cases-table td:first-child {
+  min-width: 200px;
+}
+
+.feedback-labels-table {
+  min-width: 760px;
+}
+
+.feedback-labels-table th:first-child,
+.feedback-labels-table td:first-child {
+  min-width: 260px;
+}
+</style>

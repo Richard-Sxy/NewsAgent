@@ -1,0 +1,1320 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1817e6248a59cf9699f6",
+        "related_news": [
+          {
+            "excerpt": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1817e6248a59cf9699f6",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "title": "虚构海岬资料画面",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "去年演习视频配刚刚开战的封面。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "去年演习视频配刚刚开战的封面。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "title": "虚构海岬资料画面"
+      },
+      "case_id": "research-04267ae34fc578a03b36",
+      "event_id": "synthetic-event-c89711a193f44cfa3931",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-c89711a193f44cfa3931",
+      "story_title": "虚构海岬资料画面",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b035b82a03a911f3a91",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b035b82a03a911f3a91",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构港桥跨境通行声明｜虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-08fa215d8e9e85501209",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-1817e6248a59cf9699f6",
+        "related_news": [
+          {
+            "excerpt": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1817e6248a59cf9699f6",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "title": "虚构海岬资料画面",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构海岬资料画面｜虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。",
+        "title": "虚构海岬资料画面"
+      },
+      "case_id": "research-1fc556f78b93ee4b5dcf",
+      "event_id": "synthetic-event-c89711a193f44cfa3931",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-c89711a193f44cfa3931",
+      "story_title": "虚构海岬资料画面",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8cbb77547e27d14ef41c",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8cbb77547e27d14ef41c",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "title": "虚构远港事件统计",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "权威总数为两方数字平均值15.5例。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "权威总数为两方数字平均值15.5例。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "title": "虚构远港事件统计"
+      },
+      "case_id": "research-254a88554cf952f0b9f5",
+      "event_id": "synthetic-event-6e11cf5b64fa049b4f95",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-6e11cf5b64fa049b4f95",
+      "story_title": "虚构远港事件统计",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d0046f6f80d4bd68f0a3",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d0046f6f80d4bd68f0a3",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "title": "虚构远港事件统计",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构远港事件统计｜虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "title": "虚构远港事件统计"
+      },
+      "case_id": "research-3474eb2cc42b3c7c6c5e",
+      "event_id": "synthetic-event-6e11cf5b64fa049b4f95",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-6e11cf5b64fa049b4f95",
+      "story_title": "虚构远港事件统计",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9cf10b873496b67990d5",
+        "related_news": [
+          {
+            "excerpt": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9cf10b873496b67990d5",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "title": "虚构海岬资料画面",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构海岬资料画面｜虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "title": "虚构海岬资料画面"
+      },
+      "case_id": "research-5308f4d4867c88c81ddc",
+      "event_id": "synthetic-event-c89711a193f44cfa3931",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-c89711a193f44cfa3931",
+      "story_title": "虚构海岬资料画面",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9cf10b873496b67990d5",
+        "related_news": [
+          {
+            "excerpt": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9cf10b873496b67990d5",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。；虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "title": "虚构海岬资料画面",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "会谈画面证明全面冲突爆发。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "会谈画面证明全面冲突爆发。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。",
+        "title": "虚构海岬资料画面"
+      },
+      "case_id": "research-671b02c67ff301421f11",
+      "event_id": "synthetic-event-c89711a193f44cfa3931",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构报道引用去年的演习视频，拍摄时间地点可核对；本次仅有外交声明。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-5774eafaedd33fd390e7",
+          "text": "虚构媒体新增本次会谈现场画面并标注当天日期；没有交火通报。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-c89711a193f44cfa3931",
+      "story_title": "虚构海岬资料画面",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1b035b82a03a911f3a91",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1b035b82a03a911f3a91",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "双方共同确认所有人员可通行。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "双方共同确认所有人员可通行。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-714118e2ca43f83ac277",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5eb87e275c2c0fa3155",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5eb87e275c2c0fa3155",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构港桥跨境通行声明｜虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-840bcda1bb4b2a26659b",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5eb87e275c2c0fa3155",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5eb87e275c2c0fa3155",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。；虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "全面开放旅游，忽略仅限货运的原文。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "全面开放旅游，忽略仅限货运的原文。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构双方正式公告只确认货运试运行，旅客通行仍未开放。",
+        "title": "虚构港桥跨境通行声明"
+      },
+      "case_id": "research-d9d571ee51c86a582f33",
+      "event_id": "synthetic-event-cd7e2fca740cb6a3b1b6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构甲方称新口岸开放，乙方未回应，暂缺可核验正式公告。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b0ca8306f063ac554df7",
+          "text": "虚构双方正式公告只确认货运试运行，旅客通行仍未开放。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-cd7e2fca740cb6a3b1b6",
+      "story_title": "虚构港桥跨境通行声明",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-8cbb77547e27d14ef41c",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-8cbb77547e27d14ef41c",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "title": "虚构远港事件统计",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构远港事件统计｜虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。",
+        "title": "虚构远港事件统计"
+      },
+      "case_id": "research-f835235027b3ebc7e160",
+      "event_id": "synthetic-event-6e11cf5b64fa049b4f95",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-6e11cf5b64fa049b4f95",
+      "story_title": "虚构远港事件统计",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-d0046f6f80d4bd68f0a3",
+        "related_news": [
+          {
+            "excerpt": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-d0046f6f80d4bd68f0a3",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。；虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "title": "虚构远港事件统计",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "将旧12例和新17例相加为29例。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "international"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "将旧12例和新17例相加为29例。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。",
+        "title": "虚构远港事件统计"
+      },
+      "case_id": "research-fc840940fc1025cf71f7",
+      "event_id": "synthetic-event-6e11cf5b64fa049b4f95",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构甲方报告12例、乙方报告19例，两者统计地区和截止时间不同，不能合并。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-4a80d2ccd7225f80e01b",
+          "text": "虚构联合公告给出同一截止时点核验的17例，旧来源仍在网上传播。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构港桥跨境通行声明",
+          "虚构远港事件统计",
+          "虚构海岬资料画面"
+        ],
+        "audience_summary": "关注国际的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "国际",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟国际运营员",
+        "risk_focus": [
+          "具名信源",
+          "时区",
+          "冲突数字和资料画面"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-d3f7aedb21adfa477b52",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-8c97df4835e1038aef3c"
+      },
+      "scope_sha256": "06afcbe243fca8fdb7d40abfa2b14cabc84f9a0c72c66a130ce50a8c2bf6ac58",
+      "story_id": "synthetic-story-6e11cf5b64fa049b4f95",
+      "story_title": "虚构远港事件统计",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

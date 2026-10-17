@@ -23,7 +23,7 @@ from app.services.data_loop.dataset_freezer import (
 )
 
 
-OFFLINE_REPLAY_VERSION = "hot-news-offline-replay-v1"
+OFFLINE_REPLAY_VERSION = "hot-news-offline-replay-v2"
 
 
 class BundleEvaluationRunnerFactory(Protocol):
@@ -39,6 +39,8 @@ class BundleEvaluationRunnerFactory(Protocol):
     def create(
         self,
         spec: ProductionBundleSpec,
+        *,
+        tenant_id: str,
     ) -> HotNewsEvaluationRunner: ...
 
 
@@ -96,6 +98,11 @@ class HotNewsOfflineReplayService:
                 "offline replay requires one distinct manifest per cohort layer"
             )
 
+        tenant_ids = {manifest.tenant_id for manifest in manifests}
+        if len(tenant_ids) != 1 or not next(iter(tenant_ids)).strip():
+            raise ValueError("offline replay manifests must belong to one tenant")
+        tenant_id = next(iter(tenant_ids))
+
         oversized = {
             layer: len(manifest.cases)
             for layer, manifest in by_layer.items()
@@ -135,7 +142,7 @@ class HotNewsOfflineReplayService:
         pending = {
             (layer, role): asyncio.create_task(
                 HotNewsEvaluationService(
-                    self._factory.create(spec),
+                    self._factory.create(spec, tenant_id=tenant_id),
                     concurrency_limiter=limiter,
                 ).evaluate(to_hot_news_evaluation_dataset(by_layer[layer]))
             )
@@ -201,6 +208,7 @@ class HotNewsOfflineReplayService:
             artifact_payload={
                 "schema_version": "1.0",
                 "evaluator_version": self.evaluator_version,
+                "tenant_id": tenant_id,
                 "candidate_spec": candidate_spec.model_dump(mode="json"),
                 "online_baseline_spec": online_baseline_spec.model_dump(
                     mode="json"

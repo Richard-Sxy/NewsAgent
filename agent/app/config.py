@@ -50,8 +50,43 @@ class Settings(BaseSettings):
     model_runtime_config_path: str | None = None
     # Optional independent YAML selecting PostgreSQL or Milvus knowledge search.
     knowledge_search_config_path: str | None = None
+    # Opt-in durable news revisions, three-tier projections and migration.
+    knowledge_lifecycle_config_path: str | None = None
+    # Read-only operations integration; recipient-level profiles stay in enterprise systems.
+    audience_enabled: bool = False
+    audience_backend: Literal["enterprise_http", "synthetic", "behavior_package"] = "enterprise_http"
+    behavior_tags_enabled: bool = False
+    behavior_tags_package_path: str | None = None
+    behavior_tags_cohort_id: str = Field(default="all", min_length=1, max_length=80)
+    behavior_tags_max_bonus: float = Field(default=0.08, ge=0, le=0.08)
+    reader_profile_enabled: bool = False
+    reader_profile_backend: Literal["enterprise_http", "local_package"] = "enterprise_http"
+    reader_profile_package_path: str | None = None
+    reader_profile_endpoint_url: str | None = None
+    reader_profile_api_token: SecretStr | None = None
+    reader_profile_taxonomy_path: str | None = None
+    reader_profile_source_release_sha256: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
+    reader_profile_policy_version: str = "prewindow-exclude-trigger-interest-v1"
+    reader_profile_allowed_analysis_prompt_versions: tuple[str, ...] = ("native-e2e-prompt-v3-reader-profiles",)
+    reader_profile_timeout_seconds: float = Field(default=3, ge=0.1, le=30)
+    reader_profile_run_timeout_seconds: float = Field(default=5, ge=0.1, le=60)
+    reader_profile_cache_ttl_seconds: float = Field(default=30, ge=0, le=300)
+    reader_profile_max_cache_entries: int = Field(default=256, ge=1, le=2048)
+    reader_profile_max_inflight: int = Field(default=16, ge=1, le=128)
+    reader_profile_max_response_bytes: int = Field(default=524288, ge=4096, le=2097152)
+    audience_taxonomy_path: str | None = None
+    audience_estimate_url: str | None = None
+    audience_api_token: SecretStr | None = None
+    audience_timeout_seconds: float = Field(default=5, ge=0.1, le=30)
+    audience_max_response_bytes: int = Field(default=65536, ge=1024, le=262144)
+    audience_max_snapshot_age_seconds: int = Field(default=900, ge=60, le=3600)
     # Explicit feature approval. Old enterprise deployments remain unchanged.
     conversation_enabled: bool = False
+    # Explicit rollout for conversation async hooks only; page/API launches
+    # retain their existing behavior. Temporal history is admission authority.
+    conversation_async_admission_enabled: bool = False
+    conversation_async_admission_budget: int = Field(default=2, ge=1, le=8)
+    conversation_async_admission_queue_limit: int = Field(default=100, ge=1, le=1000)
     conversation_knowledge_enabled: bool = False
     # Only attached by the isolated E2E application; trusted admin is also required.
     conversation_hot_news_query_enabled: bool = False
@@ -89,7 +124,7 @@ class Settings(BaseSettings):
     text2sql_timeout_ms: int = Field(default=30000, ge=1000, le=300000)
     sql_assistant_scenarios_path: str = "deploy/text2sql-scenes.local.yml"
     # Only the isolated local SQL application/worker can initialize this fixture.
-    sql_assistant_dataset_profile: Literal["classic-v1", "enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4"] = "classic-v1"
+    sql_assistant_dataset_profile: Literal["classic-v1", "enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6"] = "classic-v1"
     sql_assistant_news_per_tenant: Literal[120, 1200, 12000] = 1200
     # JSON array of complete ProductionBundleSpec snapshots that this worker
     # can actually execute. Data Loop workers fail closed when it is empty or

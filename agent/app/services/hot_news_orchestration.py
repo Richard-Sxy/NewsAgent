@@ -7,6 +7,8 @@ import re
 from typing import Protocol
 from uuid import UUID
 
+from app.observability.decorators import traced
+from app.observability.telemetry import operation
 from app.analytics.baseline import NewsMetricBaseline
 from app.analytics.data_source import BehaviorDataSource, BehaviorQuery
 from app.analytics.entities import ContentType
@@ -16,6 +18,7 @@ from app.analytics.metrics import NewsMetricCalculator, NewsMetricSnapshot
 from app.analytics.ranking import HotNewsRanker, MetricKey, RankedHotNews
 from app.model_runtime.result import AgentResult
 from app.domain.errors import HotNewsDataQualityError
+from app.reader_profiles.contracts import ReaderProfileSummary
 from app.schemas.hot_news import HotNewsAnalysisInput, HotNewsAnalysisReport
 from app.services.hot_news_analysis import HotNewsAnalysisService
 from app.services.hot_news_analysis_batch import HotNewsAnalysisBatch, HotNewsAnalysisBatchStats
@@ -34,6 +37,8 @@ class HotNewsRunRequest:
     sql_query_id: str | None = None
     sql_query_user_id: str | None = None
     sql_query_scope_sha256: str | None = None
+    retrieval_context_sha256: str | None = None
+    reader_profile_context_sha256: str | None = None
 
     def validate(self) -> None:
         if not self.tenant_id.strip():
@@ -48,6 +53,16 @@ class HotNewsRunRequest:
             raise ValueError("window_end must be timezone-aware")
         if self.window_start >= self.window_end:
             raise ValueError("window_start must be less than window_end")
+        if self.retrieval_context_sha256 is not None and (
+            not isinstance(self.retrieval_context_sha256, str)
+            or not re.fullmatch(r"[0-9a-f]{64}", self.retrieval_context_sha256)
+        ):
+            raise ValueError("retrieval context must be a SHA256 digest")
+        if self.reader_profile_context_sha256 is not None and (
+            not isinstance(self.reader_profile_context_sha256, str)
+            or not re.fullmatch(r"[0-9a-f]{64}", self.reader_profile_context_sha256)
+        ):
+            raise ValueError("reader profile context must be a SHA256 digest")
         references = (self.sql_query_id, self.sql_query_user_id, self.sql_query_scope_sha256)
         if any(value is not None for value in references):
             if not all(value is not None for value in references):
@@ -74,6 +89,10 @@ class HotNewsRunRequest:
         # deliberately excluded: retries reuse the first atomically bound plan.
         if self.sql_query_scope_sha256 is not None:
             identity += "\x1fhot-news-sql-v1\x1f" + self.workflow_version + "\x1f" + self.sql_query_scope_sha256
+        if self.retrieval_context_sha256 is not None:
+            identity += "\x1fbehavior-retrieval-v1\x1f" + self.retrieval_context_sha256
+        if self.reader_profile_context_sha256 is not None:
+            identity += "\x1fnews-reader-profile-v1\x1f" + self.reader_profile_context_sha256
         digest = sha256(identity.encode("utf-8")).hexdigest()
         return f"hot-news-{digest}"
 
@@ -143,6 +162,9 @@ class AnalyzedHotNews:
     analysis_input: HotNewsAnalysisInput
     captured_at: datetime
     validated_at: datetime
+    retrieval_trace: dict | None = None
+    reader_profile_summary: ReaderProfileSummary | None = None
+    reader_profile_trace: dict | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -201,6 +223,7 @@ class HotNewsOrchestrationService:
         self.analysis_batch = analysis_batch or HotNewsAnalysisBatch()
 
     """核心运行位置"""
+    @traced("hot_news.run", identity={"request.production_bundle_version": "newsagent.production_bundle_version"})
     async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:
         """执行查询、聚合、基线、排行、富化、模型分析和业务校验。"""
 
@@ -213,15 +236,16 @@ class HotNewsOrchestrationService:
                 f"policy={self.policy.production_bundle_version!r}"
             )
         if self.metric_source is not None:
-            snapshots = await self.metric_source.fetch_snapshots(
-                HotNewsMetricQuery(
-                    tenant_id=request.tenant_id,
-                    window_start=request.window_start,
-                    window_end=request.window_end,
-                    content_types=self.policy.content_types,
-                    ranking_limit=self.policy.ranking_limit,
+            with operation("data.metrics"):
+                snapshots = await self.metric_source.fetch_snapshots(
+                    HotNewsMetricQuery(
+                        tenant_id=request.tenant_id,
+                        window_start=request.window_start,
+                        window_end=request.window_end,
+                        content_types=self.policy.content_types,
+                        ranking_limit=self.policy.ranking_limit,
+                    )
                 )
-            )
             fetched_record_count = len(snapshots)
         else:
             query = BehaviorQuery(
@@ -230,34 +254,37 @@ class HotNewsOrchestrationService:
                 tenant_id=request.tenant_id,
                 content_types=self.policy.content_types,
             )
-            records = await self.behavior_data_source.fetch(query)
-            snapshots = self.metric_calculator.calculate(
-                records,
-                window_start=request.window_start,
-                window_end=request.window_end,
-                source_guarantees_unique_event_id=(
-                    self.policy.source_guarantees_unique_event_id
-                ),
-            )
+            with operation("data.aggregate"):
+                records = await self.behavior_data_source.fetch(query)
+                snapshots = self.metric_calculator.calculate(
+                    records,
+                    window_start=request.window_start,
+                    window_end=request.window_end,
+                    source_guarantees_unique_event_id=(
+                        self.policy.source_guarantees_unique_event_id
+                    ),
+                )
             fetched_record_count = len(records)
         metric_keys = frozenset(
             (snapshot.news_id, snapshot.content_type) for snapshot in snapshots
         )
 
-        baselines = await self.baseline_provider.get_baselines(
-            tenant_id=request.tenant_id,
-            window_start=request.window_start,
-            window_end=request.window_end,
-            production_bundle_version=request.production_bundle_version,
-            metric_keys=metric_keys,
-        )
-        self._validate_baselines(metric_keys=metric_keys, baselines=baselines)
+        with operation("data.baseline"):
+            baselines = await self.baseline_provider.get_baselines(
+                tenant_id=request.tenant_id,
+                window_start=request.window_start,
+                window_end=request.window_end,
+                production_bundle_version=request.production_bundle_version,
+                metric_keys=metric_keys,
+            )
+            self._validate_baselines(metric_keys=metric_keys, baselines=baselines)
 
-        ranked = self.ranker.rank(
-            snapshots,
-            baselines,
-            limit=self.policy.ranking_limit,
-        )
+        with operation("data.rank"):
+            ranked = self.ranker.rank(
+                snapshots,
+                baselines,
+                limit=self.policy.ranking_limit,
+            )
         if not ranked:
             return self._empty_result(
                 request=request,
@@ -285,6 +312,9 @@ class HotNewsOrchestrationService:
                 analysis_input=execution.analysis_input,
                 captured_at=execution.captured_at,
                 validated_at=execution.validated_at,
+                retrieval_trace=item.retrieval_trace,
+                reader_profile_summary=item.reader_profile_summary,
+                reader_profile_trace=item.reader_profile_trace,
             )
             for item, execution in zip(enriched, executions, strict=True)
         ]

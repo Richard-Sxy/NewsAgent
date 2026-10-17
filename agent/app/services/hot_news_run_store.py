@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
+from app.observability.decorators import traced
 from app.schemas.hot_news_memory import HotNewsAnalysisMemory
 
 from app.db.session import Database
@@ -62,6 +63,7 @@ class PostgresHotNewsRunStore:
                 "查询已完成热点运行失败"
             ) from exc
 
+    @traced("hot_news.persist")
     async def save_completed(
         self,
         *,

@@ -20,7 +20,14 @@ def build_native_knowledge_index(
     embedding: EmbeddingPort,
     database: Database,
     config_path: str | None = None,
+    lifecycle_config_path: str | None = None,
+    environment: str = "production",
 ):
+    if lifecycle_config_path:
+        from app.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
+        return build_lifecycle_runtime(lifecycle_config_path=lifecycle_config_path,
+            search_config_path=config_path, model_config=config, embedding=embedding,
+            database=database, environment=environment).index
     index = PostgresKnowledgeStore(
         database=database,
         embedding=embedding,
@@ -38,6 +45,8 @@ def build_native_knowledge_search(
             raise ValueError("native knowledge config, embedding and database are required without an index")
         index = build_native_knowledge_index(config=config, embedding=embedding, database=database)
     tiers = getattr(index, "tiers", (VectorTier.HOT,))
+    if getattr(index, "lifecycle_query", None) is not None:
+        return index.lifecycle_query
     return TieredVectorKnowledgeSearchClient(
         embedder=build_knowledge_query_embedder(
             index=index, embedding=embedding,

@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-07",
+  "news_id": "20261007A07F9700",
+  "title": "韩国宇宙航空厅：“世界”号第五次发射取得成功",
+  "url": "https://news.qq.com/rain/a/20261007A07F9700",
+  "publish_time": "2026-10-07T14:03:59+08:00",
+  "request_id": "73a313dd-add5-4b07-afe5-6bf41a4d4b9e",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:36.296600+00:00",
+  "turn_id": "3479c4e1-9134-4a83-9ac2-4c5025773353",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:42.590538Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261007A07F9700",
+          "title": "韩国宇宙航空厅：“世界”号第五次发射取得成功",
+          "source_url": "https://news.qq.com/rain/a/20261007A07F9700",
+          "publish_time": "2026-10-07T14:03:59+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:38613"
+        },
+        {
+          "news_id": "20261007A07U8000",
+          "title": "（外代一线）韩国自研火箭“世界”号进行第五次发射",
+          "source_url": "https://news.qq.com/rain/a/20261007A07U8000",
+          "publish_time": "2026-10-07T16:42:19+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:39604"
+        },
+        {
+          "news_id": "20260823A07FTG00",
+          "title": "标题缺失（news_id=20260823A07FTG00）",
+          "source_url": null,
+          "publish_time": null,
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:1147"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 906,
+  "answer_sha256": "b6e3373e883a4e7cba0f58454ee99ae9525331bc8af72681fe6fd13ee8f614e3"
+}

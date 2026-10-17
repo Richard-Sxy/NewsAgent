@@ -110,6 +110,16 @@ def build_publication_outcome_sha256(
 class AnalysisFeedbackCollector:
     """Data Loop 反馈写入的唯一应用层入口。"""
 
+    async def get_case(self, session: AsyncSession, *, tenant_id: str,
+                       feedback_case_id: UUID) -> AnalysisFeedbackCase:
+        case = await PostgresAnalysisFeedbackRepository(session).get_case(
+            tenant_id=self._validate_identity(tenant_id, "tenant_id"),
+            feedback_case_id=feedback_case_id,
+        )
+        if case is None:
+            raise AnalysisFeedbackTargetNotFoundError("反馈案例不存在")
+        return case
+
     async def collect(
         self,
         session: AsyncSession,

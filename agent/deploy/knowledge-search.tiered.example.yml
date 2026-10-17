@@ -1,0 +1,18 @@
+# 企业三层连接填写模板。null 必须按实际服务填写；启动校验会拒绝空值。
+# 先由向量平台建立三个集合及相同字段/索引，应用不会隐式创建或删除集合。
+schema_version: 1
+backend: milvus
+milvus:
+  uri: null
+  database: null
+  token_env: MILVUS_TOKEN
+  timeout_seconds: null
+  collections:
+    hot: news_hot_v1
+    warm: news_warm_v1
+    cold: news_cold_v1
+  metric_type: null
+  # 使用HNSW时填ef，且必须 >= 生命周期配置query_max_candidates。
+  # 其他索引改成对应搜索参数；无需ef时用{}。
+  search_params:
+    ef: null

@@ -45,3 +45,26 @@ VITE_DEV_PORT=5175 VITE_DEV_PROXY_TARGET=http://127.0.0.1:28050 npm run dev
 企业行为/模型质量、真实历史基线、跨小时去重UV、实时增量均未验收。单次热点取数保持一个完整小时，跨日场景只是两个小时窗口的对比。
 实际验收：首日、7天前、最新日各完成5条榜单与5篇分析；最终镜像额外验证10月8日窗口，同样完成5条榜单与5篇分析。旧日期回放的热点事件生命周期更新会降级（既有时序约束），不影响已保存榜单和分析；乱序事件生命周期回放仍为TODO。
 30天大数据首次入库及启动全量hash核验需要时间；12,000篇档位尚未做实际数据库容量验收。
+
+## timeline-v5 扩充版（2026-10-13 新增）
+
+`timeline-v5` 是与 v4 相同窗口（2026-09-10 00:00至2026-10-10 00:00，左闭右开）的隔离扩充 profile，
+数据版本 `news-timeline-20260910-20261009-v2`、Schema 契约 `news-warehouse-v5`
+（[冻结契约](sql-warehouse-schema-v5.md)）。相对 v4 的差异：
+
+- 主题从每栏目 12 个增至 24 个（共 96 个），标题带栏目、主题、阶段（启动/进展/观察/复盘）标记；
+- 来源扩展为 8 个合成观察团队名；
+- 小时指标在日趋势与周末效应之上叠加主题级每日轮换波动；突发小时改为 18/20/21/23 点；
+- 场景从 13 个增至 17 个：新增工作日/周末同小时、同日早晚、视频早高峰跨周、午间小样本与零基线。
+
+调用链与 v4 完全一致，仅数据生成与身份登记换成 `iter_timeline_v5_rows` / `timeline_v5_manifest`
+（`app/sql_assistant/timeline_rich_profiles.py`）。启用需在新隔离数据库中配置：
+
+```sh
+SQL_ASSISTANT_DATASET_PROFILE=timeline-v5
+SQL_ASSISTANT_SCENARIOS_PATH=deploy/text2sql-scenes.timeline-v5.yml
+```
+
+已有 v4 及更早实例不受影响：`_profile_contract` 会按数据身份拒绝接管，规模与数据变更须另建隔离项目。
+测试入口：`tests/test_timeline_v5_profiles.py`（边界与计数、96主题/来源/阶段覆盖、清单确定性、
+17场景窗口、冻结契约与 `demo_dataset_info`、绑定身份校验）。首次入库耗时与 v4 同量级。

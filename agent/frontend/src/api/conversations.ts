@@ -29,6 +29,19 @@ export interface ConversationTurn {
   error_code: string | null
   created_at: string
   completed_at: string | null
+  inputs?: ConversationInput[]
+}
+
+export interface ConversationInput {
+  id: string
+  turn_id: string
+  request_id: string
+  seq: number
+  content: string
+  status: string
+  created_at: string
+  applied_at: string | null
+  error_code: string | null
 }
 
 export interface ConversationDetail {
@@ -42,11 +55,16 @@ export interface SendConversationMessage {
 }
 
 export interface ConversationRuntime {
+  available_tools?: string[]
   model_provider: 'local' | 'openai_compatible' | 'unknown'
   model_route: string
   prompt_version: string
   query_enabled: boolean
   query_scope: {
+    dataset_profile?: string
+    news_content_source?: string
+    metric_data_synthetic?: boolean
+    category_data_synthetic?: boolean
     scenario_id: string
     window_start: string
     window_end: string
@@ -74,6 +92,12 @@ export const conversationsApi = {
   runtime() {
     return request<ConversationRuntime>(`${BASE}/runtime`)
   },
+  writingReceipt(jobId: string) {
+    return request<Record<string, unknown>>(`${BASE}/receipts/writing-jobs/${encodeURIComponent(jobId)}`)
+  },
+  evaluationReceipt(workflowId: string) {
+    return request<Record<string, unknown>>(`${BASE}/receipts/evaluation-runs/${encodeURIComponent(workflowId)}`)
+  },
   list() {
     return request<{ items: Conversation[] }>(BASE)
   },
@@ -95,6 +119,12 @@ export const conversationsApi = {
 
   restore(conversationId: string) {
     return request<Conversation>(`${BASE}/${encodeURIComponent(conversationId)}/restore`, { method: 'POST' })
+  },
+
+  appendInput(conversationId: string, turnId: string, body: { request_id: string; content: string }) {
+    return request<ConversationInput>(`${BASE}/${encodeURIComponent(conversationId)}/turns/${encodeURIComponent(turnId)}/inputs`, {
+      method: 'POST', body,
+    })
   },
 
   send(conversationId: string, body: SendConversationMessage, options: { signal?: AbortSignal } = {}) {

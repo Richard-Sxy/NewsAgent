@@ -1,0 +1,58 @@
+[
+  {
+    "module": "evaluation.run_hot_news_eval",
+    "args": [],
+    "exit_code": 0,
+    "log": "run_hot_news_eval.txt"
+  },
+  {
+    "module": "evaluation.run_hot_news_dialogue",
+    "args": [],
+    "exit_code": 1,
+    "log": "run_hot_news_dialogue.txt"
+  },
+  {
+    "module": "evaluation.run_operations_evolution",
+    "args": [
+      "validate",
+      "--verify-artifacts"
+    ],
+    "exit_code": 0,
+    "log": "run_operations_evolution.txt"
+  },
+  {
+    "module": "evaluation.run_operations_research",
+    "args": [
+      "validate",
+      "--verify-artifacts"
+    ],
+    "exit_code": 0,
+    "log": "run_operations_research.txt"
+  },
+  {
+    "module": "evaluation.data_writing_dataset",
+    "args": [
+      "--seed",
+      "evaluation/datasets/data_writing_august_2026_v1/seed.json",
+      "--output-dir",
+      "evaluation/datasets/data_writing_august_2026_v1",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "data_writing_dataset.txt"
+  },
+  {
+    "module": "evaluation.run_fault_drills",
+    "args": [],
+    "exit_code": 0,
+    "log": "run_fault_drills.txt"
+  },
+  {
+    "module": "evaluation.run_hot_news_dialogue",
+    "args": [],
+    "exit_code": 0,
+    "log": "run_hot_news_dialogue-corrected-wrapper.txt",
+    "invocation": "runpy.run_module with alter_sys=True",
+    "corrects": "first wrapper lacked __main__ module namespace; business code unchanged"
+  }
+]

@@ -9,6 +9,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.domain.job_scenario import JobScenario
+from app.reader_profiles.contracts import ReaderProfileSummary
 from app.schemas.analysis_feedback import FeedbackProblemType, FeedbackSeverity
 from app.schemas.hot_news_decision import DecisionType
 from app.schemas.operations_feedback import OperationsFeedback
@@ -97,10 +98,14 @@ class HotNewsRankedItemView(BaseModel):
     rank: int
     news_id: str
     title: str | None = None
+    content_excerpt: str = Field(default="", max_length=600)
     metrics: HotNewsMetricSnapshotView
     baseline: dict[str, Any] | None
     hot_score: HotScoreView
     analysis: HotNewsAnalysisSummaryView | None
+    retrieval_trace: dict[str, Any] | None = None
+    reader_profile_summary: ReaderProfileSummary | None = None
+    reader_profile_trace: dict[str, Any] | None = None
 
 
 class HotNewsDecisionView(BaseModel):

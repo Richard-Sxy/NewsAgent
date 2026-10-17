@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime
 from hashlib import sha256
+from typing import Sequence
 
 from app.knowledge.document import (
     IngestOutcome,
@@ -46,6 +47,18 @@ def split_text(text: str, *, max_chars: int, overlap: int) -> tuple[str, ...]:
     return tuple(chunks)
 
 
+def require_embedding_dimension(
+    vectors: Sequence[Sequence[float]], *, expected: int | None = None,
+) -> int:
+    """Reject dimension changes before a document can alter its index projection."""
+    if not vectors or not vectors[0]:
+        raise ValueError("knowledge embedding dimensions are invalid")
+    dimension = len(vectors[0]) if expected is None else expected
+    if any(len(vector) != dimension for vector in vectors):
+        raise ValueError("knowledge embedding dimensions differ")
+    return dimension
+
+
 class NativeKnowledgeIndexingService:
     def __init__(
         self,
@@ -72,6 +85,7 @@ class NativeKnowledgeIndexingService:
         self._overlap = chunk_overlap
         self._batch_size = embedding_batch_size
         self._ledger: dict[tuple[str, str], IndexedDocument] = {}
+        self._dimensions: dict[tuple[str, str], int] = {}
 
     def get_indexed(self, *, tenant_id: str, document_id: str) -> IndexedDocument | None:
         return self._ledger.get((tenant_id, document_id))
@@ -146,6 +160,8 @@ class NativeKnowledgeIndexingService:
                 f"{tenant_id}\x1f{document.document_id}\x1f{content_version}".encode("utf-8")
             ).hexdigest()
             vectors: list[tuple[float, ...]] = []
+            dimension_key = (tenant_id, self._embedding_version)
+            dimension = self._dimensions.get(dimension_key)
             for offset in range(0, len(texts), self._batch_size):
                 batch = texts[offset:offset + self._batch_size]
                 embedded = await self._embedding.embed(
@@ -160,6 +176,7 @@ class NativeKnowledgeIndexingService:
                     raise ValueError("document embedding version drifted")
                 if len(embedded.vectors) != len(batch):
                     raise ValueError("document embedding count differs from chunks")
+                dimension = require_embedding_dimension(embedded.vectors, expected=dimension)
                 vectors.extend(embedded.vectors)
             if len(vectors) != len(chunks):
                 raise ValueError("document embedding count differs from chunks")
@@ -199,6 +216,7 @@ class NativeKnowledgeIndexingService:
                 embedding_version=self._embedding_version,
                 chunk_ids=chunk_ids,
             )
+            self._dimensions[dimension_key] = dimension
             outcomes.append(
                 IngestOutcome(
                     document.document_id,

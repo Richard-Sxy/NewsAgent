@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-12",
+  "news_id": "20261011A0AC4F00",
+  "title": "十月三部韩剧播出，金智媛在《Doctor X》最美，但《百日谎言》和《恋爱博士》更好看",
+  "url": "https://news.qq.com/rain/a/20261011A0AC4F00",
+  "publish_time": "2026-10-12T06:30:00+08:00",
+  "request_id": "5a9cc694-a4aa-4639-b8ae-baf4d1df4d91",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:49.226566+00:00",
+  "turn_id": "23d537b8-dcb6-472f-a623-b838a7c518d3",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:50.912875Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261011A0AC4F00",
+          "title": "十月三部韩剧播出，金智媛在《Doctor X》最美，但《百日谎言》和《恋爱博士》更好看",
+          "source_url": "https://news.qq.com/rain/a/20261011A0AC4F00",
+          "publish_time": "2026-10-12T06:30:00+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:46338"
+        },
+        {
+          "news_id": "20260905A0A3QJ00",
+          "title": "单条播放超2.9亿，《异主入侵》令网友“狂掉san值”；AI美高剧赛道迎来“天花板”，千万网友追更 | AIGC热门精选",
+          "source_url": null,
+          "publish_time": null,
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:35661"
+        },
+        {
+          "news_id": "20261013A087WG00",
+          "title": "《蒸蒸日上》首播收视第2，观众评价一针见血，口音生硬演得刻意",
+          "source_url": "https://news.qq.com/rain/a/20261013A087WG00",
+          "publish_time": "2026-10-13T22:53:19+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:37282"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 1679,
+  "answer_sha256": "bd247399e16e67baa40125ab9bc6ce10d964763fdc3c18b9c121b64b7231a77e"
+}

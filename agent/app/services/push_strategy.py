@@ -55,6 +55,10 @@ class PushStrategyInputBuilder:
             summary=analysis_input.summary,
             hot_score=analysis_input.hot_score,
             metrics=analysis_input.metrics,
+            reader_profile_summary=(
+                analysis_input.reader_profile_summary.model_copy(deep=True)
+                if analysis_input.reader_profile_summary is not None else None
+            ),
             analysis=analysis_report,
             audience_options=PushAudienceOptions(
                 allow_all_users=policy_context.allow_all_users,

@@ -32,7 +32,7 @@ _SIGNALS = (
     )),
 )
 
-"""拒绝隐藏字符文本。"""
+"""长度限制/规范化限制去掉空格/空格处理"""
 def normalize_question(question: str, *, max_chars: int = 1000) -> str:
     # 问题长度限制
     if not isinstance(question, str) or not 1 <= len(question) <= max_chars:

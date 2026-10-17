@@ -1,0 +1,1320 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5cf53ec6bc0229f1da4",
+        "related_news": [
+          {
+            "excerpt": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5cf53ec6bc0229f1da4",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "title": "虚构晴浦旧画面再传播",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构晴浦旧画面再传播｜虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "title": "虚构晴浦旧画面再传播"
+      },
+      "case_id": "research-081190a3d0c23f8d5860",
+      "event_id": "synthetic-event-b9a6cf9d067959be3e81",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-b9a6cf9d067959be3e81",
+      "story_title": "虚构晴浦旧画面再传播",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ea420472a64a99496e11",
+        "related_news": [
+          {
+            "excerpt": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ea420472a64a99496e11",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "title": "虚构桥溪公共帮助信息",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构桥溪公共帮助信息｜虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "title": "虚构桥溪公共帮助信息"
+      },
+      "case_id": "research-082b47681eefeda9ef36",
+      "event_id": "synthetic-event-a8369d06f99c9ea0efe7",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-a8369d06f99c9ea0efe7",
+      "story_title": "虚构桥溪公共帮助信息",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ada5004cc943ce7044f",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ada5004cc943ce7044f",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构映河事件调查｜虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-3182646ee791db621090",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-819c598591a4291985dd",
+        "related_news": [
+          {
+            "excerpt": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-819c598591a4291985dd",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "title": "虚构桥溪公共帮助信息",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "为继续冲热度公布联系人隐私并发动围观。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "title": "虚构桥溪公共帮助信息"
+      },
+      "case_id": "research-61a3afe1d57460a23271",
+      "event_id": "synthetic-event-a8369d06f99c9ea0efe7",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-a8369d06f99c9ea0efe7",
+      "story_title": "虚构桥溪公共帮助信息",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-297e4a9ff6c34bee9adf",
+        "related_news": [
+          {
+            "excerpt": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-297e4a9ff6c34bee9adf",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "title": "虚构晴浦旧画面再传播",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构晴浦旧画面再传播｜虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "title": "虚构晴浦旧画面再传播"
+      },
+      "case_id": "research-6f55025e24e64ebca3c1",
+      "event_id": "synthetic-event-b9a6cf9d067959be3e81",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-b9a6cf9d067959be3e81",
+      "story_title": "虚构晴浦旧画面再传播",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-59d478aed24d9fce219b",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-59d478aed24d9fce219b",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构映河事件调查｜虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-97296e4d95064c927dd6",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-297e4a9ff6c34bee9adf",
+        "related_news": [
+          {
+            "excerpt": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-297e4a9ff6c34bee9adf",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "title": "虚构晴浦旧画面再传播",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "这张旧图证明今天本地发生严重事故。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "这张旧图证明今天本地发生严重事故。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。",
+        "title": "虚构晴浦旧画面再传播"
+      },
+      "case_id": "research-a53a363de48ea8b6c4d4",
+      "event_id": "synthetic-event-b9a6cf9d067959be3e81",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-b9a6cf9d067959be3e81",
+      "story_title": "虚构晴浦旧画面再传播",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-6ada5004cc943ce7044f",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6ada5004cc943ce7044f",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。；虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "部分核查足以确定所有指控均属实。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "部分核查足以确定所有指控均属实。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-bc63a2951f538bdcd9cb",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门公布部分核查结果，仍有两项事实待核实，不能称全部违法成立。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "content_type": "article",
+        "hot_score": 0.3,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 80,
+          "impressions": 4000,
+          "interactions": 80,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-a5cf53ec6bc0229f1da4",
+        "related_news": [
+          {
+            "excerpt": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-a5cf53ec6bc0229f1da4",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.2
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。；虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "title": "虚构晴浦旧画面再传播",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "把施工提示与旧事故拼成最新事故快报。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "把施工提示与旧事故拼成最新事故快报。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。",
+        "title": "虚构晴浦旧画面再传播"
+      },
+      "case_id": "research-d44d8c01777a221137d9",
+      "event_id": "synthetic-event-b9a6cf9d067959be3e81",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门确认网传事故画面摄于去年另一城市，本地今天没有该事故通报。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-c73a73e6b59485297a09",
+          "text": "虚构交管部门更新当前施工提示，地点与旧画面无关，提供绕行路线。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-b9a6cf9d067959be3e81",
+      "story_title": "虚构晴浦旧画面再传播",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-819c598591a4291985dd",
+        "related_news": [
+          {
+            "excerpt": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-819c598591a4291985dd",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。；虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "title": "虚构桥溪公共帮助信息",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构桥溪公共帮助信息｜虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。",
+        "title": "虚构桥溪公共帮助信息"
+      },
+      "case_id": "research-e3ca432463c323c5cc71",
+      "event_id": "synthetic-event-a8369d06f99c9ea0efe7",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构机构说明帮助事项已完成，只保留结案汇总和正式咨询入口。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-a8369d06f99c9ea0efe7",
+      "story_title": "虚构桥溪公共帮助信息",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-ea420472a64a99496e11",
+        "related_news": [
+          {
+            "excerpt": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-ea420472a64a99496e11",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "title": "虚构桥溪公共帮助信息",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "公开当事人完整住址和病史拉动评论。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。",
+        "title": "虚构桥溪公共帮助信息"
+      },
+      "case_id": "research-f01d283382fe72401d35",
+      "event_id": "synthetic-event-a8369d06f99c9ea0efe7",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-2c86cd391ff2a22bc787",
+          "text": "虚构公益机构发布已去标识的求助渠道，未授权公开当事人姓名、住址和健康情况。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-a8369d06f99c9ea0efe7",
+      "story_title": "虚构桥溪公共帮助信息",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-59d478aed24d9fce219b",
+        "related_news": [
+          {
+            "excerpt": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-59d478aed24d9fce219b",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "已证实全部违法，负责人有罪。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "society"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "已证实全部违法，负责人有罪。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。",
+        "title": "虚构映河事件调查"
+      },
+      "case_id": "research-f0b77e8270c76c91c2e8",
+      "event_id": "synthetic-event-c94d7a7a6bac64321eb6",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-6605329aacf500b30c9f",
+          "text": "虚构部门已受理投诉并启动调查，没有责任结论；现有材料仅确认调查程序。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构映河事件调查",
+          "虚构桥溪公共帮助信息",
+          "虚构晴浦旧画面再传播"
+        ],
+        "audience_summary": "关注社会的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "社会",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟社会运营员",
+        "risk_focus": [
+          "调查状态",
+          "隐私最小化",
+          "公共服务和澄清"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-a45abe3c5103d7d48876",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-89191463843a27570688"
+      },
+      "scope_sha256": "055282580c959e8e4f59307ce0360acbcdde73c369615b4a084890dad22a80a9",
+      "story_id": "synthetic-story-c94d7a7a6bac64321eb6",
+      "story_title": "虚构映河事件调查",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

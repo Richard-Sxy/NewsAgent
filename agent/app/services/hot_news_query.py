@@ -12,6 +12,7 @@ from app.db.session import Database
 from app.domain.errors import HotNewsPersistenceError
 from app.models.hot_news import HotNewsAnalysisRun
 from app.models.hot_news_decision import HotNewsDecision
+from app.reader_profiles.contracts import ReaderProfileSummary
 from app.schemas.hot_news_api import (
     HotNewsAnalysisSummaryView,
     HotNewsDecisionView,
@@ -134,6 +135,9 @@ class HotNewsQueryService:
 
         analyzed_by_news_id = cls._index_analyzed_news(payload)
         titles_by_news_id = cls._index_news_titles(payload)
+        excerpts_by_news_id = cls._index_news_content_excerpts(payload)
+        retrieval_by_news_id = cls._index_retrieval_traces(payload)
+        reader_summaries, reader_traces = cls._index_reader_profiles(payload)
 
         items: list[HotNewsRankedItemView] = []
         for entry in ranked_news:
@@ -150,10 +154,14 @@ class HotNewsQueryService:
                         rank=int(entry["rank"]),
                         news_id=metrics.news_id,
                         title=titles_by_news_id.get(metrics.news_id),
+                        content_excerpt=excerpts_by_news_id.get(metrics.news_id, ""),
                         metrics=metrics,
                         baseline=baseline,
                         hot_score=hot_score,
                         analysis=analyzed_by_news_id.get(metrics.news_id),
+                        retrieval_trace=retrieval_by_news_id.get(metrics.news_id),
+                        reader_profile_summary=reader_summaries.get(metrics.news_id),
+                        reader_profile_trace=reader_traces.get(metrics.news_id),
                     )
                 )
             except (KeyError, TypeError, ValueError) as exc:
@@ -161,6 +169,56 @@ class HotNewsQueryService:
                     "热点榜单记录不能通过 Schema 校验"
                 ) from exc
         return tuple(items)
+
+    @staticmethod
+    def _index_retrieval_traces(payload: dict[str, Any]) -> dict[str, dict[str, Any]]:
+        """Project only the saved run's retrieval decisions, never a live profile."""
+        indexed = {}
+        entries = payload.get("analyzed_news")
+        if not isinstance(entries, list):
+            return indexed
+        for item in entries:
+            if not isinstance(item, dict) or not isinstance(item.get("news_id"), str):
+                continue
+            trace = item.get("retrieval_trace")
+            if trace is None:
+                continue
+            if not isinstance(trace, dict):
+                raise HotNewsPersistenceError("热点检索依据快照格式错误")
+            indexed[item["news_id"]] = trace
+        return indexed
+
+    @staticmethod
+    def _index_reader_profiles(payload: dict[str, Any]) -> tuple[dict[str, ReaderProfileSummary], dict[str, dict[str, Any]]]:
+        """Expose the exact aggregate evidence frozen for this run, without live queries."""
+        summaries: dict[str, ReaderProfileSummary] = {}
+        traces: dict[str, dict[str, Any]] = {}
+        entries = payload.get("analyzed_news")
+        if not isinstance(entries, list):
+            return summaries, traces
+        for entry in entries:
+            if not isinstance(entry, dict) or not isinstance(entry.get("news_id"), str):
+                continue
+            raw = entry.get("reader_profile_summary")
+            analysis_input = entry.get("analysis_input")
+            input_summary = analysis_input.get("reader_profile_summary") if isinstance(analysis_input, dict) else None
+            if raw is None:
+                raw = input_summary
+            if raw is not None:
+                try:
+                    summary = ReaderProfileSummary.model_validate(raw)
+                    if summary.news_id != entry["news_id"] or (input_summary is not None
+                            and summary != ReaderProfileSummary.model_validate(input_summary)):
+                        raise ValueError("reader evidence differs from saved model input")
+                except (ValueError, TypeError) as exc:
+                    raise HotNewsPersistenceError("热点读者画像快照格式错误") from exc
+                summaries[entry["news_id"]] = summary
+            trace = entry.get("reader_profile_trace")
+            if trace is not None:
+                if not isinstance(trace, dict):
+                    raise HotNewsPersistenceError("热点读者画像依据快照格式错误")
+                traces[entry["news_id"]] = trace
+        return summaries, traces
 
     @staticmethod
     def _parse_metrics(raw: Any) -> HotNewsMetricSnapshotView:
@@ -235,6 +293,24 @@ class HotNewsQueryService:
                 raise HotNewsPersistenceError(
                     "热点分析记录不能通过 Schema 校验"
                 ) from exc
+        return indexed
+
+    @staticmethod
+    def _index_news_content_excerpts(payload: dict[str, Any]) -> dict[str, str]:
+        """Project bounded text from this saved run, never from a newer article."""
+        indexed = {}
+        entries = payload.get("analyzed_news")
+        if not isinstance(entries, list):
+            return indexed
+        for item in entries:
+            if not isinstance(item, dict):
+                continue
+            news_id, context = item.get("news_id"), item.get("analysis_input")
+            if not isinstance(news_id, str) or not isinstance(context, dict) or context.get("news_id") != news_id:
+                continue
+            excerpt = context.get("content_excerpt")
+            if isinstance(excerpt, str) and excerpt.strip():
+                indexed[news_id] = excerpt.strip()[:600]
         return indexed
 
     @staticmethod

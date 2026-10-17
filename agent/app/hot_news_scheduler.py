@@ -20,6 +20,8 @@ import sys
 
 from temporalio.client import Client
 
+from app.observability.process import telemetry_process
+from app.observability.temporal import temporal_interceptors
 from app.config import get_settings
 from app.services.hot_news_schedule import (
     HotNewsScheduleConfigError,
@@ -42,6 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+@telemetry_process("newsagent-scheduler")
 async def cmd_ensure() -> int:
     settings = get_settings()
     definitions = parse_schedule_definitions(
@@ -50,9 +53,14 @@ async def cmd_ensure() -> int:
     if not definitions:
         print("HOT_NEWS_SCHEDULE_DEFINITIONS_JSON 为空，无需 provisioning")
         return 0
+    if getattr(settings, "behavior_tags_enabled", False) or getattr(settings, "reader_profile_enabled", False):
+        raise HotNewsScheduleConfigError(
+            "行为主题检索/读者画像当前仅支持手工绑定窗口；Schedule 尚未提供执行窗口的画像冻结 Activity，不能启用定时运行"
+        )
     client = await Client.connect(
         settings.temporal_address,
         namespace=settings.temporal_namespace,
+        interceptors=temporal_interceptors(),
     )
     results = await ensure_schedules(
         client,
@@ -87,12 +95,18 @@ def cmd_list() -> int:
     return 0
 
 
+@telemetry_process("newsagent-scheduler")
 async def cmd_state(command: str, tenant_group: str) -> int:
     settings = get_settings()
+    if command == "unpause" and (getattr(settings, "behavior_tags_enabled", False) or getattr(settings, "reader_profile_enabled", False)):
+        raise HotNewsScheduleConfigError(
+            "行为主题检索/读者画像尚不支持 Schedule 执行窗口的画像冻结，不能恢复定时运行"
+        )
     schedule_id = schedule_id_for(tenant_group)
     client = await Client.connect(
         settings.temporal_address,
         namespace=settings.temporal_namespace,
+        interceptors=temporal_interceptors(),
     )
     handle = client.get_schedule_handle(schedule_id)
     if command == "pause":

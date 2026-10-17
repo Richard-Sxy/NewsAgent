@@ -73,8 +73,9 @@ def build_document_id(prefix: str, news_id: str) -> str:
 
     raw = news_id.strip()
     normalized = re.sub(r"[^A-Za-z0-9_-]", "-", raw).strip("-_")
-    if normalized and normalized == raw:
-        return f"{prefix}-{normalized}"[:120]
+    readable = f"{prefix}-{normalized}"
+    if normalized and normalized == raw and len(readable) <= 120:
+        return readable
     digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
     return f"{prefix}-{digest}"
 

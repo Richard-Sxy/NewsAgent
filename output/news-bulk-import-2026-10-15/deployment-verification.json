@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "preflight": "passed",
+  "min_free_gib": 2.5,
+  "sql_dataset_before": "corpus-v6",
+  "active_conversations_before": 0,
+  "snapshot_version": "news-bge-incremental-20261014-v2",
+  "services": [
+    "api",
+    "hot-news-worker"
+  ],
+  "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "sql_dataset_after": "corpus-v6",
+  "api_ready": {
+    "status": "ready",
+    "checks": {
+      "postgres": "ok",
+      "redis": "ok",
+      "temporal": "ok"
+    }
+  },
+  "service_configs": {
+    "api": {
+      "config_path": "/app/deploy/knowledge-search.incremental-20261014-v2.yml",
+      "config_sha256": "b16cc6fe224a30441b0fd4afeb72f849624b6cd400412a77fcc49d6739091009"
+    },
+    "hot-news-worker": {
+      "config_path": "/app/deploy/knowledge-search.incremental-20261014-v2.yml",
+      "config_sha256": "b16cc6fe224a30441b0fd4afeb72f849624b6cd400412a77fcc49d6739091009"
+    }
+  },
+  "pollers": {
+    "hot-news": {
+      "workflow": 2,
+      "activity": 2
+    },
+    "news-writing": {
+      "workflow": 1,
+      "activity": 1
+    },
+    "hot-news-data-loop": {
+      "workflow": 1,
+      "activity": 1
+    }
+  }
+}

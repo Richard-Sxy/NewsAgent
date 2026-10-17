@@ -11,6 +11,7 @@ from uuid import UUID
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
 from app.schemas.hot_news import HotNewsAnalysisReport, HotNewsMetrics
+from app.reader_profiles.contracts import ReaderProfileSummary
 
 
 class PushPriority(str, Enum):
@@ -142,9 +143,12 @@ class PushStrategyInput(BaseModel):
     earliest_send_time: AwareDatetime
     expire_by: AwareDatetime
     strategy_version: str = Field(min_length=1, max_length=64)
+    reader_profile_summary: ReaderProfileSummary | None = None
 
     @model_validator(mode="after")
     def validate_strategy_window(self) -> "PushStrategyInput":
+        if self.reader_profile_summary is not None and self.reader_profile_summary.news_id != self.news_id:
+            raise ValueError("reader profile summary differs from the push news")
         if self.earliest_send_time >= self.expire_by:
             raise ValueError("expire_by must be later than earliest_send_time")
         if len(self.allowed_channels) != len(set(self.allowed_channels)):

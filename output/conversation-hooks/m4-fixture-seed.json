@@ -1,0 +1,46 @@
+{
+  "schema_version": "conversation-demo-fixture-v1:report",
+  "mode": "applied",
+  "simulation_only": true,
+  "human_review": false,
+  "enterprise_quality_validated": false,
+  "notice": "仅为本地合成链路验证；测试演员标签不代表人类审核或企业模型质量。",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "active_bundle_version": "local-simulation-bundle-v1",
+  "synthetic_labeler": "conversation-demo-fixture-v1:synthetic-labeler",
+  "synthetic_reviewer": "conversation-demo-fixture-v1:synthetic-reviewer",
+  "analysis_status": "degraded",
+  "analysis_note": "合成案例没有线上源运行；可选源运行统计会降级，核心三层回放仍可执行。",
+  "datasets": [
+    {
+      "layer": "golden",
+      "dataset_id": "a8d05bab-8398-5f87-ada8-7cf4091dff21",
+      "dataset_name": "conversation-demo-fixture-v1-golden",
+      "dataset_version": "v1",
+      "content_sha256": "7b204a4512cd04790ddd29f21dbc1485e4613095f8f02c0dd0039e9aeb650fad",
+      "case_count": 1,
+      "persisted": true,
+      "created": true
+    },
+    {
+      "layer": "fresh_bad_case",
+      "dataset_id": "9c045bf7-75da-508c-b84c-7c7a8a37eac5",
+      "dataset_name": "conversation-demo-fixture-v1-fresh_bad_case",
+      "dataset_version": "v1",
+      "content_sha256": "2f72c28ba65f1bf9ab3d9082069f0b6cea1c0200d4543ed5e9dc324927026369",
+      "case_count": 1,
+      "persisted": true,
+      "created": true
+    },
+    {
+      "layer": "high_risk_regression",
+      "dataset_id": "ffdb9ae9-138c-598b-8729-d66589f8e427",
+      "dataset_name": "conversation-demo-fixture-v1-high_risk_regression",
+      "dataset_version": "v1",
+      "content_sha256": "f4541509ad9e6301fcfc42fa253c2d03d234fe94d564af812c9035c874e0f175",
+      "case_count": 1,
+      "persisted": true,
+      "created": true
+    }
+  ]
+}

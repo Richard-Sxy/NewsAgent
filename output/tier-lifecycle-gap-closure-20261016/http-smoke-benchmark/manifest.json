@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-16T04:40:22.723862+00:00",
+  "url": "http://localhost/api/v1/knowledge/search",
+  "method": "POST",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "token_env": "SYNTHETIC_BENCH_TOKEN",
+  "query_file_sha256": "6a0918e6df3ce65b6801b880b6aaaec857cb51244edfbae83f6acdfa8ac3a81a",
+  "query_count": 3,
+  "requests": 30,
+  "concurrency": 3,
+  "warmup": 3,
+  "timeout_seconds": 10.0,
+  "load_model": "closed_loop_fixed_concurrency",
+  "query_order": "round_robin_reset_after_warmup",
+  "retries": 0,
+  "follow_redirects": false,
+  "percentile_method": "R-7 linear interpolation: sorted values at index (n - 1) * p; empty = null",
+  "sample_order": "completion_order; request_index is zero-based within each phase",
+  "trace_fields": "allowlisted numeric measurements and fixed enums only",
+  "measurement_scope": "HTTP client wall time and server trace; not Milvus server-only time"
+}

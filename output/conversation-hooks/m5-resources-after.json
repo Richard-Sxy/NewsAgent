@@ -1,0 +1,72 @@
+{
+  "captured_at": "2026-10-13",
+  "stage": "after",
+  "containers": [
+    {
+      "BlockIO": "191MB / 0B",
+      "CPUPerc": "0.31%",
+      "Container": "news-agent-bge-demo-api-1",
+      "ID": "9c5d4183674f",
+      "MemPerc": "9.15%",
+      "MemUsage": "717.3MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-api-1",
+      "NetIO": "526MB / 5.24MB",
+      "PIDs": "20"
+    },
+    {
+      "BlockIO": "5.89MB / 0B",
+      "CPUPerc": "2.09%",
+      "Container": "news-agent-bge-demo-writing-worker-1",
+      "ID": "80bdbb84e293",
+      "MemPerc": "1.76%",
+      "MemUsage": "137.9MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-writing-worker-1",
+      "NetIO": "965kB / 992kB",
+      "PIDs": "24"
+    },
+    {
+      "BlockIO": "3.22MB / 0B",
+      "CPUPerc": "0.02%",
+      "Container": "news-agent-bge-demo-data-loop-worker-1",
+      "ID": "83a54eed7fcd",
+      "MemPerc": "1.66%",
+      "MemUsage": "130.4MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-data-loop-worker-1",
+      "NetIO": "22.3kB / 24.5kB",
+      "PIDs": "15"
+    },
+    {
+      "BlockIO": "22.4MB / 0B",
+      "CPUPerc": "0.01%",
+      "Container": "news-agent-bge-demo-hot-news-worker-1",
+      "ID": "e31fa8d6ba53",
+      "MemPerc": "7.88%",
+      "MemUsage": "617.8MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-hot-news-worker-1",
+      "NetIO": "525MB / 4.37MB",
+      "PIDs": "18"
+    },
+    {
+      "BlockIO": "1.06GB / 5.74GB",
+      "CPUPerc": "0.08%",
+      "Container": "news-agent-bge-demo-postgres-1",
+      "ID": "0b64f6ca2709",
+      "MemPerc": "2.57%",
+      "MemUsage": "201.6MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-postgres-1",
+      "NetIO": "818MB / 4.44GB",
+      "PIDs": "21"
+    },
+    {
+      "BlockIO": "47.1MB / 106kB",
+      "CPUPerc": "1.55%",
+      "Container": "news-agent-bge-demo-temporal-1",
+      "ID": "72e0976249e8",
+      "MemPerc": "1.90%",
+      "MemUsage": "148.7MiB / 7.653GiB",
+      "Name": "news-agent-bge-demo-temporal-1",
+      "NetIO": "156MB / 166MB",
+      "PIDs": "18"
+    }
+  ]
+}

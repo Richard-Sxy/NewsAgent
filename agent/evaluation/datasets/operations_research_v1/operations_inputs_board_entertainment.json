@@ -1,0 +1,1320 @@
+{
+  "cases": [
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7146a976bde707f8d6ec",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7146a976bde707f8d6ec",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "新访谈再拆成五条同义通知占满首页。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-5769fefa8486cd0d5d18",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-7146a976bde707f8d6ec",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-7146a976bde707f8d6ec",
+            "published_at": "2026-10-12T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。；虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T13:00:00+08:00",
+        "window_start": "2026-10-12T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T13:55:00+08:00",
+        "notification_copy": "虚构远树新作发布｜虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "send_after": "2026-10-12T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-5814683b242acf9a6967",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        },
+        {
+          "available_at": "2026-10-12T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构创作者新增制作访谈，专题首稿已更新创作方法，另四篇拟重复同一访谈，无其他增量。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-12T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-281c17729abea175b3db",
+        "related_news": [
+          {
+            "excerpt": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-281c17729abea175b3db",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "title": "虚构栖木演员私生活传闻",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "未经核实公开家庭细节与住址吸引点击。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "title": "虚构栖木演员私生活传闻"
+      },
+      "case_id": "research-7434596396d0771ccca8",
+      "event_id": "synthetic-event-d17384e62d341a33a77e",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-d17384e62d341a33a77e",
+      "story_title": "虚构栖木演员私生活传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-281c17729abea175b3db",
+        "related_news": [
+          {
+            "excerpt": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-281c17729abea175b3db",
+            "published_at": "2026-10-13T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "title": "虚构栖木演员私生活传闻",
+        "window_end": "2026-10-13T09:00:00+08:00",
+        "window_start": "2026-10-13T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T09:55:00+08:00",
+        "notification_copy": "虚构栖木演员私生活传闻｜网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "send_after": "2026-10-13T09:05:00+08:00",
+        "summary": "虚构评测事实：网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。",
+        "title": "虚构栖木演员私生活传闻"
+      },
+      "case_id": "research-7621d08004f844aad6e2",
+      "event_id": "synthetic-event-d17384e62d341a33a77e",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-13T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-d17384e62d341a33a77e",
+      "story_title": "虚构栖木演员私生活传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9b6e14b998d7f8673736",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b6e14b998d7f8673736",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "让同一公告五篇同义稿同时占首页首屏。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-771dc2a4ae22559fc988",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6fe83c579ff602f3836c",
+        "related_news": [
+          {
+            "excerpt": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6fe83c579ff602f3836c",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "title": "虚构望月作品商业合作",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "去掉广告标识，按普通编辑新闻推送。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "title": "虚构望月作品商业合作"
+      },
+      "case_id": "research-91f7a9d4e4f29ff6c7ff",
+      "event_id": "synthetic-event-1e7a508e4eb5a5117339",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-1e7a508e4eb5a5117339",
+      "story_title": "虚构望月作品商业合作",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-6fe83c579ff602f3836c",
+        "related_news": [
+          {
+            "excerpt": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-6fe83c579ff602f3836c",
+            "published_at": "2026-10-14T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "title": "虚构望月作品商业合作",
+        "window_end": "2026-10-14T09:00:00+08:00",
+        "window_start": "2026-10-14T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T09:55:00+08:00",
+        "notification_copy": "虚构望月作品商业合作｜虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "send_after": "2026-10-14T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。",
+        "title": "虚构望月作品商业合作"
+      },
+      "case_id": "research-924f4f8370e4ec74ba3e",
+      "event_id": "synthetic-event-1e7a508e4eb5a5117339",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-14T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-1e7a508e4eb5a5117339",
+      "story_title": "虚构望月作品商业合作",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-73b638bb8fe90da6595f",
+        "related_news": [
+          {
+            "excerpt": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-73b638bb8fe90da6595f",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "title": "虚构栖木演员私生活传闻",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "回应后仍发布住址并组织粉丝围观。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "title": "虚构栖木演员私生活传闻"
+      },
+      "case_id": "research-9e15cb35acf1b2ca0ade",
+      "event_id": "synthetic-event-d17384e62d341a33a77e",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-d17384e62d341a33a77e",
+      "story_title": "虚构栖木演员私生活传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1e1aac6a51ad374bdd46",
+        "related_news": [
+          {
+            "excerpt": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1e1aac6a51ad374bdd46",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "title": "虚构望月作品商业合作",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "将付费推广写成客观推荐并保证销量翻倍。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "title": "虚构望月作品商业合作"
+      },
+      "case_id": "research-a709daaf8bb593347c91",
+      "event_id": "synthetic-event-1e7a508e4eb5a5117339",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-1e7a508e4eb5a5117339",
+      "story_title": "虚构望月作品商业合作",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "content_type": "article",
+        "hot_score": 0.18663636363636363,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 100,
+          "ctr": 0.01,
+          "effective_consumptions": 10,
+          "impressions": 10000,
+          "interactions": 0,
+          "unique_users": 200
+        },
+        "news_id": "synthetic-news-9b6e14b998d7f8673736",
+        "related_news": [
+          {
+            "excerpt": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-9b6e14b998d7f8673736",
+            "published_at": "2026-10-12T09:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.003,
+          "consumption": 0.035,
+          "growth": 0.14863636363636365,
+          "interaction": 0.0
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布",
+        "window_end": "2026-10-12T09:00:00+08:00",
+        "window_start": "2026-10-12T08:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-12T09:55:00+08:00",
+        "notification_copy": "虚构远树新作发布｜虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "send_after": "2026-10-12T09:05:00+08:00",
+        "summary": "虚构评测事实：虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。",
+        "title": "虚构远树新作发布"
+      },
+      "case_id": "research-ba7af4dd6563f75e1b3b",
+      "event_id": "synthetic-event-fec829fc2fb1e719842c",
+      "history": [
+        {
+          "available_at": "2026-10-12T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-b3447bf9135b130bc56a",
+          "text": "虚构片方发布同一部新作的单一公告，首稿已覆盖内容，另四篇无新增事实，均争同一首页位置。"
+        }
+      ],
+      "observation_index": 1,
+      "observed_at": "2026-10-12T09:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-fec829fc2fb1e719842c",
+      "story_title": "虚构远树新作发布",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "content_type": "video",
+        "hot_score": 0.32,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 800,
+          "ctr": 0.8,
+          "effective_consumptions": 160,
+          "impressions": 1000,
+          "interactions": 8,
+          "unique_users": 1000
+        },
+        "news_id": "synthetic-news-73b638bb8fe90da6595f",
+        "related_news": [
+          {
+            "excerpt": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-73b638bb8fe90da6595f",
+            "published_at": "2026-10-13T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.24,
+          "consumption": 0.07,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。；虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "title": "虚构栖木演员私生活传闻",
+        "window_end": "2026-10-13T13:00:00+08:00",
+        "window_start": "2026-10-13T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-13T13:55:00+08:00",
+        "notification_copy": "虚构栖木演员私生活传闻｜虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "send_after": "2026-10-13T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。",
+        "title": "虚构栖木演员私生活传闻"
+      },
+      "case_id": "research-c0aaf476396ff58fdb5b",
+      "event_id": "synthetic-event-d17384e62d341a33a77e",
+      "history": [
+        {
+          "available_at": "2026-10-13T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "网帖称虚构演员家庭发生变故，只有匿名转述，无本人或具名可靠来源。"
+        },
+        {
+          "available_at": "2026-10-13T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-904c0320f424d79e5696",
+          "text": "虚构工作室回应传闻不实，仅确认演员参与公开公益活动，不公开私人行程。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-13T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-d17384e62d341a33a77e",
+      "story_title": "虚构栖木演员私生活传闻",
+      "synthetic": true
+    },
+    {
+      "analysis_input": {
+        "analysis_policy_version": "synthetic-operations-research-v1",
+        "content_excerpt": "以下仅为观察时点可见的虚构事实；公开研究来源不证明这些事实发生。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "content_type": "article",
+        "hot_score": 0.355,
+        "memory_context": null,
+        "metrics": {
+          "clicks": 400,
+          "ctr": 0.1,
+          "effective_consumptions": 360,
+          "impressions": 4000,
+          "interactions": 18,
+          "unique_users": 800
+        },
+        "news_id": "synthetic-news-1e1aac6a51ad374bdd46",
+        "related_news": [
+          {
+            "excerpt": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+            "final_score": 1.0,
+            "news_id": "synthetic-evidence-1e1aac6a51ad374bdd46",
+            "published_at": "2026-10-14T13:00:00+08:00",
+            "rerank_reasons": [
+              "synthetic_fixture_only"
+            ],
+            "source_url": null,
+            "title": "合成主线当前可见事实包"
+          }
+        ],
+        "score_components": {
+          "click": 0.03,
+          "consumption": 0.315,
+          "growth": 0.0,
+          "interaction": 0.01
+        },
+        "summary": "公开研究启发的合成新闻情景；不对应真实新闻。虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。；虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "title": "虚构望月作品商业合作",
+        "window_end": "2026-10-14T13:00:00+08:00",
+        "window_start": "2026-10-14T12:00:00+08:00"
+      },
+      "candidate": {
+        "analysis_claim": "虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "audience": {
+          "active_within_days": null,
+          "interest_tags": [
+            "entertainment"
+          ],
+          "notification_enabled": true,
+          "region_codes": [],
+          "scope": "targeted",
+          "subscription_topics": [],
+          "user_segments": []
+        },
+        "channel": "app_notification",
+        "conditions": {
+          "consent": "allowed",
+          "frequency_budget": "available",
+          "quiet_hours": false,
+          "subscription": "not_required"
+        },
+        "expire_at": "2026-10-14T13:55:00+08:00",
+        "notification_copy": "虚构望月作品商业合作｜虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "send_after": "2026-10-14T13:05:00+08:00",
+        "summary": "虚构评测事实：虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。",
+        "title": "虚构望月作品商业合作"
+      },
+      "case_id": "research-fd79f6b580d0174fd5e9",
+      "event_id": "synthetic-event-1e7a508e4eb5a5117339",
+      "history": [
+        {
+          "available_at": "2026-10-14T09:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构艺人合作内容已确认属于品牌付费推广，素材授权仅覆盖本期商业专题。"
+        },
+        {
+          "available_at": "2026-10-14T13:00:00+08:00",
+          "source_url": "synthetic://operations-research-v1/fixture-89f2af8cdaf2c2a24b15",
+          "text": "虚构品牌更新宣传物料，商业属性未改变；宣传效果没有可靠实验数据。"
+        }
+      ],
+      "observation_index": 2,
+      "observed_at": "2026-10-14T13:00:00+08:00",
+      "scope": {
+        "applicable_scenarios": [
+          "虚构远树新作发布",
+          "虚构栖木演员私生活传闻",
+          "虚构望月作品商业合作"
+        ],
+        "audience_summary": "关注娱乐的模拟读者；地域服务仅覆盖受影响且符合条件人群。站内可访问不等于授权主动通知。",
+        "board_name": "娱乐",
+        "metric_objectives": [
+          "可核验信息价值",
+          "板块服务可达性",
+          "增量与解释质量",
+          "降低重复打扰"
+        ],
+        "operator_name": "模拟娱乐运营员",
+        "risk_focus": [
+          "作品价值",
+          "公告去重",
+          "商业标识和隐私"
+        ],
+        "scope_type": "operator",
+        "section_id": "synthetic-board-db31ba0e9cf68bcc143d",
+        "tenant_id": "synthetic-tenant-b891e705424376540560",
+        "user_id": "synthetic-operator-3a97ff6e66de4f714c89"
+      },
+      "scope_sha256": "fd2c0241605312b93914fd115fbd0a93ac69fddcb15dba2700a7832bc6cbe886",
+      "story_id": "synthetic-story-1e7a508e4eb5a5117339",
+      "story_title": "虚构望月作品商业合作",
+      "synthetic": true
+    }
+  ],
+  "dataset_version": "2026-10-14.public-research-synthetic-v1",
+  "synthetic": true
+}

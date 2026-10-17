@@ -1,4 +1,4 @@
-"""公共依赖。提供数据库会话、业务服务、Redis事件读取器，以及热点、Data Loop、Memory的网关身份与权限检查。"""
+"""公共依赖。提供数据库会话、业务服务、Redis事件读取器，以及热点、写作、Data Loop、Memory的网关身份与权限检查。"""
 
 import uuid
 from collections.abc import AsyncIterator
@@ -90,6 +90,13 @@ class MemoryPermission(StrEnum):
     WRITE = "memory:write"
     APPROVE = "memory:approve"
     ADMIN = "memory:admin"
+
+
+class WritingPermission(StrEnum):
+    """Writing capabilities asserted through the independent X-Writing-Roles header."""
+
+    READ = "writing:read"
+    ADMIN = "writing:admin"
 
 
 @dataclass(frozen=True, slots=True)
@@ -319,6 +326,89 @@ def require_hot_news_permission(permission: HotNewsPermission):
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"missing hot news permission: {permission.value}",
+            )
+        return principal
+
+    return dependency
+
+
+async def get_writing_principal(
+    configured_token: Annotated[
+        str | None,
+        Depends(get_data_loop_gateway_token),
+    ],
+    authorization: Annotated[str | None, Header()] = None,
+    x_tenant_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-Tenant-ID"),
+    ] = None,
+    x_user_id: Annotated[
+        uuid.UUID | None,
+        Header(alias="X-User-ID"),
+    ] = None,
+    x_writing_roles: Annotated[
+        str | None,
+        Header(alias="X-Writing-Roles"),
+    ] = None,
+) -> DataLoopPrincipal:
+    """Authenticate writing capabilities with the existing gateway credential.
+
+    The gateway strips client identity and role headers before injecting its
+    trusted scope. Writing roles remain independent of hot-news/Data Loop roles;
+    request bodies cannot grant capabilities or override tenant/user identity.
+    """
+
+    if configured_token is None or not configured_token.strip():
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="writing gateway authentication is not configured",
+        )
+
+    parts = authorization.split() if authorization is not None else []
+    if (
+        len(parts) != 2
+        or parts[0].lower() != "bearer"
+        or not compare_digest(parts[1], configured_token)
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid writing gateway credential",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if x_tenant_id is None or x_user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="trusted gateway identity headers are required",
+        )
+
+    raw_permissions = [] if x_writing_roles is None else x_writing_roles.split(",")
+    permissions = frozenset(item.strip() for item in raw_permissions if item.strip())
+    if not permissions:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="writing permissions are required",
+        )
+    return DataLoopPrincipal(
+        tenant_id=x_tenant_id,
+        user_id=x_user_id,
+        permissions=permissions,
+    )
+
+
+def require_writing_permission(permission: WritingPermission):
+    """Build an endpoint dependency enforcing one writing capability."""
+
+    async def dependency(
+        principal: Annotated[DataLoopPrincipal, Depends(get_writing_principal)],
+    ) -> DataLoopPrincipal:
+        if (
+            permission.value not in principal.permissions
+            and WritingPermission.ADMIN.value not in principal.permissions
+        ):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"missing writing permission: {permission.value}",
             )
         return principal
 

@@ -1,0 +1,7 @@
+# Local conversation hook acceptance; existing databases and worker images are reused.
+# Build the trusted local image as documented in docs/conversation-capability-hooks.md.
+services:
+  api:
+    image: news-agent/conversation-hooks-demo:local
+    environment:
+      CONVERSATION_TURN_TIMEOUT_SECONDS: "60"

@@ -116,11 +116,11 @@ def load_scoring_dataset():
 def test_seed_evaluation_dataset_is_strict_and_versioned() -> None:
     dataset = load_evaluation_dataset(DATASET_PATH)
 
-    assert len(dataset.cases) == 30
-    assert dataset.dataset_version == "2026-09-12.v2"
+    assert len(dataset.cases) == 60
+    assert dataset.dataset_version == "2026-10-13.v3"
     assert len(dataset.content_sha256) == 64
     case_ids = {case.case_id for case in dataset.cases}
-    assert len(case_ids) == 30
+    assert len(case_ids) == 60
     assert SCORING_CASE_IDS <= case_ids
 
 

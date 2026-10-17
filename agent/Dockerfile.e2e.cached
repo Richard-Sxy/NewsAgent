@@ -21,6 +21,8 @@ COPY alembic ./alembic
 COPY alembic.ini ./
 COPY examples ./examples
 COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
+COPY tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
 COPY evaluation ./evaluation
 COPY deploy/mock-cms ./deploy/mock-cms
 COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml

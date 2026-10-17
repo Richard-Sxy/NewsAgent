@@ -1,0 +1,365 @@
+{
+  "$defs": {
+    "HotNewsMetrics": {
+      "additionalProperties": false,
+      "description": "由确定性计算层提供的权威行为指标。",
+      "properties": {
+        "impressions": {
+          "minimum": 0,
+          "title": "Impressions",
+          "type": "integer"
+        },
+        "clicks": {
+          "minimum": 0,
+          "title": "Clicks",
+          "type": "integer"
+        },
+        "ctr": {
+          "minimum": 0,
+          "title": "Ctr",
+          "type": "number"
+        },
+        "unique_users": {
+          "minimum": 0,
+          "title": "Unique Users",
+          "type": "integer"
+        },
+        "effective_consumptions": {
+          "minimum": 0,
+          "title": "Effective Consumptions",
+          "type": "integer"
+        },
+        "interactions": {
+          "minimum": 0,
+          "title": "Interactions",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "impressions",
+        "clicks",
+        "ctr",
+        "unique_users",
+        "effective_consumptions",
+        "interactions"
+      ],
+      "title": "HotNewsMetrics",
+      "type": "object"
+    },
+    "HotScoreComponents": {
+      "additionalProperties": false,
+      "description": "热点分数的确定性分量，模型只能解释，不能修改。",
+      "properties": {
+        "click": {
+          "minimum": 0,
+          "title": "Click",
+          "type": "number"
+        },
+        "consumption": {
+          "minimum": 0,
+          "title": "Consumption",
+          "type": "number"
+        },
+        "interaction": {
+          "minimum": 0,
+          "title": "Interaction",
+          "type": "number"
+        },
+        "growth": {
+          "minimum": 0,
+          "title": "Growth",
+          "type": "number"
+        }
+      },
+      "required": [
+        "click",
+        "consumption",
+        "interaction",
+        "growth"
+      ],
+      "title": "HotScoreComponents",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "PromptMemoryContext": {
+      "additionalProperties": false,
+      "description": "一次模型调用允许使用的、大小受控的 Memory Context。",
+      "properties": {
+        "resolver_policy_version": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Resolver Policy Version",
+          "type": "string"
+        },
+        "resolved_at": {
+          "format": "date-time",
+          "title": "Resolved At",
+          "type": "string"
+        },
+        "items": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/PromptMemoryItem"
+          },
+          "maxItems": 20,
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resolver_policy_version",
+        "resolved_at"
+      ],
+      "title": "PromptMemoryContext",
+      "type": "object"
+    },
+    "PromptMemoryItem": {
+      "additionalProperties": false,
+      "description": "一条经过 Resolver 选择、允许发送给模型的记忆。",
+      "properties": {
+        "memory_id": {
+          "format": "uuid",
+          "title": "Memory Id",
+          "type": "string"
+        },
+        "memory_key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Memory Key",
+          "type": "string"
+        },
+        "memory_kind": {
+          "enum": [
+            "task_goal",
+            "pending_item",
+            "temporary_preference",
+            "stable_preference",
+            "role_responsibility",
+            "user_constraint"
+          ],
+          "title": "Memory Kind",
+          "type": "string"
+        },
+        "selected_tier": {
+          "enum": [
+            "short_term",
+            "long_term"
+          ],
+          "title": "Selected Tier",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "explicit_user",
+            "trusted_identity",
+            "system_inference",
+            "approved_candidate"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "memory_id",
+        "memory_key",
+        "memory_kind",
+        "selected_tier",
+        "origin",
+        "summary",
+        "value",
+        "confidence",
+        "version"
+      ],
+      "title": "PromptMemoryItem",
+      "type": "object"
+    },
+    "RelatedNewsEvidence": {
+      "additionalProperties": false,
+      "description": "允许大模型引用的一条关联新闻证据。",
+      "properties": {
+        "news_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "News Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "excerpt": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Excerpt",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published At"
+        },
+        "final_score": {
+          "minimum": 0,
+          "title": "Final Score",
+          "type": "number"
+        },
+        "rerank_reasons": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Rerank Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "news_id",
+        "title",
+        "final_score"
+      ],
+      "title": "RelatedNewsEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "发送给热点分析模型的最小可信上下文。",
+  "properties": {
+    "news_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "News Id",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "summary": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Summary",
+      "type": "string"
+    },
+    "content_excerpt": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Content Excerpt",
+      "type": "string"
+    },
+    "content_type": {
+      "enum": [
+        "article",
+        "video"
+      ],
+      "title": "Content Type",
+      "type": "string"
+    },
+    "window_start": {
+      "format": "date-time",
+      "title": "Window Start",
+      "type": "string"
+    },
+    "window_end": {
+      "format": "date-time",
+      "title": "Window End",
+      "type": "string"
+    },
+    "hot_score": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Hot Score",
+      "type": "number"
+    },
+    "metrics": {
+      "$ref": "#/$defs/HotNewsMetrics"
+    },
+    "score_components": {
+      "$ref": "#/$defs/HotScoreComponents"
+    },
+    "related_news": {
+      "items": {
+        "$ref": "#/$defs/RelatedNewsEvidence"
+      },
+      "maxItems": 5,
+      "title": "Related News",
+      "type": "array"
+    },
+    "analysis_policy_version": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Analysis Policy Version",
+      "type": "string"
+    },
+    "memory_context": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PromptMemoryContext"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "news_id",
+    "title",
+    "content_type",
+    "window_start",
+    "window_end",
+    "hot_score",
+    "metrics",
+    "score_components",
+    "analysis_policy_version"
+  ],
+  "title": "HotNewsAnalysisInput",
+  "type": "object"
+}

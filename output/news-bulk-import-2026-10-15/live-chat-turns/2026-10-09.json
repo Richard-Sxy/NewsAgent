@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-09",
+  "news_id": "20261008A08JV900",
+  "title": "中老合作板根机场设施投入运营 多国智库关注地缘战略影响",
+  "url": "https://news.qq.com/rain/a/20261008A08JV900",
+  "publish_time": "2026-10-09T14:00:04+08:00",
+  "request_id": "902b5083-da98-4374-b090-c3e955e778ac",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:44.439518+00:00",
+  "turn_id": "67df5f5a-d597-447f-ade0-d255ed50bcee",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:45.781599Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261008A08JV900",
+          "title": "中老合作板根机场设施投入运营 多国智库关注地缘战略影响",
+          "source_url": "https://news.qq.com/rain/a/20261008A08JV900",
+          "publish_time": "2026-10-09T14:00:04+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41270"
+        },
+        {
+          "news_id": "20261008A0820S00",
+          "title": "打造“时空智能底座” 深耕海外示范项目——中国北斗持续拓展全球影响力",
+          "source_url": "https://news.qq.com/rain/a/20261008A0820S00",
+          "publish_time": "2026-10-08T15:42:09+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:40778"
+        },
+        {
+          "news_id": "20261010A088FN00",
+          "title": "越航联手老挝柬埔寨深化旅游合作，中国游客迎全新中南半岛黄金线路",
+          "source_url": "https://news.qq.com/rain/a/20261010A088FN00",
+          "publish_time": "2026-10-10T15:43:26+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:44228"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 1805,
+  "answer_sha256": "6cfcdb7e7c4b74c8be1835a952177452c19ed9ade5e943a70b6fdc68ac155837"
+}

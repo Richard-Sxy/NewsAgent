@@ -49,6 +49,7 @@ from app.sql_assistant.warehouse import (
     dataset_window,
 )
 from app.sql_assistant.public_headlines import PUBLIC_HEADLINES_PROFILE, public_article
+from app.sql_assistant.corpus_profiles import CORPUS_PROFILE, corpus_article
 
 if TYPE_CHECKING:
     from app.sql_assistant.service import SqlAssistantService
@@ -269,7 +270,24 @@ class SqlHotNewsContentRepository:
         for row in rows:
             title = str(row["title"])
             category = str(row["category"])
-            public = getattr(self.details, "dataset_profile", "classic-v1") == PUBLIC_HEADLINES_PROFILE
+            profile = getattr(self.details, "dataset_profile", "classic-v1")
+            if profile == CORPUS_PROFILE:
+                article = corpus_article(str(row["news_id"]))
+                if article is None or any((title != article["title"], row["source"] != article["source"],
+                        category != article["category"], row["content_type"] != article["content_type"],
+                        _aware_time(row["publish_time"]) != _aware_time(article["publish_time"]))):
+                    raise HotNewsDataQualityError("real news metadata differs from its frozen content catalog")
+                content = NewsContent(
+                    news_id=article["news_id"], title=article["title"],
+                    summary=article["content"][:300], body=article["content"],
+                    content_type=ContentType(article["content_type"]),
+                    publish_time=_aware_time(article["publish_time"]), source_url=article["url"],
+                    collection_id="real-news-cache-v6",
+                )
+                content.validate()
+                contents[content.news_id] = content
+                continue
+            public = profile == PUBLIC_HEADLINES_PROFILE
             article = public_article(str(row["news_id"])) if public else None
             if article is not None and (title != article["title"] or row["source"] != article["source"]
                                         or category != article["category"]
@@ -380,7 +398,9 @@ class SqlAssistantHotNewsMetricSource:
             baselines[(news_id, content_type)] = SqlNewsMetricBaseline(
                 news_id=news_id, content_type=content_type, sample_count=1,
                 ctr=baseline_values["clicks"] / baseline_values["impressions"] if baseline_values["impressions"] else Decimal(0),
-                reference_version=("synthetic-hourly-baseline-v4" if self.dataset_profile == "timeline-v4" else
+                reference_version=("synthetic-hourly-baseline-v6" if self.dataset_profile == CORPUS_PROFILE else
+                                   "synthetic-hourly-baseline-v5" if self.dataset_profile == "timeline-v5" else
+                                   "synthetic-hourly-baseline-v4" if self.dataset_profile == "timeline-v4" else
                                    "synthetic-hourly-baseline-v3" if self.dataset_profile == PUBLIC_HEADLINES_PROFILE
                                    else "synthetic-hourly-baseline-v2" if self.dataset_profile == SCALED_PROFILE
                                    else "synthetic-hourly-baseline-v1"),
@@ -418,8 +438,12 @@ class SqlAssistantHotNewsMetricSource:
             "supplemental_sql": SUPPLEMENTAL_SQL,
             "supplemental_sql_hash": sha256(SUPPLEMENTAL_SQL.encode()).hexdigest(),
             "metric_mapping_notes": [
+                *(["具体新闻标题与正文来自冻结原文缓存；运营指标和基线仍为模拟数据，栏目为演示分类。"]
+                  if self.dataset_profile == CORPUS_PROFILE else []),
                 "SQL 查询挑选候选新闻；Python HotNewsRanker 重新计算权威热度与最终排行。",
-                "窗口严格限定一个小时桶：unique_users 使用该桶真实去重值，禁止跨小时求和。",
+                ("窗口严格限定一个小时桶：unique_users 使用该桶模拟 UV，禁止跨小时求和。"
+                 if self.dataset_profile == CORPUS_PROFILE else
+                 "窗口严格限定一个小时桶：unique_users 使用该桶真实去重值，禁止跨小时求和。"),
                 "候选计数与同一聚合视图交叉校验；时长、小时 UV 与基线由固定 Python 参数化 SQL 补充。",
                 "基线的 UV 与时长未提供，保持 null；sample_count=1 表示一份合成参考，不代表推断出的历史样本数量。",
                 "SQL 演示热度仅用于候选筛选；热点 Agent 仍采用原有 Python 四分量热度公式。",
@@ -504,11 +528,13 @@ async def seed_native_sql_knowledge(dependencies: NativeHotNewsSqlDependencies, 
     documents = tuple(KnowledgeDocument(
         document_id=f"news:{news_id}", title=contents[news_id].title,
         text=contents[news_id].body, media_type=contents[news_id].content_type.value,
-        text_source=("synthetic-sql-warehouse-v4" if profile == "timeline-v4" else
+        text_source=("real-news-cache-v6" if profile == CORPUS_PROFILE else
+                     "synthetic-sql-warehouse-v5" if profile == "timeline-v5" else
+                     "synthetic-sql-warehouse-v4" if profile == "timeline-v4" else
                      "public-headline-reference-v3" if profile == PUBLIC_HEADLINES_PROFILE else
                      "synthetic-sql-warehouse-v2" if profile == SCALED_PROFILE else "synthetic-sql-warehouse-v1"),
         source_url=contents[news_id].source_url,
-        metadata={"news_id": news_id, "content_version": "1", "warehouse_schema_version": contract.version,
+        metadata={"news_id": news_id, "content_version": (str(corpus_article(news_id)["content_version"]) if profile == CORPUS_PROFILE else "1"), "warehouse_schema_version": contract.version,
                   "publish_time": contents[news_id].publish_time.isoformat(),
                   **({"warehouse_schema_sha256": contract.sha256} if profile in STREAMED_PROFILES else {})},
     ) for news_id in dependencies.news_ids)

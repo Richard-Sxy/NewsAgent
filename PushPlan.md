@@ -1,11 +1,18 @@
 # NewsAgent 运营推送闭环实施计划
 
-最后核对：2026-10-04（原计划制定于2026-09-18）
+最后核对：2026-10-16（原计划制定于2026-09-18）
 
-状态：**推送Schema、候选生成服务、确定性Validator与单测已存在；持久审批、策略集与投递运行链路待实现。第一阶段目标为模拟/shadow，不接真实百万级触达平台。**
+状态：**推送Schema、候选生成服务与确定性Validator已存在；新增主题目录、聚合受众预览Port、HTTP/本地Adapter及热点详情面板。预览不保存审批或投递状态；持久审批、策略集与投递运行链路待实现。**
+
+当前已实现的受众预览链路为：已有热点分析 → 人工选择主题组合 → 企业聚合受众接口／隔离本地替身
+→ 去重匹配人数、通知资格人数与快照校验 → 人工评估。`eligible_users > 0` 只产生
+`consider`，零人数产生 `observe`；人数不是实际送达或点击预测，也不构成发送授权。
+该服务不是新Agent，不自动选择标签，不创建持久接收者名单或 `delivery_task_id`。
+详见[受众接口实现](agent/docs/enterprise-audience-implementation.md)和
+[新版运营架构与评测](agent/docs/news-operations-agent-design.md)。下方投递状态机仍为后续方案。
 
 运营策略研究、策略卡、审批回流契约、当前Temporal调用链与长期实施顺序见
-[运营审批驱动的DataLoop文档集](agent/docs/data-loop/README.md)。其中清楚区分一次建议审批、标签二审、通用策略审核与配置发布；本计划中的RPC与专属Workflow仍为待建方案。
+[运营审批驱动的DataLoop文档集](agent/docs/data-loop/README.md)。其中清楚区分一次建议审批、标签二审、通用策略审核与配置发布；本计划中的持久人群解析、投递RPC与专属Workflow仍为待建方案。
 
 ## 1. 目标与边界
 
@@ -39,13 +46,17 @@ NewsAgent 已能从行为指标发现热点、结合正文与关联报道生成�
 - 租户隔离、幂等账本、热点运行/决策历史和不可变 Artifact 模式；个人Memory不能直接替代团队运营策略库。
 - `agent/app/schemas/push.py` 中 `AudienceRule/PushPlan/PushStrategyCandidate`。
 - `PushStrategyInputBuilder/PushStrategyService`、`PushStrategyAgentRunner` 与 `PushPolicyValidator`，当前仅为未接API/Workflow的服务及单测。
+- `TopicCatalog/AudienceSelection/AudienceSnapshot`、`AudiencePreviewService` 与
+  `AudienceProfilePort`，已接热点详情的主题与聚合受众预览；HTTP Adapter与本地替身共用合同。
+  该预览不调用推送候选生成器，不保存正式审批，默认关闭，不能推断现有实例已启用。
 
 ### 尚未实现
 
 - PushPlan持久化、修订与审核记录、投递任务和效果回执领域模型。
 - 候选生成器/Validator的原生模型装配和运行链路；完整审批revision/hash绑定、实际频控与原子去重。
 - 团队运营策略注册表、四类决定回流、策略独立审核/激活与下一建议复用。
-- 人群圈选、推送提交和结果查询/回调 RPC Port、Mock Client 与企业 Adapter。
+- 投递用持久人群解析、推送提交和结果查询/回调 RPC Port、Mock Client 与企业 Adapter。
+  聚合受众预估Port已实现，真实企业标签、画像与通知资格合同尚待联调。
 - 推送专用 Temporal Workflow、数据库迁移、API、前端页面和评测样本。
 
 因此当前不能在简历或项目介绍中表述为“已实现自动推送”。
@@ -112,6 +123,10 @@ READY_TO_DISPATCH → DISPATCHING → SENT / FAILED / EXPIRED
 
 ### AudienceService
 
+当前 `AudienceProfilePort.estimate` 仅返回绑定 `tenant/run/news` 的聚合 `AudienceSnapshot`，
+不是本节拟议的持久人群创建服务。`snapshot_id` 不等于投递接收者集合ID，查询指纹不承诺
+持久幂等重放。正式投递仍需在批准后复核同意、频控和有效期。
+
 输入结构化人群条件，返回 `audience_id`、版本、估算人数和失效时间。Agent 不接收用户 ID
 明细。请求必须携带租户、追踪 ID 和幂等键。
 
@@ -136,7 +151,8 @@ tenant_id + event_id + event_update_version + strategy_version + audience_versio
 2. 已有Validator与单测；补真实频控、原子去重和所有建议的完整审批绑定，不能把低风险PASSED当作已批准。
 3. 已有候选生成服务；补原生模型/Prompt装配和API/Workflow接入，结构化输出继续经过Validator。
 4. 新增 PostgreSQL 表、Repository、审核 API 和租户/角色权限。
-5. 定义 RPC Protocol，先实现 Mock Client 与故障分类，再接企业 SDK。
+5. 复用已实现聚合受众预览Port；确认企业真实目录、去重、资格与窗口合同，再单独定义
+   投递用持久人群解析、提交及回执Protocol，先故障模拟，再接企业接口。
 6. 使用 Temporal 编排审核等待、人群创建、任务提交和结果查询；副作用调用有限重试。
 7. 扩展黄金集、前端评审页、效果回流和运营 Memory；先 shadow，人工验收后再讨论真实触达。
 

@@ -1,3 +1,4 @@
+import hashlib
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock
 import uuid
@@ -42,6 +43,31 @@ async def test_start_workflow_uses_stable_idempotency_policies() -> None:
     assert arguments.kwargs["id_reuse_policy"] == WorkflowIDReusePolicy.REJECT_DUPLICATE
     assert arguments.args[1].topic == "主题"
     assert arguments.args[1].scenario == "research_package"
+    assert arguments.args[1].recovery_checkpoint_namespace is None
+
+
+@pytest.mark.asyncio
+async def test_research_recovery_namespace_uses_persisted_workflow_id() -> None:
+    service, client = service_and_client()
+    job = SimpleNamespace(
+        id=uuid.uuid4(), tenant_id=uuid.uuid4(), topic="主题",
+        scenario=JobScenario.ASSISTED_WRITING, requirements={},
+        temporal_workflow_id="news-writing:tenant:job:resume:operator-001",
+    )
+
+    await service.start_job(job, recovery_action="research", recovery_instruction="补充事实")
+    first = client.start_workflow.await_args.args[1]
+    await service.start_job(job, recovery_action="research", recovery_instruction="补充事实")
+    replay = client.start_workflow.await_args.args[1]
+    job.temporal_workflow_id = "news-writing:tenant:job:resume:operator-002"
+    await service.start_job(job, recovery_action="research", recovery_instruction="补充事实")
+    second = client.start_workflow.await_args.args[1]
+
+    assert first.recovery_checkpoint_namespace == replay.recovery_checkpoint_namespace
+    assert second.recovery_checkpoint_namespace == hashlib.sha256(
+        job.temporal_workflow_id.encode("utf-8")
+    ).hexdigest()
+    assert second.recovery_checkpoint_namespace != first.recovery_checkpoint_namespace
 
 
 @pytest.mark.asyncio

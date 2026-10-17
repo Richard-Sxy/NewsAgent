@@ -57,7 +57,6 @@ async function submit(): Promise<void> {
   <section class="na-card">
     <div class="na-card__head">
       <h2>新建写作任务</h2>
-      <span class="na-badge na-badge--live">真实接口</span>
     </div>
 
     <form class="na-row" @submit.prevent="submit">
@@ -85,7 +84,7 @@ async function submit(): Promise<void> {
           :aria-expanded="showRequirements"
           @click="showRequirements = !showRequirements"
         >
-          {{ showRequirements ? '收起补充要求' : '补充要求' }}
+          {{ showRequirements ? '收起高级要求' : '高级要求' }}
         </button>
       </div>
       <div class="na-field na-field--action">

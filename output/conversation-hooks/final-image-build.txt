@@ -1,0 +1,123 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.e2e.cached
+#1 transferring dockerfile: 3.32kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/news-agent/conversation-hooks-bge-dependencies:20261013
+#3 DONE 0.1s
+
+#4 [stage-1  1/30] FROM docker.io/library/python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+#4 resolve docker.io/library/python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 27B
+#5 transferring context: 163.10kB 0.1s done
+#5 DONE 0.1s
+
+#6 [dependencies 1/1] FROM docker.io/news-agent/conversation-hooks-bge-dependencies:20261013@sha256:eb061d20f2b3e325b77074db44015ba5ec0b73cac39b29bf500b9b286e3a51e1
+#6 resolve docker.io/news-agent/conversation-hooks-bge-dependencies:20261013@sha256:eb061d20f2b3e325b77074db44015ba5ec0b73cac39b29bf500b9b286e3a51e1 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1  5/30] COPY pyproject.toml ./
+#7 CACHED
+
+#8 [stage-1  2/30] WORKDIR /app
+#8 CACHED
+
+#9 [stage-1  3/30] RUN groupadd --system --gid 10001 app     && useradd --system --uid 10001 --gid app --home-dir /app app     && mkdir -p /state && chown app:app /state
+#9 CACHED
+
+#10 [stage-1  4/30] COPY --from=dependencies /usr/local /usr/local
+#10 CACHED
+
+#11 [stage-1  6/30] RUN python -c 'import importlib.metadata as m, tomllib; from packaging.requirements import Requirement; p=tomllib.load(open("pyproject.toml","rb"))["project"]; requirements=[Requirement(value) for value in p["dependencies"]+p.get("optional-dependencies",{}).get("dev",[])]; assert all(m.version(r.name) in r.specifier for r in requirements if r.marker is None or r.marker.evaluate()), "cached dependency contract mismatch"'     && python -m pip check
+#11 CACHED
+
+#12 [stage-1  7/30] COPY app ./app
+#12 DONE 0.2s
+
+#13 [stage-1  8/30] COPY alembic ./alembic
+#13 DONE 0.0s
+
+#14 [stage-1  9/30] COPY alembic.ini ./
+#14 DONE 0.0s
+
+#15 [stage-1 10/30] COPY examples ./examples
+#15 DONE 0.0s
+
+#16 [stage-1 11/30] COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+#16 DONE 0.0s
+
+#17 [stage-1 12/30] COPY tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
+#17 DONE 0.0s
+
+#18 [stage-1 13/30] COPY tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
+#18 DONE 0.0s
+
+#19 [stage-1 14/30] COPY evaluation ./evaluation
+#19 DONE 0.2s
+
+#20 [stage-1 15/30] COPY deploy/mock-cms ./deploy/mock-cms
+#20 DONE 0.1s
+
+#21 [stage-1 16/30] COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
+#21 DONE 0.0s
+
+#22 [stage-1 17/30] COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
+#22 DONE 0.0s
+
+#23 [stage-1 18/30] COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatible.example.yml
+#23 DONE 0.0s
+
+#24 [stage-1 19/30] COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
+#24 DONE 0.0s
+
+#25 [stage-1 20/30] COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
+#25 DONE 0.0s
+
+#26 [stage-1 21/30] COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
+#26 DONE 0.0s
+
+#27 [stage-1 22/30] COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
+#27 DONE 0.0s
+
+#28 [stage-1 23/30] COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
+#28 DONE 0.1s
+
+#29 [stage-1 24/30] COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
+#29 DONE 0.1s
+
+#30 [stage-1 25/30] COPY docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
+#30 DONE 0.0s
+
+#31 [stage-1 26/30] COPY docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
+#31 DONE 0.0s
+
+#32 [stage-1 27/30] COPY docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
+#32 DONE 0.0s
+
+#33 [stage-1 28/30] COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
+#33 DONE 0.0s
+
+#34 [stage-1 29/30] COPY data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
+#34 DONE 0.0s
+
+#35 [stage-1 30/30] COPY tests ./tests
+#35 DONE 0.1s
+
+#36 exporting to image
+#36 exporting layers
+#36 exporting layers 0.3s done
+#36 exporting manifest sha256:1ca0abfe9da2fc420c1990e46317e385c7e2cec668f1472c7cb9385232e1e3e3 done
+#36 exporting config sha256:c463282bab8f579e1d954ca98d7241057ace5c4fab001f2ead0469037c0ff0df done
+#36 exporting attestation manifest sha256:1117169d1a7f6637dca0342cd67690d0b2269d1567974274880101068cc56306 done
+#36 exporting manifest list sha256:d2dd4326714323b30c40835e9ae4680e97a16b017a9fdaf182f0fc6ac5b309a2 done
+#36 naming to docker.io/news-agent/conversation-hooks-bge-demo:local done
+#36 unpacking to docker.io/news-agent/conversation-hooks-bge-demo:local
+#36 unpacking to docker.io/news-agent/conversation-hooks-bge-demo:local 0.2s done
+#36 DONE 0.6s

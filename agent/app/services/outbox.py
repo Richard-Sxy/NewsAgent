@@ -9,6 +9,11 @@ from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import ValidationError
 
+from opentelemetry import trace
+from opentelemetry.context import Context
+from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
+from app.observability.telemetry import operation, record_error
+from app.observability.decorators import traced
 from app.config import Settings
 from app.db.session import Database
 from app.domain.execution import StepType
@@ -131,6 +136,11 @@ class OutboxService:
 
     @staticmethod
     async def enqueue(session: AsyncSession, event: ProgressEvent) -> None:
+        payload = event.model_dump(mode="json", exclude={"event_id"})
+        carrier = {}
+        TraceContextTextMapPropagator().inject(carrier)
+        if carrier:
+            payload["_telemetry"] = carrier
         statement = (
             insert(OutboxEvent)
             .values(
@@ -139,7 +149,7 @@ class OutboxService:
                 job_id=event.job_id,
                 event_type=event.event,
                 deduplication_key=event.deduplication_key,
-                payload=event.model_dump(mode="json", exclude={"event_id"}),
+                payload=payload,
                 status="pending",
                 attempts=0,
                 available_at=event.occurred_at,
@@ -184,29 +194,37 @@ class OutboxRelay:
             return len(events)
 
     async def _publish_one(self, outbox_event: OutboxEvent) -> None:
-        try:
-            event = ProgressEvent.model_validate(outbox_event.payload)
-        except ValidationError as exc:
-            outbox_event.attempts += 1
-            outbox_event.status = "dead_letter"
-            outbox_event.last_error = f"invalid event payload: {exc}"[:8000]
-            return
-        try:
-            await self.publisher.publish(event)
-        except ProgressPublishError as exc:
-            outbox_event.attempts += 1
-            outbox_event.last_error = str(exc)[:8000]
-            if outbox_event.attempts >= self.max_attempts:
+        carrier = outbox_event.payload.get("_telemetry", {}) if isinstance(outbox_event.payload, dict) else {}
+        carrier = {k: v for k, v in carrier.items() if k in {"traceparent", "tracestate"}
+                   and isinstance(v, str) and len(v) <= 512} if isinstance(carrier, dict) else {}
+        parent = TraceContextTextMapPropagator().extract(carrier, context=Context())
+        with operation("outbox.publish", context=parent,
+                       attributes={"newsagent.job_id": str(outbox_event.job_id)}) as span:
+            try:
+                event = ProgressEvent.model_validate(outbox_event.payload)
+            except ValidationError as exc:
+                record_error(span, exc, "outbox_decode")
+                outbox_event.attempts += 1
                 outbox_event.status = "dead_letter"
-            else:
-                delay = min(2 ** outbox_event.attempts, 300)
-                outbox_event.available_at = datetime.now(timezone.utc) + timedelta(
-                    seconds=delay
-                )
-            return
-        outbox_event.status = "published"
-        outbox_event.published_at = datetime.now(timezone.utc)
-        outbox_event.last_error = None
+                outbox_event.last_error = f"invalid event payload: {exc}"[:8000]
+                return
+            try:
+                await self.publisher.publish(event)
+            except ProgressPublishError as exc:
+                record_error(span, exc, "outbox_publish")
+                outbox_event.attempts += 1
+                outbox_event.last_error = str(exc)[:8000]
+                if outbox_event.attempts >= self.max_attempts:
+                    outbox_event.status = "dead_letter"
+                else:
+                    delay = min(2 ** outbox_event.attempts, 300)
+                    outbox_event.available_at = datetime.now(timezone.utc) + timedelta(
+                        seconds=delay
+                    )
+                return
+            outbox_event.status = "published"
+            outbox_event.published_at = datetime.now(timezone.utc)
+            outbox_event.last_error = None
 
     async def run_forever(self, stop: asyncio.Event | None = None) -> None:
         stop_event = stop or asyncio.Event()

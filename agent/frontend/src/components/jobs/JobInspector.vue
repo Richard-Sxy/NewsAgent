@@ -5,6 +5,7 @@ import { jobsApi } from '@/api'
 import type { DecisionAction, DecisionGate, JobStatus } from '@/api'
 import EventStreamViewer from '@/components/jobs/EventStreamViewer.vue'
 import NaJsonBlock from '@/components/NaJsonBlock.vue'
+import NaStateBlock from '@/components/NaStateBlock.vue'
 import { useAsyncTask } from '@/composables/useAsyncTask'
 import { useConfirmStore } from '@/stores/confirm'
 import { useJobsStore } from '@/stores/jobs'
@@ -25,10 +26,10 @@ const { pending, run } = useAsyncTask()
 const TABS: Array<{ value: JobInspectorTab; label: string }> = [
   { value: 'overview', label: '概览' },
   { value: 'progress', label: '进度' },
-  { value: 'research', label: '研究指标' },
+  { value: 'research', label: '研究质量' },
   { value: 'package', label: '资料包' },
-  { value: 'recovery', label: '恢复' },
-  { value: 'events', label: '事件流' },
+  { value: 'recovery', label: '故障恢复' },
+  { value: 'events', label: '运行记录' },
 ]
 
 const job = computed(() => store.selected)
@@ -239,7 +240,6 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
         <span v-if="job" class="na-badge" :class="`na-badge--${jobStatusTone(job.status)}`">
           {{ jobStatusLabel(job.status) }}
         </span>
-        <span class="na-badge">{{ store.streamState }}</span>
         <button
           class="na-btn"
           type="button"
@@ -259,6 +259,7 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
       loading-text="加载任务详情…"
     >
       <template v-if="job">
+        <h3>{{ job.topic }}</h3>
         <div class="na-metrics">
           <div class="na-metric">
             <div class="na-metric__label">当前步骤</div>
@@ -268,19 +269,11 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
             <div class="na-metric__label">整体进度</div>
             <div class="na-metric__value">{{ formatPercent(job.progress_percent) }}</div>
           </div>
-          <div class="na-metric">
+          <div v-if="job.sections_total" class="na-metric">
             <div class="na-metric__label">章节进度</div>
             <div class="na-metric__value">
               {{ job.sections_completed }} / {{ job.sections_total }}
             </div>
-          </div>
-          <div class="na-metric">
-            <div class="na-metric__label">评审轮次</div>
-            <div class="na-metric__value">{{ job.review_rounds }}</div>
-          </div>
-          <div class="na-metric">
-            <div class="na-metric__label">检索重试</div>
-            <div class="na-metric__value">{{ job.research_retries }}</div>
           </div>
         </div>
 
@@ -301,36 +294,21 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
 
         <div v-if="store.activeTab === 'overview'" class="na-panel">
           <dl class="na-defs">
-            <div>
-              <dt>选题</dt>
-              <dd>{{ job.topic }}</dd>
-            </div>
-            <div>
-              <dt>任务 ID</dt>
-              <dd class="na-mono">{{ job.id }}</dd>
-            </div>
-            <div>
-              <dt>租户</dt>
-              <dd class="na-mono">{{ job.tenant_id }}</dd>
-            </div>
-            <div>
-              <dt>产出类型</dt>
-              <dd>{{ job.scenario === 'assisted_writing' ? '辅助写作' : '仅资料包' }}</dd>
-            </div>
-            <div>
-              <dt>Temporal 工作流</dt>
-              <dd class="na-mono">{{ job.temporal_workflow_id }}</dd>
-            </div>
-            <div>
-              <dt>创建时间</dt>
-              <dd>{{ formatDateTime(job.created_at) }}</dd>
-            </div>
-            <div>
-              <dt>更新时间</dt>
-              <dd>{{ formatDateTime(job.updated_at) }}</dd>
-            </div>
+            <div><dt>产出类型</dt><dd>{{ job.scenario === 'assisted_writing' ? '辅助写作' : '仅资料包' }}</dd></div>
+            <div><dt>更新时间</dt><dd>{{ formatDateTime(job.updated_at) }}</dd></div>
           </dl>
-          <NaJsonBlock :value="job.requirements" label="requirements" />
+          <details class="na-disclosure">
+            <summary>任务要求与运行详情</summary>
+            <dl class="na-defs">
+              <div><dt>任务编号</dt><dd class="na-mono">{{ job.id }}</dd></div>
+              <div><dt>租户</dt><dd class="na-mono">{{ job.tenant_id }}</dd></div>
+              <div><dt>工作流编号</dt><dd class="na-mono">{{ job.temporal_workflow_id }}</dd></div>
+              <div><dt>创建时间</dt><dd>{{ formatDateTime(job.created_at) }}</dd></div>
+              <div><dt>评审轮次</dt><dd>{{ job.review_rounds }}</dd></div>
+              <div><dt>检索重试</dt><dd>{{ job.research_retries }}</dd></div>
+            </dl>
+            <NaJsonBlock :value="job.requirements" label="完整任务要求" />
+          </details>
         </div>
 
         <div v-else-if="store.activeTab === 'progress'" class="na-panel">
@@ -342,7 +320,7 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
           >
             <template v-if="store.progress">
               <p v-if="store.progress.workflow_status === 'missing'" class="na-notice">
-                Temporal 执行记录不存在；当前显示的是数据库任务状态。请先到“恢复”标签核对检查点并恢复任务，再提交人工决策。
+                Temporal 执行记录不存在；当前显示的是数据库任务状态。请先到“故障恢复”标签核对检查点并恢复任务，再提交人工决策。
               </p>
               <dl class="na-defs">
                 <div>
@@ -366,7 +344,7 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
                   <dd class="na-mono">{{ truncate(store.progress.workflow?.last_artifact_uri ?? '-', 64) }}</dd>
                 </div>
               </dl>
-              <NaJsonBlock :value="store.progress" label="进度快照原始载荷" />
+              <details class="na-disclosure"><summary>完整进度快照</summary><NaJsonBlock :value="store.progress" label="完整进度快照" /></details>
             </template>
           </NaStateBlock>
         </div>
@@ -379,16 +357,7 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
             empty-text="暂无研究指标"
           >
             <template v-if="store.metrics">
-              <div class="na-metrics">
-                <div class="na-metric">
-                  <div class="na-metric__label">逻辑键</div>
-                  <div class="na-metric__value na-mono">{{ store.metrics.logical_key }}</div>
-                </div>
-                <div class="na-metric">
-                  <div class="na-metric__label">产物版本</div>
-                  <div class="na-metric__value">v{{ store.metrics.artifact_version }}</div>
-                </div>
-              </div>
+              <details class="na-disclosure"><summary>研究记录详情</summary><p>记录编号：{{ store.metrics.logical_key }} · 版本 {{ store.metrics.artifact_version }}</p></details>
               <NaJsonBlock :value="store.metrics.metrics" label="研究指标" :collapsed-height="320" />
             </template>
           </NaStateBlock>
@@ -465,7 +434,7 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
                 <input id="resume-instruction" v-model="resumeInstruction" class="na-input">
               </div>
 
-              <NaJsonBlock :value="store.recovery.resume_point" label="恢复点" />
+              <details class="na-disclosure"><summary>查看恢复点</summary><NaJsonBlock :value="store.recovery.resume_point" label="恢复点" /></details>
             </template>
           </NaStateBlock>
         </div>
@@ -512,32 +481,37 @@ const isStreaming = computed(() => store.streamState === 'open' || store.streamS
             </button>
           </div>
         </div>
-        <div class="na-field">
-          <label for="instruction">
-            指令
-            <span v-if="needsInstruction" class="na-required">（打回修改 / 补充检索必填）</span>
-          </label>
-          <textarea
-            id="instruction"
-            v-model="instruction"
-            class="na-textarea"
-            placeholder="说明需要修改什么、或补充哪些方向的检索"
-          />
-        </div>
+        <details class="na-disclosure" :open="needsInstruction">
+          <summary>{{ needsInstruction ? '修改或补充说明（必填）' : '补充说明（可选）' }}</summary>
+          <div class="na-field">
+            <label for="instruction">
+              指令
+              <span v-if="needsInstruction" class="na-required">（打回修改 / 补充检索必填）</span>
+            </label>
+            <textarea
+              id="instruction"
+              v-model="instruction"
+              class="na-textarea"
+              placeholder="说明需要修改什么、或补充哪些方向的检索"
+            />
+          </div>
+        </details>
 
-        <h3>发布与导出</h3>
-        <div class="na-row">
-          <div class="na-field na-field--fixed">
-            <label for="channel">发布渠道</label>
-            <input id="channel" v-model="channel" class="na-input" autocomplete="off">
+        <details class="na-disclosure">
+          <summary>发布与导出</summary>
+          <div class="na-row">
+            <div class="na-field na-field--fixed">
+              <label for="channel">发布渠道</label>
+              <input id="channel" v-model="channel" class="na-input" autocomplete="off">
+            </div>
+            <div class="na-field na-field--action">
+              <button class="na-btn" type="button" :disabled="pending" @click="publish">发布到 CMS</button>
+            </div>
+            <div class="na-field na-field--action">
+              <button class="na-btn" type="button" :disabled="pending" @click="exportFinal">导出成稿</button>
+            </div>
           </div>
-          <div class="na-field na-field--action">
-            <button class="na-btn" type="button" :disabled="pending" @click="publish">发布到 CMS</button>
-          </div>
-          <div class="na-field na-field--action">
-            <button class="na-btn" type="button" :disabled="pending" @click="exportFinal">导出成稿</button>
-          </div>
-        </div>
+        </details>
       </template>
     </NaStateBlock>
   </section>

@@ -1,0 +1,118 @@
+[
+  {
+    "scenario_id": "metric-case-00",
+    "name": "常规消费",
+    "news_id": "20260718A03B9V00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-01",
+    "name": "隔离租户模拟撤稿",
+    "news_id": "20260719A04P4Y00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-02",
+    "name": "隔离租户模拟受限",
+    "news_id": "20260729A08XKX00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-03",
+    "name": "隔离租户模拟更正",
+    "news_id": "20260812A0BLLJ00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-04",
+    "name": "发布后短时升温",
+    "news_id": "20260812A0BLWD00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-05",
+    "name": "新闻时效衰减",
+    "news_id": "20260812A0C2Q700",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-06",
+    "name": "低样本",
+    "news_id": "20260815A0ATU200",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-07",
+    "name": "零点击",
+    "news_id": "20260819A00DQ500",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-08",
+    "name": "曝光及直接访问",
+    "news_id": "20260819A02V9O00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-09",
+    "name": "点击归因阅读退化",
+    "news_id": "20260819A02XVE00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-10",
+    "name": "负反馈升高",
+    "news_id": "20260819A034S300",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "metric-case-11",
+    "name": "稳定长尾",
+    "news_id": "20260819A0369E00",
+    "metric_data_synthetic": true,
+    "lifecycle_data_synthetic": true
+  },
+  {
+    "scenario_id": "late-correction",
+    "name": "最新修订先选再检验，最后闭合小时rev2纠正",
+    "window_start": "2026-10-14T19:00:00+08:00",
+    "metric_data_synthetic": true
+  },
+  {
+    "scenario_id": "open-window",
+    "name": "开放小时仅七个桶，禁止进入完整榜",
+    "window_start": "2026-10-14T20:00:00+08:00",
+    "metric_data_synthetic": true
+  },
+  {
+    "scenario_id": "daily-uv",
+    "name": "日点击UV与访问UV各自跨小时求并集，末日为partial",
+    "metric_data_synthetic": true
+  },
+  {
+    "scenario_id": "latest-invalidates-old-complete",
+    "name": "倒数第二小时rev1完整、rev2不完整，禁止回退旧完整快照",
+    "metric_data_synthetic": true
+  },
+  {
+    "scenario_id": "publication-boundary",
+    "name": "发布之前无行为、无基线，发布桶按剩余秒数计算",
+    "metric_data_synthetic": true
+  },
+  {
+    "scenario_id": "missing-baseline",
+    "name": "只取真实存在的前三天同小时，零样本NULL",
+    "metric_data_synthetic": true
+  }
+]

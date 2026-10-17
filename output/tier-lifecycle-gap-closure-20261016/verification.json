@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-16T04:44:42.305004+00:00",
+  "status": "passed_for_local_implementation_scope",
+  "scope": [
+    "pure tier migration reuses validated active-source vectors",
+    "frozen task dispatch/batches and per-row failure isolation",
+    "cursor-preserving Temporal per-page continuation",
+    "request-local trace v2 and fail-closed 503/504",
+    "bounded synchronous Milvus RPC capacity retained after async cancellation",
+    "read-only database/vector preflight and opt-in live Milvus contract test",
+    "bounded closed-loop HTTP benchmark with redacted evidence"
+  ],
+  "checks": {
+    "full_backend": {
+      "command": "cd agent && python3.11 -m pytest -o addopts='' -q",
+      "passed": 3966,
+      "skipped": 102,
+      "warnings": 3,
+      "seconds": 45.61
+    },
+    "post_review_targeted": {
+      "scope": "preflight/factory/runtime/Milvus/guarded-index tests after final explicit dynamic-field compatibility correction",
+      "passed": 114,
+      "seconds": 2.04
+    },
+    "real_postgres_temporal": {
+      "passed": 8,
+      "seconds": 8.42,
+      "isolation": "random schema, queue and workflow IDs; only own resources cleaned",
+      "entrypoints": [
+        "tests/test_tier_lifecycle_store.py::test_real_postgres_concurrent_same_revision_has_one_accepted_job",
+        "tests/test_tier_lifecycle_worker.py::test_real_temporal_dispatch_index_migrate_and_withdraw_in_isolated_postgres_schema",
+        "tests/test_tier_lifecycle_migration.py",
+        "tests/test_tier_lifecycle_stability.py::test_real_temporal_scan_continues_past_one_run_timeout_without_losing_cursor"
+      ]
+    },
+    "persistent_local_replay": {
+      "passed": 35,
+      "report": "../tier-lifecycle-replay-20261016/report.json",
+      "scope": "SQLite exact vectors and deterministic local hash embedding"
+    },
+    "api_benchmark_smoke": {
+      "status": "passed",
+      "scope": "in-process ASGI API + SQLite exact vectors + LocalHashEmbedding; no TCP, enterprise model, Milvus, or ANN performance claim",
+      "seeded_active_tiers": [
+        "hot",
+        "warm",
+        "cold"
+      ],
+      "measured_requests": 30,
+      "warmup_requests": 3,
+      "configured_concurrency": 3,
+      "readiness_scope": "database_and_vector_contract_only",
+      "trace_components_per_tier": 30
+    },
+    "git_diff_check": "passed",
+    "pdf": {
+      "pages": 1,
+      "rendered_and_visually_inspected": true,
+      "path": "../pdf/NewsAgent_三层实施缺口补齐_2026-10-16.pdf"
+    }
+  },
+  "enterprise_validation": {
+    "milvus_live": "not_run_no_target_test_collections_configured",
+    "embedding_quality": "not_run",
+    "scale_latency": "not_run",
+    "entrypoint": "agent/tests/test_milvus_lifecycle_live.py"
+  },
+  "remaining_todos": [
+    "QA child-document lifecycle",
+    "history retention and archival policy",
+    "cross-replica global quota enforcement",
+    "target-environment quality, scale and long-running acceptance"
+  ],
+  "source_sha256": {
+    "agent/app/knowledge/tier_lifecycle.py": "32d88a9b28357dd68ac3d48ab11b1f980c1b54b42ffa873f085a4b3e15e2eed0",
+    "agent/app/knowledge/tier_lifecycle_store.py": "d9f64946e9220e3a0b98013c65476be81c4e217847d4606bed0c33087f475183",
+    "agent/app/knowledge/tier_lifecycle_query.py": "649dbd9a649a63fb5f382f147946db25e9072935ff24753fb9b9da4883c616b5",
+    "agent/app/knowledge/tier_lifecycle_index.py": "db2a621b1f83ca8294816859d466974b0eca08f0d2378468e56752909e86c2a1",
+    "agent/app/knowledge/tier_lifecycle_factory.py": "b0b9b1de1b87ad5cfdd137b45fd7e98902a2b498f5b23ecfca37c41eea2d053f",
+    "agent/app/knowledge/tier_lifecycle_local_index.py": "5de4d91e9b52ad00996f49ae4314981622c458e5d9e81e91fc7010958e105611",
+    "agent/app/knowledge_lifecycle_worker.py": "1babdef611ebc55a696fb601322d314f1fc3c44aba107eb99fb5dda10e3ac30e",
+    "agent/app/workflows/knowledge_lifecycle.py": "8165c7981dd361a59558381d75d28b086ad8f13bebd5c66d8d8abf8ccf629d42",
+    "agent/app/clients/enterprise/milvus_vector.py": "e1219c6bae575d63458c0b3d40eb6489ef2fed71da55582f36411428c15b042e",
+    "agent/app/clients/enterprise/milvus_lifecycle_contract.py": "56ea12d3fe803c424de9ec2931b356813d2bbaaa21e89ba8096cf3af259fc699",
+    "agent/app/api/knowledge.py": "67cc918d49aaed5263d300dd59729a3a25630b82ef17195af5c5ae786c2eb6ce",
+    "agent/app/main.py": "f6854f5d8a4218dc0efe32ddd7ad57bbbeba2ec8e685a931120738526ac7d0da",
+    "agent/app/hot_news_worker.py": "6a809278ca5ca4682afc5875ca7b09995cf3a9712e5dc6b825bdfccc9a28b8c1",
+    "agent/tools/benchmark_tier_lifecycle.py": "f93177b1cd74aba1b19974b3c7d37e15ef494fc51f6dec7258cab112cd16096f",
+    "agent/docs/tiered-knowledge-lifecycle.md": "f6daefc7a09099e08e5e133163a62fd39f9c4db437d4dfc873b558e903a24a9b"
+  }
+}

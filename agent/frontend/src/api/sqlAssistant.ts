@@ -32,6 +32,11 @@ export interface SqlAssistantConfig {
     headline_catalog_sha256?: string
     headline_date_start?: string
     headline_date_end?: string
+    corpus_catalog_sha256?: string
+    corpus_count?: number
+    news_content_source?: string
+    metric_data_synthetic?: boolean
+    category_data_synthetic?: boolean
     enterprise_scenarios?: unknown[]
   }
   scenarios: SqlAssistantScenario[]

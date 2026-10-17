@@ -34,6 +34,11 @@ CREDIT = re.compile(
     r"[：:]\s*.{0,100}$"
 )
 IMAGE_CREDIT = re.compile(r"^(?:图源|图片来源|图片|摄影|摄图|供图)\s+\S.{0,100}$")
+BLOCK_BYLINE = re.compile(
+    r"^(?:(?:本报|本台|本刊)?(?:记者|通讯员)|作者|编辑|责编|责任编辑|校对|审核|摄影)"
+    r"\s+[\u3400-\u9fffA-Za-z·•]{1,12}"
+    r"(?:[、，,\s]+[\u3400-\u9fffA-Za-z·•]{1,12}){0,3}$"
+)
 
 
 def normalize_article_url(url: str) -> str:
@@ -116,7 +121,8 @@ def parse_article(url: str, html: str, fetched_at: str | None = None) -> dict:
     if container is None:
         raise ValueError("recognized article body container is missing")
     noise_selectors = ("script, style, noscript, nav, aside, footer, .no-read, .NO_READ, [data-no-read], "
-                       "[class*='recommend'], [id*='recommend'], .related-news, .related-articles")
+                       "[class*='recommend'], [id*='recommend'], .related-news, .related-articles, "
+                       ".article-top-content, .ac-ask-ai, #article-author, .article-author, .media-info")
     for node in container.select(noise_selectors):
         if node.parent is not None:
             node.decompose()
@@ -127,6 +133,22 @@ def parse_article(url: str, html: str, fetched_at: str | None = None) -> dict:
                 or IMAGE_CREDIT.fullmatch(text)):
             continue
         paragraphs.append(text)
+    if not paragraphs:
+        # New public SSR templates use div.qnt-p or rich_media_content's
+        # sections instead of p. Keep the established p path unchanged and
+        # admit only these observed body blocks inside the recognized article
+        # container. Parent wrappers and blocks containing p are excluded so
+        # nested blocks cannot repeat text or reintroduce rejected bylines.
+        blocks = container.select(".qnt-p, .rich_media_content section")
+        block_ids = {id(node) for node in blocks}
+        for block in blocks:
+            if block.find("p") is not None or any(id(child) in block_ids for child in block.descendants):
+                continue
+            text = re.sub(r"\s+", " ", block.get_text(" ", strip=True)).strip()
+            if (not text or text == "举报" or CREDIT.fullmatch(text)
+                    or IMAGE_CREDIT.fullmatch(text) or BLOCK_BYLINE.fullmatch(text)):
+                continue
+            paragraphs.append(text)
     content = "\n".join(paragraphs)
     if not content:
         raise ValueError("article body contains no readable paragraphs")

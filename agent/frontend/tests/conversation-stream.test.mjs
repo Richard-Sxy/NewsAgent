@@ -134,6 +134,33 @@ test('UTF-8 split at every byte, CRLF, multiline data and heartbeats retain exac
   assert.deepEqual(JSON.parse(options.body), REQUEST)
 })
 
+test('saved writing proposal and execution traces arrive before terminal done, with immutable consecutive tool indexes', async () => {
+  const events = []
+  const proposal = { name: 'start_writing_intent', status: 'completed', attempts: 1,
+    arguments: {}, result: { confirmation: { token: 'saved-opaque-token' } }, error_code: null }
+  const execution = { ...proposal, result: { workflow_accepted: true, job: { id: 'saved-job' } } }
+  const completed = { ...TURN, tools: [proposal, execution] }
+  const text = accepted() + frame('tool_started', { index: 0, name: proposal.name })
+    + frame('tool_finished', { index: 0, name: proposal.name, status: 'completed', attempts: 1, error_code: null, trace: proposal })
+    + frame('tool_started', { index: 1, name: proposal.name })
+    + frame('tool_finished', { index: 1, name: execution.name, status: 'completed', attempts: 1, error_code: null, trace: execution })
+    + frame('done', { turn: completed })
+  const api = load(async () => response(text, 1))
+  assert.deepEqual(await api.streamConversationMessage('/stream', REQUEST, { onEvent: (event) => events.push(event) }), completed)
+  assert.deepEqual(events.filter((event) => event.type === 'tool_finished').map((event) => event.data.trace), [proposal, execution])
+})
+
+test('enriched tool traces reject malformed fields and mismatches against the saved event metadata', async () => {
+  const valid = { name: 'start_writing_intent', status: 'completed', attempts: 1, arguments: {}, result: {}, error_code: null }
+  for (const trace of [{ ...valid, name: 'approve' }, { ...valid, attempts: 2 }, { ...valid, status: 'failed' },
+    { ...valid, error_code: 'other' }, { ...valid, result: [] }, { ...valid, arguments: '<script>' }]) {
+    const text = accepted() + frame('tool_started', { index: 0, name: valid.name })
+      + frame('tool_finished', { index: 0, name: valid.name, status: 'completed', attempts: 1, error_code: null, trace })
+    const api = load(async () => response(text))
+    await assert.rejects(api.streamConversationMessage('/stream', REQUEST, { onEvent() {} }), /事件顺序异常/)
+  }
+})
+
 test('a delta callback is visible while done is still waiting on the network', async () => {
   let controller
   let completed = false

@@ -102,7 +102,7 @@ def test_publication_filter_never_authorizes_a_separate_mutation(question):
     plan = json.loads(local_conversation_plan({'message': question, 'available_tools': [{'name': 'query_hot_news'}]}))
     assert plan['action'] == 'respond'
     assert plan['tool_name'] is None
-    assert '只读' in plan['answer']
+    assert '不能' in plan['answer'] and '发布' in plan['answer'] and '人工审批' in plan['answer']
 
 
 @pytest.mark.asyncio

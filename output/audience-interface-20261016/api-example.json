@@ -1,0 +1,233 @@
+{
+  "validation_scope": "API + real AudiencePreviewService + synthetic Port; authorized report repository is a test double; no enterprise call or delivery",
+  "catalog": {
+    "schema_version": 1,
+    "taxonomy_version": "news-interest-demo-v1",
+    "status": "draft",
+    "topics": [
+      {
+        "topic_id": "tech",
+        "name": "科技",
+        "parent_topic_id": null,
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "tech.nature",
+        "name": "自然",
+        "parent_topic_id": "tech",
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "tech.space",
+        "name": "航天",
+        "parent_topic_id": "tech",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "tech.digital",
+        "name": "数码",
+        "parent_topic_id": "tech",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "tech.science",
+        "name": "科学研究",
+        "parent_topic_id": "tech",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "finance",
+        "name": "财经",
+        "parent_topic_id": null,
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "finance.macro",
+        "name": "宏观",
+        "parent_topic_id": "finance",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "finance.industry",
+        "name": "产业",
+        "parent_topic_id": "finance",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "finance.markets",
+        "name": "金融市场",
+        "parent_topic_id": "finance",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "finance.companies",
+        "name": "公司",
+        "parent_topic_id": "finance",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "ai",
+        "name": "AI",
+        "parent_topic_id": null,
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "ai.foundation-models",
+        "name": "大模型",
+        "parent_topic_id": "ai",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "ai.applications",
+        "name": "应用",
+        "parent_topic_id": "ai",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "ai.infrastructure",
+        "name": "算力基础设施",
+        "parent_topic_id": "ai",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "ai.research",
+        "name": "研究进展",
+        "parent_topic_id": "ai",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "military",
+        "name": "军事",
+        "parent_topic_id": null,
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "military.defense",
+        "name": "国防",
+        "parent_topic_id": "military",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "military.equipment",
+        "name": "装备",
+        "parent_topic_id": "military",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "military.exercises",
+        "name": "演训",
+        "parent_topic_id": "military",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "military.history",
+        "name": "军事历史",
+        "parent_topic_id": "military",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "education",
+        "name": "教育",
+        "parent_topic_id": null,
+        "enabled": true,
+        "provenance": "user_confirmed"
+      },
+      {
+        "topic_id": "education.basic",
+        "name": "基础教育",
+        "parent_topic_id": "education",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "education.gaokao",
+        "name": "高考",
+        "parent_topic_id": "education",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "education.higher",
+        "name": "高等教育",
+        "parent_topic_id": "education",
+        "enabled": true,
+        "provenance": "draft_extension"
+      },
+      {
+        "topic_id": "education.vocational",
+        "name": "职业教育",
+        "parent_topic_id": "education",
+        "enabled": true,
+        "provenance": "draft_extension"
+      }
+    ],
+    "source_mode": "synthetic"
+  },
+  "preview": {
+    "preview_only": true,
+    "manual_review_required": true,
+    "dispatch_enabled": false,
+    "run_id": "cba45d7f-ecf9-4a71-96be-0db4b43f875c",
+    "news_id": "news-audience-demo-1",
+    "selection": {
+      "taxonomy_version": "news-interest-demo-v1",
+      "include_topic_ids": [
+        "tech",
+        "tech.nature"
+      ],
+      "exclude_topic_ids": [],
+      "match": "any"
+    },
+    "snapshot": {
+      "tenant_id": "2d3ec575-35cb-466d-a1a1-d5b06f81a511",
+      "run_id": "cba45d7f-ecf9-4a71-96be-0db4b43f875c",
+      "news_id": "news-audience-demo-1",
+      "taxonomy_version": "news-interest-demo-v1",
+      "query_fingerprint": "f500737b4f43609b595a072cf40659d2f6eaacb0731f9c727e29126300b0b2bc",
+      "snapshot_id": "synthetic-0f023b3c441771b116ed3a1daf128ac741b562f8d13c3458bdcef2cb77d2b18e",
+      "profile_version": "synthetic-interest-profiles-v1",
+      "source_version": "synthetic-audience-v1",
+      "window_start": "2026-10-16T06:00:00Z",
+      "window_end": "2026-10-16T07:00:00Z",
+      "generated_at": "2026-10-16T08:00:00Z",
+      "expires_at": "2026-10-16T08:05:00Z",
+      "watermark": "2026-10-16T07:00:00Z",
+      "is_complete": true,
+      "matched_users": 240,
+      "eligible_users": 164,
+      "source_mode": "synthetic"
+    },
+    "recommendation": {
+      "action": "consider",
+      "reason": "存在符合兴趣与企业通知资格的去重受众，可进入人工推送评估；未创建投递任务。"
+    },
+    "fingerprint": "f294a88195a40f062ec054efa9035de4f22105d72ffd7830c93a894507afc989",
+    "limitations": [
+      "当前为合成标签人群演示，不是腾讯新闻真实用户或推荐效果。",
+      "受众按标签组合统一去重，不能相加各主题人数；与新闻浏览UV口径不同。",
+      "这是所选主题在报告窗口对应的画像预估，不代表该新闻全站潜在受众或当前实时可送达人数。",
+      "人数不是送达、展示或点击预测；实际推送仍须企业平台重新校验同意、频控、时效与人工审批。",
+      "预览不保存审批或投递状态，fingerprint不承诺持久幂等重放。"
+    ]
+  }
+}

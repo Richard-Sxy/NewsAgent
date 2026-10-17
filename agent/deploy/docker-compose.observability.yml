@@ -1,0 +1,114 @@
+name: newsagent-observability
+
+# Explicit opt-in, local diagnostics only. This file never restarts application services.
+# The internal network blocks Internet egress; all published ports bind to loopback.
+x-local-service: &local-service
+  restart: "no"
+  read_only: true
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  networks: [observability]
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "2"
+
+services:
+  gateway:
+    <<: *local-service
+    image: nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+    entrypoint: [nginx]
+    command: ["-g", "daemon off;"]
+    user: "101:101"
+    mem_limit: 64m
+    networks: [ingress, observability]
+    volumes:
+      - ./observability/gateway.conf:/etc/nginx/nginx.conf:ro
+    tmpfs:
+      - /tmp:size=16m,uid=101,gid=101,mode=0750
+    ports:
+      - "127.0.0.1:${NEWSAGENT_OTLP_HTTP_PORT:-24318}:4318"
+      - "127.0.0.1:${NEWSAGENT_TEMPO_PORT:-23200}:3200"
+      - "127.0.0.1:${NEWSAGENT_LOKI_PORT:-23100}:3100"
+      - "127.0.0.1:${NEWSAGENT_PROMETHEUS_PORT:-29090}:9090"
+      - "127.0.0.1:${NEWSAGENT_GRAFANA_PORT:-23000}:3000"
+    depends_on: [otel-collector, tempo, loki, prometheus, grafana]
+
+  otel-collector:
+    <<: *local-service
+    image: otel/opentelemetry-collector-contrib:0.162.0@sha256:39923a8e431bd1f57be82411999d389fcfe40857492e4365456d97a4c1f74be6
+    command: ["--config=/etc/otelcol/config.yml"]
+    mem_limit: 384m
+    volumes:
+      - ./observability/otel-collector.yml:/etc/otelcol/config.yml:ro
+    depends_on: [tempo, loki]
+
+  tempo:
+    <<: *local-service
+    # Maintained 2.x single binary: no Kafka or extra model/runtime dependencies.
+    image: grafana/tempo:2.10.8@sha256:f0561deb1c68ec44d6e6e7e4487f30106c4e5e768642077695b37958b105812a
+    command: ["-config.file=/etc/tempo/config.yml"]
+    mem_limit: 768m
+    volumes:
+      - ./observability/tempo.yml:/etc/tempo/config.yml:ro
+    tmpfs:
+      - /var/tempo:size=512m,uid=10001,gid=10001,mode=0750
+      - /tmp:size=32m,mode=1777
+
+  loki:
+    <<: *local-service
+    image: grafana/loki:3.7.8@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193
+    command: ["-config.file=/etc/loki/config.yml"]
+    mem_limit: 768m
+    volumes:
+      - ./observability/loki.yml:/etc/loki/config.yml:ro
+    tmpfs:
+      - /loki:size=512m,uid=10001,gid=10001,mode=0750
+      - /tmp:size=32m,mode=1777
+
+  prometheus:
+    <<: *local-service
+    image: prom/prometheus:v3.15.0@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=24h
+      - --storage.tsdb.retention.size=384MB
+      - --enable-feature=exemplar-storage
+    mem_limit: 768m
+    volumes:
+      - ./observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/alerts.yml:/etc/prometheus/alerts.yml:ro
+    tmpfs:
+      - /prometheus:size=512m,uid=65534,gid=65534,mode=0750
+
+  grafana:
+    <<: *local-service
+    image: grafana/grafana:13.2.4@sha256:dbbc38ea21103cefb50396340cd88afec779c7e070b0a7bf5a75b4ce46651d3f
+    mem_limit: 512m
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Editor
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GF_NEWS_NEWS_FEED_ENABLED: "false"
+      GF_PLUGINS_PREINSTALL_DISABLED: "true"
+      GF_PATHS_LOGS: /tmp/logs
+    volumes:
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    tmpfs:
+      - /var/lib/grafana:size=128m,uid=472,gid=472,mode=0750
+      - /tmp:size=32m,mode=1777
+    depends_on: [prometheus, loki, tempo]
+
+networks:
+  ingress:
+    driver: bridge
+  observability:
+    internal: true

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/shi/Project/myProject/NewsAgent/agent/evaluation/run_operations_evolution.py", line 13, in <module>
+    from evaluation.operations_evolution import (
+  File "/Users/shi/Project/myProject/NewsAgent/agent/evaluation/operations_evolution.py", line 15, in <module>
+    from app.analytics.entities import ContentType
+  File "/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/__init__.py", line 10, in <module>
+    from app.analytics.hot_news_enrichment import EnrichedHotNews, HotNewsEnrichmentService
+  File "/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/hot_news_enrichment.py", line 5, in <module>
+    from app.observability.telemetry import operation, set_safe_attributes
+  File "/Users/shi/Project/myProject/NewsAgent/agent/app/observability/telemetry.py", line 24, in <module>
+    from opentelemetry import metrics, trace
+ModuleNotFoundError: No module named 'opentelemetry'

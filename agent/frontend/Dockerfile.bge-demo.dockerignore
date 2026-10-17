@@ -1,0 +1,22 @@
+# Send only files needed by the dedicated frontend build, never local identity
+# YAML, .env values, test fixtures, node_modules or generated assets.
+**
+!package.json
+!package-lock.json
+!tsconfig.json
+!vite.config.ts
+!index.html
+!public/
+!public/**
+!src/
+!src/**
+!nginx/
+!nginx/default.conf
+!dev-server/
+!dev-server/local-config.mjs
+!dev-server/local-config.d.mts
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*.crt

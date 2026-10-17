@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-11",
+  "news_id": "20261011A06WVV00",
+  "title": "“克劳德”模型曾向美国警方提交虚假命案线索",
+  "url": "https://news.qq.com/rain/a/20261011A06WVV00",
+  "publish_time": "2026-10-11T03:46:45+08:00",
+  "request_id": "7b89b447-b449-45e5-abd3-feb6c6044797",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:47.585757+00:00",
+  "turn_id": "eb865be0-f01a-4999-9daa-9b7b35eff879",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:49.210370Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261011A07BKI00",
+          "title": "美一AI模型曾向警方提交虚假线索",
+          "source_url": "https://news.qq.com/rain/a/20261011A07BKI00",
+          "publish_time": "2026-10-11T16:33:49+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45872"
+        },
+        {
+          "news_id": "20261011A06WVV00",
+          "title": "“克劳德”模型曾向美国警方提交虚假命案线索",
+          "source_url": "https://news.qq.com/rain/a/20261011A06WVV00",
+          "publish_time": "2026-10-11T03:46:45+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45025"
+        },
+        {
+          "news_id": "20261011A079QS00",
+          "title": "美一AI模型曾向警方提交虚假线索",
+          "source_url": "https://news.qq.com/rain/a/20261011A079QS00",
+          "publish_time": "2026-10-11T16:29:05+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45753"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 1446,
+  "answer_sha256": "5055fed29b05970ab061d3aa6dce4d2996e61b832582727bd770278570fd6093"
+}

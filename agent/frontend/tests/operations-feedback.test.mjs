@@ -43,7 +43,8 @@ function panel(t, path, options = {}) {
   }
   const compiled = compileScript(parse(source(path)).descriptor, { id: 'operations-feedback-test' }).content
   const component = load(compiled, {
-    vue: { ...vue, onMounted: (callback) => mounted.push(callback) },
+    vue: { ...vue, onMounted: (callback) => mounted.push(callback), onBeforeUnmount() {} },
+    'vue-router': { useRoute: () => ({ query: {} }) },
     '@/api': { hotNewsApi: api, dataLoopApi: api },
     '@/components/NaJsonBlock.vue': { default: {} },
     '@/components/NaStateBlock.vue': { default: {} },
@@ -58,6 +59,7 @@ function panel(t, path, options = {}) {
     '@/utils/labels': labels,
     '@/utils/operationsFeedback': feedback,
     '@/utils/validate': validate,
+    '@/utils/capabilityReceipts': { writingJobId: () => null },
   }).default
   const scope = vue.effectScope()
   const state = scope.run(() => component.setup({ runId: 'run-1', newsId: 'news-1' }, { expose() {}, emit() {} }))

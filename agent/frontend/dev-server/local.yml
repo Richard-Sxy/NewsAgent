@@ -7,7 +7,7 @@ server:
   port: 5174
 
 proxy:
-  target: http://127.0.0.1:28000
+  target: http://127.0.0.1:28070
 
 simulation:
   enabled: true
@@ -18,5 +18,7 @@ gateway:
   user_id: 22222222-2222-4222-8222-222222222222
   hot_news_roles: [hot-news:admin]
   data_loop_roles: [data-loop:admin]
+  writing_roles: [writing:admin]
+  memory_roles: [memory:read, memory:write]
   # 已有 Compose 栈的公开演示令牌；不是企业凭证。
   token: newsagent-native-local-token-not-for-production

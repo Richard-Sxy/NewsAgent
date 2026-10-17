@@ -1,5 +1,7 @@
 """启动 Temporal 写作 Workflow、查询进度、提交人工决定。"""
 
+import hashlib
+
 from temporalio.client import Client
 from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
 from temporalio.service import RPCError, RPCStatusCode
@@ -43,6 +45,11 @@ class OrchestratorService:
                 scenario=job.scenario.value,
                 recovery_action=recovery_action,
                 recovery_instruction=recovery_instruction,
+                recovery_checkpoint_namespace=(
+                    hashlib.sha256(job.temporal_workflow_id.encode("utf-8")).hexdigest()
+                    if recovery_action == "research"
+                    else None
+                ),
             ),
             id=job.temporal_workflow_id,
             task_queue=self.task_queue,

@@ -30,6 +30,36 @@ HTML = """<html><head><title>备用标题_腾讯新闻</title>
 <script><p>恶意脚本</p></script></div></body></html>"""
 FETCHED = "2026-10-06T02:00:00+00:00"
 
+# Minimal offline fixtures follow the SSR structure verified on the public
+# pages 20261012A07XXR00 (qnt-p) and 20261011A07H0100 (rich_media_content).
+# Editorial text is synthetic; no script or whole-page text fallback is used.
+QNT_BLOCK_HTML = """<head><title>新版段落标题_腾讯新闻</title>
+<meta property="article:published_time" content="2026-10-12 15:50:08"></head>
+<div class="content-article"><h1>新版段落标题</h1>
+<div id="article-author"><p>媒体署名与发布时间</p></div>
+<div id="article-content">
+<div class="article-top-content"><div class="ac-ask-ai">问AI · 这不是新闻原文。</div></div>
+<div class="comps-contentify-wrap comps-contentify-pc-wrap">
+<div class="qnt-p"><img src="https://example.invalid/image.jpg" alt="图片"></div>
+<div class="qnt-p">本报记者 刘岩</div>
+<div class="qnt-p">第一段 <strong>真实正文</strong>。</div>
+<div class="qnt-p">第二段包含<span class="qnt-link"><span class="qnt-link-text">正文术语</span></span>。</div>
+<div class="qnt-p">责任编辑：张三</div><div class="qnt-p">摄影 王五</div>
+<div class="recommend-list"><div class="qnt-p">侧栏推荐污染</div></div>
+</div></div><aside><p>页面推荐污染</p></aside></div>"""
+RICH_BLOCK_HTML = """<title>新版富文本标题_腾讯新闻</title>
+<meta property="article:published_time" content="2026-10-11 16:49:05">
+<h1>新版富文本标题</h1><div id="article-content">
+<div class="article-top-content"><div class="ac-ask-ai">问AI · 排除生成的问题。</div></div>
+<div class="comps-contentify-wrap comps-contentify-pc-wrap comps-contentify-arbitrary-wrap">
+<div class="rich_media_content"><section><section>
+第一段含<span class="qnt-link"><span class="qnt-link-text">有效术语</span></span>。</section>
+<section><section>第二段 <strong>嵌套正文</strong>。</section></section>
+<section>编辑 李四</section><section>图片来源：某机构</section>
+<section data-no-read>不可读广告</section>
+<div class="related-news"><section>相关报道污染</section></div>
+</section></div></div></div><nav><section>站外导航污染</section></nav>"""
+
 
 class CollectRecallArticlesTests(unittest.TestCase):
     def test_extract_only_article_paragraphs_and_remove_noise(self):
@@ -58,6 +88,46 @@ class CollectRecallArticlesTests(unittest.TestCase):
                 '<div class="related-news"><p>相关内容推荐</p></div></article>'
                 '<div><p>页尾推荐也不能进入正文</p></div>')
         self.assertEqual(parse_article(URL, html, FETCHED)["content"], "真实正文")
+
+    def test_verified_qnt_block_template_excludes_ai_byline_image_and_recommendations(self):
+        article = parse_article(URL, QNT_BLOCK_HTML, FETCHED)
+        self.assertEqual(article["title"], "新版段落标题")
+        self.assertEqual(article["publish_time"], "2026-10-12 15:50:08")
+        self.assertEqual(article["content"], "第一段 真实正文 。\n第二段包含 正文术语 。")
+
+    def test_verified_rich_section_template_uses_leaf_blocks_once(self):
+        article = parse_article(URL, RICH_BLOCK_HTML, FETCHED)
+        self.assertEqual(article["content"], "第一段含 有效术语 。\n第二段 嵌套正文 。")
+        self.assertEqual(article["publish_time"], "2026-10-11 16:49:05")
+
+    def test_nested_qnt_and_section_parents_do_not_duplicate_leaf_body(self):
+        html = ('<h1>标题</h1><article><div class="rich_media_content"><section>'
+                '<div class="qnt-p"><div class="qnt-p">第一段正文</div></div>'
+                '<section><section>第二段正文</section></section></section></div></article>')
+        self.assertEqual(parse_article(URL, html, FETCHED)["content"], "第一段正文\n第二段正文")
+
+    def test_existing_p_path_stays_byte_compatible_and_does_not_duplicate_wrapper_text(self):
+        html = ('<h1>标题</h1><article><div class="qnt-p"><p>第一段 <b>正文</b>。</p></div>'
+                '<div class="rich_media_content"><section><section><p>第二段正文。</p></section></section>'
+                '</div></article>')
+        self.assertEqual(parse_article(URL, html, FETCHED)["content"].encode(),
+                         "第一段 正文 。\n第二段正文。".encode())
+
+    def test_fallback_blocks_must_be_allowlisted_inside_recognized_container(self):
+        invalid = ('<h1>标题</h1><article><div>任意div不是已核验正文</div><section>任意section不算正文</section>'
+                   '</article><div class="qnt-p">站外伪正文</div><div class="rich_media_content">'
+                   '<section>站外富文本伪正文</section></div>')
+        with self.assertRaises(ValueError):
+            parse_article(URL, invalid, FETCHED)
+
+    def test_only_ai_navigation_and_editorial_fallback_blocks_do_not_become_an_article(self):
+        invalid = ('<h1>标题</h1><article><div class="ac-ask-ai"><div class="qnt-p">问AI问题</div></div>'
+                   '<div class="article-top-content"><div class="qnt-p">顶部导航</div></div>'
+                   '<div class="qnt-p">本报记者 张三</div><div class="qnt-p">责任编辑：李四</div>'
+                   '<div class="rich_media_content"><section>编辑 王五</section>'
+                   '<div class="related-news"><section>推荐内容</section></div></div></article>')
+        with self.assertRaises(ValueError):
+            parse_article(URL, invalid, FETCHED)
 
     def test_no_full_page_fallback_and_no_empty_body(self):
         invalid = ("", "<h1>标题</h1><p>站外导航不是正文</p>",

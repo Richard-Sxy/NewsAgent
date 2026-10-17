@@ -1,0 +1,1619 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "tenant_id": "tier-replay-synthetic",
+  "business_clock_start": "2026-10-15T12:00:00+00:00",
+  "config": {
+    "schema_version": 1,
+    "policy_version": "local-tier-lifecycle-v1",
+    "embedding_version": "native-local-embedding-v1",
+    "expected_embedding_dimensions": 32,
+    "chunking_version": "chars-overlap-local-v1",
+    "chunk_chars": 800,
+    "chunk_overlap": 80,
+    "max_chunks_per_document": 256,
+    "max_vector_coordinates_per_document": 65536,
+    "embedding_batch_size": 16,
+    "vector_batch_size": 64,
+    "hot_max_age_seconds": 120.0,
+    "cold_min_age_seconds": 480.0,
+    "reheat_hold_seconds": 180.0,
+    "migration_interval_seconds": 10.0,
+    "scan_batch_size": 100,
+    "dispatch_interval_seconds": 1.0,
+    "max_attempts": 3,
+    "retry_initial_interval_seconds": 1.0,
+    "retry_max_interval_seconds": 10.0,
+    "activity_timeout_seconds": 60.0,
+    "workflow_timeout_seconds": 300.0,
+    "task_queue": "knowledge-lifecycle-local",
+    "query_candidate_limit": 20,
+    "query_max_candidates": 80,
+    "query_refill_factor": 2,
+    "query_request_timeout_seconds": 10.0,
+    "query_rrf_k": 60,
+    "query_weights": {
+      "hot": 1.0,
+      "warm": 1.0,
+      "cold": 1.0
+    },
+    "query_max_concurrency": 4,
+    "max_search_rows": 50000
+  },
+  "measurement_scope": {
+    "model": "local deterministic hash embedding",
+    "index": "SQLite persisted vectors with exact inner-product scan",
+    "network_calls": false,
+    "temporal_dispatch_exercised": false,
+    "ann_performance": false,
+    "enterprise_model_quality": false,
+    "postgres_concurrency": false,
+    "timing_clock": "real monotonic perf_counter; business age uses explicit UTC clock"
+  },
+  "database_path": "/Users/shi/Project/myProject/NewsAgent/output/tier-lifecycle-replay-20261016/lifecycle.sqlite3",
+  "steps": [
+    {
+      "name": "seed_three_tiers",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "464bd8e418f845c3af45812e919a26e5",
+          "current_job_id": "464bd8e418f845c3af45812e919a26e5",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "current_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "current_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-cold",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "968768b6bba291ff6deda500111ff01c5ecefbf72678d7bafa22d2f44f7e1b12"
+        },
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "ef4a6c35bf05b5b1095c641c94400f2636906fc555f6b3f61e69ae97e59fe4f7"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "ea18b063a3d7f59ba1a65cb5cee5f2933ff3a2ec67224f7f9e95a581b804e079"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.3463340108282864,
+            "state_gate_ms": 0.40029201772995293,
+            "filter_ms": 0.001374981366097927,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.3463340108282864,
+                "state_gate_ms": 0.40029201772995293,
+                "filter_ms": 0.001374981366097927
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.7561660022474825
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.16104200039990246,
+            "state_gate_ms": 0.29887500568293035,
+            "filter_ms": 0.0009999785106629133,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.16104200039990246,
+                "state_gate_ms": 0.29887500568293035,
+                "filter_ms": 0.0009999785106629133
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.46720801037736237
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.15983398770913482,
+            "state_gate_ms": 0.17499999376013875,
+            "filter_ms": 0.00100000761449337,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.15983398770913482,
+                "state_gate_ms": 0.17499999376013875,
+                "filter_ms": 0.00100000761449337
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.3412500082049519
+          }
+        },
+        "queue_ms": 0.02387500717304647,
+        "embedding_ms": 0.03458300489000976,
+        "final_gate_ms": 0.2209999947808683,
+        "fusion_ms": 0.007875001756474376,
+        "returned_news": 3,
+        "total_ms": 1.9554159953258932
+      }
+    },
+    {
+      "name": "correction_pending_hides_old",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 2,
+          "status": "pending",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "bd68ecfc7a6b4b838a6f07d975d5ba1e",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "current_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "current_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 0
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "ef4a6c35bf05b5b1095c641c94400f2636906fc555f6b3f61e69ae97e59fe4f7"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "ea18b063a3d7f59ba1a65cb5cee5f2933ff3a2ec67224f7f9e95a581b804e079"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.2192499814555049,
+            "state_gate_ms": 0.21045797620899975,
+            "filter_ms": 0.0015840050764381886,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.2192499814555049,
+                "state_gate_ms": 0.21045797620899975,
+                "filter_ms": 0.0015840050764381886
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.4388329980429262
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.15016700490377843,
+            "state_gate_ms": 0.17516600200906396,
+            "filter_ms": 0.0009170034900307655,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.15016700490377843,
+                "state_gate_ms": 0.17516600200906396,
+                "filter_ms": 0.0009170034900307655
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.3319169918540865
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.13620901154354215,
+            "state_gate_ms": 0.26062497636303306,
+            "filter_ms": 0.0007500057108700275,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 0,
+                "vector_search_ms": 0.13620901154354215,
+                "state_gate_ms": 0.26062497636303306,
+                "filter_ms": 0.0007500057108700275
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.40275001083500683
+          }
+        },
+        "queue_ms": 0.012375006917864084,
+        "embedding_ms": 0.0329999893438071,
+        "final_gate_ms": 0.20733298151753843,
+        "fusion_ms": 0.004249974153935909,
+        "returned_news": 2,
+        "total_ms": 1.5165419899858534
+      }
+    },
+    {
+      "name": "correction_ready_after_restart",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bd68ecfc7a6b4b838a6f07d975d5ba1e",
+          "current_job_id": "bd68ecfc7a6b4b838a6f07d975d5ba1e",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "current_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "current_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "physical_vector_counts": {
+        "hot": 1,
+        "warm": 1,
+        "cold": 1
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "bc45da557ea9dc01a85efb2e7a337d031949e2e2faabc0440849fded85c8c84b"
+        },
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "ef4a6c35bf05b5b1095c641c94400f2636906fc555f6b3f61e69ae97e59fe4f7"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "ea18b063a3d7f59ba1a65cb5cee5f2933ff3a2ec67224f7f9e95a581b804e079"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.281250016996637,
+            "state_gate_ms": 0.34491601400077343,
+            "filter_ms": 0.0009170034900307655,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.281250016996637,
+                "state_gate_ms": 0.34491601400077343,
+                "filter_ms": 0.0009170034900307655
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.6345830042846501
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.21675002062693238,
+            "state_gate_ms": 0.19179200171492994,
+            "filter_ms": 0.0009170034900307655,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.21675002062693238,
+                "state_gate_ms": 0.19179200171492994,
+                "filter_ms": 0.0009170034900307655
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.41849998524412513
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.13004199718125165,
+            "state_gate_ms": 0.16687499010004103,
+            "filter_ms": 0.0006250047590583563,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.13004199718125165,
+                "state_gate_ms": 0.16687499010004103,
+                "filter_ms": 0.0006250047590583563
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.302250002278015
+          }
+        },
+        "queue_ms": 0.016250007320195436,
+        "embedding_ms": 0.034249998861923814,
+        "final_gate_ms": 0.18137501319870353,
+        "fusion_ms": 0.004292000085115433,
+        "returned_news": 3,
+        "total_ms": 1.6800420125946403
+      }
+    },
+    {
+      "name": "cold_news_reheated_to_hot",
+      "business_time": "2026-10-15T12:00:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "e0a6f4c28ccd46e7a609701159fd6242",
+          "current_job_id": "e0a6f4c28ccd46e7a609701159fd6242",
+          "hold_until": "2026-10-15T12:03:00+00:00"
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "hot",
+          "desired_tier": "hot",
+          "active_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "current_job_id": "9b8ecda3d6854e08be29487ee7895b08",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 1,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "current_job_id": "773e26de04b54e21b1c89f1d9525a07f",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 2,
+        "warm": 1,
+        "cold": 0
+      },
+      "physical_vector_counts": {
+        "hot": 2,
+        "warm": 1,
+        "cold": 0
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "hot",
+          "chunk_id": "ef4a6c35bf05b5b1095c641c94400f2636906fc555f6b3f61e69ae97e59fe4f7"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "ea18b063a3d7f59ba1a65cb5cee5f2933ff3a2ec67224f7f9e95a581b804e079"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "hot",
+          "chunk_id": "ea9e595fbf7887e23e115b50a059545d71429a2d46c304697823476f4e1676cb"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.18575001740828156,
+            "state_gate_ms": 0.2013749908655882,
+            "filter_ms": 0.0010829826351255178,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 2,
+                "accepted": 2,
+                "vector_search_ms": 0.18575001740828156,
+                "state_gate_ms": 0.2013749908655882,
+                "filter_ms": 0.0010829826351255178
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 2,
+            "search_and_gate_ms": 0.39458301034756005
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12174999574199319,
+            "state_gate_ms": 0.14908300363458693,
+            "filter_ms": 0.0007910130079835653,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.12174999574199319,
+                "state_gate_ms": 0.14908300363458693,
+                "filter_ms": 0.0007910130079835653
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.2756659814622253
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11049999739043415,
+            "state_gate_ms": 0.00045899651013314724,
+            "filter_ms": 0.0006660120561718941,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.11049999739043415,
+                "state_gate_ms": 0.00045899651013314724,
+                "filter_ms": 0.0006660120561718941
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.11612498201429844
+          }
+        },
+        "queue_ms": 0.015958008589223027,
+        "embedding_ms": 0.035541976103559136,
+        "final_gate_ms": 0.3274159971624613,
+        "fusion_ms": 0.004375004209578037,
+        "returned_news": 3,
+        "total_ms": 1.2629999837372452
+      }
+    },
+    {
+      "name": "age_hot_to_warm",
+      "business_time": "2026-10-15T12:04:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "current_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "warm",
+          "desired_tier": "warm",
+          "active_job_id": "dc791b0b2dca436789d30db8f6445bef",
+          "current_job_id": "dc791b0b2dca436789d30db8f6445bef",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 1,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 1,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "warm",
+          "chunk_id": "3577dd12dcda6e277678e7d0b78ca77149874cc0f6ddcca48cac135436eae6b5"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "9c132a58d48b4f7ea8667dd70b35a5cda11e636dec5b34ee65659f24c2e7875b"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12558302842080593,
+            "state_gate_ms": 0.00037500285543501377,
+            "filter_ms": 0.0006250047590583563,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.12558302842080593,
+                "state_gate_ms": 0.00037500285543501377,
+                "filter_ms": 0.0006250047590583563
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.13345800107344985
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11541697313077748,
+            "state_gate_ms": 0.1619580143596977,
+            "filter_ms": 0.0007910130079835653,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 1,
+                "accepted": 1,
+                "vector_search_ms": 0.11541697313077748,
+                "state_gate_ms": 0.1619580143596977,
+                "filter_ms": 0.0007910130079835653
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 1,
+            "search_and_gate_ms": 0.2822499955072999
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12441701255738735,
+            "state_gate_ms": 0.15991699183359742,
+            "filter_ms": 0.000833999365568161,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 2,
+                "accepted": 2,
+                "vector_search_ms": 0.12441701255738735,
+                "state_gate_ms": 0.15991699183359742,
+                "filter_ms": 0.000833999365568161
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 2,
+            "search_and_gate_ms": 0.28895799187012017
+          }
+        },
+        "queue_ms": 0.019625003915280104,
+        "embedding_ms": 0.03258298966102302,
+        "final_gate_ms": 0.2676250005606562,
+        "fusion_ms": 0.003708992153406143,
+        "returned_news": 3,
+        "total_ms": 1.1064999853260815
+      }
+    },
+    {
+      "name": "age_warm_to_cold",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "current_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "current_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "33e9af2d228e5b46254828ba93dc583c31c9cfea6f48b700628ca877b77e9a9b"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "9c132a58d48b4f7ea8667dd70b35a5cda11e636dec5b34ee65659f24c2e7875b"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11658301809802651,
+            "state_gate_ms": 0.0004169996827840805,
+            "filter_ms": 0.000459025613963604,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.11658301809802651,
+                "state_gate_ms": 0.0004169996827840805,
+                "filter_ms": 0.000459025613963604
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.12245899415574968
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11266701039858162,
+            "state_gate_ms": 0.0002500019036233425,
+            "filter_ms": 0.0003340246621519327,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.11266701039858162,
+                "state_gate_ms": 0.0002500019036233425,
+                "filter_ms": 0.0003340246621519327
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.11666698264889419
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.1327499921899289,
+            "state_gate_ms": 0.29416699544526637,
+            "filter_ms": 0.0012080126907676458,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 3,
+                "accepted": 3,
+                "vector_search_ms": 0.1327499921899289,
+                "state_gate_ms": 0.29416699544526637,
+                "filter_ms": 0.0012080126907676458
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 3,
+            "search_and_gate_ms": 0.4320839943829924
+          }
+        },
+        "queue_ms": 0.013500015484169126,
+        "embedding_ms": 0.028167007258161902,
+        "final_gate_ms": 0.167582998983562,
+        "fusion_ms": 0.0029999937396496534,
+        "returned_news": 3,
+        "total_ms": 0.9582080238033086
+      }
+    },
+    {
+      "name": "reheat_hold_expired",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 2,
+          "generation": 4,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "current_job_id": "8d1e1aa3457d4e729294de788e985521",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "current_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "33e9af2d228e5b46254828ba93dc583c31c9cfea6f48b700628ca877b77e9a9b"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        },
+        {
+          "news_id": "seed-cold",
+          "content_version": 2,
+          "tier": "cold",
+          "chunk_id": "9c132a58d48b4f7ea8667dd70b35a5cda11e636dec5b34ee65659f24c2e7875b"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12745801359415054,
+            "state_gate_ms": 0.0004580069798976183,
+            "filter_ms": 0.0005830079317092896,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.12745801359415054,
+                "state_gate_ms": 0.0004580069798976183,
+                "filter_ms": 0.0005830079317092896
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.13454101281240582
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11312498827464879,
+            "state_gate_ms": 0.00033300602808594704,
+            "filter_ms": 0.00041601015254855156,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.11312498827464879,
+                "state_gate_ms": 0.00033300602808594704,
+                "filter_ms": 0.00041601015254855156
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.1178750244434923
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.14166597975417972,
+            "state_gate_ms": 0.1742080203257501,
+            "filter_ms": 0.0011669762898236513,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 3,
+                "accepted": 3,
+                "vector_search_ms": 0.14166597975417972,
+                "state_gate_ms": 0.1742080203257501,
+                "filter_ms": 0.0011669762898236513
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 3,
+            "search_and_gate_ms": 0.3208339912816882
+          }
+        },
+        "queue_ms": 0.014707999071106315,
+        "embedding_ms": 0.036209006793797016,
+        "final_gate_ms": 0.16070899437181652,
+        "fusion_ms": 0.003208988346159458,
+        "returned_news": 3,
+        "total_ms": 0.8606250048615038
+      }
+    },
+    {
+      "name": "withdraw_blocks_before_cleanup",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "9318a71bd17a40dc9693f8314bc4cada",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "current_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 3
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "33e9af2d228e5b46254828ba93dc583c31c9cfea6f48b700628ca877b77e9a9b"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12345801224000752,
+            "state_gate_ms": 0.00033300602808594704,
+            "filter_ms": 0.000500003807246685,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.12345801224000752,
+                "state_gate_ms": 0.00033300602808594704,
+                "filter_ms": 0.000500003807246685
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.12874999083578587
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.10620802640914917,
+            "state_gate_ms": 0.0002499727997928858,
+            "filter_ms": 0.00037500285543501377,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.10620802640914917,
+                "state_gate_ms": 0.0002499727997928858,
+                "filter_ms": 0.00037500285543501377
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.1101669913623482
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.13100000796839595,
+            "state_gate_ms": 0.17162499716505408,
+            "filter_ms": 0.0010420044418424368,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 3,
+                "accepted": 2,
+                "vector_search_ms": 0.13100000796839595,
+                "state_gate_ms": 0.17162499716505408,
+                "filter_ms": 0.0010420044418424368
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 2,
+            "search_and_gate_ms": 0.3070419770665467
+          }
+        },
+        "queue_ms": 0.012167001841589808,
+        "embedding_ms": 0.02762500662356615,
+        "final_gate_ms": 0.14962500426918268,
+        "fusion_ms": 0.002707995008677244,
+        "returned_news": 2,
+        "total_ms": 0.8043329871725291
+      }
+    },
+    {
+      "name": "withdraw_complete",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "9318a71bd17a40dc9693f8314bc4cada",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "current_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "33e9af2d228e5b46254828ba93dc583c31c9cfea6f48b700628ca877b77e9a9b"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.12837498798035085,
+            "state_gate_ms": 0.00041601015254855156,
+            "filter_ms": 0.0007089984137564898,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.12837498798035085,
+                "state_gate_ms": 0.00041601015254855156,
+                "filter_ms": 0.0007089984137564898
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.1352079852949828
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.11733299470506608,
+            "state_gate_ms": 0.0002910092007368803,
+            "filter_ms": 0.000333995558321476,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.11733299470506608,
+                "state_gate_ms": 0.0002910092007368803,
+                "filter_ms": 0.000333995558321476
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.12245797552168369
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.24983298499137163,
+            "state_gate_ms": 0.16950001008808613,
+            "filter_ms": 0.0009170034900307655,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 2,
+                "accepted": 2,
+                "vector_search_ms": 0.24983298499137163,
+                "state_gate_ms": 0.16950001008808613,
+                "filter_ms": 0.0009170034900307655
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 2,
+            "search_and_gate_ms": 0.4239999980200082
+          }
+        },
+        "queue_ms": 0.008957984391599894,
+        "embedding_ms": 0.02629202208481729,
+        "final_gate_ms": 0.15570898540318012,
+        "fusion_ms": 0.0028329959604889154,
+        "returned_news": 2,
+        "total_ms": 0.9463749884162098
+      }
+    },
+    {
+      "name": "final_restart_preserves_serving_state",
+      "business_time": "2026-10-15T12:07:00+00:00",
+      "state": [
+        {
+          "news_id": "seed-cold",
+          "source_revision": 3,
+          "generation": 5,
+          "status": "retracted",
+          "active_tier": null,
+          "desired_tier": "cold",
+          "active_job_id": null,
+          "current_job_id": "9318a71bd17a40dc9693f8314bc4cada",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-hot",
+          "source_revision": 1,
+          "generation": 3,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "current_job_id": "bf068dd53b4246a081aac211f2b960b1",
+          "hold_until": null
+        },
+        {
+          "news_id": "seed-warm",
+          "source_revision": 1,
+          "generation": 2,
+          "status": "active",
+          "active_tier": "cold",
+          "desired_tier": "cold",
+          "active_job_id": "c862bd9662834833a53a607580ae937a",
+          "current_job_id": "c862bd9662834833a53a607580ae937a",
+          "hold_until": null
+        }
+      ],
+      "active_news_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "physical_vector_counts": {
+        "hot": 0,
+        "warm": 0,
+        "cold": 2
+      },
+      "query_hits": [
+        {
+          "news_id": "seed-hot",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "33e9af2d228e5b46254828ba93dc583c31c9cfea6f48b700628ca877b77e9a9b"
+        },
+        {
+          "news_id": "seed-warm",
+          "content_version": 1,
+          "tier": "cold",
+          "chunk_id": "3cc039f6d3ee178d924cb154662a619198e2fa8f28bb8527faebbdd68bab7e09"
+        }
+      ],
+      "trace": {
+        "trace_schema_version": 2,
+        "policy_version": "local-tier-lifecycle-v1",
+        "embedding_version": "native-local-embedding-v1",
+        "stage": "complete",
+        "status": "complete",
+        "tiers": {
+          "hot": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.28079201001673937,
+            "state_gate_ms": 0.00029199873097240925,
+            "filter_ms": 0.0004169996827840805,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.28079201001673937,
+                "state_gate_ms": 0.00029199873097240925,
+                "filter_ms": 0.0004169996827840805
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.2859579981304705
+          },
+          "warm": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.20995800150558352,
+            "state_gate_ms": 0.00029199873097240925,
+            "filter_ms": 0.0004580069798976183,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 0,
+                "accepted": 0,
+                "vector_search_ms": 0.20995800150558352,
+                "state_gate_ms": 0.00029199873097240925,
+                "filter_ms": 0.0004580069798976183
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 0,
+            "search_and_gate_ms": 0.21445797756314278
+          },
+          "cold": {
+            "status": "complete",
+            "components_available": true,
+            "vector_search_ms": 0.13995901099406183,
+            "state_gate_ms": 0.3626249963417649,
+            "filter_ms": 0.0009999785106629133,
+            "rounds": [
+              {
+                "requested": 20,
+                "retrieved": 2,
+                "accepted": 2,
+                "vector_search_ms": 0.13995901099406183,
+                "state_gate_ms": 0.3626249963417649,
+                "filter_ms": 0.0009999785106629133
+              }
+            ],
+            "refill_rounds": 0,
+            "hits": 2,
+            "search_and_gate_ms": 0.5074579967185855
+          }
+        },
+        "queue_ms": 0.00562501372769475,
+        "embedding_ms": 0.02370899892412126,
+        "final_gate_ms": 0.17908401787281036,
+        "fusion_ms": 0.0030830269679427147,
+        "returned_news": 2,
+        "total_ms": 1.2866670149378479
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "job_complete:upsert:seed-hot:1",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-warm:1",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:1",
+      "passed": true
+    },
+    {
+      "name": "one_seed_article_in_each_tier",
+      "passed": true
+    },
+    {
+      "name": "seed_query_returns_all_three",
+      "passed": true
+    },
+    {
+      "name": "duplicate_content_reuses_job",
+      "passed": true
+    },
+    {
+      "name": "old_revision_hidden_before_reindex",
+      "passed": true
+    },
+    {
+      "name": "pending_job_and_news_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "pending_job_payload_survives_restart",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:2",
+      "passed": true
+    },
+    {
+      "name": "corrected_news_returns_only_v2",
+      "passed": true
+    },
+    {
+      "name": "out_of_order_content_rejected",
+      "passed": true
+    },
+    {
+      "name": "same_revision_changed_body_rejected",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-cold:3",
+      "passed": true
+    },
+    {
+      "name": "reheated_news_has_one_hot_result",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-cold:4",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-warm:2",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-hot:2",
+      "passed": true
+    },
+    {
+      "name": "seed_hot_aged_to_warm",
+      "passed": true
+    },
+    {
+      "name": "job_complete:migrate:seed-hot:3",
+      "passed": true
+    },
+    {
+      "name": "seed_hot_aged_to_cold",
+      "passed": true
+    },
+    {
+      "name": "reheat_hold_resumes_age_policy",
+      "passed": true
+    },
+    {
+      "name": "withdraw_test_has_vectors_before_cleanup",
+      "passed": true
+    },
+    {
+      "name": "withdraw_gate_is_immediate",
+      "passed": true
+    },
+    {
+      "name": "job_complete:retract:seed-cold:5",
+      "passed": true
+    },
+    {
+      "name": "duplicate_withdraw_reuses_job",
+      "passed": true
+    },
+    {
+      "name": "job_complete:upsert:seed-cold:2",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_rejects_old_content",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_cannot_reheat",
+      "passed": true
+    },
+    {
+      "name": "withdraw_cleanup_removes_physical_vectors",
+      "passed": true
+    },
+    {
+      "name": "final_state_survives_restart",
+      "passed": true
+    },
+    {
+      "name": "physical_projections_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "query_results_survive_restart",
+      "passed": true
+    },
+    {
+      "name": "withdrawn_news_stays_absent_after_restart",
+      "passed": true
+    },
+    {
+      "name": "tenant_isolation",
+      "passed": true
+    }
+  ],
+  "final_active_news_counts": {
+    "hot": 0,
+    "warm": 0,
+    "cold": 2
+  }
+}

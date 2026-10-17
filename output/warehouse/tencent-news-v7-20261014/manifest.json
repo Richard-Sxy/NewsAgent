@@ -1,0 +1,77 @@
+{
+  "dataset_version": "tencent-news-business-simulation-v7-20261014",
+  "schema": "news_sim_v7",
+  "synthetic": true,
+  "config": {
+    "news_per_tenant": 120,
+    "days": 7,
+    "start_date": "2026-10-07",
+    "seed": 20261014
+  },
+  "tenants": [
+    "11111111-1111-4111-8111-111111111111",
+    "33333333-3333-4333-8333-333333333333"
+  ],
+  "historical_window_start": "2026-10-07T00:00:00+08:00",
+  "historical_window_end": "2026-10-14T00:00:00+08:00",
+  "open_window_start": "2026-10-14T00:00:00+08:00",
+  "schema_sha256": "30c4bde75e3b4f5da6f2d2be48a58d726050281dff7c1554fecc1429d6198560",
+  "generator_sha256": "9434164476df8a512cc19a0113f94c07e01dc3f773b6bb1e615a5f631ce84638",
+  "tables": {
+    "dim_publisher": {
+      "rows": 12,
+      "sha256": "30b1fd6c387742548b547d933c5ab503711251e670be7ccd69ccf799d7d39715"
+    },
+    "dim_channel": {
+      "rows": 12,
+      "sha256": "08de54584398fa523355cb65f2ae5eec59d8e320647fad09e040c182d7102696"
+    },
+    "dim_news": {
+      "rows": 240,
+      "sha256": "2654e1ece166bd534747fd9fe43a9680a9a782c8123ba25d78e9f540940701c2"
+    },
+    "window_snapshot": {
+      "rows": 340,
+      "sha256": "ced8fd2f9bbd90dc3f91766cb696b50c155f14bd3066449531001982e67d95d7"
+    },
+    "news_metric_channel_hourly": {
+      "rows": 122400,
+      "sha256": "e0521f9c566ac2964df3e7c46560aed7426d63b212516aaf9dbd9144ac57752f"
+    },
+    "news_metric_hourly": {
+      "rows": 40800,
+      "sha256": "b75b967d3648283fd0768dda56abf2359b964d7e440c1b905f8c11c6f8a6e303"
+    },
+    "news_metric_5min": {
+      "rows": 22320,
+      "sha256": "fed49c6e6f8d752e5e22f57ab05ab66064f34463904a0fc583c87725fdd7ff9f"
+    },
+    "news_metric_baseline_hourly": {
+      "rows": 40560,
+      "sha256": "c5aa4e90b4b33974a82ef834b7fd719cb1b7c13764e6cce2b8e81edfa26ed2a5"
+    },
+    "content_change_event": {
+      "rows": 60,
+      "sha256": "a935329463107b465b5b7d9ef8268b40528dccd6917a1e88e0b6b74ee4603085"
+    },
+    "content_tombstone": {
+      "rows": 40,
+      "sha256": "f0309baedb2a7672d3bb232b3c279b627a767aae73a08b5353db09587253ebfe"
+    },
+    "index_cleanup_task": {
+      "rows": 240,
+      "sha256": "5798e5af08a3c70ce22b2921ec6ce57a9e5a3b345518eacd8647b525d9663fa6"
+    },
+    "board_snapshot": {
+      "rows": 2,
+      "sha256": "ca412397a4b03632a97eccf2605bb1cbeecfe0645f349165adf172b7d3509830"
+    },
+    "board_item": {
+      "rows": 24,
+      "sha256": "9cb5369bbaccef615eee745da2397eb552ec2b07f4540a8ae826201cd9b11c12"
+    }
+  },
+  "warehouse_sql_sha256": "7d9e9b27828f856ed1e59bf895fdec8be0d1b7d88b248cedbe9101d3efd966bc",
+  "integration_status": "standalone_fixture_not_connected_to_agent_or_vector_store",
+  "dataset_sha256": "67ad183c97df43318564fa8bb8ca541ba138f04e1a7b41469f205051146db91a"
+}

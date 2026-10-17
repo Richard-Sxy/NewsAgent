@@ -1,0 +1,13 @@
+# 严格限制根目录构建上下文，排除数据、开发配置和企业凭据。
+**
+!agent/
+!agent/pyproject.toml
+!agent/app/
+!agent/app/**
+!agent/alembic/
+!agent/alembic/**
+!agent/alembic.ini
+**/__pycache__
+**/*.pyc
+**/.env
+**/.env.*

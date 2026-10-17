@@ -1,0 +1,15 @@
+# Review-only template, not an approved enterprise taxonomy or label mapping.
+# Replace taxonomy_version/topics with the enterprise owner's confirmed catalog.
+# Configure actual provider-tag mappings in the enterprise Adapter configuration;
+# do not infer them from the display names below. Production factory requires
+# status: approved after the owner has reviewed the versioned catalog.
+schema_version: 1
+taxonomy_version: enterprise-topics-to-be-confirmed-v1
+status: draft
+topics:
+  - {topic_id: tech, name: 科技, provenance: user_confirmed}
+  - {topic_id: tech.nature, name: 自然, parent_topic_id: tech, provenance: user_confirmed}
+  - {topic_id: finance, name: 财经, provenance: user_confirmed}
+  - {topic_id: ai, name: AI, provenance: user_confirmed}
+  - {topic_id: military, name: 军事, provenance: user_confirmed}
+  - {topic_id: education, name: 教育, provenance: user_confirmed}

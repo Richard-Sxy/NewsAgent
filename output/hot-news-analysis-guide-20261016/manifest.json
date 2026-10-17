@@ -1,0 +1,111 @@
+{
+  "created_on": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "candidate_version": "hot-news-analysis-candidate-v1-20261016",
+  "candidate_status": "copyable proposal, not registered or activated",
+  "candidate_prompt_sha256": "115c56315fcac077a25208b090fc770c1cb7d24009147c30c4600e033a05d853",
+  "input_fields": [
+    "news_id",
+    "title",
+    "summary",
+    "content_excerpt",
+    "content_type",
+    "window_start",
+    "window_end",
+    "hot_score",
+    "metrics",
+    "score_components",
+    "related_news",
+    "analysis_policy_version",
+    "memory_context"
+  ],
+  "output_fields": [
+    "news_id",
+    "trend_assessment",
+    "dominant_driver",
+    "attention_reasons",
+    "related_contexts",
+    "operation_suggestions",
+    "evidence_news_ids",
+    "applied_memory_ids",
+    "limitations",
+    "overall_confidence",
+    "output_schema_version"
+  ],
+  "source_code": {
+    "agent/app/model_runtime/hot_news.py": "3dfcb16c557db0f9ea7ee8d1ad9ebb5681ab53b18dee7b2bbda43911efc542e3",
+    "agent/app/model_runtime/core.py": "25de4f4dbb523c44967ece22e84512522f8726c4a6e35ce02c55b4e1c2fbb303",
+    "agent/app/model_runtime/http.py": "e0a471d24c71c51ea7feb6619003ef7cd0a85b5856c288fedf96b15976297b70",
+    "agent/app/model_runtime/local_inference.py": "17806b59741860f029fa293a93d3117a1c1e7d31923edc0eee9f103146cfd89b",
+    "agent/app/services/hot_news_analysis.py": "017e37dfc18508acc327688b937a1208a72dbfa0d73d03637994d9461f67f67c",
+    "agent/app/schemas/hot_news.py": "13bc91b365bb063de7d1583f579eaa47421ddae01c6c0fdb390dd7f0930d5de5",
+    "agent/app/analytics/hot_score.py": "4c3c225c1f09a4a50e4279e8599deab7a41c72d256294847e71228b4a3d425bb",
+    "agent/app/warehouse_simulation/real_news.py": "5be0f4905d6daf1b5c731d70410b911a61b1990b86d7e18793402b7f86f531b2",
+    "agent/app/data_analysis/engine.py": "5d22f6c1302d7db9d4ee97ec6f6f25ab57e66e9b5e6ee137370bf86035afd06b",
+    "agent/app/data_analysis/projection.py": "5d6225f60609475295a53094f95943a239a58d842950d0cb78553742cd64e147",
+    "agent/app/conversation/tools.py": "13c5cb95ff802b7bb5d708a009a3b7dff0fb9f34ea1fb7ce68f5e3f1871ce03c"
+  },
+  "example_provenance": {
+    "news_id": "20260903A06YIL00",
+    "source_url": "https://news.qq.com/rain/a/20260903A06YIL00",
+    "content_sha256": "abecde0fc77e13d846e49ac09d3e473fe069ab1eae377f601512abfe1dc3b01a",
+    "metric_data_synthetic": true,
+    "news_content_synthetic": false,
+    "input_window": "2026-10-14T17:00:00+08:00",
+    "frozen_quantification_report": "/Users/shi/Project/myProject/NewsAgent/output/baseline-quantification-20261015/baseline-quantification.json",
+    "quantification_sha256": "b5e80eca4c2643b7c3e8acefe8c642e8de87266c1e963c1b3ea709e54a9ed78c",
+    "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
+  },
+  "current_boundary": {
+    "raw_baseline_in_report_model": false,
+    "short_term_series_in_report_model": false,
+    "historical_peak_in_report_model": false,
+    "rank_in_report_model": false,
+    "conversation_baseline_tool": true,
+    "conversation_two_run_trend_tool": true,
+    "conversation_trend_scope": "common ranked news in two comparable equal nonoverlapping windows, not necessarily adjacent hours",
+    "conversation_tool_auto_injected_into_report_model": false
+  },
+  "model_runtime_observation": {
+    "scope": "collaborating auditor read-only local Worker and main tenant active bundle inspection, observed 2026-10-16",
+    "config_path": "/app/deploy/conversation-hooks.model-runtime.local.yml",
+    "provider": "local",
+    "active_bundle": "local-simulation-bundle-v1",
+    "analysis_prompt_version": "native-e2e-prompt-v1",
+    "model_version": "native-local-model-v1",
+    "note": "local inference is deterministic and does not interpret the candidate natural-language system prompt"
+  },
+  "external_sources": [
+    "https://developers.openai.com/api/docs/guides/prompt-engineering",
+    "https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses"
+  ],
+  "reproduction_chain": "source/Schema audit -> candidate text + PromptRegistry in offline memory -> StructuredInferenceService.render_input -> JSON fixtures and Validator checks -> ReportLab PDF -> pypdf/Poppler QA",
+  "files": {
+    "current-hot-news.system-prompt.txt": "cd532e33744a1552225f1a285021fcbf34fd97c0b8568a9ee8385186a5fa36f6",
+    "current-repository-prompts.json": "02a2af5cfac5440668c232ae18b64883236a89fc27d2f3fdf428ce10debc81a5",
+    "example-input.json": "4dff3405b535c8fe21356b52e07ad301fa4cc3e54b89e81c2a87fb4b171e914d",
+    "hot-news-analysis.system-prompt.txt": "115c56315fcac077a25208b090fc770c1cb7d24009147c30c4600e033a05d853",
+    "input.schema.json": "93b26480b7c6872605b314ada54e3357577278dc37a3e3983165ca39a59f100e",
+    "output.schema.json": "d6a6fdbf80e6b112bb14cd197cb9ea661beeeef6f9108fc6e52d3c6f5b052d08",
+    "render_pdf.py": "6c6af34a5b715b543062196eaca78633321b88b9a755f0d999a2f435df5ea224",
+    "rendered-messages.json": "84ebb826c11edd3dddfc5feff815f3746094e0bf632396d161724723b1c8ccf2",
+    "schema-valid-example-report.json": "b3a7b7005726ef29b69ccae58e5a893b320f04f5c797907c95c4b5ef560a4e2c",
+    "usage-and-call-chain.txt": "213c7c0635bd7f706c80b5ec8b81e14dc1d40feb29e5d7c14396161f67a1db84",
+    "verification.json": "5c069108bdf7e2e6e4a0361d7702cc7a336461439b60de24d059b064e7d86944"
+  },
+  "output_artifacts": [
+    {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/pdf/NewsAgent_热点分析判断依据与提示词_2026-10-16.pdf",
+      "sha256": "3d24868fe7177e88f956d29d8c4f8a6e7717227952363c66d179553bc4e4f2f1"
+    },
+    {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/pdf/NewsAgent_热点分析判断依据与提示词_2026-10-16.png",
+      "sha256": "bdf4abc1338b4769932e0cd782a731a73cbd3406ed6f1c36c152b8cbf0f5c459"
+    }
+  ],
+  "todo": [
+    "Real model semantic evaluation before candidate activation",
+    "Versioned report-input bridge for raw baseline/sample counts and comparable trend",
+    "Explicit bounded historical peak calculation and citation keys"
+  ]
+}

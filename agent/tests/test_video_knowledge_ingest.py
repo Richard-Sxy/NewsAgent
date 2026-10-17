@@ -196,6 +196,16 @@ def test_build_document_id_is_stable_and_collision_safe() -> None:
     assert first != second
 
 
+def test_build_document_id_keeps_long_news_ids_distinct() -> None:
+    # These IDs differ beyond the old readable-key truncation boundary.
+    first = build_document_id("news", "x" * 116 + "a")
+    second = build_document_id("news", "x" * 116 + "b")
+    assert first != second
+    assert first == build_document_id("news", "x" * 116 + "a")
+    assert len(first) <= 120 and len(second) <= 120
+    assert build_document_id("news", "x" * 115) == "news-" + "x" * 115
+
+
 @pytest.mark.asyncio
 async def test_ingest_status_values_are_stable() -> None:
     assert IngestStatus.CREATED == "created"

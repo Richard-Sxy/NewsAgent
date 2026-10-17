@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "date": "2026-10-15",
+  "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+  "cases": {
+    "baseline": {
+      "query": "baseline",
+      "row_count": 1,
+      "matched_rows": 1,
+      "truncated": false,
+      "sql_sha256": "6fdbdcdde0aff7aec96d87966f879d59eff44b215c4dc147b8d77cf005abe6d9",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "baseline-missing": {
+      "query": "baseline",
+      "row_count": 1,
+      "matched_rows": 1,
+      "truncated": false,
+      "sql_sha256": "6fdbdcdde0aff7aec96d87966f879d59eff44b215c4dc147b8d77cf005abe6d9",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "channels": {
+      "query": "channel",
+      "row_count": 3,
+      "matched_rows": 3,
+      "truncated": false,
+      "sql_sha256": "723974f7ffde3928d3d832d7d529436ff1d746adff18268011729aee5ef0064b",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "daily": {
+      "query": "daily",
+      "row_count": 15,
+      "matched_rows": 15,
+      "truncated": false,
+      "sql_sha256": "f8c50cca85f7306451cacb61f810bf4719294452eaffc8ad5bd3d25409d9cc60",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "daily-truncated": {
+      "query": "daily",
+      "row_count": 1,
+      "matched_rows": 15,
+      "truncated": true,
+      "sql_sha256": "f8c50cca85f7306451cacb61f810bf4719294452eaffc8ad5bd3d25409d9cc60",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "five-minutes": {
+      "query": "five_minute",
+      "row_count": 12,
+      "matched_rows": 12,
+      "truncated": false,
+      "sql_sha256": "fc4c5d17dec55f1adb1e00730c66be93c1f7ae229e255c3c08fcadd6bdd16940",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "hourly": {
+      "query": "hourly",
+      "row_count": 1,
+      "matched_rows": 1,
+      "truncated": false,
+      "sql_sha256": "d14cd0d21c28e40976e1999f48423f894340a74230434c5001143ad850a19be3",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "ranking-clicks": {
+      "query": "ranking",
+      "row_count": 20,
+      "matched_rows": 661,
+      "truncated": true,
+      "sql_sha256": "404283a14143c2017741d6d12ac5e5056bca32b031eab6518ef703da17a6eb4f",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "ranking-ctr": {
+      "query": "ranking",
+      "row_count": 20,
+      "matched_rows": 661,
+      "truncated": true,
+      "sql_sha256": "782c0a723fd55492befbf77f46251bff6c07b7d0ba5aab1a8ca106ed1fe09543",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "ranking-visits": {
+      "query": "ranking",
+      "row_count": 20,
+      "matched_rows": 661,
+      "truncated": true,
+      "sql_sha256": "14a2f92aeb2f9f9888bea36ce66c5313bf3aa50fa59fc9c958968b34ebcc3f2a",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    },
+    "window-18": {
+      "query": "windows",
+      "row_count": 2,
+      "matched_rows": 2,
+      "truncated": false,
+      "sql_sha256": "addcd897551ee905836a0778cb83b49b0740f313a68f08a16444788a1c49667b",
+      "query_catalog_sha256": "4f4ca30585af6c1f8de828b7ead3eda24dc8e61de12d68192ecb63eb4aa58271"
+    }
+  },
+  "blocked_windows": [
+    {
+      "hour": "2026-10-14T18:00:00+08:00",
+      "status": "blocked",
+      "reason": "latest snapshot is pending/incomplete; business query blocked without falling back to an older revision",
+      "candidate_query_executed": false
+    },
+    {
+      "hour": "2026-10-14T20:00:00+08:00",
+      "status": "blocked",
+      "reason": "latest snapshot is pending/incomplete; business query blocked without falling back to an older revision",
+      "candidate_query_executed": false
+    }
+  ],
+  "reconciliation": "five_minute and channel additive counters match same-revision hour; UV intentionally not summed",
+  "new_query_tests": {
+    "passed": 37,
+    "includes_local_postgresql_integration": true
+  },
+  "source_sha256": {
+    "agent/app/warehouse_simulation/queries.py": "d4f4188fc324beb5faab79f857e885d2f44785f5b594f25d0fcc0c17c11e8830",
+    "agent/tools/query_real_news_warehouse.py": "e220551f0b07079ae1aac23b203b4a3fd709a08d757cce1ad94e00e631358c48",
+    "agent/tests/test_real_news_warehouse_queries.py": "cc9572783056849b348d34317e0bbb8cdc4a48caf9ab5b4d6b4bff0e19b970fd"
+  }
+}

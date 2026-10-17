@@ -1,5 +1,7 @@
 """企业 RPC 接入层共用的调用上下文、响应元数据与错误语义。"""
 
+from opentelemetry import trace
+
 from dataclasses import dataclass
 from time import monotonic
 from typing import Annotated, Protocol
@@ -72,7 +74,8 @@ class DefaultRpcCallContextProvider:
         operation = operation.strip()
         if not operation:
             raise ValueError("operation cannot be empty")
-        trace_id = uuid4().hex
+        active = trace.get_current_span().get_span_context()
+        trace_id = format(active.trace_id, "032x") if active.is_valid else uuid4().hex
         return RpcCallContext(
             tenant_id=tenant_id,
             request_id=f"{operation}-{uuid4().hex}",

@@ -68,7 +68,7 @@ class LocalHotNewsInference:
             related_contexts=[],
             operation_suggestions=[
                 OperationSuggestion(
-                    action="将这条模拟新闻留在人工观察列表。",
+                    action="将这条新闻留在人工观察列表。",
                     rationale="本地端到端验收数据，不触发自动发布。",
                     priority="low",
                     metric_keys=["hot_score"],
@@ -80,6 +80,35 @@ class LocalHotNewsInference:
             limitations=["本结果由本地确定性推理替身产生，不代表真实模型判断。"],
             overall_confidence=1.0,
         )
+        summary = analysis_input.reader_profile_summary
+        if summary is not None:
+            synthetic = summary.source_mode == "synthetic"
+            source_label = "合成样例读者" if synthetic else "本地模拟解释的聚合读者"
+            report.limitations.append(
+                "合成读者画像仅用于功能演示，不代表真实用户、真实触达人数或企业效果验收。"
+                if synthetic else "读者兴趣只说明聚合相关性，不代表因果或推送收益。"
+            )
+            if not summary.reader_count:
+                report.limitations.append("本新闻在当前窗口没有可用的去重读者，无法据此建议受众方向。")
+            for label, interest in (("长期", summary.long_term), ("短期", summary.short_term)):
+                if interest.unknown_reader_count:
+                    report.limitations.append(
+                        f"{label}画像覆盖 {interest.profiled_reader_count}/{summary.reader_count} 位读者，"
+                        f"未知画像 {interest.unknown_reader_count} 位，方向建议存在覆盖限制。"
+                    )
+                topics = sorted((topic for topic in interest.topics if topic.reader_count > 0),
+                    key=lambda topic: (-topic.reader_count, topic.topic_id))[:2]
+                if topics:
+                    report.operation_suggestions.append(OperationSuggestion(
+                        action=f"人工核查{source_label}的{label}兴趣方向：" + "、".join(topic.topic_id[:80] for topic in topics) + "。",
+                        rationale=(f"本新闻去重读者 {summary.reader_count} 位，{label}有画像 {interest.profiled_reader_count} 位；"
+                            + "；".join(f"{topic.topic_id[:80]}：{topic.reader_count} 位、全体读者占比 {topic.share_all:.2%}" for topic in topics)
+                            + "。多标签可重叠；仅供人工审核，不自动选人或推送，不预测CTR或提升。"),
+                        priority="low", metric_keys=[], evidence_news_ids=[],
+                    ))
+                    if any(topic.low_sample or topic.lift is None for topic in topics):
+                        report.limitations.append(f"{label}主题有低支持样本或缺少可用lift，不能据此判断偏好提升。")
+            report.limitations = list(dict.fromkeys([*report.limitations, *summary.limitations]))[:10]
         digest = sha256(request.idempotency_key.encode("utf-8")).hexdigest()[:24]
         return RawInferenceResult(
             content=report.model_dump_json(),

@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-14",
+  "news_id": "20261013A0E3VW00",
+  "title": "反转50倍索赔！深陷9000万天价诉讼！",
+  "url": "https://news.qq.com/rain/a/20261013A0E3VW00",
+  "publish_time": "2026-10-14T08:00:00+08:00",
+  "request_id": "aabe8eb2-9a0a-4d36-b06e-6bf447bc370b",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:52.455564+00:00",
+  "turn_id": "08c20f86-e5da-49db-8453-9ed06c6adccd",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:53.909437Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261013A0E3VW00",
+          "title": "反转50倍索赔！深陷9000万天价诉讼！",
+          "source_url": "https://news.qq.com/rain/a/20261013A0E3VW00",
+          "publish_time": "2026-10-14T08:00:00+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:49035"
+        },
+        {
+          "news_id": "20260903A0AMXA00",
+          "title": "双线诉讼缠身！佳云科技再遭8912万元合同纠纷起诉：基本账户资金被冻结，累计涉诉金额超1.5亿元",
+          "source_url": null,
+          "publish_time": null,
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:18879"
+        },
+        {
+          "news_id": "20260903A0A4ZN00",
+          "title": "男女发生肢体冲突，因警方以证据不足不处罚起诉公安局，一人索赔14万亿美元被驳回 律师分析“天价索赔”",
+          "source_url": null,
+          "publish_time": null,
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:20017"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 2107,
+  "answer_sha256": "927de5c62e3ff50978f49ae003c4e15067f58188a8e94c69fc9a883f87008ae0"
+}

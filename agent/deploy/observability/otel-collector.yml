@@ -1,0 +1,70 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+        max_request_body_size: 4194304
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 256
+    spike_limit_mib: 64
+  batch:
+    timeout: 1s
+    send_batch_size: 256
+    send_batch_max_size: 512
+
+exporters:
+  otlp_http/tempo:
+    endpoint: http://tempo:4318
+    timeout: 5s
+    sending_queue:
+      queue_size: 128
+      num_consumers: 2
+    retry_on_failure:
+      max_elapsed_time: 30s
+  otlp_http/loki:
+    # The exporter appends /v1/logs. Do not use the legacy Loki exporter.
+    endpoint: http://loki:3100/otlp
+    timeout: 5s
+    sending_queue:
+      queue_size: 128
+      num_consumers: 2
+    retry_on_failure:
+      max_elapsed_time: 30s
+  prometheus:
+    endpoint: 0.0.0.0:8889
+    enable_open_metrics: true
+    metric_expiration: 5m
+    translation_strategy: UnderscoreEscapingWithSuffixes
+    # Keep high-cardinality resource attributes out of metric labels.
+    resource_constant_labels:
+      included: [service.name, service.namespace, deployment.environment.name]
+
+service:
+  telemetry:
+    logs:
+      level: warn
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: 0.0.0.0
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp_http/tempo]
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp_http/loki]

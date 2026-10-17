@@ -104,6 +104,10 @@ python -m pytest tests/test_milvus_search_config.py tests/test_milvus_vector_ind
 `NEWSAGENT_MILVUS_TEST_TENANT_ID`，可选 `NEWSAGENT_MILVUS_TEST_QUERY`，再执行
 `python -m pytest tests/test_milvus_search_live.py`。测试不会创建集合或写入数据。
 
-TODO：实际地址、集合字段/向量维度/模型和租户数据联调；真实服务过滤与超时/召回质量验收；
-需要时另行建设 Milvus 入库/更新/删除同步与索引重建。本次未改生产 Prompt/模型/Bundle，
-未自动部署或声明企业验收完成。
+增量入库、更正、撤稿与冷热迁移现由可选的
+[新闻索引生命周期](tiered-knowledge-lifecycle.md)提供。设置
+`KNOWLEDGE_LIFECYCLE_CONFIG_PATH` 后，使用独立 Temporal Worker、PostgreSQL 状态台账和
+三集合读写验证；未启用时仍使用本文的查询链路。
+
+TODO：实际地址、集合字段/向量维度/模型和租户数据联调，以及真实服务过滤、超时、
+召回质量和性能验收。配置示例不代表企业部署已完成。

@@ -1,6 +1,11 @@
 """Assemble the Python-owned hot-news runtime."""
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.behavior_tags.runtime import LocalBehaviorRuntime
+    from app.reader_profiles.service import ReaderProfileService
 
 from redis.asyncio import Redis
 
@@ -36,11 +41,16 @@ from app.services.hot_news_run_store import PostgresHotNewsRunStore
 @dataclass
 class NativeHotNewsRuntime:
     knowledge_client: KnowledgeSearchClient
+    reader_profile_service: "ReaderProfileService | None" = None
 
     async def close(self) -> None:
         close = getattr(self.knowledge_client, "close", None)
-        if close is not None:
-            await close()
+        try:
+            if close is not None:
+                await close()
+        finally:
+            if self.reader_profile_service is not None:
+                await self.reader_profile_service.close()
 
 
 @dataclass
@@ -115,6 +125,8 @@ def create_hot_news_worker_runtime(
     prompt_registry: PromptRegistry | None = None,
     allowed_model_routes: tuple[str, ...] | None = None,
     run_dependencies_factory: HotNewsRunDependenciesFactory | None = None,
+    behavior_runtime: "LocalBehaviorRuntime | None" = None,
+    reader_profile_service: "ReaderProfileService | None" = None,
 ) -> HotNewsWorkerRuntime:
     if inference_port is None or prompt_registry is None or knowledge_search is None:
         raise ValueError(
@@ -123,7 +135,7 @@ def create_hot_news_worker_runtime(
         )
     database = Database(settings)
     redis = Redis.from_url(str(settings.redis_url), decode_responses=False)
-    hot_news_runtime = NativeHotNewsRuntime(knowledge_search)
+    hot_news_runtime = NativeHotNewsRuntime(knowledge_search, reader_profile_service)
     runtime_registry = NativeProductionBundleRuntimeRegistry.from_json(
         inference_port,
         prompt_registry,
@@ -141,6 +153,8 @@ def create_hot_news_worker_runtime(
         policy_template=policy,
         run_dependencies_factory=run_dependencies_factory,
         analysis_max_concurrency=settings.hot_news_analysis_max_concurrency,
+        behavior_runtime=behavior_runtime,
+        reader_profile_service=reader_profile_service,
     )
     run_store = PostgresHotNewsRunStore(database)
     feedback_sink = AutomaticHotNewsFeedbackSink(

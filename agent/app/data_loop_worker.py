@@ -9,6 +9,8 @@ from temporalio.client import Client
 from temporalio.worker import Worker
 
 from app.activities.data_loop import DataLoopActivities, DataLoopStepHandler
+from app.observability.process import telemetry_process
+from app.observability.temporal import temporal_interceptors
 from app.config import Settings, get_settings
 from app.data_analysis.factory import create_analysis_runner
 from app.db.session import Database
@@ -109,6 +111,7 @@ def create_data_loop_worker_runtime(settings: Settings) -> DataLoopWorkerRuntime
     )
 
 
+@telemetry_process("newsagent-data-loop-worker")
 async def run_data_loop_worker(
     handler: DataLoopStepHandler | None = None,
     *,
@@ -127,6 +130,7 @@ async def run_data_loop_worker(
         client = await Client.connect(
             resolved.temporal_address,
             namespace=resolved.temporal_namespace,
+        interceptors=temporal_interceptors(),
         )
         activities = DataLoopActivities(resolved_handler)
         worker = Worker(

@@ -1,0 +1,22 @@
+schema_version: 1
+warehouse_schema_version: news-warehouse-v6
+model_scene: text2sql_assistant
+model_timeout_seconds: 15
+model_max_attempts: 2
+query_timeout_ms: 10000
+preview_ttl_seconds: 900
+scenarios:
+  - id: news-ranking
+    name: 具体新闻案例与模拟指标排行
+    description: 查询120篇真实缓存新闻的模拟聚合指标；历史发布日期与模拟指标窗口独立，栏目为演示分类。
+    result_mode: ranking
+    default_sort: clicks
+    allowed_sort_metrics: [clicks, ctr, impressions, interactions, hot_score]
+    allowed_content_types: [article, video]
+    allowed_categories: [科技, 财经, 体育, 社会]
+    default_limit: 5
+    max_limit: 100
+    sample_questions:
+      - 查询点击量最高的前5条新闻并分析原因
+      - 查询科技点击量最高的前5条新闻
+      - 查询财经互动量最高的前5条新闻

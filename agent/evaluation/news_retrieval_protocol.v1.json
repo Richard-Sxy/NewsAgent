@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "protocol_id": "news-retrieval-v1-draft-20261015",
+  "status": "draft_pending_human_labels_and_gate_approval",
+  "language": "zh-CN",
+  "purpose": "分别评测索引工程正确性、HNSW近似搜索损失、新闻相关性质量；三者不能互相替代。",
+  "frozen_baseline": {
+    "snapshot_version": "news-bge-incremental-20261014-v2",
+    "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+    "source_manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+    "index_articles": 20187,
+    "index_chunks": 50252,
+    "base_articles": 12728,
+    "base_chunks": 38026,
+    "added_articles": 7459,
+    "added_chunks": 12226,
+    "source_articles": 8000,
+    "source_ids_already_in_base": 541,
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "note": "只读现有包。只冻结Manifest摘要不足以验证资产，工程评测须逐资产核验SHA256SUMS；基线不授予生产改动权限。"
+  },
+  "parameter_register": {
+    "body_chars": {
+      "value": 800,
+      "origin": "构建器常量",
+      "scope": "仅本轮追加切片",
+      "tuning_evidence": "无标注语义调优证据"
+    },
+    "overlap_chars": {
+      "value": 80,
+      "origin": "构建器常量",
+      "unit": "字符，不是token"
+    },
+    "metadata_header": {
+      "value": "标题+来源URL+带时区时间，每片重复",
+      "risk": "与正文共同占用512token窗口"
+    },
+    "dimensions": {
+      "value": 1024,
+      "origin": "已有BGE-large-zh-v1.5模型维度，不是检索调参结果"
+    },
+    "max_seq_length": {
+      "value": 512,
+      "origin": "模型配置与构建/查询代码显式设置",
+      "note": "包含特殊token；不能把800字符当作512token"
+    },
+    "pooling": {
+      "value": "CLS",
+      "origin": "本地1_Pooling/config.json"
+    },
+    "normalization": {
+      "value": "L2",
+      "origin": "模型encode与FP16输出的float32再归一化"
+    },
+    "inference_precision": {
+      "value": "float16",
+      "origin": "本次CLI选择",
+      "note": "主机内存折中，非向量量化；存储仍为float32。小精度探针不能证明检索排序等价。"
+    },
+    "build_device": {
+      "value": "mps",
+      "origin": "本次CLI选择"
+    },
+    "build_batch_size": {
+      "value": 8,
+      "origin": "本次CLI选择"
+    },
+    "build_threads": {
+      "value": 4,
+      "origin": "本次CLI选择",
+      "note": "固定seed不保证多线程建图字节完全可复现；必须绑定最终索引SHA。"
+    },
+    "hnsw_space": {
+      "value": "ip",
+      "origin": "构建器常量",
+      "formula": "distance=1-dot(q,x)，单位向量的dot等于cosine"
+    },
+    "hnsw_M": {
+      "value": 32,
+      "origin": "构建器常量",
+      "role": "图连接规模参数；影响内存、构建成本和搜索可达性",
+      "tuning_evidence": "未做本项目标注集最优性证明"
+    },
+    "hnsw_ef_construction": {
+      "value": 200,
+      "origin": "构建器常量",
+      "role": "建图候选搜索宽度",
+      "tuning_evidence": "未做建图参数扫描"
+    },
+    "hnsw_random_seed": {
+      "value": 100,
+      "origin": "构建器常量",
+      "role": "建图随机性控制，不是相关性阈值"
+    },
+    "max_elements": {
+      "value": 50252,
+      "origin": "旧切片行数+新增切片行数",
+      "label": "连续JSONL行号0..50251"
+    },
+    "query_ef": {
+      "value": 256,
+      "origin": "检索YAML",
+      "effective_formula": "每次knn_query前设置max(configured_ef,current_chunk_pool)"
+    },
+    "query_chunk_pool": {
+      "value": 200,
+      "origin": "检索YAML",
+      "effective_formula": "min(max(chunk_pool,requested_article_limit),corpus_rows)，新闻不足时翻倍直到全库"
+    },
+    "query_encoder": {
+      "value": "同一模型文件；固定中文检索前缀+L2；CPU，batch8，最大输入2000字符",
+      "note": "文档编码不加query前缀。新自由问句候选集尚未运行该编码器。"
+    },
+    "downstream": {
+      "value": "热点候选20、默认业务重排留3；RRF k=60；聊天显式检索走raw_score",
+      "note": "RRF排名分不能用于证明语义置信度或无答案阈值。"
+    }
+  },
+  "layers": [
+    {
+      "id": "L0",
+      "name": "资产与身份正确性",
+      "checks": [
+        "Manifest及所有资产摘要",
+        "行数、label、维度、dtype、有限值及L2范数",
+        "旧包正文/向量前缀保留",
+        "source全集与新增/重复ID集合精确核对",
+        "源新闻全切片排除、租户与模型版本隔离"
+      ],
+      "pass_meaning": "索引按合同建成，不代表能找到相关报道"
+    },
+    {
+      "id": "L1",
+      "name": "编码输入完整性",
+      "checks": [
+        "真实tokenizer统计512token截断率",
+        "metadata与正文共享窗口",
+        "原文字符区间并集覆盖，扣除80字符重叠补偿",
+        "新旧语料单列，旧行长度统计不得反推历史编码过程"
+      ],
+      "pass_meaning": "量化输入覆盖；截断token率/字符缺口率均不是语义损失率"
+    },
+    {
+      "id": "L2",
+      "name": "HNSW相对精确IP检索",
+      "checks": [
+        "同一归一化存储向量",
+        "全量精确扫描ground truth",
+        "源新闻排除与文章max-chunk聚合",
+        "chunk与文章ANN agreement@3/10/20",
+        "固定seed、样本身份、线程、warmup、P50/P95延迟、bootstrap区间",
+        "requested_ef与effective_ef同时记录"
+      ],
+      "pass_meaning": "近似搜索对向量邻域的复现程度；存储chunk查询不是真实用户query"
+    },
+    {
+      "id": "L3",
+      "name": "独立人工新闻相关性",
+      "checks": [
+        "查询文本人工复核",
+        "双人独立0-3分判断+分歧仲裁",
+        "同事件组不得跨split",
+        "所有被评TopK必须已标注",
+        "固定分母与失败/空结果计入",
+        "基线与候选同查询、同索引范围、同as_of对照",
+        "标注池召回率与全库召回率明确区分"
+      ],
+      "pass_meaning": "仅在标注完成、数据冻结、门槛获批后，允许讨论新闻相关性验收"
+    }
+  ],
+  "annotation": {
+    "starter_path": "output/index-evaluation-2026-10-15/annotation",
+    "starter_status": "assistant_authored_draft_unlabeled_not_a_test_set",
+    "planned_queries": 36,
+    "tasks": [
+      "related_news",
+      "question_search",
+      "no_answer_candidate"
+    ],
+    "candidate_pool": "多来源池化：源向量近邻/词法/随机对照。自由问句未编码时不得将候选称为query dense结果。池只覆盖8,000篇有完整核验正文的来源子集，非20,187篇全库完备判断。",
+    "grade_rubric": {
+      "0": "无关、主体/事件冲突，或不满足查询时间与事实范围",
+      "1": "同主题/同主体背景，但不直接回答问题或不是同一事件报道",
+      "2": "直接回答部分问题，或属于同事件的有效报道/重要进展",
+      "3": "直接回答核心问题，或同事件关键进展/权威更正，证据充分"
+    },
+    "binary_relevant_threshold": 2,
+    "requirements": [
+      "候选显示随机顺序，隐藏检索器、排名、score与来源seed身份",
+      "标注员查看完整正文与核验来源，不能只看600字片段",
+      "每条至少两位独立标注员；分歧由第三人仲裁并保留原始票",
+      "查询题目也需人工批准；问题源文章不是自动正例",
+      "as_of由查询任务明示；未来证据不得当历史答案，时间违规另报",
+      "无答案是人工对冻结语料范围的判断，不能由一个空候选池或助手生成的问题直接认定",
+      "先人工确认event_group，再按事件组划分development/validation/test，不能机械按article或query随机拆分",
+      "event_group/split未确认一律null；草稿不计分、不调参、不作为冻结test"
+    ],
+    "target_after_pilot": "建议首轮双标试标36题，校准规则后扩展到至少300题、足够独立事件组与任务/长尾/新旧/板块覆盖；300是试验设计建议，不能代替统计功效分析。",
+    "pool_expansion": "每个新参评系统的Top20若有未判文档必须补盲标；同时加入词法/精确dense/不同切片方案的候选及池外抽样，审计池化偏差。",
+    "qrels_output_schema": {
+      "query_id": "string",
+      "news_id": "string",
+      "status": "adjudicated",
+      "judgments": [
+        {
+          "reviewer_id": "human-A",
+          "grade": "0..3 integer"
+        },
+        {
+          "reviewer_id": "human-B",
+          "grade": "0..3 integer"
+        }
+      ],
+      "final_grade": "0..3 integer",
+      "adjudicator_id": "分歧时为第三位人工ID",
+      "evidence_sha256": "冻结正文摘要"
+    },
+    "freeze_requirements": [
+      "查询status=frozen、human_reviewed=true、event_group_id、split、expected_empty必须齐全",
+      "judgment_scope=pooled；无答案需corpus_no_answer_reviewed=true",
+      "冻结query/qrels/pool/evidence/模型/索引/参数/代码版本摘要",
+      "移除或合并重复问题；同新闻主线和更正关系人工归组",
+      "人工检查语料成员资格、证据摘要、时间合法性、标注池覆盖与身份权限",
+      "评分身份采用规范化非空ID，不允许首尾空白伪造独立评审；related_news必须有source_news_id，question_search的种子只在隐藏provenance中保留。"
+    ]
+  },
+  "metrics": {
+    "unit": "news_id，每篇只计一次，源新闻不计相关候选",
+    "binary": [
+      "Precision@3",
+      "HitRate@3/10/20",
+      "pooled_Recall@3/10/20",
+      "MRR@3/10/20"
+    ],
+    "graded": "pooled_nDCG_exp2@3/10/20，gain=2^grade-1，discount=log2(rank+1)；勿与采用线性gain的其他工具分数混称相同",
+    "no_answer": [
+      "false_positive_rate",
+      "correct_abstention_rate"
+    ],
+    "engineering": [
+      "ANN agreement@3/10/20，精确TopK为分母",
+      "query encode/search/rerank/end-to-end分别计时",
+      "P50/P95/P99、固定并发下QPS、RSS/峰值内存、构建时长与磁盘",
+      "严格租户/源ID/未来证据违规数",
+      "FP16与FP32同文本同模型的邻域/标注排序对照"
+    ],
+    "statistics": "事件组cluster bootstrap 95%区间；基线/候选用同组paired bootstrap；至少报告任务、新旧、板块、长尾、跨时态等分组。样本少/组少不得只报漂亮均值。",
+    "missing": "失败、超时与空结果保留在固定query分母；未判TopK或缺失query阻断评分，不按0填充未知标签"
+  },
+  "proposed_gates_not_approved": {
+    "status": "proposed_only_requires_owner_approval_and_power_analysis",
+    "L0": "身份/资产/维度/租户/源ID/时间硬约束零违规",
+    "L1": "新候选方案正文token预算完整覆盖；保留旧800/80为基线，不据此自动重建或发布",
+    "L2": "代表性真实query上的文章ANN@20的95%CI下界>=0.98；当前存储chunk抽样仅工程探针",
+    "L3": "示例目标：pooled_Recall@20>=0.90、Precision@3>=0.80、pooled_nDCG_exp2@10>=0.75；实际绝对门槛需试标后预注册",
+    "regression": "主要任务与关键分组相对基线无超过预注册非劣界的退化；建议-0.02为讨论起点，不能直接当已批准生产规则",
+    "latency": "须先确定真实部署硬件、并发和端到端SLO；单线程ANN延迟不能当聊天/API容量验收"
+  },
+  "tuning_order": [
+    "先修复评测集/标注规则并冻结语料；不使用test结果选参数",
+    "development比较800字符基线与token预算切片（例如256/384/448，metadata纳入预算），重叠32/64token，检查全文区间覆盖",
+    "在固定切片和模型上比较元数据头、query前缀及FP16/FP32；每次生成新版本投影",
+    "再比较M=16/32/48与ef_construction=100/200/400，记录构建成本、图字节摘要和多个构建seed",
+    "固定图后比较ef=64/128/256/512、chunk_pool=50/100/200/400及候选20/50，记录实际ef的pool下限",
+    "validation选择质量/延迟/内存可接受的配置；固定全部参数与运行环境后test只做最终确认",
+    "形成可审查报告，经原有人工审批/发布流程；本评测不改生产配置"
+  ],
+  "tools": {
+    "engineering_ann": "agent/tools/evaluate_bge_ann.py",
+    "token_coverage": "agent/tools/audit_index_tokenization.py",
+    "prepare_blind_judgments": "agent/tools/prepare_retrieval_judgments.py",
+    "score_frozen_judgments": "agent/tools/score_retrieval_judgments.py",
+    "score_input_contract": "冻结queries.jsonl + 仲裁qrels.jsonl + predictions.jsonl（query_id, package_manifest_sha256, news_ids）；三文件摘要必须以CLI显式绑定",
+    "score_limits": "评分器验证review/split/分母/未判TopK/包身份；语料成员资格、正文哈希、as_of和池完备性必须另经freeze审计，不能只靠评分器声称完成所有验收。"
+  },
+  "official_references": [
+    "https://github.com/nmslib/hnswlib/blob/v0.8.0/ALGO_PARAMS.md",
+    "https://github.com/nmslib/hnswlib/blob/v0.8.0/README.md",
+    "https://huggingface.co/BAAI/bge-large-zh-v1.5"
+  ],
+  "prohibited_claims": [
+    "单测通过等于相关新闻召回质量达标",
+    "源chunk自查询或标题拷贝命中等于真实问句质量",
+    "未人工确认的来源种子就是gold正例",
+    "截断比例等于语义信息损失比例",
+    "ANN agreement高等于Embedding理解正确",
+    "池内Recall等于全库全部相关新闻Recall",
+    "参数当前能运行所以已经最优",
+    "没有人工标签仍输出语义质量通过"
+  ]
+}

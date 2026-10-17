@@ -398,6 +398,23 @@ async def list_feedback_cases(
 
 
 @router.get(
+    "/feedback-cases/{feedback_case_id}",
+)
+async def get_feedback_case(
+    feedback_case_id: UUID,
+    principal: ReadPrincipal,
+    session: AsyncSession = Depends(get_session),
+    collector: AnalysisFeedbackCollector = Depends(get_analysis_feedback_collector),
+) -> dict:
+    try:
+        case = await collector.get_case(session, tenant_id=str(principal.tenant_id),
+                                        feedback_case_id=feedback_case_id)
+    except Exception as exc:
+        _raise_data_loop_http_error(exc)
+    return {"case": case}
+
+
+@router.get(
     "/feedback-cases/{feedback_case_id}/labels",
     response_model=FeedbackLabelListResponse,
 )

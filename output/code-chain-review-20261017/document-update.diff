@@ -1,0 +1,248 @@
+--- before/执行链路.md
++++ after/执行链路.md
+@@ -1,8 +1,8 @@
+ # Agent 的重点执行链路与阅读导航
+ 
+-核对日期：2026-10-16。本文按当前工作区代码核对，包含尚未提交的实现；代码存在不代表运行实例已更新，也不代表企业接口已验收。
+-
+-推荐阅读顺序：**启动装配 → 数据表 → 采集入库 → 检索 → 对话与热点 → 人工决策/写作 → Data Loop → 恢复与观测**。前半保留原有业务链路，后半补充容易漏看的上下游。
++核对日期：2026-10-17。本文按当前工作区代码核对，包含尚未提交的实现；代码存在不代表运行实例已更新，也不代表企业接口已验收。
++
++推荐阅读顺序：**启动装配 → 数据表 → 采集入库 → 行为标签与访客画像 → 检索 → 对话与热点 → 人工决策/写作 → Data Loop → 恢复与观测**。保留原有业务链路，新增单新闻访客画像的离线构建、在线批查、模型输入及页面回读。
+ 
+ 链接行号定位到函数定义或关键分支；继续改代码后可先按旁边的类/函数名搜索。`agent/examples/` 下的 SQL 触发实现属于显式启用的隔离演示，不能据此认定生产 API 默认具备新取数能力。
+ 
+@@ -14,6 +14,8 @@
+ | --- | --- | --- |
+ | 对话 | [ConversationRecord](./agent/app/models/conversation.py#L28) / `conversation_turns` / `conversation_inputs` | 会话归属、轮次幂等、工具检查点、确认输入、摘要水位 |
+ | 热点 | [HotNewsAnalysisRun](./agent/app/models/hot_news.py#L21)（`analysis_runs`） | 同一快照里的指标、基线、榜单、分析和 SQL 轨迹 |
++| 本地内容与行为标签 | [行为标签索引定义](./agent/app/behavior_tags/build.py#L285)（`content_labels` / `behavior_labels` / `profiles`） | 冻结来源、多版本场景、合成事件派生的主题与每日画像；企业个人明细不进入本地 |
++| 单新闻访客聚合 | [读者聚合索引定义](./agent/app/reader_profiles/build.py#L286)（`contents` / `coverage` / `reader_profiles` / `metadata`） | `tenant_id + news_id + window_start + window_end`、正文 SHA、长短期兴趣、覆盖、基准与来源版本；新包不含用户 ID 或事件表 |
+ | 人工决定 / 事件 | [HotNewsDecision](./agent/app/models/hot_news_decision.py#L19) / [HotEventRecord](./agent/app/models/hot_event.py#L25) | 运营决定与热点事件台账；它们是不同实体 |
+ | 写作 | [WritingJob](./agent/app/models/job.py#L21) / [WritingStep](./agent/app/models/step.py#L27) / [WritingArtifact](./agent/app/models/artifact.py#L25) / [AgentRun](./agent/app/models/agent_run.py#L28) | 任务、阶段检查点、文件引用与模型调用记录 |
+ | 反馈 / 标签 / 效果 | [AnalysisFeedbackCaseRecord](./agent/app/models/analysis_feedback.py#L122) / `feedback_labels` / `publication_outcomes` | 错例来源、标签二审、发布效果 |
+@@ -23,7 +25,7 @@
+ | 生命周期 | [生命周期台账定义](./agent/app/knowledge/tier_lifecycle_store.py#L29) | `tier_lifecycle_news` / `tier_lifecycle_jobs`；`tier_lifecycle_vectors` 是隔离本地替身投影 |
+ | 事件投递 | [OutboxEvent](./agent/app/models/outbox.py#L16)（`outbox_events`） | 提交事务与事件发送之间的持久缓冲 |
+ 
+-SQL 演示的 `dw.*` 是取数来源，向量索引是检索投影；二者与业务状态库应分别理解。数据库结构升级入口是 `agent/alembic/versions/`。
++SQL 演示的 `dw.*` 是取数来源，向量索引是检索投影；本地标签和访客 SQLite 是派生聚合包，均与 PostgreSQL 业务状态库分别理解。单新闻画像以 `reader_profile_summary`、`reader_profile_trace` 保存到已有热点运行 JSON，无新增业务表迁移。数据库结构升级入口是 `agent/alembic/versions/`。
+ 
+ 
+ ## 热点 Agent 的对话链路
+@@ -65,35 +67,89 @@
+ 
+ 生命周期开启时，聊天检索会转入 [LifecycleKnowledgeSearch.search](./agent/app/knowledge/tier_lifecycle_query.py#L46)，并发查询冷温热三层，校验台账并按层权重融合；普通路径则走 Embedding 与索引的 `search()`。BGE 快照使用配套查询编码器，不能随意更换 Embedding 版本。
+ 
++热点 Enrichment 当前还包含独立的结构化[访客画像查询](./agent/app/analytics/hot_news_enrichment.py#L104)。它按新闻/窗口查聚合，不通过 Embedding 或向量召回；相关新闻语义检索仍走上面的链路。`BEHAVIOR_TAGS_ENABLED` 的全租户/cohort兴趣重排与 `READER_PROFILE_ENABLED` 的本新闻访问者画像分别保存 trace，不能互相替代。
++
+ ## 热点发现和分析
+ 
+-execute_local_hot_news_query()         对通过范围校验的问题生成 SQL 查询计划，将查询绑定到本地热点运行，然后启动 Temporal   
+-                        [code](./agent/examples/local_simulation.py#L154)  
+-HotNewsMonitorWorkflow.run()           调度热点 Activity，设置执行超时、心跳和重试策略   [code](./agent/app/workflows/hot_news.py#L33)  
+-HotNewsActivities.run_hot_news_window()     检查相同运行结果是否完成；已有结果直接复用，否则执行分析并保存结果   [code](./agent/app/activities/hot_news.py#L113)  
+-ActiveProductionBundleHotNewsService.run()  读取当前租户生效的配置版本，校验运行版本，组装本次使用的数据源、模型、提示词和规则   
+-                        [code](./agent/app/services/active_bundle_hot_news.py#L99)  
+-HotNewsOrchestrationService.run()          核心协调函数，依次执行下面的取数、基线、排行、证据补充和模型分析   
+-                        [code](./agent/app/services/hot_news_orchestration.py#L216)  
+-SqlAssistantHotNewsMetricSource.fetch_snapshots()  执行已经绑定的只读SQL，取得新闻候选；补充同小时的完整指标，校验一致性，生成 Snapshot   
+-                        [code](./agent/examples/native_hot_news_sql_support.py#L351)  
+-get_baselines()                         返回候选新闻对应的参考基线，检查租户、窗口和配置版本是否一致   [code](./agent/examples/native_hot_news_sql_support.py#L415)  
+-HotNewsRanker.rank()                   为每条新闻调用热度计算器，按热度排序，返回前 N 条，并保留指标、基线和评分依据   [code](./agent/app/analytics/ranking.py#L28)  
+-HotScoreCalculator.calculate()         根据点击质量、有效消费、互动和增长四个分量，按配置权重计算最终热度   [code](./agent/app/analytics/hot_score.py#L56)  
+-HotNewsEnrichmentService.enrich()      获取上榜新闻正文，检索并重排关联新闻，为后续模型分析准备证据   [code](./agent/app/analytics/hot_news_enrichment.py#L51)  
+-HotNewsAnalysisService.analyze_with_snapshot()      把指标、热度、正文、证据组装成模型输入，保存输入快照，调用模型并校验结果；校验失败再重试   
+-                        [code](./agent/app/services/hot_news_analysis.py#L419)  
+-PostgresHotNewsRunStore.save_completed()            将指标快照、排行、模型分析和查询轨迹保存到 PostgreSQL，利用幂等约束避免重复创建完成记录   
+-                        [code](./agent/app/services/hot_news_run_store.py#L67)  
+-HotNewsQueryService.get_run_detail()                读取已保存的运行，把榜单、分析和 SQL 轨迹转换成接口数据，供热点页面或聊天工具展示   
+-                        [code](./agent/app/services/hot_news_query.py#L59)  
+-
+-    -- 模型分析内部还有三个主要函数
+-        HotNewsAnalysisInputBuilder.build()   构造受限输入：复制权威指标和评分，截取正文、摘要和关联证据
+-        NativeHotNewsAnalysisRunner()         使用绑定的提示词和模型调用结构化推理，要求输出 HotNewsAnalysisReport
+-        HotNewsAnalysisValidator.validate()   检查新闻编号、指标引用、证据编号和推断标记，拒绝引用输入之外的证据
+-
+-热点分析的批处理调度在 [HotNewsAnalysisBatch.analyze](./agent/app/services/hot_news_analysis_batch.py#L39)：共享并发上限、保持输入顺序、失败时取消并等待其余任务；逐新闻仍调用 `analyze_with_snapshot()`。配置 `HOT_NEWS_ANALYSIS_MAX_CONCURRENCY` 默认 1，范围 1-16；测试入口 `agent/tests/test_hot_news_analysis_batch.py`。
++hotNewsApi.runLocalSimulation()  热点页面发送问题和一个完整小时窗口；聊天也复用后面的 execute_local_hot_news_query()，不另建 SQL 执行器   [code](./agent/frontend/src/api/hotNews.ts#L30)  
++-> execute_local_hot_news_query()  校验身份和数据覆盖，冻结行为重排/访客画像上下文，将其摘要放入本次运行请求   [code](./agent/examples/local_simulation.py#L154)  
++-> SqlAssistantService.preview()  通过模型生成受限意图，Python 编译并校验 SQL，再保存预览；此时不执行 SQL   [code](./agent/app/sql_assistant/service.py#L118)  
++-> get_or_claim() / start_workflow()  把查询计划绑定到热点幂等键，再将冻结请求交给 Temporal   [code](./agent/examples/local_simulation.py#L266) / [code](./agent/examples/local_simulation.py#L290)  
++-> HotNewsMonitorWorkflow.run()  调度热点 Activity，设置执行超时、心跳和重试策略   [code](./agent/app/workflows/hot_news.py#L33)  
++-> HotNewsActivities.run_hot_news_window()  已完成结果直接复用；否则调用生效 Bundle 服务   [code](./agent/app/activities/hot_news.py#L113)  
++-> ActiveProductionBundleHotNewsService.run()  校验请求中的画像摘要、当前 Bundle 和批准的 Prompt，创建本次数据依赖与分析服务   [code](./agent/app/services/active_bundle_hot_news.py#L102)  
++-> execute_for_hot_news()  Worker 内执行绑定的只读 SQL，检查查询归属、配置和结果一致性；不是在页面预览时取数   [code](./agent/app/sql_assistant/service.py#L247)  
++-> warehouse.execute()  在只读数仓事务中执行 SQL，取得候选新闻；补充同小时权威指标和基线   [code](./agent/app/sql_assistant/service.py#L333) / [code](./agent/examples/native_hot_news_sql_support.py#L351)  
++-> HotNewsOrchestrationService.run()  取得 NewsMetricSnapshot 与基线，依次执行排名、证据补全和模型分析   [code](./agent/app/services/hot_news_orchestration.py#L227)  
++-> HotNewsRanker.rank()  为每条候选调用确定性热度计算器，按热度排序，保留指标、基线和评分依据   [code](./agent/app/analytics/ranking.py#L28)  
++-> HotScoreCalculator.calculate()  根据点击质量、有效消费、互动和增长四个分量，计算最终热度   [code](./agent/app/analytics/hot_score.py#L56)  
++-> HotNewsEnrichmentService.enrich()  批取正文；启用时按上榜新闻批查访客画像；继续关联新闻召回和确定性重排，形成 EnrichedHotNews   [code](./agent/app/analytics/hot_news_enrichment.py#L71)  
++-> HotNewsAnalysisBatch.analyze()  按共享并发预算调度逐篇分析，保持输入顺序；失败时取消并等待其余任务   [code](./agent/app/services/hot_news_analysis_batch.py#L39)  
++-> HotNewsAnalysisService.analyze_with_snapshot()  构建并冻结模型输入，调用 Runner，执行业务校验；校验失败按既定上限返修   [code](./agent/app/services/hot_news_analysis.py#L423)  
++-> PostgresHotNewsRunStore.save_completed()  将指标、排行、报告、SQL轨迹、画像及画像来源一起保存到 PostgreSQL，利用幂等约束避免重复完成记录   [code](./agent/app/services/hot_news_run_store.py#L67)  
++-> HotNewsQueryService.get_run_detail()  只读已保存快照，转换为榜单、分析和画像接口数据   [code](./agent/app/services/hot_news_query.py#L60)  
++-> hotNewsApi.runDetail() / HotNewsRankTable  页面读取同一 run 的详情，显示分析与 NewsReaderProfilePanel，不在 GET 时重新算画像   [code](./agent/frontend/src/api/hotNews.ts#L42) / [code](./agent/frontend/src/components/hotnews/HotNewsRankTable.vue#L112)
++
++    -- 模型分析内部
++        HotNewsAnalysisInputBuilder.build()  复制权威指标和评分，截取正文/关联证据，复制 reader_profile_summary
++        NativeHotNewsAnalysisRunner.run()    使用绑定的 Prompt 和模型路由调用结构化模型 Port
++        HotNewsAnalysisValidator.validate()  校验新闻编号、指标与证据引用；Schema 通过不等于业务校验通过
++
++实现定位：[InputBuilder.build()](./agent/app/services/hot_news_analysis.py#L37) -> [复制画像](./agent/app/services/hot_news_analysis.py#L109) -> [Runner.run()](./agent/app/model_runtime/hot_news.py#L86) -> [InferencePort.complete() 调用](./agent/app/model_runtime/core.py#L367) -> [业务校验](./agent/app/services/hot_news_analysis.py#L458)。`HOT_NEWS_ANALYSIS_MAX_CONCURRENCY` 默认 1，范围 1-16；测试入口 `agent/tests/test_hot_news_analysis_batch.py`。
++
++SQL 时序说明：corpus 等 STREAMED_PROFILES 会在 Worker 的 [build_native_hot_news_sql_dependencies()](./agent/examples/native_hot_news_sql_support.py#L504) 中预取并缓存同一指标快照，后面的 fetch_snapshots() 复用该快照。不能把上述导航理解为所有 profile 都在同一个函数首次发 SQL，也不能把预览保存写成实际执行。
++
++## 用户行为标签与单新闻访客画像构建
++
++load_merged_source()  合并各版冻结来源，保留 dataset/scenario/metric policy，校验新闻身份和生命周期；跨世界 UV 不相加   [code](./agent/app/behavior_tags/merge.py#L354)  
++-> tag_article() / behavior_labels()  生成新闻主题/细分标签及新闻小时行为标签   [code](./agent/app/behavior_tags/tagging.py#L139) / [code](./agent/app/behavior_tags/tagging.py#L222)  
++-> _simulate_tenant()  根据冻结分布生成独立合成事件；不是从源数仓聚合 UV 还原真实个人   [code](./agent/app/behavior_tags/build.py#L167)  
++-> behavior_tags.build_package()  输出内容标签、新闻行为标签、合成事件/每日画像、SQLite 和 manifest   [code](./agent/app/behavior_tags/build.py#L303)  
++-> reader_profiles.build_package()  以已有合成包为输入，创建独立的单新闻访客聚合包，不重建或修改来源   [code](./agent/app/reader_profiles/build.py#L301)  
++-> _read_source()  校验 manifest 及内容标签、事件、主题策略的哈希、行数、身份与时间；只接受支持的合成来源   [code](./agent/app/reader_profiles/build.py#L124)  
++-> _event_score()  点击+1，阅读按时长及有效消费评分，互动+2，负反馈-3；曝光不加分   [code](./agent/app/behavior_tags/build.py#L88)  
++-> _RollingState.advance()  维护窗口开始前30天/24小时状态，采用三天半衰期，移除过期贡献   [code](./agent/app/reader_profiles/build.py#L219)  
++-> readers[news].add(user)  按 tenant/news/[window_start,window_end) 对 detail_view 用户去重，得到目标新闻的访问人群   [code](./agent/app/reader_profiles/build.py#L359)  
++-> _RollingState.profile()  排除目标文章全部历史贡献，正分除以本人最高分，达到0.2才成为兴趣标签；该值不是兴趣概率   [code](./agent/app/reader_profiles/build.py#L228)  
++-> _dimension()  统计长期/短期标签人数、unknown/cold_start、同租户基准、占比与 lift，完整统计后再取 Top K   [code](./agent/app/reader_profiles/build.py#L251)  
++-> ReaderProfileSummary  校验人数、分母、期限、精确基准包含关系和支持度；默认相关人数不足5不提供 lift   [code](./agent/app/reader_profiles/contracts.py#L109)  
++-> INSERT INTO reader_profiles  原子发布 manifest.json、policy.json、reader_profiles.sqlite，新包只有内容绑定、覆盖、元数据和聚合表   [code](./agent/app/reader_profiles/build.py#L381)
++
++聚合以 `tenant_id + news_id + window_start + window_end` 关联。`share_all` 的分母包含未知画像；`share_profiled` 的分母仅含该期限有画像的读者；`lift = share_profiled / baseline_share`。标签可重叠，占比不能相加为去重人数或可触达人数。当前文章的主题、全租户兴趣和当前文章访问者兴趣是三种不同数据。
++
++本地正式包为 `output/reader-profiles/local-readers-v1-20261017`，由 308,091 条合成事件、1,200 个合成身份生成 52,718 条新闻小时聚合，属于冻结本地规模。已生成的包是1小时窗口；builder 支持另建24小时包，不能累加小时 UV。早窗历史不足会提示；未覆盖/未绑定不能作为零访问返回。企业个人明细留在企业数据域，企业预聚合通过下节 Port 返回。
++
++构建配置：`--behavior-package`、`--output-dir`、`--window-hours 1|24`、`--top-k`；外部依赖为 Python/SQLite 与冻结合成文件。测试：[test_reader_profile_build.py](./agent/tests/test_reader_profile_build.py)、[test_reader_profile_contracts.py](./agent/tests/test_reader_profile_contracts.py)、[test_reader_profile_local.py](./agent/tests/test_reader_profile_local.py)。字段和企业映射详见 [news-reader-profile-warehouse.md](./agent/docs/news-reader-profile-warehouse.md)。TODO：企业事件去重、隐私身份、增量聚合和迟到修正由企业数仓实现，不能将本地脚本描述为千万级生产作业。
++
++## 单新闻访客画像服务到模型与页面
++
++build_reader_profile_service()  校验配置、目录和来源版本，选择 local_package 或 enterprise_http；API 和 Worker 分别创建服务实例   [code](./agent/app/reader_profiles/factory.py#L52)  
++-> main._business_lifespan() / run_hot_news_worker()  API保存到 app.state，Worker注入热点运行时；退出时关闭服务   [code](./agent/app/main.py#L130) / [code](./agent/app/hot_news_worker.py#L100)  
++-> ReaderProfileService.context_identity_for_window()  在候选新闻未知前，绑定服务/来源版本、tenant 与 UTC 窗口摘要   [code](./agent/app/reader_profiles/service.py#L122)  
++-> HotNewsRunRequest.idempotency_key  将可选 reader_profile_context_sha256 纳入运行身份，避免不同画像发布版本复用同一结果   [code](./agent/app/services/hot_news_orchestration.py#L94)  
++-> ActiveProductionBundleHotNewsService._validate_reader_context()  检查冻结摘要；生效 Bundle 的 Prompt 也必须在显式批准列表内   [code](./agent/app/services/active_bundle_hot_news.py#L194) / [code](./agent/app/services/active_bundle_hot_news.py#L130)  
++-> HotNewsEnrichmentService._fetch_reader_profiles()  对 Top100 最多分五批并发，共享总期限；跨批来源、目录、策略与 revision 必须一致   [code](./agent/app/analytics/hot_news_enrichment.py#L198)  
++-> ReaderProfileService.fetch()  按 tenant/news集合/window/release 查进程内 LRU，合并相同在途请求；不同在途请求达到上限直接 busy   [code](./agent/app/reader_profiles/service.py#L138)  
++-> ReaderProfileService._fetch_and_cache()  在期限内调用 Client，校验返回聚合，并按缓存TTL与企业有效期的较早值保存   [code](./agent/app/reader_profiles/service.py#L179)  
++├ LocalNewsReaderProfileClient.fetch()  本地分支将参数化 SQLite 查询放在线程执行，线上不扫描个人事件；只有已绑定新闻且窗口完整才可返回 empty   [code](./agent/app/reader_profiles/local.py#L146) / [code](./agent/app/reader_profiles/local.py#L118)  
++└ HttpNewsReaderProfileClient.fetch()  企业分支调用固定 HTTPS 聚合服务，限制响应体，拒绝重定向、代理继承及合成回退；不传个人名单   [code](./agent/app/reader_profiles/client.py#L114)  
++-> validate_reader_profile_batch()  两种分支都校验 tenant、完整新闻集合、窗口、发布SHA、版本、水位、时效和访问前截点   [code](./agent/app/reader_profiles/service.py#L35)  
++-> EnrichedHotNews  校验正文 SHA，保存每篇 reader_profile_summary 和独立 reader_profile_trace，冻结本次主题中文名   [code](./agent/app/analytics/hot_news_enrichment.py#L264)  
++-> HotNewsAnalysisInputBuilder.build()  深拷贝严格聚合到模型输入；不复制个人事件或用户 ID   [code](./agent/app/services/hot_news_analysis.py#L109)  
++-> NativeHotNewsAnalysisRunner.run()  用批准的 Prompt 调模型，只解释聚合，不重新计算人数、热度或推送收益   [code](./agent/app/model_runtime/hot_news.py#L119)  
++-> AnalyzedHotNews / save_completed()  将 summary、trace 与分析输入/报告保存在同一运行快照   [code](./agent/app/services/hot_news_orchestration.py#L308) / [code](./agent/app/services/hot_news_run_store.py#L67)  
++-> GET /runs/{run_id}  按租户回读已完成快照，提取已保存的画像，不现场重算或取最新版本替代   [code](./agent/app/api/hot_news.py#L180) / [code](./agent/app/services/hot_news_query.py#L192)  
++-> HotNewsRankTable -> NewsReaderProfilePanel  将 summary/trace 传入组件，展示来源、覆盖、长短期标签、lift与限制   [code](./agent/frontend/src/components/hotnews/HotNewsRankTable.vue#L112) / [code](./agent/frontend/src/components/hotnews/NewsReaderProfilePanel.vue#L26)
++
++本地与企业 Client 是两个配置分支，不会先读本地再调用企业。热点内部直接调用 Python Service；独立 [POST /api/v1/reader-profiles/query](./agent/app/api/reader_profiles.py#L30) 复用同一 Service，tenant 来自可信网关，请求体不能覆盖身份/来源版本。`PushStrategyInputBuilder.build()`可[复用同一聚合摘要](./agent/app/services/push_strategy.py#L58)，属于策略输入分支，不代表热点运行自动选人或触发投递。
++
++配置：[Settings](./agent/app/config.py#L62) 的 `READER_PROFILE_ENABLED` 默认 false，后端、路径/HTTPS、Token、批准目录、来源发布SHA及策略版本显式注入；默认每批3秒、全批5秒、缓存30秒、256缓存项、16个不同在途请求、企业响应524288字节。TTL=0禁用缓存，仍保留请求合并。企业快照必须声明企业身份口径和有效期，本地合成包仅允许隔离环境。
++
++Prompt：新增本地版本 [native-e2e-prompt-v3-reader-profiles](./agent/app/model_runtime/hot_news.py#L42)，保留旧资产；[模型YAML](./agent/deploy/model-runtime.reader-profiles.local.yml) 与 [Compose overlay](./agent/deploy/docker-compose.reader-profiles.local.yml) 显式选用新版本，旧数据库 Bundle 不自动晋升。企业版本使用 `READER_PROFILE_ALLOWED_ANALYSIS_PROMPT_VERSIONS` 绑定批准资产。
++
++可复跑验证：[真实包查询/API功能探针](./agent/examples/reader_profile_query_smoke.py#L33) -> [真实正文/画像进入模型的smoke](./agent/examples/reader_profile_hot_news_smoke.py#L150)。专项：[test_reader_profile_client_service.py](./agent/tests/test_reader_profile_client_service.py)、[test_reader_profile_api_factory.py](./agent/tests/test_reader_profile_api_factory.py)、[test_reader_profile_hot_news_integration.py](./agent/tests/test_reader_profile_hot_news_integration.py)、[test_reader_profile_runtime_assets.py](./agent/tests/test_reader_profile_runtime_assets.py)、[前端画像测试](./agent/frontend/tests/news-reader-profile.test.mjs)。这些是测试/复跑入口，本次文档核对不等于重新执行全部业务回归。
++
++当前 overlay 使用正文/ID兼容的 corpus-v6/120篇；可选北京时间2026-09-22 10:00至11:00的Top100场景。v8完整在线SQL profile和整栈页面验收仍待完成；单独v8 CLI smoke不能描述为页面验收。动态 Schedule 尚未冻结每窗画像，开启该功能后拒绝 ensure/unpause；企业聚合接口联调、模型质量、P95/P99与千万级负载验收仍是TODO。完整配置和数据口径见 [实现说明](./agent/docs/news-reader-profile-integration.md)。
+ 
+ ## 研究与写作链路
+ 
+@@ -178,7 +234,7 @@
+ 各阶段的实际分发位置是 HotNewsDataLoopStepHandler.execute() 它根据 step_type 找到冻结、归因、评测、激活函数   
+                     [code](./agent/app/services/data_loop/step_handler.py#L135)
+ 配置激活后，下一次热点运行会读取新的生效 Bundle。读取位置就是前面讲过的  
+-ActiveProductionBundleHotNewsService.run()  需要回滚时，入口是   [code](./agent/app/services/active_bundle_hot_news.py#L99)  
++ActiveProductionBundleHotNewsService.run()  需要回滚时，入口是   [code](./agent/app/services/active_bundle_hot_news.py#L102)  
+ rollback_production_bundle()   [code](./agent/app/api/data_loop.py#L824)  
+ 
+ ## 长短期 Memory
+@@ -350,6 +406,8 @@
+ 
+ 模型依赖由 [build_model_runtime_ports](./agent/app/model_runtime/factory.py#L52) 选择；只有 HTTP provider 进入 `OpenAICompatibleInferenceClient`，本地 provider 是同 Port 的确定性替身。热点另经 `NativeHotNewsAnalysisRunner` 绑定 Bundle 中的模型/Prompt，并在结构化解析后执行业务 Validator；JSON Schema 通过不等于事实与引用检查通过。
+ 
++热点画像输入在 [HotNewsAnalysisInputBuilder.build()](./agent/app/services/hot_news_analysis.py#L109) 注入 `reader_profile_summary`；启用后使用批准的 reader-aware Prompt，本地新增版本为 [v3](./agent/app/model_runtime/hot_news.py#L42)。人数、占比、基准和热度已经由 Python/SQL 计算，LLM解释方向与限制。旧 Prompt 资产保留，不能仅修改配置名就宣称生产 Bundle 已完成晋升。
++
+ ## 当前注册的全部对话工具
+ 注册表共 **16 个工具**（6 个基础工具 + 10 个 Hook），来自 [TOOL_NAMES](./agent/app/conversation/tools.py#L224) 和 [HOOK_REGISTRY](./agent/app/conversation/tools.py#L200)。某次部署实际暴露的集合由功能开关、依赖、租户与用户权限裁剪，以 [ConversationAgentService.runtime_info](./agent/app/conversation/service.py#L96) 为准。
+ 
+@@ -399,7 +457,7 @@
+         on_bound → remember_binding()  绑定成功回调：把 workflow_id/sql_query_id 写回工具轨迹，并向前端推 hot_news_workflow 阶段事件   
+                 [code](./agent/app/conversation/service.py#L315)
+         get_run_detail()      回读运行报告，核对 sql_query_id 与本次绑定一致，防止读到别的运行
+-                [code](./agent/app/services/hot_news_query.py#L59)
++                [code](./agent/app/services/hot_news_query.py#L60)
+ checkpoint_turn()      工具轨迹先落库（CAS 校验前缀），再对外宣布结果   [code](./agent/app/repositories/conversation.py#L544)
+ tool_finished 事件      推送工具完成事件给前端   [code](./agent/app/conversation/service.py#L404)
+ render_tool_results()  把工具快照渲染成展示文字（榜单、窗口、SQL 编号），数字全部来自快照
+@@ -413,11 +471,11 @@
+ 
+ ### 1. 进程启动与依赖装配
+ 
+-`main._business_lifespan()`读取 Settings/YAML，装配 PostgreSQL、模型 Port、Temporal、Redis、知识索引与聊天服务；`create_app()`挂载 API。聊天循环在 API 进程内执行，写作、热点、Data Loop 任务由不同 Worker 消费 Temporal 队列。热点 Worker 先调用依赖工厂；配置缺失时拒绝启动。
+-
+-入口：[main.py#L65](./agent/app/main.py#L65)、[main.py#L244](./agent/app/main.py#L244)；装配：[bootstrap.py#L31](./agent/app/bootstrap.py#L31)、[hot_news_dependencies.py#L73](./agent/app/hot_news_dependencies.py#L73)；消费：[worker.py#L18](./agent/app/worker.py#L18)、[hot_news_worker.py#L38](./agent/app/hot_news_worker.py#L38)、[data_loop_worker.py#L115](./agent/app/data_loop_worker.py#L115)。
+-
+-配置：`MODEL_RUNTIME_CONFIG_PATH`、`TEMPORAL_*_TASK_QUEUE`、`HOT_NEWS_DEPENDENCIES_FACTORY`。测试：[agent/tests/test_data_loop_worker.py](./agent/tests/test_data_loop_worker.py)、[agent/tests/test_conversation_admission_wiring.py](./agent/tests/test_conversation_admission_wiring.py)。TODO：企业 Adapter 与生产部署验收。
++`main._business_lifespan()`读取 Settings/YAML，装配 PostgreSQL、模型 Port、Temporal、Redis、知识索引、聊天服务及可选画像服务；`create_app()`挂载 API。聊天循环在 API 进程内执行，写作、热点、Data Loop 任务由不同 Worker 消费 Temporal 队列。热点 Worker 先调用依赖工厂；配置缺失时拒绝启动。画像经 [build_reader_profile_service()](./agent/app/reader_profiles/factory.py#L52) 分别在 [API](./agent/app/main.py#L130) 和 [Worker](./agent/app/hot_news_worker.py#L100) 中创建，服务缓存不是跨进程共享的 Redis 缓存；[运行时关闭](./agent/app/hot_news_bootstrap.py#L46)会关闭 Client 和在途任务。
++
++入口：[main.py#L66](./agent/app/main.py#L66)、[main.py#L252](./agent/app/main.py#L252)；装配：[bootstrap.py#L31](./agent/app/bootstrap.py#L31)、[hot_news_dependencies.py#L73](./agent/app/hot_news_dependencies.py#L73)；消费：[worker.py#L18](./agent/app/worker.py#L18)、[hot_news_worker.py#L39](./agent/app/hot_news_worker.py#L39)、[data_loop_worker.py#L115](./agent/app/data_loop_worker.py#L115)。
++
++配置：`MODEL_RUNTIME_CONFIG_PATH`、`TEMPORAL_*_TASK_QUEUE`、`HOT_NEWS_DEPENDENCIES_FACTORY`，画像使用独立 `READER_PROFILE_*`。测试：[agent/tests/test_data_loop_worker.py](./agent/tests/test_data_loop_worker.py)、[agent/tests/test_conversation_admission_wiring.py](./agent/tests/test_conversation_admission_wiring.py)、[test_reader_profile_api_factory.py](./agent/tests/test_reader_profile_api_factory.py)。TODO：企业 Adapter 与生产部署验收。
+ 
+ ### 2. 新闻采集与知识入库（补齐检索的上游）
+ 
+@@ -427,15 +485,15 @@
+ 
+ ### 3. 冷温热增量索引与撤稿、回热（可选接线）
+ 
+-设置 `KNOWLEDGE_LIFECYCLE_CONFIG_PATH` 后，[API 装配](./agent/app/main.py#L146) 将知识写入口换为 [KnowledgeLifecycleService.accept()](./agent/app/knowledge/tier_lifecycle.py#L43) → [TierLifecycleStore.accept_content()](./agent/app/knowledge/tier_lifecycle_store.py#L170) 同事务冻结正文、修订号、代次和任务 → [dispatch_once()](./agent/app/knowledge_lifecycle_worker.py#L63) 启动 Temporal `KnowledgeIndexWorkflow` → [process_job()](./agent/app/knowledge/tier_lifecycle.py#L213) 切片/复用或生成向量、批量写入、验证后条件激活，再清理旧投影。[scan_page()](./agent/app/knowledge/tier_lifecycle.py#L252) 按年龄降层；[retract()](./agent/app/knowledge/tier_lifecycle.py#L85) / [reheat()](./agent/app/knowledge/tier_lifecycle.py#L88) 处理撤稿与保持期回热。依赖 PG、Temporal、Embedding、Milvus；配套 `MODEL_RUNTIME_CONFIG_PATH/KNOWLEDGE_SEARCH_CONFIG_PATH`。测试：`agent/tests/test_tier_lifecycle_runtime.py`、`agent/tests/test_tier_lifecycle_wiring.py`、`agent/tests/test_tier_lifecycle_vector_reuse.py`。接收成功不等于 ready，需查文档/任务状态；爬虫暂未跟踪该 job，生命周期模式下 QA 子投影接口明确返回 409。生产需真实 Milvus，BGE 只读快照不能当写入目标，企业合同与容量仍需验收。
++设置 `KNOWLEDGE_LIFECYCLE_CONFIG_PATH` 后，[API 装配](./agent/app/main.py#L152) 将知识写入口换为 [KnowledgeLifecycleService.accept()](./agent/app/knowledge/tier_lifecycle.py#L43) → [TierLifecycleStore.accept_content()](./agent/app/knowledge/tier_lifecycle_store.py#L170) 同事务冻结正文、修订号、代次和任务 → [dispatch_once()](./agent/app/knowledge_lifecycle_worker.py#L63) 启动 Temporal `KnowledgeIndexWorkflow` → [process_job()](./agent/app/knowledge/tier_lifecycle.py#L213) 切片/复用或生成向量、批量写入、验证后条件激活，再清理旧投影。[scan_page()](./agent/app/knowledge/tier_lifecycle.py#L252) 按年龄降层；[retract()](./agent/app/knowledge/tier_lifecycle.py#L85) / [reheat()](./agent/app/knowledge/tier_lifecycle.py#L88) 处理撤稿与保持期回热。依赖 PG、Temporal、Embedding、Milvus；配套 `MODEL_RUNTIME_CONFIG_PATH/KNOWLEDGE_SEARCH_CONFIG_PATH`。测试：`agent/tests/test_tier_lifecycle_runtime.py`、`agent/tests/test_tier_lifecycle_wiring.py`、`agent/tests/test_tier_lifecycle_vector_reuse.py`。接收成功不等于 ready，需查文档/任务状态；爬虫暂未跟踪该 job，生命周期模式下 QA 子投影接口明确返回 409。生产需真实 Milvus，BGE 只读快照不能当写入目标，企业合同与容量仍需验收。
+ 
+ ### 4. 本地行为标签构建与热点相关性重排（默认关闭）
+ 
+-离线 [build_package()](./agent/app/behavior_tags/build.py#L304) → [load_merged_source()](./agent/app/behavior_tags/merge.py#L354) 校验冻结来源、新闻身份与生命周期，保留不同场景指标 → [tag_article()](./agent/app/behavior_tags/tagging.py#L139) / [behavior_labels()](./agent/app/behavior_tags/tagging.py#L222) 生成主题和小时行为标签 → 合成事件及每日画像 → JSONL、SQLite、Manifest。在线 [LocalBehaviorRuntime.context_for_window()](./agent/app/behavior_tags/runtime.py#L173) 冻结窗口截止前的聚合画像，经 [ActiveProductionBundleHotNewsService._behavior_context()](./agent/app/services/active_bundle_hot_news.py#L166) 校验运行摘要，接到原相关性重排之后的 [BehaviorRetrievalContext.rerank()](./agent/app/behavior_tags/runtime.py#L44)，输出排序证据 `retrieval_trace`，不改权威热度。配置 `BEHAVIOR_TAGS_ENABLED`、`BEHAVIOR_TAGS_PACKAGE_PATH`、`BEHAVIOR_TAGS_COHORT_ID`、`BEHAVIOR_TAGS_MAX_BONUS`，最大加分 0.08；依赖本地冻结包、Python/SQLite。测试：`agent/tests/test_behavior_tag_build.py`、`agent/tests/test_behavior_tag_merge.py`、`agent/tests/test_behavior_tag_runtime.py`、`agent/tests/test_behavior_hot_news_integration.py`。画像是合成场景，生产拒绝启用；Schedule 执行时冻结上下文仍是 TODO，不能宣称自动调度已接通该分支。
++离线 [build_package()](./agent/app/behavior_tags/build.py#L303) → [load_merged_source()](./agent/app/behavior_tags/merge.py#L354) 校验冻结来源、新闻身份与生命周期，保留不同场景指标 → [tag_article()](./agent/app/behavior_tags/tagging.py#L139) / [behavior_labels()](./agent/app/behavior_tags/tagging.py#L222) 生成主题和小时行为标签 → 合成事件及每日画像 → JSONL、SQLite、Manifest。在线 [LocalBehaviorRuntime.context_for_window()](./agent/app/behavior_tags/runtime.py#L173) 冻结全租户或指定 cohort 的聚合兴趣，经 [ActiveProductionBundleHotNewsService._behavior_context()](./agent/app/services/active_bundle_hot_news.py#L176) 校验运行摘要，接到原相关性重排之后的 [BehaviorRetrievalContext.rerank()](./agent/app/behavior_tags/runtime.py#L44)，输出排序证据 `retrieval_trace`，不改权威热度。它没有按当前新闻访问者筛选，不能被描述为本新闻的访客画像；该能力由上面的 `reader_profiles` 独立实现并输出 `reader_profile_trace`。配置 `BEHAVIOR_TAGS_ENABLED`、`BEHAVIOR_TAGS_PACKAGE_PATH`、`BEHAVIOR_TAGS_COHORT_ID`、`BEHAVIOR_TAGS_MAX_BONUS`，最大加分 0.08；依赖本地冻结包、Python/SQLite。测试：`agent/tests/test_behavior_tag_build.py`、`agent/tests/test_behavior_tag_merge.py`、`agent/tests/test_behavior_tag_runtime.py`、`agent/tests/test_behavior_hot_news_integration.py`。两项开关可以分别配置；本地合成模式不能当企业验收，动态 Schedule 冻结仍未接通。
+ 
+ ### 5. 热点报告后的主题受众预览（人工决策准备）
+ 
+-热点详情的 [AudiencePreviewPanel.estimateAudience()](./agent/frontend/src/components/hotnews/AudiencePreviewPanel.vue#L110) → [audienceApi.preview()](./agent/frontend/src/api/audience.ts#L144) → [POST audience.preview()](./agent/app/api/audience.py#L36) 验证运营决策权限 → [AudiencePreviewService.preview()](./agent/app/audience/service.py#L82) 回读当前租户已完成 run/news，校验主题目录并生成查询 → `AudienceProfilePort.estimate()` → 企业 [HttpAudienceProfileClient.estimate](./agent/app/audience/client.py#L77) 或隔离本地后端 → [_validate_snapshot()](./agent/app/audience/service.py#L137) 复核身份、版本、窗口、水位和时效 → 输出去重匹配/资格人数与人工预览建议。配置 `AUDIENCE_ENABLED`、`AUDIENCE_BACKEND`、`AUDIENCE_TAXONOMY_PATH`、`AUDIENCE_ESTIMATE_URL`、`AUDIENCE_API_TOKEN`；依赖 PG、HTTP、批准目录，本地 `behavior_package` 可读取前述合成包。测试：`agent/tests/test_audience_preview.py`、`agent/tests/test_audience_client.py`、`agent/tests/test_audience_runtime.py`、`agent/frontend/tests/audience-preview.test.mjs`。不调用 LLM 算人数、不保存个人名单、不创建审批或投递任务；真实标签 ID、画像资格口径、鉴权、正式审批与投递回执仍待企业联调。
++热点详情的 [AudiencePreviewPanel.estimateAudience()](./agent/frontend/src/components/hotnews/AudiencePreviewPanel.vue#L110) → [audienceApi.preview()](./agent/frontend/src/api/audience.ts#L144) → [POST audience.preview()](./agent/app/api/audience.py#L36) 验证运营决策权限 → [AudiencePreviewService.preview()](./agent/app/audience/service.py#L82) 回读当前租户已完成 run/news，校验人工选择的主题目录并生成查询 → `AudienceProfilePort.estimate()` → 企业 [HttpAudienceProfileClient.estimate](./agent/app/audience/client.py#L77) 或隔离本地后端 → [_validate_snapshot()](./agent/app/audience/service.py#L137) 复核身份、版本、窗口、水位和时效 → 输出去重匹配/资格人数与人工预览建议。这里按选定主题估计匹配/通知资格，`news_id`还承担运行授权与报告绑定；不能把返回人数等同于该新闻的历史访问人数。配置 `AUDIENCE_ENABLED`、`AUDIENCE_BACKEND`、`AUDIENCE_TAXONOMY_PATH`、`AUDIENCE_ESTIMATE_URL`、`AUDIENCE_API_TOKEN`；依赖 PG、HTTP、批准目录，本地 `behavior_package` 可读取前述合成包。测试：`agent/tests/test_audience_preview.py`、`agent/tests/test_audience_client.py`、`agent/tests/test_audience_runtime.py`、`agent/frontend/tests/audience-preview.test.mjs`。不调用 LLM 算人数、不保存个人名单、不创建审批或投递任务；真实标签 ID、画像资格口径、鉴权、正式审批与投递回执仍待企业联调。
+ 
+ ### 6. 上下文压缩与可信引用
+ 
+@@ -473,15 +531,30 @@
+ 
+ ### 10. 定时触发与全链路观测
+ 
+-手动聊天查询之外，另一热点入口是 [cmd_ensure()](./agent/app/hot_news_scheduler.py#L48) → [ensure_schedules()](./agent/app/services/hot_news_schedule.py#L158) / [build_schedule()](./agent/app/services/hot_news_schedule.py#L121) → Temporal Schedule → [HotNewsWindowDispatcherWorkflow.run()](./agent/app/workflows/hot_news.py#L57) 按 `workflow.now()` 计算有界窗口 → 原 `HotNewsMonitorWorkflow`。配置 `HOT_NEWS_SCHEDULE_DEFINITIONS_JSON` 与 `TEMPORAL_HOT_NEWS_TASK_QUEUE`；测试：[test_hot_news_schedule.py](./agent/tests/test_hot_news_schedule.py)、[test_hot_news_workflow.py](./agent/tests/test_hot_news_workflow.py)。Schedule 请求携带固定 Bundle 版本，激活新 Bundle 后也要检查调度配置是否同步；不能把“下一次读取生效配置”理解成自动改写调度请求。行为标签开关开启时，目前拒绝 ensure/unpause，窗口画像冻结仍需补齐。
++手动聊天查询之外，另一热点入口是 [cmd_ensure()](./agent/app/hot_news_scheduler.py#L48) → [ensure_schedules()](./agent/app/services/hot_news_schedule.py#L158) / [build_schedule()](./agent/app/services/hot_news_schedule.py#L121) → Temporal Schedule → [HotNewsWindowDispatcherWorkflow.run()](./agent/app/workflows/hot_news.py#L57) 按 `workflow.now()` 计算有界窗口 → 原 `HotNewsMonitorWorkflow`。配置 `HOT_NEWS_SCHEDULE_DEFINITIONS_JSON` 与 `TEMPORAL_HOT_NEWS_TASK_QUEUE`；测试：[test_hot_news_schedule.py](./agent/tests/test_hot_news_schedule.py)、[test_hot_news_workflow.py](./agent/tests/test_hot_news_workflow.py)。Schedule 请求携带固定 Bundle 版本，激活新 Bundle 后也要检查调度配置是否同步；不能把“下一次读取生效配置”理解成自动改写调度请求。`BEHAVIOR_TAGS_ENABLED` 或 `READER_PROFILE_ENABLED` 开启时，当前 [拒绝 ensure](./agent/app/hot_news_scheduler.py#L56) / [拒绝 unpause](./agent/app/hot_news_scheduler.py#L101)，动态窗口的画像冻结仍需补齐。开启前应暂停已有 Schedule；旧任务若没有 reader digest，会被 [ActiveBundle 门禁](./agent/app/services/active_bundle_hot_news.py#L194) 拒绝，不能自动用最新画像补齐。
+ 
+ 排查同一次运行时，沿 [TelemetryMiddleware.__call__()](./agent/app/observability/web.py#L17) 的 HTTP Trace → [temporal_interceptors()](./agent/app/observability/temporal.py#L123) 的 Client/Activity 传播 → [traced()](./agent/app/observability/decorators.py#L12) / [operation()](./agent/app/observability/telemetry.py#L163) 的 SQL、检索、模型、存储 span → OTLP Collector → Trace/指标/日志后端。配置入口是 [ObservabilitySettings](./agent/app/observability/settings.py#L7) 的 `OBSERVABILITY_*`，装配入口为 [configure_telemetry()](./agent/app/observability/telemetry.py#L316)；测试：[test_observability_chain.py](./agent/tests/test_observability_chain.py)、[test_observability_telemetry.py](./agent/tests/test_observability_telemetry.py)。正文、原始问题、完整 SQL 和密钥不应作为观测属性；生产采样、保留和告警阈值需部署验收。
+ 
++## 本次旧版本修正与新增内容
++
++| 原有部分 | 需要修正的旧描述 | 当前内容 |
++| --- | --- | --- |
++| 热点发现和分析 | 仅展开指标、正文、关联检索和分析 | 展开页面/聊天共用入口、冻结身份、Worker取数、排名、画像、模型、保存和页面回读 |
++| SQL工具执行时机 | 预览、实际执行、流式profile预取容易混在一起 | preview只编译/校验/保存；SQL在Worker执行；流式profile可先预取后复用同一快照 |
++| 启动装配 | 尚未列出画像服务 | API/Worker分别调用factory，独立进程缓存，明确关闭和依赖注入位置 |
++| 本地行为相关性重排 | “聚合画像”容易被读作当前新闻访客画像 | 保留全租户/cohort重排，明确它与reader_profiles的计算对象、开关、trace不同 |
++| 热点报告后的受众预览 | 主题匹配/通知资格人数容易与历史读者人数混用 | 人工选择标签后的资格预览单列，不能由访客标签重叠占比推出人数 |
++| 模型分析 | 输入说明未包含reader summary和新Prompt | 补充严格聚合输入、v3本地Prompt、批准版本门禁和旧资产保留 |
++| 定时触发 | 仅说明行为重排的Schedule限制 | 补充reader开关也拒绝ensure/unpause、旧任务无digest会拒绝、开启前暂停已有Schedule |
++| 代码定位与核验 | 2026-10-16的部分函数位置已移动 | 刷新13处旧链接，覆盖11个不同目标；新链接按定义或关键调用分支核对 |
++
++新增两个完整章节：“用户行为标签与单新闻访客画像构建”“单新闻访客画像服务到模型与页面”；同时新增本地标签/访客聚合表导航、独立API、策略输入复用、配置、测试及企业TODO。原有对话、写作、Memory、Data Loop和观测链路继续保留；注册工具仍按原16项读取，没有把画像内部Service虚构成新的对话工具。
++
+ ## 本次核对与如何验证
+ 
+-- 原文 154 处行号链接、123 个不同旧目标中，72 处需要校正（含 4 处文件误归属和 1 处漏写 `L`）。已按每一处文字语义修正，`iter_events` 与 `answer_delta` 分别指向定义和发送分支。
+-- 补齐基本表清单，工具清单从 5 项补全为 16 个注册工具；补充 BGE、生命周期、独立统计服务和热点批处理等分支。
+-- 本次修改导读文档，没有修改业务实现、启动/重启服务或调用企业接口。测试文件是学习和后续验证入口，本次未执行完整业务回归。
+-- 详细原始定位见 [行号审计记录](./output/code-chain-review-20261016/anchor-audit.json)。最终链接存在性、行号范围及定义符号检查结果见 [文档核验记录](./output/code-chain-review-20261016/validation.json)。
++- 本次仅修改导读文档及核验/图解产物；没有修改业务实现、启动/重启服务、重建模拟包或调用企业接口。
++- 代码定位以当前工作区为准；静态检查所有本地链接、行号范围、Python AST符号、旧链接迁移目标和新链路关键调用位置。测试文件是学习与复跑入口，本次未执行完整业务回归。
++- 本次旧行号迁移见 [anchor-refresh-plan.json](./output/code-chain-review-20261017/anchor-refresh-plan.json)，更新后的链接和来源文件哈希见 [validation.json](./output/code-chain-review-20261017/validation.json)。
++- 2026-10-16的154处原始链接/72处校正属于前一轮历史审计，保留于 [旧行号审计](./output/code-chain-review-20261016/anchor-audit.json) 和 [旧核验记录](./output/code-chain-review-20261016/validation.json)，不能作为本文当前SHA或新功能验收记录。
+ 
+ 阅读单条链路时，先看入口的请求 Schema 与身份，再看核心函数如何把数据变成下一阶段输入，最后结合测试读失败分支。优先记住每一步产出的真实 ID、版本和快照，而非只背函数顺序。

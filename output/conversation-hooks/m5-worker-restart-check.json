@@ -1,0 +1,106 @@
+{
+  "verification_passed": true,
+  "run_id": "1f1e418d749b4e91997a2edb28cbee99",
+  "checks": [
+    {
+      "tenant_index": 0,
+      "three_entities_preserved": true,
+      "active_budget_preserved": true,
+      "one_request_still_queued": true,
+      "two_business_workflows_running": true
+    },
+    {
+      "tenant_index": 1,
+      "three_entities_preserved": true,
+      "active_budget_preserved": true,
+      "one_request_still_queued": true,
+      "two_business_workflows_running": true
+    }
+  ],
+  "entities": [
+    {
+      "tenant_index": 0,
+      "job_id": "ecc9f57d-cb34-4d14-b50d-402bc1a8f04e",
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-d515d2a430734e8ebc768fd26a57d2cace172970fecda816ed59de78a4284051"
+      },
+      "job_status": "research_review"
+    },
+    {
+      "tenant_index": 1,
+      "job_id": "13f020a2-8f3e-4946-8710-8ff812cb1211",
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-3d1d1c6b88f1d84f4d59a0a4ce2c14f553f65977b3cf44a0c43f40f799d64908"
+      },
+      "job_status": "research_review"
+    },
+    {
+      "tenant_index": 0,
+      "job_id": "bb86782f-caf1-4c2e-82c3-9f6a7e698b56",
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-8fad689df03033663b33acfb4c5b15cc085e4cf200b4e1a1bd315ef8c018a7e2"
+      },
+      "job_status": "research_review"
+    },
+    {
+      "tenant_index": 1,
+      "job_id": "550d8822-7f0c-4eff-9610-1ba207b90c02",
+      "admission": {
+        "state": "running",
+        "queue_position": null,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-76d9d5ef9d9469003c20ce4f8ad8d9608d7658254c7e0cfeddee4a2e9ef08256"
+      },
+      "job_status": "research_review"
+    },
+    {
+      "tenant_index": 0,
+      "job_id": "7695676b-642b-489a-93dd-008c33826eb0",
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-f4d86ef7c7e3105687bd130ac3d73011b416987030fc09fbd0a1d25e3bad3491"
+      },
+      "job_status": "created"
+    },
+    {
+      "tenant_index": 1,
+      "job_id": "4b0f2b19-ec10-471e-be7e-a9ebd001d2c2",
+      "admission": {
+        "state": "queued",
+        "queue_position": 1,
+        "active_count": 2,
+        "budget": 2,
+        "bootstrap_complete": true,
+        "error_code": null,
+        "request_workflow_id": "conversation-admission-request-bfd29712cdba43442a3e56f133abfd1d9276df801f676fb271ae97bc7db3d4de"
+      },
+      "job_status": "created"
+    }
+  ]
+}

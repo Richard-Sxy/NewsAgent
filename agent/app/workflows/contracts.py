@@ -29,6 +29,9 @@ class NewsWritingInput:
     scenario: Literal["research_package", "assisted_writing"] = "assisted_writing"
     recovery_action: Literal["research"] | None = None
     recovery_instruction: str | None = None
+    # Optional for histories started before research checkpoints were isolated.
+    # Derived by the application from the persisted recovery Workflow ID.
+    recovery_checkpoint_namespace: str | None = None
 
 
 @dataclass

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import ts from 'typescript'
-import { compileScript, parse } from '@vue/compiler-sfc'
+import { compileScript, compileTemplate, parse } from '@vue/compiler-sfc'
 import { renderToString } from '@vue/server-renderer'
 import * as vue from 'vue'
 
@@ -63,7 +63,9 @@ test('the actual hot-news table renders the headline first and formats metric st
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
   })
   const imports = { vue, '@/utils/format': format,
-    '@/components/NaJsonBlock.vue': { default: vue.defineComponent({ render: () => null }) } }
+    '@/components/NaJsonBlock.vue': { default: vue.defineComponent({ render: () => null }) },
+    '@/components/hotnews/AudiencePreviewPanel.vue': { default: vue.defineComponent({ render: () => null }) },
+    '@/components/hotnews/NewsReaderProfilePanel.vue': { default: vue.defineComponent({ render: () => null }) } }
   const exports = {}
   new Function('require', 'exports', outputText)((name) => {
     assert.ok(Object.hasOwn(imports, name), `Unexpected import: ${name}`)
@@ -79,8 +81,57 @@ test('the actual hot-news table renders the headline first and formats metric st
   const html = await renderToString(vue.createSSRApp({ render: () => vue.h(exports.default, { items: [item] }) }))
   assert.match(html, /class="na-cell__title"[^>]*>假期交通服务迎来新变化<\/div>/)
   assert.match(html, /class="na-cell__sub[^>]*title="scale-news-000001"/)
-  assert.match(html, />12\.35%<\/td>/)
-  assert.match(html, />0\.1235<\/span>/)
+  assert.match(html, /class="na-hot-rank__secondary"[^>]*>CTR 12\.35%<\/small>/)
+  assert.match(html, /class="na-hot-rank__score"[^>]*>0\.1235<\/td>/)
   assert.match(html, />98\.77%<\/span>/)
+  assert.deepEqual(item, original)
+})
+
+test('expanded hot-news details show the saved behavior retrieval trace without changing authoritative scores', async () => {
+  const componentSource = readFileSync(new URL('../src/components/hotnews/HotNewsRankTable.vue', import.meta.url), 'utf8')
+  const descriptor = parse(componentSource).descriptor
+  const script = compileScript(descriptor, { id: 'rank-retrieval-trace' })
+  const template = compileTemplate({ id: 'rank-retrieval-trace', source: descriptor.template.content,
+    filename: 'HotNewsRankTable.vue', compilerOptions: { bindingMetadata: script.bindings } })
+  assert.deepEqual(template.errors, [])
+  const imports = { vue, '@/utils/format': format,
+    '@/components/NaJsonBlock.vue': { default: vue.defineComponent({ props: ['value', 'label'],
+      setup: (props) => () => vue.h('pre', { 'aria-label': props.label }, JSON.stringify(props.value)) }) },
+    '@/components/hotnews/AudiencePreviewPanel.vue': { default: vue.defineComponent({ render: () => null }) },
+    '@/components/hotnews/NewsReaderProfilePanel.vue': { default: vue.defineComponent({ render: () => null }) } }
+  function evaluate(source) {
+    const { outputText } = ts.transpileModule(source, {
+      compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+    })
+    const exports = {}
+    new Function('require', 'exports', outputText)((name) => {
+      assert.ok(Object.hasOwn(imports, name), `Unexpected import: ${name}`)
+      return imports[name]
+    }, exports)
+    return exports
+  }
+  const component = evaluate(script.content).default
+  component.render = evaluate(template.code).render
+  const setup = component.setup
+  component.setup = (props, context) => {
+    const state = setup(props, context)
+    state.expanded.value.add('news-1')
+    return state
+  }
+  const trace = { source_mode: 'synthetic', profile_version: 'profile-test-v1',
+    before_news_ids: ['finance', 'science'], after_news_ids: ['science'], hot_score_changed: false }
+  const item = { rank: 1, news_id: 'news-1', title: '研究观察', analysis: null,
+    metrics: { content_type: 'article', impressions: 100, clicks: 12, ctr: '0.123456789' },
+    hot_score: { score: '0.123456789', click_component: '0.1', consumption_component: '0.2',
+      interaction_component: '0.3', growth_component: '0.4' }, retrieval_trace: trace }
+  const original = structuredClone(item)
+  const html = await renderToString(vue.createSSRApp(component, { items: [item], runId: 'run-1' }))
+  assert.match(html, /主题兴趣与相关新闻排序依据（本地合成画像）/)
+  assert.match(html, /兴趣权重用于相关新闻排序；热点分数仍按原指标计算/)
+  assert.match(html, /aria-label="主题、画像时点与候选排序证据"/)
+  assert.match(html, /profile-test-v1/)
+  assert.match(html, /before_news_ids/)
+  assert.match(html, /after_news_ids/)
+  assert.match(html, /0\.1235<\/td>/)
   assert.deepEqual(item, original)
 })

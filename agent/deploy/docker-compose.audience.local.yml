@@ -1,0 +1,10 @@
+# Add after docker-compose.native-e2e.yml for the isolated audience preview.
+# Rebuild the backend image first; this does not enable a delivery service.
+services:
+  api:
+    environment:
+      AUDIENCE_ENABLED: "true"
+      AUDIENCE_BACKEND: synthetic
+      AUDIENCE_TAXONOMY_PATH: /app/deploy/audience-topics.local.yml
+    volumes:
+      - ./audience-topics.local.yml:/app/deploy/audience-topics.local.yml:ro

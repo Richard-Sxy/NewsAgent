@@ -29,6 +29,7 @@ Prompt、Agent 编排、结构化解析、业务校验、知识分块、索引�
 | `app/models/`、`app/repositories/`、`alembic/` | ORM、仓储和数据库迁移 |
 | `app/retrieval/` | 分层向量召回、过滤和证据约束 |
 | `app/sql_assistant/` | 本地 Text2SQL 意图编译、严格 SQL 护栏、只读数仓与查询快照 |
+| `app/reader_profiles/` | 单新闻访客聚合画像、企业 HTTPS Port、窗口校验与有界缓存 |
 
 ## 本地全链路
 
@@ -58,6 +59,10 @@ Worker。本地模型实现与生产实现使用相同 Port；它用于验证控
 
 企业配置参考 `deploy/model-runtime.enterprise.example.yml`，本地配置参考
 `deploy/model-runtime.local.yml`。密钥由环境变量注入，不得写入 YAML 或提交仓库。
+
+热点榜单支持[单新闻访问人群与推送主题分析](docs/news-reader-profile-integration.md)：
+离线聚合该新闻的去重读者及其访问前长短期兴趣，在线只读取聚合，绑定到模型输入和报告。
+本地已生成独立合成包；[数仓字段与计算口径](docs/news-reader-profile-warehouse.md)说明基准、UV 与冷启动边界。
 
 ## 测试与质量门槛
 

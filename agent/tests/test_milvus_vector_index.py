@@ -112,3 +112,86 @@ async def test_milvus_rejects_filter_injection() -> None:
             exclude_news_ids=frozenset(),
             limit=5,
         )
+
+
+def verification_record():
+    return ChunkVectorRecord(
+        chunk_id="projection-1-0", tenant_id="tenant-1", news_id="news-1",
+        content_version=2, chunk_index=0, embedding_version="embedding-v1",
+        title="更正标题", excerpt="更正切片", source_url=None,
+        publish_time=datetime(2026, 10, 15, tzinfo=UTC), vector=(0.1, 0.2),
+    )
+
+
+@pytest.mark.asyncio
+async def test_lifecycle_metadata_verification_uses_strong_consistency_and_timeout():
+    record = verification_record()
+
+    class MetadataMilvus(FakeMilvusClient):
+        def query(self, **kwargs):
+            self.calls.append(("query", kwargs))
+            return [MilvusTieredVectorIndex._record_payload(record)]
+
+    milvus = MetadataMilvus()
+    index = MilvusTieredVectorIndex(
+        milvus, collections={VectorTier.HOT: "news_hot_v1"},
+        consistency_level="Strong", timeout_seconds=2.5,
+    )
+    assert await index.verify_records(tier=VectorTier.HOT, records=[record])
+    _, call = milvus.calls[0]
+    assert call["consistency_level"] == "Strong"
+    assert call["timeout"] == 2.5
+    assert "tenant_id" in call["output_fields"]
+    assert "vector" not in call["output_fields"]
+    await index.upsert(tier=VectorTier.HOT, records=[record])
+    await index.contains(tier=VectorTier.HOT, chunk_ids=[record.chunk_id])
+    await index.delete(tier=VectorTier.HOT, chunk_ids=[record.chunk_id])
+    await index.search(
+        tier=VectorTier.HOT, tenant_id=record.tenant_id, vector=record.vector,
+        embedding_version=record.embedding_version, exclude_news_ids=frozenset(), limit=1,
+    )
+    for operation, kwargs in milvus.calls:
+        assert kwargs["timeout"] == 2.5
+        if operation in {"search", "query"}:
+            assert kwargs["consistency_level"] == "Strong"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "field,wrong_value",
+    [("tenant_id", "other-tenant"), ("news_id", "other-news"),
+     ("content_version", 1), ("chunk_index", 1), ("embedding_version", "old-model"),
+     ("title", "旧标题"), ("excerpt", "旧切片"), ("source_url", "https://wrong.test"),
+     ("publish_time_epoch", 0)],
+)
+async def test_lifecycle_verification_rejects_correct_id_with_wrong_metadata(field, wrong_value):
+    record = verification_record()
+
+    class IncorrectMetadata(FakeMilvusClient):
+        def query(self, **kwargs):
+            row = MilvusTieredVectorIndex._record_payload(record)
+            row[field] = wrong_value
+            return [row]
+
+    assert not await make_index(IncorrectMetadata()).verify_records(
+        tier=VectorTier.HOT, records=[record]
+    )
+
+
+@pytest.mark.asyncio
+async def test_verification_rejects_missing_and_duplicate_records():
+    record = verification_record()
+    assert not await make_index(FakeMilvusClient()).verify_records(
+        tier=VectorTier.HOT, records=[record]
+    )
+    with pytest.raises(ValueError, match="duplicate chunk_id"):
+        await make_index(FakeMilvusClient()).verify_records(
+            tier=VectorTier.HOT, records=[record, record]
+        )
+
+
+@pytest.mark.asyncio
+async def test_legacy_milvus_reader_keeps_collection_consistency_default():
+    milvus = FakeMilvusClient()
+    await make_index(milvus).contains(tier=VectorTier.HOT, chunk_ids=["chunk-1"])
+    assert "consistency_level" not in milvus.calls[0][1]

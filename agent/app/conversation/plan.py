@@ -2,9 +2,10 @@
 
 from typing import Any, Literal, Self
 from pydantic import BaseModel, ConfigDict, Field, model_validator
+from app.conversation.tools import TOOL_NAMES
 
 
-ToolName = Literal["capabilities", "list_hot_news", "read_hot_news", "search_knowledge", "query_hot_news", "analyze_hot_news_data"]
+ToolName = Literal[*TOOL_NAMES]
 
 """模型提出一项行动：response或tool"""
 class ConversationPlan(BaseModel):

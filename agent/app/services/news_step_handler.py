@@ -4,6 +4,9 @@ import uuid
 from dataclasses import dataclass
 from typing import Any
 
+from app.observability.telemetry import operation
+from app.model_runtime.core import model_attempt_context
+from app.observability.decorators import traced
 from app.model_runtime.agent_client import model_request_context
 from app.model_runtime.result import AgentResult
 from app.db.session import Database
@@ -69,6 +72,7 @@ class NewsStepHandler:
             research_app_id, writer_app_id, reviewer_app_id
         )
 
+    @traced("writing.step", identity={"command.job_id": "newsagent.job_id"})
     async def __call__(self, command: StepCommand) -> StepOutcome:
         policy = self._policy(command.step_type)
         tenant_id = uuid.UUID(command.tenant_id)
@@ -113,12 +117,20 @@ class NewsStepHandler:
                     )
                 return outcome
 
-            with model_request_context(
+            with model_attempt_context(attempt=command.attempt), model_request_context(
                 tenant_id=command.tenant_id,
                 trace_id=f"writing-{command.job_id}-{command.step_key}-{command.attempt}",
             ):
                 result = await self._dispatch(command, policy)
-            self._validate_agent_result(command, result)
+            with operation("model.business_validate", attributes={
+                "model.provider_request_id": result.request_id,
+            }):
+                try:
+                    self._validate_agent_result(command, result)
+                except AgentOutputValidationError as error:
+                    error.failure_stage = "business_validation"
+                    error.failure_kind = "writing_contract"
+                    raise
             target_status, next_step = self._route_success(policy, result.value)
             async with self.database.session() as session:
                 artifact = await self.artifact_pipeline.persist_success(

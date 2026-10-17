@@ -13,6 +13,7 @@ import tempfile
 import time
 from uuid import uuid4
 
+from app.observability.decorators import traced
 from .engine import AnalysisInputError, analyze, validate_request
 
 
@@ -109,6 +110,7 @@ class AnalysisRunner:
             },
         }
 
+    @traced("data_analysis.local")
     async def run(self, request: dict) -> dict:
         try:
             # Bound both the original input and its normalized representation.

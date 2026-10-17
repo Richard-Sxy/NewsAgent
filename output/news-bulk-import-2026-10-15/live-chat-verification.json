@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "created_at": "2026-10-15T04:56:36.209779+00:00",
+  "api_base": "http://127.0.0.1:5179/api/v1/conversations",
+  "conversation_title": "每日千篇导入验收",
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "cases_sha256": "5521d1a4381bb5905961dee0dff7b6ecf9e9c9db66ad1e898a319db28f362271",
+  "snapshot_version": "news-bge-incremental-20261014-v2",
+  "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "expected_embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+  "checks": [
+    {
+      "date": "2026-10-07",
+      "news_id": "20261007A07F9700",
+      "title": "韩国宇宙航空厅：“世界”号第五次发射取得成功",
+      "url": "https://news.qq.com/rain/a/20261007A07F9700",
+      "publish_time": "2026-10-07T14:03:59+08:00",
+      "request_id": "73a313dd-add5-4b07-afe5-6bf41a4d4b9e",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:36.296600+00:00",
+      "turn_id": "3479c4e1-9134-4a83-9ac2-4c5025773353",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:42.590538Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261007A07F9700",
+              "title": "韩国宇宙航空厅：“世界”号第五次发射取得成功",
+              "source_url": "https://news.qq.com/rain/a/20261007A07F9700",
+              "publish_time": "2026-10-07T14:03:59+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:38613"
+            },
+            {
+              "news_id": "20261007A07U8000",
+              "title": "（外代一线）韩国自研火箭“世界”号进行第五次发射",
+              "source_url": "https://news.qq.com/rain/a/20261007A07U8000",
+              "publish_time": "2026-10-07T16:42:19+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:39604"
+            },
+            {
+              "news_id": "20260823A07FTG00",
+              "title": "标题缺失（news_id=20260823A07FTG00）",
+              "source_url": null,
+              "publish_time": null,
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:1147"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 906,
+      "answer_sha256": "b6e3373e883a4e7cba0f58454ee99ae9525331bc8af72681fe6fd13ee8f614e3"
+    },
+    {
+      "date": "2026-10-08",
+      "news_id": "20261007A07SGK00",
+      "title": "10万元现金遗落出租车上后结局暖心，失主拿1万元现金酬谢郑州的哥",
+      "url": "https://news.qq.com/rain/a/20261007A07SGK00",
+      "publish_time": "2026-10-08T08:02:51+08:00",
+      "request_id": "aa9378a1-0cfb-475e-8853-acb7e759df16",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:42.603675+00:00",
+      "turn_id": "51c90e2b-55cc-4f9b-960e-112b36df36e4",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:44.420146Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261007A07SGK00",
+              "title": "10万元现金遗落出租车上后结局暖心，失主拿1万元现金酬谢郑州的哥",
+              "source_url": "https://news.qq.com/rain/a/20261007A07SGK00",
+              "publish_time": "2026-10-08T08:02:51+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:39510"
+            },
+            {
+              "news_id": "20261009A088SC00",
+              "title": "轨道辅警捡到600元现金，2分钟后还给外地大学生",
+              "source_url": "https://news.qq.com/rain/a/20261009A088SC00",
+              "publish_time": "2026-10-09T15:34:34+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41708"
+            },
+            {
+              "news_id": "20260903A0AFC300",
+              "title": "拦下两车货，警方追回86万元",
+              "source_url": null,
+              "publish_time": null,
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:17308"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1274,
+      "answer_sha256": "ab3e3f736ab7a3236aabcb763b19b080c82288e6783c8187cb3dd4508d3b77f4"
+    },
+    {
+      "date": "2026-10-09",
+      "news_id": "20261008A08JV900",
+      "title": "中老合作板根机场设施投入运营 多国智库关注地缘战略影响",
+      "url": "https://news.qq.com/rain/a/20261008A08JV900",
+      "publish_time": "2026-10-09T14:00:04+08:00",
+      "request_id": "902b5083-da98-4374-b090-c3e955e778ac",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:44.439518+00:00",
+      "turn_id": "67df5f5a-d597-447f-ade0-d255ed50bcee",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:45.781599Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261008A08JV900",
+              "title": "中老合作板根机场设施投入运营 多国智库关注地缘战略影响",
+              "source_url": "https://news.qq.com/rain/a/20261008A08JV900",
+              "publish_time": "2026-10-09T14:00:04+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41270"
+            },
+            {
+              "news_id": "20261008A0820S00",
+              "title": "打造“时空智能底座” 深耕海外示范项目——中国北斗持续拓展全球影响力",
+              "source_url": "https://news.qq.com/rain/a/20261008A0820S00",
+              "publish_time": "2026-10-08T15:42:09+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:40778"
+            },
+            {
+              "news_id": "20261010A088FN00",
+              "title": "越航联手老挝柬埔寨深化旅游合作，中国游客迎全新中南半岛黄金线路",
+              "source_url": "https://news.qq.com/rain/a/20261010A088FN00",
+              "publish_time": "2026-10-10T15:43:26+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:44228"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1805,
+      "answer_sha256": "6cfcdb7e7c4b74c8be1835a952177452c19ed9ade5e943a70b6fdc68ac155837"
+    },
+    {
+      "date": "2026-10-10",
+      "news_id": "20261009A09BFC00",
+      "title": "俄罗斯不明肺炎令全球自危，中国邻国关闭口岸，谭德塞察觉不太对劲",
+      "url": "https://news.qq.com/rain/a/20261009A09BFC00",
+      "publish_time": "2026-10-10T00:00:01+08:00",
+      "request_id": "3522f8ef-83cc-42db-b083-917af661d21a",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:45.792128+00:00",
+      "turn_id": "504fb1ec-3976-43b8-b414-e9e389003f9f",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:47.553624Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261009A09BFC00",
+              "title": "俄罗斯不明肺炎令全球自危，中国邻国关闭口岸，谭德塞察觉不太对劲",
+              "source_url": "https://news.qq.com/rain/a/20261009A09BFC00",
+              "publish_time": "2026-10-10T00:00:01+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:42801"
+            },
+            {
+              "news_id": "20261009A08ASC00",
+              "title": "俄官方宣布解除防疫措施，否认第二例不明肺炎病例，如何解读这场风波？",
+              "source_url": "https://news.qq.com/rain/a/20261009A08ASC00",
+              "publish_time": "2026-10-09T15:39:02+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41906"
+            },
+            {
+              "news_id": "20261008A085IJ00",
+              "title": "世卫回应俄不明原因肺炎：积极跟进",
+              "source_url": "https://news.qq.com/rain/a/20261008A085IJ00",
+              "publish_time": "2026-10-08T15:49:14+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41217"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1705,
+      "answer_sha256": "656913c7fe098cc7be2bf561b8fa960620050b8829b5fa4bed4c6257fd9c0157"
+    },
+    {
+      "date": "2026-10-11",
+      "news_id": "20261011A06WVV00",
+      "title": "“克劳德”模型曾向美国警方提交虚假命案线索",
+      "url": "https://news.qq.com/rain/a/20261011A06WVV00",
+      "publish_time": "2026-10-11T03:46:45+08:00",
+      "request_id": "7b89b447-b449-45e5-abd3-feb6c6044797",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:47.585757+00:00",
+      "turn_id": "eb865be0-f01a-4999-9daa-9b7b35eff879",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:49.210370Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261011A07BKI00",
+              "title": "美一AI模型曾向警方提交虚假线索",
+              "source_url": "https://news.qq.com/rain/a/20261011A07BKI00",
+              "publish_time": "2026-10-11T16:33:49+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45872"
+            },
+            {
+              "news_id": "20261011A06WVV00",
+              "title": "“克劳德”模型曾向美国警方提交虚假命案线索",
+              "source_url": "https://news.qq.com/rain/a/20261011A06WVV00",
+              "publish_time": "2026-10-11T03:46:45+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45025"
+            },
+            {
+              "news_id": "20261011A079QS00",
+              "title": "美一AI模型曾向警方提交虚假线索",
+              "source_url": "https://news.qq.com/rain/a/20261011A079QS00",
+              "publish_time": "2026-10-11T16:29:05+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:45753"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1446,
+      "answer_sha256": "5055fed29b05970ab061d3aa6dce4d2996e61b832582727bd770278570fd6093"
+    },
+    {
+      "date": "2026-10-12",
+      "news_id": "20261011A0AC4F00",
+      "title": "十月三部韩剧播出，金智媛在《Doctor X》最美，但《百日谎言》和《恋爱博士》更好看",
+      "url": "https://news.qq.com/rain/a/20261011A0AC4F00",
+      "publish_time": "2026-10-12T06:30:00+08:00",
+      "request_id": "5a9cc694-a4aa-4639-b8ae-baf4d1df4d91",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:49.226566+00:00",
+      "turn_id": "23d537b8-dcb6-472f-a623-b838a7c518d3",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:50.912875Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261011A0AC4F00",
+              "title": "十月三部韩剧播出，金智媛在《Doctor X》最美，但《百日谎言》和《恋爱博士》更好看",
+              "source_url": "https://news.qq.com/rain/a/20261011A0AC4F00",
+              "publish_time": "2026-10-12T06:30:00+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:46338"
+            },
+            {
+              "news_id": "20260905A0A3QJ00",
+              "title": "单条播放超2.9亿，《异主入侵》令网友“狂掉san值”；AI美高剧赛道迎来“天花板”，千万网友追更 | AIGC热门精选",
+              "source_url": null,
+              "publish_time": null,
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:35661"
+            },
+            {
+              "news_id": "20261013A087WG00",
+              "title": "《蒸蒸日上》首播收视第2，观众评价一针见血，口音生硬演得刻意",
+              "source_url": "https://news.qq.com/rain/a/20261013A087WG00",
+              "publish_time": "2026-10-13T22:53:19+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:37282"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1679,
+      "answer_sha256": "bd247399e16e67baa40125ab9bc6ce10d964763fdc3c18b9c121b64b7231a77e"
+    },
+    {
+      "date": "2026-10-13",
+      "news_id": "20261009A0AM5900",
+      "title": "中俄关系越密切，俄罗斯就越不愿卷入中国与其他国家的争端？俄专家解释其中风险",
+      "url": "https://news.qq.com/rain/a/20261009A0AM5900",
+      "publish_time": "2026-10-13T14:00:01+08:00",
+      "request_id": "5ff7db38-9922-4684-974d-3d813e09b7fb",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:50.946460+00:00",
+      "turn_id": "8995cd17-00e3-4dc7-bb00-671b88cda4b5",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:52.447201Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261009A0AM5900",
+              "title": "中俄关系越密切，俄罗斯就越不愿卷入中国与其他国家的争端？俄专家解释其中风险",
+              "source_url": "https://news.qq.com/rain/a/20261009A0AM5900",
+              "publish_time": "2026-10-13T14:00:01+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:42826"
+            },
+            {
+              "news_id": "20261008A0BYAK00",
+              "title": "俄专家直言，中国自己无法获得的东西，俄罗斯能提供的并不多",
+              "source_url": "https://news.qq.com/rain/a/20261008A0BYAK00",
+              "publish_time": "2026-10-12T15:25:00+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41345"
+            },
+            {
+              "news_id": "20261009A0BT3W00",
+              "title": "俄罗斯过度依赖中国，俄企业家却称这对中国也未必是好事",
+              "source_url": "https://news.qq.com/rain/a/20261009A0BT3W00",
+              "publish_time": "2026-10-14T14:00:00+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:42848"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 1806,
+      "answer_sha256": "97e1f710ecd566b540e4f2b427080fd6c5c5bdc114e398551f0f4621132cc7f0"
+    },
+    {
+      "date": "2026-10-14",
+      "news_id": "20261013A0E3VW00",
+      "title": "反转50倍索赔！深陷9000万天价诉讼！",
+      "url": "https://news.qq.com/rain/a/20261013A0E3VW00",
+      "publish_time": "2026-10-14T08:00:00+08:00",
+      "request_id": "aabe8eb2-9a0a-4d36-b06e-6bf447bc370b",
+      "status": "completed",
+      "submitted_at": "2026-10-15T04:56:52.455564+00:00",
+      "turn_id": "08c20f86-e5da-49db-8453-9ed06c6adccd",
+      "turn_status": "completed",
+      "completed_at": "2026-10-15T04:56:53.909437Z",
+      "errors": [],
+      "target_news_id_recalled": true,
+      "tools": [
+        {
+          "name": "search_knowledge",
+          "status": "completed",
+          "attempts": 1,
+          "checks": {
+            "tool_completed": true,
+            "snapshot_v2": true,
+            "bge_backend": true,
+            "evidence_is_untrusted": true,
+            "embedding_version": true
+          },
+          "snapshot_version": "news-bge-incremental-20261014-v2",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "items": [
+            {
+              "news_id": "20261013A0E3VW00",
+              "title": "反转50倍索赔！深陷9000万天价诉讼！",
+              "source_url": "https://news.qq.com/rain/a/20261013A0E3VW00",
+              "publish_time": "2026-10-14T08:00:00+08:00",
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:49035"
+            },
+            {
+              "news_id": "20260903A0AMXA00",
+              "title": "双线诉讼缠身！佳云科技再遭8912万元合同纠纷起诉：基本账户资金被冻结，累计涉诉金额超1.5亿元",
+              "source_url": null,
+              "publish_time": null,
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:18879"
+            },
+            {
+              "news_id": "20260903A0A4ZN00",
+              "title": "男女发生肢体冲突，因警方以证据不足不处罚起诉公安局，一人索赔14万亿美元被驳回 律师分析“天价索赔”",
+              "source_url": null,
+              "publish_time": null,
+              "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+              "content_version": 1,
+              "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:20017"
+            }
+          ]
+        }
+      ],
+      "answer_characters": 2107,
+      "answer_sha256": "927de5c62e3ff50978f49ae003c4e15067f58188a8e94c69fc9a883f87008ae0"
+    }
+  ],
+  "phase": "finished",
+  "conversation_create_started_at": "2026-10-15T04:56:36.210436+00:00",
+  "updated_at": "2026-10-15T04:56:53.919956+00:00",
+  "counts": {
+    "completed": 8
+  },
+  "finished_at": "2026-10-15T04:56:53.919948+00:00"
+}

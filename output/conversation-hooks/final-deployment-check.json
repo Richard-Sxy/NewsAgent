@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-13",
+  "environment": "news-agent-bge-demo",
+  "verification_passed": true,
+  "read_only": true,
+  "ready": {
+    "http_status": 200,
+    "postgres": "ok",
+    "redis": "ok",
+    "temporal": "ok"
+  },
+  "receipt": {
+    "http_status": 200,
+    "cache_control": "private, no-store",
+    "workflow_id": "hot-news-data-loop-ba57b94300658897b3079f89e91908c4f96b3751fce7b9deaaad35960a206c55",
+    "phase": "waiting_approval",
+    "waiting_for_approval": true,
+    "status": "pending_approval",
+    "evaluation_run_id": "2033b420-12c3-4047-bf80-f8ce69a7e033",
+    "evaluation_record_status": "completed"
+  },
+  "containers": {
+    "api": {
+      "running": true,
+      "healthy": true,
+      "matches_final_image": true,
+      "image": "sha256:d2dd4326714323b30c40835e9ae4680e97a16b017a9fdaf182f0fc6ac5b309a2"
+    },
+    "web": {
+      "running": true,
+      "healthy": true,
+      "matches_final_image": true,
+      "image": "sha256:c3e41c0960caa69ea1bed420e121ca1534f673abba5b5b70669427e6b5dce1d4"
+    }
+  },
+  "human_approval_executed": false,
+  "enterprise_quality_validated": false
+}

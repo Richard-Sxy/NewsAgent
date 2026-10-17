@@ -1,0 +1,42 @@
+{
+  "news_id": "20260903A06YIL00",
+  "trend_assessment": "本次输入为2026-10-14 17:00至18:00（北京时间）的单篇新闻模拟指标快照。有效消费分量对本次评分贡献最大，增长项有正贡献；缺少原始基线及短期序列，不能判断正在升温、连续上涨或突破历史高点。",
+  "dominant_driver": "consumption",
+  "attention_reasons": [
+    {
+      "reason_type": "metric",
+      "statement": "有效消费分量是输入四个已加权评分分量中最大的一项，说明它对本次热度得分贡献最多，不能据此证明用户关注的原因。",
+      "metric_keys": [
+        "consumption_component",
+        "hot_score"
+      ],
+      "evidence_news_ids": [],
+      "confidence": 0.8,
+      "certainty": "observed"
+    }
+  ],
+  "related_contexts": [],
+  "operation_suggestions": [
+    {
+      "action": "核实本篇报道是否有可引用的后续进展，并补充近期可比窗口。",
+      "rationale": "当前输入仅支持本窗口表现和评分贡献解释，未提供关联证据与原始趋势。先补充依据，再形成分发建议。",
+      "priority": "low",
+      "metric_keys": [
+        "hot_score",
+        "consumption_component"
+      ],
+      "evidence_news_ids": []
+    }
+  ],
+  "evidence_news_ids": [],
+  "applied_memory_ids": [],
+  "limitations": [
+    "该样例的新闻内容真实，行为指标来自冻结本地模拟数据，并非企业真实流量。",
+    "未提供原始同小时基线和真实历史样本数，不能还原原始增长率。",
+    "未提供短期时序、历史峰值或渠道归因，无法判断短期方向、创新高或传播原因。",
+    "未提供关联新闻证据。",
+    "这是手写Schema/Validator示例，不是模型生成报告；confidence为示例自评而非校准统计置信度。"
+  ],
+  "overall_confidence": 0.4,
+  "output_schema_version": "1.0"
+}

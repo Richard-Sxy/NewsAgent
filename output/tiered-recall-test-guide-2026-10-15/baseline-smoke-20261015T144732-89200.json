@@ -1,0 +1,2182 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "created_at": "2026-10-15T06:47:36.691943+00:00",
+  "evaluation_kind": "stored_source_chunk_vector_ann_approximation_only",
+  "evaluator_source_sha256": "fa39a1087f2109e107fcb309f1982af52d6a07e906de5fa63fd1e9c27d6614bd",
+  "package": "/Users/shi/Project/myProject/NewsAgent/agent/data/news-bge-incremental-20261014-v2",
+  "snapshot_version": "news-bge-incremental-20261014-v2",
+  "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "base_manifest_sha256": "edf9d5f6cd9b05f8d1c5eeece8c47424bcfdeaf6d569b02f4d5619a042b27733",
+  "build_report_sha256": "2ab22b57d565c336a2e71a168f035d389243c62fa7ead9b9dcfb46baf757c6a4",
+  "verified_asset_sha256": {
+    "data/experiments/offline_recall_fg/chunks.jsonl": "a0bf8d479604fb75dd5512825d645a309c87686f878ac44cfb4aa078b40829a5",
+    "data/experiments/offline_recall_fg/embeddings.npy": "a9f1e4e200c39d7ce94fd10a5b7eb02470929928b7702c28adbdf10af927b950",
+    "data/experiments/offline_recall_fg/index.bin": "9a848164e34375dbb9fa087f72bab370b5a48788532e8e101964f5c753e40dd9"
+  },
+  "rows": 50252,
+  "articles": 20187,
+  "dimensions": 1024,
+  "repeated_news_id_chunk_index_rows": 13554,
+  "dtype": "float32",
+  "base_rows": 38026,
+  "parameters": {
+    "seed": 20261015,
+    "sample_size": 24,
+    "ks": [
+      10
+    ],
+    "requested_efs": [
+      256
+    ],
+    "chunk_pool": 200,
+    "threads": 1,
+    "warmup_queries_per_configuration": 4,
+    "bootstrap_resamples": 200,
+    "bootstrap_seed": 20261017
+  },
+  "sampling": {
+    "method": "48/48 by default; uniform unique source articles within stratum, then one uniform chunk",
+    "stratum_boundaries": {
+      "base": [
+        0,
+        38026
+      ],
+      "incremental": [
+        38026,
+        50252
+      ]
+    },
+    "sample_identity_sha256": "f00537ac85cf3bcf5ec47c1fa62848a19a3b84385082bde6607ba8cc325b05d2",
+    "query_unit": "one distinct source article per probe",
+    "aggregate_weighting": "balanced sampled strata; not corpus-population weighted"
+  },
+  "definitions": {
+    "chunk_ann_at_k": "|ANN top-k non-source chunk rows intersect exact top-k non-source chunk rows| / k",
+    "chunk_ann_at_k_tie_aware": "same reference; alternative rows with EXACTLY equal exact-IP cutoff scores count up to available cutoff slots; cannot replace strictly better hits",
+    "article_ann_at_k": "|ANN top-k distinct non-source news_ids intersect exact max-IP-per-news_id top-k| / k",
+    "source_exclusion": "exclude every chunk with the probe source news_id in both reference and ANN",
+    "article_truth": "exact float32 IP over ALL stored chunks, max per news_id, then rank",
+    "ties": "descending score, then lexicographic decimal row suffix of online chunk_id",
+    "effective_ef": "max(requested_ef, current chunk_pool); 64/128 both become at least 200",
+    "latency": "independent single query: set_ef + knn_query + source exclusion/article dedup/sort/pool retries; no embedding, async dispatch or HTTP",
+    "ci95": "2000 by default, percentile bootstrap resampling source-article probes within fixed strata; conditional on this source-vector sampling design"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "numpy": "2.4.6",
+    "hnswlib": "0.8.0",
+    "threadpoolctl": "3.6.0",
+    "threadpools_during_run": [],
+    "numpy_build_dependencies": {
+      "blas": {
+        "name": "accelerate",
+        "found": true,
+        "version": "unknown",
+        "detection method": "system",
+        "include directory": "unknown",
+        "lib directory": "unknown",
+        "openblas configuration": "unknown",
+        "pc file directory": "unknown"
+      },
+      "lapack": {
+        "name": "accelerate",
+        "found": true,
+        "version": "unknown",
+        "detection method": "system",
+        "include directory": "unknown",
+        "lib directory": "unknown",
+        "openblas configuration": "unknown",
+        "pc file directory": "unknown"
+      }
+    },
+    "thread_control": "HNSW num_threads explicitly set; BLAS environment pinned before import plus threadpoolctl limit. An empty threadpool list means actual native BLAS thread count cannot be introspected, not that it was measured as one.",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "timing": {
+    "validation_seconds": 2.3940600829955656,
+    "total_seconds": 2.8735677920049056,
+    "exact_ip_scan": {
+      "n": 24,
+      "mean_ms": 4.061260373418918,
+      "p50_ms": 3.634083492215723,
+      "p95_ms": 6.303564300469587,
+      "min_ms": 2.9605409945361316,
+      "max_ms": 7.888291991548613
+    },
+    "exact_scan_and_ranking": {
+      "n": 24,
+      "mean_ms": 10.307751667520884,
+      "p50_ms": 9.192854500724934,
+      "p95_ms": 15.391178608115293,
+      "min_ms": 7.989457983057946,
+      "max_ms": 18.40899998205714
+    }
+  },
+  "warmups": [
+    {
+      "requested_ef": 256,
+      "k": 10,
+      "queries": 4
+    }
+  ],
+  "summary": [
+    {
+      "requested_ef": 256,
+      "k": 10,
+      "strata": {
+        "all_balanced": {
+          "chunk_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 24
+          },
+          "chunk_ann_at_k_tie_aware": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 24
+          },
+          "article_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 24
+          },
+          "latency": {
+            "n": 24,
+            "mean_ms": 2.9572864174648807,
+            "p50_ms": 2.684499995666556,
+            "p95_ms": 7.743568759178733,
+            "min_ms": 1.061624992871657,
+            "max_ms": 10.404667002148926
+          }
+        },
+        "base": {
+          "chunk_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "chunk_ann_at_k_tie_aware": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "article_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "latency": {
+            "n": 12,
+            "mean_ms": 3.832923583104275,
+            "p50_ms": 3.236207994632423,
+            "p95_ms": 9.309662655869031,
+            "min_ms": 1.2462919985409826,
+            "max_ms": 10.404667002148926
+          }
+        },
+        "incremental": {
+          "chunk_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "chunk_ann_at_k_tie_aware": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "article_ann_at_k": {
+            "mean": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "n_queries": 12
+          },
+          "latency": {
+            "n": 12,
+            "mean_ms": 2.0816492518254868,
+            "p50_ms": 1.687874988419935,
+            "p95_ms": 3.493362506560515,
+            "min_ms": 1.061624992871657,
+            "max_ms": 3.945875010685995
+          }
+        }
+      },
+      "effective_efs_observed": [
+        256
+      ],
+      "pool_sizes_observed": [
+        200
+      ],
+      "expanded_queries": 0
+    }
+  ],
+  "queries": [
+    {
+      "row": 34718,
+      "news_id": "20260903A07L1G00",
+      "chunk_index": 0,
+      "text_sha256": "df35c736eb242e864d251240bcb42b8308a812bb14da4bf6bc19ac2d9198ac08",
+      "stratum": "base",
+      "vector_sha256": "29f6908d4e2e9192c2e9b14dd160a6b8c8299397bf0382e11c41e9ded97b40da",
+      "exact": {
+        "chunks": [
+          20891,
+          12144,
+          47708,
+          47741,
+          46490,
+          47706,
+          47739,
+          47740,
+          20890,
+          46491
+        ],
+        "articles": [
+          "20260903A0AA5T00",
+          "20260903A0BDEV00",
+          "20261012A07XHN00",
+          "20261012A07XRE00",
+          "20261012A07O7H00",
+          "20260903A08M8K00",
+          "20260903A099TL00",
+          "20260903A08LO900",
+          "20260903A0BHWQ00",
+          "20260903A0AOV500"
+        ],
+        "ip_scan_ms": 3.19837499409914,
+        "scan_and_rank_ms": 10.679750004783273,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 40897,
+      "news_id": "20261008A082SB00",
+      "chunk_index": 0,
+      "text_sha256": "33ff8a8ac5eb22c4af56370cb9ba4c85e79e82b156423972873b9082068ab4fd",
+      "stratum": "incremental",
+      "vector_sha256": "4edc972abd9a7ac4b395cfcb6b22e3b63034ca906dca0398afa8e2a017e05086",
+      "exact": {
+        "chunks": [
+          41640,
+          23626,
+          14873,
+          20337,
+          17012,
+          11771,
+          17890,
+          11967,
+          48680,
+          33425
+        ],
+        "articles": [
+          "20261009A088FM00",
+          "20260903A094DS00",
+          "20260903A0AUHV00",
+          "20260903A0A72Z00",
+          "20260903A0ABDP00",
+          "20260903A0BCFZ00",
+          "20260903A0AIWU00",
+          "20260903A0BD0T00",
+          "20261013A08SV200",
+          "20260903A08XPU00"
+        ],
+        "ip_scan_ms": 4.499583999859169,
+        "scan_and_rank_ms": 12.137584009906277,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 30390,
+      "news_id": "20260903A070U200",
+      "chunk_index": 0,
+      "text_sha256": "6e7ec6254f339a9d36380f3436bc18981e0a0c0ab42454a84b4df4d24113e2cb",
+      "stratum": "base",
+      "vector_sha256": "fd8957980d882aede971a44c7b7b22bfa3dc506fffde154e6c99d1b6de9fbc79",
+      "exact": {
+        "chunks": [
+          12591,
+          9656,
+          7034,
+          33722,
+          11333,
+          9678,
+          23153,
+          33558,
+          30733,
+          33720
+        ],
+        "articles": [
+          "20260903A0BM8100",
+          "20260903A0BEBP00",
+          "20260831A074R700",
+          "20260903A08YKC00",
+          "20260903A0BA4L00",
+          "20260903A0BDMX00",
+          "20260903A09U5600",
+          "20260903A08YK500",
+          "20260903A071F000",
+          "20260830A06YSS00"
+        ],
+        "ip_scan_ms": 6.405708001693711,
+        "scan_and_rank_ms": 15.62929101055488,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 48162,
+      "news_id": "20261013A08PYG00",
+      "chunk_index": 0,
+      "text_sha256": "d59a5ce443e231fe8b86b71e355697195ebbd343c93d40ff6b90d5f2a547578d",
+      "stratum": "incremental",
+      "vector_sha256": "7246e0595cd543c7c2056ecaa6c38454ac729da0479184ea98ef5f6e92389760",
+      "exact": {
+        "chunks": [
+          40396,
+          49531,
+          40254,
+          49649,
+          40549,
+          49482,
+          40411,
+          40572,
+          40263,
+          48204
+        ],
+        "articles": [
+          "20261008A080G400",
+          "20261014A08ZMW00",
+          "20261008A0808W00",
+          "20261014A08ZV700",
+          "20261008A080OZ00",
+          "20261014A08ZKA00",
+          "20261008A080GX00",
+          "20261008A080R700",
+          "20261008A0809I00",
+          "20261013A08Q0S00"
+        ],
+        "ip_scan_ms": 3.5378749889787287,
+        "scan_and_rank_ms": 8.817833004286513,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 33865,
+      "news_id": "20260903A0901E00",
+      "chunk_index": 0,
+      "text_sha256": "70eef59a92441e61b61f81494ae653462f02857d1afe76cf8489c2095eda4fbd",
+      "stratum": "base",
+      "vector_sha256": "f2e7ec0f3a7152808cc517109840aaeb81eec86f7a4756738fc3d36fdcb1531a",
+      "exact": {
+        "chunks": [
+          10831,
+          29312,
+          22202,
+          12250,
+          29096,
+          12745,
+          44322,
+          19839,
+          13669,
+          11666
+        ],
+        "articles": [
+          "20260903A0B8M500",
+          "20260903A07E7N00",
+          "20260903A09VWB00",
+          "20260903A0BKSK00",
+          "20260903A07G1L00",
+          "20260903A0BMRX00",
+          "20261010A089GP00",
+          "20260903A0A3UW00",
+          "20260903A0BPB500",
+          "20260903A0BC3U00"
+        ],
+        "ip_scan_ms": 3.396125015569851,
+        "scan_and_rank_ms": 8.996250020572916,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 48119,
+      "news_id": "20261013A08PW300",
+      "chunk_index": 0,
+      "text_sha256": "d0910dd990aa54223b19294aba4a9478ff6e5376cc736ef5db908902afdb191d",
+      "stratum": "incremental",
+      "vector_sha256": "67b60237483efc4d94f76a5617a0600ea24fd841494605a2aa0bc327632b0a55",
+      "exact": {
+        "chunks": [
+          49459,
+          40253,
+          42686,
+          40246,
+          48355,
+          49539,
+          40423,
+          40034,
+          40554,
+          48090
+        ],
+        "articles": [
+          "20261014A08ZJ400",
+          "20261008A0808U00",
+          "20261009A08G4W00",
+          "20261008A0808D00",
+          "20261013A08Q9K00",
+          "20261014A08ZNH00",
+          "20261008A080HH00",
+          "20261008A07ZXZ00",
+          "20261008A080PB00",
+          "20261013A08PUE00"
+        ],
+        "ip_scan_ms": 4.039291001390666,
+        "scan_and_rank_ms": 10.587833006866276,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 18871,
+      "news_id": "20260903A0AO5R00",
+      "chunk_index": 0,
+      "text_sha256": "756bc3721b5ffba51459cc9e59f69538d9b54d495b200c9dec8f961ebecfeb65",
+      "stratum": "base",
+      "vector_sha256": "cd707579edd16f57f528195804ba1e4a4c0c0d2c66fe3deaed13005e30ff7245",
+      "exact": {
+        "chunks": [
+          18841,
+          18844,
+          18842,
+          18810,
+          41946,
+          18813,
+          26763,
+          19171,
+          18812,
+          19168
+        ],
+        "articles": [
+          "20260903A0AN3N00",
+          "20260903A0AN3Q00",
+          "20261009A08B7U00",
+          "20260903A08J6P00",
+          "20260903A0AP1V00",
+          "20260903A076JI00",
+          "20260903A0BAGQ00",
+          "20260903A0AEMX00",
+          "20260903A0B98Z00",
+          "20260903A04O3V00"
+        ],
+        "ip_scan_ms": 4.522833012742922,
+        "scan_and_rank_ms": 9.96708299499005,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 44299,
+      "news_id": "20261010A0899U00",
+      "chunk_index": 0,
+      "text_sha256": "8868538d22fd2e85edb5861268997be452b99872630f23c02b487379c6eb9d6c",
+      "stratum": "incremental",
+      "vector_sha256": "0c53b0337d901e4829cc6f51e476c000b7f975b29096bc0114c4927860887737",
+      "exact": {
+        "chunks": [
+          194,
+          193,
+          35517,
+          8392,
+          44836,
+          8394,
+          8391,
+          16863,
+          41651,
+          32220
+        ],
+        "articles": [
+          "20260819A0AWGG00",
+          "20260905A0AMMR00",
+          "20260831A09MPU00",
+          "20261010A0CIO100",
+          "20260903A0AE3400",
+          "20261009A088FM00",
+          "20260903A075W000",
+          "20260825A0BFDN00",
+          "20261010A088D900",
+          "20261010A087GS00"
+        ],
+        "ip_scan_ms": 5.025083984946832,
+        "scan_and_rank_ms": 12.220499978866428,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 18029,
+      "news_id": "20260903A0AJQ500",
+      "chunk_index": 0,
+      "text_sha256": "4e098b672d2282e883678643133b67a40a11d8dda55563c1750f7cf664d5c938",
+      "stratum": "base",
+      "vector_sha256": "c57aecfda66da3b0d719306754efa2bd321b214e093a9860c9315c2800909ae1",
+      "exact": {
+        "chunks": [
+          44681,
+          17285,
+          18020,
+          43175,
+          32971,
+          44544,
+          33578,
+          35354,
+          29184,
+          25875
+        ],
+        "articles": [
+          "20261010A0AK4U00",
+          "20260903A0AG2100",
+          "20260903A0AJOM00",
+          "20261010A07VZD00",
+          "20260903A08VR900",
+          "20261010A08QND00",
+          "20260903A08XPX00",
+          "20260905A06Q6U00",
+          "20260903A07G7400",
+          "20260903A09DM500"
+        ],
+        "ip_scan_ms": 4.8664999776519835,
+        "scan_and_rank_ms": 13.677457987796515,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 42482,
+      "news_id": "20261009A08FLE00",
+      "chunk_index": 0,
+      "text_sha256": "f09879a24d9a8866769ba48b7d6d2d0a1ff02ea51d914b787138044f1c1546f2",
+      "stratum": "incremental",
+      "vector_sha256": "5266b9795359cff3f9a6c2d3967d131126127bf7233779a04cf6c35c4e3113b5",
+      "exact": {
+        "chunks": [
+          49424,
+          48286,
+          40194,
+          42437,
+          42390,
+          48332,
+          48128,
+          42473,
+          40536,
+          49593
+        ],
+        "articles": [
+          "20261014A08ZH700",
+          "20261013A08Q4V00",
+          "20261008A0805R00",
+          "20261009A08FIJ00",
+          "20261009A08FFN00",
+          "20261013A08Q7T00",
+          "20261013A08PWO00",
+          "20261009A08FKP00",
+          "20261008A080NW00",
+          "20261014A08ZQP00"
+        ],
+        "ip_scan_ms": 7.888291991548613,
+        "scan_and_rank_ms": 18.40899998205714,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 34203,
+      "news_id": "20260903A092QA00",
+      "chunk_index": 0,
+      "text_sha256": "c55d4fc11d516afd84747fc1751a94cb906b47d9dfdfc9f4ef21a0f8e99c9588",
+      "stratum": "base",
+      "vector_sha256": "85e4312988d3d3deb6f4ba7a93630c534bb47e7cca00837b54bdd0b791dec2ea",
+      "exact": {
+        "chunks": [
+          14663,
+          21599,
+          45595,
+          25622,
+          18683,
+          27810,
+          30679,
+          20287,
+          17404,
+          25497
+        ],
+        "articles": [
+          "20260903A0AU2S00",
+          "20260903A09TGF00",
+          "20261011A076KD00",
+          "20260903A09D1B00",
+          "20260903A0AN0V00",
+          "20260903A08PT000",
+          "20260903A06LZL00",
+          "20260903A0A57B00",
+          "20260903A0AG4R00",
+          "20260903A091A600"
+        ],
+        "ip_scan_ms": 5.724749993532896,
+        "scan_and_rank_ms": 14.041874994290993,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 48156,
+      "news_id": "20261013A08PY300",
+      "chunk_index": 0,
+      "text_sha256": "06ff07bfa65bf5024302b43d471205107b286f9e0e4c79f8c21b36153c078a14",
+      "stratum": "incremental",
+      "vector_sha256": "3c708c95cd97a4432bf60aa7169cf297d140c8629fb0107a29b6b9696c0fe6b1",
+      "exact": {
+        "chunks": [
+          49516,
+          40317,
+          49470,
+          48334,
+          49458,
+          42659,
+          31110,
+          40304,
+          49571,
+          40535
+        ],
+        "articles": [
+          "20261014A08ZLY00",
+          "20261008A080CD00",
+          "20261014A08ZJJ00",
+          "20261013A08Q7W00",
+          "20261014A08ZJ300",
+          "20261009A08G2X00",
+          "20260903A0726000",
+          "20261008A080BT00",
+          "20261014A08ZPG00",
+          "20261008A080NV00"
+        ],
+        "ip_scan_ms": 3.7210829905234277,
+        "scan_and_rank_ms": 8.989416004624218,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 25338,
+      "news_id": "20260903A09CB100",
+      "chunk_index": 0,
+      "text_sha256": "b8a51f32cbb96ac048c0c88a5260b05e2c2c1519300ddfcfb97d4c6d60674f72",
+      "stratum": "base",
+      "vector_sha256": "8bfb61059f3d34abe7e78215957f7baa6418b222ccbad666a85011e50580add3",
+      "exact": {
+        "chunks": [
+          14209,
+          27453,
+          46878,
+          33066,
+          29318,
+          32985,
+          14206,
+          10257,
+          40917,
+          33065
+        ],
+        "articles": [
+          "20260903A0ASEF00",
+          "20260903A08N5B00",
+          "20261012A07RKM00",
+          "20260903A08VTV00",
+          "20260903A07GGB00",
+          "20260903A08V8B00",
+          "20260903A0BIOR00",
+          "20261008A0831Z00",
+          "20260903A0BO6400",
+          "20260903A0ASA100"
+        ],
+        "ip_scan_ms": 3.0743750103283674,
+        "scan_and_rank_ms": 8.2162500184495,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 38620,
+      "news_id": "20261007A07FCH00",
+      "chunk_index": 0,
+      "text_sha256": "304558cb73587d21abd6d4177c77c6b4dc21a377bab32ecfc553258e99c51f28",
+      "stratum": "incremental",
+      "vector_sha256": "fa963b29478c74bf7cb021947b8a611e66ccc6dc846dbac5616548516809835c",
+      "exact": {
+        "chunks": [
+          14691,
+          14690,
+          21400,
+          13440,
+          6152,
+          13361,
+          21399,
+          30088,
+          10773,
+          13362
+        ],
+        "articles": [
+          "20260903A0AUDI00",
+          "20260903A09T7B00",
+          "20260903A0BOEU00",
+          "20260827A0D81J00",
+          "20260903A0BOAN00",
+          "20260903A06Z6C00",
+          "20260903A0B8AU00",
+          "20260828A009SN00",
+          "20261007A07BM500",
+          "20260903A0AG7400"
+        ],
+        "ip_scan_ms": 3.0897910182829946,
+        "scan_and_rank_ms": 8.152041002176702,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 15619,
+      "news_id": "20260903A0AYLR00",
+      "chunk_index": 0,
+      "text_sha256": "67c1c25e1bd0901724fd5b95f8466d4a88f1a54dd2edbcf6c44daed4ca261603",
+      "stratum": "base",
+      "vector_sha256": "5baeca377eec65241e329e913feb5d6d2990ac5150bd0ec624d794e53e34895e",
+      "exact": {
+        "chunks": [
+          33031,
+          33032,
+          19243,
+          24048,
+          12070,
+          19246,
+          21668,
+          19241,
+          19245,
+          21468
+        ],
+        "articles": [
+          "20260903A08VXV00",
+          "20260903A0APQA00",
+          "20260903A0972N00",
+          "20260903A0BD0V00",
+          "20260903A09TVU00",
+          "20260903A09T4O00",
+          "20260903A0BF1U00",
+          "20260903A06XJJ00",
+          "20260903A0BCHI00",
+          "20260903A06TSS00"
+        ],
+        "ip_scan_ms": 2.9917080246377736,
+        "scan_and_rank_ms": 8.051333017647266,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 46523,
+      "news_id": "20261012A07OAA00",
+      "chunk_index": 0,
+      "text_sha256": "77f8785407d1504ce8f31a21af28058f06877d4fee9e1e27507d5240a0c78a92",
+      "stratum": "incremental",
+      "vector_sha256": "16d3b8e757c7b7f7ca63ab9ae4dba6b306cfb68f4939e7ec8eec492f599a42f1",
+      "exact": {
+        "chunks": [
+          46519,
+          18504,
+          41673,
+          47781,
+          27149,
+          46007,
+          48716,
+          38190,
+          27148,
+          47448
+        ],
+        "articles": [
+          "20261012A07O9V00",
+          "20260903A0ALVA00",
+          "20261009A088LV00",
+          "20261012A07YNG00",
+          "20260903A08K8400",
+          "20261011A07DQB00",
+          "20261013A08T9R00",
+          "20261007A0785000",
+          "20261012A07V7G00",
+          "20261007A07X3G00"
+        ],
+        "ip_scan_ms": 2.969749999465421,
+        "scan_and_rank_ms": 7.989457983057946,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 34418,
+      "news_id": "20260903A092HI00",
+      "chunk_index": 1,
+      "text_sha256": "e364bbad6232ac6049f18d26088f0925df403d0e94132fe24f342d803cf71eeb",
+      "stratum": "base",
+      "vector_sha256": "2e4ed41edc44e6affa416a8a5d98059f3e6c75d87674a5ed13c061026b06340c",
+      "exact": {
+        "chunks": [
+          12452,
+          12451,
+          26740,
+          20722,
+          12858,
+          25917,
+          12446,
+          24282,
+          12461,
+          24281
+        ],
+        "articles": [
+          "20260903A0BL0Q00",
+          "20260903A08JF700",
+          "20260903A0A9WD00",
+          "20260903A0BN6200",
+          "20260903A09DZY00",
+          "20260903A098IE00",
+          "20260903A08LE200",
+          "20260903A0AXF300",
+          "20260903A07DHL00",
+          "20260903A08YHS00"
+        ],
+        "ip_scan_ms": 2.9605409945361316,
+        "scan_and_rank_ms": 8.014499995624647,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 40111,
+      "news_id": "20261008A0801G00",
+      "chunk_index": 0,
+      "text_sha256": "790a52d0419c39a71119fa2b9951e4a29007df5b4d210be3b97a5c2428678a3b",
+      "stratum": "incremental",
+      "vector_sha256": "229daa2b43352f360d1cad725fd08d25bfcbbba6ec6ad0122a41ac8640300ad5",
+      "exact": {
+        "chunks": [
+          42407,
+          48022,
+          47263,
+          40155,
+          40010,
+          47283,
+          47254,
+          49150,
+          40081,
+          40217
+        ],
+        "articles": [
+          "20261009A08FGM00",
+          "20261013A08PQA00",
+          "20261012A07UQ000",
+          "20261008A0803D00",
+          "20261008A07ZWY00",
+          "20261012A07UR000",
+          "20261012A07UPO00",
+          "20261014A08Z3Y00",
+          "20261008A0800400",
+          "20261008A0806U00"
+        ],
+        "ip_scan_ms": 4.198374983388931,
+        "scan_and_rank_ms": 9.277917008148506,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 20342,
+      "news_id": "20260903A0A6SI00",
+      "chunk_index": 0,
+      "text_sha256": "2f2c80cf3eb1fc41f53211382bee9d4da2805af932ebe13b0ee89720f12647ab",
+      "stratum": "base",
+      "vector_sha256": "37e6ef7706be15c8307a23a8ceea77ce2a908c77e2cdc32b1ccb12b6c0fa4a32",
+      "exact": {
+        "chunks": [
+          12574,
+          20289,
+          12575,
+          13873,
+          20290,
+          46881,
+          23691,
+          46880,
+          46883,
+          13874
+        ],
+        "articles": [
+          "20260903A0BLXA00",
+          "20260903A0A6SB00",
+          "20260903A0AQG100",
+          "20261012A07RL900",
+          "20260903A094D300",
+          "20260903A06UT100",
+          "20261011A06VFL00",
+          "20260903A0AFTW00",
+          "20260903A0760700",
+          "20261008A0820E00"
+        ],
+        "ip_scan_ms": 3.9127089839894325,
+        "scan_and_rank_ms": 9.150583995506167,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 46537,
+      "news_id": "20261012A07OD800",
+      "chunk_index": 1,
+      "text_sha256": "6162918a19d5e2e2105db2ddbad4de68b7b7e6503b999ebad90a0579aaea9670",
+      "stratum": "incremental",
+      "vector_sha256": "370fe9eeac2821e13e2eaed8f9ada6634c7fdd850bbd95b9102766e41ed584c9",
+      "exact": {
+        "chunks": [
+          25823,
+          25822,
+          22512,
+          25824,
+          25821,
+          22511,
+          25820,
+          26644,
+          46071,
+          37519
+        ],
+        "articles": [
+          "20260903A09D2D00",
+          "20260903A09WPG00",
+          "20260903A08IUY00",
+          "20261011A07EQA00",
+          "20261013A0DNGD00",
+          "20260903A0BK8500",
+          "20260903A09YNJ00",
+          "20261011A07EZV00",
+          "20260903A0AQAF00",
+          "20261013A0DD4L00"
+        ],
+        "ip_scan_ms": 3.0527079943567514,
+        "scan_and_rank_ms": 9.2351250059437,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 11626,
+      "news_id": "20260903A0BC3G00",
+      "chunk_index": 0,
+      "text_sha256": "6ca484f9b54e43cd673faee36548743f696cee1285d6e4ae7d08cb63a0822fc3",
+      "stratum": "base",
+      "vector_sha256": "a8159443bbd47e41301293c48291842ad3abb5cbb428a5156b6c731e7421bdbd",
+      "exact": {
+        "chunks": [
+          30276,
+          35393,
+          10928,
+          23962,
+          35396,
+          31898,
+          6782,
+          37524,
+          11157,
+          28304
+        ],
+        "articles": [
+          "20260903A0769200",
+          "20260905A03U1K00",
+          "20260903A0B99300",
+          "20260903A03B3Z00",
+          "20260903A0741M00",
+          "20260831A039RI00",
+          "20261013A0DNM100",
+          "20260903A0BA9I00",
+          "20260903A07A3L00",
+          "20260903A0AQ4600"
+        ],
+        "ip_scan_ms": 3.1932920101098716,
+        "scan_and_rank_ms": 8.371917007025331,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 44364,
+      "news_id": "20261010A08A5K00",
+      "chunk_index": 0,
+      "text_sha256": "13e9a6225cee4827fde938d4a0383284fc731b43d030a58d10d7b9940d8f8308",
+      "stratum": "incremental",
+      "vector_sha256": "d7107fb8d24a919a060ac1913a454185bfdaa4b8a73467f1fe5ebd09a2f90213",
+      "exact": {
+        "chunks": [
+          13371,
+          37897,
+          48707,
+          8094,
+          41852,
+          38930,
+          48706,
+          5023,
+          25369,
+          9442
+        ],
+        "articles": [
+          "20260903A0BO2P00",
+          "20261014A0AXX200",
+          "20261013A08T3K00",
+          "20260830A0ANB700",
+          "20261009A08AGS00",
+          "20261007A07KFO00",
+          "20260826A0C89V00",
+          "20260903A09CAQ00",
+          "20260903A031OM00",
+          "20260903A0A3JS00"
+        ],
+        "ip_scan_ms": 3.081540984567255,
+        "scan_and_rank_ms": 8.208915998693556,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 3663,
+      "news_id": "20260817A09C3200",
+      "chunk_index": 0,
+      "text_sha256": "8b0bd93824777117f7f63269903cc4692b99f50ea9f99bb2d1f0a0e0982152a1",
+      "stratum": "base",
+      "vector_sha256": "94675dabdbfab0fb44432e0a0b64a8b08d3eb2e0feffeec8d1ff0be7b4f13a81",
+      "exact": {
+        "chunks": [
+          3732,
+          4078,
+          3734,
+          4079,
+          4698,
+          3737,
+          3733,
+          4699,
+          4081,
+          4074
+        ],
+        "articles": [
+          "20260818A06PFS00",
+          "20260824A08V5U00",
+          "20260826A05XYU00",
+          "20260824A0B1JW00",
+          "20260903A09WDH00",
+          "20260903A0BUPW00",
+          "20260903A09VV400",
+          "20260903A094GM00",
+          "20260817A08Y8K00",
+          "20260903A09WQQ00"
+        ],
+        "ip_scan_ms": 4.572875011945143,
+        "scan_and_rank_ms": 9.844791988143697,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    },
+    {
+      "row": 44408,
+      "news_id": "20261010A08ATC00",
+      "chunk_index": 0,
+      "text_sha256": "40e89d05215df50ac1dd1ac27ec9f1c3c537e8059c4dd3d6334344f254cc3a4d",
+      "stratum": "incremental",
+      "vector_sha256": "e91857875515834c4475416f3463bea80dd13ef2926cf7f02678ec9609fa366b",
+      "exact": {
+        "chunks": [
+          40714,
+          42993,
+          7119,
+          40596,
+          7160,
+          42845,
+          42844,
+          7118,
+          7162,
+          7120
+        ],
+        "articles": [
+          "20261008A081KP00",
+          "20261010A07S7Y00",
+          "20260831A0405M00",
+          "20261008A080WX00",
+          "20260828A0BR9L00",
+          "20261009A0AZY200",
+          "20260903A0BK5D00",
+          "20260903A0AD4B00",
+          "20261007A07XKJ00",
+          "20260831A04C3C00"
+        ],
+        "ip_scan_ms": 3.547083993908018,
+        "scan_and_rank_ms": 8.719334000488743,
+        "chunk_cutoff_tie_counts": {
+          "10": 1
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "query_row": 34718,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 2.4819590034894645,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 126
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        20891,
+        12144,
+        47708,
+        47741,
+        46490,
+        47706,
+        47739,
+        47740,
+        20890,
+        46491
+      ],
+      "ann_article_ids": [
+        "20260903A0AA5T00",
+        "20260903A0BDEV00",
+        "20261012A07XHN00",
+        "20261012A07XRE00",
+        "20261012A07O7H00",
+        "20260903A08M8K00",
+        "20260903A099TL00",
+        "20260903A08LO900",
+        "20260903A0BHWQ00",
+        "20260903A0AOV500"
+      ]
+    },
+    {
+      "query_row": 40897,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 2.6392919826321304,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 136
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        41640,
+        23626,
+        14873,
+        20337,
+        17012,
+        11771,
+        17890,
+        11967,
+        48680,
+        33425
+      ],
+      "ann_article_ids": [
+        "20261009A088FM00",
+        "20260903A094DS00",
+        "20260903A0AUHV00",
+        "20260903A0A72Z00",
+        "20260903A0ABDP00",
+        "20260903A0BCFZ00",
+        "20260903A0AIWU00",
+        "20260903A0BD0T00",
+        "20261013A08SV200",
+        "20260903A08XPU00"
+      ]
+    },
+    {
+      "query_row": 30390,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.537582982564345,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 150
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        12591,
+        9656,
+        7034,
+        33722,
+        11333,
+        9678,
+        23153,
+        33558,
+        30733,
+        33720
+      ],
+      "ann_article_ids": [
+        "20260903A0BM8100",
+        "20260903A0BEBP00",
+        "20260831A074R700",
+        "20260903A08YKC00",
+        "20260903A0BA4L00",
+        "20260903A0BDMX00",
+        "20260903A09U5600",
+        "20260903A08YK500",
+        "20260903A071F000",
+        "20260830A06YSS00"
+      ]
+    },
+    {
+      "query_row": 48162,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.061624992871657,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 199
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        40396,
+        49531,
+        40254,
+        49649,
+        40549,
+        49482,
+        40411,
+        40572,
+        40263,
+        48204
+      ],
+      "ann_article_ids": [
+        "20261008A080G400",
+        "20261014A08ZMW00",
+        "20261008A0808W00",
+        "20261014A08ZV700",
+        "20261008A080OZ00",
+        "20261014A08ZKA00",
+        "20261008A080GX00",
+        "20261008A080R700",
+        "20261008A0809I00",
+        "20261013A08Q0S00"
+      ]
+    },
+    {
+      "query_row": 33865,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 10.404667002148926,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 127
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        10831,
+        29312,
+        22202,
+        12250,
+        29096,
+        12745,
+        44322,
+        19839,
+        13669,
+        11666
+      ],
+      "ann_article_ids": [
+        "20260903A0B8M500",
+        "20260903A07E7N00",
+        "20260903A09VWB00",
+        "20260903A0BKSK00",
+        "20260903A07G1L00",
+        "20260903A0BMRX00",
+        "20261010A089GP00",
+        "20260903A0A3UW00",
+        "20260903A0BPB500",
+        "20260903A0BC3U00"
+      ]
+    },
+    {
+      "query_row": 48119,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.446709007723257,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 196
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        49459,
+        40253,
+        42686,
+        40246,
+        48355,
+        49539,
+        40423,
+        40034,
+        40554,
+        48090
+      ],
+      "ann_article_ids": [
+        "20261014A08ZJ400",
+        "20261008A0808U00",
+        "20261009A08G4W00",
+        "20261008A0808D00",
+        "20261013A08Q9K00",
+        "20261014A08ZNH00",
+        "20261008A080HH00",
+        "20261008A07ZXZ00",
+        "20261008A080PB00",
+        "20261013A08PUE00"
+      ]
+    },
+    {
+      "query_row": 18871,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.7677079963032156,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 98
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        18841,
+        18844,
+        18842,
+        18810,
+        41946,
+        18813,
+        26763,
+        19171,
+        18812,
+        19168
+      ],
+      "ann_article_ids": [
+        "20260903A0AN3N00",
+        "20260903A0AN3Q00",
+        "20261009A08B7U00",
+        "20260903A08J6P00",
+        "20260903A0AP1V00",
+        "20260903A076JI00",
+        "20260903A0BAGQ00",
+        "20260903A0AEMX00",
+        "20260903A0B98Z00",
+        "20260903A04O3V00"
+      ]
+    },
+    {
+      "query_row": 44299,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.945875010685995,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 113
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        194,
+        193,
+        35517,
+        8392,
+        44836,
+        8394,
+        8391,
+        16863,
+        41651,
+        32220
+      ],
+      "ann_article_ids": [
+        "20260819A0AWGG00",
+        "20260905A0AMMR00",
+        "20260831A09MPU00",
+        "20261010A0CIO100",
+        "20260903A0AE3400",
+        "20261009A088FM00",
+        "20260903A075W000",
+        "20260825A0BFDN00",
+        "20261010A088D900",
+        "20261010A087GS00"
+      ]
+    },
+    {
+      "query_row": 18029,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 8.413750008912757,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 150
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        44681,
+        17285,
+        18020,
+        43175,
+        32971,
+        44544,
+        33578,
+        35354,
+        29184,
+        25875
+      ],
+      "ann_article_ids": [
+        "20261010A0AK4U00",
+        "20260903A0AG2100",
+        "20260903A0AJOM00",
+        "20261010A07VZD00",
+        "20260903A08VR900",
+        "20261010A08QND00",
+        "20260903A08XPX00",
+        "20260905A06Q6U00",
+        "20260903A07G7400",
+        "20260903A09DM500"
+      ]
+    },
+    {
+      "query_row": 42482,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.2543750053737313,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 197
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        49424,
+        48286,
+        40194,
+        42437,
+        42390,
+        48332,
+        48128,
+        42473,
+        40536,
+        49593
+      ],
+      "ann_article_ids": [
+        "20261014A08ZH700",
+        "20261013A08Q4V00",
+        "20261008A0805R00",
+        "20261009A08FIJ00",
+        "20261009A08FFN00",
+        "20261013A08Q7T00",
+        "20261013A08PWO00",
+        "20261009A08FKP00",
+        "20261008A080NW00",
+        "20261014A08ZQP00"
+      ]
+    },
+    {
+      "query_row": 34203,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.2462919985409826,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 147
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        14663,
+        21599,
+        45595,
+        25622,
+        18683,
+        27810,
+        30679,
+        20287,
+        17404,
+        25497
+      ],
+      "ann_article_ids": [
+        "20260903A0AU2S00",
+        "20260903A09TGF00",
+        "20261011A076KD00",
+        "20260903A09D1B00",
+        "20260903A0AN0V00",
+        "20260903A08PT000",
+        "20260903A06LZL00",
+        "20260903A0A57B00",
+        "20260903A0AG4R00",
+        "20260903A091A600"
+      ]
+    },
+    {
+      "query_row": 48156,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.335583016043529,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 196
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        49516,
+        40317,
+        49470,
+        48334,
+        49458,
+        42659,
+        31110,
+        40304,
+        49571,
+        40535
+      ],
+      "ann_article_ids": [
+        "20261014A08ZLY00",
+        "20261008A080CD00",
+        "20261014A08ZJJ00",
+        "20261013A08Q7W00",
+        "20261014A08ZJ300",
+        "20261009A08G2X00",
+        "20260903A0726000",
+        "20261008A080BT00",
+        "20261014A08ZPG00",
+        "20261008A080NV00"
+      ]
+    },
+    {
+      "query_row": 25338,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.3296250039711595,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 135
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        14209,
+        27453,
+        46878,
+        33066,
+        29318,
+        32985,
+        14206,
+        10257,
+        40917,
+        33065
+      ],
+      "ann_article_ids": [
+        "20260903A0ASEF00",
+        "20260903A08N5B00",
+        "20261012A07RKM00",
+        "20260903A08VTV00",
+        "20260903A07GGB00",
+        "20260903A08V8B00",
+        "20260903A0BIOR00",
+        "20261008A0831Z00",
+        "20260903A0BO6400",
+        "20260903A0ASA100"
+      ]
+    },
+    {
+      "query_row": 38620,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.920207985676825,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 135
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        14691,
+        14690,
+        21400,
+        13440,
+        6152,
+        13361,
+        21399,
+        30088,
+        10773,
+        13362
+      ],
+      "ann_article_ids": [
+        "20260903A0AUDI00",
+        "20260903A09T7B00",
+        "20260903A0BOEU00",
+        "20260827A0D81J00",
+        "20260903A0BOAN00",
+        "20260903A06Z6C00",
+        "20260903A0B8AU00",
+        "20260828A009SN00",
+        "20261007A07BM500",
+        "20260903A0AG7400"
+      ]
+    },
+    {
+      "query_row": 15619,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.1427909852936864,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 96
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        33031,
+        33032,
+        19243,
+        24048,
+        12070,
+        19246,
+        21668,
+        19241,
+        19245,
+        21468
+      ],
+      "ann_article_ids": [
+        "20260903A08VXV00",
+        "20260903A0APQA00",
+        "20260903A0972N00",
+        "20260903A0BD0V00",
+        "20260903A09TVU00",
+        "20260903A09T4O00",
+        "20260903A0BF1U00",
+        "20260903A06XJJ00",
+        "20260903A0BCHI00",
+        "20260903A06TSS00"
+      ]
+    },
+    {
+      "query_row": 46523,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.123125003185123,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 146
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        46519,
+        18504,
+        41673,
+        47781,
+        27149,
+        46007,
+        48716,
+        38190,
+        27148,
+        47448
+      ],
+      "ann_article_ids": [
+        "20261012A07O9V00",
+        "20260903A0ALVA00",
+        "20261009A088LV00",
+        "20261012A07YNG00",
+        "20260903A08K8400",
+        "20261011A07DQB00",
+        "20261013A08T9R00",
+        "20261007A0785000",
+        "20261012A07V7G00",
+        "20261007A07X3G00"
+      ]
+    },
+    {
+      "query_row": 34418,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.3771249873097986,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 109
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        12452,
+        12451,
+        26740,
+        20722,
+        12858,
+        25917,
+        12446,
+        24282,
+        12461,
+        24281
+      ],
+      "ann_article_ids": [
+        "20260903A0BL0Q00",
+        "20260903A08JF700",
+        "20260903A0A9WD00",
+        "20260903A0BN6200",
+        "20260903A09DZY00",
+        "20260903A098IE00",
+        "20260903A08LE200",
+        "20260903A0AXF300",
+        "20260903A07DHL00",
+        "20260903A08YHS00"
+      ]
+    },
+    {
+      "query_row": 40111,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.1038330267183483,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 199
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        42407,
+        48022,
+        47263,
+        40155,
+        40010,
+        47283,
+        47254,
+        49150,
+        40081,
+        40217
+      ],
+      "ann_article_ids": [
+        "20261009A08FGM00",
+        "20261013A08PQA00",
+        "20261012A07UQ000",
+        "20261008A0803D00",
+        "20261008A07ZWY00",
+        "20261012A07UR000",
+        "20261012A07UPO00",
+        "20261014A08Z3Y00",
+        "20261008A0800400",
+        "20261008A0806U00"
+      ]
+    },
+    {
+      "query_row": 20342,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.980708009796217,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 109
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        12574,
+        20289,
+        12575,
+        13873,
+        20290,
+        46881,
+        23691,
+        46880,
+        46883,
+        13874
+      ],
+      "ann_article_ids": [
+        "20260903A0BLXA00",
+        "20260903A0A6SB00",
+        "20260903A0AQG100",
+        "20261012A07RL900",
+        "20260903A094D300",
+        "20260903A06UT100",
+        "20261011A06VFL00",
+        "20260903A0AFTW00",
+        "20260903A0760700",
+        "20261008A0820E00"
+      ]
+    },
+    {
+      "query_row": 46537,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 2.876457991078496,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 125
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        25823,
+        25822,
+        22512,
+        25824,
+        25821,
+        22511,
+        25820,
+        26644,
+        46071,
+        37519
+      ],
+      "ann_article_ids": [
+        "20260903A09D2D00",
+        "20260903A09WPG00",
+        "20260903A08IUY00",
+        "20261011A07EQA00",
+        "20261013A0DNGD00",
+        "20260903A0BK8500",
+        "20260903A09YNJ00",
+        "20261011A07EZV00",
+        "20260903A0AQAF00",
+        "20261013A0DD4L00"
+      ]
+    },
+    {
+      "query_row": 11626,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 3.5831670102197677,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 139
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        30276,
+        35393,
+        10928,
+        23962,
+        35396,
+        31898,
+        6782,
+        37524,
+        11157,
+        28304
+      ],
+      "ann_article_ids": [
+        "20260903A0769200",
+        "20260905A03U1K00",
+        "20260903A0B99300",
+        "20260903A03B3Z00",
+        "20260903A0741M00",
+        "20260831A039RI00",
+        "20261013A0DNM100",
+        "20260903A0BA9I00",
+        "20260903A07A3L00",
+        "20260903A0AQ4600"
+      ]
+    },
+    {
+      "query_row": 44364,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 2.817166008753702,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 147
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        13371,
+        37897,
+        48707,
+        8094,
+        41852,
+        38930,
+        48706,
+        5023,
+        25369,
+        9442
+      ],
+      "ann_article_ids": [
+        "20260903A0BO2P00",
+        "20261014A0AXX200",
+        "20261013A08T3K00",
+        "20260830A0ANB700",
+        "20261009A08AGS00",
+        "20261007A07KFO00",
+        "20260826A0C89V00",
+        "20260903A09CAQ00",
+        "20260903A031OM00",
+        "20260903A0A3JS00"
+      ]
+    },
+    {
+      "query_row": 3663,
+      "stratum": "base",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 2.7297080087009817,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 89
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        3732,
+        4078,
+        3734,
+        4079,
+        4698,
+        3737,
+        3733,
+        4699,
+        4081,
+        4074
+      ],
+      "ann_article_ids": [
+        "20260818A06PFS00",
+        "20260824A08V5U00",
+        "20260826A05XYU00",
+        "20260824A0B1JW00",
+        "20260903A09WDH00",
+        "20260903A0BUPW00",
+        "20260903A09VV400",
+        "20260903A094GM00",
+        "20260817A08Y8K00",
+        "20260903A09WQQ00"
+      ]
+    },
+    {
+      "query_row": 44408,
+      "stratum": "incremental",
+      "requested_ef": 256,
+      "k": 10,
+      "latency_ms": 1.4555419911630452,
+      "attempts": [
+        {
+          "chunk_pool": 200,
+          "effective_ef": 256,
+          "eligible_articles": 119
+        }
+      ],
+      "chunk_ann_at_k": 1.0,
+      "chunk_ann_at_k_tie_aware": 1.0,
+      "article_ann_at_k": 1.0,
+      "ann_chunk_rows": [
+        40714,
+        42993,
+        7119,
+        40596,
+        7160,
+        42845,
+        42844,
+        7118,
+        7162,
+        7120
+      ],
+      "ann_article_ids": [
+        "20261008A081KP00",
+        "20261010A07S7Y00",
+        "20260831A0405M00",
+        "20261008A080WX00",
+        "20260828A0BR9L00",
+        "20261009A0AZY200",
+        "20260903A0BK5D00",
+        "20260903A0AD4B00",
+        "20261007A07XKJ00",
+        "20260831A04C3C00"
+      ]
+    }
+  ],
+  "limitations": [
+    "Engineering ANN-neighborhood approximation, not semantic relevance/quality; no human qrels.",
+    "Queries reuse document-side source chunk vectors, not fresh user-question embeddings; BGE model is never loaded.",
+    "Repeated legacy chunk identities are retained as distinct row-based online chunk_ids; strict chunk ANN@k may penalize equally valid tied-vector neighbors, so tie-aware results are also reported.",
+    "96 probes by default, stratified by base/new package membership, not representative user demand or all news topics.",
+    "Single-thread sequential warm-cache timing; no load/concurrency/service or production latency claim.",
+    "Native BLAS thread count is not independently verified if threadpoolctl enumerates no controllable pools; see thread_environment and numpy_build_dependencies.",
+    "Bootstrap [1,1] for all-success probes is a conditional empirical interval, not proof of perfect population recall.",
+    "Manifest and three used assets verified; model weights are not loaded or independently rehashed by this audit.",
+    "Existing HNSW reused read-only; no index build, graph change, configuration activation or network access."
+  ]
+}

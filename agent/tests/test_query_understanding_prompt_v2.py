@@ -16,13 +16,13 @@ CONFIGS = (
 
 
 @pytest.mark.parametrize(("filename", "prefix"), CONFIGS)
-def test_query_understanding_binds_v4_and_retains_registered_v1_v2(filename, prefix):
+def test_query_understanding_binds_v5_and_retains_registered_previous_versions(filename, prefix):
     config = load_model_runtime_config(DEPLOY / filename)
     binding = config.agent_scene("query_understanding")
-    assert binding.prompt_version == f"{prefix}-query-understanding-v4"
+    assert binding.prompt_version == f"{prefix}-query-understanding-v5"
     assert binding.model_route in config.inference.model_routes
     registry = config.prompt_registry()
-    for version in (1, 2, 4):
+    for version in (1, 2, 4, 5):
         prompt = registry.resolve(
             scene="query_understanding", version=f"{prefix}-query-understanding-v{version}"
         )

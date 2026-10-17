@@ -1,0 +1,4 @@
+interface:
+  display_name: "NewsAgent 严格评测"
+  short_description: "定义新闻运营全链路评测、冻结对照实验、复核证据及人工门禁边界"
+  default_prompt: "使用 $newsagent-evaluation 为当前 NewsAgent 变更选择评测链路，冻结输入与版本，在授权范围执行评测并给出可追溯的结论。"

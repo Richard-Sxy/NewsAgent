@@ -1,0 +1,2874 @@
+{
+  "status": "passed",
+  "scope": "Static documentation/source audit only; no application import, full business regression, deployment or enterprise calls.",
+  "document": "/Users/shi/Project/myProject/NewsAgent/执行链路.md",
+  "document_sha256": "af6297164d1fd06796d9e5ef81ef778684230eacf2c40a85cf50f9982ed14f8b",
+  "local_markdown_links": 364,
+  "unique_local_targets": 309,
+  "python_files_parsed": 162,
+  "critical_transition_checks": 32,
+  "inline_file_checks": 22,
+  "refreshed_old_anchor_occurrences": 13,
+  "refreshed_old_anchor_targets": 11,
+  "registered_tools": {
+    "base": [
+      "capabilities",
+      "list_hot_news",
+      "read_hot_news",
+      "search_knowledge",
+      "query_hot_news",
+      "analyze_hot_news_data"
+    ],
+    "hooks": [
+      "list_writing_jobs",
+      "writing_job_status",
+      "start_writing_intent",
+      "save_short_term_memory",
+      "propose_long_term_memory",
+      "memory_status",
+      "save_feedback_case",
+      "start_data_loop",
+      "evaluation_status",
+      "propose_bundle_candidate"
+    ],
+    "total": 16
+  },
+  "errors": [],
+  "checks": [
+    {
+      "document_line": 15,
+      "label": "ConversationRecord",
+      "target": "./agent/app/models/conversation.py#L28",
+      "target_line_text": "class ConversationRecord(TimestampMixin, Base):",
+      "containing_symbol": "ConversationRecord"
+    },
+    {
+      "document_line": 16,
+      "label": "HotNewsAnalysisRun",
+      "target": "./agent/app/models/hot_news.py#L21",
+      "target_line_text": "class HotNewsAnalysisRun(TimestampMixin, Base):",
+      "containing_symbol": "HotNewsAnalysisRun"
+    },
+    {
+      "document_line": 17,
+      "label": "行为标签索引定义",
+      "target": "./agent/app/behavior_tags/build.py#L285",
+      "target_line_text": "    connection = sqlite3.connect(path)",
+      "containing_symbol": "_create_index"
+    },
+    {
+      "document_line": 18,
+      "label": "读者聚合索引定义",
+      "target": "./agent/app/reader_profiles/build.py#L286",
+      "target_line_text": "def _create_database(path):",
+      "containing_symbol": "_create_database"
+    },
+    {
+      "document_line": 19,
+      "label": "HotNewsDecision",
+      "target": "./agent/app/models/hot_news_decision.py#L19",
+      "target_line_text": "class HotNewsDecision(TimestampMixin, Base):",
+      "containing_symbol": "HotNewsDecision"
+    },
+    {
+      "document_line": 19,
+      "label": "HotEventRecord",
+      "target": "./agent/app/models/hot_event.py#L25",
+      "target_line_text": "class HotEventRecord(TimestampMixin, Base):",
+      "containing_symbol": "HotEventRecord"
+    },
+    {
+      "document_line": 20,
+      "label": "WritingJob",
+      "target": "./agent/app/models/job.py#L21",
+      "target_line_text": "class WritingJob(TimestampMixin, Base):",
+      "containing_symbol": "WritingJob"
+    },
+    {
+      "document_line": 20,
+      "label": "WritingStep",
+      "target": "./agent/app/models/step.py#L27",
+      "target_line_text": "class WritingStep(TimestampMixin, Base):",
+      "containing_symbol": "WritingStep"
+    },
+    {
+      "document_line": 20,
+      "label": "WritingArtifact",
+      "target": "./agent/app/models/artifact.py#L25",
+      "target_line_text": "class WritingArtifact(TimestampMixin, Base):",
+      "containing_symbol": "WritingArtifact"
+    },
+    {
+      "document_line": 20,
+      "label": "AgentRun",
+      "target": "./agent/app/models/agent_run.py#L28",
+      "target_line_text": "class AgentRun(TimestampMixin, Base):",
+      "containing_symbol": "AgentRun"
+    },
+    {
+      "document_line": 21,
+      "label": "AnalysisFeedbackCaseRecord",
+      "target": "./agent/app/models/analysis_feedback.py#L122",
+      "target_line_text": "class AnalysisFeedbackCaseRecord(TimestampMixin, Base):",
+      "containing_symbol": "AnalysisFeedbackCaseRecord"
+    },
+    {
+      "document_line": 22,
+      "label": "EvaluationDatasetRecord",
+      "target": "./agent/app/models/evaluation_dataset.py#L34",
+      "target_line_text": "class EvaluationDatasetRecord(TimestampMixin, Base):",
+      "containing_symbol": "EvaluationDatasetRecord"
+    },
+    {
+      "document_line": 22,
+      "label": "ProductionBundleRecord",
+      "target": "./agent/app/models/production_bundle.py#L25",
+      "target_line_text": "class ProductionBundleRecord(TimestampMixin, Base):",
+      "containing_symbol": "ProductionBundleRecord"
+    },
+    {
+      "document_line": 23,
+      "label": "ShortTermUserMemoryRecord",
+      "target": "./agent/app/models/user_memory.py#L37",
+      "target_line_text": "class ShortTermUserMemoryRecord(MemoryScopeColumns, TimestampMixin, Base):",
+      "containing_symbol": "ShortTermUserMemoryRecord"
+    },
+    {
+      "document_line": 24,
+      "label": "PostgreSQL 文档与切片表",
+      "target": "./agent/app/knowledge/postgres_store.py#L42",
+      "target_line_text": "_documents = Table(",
+      "containing_symbol": null
+    },
+    {
+      "document_line": 25,
+      "label": "生命周期台账定义",
+      "target": "./agent/app/knowledge/tier_lifecycle_store.py#L29",
+      "target_line_text": "_news = Table(",
+      "containing_symbol": null
+    },
+    {
+      "document_line": 26,
+      "label": "OutboxEvent",
+      "target": "./agent/app/models/outbox.py#L16",
+      "target_line_text": "class OutboxEvent(TimestampMixin, Base):",
+      "containing_symbol": "OutboxEvent"
+    },
+    {
+      "document_line": 33,
+      "label": "code",
+      "target": "./agent/app/api/conversations.py#L194",
+      "target_line_text": "async def stream_message(conversation_id: UUID, body: SendConversationMessageRequest,",
+      "containing_symbol": "stream_message"
+    },
+    {
+      "document_line": 34,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L118",
+      "target_line_text": "    async def prepare_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.prepare_turn"
+    },
+    {
+      "document_line": 35,
+      "label": "code",
+      "target": "./agent/app/conversation/streaming.py#L46",
+      "target_line_text": "    async def iter_events(self) -> AsyncIterator[str]:",
+      "containing_symbol": "StreamingConversation.iter_events"
+    },
+    {
+      "document_line": 36,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L167",
+      "target_line_text": "    async def run_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 37,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L528",
+      "target_line_text": "    async def _infer(self, payload, *, on_event: ProgressCallback | None = None, call: int = 1):",
+      "containing_symbol": "ConversationAgentService._infer"
+    },
+    {
+      "document_line": 38,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L576",
+      "target_line_text": "    async def _execute_query(self, plan, tenant_id, user_id, trace_id, allowed, partial, on_bound,",
+      "containing_symbol": "ConversationAgentService._execute_query"
+    },
+    {
+      "document_line": 39,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L350",
+      "target_line_text": "    async def execute_hot_news_query(self, *, arguments, tenant_id, user_id, trace_id,",
+      "containing_symbol": "ConversationTools.execute_hot_news_query"
+    },
+    {
+      "document_line": 40,
+      "label": "code",
+      "target": "./agent/examples/conversation_hot_news.py#L110",
+      "target_line_text": "    async def _understand(self, *, question, tenant_id):",
+      "containing_symbol": "LocalConversationHotNewsQuery._understand"
+    },
+    {
+      "document_line": 42,
+      "label": "code",
+      "target": "./agent/app/conversation/query_understanding.py#L295",
+      "target_line_text": "def resolve_query_understanding(original_question: str, proposal: QueryUnderstanding | dict, policy: QueryPolicy,",
+      "containing_symbol": "resolve_query_understanding"
+    },
+    {
+      "document_line": 43,
+      "label": "code",
+      "target": "./agent/app/repositories/conversation.py#L586",
+      "target_line_text": "    async def finish_turn(",
+      "containing_symbol": "PostgresConversationRepository.finish_turn"
+    },
+    {
+      "document_line": 44,
+      "label": "code",
+      "target": "./agent/app/conversation/streaming.py#L100",
+      "target_line_text": "                    for index, start in enumerate(range(0, len(answer), self._chunk_chars)):",
+      "containing_symbol": "StreamingConversation.iter_events"
+    },
+    {
+      "document_line": 48,
+      "label": "code",
+      "target": "./agent/app/knowledge/search_factory.py#L10",
+      "target_line_text": "def build_knowledge_search_index(*, config_path: str | None, postgres_store):",
+      "containing_symbol": "build_knowledge_search_index"
+    },
+    {
+      "document_line": 49,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L542",
+      "target_line_text": "    async def _execute(self, plan, tenant_id: str, trace_id: str, *, on_event: ProgressCallback | None = None,",
+      "containing_symbol": "ConversationAgentService._execute"
+    },
+    {
+      "document_line": 50,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L375",
+      "target_line_text": "    async def execute(self, *, name: str, arguments: dict, tenant_id: str, trace_id: str,",
+      "containing_symbol": "ConversationTools.execute"
+    },
+    {
+      "document_line": 51,
+      "label": "code",
+      "target": "./agent/app/model_runtime/core.py#L258",
+      "target_line_text": "    async def embed(self, request: EmbeddingRequest) -> EmbeddingResult: ...",
+      "containing_symbol": "EmbeddingPort.embed"
+    },
+    {
+      "document_line": 53,
+      "label": "code",
+      "target": "./agent/app/clients/enterprise/milvus_vector.py#L177",
+      "target_line_text": "    async def search(",
+      "containing_symbol": "MilvusTieredVectorIndex.search"
+    },
+    {
+      "document_line": 54,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L375",
+      "target_line_text": "    async def execute(self, *, name: str, arguments: dict, tenant_id: str, trace_id: str,",
+      "containing_symbol": "ConversationTools.execute"
+    },
+    {
+      "document_line": 55,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L546",
+      "target_line_text": "def render_tool_results(traces) -> str:",
+      "containing_symbol": "render_tool_results"
+    },
+    {
+      "document_line": 64,
+      "label": "ModelQueryEmbedder.embed_queries",
+      "target": "./agent/app/model_runtime/query_embedding.py#L20",
+      "target_line_text": "    async def embed_queries(",
+      "containing_symbol": "ModelQueryEmbedder.embed_queries"
+    },
+    {
+      "document_line": 64,
+      "label": "TieredVectorKnowledgeSearchClient.batch_search_related_news",
+      "target": "./agent/app/retrieval/tiered_vector.py#L162",
+      "target_line_text": "    async def batch_search_related_news(",
+      "containing_symbol": "TieredVectorKnowledgeSearchClient.batch_search_related_news"
+    },
+    {
+      "document_line": 64,
+      "label": "_fuse",
+      "target": "./agent/app/retrieval/tiered_vector.py#L224",
+      "target_line_text": "    def _fuse(",
+      "containing_symbol": "TieredVectorKnowledgeSearchClient._fuse"
+    },
+    {
+      "document_line": 64,
+      "label": "RelatedNewsReranker.rerank",
+      "target": "./agent/app/retrieval/related_news_reranker.py#L35",
+      "target_line_text": "    def rerank(",
+      "containing_symbol": "RelatedNewsReranker.rerank"
+    },
+    {
+      "document_line": 66,
+      "label": "ConversationRelatedArticles.recall",
+      "target": "./agent/app/conversation/related_articles.py#L50",
+      "target_line_text": "    async def recall(self, *, run_id: str, sources: list[dict], tenant_id: str) -> list[dict]:",
+      "containing_symbol": "ConversationRelatedArticles.recall"
+    },
+    {
+      "document_line": 68,
+      "label": "LifecycleKnowledgeSearch.search",
+      "target": "./agent/app/knowledge/tier_lifecycle_query.py#L46",
+      "target_line_text": "    async def search(self, *, query_text, tenant_id, limit=None, exclude_news_ids=()):",
+      "containing_symbol": "LifecycleKnowledgeSearch.search"
+    },
+    {
+      "document_line": 70,
+      "label": "访客画像查询",
+      "target": "./agent/app/analytics/hot_news_enrichment.py#L104",
+      "target_line_text": "        reader_profiles, reader_traces = await self._fetch_reader_profiles(",
+      "containing_symbol": "HotNewsEnrichmentService.enrich"
+    },
+    {
+      "document_line": 74,
+      "label": "code",
+      "target": "./agent/frontend/src/api/hotNews.ts#L30",
+      "target_line_text": "  runLocalSimulation(body?: SqlAssistantPreviewRequest) {"
+    },
+    {
+      "document_line": 75,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L154",
+      "target_line_text": "async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 76,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/service.py#L118",
+      "target_line_text": "    async def preview(self, request: SqlAssistantPreviewRequest, *, tenant_id: str, user_id: str,",
+      "containing_symbol": "SqlAssistantService.preview"
+    },
+    {
+      "document_line": 77,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L266",
+      "target_line_text": "        binding = await tool.hot_news_bindings.get_or_claim(",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 77,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L290",
+      "target_line_text": "                handle = await state.temporal.start_workflow(",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 78,
+      "label": "code",
+      "target": "./agent/app/workflows/hot_news.py#L33",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "HotNewsMonitorWorkflow.run"
+    },
+    {
+      "document_line": 79,
+      "label": "code",
+      "target": "./agent/app/activities/hot_news.py#L113",
+      "target_line_text": "    async def run_hot_news_window(",
+      "containing_symbol": "HotNewsActivities.run_hot_news_window"
+    },
+    {
+      "document_line": 80,
+      "label": "code",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L102",
+      "target_line_text": "    async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "containing_symbol": "ActiveProductionBundleHotNewsService.run"
+    },
+    {
+      "document_line": 81,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/service.py#L247",
+      "target_line_text": "    async def execute_for_hot_news(self, query_id: str, *, request: \"HotNewsRunRequest\") -> SqlAssistantResult:",
+      "containing_symbol": "SqlAssistantService.execute_for_hot_news"
+    },
+    {
+      "document_line": 82,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/service.py#L333",
+      "target_line_text": "                    result = await warehouse.execute(SqlQuery(",
+      "containing_symbol": "SqlAssistantService._execute"
+    },
+    {
+      "document_line": 82,
+      "label": "code",
+      "target": "./agent/examples/native_hot_news_sql_support.py#L351",
+      "target_line_text": "    async def fetch_snapshots(self, query: HotNewsMetricQuery) -> list[NewsMetricSnapshot]:",
+      "containing_symbol": "SqlAssistantHotNewsMetricSource.fetch_snapshots"
+    },
+    {
+      "document_line": 83,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_orchestration.py#L227",
+      "target_line_text": "    async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "containing_symbol": "HotNewsOrchestrationService.run"
+    },
+    {
+      "document_line": 84,
+      "label": "code",
+      "target": "./agent/app/analytics/ranking.py#L28",
+      "target_line_text": "    def rank(",
+      "containing_symbol": "HotNewsRanker.rank"
+    },
+    {
+      "document_line": 85,
+      "label": "code",
+      "target": "./agent/app/analytics/hot_score.py#L56",
+      "target_line_text": "    def calculate(",
+      "containing_symbol": "HotScoreCalculator.calculate"
+    },
+    {
+      "document_line": 86,
+      "label": "code",
+      "target": "./agent/app/analytics/hot_news_enrichment.py#L71",
+      "target_line_text": "    async def enrich(",
+      "containing_symbol": "HotNewsEnrichmentService.enrich"
+    },
+    {
+      "document_line": 87,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_analysis_batch.py#L39",
+      "target_line_text": "    async def analyze(",
+      "containing_symbol": "HotNewsAnalysisBatch.analyze"
+    },
+    {
+      "document_line": 88,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_analysis.py#L423",
+      "target_line_text": "    async def analyze_with_snapshot(",
+      "containing_symbol": "HotNewsAnalysisService.analyze_with_snapshot"
+    },
+    {
+      "document_line": 89,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_run_store.py#L67",
+      "target_line_text": "    async def save_completed(",
+      "containing_symbol": "PostgresHotNewsRunStore.save_completed"
+    },
+    {
+      "document_line": 90,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_query.py#L60",
+      "target_line_text": "    async def get_run_detail(",
+      "containing_symbol": "HotNewsQueryService.get_run_detail"
+    },
+    {
+      "document_line": 91,
+      "label": "code",
+      "target": "./agent/frontend/src/api/hotNews.ts#L42",
+      "target_line_text": "  runDetail(runId: string) {"
+    },
+    {
+      "document_line": 91,
+      "label": "code",
+      "target": "./agent/frontend/src/components/hotnews/HotNewsRankTable.vue#L112",
+      "target_line_text": "            <NewsReaderProfilePanel v-if=\"item.reader_profile_summary\" :summary=\"item.reader_profile_summary\" :trace=\"item.reader_profile_trace\" />"
+    },
+    {
+      "document_line": 98,
+      "label": "InputBuilder.build()",
+      "target": "./agent/app/services/hot_news_analysis.py#L37",
+      "target_line_text": "    def build(",
+      "containing_symbol": "HotNewsAnalysisInputBuilder.build"
+    },
+    {
+      "document_line": 98,
+      "label": "复制画像",
+      "target": "./agent/app/services/hot_news_analysis.py#L109",
+      "target_line_text": "            reader_profile_summary=(",
+      "containing_symbol": "HotNewsAnalysisInputBuilder.build"
+    },
+    {
+      "document_line": 98,
+      "label": "Runner.run()",
+      "target": "./agent/app/model_runtime/hot_news.py#L86",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "NativeHotNewsAnalysisRunner.run"
+    },
+    {
+      "document_line": 98,
+      "label": "InferencePort.complete() 调用",
+      "target": "./agent/app/model_runtime/core.py#L367",
+      "target_line_text": "                    raw = await self._inference.complete(request)",
+      "containing_symbol": "StructuredInferenceService.run"
+    },
+    {
+      "document_line": 98,
+      "label": "业务校验",
+      "target": "./agent/app/services/hot_news_analysis.py#L458",
+      "target_line_text": "                    self.validator.validate(",
+      "containing_symbol": "HotNewsAnalysisService.analyze_with_snapshot"
+    },
+    {
+      "document_line": 100,
+      "label": "build_native_hot_news_sql_dependencies()",
+      "target": "./agent/examples/native_hot_news_sql_support.py#L504",
+      "target_line_text": "        snapshots = await source.fetch_snapshots(HotNewsMetricQuery(",
+      "containing_symbol": "build_native_hot_news_sql_dependencies"
+    },
+    {
+      "document_line": 104,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/merge.py#L354",
+      "target_line_text": "def load_merged_source(directories: Sequence[str | Path], *, tenant_ids: tuple[str, ...] | None = None,",
+      "containing_symbol": "load_merged_source"
+    },
+    {
+      "document_line": 105,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/tagging.py#L139",
+      "target_line_text": "def tag_article(article: dict, policy: TopicPolicy) -> dict:",
+      "containing_symbol": "tag_article"
+    },
+    {
+      "document_line": 105,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/tagging.py#L222",
+      "target_line_text": "def behavior_labels(observation: dict) -> dict:",
+      "containing_symbol": "behavior_labels"
+    },
+    {
+      "document_line": 106,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/build.py#L167",
+      "target_line_text": "    \"\"\"Generate bounded synthetic encounters, retaining real content provenance separately.\"\"\"",
+      "containing_symbol": "_simulate_tenant"
+    },
+    {
+      "document_line": 107,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/build.py#L303",
+      "target_line_text": "def build_package(source_dir: str | Path | list[str | Path] | tuple[str | Path, ...], output_dir: str | Path, *, policy_path: str | Path | None = None,",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 108,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L301",
+      "target_line_text": "def build_package(behavior_package, output_dir, *, window_hours=1, top_k=20, minimum_sample=MIN_LIFT_SUPPORT):",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 109,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L124",
+      "target_line_text": "def _read_source(directory):",
+      "containing_symbol": "_read_source"
+    },
+    {
+      "document_line": 110,
+      "label": "code",
+      "target": "./agent/app/behavior_tags/build.py#L88",
+      "target_line_text": "    kind = event[\"event_type\"]",
+      "containing_symbol": "_event_score"
+    },
+    {
+      "document_line": 111,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L219",
+      "target_line_text": "    def advance(self, boundary):",
+      "containing_symbol": "_RollingState.advance"
+    },
+    {
+      "document_line": 112,
+      "label": "window_start,window_end) 对 detail_view 用户去重，得到目标新闻的访问人群   [code",
+      "target": "./agent/app/reader_profiles/build.py#L359",
+      "target_line_text": "                readers = defaultdict(set)",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 113,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L228",
+      "target_line_text": "    def profile(self, user, initialized, news=None):",
+      "containing_symbol": "_RollingState.profile"
+    },
+    {
+      "document_line": 114,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L251",
+      "target_line_text": "def _dimension(state, users, visitors, known, base, news, *, top_k, minimum_sample, names):",
+      "containing_symbol": "_dimension"
+    },
+    {
+      "document_line": 115,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/contracts.py#L109",
+      "target_line_text": "class ReaderProfileSummary(AggregateModel):",
+      "containing_symbol": "ReaderProfileSummary"
+    },
+    {
+      "document_line": 116,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/build.py#L381",
+      "target_line_text": "                    connection.execute(\"INSERT INTO reader_profiles VALUES(?,?,?,?,?)\", (tenant, news, _iso(window_start), _iso(window_end), _json(payload.model_dump(mode=\"json\"))))",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 122,
+      "label": "test_reader_profile_build.py",
+      "target": "./agent/tests/test_reader_profile_build.py"
+    },
+    {
+      "document_line": 122,
+      "label": "test_reader_profile_contracts.py",
+      "target": "./agent/tests/test_reader_profile_contracts.py"
+    },
+    {
+      "document_line": 122,
+      "label": "test_reader_profile_local.py",
+      "target": "./agent/tests/test_reader_profile_local.py"
+    },
+    {
+      "document_line": 122,
+      "label": "news-reader-profile-warehouse.md",
+      "target": "./agent/docs/news-reader-profile-warehouse.md"
+    },
+    {
+      "document_line": 126,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/factory.py#L52",
+      "target_line_text": "def build_reader_profile_service(settings):",
+      "containing_symbol": "build_reader_profile_service"
+    },
+    {
+      "document_line": 127,
+      "label": "code",
+      "target": "./agent/app/main.py#L130",
+      "target_line_text": "        reader_profile_service = build_reader_profile_service(settings)",
+      "containing_symbol": "_business_lifespan"
+    },
+    {
+      "document_line": 127,
+      "label": "code",
+      "target": "./agent/app/hot_news_worker.py#L100",
+      "target_line_text": "        reader_profile_service = build_reader_profile_service(resolved_settings)",
+      "containing_symbol": "run_hot_news_worker"
+    },
+    {
+      "document_line": 128,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/service.py#L122",
+      "target_line_text": "    def context_identity_for_window(self, *, tenant_id: UUID | str,",
+      "containing_symbol": "ReaderProfileService.context_identity_for_window"
+    },
+    {
+      "document_line": 129,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_orchestration.py#L94",
+      "target_line_text": "        if self.reader_profile_context_sha256 is not None:",
+      "containing_symbol": "HotNewsRunRequest.idempotency_key"
+    },
+    {
+      "document_line": 130,
+      "label": "code",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L194",
+      "target_line_text": "    def _validate_reader_context(self, request: HotNewsRunRequest) -> None:",
+      "containing_symbol": "ActiveProductionBundleHotNewsService._validate_reader_context"
+    },
+    {
+      "document_line": 130,
+      "label": "code",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L130",
+      "target_line_text": "        allowed_reader_prompts = getattr(self._reader_profile_service, \"allowed_analysis_prompt_versions\", frozenset())",
+      "containing_symbol": "ActiveProductionBundleHotNewsService.run"
+    },
+    {
+      "document_line": 131,
+      "label": "code",
+      "target": "./agent/app/analytics/hot_news_enrichment.py#L198",
+      "target_line_text": "    async def _fetch_reader_profiles(",
+      "containing_symbol": "HotNewsEnrichmentService._fetch_reader_profiles"
+    },
+    {
+      "document_line": 132,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/service.py#L138",
+      "target_line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:",
+      "containing_symbol": "ReaderProfileService.fetch"
+    },
+    {
+      "document_line": 133,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/service.py#L179",
+      "target_line_text": "    async def _fetch_and_cache(self, key: str, query: ReaderProfileQuery) -> ReaderProfileBatch:",
+      "containing_symbol": "ReaderProfileService._fetch_and_cache"
+    },
+    {
+      "document_line": 134,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/local.py#L146",
+      "target_line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:",
+      "containing_symbol": "LocalNewsReaderProfileClient.fetch"
+    },
+    {
+      "document_line": 134,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/local.py#L118",
+      "target_line_text": "                \"SELECT news_id,payload_json FROM reader_profiles WHERE tenant_id=? AND window_start=? AND window_end=? AND news_id IN (\" + placeholders + \")\",",
+      "containing_symbol": "LocalNewsReaderProfileClient._fetch_sync"
+    },
+    {
+      "document_line": 135,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/client.py#L114",
+      "target_line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:",
+      "containing_symbol": "HttpNewsReaderProfileClient.fetch"
+    },
+    {
+      "document_line": 136,
+      "label": "code",
+      "target": "./agent/app/reader_profiles/service.py#L35",
+      "target_line_text": "def validate_reader_profile_batch(query: ReaderProfileQuery, raw: ReaderProfileBatch, *,",
+      "containing_symbol": "validate_reader_profile_batch"
+    },
+    {
+      "document_line": 137,
+      "label": "code",
+      "target": "./agent/app/analytics/hot_news_enrichment.py#L264",
+      "target_line_text": "                content = contents.get(summary.news_id)",
+      "containing_symbol": "HotNewsEnrichmentService._fetch_reader_profiles"
+    },
+    {
+      "document_line": 138,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_analysis.py#L109",
+      "target_line_text": "            reader_profile_summary=(",
+      "containing_symbol": "HotNewsAnalysisInputBuilder.build"
+    },
+    {
+      "document_line": 139,
+      "label": "code",
+      "target": "./agent/app/model_runtime/hot_news.py#L119",
+      "target_line_text": "                result = await self._service.run(",
+      "containing_symbol": "NativeHotNewsAnalysisRunner.run"
+    },
+    {
+      "document_line": 140,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_orchestration.py#L308",
+      "target_line_text": "            AnalyzedHotNews(",
+      "containing_symbol": "HotNewsOrchestrationService.run"
+    },
+    {
+      "document_line": 140,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_run_store.py#L67",
+      "target_line_text": "    async def save_completed(",
+      "containing_symbol": "PostgresHotNewsRunStore.save_completed"
+    },
+    {
+      "document_line": 141,
+      "label": "code",
+      "target": "./agent/app/api/hot_news.py#L180",
+      "target_line_text": "@router.get(\"/runs/{run_id}\", response_model=HotNewsRunDetailResponse)",
+      "containing_symbol": "get_hot_news_run"
+    },
+    {
+      "document_line": 141,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_query.py#L192",
+      "target_line_text": "    def _index_reader_profiles(payload: dict[str, Any]) -> tuple[dict[str, ReaderProfileSummary], dict[str, dict[str, Any]]]:",
+      "containing_symbol": "HotNewsQueryService._index_reader_profiles"
+    },
+    {
+      "document_line": 142,
+      "label": "code",
+      "target": "./agent/frontend/src/components/hotnews/HotNewsRankTable.vue#L112",
+      "target_line_text": "            <NewsReaderProfilePanel v-if=\"item.reader_profile_summary\" :summary=\"item.reader_profile_summary\" :trace=\"item.reader_profile_trace\" />"
+    },
+    {
+      "document_line": 142,
+      "label": "code",
+      "target": "./agent/frontend/src/components/hotnews/NewsReaderProfilePanel.vue#L26",
+      "target_line_text": "  <section class=\"na-reader-profile\" aria-label=\"该新闻访问人群画像\">"
+    },
+    {
+      "document_line": 144,
+      "label": "POST /api/v1/reader-profiles/query",
+      "target": "./agent/app/api/reader_profiles.py#L30",
+      "target_line_text": "async def query_profiles(body: ReaderProfileRequest, principal: ReadPrincipal, response: Response,",
+      "containing_symbol": "query_profiles"
+    },
+    {
+      "document_line": 144,
+      "label": "复用同一聚合摘要",
+      "target": "./agent/app/services/push_strategy.py#L58",
+      "target_line_text": "            reader_profile_summary=(",
+      "containing_symbol": "PushStrategyInputBuilder.build"
+    },
+    {
+      "document_line": 146,
+      "label": "Settings",
+      "target": "./agent/app/config.py#L62",
+      "target_line_text": "    reader_profile_enabled: bool = False",
+      "containing_symbol": "Settings"
+    },
+    {
+      "document_line": 148,
+      "label": "native-e2e-prompt-v3-reader-profiles",
+      "target": "./agent/app/model_runtime/hot_news.py#L42",
+      "target_line_text": "                HOT_NEWS_SCENE, \"native-e2e-prompt-v3-reader-profiles\",",
+      "containing_symbol": "local_hot_news_prompts"
+    },
+    {
+      "document_line": 148,
+      "label": "模型YAML",
+      "target": "./agent/deploy/model-runtime.reader-profiles.local.yml"
+    },
+    {
+      "document_line": 148,
+      "label": "Compose overlay",
+      "target": "./agent/deploy/docker-compose.reader-profiles.local.yml"
+    },
+    {
+      "document_line": 150,
+      "label": "真实包查询/API功能探针",
+      "target": "./agent/examples/reader_profile_query_smoke.py#L33",
+      "target_line_text": "async def run(package: Path, repeats: int):",
+      "containing_symbol": "run"
+    },
+    {
+      "document_line": 150,
+      "label": "真实正文/画像进入模型的smoke",
+      "target": "./agent/examples/reader_profile_hot_news_smoke.py#L150",
+      "target_line_text": "async def smoke(*, reader_package, warehouse, tenant_id=None):",
+      "containing_symbol": "smoke"
+    },
+    {
+      "document_line": 150,
+      "label": "test_reader_profile_client_service.py",
+      "target": "./agent/tests/test_reader_profile_client_service.py"
+    },
+    {
+      "document_line": 150,
+      "label": "test_reader_profile_api_factory.py",
+      "target": "./agent/tests/test_reader_profile_api_factory.py"
+    },
+    {
+      "document_line": 150,
+      "label": "test_reader_profile_hot_news_integration.py",
+      "target": "./agent/tests/test_reader_profile_hot_news_integration.py"
+    },
+    {
+      "document_line": 150,
+      "label": "test_reader_profile_runtime_assets.py",
+      "target": "./agent/tests/test_reader_profile_runtime_assets.py"
+    },
+    {
+      "document_line": 150,
+      "label": "前端画像测试",
+      "target": "./agent/frontend/tests/news-reader-profile.test.mjs"
+    },
+    {
+      "document_line": 152,
+      "label": "实现说明",
+      "target": "./agent/docs/news-reader-profile-integration.md"
+    },
+    {
+      "document_line": 156,
+      "label": "code",
+      "target": "./agent/app/api/jobs.py#L177",
+      "target_line_text": "async def create_job(",
+      "containing_symbol": "create_job"
+    },
+    {
+      "document_line": 158,
+      "label": "code",
+      "target": "./agent/app/services/orchestrator.py#L31",
+      "target_line_text": "    async def start_job(",
+      "containing_symbol": "OrchestratorService.start_job"
+    },
+    {
+      "document_line": 159,
+      "label": "code",
+      "target": "./agent/app/workflows/news_writing.py#L57",
+      "target_line_text": "    async def _run_pipeline(self, request: NewsWritingInput) -> WorkflowResult:",
+      "containing_symbol": "NewsWritingWorkflow._run_pipeline"
+    },
+    {
+      "document_line": 161,
+      "label": "code",
+      "target": "./agent/app/services/agents/research.py#L13",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "ResearchAgentRunner.run"
+    },
+    {
+      "document_line": 162,
+      "label": "code",
+      "target": "./agent/app/workflows/news_writing.py#L319",
+      "target_line_text": "    async def _wait_for_human(self, gate: str) -> HumanDecision:",
+      "containing_symbol": "NewsWritingWorkflow._wait_for_human"
+    },
+    {
+      "document_line": 164,
+      "label": "code",
+      "target": "./agent/app/services/agents/writer.py#L21",
+      "target_line_text": "    async def create_outline(",
+      "containing_symbol": "WriterAgentRunner.create_outline"
+    },
+    {
+      "document_line": 166,
+      "label": "code",
+      "target": "./agent/app/services/agents/writer.py#L48",
+      "target_line_text": "    async def write_section(",
+      "containing_symbol": "WriterAgentRunner.write_section"
+    },
+    {
+      "document_line": 167,
+      "label": "code",
+      "target": "./agent/app/services/agents/writer.py#L61",
+      "target_line_text": "    async def assemble(",
+      "containing_symbol": "WriterAgentRunner.assemble"
+    },
+    {
+      "document_line": 169,
+      "label": "code",
+      "target": "./agent/app/services/agents/reviewer.py#L11",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "ReviewerAgentRunner.run"
+    },
+    {
+      "document_line": 171,
+      "label": "code",
+      "target": "./agent/app/workflows/news_writing.py#L57",
+      "target_line_text": "    async def _run_pipeline(self, request: NewsWritingInput) -> WorkflowResult:",
+      "containing_symbol": "NewsWritingWorkflow._run_pipeline"
+    },
+    {
+      "document_line": 172,
+      "label": "code",
+      "target": "./agent/app/workflows/news_writing.py#L57",
+      "target_line_text": "    async def _run_pipeline(self, request: NewsWritingInput) -> WorkflowResult:",
+      "containing_symbol": "NewsWritingWorkflow._run_pipeline"
+    },
+    {
+      "document_line": 185,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L167",
+      "target_line_text": "    async def run_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 186,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L375",
+      "target_line_text": "    async def execute(self, *, name: str, arguments: dict, tenant_id: str, trace_id: str,",
+      "containing_symbol": "ConversationTools.execute"
+    },
+    {
+      "document_line": 187,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L524",
+      "target_line_text": "    async def _analyze(self, arguments: _Analyze, *, tenant_id: str) -> dict:",
+      "containing_symbol": "ConversationTools._analyze"
+    },
+    {
+      "document_line": 189,
+      "label": "code",
+      "target": "./agent/app/data_analysis/projection.py#L136",
+      "target_line_text": "def project_dataset(detail, *, run_id, tenant_id, extended=False, include_baseline=False):",
+      "containing_symbol": "project_dataset"
+    },
+    {
+      "document_line": 190,
+      "label": "code",
+      "target": "./agent/app/data_analysis/runner.py#L114",
+      "target_line_text": "    async def run(self, request: dict) -> dict:",
+      "containing_symbol": "AnalysisRunner.run"
+    },
+    {
+      "document_line": 192,
+      "label": "code",
+      "target": "./agent/app/data_analysis/runner.py#L222",
+      "target_line_text": "    async def _execute(self, payload: bytes) -> tuple[bytes, bytes, int]:",
+      "containing_symbol": "AnalysisRunner._execute"
+    },
+    {
+      "document_line": 193,
+      "label": "code",
+      "target": "./agent/app/data_analysis/worker.py#L50",
+      "target_line_text": "def main() -> int:",
+      "containing_symbol": "main"
+    },
+    {
+      "document_line": 194,
+      "label": "code",
+      "target": "./agent/app/data_analysis/engine.py#L576",
+      "target_line_text": "def analyze(request: dict) -> dict:",
+      "containing_symbol": "analyze"
+    },
+    {
+      "document_line": 195,
+      "label": "code",
+      "target": "./agent/app/data_analysis/runner.py#L285",
+      "target_line_text": "    def _validate_output(self, stdout: bytes, request: dict) -> dict:",
+      "containing_symbol": "AnalysisRunner._validate_output"
+    },
+    {
+      "document_line": 197,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L704",
+      "target_line_text": "def render_analysis_result(result: dict) -> str:",
+      "containing_symbol": "render_analysis_result"
+    },
+    {
+      "document_line": 207,
+      "label": "create_analysis_runner",
+      "target": "./agent/app/data_analysis/factory.py#L7",
+      "target_line_text": "def create_analysis_runner(settings, *, enabled=None):",
+      "containing_symbol": "create_analysis_runner"
+    },
+    {
+      "document_line": 207,
+      "label": "RemoteAnalysisRunner.run",
+      "target": "./agent/app/data_analysis/remote.py#L87",
+      "target_line_text": "    async def run(self, request: dict) -> dict:",
+      "containing_symbol": "RemoteAnalysisRunner.run"
+    },
+    {
+      "document_line": 207,
+      "label": "create_app",
+      "target": "./agent/app/data_analysis/service.py#L119",
+      "target_line_text": "def create_app(",
+      "containing_symbol": "create_app"
+    },
+    {
+      "document_line": 213,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/feedback_collector.py#L123",
+      "target_line_text": "    async def collect(",
+      "containing_symbol": "AnalysisFeedbackCollector.collect"
+    },
+    {
+      "document_line": 215,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/feedback_collector.py#L505",
+      "target_line_text": "    async def submit_label(",
+      "containing_symbol": "AnalysisFeedbackCollector.submit_label"
+    },
+    {
+      "document_line": 215,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/feedback_collector.py#L643",
+      "target_line_text": "    async def approve_label(",
+      "containing_symbol": "AnalysisFeedbackCollector.approve_label"
+    },
+    {
+      "document_line": 217,
+      "label": "code",
+      "target": "./agent/app/api/data_loop.py#L734",
+      "target_line_text": "async def propose_configuration_candidate(",
+      "containing_symbol": "propose_configuration_candidate"
+    },
+    {
+      "document_line": 219,
+      "label": "code",
+      "target": "./agent/app/api/data_loop.py#L165",
+      "target_line_text": "async def start_data_loop(",
+      "containing_symbol": "start_data_loop"
+    },
+    {
+      "document_line": 220,
+      "label": "code",
+      "target": "./agent/app/workflows/data_loop.py#L66",
+      "target_line_text": "    async def run(self, request: DataLoopRunRequest) -> DataLoopWorkflowResult:",
+      "containing_symbol": "HotNewsDataLoopWorkflow.run"
+    },
+    {
+      "document_line": 222,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/dataset_freezer.py#L347",
+      "target_line_text": "    async def freeze(",
+      "containing_symbol": "EvaluationDatasetFreezer.freeze"
+    },
+    {
+      "document_line": 224,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/step_handler.py#L229",
+      "target_line_text": "    async def _analyze_dataset(self, command: DataLoopStepCommand) -> dict:",
+      "containing_symbol": "HotNewsDataLoopStepHandler._analyze_dataset"
+    },
+    {
+      "document_line": 226,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/step_handler.py#L305",
+      "target_line_text": "    async def _attribute_errors(self, command: DataLoopStepCommand) -> dict:",
+      "containing_symbol": "HotNewsDataLoopStepHandler._attribute_errors"
+    },
+    {
+      "document_line": 228,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/offline_replay.py#L78",
+      "target_line_text": "    async def evaluate(",
+      "containing_symbol": "HotNewsOfflineReplayService.evaluate"
+    },
+    {
+      "document_line": 229,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/evaluation_gate.py#L19",
+      "target_line_text": "    def evaluate(",
+      "containing_symbol": "EvaluationGate.evaluate"
+    },
+    {
+      "document_line": 230,
+      "label": "code",
+      "target": "./agent/app/workflows/data_loop.py#L290",
+      "target_line_text": "    async def _wait_for_decision(self) -> DataLoopHumanDecision | None:",
+      "containing_symbol": "HotNewsDataLoopWorkflow._wait_for_decision"
+    },
+    {
+      "document_line": 231,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/step_handler.py#L533",
+      "target_line_text": "    async def _record_promotion_decision(",
+      "containing_symbol": "HotNewsDataLoopStepHandler._record_promotion_decision"
+    },
+    {
+      "document_line": 233,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/step_handler.py#L619",
+      "target_line_text": "    async def _activate_bundle(self, command: DataLoopStepCommand) -> dict:",
+      "containing_symbol": "HotNewsDataLoopStepHandler._activate_bundle"
+    },
+    {
+      "document_line": 235,
+      "label": "code",
+      "target": "./agent/app/services/data_loop/step_handler.py#L135",
+      "target_line_text": "    async def execute(",
+      "containing_symbol": "HotNewsDataLoopStepHandler.execute"
+    },
+    {
+      "document_line": 237,
+      "label": "code",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L102",
+      "target_line_text": "    async def run(self, request: HotNewsRunRequest) -> HotNewsRunResult:",
+      "containing_symbol": "ActiveProductionBundleHotNewsService.run"
+    },
+    {
+      "document_line": 238,
+      "label": "code",
+      "target": "./agent/app/api/data_loop.py#L824",
+      "target_line_text": "async def rollback_production_bundle(",
+      "containing_symbol": "rollback_production_bundle"
+    },
+    {
+      "document_line": 243,
+      "label": "code",
+      "target": "./agent/app/api/memory.py#L87",
+      "target_line_text": "async def create_short_term_memory(",
+      "containing_symbol": "create_short_term_memory"
+    },
+    {
+      "document_line": 245,
+      "label": "code",
+      "target": "./agent/app/services/memory_write_application.py#L44",
+      "target_line_text": "    async def create_short_term(",
+      "containing_symbol": "MemoryWriteApplicationService.create_short_term"
+    },
+    {
+      "document_line": 247,
+      "label": "code",
+      "target": "./agent/app/api/memory.py#L125",
+      "target_line_text": "async def propose_long_term_candidate(",
+      "containing_symbol": "propose_long_term_candidate"
+    },
+    {
+      "document_line": 247,
+      "label": "code",
+      "target": "./agent/app/services/memory_write_application.py#L103",
+      "target_line_text": "    async def propose_long_term(",
+      "containing_symbol": "MemoryWriteApplicationService.propose_long_term"
+    },
+    {
+      "document_line": 248,
+      "label": "code",
+      "target": "./agent/app/api/memory.py#L163",
+      "target_line_text": "async def promote_long_term_candidate(",
+      "containing_symbol": "promote_long_term_candidate"
+    },
+    {
+      "document_line": 250,
+      "label": "code",
+      "target": "./agent/app/services/memory_promotion_application.py#L60",
+      "target_line_text": "    async def promote(",
+      "containing_symbol": "MemoryPromotionApplicationService.promote"
+    },
+    {
+      "document_line": 252,
+      "label": "code",
+      "target": "./agent/app/services/memory_promotion.py#L32",
+      "target_line_text": "    def validate(",
+      "containing_symbol": "MemoryPromotionPolicy.validate"
+    },
+    {
+      "document_line": 254,
+      "label": "code",
+      "target": "./agent/app/services/memory_promotion.py#L111",
+      "target_line_text": "    def promote(",
+      "containing_symbol": "MemoryPromotionService.promote"
+    },
+    {
+      "document_line": 270,
+      "label": "MemoryAwareHotNewsAnalysisService.analyze_with_memory",
+      "target": "./agent/app/services/memory_aware_hot_news_analysis.py#L46",
+      "target_line_text": "    async def analyze_with_memory(",
+      "containing_symbol": "MemoryAwareHotNewsAnalysisService.analyze_with_memory"
+    },
+    {
+      "document_line": 275,
+      "label": "code",
+      "target": "./agent/app/api/conversations.py#L27",
+      "target_line_text": "async def get_conversation_principal(",
+      "containing_symbol": "get_conversation_principal"
+    },
+    {
+      "document_line": 277,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L96",
+      "target_line_text": "    def runtime_info(self, *, tenant_id, hot_news_query_allowed=False, permissions=frozenset()):",
+      "containing_symbol": "ConversationAgentService.runtime_info"
+    },
+    {
+      "document_line": 279,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L321",
+      "target_line_text": "    def available_descriptions(self, *, tenant_id: str, permissions=frozenset(),",
+      "containing_symbol": "ConversationTools.available_descriptions"
+    },
+    {
+      "document_line": 281,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L84",
+      "target_line_text": "class HookSpec:",
+      "containing_symbol": "HookSpec"
+    },
+    {
+      "document_line": 282,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L200",
+      "target_line_text": "HOOK_REGISTRY = {",
+      "containing_symbol": null
+    },
+    {
+      "document_line": 284,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L375",
+      "target_line_text": "    async def execute(self, *, name: str, arguments: dict, tenant_id: str, trace_id: str,",
+      "containing_symbol": "ConversationTools.execute"
+    },
+    {
+      "document_line": 287,
+      "label": "code",
+      "target": "./agent/app/conversation/confirmation.py#L30",
+      "target_line_text": "def new_confirmation(*, hook: str, suggested: dict, lifetime_seconds: float, input_seq: int = 0) -> dict:",
+      "containing_symbol": "new_confirmation"
+    },
+    {
+      "document_line": 289,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L130",
+      "target_line_text": "    async def submit_input(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.submit_input"
+    },
+    {
+      "document_line": 289,
+      "label": "API",
+      "target": "./agent/app/api/conversations.py#L227",
+      "target_line_text": "async def append_turn_input(",
+      "containing_symbol": "append_turn_input"
+    },
+    {
+      "document_line": 291,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L620",
+      "target_line_text": "    async def _await_confirmation(self, *, tenant_id, user_id, conversation_id, claim, confirmation, deadline):",
+      "containing_symbol": "ConversationAgentService._await_confirmation"
+    },
+    {
+      "document_line": 293,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L642",
+      "target_line_text": "    async def _start_confirmed_hook(self, *, name, arguments, tenant_id, user_id, permissions,",
+      "containing_symbol": "ConversationAgentService._start_confirmed_hook"
+    },
+    {
+      "document_line": 296,
+      "label": "code",
+      "target": "./agent/app/repositories/conversation.py#L544",
+      "target_line_text": "    async def checkpoint_turn(",
+      "containing_symbol": "PostgresConversationRepository.checkpoint_turn"
+    },
+    {
+      "document_line": 297,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L404",
+      "target_line_text": "                        await self._notify(on_event, \"tool_finished\", event_data)",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 303,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L101",
+      "target_line_text": "async def _writing_intent_runner(*, tools, arguments, tenant_id, user_id, confirmed=False,",
+      "containing_symbol": "_writing_intent_runner"
+    },
+    {
+      "document_line": 305,
+      "label": "code",
+      "target": "./agent/app/conversation/writing.py#L109",
+      "target_line_text": "    async def start(",
+      "containing_symbol": "ConversationWritingCommands.start"
+    },
+    {
+      "document_line": 307,
+      "label": "code",
+      "target": "./agent/app/services/job.py#L27",
+      "target_line_text": "    async def create_or_get(",
+      "containing_symbol": "JobService.create_or_get"
+    },
+    {
+      "document_line": 309,
+      "label": "code",
+      "target": "./agent/app/conversation/writing.py#L147",
+      "target_line_text": "            await session.commit()",
+      "containing_symbol": "ConversationWritingCommands.start"
+    },
+    {
+      "document_line": 312,
+      "label": "code",
+      "target": "./agent/app/conversation/admission.py#L80",
+      "target_line_text": "    async def start_writing(self, job) -> dict:",
+      "containing_symbol": "AdmissionService.start_writing"
+    },
+    {
+      "document_line": 313,
+      "label": "code",
+      "target": "./agent/app/services/orchestrator.py#L31",
+      "target_line_text": "    async def start_job(",
+      "containing_symbol": "OrchestratorService.start_job"
+    },
+    {
+      "document_line": 320,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L116",
+      "target_line_text": "async def _memory_runner(*, tools, arguments, tenant_id, user_id, conversation_id=None,",
+      "containing_symbol": "_memory_runner"
+    },
+    {
+      "document_line": 322,
+      "label": "code",
+      "target": "./agent/app/conversation/memory_hooks.py#L117",
+      "target_line_text": "    async def save_short_term(",
+      "containing_symbol": "ConversationMemoryHooks.save_short_term"
+    },
+    {
+      "document_line": 323,
+      "label": "code",
+      "target": "./agent/app/conversation/memory_hooks.py#L125",
+      "target_line_text": "    async def propose_long_term(",
+      "containing_symbol": "ConversationMemoryHooks.propose_long_term"
+    },
+    {
+      "document_line": 325,
+      "label": "code",
+      "target": "./agent/app/conversation/memory_hooks.py#L133",
+      "target_line_text": "    async def _write(self, *, kind, tenant_id, user_id, conversation_id, request_id, content, on_bound):",
+      "containing_symbol": "ConversationMemoryHooks._write"
+    },
+    {
+      "document_line": 327,
+      "label": "code",
+      "target": "./agent/app/services/memory_write_application.py#L44",
+      "target_line_text": "    async def create_short_term(",
+      "containing_symbol": "MemoryWriteApplicationService.create_short_term"
+    },
+    {
+      "document_line": 328,
+      "label": "code",
+      "target": "./agent/app/services/memory_write_application.py#L103",
+      "target_line_text": "    async def propose_long_term(",
+      "containing_symbol": "MemoryWriteApplicationService.propose_long_term"
+    },
+    {
+      "document_line": 331,
+      "label": "code",
+      "target": "./agent/app/conversation/memory_hooks.py#L170",
+      "target_line_text": "    async def status(",
+      "containing_symbol": "ConversationMemoryHooks.status"
+    },
+    {
+      "document_line": 337,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L718",
+      "target_line_text": "    def _feedback_targets(history, traces) -> set[tuple[str, str]]:",
+      "containing_symbol": "ConversationAgentService._feedback_targets"
+    },
+    {
+      "document_line": 339,
+      "label": "code",
+      "target": "./agent/app/conversation/feedback_hooks.py#L53",
+      "target_line_text": "    async def prepare(self, *, tenant_id: str, proposal: dict) -> dict:",
+      "containing_symbol": "ConversationFeedbackHooks.prepare"
+    },
+    {
+      "document_line": 341,
+      "label": "code",
+      "target": "./agent/app/conversation/feedback_hooks.py#L66",
+      "target_line_text": "    async def start(",
+      "containing_symbol": "ConversationFeedbackHooks.start"
+    },
+    {
+      "document_line": 343,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_decision.py#L52",
+      "target_line_text": "    async def record_decision(",
+      "containing_symbol": "HotNewsDecisionService.record_decision"
+    },
+    {
+      "document_line": 345,
+      "label": "code",
+      "target": "./agent/app/conversation/feedback_hooks.py#L98",
+      "target_line_text": "            case = await PostgresAnalysisFeedbackRepository(session).get_case_by_idempotency_key(",
+      "containing_symbol": "ConversationFeedbackHooks.start"
+    },
+    {
+      "document_line": 351,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L180",
+      "target_line_text": "    async def prepare_candidate(self, *, tenant_id, proposal):",
+      "containing_symbol": "ConversationDataLoopHooks.prepare_candidate"
+    },
+    {
+      "document_line": 354,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L209",
+      "target_line_text": "    async def start_candidate(self, *, tenant_id, user_id, conversation_id, request_id, proposal,",
+      "containing_symbol": "ConversationDataLoopHooks.start_candidate"
+    },
+    {
+      "document_line": 356,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L730",
+      "target_line_text": "    def _candidate_targets(history, traces, user_content) -> set[str]:",
+      "containing_symbol": "ConversationAgentService._candidate_targets"
+    },
+    {
+      "document_line": 358,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L99",
+      "target_line_text": "    async def evaluation_context(self, *, tenant_id, candidate_id):",
+      "containing_symbol": "DataLoopCatalog.evaluation_context"
+    },
+    {
+      "document_line": 360,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L242",
+      "target_line_text": "    async def prepare_evaluation(self, *, tenant_id, proposal):",
+      "containing_symbol": "ConversationDataLoopHooks.prepare_evaluation"
+    },
+    {
+      "document_line": 362,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L253",
+      "target_line_text": "    async def start_evaluation(self, *, tenant_id, user_id, conversation_id, request_id, proposal,",
+      "containing_symbol": "ConversationDataLoopHooks.start_evaluation"
+    },
+    {
+      "document_line": 364,
+      "label": "code",
+      "target": "./agent/app/conversation/dataloop_hooks.py#L303",
+      "target_line_text": "    async def status(self, *, tenant_id, proposal):",
+      "containing_symbol": "ConversationDataLoopHooks.status"
+    },
+    {
+      "document_line": 373,
+      "label": "code",
+      "target": "./agent/app/conversation/admission.py#L90",
+      "target_line_text": "    async def _start(self, request: AdmissionRequest) -> dict:",
+      "containing_symbol": "AdmissionService._start"
+    },
+    {
+      "document_line": 375,
+      "label": "code",
+      "target": "./agent/app/conversation/admission_workflows.py#L119",
+      "target_line_text": "    async def run(self, request: AdmissionRequest) -> dict:",
+      "containing_symbol": "AdmissionRequestWorkflow.run"
+    },
+    {
+      "document_line": 377,
+      "label": "code",
+      "target": "./agent/app/conversation/admission.py#L189",
+      "target_line_text": "    async def enqueue(self, request: AdmissionRequest) -> dict:",
+      "containing_symbol": "AdmissionActivities.enqueue"
+    },
+    {
+      "document_line": 378,
+      "label": "code",
+      "target": "./agent/app/conversation/admission_workflows.py#L100",
+      "target_line_text": "    async def enqueue(self, request: AdmissionRequest) -> dict:",
+      "containing_symbol": "TenantAdmissionWorkflow.enqueue"
+    },
+    {
+      "document_line": 380,
+      "label": "code",
+      "target": "./agent/app/conversation/admission_workflows.py#L37",
+      "target_line_text": "    async def run(self, initial: TenantAdmissionState) -> None:",
+      "containing_symbol": "TenantAdmissionWorkflow.run"
+    },
+    {
+      "document_line": 382,
+      "label": "code",
+      "target": "./agent/app/conversation/admission.py#L220",
+      "target_line_text": "    async def dispatch(self, request: AdmissionRequest) -> dict:",
+      "containing_symbol": "AdmissionActivities.dispatch"
+    },
+    {
+      "document_line": 384,
+      "label": "code",
+      "target": "./agent/app/conversation/admission.py#L210",
+      "target_line_text": "    async def describe_many(self, workflow_ids: list[str]) -> list[dict]:",
+      "containing_symbol": "AdmissionActivities.describe_many"
+    },
+    {
+      "document_line": 386,
+      "label": "code",
+      "target": "./agent/app/conversation/admission_contracts.py#L165",
+      "target_line_text": "    def complete(self, business_workflow_id: str) -> list[AdmissionTicket]:",
+      "containing_symbol": "TenantAdmissionState.complete"
+    },
+    {
+      "document_line": 398,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L528",
+      "target_line_text": "    async def _infer(self, payload, *, on_event: ProgressCallback | None = None, call: int = 1):",
+      "containing_symbol": "ConversationAgentService._infer"
+    },
+    {
+      "document_line": 398,
+      "label": "code",
+      "target": "./agent/examples/conversation_hot_news.py#L110",
+      "target_line_text": "    async def _understand(self, *, question, tenant_id):",
+      "containing_symbol": "LocalConversationHotNewsQuery._understand"
+    },
+    {
+      "document_line": 399,
+      "label": "code",
+      "target": "./agent/app/model_runtime/agent_client.py#L98",
+      "target_line_text": "    async def run_structured(",
+      "containing_symbol": "NativeStructuredAgentClient.run_structured"
+    },
+    {
+      "document_line": 400,
+      "label": "code",
+      "target": "./agent/app/model_runtime/config_file.py#L84",
+      "target_line_text": "    def agent_scene(self, scene: str) -> AgentSceneConfig:",
+      "containing_symbol": "ModelRuntimeConfig.agent_scene"
+    },
+    {
+      "document_line": 401,
+      "label": "code",
+      "target": "./agent/app/model_runtime/core.py#L327",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "StructuredInferenceService.run"
+    },
+    {
+      "document_line": 402,
+      "label": "code",
+      "target": "./agent/app/model_runtime/core.py#L286",
+      "target_line_text": "    def render_input(",
+      "containing_symbol": "StructuredInferenceService.render_input"
+    },
+    {
+      "document_line": 403,
+      "label": "code",
+      "target": "./agent/app/model_runtime/http.py#L180",
+      "target_line_text": "    async def complete(self, request: InferenceRequest) -> RawInferenceResult:",
+      "containing_symbol": "OpenAICompatibleInferenceClient.complete"
+    },
+    {
+      "document_line": 404,
+      "label": "code",
+      "target": "./agent/app/model_runtime/core.py#L327",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "StructuredInferenceService.run"
+    },
+    {
+      "document_line": 405,
+      "label": "code",
+      "target": "./agent/app/model_runtime/agent_client.py#L98",
+      "target_line_text": "    async def run_structured(",
+      "containing_symbol": "NativeStructuredAgentClient.run_structured"
+    },
+    {
+      "document_line": 407,
+      "label": "build_model_runtime_ports",
+      "target": "./agent/app/model_runtime/factory.py#L52",
+      "target_line_text": "def build_model_runtime_ports(",
+      "containing_symbol": "build_model_runtime_ports"
+    },
+    {
+      "document_line": 409,
+      "label": "HotNewsAnalysisInputBuilder.build()",
+      "target": "./agent/app/services/hot_news_analysis.py#L109",
+      "target_line_text": "            reader_profile_summary=(",
+      "containing_symbol": "HotNewsAnalysisInputBuilder.build"
+    },
+    {
+      "document_line": 409,
+      "label": "v3",
+      "target": "./agent/app/model_runtime/hot_news.py#L42",
+      "target_line_text": "                HOT_NEWS_SCENE, \"native-e2e-prompt-v3-reader-profiles\",",
+      "containing_symbol": "local_hot_news_prompts"
+    },
+    {
+      "document_line": 412,
+      "label": "TOOL_NAMES",
+      "target": "./agent/app/conversation/tools.py#L224",
+      "target_line_text": "TOOL_NAMES = (\"capabilities\", \"list_hot_news\", \"read_hot_news\", \"search_knowledge\",",
+      "containing_symbol": null
+    },
+    {
+      "document_line": 412,
+      "label": "HOOK_REGISTRY",
+      "target": "./agent/app/conversation/tools.py#L200",
+      "target_line_text": "HOOK_REGISTRY = {",
+      "containing_symbol": null
+    },
+    {
+      "document_line": 412,
+      "label": "ConversationAgentService.runtime_info",
+      "target": "./agent/app/conversation/service.py#L96",
+      "target_line_text": "    def runtime_info(self, *, tenant_id, hot_news_query_allowed=False, permissions=frozenset()):",
+      "containing_symbol": "ConversationAgentService.runtime_info"
+    },
+    {
+      "document_line": 431,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L154",
+      "target_line_text": "async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 432,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/service.py#L118",
+      "target_line_text": "    async def preview(self, request: SqlAssistantPreviewRequest, *, tenant_id: str, user_id: str,",
+      "containing_symbol": "SqlAssistantService.preview"
+    },
+    {
+      "document_line": 433,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L154",
+      "target_line_text": "async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 434,
+      "label": "code",
+      "target": "./agent/app/workflows/hot_news.py#L33",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "HotNewsMonitorWorkflow.run"
+    },
+    {
+      "document_line": 435,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L350",
+      "target_line_text": "    async def execute_hot_news_query(self, *, arguments, tenant_id, user_id, trace_id,",
+      "containing_symbol": "ConversationTools.execute_hot_news_query"
+    },
+    {
+      "document_line": 436,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L167",
+      "target_line_text": "    async def run_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 441,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L309",
+      "target_line_text": "                        elif plan.tool_name == \"query_hot_news\":",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 443,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L576",
+      "target_line_text": "    async def _execute_query(self, plan, tenant_id, user_id, trace_id, allowed, partial, on_bound,",
+      "containing_symbol": "ConversationAgentService._execute_query"
+    },
+    {
+      "document_line": 445,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L350",
+      "target_line_text": "    async def execute_hot_news_query(self, *, arguments, tenant_id, user_id, trace_id,",
+      "containing_symbol": "ConversationTools.execute_hot_news_query"
+    },
+    {
+      "document_line": 447,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/input_boundary.py#L62",
+      "target_line_text": "def screen_question(question: str) -> str:",
+      "containing_symbol": "screen_question"
+    },
+    {
+      "document_line": 449,
+      "label": "code",
+      "target": "./agent/examples/conversation_hot_news.py#L110",
+      "target_line_text": "    async def _understand(self, *, question, tenant_id):",
+      "containing_symbol": "LocalConversationHotNewsQuery._understand"
+    },
+    {
+      "document_line": 451,
+      "label": "code",
+      "target": "./agent/app/conversation/query_understanding.py#L295",
+      "target_line_text": "def resolve_query_understanding(original_question: str, proposal: QueryUnderstanding | dict, policy: QueryPolicy,",
+      "containing_symbol": "resolve_query_understanding"
+    },
+    {
+      "document_line": 452,
+      "label": "code",
+      "target": "./agent/examples/conversation_hot_news.py#L26",
+      "target_line_text": "class _HotNewsQueryBreaker:",
+      "containing_symbol": "_HotNewsQueryBreaker"
+    },
+    {
+      "document_line": 454,
+      "label": "code",
+      "target": "./agent/examples/local_simulation.py#L154",
+      "target_line_text": "async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,",
+      "containing_symbol": "execute_local_hot_news_query"
+    },
+    {
+      "document_line": 455,
+      "label": "code",
+      "target": "./agent/app/sql_assistant/service.py#L118",
+      "target_line_text": "    async def preview(self, request: SqlAssistantPreviewRequest, *, tenant_id: str, user_id: str,",
+      "containing_symbol": "SqlAssistantService.preview"
+    },
+    {
+      "document_line": 456,
+      "label": "code",
+      "target": "./agent/app/workflows/hot_news.py#L33",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "HotNewsMonitorWorkflow.run"
+    },
+    {
+      "document_line": 458,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L315",
+      "target_line_text": "                            async def remember_binding(metadata):",
+      "containing_symbol": "ConversationAgentService.run_turn.remember_binding"
+    },
+    {
+      "document_line": 460,
+      "label": "code",
+      "target": "./agent/app/services/hot_news_query.py#L60",
+      "target_line_text": "    async def get_run_detail(",
+      "containing_symbol": "HotNewsQueryService.get_run_detail"
+    },
+    {
+      "document_line": 461,
+      "label": "code",
+      "target": "./agent/app/repositories/conversation.py#L544",
+      "target_line_text": "    async def checkpoint_turn(",
+      "containing_symbol": "PostgresConversationRepository.checkpoint_turn"
+    },
+    {
+      "document_line": 462,
+      "label": "code",
+      "target": "./agent/app/conversation/service.py#L404",
+      "target_line_text": "                        await self._notify(on_event, \"tool_finished\", event_data)",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 464,
+      "label": "code",
+      "target": "./agent/app/conversation/tools.py#L546",
+      "target_line_text": "def render_tool_results(traces) -> str:",
+      "containing_symbol": "render_tool_results"
+    },
+    {
+      "document_line": 465,
+      "label": "code",
+      "target": "./agent/app/repositories/conversation.py#L586",
+      "target_line_text": "    async def finish_turn(",
+      "containing_symbol": "PostgresConversationRepository.finish_turn"
+    },
+    {
+      "document_line": 466,
+      "label": "code",
+      "target": "./agent/app/conversation/streaming.py#L100",
+      "target_line_text": "                    for index, start in enumerate(range(0, len(answer), self._chunk_chars)):",
+      "containing_symbol": "StreamingConversation.iter_events"
+    },
+    {
+      "document_line": 474,
+      "label": "build_reader_profile_service()",
+      "target": "./agent/app/reader_profiles/factory.py#L52",
+      "target_line_text": "def build_reader_profile_service(settings):",
+      "containing_symbol": "build_reader_profile_service"
+    },
+    {
+      "document_line": 474,
+      "label": "API",
+      "target": "./agent/app/main.py#L130",
+      "target_line_text": "        reader_profile_service = build_reader_profile_service(settings)",
+      "containing_symbol": "_business_lifespan"
+    },
+    {
+      "document_line": 474,
+      "label": "Worker",
+      "target": "./agent/app/hot_news_worker.py#L100",
+      "target_line_text": "        reader_profile_service = build_reader_profile_service(resolved_settings)",
+      "containing_symbol": "run_hot_news_worker"
+    },
+    {
+      "document_line": 474,
+      "label": "运行时关闭",
+      "target": "./agent/app/hot_news_bootstrap.py#L46",
+      "target_line_text": "    async def close(self) -> None:",
+      "containing_symbol": "NativeHotNewsRuntime.close"
+    },
+    {
+      "document_line": 476,
+      "label": "main.py#L66",
+      "target": "./agent/app/main.py#L66",
+      "target_line_text": "async def _business_lifespan(app: FastAPI):",
+      "containing_symbol": "_business_lifespan"
+    },
+    {
+      "document_line": 476,
+      "label": "main.py#L252",
+      "target": "./agent/app/main.py#L252",
+      "target_line_text": "def create_app() -> FastAPI:",
+      "containing_symbol": "create_app"
+    },
+    {
+      "document_line": 476,
+      "label": "bootstrap.py#L31",
+      "target": "./agent/app/bootstrap.py#L31",
+      "target_line_text": "def create_worker_runtime(settings: Settings) -> WorkerRuntime:",
+      "containing_symbol": "create_worker_runtime"
+    },
+    {
+      "document_line": 476,
+      "label": "hot_news_dependencies.py#L73",
+      "target": "./agent/app/hot_news_dependencies.py#L73",
+      "target_line_text": "def build_hot_news_dependencies(settings: Settings) -> HotNewsDependencyBundle:",
+      "containing_symbol": "build_hot_news_dependencies"
+    },
+    {
+      "document_line": 476,
+      "label": "worker.py#L18",
+      "target": "./agent/app/worker.py#L18",
+      "target_line_text": "async def run_worker(",
+      "containing_symbol": "run_worker"
+    },
+    {
+      "document_line": 476,
+      "label": "hot_news_worker.py#L39",
+      "target": "./agent/app/hot_news_worker.py#L39",
+      "target_line_text": "async def run_hot_news_worker(",
+      "containing_symbol": "run_hot_news_worker"
+    },
+    {
+      "document_line": 476,
+      "label": "data_loop_worker.py#L115",
+      "target": "./agent/app/data_loop_worker.py#L115",
+      "target_line_text": "async def run_data_loop_worker(",
+      "containing_symbol": "run_data_loop_worker"
+    },
+    {
+      "document_line": 478,
+      "label": "agent/tests/test_data_loop_worker.py",
+      "target": "./agent/tests/test_data_loop_worker.py"
+    },
+    {
+      "document_line": 478,
+      "label": "agent/tests/test_conversation_admission_wiring.py",
+      "target": "./agent/tests/test_conversation_admission_wiring.py"
+    },
+    {
+      "document_line": 478,
+      "label": "test_reader_profile_api_factory.py",
+      "target": "./agent/tests/test_reader_profile_api_factory.py"
+    },
+    {
+      "document_line": 482,
+      "label": "DiscoveryIngestService.discover_and_ingest()",
+      "target": "./news/service/discovery_ingest_service.py#L63",
+      "target_line_text": "    def discover_and_ingest(",
+      "containing_symbol": "DiscoveryIngestService.discover_and_ingest"
+    },
+    {
+      "document_line": 482,
+      "label": "NewsIngestService.ingest_url()",
+      "target": "./news/service/news_ingest_service.py#L103",
+      "target_line_text": "    def ingest_url(",
+      "containing_symbol": "NewsIngestService.ingest_url"
+    },
+    {
+      "document_line": 482,
+      "label": "NewsAgentKnowledgeClient.index_news_document()",
+      "target": "./news/service/newsagent_knowledge_client.py#L87",
+      "target_line_text": "    def index_news_document(",
+      "containing_symbol": "NewsAgentKnowledgeClient.index_news_document"
+    },
+    {
+      "document_line": 482,
+      "label": "ingest_documents()",
+      "target": "./agent/app/api/knowledge.py#L74",
+      "target_line_text": "async def ingest_documents(",
+      "containing_symbol": "ingest_documents"
+    },
+    {
+      "document_line": 482,
+      "label": "PostgresKnowledgeStore.upsert_documents()",
+      "target": "./agent/app/knowledge/postgres_store.py#L125",
+      "target_line_text": "    async def upsert_documents(",
+      "containing_symbol": "PostgresKnowledgeStore.upsert_documents"
+    },
+    {
+      "document_line": 484,
+      "label": "build_incremental_news_index.build_package()",
+      "target": "./agent/tools/build_incremental_news_index.py#L336",
+      "target_line_text": "def build_package(*, articles_dir: Path, base_package: Path, output_package: Path,",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 484,
+      "label": "main()",
+      "target": "./agent/tools/build_incremental_news_index.py#L503",
+      "target_line_text": "def main() -> int:",
+      "containing_symbol": "main"
+    },
+    {
+      "document_line": 488,
+      "label": "API 装配",
+      "target": "./agent/app/main.py#L152",
+      "target_line_text": "            if settings.knowledge_lifecycle_config_path:",
+      "containing_symbol": "_business_lifespan"
+    },
+    {
+      "document_line": 488,
+      "label": "KnowledgeLifecycleService.accept()",
+      "target": "./agent/app/knowledge/tier_lifecycle.py#L43",
+      "target_line_text": "    async def accept(self, *, tenant_id: str, document, now: datetime | None = None) -> dict:",
+      "containing_symbol": "KnowledgeLifecycleService.accept"
+    },
+    {
+      "document_line": 488,
+      "label": "TierLifecycleStore.accept_content()",
+      "target": "./agent/app/knowledge/tier_lifecycle_store.py#L170",
+      "target_line_text": "    async def accept_content(self, *, tenant_id: str, news_id: str, source_revision: int,",
+      "containing_symbol": "TierLifecycleStore.accept_content"
+    },
+    {
+      "document_line": 488,
+      "label": "dispatch_once()",
+      "target": "./agent/app/knowledge_lifecycle_worker.py#L63",
+      "target_line_text": "async def dispatch_once(*, client, service, after_job_id=None):",
+      "containing_symbol": "dispatch_once"
+    },
+    {
+      "document_line": 488,
+      "label": "process_job()",
+      "target": "./agent/app/knowledge/tier_lifecycle.py#L213",
+      "target_line_text": "    async def process_job(self, *, tenant_id, job_id):",
+      "containing_symbol": "KnowledgeLifecycleService.process_job"
+    },
+    {
+      "document_line": 488,
+      "label": "scan_page()",
+      "target": "./agent/app/knowledge/tier_lifecycle.py#L252",
+      "target_line_text": "    async def scan_page(self, *, now=None, after_key=None):",
+      "containing_symbol": "KnowledgeLifecycleService.scan_page"
+    },
+    {
+      "document_line": 488,
+      "label": "retract()",
+      "target": "./agent/app/knowledge/tier_lifecycle.py#L85",
+      "target_line_text": "    async def retract(self, *, tenant_id, news_id, source_revision):",
+      "containing_symbol": "KnowledgeLifecycleService.retract"
+    },
+    {
+      "document_line": 488,
+      "label": "reheat()",
+      "target": "./agent/app/knowledge/tier_lifecycle.py#L88",
+      "target_line_text": "    async def reheat(self, *, tenant_id, news_id, now=None):",
+      "containing_symbol": "KnowledgeLifecycleService.reheat"
+    },
+    {
+      "document_line": 492,
+      "label": "build_package()",
+      "target": "./agent/app/behavior_tags/build.py#L303",
+      "target_line_text": "def build_package(source_dir: str | Path | list[str | Path] | tuple[str | Path, ...], output_dir: str | Path, *, policy_path: str | Path | None = None,",
+      "containing_symbol": "build_package"
+    },
+    {
+      "document_line": 492,
+      "label": "load_merged_source()",
+      "target": "./agent/app/behavior_tags/merge.py#L354",
+      "target_line_text": "def load_merged_source(directories: Sequence[str | Path], *, tenant_ids: tuple[str, ...] | None = None,",
+      "containing_symbol": "load_merged_source"
+    },
+    {
+      "document_line": 492,
+      "label": "tag_article()",
+      "target": "./agent/app/behavior_tags/tagging.py#L139",
+      "target_line_text": "def tag_article(article: dict, policy: TopicPolicy) -> dict:",
+      "containing_symbol": "tag_article"
+    },
+    {
+      "document_line": 492,
+      "label": "behavior_labels()",
+      "target": "./agent/app/behavior_tags/tagging.py#L222",
+      "target_line_text": "def behavior_labels(observation: dict) -> dict:",
+      "containing_symbol": "behavior_labels"
+    },
+    {
+      "document_line": 492,
+      "label": "LocalBehaviorRuntime.context_for_window()",
+      "target": "./agent/app/behavior_tags/runtime.py#L173",
+      "target_line_text": "    def context_for_window(self, *, tenant_id: str, window_start: datetime,",
+      "containing_symbol": "LocalBehaviorRuntime.context_for_window"
+    },
+    {
+      "document_line": 492,
+      "label": "ActiveProductionBundleHotNewsService._behavior_context()",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L176",
+      "target_line_text": "    def _behavior_context(self, request: HotNewsRunRequest) -> BehaviorRetrievalContext | None:",
+      "containing_symbol": "ActiveProductionBundleHotNewsService._behavior_context"
+    },
+    {
+      "document_line": 492,
+      "label": "BehaviorRetrievalContext.rerank()",
+      "target": "./agent/app/behavior_tags/runtime.py#L44",
+      "target_line_text": "    def rerank(self, source: NewsContent, candidates: list[RerankRelatedNews], *,",
+      "containing_symbol": "BehaviorRetrievalContext.rerank"
+    },
+    {
+      "document_line": 496,
+      "label": "AudiencePreviewPanel.estimateAudience()",
+      "target": "./agent/frontend/src/components/hotnews/AudiencePreviewPanel.vue#L110",
+      "target_line_text": "async function estimateAudience(): Promise<void> {"
+    },
+    {
+      "document_line": 496,
+      "label": "audienceApi.preview()",
+      "target": "./agent/frontend/src/api/audience.ts#L144",
+      "target_line_text": "  async preview(runId: string, newsId: string, selection: AudienceSelection,"
+    },
+    {
+      "document_line": 496,
+      "label": "POST audience.preview()",
+      "target": "./agent/app/api/audience.py#L36",
+      "target_line_text": "async def preview(run_id: UUID,",
+      "containing_symbol": "preview"
+    },
+    {
+      "document_line": 496,
+      "label": "AudiencePreviewService.preview()",
+      "target": "./agent/app/audience/service.py#L82",
+      "target_line_text": "    async def preview(self, *, tenant_id: UUID, run_id: UUID, news_id: str,",
+      "containing_symbol": "AudiencePreviewService.preview"
+    },
+    {
+      "document_line": 496,
+      "label": "HttpAudienceProfileClient.estimate",
+      "target": "./agent/app/audience/client.py#L77",
+      "target_line_text": "    async def estimate(self, query: AudienceQuery) -> AudienceSnapshot:",
+      "containing_symbol": "HttpAudienceProfileClient.estimate"
+    },
+    {
+      "document_line": 496,
+      "label": "_validate_snapshot()",
+      "target": "./agent/app/audience/service.py#L137",
+      "target_line_text": "    def _validate_snapshot(self, query: AudienceQuery, snapshot: AudienceSnapshot):",
+      "containing_symbol": "AudiencePreviewService._validate_snapshot"
+    },
+    {
+      "document_line": 502,
+      "label": "service.py#L167",
+      "target": "./agent/app/conversation/service.py#L167",
+      "target_line_text": "    async def run_turn(self, *, tenant_id: str, user_id: str, conversation_id: UUID,",
+      "containing_symbol": "ConversationAgentService.run_turn"
+    },
+    {
+      "document_line": 502,
+      "label": "context.py#L80",
+      "target": "./agent/app/conversation/context.py#L80",
+      "target_line_text": "    async def load(self, *, tenant_id, user_id, conversation_id, claim, model_ids, budget, notify, measure=None):",
+      "containing_symbol": "LengthBasedContext.load"
+    },
+    {
+      "document_line": 502,
+      "label": "context.py#L102",
+      "target": "./agent/app/conversation/context.py#L102",
+      "target_line_text": "    async def fit(self, *, budget, model_ids, traces, notify, measure=None):",
+      "containing_symbol": "LengthBasedContext.fit"
+    },
+    {
+      "document_line": 502,
+      "label": "context.py#L227",
+      "target": "./agent/app/conversation/context.py#L227",
+      "target_line_text": "    async def _summarize(self, turns, model_ids):",
+      "containing_symbol": "LengthBasedContext._summarize"
+    },
+    {
+      "document_line": 502,
+      "label": "context.py#L156",
+      "target": "./agent/app/conversation/context.py#L156",
+      "target_line_text": "    def _references(self, tools):",
+      "containing_symbol": "LengthBasedContext._references"
+    },
+    {
+      "document_line": 502,
+      "label": "conversation.py#L435",
+      "target": "./agent/app/repositories/conversation.py#L435",
+      "target_line_text": "    async def save_memory(self, *, tenant_id, user_id, conversation_id, turn_id, request_id,",
+      "containing_symbol": "PostgresConversationRepository.save_memory"
+    },
+    {
+      "document_line": 504,
+      "label": "agent/tests/test_conversation_compaction_policy.py",
+      "target": "./agent/tests/test_conversation_compaction_policy.py"
+    },
+    {
+      "document_line": 510,
+      "label": "artifact_pipeline.py#L29",
+      "target": "./agent/app/services/artifact_pipeline.py#L29",
+      "target_line_text": "    async def persist_success(",
+      "containing_symbol": "ArtifactPipeline.persist_success"
+    },
+    {
+      "document_line": 510,
+      "label": "checkpoint.py#L30",
+      "target": "./agent/app/services/checkpoint.py#L30",
+      "target_line_text": "    async def commit_success(",
+      "containing_symbol": "CheckpointService.commit_success"
+    },
+    {
+      "document_line": 510,
+      "label": "outbox.py#L138",
+      "target": "./agent/app/services/outbox.py#L138",
+      "target_line_text": "    async def enqueue(session: AsyncSession, event: ProgressEvent) -> None:",
+      "containing_symbol": "OutboxService.enqueue"
+    },
+    {
+      "document_line": 510,
+      "label": "outbox.py#L179",
+      "target": "./agent/app/services/outbox.py#L179",
+      "target_line_text": "    async def process_batch(self) -> int:",
+      "containing_symbol": "OutboxRelay.process_batch"
+    },
+    {
+      "document_line": 510,
+      "label": "event_publisher.py#L39",
+      "target": "./agent/app/services/event_publisher.py#L39",
+      "target_line_text": "    async def publish(self, event: ProgressEvent) -> ProgressEvent | None:",
+      "containing_symbol": "RedisProgressPublisher.publish"
+    },
+    {
+      "document_line": 510,
+      "label": "events.py#L39",
+      "target": "./agent/app/api/events.py#L39",
+      "target_line_text": "async def stream_job_events(",
+      "containing_symbol": "stream_job_events"
+    },
+    {
+      "document_line": 512,
+      "label": "agent/tests/test_checkpoint_service.py",
+      "target": "./agent/tests/test_checkpoint_service.py"
+    },
+    {
+      "document_line": 512,
+      "label": "agent/tests/test_outbox.py",
+      "target": "./agent/tests/test_outbox.py"
+    },
+    {
+      "document_line": 512,
+      "label": "agent/tests/test_event_publisher.py",
+      "target": "./agent/tests/test_event_publisher.py"
+    },
+    {
+      "document_line": 514,
+      "label": "RedisHotNewsEventStream.publish#L69",
+      "target": "./agent/app/services/hot_news_event_stream.py#L69",
+      "target_line_text": "    async def publish(",
+      "containing_symbol": "RedisHotNewsEventStream.publish"
+    },
+    {
+      "document_line": 514,
+      "label": "StreamingConversation.iter_events#L46",
+      "target": "./agent/app/conversation/streaming.py#L46",
+      "target_line_text": "    async def iter_events(self) -> AsyncIterator[str]:",
+      "containing_symbol": "StreamingConversation.iter_events"
+    },
+    {
+      "document_line": 520,
+      "label": "dependencies.py#L250",
+      "target": "./agent/app/api/dependencies.py#L250",
+      "target_line_text": "async def get_hot_news_principal(",
+      "containing_symbol": "get_hot_news_principal"
+    },
+    {
+      "document_line": 520,
+      "label": "conversations.py#L27",
+      "target": "./agent/app/api/conversations.py#L27",
+      "target_line_text": "async def get_conversation_principal(",
+      "containing_symbol": "get_conversation_principal"
+    },
+    {
+      "document_line": 520,
+      "label": "conversation.py#L469",
+      "target": "./agent/app/repositories/conversation.py#L469",
+      "target_line_text": "    async def begin_turn(",
+      "containing_symbol": "PostgresConversationRepository.begin_turn"
+    },
+    {
+      "document_line": 520,
+      "label": "conversation.py#L544",
+      "target": "./agent/app/repositories/conversation.py#L544",
+      "target_line_text": "    async def checkpoint_turn(",
+      "containing_symbol": "PostgresConversationRepository.checkpoint_turn"
+    },
+    {
+      "document_line": 520,
+      "label": "conversation.py#L586",
+      "target": "./agent/app/repositories/conversation.py#L586",
+      "target_line_text": "    async def finish_turn(",
+      "containing_symbol": "PostgresConversationRepository.finish_turn"
+    },
+    {
+      "document_line": 520,
+      "label": "jobs.py#L388",
+      "target": "./agent/app/api/jobs.py#L388",
+      "target_line_text": "async def resume_job(",
+      "containing_symbol": "resume_job"
+    },
+    {
+      "document_line": 520,
+      "label": "recovery.py#L113",
+      "target": "./agent/app/services/recovery.py#L113",
+      "target_line_text": "    async def prepare_resume(",
+      "containing_symbol": "RecoveryService.prepare_resume"
+    },
+    {
+      "document_line": 522,
+      "label": "agent/tests/test_conversation_store.py",
+      "target": "./agent/tests/test_conversation_store.py"
+    },
+    {
+      "document_line": 522,
+      "label": "agent/tests/test_conversation_tool_checkpoints.py",
+      "target": "./agent/tests/test_conversation_tool_checkpoints.py"
+    },
+    {
+      "document_line": 522,
+      "label": "agent/tests/test_recovery_service.py",
+      "target": "./agent/tests/test_recovery_service.py"
+    },
+    {
+      "document_line": 522,
+      "label": "agent/tests/test_conversation_postgres.py",
+      "target": "./agent/tests/test_conversation_postgres.py"
+    },
+    {
+      "document_line": 528,
+      "label": "hot_news.py#L208",
+      "target": "./agent/app/api/hot_news.py#L208",
+      "target_line_text": "async def record_hot_news_decision(",
+      "containing_symbol": "record_hot_news_decision"
+    },
+    {
+      "document_line": 528,
+      "label": "hot_news_decision.py#L52",
+      "target": "./agent/app/services/hot_news_decision.py#L52",
+      "target_line_text": "    async def record_decision(",
+      "containing_symbol": "HotNewsDecisionService.record_decision"
+    },
+    {
+      "document_line": 528,
+      "label": "hot_news_decision.py#L190",
+      "target": "./agent/app/services/hot_news_decision.py#L190",
+      "target_line_text": "    async def _collect_feedback_if_required(",
+      "containing_symbol": "HotNewsDecisionService._collect_feedback_if_required"
+    },
+    {
+      "document_line": 528,
+      "label": "hot_news.py#L253",
+      "target": "./agent/app/api/hot_news.py#L253",
+      "target_line_text": "async def handoff_hot_news_to_writing(",
+      "containing_symbol": "handoff_hot_news_to_writing"
+    },
+    {
+      "document_line": 528,
+      "label": "hot_news_writing_handoff.py#L73",
+      "target": "./agent/app/services/hot_news_writing_handoff.py#L73",
+      "target_line_text": "    async def handoff(",
+      "containing_symbol": "HotNewsWritingHandoffService.handoff"
+    },
+    {
+      "document_line": 528,
+      "label": "jobs.py#L450",
+      "target": "./agent/app/api/jobs.py#L450",
+      "target_line_text": "async def publish_final_article(",
+      "containing_symbol": "publish_final_article"
+    },
+    {
+      "document_line": 528,
+      "label": "cms.py#L27",
+      "target": "./agent/app/clients/cms.py#L27",
+      "target_line_text": "    async def publish(",
+      "containing_symbol": "CmsPublisher.publish"
+    },
+    {
+      "document_line": 528,
+      "label": "data_loop.py#L577",
+      "target": "./agent/app/api/data_loop.py#L577",
+      "target_line_text": "async def record_publication_outcome(",
+      "containing_symbol": "record_publication_outcome"
+    },
+    {
+      "document_line": 528,
+      "label": "publication_outcome.py#L95",
+      "target": "./agent/app/services/data_loop/publication_outcome.py#L95",
+      "target_line_text": "    async def record_and_collect(",
+      "containing_symbol": "PublicationOutcomeFeedbackService.record_and_collect"
+    },
+    {
+      "document_line": 530,
+      "label": "PublicationOutcomeFeedbackPolicy#L25",
+      "target": "./agent/app/services/data_loop/publication_outcome.py#L25",
+      "target_line_text": "class PublicationOutcomeFeedbackPolicy:",
+      "containing_symbol": "PublicationOutcomeFeedbackPolicy"
+    },
+    {
+      "document_line": 530,
+      "label": "agent/tests/test_hot_news_decision_service.py",
+      "target": "./agent/tests/test_hot_news_decision_service.py"
+    },
+    {
+      "document_line": 530,
+      "label": "agent/tests/test_hot_news_writing_handoff.py",
+      "target": "./agent/tests/test_hot_news_writing_handoff.py"
+    },
+    {
+      "document_line": 530,
+      "label": "agent/tests/test_publication_outcome_feedback.py",
+      "target": "./agent/tests/test_publication_outcome_feedback.py"
+    },
+    {
+      "document_line": 530,
+      "label": "agent/tests/test_mock_cms.py",
+      "target": "./agent/tests/test_mock_cms.py"
+    },
+    {
+      "document_line": 534,
+      "label": "cmd_ensure()",
+      "target": "./agent/app/hot_news_scheduler.py#L48",
+      "target_line_text": "async def cmd_ensure() -> int:",
+      "containing_symbol": "cmd_ensure"
+    },
+    {
+      "document_line": 534,
+      "label": "ensure_schedules()",
+      "target": "./agent/app/services/hot_news_schedule.py#L158",
+      "target_line_text": "async def ensure_schedules(",
+      "containing_symbol": "ensure_schedules"
+    },
+    {
+      "document_line": 534,
+      "label": "build_schedule()",
+      "target": "./agent/app/services/hot_news_schedule.py#L121",
+      "target_line_text": "def build_schedule(",
+      "containing_symbol": "build_schedule"
+    },
+    {
+      "document_line": 534,
+      "label": "HotNewsWindowDispatcherWorkflow.run()",
+      "target": "./agent/app/workflows/hot_news.py#L57",
+      "target_line_text": "    async def run(",
+      "containing_symbol": "HotNewsWindowDispatcherWorkflow.run"
+    },
+    {
+      "document_line": 534,
+      "label": "test_hot_news_schedule.py",
+      "target": "./agent/tests/test_hot_news_schedule.py"
+    },
+    {
+      "document_line": 534,
+      "label": "test_hot_news_workflow.py",
+      "target": "./agent/tests/test_hot_news_workflow.py"
+    },
+    {
+      "document_line": 534,
+      "label": "拒绝 ensure",
+      "target": "./agent/app/hot_news_scheduler.py#L56",
+      "target_line_text": "    if getattr(settings, \"behavior_tags_enabled\", False) or getattr(settings, \"reader_profile_enabled\", False):",
+      "containing_symbol": "cmd_ensure"
+    },
+    {
+      "document_line": 534,
+      "label": "拒绝 unpause",
+      "target": "./agent/app/hot_news_scheduler.py#L101",
+      "target_line_text": "    if command == \"unpause\" and (getattr(settings, \"behavior_tags_enabled\", False) or getattr(settings, \"reader_profile_enabled\", False)):",
+      "containing_symbol": "cmd_state"
+    },
+    {
+      "document_line": 534,
+      "label": "ActiveBundle 门禁",
+      "target": "./agent/app/services/active_bundle_hot_news.py#L194",
+      "target_line_text": "    def _validate_reader_context(self, request: HotNewsRunRequest) -> None:",
+      "containing_symbol": "ActiveProductionBundleHotNewsService._validate_reader_context"
+    },
+    {
+      "document_line": 536,
+      "label": "TelemetryMiddleware.__call__()",
+      "target": "./agent/app/observability/web.py#L17",
+      "target_line_text": "    async def __call__(self, scope, receive, send):",
+      "containing_symbol": "TelemetryMiddleware.__call__"
+    },
+    {
+      "document_line": 536,
+      "label": "temporal_interceptors()",
+      "target": "./agent/app/observability/temporal.py#L123",
+      "target_line_text": "def temporal_interceptors():",
+      "containing_symbol": "temporal_interceptors"
+    },
+    {
+      "document_line": 536,
+      "label": "traced()",
+      "target": "./agent/app/observability/decorators.py#L12",
+      "target_line_text": "def traced(name, *, attributes=None, identity=None, result_status=False):",
+      "containing_symbol": "traced"
+    },
+    {
+      "document_line": 536,
+      "label": "operation()",
+      "target": "./agent/app/observability/telemetry.py#L163",
+      "target_line_text": "def operation(name: str, *, attributes: Mapping[str, Any] | None = None,",
+      "containing_symbol": "operation"
+    },
+    {
+      "document_line": 536,
+      "label": "ObservabilitySettings",
+      "target": "./agent/app/observability/settings.py#L7",
+      "target_line_text": "class ObservabilitySettings(BaseSettings):",
+      "containing_symbol": "ObservabilitySettings"
+    },
+    {
+      "document_line": 536,
+      "label": "configure_telemetry()",
+      "target": "./agent/app/observability/telemetry.py#L316",
+      "target_line_text": "def configure_telemetry(service_name: str | None = None, *, settings: ObservabilitySettings | None = None,",
+      "containing_symbol": "configure_telemetry"
+    },
+    {
+      "document_line": 536,
+      "label": "test_observability_chain.py",
+      "target": "./agent/tests/test_observability_chain.py"
+    },
+    {
+      "document_line": 536,
+      "label": "test_observability_telemetry.py",
+      "target": "./agent/tests/test_observability_telemetry.py"
+    },
+    {
+      "document_line": 557,
+      "label": "anchor-refresh-plan.json",
+      "target": "./output/code-chain-review-20261017/anchor-refresh-plan.json"
+    },
+    {
+      "document_line": 557,
+      "label": "validation.json",
+      "target": "./output/code-chain-review-20261017/validation.json"
+    },
+    {
+      "document_line": 558,
+      "label": "旧行号审计",
+      "target": "./output/code-chain-review-20261016/anchor-audit.json"
+    },
+    {
+      "document_line": 558,
+      "label": "旧核验记录",
+      "target": "./output/code-chain-review-20261016/validation.json"
+    }
+  ],
+  "source_file_sha256": {
+    "agent/app/models/conversation.py": "e2339e9b985e251310c24d81c1341696394dc784ef7830c2d5af939eb0225fb7",
+    "agent/app/models/hot_news.py": "742384e564d4e2a2000126e1ada6d9ea0a9fd22aa7ad1c31b56e2f2976dc2c37",
+    "agent/app/behavior_tags/build.py": "6b89d8c7120af51a75e2cd210567ab11e508e5bbdc21d8935ea31d97df92a99a",
+    "agent/app/reader_profiles/build.py": "b4436d14fe49f783a219da203271c3850795184b9745f836a9ae1701e20e5d7d",
+    "agent/app/models/hot_news_decision.py": "4c831937a9166c23c27ecc8b5046104b68927eb8400cf8a3fb625c1c96ee877e",
+    "agent/app/models/hot_event.py": "1b25491d89450c7d4406f5d9d2c95c4107da0419780b58d5edfa00f06cf25380",
+    "agent/app/models/job.py": "ed9c9ba46ce5a890e1cba4764032ebfe81269bb4110ca9aebd78f31c165655d4",
+    "agent/app/models/step.py": "2b64c57d1f0ad47df6e434ec06ab94c4d07e452238dc5eeb65a821018bcbbdf2",
+    "agent/app/models/artifact.py": "efa12411f24600f632aec5ce9fc93a3634ba4d4c90828894dc3ea6b4a9be83cf",
+    "agent/app/models/agent_run.py": "b4af744dc03f333ce1deaee14817b4c295fd3a51fc68e9c6604845cc7004402b",
+    "agent/app/models/analysis_feedback.py": "694ac43c5ed0bff79b2191a01092933b6eabec28506b14a1f87bab4536919ad9",
+    "agent/app/models/evaluation_dataset.py": "50cccde760d08e061ab9536e7b50a6fc2219ea0c43e526cad1844a46710ffb1d",
+    "agent/app/models/production_bundle.py": "5878b923f4ab2005ea3effb1a16301af347cd4f3640a4c88dd786475b8343797",
+    "agent/app/models/user_memory.py": "f7bc33e4298db27a7abb3e8e2598e4635bd84e6d4c84873567635653039bebaa",
+    "agent/app/knowledge/postgres_store.py": "53548801ebd9a9f29d04e15bfdd813343884fbcc55bca7e167c03547f3eb9d76",
+    "agent/app/knowledge/tier_lifecycle_store.py": "d9f64946e9220e3a0b98013c65476be81c4e217847d4606bed0c33087f475183",
+    "agent/app/models/outbox.py": "63b8a2c06fd3e5163e129c2fd7e7f16519ee55a08c88446345e15f9db411fbd9",
+    "agent/app/api/conversations.py": "5ba74fba8ee321fb1401ebad3a95d4a28961e9bac4d95a50813d054bf8adbbd1",
+    "agent/app/conversation/service.py": "dc9fd0e2c1cf7acc601fb3c60ee4572108d76d60d06ab37a018f44f2c54a1243",
+    "agent/app/conversation/streaming.py": "f2cea6df5e58944e26ec8dd21d7eb92ce485c2458a5d5f397583cee986993e68",
+    "agent/app/conversation/tools.py": "c5ec3f507fc79c893f752c88a4dd811e455d1e68e70886e3cd6e41a9584f62d1",
+    "agent/examples/conversation_hot_news.py": "a1e1c29e37fd31a5033eb942e7488f56d04f6705f003f49d65f8219caf72b313",
+    "agent/app/conversation/query_understanding.py": "7424285adb30304b993533698fabb1541bba2329cd2ee1aa9bac6f196c405799",
+    "agent/app/repositories/conversation.py": "54ff2d58b1fc0e6491300ac55931fc61b3a553225658b6bf8ddb570c4edb9999",
+    "agent/app/knowledge/search_factory.py": "becdb6bd8c12e23655eedda7a75221a8801630b5d496ac743693e8f61add598c",
+    "agent/app/model_runtime/core.py": "cbd744ebecdad3ea927ff7ae5644e29c3c21a7bc4707b61f1febbb77a7c77cea",
+    "agent/app/clients/enterprise/milvus_vector.py": "e1219c6bae575d63458c0b3d40eb6489ef2fed71da55582f36411428c15b042e",
+    "agent/app/model_runtime/query_embedding.py": "66e3b75377ef4204a89a9a4bddde2b14b0c37d0581000851841f670675e9903f",
+    "agent/app/retrieval/tiered_vector.py": "a0a353c9ec1da87da60f992a01370fbbdd46d7ce9d6c103222693790fbc0daf7",
+    "agent/app/retrieval/related_news_reranker.py": "364ae5320343f05cf9d779a5c54fb9ea1d4ff3c635aeb05e1a1ea350c553bd92",
+    "agent/app/conversation/related_articles.py": "e926d56757fda7a9582aaaad8f04cca05ee102238f1d43cc9b72bff2c40b6152",
+    "agent/app/knowledge/tier_lifecycle_query.py": "649dbd9a649a63fb5f382f147946db25e9072935ff24753fb9b9da4883c616b5",
+    "agent/app/analytics/hot_news_enrichment.py": "8d50d3601c32ff2bf0717735671b544f6e3e035b8b6413dfde8c69f3251508f0",
+    "agent/frontend/src/api/hotNews.ts": "7ed445e5d8bea9c9c8633d6994362e18673ed50e1acd726927ee351cffd8c3cc",
+    "agent/examples/local_simulation.py": "297f81df993b342959ff998069ddbc442b8dddfafa3629bc909a5900d566b0b8",
+    "agent/app/sql_assistant/service.py": "f66bc4dc7bcf907d6117a825ddd11448f213b03b9850ea0c202a9540a5d1d335",
+    "agent/app/workflows/hot_news.py": "e79760998e11a821697d23b2b5ec77e33b9cf8923add698d8a180d6f5a9f6cf2",
+    "agent/app/activities/hot_news.py": "dd07c88644bd6c0148fff0c5bc2a7752de873830cc59b1aa72c47728360feaa0",
+    "agent/app/services/active_bundle_hot_news.py": "8e81b63be23829cfd607edc2309e2cb472c7e2e2af1564578ac6be8881cb6a90",
+    "agent/examples/native_hot_news_sql_support.py": "9e0464cf2b769d36d167eecb1289320ab51ad009ecfc778dd65ed222909bee27",
+    "agent/app/services/hot_news_orchestration.py": "e77c8a4fad416199b9b93cefe9df3f873b6d7017cc01b274c811dfc0c369f5d3",
+    "agent/app/analytics/ranking.py": "f7bbab6bacd44e406b05341d647a4c2b570cb2011349150f05fa0e478e8da932",
+    "agent/app/analytics/hot_score.py": "4c3c225c1f09a4a50e4279e8599deab7a41c72d256294847e71228b4a3d425bb",
+    "agent/app/services/hot_news_analysis_batch.py": "36c6f0fa9b41eb62b1f0b2485f596d4bde92e5d6966add341b59a35f30a11312",
+    "agent/app/services/hot_news_analysis.py": "77ba0a1572979eed71244f4c10bdbe02e875c2da3aa41687e6b4a5073b989a39",
+    "agent/app/services/hot_news_run_store.py": "1f625ae58a1b02343d00e151ceb4ef32c3359577cc4e8a7ff8c913b5dc705e57",
+    "agent/app/services/hot_news_query.py": "6e8276b416b064e73ba57470fd89dd18e509147c6b217452ed1da9e46d4728ac",
+    "agent/frontend/src/components/hotnews/HotNewsRankTable.vue": "f74a38d48d2899107476dc8c3f65cad1fe59f4e9dd99d524ea476ff0f46a388a",
+    "agent/app/model_runtime/hot_news.py": "c17cef6d5be0cfb9d2de5ddb1ee2c71309eae108815c72c7d9ce0a7e5f2c4c0a",
+    "agent/app/behavior_tags/merge.py": "43672800becff31c2f071a4759165f25f306c48aab67ab20e30be527b4578c99",
+    "agent/app/behavior_tags/tagging.py": "65e1c881fc9027f9d77a1db40e54b51f849d8ab73138a80dbc098c1d3620afc3",
+    "agent/app/reader_profiles/contracts.py": "117421ee77f5581f7acca2df3877b0e36a6c4f687dacd29ea0d43eb49d64adfc",
+    "agent/tests/test_reader_profile_build.py": "5b3e45ed40f61e1df7bb83741934cbb77e8a10830f460d36d009270c350818a9",
+    "agent/tests/test_reader_profile_contracts.py": "e4f550bc4a6575879de849453db5202cbe53ecd37476790005b382812393fc6d",
+    "agent/tests/test_reader_profile_local.py": "6f5d8144d2c2837a83835b4a2ea9f7ab1b5bb98b2ffab175409b7815e7442ab1",
+    "agent/docs/news-reader-profile-warehouse.md": "992d6097e3316ae8038aee050a394425b0ba88f85b1e63085d840c1fd15fe400",
+    "agent/app/reader_profiles/factory.py": "994b3a5c71c63192ff693343fe375ab56fc76183fe89083b9c8dc9ff82fc007a",
+    "agent/app/main.py": "7dc0cc139909d008be387491ca9d5bb0f79b5e7b7c71d1002919dac235707ca0",
+    "agent/app/hot_news_worker.py": "157c211bac18b4a8490e2b8029fe58de9fdfb5bafce7107dce27e2d77638e7ec",
+    "agent/app/reader_profiles/service.py": "e5717d6e9a39d75f00a1b5dc71e66970f8f891bc05104e20900f5cfe0569bd4c",
+    "agent/app/reader_profiles/local.py": "baf331bb246653085cb1977d7aea6b76d44f3c0e02b23ef3b499a0efb2aca0d5",
+    "agent/app/reader_profiles/client.py": "5aecd3322251f1a71457d889351c2449fe707f4adc6ff8926f610d0312b2e6d8",
+    "agent/app/api/hot_news.py": "cb3496c965cecfb254eea0d2b68ae5fba51ce9380a972590458a48c567141467",
+    "agent/frontend/src/components/hotnews/NewsReaderProfilePanel.vue": "6c835bce00d9a3102ea88fb4d8ca619a0a45aa8918a8e2b0c8d364f98691b665",
+    "agent/app/api/reader_profiles.py": "cc0174055d1f42f0020bd68b6a77f1c7e33a25904ee96982d0431c520b3df1d9",
+    "agent/app/services/push_strategy.py": "2d5bc28d8bb763f927d16f4ec4d77fe40f98d25caf74c47dd2f1ed17fb08c488",
+    "agent/app/config.py": "776fa80194d26c4143fba101c0d2e39d7754c09eeabe5d3254a8ce719d752bb5",
+    "agent/deploy/model-runtime.reader-profiles.local.yml": "bd9c53df00a13780635a4fc97956d2f4f2a358a2db15d6939225c706d75547ae",
+    "agent/deploy/docker-compose.reader-profiles.local.yml": "1677ab09c05f30f36e1e32cebe876f455f3b67c84a29b8dc9d5b4c6311458f18",
+    "agent/examples/reader_profile_query_smoke.py": "d877ceee15320e001d11e42a719b3eae05751ca66ae2a65e2b42a45706ab0b86",
+    "agent/examples/reader_profile_hot_news_smoke.py": "2174042a8a78d10975db1dcfc118e8048c0634d168a99c404f996388349b44a5",
+    "agent/tests/test_reader_profile_client_service.py": "7aa1369ce18e5417e0194f553f16b1c3dca43f435b087dd036da1e746de2d01f",
+    "agent/tests/test_reader_profile_api_factory.py": "19f76df5a13f98edf42a157f1f34e10c2e3b73f3570a311bb56c25c72bb5bc41",
+    "agent/tests/test_reader_profile_hot_news_integration.py": "e7325616ca01d2f3837f1d6648263ac8d8b78df6a6ad3b80435ecf8ec7af5b6f",
+    "agent/tests/test_reader_profile_runtime_assets.py": "53c42ad2d04f3cf21a51a6a1f9ff7f7ba96092593d609aca070239a492a07503",
+    "agent/frontend/tests/news-reader-profile.test.mjs": "8621a231af97c0c4791e29682cdca957e7087a9d8391574f26527943d78d8e15",
+    "agent/docs/news-reader-profile-integration.md": "403d2e12e8fe487fbac2ec92cfceaf2e7254accfec553fc88b10cee31046ab42",
+    "agent/app/api/jobs.py": "2f1466afde5995328ff14a6e19080047ec223c1214d9678cf3112a38b6bc3228",
+    "agent/app/services/orchestrator.py": "1da1635ac42dab9fd18e176567a5d3bbf75b8bb526054d54032105b0a00cb117",
+    "agent/app/workflows/news_writing.py": "c70cb370725d15c55e35f8ea66be15f2f06baf5536ad6f65653c7795e087ec0b",
+    "agent/app/services/agents/research.py": "cc4c466180cc7fe52be9003a9db32dbcf7c0806afb24ac1f85f3a2016ade810c",
+    "agent/app/services/agents/writer.py": "22363d2e5d225250e7e114aaa9973e9a47f3ae1249b1522af9522ed8106cef15",
+    "agent/app/services/agents/reviewer.py": "d1eb7df5e1dbd2e1a06938daae6c0d1a128abc361d61986e83be6e2708d6995b",
+    "agent/app/data_analysis/projection.py": "5d6225f60609475295a53094f95943a239a58d842950d0cb78553742cd64e147",
+    "agent/app/data_analysis/runner.py": "628a3e850ebcbf9b13486c888a65b788e582251aab4596be7884d46b310f4df7",
+    "agent/app/data_analysis/worker.py": "1d79f0bf6cc2fc50b4bb891b4865785c90c3a80a7066d08f0d2a88f31610efb8",
+    "agent/app/data_analysis/engine.py": "5d22f6c1302d7db9d4ee97ec6f6f25ab57e66e9b5e6ee137370bf86035afd06b",
+    "agent/app/data_analysis/factory.py": "395678142adc3c9549cfbcb2e6cff2b047133ab4db996d8b349b75da77b974f8",
+    "agent/app/data_analysis/remote.py": "1a4ab66737e2b7cac8ae6e49b9f361e4531b43b2077f735941681fffa72d3909",
+    "agent/app/data_analysis/service.py": "cb328abaef7efd8243f7e4f6d88ce97ad957fbcd37345c754f80a32b73b27fe6",
+    "agent/app/services/data_loop/feedback_collector.py": "b99c3ebbb64fba54705e9bcf7a975e87ee4bd3780cec243f8b736dcd4c597cc3",
+    "agent/app/api/data_loop.py": "0b940b78989b89bc325761f1b488ded3bfd5928ed468e0103472cd1b852d7c91",
+    "agent/app/workflows/data_loop.py": "8e044d1dd75c9b71eadcdca8c74de546fda6b4b55ce19ad0b13b65c27f226c5d",
+    "agent/app/services/data_loop/dataset_freezer.py": "9100461edfc76bcd60a79186c8977f9f59df2407fc65de5ffcb50d6d5d64ac56",
+    "agent/app/services/data_loop/step_handler.py": "5a659e742c72c43aeace2b9355f4f724255a97105cf891563692920184e775eb",
+    "agent/app/services/data_loop/offline_replay.py": "0a228ff03ce0c5274a6555f0b44c836f94c34a0348c2ce082d7afa14127b5fa6",
+    "agent/app/services/data_loop/evaluation_gate.py": "88be3f80e2a78f253ce531965fe844e986169be413014617e94b4922003152bc",
+    "agent/app/api/memory.py": "3def7623b35f26565f5bb97e19dcc44d84be9de4ebe6ed1700f0f906985dfe01",
+    "agent/app/services/memory_write_application.py": "5aef1117e66406840b29bab9cf0f918e4551c0a1d57d23e5bd00989ed6d09929",
+    "agent/app/services/memory_promotion_application.py": "25c886832127471eaf2782b1f4a1d6ce0551e87d0cbacbbe5116a2ef21e69670",
+    "agent/app/services/memory_promotion.py": "4e8e1da9d2378a30c21471e5a517099d300c43ebc74439ed0e260e3725f7fd95",
+    "agent/app/services/memory_aware_hot_news_analysis.py": "dbc8de2310bd860298c553b03acb1d62758dd6b965a4a3c18cfe28450248af30",
+    "agent/app/conversation/confirmation.py": "f2654c16a22577f9ad450d55a3d055ac45fc882b7aa01b8fdd668965f3a24b83",
+    "agent/app/conversation/writing.py": "0ae47666dc617d7ce6e01aa9e30e1e67292d5e44042303fb3392e4f246d156b2",
+    "agent/app/services/job.py": "5c5cc670dfb1b3dea7355c130331ce24784a664735b914ab73fa119de13b3237",
+    "agent/app/conversation/admission.py": "7abb0312d4f0fea0416f892aeb817990c50c927efb4bd3b4cc74c46c9361b0da",
+    "agent/app/conversation/memory_hooks.py": "5ab1752d0f45fab6e6c55364df5a0af4d3654735f979a1ec48394d93c8fe954a",
+    "agent/app/conversation/feedback_hooks.py": "e5f9c85986d3c4e8784a761a5c6fd584e7cf2a8772ef22370a471d7b8553a34d",
+    "agent/app/services/hot_news_decision.py": "d84d87548ccee8136158c8778ad5cd8d416647fa0480434be75695dc4d695b9b",
+    "agent/app/conversation/dataloop_hooks.py": "87070b6565494e81cd27f24da41d347498eab357128ba9763acf488c38bf2726",
+    "agent/app/conversation/admission_workflows.py": "79d2150f3251b58d8a2914ceb0b2184ae4fcd026d864433d74a1074eeaa097f5",
+    "agent/app/conversation/admission_contracts.py": "70c9892a54702d409ebacdebb71d7fd3d4222a09d311494a08f5539fbddf4952",
+    "agent/app/model_runtime/agent_client.py": "ccf6ff8b80c1d312524b4814f80da95ff122b4a85ee9d1a7c722e7bf495dea30",
+    "agent/app/model_runtime/config_file.py": "e3884ecf71d4060a3b299b9edfc8c9954e9631236b988b4704410d32b3661770",
+    "agent/app/model_runtime/http.py": "90b221d77343e39d047ac1c7d422e0037c1828f51c31eb74b7eca8c460b2302b",
+    "agent/app/model_runtime/factory.py": "0c3d64e0fe32bd1055b7c5f21f729321e0a51d78f86c23868f441f3c9a8f2ce6",
+    "agent/app/sql_assistant/input_boundary.py": "c4464aa9b63256446dd41b49fe6bd78ced21c06b0bcc6733dd0aa7b27751cbe9",
+    "agent/app/hot_news_bootstrap.py": "7a2bff6c5bb2e320fea170e2ecafdf322a5a624ebb2f38e0aeecd23ecbd69e3e",
+    "agent/app/bootstrap.py": "2f9cdb0caf9073fba992dd53c7d7453cfc367f53900d66bd81db58db44344d2e",
+    "agent/app/hot_news_dependencies.py": "0ac5bb7c2978342401cdfb3dd907b22cd6c4e913200378eb2ba90f6f803d3305",
+    "agent/app/worker.py": "3350b78ce7685a3481636acb66fbec6d938536e63c6dee8d2835416ddb9e19dc",
+    "agent/app/data_loop_worker.py": "f16048fa542fb44156a2c4228e0b20c2c736b8772665a656ecb66e28516a0024",
+    "agent/tests/test_data_loop_worker.py": "dd752f81a4ea9f93051b4e969660cf938462193b804aec2ab7f81aded6d22b43",
+    "agent/tests/test_conversation_admission_wiring.py": "53fcc0ce3418a53a27d57b67c6d8926a8c6fdcf941a388b65c2591308bf0677b",
+    "news/service/discovery_ingest_service.py": "12c5d5317bc876eca547ea455ff730d39c085fc78582fcec0093785a6af57128",
+    "news/service/news_ingest_service.py": "47da01d4e699b31a356036afb594df1bbb89c3ac1fb523d396bc79507d9fcc06",
+    "news/service/newsagent_knowledge_client.py": "c5d86940e4f7a176a462db28194fabe53bce5b9a0997c353072e860ff45ac0ce",
+    "agent/app/api/knowledge.py": "67cc918d49aaed5263d300dd59729a3a25630b82ef17195af5c5ae786c2eb6ce",
+    "agent/tools/build_incremental_news_index.py": "30964a95d9528ee4b47c244c3202de21e1bd5a924ceaddecb56bc3999664db69",
+    "agent/app/knowledge/tier_lifecycle.py": "94445e54e7a68823d248e15bcd2c433a359731dd1cd399120a13d3c0f6c001ef",
+    "agent/app/knowledge_lifecycle_worker.py": "623c1868ed0117d3289be4d6827e1cab07db1002318681df09c69f237dd25d60",
+    "agent/app/behavior_tags/runtime.py": "63af56afcdc48998559f825c8f84d38b14404926498792f9485d9c88eac74bb7",
+    "agent/frontend/src/components/hotnews/AudiencePreviewPanel.vue": "dfb8e525056f6bb156b079beec7e2df6981236070cb9bde990780081de1921f8",
+    "agent/frontend/src/api/audience.ts": "39448077cebb3adfc817fe533ccbd17a2d4352adb1924ea3bddc5bb46cea2e3c",
+    "agent/app/api/audience.py": "9d9308abe5f1d3d3d4effe74a0e9eb24cb301711578474794caf6bce336386d9",
+    "agent/app/audience/service.py": "143dd2990d1bb3ca5d056780fe54b320a0ab19be158ed5e91304da5fbd9f01cf",
+    "agent/app/audience/client.py": "b04c196fb625eb1805d9c4f062d32aec37a3892cc05824b349d9d818d15f7f32",
+    "agent/app/conversation/context.py": "dcda73f11ca00cad469d6275cf3a762e329ba70e40d993ba0475c4e1230d477c",
+    "agent/tests/test_conversation_compaction_policy.py": "43c4ea630d7f4a63ea8fb3523df5ac0ca65bf253342f62299658876fb0c332ad",
+    "agent/app/services/artifact_pipeline.py": "3173d047a67fc5c5b5c141864101a0a7ffcd1a83df60d356bfd1ac3beac7109d",
+    "agent/app/services/checkpoint.py": "952934683f042d636ee868e2594da8850af985a97ed5ca22f00514c1dcd6d0eb",
+    "agent/app/services/outbox.py": "e5d9bcc4792a34345e4ff037668a9913118b3919d9a53ddc007b13216d21227a",
+    "agent/app/services/event_publisher.py": "5882a99a444838e471cab16deef6b28b02b1b609f2c607310f0fb5a5c78e238c",
+    "agent/app/api/events.py": "3d1bd70c02948ea4af805e4452efd1d451d48410f5aad4e3069c9ceab67b901b",
+    "agent/tests/test_checkpoint_service.py": "d412c4a7fe1720b91b3babdf4c85235d57f4d5529cfda5828b42d6a797fe9346",
+    "agent/tests/test_outbox.py": "8e6e24310d485d1b4ed52f7116a252f134f586647585705511ee5a9297031b0f",
+    "agent/tests/test_event_publisher.py": "dbdeb266ee0980317ee1a7d64a6cf659704a11c24bf051c08200a44a54b28126",
+    "agent/app/services/hot_news_event_stream.py": "6b81ce011a9e402fdc7d8d9a0a81fd52d63ac45eb2fdedbd16c112cb980ed2ac",
+    "agent/app/api/dependencies.py": "cb13f2f7ae42ba29e5f63fdd64a7aec7edeb97afb6dc3093e0caaef368b94c87",
+    "agent/app/services/recovery.py": "993809beaec9e64ae2c227c683bfa61935d75bf02a30abb19a6463cf7b412247",
+    "agent/tests/test_conversation_store.py": "5c7bed3e8f046bd64b657c1e5693e9c9f38b6bed001392e4594e3c0ddfa66e70",
+    "agent/tests/test_conversation_tool_checkpoints.py": "a5c836018c3965e13ba8e75111983e0ad65884db433463bc8d6038fb843aa1ae",
+    "agent/tests/test_recovery_service.py": "a19db87073ce783fc157878a3feaecc7ccf5bb5f08fbc3ceb9f39a299c2135dd",
+    "agent/tests/test_conversation_postgres.py": "23d8237aa65efa502d4c3f3bacfb9fc9928d3db6392f625a832eb0b9d4b299ee",
+    "agent/app/services/hot_news_writing_handoff.py": "300f4c416a17d684231bd27efac381584240cfd3074f7afb464679af95d1b0f7",
+    "agent/app/clients/cms.py": "fe7dbcc9c89c31c8945e187f42ab484c1fd32534eb30a8049e4223895243e56d",
+    "agent/app/services/data_loop/publication_outcome.py": "fa721d322a684d27694698fcf79393047ef8a2be358506d3512b3b8632966ee8",
+    "agent/tests/test_hot_news_decision_service.py": "cadfc0b8fdb778163f198834836961e21f33ff7184590c95beb7d01a698b3ae7",
+    "agent/tests/test_hot_news_writing_handoff.py": "a2d3e6b240d43634c4c38b8ee33746ca98c8a38446d7eddd709e618a69039e07",
+    "agent/tests/test_publication_outcome_feedback.py": "adafcb234f19bd8d99a6cfe3ac3dc8bc2ab7cd422f9160f09570f164dc43abbb",
+    "agent/tests/test_mock_cms.py": "cedd7f6a96f31490ada41408926e5c0e93d2e64a43842aee8819742bac60b358",
+    "agent/app/hot_news_scheduler.py": "c0b59be2da58f1a4a1fa14150cbd9816e201e1c13ed7eeee18f26bb426852a26",
+    "agent/app/services/hot_news_schedule.py": "0347f6573062d3a90247328e124648bb75218275b2bdf37f2cfa7abc2465403c",
+    "agent/tests/test_hot_news_schedule.py": "f2093c8573d458ac18510c85aca95a814bb7cfa5158f2813f6ba378e4967e177",
+    "agent/tests/test_hot_news_workflow.py": "38399f32b1a23c3f77386593be3565eec20be09a2dd8f55d4590328b3db54968",
+    "agent/app/observability/web.py": "2f92d10e6d5e85182b1cd9cbaa49682f2b08020017e20e11d99678fa987a5278",
+    "agent/app/observability/temporal.py": "8be9b8ee7520f5ea63613dbfa2438f31aff38ac9029517cc6be20230ff8f4cb8",
+    "agent/app/observability/decorators.py": "db1420dcbd884b58d532c4d0f46994bb6fad44acc00b35d1995ce1b39c66e525",
+    "agent/app/observability/telemetry.py": "69971530ecc66aece4077912b904b4c72b380421ef6dd38c89b4cccbc2ed5d99",
+    "agent/app/observability/settings.py": "7ee2773392d3745e7a2c4ba2bfbbc6130d68a1cb37d97f53feccda4aa7a3dc9a",
+    "agent/tests/test_observability_chain.py": "398bc3b54f88083d78a92547abeacdf70715c16f075abd3af914a13eb8e9ff99",
+    "agent/tests/test_observability_telemetry.py": "46394deb4ee7e1916d31e983aaab6e0e605075721ac3c26d4757c353be35afaf",
+    "output/code-chain-review-20261017/anchor-refresh-plan.json": "33943aa0e6da71a5a6a0a49e9ad288cf3fa53529f5aaa8996b539bbd9a82abd6",
+    "output/code-chain-review-20261016/anchor-audit.json": "10c58f3bb06bae2b752a4f9acab929a2a5aed44097d2ac0745cf6b0549802d2a",
+    "output/code-chain-review-20261016/validation.json": "cfa06e67138bb230d1a5008b813a8cf83f912ba90def9adab83948f2cc917c9e"
+  },
+  "critical_transition_sql_execution_symbol": "SqlAssistantService._execute",
+  "tool_registry_source_unchanged": true,
+  "critical_transition_results": [
+    {
+      "target": "agent/app/reader_profiles/build.py#L124",
+      "symbol": "_read_source",
+      "line_text": "def _read_source(directory):"
+    },
+    {
+      "target": "agent/app/reader_profiles/build.py#L219",
+      "symbol": "_RollingState.advance",
+      "line_text": "    def advance(self, boundary):"
+    },
+    {
+      "target": "agent/app/reader_profiles/build.py#L228",
+      "symbol": "_RollingState.profile",
+      "line_text": "    def profile(self, user, initialized, news=None):"
+    },
+    {
+      "target": "agent/app/reader_profiles/build.py#L251",
+      "symbol": "_dimension",
+      "line_text": "def _dimension(state, users, visitors, known, base, news, *, top_k, minimum_sample, names):"
+    },
+    {
+      "target": "agent/app/reader_profiles/build.py#L359",
+      "symbol": "build_package",
+      "line_text": "                readers = defaultdict(set)"
+    },
+    {
+      "target": "agent/app/reader_profiles/build.py#L381",
+      "symbol": "build_package",
+      "line_text": "                    connection.execute(\"INSERT INTO reader_profiles VALUES(?,?,?,?,?)\", (tenant, news, _iso(window_start), _iso(window_end), _json(payload.model_dump(mode=\"json\"))))"
+    },
+    {
+      "target": "agent/app/reader_profiles/contracts.py#L109",
+      "symbol": "ReaderProfileSummary",
+      "line_text": "class ReaderProfileSummary(AggregateModel):"
+    },
+    {
+      "target": "agent/app/reader_profiles/factory.py#L52",
+      "symbol": "build_reader_profile_service",
+      "line_text": "def build_reader_profile_service(settings):"
+    },
+    {
+      "target": "agent/app/reader_profiles/service.py#L35",
+      "symbol": "validate_reader_profile_batch",
+      "line_text": "def validate_reader_profile_batch(query: ReaderProfileQuery, raw: ReaderProfileBatch, *,"
+    },
+    {
+      "target": "agent/app/reader_profiles/service.py#L122",
+      "symbol": "ReaderProfileService.context_identity_for_window",
+      "line_text": "    def context_identity_for_window(self, *, tenant_id: UUID | str,"
+    },
+    {
+      "target": "agent/app/reader_profiles/service.py#L138",
+      "symbol": "ReaderProfileService.fetch",
+      "line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:"
+    },
+    {
+      "target": "agent/app/reader_profiles/service.py#L179",
+      "symbol": "ReaderProfileService._fetch_and_cache",
+      "line_text": "    async def _fetch_and_cache(self, key: str, query: ReaderProfileQuery) -> ReaderProfileBatch:"
+    },
+    {
+      "target": "agent/app/reader_profiles/local.py#L118",
+      "symbol": "LocalNewsReaderProfileClient._fetch_sync",
+      "line_text": "                \"SELECT news_id,payload_json FROM reader_profiles WHERE tenant_id=? AND window_start=? AND window_end=? AND news_id IN (\" + placeholders + \")\","
+    },
+    {
+      "target": "agent/app/reader_profiles/local.py#L146",
+      "symbol": "LocalNewsReaderProfileClient.fetch",
+      "line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:"
+    },
+    {
+      "target": "agent/app/reader_profiles/client.py#L114",
+      "symbol": "HttpNewsReaderProfileClient.fetch",
+      "line_text": "    async def fetch(self, query: ReaderProfileQuery) -> ReaderProfileBatch:"
+    },
+    {
+      "target": "agent/app/analytics/hot_news_enrichment.py#L71",
+      "symbol": "HotNewsEnrichmentService.enrich",
+      "line_text": "    async def enrich("
+    },
+    {
+      "target": "agent/app/analytics/hot_news_enrichment.py#L104",
+      "symbol": "HotNewsEnrichmentService.enrich",
+      "line_text": "        reader_profiles, reader_traces = await self._fetch_reader_profiles("
+    },
+    {
+      "target": "agent/app/analytics/hot_news_enrichment.py#L198",
+      "symbol": "HotNewsEnrichmentService._fetch_reader_profiles",
+      "line_text": "    async def _fetch_reader_profiles("
+    },
+    {
+      "target": "agent/app/analytics/hot_news_enrichment.py#L264",
+      "symbol": "HotNewsEnrichmentService._fetch_reader_profiles",
+      "line_text": "                content = contents.get(summary.news_id)"
+    },
+    {
+      "target": "agent/app/services/hot_news_analysis.py#L109",
+      "symbol": "HotNewsAnalysisInputBuilder.build",
+      "line_text": "            reader_profile_summary=("
+    },
+    {
+      "target": "agent/app/services/hot_news_analysis.py#L458",
+      "symbol": "HotNewsAnalysisService.analyze_with_snapshot",
+      "line_text": "                    self.validator.validate("
+    },
+    {
+      "target": "agent/app/model_runtime/hot_news.py#L42",
+      "symbol": "local_hot_news_prompts",
+      "line_text": "                HOT_NEWS_SCENE, \"native-e2e-prompt-v3-reader-profiles\","
+    },
+    {
+      "target": "agent/app/model_runtime/hot_news.py#L119",
+      "symbol": "NativeHotNewsAnalysisRunner.run",
+      "line_text": "                result = await self._service.run("
+    },
+    {
+      "target": "agent/app/services/hot_news_query.py#L192",
+      "symbol": "HotNewsQueryService._index_reader_profiles",
+      "line_text": "    def _index_reader_profiles(payload: dict[str, Any]) -> tuple[dict[str, ReaderProfileSummary], dict[str, dict[str, Any]]]:"
+    },
+    {
+      "target": "agent/app/services/hot_news_run_store.py#L67",
+      "symbol": "PostgresHotNewsRunStore.save_completed",
+      "line_text": "    async def save_completed("
+    },
+    {
+      "target": "agent/app/services/active_bundle_hot_news.py#L194",
+      "symbol": "ActiveProductionBundleHotNewsService._validate_reader_context",
+      "line_text": "    def _validate_reader_context(self, request: HotNewsRunRequest) -> None:"
+    },
+    {
+      "target": "agent/app/services/hot_news_orchestration.py#L94",
+      "symbol": "HotNewsRunRequest.idempotency_key",
+      "line_text": "        if self.reader_profile_context_sha256 is not None:"
+    },
+    {
+      "target": "agent/app/api/reader_profiles.py#L30",
+      "symbol": "query_profiles",
+      "line_text": "async def query_profiles(body: ReaderProfileRequest, principal: ReadPrincipal, response: Response,"
+    },
+    {
+      "target": "agent/app/main.py#L130",
+      "symbol": "_business_lifespan",
+      "line_text": "        reader_profile_service = build_reader_profile_service(settings)"
+    },
+    {
+      "target": "agent/app/hot_news_worker.py#L100",
+      "symbol": "run_hot_news_worker",
+      "line_text": "        reader_profile_service = build_reader_profile_service(resolved_settings)"
+    },
+    {
+      "target": "agent/app/hot_news_bootstrap.py#L46",
+      "symbol": "NativeHotNewsRuntime.close",
+      "line_text": "    async def close(self) -> None:"
+    },
+    {
+      "target": "agent/app/sql_assistant/service.py#L333",
+      "symbol": "SqlAssistantService._execute",
+      "line_text": "                    result = await warehouse.execute(SqlQuery("
+    }
+  ],
+  "preserved_sections_after_anchor_refresh": [
+    "## 热点 Agent 的对话链路",
+    "## 研究与写作链路",
+    "## 榜单数据分析",
+    "## 反馈、评测与配置改进",
+    "## 长短期 Memory",
+    "## 通用 Hook 分发与用户确认",
+    "## 对话发起写作",
+    "## 对话保存记忆",
+    "## 对话沉淀反馈",
+    "## 对话提交候选与启动评测",
+    "## 对话异步任务的租户排队",
+    "## 当前注册的全部对话工具",
+    "## 这边是工具调用链路",
+    "## query_hot_news()工具调用执行链路"
+  ],
+  "initial_document_sha256": "3a20b2d50ef9eb5cea280005141f3d7bdd71acfa163c7275de2b915955240f21",
+  "source_hashes_rechecked_after_edit": true,
+  "pdf": {
+    "path": "/Users/shi/Project/myProject/NewsAgent/output/pdf/newsagent-execution-chain-update-2026-10-17.pdf",
+    "pages": 1,
+    "visual_review": "passed; Chinese fonts, flow arrows, numbers and layout inspected after rendering"
+  }
+}

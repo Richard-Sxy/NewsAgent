@@ -39,6 +39,7 @@ def local_conversation_plan(payload: dict) -> str:
     message = str(payload["message"]).strip()
     tools = payload.get("tool_results", [])
     history = payload.get("history", [])
+    available_names = {item["name"] for item in payload.get("available_tools", [])}
     analysis_enabled = any(item["name"] == "analyze_hot_news_data" for item in payload.get("available_tools", []))
     wants_analysis = analysis_enabled and any(word in message.lower() for word in (
         "数据分析", "统计", "概况", "分布", "中位", "p90", "比较", "对比", "质量检查", "趋势", "基线"))
@@ -115,8 +116,106 @@ def local_conversation_plan(payload: dict) -> str:
     # Publication filters are query semantics; keep them in the original tool
     # question for the resolver to reject. A separate publish action still blocks.
     action_text = re.sub(r"发布(?:的|时间|日期)", "", message.lower())
-    if any(word in action_text for word in ("删除", "drop ", "发布", "修改配置", "系统指令", "忽略规则", "执行命令", "密钥")):
-        return respond("聊天工具只有只读权限，不能删除数据、运行命令、修改配置或发布内容。请使用既有人工审批流程。")
+    if any(word in action_text for word in ("删除", "drop ", "发布", "批准", "激活", "回滚", "二审", "晋升", "approve", "activate", "rollback", "系统指令", "忽略规则", "执行命令", "密钥")):
+        return respond("对话不能删除数据、执行审批、配置激活、回滚或发布；请在现有工作台按人工审批流程处理。")
+    if not tools and any(word in message for word in ("评测", "评估运行", "DataLoop", "data loop")):
+        if any(word in message for word in ("进度", "状态", "跑完", "完成", "结果")):
+            if "evaluation_status" not in available_names:
+                return respond("当前没有读取评测运行的权限或运行环境不可用。")
+            workflow = re.search(r"hot-news-data-loop-[0-9a-f]{64}(?![0-9a-f])", message)
+            if workflow:
+                return call("evaluation_status", workflow_id=workflow.group())
+            for turn in reversed(history):
+                for trace in reversed(turn.get("tools", [])):
+                    run = trace.get("result", {}).get("run", {})
+                    if trace.get("status") == "completed" and run.get("workflow_id"):
+                        return call("evaluation_status", workflow_id=run["workflow_id"])
+            return respond("当前会话没有评测运行引用，请提供真实 Workflow ID。")
+        if any(word in message for word in ("启动", "发起", "开始", "运行")):
+            if "start_data_loop" not in available_names:
+                return respond("当前没有发起评测的权限或运行环境不可用。")
+            candidate = re.search(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", message, flags=re.I)
+            if candidate:
+                return call("start_data_loop", candidate_id=str(UUID(candidate.group())))
+            for turn in reversed(history):
+                for trace in reversed(turn.get("tools", [])):
+                    candidate = trace.get("result", {}).get("candidate", {})
+                    if trace.get("status") == "completed" and candidate.get("candidate_id"):
+                        return call("start_data_loop", candidate_id=candidate["candidate_id"])
+            return respond("请提供待评测候选 ID；确认卡片会读取真实冻结数据集和门禁策略。")
+    if (not tools and any(word in message for word in ("配置", "Bundle", "bundle", "model_version", "analysis_prompt_version", "重排"))
+            and any(word in message for word in ("候选", "调成", "调为", "修改", "重排参数"))):
+        if any(word in message for word in ("重排", "reranker", "vector_weight", "entity_weight", "minimum_score")):
+            return respond("当前 Bundle 和回放契约不支持重排参数变更，此建议未落地；需先增加版本化重排资产与完整证据重放。")
+        if "propose_bundle_candidate" not in available_names:
+            return respond("当前没有可用的已注册候选预设或提交权限；建议未创建配置候选。")
+        match = re.search(r"(model_version|analysis_prompt_version)\s*(?:=|：|:|调为|调成|改为|改成)\s*([A-Za-z0-9._:/-]+)", message)
+        if match:
+            return call("propose_bundle_candidate", parameter=match.group(1), value=match.group(2), reason=message[:500])
+        return respond("请指定已注册的 model_version 或 analysis_prompt_version 和目标版本；完整规格与差异由服务端构造。")
+    if not tools and any(word in message for word in ("沉淀", "保存", "记录")) and any(word in message for word in ("案例", "反馈")):
+        if "save_feedback_case" not in available_names:
+            return respond("当前没有记录此类反馈的权限，请使用评审台或联系网关管理员。")
+        for turn in reversed(history):
+            for trace in reversed(turn.get("tools", [])):
+                result = trace.get("result", {})
+                if trace.get("name") in {"read_hot_news", "query_hot_news"} and trace.get("status") == "completed" and result.get("items"):
+                    label = re.search(r"(?:期望标签|期望|标签草稿)[：:为\s]*(.+)$", message)
+                    draft = label.group(1).strip() if label else "需人工核对事实、证据与归因。"
+                    if len(draft) > 96:
+                        return respond("期望标签草稿过长，请缩短后再沉淀反馈。")
+                    return call("save_feedback_case", run_id=result["run_id"], news_id=result["items"][0]["news_id"],
+                                issue_type="analysis_incorrect", expected_label_draft=draft)
+        return respond("当前会话没有已读取的新闻分析来源，请先读取热点报告再沉淀反馈。")
+    if not tools and re.match(r"^(?:请|帮我|为我|能否|可以|帮忙|我希望你|我想让你|你能|\s)*(?:长期|短期)?(?:记住|记录偏好|保存偏好)", message):
+        name = "propose_long_term_memory" if "长期" in message else "save_short_term_memory"
+        if name not in available_names:
+            return respond("当前没有保存用户记忆的权限，请联系网关管理员。")
+        content = re.sub(r"^(?:请|帮我|为我|能否|可以|帮忙|我希望你|我想让你|你能|\s)*(?:长期|短期)?(?:记住|记录偏好|保存偏好)[：:\s]*", "", message).strip()
+        if not content or len(content) > 1000:
+            return respond("记忆内容为空或过长，请重新描述希望保存的偏好。")
+        return call(name, content=content)
+    if not tools and any(word in message for word in ("记忆", "偏好", "长期候选", "记住的")):
+        if "memory_status" in available_names:
+            for turn in reversed(history):
+                for trace in reversed(turn.get("tools", [])):
+                    memory = trace.get("result", {}).get("memory")
+                    if trace.get("status") == "completed" and memory and memory.get("id"):
+                        return call("memory_status", memory_id=memory["id"], kind=memory["tier"])
+        if "状态" in message or "候选" in message:
+            return respond("当前会话没有可读取的记忆引用或相应读取权限；长期候选不会自动晋升。")
+    if not tools and any(word in message for word in ("写一篇", "写一份", "写篇", "写个", "撰写", "起草")):
+        if "start_writing_intent" not in available_names:
+            return respond("当前没有通过聊天启动写作任务的权限，请在写作工作台操作或联系网关管理员。")
+        topic = re.sub(r"^(?:请|帮我|为我|写一篇|写一份|写篇|写个|撰写|起草|\s)+", "", message).strip()
+        words = re.search(r"(\d+)\s*字", message)
+        target = int(words.group(1)) if words else 1000
+        if not 200 <= target <= 5000 or not topic or len(topic) > 500:
+            return respond("写作要求超出当前参数范围，请缩短主题或调整篇幅后重新描述。")
+        tone = "concise" if "简洁" in message else "explanatory" if any(word in message for word in ("解释", "科普")) else "neutral"
+        return call("start_writing_intent", topic=topic, target_words=target, tone=tone)
+    wants_writing_status = any(word in message for word in ("进度", "阶段", "审批状态", "跑完", "完成了吗"))
+    has_writing_history = any(trace.get("name") in {"list_writing_jobs", "writing_job_status", "start_writing_intent"}
+        and trace.get("status") == "completed" for turn in history for trace in turn.get("tools", []))
+    writing_request = "写作任务" in message or (wants_writing_status and (
+        "写作" in message or "任务" in message or has_writing_history))
+    if not tools and writing_request:
+        if "list_writing_jobs" not in available_names:
+            return respond("当前没有读取写作任务的权限，请联系网关管理员授权后再查询。")
+        match = re.search(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", message, flags=re.I)
+        if match and "writing_job_status" in available_names:
+            return call("writing_job_status", job_id=str(UUID(match.group())))
+        if wants_writing_status and "writing_job_status" in available_names:
+            for turn in reversed(history):
+                for trace in reversed(turn.get("tools", [])):
+                    if trace.get("status") != "completed":
+                        continue
+                    result = trace.get("result", {})
+                    if trace.get("name") in {"writing_job_status", "start_writing_intent"} and result.get("job"):
+                        return call("writing_job_status", job_id=result["job"]["id"])
+                    if trace.get("name") == "list_writing_jobs" and result.get("items"):
+                        return call("writing_job_status", job_id=result["items"][0]["id"])
+        return call("list_writing_jobs", limit=5)
     if not tools and message.startswith("读取热点运行"):
         match = re.fullmatch(r"读取热点运行 ([0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12})", message)
         if match is None:
@@ -137,6 +236,12 @@ def local_conversation_plan(payload: dict) -> str:
         if tools[-1]["status"] != "completed":
             return respond("工具没有成功返回证据，本轮明确降级为失败说明，不编造数据。")
         latest = tools[-1]
+        if latest["name"] in {"save_short_term_memory", "propose_long_term_memory", "memory_status"}:
+            return respond("已读取本轮用户记忆快照。有效期和候选状态见回执；长期候选仍需人工晋升。")
+        if latest["name"] in {"list_writing_jobs", "writing_job_status"}:
+            return respond("已读取当前租户的写作任务快照。任务阶段与人工审批状态见回执卡片，审批请在写作工作台完成。")
+        if latest["name"] == "evaluation_status":
+            return respond("已读取评测运行快照。阶段、门禁和人工审批状态见回执；审批请在 DataLoop 评审台执行。")
         if wants_analysis and latest["name"] in {"read_hot_news", "query_hot_news"} and not latest["result"].get("not_found"):
             return analyze(latest["result"]["run_id"])
         if wants_analysis and latest["name"] == "list_hot_news" and latest["result"].get("items"):

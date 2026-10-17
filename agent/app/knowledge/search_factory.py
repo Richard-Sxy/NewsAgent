@@ -32,6 +32,9 @@ def build_knowledge_search_index(*, config_path: str | None, postgres_store):
 
 async def close_knowledge_search_index(index) -> None:
     from app.retrieval.bge_snapshot import BgeSnapshotVectorIndex
+    if getattr(index, "lifecycle_guarded", False):
+        await index.close()
+        return
 
     if isinstance(index, (MilvusTieredVectorIndex, BgeSnapshotVectorIndex)):
         await index.close()

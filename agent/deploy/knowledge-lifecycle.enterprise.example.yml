@@ -1,0 +1,41 @@
+# 企业参数填写模板：null 必须由负责人填写，未经填写会明确拒绝启动。
+# 不包含任何企业默认值、连接地址或凭证。
+# 配套：MODEL_RUNTIME_CONFIG_PATH 固定模型；KNOWLEDGE_SEARCH_CONFIG_PATH 配 Milvus 三集合。
+# 启用：KNOWLEDGE_LIFECYCLE_CONFIG_PATH 指向填写并版本化后的副本。
+schema_version: 1
+policy_version: null                 # 分层、迁移、检索规则的版本
+embedding_version: null              # 必须匹配 model-runtime.embedding.model_routes
+expected_embedding_dimensions: null  # 必须匹配模型输出及向量集合 schema
+chunking_version: null               # 切片规则变化必须更换版本并重建投影
+chunk_chars: null                    # 字符数；仍须遵守模型 token 上限
+chunk_overlap: null                  # 0 <= overlap < chunk_chars
+max_chunks_per_document: null        # 每篇切片总量上限，1..1024；Embedding 前检查
+max_vector_coordinates_per_document: null # 切片数 × 向量维度上限，至多 1000000
+embedding_batch_size: null           # 还受总 token 和 HTTP 响应上限约束
+vector_batch_size: null              # 单次向量写入批量
+
+hot_max_age_seconds: null            # 热：[0, Th)
+cold_min_age_seconds: null           # 温：[Th, Tc)，冷：[Tc, +∞)；要求 Th < Tc
+reheat_hold_seconds: null            # 可信回热事件的保持期，秒
+migration_interval_seconds: null    # 老化扫描间隔，秒
+scan_batch_size: null                # 每批扫描的台账记录数
+dispatch_interval_seconds: null     # 待派发任务扫描间隔，秒
+
+max_attempts: null                   # 有限重试次数，包含首次
+retry_initial_interval_seconds: null
+retry_max_interval_seconds: null    # >= initial
+activity_timeout_seconds: null      # 单次 Activity 执行上限
+workflow_timeout_seconds: null      # 包含等待和重试；>= activity_timeout
+task_queue: null                    # 与索引 Worker 的 Temporal 队列完全一致
+
+query_candidate_limit: null         # 每层初始切片候选，不是最终新闻 TopK
+query_max_candidates: null          # >= candidate_limit；有界补搜上限
+query_refill_factor: null            # 整数 2..16，每次扩大候选的倍率
+query_request_timeout_seconds: null # 查询 Embedding + 三层搜索 + 状态校验 + 融合总预算
+query_rrf_k: null                    # RRF 平滑参数，不是 TopK
+query_weights:                     # 非负，至少一个正数；首轮可用相同权重
+  hot: null
+  warm: null
+  cold: null
+query_max_concurrency: null          # 共享查询服务的并发预算
+max_search_rows: null                # 本地 SQL 模拟扫描上限；企业 Milvus 不以此限容量

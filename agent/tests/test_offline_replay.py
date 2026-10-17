@@ -88,13 +88,17 @@ class Runner:
 
 
 class Factory:
+    def __init__(self):
+        self.tenants = []
+
     def ensure_supported(self, bundle_spec):
         pass
 
     def ensure_transition_supported(self, *, baseline, candidate):
         pass
 
-    def create(self, bundle_spec):
+    def create(self, bundle_spec, *, tenant_id):
+        self.tenants.append(tenant_id)
         return Runner("growth" if bundle_spec.model_profile_id == "candidate" else "click")
 
 
@@ -112,7 +116,8 @@ async def test_offline_replay_compares_three_layers_on_identical_cases() -> None
         ),
     )
 
-    result = await HotNewsOfflineReplayService(Factory()).evaluate(
+    factory = Factory()
+    result = await HotNewsOfflineReplayService(factory).evaluate(
         manifests=manifests,
         candidate_spec=spec("candidate"),
         online_baseline_spec=spec("baseline"),
@@ -124,6 +129,41 @@ async def test_offline_replay_compares_three_layers_on_identical_cases() -> None
     assert result.suite_metrics.golden.previous_experiment.pass_rate == 1
     assert result.suite_metrics.golden.candidate.critical_failures == 1
     assert result.suite_metrics.fresh_bad_case.candidate.critical_failures == 0
+    assert factory.tenants == ["tenant-1"] * 9
+    assert result.artifact_payload["tenant_id"] == "tenant-1"
     serialized = str(result.artifact_payload)
     assert "raw_content" not in serialized
     assert "error_message" not in serialized
+
+
+def replay_manifests(tenant_id="tenant-1"):
+    return tuple(
+        manifest(layer, UUID(f"20000000-0000-4000-8000-{index:012d}"))
+        .model_copy(update={"tenant_id": tenant_id})
+        for index, layer in enumerate(("golden", "fresh_bad_case", "high_risk_regression"), 1)
+    )
+
+
+@pytest.mark.asyncio
+async def test_replay_rejects_mixed_tenants_before_creating_any_model_runner():
+    factory = Factory()
+    manifests = replay_manifests()
+    manifests = (manifests[0], manifests[1].model_copy(update={"tenant_id": "tenant-2"}), manifests[2])
+    with pytest.raises(ValueError, match="one tenant"):
+        await HotNewsOfflineReplayService(factory).evaluate(
+            manifests=manifests, candidate_spec=spec("candidate"), online_baseline_spec=spec("baseline"),
+        )
+    assert factory.tenants == []
+
+
+@pytest.mark.asyncio
+async def test_two_tenants_keep_model_audit_scope_on_their_own_replays():
+    factory = Factory()
+    service = HotNewsOfflineReplayService(factory)
+    for tenant_id in ("tenant-1", "tenant-2"):
+        result = await service.evaluate(
+            manifests=replay_manifests(tenant_id),
+            candidate_spec=spec("candidate"), online_baseline_spec=spec("baseline"),
+        )
+        assert result.artifact_payload["tenant_id"] == tenant_id
+    assert factory.tenants == ["tenant-1"] * 6 + ["tenant-2"] * 6

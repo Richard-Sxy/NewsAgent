@@ -1,0 +1,64 @@
+{
+  "conversation_id": "1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "conversation_url": "http://127.0.0.1:5179/chat?conversation=1e5929a0-2097-4e6a-9597-ce282ef6bd3e",
+  "date": "2026-10-08",
+  "news_id": "20261007A07SGK00",
+  "title": "10万元现金遗落出租车上后结局暖心，失主拿1万元现金酬谢郑州的哥",
+  "url": "https://news.qq.com/rain/a/20261007A07SGK00",
+  "publish_time": "2026-10-08T08:02:51+08:00",
+  "request_id": "aa9378a1-0cfb-475e-8853-acb7e759df16",
+  "status": "completed",
+  "submitted_at": "2026-10-15T04:56:42.603675+00:00",
+  "turn_id": "51c90e2b-55cc-4f9b-960e-112b36df36e4",
+  "turn_status": "completed",
+  "completed_at": "2026-10-15T04:56:44.420146Z",
+  "errors": [],
+  "target_news_id_recalled": true,
+  "tools": [
+    {
+      "name": "search_knowledge",
+      "status": "completed",
+      "attempts": 1,
+      "checks": {
+        "tool_completed": true,
+        "snapshot_v2": true,
+        "bge_backend": true,
+        "evidence_is_untrusted": true,
+        "embedding_version": true
+      },
+      "snapshot_version": "news-bge-incremental-20261014-v2",
+      "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+      "items": [
+        {
+          "news_id": "20261007A07SGK00",
+          "title": "10万元现金遗落出租车上后结局暖心，失主拿1万元现金酬谢郑州的哥",
+          "source_url": "https://news.qq.com/rain/a/20261007A07SGK00",
+          "publish_time": "2026-10-08T08:02:51+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:39510"
+        },
+        {
+          "news_id": "20261009A088SC00",
+          "title": "轨道辅警捡到600元现金，2分钟后还给外地大学生",
+          "source_url": "https://news.qq.com/rain/a/20261009A088SC00",
+          "publish_time": "2026-10-09T15:34:34+08:00",
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:41708"
+        },
+        {
+          "news_id": "20260903A0AFC300",
+          "title": "拦下两车货，警方追回86万元",
+          "source_url": null,
+          "publish_time": null,
+          "embedding_version": "bge-large-zh-v1.5:c59a3095657711fb",
+          "content_version": 1,
+          "chunk_id": "bge-snapshot:c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138:17308"
+        }
+      ]
+    }
+  ],
+  "answer_characters": 1274,
+  "answer_sha256": "ab3e3f736ab7a3236aabcb763b19b080c82288e6783c8187cb3dd4508d3b77f4"
+}

@@ -31,6 +31,7 @@ ResolutionCode = Literal["ready", "input_boundary", "invalid_proposal", "unsuppo
                          "query_intent_mismatch", "semantic_mismatch", "presentation_semantic_drift"]
 
 
+""" SQL查询意图理解 """
 class QueryUnderstanding(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
@@ -173,7 +174,7 @@ def _chinese_number(value: str) -> int:
             raise ValueError("invalid count")
     return total + current
 
-
+"""这边是正则匹配新闻: question用户输入/now时间/timezone_name时区信息"""
 def _requirements(question: str, *, now: datetime | None = None, timezone_name: str = "Asia/Shanghai") -> dict:
     presentation = extract_query_presentation(screen_question(question))
     time_requirements = extract_query_time(presentation.query_text,

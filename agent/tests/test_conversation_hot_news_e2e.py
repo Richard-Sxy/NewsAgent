@@ -32,11 +32,14 @@ def test_chat_uses_bound_sql_workflow_and_analysis_then_followup_replay(client):
     body = {"request_id": str(uuid4()), "content": QUESTION}
     events, turn = send(client, conversation["id"], body)
     assert turn["status"] == "completed", turn
-    assert len(turn["model_request_ids"]) == 2
+    # Planning before/after the tool and dedicated query understanding are all
+    # audited; analysis requests are recorded separately by the bound run.
+    assert len(turn["model_request_ids"]) == 3
     query = turn["tools"][0]
     assert query["name"] == "query_hot_news" and query["status"] == "completed", turn
     result = query["result"]
     assert result["understanding_model_request_id"] and result["analysis_model_request_ids"]
+    assert result["understanding_model_request_id"] in turn["model_request_ids"]
     assert result["query_model_request_id"] is None
     assert result["query_model_provider"] == "python-confirmed-intent"
     assert result["items"] and all(item["metrics"]["content_type"] == "video" for item in result["items"])

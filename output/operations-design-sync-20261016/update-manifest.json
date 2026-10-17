@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "source_thread_id": "01a143b3-5c8d-7a00-90f9-7506a48b3ff8",
+  "scope": "本窗口架构与业务说明同步；未改变应用实现或启用功能",
+  "current_document": "agent/docs/news-operations-agent-design.md",
+  "current_pdf": "output/pdf/NewsAgent_多智能体运营架构更新_2026-10-16.pdf",
+  "updated_topics": [
+    "多智能体职责与简版链路",
+    "企业画像与聚合受众服务边界",
+    "新闻运营目标与企业价值",
+    "Data Agent方向映射",
+    "评测资产复用与新增受众层",
+    "优化顺序与企业联调待办"
+  ],
+  "historical_design_pdfs": [
+    "output/pdf/NewsAgent_多智能体架构_2026-10-15.pdf",
+    "output/pdf/NewsAgent_多智能体架构_简版_2026-10-15.pdf",
+    "output/pdf/NewsAgent_腾讯新闻数据写作与企业价值_2026-10-15.pdf",
+    "output/pdf/NewsAgent_链路优化四步_2026-10-15.pdf",
+    "output/pdf/NewsAgent_DataAgent前沿方向映射_2026-10-15.pdf",
+    "output/pdf/NewsAgent_新闻运营目标与DataAgent差异_2026-10-15.pdf"
+  ],
+  "historical_policy": "保留旧版本；新版统一说明新增受众分支，未覆盖或删除历史文件",
+  "datasets_unchanged": [
+    "agent/evaluation/datasets/data_writing_august_2026_v1",
+    "agent/evaluation/datasets/operations_evolution_v2"
+  ],
+  "new_quality_dataset_status": "受众语义评测为待人工标注规划，未声称已建成或运行",
+  "evidence": ["run-spec.json", "results.json", "writing_unit.txt", "writing_artifacts.txt", "evolution_artifacts.txt", "audience_frontend.txt"]
+}

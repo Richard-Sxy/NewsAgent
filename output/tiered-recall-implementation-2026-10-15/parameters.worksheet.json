@@ -1,0 +1,366 @@
+{
+  "worksheet_version": "planning-v1",
+  "purpose": "参数填写和实现检查表；不能直接作为现有 YAML 加载",
+  "status_legend": {
+    "已有YAML": "现有解析器已支持；按对应模型或检索配置填写",
+    "已有代码参数": "构造函数/策略对象已支持；尚需接配置和依赖注入",
+    "企业侧合同": "从平台获得并冻结；不能根据本地模拟猜测",
+    "待实现": "需要先增加配置Schema、行为实现与测试"
+  },
+  "rules": [
+    "所有 user_fill 留空，由使用者填写；密钥只填环境变量名或密钥引用，不能填写密钥值。",
+    "已有配置 extra=forbid；待实现字段不能直接塞进当前模型/检索 YAML。",
+    "首版统一模型、切片版本和索引类型，三集合预加载；逻辑分层不保证延时排序。",
+    "本文是实施建议，企业参数和生产架构尚未据此变更。"
+  ],
+  "groups": {
+    "1_enterprise_connections": [
+      {
+        "name": "content_source_contract",
+        "user_fill": null,
+        "unit": "接口合同",
+        "meaning": "正文/发布时间/版本或有序修订号/撤稿/分页游标",
+        "implementation_status": "企业侧合同",
+        "constraint_or_decision": "明确重复、乱序、更正、撤稿与游标过期语义；更新时间不能单独充当版本"
+      },
+      {
+        "name": "embedding_endpoint_and_route",
+        "user_fill": null,
+        "unit": "URL及路由",
+        "meaning": "模型接口及固定模型路由；只记录api_key_env名称",
+        "implementation_status": "已有YAML：embedding.url / model_routes / api_key_env",
+        "constraint_or_decision": "企业环境 provider=openai_compatible；现有模型文件还要求inference/prompts，保留原合同"
+      },
+      {
+        "name": "postgres_test_database",
+        "user_fill": null,
+        "unit": "连接引用",
+        "meaning": "隔离测试库、账号与连接预算",
+        "implementation_status": "企业侧合同",
+        "constraint_or_decision": "可进行本项目版本化迁移；只记录密钥引用"
+      },
+      {
+        "name": "milvus_connection",
+        "user_fill": null,
+        "unit": "连接参数",
+        "meaning": "uri/database/token_env，服务和SDK版本",
+        "implementation_status": "已有YAML：milvus.uri / database / token_env",
+        "constraint_or_decision": "uri中不带凭据；版本、权限、配额、索引支持向平台确认"
+      },
+      {
+        "name": "milvus_collections",
+        "user_fill": null,
+        "unit": "三个名称",
+        "meaning": "hot/warm/cold各自独立集合",
+        "implementation_status": "已有YAML：milvus.collections",
+        "constraint_or_decision": "名称不同；字段匹配adapter，手动chunk_id主键，维度和度量一致；新增投影字段需迁移Schema"
+      },
+      {
+        "name": "temporal_namespace_queue",
+        "user_fill": null,
+        "unit": "命名空间/队列",
+        "meaning": "复用已有Temporal，新增索引工作流与Worker队列",
+        "implementation_status": "企业侧合同 + 待实现工作流",
+        "constraint_or_decision": "调度成功不等于索引完成；PG任务状态可被恢复派发"
+      },
+      {
+        "name": "test_tenant_and_monitoring",
+        "user_fill": null,
+        "unit": "身份/地址",
+        "meaning": "可信测试租户、日志/指标/告警入口",
+        "implementation_status": "企业侧合同",
+        "constraint_or_decision": "隔离数据和写权限；缓存命中也须过状态校验"
+      }
+    ],
+    "2_vector_identity_and_chunking": [
+      {
+        "name": "embedding_revision",
+        "user_fill": null,
+        "unit": "不可变版本",
+        "meaning": "权重revision、预处理、归一化规则及query/document前缀",
+        "implementation_status": "企业侧合同 + 待实现完整身份绑定",
+        "constraint_or_decision": "相同维度不代表兼容；服务路由若静默换模型必须阻止混用"
+      },
+      {
+        "name": "expected_embedding_dimensions",
+        "user_fill": null,
+        "unit": "维",
+        "meaning": "存储和查询向量维数",
+        "implementation_status": "已有YAML：embedding.expected_embedding_dimensions",
+        "constraint_or_decision": "代码允许1..65536；必须等于模型实际维度和collection维度，不是性能调参旋钮"
+      },
+      {
+        "name": "metric_type",
+        "user_fill": null,
+        "unit": "IP/COSINE",
+        "meaning": "向量检索相似度",
+        "implementation_status": "已有YAML：milvus.metric_type",
+        "constraint_or_decision": "与已建索引一致；IP和COSINE只有满足归一化约定时才可对应"
+      },
+      {
+        "name": "chunk_chars_and_overlap",
+        "user_fill": null,
+        "unit": "字符",
+        "meaning": "确定性切片长度和重叠",
+        "implementation_status": "已有代码参数：PostgresKnowledgeStore(chunk_chars, chunk_overlap)",
+        "constraint_or_decision": "chunk_chars>0且0<=overlap<chunk_chars；字符数不是token数，标题/前缀也计入模型输入预算"
+      },
+      {
+        "name": "chunking_version",
+        "user_fill": null,
+        "unit": "版本",
+        "meaning": "切片器/清洗/标题拼接规则版本",
+        "implementation_status": "待实现：投影身份与chunk_id纳入此版本",
+        "constraint_or_decision": "改变规则需要新投影，不能复用旧切片编号覆盖旧内容"
+      },
+      {
+        "name": "embedding_batch_size",
+        "user_fill": null,
+        "unit": "条/批",
+        "meaning": "每次Embedding输入条数",
+        "implementation_status": "已有YAML：embedding.max_batch_size；现有PG工厂将其接到入库批次",
+        "constraint_or_decision": "YAML允许1..2048但服务可能更小；同时满足token、条数、维度和当前HTTP响应1MiB上限；查询端当前不自动拆批"
+      },
+      {
+        "name": "embedding_token_budgets",
+        "user_fill": null,
+        "unit": "token/条与token/批",
+        "meaning": "单条和整批token上限",
+        "implementation_status": "企业侧合同 + 待实现切片后的token预算检查",
+        "constraint_or_decision": "不得静默截断导致正文缺失；超限需重新切片并记录规则版本"
+      }
+    ],
+    "3_lifecycle": [
+      {
+        "name": "hot_age_boundary",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "未显式提升时HOT的年龄上界Th",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "0<Th<Tc；age=virtual_now-publish_time；HOT为age<Th"
+      },
+      {
+        "name": "cold_age_boundary",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "未显式提升时COLD的年龄下界Tc",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "WARM为Th<=age<Tc，COLD为age>=Tc；边界无重叠无缺口"
+      },
+      {
+        "name": "unknown_or_future_time_policy",
+        "user_fill": null,
+        "unit": "策略",
+        "meaning": "缺失或未来发布时间的处理",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "单独待核验，不伪造日期或默认为冷层；记录排除量"
+      },
+      {
+        "name": "reheat_hold_and_cooldown",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "显式回热事件后的保持期及再次迁移冷却期",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "首版回放确定性提升事件；后续接Python/SQL热度规则，抑制反复搬迁"
+      },
+      {
+        "name": "migration_interval_and_batch",
+        "user_fill": null,
+        "unit": "秒/篇",
+        "meaning": "扫描频率与每批迁移文章数",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "过快增加竞争和服务负载；过慢增加层级滞后；时间和批大小分别填写"
+      },
+      {
+        "name": "visibility_consistency_and_deadline",
+        "user_fill": null,
+        "unit": "模式/秒",
+        "meaning": "写入后及后续查询的可见性保证",
+        "implementation_status": "企业侧合同 + 待实现一致性参数传递/校验",
+        "constraint_or_decision": "ACK或contains不等于Search可见；跨进程读者必须能继承同等可见性保证，不能只验证写客户端Session"
+      },
+      {
+        "name": "content_correction_policy",
+        "user_fill": null,
+        "unit": "策略",
+        "meaning": "更正接受后旧版能否继续服务",
+        "implementation_status": "待实现；建议首版严格阻断旧版",
+        "constraint_or_decision": "PG先提升最低可服务版本，新版未就绪时该新闻暂不可用；测量此空窗"
+      }
+    ],
+    "4_recall_and_index": [
+      {
+        "name": "index_type_M_efConstruction",
+        "user_fill": null,
+        "unit": "索引/整数",
+        "meaning": "HNSW连接数M和构建搜索宽度efConstruction",
+        "implementation_status": "企业侧建索引参数；不是当前搜索YAML字段",
+        "constraint_or_decision": "首版各层相同；调大通常增加内存/构建成本，变更按服务规则重建索引"
+      },
+      {
+        "name": "candidate_limit",
+        "user_fill": null,
+        "unit": "篇",
+        "meaning": "融合阶段的候选新闻上限",
+        "implementation_status": "已有代码参数：RelatedNewsSearchQuery.candidate_limit",
+        "constraint_or_decision": "与最终证据条数以及单层切片limit区分；上层仍可能再过滤截断"
+      },
+      {
+        "name": "per_tier_limit",
+        "user_fill": null,
+        "unit": "切片/层",
+        "meaning": "每层请求的向量命中数量",
+        "implementation_status": "已有代码参数：TierSearchPolicy.per_tier_limit",
+        "constraint_or_decision": "实际limit=max(per_tier_limit,candidate_limit)；去重/状态过滤后可能不足篇数"
+      },
+      {
+        "name": "ef",
+        "user_fill": null,
+        "unit": "候选宽度",
+        "meaning": "HNSW查询阶段的搜索宽度",
+        "implementation_status": "已有YAML：milvus.search_params.ef",
+        "constraint_or_decision": "至少满足部署版本对实际单层limit的约束；调大常提高近似召回并增加耗时；当前三层共用"
+      },
+      {
+        "name": "rrf_k_and_weights",
+        "user_fill": null,
+        "unit": "正数/权重",
+        "meaning": "RRF平滑参数与各层权重",
+        "implementation_status": "已有代码参数：TierSearchPolicy",
+        "constraint_or_decision": "rrf_k不是TopK；权重改变排名，不自动减少该层耗时；迁移双副本须按有效层过滤后融合"
+      },
+      {
+        "name": "refill_budget",
+        "user_fill": null,
+        "unit": "轮次/切片数",
+        "meaning": "状态过滤与新闻去重不足时扩大候选的上限",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "设置总deadline和最大候选预算；达到上限返回真实不足，不拿旧稿补足"
+      },
+      {
+        "name": "query_routing_mode",
+        "user_fill": null,
+        "unit": "策略",
+        "meaning": "首版三层并发全查，后续才评估按条件查冷层",
+        "implementation_status": "已有并发核心；聊天入口需统一",
+        "constraint_or_decision": "三层并发总耗时受慢层影响；跳过冷层需独立评测召回损失"
+      }
+    ],
+    "5_timeouts_and_capacity": [
+      {
+        "name": "embedding_timeout_seconds",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "单次模型HTTP超时",
+        "implementation_status": "已有YAML：embedding.timeout_seconds",
+        "constraint_or_decision": "代码允许>0且<=300；单请求预算仍需扣除排队/检索/校验"
+      },
+      {
+        "name": "vector_timeout_seconds",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "单次向量调用超时",
+        "implementation_status": "已有YAML：milvus.timeout_seconds",
+        "constraint_or_decision": "代码允许>0且<=60；search显式传递，写入/检查/删除需补全deadline语义；当前各层共用"
+      },
+      {
+        "name": "request_deadline_seconds",
+        "user_fill": null,
+        "unit": "秒",
+        "meaning": "检索全链路deadline",
+        "implementation_status": "待统一入口与接配置",
+        "constraint_or_decision": "覆盖排队+Embedding+max(各层检索)+PG校验+融合；重试共享剩余预算"
+      },
+      {
+        "name": "query_and_ingest_concurrency",
+        "user_fill": null,
+        "unit": "并发数",
+        "meaning": "在线查询与后台索引的独立资源上限",
+        "implementation_status": "已有每批max_query_concurrency；全局/进程/企业限流待实现",
+        "constraint_or_decision": "一条查询可发三次层级请求；批内semaphore不能代替跨请求全局限制"
+      },
+      {
+        "name": "activity_timeouts_and_retry",
+        "user_fill": null,
+        "unit": "秒/次数",
+        "meaning": "StartToClose单次、ScheduleToClose含重试总预算、退避及最大尝试",
+        "implementation_status": "Temporal已有能力；新索引工作流待接",
+        "constraint_or_decision": "只重试暂时错误；schema/维度/权限错误分类处理；避免SDK/Activity多层重试相乘"
+      },
+      {
+        "name": "heartbeat_and_checkpoint",
+        "user_fill": null,
+        "unit": "秒/批次",
+        "meaning": "长任务存活信号和可恢复进度",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "按已完成批次持久化；任务重试能重复执行；每篇新闻用generation做条件激活"
+      },
+      {
+        "name": "postgres_pool_budget",
+        "user_fill": null,
+        "unit": "连接数",
+        "meaning": "API/Worker各进程连接池和数据库总配额",
+        "implementation_status": "现有部署参数需核对",
+        "constraint_or_decision": "考虑所有副本及迁移/监控预留；远程Embedding/向量调用不占用长DB事务"
+      }
+    ],
+    "6_test_and_acceptance": [
+      {
+        "name": "replay_fixture_and_seed",
+        "user_fill": null,
+        "unit": "数据集/种子",
+        "meaning": "固定事件文件与查询集版本",
+        "implementation_status": "待实现回放器",
+        "constraint_or_decision": "包含新增、更正、撤稿、降层、回热、重复、乱序、故障；每轮重置隔离状态"
+      },
+      {
+        "name": "virtual_clock",
+        "user_fill": null,
+        "unit": "ISO8601/推进序列",
+        "meaning": "控制新闻年龄的固定业务时间",
+        "implementation_status": "待实现",
+        "constraint_or_decision": "只改变分层判断；耗时用真实单调时钟，不能用虚拟时间计算RPC延时"
+      },
+      {
+        "name": "workload",
+        "user_fill": null,
+        "unit": "QPS/事件每秒/并发/时长",
+        "meaning": "查询和变更混合流量",
+        "implementation_status": "待实现负载器",
+        "constraint_or_decision": "每次只变一个维度；报告实际到达率/完成率/排队，不只报告成功请求延时"
+      },
+      {
+        "name": "latency_and_freshness_slos",
+        "user_fill": null,
+        "unit": "毫秒/秒/比例",
+        "meaning": "端到端p95/p99、各层耗时、更新可见、撤稿屏蔽、失败和恢复预算",
+        "implementation_status": "使用者约定，待测试实现",
+        "constraint_or_decision": "样本量不足不宣称可靠p99；撤稿按PG提交后新发起查询判定；空结果/缺层另统计"
+      },
+      {
+        "name": "quality_protocol",
+        "user_fill": null,
+        "unit": "查询集/判定集",
+        "meaning": "人工相关性与ANN近似误差分开",
+        "implementation_status": "已有单层ANN工具；三层及人工相关性需接协议",
+        "constraint_or_decision": "精确基线使用同模型、同数据快照、同租户/版本过滤；向量自查询不能替代语义质量"
+      },
+      {
+        "name": "resource_or_fault_experiments",
+        "user_fill": null,
+        "unit": "实验方案",
+        "meaning": "资源/索引参数变化与故障延时注入",
+        "implementation_status": "待实现，可在稳定基线后单独运行",
+        "constraint_or_decision": "同资源三集合不保证HOT快于COLD；sleep/网络延时注入只证明预算和故障处理，不能宣称索引性能"
+      }
+    ]
+  },
+  "implementation_gates": [
+    "G1：固定模型身份；一篇文档由真实Embedding生成向量，隔离Milvus集合可检索。",
+    "G2：PG同事务保存事件/状态/job；派发失败可恢复，游标不跳过未保存事件；Worker切片/Embedding/写目标/可见性校验/条件激活。",
+    "G3：统一查询入口；有效版本、投影、层及撤稿Gate通过，跨层重复副本不重复计分。",
+    "G4：更正/撤稿/降层/回热；迁移复制并验证→PG条件切有效层→精确清理旧投影；旧任务不能重新激活。",
+    "G5：在派发、写入、激活、清理边界中断Worker；重放重复/乱序事件；验证重启和断连恢复。",
+    "G6：固定查询集混合负载；报告参数版本、各层数据量、延时、质量、新鲜度与积压。"
+  ]
+}

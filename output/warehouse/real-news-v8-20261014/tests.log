@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/shi/Project/myProject/NewsAgent/agent
+configfile: pyproject.toml
+plugins: asyncio-0.26.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 78 items
+
+agent/tests/test_real_news_warehouse_catalog.py ........................ [ 30%]
+....                                                                     [ 35%]
+agent/tests/test_real_news_warehouse_simulation.py .................     [ 57%]
+agent/tests/test_real_news_warehouse_package.py ......                   [ 65%]
+agent/tests/test_real_news_warehouse_deploy.py ......................... [ 97%]
+..                                                                       [100%]
+
+============================== 78 passed in 2.43s ==============================

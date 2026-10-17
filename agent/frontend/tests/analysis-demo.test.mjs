@@ -694,3 +694,156 @@ test('thirty-day catalog accepts scale and rejects altered bounds or scenario wi
     assert.throws(() => helper.enterpriseDemoCatalog(changed), helper.AnalysisDemoPreparationError)
   }
 })
+
+function corpusConfig() {
+  const config = timelineConfig()
+  config.schema_version = config.dataset.schema_version = 'news-warehouse-v6'
+  Object.assign(config.dataset, { dataset_profile: 'corpus-v6', dataset_version: 'news-cache-corpus-v6',
+    news_per_tenant: 120, news_count: 120, total_news_count: 240,
+    metric_row_count: 86400, baseline_row_count: 86400, total_metric_row_count: 172800,
+    total_baseline_row_count: 172800, corpus_count: 120, corpus_catalog_sha256: 'c'.repeat(64),
+    news_content_source: 'tencent-news-cache', metric_data_synthetic: true, category_data_synthetic: true })
+  return Object.assign(config, { scenarios: [{ id: 'news-ranking', result_mode: 'ranking',
+    name: '真实新闻内容与模拟指标', sample_questions: ['查询点击量最高的前100条新闻'] }],
+  configuration_template: 'schema_version: 1', model_provider: 'local' })
+}
+
+test('corpus catalog binds 120 real articles to the v6 schema and a separate 720-hour simulation', () => {
+  const catalog = helper.enterpriseDemoCatalog(corpusConfig())
+  assert.equal(catalog.datasetProfile, 'corpus-v6')
+  assert.equal(catalog.schemaVersion, 'news-warehouse-v6')
+  assert.equal(catalog.newsPerTenant, 120)
+  assert.equal(catalog.corpusCount, 120)
+  assert.equal(catalog.corpusCatalogSha256, 'c'.repeat(64))
+  assert.equal(catalog.newsContentSource, 'tencent-news-cache')
+  assert.equal(catalog.metricDataSynthetic, true)
+  assert.equal(catalog.categoryDataSynthetic, true)
+  assert.equal(catalog.hoursPerNews, 720)
+  assert.equal(catalog.metricRowCount, 86400)
+  assert.equal(catalog.totalMetricRowCount, 172800)
+  assert.equal(catalog.scenarios.length, 13)
+  assert.equal(catalog.windowStart, '2026-09-10T00:00:00+08:00')
+  assert.equal(catalog.windowEnd, '2026-10-10T00:00:00+08:00')
+})
+
+test('corpus catalog refuses altered content identity, classification flags, counts, windows and unknown profiles', () => {
+  const mutations = [
+    (data) => { delete data.corpus_catalog_sha256 },
+    (data) => { data.corpus_catalog_sha256 = 'unverified' },
+    (data) => { data.corpus_catalog_sha256 = 'C'.repeat(64) },
+    (data) => { data.corpus_count = 119 },
+    (data) => { data.corpus_count = '120' },
+    (data) => { data.news_content_source = 'generated' },
+    (data) => { delete data.news_content_source },
+    (data) => { data.metric_data_synthetic = false },
+    (data) => { data.metric_data_synthetic = 'true' },
+    (data) => { delete data.category_data_synthetic },
+    (data) => { data.category_data_synthetic = false },
+    (data) => { data.news_per_tenant = 1200 },
+    (data) => { data.news_count = 121 },
+    (data) => { data.metric_row_count++ },
+    (data) => { data.total_metric_row_count++ },
+    (data) => { data.schema_version = 'news-warehouse-v4' },
+    (data) => { data.window_start = '2026-09-09T00:00:00+08:00' },
+    (data) => { data.window_end = '2026-10-11T00:00:00+08:00' },
+    (data) => { data.enterprise_scenarios.pop() },
+    (data) => { data.dataset_profile = 'unreviewed-corpus-v7' },
+  ]
+  for (const mutate of mutations) {
+    const config = corpusConfig(); mutate(config.dataset)
+    assert.throws(() => helper.enterpriseDemoCatalog(config), helper.AnalysisDemoPreparationError)
+  }
+  const wrongTopSchema = corpusConfig(); wrongTopSchema.schema_version = 'news-warehouse-v4'
+  assert.throws(() => helper.enterpriseDemoCatalog(wrongTopSchema), helper.AnalysisDemoPreparationError)
+})
+
+test('corpus preparation rejects changed source fingerprints and every provenance identity before submitting', async () => {
+  for (const field of ['corpusCatalogSha256', 'corpusCount', 'newsContentSource', 'metricDataSynthetic', 'categoryDataSynthetic']) {
+    const config = corpusConfig(), saved = helper.enterpriseDemoCatalog(config)
+    if (field === 'corpusCatalogSha256') config.dataset.corpus_catalog_sha256 = 'f'.repeat(64)
+    if (field === 'corpusCount') saved.corpusCount = 119
+    if (field === 'newsContentSource') saved.newsContentSource = 'another-source'
+    if (field === 'metricDataSynthetic') saved.metricDataSynthetic = false
+    if (field === 'categoryDataSynthetic') saved.categoryDataSynthetic = false
+    const { clients, calls } = dependencies()
+    clients.hotNews.localSqlConfig = async () => config
+    await assert.rejects(helper.prepareAnalysisDemo({ ...clients, enterprise: {
+      catalog: saved, scenarioId: 'month-span',
+    } }), { code: 'scenario_dataset_changed' })
+    assert.equal(calls.length, 0)
+  }
+})
+
+test('corpus preparation keeps the same bounded SQL and two verified read receipts with independent UUIDs', async () => {
+  const config = corpusConfig(), scenario = config.dataset.enterprise_scenarios.find((item) => item.id === 'month-span')
+  const { clients, calls, detail } = dependencies()
+  const windows = [
+    { window_start: scenario.reference_start, window_end: '2026-09-10T20:00:00+08:00' },
+    { window_start: scenario.current_start, window_end: scenario.current_end },
+  ]
+  clients.hotNews.localSqlConfig = async () => config
+  clients.hotNews.runDetail = async (id) => {
+    const result = detail(id), window = windows[id === uuid(1) ? 0 : 1]
+    result.run = { ...result.run, ...window }
+    result.sql_tool_trace = { preview: { question: scenario.question, scenario_id: 'news-ranking',
+      schema_version: config.schema_version, schema_sha256: config.schema_sha256,
+      parameters: { ...window, row_limit: 100 } }, result: { truncated: false } }
+    return result
+  }
+  const send = clients.conversations.send
+  clients.conversations.send = async (...args) => {
+    const turn = await send(...args), result = turn.tools[0].result
+    Object.assign(result, windows[result.run_id === uuid(1) ? 0 : 1])
+    return turn
+  }
+  await helper.prepareAnalysisDemo({ ...clients, enterprise: {
+    catalog: helper.enterpriseDemoCatalog(config), scenarioId: 'month-span',
+  } })
+  const runs = calls.filter((call) => call[0] === 'run')
+  assert.equal(runs.length, 2)
+  runs.forEach((call, index) => {
+    assert.equal(call[1].question, '查询点击量最高的前100条新闻')
+    assert.equal(call[1].scenario_id, 'news-ranking')
+    assert.equal(Date.parse(call[1].window_start), Date.parse(windows[index].window_start))
+    assert.equal(Date.parse(call[1].window_end), Date.parse(windows[index].window_end))
+  })
+  const sends = calls.filter((call) => call[0] === 'send')
+  assert.equal(sends.length, 2)
+  assert.notEqual(sends[0][2].request_id, sends[1][2].request_id)
+  assert.ok(sends.every((call) => call[2].content.startsWith('读取热点运行 ')))
+})
+
+test('corpus preparation UI distinguishes original news, duplicated tenant records, simulated metrics and categories', async (t) => {
+  const { state } = await panel(t, async () => ({}), corpusConfig())
+  assert.equal(state.corpusContent.value, true)
+  assert.match(state.scaleSummary.value, /120 篇真实新闻/)
+  assert.match(state.scaleSummary.value, /共 240 条新闻记录/)
+  assert.doesNotMatch(state.scaleSummary.value, /合成新闻/)
+  assert.match(state.aggregateSummary.value, /每篇 720 小时/)
+  assert.match(state.aggregateSummary.value, /指标 172,800 条，基线 172,800 条/)
+  const template = readFileSync(new URL('../src/components/conversation/AnalysisDemoPanel.vue', import.meta.url), 'utf8')
+  assert.match(template, /真实新闻内容 · 模拟运营指标/)
+  assert.match(template, /新闻发布日期与模拟指标窗口相互独立/)
+  assert.match(template, /栏目是版本化演示分类/)
+  assert.match(template, /本地推理仅用于测试/)
+})
+
+test('hot-news query tools do not label a corpus configuration as real before its catalog identity passes', async () => {
+  for (const mode of ['corpus-flags', 'unknown-profile', 'valid']) {
+    const valid = mode === 'valid'
+    const config = corpusConfig()
+    if (mode === 'corpus-flags') config.dataset.category_data_synthetic = false
+    if (mode === 'unknown-profile') config.dataset.dataset_profile = 'unreviewed-corpus-v7'
+    const compiled = compileScript(parse(readFileSync(new URL('../src/components/hotnews/HotNewsQueryTools.vue', import.meta.url), 'utf8')).descriptor, { id: 'corpus-query-tools' }).content
+    const component = load(compiled, {
+      vue: { ...vue, onMounted() {} }, '@/api/hotNews': { hotNewsApi: { localSqlConfig: async () => config } },
+      '@/utils/analysisDemo': helper, '@/utils/download': { downloadBlob() {} },
+      '@/composables/useAsyncTask': { useAsyncTask: () => ({ pending: vue.ref(false), error: vue.ref(null),
+        run: async (operation) => { try { return await operation() } catch { return null } } }) },
+    }).default
+    const state = component.setup({ running: false }, { expose() {}, emit() {} })
+    await state.loadConfiguration()
+    assert.equal(state.corpusContent.value, valid)
+    assert.equal(state.configuration.value?.dataset.news_count ?? null, valid ? 120 : null)
+  }
+})

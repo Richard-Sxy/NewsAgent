@@ -29,7 +29,8 @@ class StreamingConversation:
     """流式对话类"""
     def __init__(self, *, service: ConversationAgentService, claim: TurnClaim,
                  tenant_id: str, user_id: str, conversation_id: UUID,
-                 heartbeat_seconds: float = 10, chunk_chars: int = 128, hot_news_query_allowed: bool = False):
+                 heartbeat_seconds: float = 10, chunk_chars: int = 128, hot_news_query_allowed: bool = False,
+                 permissions=frozenset()):
         if not 0 < heartbeat_seconds <= 30 or not 1 <= chunk_chars <= 1024:
             raise ValueError("invalid conversation stream limits")
         self._service = service
@@ -40,6 +41,7 @@ class StreamingConversation:
         self._heartbeat = heartbeat_seconds
         self._chunk_chars = chunk_chars
         self._query_allowed = hot_news_query_allowed
+        self._permissions = permissions
 
     async def iter_events(self) -> AsyncIterator[str]:
         # 在配置的有限条件下，可能发生的进度事件少于 40 个
@@ -63,6 +65,7 @@ class StreamingConversation:
                         tenant_id=self._tenant_id, user_id=self._user_id,
                         conversation_id=self._conversation_id, claim=self._claim, on_event=publish,
                         hot_news_query_allowed=self._query_allowed,
+                        permissions=self._permissions,
                     )
                 if turn.status not in {"completed", "failed"}:
                     raise ValueError("stream result must be terminal")

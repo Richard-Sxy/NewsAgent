@@ -12,11 +12,12 @@ from app.api.dependencies import DataLoopPrincipal, HotNewsPermission
 from app.conversation.query_understanding import (
     QueryPolicy, QueryResolutionError, QueryUnderstanding, resolve_query_understanding,
 )
+from app.conversation.structured_query_resolution import resolve_structured_query
 from app.domain.errors import AgentOutputValidationError
 from app.model_runtime.agent_client import model_request_context
 from app.schemas.sql_assistant import SqlAssistantPreviewRequest
 from app.services.hot_news_query import HotNewsQueryService
-from app.sql_assistant.input_boundary import SqlAssistantQuestionError, screen_question
+from app.sql_assistant.input_boundary import SqlAssistantQuestionError, normalize_question
 from app.sql_assistant.scenarios import load_sql_scenarios
 from app.sql_assistant.warehouse import dataset_window
 from examples.hot_news_e2e_support import E2E_TENANT_ID
@@ -63,6 +64,7 @@ class LocalConversationHotNewsQuery:
         if scenario.result_mode != "ranking":
             raise ValueError("conversation hot-news query requires a ranking scenario")
         self._state = state
+        self._dataset_profile = getattr(settings, "sql_assistant_dataset_profile", "classic-v1")
         self._scenario = scenario.id
         coverage_start, coverage_end = dataset_window(getattr(settings, "sql_assistant_dataset_profile", "classic-v1"))
         self._start = coverage_end - timedelta(days=1) + timedelta(hours=settings.conversation_hot_news_query_hour)
@@ -77,12 +79,20 @@ class LocalConversationHotNewsQuery:
         self._understanding_agent = understanding_agent or state.sql_assistant.agent
         self._understanding_metadata = understanding_metadata or {
             "provider": getattr(getattr(getattr(state, "model_config", None), "inference", None), "provider", "local")}
+        # The deterministic local Port retains its finite-parser test contract.
+        # A configured model interprets the raw question; Python checks fields.
+        self._resolve_query = (resolve_structured_query
+            if self._understanding_metadata.get("provider") == "openai_compatible"
+            else resolve_query_understanding)
         self._understanding_timeout = understanding_timeout or config.model_timeout_seconds
         self._clock = clock or (lambda: datetime.now(timezone.utc))
         self._breaker = _HotNewsQueryBreaker(failure_threshold=3, open_seconds=60.0)
 
     def description(self):
         return {"name": "query_hot_news",
+                **({"dataset_profile": "corpus-v6", "news_content_source": "tencent-news-cache",
+                    "metric_data_synthetic": True, "category_data_synthetic": True}
+                   if self._dataset_profile == "corpus-v6" else {}),
                 "description": "先理解当前问题并校验日期、榜单来源和条件，再查询模拟数仓并执行原有热点分析Workflow；不发布、不审批。今日不等于样本窗口，范围不满足时不会执行取数。",
                 "arguments": {"question": "完整保留当前用户原问题，2..1000字；不得删除日期、来源或条件，不得携带SQL或身份"},
                 "scenario_id": self._scenario, "window_start": self._start.isoformat(),
@@ -91,21 +101,23 @@ class LocalConversationHotNewsQuery:
                 "coverage_window_end": self._policy.coverage_window_end.isoformat(),
                 "query_policy": self._policy.model_dump(mode="json"),
                 "understanding_model": self._understanding_metadata,
+                "resolution_mode": "structured_fields" if self._resolve_query is resolve_structured_query else "local_rules",
                 "understanding_schema": QueryUnderstanding.model_json_schema()}
 
     def available_for(self, tenant_id):
         return tenant_id == E2E_TENANT_ID
 
     async def _understand(self, *, question, tenant_id):
-        # Capture once: the model and Python must agree across midnight.
+        # 这边先获取时区，用于和用户时间匹配
         clock = self._clock()
         if clock.tzinfo is None or clock.utcoffset() is None:
             raise ValueError("query clock must be timezone aware")
         clock = clock.astimezone(ZoneInfo(self._policy.timezone))
+        # 模型前只校验长度、空内容和隐藏字符；语义交给理解 Port
         try:
-            screened = screen_question(question)
+            screened = normalize_question(question)
         except SqlAssistantQuestionError:
-            resolve_query_understanding(question, QueryUnderstanding(
+            self._resolve_query(question, QueryUnderstanding(
                 status="unsupported", unsupported_conditions=["input_boundary"],
             ), self._policy, now=clock).require_ready()
             raise  # The resolver always blocks this input; keep a fail-closed fallback.
@@ -113,7 +125,7 @@ class LocalConversationHotNewsQuery:
             try:
                 async with asyncio.timeout(self._understanding_timeout):
                     result = await self._understanding_agent.run_structured(
-                        app_id="python:query-understanding-v4", mode="query_understanding",
+                        app_id="python:query-understanding-v5", mode="query_understanding",
                         payload={"question": screened, "policy": self._policy.model_dump(mode="json"),
                                  "temporal_context": {"server_now": clock.isoformat(),
                                     "timezone": self._policy.timezone,
@@ -124,10 +136,10 @@ class LocalConversationHotNewsQuery:
                     )
             except AgentOutputValidationError as exc:
                 raise QueryResolutionError(
-                    resolve_query_understanding(screened, {}, self._policy, now=clock),
+                    self._resolve_query(screened, {}, self._policy, now=clock),
                     request_id=exc.request_id,
                 ) from exc
-        resolution = resolve_query_understanding(screened, result.value, self._policy, now=clock)
+        resolution = self._resolve_query(screened, result.value, self._policy, now=clock)
         if resolution.status != "ready":
             raise QueryResolutionError(resolution, request_id=result.request_id)
         return resolution, result.request_id

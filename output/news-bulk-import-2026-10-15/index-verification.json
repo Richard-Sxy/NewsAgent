@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "generated_at": "2026-10-15T04:52:54.320236+00:00",
+  "manifest_path": "/Users/shi/Project/myProject/NewsAgent/news/data/incremental/2026-10-07_2026-10-14-v2/manifest.json",
+  "package": "/Users/shi/Project/myProject/NewsAgent/agent/data/news-bge-incremental-20261014-v2",
+  "base_package": "/Users/shi/Project/myProject/NewsAgent/agent/data/news-bge-incremental-20261014-v1",
+  "counts": {
+    "source_articles": 8000,
+    "expected_source_chunks": 13873,
+    "verified_source_articles": 8000,
+    "verified_source_chunks": 13873,
+    "base_package_articles": 12728,
+    "base_package_chunks": 38026,
+    "expected_package_articles": 20187,
+    "expected_package_chunks": 50252,
+    "total_package_articles": 20187,
+    "total_package_chunks": 50252
+  },
+  "checks": {
+    "source_file_and_document_hashes": true,
+    "all_source_news_ids": true,
+    "all_titles_urls_publication_times_and_versions": true,
+    "every_full_body_slice_exactly_once": true,
+    "all_package_asset_hashes": true,
+    "exact_base_union_source_news_ids": true,
+    "exact_base_plus_new_source_chunk_count": true,
+    "base_package_manifest_unchanged": true,
+    "base_jsonl_byte_prefix_preserved": true
+  },
+  "manifest_sha256": "f1262e6f4a8a212b35233363eb91df58f34d9407a45b1f541736729c4bd9dac4",
+  "counts_by_date": {
+    "2026-10-07": 1000,
+    "2026-10-08": 1000,
+    "2026-10-09": 1000,
+    "2026-10-10": 1000,
+    "2026-10-11": 1000,
+    "2026-10-12": 1000,
+    "2026-10-13": 1000,
+    "2026-10-14": 1000
+  },
+  "package_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "base_manifest_sha256": "edf9d5f6cd9b05f8d1c5eeece8c47424bcfdeaf6d569b02f4d5619a042b27733",
+  "snapshot_version": "news-bge-incremental-20261014-v2",
+  "verified_document_roster_sha256": "342bfbb242c6c65a04e4789c2d57ee3bc232d9d7f8fa4aad59d794f7842d56e5"
+}

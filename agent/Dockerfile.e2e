@@ -28,23 +28,36 @@ COPY app ./app
 
 # Install the application and dependencies before copying test-only assets, so
 # editing a runbook fixture or E2E test does not force a full dependency fetch.
+# The local BGE demo runs on CPU. Install its reviewed CPU wheel first so the
+# general package index cannot select a CUDA-enabled PyTorch distribution.
 RUN pip install --upgrade pip \
+    && case "${APP_EXTRAS}" in *bge-snapshot*) \
+         pip install 'torch==2.8.0+cpu' --index-url https://download.pytorch.org/whl/cpu ;; \
+       esac \
     && pip install ".[dev${APP_EXTRAS}]"
 
 COPY alembic ./alembic
 COPY alembic.ini ./
 COPY examples ./examples
 COPY tools/collect_public_headlines.py ./tools/collect_public_headlines.py
+COPY tools/seed_conversation_evaluation_demo.py ./tools/seed_conversation_evaluation_demo.py
+COPY tools/conversation_hooks_load.py ./tools/conversation_hooks_load.py
 COPY tools/query_news_recall.py ./tools/query_news_recall.py
 COPY evaluation ./evaluation
 COPY deploy/mock-cms ./deploy/mock-cms
 COPY deploy/model-runtime.local.yml ./deploy/model-runtime.local.yml
+COPY deploy/model-runtime.reader-profiles.local.yml ./deploy/model-runtime.reader-profiles.local.yml
 COPY deploy/model-runtime.enterprise.example.yml ./deploy/model-runtime.enterprise.example.yml
 COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatible.example.yml
 COPY deploy/knowledge-search.bge-snapshot.yml ./deploy/knowledge-search.bge-snapshot.yml
 COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
 COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
 COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
+COPY deploy/audience-topics.local.yml ./deploy/audience-topics.local.yml
+COPY deploy/audience-topics.enterprise.example.yml ./deploy/audience-topics.enterprise.example.yml
+COPY deploy/docker-compose.audience.local.yml ./deploy/docker-compose.audience.local.yml
+COPY deploy/behavior-topic-policy.local.yml ./deploy/behavior-topic-policy.local.yml
+COPY deploy/docker-compose.behavior-tags.local.yml ./deploy/docker-compose.behavior-tags.local.yml
 COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
 COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
 COPY docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
