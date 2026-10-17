@@ -21,11 +21,19 @@ OpenAI-compatible Chat Completions 与 Embeddings 接口；Agent 编排、Prompt
 
 ## 仓库组成
 
-- `agent/`：FastAPI、Temporal、PostgreSQL、Redis、MinIO、Python Agent、
-  知识入库/检索、Data Loop 和 Vue 运营前端。
+- `agent/`：FastAPI、Temporal、PostgreSQL、Redis、MinIO、Python Agent 与 Vue 运营前端。
+  业务代码按 `app/modules/`（hot_news、writing、data_loop、memory、conversation、knowledge、
+  audience、behavior_tags、reader_profiles、data_analysis）组织，启动装配在 `app/bootstrap/`，
+  本地模拟装配在 `simulation/`；旧导入路径保留薄兼容入口。
 - `news/`：腾讯新闻发现、抓取、清洗、缓存、去重、标题 NLP、重试和
   NewsAgent 知识 API 客户端。
+- `deploy/`：Compose、Dockerfile、K8s、监控与模拟 CMS 部署资产
+  （`agent/deploy` 为旧路径兼容链接）。
+- `var/`：本地运行数据根：行为标签/读者画像运行包、数仓数据包、只读知识快照与增量缓存；
+  批量数据不入库，manifest/合同文件入库。数仓目录可用 `WAREHOUSE_DATASET_DIR` 覆盖。
+- `output/`：报告、图解、评测结果与验收证据。
 - `DemoMD/`：业务场景、长期架构上下文、演示脚本与设计参考。
+- `项目架构.md`：完整目录树、模块内部结构与数据/版本边界。
 
 ## 核心链路
 
@@ -100,12 +108,11 @@ python3 agent/tools/deploy_bge_demo.py
 `http://127.0.0.1:5178/chat`。准备环境、每个阶段的作用、更新、停止及排查步骤见
 [项目启动与部署教程](agent/docs/bge-demo-deployment.md)。以下是原生基础演示的手工入口。
 
-需要 Docker Desktop、Node.js 20.19+。
+需要 Docker Desktop、Node.js 20.19+。以下命令在仓库根执行。
 
 后端：
 
 ```bash
-cd agent
 docker compose -f deploy/docker-compose.native-e2e.yml up -d --build
 curl -fsS http://127.0.0.1:28000/ready
 ```
@@ -123,7 +130,15 @@ npm run dev
 这份 YAML 仅供本地开发，生产构建和预览不加载本地身份。
 配置调用链、覆盖规则与测试见 [前端说明](agent/frontend/README.md)。
 
+注意端口对应关系：`local.yml` 默认代理到 `http://127.0.0.1:28070`（真实新闻演示栈）；
+上面的 native-e2e 栈暴露 `28000`，启动前端时覆盖代理地址即可：
+
+```bash
+VITE_DEV_PROXY_TARGET=http://127.0.0.1:28000 npm run dev
+```
+
 访问 `http://127.0.0.1:5174/hot-news`；持续对话页面为 `http://127.0.0.1:5174/chat`。
+本地演示数据位于租户 `11111111-1111-4111-8111-111111111111`。
 
 持续对话第一版：消息与轮次保存在 PostgreSQL，支持同会话追问、刷新恢复、热点报告读取和
 新闻知识检索。现已增加本地管理员的 `query_hot_news`：聊天问题直接进入原有热点 SQL
@@ -145,12 +160,18 @@ Workflow，读取模拟数仓并返回同一run的分析；不绕过 SQL 校验�
 
 ## 测试
 
-后端完整回归：
+后端完整回归（容器内）：
+
+```bash
+docker compose -f deploy/docker-compose.native-e2e.yml --profile test \
+  run --rm test-runner python -m pytest -o addopts='' -q
+```
+
+后端源码模式（已执行 `uv sync --extra dev`，在 `agent/` 下）：
 
 ```bash
 cd agent
-docker compose -f deploy/docker-compose.native-e2e.yml --profile test \
-  run --rm test-runner python -m pytest -o addopts='' -q
+.venv/bin/python -m pytest
 ```
 
 爬虫：

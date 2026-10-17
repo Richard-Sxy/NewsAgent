@@ -38,6 +38,8 @@ Prompt、Agent 编排、结构化解析、业务校验、知识分块、索引�
 
 ## 本地全链路
 
+以下命令在仓库根执行：
+
 ```bash
 docker compose -f deploy/docker-compose.native-e2e.yml up -d --build
 curl -fsS http://127.0.0.1:28000/ready
