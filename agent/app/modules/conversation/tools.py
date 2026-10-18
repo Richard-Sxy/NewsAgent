@@ -79,7 +79,7 @@ class _MemoryStatus(_Arguments):
     memory_id: str = Field(pattern=r"^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$")
     kind: Literal["short_term", "long_term_candidate"]
 
-
+# 钩子对象注册
 @dataclass(frozen=True, slots=True)
 class HookSpec:
     name: str
@@ -88,7 +88,6 @@ class HookSpec:
     execution_class: Literal["sync_read", "async_start", "confirm_gated"]
     runner: Callable[..., Awaitable[dict]]
     receipt_builder: Callable[[dict], dict]
-
 
 async def _writing_list_runner(*, tools, arguments, tenant_id, **_):
     return await tools._writing_reader.list_jobs(tenant_id=tenant_id, limit=arguments.limit)
@@ -196,7 +195,7 @@ def _writing_status_receipt(result: dict) -> dict:
     return {**result, "receipt": receipt}
 
 
-# Existing tools retain their handlers. New hooks share this six-field contract.
+# 现有工具保留其处理程序。新钩子分享这份六场合同。
 HOOK_REGISTRY = {
     spec.name: spec for spec in (
         HookSpec("list_writing_jobs", "writing:read", _WritingList, "sync_read",

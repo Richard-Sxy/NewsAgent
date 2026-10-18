@@ -39,7 +39,7 @@ ConversationMemoryKind = Literal["short_term", "long_term_candidate"]
 class MemoryHookSourceNotFoundError(LookupError):
     """The original request is absent or outside the authenticated user scope."""
 
-
+# 校验记忆钩子的参数
 class MemoryHookArguments(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
@@ -91,7 +91,7 @@ def _snapshot(
         result["created"] = created
     return result
 
-
+"""这边是对话记忆钩子"""
 class ConversationMemoryHooks:
     def __init__(self, *, database, writer: MemoryWriteApplicationService | None = None):
         self.database = database

@@ -162,7 +162,7 @@ def record_metric(name: str, value: int | float, *, attributes: Mapping[str, Any
 @contextmanager
 def operation(name: str, *, attributes: Mapping[str, Any] | None = None,
               kind: SpanKind = SpanKind.INTERNAL, context: Any = None) -> Iterator[Span]:
-    """A span plus bounded duration/outcome metrics, including cancellation."""
+    """这段代码产生追踪记录、指标和日志三类书籍，最终在哪里查看，还要自己看。"""
     attrs = sanitize_attributes(attributes)
     attrs.setdefault("newsagent.operation", name)
     attrs.setdefault("newsagent.stage", name)

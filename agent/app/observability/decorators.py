@@ -10,7 +10,7 @@ class DomainOutcomeError(RuntimeError):
 
 
 def traced(name, *, attributes=None, identity=None, result_status=False):
-    """Only explicitly selected identifiers enter spans; never serialize arguments."""
+    """只有明确选择的标识符才能输入跨度；永远不要序列化参数。"""
     def decorate(function):
         parameters = signature(function)
 

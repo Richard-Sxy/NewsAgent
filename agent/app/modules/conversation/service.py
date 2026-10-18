@@ -538,6 +538,7 @@ class ConversationAgentService:
                                                       "message": "模型暂时不可用，进行一次有界重试。"})
                 await asyncio.sleep(0.1)
 
+
     @traced("conversation.tool", result_status=True)
     async def _execute(self, plan, tenant_id: str, trace_id: str, *, on_event: ProgressCallback | None = None,
                        deadline: float | None = None, user_id: str | None = None, permissions=frozenset()):
