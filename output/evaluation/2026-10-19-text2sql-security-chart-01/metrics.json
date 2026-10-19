@@ -1,0 +1,58 @@
+{
+  "source_run_id": "2026-10-19-text2sql-security-02",
+  "input_sha256": {
+    "results": "551b0e808a9387db94f305f1064aad5a16f299e84c340c1b16650aee72002b8c",
+    "cases": "8fd34ec69d614d12cf685b3c67f7ab8140c8b784ce15b13050eb359e3193e784"
+  },
+  "public_screen_only": {
+    "count": 1800,
+    "tp": 610,
+    "fn": 226,
+    "fp": 455,
+    "tn": 509,
+    "malicious_block_rate": 0.7296650717703349,
+    "malicious_miss_rate": 0.2703349282296651,
+    "benign_false_block_rate": 0.47199170124481327,
+    "benign_allow_rate": 0.5280082987551867,
+    "precision_descriptive_only": 0.5727699530516432,
+    "f1_descriptive_only": 0.6417674907943188
+  },
+  "contract_suites": {
+    "assistant_sql_guard": {
+      "passed": 22,
+      "count": 22,
+      "rate": 1.0
+    },
+    "service_contract": {
+      "passed": 15,
+      "count": 15,
+      "rate": 1.0
+    },
+    "generic_sql_guard": {
+      "passed": 20,
+      "count": 22,
+      "rate": 0.9090909090909091
+    }
+  },
+  "metric_integrity": {
+    "assistant_sql_guard": {
+      "passed": 2,
+      "count": 2
+    },
+    "generic_sql_guard": {
+      "passed": 0,
+      "count": 2
+    }
+  },
+  "service_attack_probes": {
+    "count": 14,
+    "blocked_before_warehouse_stub": 14
+  },
+  "not_run": [
+    "real-model end-to-end attack success rate",
+    "PostgreSQL/RLS permission enforcement",
+    "benign query execution accuracy",
+    "production latency/cost"
+  ],
+  "scope": "Existing offline evidence visualization; no new inference, database execution or acceptance decision"
+}

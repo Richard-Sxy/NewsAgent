@@ -1,0 +1,16 @@
+{
+  "source_run_id": "2026-10-19-text2sql-security-02",
+  "report_purpose": "explain prior frozen measurements; no new evaluation run",
+  "current_source_drift": [
+    {
+      "path": "agent/app/observability/telemetry.py",
+      "measured_sha256": "9207479aa178112a140320330a17ccd623e0d69baba51035de146dfa547ce919",
+      "current_sha256": "8558b775aedab342107e45709a517e6b7ac4506efd62a9839678c1af728bd5ca"
+    }
+  ],
+  "raw_public_dataset_included": false,
+  "enterprise_data_included": false,
+  "secret_values_included": false,
+  "packaged_evidence_source": "/Users/shi/Project/myProject/NewsAgent/output/evaluation/2026-10-19-text2sql-security-02",
+  "source_head": "717c6b2aaa694db21c192e3ee2760db85a2c0520"
+}

@@ -1,0 +1,165 @@
+{
+  "purpose": "Portable report and frozen evidence; no raw public dataset or enterprise data",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1669,
+      "sha256": "53ba2c8b2b8ec99f422d1a9a40af0742d48fbff4ae1489dc8cdb1bb7ebfb34cf"
+    },
+    {
+      "path": "assets/overview.png",
+      "bytes": 401189,
+      "sha256": "995677ae63e160ff0374cc648afa3b508f2e97ca8d6e9a64cb7a28f83ddf8e53"
+    },
+    {
+      "path": "build_report.py",
+      "bytes": 14718,
+      "sha256": "d073725b3bce57ce066e4a30837f6862480d3a1e684772065833e73907d96d61"
+    },
+    {
+      "path": "evidence/chart-01/manifest.json",
+      "bytes": 1338,
+      "sha256": "89540e5f3daa70535b64ebd1fc4499cdba4972927a6dc0ed3019ce48de20a63d"
+    },
+    {
+      "path": "evidence/chart-01/metrics.json",
+      "bytes": 1522,
+      "sha256": "32da43d187b99db32cab929515b7283c47f0b366a5c0faba014f77dda0cb1c24"
+    },
+    {
+      "path": "evidence/chart-01/text2sql-security-results.png",
+      "bytes": 401189,
+      "sha256": "995677ae63e160ff0374cc648afa3b508f2e97ca8d6e9a64cb7a28f83ddf8e53"
+    },
+    {
+      "path": "evidence/detailed-casebook.json",
+      "bytes": 54014,
+      "sha256": "a84ba6b4218458bbc0c77804ff56f32d58b04aff9047f3352f05c9f1a9ffe74e"
+    },
+    {
+      "path": "evidence/render_text2sql_security_results.py",
+      "bytes": 9381,
+      "sha256": "26c629797d6dbcaae32f6a18239a599001015e9739abdd41116028b51883ba68"
+    },
+    {
+      "path": "evidence/run-01/commands.json",
+      "bytes": 690,
+      "sha256": "d8000b4818d54f5e691dd8068fbc45f689626b50f20899c055a21110ab036422"
+    },
+    {
+      "path": "evidence/run-01/frozen-project-cases-v1.json",
+      "bytes": 4878,
+      "sha256": "c32ac1bf25ffec2d35edf4f0bfa11d74e7bad08ff8dc99f04fb3ec719dae1135"
+    },
+    {
+      "path": "evidence/run-01/results.json",
+      "bytes": 3335,
+      "sha256": "0f435f7ae31ff5fdc4d08d2803790a145d1f4aef5f6acd82c42ff2214c82cac5"
+    },
+    {
+      "path": "evidence/run-01/run-spec.json",
+      "bytes": 85200,
+      "sha256": "4b83f7fbdcc33befdb12f31ab78dd39e5fab52979d0422ca971c580fe61b3643"
+    },
+    {
+      "path": "evidence/run-01/runner-v1.py",
+      "bytes": 25877,
+      "sha256": "40e2d0ca099c1ae15fb5c0451bc3a751871846bd408b40a7c0cea2fd171dfa03"
+    },
+    {
+      "path": "evidence/run-02/cases.jsonl",
+      "bytes": 774501,
+      "sha256": "8fd34ec69d614d12cf685b3c67f7ab8140c8b784ce15b13050eb359e3193e784"
+    },
+    {
+      "path": "evidence/run-02/commands.json",
+      "bytes": 690,
+      "sha256": "a0895ad4331faa427a43837e758d4e231a8eed1d53361be16b82c13a09dfa082"
+    },
+    {
+      "path": "evidence/run-02/diagnostics.json",
+      "bytes": 272,
+      "sha256": "6694515da44a3430211b8ce91bd2d88038573470ba4a5cf53c79410fafff6366"
+    },
+    {
+      "path": "evidence/run-02/evidence-manifest.json",
+      "bytes": 2054,
+      "sha256": "7c0d173c23bfe496f3cc0118002f9a23eac70d206da7477ae1c019e6fed4cf7e"
+    },
+    {
+      "path": "evidence/run-02/frozen-project-cases-v2.json",
+      "bytes": 6964,
+      "sha256": "973f9e50520afa4a7bde693fabb44c9f8b1edfad2c09d7ed673538ebb7076d92"
+    },
+    {
+      "path": "evidence/run-02/regression-command.json",
+      "bytes": 676,
+      "sha256": "1c5ecfff441d5b906e0ed5cd25e4b321d3db04eecc6c68a0256b05b47ab45d05"
+    },
+    {
+      "path": "evidence/run-02/regression-pytest.txt",
+      "bytes": 420,
+      "sha256": "5ba7fed6af4bdc87080b69b7d3a277163e39459a1220b9403a2ec1ba34287145"
+    },
+    {
+      "path": "evidence/run-02/report.md",
+      "bytes": 15024,
+      "sha256": "129ea30dba9a06e8bc4584d185ac13400e49f58e0dfbc7714090d8d3f78e7544"
+    },
+    {
+      "path": "evidence/run-02/results.json",
+      "bytes": 3479,
+      "sha256": "551b0e808a9387db94f305f1064aad5a16f299e84c340c1b16650aee72002b8c"
+    },
+    {
+      "path": "evidence/run-02/run-spec.json",
+      "bytes": 85217,
+      "sha256": "5a43fafb73295f8e07633d3f811640b913b42ce5a7c2fcf96713e6e94cfc1e55"
+    },
+    {
+      "path": "evidence/run-02/runner-pytest.txt",
+      "bytes": 99,
+      "sha256": "def9dcb35aac50bf4083ddf3a5ca1e7c9accaad627430b6a814a53ff01cbaf46"
+    },
+    {
+      "path": "evidence/run-02/runner-test-command.json",
+      "bytes": 370,
+      "sha256": "d5d9bd13222638fcf72f3c8b27edb9238280f56820dd3d8edaa7b0967e2f56e2"
+    },
+    {
+      "path": "evidence/run-02/runner-tests.py",
+      "bytes": 7634,
+      "sha256": "6b833827db51b6520be6858a256b4181cdacd1fea26f0b6d2f6720f68b67f747"
+    },
+    {
+      "path": "evidence/run-02/runner-v2.py",
+      "bytes": 26027,
+      "sha256": "13025a412bc3cda4e2fa473706a9bc6438c63068df6a2c24a990d5c9b638a84c"
+    },
+    {
+      "path": "evidence/sqlshield-source-manifest.json",
+      "bytes": 4421,
+      "sha256": "a9539d0fb76ec64753800a953741ddfa44f86a1e6505e40a8410f6055bb9134d"
+    },
+    {
+      "path": "report-facts.json",
+      "bytes": 715,
+      "sha256": "ea8d9a60ade3ec3fde1111c2233464e00e3afa724a9ebe658978ed9beac6907a"
+    },
+    {
+      "path": "report-validation.json",
+      "bytes": 508,
+      "sha256": "558b844a1bbcdd26bb6b06cb538fda665c70f2359e228e51ff6d68d8c9d45c70"
+    },
+    {
+      "path": "report.html",
+      "bytes": 603032,
+      "sha256": "08d1274b7a48c710f88d6d0ae9d1aa6fb67d624620fe27f629b8e7e3dce82170"
+    },
+    {
+      "path": "report.md",
+      "bytes": 54323,
+      "sha256": "f191c06ba061cb214668035718858ea5caf4e7111c658c3081b1cc4c94809936"
+    }
+  ]
+}

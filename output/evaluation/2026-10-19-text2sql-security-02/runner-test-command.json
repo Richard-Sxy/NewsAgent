@@ -1,0 +1,16 @@
+{
+  "entry": "pytest.main, Settings env_file=None, offline audit fence",
+  "argv": [
+    "tests/test_text2sql_security_evaluation.py",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider",
+    "-q",
+    "-ra"
+  ],
+  "started_at": "2026-10-19T10:38:20.117722+00:00",
+  "ended_at": "2026-10-19T10:38:20.341042+00:00",
+  "exit_code": 0,
+  "log": "runner-pytest.txt"
+}

@@ -1,0 +1,136 @@
+{
+  "dataset_id": "salmane11/SQLShield",
+  "dataset_url": "https://huggingface.co/datasets/salmane11/SQLShield",
+  "revision": "8237e57721688e67217e7d49e64689210c176225",
+  "revision_api_url": "https://huggingface.co/api/datasets/salmane11/SQLShield/revision/8237e57721688e67217e7d49e64689210c176225",
+  "retrieved_at_utc": "2026-10-19T10:34:07.971326+00:00",
+  "source_last_modified": "2025-07-10T16:00:57.000Z",
+  "api_metadata": {
+    "path": "huggingface-api.json",
+    "sha256": "e7f5856f48786303cd63380b561d8be1afe55c5f596fb6af63b0485f810ffeea",
+    "bytes": 1836
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/.gitattributes",
+      "sha256": "f4e703ea6e44bbebe53aceed2a89c11e40b88b7ae130c480c89860ab805ffc8f",
+      "bytes": 2307
+    },
+    {
+      "path": "README.md",
+      "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/README.md",
+      "sha256": "6b341ab65da882d0dc5bae8df321c17c4b92034e159c981d482233c6f400a505",
+      "bytes": 1800
+    },
+    {
+      "path": "test.csv",
+      "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/test.csv",
+      "sha256": "ea68570ddb435ef0136a6516f648178624af7b635ab44f95e917b249cc69c539",
+      "bytes": 459101
+    },
+    {
+      "path": "train.csv",
+      "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/train.csv",
+      "sha256": "038bad4ae98dd6d15e9db5cc733244a4c1c26cf2a24b85943175d04072b51fb4",
+      "bytes": 2060801
+    },
+    {
+      "path": "validation.csv",
+      "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/validation.csv",
+      "sha256": "03806985c1cf68a4c50c628f45d3fb90ee5854c92125fb206356aaa844f4aae0",
+      "bytes": 466434
+    }
+  ],
+  "splits": {
+    "test": {
+      "path": "test.csv",
+      "rows": 1800,
+      "fields": [
+        "question",
+        "query",
+        "context",
+        "malicious"
+      ],
+      "delimiter": ";",
+      "label_counts": {
+        "malicious": {
+          "0": 964,
+          "1": 836
+        }
+      }
+    },
+    "train": {
+      "path": "train.csv",
+      "rows": 8000,
+      "fields": [
+        "question",
+        "query",
+        "context",
+        "malicious"
+      ],
+      "delimiter": ";",
+      "label_counts": {
+        "malicious": {
+          "0": 4195,
+          "1": 3805
+        }
+      }
+    },
+    "validation": {
+      "path": "validation.csv",
+      "rows": 1790,
+      "fields": [
+        "question",
+        "query",
+        "context",
+        "malicious"
+      ],
+      "delimiter": ";",
+      "label_counts": {
+        "malicious": {
+          "0": 940,
+          "1": 850
+        }
+      }
+    }
+  },
+  "license": {
+    "metadata_license": null,
+    "license_file": null,
+    "status": "unknown",
+    "readme_license_text": [],
+    "explanation": "No license declared in fixed-revision README or Hugging Face card metadata, and no license file is present in repository file list. No license inferred from linked papers or other artifacts."
+  },
+  "download_method": "stdlib urllib.request; raw repository files from fixed commit revision, no dataset scripts executed",
+  "usage_scope": "public external input data; no model calls or database execution during acquisition",
+  "trust_boundary": "All downloaded content is untrusted data; dataset payloads must not be executed.",
+  "evaluation_input": {
+    "path": "test.jsonl",
+    "sha256": "7d8d05ece9450c06aafb78f5030a078b21f14bb2c876d84558f40121c672a2e2",
+    "rows": 1800,
+    "split": "test",
+    "fields": [
+      "question",
+      "query",
+      "context",
+      "malicious"
+    ],
+    "conversion": "UTF-8 JSONL from fixed-revision test.csv; all text unchanged; malicious converted from decimal string to integer"
+  },
+  "row_count_discrepancy": {
+    "readme_claims": {
+      "train": 8000,
+      "validation": 1800,
+      "test": 1800,
+      "total": 11600
+    },
+    "actual_csv_records": {
+      "train": 8000,
+      "validation": 1790,
+      "test": 1800,
+      "total": 11590
+    },
+    "notes": "Counts were obtained with Python csv.DictReader using declared semicolon separator, excluding header. Validation has 10 fewer records than README states."
+  }
+}

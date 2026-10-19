@@ -71,7 +71,7 @@ _active_operations: ContextVar[tuple[dict[str, Any], ...]] = ContextVar("newsage
 
 
 def sanitize_attributes(attributes: Mapping[str, Any] | None, *, metric: bool = False) -> dict[str, Any]:
-    """Allowlisted scalar technical data; IDs are never metric dimensions."""
+    """列入许可名单的标量技术数据； ID 绝不是公制尺寸。"""
     allowed = _METRIC_KEYS if metric else _SAFE_KEYS
     result: dict[str, Any] = {}
     if not isinstance(attributes, Mapping):
@@ -167,6 +167,7 @@ def operation(name: str, *, attributes: Mapping[str, Any] | None = None,
     attrs.setdefault("newsagent.operation", name)
     attrs.setdefault("newsagent.stage", name)
     started = perf_counter()
+    # 这边创建 Span + 保存上下文
     with get_tracer().start_as_current_span(
         name, attributes=attrs, kind=kind, context=context,
         record_exception=False, set_status_on_exception=False,
@@ -175,7 +176,7 @@ def operation(name: str, *, attributes: Mapping[str, Any] | None = None,
         token = _active_operations.set((*_active_operations.get(), state))
         outcome = "success"
         try:
-            yield span
+            yield span  # 这边是关键位置，执行到这边之后执行外部的 with 代码
         except BaseException as error:
             outcome = "error"
             record_error(span, error, attrs.get("newsagent.stage", name))

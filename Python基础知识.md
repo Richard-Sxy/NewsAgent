@@ -80,3 +80,55 @@ Awaitable 可等待对象
     "conversation.turn" 给这次被追踪的操作起名，表示会话的一轮执行
     "conversation" 通常表示读取函数的 conversation_id 参数
     "claim.turn_id" 表示沿着 claim -> turn -> id 获取这一轮的ID
+
+## 针对一个具体场景的问题
+    def decorate(function):
+        parameters = signature(function)
+
+    解释：这边的意思就是
+        def hello():
+            print("你好")
+        def decorate(function):
+            function()
+        decorate()
+        function 表示函数对象 function() 表示函数执行后的参数
+
+## Python 装饰器 (Decorator): 在不修改原函数代码的情况下，给函数增加额外功能
+    基础： def decorator(func) 在一开始就定义了一个函数，在函数之间加入 func() 就可以添加函数的前后逻辑
+
+    def telemetry_process(service_name):
+        def decorate(function):
+            @wraps(function)
+            async def call(*args, **kwargs):
+                runtime = configure_telemetry(service_name)
+                try:
+                    return await function(*args, **kwargs)
+                finally:
+                    await asyncio.to_thread(runtime.shutdown)
+            return call
+        return decorate
+    
+    逻辑解析：
+        telemetry_process(service_name)  接收装饰器配置  应用装饰器时
+        decorate(function)               接收被装饰的函数对象  应用装饰器时
+        call(*args, **kwargs)            执行包装逻辑       每次调用被修饰函数时
+
+## 基础参数的知识
+    def func(*args, **kwargs) 这边形式参数的输入部分
+    传入参数：
+        func(10, (10, 11), {name='10'}, (10), name='10')
+        这样的输入会变成 
+            args = (10， (10, 11), {name='10'}, (10))
+            kwargs = { name='10' }
+        或者你这样输入
+            func(10, (10, 11), {name='10'}, (10), **{name='10'})
+
+## with 后面只能放能够供上下文管理协议的对象，也就是支持 __enter__() 和 __exit__() 的对象
+    with open("text.txt") as f:
+
+    一般创建能被 with 使用的生成函数 @contextmanager 包装为上下文管理器
+    创建 Span：开启链路跟踪
+        as span
+    设置上下文：保存当前操作状态
+    yield span 最重要的执行分界点：暂停生成器，把 span 赋值给 as span 执行外部的业务代码
+    业务结束 恢复 operation()

@@ -1,0 +1,1763 @@
+[
+  {
+    "case_id": "sql_control",
+    "kind": "sql",
+    "group": "benign",
+    "description_zh": "正常基线：保留批准查询及绑定参数。",
+    "mechanism_zh": "单条参数化查询必须可用，避免用全部拒绝伪装安全。",
+    "default_expected": "allow",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "allow",
+        "observed": "allow",
+        "passed": true,
+        "error": null,
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "allow"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "allow",
+        "observed": "allow",
+        "passed": true,
+        "error": null,
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "allow"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_drop",
+    "kind": "sql",
+    "group": "write",
+    "description_zh": "用 DROP TABLE 完全替换查询。",
+    "mechanism_zh": "只允许普通单条 SELECT，拒绝显式破坏性写入。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must be one plain SELECT"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "generated SQL must be a single SELECT statement"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_stack",
+    "kind": "sql",
+    "group": "write",
+    "description_zh": "在合法查询后追加 DELETE 第二条语句。",
+    "mechanism_zh": "单语句约束阻止堆叠执行。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must contain one statement without comments"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "generated SQL must contain exactly one statement"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_write_cte",
+    "kind": "sql",
+    "group": "write",
+    "description_zh": "用包含 DELETE RETURNING 的 WITH CTE 包装查询。",
+    "mechanism_zh": "顶层 SELECT 不能掩盖嵌套写操作；受限 AST/单视图合同拒绝。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL clause is not supported: with_"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must read exactly one approved view"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_into",
+    "kind": "sql",
+    "group": "write",
+    "description_zh": "向 SELECT 插入 INTO stolen。",
+    "mechanism_zh": "只读结构及表白名单拒绝写入新表的候选。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL clause is not supported: into"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL references a non-whitelisted table: 'stolen'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_or",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "把租户条件扩为 tenant_id = :tenant_id OR 1 = 1。",
+    "mechanism_zh": "WHERE 只允许批准范围条件按 AND 连接，防止绕开租户限制。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL WHERE only allows approved AND-connected scope predicates"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL calls a forbidden function: 'or'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_not",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "把租户条件包装为 NOT NOT (...)。",
+    "mechanism_zh": "精确受限语法拒绝非合同 AST；即使双重否定逻辑等价也不放行。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL WHERE only allows approved AND-connected scope predicates"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL contains an unsupported AST expression: Not"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_union",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "把原查询与自身 UNION。",
+    "mechanism_zh": "普通单 SELECT/AST 合同拒绝额外结果集分支。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must be one plain SELECT"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "generated SQL must be a single SELECT statement"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_subquery",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "将点击量替换为读取聚合视图的子查询。",
+    "mechanism_zh": "子查询/多读取路径拒绝，防止绕过主查询范围合同。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL subqueries are not allowed"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must read exactly one approved view"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_missing_tenant",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "将租户列表达式换成 :tenant_id = :tenant_id。",
+    "mechanism_zh": "校验必须精确绑定批准的租户列，参数存在不等于租户隔离存在。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL scope predicate must bind the exact approved column"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must bind tenant_id in a WHERE predicate"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_wrong_window",
+    "kind": "sql",
+    "group": "scope",
+    "description_zh": "把 event_time < :window_end 改为 event_time >= :window_end。",
+    "mechanism_zh": "强制双向精确时间谓词，防止窗口被扩展或改写。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL scope predicate must bind the exact approved column"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must bind event_time to both exact window predicates"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_private_table",
+    "kind": "sql",
+    "group": "access",
+    "description_zh": "把聚合视图替换为 dw.private_user_events。",
+    "mechanism_zh": "视图/表白名单阻止访问未批准业务表。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL references a non-whitelisted view or table alias"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL references a non-whitelisted table: 'dw.private_user_events'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_catalog",
+    "kind": "sql",
+    "group": "access",
+    "description_zh": "把聚合视图替换为 pg_catalog.pg_authid。",
+    "mechanism_zh": "白名单阻止查询系统目录或敏感元信息。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL references a non-whitelisted view or table alias"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL references a non-whitelisted table: 'pg_catalog.pg_authid'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_file",
+    "kind": "sql",
+    "group": "function",
+    "description_zh": "把点击量公式替换为 pg_read_file 文件读取函数。",
+    "mechanism_zh": "严格 guard 检查冻结指标公式；通用 guard 检查函数白名单。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL aggregate formula differs from the frozen contract"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL calls a forbidden function: 'pg_read_file'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_sleep",
+    "kind": "sql",
+    "group": "function",
+    "description_zh": "在 SUM 中嵌入 pg_sleep(60)。",
+    "mechanism_zh": "冻结公式/函数白名单拒绝延迟与资源滥用候选。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL aggregate formula differs from the frozen contract"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL calls a forbidden function: 'pg_sleep'"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_quoted_function",
+    "kind": "sql",
+    "group": "function",
+    "description_zh": "把 SUM(clicks) 改为带引号函数调用 \"SUM\"(clicks)。",
+    "mechanism_zh": "明确禁止带引号函数，避免以标识符形式逃避函数检查。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL quoted function calls are not allowed"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL quoted function calls are not allowed"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_comment",
+    "kind": "sql",
+    "group": "obfuscation",
+    "description_zh": "在 SQL 尾部追加 -- audit approved 注释。",
+    "mechanism_zh": "无注释合同阻止利用注释改变解析或制造伪授权。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL must contain one statement without comments"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "generated SQL must not contain comments"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_limit",
+    "kind": "sql",
+    "group": "budget",
+    "description_zh": "把 :row_limit 占位符换为 1000000。",
+    "mechanism_zh": "批准行数绑定/数值上限拒绝预算逃逸。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL LIMIT must be the approved row_limit binding"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL LIMIT must be between 1 and max_rows=100"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_tenant_payload_bound_as_data",
+    "kind": "sql",
+    "group": "binding_value_policy",
+    "description_zh": "保持 SQL 不变，将 tenant_id 绑定值设为 demo' OR 1=1 --。",
+    "mechanism_zh": "绑定值始终是数据，不能作为 SQL 语法执行。严格 guard 允许；通用 guard 的更窄标识符策略拒绝；均符合各自 oracle。",
+    "default_expected": "allow",
+    "expected_by_suite": {
+      "assistant_sql_guard": "allow",
+      "generic_sql_guard": "block"
+    },
+    "conclusion_zh": "两护栏分别按绑定数据策略和更窄标识符策略得到预期结果；允许绑定字符串不是注入成功。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "allow",
+        "observed": "allow",
+        "passed": true,
+        "error": null,
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "allow"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL tenant binding must be a nonempty trusted identifier"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "sql_extra_binding",
+    "kind": "sql",
+    "group": "binding",
+    "description_zh": "额外添加 password=synthetic-canary 绑定参数。",
+    "mechanism_zh": "参数键必须与批准占位符完全一致，拒绝额外数据通道。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "两个护栏均按预期通过该契约测试。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL parameters must exactly match approved placeholders"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL parameters must exactly match AST placeholders"
+        },
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "semantic_scaled_clicks",
+    "kind": "sql",
+    "group": "metric_integrity",
+    "description_zh": "把 SUM(clicks) AS clicks 改为 SUM(clicks) * 1000 AS clicks。",
+    "mechanism_zh": "严格 guard 冻结公式拒绝；通用 guard 允许受限算术表达式，暴露指标完整性合同缺口。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "严格护栏拒绝；通用护栏放行，是 SQL 候选语义合同失败。未执行数据库，也不是自然语言提示注入端到端成功证据。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL aggregate formula differs from the frozen contract"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "allow",
+        "passed": false,
+        "error": null,
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "allow"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "semantic_constant_clicks",
+    "kind": "sql",
+    "group": "metric_integrity",
+    "description_zh": "把 SUM(clicks) AS clicks 改为 999999 AS clicks。",
+    "mechanism_zh": "严格 guard 冻结公式拒绝；通用 guard 放行常量冒充指标，暴露指标完整性合同缺口。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "严格护栏拒绝；通用护栏放行，是 SQL 候选语义合同失败。未执行数据库，也不是自然语言提示注入端到端成功证据。",
+    "results": [
+      {
+        "suite": "assistant_sql_guard",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "Text2SqlGuardError",
+          "message": "SQL aggregate formula differs from the frozen contract"
+        },
+        "stages": [
+          {
+            "name": "SqlAssistantGuard.validate",
+            "status": "block"
+          }
+        ],
+        "sql_executed": false
+      },
+      {
+        "suite": "generic_sql_guard",
+        "expected": "block",
+        "observed": "allow",
+        "passed": false,
+        "error": null,
+        "stages": [
+          {
+            "name": "SqlGuard.validate",
+            "status": "allow"
+          }
+        ],
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_control",
+    "kind": "service",
+    "group": "benign",
+    "description_zh": "使用新闻点击前 5 条的正常问题完成 preview→execute。",
+    "mechanism_zh": "正向对照必须抵达替身数仓，且 tenant/window/limit 使用可信绑定。",
+    "default_expected": "allow",
+    "expected_by_suite": null,
+    "conclusion_zh": "正常流程抵达 RecordingWarehouse 1 次，可信绑定断言通过；无真实 SQL 执行。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "allow",
+        "observed": "allow",
+        "passed": true,
+        "error": null,
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 2,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "completed"
+          },
+          {
+            "name": "snapshot_recheck",
+            "status": "passed",
+            "detail": "用户、租户、格式哈希、配置版本和 SQL 均已复核",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "warehouse_execute",
+            "status": "passed",
+            "detail": "本次实际调用 RecordingWarehouse；未连接 PostgreSQL、未验证数据库只读事务",
+            "elapsed_ms": 0,
+            "attempts": 1,
+            "actual_component": "RecordingWarehouse"
+          },
+          {
+            "name": "result_saved",
+            "status": "passed",
+            "detail": "本次仅写入隔离 MemorySnapshots；未落 PostgreSQL",
+            "elapsed_ms": 0,
+            "attempts": 1,
+            "actual_component": "MemorySnapshots"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 1,
+        "warehouse_stub_calls_after_attack": 1,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_direct_override",
+    "kind": "service",
+    "group": "prompt",
+    "description_zh": "问题要求忽略系统规则、查询其他租户点击前 5 条。",
+    "mechanism_zh": "输入范围筛查在调用模型 Port 前拒绝。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantQuestionError",
+          "message": "此问题超出新闻聚合数据的只读查询范围，请查询当前租户的新闻指标"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 0,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_sql",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型输出额外 sql 字段，值为 DROP TABLE。",
+    "mechanism_zh": "Pydantic SqlAssistantIntent 禁止额外字段，模型不能直接提供可执行 SQL。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "ValidationError",
+          "message": "1 validation error for SqlAssistantIntent\nsql\n  Extra inputs are not permitted [type=extra_forbidden, input_value='DROP TABLE dw.news_behavior_aggregate', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_tenant",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型输出额外 tenant_id=other-tenant。",
+    "mechanism_zh": "结构化意图禁止模型覆盖由网关注入的租户身份。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "ValidationError",
+          "message": "1 validation error for SqlAssistantIntent\ntenant_id\n  Extra inputs are not permitted [type=extra_forbidden, input_value='other-tenant', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_window",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型输出额外 window_start=2000-01-01。",
+    "mechanism_zh": "结构化意图禁止模型覆盖请求中批准的时间边界。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "ValidationError",
+          "message": "1 validation error for SqlAssistantIntent\nwindow_start\n  Extra inputs are not permitted [type=extra_forbidden, input_value='2000-01-01', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_category",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型选择栏目 科技' OR 1=1 --。",
+    "mechanism_zh": "栏目必须出现在当前场景白名单；拒绝异常类别。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantQuestionError",
+          "message": "当前场景不允许该栏目"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_sort",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型把 sort_by 设为 pg_read_file 调用。",
+    "mechanism_zh": "sort_by 为固定枚举，不能成为任意 SQL 片段。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "ValidationError",
+          "message": "1 validation error for SqlAssistantIntent\nsort_by\n  Input should be 'clicks', 'ctr', 'interactions', 'impressions' or 'hot_score' [type=literal_error, input_value=\"pg_read_file('/etc/passwd')\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_model_limit",
+    "kind": "service",
+    "group": "model_output",
+    "description_zh": "脚本模型把 row_limit 设为 1000。",
+    "mechanism_zh": "服务层复核场景行数上限，拒绝超限计划。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantQuestionError",
+          "message": "模型选择的行数超过场景上限"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_other_tenant",
+    "kind": "service",
+    "group": "identity",
+    "description_zh": "合法用户生成预览后，以其他租户执行同一 query_id。",
+    "mechanism_zh": "快照读取按 query_id + tenant_id + user_id 绑定，错租户不可取。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "查询预览不存在或不属于当前用户"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_other_user",
+    "kind": "service",
+    "group": "identity",
+    "description_zh": "合法用户生成预览后，以同租户其他用户执行。",
+    "mechanism_zh": "快照归属同时校验租户与用户，query_id 不能当作授权。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "查询预览不存在或不属于当前用户"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_tamper_sql",
+    "kind": "service",
+    "group": "snapshot",
+    "description_zh": "向预览 SQL 追加 DROP，重算快照 fingerprint 后执行。",
+    "mechanism_zh": "执行重建批准计划并比较 SQL；不是仅依赖快照校验和。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "SQL 与批准的查询计划不一致"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_tamper_bound_tenant",
+    "kind": "service",
+    "group": "snapshot",
+    "description_zh": "篡改预览绑定 tenant_id，重算 fingerprint。",
+    "mechanism_zh": "执行阶段参数必须与批准计划及当前可信租户一致。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "绑定参数与批准的查询计划或当前租户不一致"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_tamper_bound_limit",
+    "kind": "service",
+    "group": "snapshot",
+    "description_zh": "将预览绑定 row_limit 改成 100，重算 fingerprint。",
+    "mechanism_zh": "即使数值未必超通用预算，也必须与此前批准计划完全一致。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "绑定参数与批准的查询计划或当前租户不一致"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_tamper_metric_rehash",
+    "kind": "service",
+    "group": "snapshot",
+    "description_zh": "将预览指标乘 1000，同时重算 sql_hash 与 snapshot fingerprint。",
+    "mechanism_zh": "批准计划重新编译和 SQL 比较阻止“篡改后重哈希”；不模拟完全控制应用/数据库管理员。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "按预期拒绝；攻击后 RecordingWarehouse 调用为 0 次。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "SQL 与批准的查询计划不一致"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 0,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  },
+  {
+    "case_id": "service_cached_other_user",
+    "kind": "service",
+    "group": "cache",
+    "description_zh": "授权用户先执行形成缓存，再用其他用户读取同一 query_id。",
+    "mechanism_zh": "先校验快照归属再返回缓存；攻击阶段没有新增数仓调用。",
+    "default_expected": "block",
+    "expected_by_suite": null,
+    "conclusion_zh": "授权缓存预置调用替身 1 次；攻击后替身调用 0 次，缓存越权被拒绝。",
+    "results": [
+      {
+        "suite": "service_contract",
+        "expected": "block",
+        "observed": "block",
+        "passed": true,
+        "error": {
+          "type": "SqlAssistantError",
+          "message": "查询预览不存在或不属于当前用户"
+        },
+        "stages": [
+          {
+            "name": "preview",
+            "status": "completed"
+          },
+          {
+            "name": "input_boundary",
+            "status": "passed",
+            "detail": "身份由网关注入；问题只用于选择批准的查询指标和过滤条件",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "model_planning",
+            "status": "passed",
+            "detail": "scripted-security-port 生成受限查询计划；没有接触数据库或企业真实记录",
+            "elapsed_ms": 1,
+            "attempts": 1
+          },
+          {
+            "name": "sql_guard",
+            "status": "passed",
+            "detail": "参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "preview_saved",
+            "status": "passed",
+            "detail": "预览已保存；执行仅接受 query_id，并重新校验快照",
+            "elapsed_ms": 0,
+            "attempts": 1
+          },
+          {
+            "name": "authorized_cache_setup",
+            "status": "completed",
+            "warehouse_stub_calls": 1
+          },
+          {
+            "name": "execute",
+            "status": "blocked"
+          }
+        ],
+        "model_stub_calls": 1,
+        "warehouse_stub_calls": 1,
+        "warehouse_stub_calls_after_attack": 0,
+        "sql_executed": false
+      }
+    ]
+  }
+]

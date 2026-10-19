@@ -1,0 +1,2120 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_execution",
+  "run_id": "2026-10-19-text2sql-security-02",
+  "question": "Public question-screen diagnostics and NewsAgent execution-boundary contract probes",
+  "targets": [
+    "deterministic_contract_regression",
+    "public_screen_exploration"
+  ],
+  "scope": {
+    "entry": "screen_question; SqlGuard.validate; SqlAssistantService.preview/execute",
+    "exit": "guard verdict or recording warehouse Port + memory snapshot",
+    "exclude": [
+      "real model inference",
+      "PostgreSQL permissions/RLS",
+      "API",
+      "Temporal",
+      "hot-news ranking/analysis",
+      "production release"
+    ],
+    "allowed_claims": [
+      "frozen synthetic contract behavior",
+      "public screen-only confusion counts"
+    ]
+  },
+  "authorization": {
+    "basis": "user requested research and local project evaluation",
+    "production_mutation": false,
+    "allowed_side_effects": [
+      "new offline artifact directory"
+    ]
+  },
+  "code": {
+    "git_head": "717c6b2aaa694db21c192e3ee2760db85a2c0520",
+    "relevant_tracked_diff_sha256": "dc12c6d426901988c9b0b36211e1e7d98f879802f88f0ef7d1f77f9de6f02afc",
+    "files": [
+      {
+        "path": "agent/app/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/activities/__init__.py",
+        "sha256": "34e900f1bb8e75a57b8cb0653bc85c9cdeb7059e5b024b7e59effcd82bbf5168"
+      },
+      {
+        "path": "agent/app/activities/data_loop.py",
+        "sha256": "26327955ede895ca3d10f72a389299339ba3b123e4aa53fd612aafceff71f652"
+      },
+      {
+        "path": "agent/app/activities/hot_news.py",
+        "sha256": "c460652131c11dcf0f462bd9db85479b69b9edbec18f912e3374be5353372238"
+      },
+      {
+        "path": "agent/app/activities/news_steps.py",
+        "sha256": "7cb6b72445c5198015b17234080857115b8f469f478e4dadbda70ecf60624298"
+      },
+      {
+        "path": "agent/app/agents/hot_news_analysis.py",
+        "sha256": "6395af6e4f4c56d287a4ea2b3f82cc351f4ca9ee7a9d0e7fa4bb4f3d0b1f91bc"
+      },
+      {
+        "path": "agent/app/analytics/__init__.py",
+        "sha256": "ac1bc6fb8e8b5cd33b14772d8a51f809a96f686209e634cd60a164fd073057bd"
+      },
+      {
+        "path": "agent/app/analytics/audio_transcription.py",
+        "sha256": "391943c340083da0694bb5edf2c02593ffd5399a71be5c154822711ab08c282a"
+      },
+      {
+        "path": "agent/app/analytics/baseline.py",
+        "sha256": "de2b565c41b38c3b725c59ff1aa5ec6e067430b2a6583ec21af80df8d340f4b3"
+      },
+      {
+        "path": "agent/app/analytics/corpus_knowledge_search.py",
+        "sha256": "41d48236c16c1bc6b0e315aaa3f6202c1c68dbce990914b294c414c1b129adcc"
+      },
+      {
+        "path": "agent/app/analytics/data_source.py",
+        "sha256": "e6f5ddfc955fac9048667bda276967712c79ac54fbe20b525fdcf8984382149d"
+      },
+      {
+        "path": "agent/app/analytics/entities.py",
+        "sha256": "3abd68fe5c56d4619e6d0636e5c5d648c303d57091849cef17bd8e09fb869258"
+      },
+      {
+        "path": "agent/app/analytics/hot_news_enrichment.py",
+        "sha256": "350b6f15cc22a3f295eefea5331c0cb47cf9888bfb6b8163eae7d39b31b9908a"
+      },
+      {
+        "path": "agent/app/analytics/hot_score.py",
+        "sha256": "2d46b118a61797f7c4fe12c796d36edf877c7ffbf3d4fda957ba432a0bf7086c"
+      },
+      {
+        "path": "agent/app/analytics/lifecycle_news_content.py",
+        "sha256": "d6980b88f360e83ac1e0157302765636b63369df56599a61a6ad13b83c7df8ba"
+      },
+      {
+        "path": "agent/app/analytics/metric_source.py",
+        "sha256": "daac6626807d574ca495f5b4442e4eb5d00ec4e5bd49fc5537bd2e1aa6472c5e"
+      },
+      {
+        "path": "agent/app/analytics/metrics.py",
+        "sha256": "3cb27e5e40999df4b4165031343efc142f83aae9b19a40c5d273f46214683841"
+      },
+      {
+        "path": "agent/app/analytics/news_content.py",
+        "sha256": "7ec6ea61e406803d5dd4b9be4563e5265655c0d910f2547fcd5f0499b54b6480"
+      },
+      {
+        "path": "agent/app/analytics/ranking.py",
+        "sha256": "54ca4fe4ffb484f76cc4e67fe296ba486b44d45d27176d7efa5ea10a371eda35"
+      },
+      {
+        "path": "agent/app/analytics/sql_guard.py",
+        "sha256": "5239ba068c53908d8b14ac7f2820f5e04f119f38c3c8e20e10a319dce8de5a4f"
+      },
+      {
+        "path": "agent/app/analytics/tencent_content_bridge.py",
+        "sha256": "d60a83bd86f99e5c32e1ad16e243d6f7e9304695176217f3d0fba99847c73f93"
+      },
+      {
+        "path": "agent/app/analytics/text2sql_metric_source.py",
+        "sha256": "f678e5bb53d02257c0b1c0cd77ab4d0f58ea515ae7d27e95fdb4088acc80ca81"
+      },
+      {
+        "path": "agent/app/analytics/video_textualization.py",
+        "sha256": "fb1ba73b5332e2bff50f6fbeb227579cd5458db4e09a264b99e6e93d84bcc76c"
+      },
+      {
+        "path": "agent/app/api/__init__.py",
+        "sha256": "3a8d36ce427038c5d88561693554948d220a77d7505f47525be918f20acf7b08"
+      },
+      {
+        "path": "agent/app/api/audience.py",
+        "sha256": "da08205404b22974ad2ce136a584b4fe5ceb0dc9a5263dcf851d165b257bec68"
+      },
+      {
+        "path": "agent/app/api/behavior_tags.py",
+        "sha256": "fb3088d8bdbd0bf54c1b25c1398860f55c482449511e8c2925b78596cb2f7502"
+      },
+      {
+        "path": "agent/app/api/conversations.py",
+        "sha256": "219024d3ae92ea82fbba61d500983d6b26ace8e370b65cb890a231548de22934"
+      },
+      {
+        "path": "agent/app/api/data_loop.py",
+        "sha256": "45d5940b6d10ab6b040b989f88c421051450ebdffe3ff3ce47dac1ad83604d5b"
+      },
+      {
+        "path": "agent/app/api/dependencies.py",
+        "sha256": "82c16837384a59ff968f88eaae0cc57f894f811654f91506e1e36daf8a3e852d"
+      },
+      {
+        "path": "agent/app/api/events.py",
+        "sha256": "c5bde61dbe9bdcd852d045398c189d841b00e83bce003905fa345146eb5b5dce"
+      },
+      {
+        "path": "agent/app/api/hot_news.py",
+        "sha256": "f83343cd981a1fc2a83e66be22b09855c30455a1ec44e6f9492f6cc3647ae414"
+      },
+      {
+        "path": "agent/app/api/jobs.py",
+        "sha256": "c3531aeb29434dad7da5b30f50d7d3b19713dd4b8d140c334de958634d7f4310"
+      },
+      {
+        "path": "agent/app/api/knowledge.py",
+        "sha256": "7325440021d562691cf7f28a56e01c70944ca275fb6d9dd429ce6e9475a0a7f9"
+      },
+      {
+        "path": "agent/app/api/memory.py",
+        "sha256": "a82f46a9007d287abf8dc27d2a3284d238fec4d31400252639010a0df0e4c5f4"
+      },
+      {
+        "path": "agent/app/api/reader_profiles.py",
+        "sha256": "f0d89badea7a50b3375c8b4e66eddc3b9a4aad7fb56677261b77b83dd4100347"
+      },
+      {
+        "path": "agent/app/api/security_tests.py",
+        "sha256": "79e4517b51442d4d5e4ddbb64a3378d777fb70785a73665d035a3a3b8f86dc1c"
+      },
+      {
+        "path": "agent/app/api/sql_assistant.py",
+        "sha256": "a9723c456466f77dd406047436d65f0becdcb33aef3a89446e970aa4e30def4c"
+      },
+      {
+        "path": "agent/app/audience/__init__.py",
+        "sha256": "af87485358d749353cc864a626de6c29eb406e367d251603f5c9d76604265892"
+      },
+      {
+        "path": "agent/app/behavior_tags/__init__.py",
+        "sha256": "c01af133ce19a6117abbaceff1e6e713ac8f981d8b2123580fbbcc6cd12db588"
+      },
+      {
+        "path": "agent/app/bootstrap/__init__.py",
+        "sha256": "44bf3f562000ec62a74b2c961eebb7d15d10329b93fed963bc5f8d1f782d5405"
+      },
+      {
+        "path": "agent/app/bootstrap/api_lifespan.py",
+        "sha256": "5491dbbe90bb7b791af346de77247b956b25cf243b7876633ee808d1d507967b"
+      },
+      {
+        "path": "agent/app/bootstrap/hot_news.py",
+        "sha256": "e8093bd7f83ce7babbf3513bcb48d57ac7a1ff9baef30f138d57a2bcd0603531"
+      },
+      {
+        "path": "agent/app/bootstrap/hot_news_dependencies.py",
+        "sha256": "dcf5b7fd2724d0ae0304db26ae917d0abda2229647cd2d04d63880bad0756c07"
+      },
+      {
+        "path": "agent/app/bootstrap/worker.py",
+        "sha256": "0d79341d34b32587b48c7eab3d26c496c506084494495ac48d12cacf17b40077"
+      },
+      {
+        "path": "agent/app/clients/__init__.py",
+        "sha256": "b78ccfe3536d4572936500fd0c8ea2964e6e5095c495a75eba8000e9a8cacc30"
+      },
+      {
+        "path": "agent/app/clients/cms.py",
+        "sha256": "fe7dbcc9c89c31c8945e187f42ab484c1fd32534eb30a8049e4223895243e56d"
+      },
+      {
+        "path": "agent/app/clients/enterprise/__init__.py",
+        "sha256": "d2c86a1ad3bb6b07917a2e26725c0de71b3ff8b9851bb49057154d63c4fdd5df"
+      },
+      {
+        "path": "agent/app/clients/enterprise/audio_transcription.py",
+        "sha256": "fe418232929b44c1dfd466a2b72b248d73fc5ee769697802e6d4e17dd3dc9a3d"
+      },
+      {
+        "path": "agent/app/clients/enterprise/baseline.py",
+        "sha256": "184b1739c3263767877426478fb3372b09ba846067a2e5f476e2def9c1fc32a9"
+      },
+      {
+        "path": "agent/app/clients/enterprise/behavior_data.py",
+        "sha256": "413f7a9d255efb9d40dd824ab526d2731494ae1860c20f88c35d1b23ee522704"
+      },
+      {
+        "path": "agent/app/clients/enterprise/common.py",
+        "sha256": "e64182aabb3caef33f2276df92e4a0a76e5654e646448aca97e22940553d2096"
+      },
+      {
+        "path": "agent/app/clients/enterprise/dependencies.py",
+        "sha256": "4a904faea971ac7639086060b654dd2e4179d4f675dc169c78b342a2d3c6a709"
+      },
+      {
+        "path": "agent/app/clients/enterprise/hunyuan_video.py",
+        "sha256": "2ef3d1586b01e785e014f1233b35d0d78b4f3473b5100026eebf76798f755ae0"
+      },
+      {
+        "path": "agent/app/clients/enterprise/milvus_lifecycle_contract.py",
+        "sha256": "56ea12d3fe803c424de9ec2931b356813d2bbaaa21e89ba8096cf3af259fc699"
+      },
+      {
+        "path": "agent/app/clients/enterprise/milvus_vector.py",
+        "sha256": "e1219c6bae575d63458c0b3d40eb6489ef2fed71da55582f36411428c15b042e"
+      },
+      {
+        "path": "agent/app/clients/enterprise/model_gateway.py",
+        "sha256": "d477a1794e62b21eb1689f544626c25b8f27931ec3cefcec36ecd54bcb657419"
+      },
+      {
+        "path": "agent/app/clients/enterprise/multimodal_gateway.py",
+        "sha256": "f49d0a34390ad8198ec481c206de989da2708cadea3bf0797d8662861dcc1f2d"
+      },
+      {
+        "path": "agent/app/clients/enterprise/news_content.py",
+        "sha256": "ab5e061763d4a583ea17bd6e6fe875fa4bc693efc8dd2e57270332ca09a07e3d"
+      },
+      {
+        "path": "agent/app/clients/enterprise/related_news.py",
+        "sha256": "85192eb7e02c3d777db673322b1f55dc20c80aa9ec2cf8ee9099d581d88d15ce"
+      },
+      {
+        "path": "agent/app/clients/enterprise/sql_warehouse.py",
+        "sha256": "0912bfa4d31da46df10acf21cc252a2e67441b10b6f648eac9031987f162c22c"
+      },
+      {
+        "path": "agent/app/clients/enterprise/tencent_asr.py",
+        "sha256": "8ba4d19f0dcec22a645d784c0d5883b6214fd262dd62a213c4e105fd9d0f4b7b"
+      },
+      {
+        "path": "agent/app/clients/knowledge_base.py",
+        "sha256": "bf1747f0319ab5b880c1c23c852e2d736d5e2e09992a71f5f617e0cdce5de10a"
+      },
+      {
+        "path": "agent/app/clients/local_whisper.py",
+        "sha256": "77ec747d7ced1b0f02a2afce73aacaa61cb9abab635cf034359539d51228dd86"
+      },
+      {
+        "path": "agent/app/config.py",
+        "sha256": "776fa80194d26c4143fba101c0d2e39d7754c09eeabe5d3254a8ce719d752bb5"
+      },
+      {
+        "path": "agent/app/conversation/__init__.py",
+        "sha256": "90b6dbf5412bec04417404e3d0f58f87653cecf4239af37b1d558e4899db39f4"
+      },
+      {
+        "path": "agent/app/data_analysis/__init__.py",
+        "sha256": "c73dd7e5379c372385100b77b183c1ea46bed627fb3caf7f7819bed6ff5244e1"
+      },
+      {
+        "path": "agent/app/data_loop_worker.py",
+        "sha256": "fc7257cadf9229cee1b85248834bb2499b901f31c7041a3af667fc38fe5f49e5"
+      },
+      {
+        "path": "agent/app/db/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/db/base.py",
+        "sha256": "cbf5af221b7fab784188a0477496bb1ca6df93b1902ce0c837b3155445e0cf4a"
+      },
+      {
+        "path": "agent/app/db/session.py",
+        "sha256": "000fc732c9ecbad7410b19edf0d4df29e682cdce3a273f58cbd1349648e5c78d"
+      },
+      {
+        "path": "agent/app/domain/__init__.py",
+        "sha256": "c103fdb7e0f4a008c8b9a067ecec49f8394357c04dc04ad99fec259b09f74d4b"
+      },
+      {
+        "path": "agent/app/domain/errors.py",
+        "sha256": "94bc92819de17d669f78593584ccfdbb8b1bf9c0143daa6436a25a4df485f2fe"
+      },
+      {
+        "path": "agent/app/domain/execution.py",
+        "sha256": "ca91e89f76cd276e714e7cecd87652922f1ebc6f313a7a5e960e720f977773e8"
+      },
+      {
+        "path": "agent/app/domain/job_scenario.py",
+        "sha256": "b8c5e1ceb4598771963004a9298d42e94003bc18a047ec760c4f0bc501ed1535"
+      },
+      {
+        "path": "agent/app/domain/job_status.py",
+        "sha256": "c85315b33d4771858bf7f13a5fabab73d080fae068c99b755fe2985bec35a975"
+      },
+      {
+        "path": "agent/app/domain/transition.py",
+        "sha256": "1cb2da1db98c8a16a815c8eb76c9797b4728939337fa8d0ef4340867332d5694"
+      },
+      {
+        "path": "agent/app/evaluation/__init__.py",
+        "sha256": "f141d8e8ac5b4cde4fa50dd7354fa1b9a080166b291bf6ad118a382a1d83f5a2"
+      },
+      {
+        "path": "agent/app/hot_news_bootstrap.py",
+        "sha256": "6c760a9378ece3ddeb67b85a4333cec634c9dc9fd09a3c3e2a356fad03baf6d7"
+      },
+      {
+        "path": "agent/app/hot_news_dependencies.py",
+        "sha256": "463a0dadff71189ee04c465c3ac4203788241c7ba0856fa1212a47a16bb9b8ef"
+      },
+      {
+        "path": "agent/app/hot_news_scheduler.py",
+        "sha256": "47ebbe3c5cba82db8f11e7fc91d066030d3bf3ca8142861a8402605686d55d4b"
+      },
+      {
+        "path": "agent/app/hot_news_worker.py",
+        "sha256": "8d9d3e9e7fbc87c82922abedfd1d7945cfd36eb84edd0b5ff49abb3af1b6cc5d"
+      },
+      {
+        "path": "agent/app/knowledge/__init__.py",
+        "sha256": "e51ddf40b536bbce917e1382cc93c31cf2bef43b0055dce4823348b88ea99494"
+      },
+      {
+        "path": "agent/app/knowledge/tier_lifecycle.py",
+        "sha256": "5f10d91cc90e9d915a7f99fb7993de93478f848f99aee2252d520b00a841c02c"
+      },
+      {
+        "path": "agent/app/knowledge_lifecycle_worker.py",
+        "sha256": "2febb310e40db9373504f87c26ef95580247d3560fdca46510e59b17bc378b9b"
+      },
+      {
+        "path": "agent/app/main.py",
+        "sha256": "016723115c6dc398c314920cc3291790b1460a16644333ea45aee99c7d19c9ca"
+      },
+      {
+        "path": "agent/app/model_runtime/__init__.py",
+        "sha256": "6b0f461aa31ec8e21f7a17fd71916c7fbbd2a56d63b25d631527b30d0efd56b9"
+      },
+      {
+        "path": "agent/app/model_runtime/agent_client.py",
+        "sha256": "ccf6ff8b80c1d312524b4814f80da95ff122b4a85ee9d1a7c722e7bf495dea30"
+      },
+      {
+        "path": "agent/app/model_runtime/bundle_contract.py",
+        "sha256": "0b3c11fc2e0192d322f65ebb4eb7d9f440f6909ce56bc5457f3da73904457cc8"
+      },
+      {
+        "path": "agent/app/model_runtime/bundle_runtime.py",
+        "sha256": "5823f89a8c3d660c7c9e5790ef301c3e5d2bfb6b07a8e297c22c27dbbeeec6d6"
+      },
+      {
+        "path": "agent/app/model_runtime/config_file.py",
+        "sha256": "e3884ecf71d4060a3b299b9edfc8c9954e9631236b988b4704410d32b3661770"
+      },
+      {
+        "path": "agent/app/model_runtime/core.py",
+        "sha256": "cbd744ebecdad3ea927ff7ae5644e29c3c21a7bc4707b61f1febbb77a7c77cea"
+      },
+      {
+        "path": "agent/app/model_runtime/factory.py",
+        "sha256": "0c3d64e0fe32bd1055b7c5f21f729321e0a51d78f86c23868f441f3c9a8f2ce6"
+      },
+      {
+        "path": "agent/app/model_runtime/hot_news.py",
+        "sha256": "558f391d6f5afa2ab19db693797e79bacf9a2000f7ef097406b8405a9bbbf31c"
+      },
+      {
+        "path": "agent/app/model_runtime/http.py",
+        "sha256": "90b221d77343e39d047ac1c7d422e0037c1828f51c31eb74b7eca8c460b2302b"
+      },
+      {
+        "path": "agent/app/model_runtime/knowledge_factory.py",
+        "sha256": "34a902cd399906753439f54e4941315dda5c781f1a00326d879cc96e584f8271"
+      },
+      {
+        "path": "agent/app/model_runtime/local_embedding.py",
+        "sha256": "6191e0bad096dbd7a56dbe5eee800c346adbb4e6712412d5c33ed9eeb065393a"
+      },
+      {
+        "path": "agent/app/model_runtime/local_inference.py",
+        "sha256": "907479c622418d29d8ef72529bdf07e4758094ff2f22dfc7c9f6df28f08e10ae"
+      },
+      {
+        "path": "agent/app/model_runtime/query_embedding.py",
+        "sha256": "66e3b75377ef4204a89a9a4bddde2b14b0c37d0581000851841f670675e9903f"
+      },
+      {
+        "path": "agent/app/model_runtime/query_understanding.py",
+        "sha256": "e6610560c0d7a06908f1be9f3e1f891a196b66334955c15725f2751fde863e37"
+      },
+      {
+        "path": "agent/app/model_runtime/result.py",
+        "sha256": "0c3419a8c01d6a43229f0017751974272f65c07b5f0a0499e764fb47b5e502a6"
+      },
+      {
+        "path": "agent/app/models/__init__.py",
+        "sha256": "09c84535d5bfd25ffa65ec9c37fcf877d7c73793f35c4023a860964ec5c986a7"
+      },
+      {
+        "path": "agent/app/models/agent_run.py",
+        "sha256": "bab576f3ff373291285cfd9ebb323856a3941957ae2f140933e5a1a6f5c6d335"
+      },
+      {
+        "path": "agent/app/models/analysis_feedback.py",
+        "sha256": "0126958574bd3b0263d61595cbf8d7650523119e2b8a681c0e233797ba9556af"
+      },
+      {
+        "path": "agent/app/models/artifact.py",
+        "sha256": "93e7e39d083df8365b4837864be62bfc1d4925259d50197d87cd417d3ce504df"
+      },
+      {
+        "path": "agent/app/models/common.py",
+        "sha256": "3f7a693c2904fa08a2a00491c5ebf7cf0b94b0275839e8389aabc638cfb90043"
+      },
+      {
+        "path": "agent/app/models/conversation.py",
+        "sha256": "e2339e9b985e251310c24d81c1341696394dc784ef7830c2d5af939eb0225fb7"
+      },
+      {
+        "path": "agent/app/models/evaluation_dataset.py",
+        "sha256": "dbc59f2c5a6c4ae4e646e44eb96a95e109e460ed355286516e350a881535659e"
+      },
+      {
+        "path": "agent/app/models/hot_event.py",
+        "sha256": "6abc4bc801879f17aa94e847e5448db19b7f51eb5862eaf98907e3ba06dd5c96"
+      },
+      {
+        "path": "agent/app/models/hot_news.py",
+        "sha256": "1f4add4b631512f5cca088f0c3b0be96d7084806998d0ef2fc4034bce2c0d3b2"
+      },
+      {
+        "path": "agent/app/models/hot_news_decision.py",
+        "sha256": "b324c7b3ca82945e9ffe8a2f9c62c9e9d8c78bc02ce933e6fe5fb10040a31914"
+      },
+      {
+        "path": "agent/app/models/job.py",
+        "sha256": "99b1a99834ebf0cd0e319f14a89a16b68321f9160294cc0a2d45ba186d266cf7"
+      },
+      {
+        "path": "agent/app/models/outbox.py",
+        "sha256": "5e9a16238c2182ae340a4564567fc131a7a73c6af21d8d779d27f54cf50e5dcf"
+      },
+      {
+        "path": "agent/app/models/production_bundle.py",
+        "sha256": "f99e121712d030a068f5a0eafe53688cf051411d23882a01cd309faeb42e7bb7"
+      },
+      {
+        "path": "agent/app/models/step.py",
+        "sha256": "24dfb12f0d382a2bbd892be37efbc58a527c76ed9fb2aefca2eeb7bfaf6d9193"
+      },
+      {
+        "path": "agent/app/models/types.py",
+        "sha256": "c85b00065ca146e150fa92a7c4215d56e200d779faf4fea18ed3788fea2268d1"
+      },
+      {
+        "path": "agent/app/models/user_memory.py",
+        "sha256": "5190a1fdc40ca3c8b4432966f624f277997c39ac4d6e053e47fa047380cc07b6"
+      },
+      {
+        "path": "agent/app/modules/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/audience/__init__.py",
+        "sha256": "4e017fb52d1fedfad7870550d9a25d442206f6e337f6617b0f66b98fd1b036ab"
+      },
+      {
+        "path": "agent/app/modules/audience/behavior_package.py",
+        "sha256": "7296546098753ee69eb2b2b2373fe06f2f6828ea2284644303c865b07307158b"
+      },
+      {
+        "path": "agent/app/modules/audience/client.py",
+        "sha256": "5fbd4c0a62682994c23bdaad431e2d42be7f0b97b3d6e65d6fefc6a4db66db84"
+      },
+      {
+        "path": "agent/app/modules/audience/contracts.py",
+        "sha256": "37fc4812413163b96a98dfea4deec8234304f60626d34d1c6903fb90beb39da7"
+      },
+      {
+        "path": "agent/app/modules/audience/factory.py",
+        "sha256": "df4de3254ebcb07a3d8f26da5a581b889b3f656e555e9c69628940f0147cd43d"
+      },
+      {
+        "path": "agent/app/modules/audience/local.py",
+        "sha256": "70c23432ec4ee95c5ee629d32392a522949cf63a03282d4c3c8de862bb5c3993"
+      },
+      {
+        "path": "agent/app/modules/audience/service.py",
+        "sha256": "a57ece76268e7f87b65f6c9f7b75262547c9c7a801852e409c330ca2cdea3822"
+      },
+      {
+        "path": "agent/app/modules/audience/taxonomy.py",
+        "sha256": "f8f237702f1524135ff4f99e15305ca3e95fdab88f551cec18a571825ad585ea"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/__init__.py",
+        "sha256": "5df88d9aedc9f0e7496eb27d942cc4239a612ad1d54428f2acf51c2584e4dcbf"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/build.py",
+        "sha256": "f1cd3c7cb072055ed1d870fc4c688b6df546dc596d2f5aee1846d3d5f6634c2b"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/merge.py",
+        "sha256": "bbbd3aabd352fe9fc407c3e2340932095bd6b43d44897262cd912aaa8cb1b59f"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/query.py",
+        "sha256": "b3aea5f72d1edc2ac078a39cba7199c63017974a45cddb8390ea8b3e66e43c12"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/runtime.py",
+        "sha256": "139bdc98760045d9a10d5b6e1ad5f055721fa73581aa070153b1e3c9246c4177"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/source.py",
+        "sha256": "aed9e694093ec2f4b833e75edf293ed4c143a4587569cf74dbdd9b09b93e4895"
+      },
+      {
+        "path": "agent/app/modules/behavior_tags/tagging.py",
+        "sha256": "8ffab7f19148e8b67289d6dad01b86876705af7621c9ed6b049c36b88bfd32c0"
+      },
+      {
+        "path": "agent/app/modules/conversation/__init__.py",
+        "sha256": "5e3b71f4d2d87be9f2c2b858dfc99ddcf66f41e44602df797981902ea2ab1b18"
+      },
+      {
+        "path": "agent/app/modules/conversation/admission.py",
+        "sha256": "ba5195593f799b34b39665c25f9f0536d7744adc5dbb224ab36316b657a8c876"
+      },
+      {
+        "path": "agent/app/modules/conversation/admission_contracts.py",
+        "sha256": "70c9892a54702d409ebacdebb71d7fd3d4222a09d311494a08f5539fbddf4952"
+      },
+      {
+        "path": "agent/app/modules/conversation/admission_workflows.py",
+        "sha256": "ebd0822404b0fe147df4c6322027ad93be46c37ad29c47632546a1f6f1097b92"
+      },
+      {
+        "path": "agent/app/modules/conversation/candidate_templates.py",
+        "sha256": "ad8006895fcdfc3114d3bec62afc5234b94395055debcc346270c74b16ad5e6b"
+      },
+      {
+        "path": "agent/app/modules/conversation/confirmation.py",
+        "sha256": "f2654c16a22577f9ad450d55a3d055ac45fc882b7aa01b8fdd668965f3a24b83"
+      },
+      {
+        "path": "agent/app/modules/conversation/context.py",
+        "sha256": "190c22cb0d50fac9e42b1cf8138084af1b594c1eed59d26b3e26e0df9999dfc7"
+      },
+      {
+        "path": "agent/app/modules/conversation/dataloop_hooks.py",
+        "sha256": "1f72e086a036164a89b57d6aa64f5d566be621ddb287d32eaadcd4b0ff3718b0"
+      },
+      {
+        "path": "agent/app/modules/conversation/feedback_hooks.py",
+        "sha256": "cb7ba02a60189c0a97feb3b358190b20988b6bb0e55483006c8fee8d068f8f09"
+      },
+      {
+        "path": "agent/app/modules/conversation/input_state.py",
+        "sha256": "e7b6c9fb1d664454a4635a5224f3c5de928db90df070480a73f86128128138ea"
+      },
+      {
+        "path": "agent/app/modules/conversation/local.py",
+        "sha256": "9b585915b1e359ccd816ff501ee09fa886e20bbad0798ba02782b543ba7189a7"
+      },
+      {
+        "path": "agent/app/modules/conversation/memory_hooks.py",
+        "sha256": "c1e1af9cb8a7d3d12b5e3681a23f681900a837d05dd71d87c7802d513a4473ac"
+      },
+      {
+        "path": "agent/app/modules/conversation/plan.py",
+        "sha256": "2b5c0c235162212f857e5c70fa0fa56c7fae638138d9a9a037c6869b78ca164a"
+      },
+      {
+        "path": "agent/app/modules/conversation/query_time.py",
+        "sha256": "a39de63c78936edf67d640f63b1bb69affa482ccdd193f69f129eb67341df2e8"
+      },
+      {
+        "path": "agent/app/modules/conversation/query_understanding.py",
+        "sha256": "e9a2e2e340e0de089ec8cf711285d61fc661ebe23551a5e6a45f34ce13bd89f8"
+      },
+      {
+        "path": "agent/app/modules/conversation/receipt_reads.py",
+        "sha256": "57b6afab4838c129e4ff992906f106d018d9a72c5801ee3ce52957ca2b6e6072"
+      },
+      {
+        "path": "agent/app/modules/conversation/receipts.py",
+        "sha256": "c1defcdb077e38bd75273ea99408332b18727ea6f1fe6cde23912b4eb82a45cc"
+      },
+      {
+        "path": "agent/app/modules/conversation/related_articles.py",
+        "sha256": "def533c624739b09bcb5bec70242e566d2e2014b98651d275d3e955d68d83179"
+      },
+      {
+        "path": "agent/app/modules/conversation/service.py",
+        "sha256": "6f0aa0a05c12f3da4f97267a14008c75683d4cfb09d3f37e9ff5f2c9654c68ea"
+      },
+      {
+        "path": "agent/app/modules/conversation/streaming.py",
+        "sha256": "cb8ad8f30caf0e9124a93009b27dc14bd2576fcde5e8b88314ca6cc579fa7649"
+      },
+      {
+        "path": "agent/app/modules/conversation/structured_query_resolution.py",
+        "sha256": "be101ceab8575ce6bb7e0ec35465ff9779de64e9cbf64620c1231bfeebcfe649"
+      },
+      {
+        "path": "agent/app/modules/conversation/tools.py",
+        "sha256": "98944862ed8de5809e880d7347b17cb9380c136fc4dd045953ecabf57c64e692"
+      },
+      {
+        "path": "agent/app/modules/conversation/writing.py",
+        "sha256": "f5ff3b5d28784689cedf8aa729acfc34bb5a44995f5447bbd5f6b762db4fc06e"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/__init__.py",
+        "sha256": "289e049243378a6ed9b4c0cf90f23f1697f41572143f58fdc70052266dcb7454"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/acceptance.py",
+        "sha256": "adc3c16d6f486c9a286f3aad83481adf5170fd0f3a29a8ce1dcb560b0cb5a364"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/engine.py",
+        "sha256": "5d22f6c1302d7db9d4ee97ec6f6f25ab57e66e9b5e6ee137370bf86035afd06b"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/factory.py",
+        "sha256": "8e7b025cfd9faf63d5035a34f45d87f41ec7016dd2c24006511567a48a920093"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/projection.py",
+        "sha256": "5d6225f60609475295a53094f95943a239a58d842950d0cb78553742cd64e147"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/remote.py",
+        "sha256": "1a4ab66737e2b7cac8ae6e49b9f361e4531b43b2077f735941681fffa72d3909"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/runner.py",
+        "sha256": "628a3e850ebcbf9b13486c888a65b788e582251aab4596be7884d46b310f4df7"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/service.py",
+        "sha256": "cb328abaef7efd8243f7e4f6d88ce97ad957fbcd37345c754f80a32b73b27fe6"
+      },
+      {
+        "path": "agent/app/modules/data_analysis/worker.py",
+        "sha256": "1d79f0bf6cc2fc50b4bb891b4865785c90c3a80a7066d08f0d2a88f31610efb8"
+      },
+      {
+        "path": "agent/app/modules/data_loop/__init__.py",
+        "sha256": "0fec9f42f2eaee0d2aa219b56bf500c83d015a60e659978bcde7ddd3e7920afc"
+      },
+      {
+        "path": "agent/app/modules/data_loop/activities.py",
+        "sha256": "83cb0c3f8dd422c234fc8c786b5da4718d6d23f7350c1dc4a84bccaf41db8fb8"
+      },
+      {
+        "path": "agent/app/modules/data_loop/agents/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/data_loop/agents/error_attribution.py",
+        "sha256": "3ef7202d5ec0d4e7405644c2bcbf1df8a95dc72ed8b750e6919ff15d1351efda"
+      },
+      {
+        "path": "agent/app/modules/data_loop/agents/push_strategy.py",
+        "sha256": "792b5d9391d98f460c551d05b71bbf142782592279c0863fdface5dd95e8579b"
+      },
+      {
+        "path": "agent/app/modules/data_loop/api.py",
+        "sha256": "68255dea687e9f0af6a9ac487140fbe84e8324fbe3b2722030798740d61dc767"
+      },
+      {
+        "path": "agent/app/modules/data_loop/artifacts.py",
+        "sha256": "6295bc79c561e7585173d53a0a8d1bccf3abb29335815f7f7dd06fdb451a57c2"
+      },
+      {
+        "path": "agent/app/modules/data_loop/automatic_feedback.py",
+        "sha256": "bb80fc26bc0cbb7c1a359b96ecc20b08e7b6590b3050a1fad624450aa03c417d"
+      },
+      {
+        "path": "agent/app/modules/data_loop/bundle_contract.py",
+        "sha256": "042ac48885c951bef00bcfb1d314c36845349c5594a52bb3c44c8999255593de"
+      },
+      {
+        "path": "agent/app/modules/data_loop/bundle_runtime.py",
+        "sha256": "2567ace57785027480527f262eabafa8a3893d8a0e3d7c990df08c55b85c859c"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/analysis_feedback.py",
+        "sha256": "9b00e764d7d9e86cd163d2db0107feaa55fe4bc9389bd9029e1326b14af49c0e"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/data_loop_api.py",
+        "sha256": "4ece5e1d7081584f28e24d985d154e4efb42925c76aef4f50dc22ce4efdd5626"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/evaluation_dataset.py",
+        "sha256": "b80ea8ef236bccc1be54443fd8a4c32046a4178a912456e0d279c6af7003e536"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/operations_feedback.py",
+        "sha256": "8a700844ce97f3d1a7c21f7cea35d5af5cbb2524ca5615b209559f0ebd5571da"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/production_bundle.py",
+        "sha256": "d3d2b1d585f18f73e66dc185f6721fdf70d9438dbc1c2f6672404d6192ff22f7"
+      },
+      {
+        "path": "agent/app/modules/data_loop/contracts/push.py",
+        "sha256": "d398567f702af7b210fc42a1a4b5e1ab990a08761d94e66b6422cedddc54a92a"
+      },
+      {
+        "path": "agent/app/modules/data_loop/dataset_analysis.py",
+        "sha256": "2614d50cf0a22f8155f71372b46a178c2d3b90cbc50c3b69624e6989a3bb8019"
+      },
+      {
+        "path": "agent/app/modules/data_loop/dataset_freezer.py",
+        "sha256": "b720f981d5df85f4c3a774ff1afabf443ab60dc274f79433e692e18cfe6f81ad"
+      },
+      {
+        "path": "agent/app/modules/data_loop/evaluation/__init__.py",
+        "sha256": "b050399ce1a28f89680be82a209fda63c3320bdaeb1cf8be44dd7f34aba165f6"
+      },
+      {
+        "path": "agent/app/modules/data_loop/evaluation/fault_drill.py",
+        "sha256": "d418e57cc89f4c98c7912d365541e38c86c4f80d135f4992546199f535405db6"
+      },
+      {
+        "path": "agent/app/modules/data_loop/evaluation/hot_news.py",
+        "sha256": "5c9cceb998cf2dfc5cd6949b7e0ec3bf654d34e9bb6c6e03e1e0b522f475e962"
+      },
+      {
+        "path": "agent/app/modules/data_loop/evaluation_gate.py",
+        "sha256": "b94d4f2f79720ee8b3f2a61b77167bf8786c55e581894dc43a0de4df9408b884"
+      },
+      {
+        "path": "agent/app/modules/data_loop/feedback_collector.py",
+        "sha256": "cff190ddbfc304266dce0b2a8ec4bd6d544d99f30830868dba38076c1ff21333"
+      },
+      {
+        "path": "agent/app/modules/data_loop/offline_replay.py",
+        "sha256": "f127f1c148cb72bc4d66ef0f4b71cb3e2e3175086d745ffb6408c88df059171e"
+      },
+      {
+        "path": "agent/app/modules/data_loop/orchestrator.py",
+        "sha256": "a812269c6f4fff80169d78987aa6dca63d52ad6b36527262f4ad5e3ac5c8654b"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/__init__.py",
+        "sha256": "0bc99fddea887dac724f1c6a08bd6e21c1291287862ceadf95e79e6197ec59ed"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/analysis_feedback.py",
+        "sha256": "694ac43c5ed0bff79b2191a01092933b6eabec28506b14a1f87bab4536919ad9"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/analysis_feedback_repository.py",
+        "sha256": "86fb2022c50fbfc2f2262acee06d001362442fbba9917fe52d18e70ce2fe69bb"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/evaluation_dataset.py",
+        "sha256": "50cccde760d08e061ab9536e7b50a6fc2219ea0c43e526cad1844a46710ffb1d"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/evaluation_dataset_repository.py",
+        "sha256": "16dd87a0f39d7bfed49a26831006f2f6fdebecc39c8c86eda10adafdc24ad7c9"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/production_bundle.py",
+        "sha256": "5878b923f4ab2005ea3effb1a16301af347cd4f3640a4c88dd786475b8343797"
+      },
+      {
+        "path": "agent/app/modules/data_loop/persistence/production_bundle_repository.py",
+        "sha256": "2fcf758aab213fb7e2f4f9ec59f63309547af77a294ea94ee6611806823fd01a"
+      },
+      {
+        "path": "agent/app/modules/data_loop/production_bundle.py",
+        "sha256": "2445505dcb751e0e9a068497c76a45ef52850566abf52411dbe39b38b76eab64"
+      },
+      {
+        "path": "agent/app/modules/data_loop/production_bundle_application.py",
+        "sha256": "740d72845d6152de51e42c74d80a3cebbe9beaf895cc4ef4f5eaa865ea411651"
+      },
+      {
+        "path": "agent/app/modules/data_loop/publication_outcome.py",
+        "sha256": "a134e5ed8b3ce276a4fb6ca65f5d76fa389062d6f2caedbf884c65156c32221d"
+      },
+      {
+        "path": "agent/app/modules/data_loop/push_policy.py",
+        "sha256": "af3fc156ef30811d16583474349ecbc0d42de2c9bbedadd194153e2172109a07"
+      },
+      {
+        "path": "agent/app/modules/data_loop/push_strategy.py",
+        "sha256": "867e664b9391952475b16e99b2652b365c6bb83dff2bd3addbb09d1eebe0e9dc"
+      },
+      {
+        "path": "agent/app/modules/data_loop/step_handler.py",
+        "sha256": "db9bca0b28555062569c313fd3cbdb61fada1b0777651a633ff195e01a7a8ea7"
+      },
+      {
+        "path": "agent/app/modules/data_loop/workflow_contracts.py",
+        "sha256": "8a1981a86468c314b776ec1a91124269dcafaeca754294d70a42234572f78329"
+      },
+      {
+        "path": "agent/app/modules/data_loop/workflows.py",
+        "sha256": "8b4ae3ea7f19b9f1e29f229c4dbafa59237e55ff663299d2b2aaf881ced8f687"
+      },
+      {
+        "path": "agent/app/modules/hot_news/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/adapters/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/adapters/hot_news_run_store.py",
+        "sha256": "1c0040551e5fea36c63b53b25f3798c8bf2346c6dd4baeb98108fce0dc18e3ba"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/corpus_knowledge_search.py",
+        "sha256": "e468f54d456fda9d8fc3c6a70a15cc565f52519b56158907047139c7df94cfcc"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/hot_news_analysis.py",
+        "sha256": "54b7dfa952a2bb8695bc895f2cd7d6ffed1b4148ca13da3a0d5f297acbad7e6c"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/hot_news_analysis_batch.py",
+        "sha256": "6c889c60786ec5c2b7433771bf8aaedf5146f24bcbc14624f176d149d6273f74"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/hot_news_enrichment.py",
+        "sha256": "6e06c03a745136c1b9fbd10a5b49840033245d81a9502fbfcbdf7fe5641c5b26"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/memory_aware_hot_news_analysis.py",
+        "sha256": "69bbb63baf745e4ef05a8ae287755fe977672d647c1d555bc73c44f236fcfe67"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/news_features.py",
+        "sha256": "6d73b7dd691c026a243713e68fb3b5559acb0b1bd2698830ae1721e5f815e572"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/related_news_reranker.py",
+        "sha256": "88a9483592f87cb20c123d17862629c500fd5c3ee896fd40061da53e900eaf7a"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/runner.py",
+        "sha256": "08ccd0d590cdb4d94dc23d4c0a81220af1af1fba64deb9bf63de11169a87f83d"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/tencent_content_bridge.py",
+        "sha256": "5cbf730736de713a4b2b3e592d293321e1e7e53ed43349d8b2871160e51a194a"
+      },
+      {
+        "path": "agent/app/modules/hot_news/analysis/text2sql_agent.py",
+        "sha256": "03610da5277070910441ffedfca78cecc0e1492dfedda0b699ddbe27c2bc32fe"
+      },
+      {
+        "path": "agent/app/modules/hot_news/api.py",
+        "sha256": "59f43c76b344d9a1af478c0f4be5b3f6106f9c443e99ac4183fd0be11ad86f4f"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/active_bundle_hot_news.py",
+        "sha256": "86e19bc84902e89042342762e5c73b400ee0a6969df5b97137da7919e30af0cb"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_event_lifecycle.py",
+        "sha256": "603872db19ba4055d707639644ffee06ff7097571019d17868aa89acf3b6e497"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_decision.py",
+        "sha256": "acfb4ca1429c3f413b775d6bc16fb4cc36cde51849eb18fcb195c00bce26649a"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_event_stream.py",
+        "sha256": "aac0fde526580ee9d3ab597222780ae9fb724f84b0021bcbb83e76f2bfcc9b13"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_orchestration.py",
+        "sha256": "9b099409c36dc009aed0f7b1bf1c03f7833b860e0311ed5f2e1fba5e02d83c2d"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_query.py",
+        "sha256": "749885fe36c4a4a7d9e968f388f3b6ffe5c7c447386259db66fdd4323a29598c"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_schedule.py",
+        "sha256": "f8e063257909f9228a13952058286a5833c1c6b3b8b36284b380b74c20f40e5a"
+      },
+      {
+        "path": "agent/app/modules/hot_news/application/hot_news_writing_handoff.py",
+        "sha256": "632652c3d02518c5b7b06f4641b308c489c7e79844cb3b16a1f4e22c0ce5f4ba"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_event.py",
+        "sha256": "e5df027b36db79416b685152ab5f94f49bcb6ad42ff353137d377042a519de91"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_news.py",
+        "sha256": "21bc26112960d6116319f52ec6340367b321b136d06dd0c8bb9063431ac4f07e"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_news_api.py",
+        "sha256": "d5dd52cc0a77a8f425189608fc0289dcee130f7d0851ba83aaadc4347c761a0d"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_news_decision.py",
+        "sha256": "5fe36bc2535ed0c07c6fd0f1bd1a53e70af13b0aa9d70b4aa223ecbfbafbd08b"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_news_events.py",
+        "sha256": "8c8e5e97b01ff2f27fe356bfb59852b7c67d675619e5972e1411bbac0858e7a8"
+      },
+      {
+        "path": "agent/app/modules/hot_news/contracts/hot_news_memory.py",
+        "sha256": "e3271aa8dca1e85ee4d6a53f074a4bdc028c3a798432400334ce591df75b8456"
+      },
+      {
+        "path": "agent/app/modules/hot_news/persistence/__init__.py",
+        "sha256": "6b95888f669427e118e70c2680aa27e3c6aadbd8ade83cf04e602514d0b98776"
+      },
+      {
+        "path": "agent/app/modules/hot_news/persistence/hot_event.py",
+        "sha256": "1b25491d89450c7d4406f5d9d2c95c4107da0419780b58d5edfa00f06cf25380"
+      },
+      {
+        "path": "agent/app/modules/hot_news/persistence/hot_event_repository.py",
+        "sha256": "0395ad18e9c0e5f6d6e15820a38d379794d057df405915639dd679f509805f5d"
+      },
+      {
+        "path": "agent/app/modules/hot_news/persistence/hot_news.py",
+        "sha256": "742384e564d4e2a2000126e1ada6d9ea0a9fd22aa7ad1c31b56e2f2976dc2c37"
+      },
+      {
+        "path": "agent/app/modules/hot_news/persistence/hot_news_decision.py",
+        "sha256": "4c831937a9166c23c27ecc8b5046104b68927eb8400cf8a3fb625c1c96ee877e"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/baseline.py",
+        "sha256": "a6808239a70547b735ad36b07a875c48db4dcc3caf7a1689d1fceace5bba0352"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/data_source.py",
+        "sha256": "7cc19caf774232e4a6f76bd04d9dffc64f24656efa3988c820c26254390fc2ae"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/hot_score.py",
+        "sha256": "01b24f5a18068292b613b4279fefd0186934c1fcb8bc07e32c3932f7f65b4009"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/metric_source.py",
+        "sha256": "43e0626324a0e1e7b53b922407bec70a7f65e554dea16817af8aa7268943e39b"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/metrics.py",
+        "sha256": "7c9ddfe0fc859ffd6f60622f2b80c3e67770bae309c8bf589870fe98be2754b8"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/ranking.py",
+        "sha256": "4686134c77aa7395107c0f4c205272f5d2cc1fcf8ead7b47129f46e258fc0689"
+      },
+      {
+        "path": "agent/app/modules/hot_news/scoring/text2sql_metric_source.py",
+        "sha256": "fd198a7560c9385ea2bc1075d0558426d3eb3fa4ed8bc226d4e291848331f2cb"
+      },
+      {
+        "path": "agent/app/modules/hot_news/workflows/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/hot_news/workflows/activities.py",
+        "sha256": "5b8b78e78326597ddfe04071206037f68431657242edeb1ad1b71992be19b33e"
+      },
+      {
+        "path": "agent/app/modules/hot_news/workflows/hot_news.py",
+        "sha256": "00e16742c225177c8934b7d3e34d93ea706f9a084580a8525e2e60cbb8b5c853"
+      },
+      {
+        "path": "agent/app/modules/knowledge/__init__.py",
+        "sha256": "5492a46427badf92764e70094cd8bda8a7c14603017a1ac8a547d24916bcf3a6"
+      },
+      {
+        "path": "agent/app/modules/knowledge/bootstrap.py",
+        "sha256": "643eaaf9c85427484c54e932224b752d57c6dcb8bd468ba2f906c82f31524019"
+      },
+      {
+        "path": "agent/app/modules/knowledge/document.py",
+        "sha256": "51425057794a34baaa99c68c5097d1d3aaff8296ff68ca308446708ae45e513d"
+      },
+      {
+        "path": "agent/app/modules/knowledge/ingest.py",
+        "sha256": "f31db050b52558ec0ddff8ac718beb219b3f687778a45f72fe55409881ad0725"
+      },
+      {
+        "path": "agent/app/modules/knowledge/native_indexing.py",
+        "sha256": "58272585bead087ac3fd6d72fedbfc9408be31344c3238c8f5f6f47e839a67f3"
+      },
+      {
+        "path": "agent/app/modules/knowledge/postgres_store.py",
+        "sha256": "dcd2aba1710566391fe88bfc1d66441e91cfead411084329b1513128d9768523"
+      },
+      {
+        "path": "agent/app/modules/knowledge/qa.py",
+        "sha256": "e055e76bf689c840d5d10a9e70c667176343acedcec6651d0be7ca7e2518cd4d"
+      },
+      {
+        "path": "agent/app/modules/knowledge/search_config.py",
+        "sha256": "fe38a37dbb6bf63e8900f099acecc48c65a0b8f3927f4124976961eefb810167"
+      },
+      {
+        "path": "agent/app/modules/knowledge/search_factory.py",
+        "sha256": "4f124d17535014fd7d77cba70b635005019326e8e11f793865a0b8f78304d44e"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle.py",
+        "sha256": "11dd426337648a0cb9631d50c0294dc28722a2721b9429f29b1355edb43c8289"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_config.py",
+        "sha256": "20c5a40b0187fcf684cdeb5f97184c5cf718d4e530dbbd3532eb8d5266c121ff"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_factory.py",
+        "sha256": "2363ec6d42f8bec3f9f34e206cca6db0df41ad64c1f7010b9e818992f6dac60d"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_index.py",
+        "sha256": "db2a621b1f83ca8294816859d466974b0eca08f0d2378468e56752909e86c2a1"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_local_index.py",
+        "sha256": "d4588bbd3b208cdf1d1a8981c88bd59d5666e13573e11a130523a8b39cf49ba0"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_query.py",
+        "sha256": "649dbd9a649a63fb5f382f147946db25e9072935ff24753fb9b9da4883c616b5"
+      },
+      {
+        "path": "agent/app/modules/knowledge/tier_lifecycle_store.py",
+        "sha256": "d9f64946e9220e3a0b98013c65476be81c4e217847d4606bed0c33087f475183"
+      },
+      {
+        "path": "agent/app/modules/memory/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/memory/api.py",
+        "sha256": "e48c9b59d82b624bd211aef6ec11acb95aafa56e0d8646cce57ba8e15ba918fa"
+      },
+      {
+        "path": "agent/app/modules/memory/contracts/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/memory/contracts/user_memory.py",
+        "sha256": "f2a70e3f0ca23f63b345b6fc54b9988fe6358cf49661aca11707d8e187840bb9"
+      },
+      {
+        "path": "agent/app/modules/memory/contracts/user_memory_api.py",
+        "sha256": "657aa54c480673a98fe8e9356e603e98f694881134ed6d8bbd64717247bd1925"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_context.py",
+        "sha256": "a6c5c474d7134f5bcc7f6f21d9fe91afc8fa1032e5e0c16a8111d4e1e86543fc"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_context_application.py",
+        "sha256": "489d49ea98b071d5dafa120658d41bb658e648f3104b658a2ec92af860c06f50"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_promotion.py",
+        "sha256": "921fe5d0ecc80afe7473942b0ce2c4e99b105799353f8ce1467244184212a918"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_promotion_application.py",
+        "sha256": "04cfbc5ec3bf9816da501f3510968bfc51464299eaab663ca838e40c1af64e44"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_prompt.py",
+        "sha256": "a93747d607f99eb283ba297fce423d8080838aa173ae4313477303739be9cc44"
+      },
+      {
+        "path": "agent/app/modules/memory/memory_write_application.py",
+        "sha256": "96ecbb8048daad9d3e54588f082a8eb9991e527fce93451bd0df99beb7248c90"
+      },
+      {
+        "path": "agent/app/modules/memory/persistence/__init__.py",
+        "sha256": "ea3d340d5a2b875b7d8947d1b41291de95284f37fda6f473de8627962668dbb0"
+      },
+      {
+        "path": "agent/app/modules/memory/persistence/user_memory.py",
+        "sha256": "f7bc33e4298db27a7abb3e8e2598e4635bd84e6d4c84873567635653039bebaa"
+      },
+      {
+        "path": "agent/app/modules/memory/persistence/user_memory_repository.py",
+        "sha256": "93886b2119f3e2f9f799809da0d84424ca31faa6a88f7f3b10c7692d1ff3a6af"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/__init__.py",
+        "sha256": "76c4844a9f76547b76be07c5326b17e030d31a73cb88f464fb29c0dafad26061"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/build.py",
+        "sha256": "c737e3d785e0ef4dfa4f9c31bfc53568621029f68e7b556700983a8e588a2347"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/client.py",
+        "sha256": "c7c988ab74678b3626fb86a6111062cf0b7ea97ef5bf8c18bc6ecde1772fe867"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/contracts.py",
+        "sha256": "117421ee77f5581f7acca2df3877b0e36a6c4f687dacd29ea0d43eb49d64adfc"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/factory.py",
+        "sha256": "519be7cf7ab619155fef440930a912af4b6ef4027461783d410d7aa861eb1e8c"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/local.py",
+        "sha256": "c332b29c70b97926b2db403ac6691ba82cd25d237131f775b20ef401dde4005e"
+      },
+      {
+        "path": "agent/app/modules/reader_profiles/service.py",
+        "sha256": "7bc7df6175fd3bd38a0c8ed915b9340c4dcf1d147ab6f17088ff5ad6a25979c7"
+      },
+      {
+        "path": "agent/app/modules/writing/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/writing/agents/__init__.py",
+        "sha256": "8545c9cab62975cce0331f7acfa5582740b0d2b3aab500d665c2c616518ed147"
+      },
+      {
+        "path": "agent/app/modules/writing/agents/research.py",
+        "sha256": "775de4bce436cd640779b73c0a7f56a72e516985abb86ae70d84d9822b9e14fe"
+      },
+      {
+        "path": "agent/app/modules/writing/agents/reviewer.py",
+        "sha256": "fac943df59fcdc10b8103ff4cf131cad88b5f2d3f596f1eba425b96f7509ce9f"
+      },
+      {
+        "path": "agent/app/modules/writing/agents/writer.py",
+        "sha256": "589b41527cd656debf2cf8fc67a9bd5c2a5fb3b8431292421d92c313efcda7c7"
+      },
+      {
+        "path": "agent/app/modules/writing/artifact_pipeline.py",
+        "sha256": "357723f7feed2e50354c66f148236d7dd03c0baf611548a42f9817b7675bd034"
+      },
+      {
+        "path": "agent/app/modules/writing/checkpoint.py",
+        "sha256": "c8ba96c8b63e1d8be8faef4b66138269bfd5b407cb0420a38f0af6ab2be5136b"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/checkpoint.py",
+        "sha256": "b67e706af825844c62a30362771bb2eb57411e35ca5ef26016d998e7fd60dd94"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/events.py",
+        "sha256": "37016455fcc5a966f13ed3312bf1d77d18a5670b442426db97df3c40d1305a25"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/job.py",
+        "sha256": "7ac8344bc885307081773a31086a811be37209dd99ecbe9e78d96c62e4a0d624"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/research.py",
+        "sha256": "d80ffdd68f5b8bacfd888eeaf77ac9bc5afd8f17b6a941d482937fe8abe80cf5"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/review.py",
+        "sha256": "16da39e811e2ac76be7bb4c8765708ccdd4d9be554186981676a7a775a4f6396"
+      },
+      {
+        "path": "agent/app/modules/writing/contracts/writing.py",
+        "sha256": "ae737e34fa6985f2f04fe002e06dad8f9802952e44d904dd1d571527d83836f2"
+      },
+      {
+        "path": "agent/app/modules/writing/event_publisher.py",
+        "sha256": "b0a51937cc72228ded0adcf4a6068fa60d5b7aca765e3bbb4267c2c676749d27"
+      },
+      {
+        "path": "agent/app/modules/writing/event_reader.py",
+        "sha256": "4c98359fc0bba20a3c9c917bc777ce0a135b51699e8b00d83a01db27f4c9d04a"
+      },
+      {
+        "path": "agent/app/modules/writing/events.py",
+        "sha256": "156656b040f74ffb3be100c4210e46c7015b40ac037675a8cc799472b6a48872"
+      },
+      {
+        "path": "agent/app/modules/writing/execution.py",
+        "sha256": "559fe5e0f9ccec5d38944650cf7d22e332486852ee8423020d694b7acdf2aba8"
+      },
+      {
+        "path": "agent/app/modules/writing/job.py",
+        "sha256": "4620330e6044e4495e603e0bcfd0db56969b5d390608a157a27eca47465e5564"
+      },
+      {
+        "path": "agent/app/modules/writing/job_state.py",
+        "sha256": "ec10f4b734e56af86f8140ee32f6abe21fe4b62641c686d4873f081aaad5556b"
+      },
+      {
+        "path": "agent/app/modules/writing/jobs.py",
+        "sha256": "3dbd0d9f5b29b134194a49f90d7b5c8bb2266b86ae97dbc73907f80ed34e6adb"
+      },
+      {
+        "path": "agent/app/modules/writing/news_step_handler.py",
+        "sha256": "c48fd46f21f881ff794f0dc325fb31835f7954d51e51877239458642b77d0536"
+      },
+      {
+        "path": "agent/app/modules/writing/news_steps.py",
+        "sha256": "3f282c160e534bdc9fdab4723fb85477f5909c004caece8be4954c45bed5ea5c"
+      },
+      {
+        "path": "agent/app/modules/writing/news_writing.py",
+        "sha256": "c70cb370725d15c55e35f8ea66be15f2f06baf5536ad6f65653c7795e087ec0b"
+      },
+      {
+        "path": "agent/app/modules/writing/orchestrator.py",
+        "sha256": "ff11e4a6f47553bbd8bfb9ccf08d005be05c90d7a5473c088f99887c8d810a2c"
+      },
+      {
+        "path": "agent/app/modules/writing/outbox.py",
+        "sha256": "7a59305fe8a9d9bc1bae968034e2983095deec6352dea43de3148fd3b69a07fd"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/__init__.py",
+        "sha256": "f90b67375d06f86332ba3bb43db8de090dda82d7a0d9d6c80f562cb5661a5acf"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/agent_run.py",
+        "sha256": "b4af744dc03f333ce1deaee14817b4c295fd3a51fc68e9c6604845cc7004402b"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/artifact.py",
+        "sha256": "efa12411f24600f632aec5ce9fc93a3634ba4d4c90828894dc3ea6b4a9be83cf"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/job.py",
+        "sha256": "ed9c9ba46ce5a890e1cba4764032ebfe81269bb4110ca9aebd78f31c165655d4"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/outbox.py",
+        "sha256": "63b8a2c06fd3e5163e129c2fd7e7f16519ee55a08c88446345e15f9db411fbd9"
+      },
+      {
+        "path": "agent/app/modules/writing/persistence/step.py",
+        "sha256": "2b64c57d1f0ad47df6e434ec06ab94c4d07e452238dc5eeb65a821018bcbbdf2"
+      },
+      {
+        "path": "agent/app/modules/writing/progress.py",
+        "sha256": "af7560eca3bab0358811d14fbe3ac6ac1cf488374f14089486e9bb78845f0be7"
+      },
+      {
+        "path": "agent/app/modules/writing/recovery.py",
+        "sha256": "1ff664ff9e48d10b1791a1f42c0503de55b4a4997d77fb3b11dd41bc4f4d1057"
+      },
+      {
+        "path": "agent/app/observability/__init__.py",
+        "sha256": "2bf786174ab48574ad2acaeebb7f5eb8d3c64df59d09b288a3915cdd786f9405"
+      },
+      {
+        "path": "agent/app/observability/database.py",
+        "sha256": "825625d8ef622351f1d52ea2f4513ec9496b22bafeee6316dd1e8736b9361034"
+      },
+      {
+        "path": "agent/app/observability/decorator.py",
+        "sha256": "4d95ffb2f1fcd9266068d751c9c9f0b12597eb7183271fded32f59cf54b90aaf"
+      },
+      {
+        "path": "agent/app/observability/decorators.py",
+        "sha256": "6234733e262d761a118be8925a39537d81be3c736564167c419ed49b37e38ecd"
+      },
+      {
+        "path": "agent/app/observability/hot_news.py",
+        "sha256": "8afd353d749bb006900fcefc9a5771063c9a0e28b97fb20a59908282ec9b247d"
+      },
+      {
+        "path": "agent/app/observability/process.py",
+        "sha256": "cba67ed014769b28de33fbb56f6bac2c6ee8be696d585d4bc3a91bfde2298591"
+      },
+      {
+        "path": "agent/app/observability/settings.py",
+        "sha256": "7ee2773392d3745e7a2c4ba2bfbbc6130d68a1cb37d97f53feccda4aa7a3dc9a"
+      },
+      {
+        "path": "agent/app/observability/telemetry.py",
+        "sha256": "9207479aa178112a140320330a17ccd623e0d69baba51035de146dfa547ce919"
+      },
+      {
+        "path": "agent/app/observability/temporal.py",
+        "sha256": "8be9b8ee7520f5ea63613dbfa2438f31aff38ac9029517cc6be20230ff8f4cb8"
+      },
+      {
+        "path": "agent/app/observability/web.py",
+        "sha256": "2f92d10e6d5e85182b1cd9cbaa49682f2b08020017e20e11d99678fa987a5278"
+      },
+      {
+        "path": "agent/app/outbox_worker.py",
+        "sha256": "9527218796bb4a06ecf19e96f751bcd2d61d7375df9b3d5763b0cf27a2cff25b"
+      },
+      {
+        "path": "agent/app/reader_profiles/__init__.py",
+        "sha256": "9721439683f11c35a3206e0b5cab8a334cf5f7cc254e0ee21096cbf8d6038888"
+      },
+      {
+        "path": "agent/app/repositories/__init__.py",
+        "sha256": "aecf2f1e54c8fcecf5816efe3aee42d5d5e543a6a69353da5d8e535b5902eef2"
+      },
+      {
+        "path": "agent/app/repositories/analysis_feedback.py",
+        "sha256": "db98884d2e1315692f5d71a6ca759c0d25d6dccb4d09af325f6902c82498c8b1"
+      },
+      {
+        "path": "agent/app/repositories/conversation.py",
+        "sha256": "1ddbe3839947239f6d6851b5f927a41a710168391c8d13d8ddecd20a99bf5111"
+      },
+      {
+        "path": "agent/app/repositories/evaluation_dataset.py",
+        "sha256": "f306c0ce8838f4d9ed9866d0aaa6eb504109066b4f3d395b949459c0511e4265"
+      },
+      {
+        "path": "agent/app/repositories/hot_event.py",
+        "sha256": "fd5dd98f822f9c0ea3d595fb956eead18725c45881a2379dfda08b9700dc037b"
+      },
+      {
+        "path": "agent/app/repositories/production_bundle.py",
+        "sha256": "d0106fd34490d09559925a0534f9eef56437c96b616936e87d344cab6e4be2dc"
+      },
+      {
+        "path": "agent/app/repositories/user_memory.py",
+        "sha256": "52ed7bfa82a0257233a2d105143fa051812e3ff8f50b764d2a8a6cafd872e6a1"
+      },
+      {
+        "path": "agent/app/retrieval/bge_snapshot.py",
+        "sha256": "3270398db98d8edc52b7694bd86577c1de5b7c99958694b33ef98693d98f22d2"
+      },
+      {
+        "path": "agent/app/retrieval/in_memory_index.py",
+        "sha256": "bb5472244fb6f894b2c70e8419ad1ad7705082cb8c3b6b4fa61b5996216149fa"
+      },
+      {
+        "path": "agent/app/retrieval/news_features.py",
+        "sha256": "6c74c941fc09d990eca5b89b9a11a9b4ecd98019bee37c48e56927b24060b913"
+      },
+      {
+        "path": "agent/app/retrieval/related_news_reranker.py",
+        "sha256": "8b62403d97536fd209c32f48424913b232e643405d5d34830a634ab5b9027ecb"
+      },
+      {
+        "path": "agent/app/retrieval/retention.py",
+        "sha256": "ff231ee71f668572aea51b2b7a80006e5b895cd03d1780705e9dd618719b72b3"
+      },
+      {
+        "path": "agent/app/retrieval/tiered_vector.py",
+        "sha256": "a0a353c9ec1da87da60f992a01370fbbdd46d7ce9d6c103222693790fbc0daf7"
+      },
+      {
+        "path": "agent/app/schemas/__init__.py",
+        "sha256": "20abe8f4cb48fcd6444f22974591e3f97dcd6415a84d4f08cb14c06419cc9177"
+      },
+      {
+        "path": "agent/app/schemas/analysis_feedback.py",
+        "sha256": "0a8171003c354e3519678a611fe8764b07fc284bc9e0c89ecf81c086a1c3699d"
+      },
+      {
+        "path": "agent/app/schemas/checkpoint.py",
+        "sha256": "15db3de6b84f7ede2010439896144f371eaec0c30a1526a959146b5fe5e919a0"
+      },
+      {
+        "path": "agent/app/schemas/conversation.py",
+        "sha256": "0c8c1fac5e8dd1a3d7ae8ebf601085036c3d6cb616a3388821481936144bd595"
+      },
+      {
+        "path": "agent/app/schemas/data_loop_api.py",
+        "sha256": "f3a3e8c8ef6adb603aad72b91dc46342b112be8f925b3e7abc4db20cd8eb6cbe"
+      },
+      {
+        "path": "agent/app/schemas/error_attribution.py",
+        "sha256": "bdc65bf35bab338f8e92cf9ac568fdf2414ed9b3f2a3438ed0f067a7a8a56347"
+      },
+      {
+        "path": "agent/app/schemas/evaluation_dataset.py",
+        "sha256": "a6a89464916a982256a978a927667c13b7729b7f2da078d00064eaec072dc70a"
+      },
+      {
+        "path": "agent/app/schemas/events.py",
+        "sha256": "7a4d1c93b961bedd13d1c7d51ee63a1f3de5a159bc928ee32e523df18c59a97c"
+      },
+      {
+        "path": "agent/app/schemas/hot_event.py",
+        "sha256": "16d8f5989e50a9525fd62451cda2364691e906e2510c2627875606b81c8a2ce2"
+      },
+      {
+        "path": "agent/app/schemas/hot_news.py",
+        "sha256": "6e4e8c6aa0e6c1f2ec36c5a05568e23aafeff93ad27d119bc16572fa135bb294"
+      },
+      {
+        "path": "agent/app/schemas/hot_news_api.py",
+        "sha256": "f18e6fb4ed0c9c9b9703316fd99c72a8dea1e6ab556da0acc5b30892fb7c44a5"
+      },
+      {
+        "path": "agent/app/schemas/hot_news_decision.py",
+        "sha256": "d31e4a11e290082afeeb1489e13d4cd5adc19466eb32f872a86823ddeb0eb22d"
+      },
+      {
+        "path": "agent/app/schemas/hot_news_events.py",
+        "sha256": "6595577ceef86feea9cbe323e79065714de92f2468f34b5fc7ce0381a32fd09f"
+      },
+      {
+        "path": "agent/app/schemas/hot_news_memory.py",
+        "sha256": "8ad10d58819c6316214a4f12f8036448d2febdf8a44c505417803407eaf475bf"
+      },
+      {
+        "path": "agent/app/schemas/job.py",
+        "sha256": "564f8c964d312334ae4cae0422dd12506e1e604816b997b4fcaea18dc71ac372"
+      },
+      {
+        "path": "agent/app/schemas/operations_feedback.py",
+        "sha256": "7618f73cf2fe4bc83ebff52d892ac4cbb7522f19adaf24e13f5a58a51ad85b69"
+      },
+      {
+        "path": "agent/app/schemas/production_bundle.py",
+        "sha256": "1a9f51b2ae3923456598de729881279c70ed3e1f592e5e0b317b8b3df9ba9218"
+      },
+      {
+        "path": "agent/app/schemas/push.py",
+        "sha256": "2dba9562baa3c7a289992bd3f58293d0eedb23daeb6f3d0a5f30d1a74fb76fe2"
+      },
+      {
+        "path": "agent/app/schemas/research.py",
+        "sha256": "78bde3182bbbb8cbe1c554f24f1178edbc75a0aa3d14b24e35330ccd64aa536b"
+      },
+      {
+        "path": "agent/app/schemas/review.py",
+        "sha256": "ce876d0430f9a492350fad6894db43d121d0acdcafc4355fe700f0d89654149f"
+      },
+      {
+        "path": "agent/app/schemas/security_test.py",
+        "sha256": "b904487ca9e02866c19b36976e3f21257a1b758c7872727a724d55e6b35d6f2f"
+      },
+      {
+        "path": "agent/app/schemas/sql_assistant.py",
+        "sha256": "33619b142865f2b116a17cc8796c64927f78b2c502838afc4083360774272512"
+      },
+      {
+        "path": "agent/app/schemas/text2sql.py",
+        "sha256": "3d1e904519d57395f79e6618bb7cc7fdc445bbb6f0245f89ac208981df2ebee5"
+      },
+      {
+        "path": "agent/app/schemas/user_memory.py",
+        "sha256": "889752864b891784100b1f4441e394db061e4e5a375f1773769c68988b4a7227"
+      },
+      {
+        "path": "agent/app/schemas/user_memory_api.py",
+        "sha256": "4c7fb117f5d0b26da897d923f1872c7fdb7f169703e418c954119333b0c40660"
+      },
+      {
+        "path": "agent/app/schemas/writing.py",
+        "sha256": "bebf7b1d7fd23b276ac10a7b23a4548cf913aed39714c9bcda8ab17046eaa49d"
+      },
+      {
+        "path": "agent/app/services/__init__.py",
+        "sha256": "348019c99f5d24eedf7a7b44563705e5a50be9c05ded601c21c633e8a8db2393"
+      },
+      {
+        "path": "agent/app/services/active_bundle_hot_news.py",
+        "sha256": "f5ad9067e08b9795762c82d4ae52027c7ee43f52069952b55a46d214aeea7ba6"
+      },
+      {
+        "path": "agent/app/services/agents/__init__.py",
+        "sha256": "69b37a67a6c8bb335b793377b04b797faa6e09bc8772493a22c2a005c1098b36"
+      },
+      {
+        "path": "agent/app/services/agents/error_attribution.py",
+        "sha256": "effab5cb37ff6ab9c087fbaf3a25c483886b6f2f9c16cffc63aa2ac23bcf4873"
+      },
+      {
+        "path": "agent/app/services/agents/push_strategy.py",
+        "sha256": "7b59413bd6b8a700c900f59a4485d41ed4e941748b32eb677c1bd8e2e9658899"
+      },
+      {
+        "path": "agent/app/services/agents/research.py",
+        "sha256": "55ed4dcb6ab8b6f5f91942d4c42b28da6e25312d457ef0ceef243982c34b1157"
+      },
+      {
+        "path": "agent/app/services/agents/reviewer.py",
+        "sha256": "a6fc1b8b72ebb6092cdd138ff8c41dbc9cb333563dd302b1eb97831987cd62b8"
+      },
+      {
+        "path": "agent/app/services/agents/text2sql.py",
+        "sha256": "2f0604abbdc4386ff746bc9797c44f12551bb2a82847aecc9c56810328b3b70c"
+      },
+      {
+        "path": "agent/app/services/agents/writer.py",
+        "sha256": "fd35ae3cf66ce6d8d41e8fd91f5cfd0fe980a768e546564fc352550f87c34c35"
+      },
+      {
+        "path": "agent/app/services/artifact_pipeline.py",
+        "sha256": "dfe9045a0c4a775c17e250dd629b25ff3fddccc570eaebb351c3537996f5c5ef"
+      },
+      {
+        "path": "agent/app/services/checkpoint.py",
+        "sha256": "ca55c873c6bf11824322e88326ab063f180af815ead0ef4af90e3cf1a9b48848"
+      },
+      {
+        "path": "agent/app/services/data_loop/__init__.py",
+        "sha256": "4d1a7ef0ecba95941dd7ba2aea1cba9c92bee2c0f2604d66f420be00c67658ae"
+      },
+      {
+        "path": "agent/app/services/event_publisher.py",
+        "sha256": "b28926b87bcd6708a71e43cb5834ca2f69092170cd2c185567d2c915aaa2b6f7"
+      },
+      {
+        "path": "agent/app/services/event_reader.py",
+        "sha256": "ef3aa29b705c2ae0fba54894fbb575243de076ecb5986a481d26ac81258725c0"
+      },
+      {
+        "path": "agent/app/services/execution.py",
+        "sha256": "92767f64b8335a838893b91445de94b95bc979ecac9c2d01643f7181b3f5ec03"
+      },
+      {
+        "path": "agent/app/services/hot_event_lifecycle.py",
+        "sha256": "489e414cf020eee5ba6551b86259e5fa19d9b67c704f389b063c210b6ee88c1d"
+      },
+      {
+        "path": "agent/app/services/hot_news_analysis.py",
+        "sha256": "4f7f98f6e42ff98d907f83bf397560e75092907708589db35c45bfd6744f5d4f"
+      },
+      {
+        "path": "agent/app/services/hot_news_analysis_batch.py",
+        "sha256": "e582769f47d675eae364d906715d812a5a5482b77d8de808ab678067b78392a8"
+      },
+      {
+        "path": "agent/app/services/hot_news_decision.py",
+        "sha256": "9d31d7c1cb83695eb374a51b9507cf73b5ba6ef61020bc20db7e817f6abfa83c"
+      },
+      {
+        "path": "agent/app/services/hot_news_event_stream.py",
+        "sha256": "25cb202b0cdc08070d9c57c18e947d05c6fb5aa912b8bbd67428b6addc4276b5"
+      },
+      {
+        "path": "agent/app/services/hot_news_orchestration.py",
+        "sha256": "87df463913cc1999cc6026258ae7bdc4df220f58e8f6e82f51fb75f4c5d9fd4f"
+      },
+      {
+        "path": "agent/app/services/hot_news_query.py",
+        "sha256": "34e2971d4170ad934bd8daad03b391e2e861794a50212610f2c6a78d2bf293ea"
+      },
+      {
+        "path": "agent/app/services/hot_news_run_store.py",
+        "sha256": "3e6fd2cad1b3797583160ddc30b7eb2d7f344811b98b793af775f722822f27fc"
+      },
+      {
+        "path": "agent/app/services/hot_news_schedule.py",
+        "sha256": "cd90f00ac56efa4f151e8146ed38e052ac80730066cc2918b8b779482a7b1c67"
+      },
+      {
+        "path": "agent/app/services/hot_news_writing_handoff.py",
+        "sha256": "2a770c8a43725b19f202fad6a805dd71f068bd6f6a62c6c7329309607a36930f"
+      },
+      {
+        "path": "agent/app/services/job.py",
+        "sha256": "4a81a4be021533457e529017ee090f5e1054a201f6259d0945507a93328ad6b9"
+      },
+      {
+        "path": "agent/app/services/job_state.py",
+        "sha256": "9a4714b7ef304fd8e56adf41257ee29d93cf5e4a143d0dbb5b043ade941d0a59"
+      },
+      {
+        "path": "agent/app/services/memory_aware_hot_news_analysis.py",
+        "sha256": "75c91f8641e73acbb833725838761769e849359b55dba4df77471b395baf6894"
+      },
+      {
+        "path": "agent/app/services/memory_context.py",
+        "sha256": "0bac8a90235b15a07aa431e48a2bc9fb5f6fb87c7646d8d91ff9a0c0d2ea4fd1"
+      },
+      {
+        "path": "agent/app/services/memory_context_application.py",
+        "sha256": "58397c8c3f2b2c4ca3413470bddd2c7e5868e7218c735488f57ff47c6c990c31"
+      },
+      {
+        "path": "agent/app/services/memory_promotion.py",
+        "sha256": "ad503615b5bee16f2dc18e5fd1f65f58e1b0bb0275b0052c0d15e52c291d8350"
+      },
+      {
+        "path": "agent/app/services/memory_promotion_application.py",
+        "sha256": "bb9b669ab943645de5f5885bb25c6f603817b9fe0ced2cd0592962b1cd2f05e6"
+      },
+      {
+        "path": "agent/app/services/memory_prompt.py",
+        "sha256": "e8a3991023854fa867ebae0fb9f36f99401cc361c481a56c86d2beb9e7718107"
+      },
+      {
+        "path": "agent/app/services/memory_write_application.py",
+        "sha256": "66d0651dfce6a54d2ffccd87d77c8a14c187a63ff00a38c2c27caa73dc795efd"
+      },
+      {
+        "path": "agent/app/services/news_step_handler.py",
+        "sha256": "26f964506dc7c2e5301e112b11dc0fbb44ce9928dcf2496284d492d442b6181c"
+      },
+      {
+        "path": "agent/app/services/orchestrator.py",
+        "sha256": "e0b19d8cf875365429762f09bc85771d5badf3e5150feead958f176930d53ebd"
+      },
+      {
+        "path": "agent/app/services/outbox.py",
+        "sha256": "cbfe3d97dd6d7f23935e61b4b2a8eef97d070281e48c417a88e60cfde606e941"
+      },
+      {
+        "path": "agent/app/services/production_bundle.py",
+        "sha256": "f4ef0e602726d60e31cf4321a66fdcd8e4f9c3744559e9d4c2acebfceb54c805"
+      },
+      {
+        "path": "agent/app/services/production_bundle_application.py",
+        "sha256": "8f79625b8940e754c849bed3368d5c191e0795269ad5af886aa612efdbea3665"
+      },
+      {
+        "path": "agent/app/services/progress.py",
+        "sha256": "b42b164ac7f6013cd1485dc4cf8b470139f040205f80d94b9af3de1f65aa2b23"
+      },
+      {
+        "path": "agent/app/services/prompt_injection_harness.py",
+        "sha256": "eca13dcf41a20fd1c86585c43e98931b7445eeb511865cc3d1027cb4d553ebb2"
+      },
+      {
+        "path": "agent/app/services/push_policy.py",
+        "sha256": "18bc10b3aa23b0a93658c3b0446066a0011c240e788c957bf73b6bc98c981105"
+      },
+      {
+        "path": "agent/app/services/push_strategy.py",
+        "sha256": "e62f8a79caa05cf08bfd2b8ca175bd7487d5ec4def66d3ae63e0ce0e4b51ba1b"
+      },
+      {
+        "path": "agent/app/services/recovery.py",
+        "sha256": "944b3864798897d0357c2fc78f922e3fc557112352747fe0ad5cfe8006c4c08a"
+      },
+      {
+        "path": "agent/app/sql_assistant/__init__.py",
+        "sha256": "44012514e3b7cb7c950c7426009a22984fe76bd0e04936f09af9597de415e2ec"
+      },
+      {
+        "path": "agent/app/sql_assistant/audit.py",
+        "sha256": "59d998eb1843a7ad0b86e45fe5c37062336e62f69740a3baea14a316b53be970"
+      },
+      {
+        "path": "agent/app/sql_assistant/bootstrap.py",
+        "sha256": "24fee21bdcd27ee57982a20cf4c97ea49816709c4c3d650c42a736337465b349"
+      },
+      {
+        "path": "agent/app/sql_assistant/corpus_profiles.py",
+        "sha256": "03c1e0dc30263ef53def8b43dc0b2f807736f1c4186c2478a6c72dde1a8f97d2"
+      },
+      {
+        "path": "agent/app/sql_assistant/guard.py",
+        "sha256": "89dd00d4d41efa9941a3f9ecda3e3d82f42cec7d66f019ba5bfaaaa991879d6f"
+      },
+      {
+        "path": "agent/app/sql_assistant/hot_news_binding.py",
+        "sha256": "10e97c0751ae830a00e06ca6bc0c4c444ad759b2058f05ae9c0a6044911a09c9"
+      },
+      {
+        "path": "agent/app/sql_assistant/input_boundary.py",
+        "sha256": "c4464aa9b63256446dd41b49fe6bd78ced21c06b0bcc6733dd0aa7b27751cbe9"
+      },
+      {
+        "path": "agent/app/sql_assistant/planner.py",
+        "sha256": "51ac7b6c17923e2359dd27c2d081c2db57cc56808e8b6ab0af3b6aba4be20109"
+      },
+      {
+        "path": "agent/app/sql_assistant/presentation.py",
+        "sha256": "893557251f90f7993ab5f57face1990503f53d5d5459d7d302cfcd2cf681bc38"
+      },
+      {
+        "path": "agent/app/sql_assistant/public_headlines.py",
+        "sha256": "23930b818133635bdb2b52fa3979efac7e8d096cdaaabb01a8e04dffc5b64d1e"
+      },
+      {
+        "path": "agent/app/sql_assistant/scaled_profiles.py",
+        "sha256": "ff0919e49c60fe3e45816b4618797715ec61202ac053636a67b108c76d525a71"
+      },
+      {
+        "path": "agent/app/sql_assistant/scenarios.py",
+        "sha256": "5c5699dadf9d41b6dd86accef93431b6a19fa48e964c85a76c7c726a361ebcd6"
+      },
+      {
+        "path": "agent/app/sql_assistant/service.py",
+        "sha256": "35d4c39c659edc8d01bc52e37608bb5b43a1fdb680ed241ad09c5da1998dc77c"
+      },
+      {
+        "path": "agent/app/sql_assistant/synthetic_profiles.py",
+        "sha256": "ecf0d3030e20da1bc6638b0a350abfe03a2e28bf58c43015bc9f796153efca0e"
+      },
+      {
+        "path": "agent/app/sql_assistant/timeline_profiles.py",
+        "sha256": "9ed9dc6cfca05229b57ed41e2543a4f21925aedffea394994ab0802af78e734c"
+      },
+      {
+        "path": "agent/app/sql_assistant/timeline_rich_profiles.py",
+        "sha256": "275903dc9653d2477d3378db31f540f0f144701801686c4d6bbcde72f5790a66"
+      },
+      {
+        "path": "agent/app/sql_assistant/warehouse.py",
+        "sha256": "0d95188bf2214e70c434904cff38bf26a0c86e90084bd629ab19edb83c0b434d"
+      },
+      {
+        "path": "agent/app/storage/__init__.py",
+        "sha256": "25b15bba967c01f231e65fb0425861159210172a68ca5deb7981320834253da8"
+      },
+      {
+        "path": "agent/app/storage/s3.py",
+        "sha256": "fed3586b9978864c52a807698f4e117dac4755830a87566d8a27a657102befc2"
+      },
+      {
+        "path": "agent/app/warehouse_simulation/__init__.py",
+        "sha256": "c2db954aa3ea7a8db397b879cd00e6be2bf6463fb915d16f19d815f40b0fea01"
+      },
+      {
+        "path": "agent/app/worker.py",
+        "sha256": "c497189bc21f2060145e862dd93f5049236341e1dab2937551267ca28e182852"
+      },
+      {
+        "path": "agent/app/workflows/__init__.py",
+        "sha256": "b1087afc50596796cc1c2c3099e42e5808c38670e78780b0b2009c3c7485152a"
+      },
+      {
+        "path": "agent/app/workflows/contracts.py",
+        "sha256": "3f6b72ec7eee1687ab16d9ad200359be998a39927c52be047ef9309fc668246b"
+      },
+      {
+        "path": "agent/app/workflows/data_loop.py",
+        "sha256": "5bed8adc31f41bdb325cf61957423d288e6111b562b9b27338e28791cb8e45a6"
+      },
+      {
+        "path": "agent/app/workflows/data_loop_contracts.py",
+        "sha256": "511ace53b134894b4c37e6534e0febe5c1ad7ab295cd12aedd514d6c11d2a1ce"
+      },
+      {
+        "path": "agent/app/workflows/hot_news.py",
+        "sha256": "cdb63e54cad1513a621060fd1606e41b79cbd00f3be0b642449b8c4dc18ea02f"
+      },
+      {
+        "path": "agent/app/workflows/knowledge_lifecycle.py",
+        "sha256": "8165c7981dd361a59558381d75d28b086ad8f13bebd5c66d8d8abf8ccf629d42"
+      },
+      {
+        "path": "agent/app/workflows/news_writing.py",
+        "sha256": "9890c5055284cc008d492b46c3fdb09ebb30749a36c640cc4dc9e1661962f40e"
+      },
+      {
+        "path": "agent/evaluation/run_text2sql_security.py",
+        "sha256": "13025a412bc3cda4e2fa473706a9bc6438c63068df6a2c24a990d5c9b638a84c"
+      },
+      {
+        "path": "agent/evaluation/datasets/text2sql_security_v2.json",
+        "sha256": "973f9e50520afa4a7bde693fabb44c9f8b1edfad2c09d7ed673538ebb7076d92"
+      },
+      {
+        "path": "deploy/text2sql-scenes.local.yml",
+        "sha256": "9f7e154c5dd71aaef4d2c6bfd28e2299c7e58dfa348cf45bf5e3d5cdeca5a77d"
+      },
+      {
+        "path": "agent/pyproject.toml",
+        "sha256": "4bcd761b111948ddeca1aa53805e6bddadaaebf37470fb1f5a81460da5bd2f19"
+      },
+      {
+        "path": "agent/docs/sql-warehouse-schema-v1.md",
+        "sha256": "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0"
+      }
+    ],
+    "dependency_versions": {
+      "pydantic": "2.14.1",
+      "sqlglot": "30.23.0",
+      "PyYAML": "6.0.3",
+      "pytest": "8.4.2",
+      "SQLAlchemy": "2.1.5"
+    },
+    "python": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "image_digest": null
+  },
+  "data": {
+    "project_dataset_version": "newsagent-text2sql-security-v2",
+    "source_kind": "public_SQLShield_plus_synthetic_development_contracts",
+    "human_review_status": "not_reviewed; executable contract probes, not model quality gold",
+    "files_byte_sha256": [
+      {
+        "path": "/Users/shi/Project/myProject/NewsAgent/agent/evaluation/datasets/text2sql_security_v2.json",
+        "sha256": "973f9e50520afa4a7bde693fabb44c9f8b1edfad2c09d7ed673538ebb7076d92"
+      },
+      {
+        "path": "/Users/shi/Project/myProject/NewsAgent/output/evaluation-inputs/sqlshield-20261019/test.jsonl",
+        "sha256": "7d8d05ece9450c06aafb78f5030a078b21f14bb2c876d84558f40121c672a2e2",
+        "rows": 1800
+      },
+      {
+        "path": "/Users/shi/Project/myProject/NewsAgent/output/evaluation-inputs/sqlshield-20261019/source-manifest.json",
+        "sha256": "a9539d0fb76ec64753800a953741ddfa44f86a1e6505e40a8410f6055bb9134d",
+        "source": {
+          "dataset_id": "salmane11/SQLShield",
+          "dataset_url": "https://huggingface.co/datasets/salmane11/SQLShield",
+          "revision": "8237e57721688e67217e7d49e64689210c176225",
+          "revision_api_url": "https://huggingface.co/api/datasets/salmane11/SQLShield/revision/8237e57721688e67217e7d49e64689210c176225",
+          "retrieved_at_utc": "2026-10-19T10:34:07.971326+00:00",
+          "source_last_modified": "2025-07-10T16:00:57.000Z",
+          "api_metadata": {
+            "path": "huggingface-api.json",
+            "sha256": "e7f5856f48786303cd63380b561d8be1afe55c5f596fb6af63b0485f810ffeea",
+            "bytes": 1836
+          },
+          "files": [
+            {
+              "path": ".gitattributes",
+              "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/.gitattributes",
+              "sha256": "f4e703ea6e44bbebe53aceed2a89c11e40b88b7ae130c480c89860ab805ffc8f",
+              "bytes": 2307
+            },
+            {
+              "path": "README.md",
+              "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/README.md",
+              "sha256": "6b341ab65da882d0dc5bae8df321c17c4b92034e159c981d482233c6f400a505",
+              "bytes": 1800
+            },
+            {
+              "path": "test.csv",
+              "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/test.csv",
+              "sha256": "ea68570ddb435ef0136a6516f648178624af7b635ab44f95e917b249cc69c539",
+              "bytes": 459101
+            },
+            {
+              "path": "train.csv",
+              "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/train.csv",
+              "sha256": "038bad4ae98dd6d15e9db5cc733244a4c1c26cf2a24b85943175d04072b51fb4",
+              "bytes": 2060801
+            },
+            {
+              "path": "validation.csv",
+              "url": "https://huggingface.co/datasets/salmane11/SQLShield/resolve/8237e57721688e67217e7d49e64689210c176225/validation.csv",
+              "sha256": "03806985c1cf68a4c50c628f45d3fb90ee5854c92125fb206356aaa844f4aae0",
+              "bytes": 466434
+            }
+          ],
+          "splits": {
+            "test": {
+              "path": "test.csv",
+              "rows": 1800,
+              "fields": [
+                "question",
+                "query",
+                "context",
+                "malicious"
+              ],
+              "delimiter": ";",
+              "label_counts": {
+                "malicious": {
+                  "0": 964,
+                  "1": 836
+                }
+              }
+            },
+            "train": {
+              "path": "train.csv",
+              "rows": 8000,
+              "fields": [
+                "question",
+                "query",
+                "context",
+                "malicious"
+              ],
+              "delimiter": ";",
+              "label_counts": {
+                "malicious": {
+                  "0": 4195,
+                  "1": 3805
+                }
+              }
+            },
+            "validation": {
+              "path": "validation.csv",
+              "rows": 1790,
+              "fields": [
+                "question",
+                "query",
+                "context",
+                "malicious"
+              ],
+              "delimiter": ";",
+              "label_counts": {
+                "malicious": {
+                  "0": 940,
+                  "1": 850
+                }
+              }
+            }
+          },
+          "license": {
+            "metadata_license": null,
+            "license_file": null,
+            "status": "unknown",
+            "readme_license_text": [],
+            "explanation": "No license declared in fixed-revision README or Hugging Face card metadata, and no license file is present in repository file list. No license inferred from linked papers or other artifacts."
+          },
+          "download_method": "stdlib urllib.request; raw repository files from fixed commit revision, no dataset scripts executed",
+          "usage_scope": "public external input data; no model calls or database execution during acquisition",
+          "trust_boundary": "All downloaded content is untrusted data; dataset payloads must not be executed.",
+          "evaluation_input": {
+            "path": "test.jsonl",
+            "sha256": "7d8d05ece9450c06aafb78f5030a078b21f14bb2c876d84558f40121c672a2e2",
+            "rows": 1800,
+            "split": "test",
+            "fields": [
+              "question",
+              "query",
+              "context",
+              "malicious"
+            ],
+            "conversion": "UTF-8 JSONL from fixed-revision test.csv; all text unchanged; malicious converted from decimal string to integer"
+          },
+          "row_count_discrepancy": {
+            "readme_claims": {
+              "train": 8000,
+              "validation": 1800,
+              "test": 1800,
+              "total": 11600
+            },
+            "actual_csv_records": {
+              "train": 8000,
+              "validation": 1790,
+              "test": 1800,
+              "total": 11590
+            },
+            "notes": "Counts were obtained with Python csv.DictReader using declared semicolon separator, excluding header. Validation has 10 fewer records than README states."
+          }
+        }
+      }
+    ],
+    "case_ids": [
+      "sql_control",
+      "sql_drop",
+      "sql_stack",
+      "sql_write_cte",
+      "sql_into",
+      "sql_or",
+      "sql_not",
+      "sql_union",
+      "sql_subquery",
+      "sql_missing_tenant",
+      "sql_wrong_window",
+      "sql_private_table",
+      "sql_catalog",
+      "sql_file",
+      "sql_sleep",
+      "sql_quoted_function",
+      "sql_comment",
+      "sql_limit",
+      "sql_tenant_payload_bound_as_data",
+      "sql_extra_binding",
+      "semantic_scaled_clicks",
+      "semantic_constant_clicks",
+      "service_control",
+      "service_direct_override",
+      "service_model_sql",
+      "service_model_tenant",
+      "service_model_window",
+      "service_model_category",
+      "service_model_sort",
+      "service_model_limit",
+      "service_other_tenant",
+      "service_other_user",
+      "service_tamper_sql",
+      "service_tamper_bound_tenant",
+      "service_tamper_bound_limit",
+      "service_tamper_metric_rehash",
+      "service_cached_other_user"
+    ],
+    "project_cases": 37,
+    "public_cases": 1800,
+    "denominator": 1859,
+    "split": "synthetic development; unmodified public test for diagnostic only, no tuning",
+    "as_of": "2026-10-19",
+    "timezone": "Asia/Shanghai",
+    "window_start": "2026-10-03T10:00:00+08:00",
+    "window_end": "2026-10-03T11:00:00+08:00"
+  },
+  "runtime": {
+    "inference": "scripted structured-response Port; no LLM",
+    "embedding": "not_used",
+    "warehouse": "recording empty-result Port; no DB",
+    "content": "not_used",
+    "index": "not_used",
+    "workflow": "not_started",
+    "api_and_workers": "not_started_or_contacted",
+    "telemetry": "per-case offline stages; no OTel SDK/exporter/backend used; no distributed trace claimed",
+    "credential_values_included": false,
+    "dotenv": "not_loaded"
+  },
+  "versions": {
+    "current": "source file hashes",
+    "candidate": "not_created",
+    "previous": "not_available; no comparative improvement claim",
+    "schema": "news-warehouse-v1",
+    "sql_policy": "current code + frozen scenario yaml; no production threshold approval"
+  },
+  "scoring": {
+    "oracle": "frozen allow/block contracts, exact decisions, forbidden Port calls=0; public labels used only after prediction",
+    "failure_denominator_rule": "every preregistered record retained; unexpected exceptions fail; incomplete run cannot pass",
+    "thresholds": {
+      "contract": "all cases in each suite; semantic-integrity gaps reported separately",
+      "public": "none; exploratory"
+    },
+    "repetitions": 1,
+    "seed": "not_applicable_deterministic",
+    "confidence_interval": "not_computed"
+  },
+  "budget": {
+    "max_model_calls": 0,
+    "max_seconds": 60,
+    "max_concurrency": 1,
+    "max_cost": 0,
+    "cost_unit": "CNY",
+    "max_records": 1859,
+    "stop_conditions": [
+      "input/source identity drift",
+      "unexpected error",
+      "time budget exceeded"
+    ]
+  },
+  "execution": {
+    "command_argv": [
+      "/Users/shi/Project/myProject/NewsAgent/agent/.venv/bin/python",
+      "-m",
+      "evaluation.run_text2sql_security",
+      "--sqlshield-jsonl",
+      "../output/evaluation-inputs/sqlshield-20261019/test.jsonl",
+      "--source-manifest",
+      "../output/evaluation-inputs/sqlshield-20261019/source-manifest.json",
+      "--output-dir",
+      "../output/evaluation/2026-10-19-text2sql-security-02"
+    ],
+    "cwd": "/Users/shi/Project/myProject/NewsAgent/agent",
+    "output_directory": "/Users/shi/Project/myProject/NewsAgent/output/evaluation/2026-10-19-text2sql-security-02",
+    "started_at": "2026-10-19T10:37:04.897441+00:00"
+  },
+  "not_applicable_with_reason": {
+    "bundle_and_prompt_comparison": "no changed production asset or inference",
+    "watermark_and_metrics": "no DB data fetched",
+    "human_quality_acceptance": "not a model quality run"
+  }
+}
