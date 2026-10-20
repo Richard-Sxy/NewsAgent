@@ -3,17 +3,88 @@
 本版先完成可导入、可查询、可复现的数仓底座，供后续 NewsAgent 接入。它模拟新闻运营业务的
 维度和统计链路，不描述腾讯新闻的内部实现，也没有连接企业行为库。
 
+## 2026-10-19 真实内容扩展（原地 v8）
+
+用户确认在 v8 上原地扩充真实内容，不伪造新文章的行为指标。当前数据包包含：
+
+- **8,120 篇真实公开新闻**：661 篇冻结目录 + 7,459 篇 v2 公开增量；正文、URL、发布时间和
+  内容哈希均来自公开缓存，不生成模拟标题或模拟正文。
+- **7,459 篇内容-only 文章**：写入 `dim_news` 和新增的 `news_content_feature`，但没有曝光、
+  点击、UV、时长、基线或榜单行。它们不能被表述为热点候选。
+- **661 篇仍有 v8 行为指标**：这些指标仍是确定性模拟值，继续标记
+  `metric_data_synthetic=true`，不能代表真实热度。
+- 新增 `news_content_feature`（标题/正文字数、段落数、句子数、数字 token 数和确定性
+  CJK 关键词），只由真实正文计算，不包含用户级数据。
+- 原地重建后的数据包摘要为
+  `e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904`；
+  扩展清单为 `catalog-extension-v2.json`，摘要
+  `6b7e65df3590ce84974adcf77d4505bc494e05ecbd5a0b1e7c5eec1732ad766f`。
+- 旧数据包已备份到仓库外，新的 `warehouse.sql` 使用 JSONB 文本导入关键词数组，不再使用
+  Python 列表的 `repr`。
+
+### 扩展生成与校验
+
+```bash
+# 1. 生成 7,459 篇真实文章的元数据/派生特征清单；正文仍留在公开缓存
+PYTHONPATH=agent python3.11 agent/tools/freeze_real_news_warehouse_extension.py --overwrite
+
+# 2. 导出新的 v8 数据包（需要新的目录；旧包先移出或备份）
+PYTHONPATH=agent python3.11 -c "from simulation.warehouse_simulation.real_news import export_dataset, RealNewsSimulationConfig; export_dataset(RealNewsSimulationConfig(), 'var/warehouse/real-news-v8-new')"
+
+# 3. 校验并替换
+PYTHONPATH=agent python3.11 agent/tools/validate_real_news_warehouse.py \
+  var/warehouse/real-news-v8-new --report var/warehouse/real-news-v8-new/validation.json
+```
+
+### 热点 Agent 接入（`real-news-v8`）
+
+新增 `agent/app/sql_assistant/real_news_profiles.py` 和冻结契约
+`agent/docs/sql-warehouse-schema-v7.md`。该 profile：
+
+- 在 Agent 侧导入 8,120 篇真实内容的 `dim_news`（每租户）；
+- 只导入 661 篇有 v8 指标的文章到 `dw.news_behavior_aggregate`；
+- 对缺失基线保留为空（视图 LEFT JOIN），不补 0；
+- 7,459 篇内容-only 文章只存在于 `dim_news`，没有指标行，因此不会进入热度排行；
+- 聊天/热点运行使用 `deploy/text2sql-scenes.real-news-v8.yml`，允许 7 个演示栏目；
+- 独立 Compose 叠加文件 `deploy/docker-compose.real-news-v8-agent.yml` 使用新的项目名、
+  端口和卷（API `38000`、Postgres `35432`、Temporal `37233`、MinIO `39000/39001`），
+  不修改默认 native-e2e 演示。
+
+启动：
+
+```bash
+docker compose -f deploy/docker-compose.native-e2e.yml \
+  -f deploy/docker-compose.real-news-v8-agent.yml up -d --build
+```
+
+验证过的链路：`/api/v1/conversations/runtime` 返回 `dataset_profile=real-news-v8`、
+`metric_available_article_count=661`、`content_only_article_count=7459`；
+本地热点运行在 `2026-10-13 20:00` 窗口完成 5 篇排名和分析；首条内容来自真实公开正文，
+不再使用“本地合成新闻样本”占位。新增内容-only 文章在同一运行中不可见。
+
+测试：
+
+```bash
+python3.11 -m pytest -o addopts='' -q \
+  tests/test_real_news_warehouse_extension.py tests/test_real_news_profiles.py \
+  tests/test_real_news_warehouse_catalog.py tests/test_real_news_warehouse_simulation.py \
+  tests/test_real_news_warehouse_package.py
+```
+
+仍待完成：企业真实行为指标、内容-only 文章的真实榜单资格、企业聚合接口、生产负载和
+权限联调。当前只证明隔离本地环境和真实公开内容链路。
+
 2026-10-15 已补 [SQL 查询与热点全链路说明](hot-news-sql-chain.md)：包含 PostgreSQL 方言、7类固定
 参数化只读查询、可运行 CLI、最新水位门禁、现有 Python 权威热度和后续 Agent 适配清单。
 
 ## 内容、规模与时间
 
-- 661 篇不同的真实新闻：既有冻结 corpus-v6 的 120 篇，加上增量来源的 541 篇，交集为 0。
+- 8,120 篇不同的真实新闻：冻结目录 661 篇（corpus-v6 120 + 增量 v1 541），加上 v2 公开
+  增量 7,459 篇；ID 去重后交集为 0。
 - 原始 `news_id`、标题、完整正文、URL、发布时间、正文版本和来源摘要保留，标题没有合成前缀。
-- 7 个演示栏目：汽车 148、教育 101、科技 94、财经 89、体育 87、娱乐 80、社会 62。
-  栏目按公开发现入口或标题规则映射，有独立来源标签，不冒充原始编辑分类或媒体名。
-- 2 个隔离租户共 1,322 条新闻维记录；它们使用相同真实内容，各有独立模拟行为数据。
-  **不同真实新闻的数量是 661，不把租户复制算成新增新闻。**
+- 7 个演示栏目；v2 新增文章来自公开发现入口，全部映射为社会栏目，不冒充原始编辑分类。
+- 2 个隔离租户共 16,240 条新闻维记录；它们使用相同真实内容。661 篇有模拟行为数据，
+  7,459 篇内容-only 文章没有指标行。**不同真实新闻的数量是 8,120，不把租户复制算成新增新闻。**
 - 默认闭合时段为北京时间 `2026-09-30 00:00` 至 `2026-10-14 20:00`，共 356 小时。
   另有 20:00 开始的开放小时，模拟观测至 20:35。实际可查询的小时还受最新修订质量门禁限制。
 - 新闻发布时间在统计期内时，只对发布后的桶内时段建模；发布前没有行为桶、小时指标或基线。
@@ -24,26 +95,27 @@
 原文发布时间 `2026-09-03 12:18:15+08:00`，3,856 字，页面正文与本地缓存完整一致。
 全量目录来自已冻结缓存，只有这个参考案例及两篇备选做了本次在线复核；不是逐篇重新抓取。
 
-本次默认数据包生成 **2,476,892 行**，约 1.3 GiB，核心数据集摘要为
-`a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81`。
+本次默认数据包生成 **2,508,059 行**，约 1.5 GiB，核心数据集摘要为
+`e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904`。
 其中五分钟 1,739,966 行、渠道小时 438,036 行、新闻小时 146,012 行、新闻日表 6,980 行、
 基线 143,368 行，其余为维度、窗口修订和生命周期演练记录。行数包括修订历史，不代表曝光/点击事件数。
 
-实际验收通过：78 项 Python 测试；包内每表摘要与行数；PostgreSQL 16.15 的全量导入、1,322 条
+实际验收通过：包内每表摘要与行数；PostgreSQL 16.15 的全量导入、16,240 条
 实际新闻正文与元数据核验、只读跨粒度与基线 SQL 对账；localhost:28438 的参数化只读查询。
-库内有 12 张表、4 个视图，约 857 MiB 数据；每租户 354 个完整小时、1 个纠正小时、2 个不完整小时。
+库内有 13 张表、4 个视图；每租户 354 个完整小时、1 个纠正小时、2 个不完整小时。
 参考新闻在 `2026-10-14 19:00` 模拟窗口：曝光 1,323、点击 81、点击 UV 41、访问 PV 401、访问 UV 245，
 其中直接访问 PV 341，CTR 6.12%，基线样本数 3。以上行为数字均为模拟值。
 证据文件为数据包内的 `validation.json`、`deployment.json`、`postgres-checks.log`、
 `postgres-observed.json`、`host-query.json` 与 `tests.log`；对应架构 PDF 已确认仅一页且中文渲染正常。
 
-## 12 张表和统计颗粒度
+## 13 张表和统计颗粒度
 
 | 表 | 颗粒度与用途 |
 | --- | --- |
 | `dim_behavior_policy` | 租户 / 指标规则版本，保存 PV、UV、点击和有效阅读定义 |
 | `dim_channel` | 租户 / 入口：推荐、栏目、搜索、热榜、消息、网页 |
 | `dim_news` | 租户 / 真实 news_id，含正文、URL、发布时间、内容摘要和状态来源 |
+| `news_content_feature` | 租户 / 真实新闻，标题/正文字数、段落、句子、数字 token 和确定性关键词 |
 | `window_snapshot` | 租户 / 小时 / 修订号，水位、观测时间、完整性、质量状态 |
 | `news_metric_5min` | 租户 / 新闻 / 五分钟 / 修订号，所有历史有效桶都有数据 |
 | `news_metric_channel_hourly` | 租户 / 新闻 / 入口 / 小时 / 修订号，每篇选取 3 个模拟入口 |
@@ -136,7 +208,7 @@ WHERE tenant_id='11111111-1111-4111-8111-111111111111'
 COMMIT;
 ```
 
-包内有原始 catalog、生成器与 loader 源码快照、DDL、全事务 `warehouse.sql`、12 张表 JSONL、
+包内有原始 catalog、扩展清单、生成器与 loader 源码快照、DDL、全事务 `warehouse.sql`、13 张表 JSONL、
 manifest、少量 preview 与 scenarios。manifest 对每表行数、列和 SHA 以及 SQL、源码、正文目录分别绑定。
 冻结新目录和已有数据库均拒绝覆盖，允许同一版本重启；重新构建内容或修改指标规则应使用新版本、新目录、新卷。
 

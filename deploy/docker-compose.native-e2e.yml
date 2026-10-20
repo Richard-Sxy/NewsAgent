@@ -219,6 +219,10 @@ services:
   test-runner:
     <<: *app-service
     profiles: [test]
+    # The real-news package export used by tests can exceed the 128 MiB app
+    # tmpfs; tests still run read-only and write only to this bounded tmpfs.
+    tmpfs:
+      - /tmp:size=2g,mode=1777
     environment:
       <<: *native-env
       PYTEST_ADDOPTS: -o cache_dir=/tmp/.pytest_cache

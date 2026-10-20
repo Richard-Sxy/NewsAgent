@@ -453,3 +453,22 @@ HookSpec {
 - 真实多租户业务 Worker 再重启后只读复验：原六个实体仍保留；每租户仍为2个运行、1个排队，预算2未被重启放大，m5-worker-restart-check.json 已留档。
 
 - 第7节回执读取：前端同页Map + 后端每API进程 tenant/hook/entity singleflight；每caller先重新校验权限/启用/Schema，写作3秒/评测15秒短缓存，256项LRU/128个在途、10秒有界只读任务，失败不缓存，断线不取消共享读取，lifespan释放。排除用户Memory；不是跨API副本全局缓存，浏览器HTTP仍各自鉴权。专项86通过。
+
+## 7. 真实内容 v8 扩充与热点 Agent 接入（2026-10-19）
+
+- [x] 原地扩充 v8：8,120 篇真实公开新闻（661 冻结 + 7,459 v2 增量），正文/URL/发布时间/
+  内容哈希来自公开缓存，不生成模拟标题或正文。
+- [x] 新增 `news_content_feature`：标题/正文字数、段落、句子、数字 token、确定性 CJK 关键词。
+- [x] 7,459 篇内容-only 文章不生成曝光/点击/UV/时长/基线/榜单/生命周期行；661 篇既有指标
+  继续明确标记为模拟。
+- [x] 数据包原地重建并校验：摘要 `e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904`；
+  独立 PostgreSQL 13 张表、16,240 条新闻维、SQL 检查通过。
+- [x] 新增 Agent profile `real-news-v8`、契约 `news-warehouse-v7`、场景 YAML 和独立 Compose
+  叠加文件；热点运行已验证 5 篇排名/分析，正文来自真实公开内容。
+- [x] 完整后端回归（使用带 numpy/threadpoolctl 的本地测试镜像，包含 BGE 可选依赖测试）：
+  `4515 passed, 143 skipped`；v8 专项 `61 passed`。
+- [ ] 内容-only 文章进入热度排行需要企业真实行为指标或另行批准的非行为评分规则；不得补 0
+  或生成模拟值。
+- [ ] 企业真实聚合接口、权限、生产负载、长稳与内容-only 内容检索接入仍待验收。
+- [ ] `catalog-extension-v2.json` 为本地生成清单（未纳入 Git）；克隆后需先运行
+  `agent/tools/freeze_real_news_warehouse_extension.py`。

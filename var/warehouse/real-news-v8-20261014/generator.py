@@ -14,6 +14,8 @@ from pathlib import Path
 import tempfile
 from typing import Any, Iterator
 
+from simulation.warehouse_simulation.content_features import derive_content_features
+
 VERSION = "real-news-business-warehouse-v8-20261014"
 SCHEMA = "news_sim_v8"
 TENANTS = ("11111111-1111-4111-8111-111111111111", "33333333-3333-4333-8333-333333333333")
@@ -28,10 +30,10 @@ CHANNELS = (("recommend", "推荐信息流", "app"), ("channel", "栏目页", "a
 ADDITIVE = ("impressions", "clicks", "detail_page_views", "direct_page_views", "total_duration_seconds",
             "effective_consumptions", "interactions", "likes", "comments", "shares",
             "favorites", "negative_feedback")
-TABLE_NAMES = ("dim_behavior_policy", "dim_channel", "dim_news", "window_snapshot",
-               "news_metric_5min", "news_metric_channel_hourly", "news_metric_hourly",
-               "news_metric_daily", "news_metric_baseline_hourly", "content_change_event",
-               "content_tombstone", "index_cleanup_task")
+TABLE_NAMES = ("dim_behavior_policy", "dim_channel", "dim_news", "news_content_feature",
+               "window_snapshot", "news_metric_5min", "news_metric_channel_hourly",
+               "news_metric_hourly", "news_metric_daily", "news_metric_baseline_hourly",
+               "content_change_event", "content_tombstone", "index_cleanup_task")
 
 
 @dataclass(frozen=True)
@@ -81,6 +83,8 @@ def copy_value(value):
         return r"\N"
     if type(value) is bool:
         return "t" if value else "f"
+    if isinstance(value, (dict, list)):
+        value = _json(value)
     return str(value).replace("\\", "\\\\").replace("\t", r"\t").replace("\n", r"\n").replace("\r", r"\r")
 
 
@@ -99,11 +103,11 @@ def _time(value):
 
 def _catalog(catalog=None):
     if catalog is None:
-        from app.warehouse_simulation.real_news_catalog import load_catalog
-        catalog = load_catalog()
+        from simulation.warehouse_simulation.real_news_catalog import load_extended_catalog
+        catalog = load_extended_catalog()
     articles = tuple(dict(article) for article in catalog)
-    if not articles or len(articles) > 2000:
-        raise ValueError("catalog must contain 1..2000 real articles")
+    if not articles or len(articles) > 10_000:
+        raise ValueError("catalog must contain 1..10000 real articles")
     seen = set()
     for article in articles:
         required = ("news_id", "title", "content", "url", "publish_time", "category", "content_version")
@@ -118,6 +122,8 @@ def _catalog(catalog=None):
             raise ValueError("catalog content version must be a positive integer")
         if article.get("news_content_synthetic", False) is not False or article.get("content_type", "article") != "article":
             raise ValueError("v8 only accepts real text articles")
+        if article.get("metric_available", True) not in {True, False}:
+            raise ValueError("catalog metric availability must be boolean")
         _time(article["publish_time"])
         seen.add(article["news_id"])
     return tuple(sorted(articles, key=lambda item: item["news_id"]))
@@ -179,6 +185,7 @@ def _dimension(article, index, tenant, config):
             "source_manifest_sha256": article.get("source_manifest_sha256"),
             "source_html_sha256": article.get("source_html_sha256"),
             "news_content_synthetic": False, "metric_data_synthetic": True,
+            "metric_available": bool(article.get("metric_available", True)),
             "lifecycle_data_synthetic": True, "lifecycle_scenario": kind or "none",
             "status": status, "lifecycle_revision": revision,
             "status_effective_at": (config.end - timedelta(minutes=10)).isoformat() if kind else article["publish_time"]}
@@ -365,6 +372,8 @@ def _article_rows(article, index, tenant, config):
 def _changes(articles, config):
     tenant = TENANTS[1]
     for index, article in enumerate(articles):
+        if not article.get("metric_available", True):
+            continue
         kind, status, version, revision = _lifecycle(article, index, tenant, config)
         if kind is None:
             continue
@@ -374,6 +383,19 @@ def _changes(articles, config):
                "new_status": status, "effective_at": (config.end - timedelta(minutes=10)).isoformat(),
                "received_at": (config.end - timedelta(minutes=9)).isoformat(),
                "reason_code": f"isolated_simulated_{kind}", "lifecycle_data_synthetic": True}
+
+
+def _content_feature_row(article, tenant):
+    features = article.get("content_features")
+    if features is None:
+        features = derive_content_features(article["title"], article["content"])
+    return {
+        "tenant_id": tenant,
+        "news_id": article["news_id"],
+        "content_sha256": article.get("content_sha256", hashlib.sha256(article["content"].encode()).hexdigest()),
+        "metric_available": bool(article.get("metric_available", True)),
+        **features,
+    }
 
 
 def _dimension_rows(articles, config):
@@ -389,6 +411,7 @@ def _dimension_rows(articles, config):
                                   "platform": platform, "dimension_data_synthetic": True}
         for index, article in enumerate(articles):
             yield "dim_news", _dimension(article, index, tenant, config)
+            yield "news_content_feature", _content_feature_row(article, tenant)
         for hour, revision in _versions(config):
             yield "window_snapshot", _snapshot(tenant, hour, revision, config)
     for event in _changes(articles, config):
@@ -415,6 +438,8 @@ def iter_rows(table, config=RealNewsSimulationConfig(), catalog=None):
     if table.startswith("news_metric_"):
         for tenant in TENANTS:
             for index, article in enumerate(articles):
+                if not article.get("metric_available", True):
+                    continue
                 for name, row in _article_rows(article, index, tenant, config):
                     if name == table:
                         yield row
@@ -463,11 +488,14 @@ def export_dataset(config, output_dir, catalog=None):
         work.mkdir()
         (work / "generator.py").write_bytes(source_bytes)
         (work / "schema.sql").write_bytes(ddl)
-        from app.warehouse_simulation import real_news_catalog as catalog_module
+        from simulation.warehouse_simulation import real_news_catalog as catalog_module
         loader_bytes = Path(catalog_module.__file__).read_bytes()
         (work / "catalog_loader.py").write_bytes(loader_bytes)
         catalog_bytes = catalog_module.CATALOG_PATH.read_bytes() if original_catalog else (_json(articles) + "\n").encode()
         (work / "catalog.json").write_bytes(catalog_bytes)
+        extension_bytes = catalog_module.EXTENSION_PATH.read_bytes() if original_catalog else b""
+        if extension_bytes:
+            (work / catalog_module.EXTENSION_PATH.name).write_bytes(extension_bytes)
         handles = {name: (work / f"{name}.jsonl").open("w", encoding="utf-8", newline="\n") for name in TABLE_NAMES}
         copy_handles = {name: (work / f".{name}.copy").open("w", encoding="utf-8", newline="\n") for name in TABLE_NAMES}
         states = {name: {"hash": hashlib.sha256(), "rows": 0, "columns": None, "preview": []} for name in TABLE_NAMES}
@@ -492,6 +520,8 @@ def export_dataset(config, output_dir, catalog=None):
                 write(name, row)
             for tenant in TENANTS:
                 for index, article in enumerate(articles):
+                    if not article.get("metric_available", True):
+                        continue
                     for name, row in _article_rows(article, index, tenant, config):
                         write(name, row)
         finally:
@@ -513,8 +543,14 @@ def export_dataset(config, output_dir, catalog=None):
             sql.write("COMMIT;\n")
         tables = {name: {"rows": state["rows"], "sha256": state["hash"].hexdigest(), "columns": list(state["columns"] or ())}
                   for name, state in states.items()}
+        metric_articles = sum(1 for article in articles if article.get("metric_available", True))
+        extension_count = len(articles) - metric_articles
         manifest = {"dataset_version": VERSION, "schema": SCHEMA, "config": asdict(config), "tenants": list(TENANTS),
-             "real_article_count": len(articles), "catalog_count": len(articles), "catalog_sha256": hashlib.sha256(catalog_bytes).hexdigest(),
+             "real_article_count": len(articles), "catalog_count": len(articles) - extension_count,
+             "extension_count": extension_count, "metric_article_count": metric_articles,
+             "catalog_sha256": hashlib.sha256(catalog_bytes).hexdigest(),
+             "extension_sha256": hashlib.sha256(extension_bytes).hexdigest() if extension_bytes else None,
+             "extension_path": catalog_module.EXTENSION_PATH.name if extension_bytes else None,
              "catalog_loader_sha256": hashlib.sha256(loader_bytes).hexdigest(),
              "schema_sha256": hashlib.sha256(ddl).hexdigest(), "generator_sha256": hashlib.sha256(source_bytes).hexdigest(),
              "closed_window_start": config.start.isoformat(), "closed_window_end": config.end.isoformat(),
@@ -523,7 +559,8 @@ def export_dataset(config, output_dir, catalog=None):
              "open_window_start": config.end.isoformat(), "tables": tables, "warehouse_sql_sha256": _file_sha(sql_path),
              "news_content_synthetic": False, "metric_data_synthetic": True, "category_data_synthetic": True,
              "lifecycle_data_synthetic": True,
-             "content_provenance": "catalog preserves cached source IDs, title, body, URL and publication metadata",
+             "content_provenance": "catalog plus extension preserve cached source IDs, title, body, URL and publication metadata; extension bodies are real public articles",
+             "content_only_metric_policy": "articles without approved behavior data have no metric, baseline, lifecycle or daily rows",
              "metric_provenance": {"generator": "deterministic aggregate simulator", "policy_version": POLICY_VERSION,
                  "uv_method": UV_METHOD, "unique_users": "click UV", "detail_visitors": "independent successful-detail-access UV",
                  "detail_page_views": "successful detail opens including direct access; may exceed clicks",

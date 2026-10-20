@@ -1,16 +1,9 @@
-============================= test session starts ==============================
-platform darwin -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
-rootdir: /Users/shi/Project/myProject/NewsAgent/agent
-configfile: pyproject.toml
-plugins: asyncio-0.26.0, anyio-4.13.0
-asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
-collected 78 items
+$ python -m pytest tests/test_real_news_warehouse_catalog.py tests/test_real_news_warehouse_simulation.py tests/test_real_news_warehouse_package.py tests/test_real_news_warehouse_extension.py tests/test_real_news_profiles.py
+.............................................................            [100%]
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.11/site-packages/opentelemetry/util/_importlib_metadata.py:32
+  /usr/local/lib/python3.11/site-packages/opentelemetry/util/_importlib_metadata.py:32: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+    return EntryPoints(ep for group_eps in eps.values() for ep in group_eps)
 
-agent/tests/test_real_news_warehouse_catalog.py ........................ [ 30%]
-....                                                                     [ 35%]
-agent/tests/test_real_news_warehouse_simulation.py .................     [ 57%]
-agent/tests/test_real_news_warehouse_package.py ......                   [ 65%]
-agent/tests/test_real_news_warehouse_deploy.py ......................... [ 97%]
-..                                                                       [100%]
-
-============================== 78 passed in 2.43s ==============================
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+61 passed, 1 warning in 23.82s

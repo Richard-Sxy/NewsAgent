@@ -1,0 +1,37 @@
+# Add after docker-compose.native-e2e.yml to point the isolated hot-news Agent
+# at the extended real-content v8 warehouse. Metrics still exist only for the
+# 661 articles with approved aggregate evidence; content-only articles are not
+# ranked. The dataset package is mounted read-only and remains outside Git.
+# A separate project name gives this profile fresh PostgreSQL/Temporal/MinIO
+# volumes and alternate host ports, so the default native-e2e demo is untouched.
+name: news-agent-real-news-v8
+
+services:
+  postgres:
+    ports: !override ["127.0.0.1:35432:5432"]
+  temporal:
+    ports: !override ["127.0.0.1:37233:7233"]
+  minio:
+    ports: !override ["127.0.0.1:39000:9000", "127.0.0.1:39001:9001"]
+  api:
+    ports: !override ["127.0.0.1:38000:8000"]
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: real-news-v8
+      SQL_ASSISTANT_NEWS_PER_TENANT: "8120"
+      SQL_ASSISTANT_SCENARIOS_PATH: /app/deploy/text2sql-scenes.real-news-v8.yml
+      REAL_NEWS_WAREHOUSE_DATASET: /data/real-news-v8
+    volumes:
+      - ../agent/data/real-news-warehouse-v8:/app/data/real-news-warehouse-v8:ro
+      - ../var/warehouse/real-news-v8-20261014:/data/real-news-v8:ro
+      - ./text2sql-scenes.real-news-v8.yml:/app/deploy/text2sql-scenes.real-news-v8.yml:ro
+
+  hot-news-worker:
+    environment:
+      SQL_ASSISTANT_DATASET_PROFILE: real-news-v8
+      SQL_ASSISTANT_NEWS_PER_TENANT: "8120"
+      SQL_ASSISTANT_SCENARIOS_PATH: /app/deploy/text2sql-scenes.real-news-v8.yml
+      REAL_NEWS_WAREHOUSE_DATASET: /data/real-news-v8
+    volumes:
+      - ../agent/data/real-news-warehouse-v8:/app/data/real-news-warehouse-v8:ro
+      - ../var/warehouse/real-news-v8-20261014:/data/real-news-v8:ro
+      - ./text2sql-scenes.real-news-v8.yml:/app/deploy/text2sql-scenes.real-news-v8.yml:ro

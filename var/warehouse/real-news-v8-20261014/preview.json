@@ -59,6 +59,7 @@
       "source_html_sha256": null,
       "news_content_synthetic": false,
       "metric_data_synthetic": true,
+      "metric_available": true,
       "lifecycle_data_synthetic": true,
       "lifecycle_scenario": "none",
       "status": "published",
@@ -88,11 +89,56 @@
       "source_html_sha256": null,
       "news_content_synthetic": false,
       "metric_data_synthetic": true,
+      "metric_available": true,
       "lifecycle_data_synthetic": true,
       "lifecycle_scenario": "none",
       "status": "published",
       "lifecycle_revision": 1,
       "status_effective_at": "2026-07-19T11:41:45+08:00"
+    }
+  ],
+  "news_content_feature": [
+    {
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20260718A03B9V00",
+      "content_sha256": "0e94f21c1b91d193cf2259dee7d8d759041f8c24ffa1766129f93568e3a6b207",
+      "metric_available": true,
+      "title_chars": 25,
+      "content_chars": 4574,
+      "paragraph_count": 54,
+      "sentence_count": 103,
+      "digit_token_count": 6,
+      "keyword_top": [
+        "模型",
+        "组织",
+        "世界",
+        "智能",
+        "能力",
+        "企业",
+        "物理",
+        "腾讯"
+      ]
+    },
+    {
+      "tenant_id": "11111111-1111-4111-8111-111111111111",
+      "news_id": "20260719A04P4Y00",
+      "content_sha256": "737a4802717486867d496cbf3e953b821fd9300ac9726b1666204e3f179b91e4",
+      "metric_available": true,
+      "title_chars": 36,
+      "content_chars": 4727,
+      "paragraph_count": 50,
+      "sentence_count": 103,
+      "digit_token_count": 48,
+      "keyword_top": [
+        "模型",
+        "机器人",
+        "任务",
+        "展示",
+        "智能",
+        "系统",
+        "服务",
+        "算力"
+      ]
     }
   ],
   "window_snapshot": [

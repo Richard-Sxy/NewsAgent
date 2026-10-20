@@ -549,3 +549,31 @@ Top1的5位合成读者已通过 Service/Enrichment/InputBuilder 定点验证。
 归因和 Data Loop 讨论。内部推荐算法架构继续不属于本项目建设范围；具体岗位分工、
 剪辑工具接入、算法协作接口、指标合同及实验方案尚待明确。该背景确认不代表自动
 剪辑、搜索推荐接入、算法训练、真实投递或业务收益已经实现，也不新增这些操作权限。
+
+## 26. 真实内容 v8 原地扩充与热点 Agent 接入（2026-10-19 用户确认）
+
+用户确认在既有 v8 数仓上原地扩充真实内容，新增内容不得是模拟数据，并同时接入热点 Agent。
+本次新增 7,459 篇 v2 公开缓存新闻（含标题、正文、URL、发布时间和内容哈希），使真实新闻
+总数达到 8,120 篇；新增 `news_content_feature` 保存标题/正文字数、段落、句子、数字 token
+和确定性 CJK 关键词。7,459 篇新文章没有企业行为数据，因此没有曝光、点击、UV、时长、基线、
+榜单或生命周期行，只存在于 `dim_news` 和特征表；661 篇既有文章继续使用明确标记的模拟行为
+指标。不得把内容-only 文章描述为热点候选，也不得用 0 或模拟值补齐。
+
+v8 数据包已原地重建，摘要为
+`e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904`；扩展清单为
+`catalog-extension-v2.json`（`6b7e65df3590ce84974adcf77d4505bc494e05ecbd5a0b1e7c5eec1732ad766f`），
+正文仍留在被忽略的公开缓存和 `var/` 数据包中，不进入 Git。旧包备份在仓库外
+`NewsAgent-legacy-backup/real-news-v8-pre-copyfix-20261019` 等目录。
+
+新增 Agent profile `real-news-v8` 和冻结契约 `news-warehouse-v7`：Agent 侧导入 8,120 篇
+真实内容，仅 661 篇进入 `dw.news_behavior_aggregate`；缺失基线保留为空，视图使用 LEFT JOIN。
+场景 `deploy/text2sql-scenes.real-news-v8.yml` 支持 7 个演示栏目；独立 Compose 叠加文件
+`deploy/docker-compose.real-news-v8-agent.yml` 使用新项目名和新卷，API `38000`、Postgres
+`35432`、Temporal `37233`、MinIO `39000/39001`，不改变默认 native-e2e 演示。
+
+已验证：真实内容包 61 项定向测试；完整后端回归（含 BGE 可选依赖测试）`4515 passed,
+143 skipped`；独立 PostgreSQL 导入 16,240 条新闻维、13 张表、SQL 检查通过；Agent profile 初始化 26 秒，`dim_news=16,240`、`news_metric_hourly=140,724`、
+内容-only 示例在榜单视图为 0 行；热点运行在 `2026-10-13 20:00` 完成 5 篇排名和分析，
+正文使用真实公开内容而非合成占位；`/api/v1/conversations/runtime` 返回 661 指标文章和
+7,459 内容-only 文章。企业真实行为指标、内容-only 的真实榜单资格、企业聚合接口和生产
+负载/权限仍未验收；不能让本次本地结果替代这些后续验证。

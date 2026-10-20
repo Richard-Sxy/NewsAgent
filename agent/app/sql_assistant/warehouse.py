@@ -42,6 +42,10 @@ from app.sql_assistant.corpus_profiles import (
     CORPUS_PROFILE, CORPUS_CATALOG_SHA256, corpus_catalog, corpus_manifest,
     corpus_news_ids, iter_corpus_rows, validate_corpus_news_count,
 )
+from app.sql_assistant.real_news_profiles import (
+    REAL_NEWS_PROFILE, REAL_NEWS_WINDOW_END, REAL_NEWS_WINDOW_START,
+    iter_real_news_rows, real_news_manifest, real_news_news_ids, validate_real_news_count,
+)
 
 SCHEMA_VERSION = "news-warehouse-v1"
 SCHEMA_SHA256 = "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0"
@@ -60,7 +64,10 @@ SCHEMA_PATH_V5 = SCHEMA_PATH.with_name("sql-warehouse-schema-v5.md")
 SCHEMA_VERSION_V6 = "news-warehouse-v6"
 SCHEMA_SHA256_V6 = "bb4fb8fb45113b250ac953beb6c7789fe9a519d98c130d78c50b4277802480b7"
 SCHEMA_PATH_V6 = SCHEMA_PATH.with_name("sql-warehouse-schema-v6.md")
-STREAMED_PROFILES = frozenset({SCALED_PROFILE, PUBLIC_HEADLINES_PROFILE, TIMELINE_PROFILE, TIMELINE_V5_PROFILE, CORPUS_PROFILE})
+SCHEMA_VERSION_V7 = "news-warehouse-v7"
+SCHEMA_SHA256_V7 = "96bee2a00e6cb6ed4d9f401b246f3efae1fa2a198b68cd4bc62ab442d2c933c9"
+SCHEMA_PATH_V7 = SCHEMA_PATH.with_name("sql-warehouse-schema-v7.md")
+STREAMED_PROFILES = frozenset({SCALED_PROFILE, PUBLIC_HEADLINES_PROFILE, TIMELINE_PROFILE, TIMELINE_V5_PROFILE, CORPUS_PROFILE, REAL_NEWS_PROFILE})
 DEMO_TENANT_ID = UUID("11111111-1111-4111-8111-111111111111")
 ISOLATION_TENANT_ID = UUID("33333333-3333-4333-8333-333333333333")
 WINDOW_START = datetime(2026, 10, 3, tzinfo=timezone(timedelta(hours=8)))
@@ -89,6 +96,8 @@ class WarehouseContract:
 
 def dataset_window(profile: str = CLASSIC_PROFILE):
     validate_profile(profile)
+    if profile == REAL_NEWS_PROFILE:
+        return (REAL_NEWS_WINDOW_START, REAL_NEWS_WINDOW_END)
     if profile in {TIMELINE_PROFILE, TIMELINE_V5_PROFILE, CORPUS_PROFILE}:
         return (TIMELINE_START, TIMELINE_END)
     return (WINDOW_START, WINDOW_END)
@@ -96,6 +105,8 @@ def dataset_window(profile: str = CLASSIC_PROFILE):
 
 def warehouse_contract(profile: str = CLASSIC_PROFILE) -> WarehouseContract:
     validate_profile(profile)
+    if profile == REAL_NEWS_PROFILE:
+        return WarehouseContract(SCHEMA_VERSION_V7, SCHEMA_SHA256_V7, SCHEMA_PATH_V7)
     if profile == CORPUS_PROFILE:
         return WarehouseContract(SCHEMA_VERSION_V6, SCHEMA_SHA256_V6, SCHEMA_PATH_V6)
     if profile == TIMELINE_V5_PROFILE:
@@ -128,7 +139,7 @@ _VIEW_COLUMNS: tuple[tuple[str, str, str], ...] = (
     ("event_time", "timestamptz", "小时桶起点；半开时间窗口过滤"),
     ("title", "text", "合成新闻标题"),
     ("content_type", "text", "article 图文或 video 视频"),
-    ("category", "text", "栏目：科技、财经、体育、社会"),
+    ("category", "text", "栏目：科技、财经、体育、社会、汽车、教育、娱乐"),
     ("source", "text", "合成来源"),
     ("publish_time", "timestamptz", "新闻发布时间"),
     ("impressions", "bigint", "小时展示次数，可跨小时求和"),
@@ -151,12 +162,18 @@ def get_text2sql_schema(profile: str = CLASSIC_PROFILE) -> Text2SqlSchema:
         tables=(
             Text2SqlTable(
                 name=ALLOWED_VIEW,
-                description=("真实缓存新闻内容与模拟运营聚合；栏目为演示分类，一行对应租户、新闻、小时桶"
+                description=("真实公开新闻内容；仅661篇具备模拟行为指标，7,459篇内容-only文章不在榜单视图"
+                             if profile == REAL_NEWS_PROFILE else
+                             "真实缓存新闻内容与模拟运营聚合；栏目为演示分类，一行对应租户、新闻、小时桶"
                              if profile == CORPUS_PROFILE else
                              "公开真实标题引用与合成运营聚合；一行对应租户、新闻、小时桶"
                              if profile == PUBLIC_HEADLINES_PROFILE else "仅合成聚合数据；一行对应租户、新闻、小时桶"),
                 columns=tuple(
                     Text2SqlColumn(name=name, data_type=data_type, description=(
+                        {"title": "公开新闻原始标题", "source": "腾讯新闻公开页面缓存", "category": "按公开发现入口或标题规则映射的演示分类",
+                         "baseline_impressions": "历史同小时均值；无样本时为空", "baseline_clicks": "历史同小时均值；无样本时为空",
+                         "baseline_effective_consumptions": "历史同小时均值；无样本时为空", "baseline_interactions": "历史同小时均值；无样本时为空"}.get(name, description)
+                        if profile == REAL_NEWS_PROFILE else
                         {"title": "原缓存新闻标题", "source": "腾讯新闻公开页面缓存，非原发布者", "category": "按标题关键词的演示分类，非原始栏目"}.get(name, description)
                         if profile == CORPUS_PROFILE else
                         {"title": "公开新闻原始标题", "source": "公开新闻原始来源"}.get(name, description)
@@ -171,6 +188,8 @@ def get_text2sql_schema(profile: str = CLASSIC_PROFILE) -> Text2SqlSchema:
 
 def profile_news_count(profile: str, news_per_tenant: int) -> int:
     validate_profile(profile)
+    if profile == REAL_NEWS_PROFILE:
+        return validate_real_news_count(news_per_tenant)
     if profile == CORPUS_PROFILE:
         return validate_corpus_news_count(news_per_tenant)
     if profile == PUBLIC_HEADLINES_PROFILE:
@@ -179,6 +198,8 @@ def profile_news_count(profile: str, news_per_tenant: int) -> int:
 
 
 def streamed_manifest(profile: str, news_per_tenant: int) -> dict[str, Any]:
+    if profile == REAL_NEWS_PROFILE:
+        return real_news_manifest(news_per_tenant)
     if profile == CORPUS_PROFILE:
         return corpus_manifest(news_per_tenant)
     if profile == TIMELINE_PROFILE:
@@ -199,7 +220,8 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
     contract = warehouse_contract(profile)
     count = profile_news_count(profile, news_per_tenant)
     start, end = dataset_window(profile)
-    hours = TIMELINE_HOURS if profile in {TIMELINE_PROFILE, TIMELINE_V5_PROFILE, CORPUS_PROFILE} else 24
+    hours = (int((end - start).total_seconds() // 3600) if profile == REAL_NEWS_PROFILE else
+             TIMELINE_HOURS if profile in {TIMELINE_PROFILE, TIMELINE_V5_PROFILE, CORPUS_PROFILE} else 24)
     info = {
         "schema_version": contract.version,
         "schema_sha256": contract.sha256,
@@ -219,6 +241,16 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
         info.update({key: manifest[key] for key in ("dataset_version", "dataset_sha256", "enterprise_scenarios")})
         info.update(news_per_tenant=count, hours_per_news=hours, total_news_count=count * 2,
                     total_metric_row_count=count * hours * 2, total_baseline_row_count=count * hours * 2)
+    if profile == REAL_NEWS_PROFILE:
+        info.update(synthetic=False, news_content_synthetic=False, metric_data_synthetic=True,
+                    category_data_synthetic=True, content_type="article",
+                    metric_article_count=manifest["metric_available_article_count"],
+                    content_only_article_count=manifest["content_only_article_count"],
+                    extension_sha256=manifest["extension_sha256"])
+        info["metric_row_count"] = manifest["tables"]["news_metric_hourly"]["rows"]
+        info["baseline_row_count"] = manifest["tables"]["news_metric_baseline_hourly"]["rows"]
+        info["total_metric_row_count"] = info["metric_row_count"] * 2
+        info["total_baseline_row_count"] = info["baseline_row_count"] * 2
     if profile == PUBLIC_HEADLINES_PROFILE:
         catalog = public_catalog()
         dates = [datetime.fromisoformat(article["published_at"]) for article in catalog["articles"]]
@@ -239,6 +271,8 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
 
 def demo_news_ids(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = DEFAULT_NEWS_COUNT) -> tuple[str, ...]:
     validate_profile(profile)
+    if profile == REAL_NEWS_PROFILE:
+        return real_news_news_ids(news_per_tenant)
     if profile == CORPUS_PROFILE:
         return corpus_news_ids(news_per_tenant)
     if profile == PUBLIC_HEADLINES_PROFILE:
@@ -257,7 +291,7 @@ _DDL = (
         news_id text NOT NULL,
         title text NOT NULL,
         content_type text NOT NULL CHECK (content_type IN ('article', 'video')),
-        category text NOT NULL CHECK (category IN ('科技', '财经', '体育', '社会')),
+        category text NOT NULL CHECK (category IN ('科技', '财经', '体育', '社会', '汽车', '教育', '娱乐')),
         source text NOT NULL,
         publish_time timestamptz NOT NULL,
         PRIMARY KEY (tenant_id, news_id)
@@ -302,7 +336,7 @@ _VIEW_DDL = """CREATE VIEW dw.news_behavior_aggregate AS
     FROM dw.news_metric_hourly AS m
     JOIN dw.dim_news AS n
         ON n.tenant_id = m.tenant_id AND n.news_id = m.news_id
-    JOIN dw.news_metric_baseline_hourly AS b
+    LEFT JOIN dw.news_metric_baseline_hourly AS b
         ON b.tenant_id = m.tenant_id
         AND b.news_id = m.news_id
         AND b.event_time = m.event_time
@@ -425,7 +459,8 @@ def _scaled_batches(table: str, news_per_tenant: int, *, batch_size: int = 500,
     if type(batch_size) is not int or not 1 <= batch_size <= 500:
         raise ValueError("scaled fixture batch must contain 1 to 500 rows")
     batch = []
-    iterator = (iter_corpus_rows if dataset_profile == CORPUS_PROFILE else
+    iterator = (iter_real_news_rows if dataset_profile == REAL_NEWS_PROFILE else
+                iter_corpus_rows if dataset_profile == CORPUS_PROFILE else
                 iter_timeline_rows if dataset_profile == TIMELINE_PROFILE else
                 iter_timeline_v5_rows if dataset_profile == TIMELINE_V5_PROFILE else
                 iter_public_rows if dataset_profile == PUBLIC_HEADLINES_PROFILE else iter_scaled_rows)

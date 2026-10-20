@@ -92,7 +92,12 @@ class LocalConversationHotNewsQuery:
         return {"name": "query_hot_news",
                 **({"dataset_profile": "corpus-v6", "news_content_source": "tencent-news-cache",
                     "metric_data_synthetic": True, "category_data_synthetic": True}
-                   if self._dataset_profile == "corpus-v6" else {}),
+                   if self._dataset_profile == "corpus-v6" else
+                   {"dataset_profile": "real-news-v8", "news_content_source": "tencent-public-cache",
+                    "news_content_synthetic": False, "metric_data_synthetic": True,
+                    "metric_available_article_count": 661, "content_only_article_count": 7459,
+                    "content_only_rankable": False}
+                   if self._dataset_profile == "real-news-v8" else {}),
                 "description": "先理解当前问题并校验日期、榜单来源和条件，再查询模拟数仓并执行原有热点分析Workflow；不发布、不审批。今日不等于样本窗口，范围不满足时不会执行取数。",
                 "arguments": {"question": "完整保留当前用户原问题，2..1000字；不得删除日期、来源或条件，不得携带SQL或身份"},
                 "scenario_id": self._scenario, "window_start": self._start.isoformat(),
@@ -123,6 +128,7 @@ class LocalConversationHotNewsQuery:
             raise  # The resolver always blocks this input; keep a fail-closed fallback.
         with model_request_context(tenant_id=tenant_id, trace_id=f"query-understanding-{uuid4()}"):
             try:
+                # 这边输入到项目当中
                 async with asyncio.timeout(self._understanding_timeout):
                     result = await self._understanding_agent.run_structured(
                         app_id="python:query-understanding-v5", mode="query_understanding",

@@ -97,6 +97,19 @@ python3 agent/tools/start_local_demo.py
 它会部署前端、后端、所有 Worker 和基础依赖，无需企业模型密钥或单独运行 Vite。
 预检、恢复、停止与业务验证见 [完整本地模拟启动说明](agent/docs/local-bge-simulation.md)。
 
+真实内容 v8 热点 Agent（8,120 篇真实公开新闻；仅 661 篇有既有模拟指标）：
+
+```bash
+docker compose -f deploy/docker-compose.native-e2e.yml \
+  -f deploy/docker-compose.real-news-v8-agent.yml up -d --build
+cd agent/frontend
+VITE_DEV_PROXY_TARGET=http://127.0.0.1:38000 VITE_DEV_PORT=5274 npm run dev
+```
+
+访问 `http://127.0.0.1:5274/chat` 和 `/hot-news`。7,459 篇内容-only 文章没有行为指标，
+不会进入热度排行；它们只作为真实内容和派生特征存在。详见
+[真实新闻数仓 v8](agent/docs/real-news-warehouse-v8.md)。
+
 需要沿用企业查询理解模型展示热点对话与 BGE 相关新闻时，使用以下部署入口：
 
 ```bash

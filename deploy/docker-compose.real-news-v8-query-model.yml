@@ -1,0 +1,11 @@
+# Opt in to a real Chat Completions model for query understanding only.
+# Conversation planning, Text2SQL and hot-news analysis stay on the local
+# model runtime. This overlay changes only the API, because the understanding
+# call runs before the hot-news Workflow is started.
+services:
+  api:
+    environment:
+      CONVERSATION_QUERY_UNDERSTANDING_CONFIG_PATH: /app/deploy/model-runtime.compatible.yml
+      NEWSAGENT_MODEL_API_KEY: ${NEWSAGENT_MODEL_API_KEY:?Inject the model API key securely; do not commit it}
+    volumes:
+      - ./model-runtime.compatible.yml:/app/deploy/model-runtime.compatible.yml:ro

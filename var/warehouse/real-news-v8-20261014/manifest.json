@@ -10,12 +10,16 @@
     "11111111-1111-4111-8111-111111111111",
     "33333333-3333-4333-8333-333333333333"
   ],
-  "real_article_count": 661,
+  "real_article_count": 8120,
   "catalog_count": 661,
+  "extension_count": 7459,
+  "metric_article_count": 661,
   "catalog_sha256": "1af51f4fba5f190829d255fe8ee2ce2328811f09102af6d9e814e2b49d4353f0",
-  "catalog_loader_sha256": "f7e81d97cf0217544b14a600c3a0fd6583b3dcf5ce1e0835e653b0afb33c3e91",
-  "schema_sha256": "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073",
-  "generator_sha256": "5be0f4905d6daf1b5c731d70410b911a61b1990b86d7e18793402b7f86f531b2",
+  "extension_sha256": "6b7e65df3590ce84974adcf77d4505bc494e05ecbd5a0b1e7c5eec1732ad766f",
+  "extension_path": "catalog-extension-v2.json",
+  "catalog_loader_sha256": "b597ba6d691746ba81b9f3a5a20f183b164556486191b02d6821accda9cd9bed",
+  "schema_sha256": "a905d537eb40622fc2f336ac01e35778eed6fca7dcaef677aa9ff7511e994f73",
+  "generator_sha256": "bf925faa86e1d4f6463fe23dbd56bc1e24a630118bf126659e6b93dabab66633",
   "closed_window_start": "2026-09-30T00:00:00+08:00",
   "closed_window_end": "2026-10-14T20:00:00+08:00",
   "historical_window_start": "2026-09-30T00:00:00+08:00",
@@ -50,8 +54,8 @@
       ]
     },
     "dim_news": {
-      "rows": 1322,
-      "sha256": "821f1cccb40d6a122d3a71af4f5751cdc2cd5535e4c9e63a4b4457c00f2b5307",
+      "rows": 16240,
+      "sha256": "65fac5f5da9571e592b30d6f2a5b9051ff234dd546f8bc7cdec3076d05405892",
       "columns": [
         "tenant_id",
         "news_id",
@@ -75,11 +79,28 @@
         "source_html_sha256",
         "news_content_synthetic",
         "metric_data_synthetic",
+        "metric_available",
         "lifecycle_data_synthetic",
         "lifecycle_scenario",
         "status",
         "lifecycle_revision",
         "status_effective_at"
+      ]
+    },
+    "news_content_feature": {
+      "rows": 16240,
+      "sha256": "9e9e46d73c1945c4654e843af7b9da2a830af790a0c2ee8230089e3b8f575de2",
+      "columns": [
+        "tenant_id",
+        "news_id",
+        "content_sha256",
+        "metric_available",
+        "title_chars",
+        "content_chars",
+        "paragraph_count",
+        "sentence_count",
+        "digit_token_count",
+        "keyword_top"
       ]
     },
     "window_snapshot": {
@@ -100,7 +121,7 @@
     },
     "news_metric_5min": {
       "rows": 1739966,
-      "sha256": "e15b0b2a6b6b0fc5708f4d686035c8202b603dc8aa7071ba6a0dc1336ae5fccb",
+      "sha256": "ca0c7ddb96d7d796156de115d903ea03c41fbaef05c9439a70bef2f2e4a66211",
       "columns": [
         "tenant_id",
         "news_id",
@@ -124,7 +145,7 @@
     },
     "news_metric_channel_hourly": {
       "rows": 438036,
-      "sha256": "00062a250628ac6aac2f2d5d495f79ad526fbcb3a5e7d920d5ef653c17342041",
+      "sha256": "15ef1e23b421d01377f10479c19f949882300b0a4e57d06288fcfda9d693e240",
       "columns": [
         "tenant_id",
         "news_id",
@@ -149,7 +170,7 @@
     },
     "news_metric_hourly": {
       "rows": 146012,
-      "sha256": "5f4c53400b6f8d74c4736ad9f306bf4ae257ae706c45ccc73b8d1c398d3192e8",
+      "sha256": "3a936351e83044bfa33a2a8301f469cae49f67ec6c27ada83c0a69e3aa4e0462",
       "columns": [
         "tenant_id",
         "news_id",
@@ -175,7 +196,7 @@
     },
     "news_metric_daily": {
       "rows": 6980,
-      "sha256": "6e73b563869699e789b87daf84ab440c98165a4f6cb94043db1fb32c3106e45a",
+      "sha256": "19237454000b55092bcaee5619f748561a3a6c907b35768160ec41633458a1eb",
       "columns": [
         "tenant_id",
         "news_id",
@@ -206,7 +227,7 @@
     },
     "news_metric_baseline_hourly": {
       "rows": 143368,
-      "sha256": "88fef81e76eaa6375517846538daeb2b886851cd9c6b59f0e5953aeff469255e",
+      "sha256": "4f94c5aee0f98d8b45c592289f6c0501ad71c051ce95beda06316a8ff78260b7",
       "columns": [
         "tenant_id",
         "news_id",
@@ -220,8 +241,8 @@
       ]
     },
     "content_change_event": {
-      "rows": 84,
-      "sha256": "b12bea5b725847eb0c9fe31ad7d43327ff86d54b510e884f93b7e87fb9378ec5",
+      "rows": 86,
+      "sha256": "956ba1517706d4f58b877003b601d114f57338823f42b0e816f039870a241574",
       "columns": [
         "tenant_id",
         "event_id",
@@ -238,8 +259,8 @@
       ]
     },
     "content_tombstone": {
-      "rows": 56,
-      "sha256": "6a6d0f160373d7fbe1b3667f18ed56bb7c18873179cace82129255f61a908797",
+      "rows": 55,
+      "sha256": "e26c6bb00c82421908529ffce6dc6c35a46e58697d9667e1ff09a338fc840812",
       "columns": [
         "tenant_id",
         "news_id",
@@ -252,8 +273,8 @@
       ]
     },
     "index_cleanup_task": {
-      "rows": 336,
-      "sha256": "cbab81bab99025c12759349c4cfefda5c94e9b5bd3b1e8bd2e379e706fa37be3",
+      "rows": 344,
+      "sha256": "c30011de41af0311a06599708f5d21e293e6b537d2dccd0c0b45373ea07d2acd",
       "columns": [
         "tenant_id",
         "task_id",
@@ -270,12 +291,13 @@
       ]
     }
   },
-  "warehouse_sql_sha256": "ba6b4ba655a2251a2160350edf17803ff3b590e7b172dd5e39ea0886e3f5387e",
+  "warehouse_sql_sha256": "0960ee887e81444e661245a06c1dcf24c3be3155acbd98fa594c9b43d4506c4a",
   "news_content_synthetic": false,
   "metric_data_synthetic": true,
   "category_data_synthetic": true,
   "lifecycle_data_synthetic": true,
-  "content_provenance": "catalog preserves cached source IDs, title, body, URL and publication metadata",
+  "content_provenance": "catalog plus extension preserve cached source IDs, title, body, URL and publication metadata; extension bodies are real public articles",
+  "content_only_metric_policy": "articles without approved behavior data have no metric, baseline, lifecycle or daily rows",
   "metric_provenance": {
     "generator": "deterministic aggregate simulator",
     "policy_version": "sim-click-attributed-reading-v8.1",
@@ -292,5 +314,5 @@
     "cleanup_execution": "none; all tasks pending, no external adapter"
   },
   "integration_status": "standalone_fixture_not_connected_to_agent_or_vector_store",
-  "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
+  "dataset_sha256": "e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904"
 }

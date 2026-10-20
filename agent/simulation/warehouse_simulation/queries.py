@@ -27,14 +27,14 @@ DEFAULT_DATASET = Path(os.environ.get("WAREHOUSE_DATASET_DIR")
                        or (Path(__file__).resolve().parents[3] / "var/warehouse/real-news-v8-20261014"))
 TENANTS = ("11111111-1111-4111-8111-111111111111", "33333333-3333-4333-8333-333333333333")
 DEFAULT_NEWS_ID = "20260903A05YQE00"
-DATASET_SHA256 = "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
-SCHEMA_SHA256 = "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073"
+DATASET_SHA256 = "e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904"
+SCHEMA_SHA256 = "a905d537eb40622fc2f336ac01e35778eed6fca7dcaef677aa9ff7511e994f73"
 QUERY_NAMES = ("ranking", "hourly", "five_minute", "channel", "daily", "baseline", "windows")
 SORT_METRICS = ("clicks", "ctr", "detail_page_views", "detail_visitors", "interactions")
-TABLES = ("dim_behavior_policy", "dim_channel", "dim_news", "window_snapshot", "news_metric_5min",
-          "news_metric_channel_hourly", "news_metric_hourly", "news_metric_daily",
+TABLES = ("dim_behavior_policy", "dim_channel", "dim_news", "news_content_feature", "window_snapshot",
+          "news_metric_5min", "news_metric_channel_hourly", "news_metric_hourly", "news_metric_daily",
           "news_metric_baseline_hourly", "content_change_event", "content_tombstone", "index_cleanup_task")
-QUERY_CATALOG_VERSION = "v8-readonly-query-catalog-v1"
+QUERY_CATALOG_VERSION = "v8-readonly-query-catalog-v2"
 
 GATE_SQL = """SELECT tenant_id,event_time,snapshot_revision,window_end,watermark_at,snapshot_at,
  completeness,quality_status,policy_version

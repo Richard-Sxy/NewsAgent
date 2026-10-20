@@ -204,7 +204,7 @@ class SqlAssistantService:
         if intent.category is None and len(scenario.allowed_categories) == 1:
             intent = intent.model_copy(update={"category": scenario.allowed_categories[0]})
             params["category"] = intent.category
-        if len(scenario.allowed_categories) not in (1, 4) and intent.category is None:
+        if len(scenario.allowed_categories) not in (1, 4, 7) and intent.category is None:
             raise SqlAssistantError("当前场景请在问题中指定一个允许的栏目")
         sql = compile_query(intent, scenario)
         self.guard.validate(sql, params)

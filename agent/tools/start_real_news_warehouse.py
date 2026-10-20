@@ -34,7 +34,7 @@ PROJECT = "newsagent-real-news-warehouse-v8"
 VOLUME = "newsagent-real-news-warehouse-v8-pgdata"
 DATASET_LABEL = "org.newsagent.dataset_sha256"
 LOCAL_DSN = "postgresql://news_demo:local-v8-only@127.0.0.1:28438/news_demo"
-MAX_DATABASE_RESPONSE = 4 * 1024 * 1024
+MAX_DATABASE_RESPONSE = 64 * 1024 * 1024
 _DIM_FIELDS = (
     "tenant_id", "news_id", "title", "source_url", "publish_time", "content_sha256",
     "source_file", "source_sha256", "source_package", "source_manifest_sha256",

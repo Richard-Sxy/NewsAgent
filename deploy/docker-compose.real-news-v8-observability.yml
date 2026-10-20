@@ -1,0 +1,51 @@
+# Connect the real-news-v8 application roles to the independent local
+# observability stack. Start deploy/docker-compose.observability.yml first.
+# The OTLP endpoint is only reachable on the observability internal network;
+# business data stays on the application network and is never exported.
+services:
+  api:
+    networks: !override [native, observability]
+    environment:
+      OBSERVABILITY_ENABLED: "true"
+      OBSERVABILITY_OTLP_ENDPOINT: http://otel-collector:4318
+      OBSERVABILITY_SERVICE_NAME: newsagent-real-news-v8-api
+      OBSERVABILITY_SERVICE_VERSION: local-real-news-v8
+      OBSERVABILITY_ENVIRONMENT: local
+      OBSERVABILITY_SAMPLE_RATIO: "1.0"
+      OBSERVABILITY_METRIC_EXPORT_INTERVAL_MS: "5000"
+
+  hot-news-worker:
+    networks: !override [native, observability]
+    environment:
+      OBSERVABILITY_ENABLED: "true"
+      OBSERVABILITY_OTLP_ENDPOINT: http://otel-collector:4318
+      OBSERVABILITY_SERVICE_NAME: newsagent-real-news-v8-hot-news-worker
+      OBSERVABILITY_SERVICE_VERSION: local-real-news-v8
+      OBSERVABILITY_ENVIRONMENT: local
+      OBSERVABILITY_SAMPLE_RATIO: "1.0"
+      OBSERVABILITY_METRIC_EXPORT_INTERVAL_MS: "5000"
+
+  writing-worker:
+    networks: !override [native, observability]
+    environment:
+      OBSERVABILITY_ENABLED: "true"
+      OBSERVABILITY_OTLP_ENDPOINT: http://otel-collector:4318
+      OBSERVABILITY_SERVICE_NAME: newsagent-real-news-v8-writing-worker
+      OBSERVABILITY_SERVICE_VERSION: local-real-news-v8
+      OBSERVABILITY_ENVIRONMENT: local
+      OBSERVABILITY_SAMPLE_RATIO: "1.0"
+
+  outbox-worker:
+    networks: !override [native, observability]
+    environment:
+      OBSERVABILITY_ENABLED: "true"
+      OBSERVABILITY_OTLP_ENDPOINT: http://otel-collector:4318
+      OBSERVABILITY_SERVICE_NAME: newsagent-real-news-v8-outbox-worker
+      OBSERVABILITY_SERVICE_VERSION: local-real-news-v8
+      OBSERVABILITY_ENVIRONMENT: local
+      OBSERVABILITY_SAMPLE_RATIO: "1.0"
+
+networks:
+  observability:
+    external: true
+    name: newsagent-observability_observability

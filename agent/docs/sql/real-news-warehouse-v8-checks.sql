@@ -290,11 +290,23 @@ BEGIN
   AND column_name IN ('user_id','device_id','session_id','view_id','client_ip','ip_address','cookie_id');
  IF bad <> 0 THEN RAISE EXCEPTION 'raw behavior identity fields were persisted: %',bad; END IF;
 
+ -- Content-only real articles must not claim behavior evidence.
+ SELECT count(*) INTO bad FROM news_sim_v8.news_metric_hourly m
+ JOIN news_sim_v8.dim_news n USING (tenant_id,news_id)
+ WHERE NOT n.metric_available;
+ IF bad <> 0 THEN RAISE EXCEPTION 'content-only articles have behavior metrics: %',bad; END IF;
+
+ SELECT count(*) INTO bad FROM news_sim_v8.dim_news n
+ LEFT JOIN news_sim_v8.news_content_feature f USING (tenant_id,news_id)
+ WHERE f.news_id IS NULL OR f.content_sha256 <> n.content_sha256
+  OR f.metric_available <> n.metric_available;
+ IF bad <> 0 THEN RAISE EXCEPTION 'content-only feature rows are missing or inconsistent: %',bad; END IF;
+
  -- Revision identity and same-tenant parent bindings are database contracts,
  -- not just assumptions made by the generator's deterministic replay.
  IF (SELECT count(*) FROM pg_constraint c
    JOIN pg_class r ON r.oid=c.conrelid JOIN pg_namespace s ON s.oid=r.relnamespace
-   WHERE s.nspname='news_sim_v8' AND r.relkind='r' AND c.contype='p') <> 12
+   WHERE s.nspname='news_sim_v8' AND r.relkind='r' AND c.contype='p') <> 13
  THEN RAISE EXCEPTION 'one or more fixture tables lack a replay-safe primary key'; END IF;
 END $$;
 
@@ -305,6 +317,9 @@ SELECT jsonb_build_object(
  'channel_dimension_rows',(SELECT count(*) FROM news_sim_v8.dim_channel),
  'real_news_count',(SELECT count(DISTINCT news_id) FROM news_sim_v8.dim_news),
  'dimension_rows',(SELECT count(*) FROM news_sim_v8.dim_news),
+ 'content_feature_rows',(SELECT count(*) FROM news_sim_v8.news_content_feature),
+ 'metric_available_dimensions',(SELECT count(*) FROM news_sim_v8.dim_news WHERE metric_available),
+ 'content_only_dimensions',(SELECT count(*) FROM news_sim_v8.dim_news WHERE NOT metric_available),
  'five_minute_rows',(SELECT count(*) FROM news_sim_v8.news_metric_5min),
  'channel_hour_rows',(SELECT count(*) FROM news_sim_v8.news_metric_channel_hourly),
  'hour_rows',(SELECT count(*) FROM news_sim_v8.news_metric_hourly),

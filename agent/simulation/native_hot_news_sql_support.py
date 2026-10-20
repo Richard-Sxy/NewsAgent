@@ -15,6 +15,8 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from hashlib import sha256
 import json
+import os
+from pathlib import Path
 from typing import Any, TYPE_CHECKING
 from uuid import UUID
 
@@ -248,8 +250,42 @@ class SqlHotNewsDetailRepository:
         return tuple(collected)
 
 
+_REAL_NEWS_CONTENT_CACHE: dict[tuple[str, str], dict[str, dict[str, Any]]] = {}
+
+
+def _real_news_content_path() -> Path:
+    configured = os.environ.get("REAL_NEWS_WAREHOUSE_DATASET")
+    if not configured:
+        raise HotNewsDataQualityError("real-news-v8 content package is not configured")
+    path = Path(configured)
+    if not path.is_dir() or path.is_symlink():
+        raise HotNewsDataQualityError("real-news-v8 content package is unavailable")
+    return path
+
+
+def _load_real_news_content(tenant_id: str) -> dict[str, dict[str, Any]]:
+    """Read verified real bodies from the mounted package; no synthetic summary."""
+
+    path = _real_news_content_path()
+    key = (str(path), tenant_id)
+    cached = _REAL_NEWS_CONTENT_CACHE.get(key)
+    if cached is not None:
+        return cached
+    rows: dict[str, dict[str, Any]] = {}
+    with (path / "dim_news.jsonl").open(encoding="utf-8") as stream:
+        for line in stream:
+            row = json.loads(line)
+            if row["tenant_id"] != tenant_id:
+                continue
+            rows[row["news_id"]] = row
+    if not rows:
+        raise HotNewsDataQualityError("real-news-v8 content package has no tenant rows")
+    _REAL_NEWS_CONTENT_CACHE[key] = rows
+    return rows
+
+
 class SqlHotNewsContentRepository:
-    """Synthetic content tied to metadata and IDs in the same local warehouse."""
+    """Content tied to metadata and IDs in the same local warehouse."""
 
     def __init__(self, details: SqlHotNewsDetailRepository) -> None:
         self.details = details
@@ -258,7 +294,34 @@ class SqlHotNewsContentRepository:
         if str(UUID(tenant_id)) != self.details.tenant_id:
             raise HotNewsDataQualityError("SQL hot-news content request crossed its bound tenant")
         requested = tuple(dict.fromkeys(news_ids))
-        if getattr(self.details, "dataset_profile", "classic-v1") in STREAMED_PROFILES:
+        profile = getattr(self.details, "dataset_profile", "classic-v1")
+        if profile == "real-news-v8":
+            rows = await self.details.fetch_metadata(news_ids=requested)
+            source_rows = await asyncio.to_thread(_load_real_news_content, self.details.tenant_id)
+            contents: dict[str, NewsContent] = {}
+            for row in rows:
+                news_id = str(row["news_id"])
+                source = source_rows.get(news_id)
+                if source is None:
+                    raise HotNewsDataQualityError("real-news-v8 metadata lacks its real body")
+                if (source["title"] != row["title"] or source["category"] != row["category"]
+                        or source["source"] != row["source"]
+                        or source["content_type"] != row["content_type"]
+                        or _aware_time(source["publish_time"]) != _aware_time(row["publish_time"])):
+                    raise HotNewsDataQualityError("real-news-v8 metadata differs from its real body")
+                body = source["content"]
+                content = NewsContent(
+                    news_id=news_id, title=source["title"],
+                    summary=body[:300], body=body,
+                    content_type=ContentType(source["content_type"]),
+                    publish_time=_aware_time(source["publish_time"]),
+                    source_url=source["source_url"],
+                    collection_id="real-news-v8-public-cache",
+                )
+                content.validate()
+                contents[news_id] = content
+            return contents
+        if profile in STREAMED_PROFILES:
             rows = await self.details.fetch_metadata(news_ids=requested)
         else:
             requested = tuple(item for item in requested if item in DEMO_NEWS_IDS)
@@ -391,21 +454,24 @@ class SqlAssistantHotNewsMetricSource:
                 news_id=news_id, content_type=content_type, window_start=self.window_start,
                 window_end=self.window_end, ctr=ctr, **values,
             ))
-            baseline_values = {
-                name: _decimal(row[f"baseline_{name}"], name)
-                for name in ("impressions", "clicks", "effective_consumptions", "interactions")
-            }
-            baselines[(news_id, content_type)] = SqlNewsMetricBaseline(
-                news_id=news_id, content_type=content_type, sample_count=1,
-                ctr=baseline_values["clicks"] / baseline_values["impressions"] if baseline_values["impressions"] else Decimal(0),
-                reference_version=("synthetic-hourly-baseline-v6" if self.dataset_profile == CORPUS_PROFILE else
-                                   "synthetic-hourly-baseline-v5" if self.dataset_profile == "timeline-v5" else
-                                   "synthetic-hourly-baseline-v4" if self.dataset_profile == "timeline-v4" else
-                                   "synthetic-hourly-baseline-v3" if self.dataset_profile == PUBLIC_HEADLINES_PROFILE
-                                   else "synthetic-hourly-baseline-v2" if self.dataset_profile == SCALED_PROFILE
-                                   else "synthetic-hourly-baseline-v1"),
-                **baseline_values,
-            )
+            baseline_names = ("impressions", "clicks", "effective_consumptions", "interactions")
+            if all(row.get(f"baseline_{name}") is not None for name in baseline_names):
+                baseline_values = {
+                    name: _decimal(row[f"baseline_{name}"], name)
+                    for name in baseline_names
+                }
+                baselines[(news_id, content_type)] = SqlNewsMetricBaseline(
+                    news_id=news_id, content_type=content_type, sample_count=1,
+                    ctr=baseline_values["clicks"] / baseline_values["impressions"] if baseline_values["impressions"] else Decimal(0),
+                    reference_version=("real-news-v8-synthetic-hourly-baseline" if self.dataset_profile == "real-news-v8" else
+                                       "synthetic-hourly-baseline-v6" if self.dataset_profile == CORPUS_PROFILE else
+                                       "synthetic-hourly-baseline-v5" if self.dataset_profile == "timeline-v5" else
+                                       "synthetic-hourly-baseline-v4" if self.dataset_profile == "timeline-v4" else
+                                       "synthetic-hourly-baseline-v3" if self.dataset_profile == PUBLIC_HEADLINES_PROFILE
+                                       else "synthetic-hourly-baseline-v2" if self.dataset_profile == SCALED_PROFILE
+                                       else "synthetic-hourly-baseline-v1"),
+                    **baseline_values,
+                )
         snapshots.sort(key=lambda item: (item.news_id, item.content_type.value))
         self._snapshots = tuple(snapshots)
         self._baselines = baselines
@@ -420,6 +486,13 @@ class SqlAssistantHotNewsMetricSource:
             raise HotNewsDataQualityError("SQL hot-news baseline scope/bundle mismatch")
         if self._snapshots is None:
             raise HotNewsDataQualityError("SQL hot-news baseline requested before its metric tool completed")
+        candidate_keys = {(snapshot.news_id, snapshot.content_type) for snapshot in self._snapshots}
+        if not metric_keys <= candidate_keys:
+            raise HotNewsDataQualityError("SQL hot-news baseline contains unknown candidate keys")
+        if self.dataset_profile == "real-news-v8":
+            # Real v8 baselines legitimately have sample_count=0 for early
+            # buckets. Absence is preserved as no baseline; it is never zero.
+            return {key: self._baselines[key] for key in metric_keys if key in self._baselines}
         if not metric_keys <= set(self._baselines):
             raise HotNewsDataQualityError("SQL hot-news baseline contains unknown candidate keys")
         return {key: self._baselines[key] for key in metric_keys}

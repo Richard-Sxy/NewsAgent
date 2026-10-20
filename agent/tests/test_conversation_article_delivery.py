@@ -20,6 +20,7 @@ from app.modules.conversation.tools import ConversationTools, safe_source_url
 from app.model_runtime.core import RawInferenceResult
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
 from app.modules.hot_news.contracts.hot_news_api import HotNewsMetricSnapshotView, HotScoreView
+from app.modules.hot_news.analysis.related_news_reranker import RerankRelatedNews
 from tests.test_conversation_agent import RUN, TENANT, USER, headers, runtime
 
 
@@ -98,6 +99,30 @@ class SnapshotIndex:
         ]
 
 
+class PassthroughReranker:
+    """Test double proving delivery is independent from the semantic threshold."""
+
+    def rerank(self, source, candidates, *, limit=3):
+        return [
+            RerankRelatedNews(
+                news=candidate, final_score=1.0, vector_score=1.0,
+                entity_score=1.0, event_score=1.0, keyword_score=1.0,
+                time_score=1.0, reasons=("test-passthrough",),
+            )
+            for candidate in candidates[:limit]
+        ]
+
+
+class RejectAllReranker:
+    def rerank(self, source, candidates, *, limit=3):
+        return []
+
+
+class FailingReranker:
+    def rerank(self, source, candidates, *, limit=3):
+        raise RuntimeError("semantic verifier unavailable")
+
+
 class HotNews:
     def __init__(self, *, count=5, status="completed", missing_title=False):
         self.calls = []
@@ -144,6 +169,9 @@ def tools_runtime(*, enabled=True, count=5, status="completed", missing_title=Fa
         hot_news=hot_news, knowledge_store=index, embedding=embedding,
         embedding_version="unrelated-runtime-version", knowledge_enabled=enabled,
     )
+    # Delivery tests exercise the projection contract; semantic filtering has
+    # its own tests below. Keep the historical fake candidates deterministic.
+    tools._related_articles._reranker = PassthroughReranker()
     return tools, hot_news, index, embedding
 
 
@@ -155,6 +183,7 @@ async def read(tools, **arguments):
 
 
 def recall_helper(index, embedding, **kwargs):
+    kwargs.setdefault("reranker", PassthroughReranker())
     return ConversationRelatedArticles(
         index=index, embedding=embedding, embedding_version="unrelated-runtime-version",
         source_url_sanitizer=safe_source_url, **kwargs,
@@ -395,3 +424,26 @@ async def test_knowledge_disabled_turn_persists_report_without_retrieval_project
     assert result.status == "completed" and result.tools[0].result["items"]
     assert "related_articles" not in result.tools[0].result
     assert index.query_embedder.calls == index.calls == embedding.calls == []
+
+
+@pytest.mark.asyncio
+async def test_semantic_reranker_can_suppress_all_candidates_without_touching_report():
+    tools, hot_news, _, _ = tools_runtime()
+    tools._related_articles._reranker = RejectAllReranker()
+    report = await read(tools)
+    assert len(report["items"]) == len(hot_news.items)
+    assert all(group["status"] == "completed" and group["items"] == []
+               and "已过滤低相关候选" in group["notice"]
+               for group in report["related_articles"])
+
+
+@pytest.mark.asyncio
+async def test_semantic_reranker_failure_is_fail_closed_per_source():
+    tools, hot_news, _, _ = tools_runtime()
+    tools._related_articles._reranker = FailingReranker()
+    report = await read(tools)
+    assert len(report["items"]) == len(hot_news.items)
+    assert all(group["status"] == "failed" and group["items"] == []
+               and "语义过滤失败" in group["notice"]
+               for group in report["related_articles"])
+    assert all(item["metrics"]["clicks"] == 12 for item in report["items"])

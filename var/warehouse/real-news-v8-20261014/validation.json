@@ -2,15 +2,17 @@
   "status": "passed",
   "validation_kind": "streamed_artifact_integrity",
   "dataset_version": "real-news-business-warehouse-v8-20261014",
-  "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+  "dataset_sha256": "e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904",
   "news_content_synthetic": false,
   "metric_data_synthetic": true,
-  "distinct_real_articles": 661,
+  "distinct_real_articles": 8120,
   "tenants": [
     "11111111-1111-4111-8111-111111111111",
     "33333333-3333-4333-8333-333333333333"
   ],
-  "total_persisted_rows": 2476892,
+  "extension_count": 7459,
+  "metric_article_count": 661,
+  "total_persisted_rows": 2508059,
   "tables": {
     "dim_behavior_policy": {
       "rows": 2,
@@ -21,8 +23,12 @@
       "sha256": "de9b15db3d7896cada55d78d9ba1c275996419018e197d905dfb2703ea8ebf5f"
     },
     "dim_news": {
-      "rows": 1322,
-      "sha256": "821f1cccb40d6a122d3a71af4f5751cdc2cd5535e4c9e63a4b4457c00f2b5307"
+      "rows": 16240,
+      "sha256": "65fac5f5da9571e592b30d6f2a5b9051ff234dd546f8bc7cdec3076d05405892"
+    },
+    "news_content_feature": {
+      "rows": 16240,
+      "sha256": "9e9e46d73c1945c4654e843af7b9da2a830af790a0c2ee8230089e3b8f575de2"
     },
     "window_snapshot": {
       "rows": 718,
@@ -30,35 +36,35 @@
     },
     "news_metric_5min": {
       "rows": 1739966,
-      "sha256": "e15b0b2a6b6b0fc5708f4d686035c8202b603dc8aa7071ba6a0dc1336ae5fccb"
+      "sha256": "ca0c7ddb96d7d796156de115d903ea03c41fbaef05c9439a70bef2f2e4a66211"
     },
     "news_metric_channel_hourly": {
       "rows": 438036,
-      "sha256": "00062a250628ac6aac2f2d5d495f79ad526fbcb3a5e7d920d5ef653c17342041"
+      "sha256": "15ef1e23b421d01377f10479c19f949882300b0a4e57d06288fcfda9d693e240"
     },
     "news_metric_hourly": {
       "rows": 146012,
-      "sha256": "5f4c53400b6f8d74c4736ad9f306bf4ae257ae706c45ccc73b8d1c398d3192e8"
+      "sha256": "3a936351e83044bfa33a2a8301f469cae49f67ec6c27ada83c0a69e3aa4e0462"
     },
     "news_metric_daily": {
       "rows": 6980,
-      "sha256": "6e73b563869699e789b87daf84ab440c98165a4f6cb94043db1fb32c3106e45a"
+      "sha256": "19237454000b55092bcaee5619f748561a3a6c907b35768160ec41633458a1eb"
     },
     "news_metric_baseline_hourly": {
       "rows": 143368,
-      "sha256": "88fef81e76eaa6375517846538daeb2b886851cd9c6b59f0e5953aeff469255e"
+      "sha256": "4f94c5aee0f98d8b45c592289f6c0501ad71c051ce95beda06316a8ff78260b7"
     },
     "content_change_event": {
-      "rows": 84,
-      "sha256": "b12bea5b725847eb0c9fe31ad7d43327ff86d54b510e884f93b7e87fb9378ec5"
+      "rows": 86,
+      "sha256": "956ba1517706d4f58b877003b601d114f57338823f42b0e816f039870a241574"
     },
     "content_tombstone": {
-      "rows": 56,
-      "sha256": "6a6d0f160373d7fbe1b3667f18ed56bb7c18873179cace82129255f61a908797"
+      "rows": 55,
+      "sha256": "e26c6bb00c82421908529ffce6dc6c35a46e58697d9667e1ff09a338fc840812"
     },
     "index_cleanup_task": {
-      "rows": 336,
-      "sha256": "cbab81bab99025c12759349c4cfefda5c94e9b5bd3b1e8bd2e379e706fa37be3"
+      "rows": 344,
+      "sha256": "c30011de41af0311a06599708f5d21e293e6b537d2dccd0c0b45373ea07d2acd"
     }
   },
   "database_checks": "separate_versioned_sql_checks_required"

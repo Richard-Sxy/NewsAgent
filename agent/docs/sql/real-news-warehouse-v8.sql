@@ -32,6 +32,7 @@ CREATE TABLE news_sim_v8.dim_news (
     source_html_sha256 text CHECK (source_html_sha256 ~ '^[a-f0-9]{64}$'),
     news_content_synthetic boolean NOT NULL CHECK (NOT news_content_synthetic),
     metric_data_synthetic boolean NOT NULL CHECK (metric_data_synthetic),
+    metric_available boolean NOT NULL,
     lifecycle_data_synthetic boolean NOT NULL CHECK (lifecycle_data_synthetic),
     lifecycle_scenario text NOT NULL CHECK (lifecycle_scenario IN ('none','withdraw','restrict','correct')),
     status text NOT NULL CHECK (status IN ('published','withdrawn','restricted')),
@@ -40,6 +41,19 @@ CREATE TABLE news_sim_v8.dim_news (
     CHECK (tenant_id <> '11111111-1111-4111-8111-111111111111' OR
            (status = 'published' AND lifecycle_scenario = 'none' AND fixture_content_version = content_version)),
     CHECK (status_effective_at >= publish_time)
+);
+CREATE TABLE news_sim_v8.news_content_feature (
+    tenant_id uuid NOT NULL, news_id text NOT NULL,
+    content_sha256 text NOT NULL CHECK (content_sha256 ~ '^[a-f0-9]{64}$'),
+    metric_available boolean NOT NULL,
+    title_chars integer NOT NULL CHECK (title_chars > 0),
+    content_chars integer NOT NULL CHECK (content_chars > 0),
+    paragraph_count integer NOT NULL CHECK (paragraph_count >= 0),
+    sentence_count integer NOT NULL CHECK (sentence_count >= 0),
+    digit_token_count integer NOT NULL CHECK (digit_token_count >= 0),
+    keyword_top jsonb NOT NULL CHECK (jsonb_typeof(keyword_top) = 'array'),
+    PRIMARY KEY (tenant_id, news_id),
+    FOREIGN KEY (tenant_id, news_id) REFERENCES news_sim_v8.dim_news(tenant_id, news_id)
 );
 CREATE TABLE news_sim_v8.window_snapshot (
     tenant_id uuid NOT NULL, event_time timestamptz NOT NULL,

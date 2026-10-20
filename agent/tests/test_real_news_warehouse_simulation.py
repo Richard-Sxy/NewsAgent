@@ -8,6 +8,7 @@ import json
 import pytest
 
 from simulation.warehouse_simulation import real_news as warehouse
+from simulation.warehouse_simulation import real_news_catalog as catalog_module
 
 
 @pytest.fixture(scope="module")
@@ -51,12 +52,17 @@ def _hour_key(row):
 
 
 def test_default_configuration_and_catalog_have_real_distinct_articles():
+    if not catalog_module.EXTENSION_PATH.exists():
+        pytest.skip("run agent/tools/freeze_real_news_warehouse_extension.py first")
     config = warehouse.RealNewsSimulationConfig()
     assert config.end.isoformat() == "2026-10-14T20:00:00+08:00"
     articles = warehouse._catalog()
-    assert len(articles) == len({item["news_id"] for item in articles}) == 661
+    assert len(articles) == len({item["news_id"] for item in articles}) == 8120
+    assert sum(1 for item in articles if item.get("metric_available", True)) == 661
+    assert sum(1 for item in articles if not item.get("metric_available", True)) == 7459
     assert all(item["news_content_synthetic"] is False and item["content_type"] == "article" for item in articles)
     assert len({item["category"] for item in articles}) == 7
+    assert all("content_features" in item or item.get("metric_available", True) for item in articles)
 
 
 @pytest.mark.parametrize("args", [("2026-09-30", 50, 1), ("2026-09-30T00:00:00Z", 50, 1),

@@ -17,10 +17,10 @@ from typing import Any
 
 
 TABLES = (
-    "dim_behavior_policy", "dim_channel", "dim_news", "window_snapshot",
-    "news_metric_5min", "news_metric_channel_hourly", "news_metric_hourly",
-    "news_metric_daily", "news_metric_baseline_hourly", "content_change_event",
-    "content_tombstone", "index_cleanup_task",
+    "dim_behavior_policy", "dim_channel", "dim_news", "news_content_feature",
+    "window_snapshot", "news_metric_5min", "news_metric_channel_hourly",
+    "news_metric_hourly", "news_metric_daily", "news_metric_baseline_hourly",
+    "content_change_event", "content_tombstone", "index_cleanup_task",
 )
 FORBIDDEN_FIELDS = frozenset({
     "user_id", "user_ids", "device_id", "session_id", "session_ids",
@@ -80,6 +80,8 @@ def validate_package(directory: Path) -> dict[str, Any]:
         "catalog.json": "catalog_sha256", "catalog_loader.py": "catalog_loader_sha256",
         "warehouse.sql": "warehouse_sql_sha256",
     }
+    if manifest.get("extension_sha256"):
+        artifacts[manifest["extension_path"]] = "extension_sha256"
     for name, field in artifacts.items():
         path = directory / name
         if path.is_symlink() or not path.is_file() or file_sha256(path) != manifest.get(field):
@@ -88,7 +90,10 @@ def validate_package(directory: Path) -> dict[str, Any]:
     # A rewritten manifest cannot authorize a different article roster. Bind it
     # to the independently frozen source identity, then verify its full schema.
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from simulation.warehouse_simulation.real_news_catalog import CATALOG_SHA256, load_catalog
+    from simulation.warehouse_simulation.content_features import derive_content_features
+    from simulation.warehouse_simulation.real_news_catalog import (
+        CATALOG_SHA256, load_catalog, load_extension,
+    )
 
     if manifest["catalog_sha256"] != CATALOG_SHA256:
         raise ValueError("catalog differs from the independently frozen real-news identity")
@@ -108,9 +113,25 @@ def validate_package(directory: Path) -> dict[str, Any]:
         body = article.get("content")
         if not isinstance(body, str) or hashlib.sha256(body.encode("utf-8")).hexdigest() != article.get("content_sha256"):
             raise ValueError("real article body digest mismatch")
+        article["metric_available"] = True
+        article["content_features"] = derive_content_features(article["title"], body)
         by_id[news_id] = article
+    extension_rows: tuple[dict[str, Any], ...] = ()
+    if manifest.get("extension_sha256"):
+        if manifest.get("extension_count") != 7459 or manifest.get("metric_article_count") != 661:
+            raise ValueError("extension or metric-eligible article count is invalid")
+        extension_rows = load_extension(directory / manifest["extension_path"])
+        for article in extension_rows:
+            news_id = article["news_id"]
+            if news_id in by_id:
+                raise ValueError("extension duplicates a frozen catalog identity")
+            if article.get("metric_available") is not False:
+                raise ValueError("extension article unexpectedly claims behavior metrics")
+            by_id[news_id] = article
     observed: dict[str, dict[str, Any]] = {}
     dim_identities: set[tuple[str, str]] = set()
+    feature_identities: set[tuple[str, str]] = set()
+    ineligible = {news_id for news_id, article in by_id.items() if not article.get("metric_available", True)}
     for table in TABLES:
         path = directory / f"{table}.jsonl"
         if path.is_symlink() or not path.is_file():
@@ -134,19 +155,46 @@ def validate_package(directory: Path) -> dict[str, Any]:
                     raise ValueError("unknown fixture tenant")
                 if "news_id" in row and row["news_id"] not in by_id:
                     raise ValueError("a table contains an unknown real-news identity")
+                if table.startswith("news_metric_") and row["news_id"] in ineligible:
+                    raise ValueError("a content-only article has behavior metric rows")
                 if table == "dim_news":
                     identity = (row["tenant_id"], row["news_id"])
                     if identity in dim_identities:
                         raise ValueError("duplicate news dimension identity")
                     dim_identities.add(identity)
                     source = by_id[row["news_id"]]
-                    for field in ("title", "content", "publish_time", "content_sha256"):
+                    for field in ("title", "publish_time", "content_sha256"):
                         if row.get(field) != source.get(field):
                             raise ValueError(f"news dimension changed original {field}")
                     if row.get("source_url") != source["url"]:
                         raise ValueError("news dimension changed original URL")
+                    if hashlib.sha256(row["content"].encode("utf-8")).hexdigest() != row.get("content_sha256"):
+                        raise ValueError("news dimension body digest mismatch")
+                    if source.get("content") is not None and row.get("content") != source.get("content"):
+                        raise ValueError("news dimension changed original body")
                     if row.get("news_content_synthetic") is not False:
                         raise ValueError("synthetic content entered the news dimension")
+                    if row.get("metric_available") is not source.get("metric_available", True):
+                        raise ValueError("news dimension metric availability differs from its source")
+                if table == "news_content_feature":
+                    identity = (row["tenant_id"], row["news_id"])
+                    if identity in feature_identities:
+                        raise ValueError("duplicate content feature identity")
+                    feature_identities.add(identity)
+                    source = by_id[row["news_id"]]
+                    features = source.get("content_features") or {
+                        key: source[key] for key in (
+                            "title_chars", "content_chars", "paragraph_count", "sentence_count",
+                            "digit_token_count", "keyword_top")
+                    }
+                    for field in ("title_chars", "content_chars", "paragraph_count", "sentence_count",
+                                  "digit_token_count", "keyword_top"):
+                        if row.get(field) != features[field]:
+                            raise ValueError(f"content feature {field} differs from its source")
+                    if row.get("content_sha256") != source.get("content_sha256"):
+                        raise ValueError("content feature body digest differs from its source")
+                    if row.get("metric_available") is not source.get("metric_available", True):
+                        raise ValueError("content feature metric availability differs from its source")
                 if table == "index_cleanup_task" and row.get("status") != "pending":
                     raise ValueError("fixture cleanup tasks must remain pending")
                 count += 1
@@ -157,11 +205,14 @@ def validate_package(directory: Path) -> dict[str, Any]:
     expected_identities = {(tenant, news_id) for tenant in tenants for news_id in by_id}
     if dim_identities != expected_identities:
         raise ValueError("news dimensions do not contain the complete corpus in both tenants")
+    if feature_identities != expected_identities:
+        raise ValueError("content features do not contain the complete corpus in both tenants")
     return {
         "status": "passed", "validation_kind": "streamed_artifact_integrity",
         "dataset_version": manifest["dataset_version"], "dataset_sha256": actual_dataset_digest,
         "news_content_synthetic": False, "metric_data_synthetic": True,
         "distinct_real_articles": len(by_id), "tenants": tenants,
+        "extension_count": len(extension_rows), "metric_article_count": len(by_id) - len(extension_rows),
         "total_persisted_rows": sum(table["rows"] for table in observed.values()),
         "tables": observed,
         "database_checks": "separate_versioned_sql_checks_required",

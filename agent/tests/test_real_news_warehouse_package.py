@@ -37,10 +37,16 @@ def private_copy(package, tmp_path):
 
 
 def test_valid_full_real_catalog_package_matches_streamed_counts(package):
+    from simulation.warehouse_simulation import real_news_catalog as catalog
+    if not catalog.EXTENSION_PATH.exists():
+        pytest.skip("run agent/tools/freeze_real_news_warehouse_extension.py first")
     result = validate_package(package)
     assert result["status"] == "passed"
-    assert result["distinct_real_articles"] == 661
-    assert result["tables"]["dim_news"]["rows"] == 1322
+    assert result["distinct_real_articles"] == 8120
+    assert result["extension_count"] == 7459
+    assert result["metric_article_count"] == 661
+    assert result["tables"]["dim_news"]["rows"] == 16240
+    assert result["tables"]["news_content_feature"]["rows"] == 16240
     assert result["total_persisted_rows"] > 10_000
     assert result["news_content_synthetic"] is False
     assert result["metric_data_synthetic"] is True

@@ -102,6 +102,7 @@ def build_hot_news_sql_scope(
         profiles = {"timeline-v4": ("news-warehouse-v4", (120, 1200, 12000)),
                     "timeline-v5": ("news-warehouse-v5", (120, 1200, 12000)),
                     "corpus-v6": ("news-warehouse-v6", (120,)),
+                    "real-news-v8": ("news-warehouse-v7", (8120,)),
                     "enterprise-v2": ("news-warehouse-v2", (120, 1200, 12000)),
                     "public-headlines-v3": ("news-warehouse-v3", (120, 1200))}
         profile = dataset_identity["dataset_profile"]

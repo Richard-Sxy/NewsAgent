@@ -1,7 +1,7 @@
 {
   "status": "ready",
-  "dataset": "/Users/shi/Project/myProject/NewsAgent/output/warehouse/real-news-v8-20261014",
-  "dataset_sha256": "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81",
+  "dataset": "/home/shi/project/NewsAgent/var/warehouse/real-news-v8-20261014",
+  "dataset_sha256": "e139126c4bdc49f885aa6f08681de48f7da4d445de85442207a77c3706d7c904",
   "project": "newsagent-real-news-warehouse-v8",
   "volume": "newsagent-real-news-warehouse-v8-pgdata",
   "local_dsn": "postgresql://news_demo:local-v8-only@127.0.0.1:28438/news_demo",
@@ -21,18 +21,19 @@
     "table_counts": {
       "dim_behavior_policy": 2,
       "dim_channel": 12,
-      "dim_news": 1322,
+      "dim_news": 16240,
+      "news_content_feature": 16240,
       "window_snapshot": 718,
       "news_metric_5min": 1739966,
       "news_metric_channel_hourly": 438036,
       "news_metric_hourly": 146012,
       "news_metric_daily": 6980,
       "news_metric_baseline_hourly": 143368,
-      "content_change_event": 84,
-      "content_tombstone": 56,
-      "index_cleanup_task": 336
+      "content_change_event": 86,
+      "content_tombstone": 55,
+      "index_cleanup_task": 344
     },
-    "real_news_dimensions_verified": 1322,
+    "real_news_dimensions_verified": 16240,
     "statistics_window_start": "2026-09-30T00:00:00+08:00",
     "open_window_start": "2026-10-14T20:00:00+08:00"
   }

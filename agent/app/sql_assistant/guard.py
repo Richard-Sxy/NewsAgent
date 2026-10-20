@@ -220,7 +220,7 @@ class SqlAssistantGuard:
             raise Text2SqlGuardError("SQL content_type binding is not whitelisted")
         if "category" in found and (
             not isinstance(params["category"], str)
-            or params["category"] not in {"科技", "财经", "体育", "社会"}
+            or params["category"] not in {"科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"}
         ):
             raise Text2SqlGuardError("SQL category binding is not whitelisted")
         try:

@@ -19,7 +19,7 @@ class SqlScenario(BaseModel):
     default_sort: SqlMetric = "clicks"
     allowed_sort_metrics: tuple[SqlMetric, ...] = Field(min_length=1)
     allowed_content_types: tuple[Literal["article", "video"], ...] = ("article", "video")
-    allowed_categories: tuple[str, ...] = ("科技", "财经", "体育", "社会")
+    allowed_categories: tuple[str, ...] = ("科技", "财经", "体育", "社会", "汽车", "教育", "娱乐")
     default_limit: int = Field(default=10, ge=1, le=100)
     max_limit: int = Field(default=100, ge=1, le=1000)
     sample_questions: tuple[str, ...] = Field(min_length=1, max_length=10)
@@ -32,8 +32,8 @@ class SqlScenario(BaseModel):
             raise ValueError("default_limit exceeds max_limit")
         if not self.allowed_content_types or not self.allowed_categories:
             raise ValueError("scenario filters cannot be empty")
-        if any(value not in {"科技", "财经", "体育", "社会"} for value in self.allowed_categories):
-            raise ValueError("category does not exist in frozen schema v1")
+        if any(value not in {"科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"} for value in self.allowed_categories):
+            raise ValueError("category does not exist in a frozen schema version")
         for choices in (self.allowed_sort_metrics, self.allowed_content_types, self.allowed_categories):
             if len(choices) != len(set(choices)):
                 raise ValueError("scenario whitelist contains duplicate choices")
@@ -44,7 +44,7 @@ class SqlScenariosConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     schema_version: Literal[1]
-    warehouse_schema_version: Literal["news-warehouse-v1", "news-warehouse-v2", "news-warehouse-v3", "news-warehouse-v4", "news-warehouse-v5", "news-warehouse-v6"]
+    warehouse_schema_version: Literal["news-warehouse-v1", "news-warehouse-v2", "news-warehouse-v3", "news-warehouse-v4", "news-warehouse-v5", "news-warehouse-v6", "news-warehouse-v7"]
     model_scene: Literal["text2sql_assistant"] = "text2sql_assistant"
     model_timeout_seconds: float = Field(default=15, ge=1, le=15)
     model_max_attempts: int = Field(default=2, ge=1, le=2)

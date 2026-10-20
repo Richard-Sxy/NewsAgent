@@ -124,8 +124,8 @@ class Settings(BaseSettings):
     text2sql_timeout_ms: int = Field(default=30000, ge=1000, le=300000)
     sql_assistant_scenarios_path: str = "deploy/text2sql-scenes.local.yml"
     # Only the isolated local SQL application/worker can initialize this fixture.
-    sql_assistant_dataset_profile: Literal["classic-v1", "enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6"] = "classic-v1"
-    sql_assistant_news_per_tenant: Literal[120, 1200, 12000] = 1200
+    sql_assistant_dataset_profile: Literal["classic-v1", "enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6", "real-news-v8"] = "classic-v1"
+    sql_assistant_news_per_tenant: Literal[120, 1200, 8120, 12000] = 1200
     # JSON array of complete ProductionBundleSpec snapshots that this worker
     # can actually execute. Data Loop workers fail closed when it is empty or
     # a candidate is not registered.
@@ -171,12 +171,12 @@ class Settings(BaseSettings):
         # Environment values are strings. Convert only the three exact approved
         # spellings; bool, floats, whitespace and alternative numeric forms must
         # not silently select a different fixture identity.
-        approved = {"120": 120, "1200": 1200, "12000": 12000}
+        approved = {"120": 120, "1200": 1200, "8120": 8120, "12000": 12000}
         if type(value) is str and value in approved:
             return approved[value]
         if type(value) is int and value in approved.values():
             return value
-        raise ValueError("synthetic dataset news count must be exactly 120, 1200 or 12000")
+        raise ValueError("synthetic dataset news count must be exactly 120, 1200, 8120 or 12000")
 
     @model_validator(mode="after")
     def require_native_model_runtime(self) -> "Settings":

@@ -509,7 +509,7 @@ class ConversationAgentService:
         if claim.acquired:
             await self._interrupt(tenant_id, user_id, conversation_id, claim.turn.id, [], [])
 
-    """构造"""
+    """这边是开头提示语"""
     def _render_answer(self, answer, traces, tenant_id):
         rendered = render_tool_results(traces)
         if rendered:
@@ -520,7 +520,7 @@ class ConversationAgentService:
                      and description.get("understanding_model", {}).get("provider") == "openai_compatible")
             notice = ("查询理解使用已配置大模型，其余本地演示环节采用规则模拟"
                       if mixed else "本地规则模拟，不代表企业模型质量")
-            answer = f"【{notice}】\n{answer}"
+            answer = f"{answer}"  # 这边可以添加 notice 对象的内容
         return answer[:30000]
 
     """模型调用尝试，如果失败就尝试重试等待或者前端返回内容。"""

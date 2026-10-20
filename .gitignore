@@ -72,3 +72,9 @@ tmp/
 /var/agent/data/news-bge-incremental-*/
 /var/agent/data/.news-bge-incremental-*/
 /var/news/data/incremental/
+
+# Derived extension metadata for the v8 package; the canonical copy lives in agent/data/.
+/var/warehouse/**/catalog-extension-*.json
+
+# Generated real-news extension metadata; local-only and derived from ignored caches.
+/agent/data/real-news-warehouse-v8/catalog-extension-*.json

@@ -53,6 +53,7 @@ COPY deploy/model-runtime.compatible.example.yml ./deploy/model-runtime.compatib
 COPY deploy/knowledge-search.bge-snapshot.yml ./deploy/knowledge-search.bge-snapshot.yml
 COPY deploy/docker-compose.compatible-model.example.yml ./deploy/docker-compose.compatible-model.example.yml
 COPY deploy/text2sql-scenes.local.yml ./deploy/text2sql-scenes.local.yml
+COPY deploy/text2sql-scenes.real-news-v8.yml ./deploy/text2sql-scenes.real-news-v8.yml
 COPY deploy/text2sql-scenes.example.yml ./deploy/text2sql-scenes.example.yml
 COPY deploy/audience-topics.local.yml ./deploy/audience-topics.local.yml
 COPY deploy/audience-topics.enterprise.example.yml ./deploy/audience-topics.enterprise.example.yml
@@ -65,6 +66,9 @@ COPY agent/docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
 COPY agent/docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
 COPY agent/docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
 COPY agent/docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
+COPY agent/docs/sql-warehouse-schema-v5.md ./docs/sql-warehouse-schema-v5.md
+COPY agent/docs/sql-warehouse-schema-v6.md ./docs/sql-warehouse-schema-v6.md
+COPY agent/docs/sql-warehouse-schema-v7.md ./docs/sql-warehouse-schema-v7.md
 COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
 COPY agent/data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
 COPY agent/tests ./tests
