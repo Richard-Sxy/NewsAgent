@@ -31,7 +31,6 @@ class TemplateNotApplicableError(HotNewsDataQualityError):
 
     retryable = False
 
-
 @dataclass(frozen=True, slots=True)
 class HotNewsMetricSqlTemplate:
     """把结构化窗口请求渲染成固定聚合 SQL 的参数化模板。

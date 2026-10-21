@@ -18,7 +18,7 @@ _LOCAL_WORDS = (
 )
 _LOCAL_WORD_PATTERN = "|".join(re.escape(word) for word in sorted(_LOCAL_WORDS, key=len, reverse=True))
 
-
+""" 验证本地词汇 """
 def _validate_local_vocabulary(question: str) -> None:
     # The local Port is a bounded simulator, not an LLM. Reject leftover words
     # rather than silently dropping an unknown source/category/filter condition.
@@ -30,9 +30,8 @@ def _validate_local_vocabulary(question: str) -> None:
     if remainder:
         raise SqlAssistantQuestionError("本地 v1 无法完整理解该问题，请按场景示例填写；未知栏目、来源或额外条件不会被忽略")
 
-
 def local_query_intent(payload: dict) -> SqlAssistantIntent:
-    """Deliberately limited, reproducible simulation; unsupported questions fail."""
+    """故意限制、可重复的模拟；不受支持的问题会失败。"""
     question = extract_query_presentation(screen_question(payload["question"])).query_text
     scenario = SqlScenario.model_validate(payload["scenario"])
     if not re.search(r"新闻|图文|视频|热点|科技|财经|体育|社会|点击|曝光|互动|热度|趋势", question):
@@ -98,7 +97,7 @@ def local_query_intent(payload: dict) -> SqlAssistantIntent:
     validate_intent(intent, scenario)
     return intent
 
-
+""" 验证意图 """
 def validate_intent(intent: SqlAssistantIntent, scenario: SqlScenario) -> None:
     if intent.sort_by not in scenario.allowed_sort_metrics:
         raise SqlAssistantQuestionError("模型选择了当前场景未批准的指标")
@@ -109,7 +108,7 @@ def validate_intent(intent: SqlAssistantIntent, scenario: SqlScenario) -> None:
     if intent.row_limit > scenario.max_limit:
         raise SqlAssistantQuestionError("模型选择的行数超过场景上限")
 
-""""查询意图转SQL"""
+"""" 查询意图转SQL """
 def compile_query(intent: SqlAssistantIntent, scenario: SqlScenario) -> str:
     validate_intent(intent, scenario)
     dimensions = "news_id, title, content_type, category, source" if scenario.result_mode == "ranking" else "event_time"

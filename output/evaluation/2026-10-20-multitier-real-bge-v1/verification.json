@@ -1,0 +1,33 @@
+{
+  "verification_kind": "post_run_asset_and_contract_audit",
+  "frozen_input_hashes": "passed",
+  "relevant_code_hashes": "passed",
+  "planned_queries": 12,
+  "completed_queries": 12,
+  "checks_passed_counts": {
+    "three_tiers_executed": 12,
+    "all_tiers_have_candidates": 12,
+    "source_excluded": 12,
+    "article_deduplicated": 12,
+    "native_rrf_matches_frozen_formula": 12,
+    "metadata_time_model_valid": 12,
+    "cache_served_exactly_once": 12,
+    "default_cache_served_exactly_once": 12,
+    "default_native_rrf_matches_frozen_formula": 12,
+    "default_source_excluded_and_unique": 12,
+    "same_candidates_in_both_policies": 12
+  },
+  "cold_in_top5_queries": {
+    "native_default": 0,
+    "equal_weight": 12
+  },
+  "indexes_bytes_total": 60650880,
+  "source_results_sha256": "56a4a9fd612ce721211af601c5cee7e15b4c9f19f119fc5da9ccce18d87d89d8",
+  "source_run_spec_sha256": "6e62a38e38743e079589d8a3eb1f57ec6a6f909be29cd319f578dc4608896f8b",
+  "summary_sha256": "543722332d6e8a509eb1cf8b4f2562f8f74755aecb4641ff4ee77356fa461b52",
+  "semantic_quality": "blocked_no_human_qrels",
+  "native_mock_contract_tests": {
+    "passed": 2,
+    "scope": "mock_contract_only"
+  }
+}

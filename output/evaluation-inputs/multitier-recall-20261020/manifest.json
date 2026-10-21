@@ -1,0 +1,47 @@
+{
+  "dataset_id": "multitier-recall-20261020-source-informed-v1",
+  "purpose": "exploratory_multitier_retrieval",
+  "labels_status": "draft_unreviewed",
+  "as_of": "2026-10-15T00:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "tier_rule": {
+    "hot_age_days_max": 1,
+    "warm_age_days_max": 4,
+    "age_unit": "Beijing calendar date difference"
+  },
+  "denominators": {
+    "queries": 12,
+    "report_lookup": 6,
+    "cross_tier_theme": 3,
+    "source_exclusion": 3,
+    "source_news_ids_unique": 15,
+    "corpus_articles": 20187,
+    "corpus_articles_by_tier": {
+      "unknown": 12187,
+      "cold": 4000,
+      "warm": 3000,
+      "hot": 1000
+    },
+    "corpus_chunks_by_tier": {
+      "unknown": 36379,
+      "cold": 7007,
+      "warm": 5268,
+      "hot": 1598
+    }
+  },
+  "source_file": "var/agent/data/news-bge-incremental-20261014-v2/data/experiments/offline_recall_fg/chunks.jsonl",
+  "source_file_sha256": "a0bf8d479604fb75dd5512825d645a309c87686f878ac44cfb4aa078b40829a5",
+  "files": {
+    "queries.jsonl": {
+      "sha256": "19e168431052b8626ffa8f5bfb6cb1d7805e2c1164392c42de0b5da7a3f27e24",
+      "bytes": 1786
+    },
+    "cases.jsonl": {
+      "sha256": "8e6f1fd78cf977329c9bb02b84f67a4ef5f4e19a5c1a9c0956a4748d8af853ad",
+      "bytes": 33760
+    }
+  },
+  "not_gold": true,
+  "human_review_status": "not_performed",
+  "external_fact_verification": "not_performed"
+}

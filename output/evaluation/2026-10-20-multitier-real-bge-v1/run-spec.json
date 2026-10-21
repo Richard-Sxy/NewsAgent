@@ -1,0 +1,217 @@
+{
+  "protocol": "newsagent-isolated-real-three-tier-exploration-v1",
+  "frozen_at": "2026-10-20T14:29:58.513891+00:00",
+  "authorization": "user requested testing multilayer news recall; isolated output only",
+  "scope": {
+    "start": "frozen public news chunks/vectors and local BGE model",
+    "end": "native tiered client RRF result and local report",
+    "includes": [
+      "real BGE query encoding",
+      "three real fp32 HNSW builds",
+      "persist/reload/vector verification",
+      "article deduplication",
+      "source exclusion",
+      "native equal-weight RRF"
+    ],
+    "excludes": [
+      "HTTP",
+      "PG",
+      "Temporal",
+      "business reranking",
+      "quantization",
+      "lifecycle migration",
+      "enterprise services",
+      "ANN agreement",
+      "semantic quality scoring",
+      "production performance/SLO"
+    ],
+    "allowed_conclusions": [
+      "isolated index and recall contracts",
+      "observable per-query returned public news"
+    ],
+    "semantic_quality": {
+      "status": "blocked",
+      "reason": "assistant-authored source-informed draft cases; no independently reviewed qrels; no representative traffic"
+    }
+  },
+  "inputs": {
+    "SHA256SUMS": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/var/agent/data/news-bge-incremental-20261014-v2/SHA256SUMS",
+      "sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138"
+    },
+    "queries": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/evaluation-inputs/multitier-recall-20261020/queries.jsonl",
+      "sha256": "19e168431052b8626ffa8f5bfb6cb1d7805e2c1164392c42de0b5da7a3f27e24"
+    },
+    "cases.jsonl": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/evaluation-inputs/multitier-recall-20261020/cases.jsonl",
+      "sha256": "8e6f1fd78cf977329c9bb02b84f67a4ef5f4e19a5c1a9c0956a4748d8af853ad",
+      "used_for_model_input": false
+    },
+    "README.md": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/output/evaluation-inputs/multitier-recall-20261020/README.md",
+      "sha256": "0375de76079268eca6fb873e30495554318de548c342b999f66f8292a8dcd842",
+      "used_for_model_input": false
+    },
+    "chunks.jsonl": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/var/agent/data/news-bge-incremental-20261014-v2/data/experiments/offline_recall_fg/chunks.jsonl",
+      "sha256": "a0bf8d479604fb75dd5512825d645a309c87686f878ac44cfb4aa078b40829a5"
+    },
+    "embeddings.npy": {
+      "path": "/Users/shi/Project/myProject/NewsAgent/var/agent/data/news-bge-incremental-20261014-v2/data/experiments/offline_recall_fg/embeddings.npy",
+      "sha256": "a9f1e4e200c39d7ce94fd10a5b7eb02470929928b7702c28adbdf10af927b950"
+    }
+  },
+  "package_verification": "passed: native _verify_package checks required corpus and every model file against manifest",
+  "queries": {
+    "count": 12,
+    "ids": [
+      "find-hot-01",
+      "find-hot-02",
+      "find-warm-01",
+      "find-warm-02",
+      "find-cold-01",
+      "find-cold-02",
+      "cross-01",
+      "cross-02",
+      "cross-03",
+      "exclude-hot-01",
+      "exclude-warm-01",
+      "exclude-cold-01"
+    ],
+    "source": "assistant-authored source-informed exploratory draft",
+    "human_review": "not_reviewed",
+    "split": "exploration_no_quality_claim"
+  },
+  "distribution": {
+    "hot": {
+      "articles": 1000,
+      "chunks": 1598
+    },
+    "warm": {
+      "articles": 3000,
+      "chunks": 5268
+    },
+    "cold": {
+      "articles": 4000,
+      "chunks": 7007
+    },
+    "unknown_date": {
+      "articles": 12187,
+      "chunks": 36379
+    },
+    "future_date": {
+      "articles": 0,
+      "chunks": 0
+    },
+    "source_total": {
+      "articles": 20187,
+      "chunks": 50252
+    }
+  },
+  "as_of": "2026-10-15T00:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "tier_policy": {
+    "kind": "calendar-date-age demonstration",
+    "hot_days_inclusive": 1,
+    "warm_days_inclusive": 4,
+    "unknown_date": "excluded",
+    "future_date": "excluded",
+    "production_30_365_days": "not_run"
+  },
+  "source_identity": {
+    "git_head": "b19e2511f908d97997f3ae107f2557958ce2013a",
+    "relevant_files_sha256": {
+      "agent/tools/test_multitier_news_recall.py": "1b79209430fcd72cf0bd9497e6a3443b8481a4fa6b2da6bbf8aaa6232a363ee7",
+      "agent/app/clients/knowledge_base.py": "bf1747f0319ab5b880c1c23c852e2d736d5e2e09992a71f5f617e0cdce5de10a",
+      "agent/app/retrieval/bge_snapshot.py": "3270398db98d8edc52b7694bd86577c1de5b7c99958694b33ef98693d98f22d2",
+      "agent/app/retrieval/tiered_vector.py": "a0a353c9ec1da87da60f992a01370fbbdd46d7ce9d6c103222693790fbc0daf7"
+    },
+    "relevant_tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runtime": {
+    "python": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "executable": "/Users/shi/Project/myProject/NewsAgent/news/.venv-recall/bin/python",
+    "dependencies": {
+      "numpy": "2.4.6",
+      "hnswlib": "0.8.0",
+      "torch": "2.14.1",
+      "sentence-transformers": "3.4.1",
+      "transformers": "4.49.0",
+      "tokenizers": "0.21.4"
+    },
+    "system": "Darwin",
+    "machine": "arm64",
+    "processor": "arm",
+    "logical_cpu_count": 10,
+    "threads": 2,
+    "intra_query_tier_dispatch": "async gather with synchronous local Port; max 2 HNSW worker threads",
+    "device": "cpu"
+  },
+  "versions": {
+    "embedding": "bge-large-zh-v1.5:c59a3095657711fb",
+    "query_instruction": "为这个句子生成表示以用于检索相关文章：",
+    "max_seq_length": 512,
+    "inference": "not_run",
+    "prompt": "not_applicable",
+    "SQL": "not_run",
+    "schema_validator": "native RelatedNewsSearchQuery and checked BGE vectors",
+    "index": "hnswlib ip fp32",
+    "reranker": "native rank-only RRF"
+  },
+  "execution": {
+    "command": "/Users/shi/Project/myProject/NewsAgent/news/.venv-recall/bin/python /Users/shi/Project/myProject/NewsAgent/agent/tools/test_multitier_news_recall.py --package var/agent/data/news-bge-incremental-20261014-v2 --query-file output/evaluation-inputs/multitier-recall-20261020/queries.jsonl --output-dir output/evaluation/2026-10-20-multitier-real-bge-v1 --as-of 2026-10-15 --hot-days 1 --warm-days 4 --limit 5 --threads 2 --seed 20261020",
+    "seed": 20261020,
+    "repetitions_per_policy": 1,
+    "warmup": "one real short-sentence query, separately timed",
+    "max_queries": 20,
+    "total_budget_seconds": 300,
+    "max_query_encoding_calls": 13,
+    "max_port_search_calls": 72,
+    "knn_query_expansion_budget": "at most 1+ceil(log2(tier_chunks/initial_pool)) calls per Port.search; stops once 50 unique news found or tier exhausted",
+    "parallel_queries": 1,
+    "external_network_calls": 0,
+    "stop_on_contract_failure": true
+  },
+  "search": {
+    "M": 32,
+    "ef_construction": 200,
+    "initial_chunk_pool": 200,
+    "ef": "max(256,pool)",
+    "pool_expansion": "double until 50 unique articles or tier exhausted",
+    "per_tier_news_limit": 50,
+    "output_top_k": 5,
+    "rrf_k": 60,
+    "policies": {
+      "equal_weight": {
+        "version": "isolated-equal-weight-rrf60-v1",
+        "tier_weights": {
+          "hot": 1,
+          "warm": 1,
+          "cold": 1
+        }
+      },
+      "native_default": {
+        "version": "tiered-rrf-v1",
+        "tier_weights": {
+          "hot": 1,
+          "warm": 1,
+          "cold": 0.7
+        }
+      }
+    },
+    "comparison_scope": "two pre-registered policies, no tuning or semantic improvement claim; share one real query encoding"
+  },
+  "oracle": {
+    "index": "persisted reload count/labels/vector allclose atol=1e-6",
+    "recall": "source exclusion, unique news, three-tier execution, structured metadata/as_of/model identity, native RRF formula",
+    "semantic": "unavailable",
+    "standard": "engineering exploration assertions, no approved semantic acceptance threshold"
+  },
+  "side_effects": "new exclusive output directory only; source package/models/indexes and production configurations read-only",
+  "baseline": {
+    "current": "existing frozen v2 vectors",
+    "candidate": "isolated equal-weight three fp32 date tiers",
+    "previous": "not_used; no improvement claim"
+  }
+}

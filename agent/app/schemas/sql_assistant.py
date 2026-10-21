@@ -10,7 +10,7 @@ SqlMetric = Literal["clicks", "ctr", "interactions", "impressions", "hot_score"]
 
 
 class SqlAssistantIntent(BaseModel):
-    """A model may select approved semantics, never tenant identities or SQL text."""
+    """模型可以选择批准的语义，而不是租户身份或 SQL 文本。"""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
@@ -79,7 +79,7 @@ class SqlAssistantResult(BaseModel):
 
 
 class HotNewsSqlToolTrace(BaseModel):
-    """Read-only projection of the SQL tool inside one completed hot-news run."""
+    """SQL 工具在一次已完成的热点新闻运行中的只读投影。"""
 
     model_config = ConfigDict(extra="forbid")
     query_id: str
