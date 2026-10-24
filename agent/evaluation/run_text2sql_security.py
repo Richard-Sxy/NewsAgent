@@ -38,7 +38,7 @@ from app.sql_assistant.warehouse import get_text2sql_schema
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_CASES = Path(__file__).with_name("datasets") / "text2sql_security_v2.json"
+DEFAULT_CASES = Path(__file__).with_name("datasets") / "sql_security" / "text2sql_security_v2.json"
 SCENARIOS = ROOT / "deploy/text2sql-scenes.local.yml"
 TENANT = "11111111-1111-4111-8111-111111111111"
 USER = "22222222-2222-4222-8222-222222222222"

@@ -18,6 +18,7 @@ DATASET_PATH = (
     Path(__file__).parents[1]
     / "evaluation"
     / "datasets"
+    / "hot_news"
     / "hot_news_eval_seed_v1.json"
 )
 

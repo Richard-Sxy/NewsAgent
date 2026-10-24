@@ -25,7 +25,7 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, model_validato
 
 
 PREFIX = "/api/v1/conversations"
-DEFAULT_DATASET = Path(__file__).parent / "datasets/hot_news_dialogue_v1/cases.json"
+DEFAULT_DATASET = Path(__file__).parent / "datasets/hot_news/hot_news_dialogue_v1/cases.json"
 DEFAULT_BASE_URL = "http://127.0.0.1:5175"
 LOCAL_TOKEN = "newsagent-native-local-token-not-for-production"
 LOCAL_TENANT = "11111111-1111-4111-8111-111111111111"

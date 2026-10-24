@@ -27,7 +27,7 @@ from evaluation.operations_synthetic import metric_snapshot, metrics_view, valid
 
 VERSION = "2026-10-10.synthetic-evolution-v2"
 DEFAULT_CATALOG = Path(__file__).parent / "seeds" / "operations_evolution_v2.json"
-DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "operations_evolution_v2"
+DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "hot_news" / "operations_evolution_v2"
 Split = Literal["development", "validation", "test"]
 Layer = Literal["golden", "fresh_bad_case", "high_risk"]
 StageName = Literal["emerging", "confirmed", "developing", "repeat", "cooling", "corrected"]

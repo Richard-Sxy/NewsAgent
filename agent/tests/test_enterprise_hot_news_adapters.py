@@ -210,6 +210,7 @@ class FakeContentRpc:
                 title=f"新闻 {news_id}",
                 summary="可信摘要",
                 body="可信正文",
+                category="health",
                 content_type="article",
                 publish_time=START,
                 canonical_url=f"https://news.example.com/{news_id}",
@@ -238,6 +239,7 @@ async def test_content_adapter_batches_and_preserves_explicit_missing_ids() -> N
 
     assert tuple(result) == ("news-1",)
     assert len(rpc.requests) == 2
+    assert result["news-1"].category == "health"
 
 
 @pytest.mark.asyncio

@@ -28,7 +28,7 @@ from app.modules.data_loop.contracts.operations_feedback import OperationsFeedba
 
 VERSION = "2026-10-10.synthetic-v1"
 DEFAULT_CATALOG = Path(__file__).parent / "seeds" / "operations_scenarios_v1.json"
-DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "operations_synthetic_v1"
+DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "hot_news" / "operations_synthetic_v1"
 Layer = Literal["golden", "fresh_bad_case", "high_risk"]
 Verdict = Literal["correct", "partially_correct", "incorrect", "unassessed"]
 

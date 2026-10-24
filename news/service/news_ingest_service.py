@@ -162,6 +162,18 @@ class NewsIngestService:
 
             collection_id = result["documentId"]
 
+            detail = result.get("detail") or ""
+            if result.get("status") == "skipped" and detail.startswith("news_board_excluded:"):
+                self.repository.mark_filtered(url, article.title, detail)
+                return {
+                    "url": article.url,
+                    "title": article.title,
+                    "collection_id": None,
+                    "insert_len": 0,
+                    "status": "filtered",
+                    "detail": detail,
+                }
+
             self.repository.mark_success(
                 url=article.url,
                 title=article.title,
@@ -254,6 +266,8 @@ class NewsIngestService:
             for item in items
         )
 
+        filtered = sum(item["status"] == "filtered" for item in items)
+
         retry_exhausted = sum(
             item["status"] == "retry_exhausted"
             for item in items
@@ -263,6 +277,7 @@ class NewsIngestService:
             "total": len(items),
             "succeeded": succeeded,
             "skipped": skipped,
+            "filtered": filtered,
             "failed": failed,
             "retry_exhausted": retry_exhausted,
             "items": items,

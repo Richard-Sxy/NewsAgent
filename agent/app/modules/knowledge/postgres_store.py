@@ -34,6 +34,7 @@ from app.modules.knowledge.document import (
     KnowledgeDocument,
 )
 from app.modules.knowledge.native_indexing import require_embedding_dimension, split_text
+from app.modules.knowledge.board_policy import excluded_board_outcome
 from app.model_runtime.core import EmbeddingPort, EmbeddingRequest
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
 
@@ -133,6 +134,10 @@ class PostgresKnowledgeStore:
         outcomes: list[IngestOutcome] = []
         for document in documents:
             document.validate()
+            excluded = excluded_board_outcome(document)
+            if excluded is not None:
+                outcomes.append(excluded)
+                continue
             try:
                 news_id = document.metadata["news_id"].strip()
                 content_version = int(document.metadata["content_version"])

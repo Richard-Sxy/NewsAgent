@@ -5,6 +5,41 @@
 Temporal Worker 写向量；聊天、热点关联召回和检索测试 API 共用带状态校验的查询服务。
 未设置此变量时，现有知识入库和检索行为保持兼容。
 
+## 新闻板块准入（2026-10-24）
+
+用户确认健康板块不进入向量知识库。统一规则在
+`app/modules/knowledge/board_policy.py`，版本 `news-board-admission-v1`，
+`EXCLUDED_BOARDS={health}`；新增其他排除项必须明确业务范围并升级规则版本。
+
+知识 API 的 `documents[].metadata` 使用明确的 `category`（推荐），也兼容
+`board`、`board_id`、`channel`、`source_topic`。在这些字段中精确匹配 `health`、
+`健康`、`健康频道`、`健康板块`、`news_news_health`；统一空白、大小写和全半角。
+不匹配标题正文里的“健康”，不将 `topic_ids` 或受众兴趣作为栏目；数仓 `channel_id`
+是访问渠道，不能映射为新闻板块。多个分类字段冲突时，明确的健康分类优先排除。
+
+调用链：抓取分类/企业内容适配 → `KnowledgeDocument.metadata` 或
+`NewsContent.category` → `board_exclusion_detail` / `excluded_board_outcome` →
+健康返回 `skipped`，`detail=news_board_excluded: board=health; policy=news-board-admission-v1`。
+普通 PG 写入、原生内存索引、生命周期 `accept/upsert_documents` 均在切片、Embedding、
+台账及任务写入前拦截；QA 在模型调用前、视频在媒资解析和文本化前拦截。
+符合范围的内容继续走原有质量检查及分层流程。直接调用生命周期 `accept` 的程序会收到
+`NewsBoardExcluded`；批量 API 则返回同序的 `skipped` 结果。
+
+爬虫发现入口保留 `topic` 并透传 `category`，它表示配置的发现来源类别；纯 URL 和 sitemap
+可能没有类别。爬虫收到该特定跳过原因时记录 `filtered` 和原因，不计为成功写入或失败重试。
+企业 `NewsContentRow` 支持可选 `category` 并映射到 `NewsContent`；真实栏目码仍需企业适配。
+规则为版本化代码配置，无新增环境变量、网络依赖或数据库迁移。
+
+当前统一正文冻结契约未保存栏目；其 `health` 标签来自关键词推断，不能直接按该标签删除
+医药财经等跨板块新闻。缺失/未知分类保持原路径，不假装已识别；这意味着健康排除只对
+正确提供分类的新增请求生效。必须补齐来源栏目映射后，才能对无分类存量做可靠筛选。
+本次不改冻结正文、已建 BGE 快照、已有向量或已接受的索引任务，也不改变热点统计口径。
+先前已入库的内容若后来改判为健康，本次跳过不会撤销旧投影，需独立处理存量撤出。
+
+验证入口：`tests/test_news_board_admission.py`、`tests/test_tier_lifecycle_wiring.py`、
+`tests/test_enterprise_hot_news_adapters.py`；覆盖模型/索引零调用、混合批次顺序、
+正文关键词误伤、API 不创建任务和企业分类透传。爬虫测试位于 `news/tests`。
+
 ## 先运行本地持久回放
 
 在仓库根目录执行，输出目录必须不存在或为空：

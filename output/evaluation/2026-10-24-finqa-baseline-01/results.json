@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "split": "dev",
+  "planned": 20,
+  "execution": {
+    "planned": 20,
+    "attempted": 20,
+    "counts": {
+      "ok": 18,
+      "invalid_output": 2
+    },
+    "stop_reason": null,
+    "finished_at": "2026-10-24T06:54:40.559683+00:00",
+    "status": "completed",
+    "predictions_sha256": "3c7ad767b81e4fad0a70870ef0cc9186ac2eeb389444d9c0401b561ffb254b3d",
+    "cases_sha256": "2a82dab36dec603626f7143777415c5283ff53716c08c813a6ac664ad090f67e"
+  },
+  "environment": "real_deepseek_api",
+  "execution_accuracy": 0.4,
+  "program_accuracy": 0.25,
+  "production_acceptance": "not_approved",
+  "scope": "FinQA subset numerical QA; not report-writing or enterprise quality",
+  "scoring_command": [
+    "/Users/shi/Project/myProject/NewsAgent/agent/.venv/bin/python",
+    "-B",
+    "/Users/shi/Project/myProject/NewsAgent/output/evaluation/2026-10-24-finqa-baseline-01/official_evaluate.py",
+    "/Users/shi/Project/myProject/NewsAgent/output/evaluation/2026-10-24-finqa-baseline-01/predictions.json",
+    "/Users/shi/Project/myProject/NewsAgent/output/evaluation/2026-10-24-finqa-baseline-01/gold.json"
+  ]
+}

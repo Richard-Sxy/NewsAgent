@@ -1,0 +1,28 @@
+{
+  "id": "32890fa7-e317-471d-9ed6-458735e5808d",
+  "object": "chat.completion",
+  "created": 1792824871,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"predicted\":[\"table_sum(\",\"total residential mortgages\",\"none\",\")\",\"EOF\"]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1438,
+    "completion_tokens": 19,
+    "total_tokens": 1457,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 1438
+  },
+  "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "source_binding_checked_labels_pending",
+  "checked_at": "2026-10-24T08:06:00.850340+00:00",
+  "tenant_id": "public-news-local",
+  "release_id": "news-0c74530f2864db20a73d7a96",
+  "source_export": "/Users/shi/Project/myProject/NewsAgent/var/news-storage/exports/20261023/body-candidates.jsonl",
+  "source_export_sha256": "9e638bcbae404f1ad7a3b51e6bb7e1654c94fb8d19499590a518cec5acef63fb",
+  "source_manifest_sha256": "3a823c1722ba806123ca6317340537ba2d1a410408a70ffdb6096d74c19b39fd",
+  "source_records": 8144,
+  "unique_news_identities": 8144,
+  "exact_duplicate_body_groups_in_export": 0,
+  "input_file_sha256": "c8a1d55dfcde74193e73d6b8bd169eeabf3604dcc8ee00959a55c4416d56c105",
+  "gold_file_sha256": "856261de18177a406ae629f863ea3cccb9ca36fd81289be6ee34a26cfb1611d3",
+  "matches": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "source_id": "S-TENCENT",
+      "news_id": "20260812A0BLLJ00",
+      "record_sha256": "81d12cd5ebdda09f337441bf7fe5b79c8f8da9ecb392875bb449b1b590a57e87",
+      "body_sha256": "9163f7101ecc6ba861c10e6001830e2d285a051543e39f2b0b66df87c3ef16bd",
+      "publish_time": "2026-08-12T10:26:28+00:00",
+      "quality_flags": [
+        "cached_body_completeness_unreviewed",
+        "source_naive_time_assumed_asia_shanghai"
+      ],
+      "exact_body_title_url_match": true,
+      "same_publication_instant": true,
+      "not_after_as_of": true
+    },
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "source_id": "S-TENCENT-CASH",
+      "news_id": "20260812A0C2Q700",
+      "record_sha256": "1dc6e06e47e267e1b9dbf2967f8a8dbafa9482fdfa9f8fd1896c522c9f0c9439",
+      "body_sha256": "b54f91dba714ecd25542b5bb6f3121084061d90356a113b97c6ef21cd099f130",
+      "publish_time": "2026-08-12T10:57:46+00:00",
+      "quality_flags": [
+        "cached_body_completeness_unreviewed",
+        "source_naive_time_assumed_asia_shanghai"
+      ],
+      "exact_body_title_url_match": true,
+      "same_publication_instant": true,
+      "not_after_as_of": true
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "source_id": "S-OPENAI-IPO",
+      "news_id": "20260820A07JJO00",
+      "record_sha256": "7f72b9711b44e910cf863775c7c4871d2bde46ef0afc4be436ff6165d6b8bab9",
+      "body_sha256": "9c321e99b4839acc8df6d26ac75797dc375bd4271cdf20e02ef13ce21528e6fb",
+      "publish_time": "2026-08-20T10:54:27+00:00",
+      "quality_flags": [
+        "cached_body_completeness_unreviewed",
+        "source_naive_time_assumed_asia_shanghai"
+      ],
+      "exact_body_title_url_match": true,
+      "same_publication_instant": true,
+      "not_after_as_of": true
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "source_id": "S-OPENAI-GROWTH",
+      "news_id": "20260820A0A9DO00",
+      "record_sha256": "84b7e1c1510b68f9add3744ff56bd7639d5dd646dda39efc47ad05f2b4fbb4c2",
+      "body_sha256": "7245bd364ccaa5044efabc87c9f8de27eec911c8b0807f26e09de46182a4ad38",
+      "publish_time": "2026-08-20T08:32:09+00:00",
+      "quality_flags": [
+        "cached_body_completeness_unreviewed",
+        "source_naive_time_assumed_asia_shanghai"
+      ],
+      "exact_body_title_url_match": true,
+      "same_publication_instant": true,
+      "not_after_as_of": true
+    },
+    {
+      "case_id": "E02-BANK-H1-REPORT",
+      "source_id": "S-BANK",
+      "news_id": "20260819A059HM00",
+      "record_sha256": "9d3cf18f8747932997ee3d031960fee3254a86b32154603f22c58312e136c915",
+      "body_sha256": "726e416330729237f9883b65bd1b129f2f1052ad284694980ace9faf83cf6e2f",
+      "publish_time": "2026-08-19T03:18:03+00:00",
+      "quality_flags": [
+        "cached_body_completeness_unreviewed",
+        "source_naive_time_assumed_asia_shanghai"
+      ],
+      "exact_body_title_url_match": true,
+      "same_publication_instant": true,
+      "not_after_as_of": true
+    }
+  ],
+  "development_cases": 2,
+  "required_fact_count": 12,
+  "decimal_checks": 6,
+  "semantic_label_review": "pending_human_review",
+  "model_inference": "not_run",
+  "limitations": [
+    "body completeness not human certified",
+    "cached source claims not independently verified",
+    "exact identity/body checks are not event or near-duplicate deduplication",
+    "August publication metadata does not prove an August frozen snapshot"
+  ],
+  "call_chain": "unified body export + manifest -> SHA/identity/release checks -> existing report sources exact match -> private gold locators + Decimal -> human review document",
+  "configuration": {
+    "source_export": "/Users/shi/Project/myProject/NewsAgent/var/news-storage/exports/20261023/body-candidates.jsonl",
+    "dataset": "/Users/shi/Project/myProject/NewsAgent/agent/evaluation/datasets/writing/report_pilot_v1"
+  },
+  "test_entry": "offline artifact-generation assertions (export/hash/ID/time/locator/Decimal); no model tests run",
+  "todo": [
+    "human label confirmation",
+    "real inference",
+    "human output review",
+    "quality scoring"
+  ]
+}

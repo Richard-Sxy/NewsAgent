@@ -7,7 +7,7 @@ import unittest
 from evaluation.data_writing_dataset import load_seed, render_dataset, validate_seed
 
 
-SEED = Path(__file__).resolve().parents[1] / 'evaluation/datasets/data_writing_august_2026_v1/seed.json'
+SEED = Path(__file__).resolve().parents[1] / 'evaluation/datasets/writing/data_writing_august_2026_v1/seed.json'
 
 
 class AugustDataWritingSampleTests(unittest.TestCase):

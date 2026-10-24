@@ -1,0 +1,960 @@
+[
+  {
+    "id": "V/2008/page_17.pdf-1",
+    "table": [
+      [
+        "company",
+        "payments volume ( billions )",
+        "total volume ( billions )",
+        "total transactions ( billions )",
+        "cards ( millions )"
+      ],
+      [
+        "visa inc. ( 1 )",
+        "$ 2457",
+        "$ 3822",
+        "50.3",
+        "1592"
+      ],
+      [
+        "mastercard",
+        "1697",
+        "2276",
+        "27.0",
+        "916"
+      ],
+      [
+        "american express",
+        "637",
+        "647",
+        "5.0",
+        "86"
+      ],
+      [
+        "discover",
+        "102",
+        "119",
+        "1.6",
+        "57"
+      ],
+      [
+        "jcb",
+        "55",
+        "61",
+        "0.6",
+        "58"
+      ],
+      [
+        "diners club",
+        "29",
+        "30",
+        "0.2",
+        "7"
+      ]
+    ],
+    "qa": {
+      "program": "divide(637, const_5)",
+      "exe_ans": 127.4
+    }
+  },
+  {
+    "id": "C/2017/page_328.pdf-1",
+    "table": [
+      [
+        "date",
+        "citi",
+        "s&p 500",
+        "s&p financials"
+      ],
+      [
+        "31-dec-2012",
+        "100.0",
+        "100.0",
+        "100.0"
+      ],
+      [
+        "31-dec-2013",
+        "131.8",
+        "132.4",
+        "135.6"
+      ],
+      [
+        "31-dec-2014",
+        "137.0",
+        "150.5",
+        "156.2"
+      ],
+      [
+        "31-dec-2015",
+        "131.4",
+        "152.6",
+        "153.9"
+      ],
+      [
+        "31-dec-2016",
+        "152.3",
+        "170.8",
+        "188.9"
+      ],
+      [
+        "31-dec-2017",
+        "193.5",
+        "208.1",
+        "230.9"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(193.5, const_100), divide(#0, const_100)",
+      "exe_ans": 0.935
+    }
+  },
+  {
+    "id": "DVN/2007/page_58.pdf-2",
+    "table": [
+      [
+        "",
+        "oil ( mmbbls )",
+        "gas ( bcf )",
+        "ngls ( mmbbls )",
+        "total ( mmboe )"
+      ],
+      [
+        "u.s . onshore",
+        "12",
+        "626",
+        "23",
+        "140"
+      ],
+      [
+        "u.s . offshore",
+        "8",
+        "68",
+        "1",
+        "20"
+      ],
+      [
+        "canada",
+        "23",
+        "198",
+        "4",
+        "60"
+      ],
+      [
+        "international",
+        "23",
+        "2",
+        "2014",
+        "23"
+      ],
+      [
+        "total",
+        "66",
+        "894",
+        "28",
+        "243"
+      ]
+    ],
+    "qa": {
+      "program": "divide(60, 243), multiply(#0, const_100)",
+      "exe_ans": 24.69136
+    }
+  },
+  {
+    "id": "ETR/2011/page_341.pdf-3",
+    "table": [
+      [
+        "",
+        "amount ( in millions )"
+      ],
+      [
+        "2009 net revenue",
+        "$ 536.7"
+      ],
+      [
+        "volume/weather",
+        "18.9"
+      ],
+      [
+        "other",
+        "-0.3 ( 0.3 )"
+      ],
+      [
+        "2010 net revenue",
+        "$ 555.3"
+      ]
+    ],
+    "qa": {
+      "program": "add(18.9, 0.3)",
+      "exe_ans": 19.2
+    }
+  },
+  {
+    "id": "ETR/2004/page_213.pdf-2",
+    "table": [
+      [
+        "",
+        "( in millions )"
+      ],
+      [
+        "2002 net revenue",
+        "$ 922.9"
+      ],
+      [
+        "deferred fuel cost revisions",
+        "59.1"
+      ],
+      [
+        "asset retirement obligation",
+        "8.2"
+      ],
+      [
+        "volume",
+        "-16.2 ( 16.2 )"
+      ],
+      [
+        "vidalia settlement",
+        "-9.2 ( 9.2 )"
+      ],
+      [
+        "other",
+        "8.9"
+      ],
+      [
+        "2003 net revenue",
+        "$ 973.7"
+      ]
+    ],
+    "qa": {
+      "program": "divide(59.1, 98.0)",
+      "exe_ans": 0.60306
+    }
+  },
+  {
+    "id": "PM/2017/page_38.pdf-1",
+    "table": [
+      [
+        "( in millions )",
+        "for the years ended december 31 , 2017",
+        "for the years ended december 31 , 2016",
+        "for the years ended december 31 , $",
+        "% (  % )"
+      ],
+      [
+        "cost of sales",
+        "$ 10432",
+        "$ 9391",
+        "$ 1041",
+        "11.1% ( 11.1 % )"
+      ],
+      [
+        "marketing administration and research costs",
+        "6725",
+        "6405",
+        "320",
+        "5.0% ( 5.0 % )"
+      ],
+      [
+        "operating income",
+        "11503",
+        "10815",
+        "688",
+        "6.4% ( 6.4 % )"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(11503, 10815)",
+      "exe_ans": 688.0
+    }
+  },
+  {
+    "id": "JPM/2008/page_85.pdf-3",
+    "table": [
+      [
+        "december 31 ( in millions )",
+        "2008",
+        "2007"
+      ],
+      [
+        "total tier 1capital ( a )",
+        "$ 136104",
+        "$ 88746"
+      ],
+      [
+        "total tier 2 capital",
+        "48616",
+        "43496"
+      ],
+      [
+        "total capital",
+        "$ 184720",
+        "$ 132242"
+      ],
+      [
+        "risk-weighted assets",
+        "$ 1244659",
+        "$ 1051879"
+      ],
+      [
+        "total adjusted average assets",
+        "1966895",
+        "1473541"
+      ]
+    ],
+    "qa": {
+      "program": "divide(136104, 1244659)",
+      "exe_ans": 0.10935
+    }
+  },
+  {
+    "id": "PNC/2013/page_207.pdf-1",
+    "table": [
+      [
+        "in millions",
+        "december 31 2013 notional/contractamount",
+        "december 31 2013 assetfairvalue ( a )",
+        "december 31 2013 liabilityfairvalue ( b )",
+        "december 31 2013 notional/contractamount",
+        "december 31 2013 assetfairvalue ( a )",
+        "liabilityfairvalue ( b )"
+      ],
+      [
+        "derivatives designated as hedging instruments under gaap",
+        "$ 36197",
+        "$ 1189",
+        "$ 364",
+        "$ 29270",
+        "$ 1872",
+        "$ 152"
+      ],
+      [
+        "derivatives not designated as hedging instruments under gaap",
+        "345059",
+        "3604",
+        "3570",
+        "337086",
+        "6696",
+        "6458"
+      ],
+      [
+        "total gross derivatives",
+        "$ 381256",
+        "$ 4793",
+        "$ 3934",
+        "$ 366356",
+        "$ 8568",
+        "$ 6610"
+      ]
+    ],
+    "qa": {
+      "program": "divide(36197, 1189)",
+      "exe_ans": 30.44323
+    }
+  },
+  {
+    "id": "CME/2017/page_97.pdf-5",
+    "table": [
+      [
+        "( in thousands )",
+        "december 31 , 2017",
+        "december 31 , 2016"
+      ],
+      [
+        "class a common stock authorized",
+        "1000000",
+        "1000000"
+      ],
+      [
+        "class a common stock issued and outstanding",
+        "339235",
+        "338240"
+      ],
+      [
+        "class b-1 common stock authorized issued and outstanding",
+        "0.6",
+        "0.6"
+      ],
+      [
+        "class b-2 common stock authorized issued and outstanding",
+        "0.8",
+        "0.8"
+      ],
+      [
+        "class b-3 common stock authorized issued and outstanding",
+        "1.3",
+        "1.3"
+      ],
+      [
+        "class b-4 common stock authorized issued and outstanding",
+        "0.4",
+        "0.4"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(339235, 338240)",
+      "exe_ans": 995.0
+    }
+  },
+  {
+    "id": "PNC/2013/page_62.pdf-2",
+    "table": [
+      [
+        "in millions",
+        "december 312013",
+        "december 312012"
+      ],
+      [
+        "commercial mortgages at fair value",
+        "$ 586",
+        "$ 772"
+      ],
+      [
+        "commercial mortgages at lower of cost or fair value",
+        "281",
+        "620"
+      ],
+      [
+        "total commercial mortgages",
+        "867",
+        "1392"
+      ],
+      [
+        "residential mortgages at fair value",
+        "1315",
+        "2096"
+      ],
+      [
+        "residential mortgages at lower of cost or fair value",
+        "41",
+        "124"
+      ],
+      [
+        "total residential mortgages",
+        "1356",
+        "2220"
+      ],
+      [
+        "other",
+        "32",
+        "81"
+      ],
+      [
+        "total",
+        "$ 2255",
+        "$ 3693"
+      ]
+    ],
+    "qa": {
+      "program": "add(1356, 2220)",
+      "exe_ans": 3576.0
+    }
+  },
+  {
+    "id": "AAPL/2004/page_36.pdf-2",
+    "table": [
+      [
+        "",
+        "2004",
+        "2003",
+        "2002"
+      ],
+      [
+        "net sales",
+        "$ 8279",
+        "$ 6207",
+        "$ 5742"
+      ],
+      [
+        "cost of sales",
+        "6020",
+        "4499",
+        "4139"
+      ],
+      [
+        "gross margin",
+        "$ 2259",
+        "$ 1708",
+        "$ 1603"
+      ],
+      [
+        "gross margin percentage",
+        "27.3% ( 27.3 % )",
+        "27.5% ( 27.5 % )",
+        "27.9% ( 27.9 % )"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(27.5, 27.3)",
+      "exe_ans": 0.2
+    }
+  },
+  {
+    "id": "PKG/2009/page_65.pdf-4",
+    "table": [
+      [
+        "",
+        "( in thousands )"
+      ],
+      [
+        "2010",
+        "$ 6951"
+      ],
+      [
+        "2011",
+        "5942"
+      ],
+      [
+        "2012",
+        "3659"
+      ],
+      [
+        "2013",
+        "1486"
+      ],
+      [
+        "2014",
+        "1486"
+      ],
+      [
+        "thereafter",
+        "25048"
+      ],
+      [
+        "total",
+        "$ 44572"
+      ]
+    ],
+    "qa": {
+      "program": "divide(25048, 44572)",
+      "exe_ans": 0.56197
+    }
+  },
+  {
+    "id": "LMT/2013/page_74.pdf-4",
+    "table": [
+      [
+        "",
+        "2013",
+        "2012",
+        "2011"
+      ],
+      [
+        "weighted average common shares outstanding for basic computations",
+        "320.9",
+        "323.7",
+        "335.9"
+      ],
+      [
+        "weighted average dilutive effect of equity awards",
+        "5.6",
+        "4.7",
+        "4.0"
+      ],
+      [
+        "weighted average common shares outstanding for diluted computations",
+        "326.5",
+        "328.4",
+        "339.9"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(326.5, 328.4)",
+      "exe_ans": -1.9
+    }
+  },
+  {
+    "id": "STT/2011/page_83.pdf-1",
+    "table": [
+      [
+        "( in millions )",
+        "2011",
+        "2010"
+      ],
+      [
+        "fair value",
+        "$ 99832",
+        "$ 81881"
+      ],
+      [
+        "amortized cost",
+        "100013",
+        "82329"
+      ],
+      [
+        "net unrealized loss pre-tax",
+        "$ -181 ( 181 )",
+        "$ -448 ( 448 )"
+      ],
+      [
+        "net unrealized loss after-tax",
+        "$ -113 ( 113 )",
+        "$ -270 ( 270 )"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(303, 189)",
+      "exe_ans": 114.0
+    }
+  },
+  {
+    "id": "MRO/2007/page_149.pdf-2",
+    "table": [
+      [
+        "( in millions )",
+        "2007",
+        "2006",
+        "2005"
+      ],
+      [
+        "sales and transfers of oil and gas produced net of production transportation and administrative costs",
+        "$ -4887 ( 4887 )",
+        "$ -5312 ( 5312 )",
+        "$ -3754 ( 3754 )"
+      ],
+      [
+        "net changes in prices and production transportation and administrative costs related to future production",
+        "12845",
+        "-1342 ( 1342 )",
+        "6648"
+      ],
+      [
+        "extensions discoveries and improved recovery less related costs",
+        "1816",
+        "1290",
+        "700"
+      ],
+      [
+        "development costs incurred during the period",
+        "1654",
+        "1251",
+        "1030"
+      ],
+      [
+        "changes in estimated future development costs",
+        "-1727 ( 1727 )",
+        "-527 ( 527 )",
+        "-552 ( 552 )"
+      ],
+      [
+        "revisions of previous quantity estimates",
+        "290",
+        "1319",
+        "820"
+      ],
+      [
+        "net changes in purchases and sales of minerals in place",
+        "23",
+        "30",
+        "4557"
+      ],
+      [
+        "accretion of discount",
+        "1726",
+        "1882",
+        "1124"
+      ],
+      [
+        "net change in income taxes",
+        "-6751 ( 6751 )",
+        "-660 ( 660 )",
+        "-6694 ( 6694 )"
+      ],
+      [
+        "timing and other",
+        "-12 ( 12 )",
+        "-14 ( 14 )",
+        "307"
+      ],
+      [
+        "net change for the year",
+        "4977",
+        "-2083 ( 2083 )",
+        "4186"
+      ],
+      [
+        "beginning of year",
+        "8518",
+        "10601",
+        "6415"
+      ],
+      [
+        "end of year",
+        "$ 13495",
+        "$ 8518",
+        "$ 10601"
+      ],
+      [
+        "net change for the year from discontinued operations",
+        "$ 2013",
+        "$ -216 ( 216 )",
+        "$ 162"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(1654, 1251), add(#0, 1654)",
+      "exe_ans": 2057.0
+    }
+  },
+  {
+    "id": "AOS/2004/page_11.pdf-2",
+    "table": [
+      [
+        "( dollars in millions ) contractual obligation",
+        "( dollars in millions ) total",
+        "( dollars in millions ) less than 1 year",
+        "( dollars in millions ) 1 - 3 years",
+        "( dollars in millions ) 3 - 5 years",
+        "more than 5 years"
+      ],
+      [
+        "long-term debt",
+        "$ 275.1",
+        "$ 8.6",
+        "$ 13.8",
+        "$ 138.2",
+        "$ 114.5"
+      ],
+      [
+        "capital leases",
+        "6.0",
+        "2014",
+        "2014",
+        "6.0",
+        "2014"
+      ],
+      [
+        "operating leases",
+        "62.9",
+        "14.4",
+        "20.7",
+        "11.6",
+        "16.2"
+      ],
+      [
+        "purchase obligations",
+        "177.3",
+        "176.6",
+        "0.7",
+        "2014",
+        "2014"
+      ],
+      [
+        "total",
+        "$ 521.3",
+        "$ 199.6",
+        "$ 35.2",
+        "$ 155.8",
+        "$ 130.7"
+      ]
+    ],
+    "qa": {
+      "program": "divide(177.3, 521.3)",
+      "exe_ans": 0.34011
+    }
+  },
+  {
+    "id": "C/2010/page_223.pdf-3",
+    "table": [
+      [
+        "in millions of dollars",
+        "accretable yield",
+        "carrying amount of loan receivable",
+        "allowance"
+      ],
+      [
+        "beginning balance",
+        "$ 27",
+        "$ 920",
+        "$ 95"
+      ],
+      [
+        "purchases ( 1 )",
+        "1",
+        "130",
+        "2014"
+      ],
+      [
+        "disposals/payments received",
+        "-11 ( 11 )",
+        "-594 ( 594 )",
+        "2014"
+      ],
+      [
+        "accretion",
+        "-44 ( 44 )",
+        "44",
+        "2014"
+      ],
+      [
+        "builds ( reductions ) to the allowance",
+        "128",
+        "2014",
+        "-18 ( 18 )"
+      ],
+      [
+        "increase to expected cash flows",
+        "-2 ( 2 )",
+        "19",
+        "2014"
+      ],
+      [
+        "fx/other",
+        "17",
+        "-50 ( 50 )",
+        "2014"
+      ],
+      [
+        "balance at december 31 2010 ( 2 )",
+        "$ 116",
+        "$ 469",
+        "$ 77"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(920, 95), subtract(469, 77), subtract(#1, #0), divide(#2, #0)",
+      "exe_ans": -0.52485
+    }
+  },
+  {
+    "id": "MSI/2006/page_61.pdf-3",
+    "table": [
+      [
+        "( in millions )",
+        "payments due by period ( 1 ) total",
+        "payments due by period ( 1 ) 2007",
+        "payments due by period ( 1 ) 2008",
+        "payments due by period ( 1 ) 2009",
+        "payments due by period ( 1 ) 2010",
+        "payments due by period ( 1 ) 2011",
+        "payments due by period ( 1 ) thereafter"
+      ],
+      [
+        "long-term debt obligations",
+        "$ 4134",
+        "$ 1340",
+        "$ 198",
+        "$ 4",
+        "$ 534",
+        "$ 607",
+        "$ 1451"
+      ],
+      [
+        "lease obligations",
+        "2328",
+        "351",
+        "281",
+        "209",
+        "178",
+        "158",
+        "1151"
+      ],
+      [
+        "purchase obligations",
+        "1035",
+        "326",
+        "120",
+        "26",
+        "12",
+        "12",
+        "539"
+      ],
+      [
+        "total contractual obligations",
+        "$ 7497",
+        "$ 2017",
+        "$ 599",
+        "$ 239",
+        "$ 724",
+        "$ 777",
+        "$ 3141"
+      ]
+    ],
+    "qa": {
+      "program": "divide(1451, 4134)",
+      "exe_ans": 0.35099
+    }
+  },
+  {
+    "id": "ABMD/2006/page_75.pdf-1",
+    "table": [
+      [
+        "fiscal year ending march 31,",
+        "operating leases"
+      ],
+      [
+        "2007",
+        "1703"
+      ],
+      [
+        "2008",
+        "1371"
+      ],
+      [
+        "2009",
+        "1035"
+      ],
+      [
+        "2010",
+        "710"
+      ],
+      [
+        "total future minimum lease payments",
+        "$ 4819"
+      ]
+    ],
+    "qa": {
+      "program": "subtract(1703, 1371), divide(#0, 1703)",
+      "exe_ans": 0.19495
+    }
+  },
+  {
+    "id": "AMAT/2013/page_18.pdf-2",
+    "table": [
+      [
+        "",
+        "2013",
+        "2012",
+        "",
+        "( in millions except percentages )"
+      ],
+      [
+        "silicon systems group",
+        "$ 1295",
+        "55% ( 55 % )",
+        "$ 705",
+        "44% ( 44 % )"
+      ],
+      [
+        "applied global services",
+        "591",
+        "25% ( 25 % )",
+        "580",
+        "36% ( 36 % )"
+      ],
+      [
+        "display",
+        "361",
+        "15% ( 15 % )",
+        "206",
+        "13% ( 13 % )"
+      ],
+      [
+        "energy and environmental solutions",
+        "125",
+        "5% ( 5 % )",
+        "115",
+        "7% ( 7 % )"
+      ],
+      [
+        "total",
+        "$ 2372",
+        "100% ( 100 % )",
+        "$ 1606",
+        "100% ( 100 % )"
+      ]
+    ],
+    "qa": {
+      "program": "divide(18, const_100), divide(1.3, #0)",
+      "exe_ans": 7.22222
+    }
+  }
+]

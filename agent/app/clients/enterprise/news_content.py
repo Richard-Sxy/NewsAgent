@@ -37,6 +37,8 @@ class NewsContentRow(BaseModel):
     title: str = Field(min_length=1, max_length=500)
     summary: str = Field(default="", max_length=2_000)
     body: str = Field(default="", max_length=100_000)
+    # Source board, not inferred content topics or reader-interest labels.
+    category: str = Field(default="", max_length=128)
     content_type: Literal["article", "video"]
     publish_time: AwareDatetime
     canonical_url: NonBlank256
@@ -151,6 +153,7 @@ class RpcNewsContentRepository(NewsContentRepository):
                     title=row.title,
                     summary=row.summary,
                     body=row.body,
+                    category=row.category,
                     content_type=ContentType(row.content_type),
                     publish_time=row.publish_time,
                     source_url=row.canonical_url,

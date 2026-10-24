@@ -1,0 +1,10 @@
+{
+  "model_path": "/REPLACE_ME/models/Hunyuan-7B-Instruct",
+  "tokenizer_path": "/REPLACE_ME/models/Hunyuan-7B-Instruct",
+  "adapter_path": "/REPLACE_ME/adapters/query-lora-v1",
+  "training_manifest_path": "/REPLACE_ME/query-semantics-training-v1/training-manifest.json",
+  "base_model": "tencent/Hunyuan-7B-Instruct",
+  "dtype": "bfloat16",
+  "device_map": "auto",
+  "max_new_tokens": 1024
+}

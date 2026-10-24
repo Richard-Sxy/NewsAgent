@@ -1,0 +1,22 @@
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model_route": "REPLACE_ME_served_model_name",
+  "api_key_env": "QUERY_EVAL_API_KEY",
+  "timeout_seconds": 120,
+  "response_format": "none",
+  "extra_body": {
+    "max_tokens": 1024
+  },
+  "identity": {
+    "base_model": "tencent/Hunyuan-7B-Instruct",
+    "base_revision": "REPLACE_ME_checkpoint_revision",
+    "tokenizer_revision": "REPLACE_ME_tokenizer_revision",
+    "chat_template_sha256": "REPLACE_ME_64_hex_digest",
+    "quantization": "REPLACE_ME_actual_precision",
+    "adapter_sha256": "REPLACE_ME_64_hex_digest",
+    "role": "lora",
+    "training_group_ids": [
+      "REPLACE_ME_real_training_groups"
+    ]
+  }
+}

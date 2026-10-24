@@ -91,6 +91,8 @@ def score(queries: list[dict], qrels: list[dict], predictions: list[dict], *,
           seed: int = 20261015) -> dict:
     if not ks or any(type(k) is not int or k <= 0 for k in ks):
         raise EvaluationBlocked("cutoffs must be positive integers")
+    if len(ks) != len(set(ks)):
+        raise EvaluationBlocked("cutoffs must be distinct")
     if len(package_sha256) != 64 or any(c not in "0123456789abcdef" for c in package_sha256):
         raise EvaluationBlocked("package_sha256 must be a pinned SHA-256")
     if split not in {"development", "validation", "test"}:
@@ -219,6 +221,8 @@ def main() -> int:
         parser.add_argument("--expected-" + name + "-sha256", required=True)
     parser.add_argument("--package-sha256", required=True)
     parser.add_argument("--split", choices=("development", "validation", "test"), default="test")
+    parser.add_argument("--ks", nargs="+", type=int, default=(3, 10, 20),
+                        metavar="K", help="Distinct positive ranking cutoffs (default: 3 10 20)")
     args = parser.parse_args()
     identity = {}
     try:
@@ -228,7 +232,7 @@ def main() -> int:
                 raise EvaluationBlocked(f"{name} file hash differs from preregistered input")
             identity[name + "_sha256"] = digest
         report = score(load_jsonl(args.queries), load_jsonl(args.qrels), load_jsonl(args.predictions),
-                       package_sha256=args.package_sha256, split=args.split)
+                       package_sha256=args.package_sha256, split=args.split, ks=tuple(args.ks))
     except (EvaluationBlocked, ValueError, OSError, KeyError, TypeError) as exc:
         report = {"schema_version": 1, "status": "blocked", "acceptance_status": "not_approved",
                   "reason": str(exc), "metrics": None}

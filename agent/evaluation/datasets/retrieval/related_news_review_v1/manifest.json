@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "status": "draft_unreviewed",
+  "prepared_on": "2026-10-24",
+  "query_count": 16,
+  "source_count": 16,
+  "approved_test_queries": 0,
+  "semantic_quality": "blocked_no_human_qrels",
+  "retrieval_execution": "not_run",
+  "as_of": "2026-10-14T23:59:59+08:00",
+  "source_material": "output/index-evaluation-2026-10-15/annotation",
+  "source_material_sha256": {
+    "manifest.json": "feacc27fde53f74480f3f12978ee385f071d4a72e15226b2a0959e1f9c75b2d5",
+    "queries.jsonl": "5554e304825654b33971ab51c708fa4e2a092bdc1abe58e50aa206cda62aca3f",
+    "evidence.jsonl": "7a4cdabd7ba5d80f9574a9bf49d01fcb48642f6f227fe723381c03c95d0ecf72",
+    "annotation_tasks.jsonl": "e31a52fdce3966ab02282bac9182e2d23ea8f359353b1b185ee15e0e306ec46f",
+    "candidate_provenance.jsonl": "ae86dea559cc7d1cc73a9533e96fc12aa3dd22f34cd8e03a665eb63734ef5f74"
+  },
+  "proposed_corpus_package": "var/agent/data/news-bge-incremental-20261014-v2",
+  "historical_index_manifest_sha256": "c59a3095657711fb0213b66bf7e7e775c63840961cbad4ba96fdbb9de6bd9138",
+  "proposed_corpus_status": "not_frozen_for_this_run",
+  "query_builder": "TencentNewsCacheRepository._map_payload -> RelatedNewsSearchQuery.query_text",
+  "query_builder_source_sha256": {
+    "agent/app/analytics/news_content.py": "7ec6ea61e406803d5dd4b9be4563e5265655c0d910f2547fcd5f0499b54b6480",
+    "agent/app/clients/knowledge_base.py": "bf1747f0319ab5b880c1c23c852e2d736d5e2e09992a71f5f617e0cdce5de10a"
+  },
+  "proposed_limits": {
+    "candidate_limit": 20,
+    "related_limit": 5
+  },
+  "files_sha256": {
+    "queries.review.jsonl": "48c3f4cb1c80e78cca7cd60bcd2ed3f2ce565f0283b3a1fb4f0a76ad334d0b84",
+    "source-evidence.jsonl": "e8ed09c0ea21c0cae2580d406c9126263c602258dc185bfd45999d55c617b13f",
+    "annotation.review.jsonl": "3f6df5b12b56f5922e3bec2ff5ab2c946c667c441f05476b215f40e8efd4458a",
+    "candidate-evidence.jsonl": "e6c8e190ba216f2d5c5681dd0dc5a6b9ce4ccd596e1a41dca6ce56397d0a0abe",
+    "judgments-reviewer-a.jsonl": "44478526cd25c9c4bf1a3459d20ddba4313dde3ebe09d06eb02292e43ef824be",
+    "judgments-reviewer-b.jsonl": "44478526cd25c9c4bf1a3459d20ddba4313dde3ebe09d06eb02292e43ef824be",
+    "annotation-preview.html": "ad3c4992ab81d7b0982d5990a8013f652ee5cc4994c583bc783a3d39e64c847a",
+    "README.md": "b61fd565af63b43462f0e237709371bbb6a83ed7615052d5358ceb1eac94ed39",
+    "ANNOTATION_GUIDE.md": "3699b379d4d7a017a480bae7456a1826ba7c368b81198a654b9254802ee9cf1c"
+  },
+  "checks": {
+    "historical_input_hashes": "passed",
+    "source_file_hashes": "passed",
+    "source_document_hashes": "passed",
+    "source_publish_time_not_future": "passed",
+    "actual_query_builder_used": "passed",
+    "unique_query_ids": "passed",
+    "candidate_source_hashes": "passed",
+    "candidate_document_hashes": "passed",
+    "candidate_not_future": "passed",
+    "source_and_exact_source_copy_exclusion": "passed",
+    "all_labels_null": "passed",
+    "static_preview": "passed_16_tasks_256_candidates_no_scripts_or_remote_resources"
+  },
+  "limitations": [
+    "Assistant-prepared review candidates from existing public-news caches; not independent user traffic or human gold.",
+    "Original source selection was exposed in prior drafting; human approval does not by itself make a held-out test set.",
+    "No relevance labels, event groups, splits or answerability judgments have been assigned.",
+    "Candidate pools must be regenerated from the actual baseline and candidate and independently judged before scoring.",
+    "Known-date corpus covers roughly one week; it does not validate retrieval over years of historical news.",
+    "Hashes identify the prepared draft only; edited review material must be audited and separately frozen before evaluation."
+  ],
+  "annotation_pair_count": 256,
+  "candidate_evidence_count": 249,
+  "pool_status": "provisional_not_ab_union",
+  "human_label_count": 0,
+  "blind_presentation": "algorithm names, scores and ranks omitted; stable hash-shuffled within query",
+  "presentation_shuffle_seed": "preview-20261024",
+  "annotation_pool_source": "historical source-vector, title-bigram, heuristic-topic and random proposals; not actual new-query A/B output"
+}

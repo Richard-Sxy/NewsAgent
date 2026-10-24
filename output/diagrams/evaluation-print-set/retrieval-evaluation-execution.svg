@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 1440 1018">
+<title>热／温／冷关联检索 · 评测执行链路</title>
+<desc>目标：给定真实源新闻，检验历史关联报道的排序质量及完整检索链耗时</desc>
+<rect width="1440" height="1018" fill="white"/>
+<text x="720" y="64" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="36" font-weight="600" fill="#173447">热／温／冷关联检索 · 评测执行链路</text>
+<text x="720" y="113" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="21" font-weight="400" fill="#435461">目标：给定真实源新闻，检验历史关联报道的排序质量及完整检索链耗时</text>
+<rect x="55" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="260" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">① 冻结任务与运行条件</text>
+<rect x="515" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="720" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">② 同条件检索与重排对照</text>
+<rect x="975" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="1180" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">③ 候选盲审与指标计算</text>
+<polyline points="473,193 506,193" fill="none" stroke="#126B66" stroke-width="2.2"/>
+<polygon points="506,193 497.0,189.0 497.0,197.0" fill="#126B66"/>
+<polyline points="933,193 966,193" fill="none" stroke="#126B66" stroke-width="2.2"/>
+<polygon points="966,193 957.0,189.0 957.0,197.0" fill="#126B66"/>
+<rect x="55" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">确认真实源新闻检索任务</text>
+<text x="260.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">绑定 source_news_id 与规范正文</text>
+<text x="260.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">排除源新闻自召回及未来证据</text>
+<rect x="55" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">按事件分组并隔离数据</text>
+<text x="260.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">同事件及更正链不跨 split</text>
+<text x="260.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">现有 16 条预审材料不等于独立 N</text>
+<rect x="55" y="511" width="410" height="127" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="541" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">固定三层实现与资产身份</text>
+<text x="260.0" y="571" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">冻结 Embedding、索引、正文时点</text>
+<text x="260.0" y="595" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">固定实际后端及生命周期门禁</text>
+<text x="260.0" y="619" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">静态索引实验不等于生产迁层验收</text>
+<rect x="55" y="668" width="410" height="127" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="260.0" y="698" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">冻结 Top5 配置与计时协议</text>
+<text x="260.0" y="728" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">candidate_limit＝20，related_limit＝5</text>
+<text x="260.0" y="752" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">固定硬件、并发、缓存和预热</text>
+<text x="260.0" y="776" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">保留失败、超时及实际返回数量</text>
+<polyline points="260,353 260,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,381 264.0,372.0 256.0,372.0" fill="#718492"/>
+<polyline points="260,482 260,510" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,510 264.0,501.0 256.0,501.0" fill="#718492"/>
+<polyline points="260,638 260,667" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,667 264.0,658.0 256.0,658.0" fill="#718492"/>
+<rect x="515" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="720.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">源标题＋摘要 → Query Embedding</text>
+<text x="720.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">源正文、发布时间另供业务重排</text>
+<text x="720.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">同一输入、语料、模型与索引</text>
+<polyline points="720,353 720,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,381 724.0,372.0 716.0,372.0" fill="#718492"/>
+<rect x="515" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="720.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">三层查询 → 过滤去重 → RRF</text>
+<text x="720.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">按实际链执行门禁及必要的补搜</text>
+<text x="720.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">按新闻粒度融合，补全候选元信息</text>
+<polyline points="720,482 720,514" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,514 724.0,505.0 716.0,505.0" fill="#718492"/>
+<text x="720" y="536" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="19" font-weight="400" fill="#126B66">只改变是否加入业务重排</text>
+<polyline points="720,549 720,559 612,559 612,575" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="612,575 616.0,566.0 608.0,566.0" fill="#718492"/>
+<polyline points="720,559 827,559 827,575" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="827,575 831.0,566.0 823.0,566.0" fill="#718492"/>
+<rect x="515" y="576" width="195" height="91" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="612.5" y="606" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="20" font-weight="600" fill="#173447">A：仅 RRF</text>
+<text x="612.5" y="636" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="17" font-weight="400" fill="#435461">保留融合后排序</text>
+<rect x="730" y="576" width="195" height="91" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="827.5" y="606" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="20" font-weight="600" fill="#173447">B：加入重排</text>
+<text x="827.5" y="636" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="17" font-weight="400" fill="#435461">主体／事件／时效</text>
+<polyline points="612,667 612,689 720,689 720,712" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,712 724.0,703.0 716.0,703.0" fill="#718492"/>
+<polyline points="827,667 827,689 720,689" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,689 729.0,693.0 729.0,685.0" fill="#718492"/>
+<rect x="515" y="713" width="410" height="82" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="720.0" y="743" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">保存排序、错误并测 B 的耗时</text>
+<text x="720.0" y="773" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">候选池盲审用两组真实运行输出</text>
+<rect x="975" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">合并 A／B 候选并匿名盲审</text>
+<text x="1180.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">隐藏方案名称和原始排序</text>
+<text x="1180.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">按统一标准评 0–3 级相关性</text>
+<rect x="975" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">独立双审，分歧仲裁</text>
+<text x="1180.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">补判新增候选，确保 Top5 全部有标签</text>
+<text x="1180.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">未标注不能当作不相关的 0 分</text>
+<rect x="975" y="511" width="410" height="127" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="541" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">冻结 test＋qrels → 离线评分</text>
+<text x="1180.0" y="571" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">score_retrieval_judgments.py</text>
+<text x="1180.0" y="595" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">计算 pooled exp2 nDCG@5</text>
+<text x="1180.0" y="619" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">两组使用同一固定查询集合</text>
+<rect x="975" y="668" width="410" height="127" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="1180.0" y="698" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">填写 N、A、B、T 及适用边界</text>
+<text x="1180.0" y="728" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">N：有正例的独立测试查询数</text>
+<text x="1180.0" y="752" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">A／B：nDCG@5 均值；T：B 链 P95</text>
+<text x="1180.0" y="776" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">另报事件组数量、超时和失败率</text>
+<polyline points="1180,353 1180,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,381 1184.0,372.0 1176.0,372.0" fill="#718492"/>
+<polyline points="1180,482 1180,510" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,510 1184.0,501.0 1176.0,501.0" fill="#718492"/>
+<polyline points="1180,638 1180,667" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,667 1184.0,658.0 1176.0,658.0" fill="#718492"/>
+<rect x="55" y="839" width="1330" height="119" rx="10" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="720" y="869" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="21" font-weight="600" fill="#173447">nDCG@5 为人工候选池口径；本对照衡量业务重排收益，不单独证明分层或 RRF 收益。</text>
+<text x="720" y="902" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#173447">P95 含源内容读取、Embedding、三层查询／门禁、RRF、候选补全及重排；不含下游 LLM。</text>
+<text x="720" y="934" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">当前：16 条起始材料及评分入口已准备；正式 A／B 检索、候选盲审与性能测试待完成。</text>
+<text x="720" y="987" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="15" font-weight="400" fill="#435461">对应窗口：简历润色(评测) (2)  ·  A4 横向／300 DPI  ·  不用 ANN-only 或缺重排的 API 耗时代填 T</text>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 1440 1018">
+<title>查询解析与 LoRA SFT 执行链路</title>
+<desc>本机审核和冻结数据，台式机训练并对照推理，本机校验评分。当前没有真实 A、B 成绩。</desc>
+<rect width="1440" height="1018" fill="white"/>
+<text x="720" y="64" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="36" font-weight="600" fill="#173447">查询解析与 LoRA SFT · 执行链路</text>
+<text x="720" y="113" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="21" font-weight="400" fill="#435461">目标：减少时间、指标及筛选条件的误解与遗漏</text>
+<rect x="55" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="260" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">① 本机：准备与审核</text>
+<rect x="515" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="720" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">② 台式机：训练与推理</text>
+<rect x="975" y="164" width="410" height="58" rx="9" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="1180" y="193" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="24" font-weight="600" fill="#173447">③ 本机：校验与评分</text>
+<polyline points="473,193 506,193" fill="none" stroke="#126B66" stroke-width="2.2"/>
+<polygon points="506,193 497.0,189.0 497.0,197.0" fill="#126B66"/>
+<polyline points="933,193 966,193" fill="none" stroke="#126B66" stroke-width="2.2"/>
+<polygon points="966,193 957.0,189.0 957.0,197.0" fill="#126B66"/>
+<rect x="55" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">收集问题与候选答案</text>
+<text x="260.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">真实匿名坏例／Hy4 辅助构建</text>
+<text x="260.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">现有 24 条仅作开发检查</text>
+<polyline points="260,353 260,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,381 264.0,372.0 256.0,372.0" fill="#718492"/>
+<rect x="55" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">人工标注与独立复核</text>
+<text x="260.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">你确认业务问题和标准答案</text>
+<text x="260.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">校准时间、指标、数量与筛选</text>
+<polyline points="260,482 260,510" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,510 264.0,501.0 256.0,501.0" fill="#718492"/>
+<rect x="55" y="511" width="410" height="127" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="260.0" y="541" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">按需求分组并冻结数据</text>
+<text x="260.0" y="571" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">隔离 train／validation／test</text>
+<text x="260.0" y="595" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">同一需求及其改写不跨集合</text>
+<text x="260.0" y="619" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">另标 Golden／Fresh／High-risk</text>
+<polyline points="260,638 260,667" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="260,667 264.0,658.0 256.0,658.0" fill="#718492"/>
+<rect x="55" y="668" width="410" height="127" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="260.0" y="698" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">传递执行包与训练数据</text>
+<text x="260.0" y="728" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">冻结 Prompt、Schema、时间和策略</text>
+<text x="260.0" y="752" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">被评模型只看测试输入</text>
+<text x="260.0" y="776" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">测试标准答案留在本机评分</text>
+<rect x="515" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="720.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">训练集 → LoRA SFT</text>
+<text x="720.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">使用同一 Hunyuan-7B-Instruct 基座</text>
+<text x="720.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">只用人工确认的目标训练</text>
+<polyline points="720,353 720,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,381 724.0,372.0 716.0,372.0" fill="#718492"/>
+<rect x="515" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="720.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">验证集选择并冻结 LoRA</text>
+<text x="720.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">选择训练参数和 checkpoint</text>
+<text x="720.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">独立测试集不参与调参</text>
+<polyline points="720,482 720,514" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,514 724.0,505.0 716.0,505.0" fill="#718492"/>
+<text x="720" y="536" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#126B66">同一测试输入 · 同一 Prompt 与推理设置</text>
+<polyline points="720,549 720,559 612,559 612,575" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="612,575 616.0,566.0 608.0,566.0" fill="#718492"/>
+<polyline points="720,559 827,559 827,575" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="827,575 831.0,566.0 823.0,566.0" fill="#718492"/>
+<rect x="515" y="576" width="195" height="91" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="612.5" y="606" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="20" font-weight="600" fill="#173447">未微调基座</text>
+<text x="612.5" y="636" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="17" font-weight="400" fill="#435461">生成逐题预测 A</text>
+<rect x="730" y="576" width="195" height="91" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="827.5" y="606" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="20" font-weight="600" fill="#173447">基座＋LoRA</text>
+<text x="827.5" y="636" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="17" font-weight="400" fill="#435461">生成逐题预测 B</text>
+<polyline points="612,667 612,689 720,689 720,712" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,712 724.0,703.0 716.0,703.0" fill="#718492"/>
+<polyline points="827,667 827,689 720,689" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="720,689 729.0,693.0 729.0,685.0" fill="#718492"/>
+<rect x="515" y="713" width="410" height="82" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="720.0" y="743" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">回传两次完整运行目录</text>
+<text x="720.0" y="773" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">预测、模型版本、配置与失败记录</text>
+<rect x="975" y="253" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="283" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">核验运行证据</text>
+<text x="1180.0" y="313" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">检查数据、版本、配置和预测覆盖</text>
+<text x="1180.0" y="337" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">确认训练组与测试组隔离</text>
+<polyline points="1180,353 1180,381" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,381 1184.0,372.0 1176.0,372.0" fill="#718492"/>
+<rect x="975" y="382" width="410" height="100" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="412" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">独立标准答案 → 确定性评分</text>
+<text x="1180.0" y="442" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">score／compare 逐题比较语义槽位</text>
+<text x="1180.0" y="466" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">不以模型自评分作为标准答案</text>
+<polyline points="1180,482 1180,510" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,510 1184.0,501.0 1176.0,501.0" fill="#718492"/>
+<rect x="975" y="511" width="410" height="127" rx="12" fill="#F4F7F8" stroke="#126B66" stroke-width="1.2"/>
+<text x="1180.0" y="541" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">得到基座与 LoRA 对照结果</text>
+<text x="1180.0" y="571" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">A：基座查询语义全匹配率</text>
+<text x="1180.0" y="595" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">B：LoRA 查询语义全匹配率</text>
+<text x="1180.0" y="619" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">另报高风险错误放行率</text>
+<polyline points="1180,638 1180,667" fill="none" stroke="#718492" stroke-width="1.8"/>
+<polygon points="1180,667 1184.0,658.0 1176.0,658.0" fill="#718492"/>
+<rect x="975" y="668" width="410" height="127" rx="12" fill="#FFFFFF" stroke="#718492" stroke-width="1.2"/>
+<text x="1180.0" y="698" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">依据真实结果填写简历</text>
+<text x="1180.0" y="728" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">保留样本量、错误案例和版本</text>
+<text x="1180.0" y="752" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">条件不足时，A／B 保持待填写</text>
+<text x="1180.0" y="776" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">评测结果不触发自动上线</text>
+<rect x="55" y="839" width="1330" height="119" rx="10" fill="#F4F7F8" stroke="#718492" stroke-width="1.2"/>
+<text x="720" y="869" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="22" font-weight="600" fill="#173447">主指标：全部 13 个语义槽位正确的正常查询数 ÷ 正常查询总数</text>
+<text x="720" y="902" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="19" font-weight="400" fill="#173447">超时与非法输出保留在分母；拒绝／澄清题单列评分；两次测试条件一致。</text>
+<text x="720" y="934" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="18" font-weight="400" fill="#435461">当前状态：执行计划与脚本已准备；人工审核、独立测试集及台式机真实实验待完成。</text>
+<text x="720" y="987" text-anchor="middle" dominant-baseline="central" font-family="STHeiti, Heiti SC, Arial Unicode MS, sans-serif" font-size="15" font-weight="400" fill="#435461">NewsAgent  ·  查询理解评测  ·  A4 横向／300 DPI  ·  此图为执行计划，不代表已完成 SFT</text>
+</svg>

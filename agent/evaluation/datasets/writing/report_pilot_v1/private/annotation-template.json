@@ -1,0 +1,213 @@
+{
+  "cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "critical_error_definition": null,
+      "editor_usable_definition": null,
+      "event_group_id": "E01-TENCENT-Q2",
+      "forbidden_claims_draft": [
+        "批准错误稿",
+        "把18个百分点当作相对提高18%",
+        "把调整后自由现金流当未调整值",
+        "把负138亿元写成Non-IFRS经营亏损",
+        "称任务解决率提高90%",
+        "认为AI投入已必然导致公司经营亏损"
+      ],
+      "gold_research_packet": null,
+      "notes": null,
+      "numeric_expectations_draft": [
+        {
+          "check_id": "WB-PP",
+          "expected_value": "18",
+          "operands": [
+            "F-TEN-WB-NEW",
+            "F-TEN-WB-OLD"
+          ],
+          "operation": "percentage_point_delta",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "个百分点"
+        },
+        {
+          "check_id": "WB-REL",
+          "expected_value": "25",
+          "operands": [
+            "F-TEN-WB-NEW",
+            "F-TEN-WB-OLD"
+          ],
+          "operation": "relative_change_percent",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "%"
+        }
+      ],
+      "required_caveats_draft": [
+        "CACHED_REPORT_NOT_INDEPENDENT_VERIFICATION",
+        "EVALUATION_SAMPLE_NOT_DISCLOSED",
+        "FINANCIAL_DEFINITIONS_DIFFER",
+        "NO_CAUSAL_PROOF",
+        "REPORT_ATTRIBUTION"
+      ],
+      "required_facts_draft": [
+        "F-TEN-FCF",
+        "F-TEN-FCF-ADJ",
+        "F-TEN-OP",
+        "F-TEN-REV",
+        "F-TEN-WB-NEW",
+        "F-TEN-WB-OLD"
+      ],
+      "review_decisions": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "source_review_status": "cache_only_not_independently_verified",
+      "split": "development",
+      "status": "pending_human_review"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "critical_error_definition": null,
+      "editor_usable_definition": null,
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "forbidden_claims_draft": [
+        "OpenAI已经完成IPO",
+        "仅因17.54%与18%不同就断言报道造假",
+        "批准以下错误稿",
+        "营业亏损变成净利润",
+        "营业亏损等于净利润"
+      ],
+      "gold_research_packet": null,
+      "notes": null,
+      "numeric_expectations_draft": [
+        {
+          "check_id": "REV-DELTA",
+          "expected_value": "10",
+          "operands": [
+            "F-OAI-REV-Q2",
+            "F-OAI-REV-Q1"
+          ],
+          "operation": "delta",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "亿美元"
+        },
+        {
+          "check_id": "REV-REL",
+          "expected_value": "17.54",
+          "operands": [
+            "F-OAI-REV-Q2",
+            "F-OAI-REV-Q1"
+          ],
+          "operation": "relative_change_percent",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "%"
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "expected_value": "30",
+          "operands": [
+            "F-OAI-LOSS-Q2",
+            "F-OAI-LOSS-Q1"
+          ],
+          "operation": "delta",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "亿美元"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "expected_value": "32.26",
+          "operands": [
+            "F-OAI-LOSS-Q2",
+            "F-OAI-LOSS-Q1"
+          ],
+          "operation": "relative_change_percent",
+          "stage": "write",
+          "tolerance": "0.01",
+          "unit": "%"
+        }
+      ],
+      "required_caveats_draft": [
+        "APPROXIMATE_INPUT",
+        "LOSS_NOT_PROFIT",
+        "PLAN_NOT_COMPLETED",
+        "ROUNDING_NOT_AUTOMATIC_CONTRADICTION",
+        "SECONDARY_REPORT"
+      ],
+      "required_facts_draft": [
+        "F-OAI-LOSS-Q1",
+        "F-OAI-LOSS-Q2",
+        "F-OAI-PLAN",
+        "F-OAI-REPORTED-QOQ",
+        "F-OAI-REV-Q1",
+        "F-OAI-REV-Q2"
+      ],
+      "review_decisions": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "source_review_status": "cache_only_not_independently_verified",
+      "split": "development",
+      "status": "pending_human_review"
+    },
+    {
+      "case_id": "E02-BANK-H1-REPORT",
+      "critical_error_definition": null,
+      "editor_usable_definition": null,
+      "event_group_id": "E02-BANK-H1",
+      "forbidden_claims_draft": [
+        "写成8月份银行利润为1.2万亿元",
+        "净息差增至1.41亿元",
+        "所有银行盈利增长7.4%",
+        "提升1个百分点"
+      ],
+      "gold_research_packet": null,
+      "notes": null,
+      "numeric_expectations_draft": [
+        {
+          "check_id": "NIM-PP",
+          "expected_value": "0.01",
+          "operands": [
+            "F-BANK-NIM-NEW",
+            "F-BANK-NIM-OLD"
+          ],
+          "operation": "percentage_point_delta",
+          "stage": "write",
+          "tolerance": "0.00001",
+          "unit": "个百分点"
+        },
+        {
+          "check_id": "NIM-BP",
+          "expected_value": "1",
+          "operands": [
+            "F-BANK-NIM-NEW",
+            "F-BANK-NIM-OLD"
+          ],
+          "operation": "basis_point_delta",
+          "stage": "write",
+          "tolerance": "0.00001",
+          "unit": "基点"
+        }
+      ],
+      "required_caveats_draft": [
+        "BANK_TYPES_DIFFER",
+        "PUBLICATION_DATE_IS_NOT_DATA_PERIOD",
+        "QUARTER_ON_QUARTER"
+      ],
+      "required_facts_draft": [
+        "F-BANK-NIM-NEW",
+        "F-BANK-NIM-OLD",
+        "F-BANK-PROFIT",
+        "F-BANK-YOY"
+      ],
+      "review_decisions": [],
+      "reviewed_at": null,
+      "reviewer": null,
+      "source_review_status": "cache_only_not_independently_verified",
+      "split": "validation",
+      "status": "pending_human_review"
+    }
+  ],
+  "instructions": "复核草案事实和数值，人工定义严重错误及可用标准；未填写不等于审核通过。",
+  "model_input_allowed": false,
+  "status": "pending_human_review"
+}

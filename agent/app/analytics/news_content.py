@@ -21,12 +21,15 @@ class NewsContent:
     source_url: str
     collection_id: str | None = None
     body: str = ""
+    category: str = ""
 
     def validate(self) -> None:
         if not self.news_id.strip():
             raise ValueError("news_id cannot be empty")
         if not self.title.strip():
             raise ValueError("title cannot be empty")
+        if not isinstance(self.category, str):
+            raise TypeError("category must be a string")
         if self.publish_time.tzinfo is None or self.publish_time.utcoffset() is None:
             raise ValueError("publish_time must be timezone-aware")
 
@@ -150,6 +153,7 @@ class TencentNewsCacheRepository:
                 else None
             ),
             body=body,
+            category=payload.get("category") or "",
         )
         content.validate()
         return content

@@ -107,11 +107,13 @@ def test_discover_and_ingest_passes_unique_urls():
         {
             "https://news.qq.com/rain/a/ONE": {
                 "topic": "科技",
+                "category": "科技",
                 "source_title": "新闻一",
                 "discovered_publish_time": "2026-08-19 10:00:00",
             },
             "https://news.qq.com/rain/a/TWO": {
                 "topic": "科技",
+                "category": "科技",
                 "source_title": "新闻二",
                 "discovered_publish_time": "2026-08-18 10:00:00",
             },

@@ -3,9 +3,12 @@
 这套工具不依赖企业 RPC，可以先完成三件事：定义稳定样本格式、建立 Agent 评测基线、验证
 故障是否被正确重试或阻塞。它不是完整 Data Loop，也不会自动修改 Prompt、规则或生产版本。
 
+数据集已按 `sql_security / business_sql / retrieval / writing / hot_news` 分类，
+各目录用途和保留依据见 [数据集索引](datasets/README.md)。
+
 ## 1. 你现在怎样补评测内容
 
-从 `datasets/hot_news_eval_seed_v1.json` 复制一个 case，只填写两部分：
+从 `datasets/hot_news/hot_news_eval_seed_v1.json` 复制一个 case，只填写两部分：
 
 1. `analysis_input`：热点新闻、确定性指标、热度分量，以及允许模型看到的关联证据。
 2. `expected`：允许的主驱动、必须/禁止引用的证据、必须引用的指标，以及是否必须说明局限。
@@ -13,7 +16,7 @@
 不需要人工编写一整篇“标准分析报告”。这种最小标签更容易保持一致，也允许模型使用不同但
 合理的表达。
 
-当前 `datasets/hot_news_eval_seed_v1.json` 已按下列分层补齐 60 条
+当前 `datasets/hot_news/hot_news_eval_seed_v1.json` 已按下列分层补齐 60 条
 （`dataset_version` 为 `2026-10-13.v3`；前 30 条沿用 v2 六大基础分层，后 30 条为 v3 扩充）：
 
 | 分层 | 数量 | 重点 |

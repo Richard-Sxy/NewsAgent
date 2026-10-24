@@ -18,7 +18,7 @@ import zipfile
 from evaluation.data_writing_dataset import load_seed, validate_seed
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_SEED = ROOT / 'agent/evaluation/datasets/data_writing_august_2026_v1/seed.json'
+DEFAULT_SEED = ROOT / 'agent/evaluation/datasets/writing/data_writing_august_2026_v1/seed.json'
 STAGES = {'research': '研究', 'write': '写作', 'review': '审校'}
 DOMAINS = {'finance': '金融', 'ai': 'AI', 'technology': '机器人 / 科技'}
 EVENTS = {

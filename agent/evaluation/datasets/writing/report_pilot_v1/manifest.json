@@ -1,0 +1,133 @@
+{
+  "case_count": 3,
+  "cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "execution_status": "not_run",
+      "semantic_review_status": "pending_human_review",
+      "source_count": 2,
+      "source_ids": [
+        "S-TENCENT",
+        "S-TENCENT-CASH"
+      ],
+      "split": "development",
+      "structural_blockers": [],
+      "structural_source_ready": true
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "execution_status": "not_run",
+      "semantic_review_status": "pending_human_review",
+      "source_count": 2,
+      "source_ids": [
+        "S-OPENAI-IPO",
+        "S-OPENAI-GROWTH"
+      ],
+      "split": "development",
+      "structural_blockers": [],
+      "structural_source_ready": true
+    },
+    {
+      "case_id": "E02-BANK-H1-REPORT",
+      "event_group_id": "E02-BANK-H1",
+      "execution_status": "not_run",
+      "semantic_review_status": "pending_human_review",
+      "source_count": 1,
+      "source_ids": [
+        "S-BANK"
+      ],
+      "split": "validation",
+      "structural_blockers": [
+        "missing_second_source"
+      ],
+      "structural_source_ready": false
+    }
+  ],
+  "dataset_version": "report-pilot-v1",
+  "event_group_count": 3,
+  "files": {
+    "inputs.jsonl": {
+      "bytes": 21597,
+      "sha256": "c8a1d55dfcde74193e73d6b8bd169eeabf3604dcc8ee00959a55c4416d56c105"
+    },
+    "private/annotation-template.json": {
+      "bytes": 6098,
+      "sha256": "b3fd317300dd71dc1bb84384e0823229b4b36c971ab9fcb8900df0bbfaee7c0c"
+    },
+    "private/labels.draft.jsonl": {
+      "bytes": 9533,
+      "sha256": "536c2e0a506a83bd932b045abc59c1a6cf98da6bbf2ff1c0e27d6362601c0dee"
+    },
+    "private/reviewer-probes.draft.jsonl": {
+      "bytes": 5777,
+      "sha256": "dbda36c56350b275869000f79896a9ef616330ca6808685278e681997dc7cb1a"
+    }
+  },
+  "historical_snapshot_verified": false,
+  "independent_source_verification": false,
+  "model_inference_performed": false,
+  "model_input_boundary": "Only each inputs.jsonl record.input; never private/, manifest or seed.",
+  "prepared_at": "2026-10-24T07:33:18.515163+00:00",
+  "schema_version": 1,
+  "scope": "full cached-news documents for Research/Writer/Reviewer report-pilot preparation only",
+  "scoring_status": "not_run",
+  "source_boundary": "仅依据给定缓存报道形成数据短报告，保留来源归属、统计期间和不确定性。缓存报道未经独立核真；八月发表元数据不代表八月当日留存版本。",
+  "source_count": 5,
+  "source_dataset": {
+    "dataset_version": "tencent-news-data-writing-2026-08.v1",
+    "path": "/Users/shi/Project/myProject/NewsAgent/agent/evaluation/datasets/writing/data_writing_august_2026_v1/seed.json",
+    "sha256": "8238b4672d7ab9ca4353c19f62a71a269a86e9b9ebd3b53c8ae2d116464b8611"
+  },
+  "sources": [
+    {
+      "cache_reference": "news/data/local_recall/articles-v1/20260812A0BLLJ00.json",
+      "cache_sha256": "7a2a3ddf301e77feb924c580119838ea5e6fa5bc4842d05c2649d85dc5cbfd55",
+      "content_characters": 1523,
+      "content_sha256": "9163f7101ecc6ba861c10e6001830e2d285a051543e39f2b0b66df87c3ef16bd",
+      "fetched_at": "2026-10-06T08:47:33.393363+00:00",
+      "source_id": "S-TENCENT",
+      "verification_status": "cache_only"
+    },
+    {
+      "cache_reference": "news/data/local_recall/articles-v1/20260812A0C2Q700.json",
+      "cache_sha256": "0cc8a3b0e5f8342eb155e9b07f363e1386bf8ce204ddec477e9b3b50b1ceb271",
+      "content_characters": 558,
+      "content_sha256": "b54f91dba714ecd25542b5bb6f3121084061d90356a113b97c6ef21cd099f130",
+      "fetched_at": "2026-10-06T08:47:33.883033+00:00",
+      "source_id": "S-TENCENT-CASH",
+      "verification_status": "cache_only"
+    },
+    {
+      "cache_reference": "news/data/local_recall/articles-v1/20260820A07JJO00.json",
+      "cache_sha256": "ee0eb96a88f4d358bcaff66513320dd01a074b8aa80b1927b738e03d12ccf222",
+      "content_characters": 865,
+      "content_sha256": "9c321e99b4839acc8df6d26ac75797dc375bd4271cdf20e02ef13ce21528e6fb",
+      "fetched_at": "2026-10-06T08:47:39.100695+00:00",
+      "source_id": "S-OPENAI-IPO",
+      "verification_status": "cache_only"
+    },
+    {
+      "cache_reference": "news/data/local_recall/articles-v1/20260820A0A9DO00.json",
+      "cache_sha256": "fcd5d25e71e1d899c52a9362127f57747e72be7a148f66ed898568dd6092ef46",
+      "content_characters": 3039,
+      "content_sha256": "7245bd364ccaa5044efabc87c9f8de27eec911c8b0807f26e09de46182a4ad38",
+      "fetched_at": "2026-10-06T08:47:41.127246+00:00",
+      "source_id": "S-OPENAI-GROWTH",
+      "verification_status": "cache_only"
+    },
+    {
+      "cache_reference": "news/data/local_recall/articles-v1/20260819A059HM00.json",
+      "cache_sha256": "1ae353478f5391f02f1fc7dd00201859291c330249a471e1f3fe653c8cb75897",
+      "content_characters": 878,
+      "content_sha256": "726e416330729237f9883b65bd1b129f2f1052ad284694980ace9faf83cf6e2f",
+      "fetched_at": "2026-10-06T08:47:34.831889+00:00",
+      "source_id": "S-BANK",
+      "verification_status": "cache_only"
+    }
+  ],
+  "status": "draft_pending_human_review",
+  "structural_readiness_definition": "At least two hash-verified cached documents; not semantic approval or runnable workflow acceptance.",
+  "workflow_execution": "not_run"
+}

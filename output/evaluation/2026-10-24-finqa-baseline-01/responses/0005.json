@@ -1,0 +1,28 @@
+{
+  "id": "17e1d83c-20ba-4c3d-a73d-df16def3247e",
+  "object": "chat.completion",
+  "created": 1792824867,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"predicted\":[\"subtract(\",\"11503\",\"10815\",\")\",\"EOF\"]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1244,
+    "completion_tokens": 19,
+    "total_tokens": 1263,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 1244
+  },
+  "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+}

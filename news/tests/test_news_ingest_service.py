@@ -428,3 +428,84 @@ def test_ingest_urls_rejects_too_many_urls(
         match="单次最多导入 20 篇新闻",
     ):
         service.ingest_urls(urls)
+
+
+def test_board_exclusion_is_filtered_and_never_success_or_failure(tmp_path):
+    reason = "news_board_excluded: board=health; policy=news-board-admission-v1"
+
+    class ExcludingClient:
+        calls = 0
+
+        def index_news_document(self, article, text, extra_metadata=None):
+            self.calls += 1
+            assert extra_metadata == {"category": "健康"}
+            return {
+                "documentId": "news-test", "indexedCount": 0,
+                "status": "skipped", "detail": reason,
+            }
+
+    client = ExcludingClient()
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    service = NewsIngestService(
+        crawler=FakeCrawler(), knowledge_client=client, repository=repository,
+    )
+    url = "https://news.qq.com/rain/a/HEALTH"
+    for _ in range(2):
+        result = service.ingest_urls([url], metadata_by_url={url: {"category": "健康"}})
+        assert result["filtered"] == 1
+        assert result["succeeded"] == result["failed"] == result["retry_exhausted"] == 0
+        assert result["items"][0]["detail"] == reason
+        assert result["items"][0]["collection_id"] is None
+        stored = repository.get_by_url(url)
+        assert stored["status"] == "filtered"
+        assert stored["error_message"] == reason
+        assert stored["retry_count"] == 0
+        assert repository.list_success() == []
+    # An explicit re-import rechecks the current policy, rather than using success dedup.
+    assert client.calls == 2
+
+
+def test_existing_index_skip_keeps_success_dedup_compatibility(tmp_path):
+    class AlreadyIndexedClient:
+        def index_news_document(self, article, text, extra_metadata=None):
+            return {
+                "documentId": "news-test", "indexedCount": 0,
+                "status": "skipped", "detail": "already indexed",
+            }
+
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    service = NewsIngestService(
+        crawler=FakeCrawler(), knowledge_client=AlreadyIndexedClient(), repository=repository,
+    )
+    url = "https://news.qq.com/rain/a/EXISTING"
+    assert service.ingest_url(url)["status"] == "success"
+    assert repository.get_by_url(url)["status"] == "success"
+    assert service.ingest_url(url)["status"] == "skipped"
+
+
+def test_board_exclusion_updates_original_pending_url_when_crawler_normalizes(tmp_path):
+    reason = "news_board_excluded: board=health; policy=news-board-admission-v1"
+
+    class ExcludingClient:
+        def index_news_document(self, article, text, extra_metadata=None):
+            return {
+                "documentId": "news-test", "indexedCount": 0,
+                "status": "skipped", "detail": reason,
+            }
+
+    original_url = "https://news.qq.com/rain/a/HEALTH?source=feed"
+    canonical_url = "https://news.qq.com/rain/a/HEALTH"
+    article = FakeCrawler().crawl(canonical_url)
+    repository = IngestRepository(str(tmp_path / "test.db"))
+    service = NewsIngestService(
+        crawler=ConfigurableCrawler(article), knowledge_client=ExcludingClient(),
+        repository=repository,
+    )
+
+    result = service.ingest_url(original_url)
+
+    assert result["status"] == "filtered"
+    assert result["url"] == canonical_url
+    assert repository.get_by_url(original_url)["status"] == "filtered"
+    assert repository.get_by_url(original_url)["error_message"] == reason
+    assert repository.get_by_url(canonical_url) is None

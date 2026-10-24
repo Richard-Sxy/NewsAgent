@@ -104,6 +104,8 @@ class DiscoveryIngestService:
         metadata_by_url = {
             item.url: {
                 "topic": item.topic,
+                # Discovery topics are source board names, not inferred body topics.
+                "category": item.topic,
                 "source_title": item.title,
                 "discovered_publish_time":(
                     item.publish_time

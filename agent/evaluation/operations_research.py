@@ -36,7 +36,7 @@ from evaluation.operations_synthetic import metric_snapshot, metrics_view, valid
 
 VERSION = "2026-10-14.public-research-synthetic-v1"
 DEFAULT_CATALOG = Path(__file__).parent / "seeds" / "operations_research_v1.json"
-DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "operations_research_v1"
+DEFAULT_OUTPUT = Path(__file__).parent / "datasets" / "hot_news" / "operations_research_v1"
 SPLITS = ("development", "validation", "test")
 Split = Literal["development", "validation", "test"]
 Profile = Literal["click", "consumption", "interaction", "growth"]

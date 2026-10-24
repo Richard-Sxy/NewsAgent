@@ -15,6 +15,7 @@ import re
 from typing import Protocol, Sequence
 
 from app.analytics.entities import ContentType
+from app.modules.knowledge.board_policy import board_exclusion_detail
 from app.analytics.news_content import NewsContent
 from app.analytics.video_textualization import (
     ContentTextualization,
@@ -94,7 +95,8 @@ class KnowledgeDocumentBuilder:
             textualization=textualization,
             publish_time=content.publish_time.isoformat(),
             source_url=content.source_url,
-            extra={"original_title": content.title, "content_version": "1"},
+            extra={"original_title": content.title, "content_version": "1",
+                   "category": content.category},
         )
         document = KnowledgeDocument(
             document_id=document_id,
@@ -147,6 +149,12 @@ class ContentIngestService:
             document_id = build_document_id(
                 self.policy.document_id_prefix, content.news_id
             )
+            excluded = board_exclusion_detail({"category": content.category})
+            if excluded is not None:
+                results[index] = IngestOutcome(
+                    document_id=document_id, status=IngestStatus.SKIPPED, detail=excluded,
+                )
+                continue
             asset = await self._resolve_video_asset(
                 tenant_id=tenant_id, content=content
             )

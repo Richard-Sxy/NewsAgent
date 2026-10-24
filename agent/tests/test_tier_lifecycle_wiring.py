@@ -208,6 +208,23 @@ async def test_protected_readiness_checks_tables_and_rejects_missing_vector_tabl
 
 
 @pytest.mark.asyncio
+async def test_api_health_exclusion_returns_reason_without_creating_job(setup):
+    transport = httpx.ASGITransport(app=app_for(setup.runtime))
+    item = payload("health") | {"metadata": {"category": "健康"}}
+    async with httpx.AsyncClient(transport=transport, base_url="http://fixture") as client:
+        response = await client.post("/api/v1/knowledge/documents", headers=AUTH,
+                                     json={"documents": [item]})
+        assert response.status_code == 200
+        outcome = response.json()["outcomes"][0]
+        assert outcome["status"] == "skipped"
+        assert outcome["collection_id"] is None
+        assert outcome["detail"].startswith("news_board_excluded:")
+        response = await client.get("/api/v1/knowledge/documents/document-health/status", headers=AUTH)
+        assert response.status_code == 404
+    assert await setup.runtime.service.ledger.list_pending(limit=10) == []
+
+
+@pytest.mark.asyncio
 async def test_api_acceptance_status_and_withdrawal_follow_durable_state(setup):
     runtime = setup.runtime
     transport = httpx.ASGITransport(app=app_for(runtime))

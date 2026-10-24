@@ -24,7 +24,7 @@ from reportlab.platypus import Paragraph
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = ROOT / "agent/evaluation/datasets/operations_synthetic_v1"
+DEFAULT_INPUT = ROOT / "agent/evaluation/datasets/hot_news/operations_synthetic_v1"
 DEFAULT_OUTPUT = ROOT / "output/pdf/DataLoop_运营反馈与数据集扩充_可视化指南.pdf"
 WIDTH, HEIGHT = A4
 MARGIN = 42

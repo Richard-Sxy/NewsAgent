@@ -54,7 +54,7 @@ def load_evidence(path: Path):
     assert len(query_traces) == summary["completed_query_count"] == 12
     assert len({trace["result"]["run_id"] for trace in query_traces}) == 11
     assert len({trace["result"]["sql_query_id"] for trace in query_traces}) == 11
-    manifest_path = ROOT / "agent/evaluation/datasets/hot_news_dialogue_v1/manifest.json"
+    manifest_path = ROOT / "agent/evaluation/datasets/hot_news/hot_news_dialogue_v1/manifest.json"
     cases_path = manifest_path.with_name("cases.json")
     manifest = json.loads(manifest_path.read_text())
     assert sha256(cases_path.read_bytes()).hexdigest() == manifest["sha256"] == report["dataset_sha256"]

@@ -288,6 +288,20 @@ class IngestRepository:
                 ),
             )
 
+    def mark_filtered(self, url: str, title: str, reason: str) -> None:
+        """Persist a policy exclusion separately from success and retryable failure."""
+        now = datetime.now(timezone.utc).isoformat()
+        with self.connect() as connection:
+            connection.execute(
+                """
+                UPDATE news_ingest_records
+                SET title = ?, collection_id = NULL, status = 'filtered',
+                    error_message = ?, retry_count = 0, updated_at = ?
+                WHERE url = ?
+                """,
+                (title, reason, now, url),
+            )
+
     def save_title_analysis(self, url: str, analysis: TitleAnalysis) -> None:
         """原子替换一篇新闻的标题分析和可查询实体行。"""
         now = datetime.now(timezone.utc).isoformat()

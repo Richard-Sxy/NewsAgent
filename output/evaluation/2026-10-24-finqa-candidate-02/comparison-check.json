@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-24T07:23:49.082248+00:00",
+  "status": "passed",
+  "scope": "offline prompt/example validation and paired-input identities",
+  "experiments": [
+    "2026-10-24-finqa-baseline-01",
+    "2026-10-24-finqa-candidate-01",
+    "2026-10-24-finqa-candidate-02"
+  ],
+  "planned": 20,
+  "same_cases_inputs_gold_scorer_model_runtime": true,
+  "changed_asset": "prompt.txt",
+  "prompt_hashes": {
+    "2026-10-24-finqa-baseline-01": "14bdd773ffa708f59d83f0bef62001b47648895a3b62fcf14df6e0ebd8363017",
+    "2026-10-24-finqa-candidate-01": "8c930f607738221c793907a472461cb202cd16e0a97e039dcceec31de2efd9f5",
+    "2026-10-24-finqa-candidate-02": "7bc9caf8f07ee682760780ea8a9432876810645559f760c05170516406abd797"
+  },
+  "format_examples": [
+    {
+      "tokens": [
+        "subtract(",
+        "120",
+        "100",
+        ")",
+        "EOF"
+      ],
+      "execution_result": 20.0,
+      "kind": "synthetic_format_example_not_model_prediction"
+    },
+    {
+      "tokens": [
+        "add(",
+        "70",
+        "30",
+        ")",
+        "subtract(",
+        "#0",
+        "25",
+        ")",
+        "EOF"
+      ],
+      "execution_result": 75.0,
+      "kind": "synthetic_format_example_not_model_prediction"
+    }
+  ],
+  "numeric_parser_checks": 4,
+  "real_model_calls": 0,
+  "candidate_model_quality": "not_run",
+  "production_acceptance": "not_approved",
+  "limitations": [
+    "development subset used to design prompts",
+    "not NewsAgent Research/Writer/Reviewer or end-to-end report quality",
+    "same model alias does not pin provider weights"
+  ]
+}

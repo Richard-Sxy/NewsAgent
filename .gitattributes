@@ -1,0 +1,2 @@
+# Preserve frozen SQLShield source bytes; their SHA-256 includes CRLF endings.
+agent/evaluation/datasets/sql_security/SQLShield/*.csv -text whitespace=cr-at-eol

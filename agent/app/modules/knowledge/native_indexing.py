@@ -17,6 +17,7 @@ from app.modules.knowledge.document import (
     KnowledgeDocument,
 )
 from app.model_runtime.core import EmbeddingPort, EmbeddingRequest
+from app.modules.knowledge.board_policy import excluded_board_outcome
 from app.retrieval.tiered_vector import ChunkVectorRecord, TieredVectorIndexPort, VectorTier
 
 
@@ -101,6 +102,10 @@ class NativeKnowledgeIndexingService:
         outcomes: list[IngestOutcome] = []
         for document in documents:
             document.validate()
+            excluded = excluded_board_outcome(document)
+            if excluded is not None:
+                outcomes.append(excluded)
+                continue
             news_id = document.metadata.get("news_id", "").strip()
             version_text = document.metadata.get("content_version", "")
             publish_text = document.metadata.get("publish_time", "")

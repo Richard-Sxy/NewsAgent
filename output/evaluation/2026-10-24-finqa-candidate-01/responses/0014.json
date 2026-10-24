@@ -1,0 +1,28 @@
+{
+  "id": "7d978947-9a82-4461-b4ab-e38d3d9b22bd",
+  "object": "chat.completion",
+  "created": 1792826148,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"predicted\":[\"table_sum(\",\"development costs incurred during the period\",\"none\",\")\",\"add(\",\"#0\",\"1654\",\")\",\"EOF\"]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 865,
+    "completion_tokens": 32,
+    "total_tokens": 897,
+    "prompt_tokens_details": {
+      "cached_tokens": 128
+    },
+    "prompt_cache_hit_tokens": 128,
+    "prompt_cache_miss_tokens": 737
+  },
+  "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+}

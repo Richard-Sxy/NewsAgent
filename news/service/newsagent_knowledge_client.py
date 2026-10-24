@@ -79,6 +79,8 @@ class NewsAgentKnowledgeClient:
             raise RuntimeError("NewsAgent knowledge API returned an unknown status")
         return {
             "documentId": outcomes[0]["document_id"],
+            "status": outcomes[0]["status"],
+            "detail": outcomes[0].get("detail"),
             "indexedCount": sum(
                 item["status"] in {"created", "updated"} for item in outcomes
             ),

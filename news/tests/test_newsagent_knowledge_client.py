@@ -1,5 +1,8 @@
 """Crawler document identity contracts without HTTP or configured credentials."""
 
+import httpx
+import pytest
+
 from crawler.tencent_news import NewsArticle
 from service.newsagent_knowledge_client import NewsAgentKnowledgeClient
 
@@ -27,3 +30,26 @@ def test_long_news_ids_do_not_overwrite_one_another():
     assert len(first["document_id"]) <= 160
     assert first["news_id"] == "x" * 155 + "a"
     assert second["news_id"] == "x" * 155 + "b"
+
+
+@pytest.mark.parametrize("status,detail,indexed_count", [
+    ("created", None, 1),
+    ("skipped", "already indexed", 0),
+    ("skipped", "news_board_excluded: board=health; policy=news-board-admission-v1", 0),
+])
+def test_index_outcome_preserves_skip_reason(monkeypatch, status, detail, indexed_count):
+    client = NewsAgentKnowledgeClient.__new__(NewsAgentKnowledgeClient)
+    client._base_url = "http://knowledge.test"
+    client._headers = {}
+    client._timeout = 1
+    response = httpx.Response(
+        200,
+        json={"outcomes": [{"document_id": "news-test", "status": status, "detail": detail}]},
+        request=httpx.Request("POST", "http://knowledge.test/api/v1/knowledge/documents"),
+    )
+    monkeypatch.setattr(httpx, "post", lambda *args, **kwargs: response)
+
+    assert client._post("documents", {}) == {
+        "documentId": "news-test", "status": status, "detail": detail,
+        "indexedCount": indexed_count,
+    }

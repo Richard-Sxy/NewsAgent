@@ -26,7 +26,7 @@ from time import monotonic
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DATASET = Path(__file__).with_name("datasets") / "metric_contract_business_v1.json"
+DEFAULT_DATASET = Path(__file__).with_name("datasets") / "business_sql" / "metric_contract_business_v1.json"
 
 
 def install_offline_fence() -> None:

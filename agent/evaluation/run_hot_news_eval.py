@@ -18,7 +18,7 @@ from app.modules.hot_news.analysis.runner import NativeHotNewsAnalysisRunner
 
 
 DEFAULT_DATASET = (
-    Path(__file__).parent / "datasets" / "hot_news_eval_seed_v1.json"
+    Path(__file__).parent / "datasets" / "hot_news" / "hot_news_eval_seed_v1.json"
 )
 
 

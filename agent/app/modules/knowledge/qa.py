@@ -7,6 +7,7 @@ from hashlib import sha256
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.knowledge.document import IngestReport, KnowledgeDocument
+from app.modules.knowledge.board_policy import excluded_board_outcome
 from app.modules.knowledge.postgres_store import PostgresKnowledgeStore
 from app.model_runtime.agent_client import NativeStructuredAgentClient, model_request_context
 
@@ -42,6 +43,9 @@ class NativeQAGenerationService:
         source: KnowledgeDocument,
     ) -> IngestReport:
         source.validate()
+        excluded = excluded_board_outcome(source)
+        if excluded is not None:
+            return IngestReport((excluded,))
         with model_request_context(
             tenant_id=tenant_id,
             trace_id=f"knowledge-qa-{sha256(source.document_id.encode('utf-8')).hexdigest()}",

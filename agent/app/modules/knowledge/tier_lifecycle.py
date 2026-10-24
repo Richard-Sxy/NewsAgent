@@ -13,6 +13,7 @@ import logging
 
 from app.observability.decorators import traced
 from app.modules.knowledge.document import IngestOutcome, IngestReport, IngestStatus
+from app.modules.knowledge.board_policy import NewsBoardExcluded, excluded_board_outcome
 from app.modules.knowledge.native_indexing import split_text, require_embedding_dimension
 from app.modules.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
 from app.modules.knowledge.tier_lifecycle_store import projection_chunk_id
@@ -42,6 +43,9 @@ class KnowledgeLifecycleService:
 
     async def accept(self, *, tenant_id: str, document, now: datetime | None = None) -> dict:
         document.validate()
+        excluded = excluded_board_outcome(document)
+        if excluded is not None:
+            raise NewsBoardExcluded(excluded.detail)
         now = now or datetime.now(UTC)
         news_id = document.metadata.get("news_id", "").strip()
         revision = int(document.metadata.get("content_version", "0"))
@@ -59,6 +63,11 @@ class KnowledgeLifecycleService:
         outcomes = []
         for document in documents:
             try:
+                document.validate()
+                excluded = excluded_board_outcome(document)
+                if excluded is not None:
+                    outcomes.append(excluded)
+                    continue
                 previous = await self.ledger.get_news(
                     tenant_id=tenant_id, news_id=document.metadata.get("news_id", ""))
                 job = await self.accept(tenant_id=tenant_id, document=document)

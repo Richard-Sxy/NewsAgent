@@ -1,0 +1,198 @@
+{
+  "$defs": {
+    "SqlAssistantIntent": {
+      "additionalProperties": false,
+      "description": "模型可以选择批准的语义，而不是租户身份或 SQL 文本。",
+      "properties": {
+        "sort_by": {
+          "enum": [
+            "clicks",
+            "ctr",
+            "interactions",
+            "impressions",
+            "hot_score"
+          ],
+          "title": "Sort By",
+          "type": "string"
+        },
+        "sort_direction": {
+          "default": "desc",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "title": "Sort Direction",
+          "type": "string"
+        },
+        "content_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "article",
+                "video"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content Type"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "maxLength": 40,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "row_limit": {
+          "default": 10,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Row Limit",
+          "type": "integer"
+        },
+        "explanation": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sort_by",
+        "explanation"
+      ],
+      "title": "SqlAssistantIntent",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "ready",
+        "clarify",
+        "unsupported"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "intent": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SqlAssistantIntent"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "time_expression": {
+      "default": "sample",
+      "enum": [
+        "sample",
+        "today",
+        "yesterday",
+        "day_before_yesterday",
+        "latest",
+        "date"
+      ],
+      "title": "Time Expression",
+      "type": "string"
+    },
+    "explicit_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Explicit Date"
+    },
+    "hour_start": {
+      "anyOf": [
+        {
+          "maximum": 23,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Hour Start"
+    },
+    "hour_end": {
+      "anyOf": [
+        {
+          "maximum": 24,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Hour End"
+    },
+    "time_basis": {
+      "default": "behavior",
+      "enum": [
+        "behavior",
+        "publication"
+      ],
+      "title": "Time Basis",
+      "type": "string"
+    },
+    "ranking_source": {
+      "default": "unspecified",
+      "enum": [
+        "project_computed",
+        "enterprise_board",
+        "unspecified"
+      ],
+      "title": "Ranking Source",
+      "type": "string"
+    },
+    "response_style": {
+      "default": "list",
+      "enum": [
+        "list",
+        "summary"
+      ],
+      "title": "Response Style",
+      "type": "string"
+    },
+    "unsupported_conditions": {
+      "items": {
+        "maxLength": 120,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 8,
+      "title": "Unsupported Conditions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "title": "QueryUnderstanding",
+  "type": "object"
+}
