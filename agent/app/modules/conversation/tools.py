@@ -565,8 +565,8 @@ def render_tool_results(traces) -> str:
             except (ValidationError, ValueError):
                 parts.append("查询范围说明未通过结构校验，无法确认本轮结果。")
                 continue
-            parts.append(resolution.message)
-            parts.extend(resolution.notes)
+            parts.append(resolution.message)     # 这边是添加一个元素对象 [news1, [news2, news3]]
+            parts.extend(resolution.notes)       # 这边是迭代添加元素对象 [news1, news2, news3]
             response_style = resolution.response_style
             if resolution.status != "ready":
                 coverage_start = resolution.coverage_window_start or resolution.supported_window_start

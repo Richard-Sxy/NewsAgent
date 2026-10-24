@@ -1,0 +1,111 @@
+{
+  "release": {
+    "tenant_id": "public-news-local",
+    "schema_version": "unified-news-content-v1",
+    "selection_policy": "prefer-cached-body-source-priority-v1",
+    "release_id": "news-0c74530f2864db20a73d7a96",
+    "identity_sha256": "0c74530f2864db20a73d7a960cec3649085e9db5fdb054bbf0bfbfc21a58375e",
+    "counts": {
+      "news_count": 21435,
+      "version_count": 21828,
+      "provenance_count": 22369,
+      "body_available_count": 8441,
+      "fragments_only_count": 11794,
+      "title_only_count": 1200,
+      "conflicting_body_news_count": 0
+    }
+  },
+  "files": {
+    "versions.jsonl": {
+      "sha256": "56b97d6566ae5769764aba884c708c48c99e18e62b2d3dc13b3f7df485b652bf",
+      "bytes": 84110121,
+      "rows": 21828
+    },
+    "provenance.jsonl": {
+      "sha256": "85a6ad068d129f15c4875ddcbd6e829b85eb1a242539d9b3b70b56dedd5892d0",
+      "bytes": 13064431,
+      "rows": 22369
+    },
+    "release_items.jsonl": {
+      "sha256": "e36675e62dbd7890951421621894f43577b4ff26f0de828c5e3bf028e70aa4df",
+      "bytes": 5437273,
+      "rows": 21435
+    }
+  },
+  "source_inventory": {
+    "candidate_records": 22369,
+    "unique_news_ids": 21435,
+    "overlapping_source_records": 934,
+    "selected_content_states": {
+      "body_available": 8441,
+      "fragments_only": 11794,
+      "title_only": 1200
+    },
+    "selected_content_types": {
+      "article": 20583,
+      "video": 852
+    },
+    "selected_quality_flags": {
+      "body_missing": 1200,
+      "body_under_100_chars": 290,
+      "body_under_300_chars": 2566,
+      "cached_body_completeness_unreviewed": 8441,
+      "duplicate_chunk_index": 3648,
+      "fragment_only": 11794,
+      "metadata_review_required": 7,
+      "missing_publish_time": 11794,
+      "missing_title": 11794,
+      "missing_url": 11794,
+      "short_body_lt_100": 290,
+      "source_content_version_missing": 11794,
+      "source_naive_time_assumed_asia_shanghai": 441,
+      "source_publish_time_missing": 11794,
+      "source_title_missing": 11794,
+      "source_url_missing": 11794,
+      "title_only": 1200
+    },
+    "historical_fragment_rows": 36379,
+    "duplicate_body_groups": 6,
+    "duplicate_body_extra_news_ids": 8,
+    "packages": [
+      {
+        "package": "historical-bge-public-fragments",
+        "candidate_records": 12187,
+        "unique_news_ids": 12187,
+        "source_files": 1
+      },
+      {
+        "package": "incremental-20261014-v1",
+        "candidate_records": 541,
+        "unique_news_ids": 541,
+        "source_files": 541
+      },
+      {
+        "package": "incremental-20261014-v2",
+        "candidate_records": 8000,
+        "unique_news_ids": 8000,
+        "source_files": 8000
+      },
+      {
+        "package": "public-headlines-20261007",
+        "candidate_records": 1200,
+        "unique_news_ids": 1200,
+        "source_files": 1
+      },
+      {
+        "package": "public-recall-cache-v1",
+        "candidate_records": 441,
+        "unique_news_ids": 441,
+        "source_files": 441
+      }
+    ],
+    "boundaries": [
+      "public_content_only",
+      "no_enterprise_behavior_imported",
+      "cached_body_completeness_not_certified",
+      "historical_fragments_not_reconstructed",
+      "headline_article_video_type_preserved",
+      "short_or_metadata_review_records_retained_with_flags"
+    ]
+  }
+}

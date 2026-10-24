@@ -159,6 +159,7 @@ class TieredVectorKnowledgeSearchClient(KnowledgeSearchClient):
         self._tiers = tuple(dict.fromkeys(tiers))
         self._max_query_concurrency = max_query_concurrency
 
+    """ 异步检索召回不相关新闻 """
     async def batch_search_related_news(
         self,
         queries: tuple[RelatedNewsSearchQuery, ...],

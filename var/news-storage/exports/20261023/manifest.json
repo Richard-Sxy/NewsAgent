@@ -1,0 +1,17 @@
+{
+  "tenant_id": "public-news-local",
+  "release_id": "news-0c74530f2864db20a73d7a96",
+  "output": "var/news-storage/exports/20261023/body-candidates.jsonl",
+  "sha256": "9e638bcbae404f1ad7a3b51e6bb7e1654c94fb8d19499590a518cec5acef63fb",
+  "counts": {
+    "exported": 8144,
+    "excluded_metadata_review": 7,
+    "excluded_short_body": 290
+  },
+  "filters": {
+    "body_only": true,
+    "min_body_chars": 100,
+    "exclude_metadata_review": true
+  },
+  "artifact_kind": "source_material_not_evaluation_labels"
+}

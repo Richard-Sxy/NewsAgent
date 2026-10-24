@@ -34,7 +34,6 @@
 | Docker 容器 | `news-agent-native-e2e-postgres-1` |
 | 容器内端口 | `5432` |
 | 本地演示用户名 | `newsagent_native` |
-| 本地演示密码 | `newsagent_native`（仓库 Compose 中公开的本地配置） |
 | 内容与内容标签 Schema | `public` |
 | 新闻受众 Schema | `news_audience` |
 | 容器内数据目录 | `/var/lib/postgresql/data`；由现有 Compose 的 `native-postgres-data` 卷挂载 |
@@ -802,8 +801,8 @@ CLI 单批支持 1–20 个不同新闻 ID，回看期限仅 24/720，查询 top
 从仓库根目录设置本地公开演示连接：
 
 ```bash
-export UNIFIED_NEWS_DATABASE_URL='postgresql+psycopg://newsagent_native:newsagent_native@127.0.0.1:25432/newsagent_unified_news_20261023'
-export AUDIENCE_DATABASE_URL='postgresql://newsagent_native:newsagent_native@127.0.0.1:25432/newsagent_unified_news_20261023'
+export UNIFIED_NEWS_DATABASE_URL='postgresql+psycopg://YOUR_USER@127.0.0.1:25432/newsagent_unified_news_20261023'
+export AUDIENCE_DATABASE_URL='postgresql://YOUR_USER@127.0.0.1:25432/newsagent_unified_news_20261023'
 ```
 
 这些独立 CLI 只使用显式连接变量，不读取 `.env`。依赖 Python、PostgreSQL、SQLAlchemy、psycopg、SQLite 和已有 Pydantic/规则代码；本次存储与查询不调用 LLM、Embedding、ES 或企业 HTTP 接口。

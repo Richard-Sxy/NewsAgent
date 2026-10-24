@@ -1,0 +1,19 @@
+{
+  "tenant_id": "public-news-local",
+  "release_id": "news-0c74530f2864db20a73d7a96",
+  "tag_release_id": "tags-33c4054fd01bd98cd5ef2826",
+  "output": "var/news-storage/exports/20261023/body-candidates-with-tags.jsonl",
+  "sha256": "f46befd413136176817881ef8eca15873dc58525ae80854d1cdd4105f025379f",
+  "counts": {
+    "exported": 8144,
+    "excluded_metadata_review": 7,
+    "excluded_short_body": 290
+  },
+  "filters": {
+    "body_only": true,
+    "min_body_chars": 100,
+    "exclude_metadata_review": true,
+    "topic_ids": []
+  },
+  "artifact_kind": "source_material_with_inferred_topics_not_evaluation_gold"
+}
