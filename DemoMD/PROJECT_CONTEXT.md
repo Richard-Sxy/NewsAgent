@@ -1,6 +1,6 @@
 # NewsAgent 持久项目上下文
 
-最后更新：2026-10-19
+最后更新：2026-10-23
 
 本文保存已经确认、需要跨会话继承的项目事实、架构边界、当前状态和协作方式。它不保存
 密码、Token、`.env` 内容、企业原始用户行为或未经确认的临时猜测。
@@ -17,8 +17,8 @@ NewsAgent 是独立 Python Agent 项目。Agent 应用层、Prompt/模型版本�
 旧数据库列通过 `20261002_0017` 无损迁移为供应商无关字段。旧 Alembic 迁移与本说明中的
 历史名称保留用于已有数据库升级和决策追溯，不属于可执行依赖。
 
-实现与配置说明见
-[`agent/docs/python-runtime.md`](../agent/docs/python-runtime.md)。
+实现目录与运行入口见 [Agent 服务说明](../agent/README.md)；模型运行时源码位于
+[`agent/app/model_runtime/`](../agent/app/model_runtime/)。原 `python-runtime.md` 已从工作区移除。
 
 ## 2. 项目目标与数据边界
 
@@ -271,7 +271,9 @@ Agent 不可自主：修改生产 Prompt/规则/模型，发布外部内容，�
 企业增量推理、生产锁/事务超时、数据保留治理及负载/故障演练。聊天内写作任务和长期记忆
 需另行确认权限并复用现有Workflow/人工审批，不可默认开启。
 
-启动、配置、调用链、测试入口和后续阶段见 `agent/docs/conversation-agent.md`。
+当前可用的对话取数、模型配置与测试说明见
+[聊天数仓与模型说明](../agent/docs/conversation-warehouse-model.md)；后续阶段见
+[TODO](../TODO.md)。原 `conversation-agent.md` 已从工作区移除。
 
 第二阶段安全 SSE 已实现并在隔离本地环境验收（2026-10-04）：
 
@@ -411,8 +413,9 @@ PostgreSQL JSONB字段，真实工具引用由Python独立提取，不从模型�
 把其他资产变化当作重排效果。未来需版本化真实重排资产与完整证据重放后再接入。
 
 三位正式人工合同评审仍待回填，合成标签演员和独立 Agent 技术审查不能代替人工审核。
-具体调用链、配置、测试和未完成范围见
-[`统一对话能力说明`](../agent/docs/conversation-capability-hooks.md)；验收状态以根目录 TODO.md 最新账本为准。
+统一对话能力的验收状态与未完成范围以 [TODO 最新账本](../TODO.md)为准；
+当前实现见 [conversation 模块](../agent/app/modules/conversation/)。
+原 `conversation-capability-hooks.md` 已从工作区移除。
 
 ## 18. 腾讯新闻的数据驱动写作定位（2026-10-15 用户确认）
 
@@ -577,3 +580,128 @@ v8 数据包已原地重建，摘要为
 正文使用真实公开内容而非合成占位；`/api/v1/conversations/runtime` 返回 661 指标文章和
 7,459 内容-only 文章。企业真实行为指标、内容-only 的真实榜单资格、企业聚合接口和生产
 负载/权限仍未验收；不能让本次本地结果替代这些后续验证。
+
+## 27. 企业数仓技术背景（2026-10-23 用户确认）
+
+用户确认企业数仓使用 **TDSQL-A、PostgreSQL 兼容**。后续企业聚合数据接入沿 PostgreSQL
+方言设计，优先复用现有 SQL 编译、AST 校验与 `SqlWarehouseClient` Port；实际采用协议直连
+还是企业 SQL 网关/SDK，以内部批准的连接方式为准。
+
+该确认是企业技术背景，不代表本地已经实现或验收 TDSQL-A Adapter。内核版本、实际库表、
+指标口径、身份权限、水位/修订及快照一致性仍需映射和验证；本地 PostgreSQL 模拟数据继续
+与企业数据区分，不将当前 13 表结构或合成行为数值描述为企业真实 DDL 或指标。
+
+接入与评测准备见 [企业 TDSQL 数仓合同](../agent/docs/enterprise-tdsql-warehouse-contract.md)，
+逐字段参考见 [当前本地结构字典](../agent/docs/enterprise-warehouse-current-fields.md)。
+
+## 28. 本地统一新闻内容存储与冻结素材（2026-10-23 用户确认并完成）
+
+用户要求先统一企业新闻内容存储、导入此前获取的新闻，再制作评测集；确认本次落地为
+**本地 PostgreSQL，按 TDSQL-A / PostgreSQL 兼容方向设计**。本次复用现有 native-e2e
+PostgreSQL 16 实例的 `127.0.0.1:25432`，新建独立数据库
+`newsagent_unified_news_20261023`，没有改动现有应用库或切换在线 Worker 内容源。
+
+- 新增 Python 原生 `app/modules/news_storage`，通过四张内容版本、来源证据、冻结发布、
+  发布选定项表及 `news_content_selected` 视图统一读取。发布时间为 TIMESTAMPTZ，扩展
+  字段为 JSONB；未使用向量扩展或企业专属 DDL。本地验收不等于企业 TDSQL-A 验收。
+- 租户 `public-news-local`，冻结版本 `news-0c74530f2864db20a73d7a96`：
+  **21,435 个新闻 ID、21,828 个内容版本、22,369 条来源记录**。
+  选定内容为 **8,441 篇缓存正文、11,794 个仅有历史片段的新闻、1,200 条仅标题记录**。
+  来源覆盖 8,000 篇 v2、541 篇 v1、441 篇本地正文、12,187 个历史片段 ID 及 1,200 条标题；
+  来源间重叠已按新闻身份和内容哈希处理，历史片段的 36,379 条原始切片仍保留。
+- 不从片段拼接伪造全文，不推测缺失标题/URL/时间；保留 article/video 类型、短正文和
+  元数据待核查标记。缓存正文均未经过人工完整性认证；不同新闻 ID 的相同正文不合并。
+- 冻结包在 `var/news-storage/unified-public-news-20261023/`，清单包含文件校验和；
+  现成素材在 `var/news-storage/exports/20261023/body-candidates.jsonl`，包含 8,144 篇
+  正文（过滤不足 100 字的 290 篇及元数据待核查的 7 篇），保留版本、来源和质量标记。
+  这只是待抽样、待标注的公开内容素材，不是完成的评测集，也不包含企业行为数据。
+- 已通过 66 项定向测试、真实 PostgreSQL 单事务导入、全量 21,435 条选定记录及来源
+  读回比对、重复导入幂等、固定租户/版本读取及 NewsContent Port 冒烟检查。
+  验收证据在 `output/news-storage-unification-20261023/report.json`。
+
+代码入口 `agent/tools/unify_news_storage.py`；连接必须显式设置
+`UNIFIED_NEWS_DATABASE_URL`，不读取 `.env`。后续评测须固定 tenant/release/hash；
+业务端接入使用 `ReleaseNewsContentRepository`，当前尚未替换 `tier_lifecycle_news` 的
+在线有效内容及索引激活链。角色授权/RLS、企业实例兼容性、增量接入调度与线上投影另行实现。
+没有调用模型、Embedding 或制作评测题/金标。使用方法与逐字段说明见
+[统一新闻存储说明](../agent/docs/unified-news-storage.md)。
+
+## 29. 统一新闻内容、主题标签与旧聚合查询串联（2026-10-23 用户确认并完成）
+
+用户确认今天需将已有 tag 与统一新闻存储串联，而非只保留分离的数据包。
+本次在同一个本地独立 PostgreSQL database 中新增标签发布、新闻标签、主题关系三表，
+及 `news_content_tagged_selected` 联合视图；原正文 release 和全部原字段保持不变。
+
+- 复用已有 `news-behavior-topic-rules-v1` 关键词规则和 `news-behavior-topics-demo-v1`
+  目录（12 个根主题、72 个细分，draft），对统一原文重算，禁止模拟栏目兜底。
+  标签属于规则推断，不是人工评测金标，也不代表腾讯官方主题分类。
+- 标签 release 为 `tags-33c4054fd01bd98cd5ef2826`，绑定正文 release
+  `news-0c74530f2864db20a73d7a96`。21,435 条选定新闻均有明确标签状态：
+  7,566 条命中主题、2,068 条未分类、11,794 条因只有片段而输入不足、7 条元数据待复核。
+  共 35,888 条新闻—主题关系；8,441 篇缓存正文中 7,212 篇命中主题、1,222 篇未分类、7 篇待复核。
+- 旧内容标签与当前公开内容精确相交 781 个 ID（661 篇正文、120 条标题）。标题、正文
+  哈希、规则版本及输出均一致的 670 条标记 `legacy_verified`；模拟栏目标签只作为审计
+  来源，不复制为当前主题。新正文 7,780 篇按相同规则计算，缺失输入不拼凑、不推测标签。
+- `unify_news_storage.py` 增加 `build-tags/verify-tags/import-tags/topics/list/behavior`，
+  `get/summary/export` 可显式传入 `--tag-release-id`；返回中文主题名、规则命中位置、
+  推断标记及版本。按主题过滤在分页前执行，无隐式 latest、无跨租户回退。
+- 旧行为标签保留在原本地模拟包，按明确原租户、news_id、正文哈希及时间窗口只读查询
+  新闻小时聚合，保留来源/场景/指标口径并标记 `synthetic`，不跨小时或跨来源累加 UV。
+  无旧内容引用或无窗口数据时返回 unavailable，不补零；不读取个人事件或画像行。
+- 已导出 `var/news-storage/exports/20261023/all-news-with-tags.jsonl`（21,435 条）和
+  `body-candidates-with-tags.jsonl`（8,144 条）。原候选文件保留；新文件除增加 tags 外，
+  每条原始字段与之前候选逐项一致。标签冻结包位于
+  `var/news-storage/tags/public-news-topics-20261023/`。
+
+验收：168 项定向测试通过；真实 PostgreSQL 全量 21,435 条联合读回、原内容不变、重复
+标签导入幂等、主题目录计数与分页匹配、租户边界、旧模拟聚合可查询及缺数据明确返回均
+通过。证据见 `output/news-storage-unification-20261023/tag-integration-report.json`。
+完整字段与调用链仍见统一存储说明。没有切换在线 Worker、调用模型/Embedding 或发布
+生产配置；企业权限/兼容验收、线上生命周期接入及人工主题质量评测仍待完成。
+
+## 30. 新闻受众聚合正式落入 PostgreSQL（2026-10-23 用户确认并完成）
+
+用户要求将已有受众聚合放入明确的表，能够直接编写 SQL 查询。本次在同一独立本地库
+`127.0.0.1:25432/newsagent_unified_news_20261023` 创建 `news_audience` Schema，
+没有修改正文/标签表或切换在线 Worker。早先 `news_audience_proposal_v1` 仍只是经过
+事务回滚验证的设计稿，实际可查对象以 `news_audience` 为准。
+
+- 来源为 `var/reader-profiles/local-readers-v1-20261017/` 已冻结、匿名聚合包；发布身份
+  使用 manifest 原始字节 SHA：`03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5`。
+  全部标记 `synthetic`，不代表企业真实访问人群，不导入个人事件或逐用户兴趣画像。
+- 7 表包括 `package_release`、`content_binding`、`unified_news_binding`、
+  `reader_snapshot`、`topic_dictionary`、`news_reader_population`、`news_reader_topic`。
+  导入 84 个目录主题、2,474 条源新闻资格、1,488 个租户覆盖窗口；52,718 条新闻窗口
+  受众记录拆为 105,436 条长短期人口行、1,282,053 条保留主题计数，不能把这些行数称为用户数。
+- 视图 `v_news_reader_population_status` 与 `v_news_reader_topic_metrics` 暴露分母、
+  中文主题名、原精度占比、同口径基准/lift、来源、质量与截断信息。源每期限最多20个
+  主题，缺失主题不等于0；长期720h和短期24h分别计算，不能跨小时或标签直接相加UV。
+- `knowledge_as_of` 明确为合成包冻结生成时点；`quality_basis` 是本地导入合同校验，
+  不是企业历史事件到达时间或生产质量验收。覆盖范围为北京时间9月13日20点至10月14日20点。
+  已知源新闻+完整覆盖窗口无访客行可返回empty/0；未绑定或窗口未覆盖不可补零。
+- 显式 `unified_news_binding` 以 news_id+非空正文SHA关联旧业务UUID租户与
+  `public-news-local` 内容域，共1,266条业务映射、661个不同公开新闻。没有把租户
+  强制等同，也没有给新增内容编造行为/受众。正文仍使用原冻结release。
+
+实现入口 `agent/tools/import_reader_audience.py`，命令 `import/bind-content/query`，
+显式配置 `AUDIENCE_DATABASE_URL`，不读取 `.env`。`ReaderWarehouseSource` 校验来源SHA、
+严格Reader合同、绑定、窗口和版本，流式COPY后全量按确定顺序读回摘要，再单事务提交。
+重复导入检查已冻结投影，不追加或覆盖；SQL与CLI均显式绑定来源/租户/窗口。
+
+验收：77项相关测试通过；全量投影读回、重复导入幂等、重复正文绑定、5段交付SQL、
+来源Client快照/人数对照及10项真实PG集成检查通过。示例AI新闻`20260718A03B9V00`，
+北京时间2026-09-24 22点至23点，有6位模拟详情读者，不能当作企业指标。
+可执行SQL在 `agent/docs/sql/news-audience-local-query.sql`，说明在统一存储文档第11节，
+结果与验收报告在 `output/news-storage-unification-20261023/audience-*.json`。
+正文、内容标签与受众库的集中检索入口为
+[本地统一数据库库表与查询手册](../agent/docs/news-storage-database-reference.md)，
+包含实际连接、14张表/138个字段、4个视图、版本身份、数据路径及可执行查询示例。
+企业真实聚合映射、线上SQL Reader Port装配、持续更新作业、权限/RLS和TDSQL-A验收仍待完成。
+
+## 31. 新闻正文对象存储背景（2026-10-23 用户补充）
+
+用户说明新闻内容库使用对象存储；后续企业接入按正文对象+版本/元数据台账设计，具体
+产品、对象键与内容服务接口尚未提供。当前本地统一正文仍在PostgreSQL，本次没有迁到
+对象存储。项目已有S3/MinIO Artifact能力不等于已接通新闻正文对象读取。
+用户询问ES是否需要接入，尚未确认实施；当前没有线上ES/BM25客户端。已知新闻ID的正文
+精确读取不依赖ES，相关内容的关键词检索可另评估ES与现有向量检索的组合。

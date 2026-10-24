@@ -10,7 +10,7 @@ from app.model_runtime.core import StructuredInferenceService
 from app.schemas.sql_assistant import SqlAssistantIntent, SqlAssistantPreviewRequest
 from app.sql_assistant.guard import SqlAssistantGuard
 from app.sql_assistant.planner import SqlAssistantQuestionError, compile_query, local_query_intent, screen_question
-from app.sql_assistant.scenarios import load_sql_scenarios
+from app.sql_assistant.scenarios import SqlScenario, load_sql_scenarios
 from app.sql_assistant.warehouse import DEMO_TENANT_ID, WINDOW_END, WINDOW_START
 
 
@@ -54,6 +54,35 @@ def test_trend_uses_time_order_instead_of_ranking():
     assert intent.row_limit == 168
     assert "ORDER BY event_time ASC" in sql
     SqlAssistantGuard(max_rows=1000).validate(sql, {"tenant_id": str(DEMO_TENANT_ID), "window_start": WINDOW_START, "window_end": WINDOW_END, "row_limit": 168, "category": "科技"})
+
+
+@pytest.mark.parametrize("category", ["汽车", "教育", "娱乐"])
+def test_scene_approved_new_categories_keep_their_filter(category):
+    scenario = SqlScenario.model_validate({
+        **load_sql_scenarios(CONFIG).resolve("news-ranking").model_dump(),
+        "allowed_categories": ["科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"],
+    })
+    intent = local_query_intent({
+        "question": f"查询{category}新闻按点击量从高到低前5条",
+        "scenario": scenario.model_dump(mode="json"),
+    })
+    assert intent.category == category
+    sql = compile_query(intent, scenario)
+    assert "AND category = :category" in sql
+    SqlAssistantGuard().validate(sql, {
+        "tenant_id": str(DEMO_TENANT_ID), "window_start": WINDOW_START,
+        "window_end": WINDOW_END, "row_limit": 5, "category": category,
+    })
+
+
+@pytest.mark.parametrize("category", ["汽车", "教育", "娱乐"])
+def test_new_categories_remain_rejected_when_not_approved_by_scene(category):
+    scenario = load_sql_scenarios(CONFIG).resolve("news-ranking")
+    with pytest.raises(SqlAssistantQuestionError):
+        local_query_intent({
+            "question": f"查询{category}新闻按点击量从高到低前5条",
+            "scenario": scenario.model_dump(mode="json"),
+        })
 
 
 @pytest.mark.parametrize("question", [

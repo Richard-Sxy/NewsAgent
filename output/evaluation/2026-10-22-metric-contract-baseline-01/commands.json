@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Users/shi/Project/myProject/NewsAgent/agent/.venv/bin/python",
+    "-m",
+    "evaluation.run_metric_contract_business",
+    "--output-dir",
+    "../output/evaluation/2026-10-22-metric-contract-baseline-01",
+    "--require-mode",
+    "baseline",
+    "--source-file",
+    "/private/tmp/newsagent-metric-source-before-20261022.py"
+  ],
+  "cwd": "/Users/shi/Project/myProject/NewsAgent/agent",
+  "started_at": "2026-10-22T14:49:27.937709+00:00",
+  "finished_at": "2026-10-22T14:49:32.573382+00:00",
+  "exit_code": 0,
+  "note": "Exit 0 means replay completed. See results.status for contract verdict."
+}

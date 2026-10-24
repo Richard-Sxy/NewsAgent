@@ -1,0 +1,184 @@
+{
+  "source_mode": "synthetic",
+  "queries": [
+    {
+      "query_number": 1,
+      "rows": [
+        {
+          "source_release_sha256": "03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5",
+          "schema_version": "news-reader-audience-v1",
+          "row_counts": {
+            "content_binding": 2474,
+            "reader_snapshot": 1488,
+            "topic_dictionary": 84,
+            "news_reader_topic": 1282053,
+            "news_reader_population": 105436
+          },
+          "source_mode": "synthetic",
+          "coverage_start": "2026-09-13T12:00:00+00:00",
+          "coverage_end": "2026-10-14T12:00:00+00:00",
+          "imported_at": "2026-10-23T08:40:43.783571+00:00"
+        }
+      ]
+    },
+    {
+      "query_number": 2,
+      "rows": [
+        {
+          "tenant_id": "11111111-1111-4111-8111-111111111111",
+          "snapshot_id": "90d919aee5b20f16d3bc3200e91f65d55120b69458388ba6c883a96d1db4954d",
+          "window_start": "2026-09-24T14:00:00+00:00",
+          "window_end": "2026-09-24T15:00:00+00:00",
+          "profile_cutoff": "2026-09-24T14:00:00+00:00",
+          "source_mode": "synthetic",
+          "source_revision": 1,
+          "completeness": "complete",
+          "quality_status": "passed",
+          "quality_basis": "local_import_contract_validation",
+          "generated_at": "2026-10-14T12:35:00+00:00",
+          "watermark_at": "2026-10-14T12:00:00+00:00",
+          "knowledge_as_of": "2026-10-14T12:35:00+00:00",
+          "knowledge_as_of_basis": "synthetic_package_frozen_at"
+        }
+      ]
+    },
+    {
+      "query_number": 3,
+      "rows": [
+        {
+          "news_id": "20260718A03B9V00",
+          "title": "驶向AI的下一程：2026腾讯WAIC之夜成功举办",
+          "body": "7月17日晚，在2026世界人工智能大会（WAIC）举办期间，由腾讯新闻、腾讯科技主办，腾讯华东总部、腾讯云智能特别支持的“腾讯WAIC之夜”在上海举行。\n这是“腾讯WAIC之夜”连续第二年与行业人士相约浦江。今年的活动以“AI的下一程（The Next Wave）”为主题，邀请近百位来自大模型、算力、智能终端、机器人、空间智能、视觉生成和投资机构的企业家、研究者与一线实践者登船交流。\n围绕Tokenmaxing退潮之后的产业变化、Agent进入企业带来的组织重构、AI从数字世界走向物理世界的现实阻力，以及世界模型可能开启的新范式，嘉宾们展开了两个多小时的分享与讨论。\n腾讯新闻负责人何毅进在致辞中表示，过去一年，模型能力继续提升，Agent加速从概念走向实践， 具身智能 也在不断取得新进展。与此同时，成本、效率、可靠性、商业模式和组织变革等问题，开始比单一的模型指标更受关注。\n他认为，AI的“下一程”不只是参数继续增加或产品数量继续增长。当AI走出聊天框，进入真实业务、真实组织和物理世界，一批在实验室阶段不明显的问题正在浮出水面，比如说企业如何控制Agent的使用成本，如何评估它的效率，消耗的Token能否转化为组织资产。\n当Agent参与实际流程，哪些任务可以自动完成，哪些环节必须由人确认，出现错误后又该由谁负责。\n何毅进指出，如果只是把Agent接入原有流程，效率提升很快会碰到上限。未来企业之间的AI差距，未必只取决于谁能获得更先进的模型，也取决于谁能把自身积累的知识、规则和经验，转化为模型可以理解、调用和复用的上下文。\n过去两年，腾讯新闻持续推进“资讯+AI”战略。在生产端，AI被用于内容创作与审核。在消费端，“新闻妹”的伴随式问答和“AI电台”的对谈式语音互动，正在带来新的资讯体验。与此同时，腾讯新闻也在建设AI中台，将实践中积累的能力沉淀为Skills、 MCP 、Agents和知识库。\n“对腾讯新闻而言，AI的下一程，不是使用更多模型、调用更多Token，而是让一次次应用沉淀为组织能力，让生产效率进一步转化为用户能够真实感知的资讯体验。”何毅进说。\n在腾讯科技高级编辑、AI未来指北主理人郭晓静主持的首场圆桌中，昆仑万维董事长兼CEO方汉、出门问问创始人兼CEO李志飞、沐曦股份联合创始人兼CTO杨建，围绕模型、产品与组织三个层面，讨论了Tokenmaxing退潮后的新问题。\n李志飞分享了出门问问过去一年围绕AI编程调整组织的经历。随着个人借助AI完成任务的速度大幅提升，他很快发现，“超级个体”并不等于“超级组织”。当少数人已经能在半小时内完成过去以周计算的工作，团队仍沿用原来的排期、分工和协作方式，个人效率无法自动转化为组织效率。\n在他看来，判断一家企业是否真正AI原生，有两个直接标准。一是Agent是不是主要生产力，甚至被当作“正式员工”。二是组织内部能不能做到多人共同指挥多个Agent协作。\nAI进入公司之后，产品、设计、研发、运营等岗位的边界会重新划分，工作流也将从线性接力转向围绕原型快速迭代。与过去依赖规模效应不同，AI应用未来更需要数据壁垒和网络效应。\n杨建则从知识生产的变化谈起。他判断，越来越多“解题型”的脑力劳动将交给模型，人需要把重心转向发现问题和定义问题。\n这意味着企业引入Agent，不能只靠员工自发尝试，而要重新梳理岗位职责，为数字员工定岗，并在权限、审核和沙箱隔离等方面建立规则。相比激进地压缩人员，他更倾向于通过组织调整和跨团队流动，让员工找到更适合AI时代的位置。\n方汉认为，Claude Code等新型 Harness 放大了模型在长程任务中的能力，也让AI编程的Token消耗快速增长。但他提醒，产能增加的另一面是技术债和代码质量风险。昆仑万维在实践中把学习型Agent放进工作群，持续整理讨论和项目记忆，并通过共享规范减少重复犯错。\n现场谈到“AI写代码后，人还要不要看代码”时，嘉宾给出的答案是，不手写，不等于不审查。最终责任仍然在人。\n对于下一阶段该把资源投向哪里，三位嘉宾也给出了不同选择。\n李志飞和杨建更看重产品，希望把模型能力转化为真实用户价值。方汉仍然看好模型Scaling在世界模型、视频、音频和具身等方向的空间。\n但三位嘉宾都认为单纯增加Token已经不能解释企业的AI竞争力，产品闭环、组织协作和工程体系正在成为新的变量。\n第二场圆桌由同创伟业智能终端投资负责人 王晶 主持。傅利叶创始人兼CEO顾捷、大漠大智控董事长刘汉斌、浩瀚创始人兼CEO陈敏，从康复机器人、低空集群和智能影像三个场景，讨论AI如何真正进入物理世界。\n顾捷用一句话点出了具身智能当前最直观的落差：“会动不代表会干活。”机器人跳舞、奔跑，主要是在控制自身状态，但拿起水杯、搀扶老人或完成康复训练，却要触碰并改变真实世界。文本和视频可以重新生成，机器人一旦参与现实操作，就必须承担后果。\n这要求模型不仅要具备生成能力，还要处理触觉、重量、空间坐标和人的意图，并与可靠的本体结合。\n在顾捷看来，机器人的“GPT时刻”可以有一个具体标准：在没有见过的空间里，机器人能够自主走到一杯没见过的水面前，稳定地拿起它，再递到人手中。\n傅利叶从康复医疗切入，十年来持续积累人与机器人接触、协作的数据和经验。比炫目的演示更重要的，是长期可靠性、真实交互和用户信任。\n刘汉斌把无人机视作空中的具身智能体。大漠大智控正在把无人机灯光秀背后的集群控制能力，延伸到空间三维重建、 GPS 拒止环境下的自主飞行、多机协同、毫秒级决策，以及隧道、桥梁、山谷和丛林等非结构化场景。\n他认为，安全是低空智能体的入场券，飞行数据和智能化等级决定了企业能进入多大的市场。\n陈敏则从消费级智能影像谈端侧AI的变化。过去，用户需要通过手势、框选等方式启动拍摄。现在，设备开始理解拍摄场景、人物表情和情绪，逐渐从“半自动工具”变成随身摄影师。\n下一步的瓶颈，是如何在电池供电的终端上，以更低功耗运行更大的模型。随着专业拍摄能力逐步被端侧AI标准化，真正的差异将来自对用户场景的理解、持续积累的数据，以及软硬件和供应链的协同。\n三位嘉宾的业务相距很远，却反复谈到相同的几个词：安全、可靠、场景、数据和信任。这说明，物理AI的竞争看的是产品能否长时间工作，能否在真实环境中完成任务，出了问题能否被控制。\n收官圆桌由云启资本管理合伙人陈昱主持。群核科技联合创始人兼董事长黄晓煌、生数科技联合创始人兼CEO骆怡航、北京银河通用机器人联合创始人兼大模型负责人张直政，围绕空间智能、世界模型和Physical AI展开讨论。\n黄晓煌认为，大语言模型已经进入资本密集型竞争阶段，纯软件和通用Agent很容易被基础模型能力覆盖。群核科技选择的方向，是让模型生成一个可以交互的世界。他将当前世界模型的路径概括为两类：一类依赖结构化数据和物理仿真，另一类依赖大规模视频学习。两条路线可能共享大部分基础工作，但在如何理解物理规律上仍有分歧。\n骆怡航提出，下一代范式可能是面向物理世界的通用模型。它需要完成从感知、理解、预测到行动的闭环，也很难由单一路线实现。\n视频、物理强化数据、本体数据、触觉信号和强化学习，都可能进入同一套训练体系。当前模型在长程任务、失败恢复和动态决策上仍有明显短板，但他判断，通用世界模型正在出现早期迹象。\n张直政则把变化概括为从Digital AI走向Physical AI。过去的大模型主要通过离线数据学习，但能够与物理世界可靠交互的模型，需要先学会行动，再从持续交互中学习。\n他认为，一个完整的世界模型至少要具备三种能力：预测动作会怎样改变环境，利用这种预测帮助策略学习，并判断行动结果是否符合目标。\n对于物理AI何时落地，张直政给出了更激进的看法：不必一开始就追求“什么都能做”的全面通用，可以先在有限空间内实现足够的泛化。\n自动驾驶、特定产线、太空舱或一间房间，都可能成为物理智能体率先形成产品闭环的“缩小版世界”。\n三位嘉宾没有就技术路线达成统一答案。物理仿真与视频学习如何融合，模型与Harness会不会最终合为一体，Digital AI与Physical AI能否走向统一，仍是开放问题。\nWorkBuddy产品专家汪晟杰在特别分享中，将组织竞争力概括为一个公式：人才密度乘以AI杠杆，再除以组织摩擦。\n他复盘了团队从单点工具、个人Agent走向协作系统的过程。AI让一个人具备独立完成产品原型的能力，也带来了大量重复应用、重复代码和难以维护的业务逻辑。上下文质量接近于零时，再强的模型也只能消耗更多Token，无法形成有效产出。\n因此，从“一个人就是一家公司”的 OPC 走向“一个团队就是一家公司”的OPT，关键不只是给每个人更多Agent，而是建立共识与交付机制。需求、文档、代码和项目经验需要成为团队可共享、可版本管理、可复用的资产。不同Agent之间也需要明确目标、边界和交接协议。\n汪晟杰把超级团队的生产力归纳为“共识密度×交付密度×资产复利”。这三个要素中任何一个接近于零，个人效率都很难被团队放大。\n组织真正要解决的，不是让AI跑得比人更快，而是降低人与人、人与Agent以及Agent之间的摩擦。\n活动现场，腾讯科技旗下企鹅智库正式发布《2026 Q2 AI趋势报告：Agent进入世界后遇到的大考》。企鹅智库高级研究员郝博阳介绍，这份报告希望留下一个可信的时代切片，为正在形成的变化命名和解释，把研究者、创业者、企业与普通人关心的问题放进同一张地图，并提出下一阶段值得持续讨论的议题。\n报告认为，如果说2026年第一季度，市场开始更广泛地认识到Agent及其能力，那么到了第二季度，Agent已经离开实验室，进入企业、设备、云环境和真实工作流程。外部环境、组织习惯和产品诉求带来的摩擦，也随之成为产业重新设计的起点。\n报告提炼了八个趋势，覆盖入口、模型、算力、商业、组织和社会影响等方向。其中，多Agent系统正在从“并行执行”转向对真实协作的探索。CPU、内存、网络和运行时在Agent长程任务中的重要性重新上升、模型路由从优化功能变成基础能力、企业衡量AI的方式，也将从消耗多少Token，转向沉淀了多少可复用的Skill、工作流、工具和组织知识。\n郝博阳表示，模型阶段的主线是Scaling，投入更多数据、算力和参数以生产更强的智能。Agent开始行动后，问题变成了任务交给谁、信息怎样共享、调用哪个模型、出现错误由谁负责。\n由此，AI产业的竞争开始从“谁的模型更强”扩展到“谁能制定更有效的分配规则”。\n但讨论指向了同一个变化。AI正在从生成内容、调用工具，走向理解空间、执行动作并承担现实后果。\n整个分享中最大的共识，就是AI的下一步，面对的问题可能更复杂。模型变强，只是起点。\nAgent进入企业后，协作方式、使用成本和责任边界都要重做。AI走进物理世界，还要过安全、可靠性和数据闭环这几关。\n等模型能力逐渐拉平，企业的差距将更多来自两件事：是否真正理解场景，能否把每次调用留下的经验变成下一次可复用的组织资产。\n对“AI的下一程”而言，这些问题本身就是出发点。",
+          "content_state": "body_available",
+          "window_start": "2026-09-24T14:00:00+00:00",
+          "window_end": "2026-09-24T15:00:00+00:00",
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "unknown_reader_count": 0,
+          "cold_start_reader_count": 0,
+          "profile_coverage": "1.00000000000000000000",
+          "source_topic_count": 20,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic",
+          "limitations": [
+            "synthetic readers only; not enterprise audience or delivery eligibility",
+            "interest membership uses normalized positive score >= 0.2; multi-label shares do not sum to one",
+            "history is truncated at package coverage start; lookback is a maximum",
+            "source retains up to 20 topics; omitted topics are not zero"
+          ]
+        }
+      ]
+    },
+    {
+      "query_number": 4,
+      "rows": [
+        {
+          "news_id": "20260718A03B9V00",
+          "topic_id": "ai",
+          "topic_name": "AI",
+          "topic_reader_count": 5,
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "share_all_pct": "83.33",
+          "share_profiled_pct": "83.33",
+          "baseline_topic_count": 424,
+          "baseline_profiled_count": 540,
+          "baseline_share": "0.78518518518518518519",
+          "lift": "1.06132075471698113206",
+          "low_sample": false,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic"
+        },
+        {
+          "news_id": "20260718A03B9V00",
+          "topic_id": "finance",
+          "topic_name": "财经",
+          "topic_reader_count": 5,
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "share_all_pct": "83.33",
+          "share_profiled_pct": "83.33",
+          "baseline_topic_count": 494,
+          "baseline_profiled_count": 540,
+          "baseline_share": "0.91481481481481481481",
+          "lift": "0.91093117408906882591",
+          "low_sample": false,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic"
+        },
+        {
+          "news_id": "20260718A03B9V00",
+          "topic_id": "society",
+          "topic_name": "社会",
+          "topic_reader_count": 5,
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "share_all_pct": "83.33",
+          "share_profiled_pct": "83.33",
+          "baseline_topic_count": 420,
+          "baseline_profiled_count": 540,
+          "baseline_share": "0.77777777777777777778",
+          "lift": "1.07142857142857142856",
+          "low_sample": false,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic"
+        },
+        {
+          "news_id": "20260718A03B9V00",
+          "topic_id": "sports",
+          "topic_name": "体育",
+          "topic_reader_count": 5,
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "share_all_pct": "83.33",
+          "share_profiled_pct": "83.33",
+          "baseline_topic_count": 443,
+          "baseline_profiled_count": 540,
+          "baseline_share": "0.82037037037037037037",
+          "lift": "1.01580135440180586907",
+          "low_sample": false,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic"
+        },
+        {
+          "news_id": "20260718A03B9V00",
+          "topic_id": "tech",
+          "topic_name": "科技",
+          "topic_reader_count": 5,
+          "reader_count": 6,
+          "profiled_reader_count": 6,
+          "share_all_pct": "83.33",
+          "share_profiled_pct": "83.33",
+          "baseline_topic_count": 457,
+          "baseline_profiled_count": 540,
+          "baseline_share": "0.84629629629629629630",
+          "lift": "0.98468271334792122537",
+          "low_sample": false,
+          "source_topic_limit": 20,
+          "topic_list_may_be_truncated": true,
+          "source_mode": "synthetic"
+        }
+      ]
+    },
+    {
+      "query_number": 5,
+      "rows": [
+        {
+          "news_id": "20260718A03B9V00",
+          "reader_status": "complete",
+          "reader_count": 6
+        },
+        {
+          "news_id": "not-in-source",
+          "reader_status": "unavailable",
+          "reader_count": null
+        }
+      ]
+    }
+  ]
+}

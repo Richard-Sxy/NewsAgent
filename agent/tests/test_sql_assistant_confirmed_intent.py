@@ -148,6 +148,35 @@ async def test_confirmed_path_preserves_required_narrow_scene_filters(harness):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("category", ["汽车", "教育", "娱乐"])
+async def test_confirmed_new_category_passes_recheck_without_losing_filter(harness, category):
+    modify_config(harness, lambda config: config["scenarios"][0].update({
+        "allowed_categories": ["科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"],
+    }))
+    intent = confirmed_intent(category=category)
+    view = await confirmed_preview(
+        harness, question=f"查询{category}视频新闻按点击率从低到高前5条", intent=intent,
+    )
+    assert view.parameters["category"] == category
+    assert "AND category = :category" in view.sql
+    assert view.model_provider == "python-confirmed-intent"
+    assert harness.agent.calls == []
+    assert harness.warehouse.queries == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("category", ["汽车", "教育", "娱乐"])
+async def test_confirmed_new_category_cannot_expand_scene_permissions(harness, category):
+    with pytest.raises(SqlAssistantQuestionError, match="不允许该栏目"):
+        await confirmed_preview(
+            harness, question=f"查询{category}视频新闻按点击率从低到高前5条",
+            intent=confirmed_intent(category=category),
+        )
+    assert harness.agent.calls == [] and harness.store.snapshots == {}
+    assert harness.warehouse.queries == []
+
+
+@pytest.mark.asyncio
 async def test_confirmed_compiler_output_still_passes_the_independent_ast_gate(harness, monkeypatch):
     original = service_module.compile_query
     monkeypatch.setattr(service_module, "compile_query", lambda intent, scene: original(intent, scene).replace(

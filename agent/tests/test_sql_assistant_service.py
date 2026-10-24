@@ -1,7 +1,7 @@
 """Verify bounded interactive SQL planning with real compiler and AST guard."""
 
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -355,6 +355,81 @@ async def test_narrow_scene_filter_is_enforced_when_model_omits_it(harness):
     assert value.parameters["category"] == "科技"
     assert "AND content_type = :content_type" in value.sql
     assert "AND category = :category" in value.sql
+
+
+def configure_category_scope(harness, *, version, categories):
+    # Exercise the versioned policy without loading the real-news v8 package.
+    harness.service.contract = replace(harness.service.contract, version=version)
+
+    def update(config):
+        config["warehouse_schema_version"] = version
+        config["scenarios"][0]["allowed_categories"] = categories
+
+    modify_config(harness, update)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("categories", [
+    ["科技", "财经", "体育", "社会"],
+    ["科技", "财经", "汽车", "教育"],
+])
+async def test_four_category_scene_cannot_query_all_seven_warehouse_categories(harness, categories):
+    configure_category_scope(harness, version="news-warehouse-v7", categories=categories)
+    with pytest.raises(SqlAssistantError, match="指定一个允许的栏目"):
+        await preview(harness)
+    assert harness.store.snapshots == {}
+    assert harness.warehouse.queries == [] and harness.factory_tenants == []
+
+
+@pytest.mark.asyncio
+async def test_seven_category_warehouse_allows_an_explicit_approved_subset_filter(harness):
+    configure_category_scope(
+        harness, version="news-warehouse-v7", categories=["科技", "财经", "体育", "社会"],
+    )
+    harness.agent.intent = harness.agent.intent.model_copy(update={"category": "科技"})
+    view = await preview(harness, question="查询科技新闻按点击量从高到低前5条")
+    assert view.parameters["category"] == "科技"
+    assert "AND category = :category" in view.sql
+    await execute(harness, view.query_id)
+    assert harness.warehouse.queries[0].params["category"] == "科技"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("version,categories", [
+    ("news-warehouse-v1", ["社会", "体育", "财经", "科技"]),
+    ("news-warehouse-v6", ["科技", "财经", "体育", "社会"]),
+    ("news-warehouse-v7", ["科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"]),
+])
+async def test_complete_versioned_category_set_may_omit_filter(harness, version, categories):
+    configure_category_scope(harness, version=version, categories=categories)
+    view = await preview(harness)
+    assert "category" not in view.parameters
+    assert "AND category = :category" not in view.sql
+    result = await execute(harness, view.query_id)
+    assert result.row_count == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("cached", [False, True])
+async def test_legacy_unfiltered_subset_snapshot_is_rejected_before_execution_or_cache(harness, cached):
+    configure_category_scope(
+        harness, version="news-warehouse-v7",
+        categories=["科技", "财经", "体育", "社会", "汽车", "教育", "娱乐"],
+    )
+    view = await preview(harness)
+    if cached:
+        await execute(harness, view.query_id)
+    # Model an old, internally consistent preview created by the former
+    # count-based check: a four-category policy with no category predicate.
+    subset = ["科技", "财经", "体育", "社会"]
+    configure_category_scope(harness, version="news-warehouse-v7", categories=subset)
+    snapshot = harness.store.snapshots[view.query_id]
+    snapshot["scenario"]["allowed_categories"] = subset
+    snapshot["fingerprint"] = service_module._snapshot_fingerprint(snapshot)
+    calls_before = len(harness.warehouse.queries)
+    with pytest.raises(SqlAssistantError, match="指定一个允许的栏目"):
+        await execute(harness, view.query_id)
+    assert len(harness.warehouse.queries) == calls_before
 
 
 @pytest.mark.parametrize("mutation", [

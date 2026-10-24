@@ -11,21 +11,26 @@ from app.sql_assistant.scenarios import SqlScenario
 _LOCAL_WORDS = (
     "查询", "查一下", "查看", "请", "帮我", "我想", "看看", "展示", "统计", "了解", "取",
     "按照", "按", "排序", "排行", "排名", "指标", "的", "中", "所有", "全部", "只", "仅",
-    "新闻", "热点", "图文", "视频", "科技", "财经", "体育", "社会", "article", "video",
+    "新闻", "热点", "图文", "视频", "article", "video",
     "点击率", "ctr", "点击量", "点击", "曝光量", "曝光", "互动量", "互动", "热度分", "热度",
     "每小时", "逐小时", "趋势", "前", "top", "最高", "最多", "最低", "最少",
     "从低到高", "从高到低", "降序", "升序", "条", "篇", "个",
 )
-_LOCAL_WORD_PATTERN = "|".join(re.escape(word) for word in sorted(_LOCAL_WORDS, key=len, reverse=True))
+
 
 """ 验证本地词汇 """
-def _validate_local_vocabulary(question: str) -> None:
+def _validate_local_vocabulary(question: str, scenario: SqlScenario) -> None:
     # The local Port is a bounded simulator, not an LLM. Reject leftover words
     # rather than silently dropping an unknown source/category/filter condition.
     # A finite presentation request adds no warehouse filter or metric. Keep
     # rejecting every other unknown term; this is still not language inference.
     query_text = re.sub(r"(?:并|，|,)?分析(?:热点)?原因[。！!]?\s*$", "", question)
-    remainder = re.sub(_LOCAL_WORD_PATTERN, "", query_text, flags=re.I)
+    # Approved scene categories are the shared source for vocabulary and slots.
+    # A newly approved category must survive the independent canonical recheck;
+    # a category outside this scene must not be silently discarded.
+    words = (*_LOCAL_WORDS, *scenario.allowed_categories)
+    word_pattern = "|".join(re.escape(word) for word in sorted(words, key=len, reverse=True))
+    remainder = re.sub(word_pattern, "", query_text, flags=re.I)
     remainder = re.sub(r"[\d\s，。！？、：；,.?!:;]+", "", remainder)
     if remainder:
         raise SqlAssistantQuestionError("本地 v1 无法完整理解该问题，请按场景示例填写；未知栏目、来源或额外条件不会被忽略")
@@ -46,7 +51,7 @@ def local_query_intent(payload: dict) -> SqlAssistantIntent:
         raise SqlAssistantQuestionError("本地 v1 暂不支持阈值过滤、排除、对比或其他统计口径，请使用排行/小时趋势模板")
     if re.search(r"(?:前|最高的?|最多的?|最低的?)\s*[一二三四五六七八九十百千两]+", question):
         raise SqlAssistantQuestionError("本地 v1 请使用阿拉伯数字表示行数，例如前5条")
-    _validate_local_vocabulary(question)
+    _validate_local_vocabulary(question, scenario)
     metric_words = re.findall(r"点击率|ctr|互动|曝光|热度|点击", question, re.I)
     metrics = { {"点击率": "ctr", "ctr": "ctr", "互动": "interactions", "曝光": "impressions", "热度": "hot_score", "点击": "clicks"}[word.lower()] for word in metric_words }
     if len(metrics) > 1:
@@ -57,7 +62,7 @@ def local_query_intent(payload: dict) -> SqlAssistantIntent:
     has_video = bool(re.search(r"视频|(?<![A-Za-z])video(?![A-Za-z])", question, re.I))
     has_article = bool(re.search(r"图文|(?<![A-Za-z])article(?![A-Za-z])", question, re.I))
     content_type = "video" if has_video else "article" if has_article else None
-    categories = [item for item in ("科技", "财经", "体育", "社会") if item in question]
+    categories = [item for item in scenario.allowed_categories if item in question]
     if len(categories) > 1 or (has_video and has_article):
         raise SqlAssistantQuestionError("本地 v1 每次支持一种内容类型和一个栏目，请拆分查询")
     category = categories[0] if categories else None

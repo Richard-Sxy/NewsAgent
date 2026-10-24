@@ -119,7 +119,7 @@ python3 agent/tools/deploy_bge_demo.py
 
 该入口部署前端、API、Worker 和基础依赖，沿用已有企业查询理解配置，聊天入口为
 `http://127.0.0.1:5178/chat`。准备环境、每个阶段的作用、更新、停止及排查步骤见
-[项目启动与部署教程](agent/docs/bge-demo-deployment.md)。以下是原生基础演示的手工入口。
+[本地 BGE 模拟运行说明](agent/docs/local-bge-simulation.md)。以下是原生基础演示的手工入口。
 
 需要 Docker Desktop、Node.js 20.19+。以下命令在仓库根执行。
 
@@ -159,7 +159,7 @@ Workflow，读取模拟数仓并返回同一run的分析；不绕过 SQL 校验�
 聊天默认使用安全 SSE：处理与工具进度实时推送，答复校验、保存后分段返回；不是企业模型
 原始 token 透传。[流式配置、断线恢复和验收](agent/docs/conversation-streaming.md)。
 演示顺序：`我关注科技` → `记得上一轮我说了什么吗` → `查看最近热点` → `解释第一条新闻`。
-配置、完整调用链、测试和后续阶段见 [持续对话说明](agent/docs/conversation-agent.md)。
+对话取数与模型配置、调用链和测试见 [聊天数仓与模型说明](agent/docs/conversation-warehouse-model.md)；后续验收事项见 [TODO](TODO.md)。
 合成数据现支持10组企业运营情形、20项数据契约演练及每租户120／1,200／12,000篇三个数量档；默认扩量实例每租户1,200篇、每次Top100。场景选择、独立实例启动、
 分析链路与验收边界见 [企业情形合成演示](agent/docs/enterprise-synthetic-data.md)。
 当前5177扩量环境的恢复命令、写作人工节点、反馈回流与Worker验收见

@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-22T15:04:50.328729+00:00",
+  "note": "Post-run evidence index, not a preregistered run specification. Core output was observed in the tool transcript; no raw core log was captured.",
+  "core_observed": {
+    "passed": 215,
+    "seconds": 212.84,
+    "exit_code": 0,
+    "pytest_args": [
+      "tests/test_text2sql_metric_source.py",
+      "tests/test_metric_sql_contract.py",
+      "tests/test_sql_assistant_planner.py",
+      "tests/test_sql_assistant_confirmed_intent.py",
+      "tests/test_sql_assistant_service.py",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider",
+      "-q"
+    ],
+    "metric_cases_at_this_stage": 46
+  },
+  "related": {
+    "passed": 226,
+    "skipped": 1,
+    "evidence": "2026-10-22-metric-contract-regression-01",
+    "skip_reason": "SQL_WAREHOUSE_INTEGRATION_URL was not set; isolated PostgreSQL integration was not run"
+  },
+  "final_metric": {
+    "passed": 47,
+    "evidence": "2026-10-22-metric-contract-regression-02",
+    "note": "46 previous cases plus one DST regression; replaces the 46 earlier metric results"
+  },
+  "distinct_passed": 442,
+  "test_environment": "Offline audit fence; Settings and VideoIngestSettings dotenv loading disabled before pytest.main; no enterprise model or database"
+}

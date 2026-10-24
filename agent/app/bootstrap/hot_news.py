@@ -98,6 +98,7 @@ def create_text2sql_metric_source(
     schema: Text2SqlSchema,
     template: HotNewsMetricSqlTemplate | None = None,
     generator: Text2SqlAgentRunner | None = None,
+    metric_contract: HotNewsMetricSqlTemplate | None = None,
 ) -> Text2SqlNewsMetricSource:
     """Assemble deterministic templates with an optional Python Agent fallback."""
 
@@ -106,6 +107,7 @@ def create_text2sql_metric_source(
         schema=schema,
         template=template,
         generator=generator,
+        metric_contract=metric_contract,
         max_rows=settings.text2sql_max_rows,
         timeout_ms=settings.text2sql_timeout_ms,
     )

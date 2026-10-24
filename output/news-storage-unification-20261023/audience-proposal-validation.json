@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "source_mode": "tiny_synthetic_contract_fixtures",
+  "ddl_sha256": "50143834d17c851c6e20e1d2cf198c118c44eea981d79501cd7b41452192ce66",
+  "query_sha256": "1806d2ead90680f241e739f0e0f5557f186f78e3a35957cac3c2915d3ac0d812",
+  "checks": [
+    "all_five_example_queries_parse_as_postgresql",
+    "ddl_executes_in_postgresql",
+    "unknown_readers_remain_in_all_readers_denominator",
+    "lift_uses_profiled_share_and_matching_baseline",
+    "low_support_suppresses_lift",
+    "zero_denominators_remain_null",
+    "cross_tenant_reference_rejected",
+    "wrong_taxonomy_rejected",
+    "future_profile_cutoff_rejected",
+    "example_distinguishes_missing_from_measured_empty",
+    "example_top_k_is_per_news_and_does_not_multiply_lookbacks",
+    "transaction_rolled_back_no_schema_or_fixture_persisted"
+  ],
+  "limitations": [
+    "No enterprise connection, data or performance evaluation",
+    "Cross-row publisher validation and SQL Adapter are not implemented",
+    "Existing metric and content queries were parsed, not run by this check"
+  ]
+}

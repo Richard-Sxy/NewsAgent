@@ -1,0 +1,929 @@
+{
+  "checked_at": "2026-10-23T05:44:05.467993+00:00",
+  "status": "passed",
+  "database": "127.0.0.1:25432/newsagent_unified_news_20261023",
+  "release": {
+    "content_identity_sha256": "0c74530f2864db20a73d7a960cec3649085e9db5fdb054bbf0bfbfc21a58375e",
+    "content_release_id": "news-0c74530f2864db20a73d7a96",
+    "counts": {
+      "insufficient_input_count": 11794,
+      "legacy_verified_count": 670,
+      "metadata_review_count": 7,
+      "news_count": 21435,
+      "tagged_count": 7566,
+      "topic_memberships_count": 35888,
+      "unclassified_count": 2068,
+      "with_legacy_refs_count": 781
+    },
+    "derivation_version": "verified-text-only-topics-v1",
+    "identity_sha256": "33c4054fd01bd98cd5ef2826555ecde7299205dd0d4f11996095112007479443",
+    "legacy_source": {
+      "content_labels_sha256": "ad56af67db922f5d4a2d9e50f79fb9f8bb8103481ef2a28623612f54233bb92e",
+      "identity_sha256": "39d386219cc640b631cbf0f582feb311286a3d06ae115a9a95e70d3a1b9fecd6",
+      "manifest_sha256": "b92de6d3bab62542e8eb2a4871795294848c2ef7bc4ffe1efd0f762f9541ff8a",
+      "package_version": "behavior-tags-local-v1",
+      "policy_sha256": "93d282b7bf2560138aaaab4b5b7ae15259be59d9697d33829fb4ad47c67a8462",
+      "policy_version": "news-behavior-topic-rules-v1",
+      "taxonomy_version": "news-behavior-topics-demo-v1"
+    },
+    "policy_version": "news-behavior-topic-rules-v1",
+    "schema_version": "unified-news-topics-v1",
+    "tag_release_id": "tags-33c4054fd01bd98cd5ef2826",
+    "tagger_sha256": "e8678983e7ca1fa3d906751f671029f0ae2805ff2429c068ebbfa56bc4316f6c",
+    "taxonomy_version": "news-behavior-topics-demo-v1",
+    "tenant_id": "public-news-local"
+  },
+  "table_row_counts": {
+    "news_content_releases": 1,
+    "news_content_versions": 21828,
+    "news_content_provenance": 22369,
+    "news_content_release_items": 21435,
+    "news_content_tag_releases": 1,
+    "news_content_tags": 21435,
+    "news_content_topic_memberships": 35888
+  },
+  "joined_view_count": 21435,
+  "body_tag_status_counts": {
+    "tagged": 7212,
+    "metadata_review": 7,
+    "unclassified": 1222
+  },
+  "checks": {
+    "reimport_status": "already_present",
+    "joined_records_verified": 21435,
+    "frozen_content_package_unchanged": true,
+    "candidate_original_fields_unchanged": 8144,
+    "topic_filter_before_pagination_verified": "finance",
+    "finance_news_count": 3536,
+    "topic_counts_match_memberships": true,
+    "wrong_tenant_rejected": true,
+    "body_and_label_versions_exactly_bound": true,
+    "legacy_aggregate_lookup": "available",
+    "missing_legacy_aggregate_is_unavailable_not_zero": true
+  },
+  "topic_directory": {
+    "tenant_id": "public-news-local",
+    "content_release_id": "news-0c74530f2864db20a73d7a96",
+    "tag_release_id": "tags-33c4054fd01bd98cd5ef2826",
+    "policy_version": "news-behavior-topic-rules-v1",
+    "catalog": {
+      "status": "draft",
+      "topics": [
+        {
+          "name": "科技",
+          "enabled": true,
+          "topic_id": "tech",
+          "provenance": "user_confirmed",
+          "parent_topic_id": null
+        },
+        {
+          "name": "自然",
+          "enabled": true,
+          "topic_id": "tech.nature",
+          "provenance": "user_confirmed",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "航天",
+          "enabled": true,
+          "topic_id": "tech.space",
+          "provenance": "draft_extension",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "数码",
+          "enabled": true,
+          "topic_id": "tech.digital",
+          "provenance": "draft_extension",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "芯片",
+          "enabled": true,
+          "topic_id": "tech.chips",
+          "provenance": "draft_extension",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "机器人",
+          "enabled": true,
+          "topic_id": "tech.robotics",
+          "provenance": "draft_extension",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "能源技术",
+          "enabled": true,
+          "topic_id": "tech.energy",
+          "provenance": "draft_extension",
+          "parent_topic_id": "tech"
+        },
+        {
+          "name": "财经",
+          "enabled": true,
+          "topic_id": "finance",
+          "provenance": "user_confirmed",
+          "parent_topic_id": null
+        },
+        {
+          "name": "宏观",
+          "enabled": true,
+          "topic_id": "finance.macro",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "产业",
+          "enabled": true,
+          "topic_id": "finance.industry",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "金融市场",
+          "enabled": true,
+          "topic_id": "finance.markets",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "公司",
+          "enabled": true,
+          "topic_id": "finance.companies",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "消费",
+          "enabled": true,
+          "topic_id": "finance.consumption",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "银行金融",
+          "enabled": true,
+          "topic_id": "finance.banking",
+          "provenance": "draft_extension",
+          "parent_topic_id": "finance"
+        },
+        {
+          "name": "AI",
+          "enabled": true,
+          "topic_id": "ai",
+          "provenance": "user_confirmed",
+          "parent_topic_id": null
+        },
+        {
+          "name": "大模型",
+          "enabled": true,
+          "topic_id": "ai.models",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "应用",
+          "enabled": true,
+          "topic_id": "ai.applications",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "算力",
+          "enabled": true,
+          "topic_id": "ai.infrastructure",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "研究",
+          "enabled": true,
+          "topic_id": "ai.research",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "治理",
+          "enabled": true,
+          "topic_id": "ai.governance",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "生态",
+          "enabled": true,
+          "topic_id": "ai.ecosystem",
+          "provenance": "draft_extension",
+          "parent_topic_id": "ai"
+        },
+        {
+          "name": "军事",
+          "enabled": true,
+          "topic_id": "military",
+          "provenance": "user_confirmed",
+          "parent_topic_id": null
+        },
+        {
+          "name": "国防",
+          "enabled": true,
+          "topic_id": "military.defense",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "装备",
+          "enabled": true,
+          "topic_id": "military.equipment",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "演训",
+          "enabled": true,
+          "topic_id": "military.exercises",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "海军",
+          "enabled": true,
+          "topic_id": "military.naval",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "空军",
+          "enabled": true,
+          "topic_id": "military.air",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "军史",
+          "enabled": true,
+          "topic_id": "military.history",
+          "provenance": "draft_extension",
+          "parent_topic_id": "military"
+        },
+        {
+          "name": "教育",
+          "enabled": true,
+          "topic_id": "education",
+          "provenance": "user_confirmed",
+          "parent_topic_id": null
+        },
+        {
+          "name": "基础教育",
+          "enabled": true,
+          "topic_id": "education.basic",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "高考",
+          "enabled": true,
+          "topic_id": "education.gaokao",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "高等教育",
+          "enabled": true,
+          "topic_id": "education.higher",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "职业教育",
+          "enabled": true,
+          "topic_id": "education.vocational",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "教育政策",
+          "enabled": true,
+          "topic_id": "education.policy",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "校园",
+          "enabled": true,
+          "topic_id": "education.campus",
+          "provenance": "draft_extension",
+          "parent_topic_id": "education"
+        },
+        {
+          "name": "体育",
+          "enabled": true,
+          "topic_id": "sports",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "足球",
+          "enabled": true,
+          "topic_id": "sports.football",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "篮球",
+          "enabled": true,
+          "topic_id": "sports.basketball",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "乒羽网球",
+          "enabled": true,
+          "topic_id": "sports.racket",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "田径跑步",
+          "enabled": true,
+          "topic_id": "sports.running",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "综合赛事",
+          "enabled": true,
+          "topic_id": "sports.events",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "全民健身",
+          "enabled": true,
+          "topic_id": "sports.fitness",
+          "provenance": "draft_extension",
+          "parent_topic_id": "sports"
+        },
+        {
+          "name": "汽车",
+          "enabled": true,
+          "topic_id": "auto",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "新能源汽车",
+          "enabled": true,
+          "topic_id": "auto.electric",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "智能驾驶",
+          "enabled": true,
+          "topic_id": "auto.intelligent",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "车型产品",
+          "enabled": true,
+          "topic_id": "auto.products",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "汽车产业",
+          "enabled": true,
+          "topic_id": "auto.industry",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "汽车市场",
+          "enabled": true,
+          "topic_id": "auto.market",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "用车服务",
+          "enabled": true,
+          "topic_id": "auto.ownership",
+          "provenance": "draft_extension",
+          "parent_topic_id": "auto"
+        },
+        {
+          "name": "娱乐",
+          "enabled": true,
+          "topic_id": "entertainment",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "电影",
+          "enabled": true,
+          "topic_id": "entertainment.film",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "影视剧",
+          "enabled": true,
+          "topic_id": "entertainment.drama",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "音乐",
+          "enabled": true,
+          "topic_id": "entertainment.music",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "综艺",
+          "enabled": true,
+          "topic_id": "entertainment.shows",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "文娱人物",
+          "enabled": true,
+          "topic_id": "entertainment.people",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "文娱产业",
+          "enabled": true,
+          "topic_id": "entertainment.industry",
+          "provenance": "draft_extension",
+          "parent_topic_id": "entertainment"
+        },
+        {
+          "name": "社会",
+          "enabled": true,
+          "topic_id": "society",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "民生",
+          "enabled": true,
+          "topic_id": "society.livelihood",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "交通",
+          "enabled": true,
+          "topic_id": "society.transport",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "天气",
+          "enabled": true,
+          "topic_id": "society.weather",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "公共安全",
+          "enabled": true,
+          "topic_id": "society.safety",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "生态环境",
+          "enabled": true,
+          "topic_id": "society.environment",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "法治",
+          "enabled": true,
+          "topic_id": "society.law",
+          "provenance": "draft_extension",
+          "parent_topic_id": "society"
+        },
+        {
+          "name": "国际",
+          "enabled": true,
+          "topic_id": "international",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "外交",
+          "enabled": true,
+          "topic_id": "international.diplomacy",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "国际组织",
+          "enabled": true,
+          "topic_id": "international.governance",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "全球经济",
+          "enabled": true,
+          "topic_id": "international.economy",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "亚洲",
+          "enabled": true,
+          "topic_id": "international.asia",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "欧洲",
+          "enabled": true,
+          "topic_id": "international.europe",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "美洲",
+          "enabled": true,
+          "topic_id": "international.americas",
+          "provenance": "draft_extension",
+          "parent_topic_id": "international"
+        },
+        {
+          "name": "健康",
+          "enabled": true,
+          "topic_id": "health",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "疾病预防",
+          "enabled": true,
+          "topic_id": "health.prevention",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "医疗",
+          "enabled": true,
+          "topic_id": "health.medicine",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "营养饮食",
+          "enabled": true,
+          "topic_id": "health.nutrition",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "心理健康",
+          "enabled": true,
+          "topic_id": "health.mental",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "运动健康",
+          "enabled": true,
+          "topic_id": "health.exercise",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "医学研究",
+          "enabled": true,
+          "topic_id": "health.science",
+          "provenance": "draft_extension",
+          "parent_topic_id": "health"
+        },
+        {
+          "name": "文化",
+          "enabled": true,
+          "topic_id": "culture",
+          "provenance": "draft_extension",
+          "parent_topic_id": null
+        },
+        {
+          "name": "文化遗产",
+          "enabled": true,
+          "topic_id": "culture.heritage",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        },
+        {
+          "name": "文学阅读",
+          "enabled": true,
+          "topic_id": "culture.literature",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        },
+        {
+          "name": "艺术",
+          "enabled": true,
+          "topic_id": "culture.arts",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        },
+        {
+          "name": "博物展览",
+          "enabled": true,
+          "topic_id": "culture.museums",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        },
+        {
+          "name": "人文旅游",
+          "enabled": true,
+          "topic_id": "culture.travel",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        },
+        {
+          "name": "历史",
+          "enabled": true,
+          "topic_id": "culture.history",
+          "provenance": "draft_extension",
+          "parent_topic_id": "culture"
+        }
+      ],
+      "schema_version": 1,
+      "taxonomy_version": "news-behavior-topics-demo-v1"
+    },
+    "topic_counts": {
+      "tech": 1143,
+      "tech.nature": 59,
+      "tech.space": 210,
+      "tech.digital": 99,
+      "tech.chips": 541,
+      "tech.robotics": 299,
+      "tech.energy": 166,
+      "finance": 3536,
+      "finance.macro": 124,
+      "finance.industry": 746,
+      "finance.markets": 1902,
+      "finance.companies": 1966,
+      "finance.consumption": 337,
+      "finance.banking": 691,
+      "ai": 1199,
+      "ai.models": 171,
+      "ai.applications": 183,
+      "ai.infrastructure": 295,
+      "ai.research": 31,
+      "ai.governance": 12,
+      "ai.ecosystem": 1085,
+      "military": 217,
+      "military.defense": 129,
+      "military.equipment": 31,
+      "military.exercises": 5,
+      "military.naval": 65,
+      "military.air": 62,
+      "military.history": 3,
+      "education": 1012,
+      "education.basic": 210,
+      "education.gaokao": 34,
+      "education.higher": 688,
+      "education.vocational": 51,
+      "education.policy": 93,
+      "education.campus": 479,
+      "sports": 746,
+      "sports.football": 283,
+      "sports.basketball": 206,
+      "sports.racket": 166,
+      "sports.running": 56,
+      "sports.events": 95,
+      "sports.fitness": 88,
+      "auto": 610,
+      "auto.electric": 388,
+      "auto.intelligent": 122,
+      "auto.products": 320,
+      "auto.industry": 216,
+      "auto.market": 72,
+      "auto.ownership": 75,
+      "entertainment": 709,
+      "entertainment.film": 184,
+      "entertainment.drama": 127,
+      "entertainment.music": 256,
+      "entertainment.shows": 56,
+      "entertainment.people": 343,
+      "entertainment.industry": 88,
+      "society": 1773,
+      "society.livelihood": 434,
+      "society.transport": 872,
+      "society.weather": 301,
+      "society.safety": 325,
+      "society.environment": 79,
+      "society.law": 340,
+      "international": 1686,
+      "international.diplomacy": 221,
+      "international.governance": 99,
+      "international.economy": 66,
+      "international.asia": 563,
+      "international.europe": 671,
+      "international.americas": 797,
+      "health": 910,
+      "health.prevention": 83,
+      "health.medicine": 738,
+      "health.nutrition": 88,
+      "health.mental": 36,
+      "health.exercise": 12,
+      "health.science": 140,
+      "culture": 1047,
+      "culture.heritage": 192,
+      "culture.literature": 212,
+      "culture.arts": 323,
+      "culture.museums": 158,
+      "culture.travel": 565,
+      "culture.history": 77
+    }
+  },
+  "exports": [
+    {
+      "tenant_id": "public-news-local",
+      "release_id": "news-0c74530f2864db20a73d7a96",
+      "tag_release_id": "tags-33c4054fd01bd98cd5ef2826",
+      "output": "var/news-storage/exports/20261023/body-candidates-with-tags.jsonl",
+      "sha256": "f46befd413136176817881ef8eca15873dc58525ae80854d1cdd4105f025379f",
+      "counts": {
+        "exported": 8144,
+        "excluded_metadata_review": 7,
+        "excluded_short_body": 290
+      },
+      "filters": {
+        "body_only": true,
+        "min_body_chars": 100,
+        "exclude_metadata_review": true,
+        "topic_ids": []
+      },
+      "artifact_kind": "source_material_with_inferred_topics_not_evaluation_gold"
+    },
+    {
+      "tenant_id": "public-news-local",
+      "release_id": "news-0c74530f2864db20a73d7a96",
+      "tag_release_id": "tags-33c4054fd01bd98cd5ef2826",
+      "output": "var/news-storage/exports/20261023/all-news-with-tags.jsonl",
+      "sha256": "6776c250fb14c5c82679e6b94e35d1933b0d351baf25f8f3d5e44067b6891ec8",
+      "counts": {
+        "exported": 21435
+      },
+      "filters": {
+        "body_only": false,
+        "min_body_chars": 0,
+        "exclude_metadata_review": false,
+        "topic_ids": []
+      },
+      "artifact_kind": "source_material_with_inferred_topics_not_evaluation_gold"
+    }
+  ],
+  "finance_samples": [
+    {
+      "news_id": "20260718A03B9V00",
+      "title": "驶向AI的下一程：2026腾讯WAIC之夜成功举办",
+      "topic_names": [
+        "AI",
+        "应用",
+        "生态",
+        "算力",
+        "大模型",
+        "研究",
+        "汽车",
+        "智能驾驶",
+        "财经",
+        "产业",
+        "健康",
+        "运动健康",
+        "医疗",
+        "科技",
+        "数码",
+        "机器人"
+      ]
+    },
+    {
+      "news_id": "20260719A04P4Y00",
+      "title": "WAIC 2026观察：大模型不再独占C位，智能体、机器人和算力走到台前",
+      "topic_names": [
+        "AI",
+        "应用",
+        "生态",
+        "算力",
+        "大模型",
+        "文化",
+        "艺术",
+        "博物展览",
+        "财经",
+        "公司",
+        "消费",
+        "健康",
+        "医疗",
+        "社会",
+        "民生",
+        "公共安全",
+        "科技",
+        "芯片",
+        "数码",
+        "机器人"
+      ]
+    },
+    {
+      "news_id": "20260729A08XKX00",
+      "title": "具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关",
+      "topic_names": [
+        "AI",
+        "生态",
+        "算力",
+        "大模型",
+        "文化",
+        "艺术",
+        "财经",
+        "银行金融",
+        "公司",
+        "产业",
+        "健康",
+        "医疗",
+        "科技",
+        "芯片",
+        "机器人"
+      ]
+    }
+  ],
+  "behavior_sample": {
+    "news_id": "20260718A03B9V00",
+    "source_tenant_id": "11111111-1111-4111-8111-111111111111",
+    "source_mode": "synthetic",
+    "returned_rows": 3,
+    "truncated": true,
+    "rows": [
+      {
+        "news_id": "20260718A03B9V00",
+        "window_start": "2026-10-13T00:00:00+08:00",
+        "window_end": "2026-10-13T01:00:00+08:00",
+        "source_dataset_version": "real-news-business-warehouse-v8-20261014",
+        "scenario_id": "real-news-v8",
+        "metric_definition_id": "sim-click-attributed-reading-v8.1|temporary_interval_union_v8.1",
+        "label_ids": [
+          "feedback.low_negative_rate",
+          "growth.steady",
+          "interaction.high_rate",
+          "reading.high_effective_rate",
+          "traffic.direct_heavy",
+          "traffic.repeated_visits"
+        ]
+      },
+      {
+        "news_id": "20260718A03B9V00",
+        "window_start": "2026-10-13T01:00:00+08:00",
+        "window_end": "2026-10-13T02:00:00+08:00",
+        "source_dataset_version": "real-news-business-warehouse-v8-20261014",
+        "scenario_id": "real-news-v8",
+        "metric_definition_id": "sim-click-attributed-reading-v8.1|temporary_interval_union_v8.1",
+        "label_ids": [
+          "feedback.low_negative_rate",
+          "growth.steady",
+          "interaction.high_rate",
+          "reading.high_effective_rate",
+          "traffic.repeated_visits"
+        ]
+      },
+      {
+        "news_id": "20260718A03B9V00",
+        "window_start": "2026-10-13T02:00:00+08:00",
+        "window_end": "2026-10-13T03:00:00+08:00",
+        "source_dataset_version": "real-news-business-warehouse-v8-20261014",
+        "scenario_id": "real-news-v8",
+        "metric_definition_id": "sim-click-attributed-reading-v8.1|temporary_interval_union_v8.1",
+        "label_ids": [
+          "feedback.low_negative_rate",
+          "growth.steady",
+          "interaction.high_rate",
+          "reading.high_effective_rate",
+          "traffic.repeated_visits"
+        ]
+      }
+    ]
+  },
+  "tests": {
+    "command": "agent/.venv/bin/python -m pytest -q agent/tests/test_unified_news_*.py",
+    "passed": 168
+  },
+  "boundaries": [
+    "keyword_rule_inferred_topics_not_human_gold",
+    "draft_taxonomy_not_enterprise_official_taxonomy",
+    "legacy_behavior_is_simulated_aggregate_only",
+    "no_personal_event_or_profile_rows_read",
+    "no_model_or_embedding_calls",
+    "original_content_release_unchanged",
+    "online_worker_not_switched",
+    "local_postgresql_not_enterprise_tdsql_acceptance"
+  ]
+}

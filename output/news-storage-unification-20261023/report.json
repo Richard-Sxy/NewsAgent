@@ -1,0 +1,238 @@
+{
+  "checked_at": "2026-10-23T04:45:27.366639+00:00",
+  "status": "passed",
+  "database": {
+    "host": "127.0.0.1",
+    "port": 25432,
+    "database": "newsagent_unified_news_20261023",
+    "postgres_version": "16.15"
+  },
+  "release": {
+    "tenant_id": "public-news-local",
+    "schema_version": "unified-news-content-v1",
+    "selection_policy": "prefer-cached-body-source-priority-v1",
+    "release_id": "news-0c74530f2864db20a73d7a96",
+    "identity_sha256": "0c74530f2864db20a73d7a960cec3649085e9db5fdb054bbf0bfbfc21a58375e",
+    "counts": {
+      "news_count": 21435,
+      "version_count": 21828,
+      "provenance_count": 22369,
+      "body_available_count": 8441,
+      "fragments_only_count": 11794,
+      "title_only_count": 1200,
+      "conflicting_body_news_count": 0
+    }
+  },
+  "package_directory": "var/news-storage/unified-public-news-20261023",
+  "table_row_counts": {
+    "news_content_releases": 1,
+    "news_content_versions": 21828,
+    "news_content_provenance": 22369,
+    "news_content_release_items": 21435
+  },
+  "view_content_state_counts": {
+    "title_only": 1200,
+    "fragments_only": 11794,
+    "body_available": 8441
+  },
+  "checks": {
+    "package_file_and_content_hashes": true,
+    "transactional_import_and_full_reconstruction": true,
+    "reimport_status": "already_present",
+    "selected_records_verified_against_package": 21435,
+    "selected_provenance_verified": true,
+    "pagination_duplicate_or_missing_ids": 0,
+    "wrong_tenant_rejected": true,
+    "content_port_body_only_and_metadata_filter": true,
+    "content_port_does_not_claim_index_collection": true
+  },
+  "sample_news_ids": {
+    "fragments_only": "20250108A0AAHC00",
+    "body_available": "20260718A03B9V00",
+    "metadata_review_required": "20260819A044YC00",
+    "title_only": "20261006A09CMX00"
+  },
+  "body_candidate_export": {
+    "tenant_id": "public-news-local",
+    "release_id": "news-0c74530f2864db20a73d7a96",
+    "output": "var/news-storage/exports/20261023/body-candidates.jsonl",
+    "sha256": "9e638bcbae404f1ad7a3b51e6bb7e1654c94fb8d19499590a518cec5acef63fb",
+    "counts": {
+      "exported": 8144,
+      "excluded_metadata_review": 7,
+      "excluded_short_body": 290
+    },
+    "filters": {
+      "body_only": true,
+      "min_body_chars": 100,
+      "exclude_metadata_review": true
+    },
+    "artifact_kind": "source_material_not_evaluation_labels"
+  },
+  "column_types": [
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "tenant_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "release_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "news_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "record_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "source_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_provenance",
+      "column_name": "source",
+      "data_type": "jsonb"
+    },
+    {
+      "table_name": "news_content_release_items",
+      "column_name": "tenant_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_release_items",
+      "column_name": "release_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_release_items",
+      "column_name": "news_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_release_items",
+      "column_name": "record_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_release_items",
+      "column_name": "quality_flags",
+      "data_type": "jsonb"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "tenant_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "release_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "identity_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "schema_version",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "selection_policy",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "status",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "manifest",
+      "data_type": "jsonb"
+    },
+    {
+      "table_name": "news_content_releases",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "tenant_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "news_id",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "record_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "title",
+      "data_type": "text"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "body",
+      "data_type": "text"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "url",
+      "data_type": "text"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "publish_time",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "content_type",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "content_state",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "body_sha256",
+      "data_type": "character varying"
+    },
+    {
+      "table_name": "news_content_versions",
+      "column_name": "record",
+      "data_type": "jsonb"
+    }
+  ],
+  "boundaries": [
+    "public_cached_content_only",
+    "no_enterprise_behavior_import",
+    "no_model_or_embedding_calls",
+    "online_lifecycle_unchanged",
+    "local_postgresql_verified_not_enterprise_tdsql_a_acceptance",
+    "no_model_quality_evaluation_performed"
+  ],
+  "tests": {
+    "command": "agent/.venv/bin/python -m pytest -q agent/tests/test_unified_news_model.py agent/tests/test_unified_news_store.py agent/tests/test_unified_news_package_io.py",
+    "passed": 66,
+    "scope": "model_integrity_disk_package_and_sqlite_storage_unit_integration_tests",
+    "real_postgresql_checks": "recorded_separately_in_checks"
+  }
+}

@@ -1,6 +1,14 @@
 # Text2SQL 后续代码草案
 
-日期：2026-10-04。供后续开发参考，下面的代码尚未加入运行链路。
+原草案日期：2026-10-04。2026-10-22 状态更正：下面第一优先级已按完整查询契约实现，
+实际代码是 `app/modules/hot_news/scoring/metric_sql_contract.py` 与
+`app/modules/hot_news/scoring/text2sql_metric_source.py`，不要再次按旧路径重复建设。
+默认聚合模板的 GROUP BY、未消费指标、单桶 UV 及重复行问题也已处理。
+本页后续代码块保留为历史设计参考，不代表当前运行实现；当前状态、调用链、测试和
+剩余待办以[安全边界说明](text2sql-security.md)为准。结构化理解/澄清结果已有实现，
+仍需评测模型是否忠实保留用户原意。
+
+以下为原草案背景：
 上一轮已经修改了输入筛查、SQL 护栏、执行复核及相关测试，但没有部署到运行中的服务；
 本轮只补文档。已实现的规则和参考项目见
 [安全边界说明](/Users/shi/Project/myProject/NewsAgent/agent/docs/text2sql-security.md)。
@@ -12,7 +20,7 @@
 | 自然语言筛查 | [input_boundary.py](/Users/shi/Project/myProject/NewsAgent/agent/app/sql_assistant/input_boundary.py) | 补真实语言与攻击样例，保持检查文本与推理文本一致 |
 | 意图校验、固定 SQL 编译 | [planner.py](/Users/shi/Project/myProject/NewsAgent/agent/app/sql_assistant/planner.py) | 优先扩展批准场景，再扩展表达方式 |
 | 通用 SQL 结构护栏 | [sql_guard.py](/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/sql_guard.py) | 保留租户、窗口、表列函数和参数限制 |
-| 通用指标取数 | [text2sql_metric_source.py](/Users/shi/Project/myProject/NewsAgent/agent/app/analytics/text2sql_metric_source.py) | **优先补指标口径校验**，位置在 `fetch_batch()` 中、数仓执行之前 |
+| 通用指标取数 | [text2sql_metric_source.py](/Users/shi/Project/myProject/NewsAgent/agent/app/modules/hot_news/scoring/text2sql_metric_source.py) | 2026-10-22 已在 `fetch_batch()` 中、数仓执行之前补完整口径校验 |
 | 计划快照与执行复核 | [service.py](/Users/shi/Project/myProject/NewsAgent/agent/app/sql_assistant/service.py) | 后续增加结构化拒绝/澄清结果，不绕过冻结计划 |
 | 企业数仓 Port | [sql_warehouse.py](/Users/shi/Project/myProject/NewsAgent/agent/app/clients/enterprise/sql_warehouse.py) | 实现企业 SDK/RPC 适配器，独立复核权限和预算 |
 | 本地只读执行参考 | [warehouse.py](/Users/shi/Project/myProject/NewsAgent/agent/app/sql_assistant/warehouse.py) | 参考 `LocalPostgresSqlWarehouseClient.execute()` 的参数绑定、只读事务与超时 |

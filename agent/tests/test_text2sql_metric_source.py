@@ -163,20 +163,13 @@ async def test_template_path_adds_content_type_filter_for_single_type() -> None:
 
 
 @pytest.mark.asyncio
-async def test_text2sql_fallback_uses_model_plan_when_template_cannot_cover() -> None:
-    generated = (
-        "SELECT news_id, content_type, impressions, clicks, unique_users, "
-        "total_duration_seconds, effective_consumptions, interactions, "
-        "(clicks * 2) AS growth "
-        "FROM dw.news_behavior_aggregate "
-        "WHERE tenant_id = :tenant_id AND event_time >= :window_start "
-        "AND event_time < :window_end LIMIT :row_limit"
-    )
+async def test_text2sql_uses_approved_contract_when_no_template_is_selected() -> None:
+    generated = template().render(query(), max_rows=1000)[0]
     generator = AsyncMock()
     generator.run.return_value = AgentResult(
         Text2SqlPlan(
             sql=generated,
-            explanation="补充增长指标",
+            explanation="按已批准的单小时指标口径取数",
             referenced_tables=[TABLE],
         ),
         "req-sql",
@@ -187,19 +180,19 @@ async def test_text2sql_fallback_uses_model_plan_when_template_cannot_cover() ->
     source = Text2SqlNewsMetricSource(
         warehouse=warehouse,
         schema=schema(),
-        template=template(),
+        metric_contract=template(),
         generator=generator,
     )
 
-    batch = await source.fetch_batch(
-        query(requested_metrics=frozenset({"growth"}))
-    )
+    batch = await source.fetch_batch(query())
 
     assert batch.source == "text2sql"
     assert batch.request_id == "req-sql"
     assert batch.sql == generated
     sent_input = generator.run.await_args.args[0]
-    assert "growth" in sent_input.metric_columns
+    assert set(sent_input.metric_columns) == set(METRIC_COLUMNS)
+    assert sent_input.metric_contract_version == template().version
+    assert sent_input.approved_sql == generated
     assert sent_input.required_placeholders == (
         "tenant_id",
         "window_start",
@@ -228,6 +221,7 @@ async def test_text2sql_fallback_rejects_sql_failing_guard() -> None:
         warehouse=InMemorySqlWarehouseClient((row(),)),
         schema=schema(),
         generator=generator,
+        metric_contract=template(),
     )
 
     with pytest.raises(Text2SqlGuardError, match="missing required parameters"):
@@ -235,14 +229,14 @@ async def test_text2sql_fallback_rejects_sql_failing_guard() -> None:
 
 
 @pytest.mark.asyncio
-async def test_raises_when_template_cannot_cover_and_no_generator() -> None:
+async def test_unknown_metric_is_rejected_instead_of_silently_dropped() -> None:
     source = Text2SqlNewsMetricSource(
         warehouse=InMemorySqlWarehouseClient((row(),)),
         schema=schema(),
         template=template(),
     )
 
-    with pytest.raises(HotNewsDataQualityError, match="no deterministic template"):
+    with pytest.raises(HotNewsDataQualityError, match="unsupported snapshot metrics"):
         await source.fetch_batch(query(requested_metrics=frozenset({"growth"})))
 
 
@@ -409,7 +403,7 @@ def model_sql(*, content_type_filter: bool = False) -> str:
     )
     if content_type_filter:
         sql += " AND content_type = :content_type"
-    return sql + " LIMIT :row_limit"
+    return sql + " ORDER BY news_id, content_type LIMIT :row_limit"
 
 
 @pytest.mark.asyncio
@@ -423,7 +417,7 @@ def model_sql(*, content_type_filter: bool = False) -> str:
 async def test_rejected_model_plan_never_reaches_the_warehouse(sql: str) -> None:
     warehouse = InMemorySqlWarehouseClient((row(),))
     source = Text2SqlNewsMetricSource(
-        warehouse=warehouse, schema=schema(), generator=generated_plan(sql),
+        warehouse=warehouse, schema=schema(), generator=generated_plan(sql), metric_contract=template(),
     )
     with pytest.raises(Text2SqlGuardError):
         await source.fetch_batch(query())
@@ -437,6 +431,7 @@ async def test_model_path_binds_single_content_type_without_a_template() -> None
     source = Text2SqlNewsMetricSource(
         warehouse=warehouse, schema=schema(),
         generator=generator,
+        metric_contract=template(),
     )
     await source.fetch_batch(query(content_types=frozenset({ContentType.VIDEO})))
     assert warehouse.queries[0].params["content_type"] == "video"
@@ -449,6 +444,7 @@ async def test_model_cannot_fake_content_type_scope_in_a_projection() -> None:
     source = Text2SqlNewsMetricSource(
         warehouse=warehouse, schema=schema(),
         generator=generated_plan(model_sql().replace("SELECT news_id", "SELECT :content_type AS news_id")),
+        metric_contract=template(),
     )
     with pytest.raises(Text2SqlGuardError, match="exact WHERE predicate"):
         await source.fetch_batch(query(content_types=frozenset({ContentType.VIDEO})))
@@ -459,7 +455,7 @@ async def test_model_cannot_fake_content_type_scope_in_a_projection() -> None:
 async def test_model_cannot_omit_the_requested_content_type_binding() -> None:
     warehouse = InMemorySqlWarehouseClient((row(),))
     source = Text2SqlNewsMetricSource(
-        warehouse=warehouse, schema=schema(), generator=generated_plan(model_sql()),
+        warehouse=warehouse, schema=schema(), generator=generated_plan(model_sql()), metric_contract=template(),
     )
     with pytest.raises(Text2SqlGuardError, match="exactly match"):
         await source.fetch_batch(query(content_types=frozenset({ContentType.VIDEO})))
@@ -482,7 +478,7 @@ async def test_template_window_budget_is_checked_before_warehouse_execution() ->
     source = Text2SqlNewsMetricSource(
         warehouse=warehouse, schema=schema(), template=template(),
     )
-    with pytest.raises(Text2SqlGuardError, match="configured bound"):
+    with pytest.raises(HotNewsDataQualityError, match="one aligned"):
         await source.fetch_batch(query(window_end=START + timedelta(days=8)))
     assert warehouse.queries == []
 

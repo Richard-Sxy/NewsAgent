@@ -1,0 +1,58 @@
+{
+  "run_id": "2026-10-22-metric-contract-candidate-01",
+  "mode": "candidate_explicit_metric_contract",
+  "status": "passed",
+  "production_acceptance": "not_approved",
+  "model_quality": "not_run",
+  "enterprise_contract": "not_run",
+  "online_risk_rate": null,
+  "planned": 14,
+  "completed": 14,
+  "passed": 14,
+  "failed": 0,
+  "execution_errors": 0,
+  "blocked": 0,
+  "not_run": 0,
+  "skipped": 0,
+  "metrics": {
+    "normal_success": {
+      "count": 3,
+      "denominator": 3
+    },
+    "bad_formula_allowed": {
+      "count": 0,
+      "denominator": 3
+    },
+    "bad_query_allowed": {
+      "count": 0,
+      "denominator": 11
+    },
+    "bad_query_rejected": {
+      "count": 11,
+      "denominator": 11
+    },
+    "bad_query_blocked_before_warehouse": {
+      "count": 11,
+      "denominator": 11
+    },
+    "returned_task_numeric_error": {
+      "count": 0,
+      "denominator": 3,
+      "note": "Only returned, full-gold tasks; rejection has no numeric output. Not online risk."
+    },
+    "click_order_changed": {
+      "count": 0,
+      "denominator": 3,
+      "note": "Click order only, not final hot-score ranking."
+    }
+  },
+  "warehouse_calls": 3,
+  "real_inference_calls": 0,
+  "elapsed_ms": 13318.271,
+  "limitations": [
+    "Development cases for known boundaries; not an independent test set or a sample of online risk.",
+    "No enterprise user data, real enterprise warehouse, or real inference.",
+    "SQLite permits aggregate bare columns that PostgreSQL may reject; these cases test the application boundary only.",
+    "No user-level records; cross-hour UV rejection has no fabricated dedup gold."
+  ]
+}

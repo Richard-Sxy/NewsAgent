@@ -21,6 +21,7 @@ from app.sql_assistant.guard import SqlAssistantGuard
 from app.sql_assistant.planner import compile_query, local_query_intent, screen_question, validate_intent
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError
 from app.sql_assistant.scenarios import SqlScenario, load_sql_scenarios
+from app.sql_assistant.real_news_profiles import REAL_NEWS_CATEGORIES
 from app.sql_assistant.warehouse import (
     demo_dataset_info, get_text2sql_schema, verify_schema_contract,
     warehouse_contract,
@@ -106,6 +107,19 @@ class SqlAssistantService:
         if config.warehouse_schema_version != self.contract.version:
             raise SqlAssistantError("场景与当前数仓格式版本不一致", 409)
         return config
+
+    def _validate_category_scope(self, intent: SqlAssistantIntent, scenario: SqlScenario) -> None:
+        """An omitted filter is safe only for this warehouse's complete set."""
+        if intent.category is not None:
+            return
+        if self.contract.version == "news-warehouse-v7":
+            complete_categories = frozenset(REAL_NEWS_CATEGORIES)
+        elif self.contract.version in {f"news-warehouse-v{version}" for version in range(1, 7)}:
+            complete_categories = frozenset({"科技", "财经", "体育", "社会"})
+        else:
+            raise SqlAssistantError("当前数仓版本的完整栏目范围未配置", 409)
+        if frozenset(scenario.allowed_categories) != complete_categories:
+            raise SqlAssistantError("当前场景请在问题中指定一个允许的栏目")
 
     def dataset_identity(self) -> dict:
         """Freeze only the immutable scaled identity, never the full dataset."""
@@ -204,8 +218,7 @@ class SqlAssistantService:
         if intent.category is None and len(scenario.allowed_categories) == 1:
             intent = intent.model_copy(update={"category": scenario.allowed_categories[0]})
             params["category"] = intent.category
-        if len(scenario.allowed_categories) not in (1, 4, 7) and intent.category is None:
-            raise SqlAssistantError("当前场景请在问题中指定一个允许的栏目")
+        self._validate_category_scope(intent, scenario)
         sql = compile_query(intent, scenario)
         self.guard.validate(sql, params)
         stages.append(SqlAssistantStage(name="sql_guard", detail="参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过"))
@@ -285,6 +298,7 @@ class SqlAssistantService:
             raise SqlAssistantError("场景配置已变化，请重新生成预览", 409)
         intent = SqlAssistantIntent.model_validate(snapshot["intent"])
         validate_intent(intent, scenario)
+        self._validate_category_scope(intent, scenario)
         expected_sql = compile_query(intent, scenario)
         if preview.sql != expected_sql or preview.sql_hash != sha256(expected_sql.encode()).hexdigest():
             raise SqlAssistantError("SQL 与批准的查询计划不一致", 409)

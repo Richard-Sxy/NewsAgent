@@ -1,15 +1,16 @@
-"""通过 SQL 获取指标；优先使用批准的模版；配置了生成器，可处理模版无法请求覆盖的要求。执行前经过护栏，结果转换成指标快照。
+"""按批准的单桶数仓口径取数，再转换成热点指标快照。
 
-参数化模板是默认且可复现的路径；只有当一次请求要求模板未声明的指标，或部署
-没有可用模板时，才调用大模型生成候选 SQL。两条路径最终都经过 ``SqlGuard``
-只读白名单校验，再送入 ``SqlWarehouseClient`` 执行，最后映射为
-``NewsMetricSnapshot``，因此下游热点计算链路完全不变。
+固定模板优先。模型候选 SQL 必须有服务端提供的 ``metric_contract``，且与批准
+查询保持相同公式和范围；不能通过模型兜底创造新指标。两条路径均经过通用 SQL
+护栏和口径比对。当前每新闻/内容类型只消费一个完整时间桶；跨桶 UV 需要另立合同。
 """
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from hashlib import sha256
+import json
+from types import MappingProxyType
 from typing import Any, Literal, Mapping
 
 from app.observability.decorators import traced
@@ -19,6 +20,7 @@ from app.modules.hot_news.scoring.metrics import (
     NewsMetricSnapshot,
 )
 from app.modules.hot_news.scoring.metric_source import HotNewsMetricQuery
+from app.modules.hot_news.scoring.metric_sql_contract import validate_metric_sql_contract
 from app.analytics.sql_guard import SqlGuard, SqlGuardPolicy
 from app.clients.enterprise.sql_warehouse import SqlQuery, SqlWarehouseClient
 from app.domain.errors import HotNewsDataQualityError
@@ -27,16 +29,18 @@ from app.modules.hot_news.analysis.text2sql_agent import Text2SqlAgentRunner
 
 
 class TemplateNotApplicableError(HotNewsDataQualityError):
-    """请求指标超出模板声明能力，需要走 Text2SQL 兜底。"""
+    """批准口径没有覆盖请求，不允许由模型临时补造。"""
 
     retryable = False
 
 @dataclass(frozen=True, slots=True)
 class HotNewsMetricSqlTemplate:
-    """把结构化窗口请求渲染成固定聚合 SQL 的参数化模板。
+    """服务端批准的单桶指标口径，也是候选 SQL 的执行契约。
 
     ``metric_expressions`` 的键是规范指标名，值是聚合 SQL 表达式。表达式必须
-    来自受控配置，不能由模型生成。
+    来自受控配置，不能由模型生成。默认桶为 UTC 对齐的完整小时；其它粒度必须
+    显式指定 ``bucket_seconds``，并由上游保证每个输出维度只对应该桶的数据。
+    ``group_by_dimensions=False`` 用于上游已按新闻/内容类型/桶聚合的唯一行。
     """
 
     table: str
@@ -45,7 +49,50 @@ class HotNewsMetricSqlTemplate:
     content_type_column: str = "content_type"
     tenant_column: str = "tenant_id"
     window_column: str = "event_time"
-    version: str = "hot-news-metric-template-v1"
+    version: str = "hot-news-metric-template-v2"
+    bucket_seconds: int = 3600
+    group_by_dimensions: bool = True
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.version, str) or not self.version.strip():
+            raise ValueError("metric contract version must be nonempty")
+        if type(self.bucket_seconds) is not int or not 1 <= self.bucket_seconds <= 604800:
+            raise ValueError("metric contract bucket_seconds must be within 1..604800")
+        if type(self.group_by_dimensions) is not bool:
+            raise ValueError("group_by_dimensions must be boolean")
+        expressions = dict(self.metric_expressions)
+        if not expressions or any(
+            not isinstance(key, str) or not key or not isinstance(value, str) or not value.strip()
+            for key, value in expressions.items()
+        ):
+            raise ValueError("metric contract expressions must be nonempty strings")
+        object.__setattr__(self, "metric_expressions", MappingProxyType(expressions))
+
+    @property
+    def sha256(self) -> str:
+        payload = {
+            "version": self.version, "table": self.table,
+            "metric_expressions": dict(self.metric_expressions),
+            "news_id_column": self.news_id_column, "content_type_column": self.content_type_column,
+            "tenant_column": self.tenant_column, "window_column": self.window_column,
+            "bucket_seconds": self.bucket_seconds, "group_by_dimensions": self.group_by_dimensions,
+        }
+        return sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
+    def validate_window(self, query: HotNewsMetricQuery) -> None:
+        # Same-ZoneInfo subtraction uses wall time across DST transitions.
+        # Buckets represent elapsed time, so compare and align in UTC.
+        start = query.window_start.astimezone(timezone.utc)
+        end = query.window_end.astimezone(timezone.utc)
+        if (
+            end - start != timedelta(seconds=self.bucket_seconds)
+            or start.microsecond
+            or int(start.timestamp()) % self.bucket_seconds
+        ):
+            raise HotNewsDataQualityError(
+                "metric contract requires one aligned complete time bucket; "
+                "cross-bucket unique users need a separate approved source"
+            )
 
     @property
     def supported_metrics(self) -> frozenset[str]:
@@ -61,7 +108,12 @@ class HotNewsMetricSqlTemplate:
         *,
         max_rows: int,
     ) -> tuple[str, dict[str, Any]]:
-        metrics = BASE_METRIC_KEYS | query.requested_metrics
+        self.validate_window(query)
+        unsupported = query.requested_metrics - (BASE_METRIC_KEYS | {"ctr"})
+        if unsupported:
+            raise HotNewsDataQualityError(f"unsupported snapshot metrics: {sorted(unsupported)}")
+        # CTR is computed by Python from these base counts, not by model SQL.
+        metrics = BASE_METRIC_KEYS
         missing = metrics - self.supported_metrics
         if missing:
             raise TemplateNotApplicableError(
@@ -92,8 +144,9 @@ class HotNewsMetricSqlTemplate:
         if len(query.content_types) == 1:
             sql += f" AND {self.content_type_column} = :content_type"
             params["content_type"] = next(iter(query.content_types)).value
+        if self.group_by_dimensions:
+            sql += f" GROUP BY {self.news_id_column}, {self.content_type_column}"
         sql += (
-            f" GROUP BY {self.news_id_column}, {self.content_type_column}"
             f" ORDER BY {self.news_id_column}, {self.content_type_column}"
             " LIMIT :row_limit"
         )
@@ -104,15 +157,18 @@ def aggregate_metric_template(
     *,
     table: str,
     window_column: str = "event_time",
-    version: str = "hot-news-metric-template-v1",
+    version: str = "hot-news-metric-template-v2",
+    bucket_seconds: int = 3600,
 ) -> HotNewsMetricSqlTemplate:
-    """为"已聚合行为视图"构造模板：视图里已有规范指标列。"""
+    """读取每新闻/类型/完整桶唯一一行的聚合视图；不再对小时 UV 求和。"""
 
     return HotNewsMetricSqlTemplate(
         table=table,
         metric_expressions={key: key for key in sorted(BASE_METRIC_KEYS)},
         window_column=window_column,
         version=version,
+        bucket_seconds=bucket_seconds,
+        group_by_dimensions=False,
     )
 
 
@@ -126,10 +182,12 @@ class SqlMetricBatch:
     sql_hash: str
     params: Mapping[str, Any]
     request_id: str | None = None
+    metric_contract_version: str = ""
+    metric_contract_sha256: str = ""
 
 
 class Text2SqlNewsMetricSource:
-    """实现 ``NewsMetricSource``：模板优先，超纲时回退到 Text2SQL。"""
+    """模板优先；模型仅能提交符合已批准指标契约的候选 SQL。"""
 
     def __init__(
         self,
@@ -138,6 +196,7 @@ class Text2SqlNewsMetricSource:
         schema: Text2SqlSchema,
         template: HotNewsMetricSqlTemplate | None = None,
         generator: Text2SqlAgentRunner | None = None,
+        metric_contract: HotNewsMetricSqlTemplate | None = None,
         max_rows: int | None = None,
         timeout_ms: int = 30_000,
     ) -> None:
@@ -155,6 +214,7 @@ class Text2SqlNewsMetricSource:
         self.schema = schema
         self.template = template
         self.generator = generator
+        self.metric_contract = metric_contract if metric_contract is not None else template
         self.max_rows = resolved_max_rows
         self.timeout_ms = timeout_ms
 
@@ -174,7 +234,7 @@ class Text2SqlNewsMetricSource:
                 allowed_placeholders=frozenset(allowed_placeholders),
                 max_rows=self.max_rows,
                 dialect=schema.dialect,
-                content_type_column=template.content_type_column if template is not None else "content_type",
+                content_type_column=self.metric_contract.content_type_column if self.metric_contract is not None else "content_type",
             )
         )
 
@@ -191,7 +251,16 @@ class Text2SqlNewsMetricSource:
         query: HotNewsMetricQuery,
     ) -> SqlMetricBatch:
         query.validate()
-        requested_metrics = BASE_METRIC_KEYS | query.requested_metrics
+        unsupported = query.requested_metrics - (BASE_METRIC_KEYS | {"ctr"})
+        if unsupported:
+            raise HotNewsDataQualityError(f"unsupported snapshot metrics: {sorted(unsupported)}")
+        if self.metric_contract is None:
+            raise HotNewsDataQualityError("text2sql requires an approved metric contract before generation")
+        requested_metrics = BASE_METRIC_KEYS
+        approved_sql, approved_params = self.metric_contract.render(query, max_rows=self.max_rows)
+        # Validate trusted configuration too: a malformed contract must not be
+        # sent to a generator or allowed to expand the schema/scope whitelist.
+        self._guard.validate(approved_sql, approved_params)
 
         source: Literal["template", "text2sql"] = "template"
         request_id: str | None = None
@@ -216,6 +285,9 @@ class Text2SqlNewsMetricSource:
             params = self._base_params(query)
 
         self._guard.validate(sql, params)
+        if params != approved_params:
+            raise HotNewsDataQualityError("metric query bindings differ from the approved contract")
+        validate_metric_sql_contract(sql, approved_sql=approved_sql, dialect=self.schema.dialect)
         execution = await self.warehouse.execute(
             SqlQuery(
                 sql=sql,
@@ -243,6 +315,8 @@ class Text2SqlNewsMetricSource:
             sql_hash=sha256(sql.encode("utf-8")).hexdigest(),
             params=params,
             request_id=request_id,
+            metric_contract_version=self.metric_contract.version,
+            metric_contract_sha256=self.metric_contract.sha256,
         )
 
     def _generation_input(
@@ -264,6 +338,8 @@ class Text2SqlNewsMetricSource:
                 ("content_type",) if len(query.content_types) == 1 else ()
             ),
             row_limit_placeholder="row_limit",
+            metric_contract_version=self.metric_contract.version,
+            approved_sql=self.metric_contract.render(query, max_rows=self.max_rows)[0],
         )
 
     def _base_params(self, query: HotNewsMetricQuery) -> dict[str, Any]:
@@ -285,6 +361,7 @@ def _snapshots_from_rows(
     window_end: datetime,
 ) -> list[NewsMetricSnapshot]:
     snapshots: list[NewsMetricSnapshot] = []
+    seen: set[tuple[str, ContentType]] = set()
     for index, row in enumerate(rows):
         try:
             news_id = str(row["news_id"]).strip()
@@ -302,6 +379,11 @@ def _snapshots_from_rows(
             raise HotNewsDataQualityError(
                 f"sql metric row {index} has an empty news_id"
             )
+
+        identity = (news_id, content_type)
+        if identity in seen:
+            raise HotNewsDataQualityError("sql metric rows contain a duplicate news/content type identity")
+        seen.add(identity)
 
         impressions = values["impressions"]
         clicks = values["clicks"]

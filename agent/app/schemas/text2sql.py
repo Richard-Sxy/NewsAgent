@@ -75,6 +75,8 @@ class Text2SqlGenerationInput(BaseModel):
     window_column: str = Field(min_length=1, max_length=128)
     required_placeholders: tuple[str, ...] = Field(min_length=1, max_length=16)
     row_limit_placeholder: str = Field(min_length=1, max_length=128)
+    metric_contract_version: str | None = Field(default=None, min_length=1, max_length=128)
+    approved_sql: str | None = Field(default=None, min_length=1, max_length=20000)
 
 
 class Text2SqlPlan(BaseModel):

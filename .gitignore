@@ -78,3 +78,7 @@ tmp/
 
 # Generated real-news extension metadata; local-only and derived from ignored caches.
 /agent/data/real-news-warehouse-v8/catalog-extension-*.json
+
+# Frozen public-news source material. Keep small manifests, not captured bodies.
+/var/news-storage/**/*.jsonl
+/var/news-storage/.*.building-*/
