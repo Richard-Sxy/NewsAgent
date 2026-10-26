@@ -3,6 +3,7 @@
 from copy import deepcopy
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -134,7 +135,7 @@ def test_start_validates_first_uses_fixed_new_project_and_verifies_every_dimensi
     assert len(calls) == 4
     up, kwargs = calls[1]
     assert up == deploy.compose_command("up", "--detach", "--wait", "--wait-timeout", "300", "warehouse")
-    assert "--env-file" in up and up[up.index("--env-file") + 1] == "/dev/null"
+    assert "--env-file" in up and up[up.index("--env-file") + 1] == os.devnull
     assert kwargs["env"]["REAL_NEWS_WAREHOUSE_DATASET"] == str(path.absolute())
     assert kwargs["env"]["REAL_NEWS_WAREHOUSE_DATASET_SHA256"] == manifest["dataset_sha256"]
     assert not {"OPENAI_API_KEY", "DATABASE_URL", "COMPOSE_FILE"}.intersection(kwargs["env"])

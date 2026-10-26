@@ -72,6 +72,14 @@ def test_real_sdk_nested_spans_log_correlation_and_no_payload(telemetry):
     assert "prompt" not in parent_span.attributes and "model.output" not in child_span.attributes
 
 
+def test_instance_identity_separates_process_metrics(telemetry):
+    record_metric("diagnostic.calls",1,kind="counter")
+    data = telemetry.reader.get_metrics_data()
+    instance = data.resource_metrics[0].resource.attributes["service.instance.id"]
+    assert instance == telemetry.runtime.settings.service_instance_id
+    assert ObservabilitySettings().service_instance_id != instance
+
+
 def test_exception_attribution_preserves_failure_stage_without_messages(telemetry):
     class ModelFailure(RuntimeError):
         failure_stage = "response_decode"

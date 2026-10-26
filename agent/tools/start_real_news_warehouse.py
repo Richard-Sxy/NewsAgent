@@ -25,7 +25,7 @@ TOOLS_DIR = str(Path(__file__).resolve().parent)
 if TOOLS_DIR not in sys.path:
     sys.path.insert(0, TOOLS_DIR)
 
-from validate_real_news_warehouse import TABLES, validate_package
+from validate_real_news_warehouse import LEGACY_TABLES, TABLES, package_tables, validate_package
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPOSE_PATH = REPOSITORY_ROOT / "deploy/docker-compose.real-news-warehouse-v8.yml"
@@ -82,7 +82,7 @@ def _verify_transaction(path: Path) -> None:
         prefix = stream.read(128)
         stream.seek(max(0, path.stat().st_size - 256))
         suffix = stream.read(256)
-    if not prefix.startswith(b"\\set ON_ERROR_STOP on\nBEGIN;\n") or not suffix.rstrip().endswith(b"COMMIT;"):
+    if not prefix.replace(b"\r\n", b"\n").startswith(b"\\set ON_ERROR_STOP on\nBEGIN;\n") or not suffix.rstrip().endswith(b"COMMIT;"):
         raise WarehouseDeploymentError("Frozen warehouse SQL requires ON_ERROR_STOP and one atomic BEGIN/COMMIT import")
 
 
@@ -127,8 +127,10 @@ def _verify_host_postgres(*, connector=None) -> dict[str, Any]:
             "protocol": "PostgreSQL SSLRequest", "server_ssl": response == b"S"}
 
 
-def database_verification_sql() -> str:
-    counts = ",".join(f"'{name}',(SELECT count(*) FROM news_sim_v8.{name})" for name in TABLES)
+def database_verification_sql(tables: tuple[str, ...] = TABLES) -> str:
+    if tables not in (TABLES, LEGACY_TABLES):
+        raise WarehouseDeploymentError("Database verification requires approved table names")
+    counts = ",".join(f"'{name}',(SELECT count(*) FROM news_sim_v8.{name})" for name in tables)
     fields = ",".join(f"'{field}',{field}" for field in _DIM_FIELDS)
     return f"""BEGIN READ ONLY;
 SET LOCAL TIME ZONE 'Asia/Shanghai';
@@ -159,7 +161,7 @@ def _timestamp(value: Any) -> datetime:
 
 
 def verify_database_result(dataset: Path, manifest: dict[str, Any], result: dict[str, Any]) -> dict[str, Any]:
-    expected_counts = {name: manifest["tables"][name]["rows"] for name in TABLES}
+    expected_counts = {name: manifest["tables"][name]["rows"] for name in package_tables(manifest)}
     if result.get("counts") != expected_counts:
         raise WarehouseDeploymentError("Existing database table counts differ from the verified dataset; volume preserved")
     for actual, expected in (("window_min", "closed_window_start"), ("window_max", "open_window_start"),
@@ -229,7 +231,7 @@ def start_warehouse(dataset: Path | str = DEFAULT_DATASET, *, wait_seconds: int 
     report["host_connection"] = _verify_host_postgres(connector=connector)
     sql_result = _run(compose_command("exec", "-T", "-e", "PGPASSWORD=local-v8-only", "warehouse", "psql",
                                       "-X", "-qAt", "-v", "ON_ERROR_STOP=1", "-h", "127.0.0.1",
-                                      "-U", "news_demo", "-d", "news_demo", "-c", database_verification_sql()),
+                                      "-U", "news_demo", "-d", "news_demo", "-c", database_verification_sql(package_tables(manifest))),
                       env=env, timeout=150, run=run)
     if len(sql_result.stdout.encode()) > MAX_DATABASE_RESPONSE:
         raise WarehouseDeploymentError("Database verification response exceeded its size budget")

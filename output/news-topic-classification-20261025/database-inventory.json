@@ -1,0 +1,14 @@
+{
+  "checked_on": "2026-10-25",
+  "database": "newsagent_unified_news_20261023",
+  "read_only_transaction": true,
+  "tenant_id": "public-news-local",
+  "selected_news_count": 21435,
+  "release_ids": ["news-0c74530f2864db20a73d7a96"],
+  "selected_id_version_md5": "6283da1d90733a96cdc47b185b7a732e",
+  "digest_definition": "md5(newline-joined news_id + ':' + record_sha256, sorted by news_id with C collation); identity cross-check only",
+  "body_available_count": 8441,
+  "fragments_only_count": 11794,
+  "title_only_count": 1200,
+  "deduplicated_count": 21427
+}

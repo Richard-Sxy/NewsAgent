@@ -1,0 +1,24 @@
+{
+  "version": "inventory-expansion-v2-20261025",
+  "purpose": "offline_review_candidates_not_production_admission_or_gold",
+  "as_of": "2026-10-15T00:00:00+08:00",
+  "min_source_body_chars": 300,
+  "min_candidate_body_chars": 100,
+  "sources_per_topic": 10,
+  "candidates_per_query": 12,
+  "quality_cases_per_stratum": 10,
+  "seed": 20261025,
+  "near_title_jaccard": 0.65,
+  "topics": [
+    {"id": "technology", "name": "科技", "title_terms": ["科技", "芯片", "半导体", "量子", "航天", "卫星", "机器人", "科学家", "科研"], "source_title_exclusions": ["股价", "股票", "股市", "涨停", "跌停", "涨幅", "市值", "投资", "ETF", "基金", "证券", "收涨", "目标价", "财报"]},
+    {"id": "ai", "name": "AI", "title_terms": ["人工智能", "大模型", "AI", "智能体", "生成式", "ChatGPT", "DeepSeek", "算力", "英伟达", "WAIC"], "source_title_exclusions": ["AI预测", "AI 预测"]},
+    {"id": "finance", "name": "财经", "title_terms": ["央行", "货币", "财政", "经济", "银行", "利率", "通胀", "GDP", "关税", "贸易", "消费"], "source_title_exclusions": ["限制消费"]},
+    {"id": "stocks", "name": "股票", "title_terms": ["股票", "股价", "股市", "A股", "港股", "美股", "上证", "深证", "创业板", "科创板", "涨停", "跌停", "上市公司", "券商", "财报", "净利润", "市值"]},
+    {"id": "auto", "name": "汽车", "title_terms": ["汽车", "车企", "新能源车", "电动车", "比亚迪", "特斯拉", "吉利", "奇瑞", "长安", "上汽", "小米汽车", "鸿蒙智行", "智驾", "自动驾驶"]},
+    {"id": "digital", "name": "数码", "title_terms": ["手机", "iPhone", "华为", "小米", "荣耀", "OPPO", "vivo", "平板", "笔记本", "耳机", "相机", "数码", "固态硬盘", "路由器"], "source_title_exclusions": ["财报", "净利润", "少赚", "股价", "涨停", "跌停", "营收"]},
+    {"id": "international", "name": "国际", "title_terms": ["国际局势", "联合国", "外交部", "美国", "欧盟", "欧洲", "俄罗斯", "乌克兰", "日本", "韩国", "印度", "以色列", "加沙", "特朗普"], "source_title_exclusions": ["足球", "篮球", "足协", "裁判", "球员", "队长", "奥运", "联赛", "乒乓", "网球", "游戏", "任天堂", "Steam", "PS5", "Xbox", "手机", "iPhone", "戏剧", "电影", "电视剧", "债市", "ETF", "股市", "财报", "金融危机"]},
+    {"id": "military", "name": "军事", "title_terms": ["军事", "军队", "军方", "导弹", "战机", "航母", "军舰", "舰队", "国防", "军演", "演习", "空军", "海军", "武器", "战场", "无人机"], "source_title_exclusions": ["无人机培训", "农用无人机"]},
+    {"id": "sports", "name": "体育", "title_terms": ["体育", "足球", "篮球", "乒乓", "网球", "中超", "世界杯", "欧冠", "NBA", "CBA", "奥运", "全运", "联赛", "国足", "乒联", "F1"], "source_title_exclusions": ["体育单招", "核销指南"]},
+    {"id": "gaming", "name": "游戏", "title_terms": ["游戏", "电竞", "王者荣耀", "英雄联盟", "和平精英", "原神", "任天堂", "Steam", "PS5", "Xbox", "宝可梦", "黑神话", "吃鸡", "手游", "端游"], "source_title_exclusions": ["手机", "一加", "游戏旗舰", "电竞旗舰"]}
+  ]
+}

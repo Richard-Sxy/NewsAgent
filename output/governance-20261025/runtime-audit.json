@@ -1,0 +1,126 @@
+{
+  "created_at": "2026-10-25T05:48:21.042838+00:00",
+  "scope": "local deterministic inference; current bind-mounted workspace",
+  "source_sha256": {
+    "agent/app/model_runtime/governance.py": "cad499ccef3f0a87a28b4a0f66e837984df7552439d62df33569fc418b891ded",
+    "agent/app/model_runtime/factory.py": "79878106106bd08abe724480757ffd8a0c3099d88f3a2fe9f02f3206f06df844",
+    "agent/app/observability/settings.py": "55c2a1a66b017ee9784622a7d712c051e3252bc617910801a2ab412084b074c3",
+    "agent/app/observability/telemetry.py": "9b9002efffdd1225d616dbb8c5f6de5ff1753ba8810fe008bf3291d663096760",
+    "agent/tools/governance_load.py": "215068453ceb1648700329ec8cd3e58ffa4c98f404640d6f381dc64b86449ab7",
+    "agent/tools/governance_temporal_probe.py": "83f55ac4923fd7516d0e1b0e82bc459c8bdc4710586c3b9672e8fe38b6761ba0",
+    "agent/tools/governance_probe_check.py": "b8e842207e9782267cbbe0f354a7fc1d9f7b3717354b83ecbc4c9e1b060fba4b",
+    "deploy/docker-compose.governance-local.yml": "28540bd871a83bfcc7488aa4b83db6959aff4f26b6936a88a104f577ad1ee684",
+    "deploy/model-governance.local.yml": "edf3b9781d14ae6649b716d79447aa43ab9129c9bc548df1602185094f989d90",
+    "deploy/docker-compose.observability-durable.yml": "4a60d78985038eae980f6d68d70ce566a5327970346a6b82f708853585bd512b",
+    "deploy/observability/otel-collector.yml": "8ccd01c7883a0be4ddf0c57b1b24282ca3ef38487619f9d2c5717d047817c518",
+    "deploy/model-runtime.local.yml": "1a51e8e949bd349d072885cceeec5aa19fbfdbffd76fa6ceaf933f7d131865f8"
+  },
+  "containers": [
+    {
+      "name": "newsagent-governance-local-api-a-1",
+      "image_id": "sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18",
+      "status": "running",
+      "started_at": "2026-10-25T05:46:15.953091434Z",
+      "command": [
+        "uvicorn",
+        "app.main:create_app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ]
+    },
+    {
+      "name": "newsagent-governance-local-api-b-1",
+      "image_id": "sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18",
+      "status": "running",
+      "started_at": "2026-10-25T05:46:15.945882232Z",
+      "command": [
+        "uvicorn",
+        "app.main:create_app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ]
+    },
+    {
+      "name": "newsagent-governance-local-probe-api-1",
+      "image_id": "sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18",
+      "status": "running",
+      "started_at": "2026-10-25T05:46:13.230824052Z",
+      "command": [
+        "uvicorn",
+        "tools.governance_temporal_probe:create_app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ]
+    },
+    {
+      "name": "newsagent-governance-local-probe-worker-1",
+      "image_id": "sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18",
+      "status": "running",
+      "started_at": "2026-10-25T05:46:13.947338616Z",
+      "command": [
+        "python",
+        "-m",
+        "tools.governance_temporal_probe"
+      ]
+    },
+    {
+      "name": "news-agent-real-news-v8-api-1",
+      "image_id": "sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18",
+      "status": "running",
+      "started_at": "2026-10-22T09:37:58.757971035Z",
+      "command": [
+        "uvicorn",
+        "simulation.local_simulation:create_local_app",
+        "--factory",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ]
+    },
+    {
+      "name": "news-agent-real-news-v8-hot-news-worker-1",
+      "image_id": "sha256:256c29e12ef8ffd6e661a342d37e717e946e2adaa6b15007fe6ab897b79d0274",
+      "status": "running",
+      "started_at": "2026-10-22T09:37:58.958195181Z",
+      "command": [
+        "python",
+        "-m",
+        "simulation.native_hot_news_e2e_worker"
+      ]
+    },
+    {
+      "name": "newsagent-observability-otel-collector-1",
+      "image_id": "sha256:39923a8e431bd1f57be82411999d389fcfe40857492e4365456d97a4c1f74be6",
+      "status": "running",
+      "started_at": "2026-10-25T05:46:11.957111363Z",
+      "command": [
+        "--config=/etc/otelcol/config.yml"
+      ]
+    },
+    {
+      "name": "newsagent-observability-prometheus-1",
+      "image_id": "sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e",
+      "status": "running",
+      "started_at": "2026-10-25T05:41:03.358772576Z",
+      "command": [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/prometheus",
+        "--storage.tsdb.retention.time=24h",
+        "--storage.tsdb.retention.size=2GB",
+        "--storage.tsdb.wal-compression",
+        "--enable-feature=exemplar-storage"
+      ]
+    }
+  ],
+  "docker_resources": "12 CPUs; 16325062656 bytes memory"
+}

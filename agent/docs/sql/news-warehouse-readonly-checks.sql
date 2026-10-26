@@ -1,4 +1,5 @@
--- 本地合成数仓核对；v1/v2 通用。
+-- 本地 dw 查询库的结构、数量与质量核对；最初用于v1/v2，也适用于沿用这些对象的profile。
+-- 请先核对 news_schema_contract 与所选profile；这不是独立 news_sim_v7/news_sim_v8 的专用验收。
 -- 多条受信任 SELECT 供运维执行，不是模型允许生成的查询。
 -- 不创建/修改表，不改数据；只输出规模、约束和汇总质量计数。
 BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY;
@@ -44,6 +45,7 @@ SELECT
         <> event_time AT TIME ZONE 'UTC') AS non_hour_aligned_rows
 FROM dw.news_metric_hourly;
 
+-- 以下仅统计缺失基线；real-news-v8 初期无历史样本时允许缺基线，不应一概判为错误。
 SELECT COUNT(*) AS metric_rows_without_baseline
 FROM dw.news_metric_hourly AS m
 LEFT JOIN dw.news_metric_baseline_hourly AS b

@@ -168,7 +168,7 @@ class Settings(BaseSettings):
     @field_validator("sql_assistant_news_per_tenant", mode="before")
     @classmethod
     def parse_synthetic_news_count(cls, value):
-        # Environment values are strings. Convert only the three exact approved
+        # Environment values are strings. Convert only the exact approved
         # spellings; bool, floats, whitespace and alternative numeric forms must
         # not silently select a different fixture identity.
         approved = {"120": 120, "1200": 1200, "8120": 8120, "12000": 12000}

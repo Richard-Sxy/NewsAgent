@@ -2,6 +2,7 @@
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from uuid import uuid4
 
 
 class ObservabilitySettings(BaseSettings):
@@ -10,6 +11,7 @@ class ObservabilitySettings(BaseSettings):
     enabled: bool = False
     service_name: str = "newsagent-api"
     service_version: str = "0.1.0"
+    service_instance_id: str = Field(default_factory=lambda: uuid4().hex, pattern=r"^[A-Za-z0-9_.-]{1,128}$")
     environment: str = "local"
     otlp_endpoint: str = "http://127.0.0.1:4318"
     sample_ratio: float = Field(default=1.0, ge=0, le=1)

@@ -105,6 +105,11 @@ def test_source_code_corruption_and_symlinked_table_are_rejected(package, tmp_pa
     source.write_bytes((package / "generator.py").read_bytes())
     table = path / "news_metric_hourly.jsonl"
     table.unlink()
-    table.symlink_to(package / "news_metric_hourly.jsonl")
+    try:
+        table.symlink_to(package / "news_metric_hourly.jsonl")
+    except OSError as error:
+        if getattr(error, "winerror", None) == 1314:
+            pytest.skip("Windows symlink privilege is unavailable")
+        raise
     with pytest.raises(ValueError, match="invalid table artifact"):
         validate_package(path)

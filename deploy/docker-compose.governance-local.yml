@@ -1,0 +1,90 @@
+# Two opt-in API replicas on the existing local native data plane.
+# No enterprise endpoints, migrations, publishing or mutation of existing services.
+name: newsagent-governance-local
+x-api: &api
+  image: news-agent/writing-agent-service:native-e2e
+  read_only: true
+  tmpfs: [/tmp:size=128m]
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  mem_limit: 768m
+  command: [uvicorn, app.main:create_app, --factory, --host, 0.0.0.0, --port, "8000"]
+  environment: &env
+    ENVIRONMENT: e2e
+    MODEL_RUNTIME_BACKEND: native
+    MODEL_RUNTIME_CONFIG_PATH: /app/deploy/model-runtime.local.yml
+    MODEL_GOVERNANCE_CONFIG_PATH: /app/deploy/model-governance.local.yml
+    DATABASE_URL: postgresql+psycopg://newsagent_native:newsagent_native@postgres:5432/newsagent_native
+    REDIS_URL: redis://redis:6379/14
+    TEMPORAL_ADDRESS: temporal:7233
+    TEMPORAL_NAMESPACE: default
+    TEMPORAL_TASK_QUEUE: governance-writing
+    TEMPORAL_HOT_NEWS_TASK_QUEUE: governance-hot-news
+    TEMPORAL_DATA_LOOP_TASK_QUEUE: governance-data-loop
+    DATA_LOOP_GATEWAY_TOKEN: newsagent-native-local-token-not-for-production
+    KNOWLEDGE_INGEST_TOKEN: newsagent-native-knowledge-token-not-for-production
+    ARTIFACT_BUCKET: newsagent-native-artifacts
+    ARTIFACT_ENDPOINT: http://minio:9000
+    ARTIFACT_REGION: us-east-1
+    ARTIFACT_PREFIX: governance-local
+    ARTIFACT_SSE_ALGORITHM: none
+    AWS_ACCESS_KEY_ID: newsagent-native-minio
+    AWS_SECRET_ACCESS_KEY: newsagent-native-minio-secret
+    AWS_EC2_METADATA_DISABLED: "true"
+    CONVERSATION_ENABLED: "1"
+    CONVERSATION_KNOWLEDGE_ENABLED: "0"
+    CONVERSATION_HOT_NEWS_QUERY_ENABLED: "0"
+    OBSERVABILITY_ENABLED: "true"
+    OBSERVABILITY_OTLP_ENDPOINT: http://otel-collector:4318
+    OBSERVABILITY_SERVICE_NAME: newsagent-governance-api
+    OBSERVABILITY_SERVICE_VERSION: local-governance-v1
+    OBSERVABILITY_ENVIRONMENT: local
+    OBSERVABILITY_SAMPLE_RATIO: "1.0"
+    OBSERVABILITY_METRIC_EXPORT_INTERVAL_MS: "5000"
+  volumes:
+    - ../agent/app:/app/app:ro
+    - ./model-runtime.local.yml:/app/deploy/model-runtime.local.yml:ro
+    - ./model-governance.local.yml:/app/deploy/model-governance.local.yml:ro
+  networks: [native, observability]
+  healthcheck:
+    test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+    interval: 5s
+    timeout: 4s
+    retries: 10
+services:
+  api-a:
+    <<: *api
+    ports: ["127.0.0.1:38101:8000"]
+  api-b:
+    <<: *api
+    ports: ["127.0.0.1:38102:8000"]
+  probe-api:
+    <<: *api
+    profiles: [diagnostic]
+    command: [uvicorn, tools.governance_temporal_probe:create_app, --factory, --host, 0.0.0.0, --port, "8000"]
+    ports: ["127.0.0.1:38103:8000"]
+    volumes:
+      - ../agent/app:/app/app:ro
+      - ../agent/tools:/app/tools:ro
+      - ./model-runtime.local.yml:/app/deploy/model-runtime.local.yml:ro
+      - ./model-governance.local.yml:/app/deploy/model-governance.local.yml:ro
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+  probe-worker:
+    <<: *api
+    profiles: [diagnostic]
+    command: [python, -m, tools.governance_temporal_probe]
+    volumes:
+      - ../agent/app:/app/app:ro
+      - ../agent/tools:/app/tools:ro
+      - ./model-runtime.local.yml:/app/deploy/model-runtime.local.yml:ro
+      - ./model-governance.local.yml:/app/deploy/model-governance.local.yml:ro
+    healthcheck:
+      disable: true
+networks:
+  native:
+    external: true
+    name: news-agent-real-news-v8_native
+  observability:
+    external: true
+    name: newsagent-observability_observability

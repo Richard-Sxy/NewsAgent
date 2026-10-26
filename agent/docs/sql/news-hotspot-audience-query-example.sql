@@ -1,12 +1,13 @@
 -- 新闻热点 -> 实际读者兴趣 -> 热点 Agent：参数化查询示例，2026-10-23。
 -- 状态：设计/教学 SQL，不是已上线的查询接口；本文件没有执行任何建表或导入。
 -- dw.news_behavior_aggregate 是已有 v7 对象；news_audience_proposal_v1.*
--- 来自同目录 news-reader-audience-proposal-v1.sql，当前尚未部署、尚无业务数据。
+-- 来自同目录 news-reader-audience-proposal-v1.sql，是未由应用自动装配的设计对象。
+-- 它不同于已实现的本地 news_audience 历史投影及 news_realtime 实时模拟投影。
 -- :name 是 SQLAlchemy named bind，不是 psql 直接可执行的变量语法。
 -- tenant_id 来自认证上下文；news_ids 是服务端权威榜单返回的有界 text[]，每批最多20篇。
 -- table/schema 名称固定；不接受模型任意指定表名、任意 SQL 或个人身份列。
 
--- 0. 企业内部的两条生产作业（关系实体详见 DDL 文件顶部注释）：
+-- 0. 接入设计要求企业提供的两类聚合作业（尚待合同映射与联调；实体见 DDL 顶部注释）：
 -- A. 事件去重/清洗 -> 新闻完整小时指标 -> dw.news_behavior_aggregate。
 -- B. 同源详情访问去重集合 + 截止窗口开始前的个人兴趣原始分数
 --    -> 排除目标文章全部历史贡献 -> 重新归一化 -> 新闻读者概况/主题人数。
@@ -18,7 +19,7 @@
 -- 注意：这里的 ORDER BY clicks 是候选策略，绝不是最终“热度排名”。
 -- 候选数量和策略需写入运行记录；对候选的热度排名不等于全站所有文章的热度排名。
 -- 当前 v7 视图没有修订/水位字段，企业接入必须另取指标快照元数据；不能只靠这段 SQL
--- 证明数据完整或与画像同源。已有生产链路用受控模板、AST 检查和指标合同校验。
+-- 证明数据完整或与画像同源。现有代码链路使用受控模板、AST 检查和指标合同校验。
 SELECT news_id, event_time, title, content_type, category, source, publish_time,
        impressions, clicks, unique_users, total_duration_seconds,
        effective_consumptions, interactions,
@@ -93,7 +94,8 @@ WHERE topic_rank <= :topic_top_k
 ORDER BY news_id, topic_rank;
 
 -- 6. 按业务域 -> 公开内容域的显式绑定取正文，不把两个 tenant_id 直接等同。
--- 建议独立映射实体 business_news_content_binding（待实现）：
+-- 企业版本建议独立映射实体 business_news_content_binding（待实现）：
+-- 本地已有 news_audience.unified_news_binding；不要把此建议理解为本地尚无正文绑定。
 -- PK(business_tenant_id, binding_release_id, news_id)，字段 content_tenant_id,
 -- content_release_id, content_record_sha256, body_sha256, tag_release_id, bound_at。
 -- 绑定只有在新闻ID、正文哈希/来源权限校验通过后生成，不能把所有新新闻都补上行为。
@@ -109,7 +111,7 @@ WHERE tenant_id = :content_tenant_id
 -- -> ReaderProfileService -> HotNewsEnrichmentService
 -- -> HotNewsAnalysisInputBuilder -> NativeHotNewsAnalysisRunner -> 报告校验与持久化。
 -- 模型收到正文、热度及分量、主要标签人数/占比/基准/局限和快照引用；不收到 actor_key。
--- 现有企业 HTTPS 聚合 Adapter 可继续使用，不必为了此设计更换 Agent 架构。
+-- 现有 enterprise_http 聚合 Adapter 代码可复用；企业真实服务仍需联调验收。
 -- 配置：沿用 READER_PROFILE_ENABLED 等开关；SQL backend/DSN/schema/权限尚待实现，
 -- 不改现有冻结 news-warehouse-v7 或放宽 SQL AST 白名单。
 -- 测试入口：本设计需 PostgreSQL DDL/查询合同验证；未来 Adapter 复用

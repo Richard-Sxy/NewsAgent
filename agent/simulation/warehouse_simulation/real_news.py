@@ -10,6 +10,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_HALF_UP
 import hashlib
 import json
+import os
 from pathlib import Path
 import tempfile
 from typing import Any, Iterator
@@ -122,7 +123,7 @@ def _catalog(catalog=None):
             raise ValueError("catalog content version must be a positive integer")
         if article.get("news_content_synthetic", False) is not False or article.get("content_type", "article") != "article":
             raise ValueError("v8 only accepts real text articles")
-        if article.get("metric_available", True) not in {True, False}:
+        if type(article.get("metric_available", True)) is not bool:
             raise ValueError("catalog metric availability must be boolean")
         _time(article["publish_time"])
         seen.add(article["news_id"])
@@ -573,10 +574,15 @@ def export_dataset(config, output_dir, catalog=None):
         for name, payload in (("manifest.json", manifest), ("preview.json", {name: state["preview"] for name, state in states.items()}),
                               ("scenarios.json", scenario_catalog(config, articles))):
             (work / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        output.mkdir()
-        try:
+        if os.name == "nt":
+            # Windows rename atomically refuses an existing destination.
+            # Pre-creating an empty directory makes every publication fail.
             work.rename(output)
-        except OSError:
-            output.rmdir()
-            raise
+        else:
+            output.mkdir()
+            try:
+                work.rename(output)
+            except OSError:
+                output.rmdir()
+                raise
     return manifest

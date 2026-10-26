@@ -45,7 +45,7 @@ ANN 默认用旧/新语料中的源 chunk 向量探针，不是自然用户问�
 
 **评什么**：NL→Intent（需独立标签）、编译和 AST/绑定参数白名单、冻结格式/claim/身份、数据口径/CTR/零分母/null、run一致性、幂等。模型不能传 SQL/tenant/user。小时 UV 不能跨小时相加；SQL hot_score 选候选，最终热度由 Python 算。
 
-**配置/测试**：冻结 `agent/docs/sql-warehouse-schema-v1.md`、场景 YAML、runtime/profile/manifest、批准只读数据源；`test_sql_assistant_guard.py`、`test_sql_assistant_planner.py`、`test_sql_assistant_service.py`、`test_sql_assistant_confirmed_intent.py`、`test_hot_news_sql_binding.py`、`test_text2sql_metric_source.py`。真实本地数仓/HTTP 是 opt-in。
+**配置/测试**：冻结 `agent/docs/sql-warehouse/sql-warehouse-schema-v1.md`、场景 YAML、runtime/profile/manifest、批准只读数据源；`test_sql_assistant_guard.py`、`test_sql_assistant_planner.py`、`test_sql_assistant_service.py`、`test_sql_assistant_confirmed_intent.py`、`test_hot_news_sql_binding.py`、`test_text2sql_metric_source.py`。真实本地数仓/HTTP 是 opt-in。
 
 **缺口**：通用自然语言 SQL 规划质量 runner、真实企业数仓/权限/跨小时真实去重合同。旧独立 router 文件存在不代表应用挂载，不能绕出第二套查询业务。
 

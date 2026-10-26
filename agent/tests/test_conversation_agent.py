@@ -2,7 +2,7 @@
 
 import asyncio
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 from uuid import UUID, uuid4
 
@@ -85,8 +85,13 @@ class Repository:
                 return TurnClaim(turn, False)
         if any(turn.status == "processing" for turn in turns):
             raise ConversationConflict()
+        # A serial test ledger needs a deterministic clock even on hosts whose
+        # datetime.now() resolution is coarser than these in-memory operations.
+        created_at = datetime.now(timezone.utc)
+        if turns:
+            created_at = max(created_at, turns[-1].created_at + timedelta(microseconds=1))
         turn = ConversationTurnView(id=uuid4(), request_id=request_id, user_content=content,
-                                    status="processing", created_at=datetime.now(timezone.utc),
+                                    status="processing", created_at=created_at,
                                     runtime_metadata=kwargs.get("runtime_metadata", {}))
         turns.append(turn)
         return TurnClaim(turn, True)

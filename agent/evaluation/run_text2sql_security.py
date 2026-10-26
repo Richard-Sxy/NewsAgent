@@ -77,7 +77,7 @@ def source_identity() -> dict:
     # Python only; never inspect dotenv/config credentials or dump source diffs.
     paths = sorted((ROOT / "agent/app").rglob("*.py"))
     paths += [Path(__file__), DEFAULT_CASES, SCENARIOS,
-              ROOT / "agent/pyproject.toml", ROOT / "agent/docs/sql-warehouse-schema-v1.md"]
+              ROOT / "agent/pyproject.toml", ROOT / "agent/docs/sql-warehouse/sql-warehouse-schema-v1.md"]
     hashes = [{"path": str(p.relative_to(ROOT)), "sha256": digest(p.read_bytes())} for p in paths]
     return {
         "git_head": git("rev-parse", "HEAD").decode().strip(),
@@ -434,8 +434,12 @@ def main():
     parser.add_argument("--sqlshield-jsonl", type=Path)
     parser.add_argument("--source-manifest", type=Path)
     args = parser.parse_args()
-    install_offline_fence()
-    return asyncio.run(run(args))
+    # Windows implements asyncio's internal socketpair using a loopback connect.
+    # Create only that loop plumbing before forbidding all evaluation networking.
+    with asyncio.Runner() as runner:
+        runner.get_loop()
+        install_offline_fence()
+        return runner.run(run(args))
 
 
 if __name__ == "__main__":

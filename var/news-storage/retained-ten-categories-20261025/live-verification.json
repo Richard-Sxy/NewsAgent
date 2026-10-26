@@ -1,0 +1,152 @@
+{
+  "status": "passed",
+  "operation_id": "news-category-prune-conservative-20261025-v1",
+  "active_news": 16369,
+  "removed_ids_remaining_in_versions": 0,
+  "categories": [
+    {
+      "category_status": "auto_labeled",
+      "target_category": "ai",
+      "count": 140
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "auto",
+      "count": 34
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "digital",
+      "count": 138
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "finance",
+      "count": 322
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "games",
+      "count": 127
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "international",
+      "count": 295
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "military",
+      "count": 120
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "sports",
+      "count": 282
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "stocks",
+      "count": 167
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": "tech",
+      "count": 182
+    },
+    {
+      "category_status": "auto_labeled",
+      "target_category": null,
+      "count": 2907
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "ai",
+      "count": 642
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "auto",
+      "count": 1113
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "digital",
+      "count": 210
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "finance",
+      "count": 3662
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "games",
+      "count": 277
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "international",
+      "count": 538
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "military",
+      "count": 411
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "sports",
+      "count": 2377
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "stocks",
+      "count": 1660
+    },
+    {
+      "category_status": "keep_target",
+      "target_category": "tech",
+      "count": 765
+    }
+  ],
+  "release_states": [
+    {
+      "release_id": "news-0c74530f2864db20a73d7a96",
+      "status": "archived"
+    },
+    {
+      "release_id": "news-1443103656c4351fe52c0882",
+      "status": "frozen"
+    }
+  ],
+  "removed_ids_in_realtime_views": {
+    "news_detail_current": 0,
+    "news_live_current": 0
+  },
+  "feed": {
+    "enabled": false,
+    "public_catalog_id": "public-37050d7b7046f8bad85b8d57"
+  },
+  "eligible_catalog_count": 6486,
+  "affected_windows_missing_invalidation": 0,
+  "historical_retained_read": true,
+  "historical_removed_read_rejected": true,
+  "api": {
+    "ready": {
+      "status": "ok",
+      "scope": "isolated_synthetic",
+      "external_model_calls": 0
+    },
+    "streaming-lab-api/public-news": {
+      "ok": true,
+      "returned_count": 57,
+      "removed_news_returned": 0
+    },
+    "streaming-lab-api/realtime-news": {
+      "ok": true,
+      "returned_count": 42,
+      "removed_news_returned": 0
+    }
+  }
+}

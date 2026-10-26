@@ -1,0 +1,62 @@
+{
+  "compatibility_links": 14,
+  "protected_hashes_unchanged": 19,
+  "portable_bundle_public_validation": {
+    "contract": "passed",
+    "planned": 24,
+    "review_status": "draft",
+    "model_quality": "not_run"
+  },
+  "prepare_cases": 24,
+  "bundle_source_files": 33,
+  "new_cli": {
+    "returncode": 0,
+    "stdout": "{\n  \"contract\": \"passed\",\n  \"planned\": 24,\n  \"review_status\": \"draft\",\n  \"model_quality\": \"not_run\"\n}",
+    "stderr": ""
+  },
+  "old_cli": {
+    "returncode": 0,
+    "stdout": "{\n  \"contract\": \"passed\",\n  \"planned\": 24,\n  \"review_status\": \"draft\",\n  \"model_quality\": \"not_run\"\n}",
+    "stderr": ""
+  },
+  "model_dependency_check": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.11.14 environment at: small_model/environments/hunyuan\nChecked 57 packages in 90ms\nAll installed packages are compatible"
+  },
+  "evaluation_dependency_check": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.11.14 environment at: small_model/environments/query-eval/venv-20261025\nChecked 27 packages in 62ms\nAll installed packages are compatible"
+  },
+  "shell_syntax": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "old_control_status": {
+    "returncode": 0,
+    "stdout": "{\n  \"status\": \"not_running\"\n}",
+    "stderr": ""
+  },
+  "ignored_asset_paths": 6,
+  "date": "2026-10-25",
+  "status": "passed",
+  "gpu_model_loaded": false,
+  "training_started": false,
+  "model_quality": "not_run",
+  "scope": "directory migration and offline contracts",
+  "model_assets": {
+    "status": "verified",
+    "revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+    "files": 16,
+    "method": "scripts/assets.py full SHA-256 and size verification"
+  },
+  "control_tests": {"entry": "scripts/test_control.py", "passed": 6},
+  "gpu_environment_imports": {
+    "python": "3.11.14", "torch": "2.9.1+cu128",
+    "transformers": "4.57.6", "peft": "0.18.1", "cuda_available": true
+  },
+  "evaluation_launcher_syntax": {"command": "bash -n configs/hunyuan-wsl-query-20261025/run-base-dev.sh", "returncode": 0},
+  "pytest_suite_run": false
+}

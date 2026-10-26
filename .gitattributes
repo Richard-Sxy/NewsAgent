@@ -1,2 +1,13 @@
 # Preserve frozen SQLShield source bytes; their SHA-256 includes CRLF endings.
 agent/evaluation/datasets/sql_security/SQLShield/*.csv -text whitespace=cr-at-eol
+
+# Frozen contracts are validated by byte-level hashes across Windows and POSIX.
+agent/docs/sql-warehouse/sql-warehouse-schema-v*.md text eol=lf
+agent/docs/sql/real-news-warehouse-v8*.sql text eol=lf
+agent/data/real-news-warehouse-v8/*.json -text
+
+# Small-model shell launchers and immutable evaluation inputs.
+small_model/scripts/*.sh text eol=lf
+small_model/configs/**/*.sh text eol=lf
+small_model/data/query_semantics_v1/*.jsonl -text
+small_model/packages/** -text

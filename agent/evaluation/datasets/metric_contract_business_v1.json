@@ -1,0 +1,669 @@
+{
+  "version": "metric-contract-business-v1",
+  "split": "development",
+  "dataset_kind": "synthetic_enterprise_hourly_aggregates",
+  "label_review": {
+    "status": "developer_authored_not_independently_business_reviewed",
+    "production_acceptance": "not_approved"
+  },
+  "as_of": "2026-10-03T12:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "table": "dw.news_behavior_aggregate",
+  "approved_grain": [
+    "tenant_id",
+    "news_id",
+    "content_type",
+    "event_time(hour)"
+  ],
+  "approved_bucket_seconds": 3600,
+  "approved_metric_expressions": {
+    "clicks": "clicks",
+    "effective_consumptions": "effective_consumptions",
+    "impressions": "impressions",
+    "interactions": "interactions",
+    "total_duration_seconds": "total_duration_seconds",
+    "unique_users": "unique_users"
+  },
+  "cross_hour_uv_policy": "reject; distinct UV cannot be derived from aggregate counts",
+  "schema_columns": [
+    "tenant_id",
+    "event_time",
+    "news_id",
+    "content_type",
+    "clicks",
+    "effective_consumptions",
+    "impressions",
+    "interactions",
+    "total_duration_seconds",
+    "unique_users"
+  ],
+  "rows": [
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T10:00:00+08:00",
+      "news_id": "news-a",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 100,
+      "unique_users": 80,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T10:00:00+08:00",
+      "news_id": "news-b",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 200,
+      "unique_users": 90,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T10:00:00+08:00",
+      "news_id": "news-c",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 100,
+      "unique_users": 70,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T11:00:00+08:00",
+      "news_id": "news-a",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 100,
+      "unique_users": 85,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T11:00:00+08:00",
+      "news_id": "news-b",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 250,
+      "unique_users": 95,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-demo",
+      "event_time": "2026-10-03T11:00:00+08:00",
+      "news_id": "news-c",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 150,
+      "unique_users": 75,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    },
+    {
+      "tenant_id": "tenant-other",
+      "event_time": "2026-10-03T10:00:00+08:00",
+      "news_id": "news-a",
+      "content_type": "article",
+      "impressions": 1000,
+      "clicks": 999999,
+      "unique_users": 80,
+      "total_duration_seconds": 1000,
+      "effective_consumptions": 50,
+      "interactions": 10
+    }
+  ],
+  "cases": [
+    {
+      "id": "normal-hour",
+      "business_scenario": "Correct one-hour operational news metrics",
+      "group": "normal",
+      "expected": "allow",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "normal-alias-order",
+      "business_scenario": "Same-name aliases and projection reordering preserve results",
+      "group": "normal",
+      "expected": "allow",
+      "sql": "SELECT unique_users AS unique_users, total_duration_seconds AS total_duration_seconds, interactions AS interactions, impressions AS impressions, effective_consumptions AS effective_consumptions, clicks AS clicks, content_type AS content_type, news_id AS news_id FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "normal-adjacent-hour",
+      "business_scenario": "Adjacent hour includes start and excludes end",
+      "group": "normal",
+      "expected": "allow",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T11:00:00+08:00",
+      "window_end": "2026-10-03T12:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 85
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 250,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 95
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 150,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 75
+        }
+      ]
+    },
+    {
+      "id": "scaled-clicks",
+      "business_scenario": "Clicks multiplied by 1000 inflate business reports",
+      "group": "formula",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(clicks) * 1000 AS clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end GROUP BY news_id, content_type ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "constant-clicks",
+      "business_scenario": "A constant replaces actual news clicks",
+      "group": "formula",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, 999999 AS clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "distinct-clicks",
+      "business_scenario": "SUM DISTINCT loses repeated hourly click counts",
+      "group": "formula",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(DISTINCT clicks) AS clicks, SUM(effective_consumptions) AS effective_consumptions, SUM(impressions) AS impressions, SUM(interactions) AS interactions, SUM(total_duration_seconds) AS total_duration_seconds, SUM(unique_users) AS unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end GROUP BY news_id, content_type ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T12:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": null,
+      "numeric_not_scored_reason": "Cross-hour UV is unknowable from hourly aggregate UV. Click sums are independently derivable.",
+      "expected_clicks": {
+        "news-a": 200,
+        "news-b": 450,
+        "news-c": 250
+      }
+    },
+    {
+      "id": "missing-group",
+      "business_scenario": "Missing GROUP BY merges the news candidate list",
+      "group": "shape",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(clicks) AS clicks, SUM(effective_consumptions) AS effective_consumptions, SUM(impressions) AS impressions, SUM(interactions) AS interactions, SUM(total_duration_seconds) AS total_duration_seconds, SUM(unique_users) AS unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "wrong-group",
+      "business_scenario": "Grouping only by content type merges different news",
+      "group": "shape",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(clicks) AS clicks, SUM(effective_consumptions) AS effective_consumptions, SUM(impressions) AS impressions, SUM(interactions) AS interactions, SUM(total_duration_seconds) AS total_duration_seconds, SUM(unique_users) AS unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end GROUP BY content_type ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "where-filter",
+      "business_scenario": "An extra WHERE silently removes lower-click news",
+      "group": "scope",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end AND clicks > 100 ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "having-filter",
+      "business_scenario": "An extra HAVING silently removes lower-click news",
+      "group": "scope",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(clicks) AS clicks, SUM(effective_consumptions) AS effective_consumptions, SUM(impressions) AS impressions, SUM(interactions) AS interactions, SUM(total_duration_seconds) AS total_duration_seconds, SUM(unique_users) AS unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end GROUP BY news_id, content_type HAVING SUM(clicks) > 100 ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "missing-column",
+      "business_scenario": "Missing interactions breaks the required metric schema",
+      "group": "schema",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "extra-column",
+      "business_scenario": "An extra tenant output column exceeds approved result schema",
+      "group": "schema",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users, tenant_id FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "unknown-growth",
+      "business_scenario": "Requested growth is silently dropped from snapshots",
+      "group": "unsupported",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, clicks, effective_consumptions, impressions, interactions, total_duration_seconds, unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T11:00:00+08:00",
+      "requested_metrics": [
+        "growth"
+      ],
+      "gold_rows": [
+        {
+          "news_id": "news-a",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 80
+        },
+        {
+          "news_id": "news-b",
+          "content_type": "article",
+          "clicks": 200,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 90
+        },
+        {
+          "news_id": "news-c",
+          "content_type": "article",
+          "clicks": 100,
+          "effective_consumptions": 50,
+          "impressions": 1000,
+          "interactions": 10,
+          "total_duration_seconds": 1000,
+          "unique_users": 70
+        }
+      ]
+    },
+    {
+      "id": "cross-hour-uv",
+      "business_scenario": "Summing hourly UV double-counts recurring readers",
+      "group": "grain",
+      "expected": "reject",
+      "sql": "SELECT news_id, content_type, SUM(clicks) AS clicks, SUM(effective_consumptions) AS effective_consumptions, SUM(impressions) AS impressions, SUM(interactions) AS interactions, SUM(total_duration_seconds) AS total_duration_seconds, SUM(unique_users) AS unique_users FROM dw.news_behavior_aggregate WHERE tenant_id = :tenant_id AND event_time >= :window_start AND event_time < :window_end GROUP BY news_id, content_type ORDER BY news_id, content_type LIMIT :row_limit",
+      "window_start": "2026-10-03T10:00:00+08:00",
+      "window_end": "2026-10-03T12:00:00+08:00",
+      "requested_metrics": [],
+      "gold_rows": null,
+      "numeric_not_scored_reason": "No user identifiers or cross-hour dedup oracle; only test that unsupported grain is rejected."
+    }
+  ],
+  "limitations": [
+    "Development cases for known boundaries; not an independent test set or a sample of online risk.",
+    "No enterprise user data, real enterprise warehouse, or real inference.",
+    "SQLite permits aggregate bare columns that PostgreSQL may reject; these cases test the application boundary only.",
+    "No user-level records; cross-hour UV rejection has no fabricated dedup gold."
+  ]
+}

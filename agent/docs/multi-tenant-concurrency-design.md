@@ -1,9 +1,13 @@
-# 多租户并发设计与测试契约（设计稿 v2）
+# 多租户并发设计与测试契约（历史设计 v2，含现状核对）
 
-日期：2026-10-09。状态：待实现、待验收。本文重新审视
-[`conversation-concurrency.md`](conversation-concurrency.md) 的设计部分；原始压测结果保留。
-本次不改变应用执行策略、生产模型/Prompt、数据表或部署，不执行新的模型压测。
-配置名、组件名、新接口及新增测试名均为拟议契约，不能当作当前已有能力。
+原设计日期：2026-10-09；源码核对日期：2026-10-26。本文保留多租户公平调度的设计建议，
+第2节更新为当前代码现状，第3–10节仍是拟议方案，不能作为已部署架构或既定实现计划。
+后续代码已加入局部准入和模型治理，但没有完整实现本文的统一PostgreSQL准入台账、
+多资源租约和按租户加权公平调度。本次仅修正文档，未改变执行策略、配置或部署，未运行新压测。
+
+原参考文档 `conversation-concurrency.md` 已缺失；2026-10-09的原始JSON报告仍保留在
+`agent/evaluation/results/`。拟议组件与配置不应直接照抄启用，尤其是下文的
+`AdmissionService` 名称与当前同名但用途有限的Temporal组件不能混为一谈。
 
 ## 1. 先明确租户与测试目标
 
@@ -11,9 +15,14 @@
 多个租户，但每个请求只能绑定一个经过身份系统授权的租户。每位客户到底对应组织还是
 个人，应由接入的身份合同决定，不能用随机 user_id 自动推导生产 tenant_id。
 
-上次测试是 **1 个租户 × 100 个独立用户**，只额外验证更换身份读取已有会话被拒绝；
+2026-10-09历史测试是 **1 个租户 × 100 个独立用户**，只额外验证更换身份读取已有会话被拒绝；
 它没有验证 10 个租户 × 10 个用户或 100 个租户 × 1 个用户的竞争、公平性、业务数据
 隔离和真实入口鉴权。100 个 SSE 都建立、66 个轮次 completed，并非多租户容量验收。
+
+该计数来自保存的 `conversation-load-100-existing-reports-20261009.json`，其余34轮标为
+`model_unavailable`。另有 [2026-10-25本地治理记录](../../output/governance-20261025/RESULTS.md)，
+覆盖确定性模型下的双副本、10虚拟用户与10分钟负载，严格全通过门槛未通过；它不是
+本文提出的多租户公平/真实模型容量验收，也不是本次重新测得的结果。
 
 本设计分别要证明：
 
@@ -29,28 +38,36 @@
 | 当前代码 | 已有能力 | 多租户缺口 |
 | --- | --- | --- |
 | `app/api/dependencies.py:get_hot_news_principal` | 共享网关凭据、tenant/user、角色检查 | 依赖网关剥离和注入身份头；共享凭据不是用户身份验证，也不验证组织成员关系 |
-| `app/api/jobs.py`、`app/api/events.py` | JobService 读取按 tenant 过滤 | 仍依赖裸 `get_tenant_id/get_user_id` Header，main 无全局鉴权；需统一身份与写作权限合同 |
+| `app/modules/writing/jobs.py`、`events.py` | JobService 读取按 tenant 过滤；旧 `app/api/` 文件为兼容导出 | 这些HTTP入口仍依赖 `get_tenant_id/get_user_id` Header；需与真实网关/写作权限合同逐路由核对 |
 | `app/api/knowledge.py` | 知识写入需要采集token与tenant | 共享采集token未限定allowed tenants；需要授权服务身份，不能发给所有客户 |
-| `app/models/conversation.py`、`repositories/conversation.py` | 所有权复合外键、UUID幂等、行锁、同会话 processing 唯一索引 | 无排队/准入事实记录；processing 的过期依据 created_at，不能直接塞入长队列 |
-| `app/model_runtime/agent_client.py` | ContextVar 的 tenant/trace 请求绑定和 reset | 没有全局资源配额；后台任务不能只靠继承 ContextVar 传身份 |
-| `app/conversation/service.py`、`streaming.py` | 单轮预算、有界工具、检查点、取消清理、校验后答复 | 无租户公平排队；模型失败折叠为 model_unavailable；断线默认取消当前聊天执行 |
-| `app/services/hot_news_query.py` | 热点报告按 tenant 和 completed 过滤 | 租户级共享报告与用户私人聊天权限需分别明确，不能沿用一种 ACL |
+| `app/models/conversation.py`、`repositories/conversation.py` | 所有权复合外键、UUID幂等、行锁、同会话 processing 唯一索引 | 没有本文拟议的整轮聊天准入台账；processing 的过期依据 created_at，不能直接塞入长队列 |
+| `app/model_runtime/agent_client.py` | ContextVar 的 tenant/trace 请求绑定和 reset | 身份绑定本身不提供资源配额；后台任务不能只靠继承 ContextVar 传身份 |
+| `app/model_runtime/governance.py` | 可选Redis原子共享模型并发/RPM，预留交互容量；策略不一致或Redis不可用时拒绝准入 | 非FIFO/租户公平队列，无TPM或Embedding治理；不能证明供应商物理调用在客户端取消后停止 |
+| `app/modules/conversation/service.py`、`streaming.py` | 单轮预算、有界工具、检查点、轮内补充输入、取消清理、校验后答复 | 无整轮聊天租户公平排队；UI仍可能汇总为model_unavailable，底层HTTP/配额错误已有分阶段遥测；断线默认取消当前聊天等待 |
+| `app/modules/conversation/admission.py`、`admission_workflows.py` | 可选Temporal租户FIFO与在途预算，仅覆盖会话发起的写作/评测Hook，业务Workflow终态决定释放 | 不覆盖全部聊天轮次、页面/API发起任务或所有模型资源，不是本文统一PG方案 |
+| `app/modules/hot_news/application/hot_news_query.py` | 热点报告按 tenant 和 completed 过滤 | 租户级共享报告与用户私人聊天权限需分别明确，不能沿用一种 ACL |
 | `app/db/session.py` | 每实例 20+20 连接、独立异步事务 | 多进程总连接预算未配置；不能默认所有路由都释放了长期 SSE 的数据库会话 |
-| `app/data_analysis/runner.py` | 实例内 Semaphore、子进程资源限制 | 等待槽不在执行计时内；没有跨副本、按租户的排队公平与等待上限 |
-| `app/hot_news_worker.py` | Temporal Workflows 与队列 | 无显式 Activity 全局租户预算；run 内并发不是跨 run 或跨 Worker 配额 |
-| `tools/conversation_load.py` | HTTP/SSE、单租户合成用户、终态/重放/越权检查 | 无多租户数据夹具、按租户指标、噪声租户、固定到达率、跨副本和故障测试 |
+| `app/modules/data_analysis/runner.py` | 实例内 Semaphore、子进程资源限制 | 等待槽不在子进程执行计时内；没有跨副本、按租户的排队公平与独立等待上限 |
+| `app/hot_news_worker.py`、`HotNewsAnalysisBatch` | Temporal Workflows与队列，热点分析批次在同Worker实例内跨run共享额度 | 非跨Worker或按租户公平的Activity配额；可选模型治理是另一层，不能混算 |
+| `tools/conversation_load.py`、`tools/governance_load.py` | 前者支持HTTP/SSE单租户合成用户；后者增加双副本闭环负载、思考时间和Trace核对 | 仍不是本文的多租户业务夹具、加权公平、噪声租户与开放到达率测试矩阵 |
 
 上述为工作区代码审查；部署镜像可能不同。开放写作/发布/进度等路由前要逐一核对真实
 网关、网络入口和鉴权，不能把聊天权限测试扩展成全项目鉴权已经完成的结论。
 
-## 3. 总体选择：共享运行时，分层配额，PostgreSQL 保存事实
+当前两种可选治理应分别理解：`MODEL_GOVERNANCE_CONFIG_PATH` 加载
+`deploy/model-governance.local.yml`，用Redis协调参与进程的模型调用；
+`CONVERSATION_ASYNC_ADMISSION_ENABLED`（默认false）及对应budget/queue_limit控制
+Temporal会话异步Hook。业务事实仍保存于原PostgreSQL/Temporal链路。
+下面的PG统一台账方案尚未替换这两种实现，不能为了符合历史设计而直接迁移现有状态。
+
+## 3. 设计建议：共享运行时，分层配额，PostgreSQL 保存事实
 
 先采用共享 Python API/Worker 与共享 PostgreSQL，按 tenant 分离数据、策略和配额。
 100 用户阶段不为每个租户起一套 Agent 进程或数据库连接池；Python 服务实例保持无
 请求级可变状态，历史、工具结果和上下文缓冲各自属于请求。达到明确的容量或权限合同
 要求时，再给特定租户独立 Worker/数据库/模型账号，沿用同一 Port 和业务 Schema。
 
-PostgreSQL 保存准入请求、队列、执行绑定、策略版本、配额租约及审计。Redis 仅用于
+本设计拟由PostgreSQL保存统一准入请求、队列、执行绑定、策略版本、配额租约及审计。Redis 仅用于
 通知、缓存和进度投影；通知丢失由有限轮询数据库补偿，不把 Redis 当作业务事实源。
 这延续项目“PostgreSQL 是事实源、Redis 做缓存/事件”的边界。100 用户阶段优先验证
 数据库协调器的正确性与开销，再根据数据决定是否需要独立调度服务。
@@ -208,7 +225,7 @@ conversation 行锁，使准入表、现有 processing 唯一索引与软删除�
 
 ### 6.2 SSE/API 需要版本化排队契约
 
-当前 SSE 的 accepted 已有 turn_id，并默认 processing，不能把 queued 请求塞进去
+聊天轮次 SSE 的 accepted 已有 turn_id，并默认 processing，不能把 queued 请求塞进去
 假装它已经运行。新契约拟提供 admission_id、request_id、state、queue_wait_ms、
 turn_id（未运行时为空），以及 queued/started/done/error 事件；不承诺准确全局队列
 位置。JSON入口先保持同步、有界等待终态，另加显式断线检测；SSE入口持续观察
@@ -261,7 +278,8 @@ PostgreSQL 协调器不可用：停止新准入/派发，返回 503；执行者�
 保守等待/中断，不能回退到每副本独立 semaphore。Redis 不可用：允许有限数据库
 轮询，继续依据持久记录调度，SSE 进度可降级；租户身份和配额不绕过。恢复后重建
 投影，不重新启动已终态业务。Redis 的异步复制/故障切换本身也不保证锁互斥，因而
-本阶段不选它作为权威业务许可账本。[Redis 官方说明](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/)
+本历史设计未选它作为统一业务许可账本。当前实现另用Redis做有限的模型调用准入，
+其范围与恢复保证不同，不能据此宣称已满足本节的租约/unknown语义。[Redis 官方说明](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/)
 
 供应商 429 按其真正 scope 施加 cooldown，遵守 Retry-After；若是租户专用账号失败，
 不熔断其他账号。5xx/连接异常采用有界退避与抖动；明确尚未派发或供应商确认结束的
@@ -382,7 +400,10 @@ tenant权重；queue_timeout/permit_wait/call_timeout/lease_heartbeat/drain_dead
 
 当前可用测试入口为现有 `tests/test_conversation_load.py`、`test_conversation_postgres.py`、
 `test_conversation_security.py`、`test_conversation_stream.py`、知识/SQL/写作相关用例。
-新调度/准入/租约/公平/多租户fixture测试尚需实现，建议按纯确定性单测 → 真实PG集成
+局部治理另有 `tests/test_model_governance.py`、`test_governance_load.py` 和
+`test_conversation_admission.py`、`test_conversation_admission_temporal.py`、
+`test_conversation_admission_wiring.py`；它们覆盖各自已实现的边界。
+本设计完整的统一调度/租约/公平/多租户fixture测试尚需实现，建议按纯确定性单测 → 真实PG集成
 → 2副本HTTP/SSE → 真实模型与故障演练依次执行。本次只验证设计引用和文档一致性，
 未运行新的容量/企业模型测试，不能沿用此前6个脚本单测作为本设计已通过的证据。
 
@@ -390,3 +411,15 @@ tenant权重；queue_timeout/permit_wait/call_timeout/lease_heartbeat/drain_dead
 共享调度器与租约generation；供应商取消/最大时限/计费合同；每步配额和错误分类；
 RLS/服务角色；合成多租户证据；跨副本/噪声/故障测试；业务SLO与真实额度确认。
 本文不更新长期项目上下文；新架构仍是设计建议，尚未由用户确认成为长期决定。
+
+## 11. 历史报告生成依赖
+
+[render_concurrency_pdf.py](../evaluation/render_concurrency_pdf.py) 的 `load_sources`
+读取2026-10-09的10用户/100用户JSON，校验统计与模型路由，并检查本文、
+[热点分析并发说明](hot-news-concurrency.md)、发压工具、演示程序和
+已缺失的 `agent/docs/conversation-concurrency.md`。当前缺失依赖会使生成器停止，
+本轮未修改生成器或重新生成PDF。
+
+该离线链为历史JSON/文件存在性检查 → `ConcurrencyGuide`/ReportLab →
+`output/pdf/NewsAgent_高并发与多租户场景模拟图解.pdf`；还需要可用中文字体和输出路径。
+它不调用服务，也不重新验证性能。后续需明确替代历史来源并调整生成器契约，再验证报告内容。

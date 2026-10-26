@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsagent-frontend-ingress
+  namespace: news-agent
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app.kubernetes.io/name: newsagent-frontend
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newsagent-gateway
+  namespace: news-agent
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: newsagent-gateway
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.cloud.tencent.com/direct-access: "false"
+    kubernetes.io/ingress.class: qcloud
+    kubernetes.io/ingress.existLbId: lb-replace-me
+  name: newsagent
+  namespace: news-agent
+spec:
+  rules:
+  - host: newsagent.example.invalid
+    http:
+      paths:
+      - backend:
+          service:
+            name: newsagent-gateway
+            port:
+              name: http
+        path: /api
+        pathType: Prefix
+      - backend:
+          service:
+            name: newsagent-frontend-ingress
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - newsagent.example.invalid
+    secretName: newsagent-tls

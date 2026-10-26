@@ -1,0 +1,71 @@
+{
+  "replica_model_calls": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "__name__": "newsagent_model_calls_total",
+            "deployment_environment_name": "local",
+            "gen_ai_operation_name": "chat",
+            "instance": "524d7e06a5dc458b8f0d461392741b07",
+            "job": "newsagent-api",
+            "model_route": "native-local-model-v1",
+            "model_scene": "conversation",
+            "newsagent_outcome": "success",
+            "newsagent_stage": "completed",
+            "otel_scope_name": "newsagent",
+            "service_name": "newsagent-api"
+          },
+          "value": [
+            1792908998.922,
+            "34"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "newsagent_model_calls_total",
+            "deployment_environment_name": "local",
+            "gen_ai_operation_name": "chat",
+            "instance": "fc135119dd3a4b1692efa6178f9854f0",
+            "job": "newsagent-api",
+            "model_route": "native-local-model-v1",
+            "model_scene": "conversation",
+            "newsagent_outcome": "success",
+            "newsagent_stage": "completed",
+            "otel_scope_name": "newsagent",
+            "service_name": "newsagent-api"
+          },
+          "value": [
+            1792908998.922,
+            "39"
+          ]
+        }
+      ]
+    }
+  },
+  "exporter_failed_spans": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "__name__": "otelcol_exporter_send_failed_spans",
+            "exporter": "otlp_http/tempo",
+            "instance": "otel-collector:8888",
+            "job": "otel-collector",
+            "server.address": "tempo",
+            "server.port": "4318",
+            "url.path": "/v1/traces"
+          },
+          "value": [
+            1792908998.924,
+            "197"
+          ]
+        }
+      ]
+    }
+  }
+}

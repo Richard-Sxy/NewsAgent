@@ -1,0 +1,12 @@
+# Explicit isolated local acceptance policy; not a production capacity claim.
+# Every API/Worker using the same provider budget must load the same policy.
+version: local-governance-v1
+pool: local-governance-v1
+redis_url_env: REDIS_URL
+max_concurrent: 4
+interactive_reserved: 2
+requests_per_minute: 1200
+interactive_rpm_reserved: 200
+wait_seconds: 10
+call_timeout_seconds: 120
+interactive_scenes: [conversation, conversation_memory, query_understanding, text2sql_assistant]

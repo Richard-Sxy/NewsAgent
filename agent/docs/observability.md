@@ -1,12 +1,15 @@
 # NewsAgent 全链路可观测与模型故障定位
 
 适用范围：本仓库 Python Agent 的 API、Temporal Worker、业务工具、知识链路与模型 Port。
-本次提供可运行的本地诊断栈和经过测试的埋点契约；企业生产部署、真实模型质量与企业告警渠道尚未验收。
+仓库提供本地诊断栈、应用埋点与相应测试；企业生产部署、真实模型质量与企业告警渠道尚未验收。
 不引入外部 Agent/知识库框架，不改权威指标计算和人工审批边界。
 
-## 执行计划与验收层次
+2026-10-26 按源码和部署模板重新核对本文，本轮没有启动诊断栈或重跑业务测试。
+文末 2026-10-16 的验证数量是历史记录。测试需要可用的项目依赖与Linux符号链接，PDF字体路径仍有迁移待办，见下文。
 
-| 步骤 | 实施结果 | 验收方式 |
+## 实现范围与验证入口
+
+| 层次 | 仓库实现 | 验证方式 |
 | --- | --- | --- |
 | 1. 统一技术契约 | 进程级 SDK、受控属性、JSON 日志、错误阶段、低基数指标、W3C context | 内存 exporter 与真实本地 OTLP HTTP 合同测试 |
 | 2. 串起上游到下游 | HTTP/SSE → Temporal → Activity → 工具/DB/知识/模型 → Artifact/Outbox | 父子 span、重试、普通返回值失败、流式生命周期测试 |
@@ -35,7 +38,7 @@ API / SSE / Worker / Schedule / 批处理入口
   → PostgreSQL / S3 Artifact / Outbox（私有 _telemetry → relay → Redis）
   → 用户响应 / SSE / 持久化报告 / 查询投影
 
-上面每个受控 operation
+启用遥测后的受控 operation
   ├─ Span + 安全技术属性（版本、ID、阶段、错误分类）
   ├─ Counter/Histogram（仅低基数维度）
   └─ operation.completed / operation.failed 结构化日志（trace_id/span_id）
@@ -57,7 +60,7 @@ API / SSE / Worker / Schedule / 批处理入口
 
 | 层 | 核心类/函数与输出 |
 | --- | --- |
-| SDK 与安全边界 | `app/observability/settings.py::ObservabilitySettings`；`telemetry.py::configure_telemetry/operation/record_error/record_metric/log_event`；provider 缓冲、flush、shutdown 与属性白名单 |
+| SDK 与安全边界 | `app/observability/settings.py::ObservabilitySettings`；`telemetry.py::configure_telemetry/operation/record_error/record_metric/log_event`；provider 缓冲、flush、shutdown 与属性白名单；API 生命周期由 `app/bootstrap/api_lifespan.py` 装配 |
 | HTTP/SSE | `app/observability/web.py::TelemetryMiddleware`；按路由模板记录，响应流结束后结束 span；探针不循环采样 |
 | Temporal | `app/observability/temporal.py::temporal_interceptors`；官方 interceptor 与安全 facade；Activity 记录 workflow/run/type/attempt，重放不增加真实业务副作用 |
 | DB 与边界装饰器 | `app/observability/database.py::instrument_engine` 仅 SQL 类型；`decorators.py::traced` 处理异常和普通领域失败返回值 |
@@ -88,6 +91,7 @@ JSON 安全日志默认开启；关闭 JSON 选项会恢复应用原有日志行
 | `OBSERVABILITY_ENABLED` | `false` | 显式 `true` |
 | `OBSERVABILITY_SERVICE_NAME` | `newsagent-api` | 每类独立入口使用稳定名称；已有 API/Worker 启动函数会传入自己的角色名 |
 | `OBSERVABILITY_SERVICE_VERSION` | `0.1.0` | 实际构建版本/提交号 |
+| `OBSERVABILITY_SERVICE_INSTANCE_ID` | 每次配置实例生成 UUID hex | 区分同类进程；业务 run/job/turn ID 不放入此字段 |
 | `OBSERVABILITY_ENVIRONMENT` | `local` | `local` / 已批准部署环境 |
 | `OBSERVABILITY_OTLP_ENDPOINT` | `http://127.0.0.1:4318` | **本栈是 `http://127.0.0.1:24318`**，填 base URL，不加 `/v1/...` |
 | `OBSERVABILITY_SAMPLE_RATIO` | `1.0` | 本地复现保留 100%；ParentBased 采样继承上游决定 |
@@ -118,7 +122,8 @@ Grafana 为本地匿名 Editor，以便 Explore/Trace 跳转；没有默认管�
 
 ## 运行与验证
 
-以下在仓库根目录执行。`--env-file /dev/null` 避免 Compose 隐式读取应用 `.env`。
+以下 Bash 命令适用于 Linux/WSL，默认从仓库根目录执行；Python 使用已安装项目依赖的 3.11+ 环境。
+`--env-file /dev/null` 避免 Compose 隐式读取应用 `.env`。
 
 ```bash
 docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml config --quiet
@@ -131,10 +136,15 @@ python3 deploy/observability/smoke.py
 `rate` 面板通常需至少两次抓取。没有数据不会自动填成“全绿”。
 
 合成 smoke 将本地 `response_decode / invalid_json` 错误发送到 Collector，再按同一 TraceID 从 Tempo、
-Loki 查回，按稳定 service 从 Prometheus 查回计数。脚本仅允许 loopback HTTP，最长查回等待 45 秒，
+Loki 查回，按稳定 service 从 Prometheus 查回计数。脚本仅允许 loopback HTTP，查回循环预算为45秒、单次HTTP超时5秒，
 不启动业务 Workflow、不调用企业模型，不读取任何凭据。成功输出 `trace/log/metric: true`。
 
-启动宿主 Python 进程时显式传入：
+修改 Compose 的端口后，还需把对应地址传给 `smoke.py` 的 `--otlp-endpoint`、`--tempo`、
+`--loki`、`--prometheus` 参数；这些脚本默认值不会随 Compose 环境变量自动改变。
+
+给已配置好的宿主 Python API 进程接入遥测时，显式传入以下参数。
+`app.main:app` 是通用API入口，仍需要数据库、Redis、Temporal、Artifact和模型配置；这段命令不负责准备本地数据或启动依赖。
+本地模拟的启动步骤见 [本地运行](local-bge-simulation.md)，其专用工厂为 `simulation.local_simulation:create_local_app`。
 
 ```bash
 cd agent
@@ -164,6 +174,10 @@ docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml \
 # 停止且只清理这个独立栈；tmpfs 遥测随之清空
 docker compose --env-file /dev/null -f deploy/docker-compose.observability.yml down
 ```
+
+静态部署合同检查 `agent/tests/test_observability_deploy.py` 通过 `agent/deploy` 符号链接读取
+仓库根 `deploy/`。该链接在WSL中可用；Windows通过UNC访问时可能无法跟随，应在Linux/WSL执行上述检查。
+容器镜像使用复制后的 `/app/deploy/`，与源码目录的链接方式不同。
 
 ## 指标与查询契约
 
@@ -247,12 +261,14 @@ Grafana Loki derived field 使用 `matcherType: label`，Tempo 自定义 Logs �
 - 浏览器 RUM 与前后端 trace context、模型 TTFT/流式 token 时延、成本定价版本（当前不凭空估价）。
 - 第三方检索/向量服务与分析子进程内部 span；业务未埋点的脚本/临时入口仍需主动调用统一 SDK。
 - 基于真实模型和已批准数据集的质量评测与脱敏 bad-case 闭环；不得把成功率当事实准确性，不自动改生产 Prompt/规则/模型。
+- 将 PDF 公共绘图库中的 macOS 固定字体路径改为可配置，适配当前 Linux/WSL 环境。
 
-本地 `tests/test_observability_temporal_e2e.py` 已用隔离 Temporal devserver 验证
-Workflow → Activity 第 1/2 次尝试 → timer → Replayer replay 的传播与重放；
-这不覆盖企业环境、跨天长流程、版本升级与历史大规模重放。
+`tests/test_observability_temporal_e2e.py` 覆盖隔离 Temporal devserver 中的
+Workflow → Activity 第 1/2 次尝试 → timer → Replayer replay 传播与重放；
+需显式设置 `NEWS_AGENT_OBSERVABILITY_TEMPORAL_TEST=1`，缺少CLI时会下载官方Temporal CLI。
+其历史通过记录见下节，本轮未重跑，也不覆盖企业环境、跨天长流程、版本升级与历史大规模重放。
 
-## 本次验证记录（2026-10-16）
+## 历史验证记录（2026-10-16，未在本轮重跑）
 
 - 后端全量回归：`4017 passed, 104 skipped, 4 warnings`（46.27 秒），跳过项不能视为企业验收通过。
 - 新增部署配置合同测试：6 项通过；Compose 解析通过，六个官方镜像全部固定 patch tag 与 digest。
@@ -265,15 +281,16 @@ Workflow → Activity 第 1/2 次尝试 → timer → Replayer replay 的传播�
   验证结束清理独立测试项目，不连接、不重启既有业务容器。
 - SDK 本地 OTLP protobuf 三信号合同测试和隔离真实 Temporal 重试/重放验收另行显式通过。
 
-这些结果证明本地实现与诊断数据链路可用；不代表企业真实模型效果、生产安全隔离、持久留存、
+这些记录反映当时本地实现与诊断数据链路的验证结果；不代表当前工作区已重新通过，也不代表企业真实模型效果、生产安全隔离、持久留存、
 容量和 SLO 已完成验收。栈会按“运行与验证”中的命令显式启动，默认应用遥测仍关闭。
 
 ## PDF 图解与产物生成链
 
-`evaluation/render_observability_pdf.py` → ReportLab + 本机中文字体 →
-`../output/pdf/newsagent-observability-2026-10-16.pdf`（一页中文架构/定位图）。
-依赖本机 Python ReportLab 与脚本指定中文字体，使用 PDF 渲染/页数检查验证排版。
-该脚本是文档产物入口，不进入业务运行时、不调用模型或企业服务；脚本自身没有业务 TODO。
+`agent/evaluation/render_observability_pdf.py` → `render_real_news_warehouse_pdf.Diagram` →
+ReportLab与中文字体 → 仓库根 `output/pdf/newsagent-observability-2026-10-16.pdf`（一页中文架构/定位图）。
+公共 `Diagram` 当前硬编码 `/System/Library/Fonts/STHeiti Light.ttc` 与 `STHeiti Medium.ttc`，
+属于macOS路径；Linux/WSL新环境需要先适配字体，不能仅安装ReportLab就宣称可以生成。
+该脚本只生成文档产物，不进入业务运行时、不调用模型或企业服务；字体适配后还需渲染PDF并检查页数与排版。
 
 ## 官方依据
 

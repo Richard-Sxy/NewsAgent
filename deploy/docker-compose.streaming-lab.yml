@@ -1,0 +1,239 @@
+name: newsagent-streaming-lab
+
+x-flink: &flink
+  image: flink:1.20.5-java17@sha256:80401a8ee20e2246718c01303712c10ccaf13961e31316d9b8c4549f7b2cfc9b
+  environment:
+    FLINK_PROPERTIES: |
+      jobmanager.rpc.address: jobmanager
+      jobmanager.memory.process.size: 768m
+      taskmanager.memory.process.size: 1024m
+      taskmanager.numberOfTaskSlots: 1
+      parallelism.default: 1
+      state.checkpoints.dir: file:///state/checkpoints
+      state.savepoints.dir: file:///state/savepoints
+      execution.checkpointing.interval: 5s
+      execution.checkpointing.externalized-checkpoint-retention: RETAIN_ON_CANCELLATION
+    LAB_JDBC_URL: jdbc:postgresql://postgres:5432/stream_lab
+    LAB_DB_USER: stream_lab
+    LAB_DB_PASSWORD: local-stream-lab-only
+    LAB_KAFKA_TOPIC: newsagent-wallclock-v1
+  volumes:
+    - streaming-checkpoints:/state
+    - ../var/streaming-lab/lib/flink-sql-connector-kafka-3.4.0-1.20.jar:/opt/flink/lib/flink-sql-connector-kafka-3.4.0-1.20.jar:ro
+    - ../var/streaming-lab/lib/postgresql-42.7.14.jar:/opt/flink/lib/postgresql-42.7.14.jar:ro
+    - ../var/streaming-lab/build:/lab:ro
+  networks: [lab]
+
+services:
+  wallclock-feed: &wallclock
+    image: newsagent-streaming-dynamic:local-v1
+    profiles: [wallclock]
+    mem_limit: 384m
+    cpus: 0.75
+    restart: unless-stopped
+    working_dir: /source
+    command: [python, -m, simulation.streaming_lab.wallclock_feed, worker]
+    environment:
+      PYTHONPATH: /source
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUNBUFFERED: '1'
+      LAB_DSN: postgresql://stream_lab:local-stream-lab-only@postgres:5432/stream_lab
+      LAB_UNIFIED_DSN: postgresql://newsagent_native:newsagent_native@host.docker.internal:25432/newsagent_unified_news_20261023
+      LAB_MIGRATIONS: /lab-migrations
+      OBSERVABILITY_ENABLED: 'true'
+      OBSERVABILITY_SERVICE_NAME: newsagent-wallclock-readers
+      OBSERVABILITY_SERVICE_VERSION: wallclock-readers-v1
+      OBSERVABILITY_ENVIRONMENT: e2e
+      OBSERVABILITY_SAMPLE_RATIO: '1.0'
+      OBSERVABILITY_OTLP_ENDPOINT: http://host.docker.internal:24318
+    volumes:
+      - ../agent:/source:ro
+      - ./streaming-lab/migrations:/lab-migrations:ro
+    networks: [lab]
+    depends_on:
+      agent: {condition: service_healthy}
+      kafka: {condition: service_healthy}
+    read_only: true
+    tmpfs: ['/tmp:size=32m,mode=1777']
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  realtime-readers:
+    <<: *wallclock
+    restart: 'on-failure:2'
+    command: [python, -m, simulation.streaming_lab.realtime_readers]
+  dynamic-feed:
+    image: newsagent-streaming-dynamic:local-v1
+    build:
+      context: ./streaming-lab
+      dockerfile: Dockerfile.dynamic
+    profiles: [dynamic]
+    mem_limit: 384m
+    cpus: 0.5
+    working_dir: /source
+    command: [python, -m, simulation.streaming_lab.dynamic_feed, worker]
+    environment:
+      PYTHONPATH: /source
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUNBUFFERED: '1'
+      LAB_DSN: postgresql://stream_lab:local-stream-lab-only@postgres:5432/stream_lab
+      LAB_TEMPORAL_ADDRESS: temporal:7233
+      LAB_PRODUCER_STATE: /producer-state
+      OBSERVABILITY_ENABLED: 'true'
+      OBSERVABILITY_SERVICE_NAME: newsagent-dynamic-feed
+      OBSERVABILITY_SERVICE_VERSION: dynamic-traffic-v2
+      OBSERVABILITY_ENVIRONMENT: e2e
+      OBSERVABILITY_SAMPLE_RATIO: '1.0'
+      OBSERVABILITY_OTLP_ENDPOINT: http://host.docker.internal:24318
+    volumes:
+      - ../agent/app:/source/app:ro
+      - ../agent/simulation:/source/simulation:ro
+      - ../agent/tools:/source/tools:ro
+      - ../agent/tests:/source/tests:ro
+      - ../var/streaming-lab:/producer-state
+    networks: [lab]
+    depends_on:
+      agent: {condition: service_healthy}
+      kafka: {condition: service_healthy}
+    read_only: true
+    tmpfs: ['/tmp:size=32m,mode=1777']
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  kafka:
+    image: apache/kafka:3.9.1@sha256:4ceccc577f03f51f6af8dbfda55194d0d892f4fa7913ffbded567ce3895622ed
+    hostname: kafka
+    mem_limit: 1g
+    cpus: 1
+    environment:
+      CLUSTER_ID: c3RyZWFtaW5nLWxhYi0wMQ
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_LOG_RETENTION_HOURS: 24
+      KAFKA_LOG_RETENTION_BYTES: 268435456
+      KAFKA_LOG_SEGMENT_BYTES: 33554432
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_HEAP_OPTS: -Xms256m -Xmx512m
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+    volumes: [streaming-kafka:/var/lib/kafka/data]
+    networks: [lab]
+    healthcheck:
+      test: [CMD-SHELL, '/opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --list >/dev/null 2>&1']
+      interval: 10s
+      timeout: 10s
+      retries: 12
+  postgres:
+    image: postgres:16-alpine@sha256:deb28ee471183cb0c303113dac9b2433c51eeeeb678def7af9a9ec5820367815
+    mem_limit: 512m
+    cpus: 0.75
+    environment:
+      POSTGRES_USER: stream_lab
+      POSTGRES_PASSWORD: local-stream-lab-only
+      POSTGRES_DB: stream_lab
+    volumes:
+      - streaming-postgres:/var/lib/postgresql/data
+      - ./streaming-lab/init.sql:/docker-entrypoint-initdb.d/01-streaming.sql:ro
+    ports: ['127.0.0.1:45432:5432']
+    networks: [lab]
+    healthcheck:
+      test: [CMD, pg_isready, -U, stream_lab, -d, stream_lab]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  temporal:
+    image: temporalio/auto-setup:1.27.2@sha256:b44cbfeb43dbeae42db113b44fb8414c3452f05643b3d6b1592f955277d73526
+    mem_limit: 768m
+    cpus: 0.75
+    depends_on:
+      postgres: {condition: service_healthy}
+    environment:
+      DB: postgres12
+      DB_PORT: '5432'
+      POSTGRES_USER: stream_lab
+      POSTGRES_PWD: local-stream-lab-only
+      POSTGRES_SEEDS: postgres
+    ports: ['127.0.0.1:47233:7233']
+    networks: [lab]
+    healthcheck:
+      test: [CMD, temporal, operator, cluster, health, --address, 'temporal:7233']
+      interval: 5s
+      timeout: 5s
+      retries: 40
+  checkpoint-init:
+    <<: *flink
+    user: '0:0'
+    entrypoint: [/bin/sh, -c]
+    command: ['mkdir -p /state/checkpoints /state/savepoints && chown -R flink:flink /state']
+    mem_limit: 128m
+    restart: 'no'
+  jobmanager:
+    <<: *flink
+    command: jobmanager
+    mem_limit: 1g
+    cpus: 1
+    ports: ['127.0.0.1:48081:8081']
+    depends_on:
+      checkpoint-init: {condition: service_completed_successfully}
+      kafka: {condition: service_healthy}
+      postgres: {condition: service_healthy}
+  taskmanager:
+    <<: *flink
+    command: taskmanager
+    mem_limit: 1280m
+    cpus: 1.5
+    depends_on: [jobmanager]
+  agent:
+    restart: unless-stopped
+    # Reuse the measured local dependency image, without changing its existing tag.
+    image: sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18
+    mem_limit: 512m
+    cpus: 1
+    working_dir: /source
+    command: [python, -m, simulation.streaming_lab.runtime]
+    environment:
+      PYTHONPATH: /source
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUNBUFFERED: '1'
+      LAB_DSN: postgresql://stream_lab:local-stream-lab-only@postgres:5432/stream_lab
+      LAB_TEMPORAL_ADDRESS: temporal:7233
+      LAB_MIGRATIONS: /lab-migrations
+      LAB_UI_DIR: /lab-ui
+      LAB_UNIFIED_DSN: postgresql://newsagent_native:newsagent_native@host.docker.internal:25432/newsagent_unified_news_20261023
+      OBSERVABILITY_ENABLED: 'true'
+      OBSERVABILITY_SERVICE_NAME: newsagent-streaming-lab
+      OBSERVABILITY_SERVICE_VERSION: streaming-lab-v1
+      OBSERVABILITY_ENVIRONMENT: e2e
+      OBSERVABILITY_SAMPLE_RATIO: '1.0'
+      OBSERVABILITY_OTLP_ENDPOINT: http://host.docker.internal:24318
+    volumes:
+      - ../agent/app:/source/app:ro
+      - ../agent/simulation:/source/simulation:ro
+      - ../agent/tests:/source/tests:ro
+      - ./streaming-lab/migrations:/lab-migrations:ro
+      - ../var/streaming-lab/ui:/lab-ui:ro
+    ports: ['127.0.0.1:48000:8000']
+    networks: [lab]
+    depends_on:
+      temporal: {condition: service_healthy}
+    read_only: true
+    tmpfs: ['/tmp:size=64m,mode=1777']
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/ready",timeout=3)']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+networks:
+  lab: {}
+volumes:
+  streaming-kafka: {}
+  streaming-postgres: {}
+  streaming-checkpoints: {}

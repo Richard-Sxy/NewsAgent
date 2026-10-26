@@ -47,7 +47,7 @@ def test_collector_routes_three_signals_with_memory_and_batch_bounds(signal, exp
     assert config["processors"]["batch"]["send_batch_max_size"] == 512
     assert config["exporters"]["otlp_http/loki"]["endpoint"] == "http://loki:3100/otlp"
     assert config["exporters"]["prometheus"]["resource_constant_labels"]["included"] == [
-        "service.name", "service.namespace", "deployment.environment.name"]
+        "service.name", "service.namespace", "deployment.environment.name", "service.instance.id"]
 
 
 def test_backends_expire_data_and_do_not_index_ids():

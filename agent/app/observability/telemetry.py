@@ -71,7 +71,7 @@ _active_operations: ContextVar[tuple[dict[str, Any], ...]] = ContextVar("newsage
 
 
 def sanitize_attributes(attributes: Mapping[str, Any] | None, *, metric: bool = False) -> dict[str, Any]:
-    """列入许可名单的标量技术数据； ID 绝不是公制尺寸。"""
+    """仅保留白名单中的技术标量；标识符不作为指标维度。"""
     allowed = _METRIC_KEYS if metric else _SAFE_KEYS
     result: dict[str, Any] = {}
     if not isinstance(attributes, Mapping):
@@ -333,6 +333,7 @@ def configure_telemetry(service_name: str | None = None, *, settings: Observabil
         if config.enabled:
             resource = Resource({"service.name": service_name or config.service_name,
                                  "service.version": config.service_version,
+                                 "service.instance.id": config.service_instance_id,
                                  "deployment.environment.name": config.environment})
             if span_exporter is None or metric_reader is None or log_exporter is None:
                 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter

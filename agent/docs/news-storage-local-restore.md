@@ -1,26 +1,30 @@
-# 本机统一新闻与受众数据库恢复记录
+# 本机统一新闻与受众数据库恢复记录（2026-10-23）
+
+本文保留 2026-10-23 迁移和验收事实，路径、对象数量、测试数量与服务状态均属于当时记录。2026-10-26 仅复核源码及已有清单，没有重新恢复、连接数据库或运行验收。
+
+后续本地模拟已增加公开正文目录、实时合成指标和实时读者兴趣的 SQL 投影；10 月 25 日又完成内容子集清理与自动标注。当前 release 与数量见 [数据库查询手册](news-storage-database-reference.md#connection)，实时模拟实现见 [实时 SQL 投影](news-storage-database-reference.md#realtime)。不能用本页 14 表/4 视图和旧 release 代表整个当前数据库。
 
 2026-10-23 已完成桌面 `NewsAgent-WSL-transfer-20261023.zip` 的代码合并、SQL 恢复和本机验收。
-这是已落库的历史冻结快照；实时模拟流水线继续独立运行，本次没有把历史画像接成实时画像。
+这是当时落库的历史冻结包投影；历史受众与后续实时模拟仍采用不同来源和窗口，不能把历史画像改名当成实时画像。
 
-## 本机位置
+## 迁移时的本机位置
 
 | 内容 | 位置 |
 | --- | --- |
 | Windows 项目 | `E:\NewsAgent` |
 | WSL 项目 | `/home/shi/project/NewsAgent`（Ubuntu-20.04） |
-| 正文、标签和导出素材 | 两份项目各自的 `var/news-storage/` |
+| 正文、标签和导出素材 | 当时两份项目各自的 `var/news-storage/`；当前工作区为上述 WSL 项目 |
 | 原始 SQL | `E:\NewsAgent\var\imports\newsagent-transfer-20261023\database\newsagent_unified_news_20261023.sql` |
 | 本机验收证据 | `E:\NewsAgent\output\setup-reports\news-storage-import-20261023\` |
 | PostgreSQL 容器 | `news-agent-native-e2e-postgres-1` |
 | 持久化卷 | `news-agent-native-e2e_native-postgres-data` |
 | Windows 连接 | `127.0.0.1:25432` |
 | 数据库 | `newsagent_unified_news_20261023` |
-| 用户 / 密码 | `newsagent_native` / `newsagent_native`，现有 Compose 的公开本地演示配置 |
+| 本地演示用户 | `newsagent_native`；凭据按本机显式配置注入 |
 | Schema | `public`、`news_audience` |
 
-两份项目连接同一个 Docker 数据库，没有分别恢复两份数据库。原应用库 `newsagent_native` 保留。
-容器已启动；当前重启策略为手动，Docker 重启后若未运行，可执行：
+迁移时两份项目连接同一个 Docker 数据库，没有分别恢复两份数据库；原应用库 `newsagent_native` 保留。
+当时容器已启动、重启策略为手动。本次没有检查它当前是否运行；需要时先检查容器状态，再使用既有启动命令：
 
 ```powershell
 docker start news-agent-native-e2e-postgres-1
@@ -33,7 +37,7 @@ WSL 中旧版数据库说明仅包含与包内版本不同的公开演示凭据�
 `E:\NewsAgent\var\imports\newsagent-transfer-20261023\backups\wsl\agent\docs\news-storage-database-reference.md`。
 其他已有修改保持原状。批量 JSONL、SQLite、SQL 中转文件已通过局部 `.gitignore` 排除。
 
-## 数据和验证
+## 2026-10-23 数据和验证
 
 独立空库使用 PostgreSQL 16.15 的 `psql -X -v ON_ERROR_STOP=1 --single-transaction` 恢复，
 49.08 秒成功提交。恢复前检查了 SQL 结构与 psql 指令，没有执行归档中的任意 shell 命令。
@@ -57,7 +61,7 @@ WSL 中旧版数据库说明仅包含与包内版本不同的公开演示凭据�
 公开新闻、规则推断标签、synthetic 受众的来源属性保持不变。
 
 245 项 Python 测试通过：168 项 unified_news 测试、22 项 warehouse 测试、42 项画像契约测试、
-13 项本地画像客户端测试。使用已有 `newsagent-streaming-base:local` 镜像和当前 Windows 源码的
+13 项本地画像客户端测试。当时使用已有 `newsagent-streaming-base:local` 镜像和 Windows 源码的
 只读挂载执行，没有使用项目里从 Mac 拷贝过来的 `.venv`。
 测试入口为 `agent/tests/test_unified_news_*.py`、`test_reader_profile_warehouse.py`、
 `test_reader_profile_contracts.py`、`test_reader_profile_local.py`。
@@ -76,7 +80,7 @@ WSL 中旧版数据库说明仅包含与包内版本不同的公开演示凭据�
 
 ## DBeaver 查看
 
-现有客户端工作区已增加独立连接文件：
+迁移验收时，Windows 客户端工作区已增加独立连接文件：
 `E:\NewsAgent\var\database-client\workspace\General\.dbeaver\data-sources-unified-news.json`。
 连接名为 **NewsAgent Unified News + Audience**，使用现有 PostgreSQL JDBC 驱动和只读设置。
 已通过相同驱动执行认证、枚举、逐表计数及取一行读取，未声称已在 GUI 中点击验收。
@@ -93,7 +97,7 @@ WSL 中旧版数据库说明仅包含与包内版本不同的公开演示凭据�
 2. 后续正文/标签工具：`agent/tools/unify_news_storage.py` → `load_package` /
    `load_tag_package` 校验冻结身份、版本和内容摘要 → `FrozenNewsStore` /
    `FrozenNewsTagStore` → public 表/视图 → summary/get/list/topics/导出。
-   应用可通过 `ReleaseNewsContentRepository` 读取明确版本，此次未替换在线应用的内容源。
+   应用可通过 `ReleaseNewsContentRepository` 读取明确版本，当时未替换在线应用的内容源；后续 streaming lab 已通过 `PublicContentRepository` 读取绑定的统一正文目录。
 3. 后续受众工具：`agent/tools/import_reader_audience.py` → `ReaderWarehouseSource`
    从本地合成画像包校验窗口、租户与来源 → `population_rows` / `topic_rows` 拆分期限与主题 →
    `import_package` COPY、不可变身份检查和 `verify_projection` 摘要核对 → news_audience。
@@ -105,22 +109,19 @@ WSL 中旧版数据库说明仅包含与包内版本不同的公开演示凭据�
 两个 CLI 只接受显式环境变量，不自动读取 `.env`：
 
 ```text
-UNIFIED_NEWS_DATABASE_URL=postgresql+psycopg://newsagent_native:newsagent_native@127.0.0.1:25432/newsagent_unified_news_20261023
-AUDIENCE_DATABASE_URL=postgresql://newsagent_native:newsagent_native@127.0.0.1:25432/newsagent_unified_news_20261023
+UNIFIED_NEWS_DATABASE_URL=postgresql+psycopg://YOUR_USER@127.0.0.1:25432/newsagent_unified_news_20261023
+AUDIENCE_DATABASE_URL=postgresql://YOUR_USER@127.0.0.1:25432/newsagent_unified_news_20261023
 ```
 
-以上主机地址用于 Windows 本机。在 Docker 临时验收容器中使用 `host.docker.internal:25432`；
+以上是连接格式示例，需要使用本机已配置的认证方式；未设置凭据时不能视为可直接执行的完整连接。主机地址沿用 Windows 本机约定。在 Docker 临时验收容器中使用 `host.docker.internal:25432`；
 不要把 Mac 虚拟环境或文档中的历史 Mac 绝对路径当成本机执行路径。
 查询必须指定 release、租户和窗口，内容域 `public-news-local` 不能当作业务租户 UUID。
 
-## 仍待完成的实时对接
+## 后续实现与仍待完成的对接
 
-- 当前实时模拟使用三个人造新闻 ID、分钟窗口与独立租户集合；本次冻结受众使用历史真实新闻
-  ID、小时窗口及另一组租户。必须先建立明确的新闻、正文版本、租户与事件时间映射，不能直接 JOIN。
-- Reader 的在线 factory 尚未装配 PostgreSQL Port；现阶段本库由独立 CLI/SQL 查询。
-  原应用仍使用已有本地包/企业接口 Port 配置。本次未切换运行中的 v8 应用。
-- 持续更新需发布新的快照与来源版本，区分点击 UV 和详情去重读者，保证访问前兴趣、迟到修订、
-  TopK 缺失含义与质量门槛；不得向现有冻结包身份追加实时数据。
-- 企业模型、真实聚合服务、TDSQL-A 兼容性、授权/RLS 与生产负载验收仍待企业联调。
+- 本地实时模拟已有公开正文目录、分钟指标与读者兴趣投影；不再仅限于早期三个人造新闻 ID。目录必须绑定内容/标签 release、正文哈希与实验租户，历史小时受众不能直接 JOIN 到实时分钟窗口。源码为 `agent/simulation/streaming_lab/public_news.py` 和 `realtime_readers.py`，查询入口是 `news_realtime` 视图。
+- 通用 Reader factory 仍仅装配 `local_package` / `enterprise_http`；`news_audience` 的 PostgreSQL 查询尚未成为该 factory 的独立在线后端。独立 streaming lab 已有实时聚合接线，不能把两者混为“全部未接入”或“全部生产可用”。
+- 本地模拟已有暂定/定稿、水位、迟到修订及来源检查；企业聚合服务的同义合同、快照有效期、权限/RLS、TDSQL-A 兼容性和生产负载仍待联调。本地能力不代表企业模型质量或真实业务效果。
+- 冻结磁盘包按身份保留，数据库保留策略另行管理。10 月 25 日清理后，原内容/标签 release 已归档且部分旧数据库行已删除，当前指针为 `var/news-storage/current-selection.json`。恢复本页原始 SQL 只能重建迁移基线，不能代表清理后的当前状态。恢复清理前数据应使用 `var/backups/news-category-prune-20261025/unified-news.before.dump`，先在独立库核验；后续标注/实时状态还须分别按版本恢复。
 
-详细字段、键和查询口径继续以 `agent/docs/news-storage-database-reference.md` 为参考。
+本文恢复记录的调用链、配置和测试入口保留在上文；当前数据、自动标注及实时模拟的调用链、配置、查询与测试入口见 [数据库查询手册](news-storage-database-reference.md)。本次只修改文档，没有执行恢复、模型推理或数据库写入。

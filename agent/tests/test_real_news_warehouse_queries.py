@@ -43,7 +43,7 @@ class FakeCursor:
         self.manifest, self.gate, self.rows = manifest, gate, rows
         self.calls = []
         self.columns = [{"table_name": table, "column_name": field, "ordinal_position": position}
-                        for table in sorted(q.TABLES)
+                        for table in sorted(manifest["tables"])
                         for position, field in enumerate(manifest["tables"][table]["columns"], 1)]
 
     def __enter__(self):

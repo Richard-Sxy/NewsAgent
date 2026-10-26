@@ -41,7 +41,7 @@ INCREMENTAL_INDEX_VERSIONS = {
            "../var/agent/data/news-bge-incremental-20261014-v2"),
 }
 CATALOG = "data/corpus-news-v6/catalog.json"
-SCHEMA = "docs/sql-warehouse-schema-v6.md"
+SCHEMA = "docs/sql-warehouse/sql-warehouse-schema-v6.md"
 RUNTIME_PROBE = """
 import importlib.metadata as m
 expected = {'numpy':'2.4.6', 'hnswlib':'0.8.0', 'sentence-transformers':'6.0.1', 'torch':'2.8.0+cpu'}

@@ -1,0 +1,9 @@
+FROM flink:1.20.5-java17@sha256:80401a8ee20e2246718c01303712c10ccaf13961e31316d9b8c4549f7b2cfc9b AS flink
+FROM eclipse-temurin:17-jdk-jammy@sha256:73ed442231ec66cfe48cae0b263ce619a75ab96d162ab325f38fc0a269ee3aab AS compiler
+COPY --from=flink /opt/flink/lib /flink-lib
+COPY --from=deps / /deps/
+COPY StreamingJob.java /src/StreamingJob.java
+RUN mkdir -p /classes && javac --release 17 -cp '/flink-lib/*:/deps/*' -d /classes /src/StreamingJob.java \
+    && jar --create --file /streaming-job.jar -C /classes .
+FROM scratch AS artifact
+COPY --from=compiler /streaming-job.jar /streaming-job.jar

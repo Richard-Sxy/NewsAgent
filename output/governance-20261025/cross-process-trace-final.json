@@ -1,0 +1,201 @@
+{
+  "synthetic_only": true,
+  "request_id": "0dd4f4e2-b4fd-4cdc-92c8-0ca2fc76857d",
+  "workflow_id": "governance-probe-0dd4f4e2-b4fd-4cdc-92c8-0ca2fc76857d",
+  "model_request_id": "native-local-512d438e078a3a0f7bc449a7",
+  "checks": {
+    "completed": true,
+    "parent_preserved": true,
+    "http": true,
+    "workflow": true,
+    "activity": true,
+    "model": true,
+    "quota": true,
+    "business_validation": true,
+    "two_services": true
+  },
+  "trace_id": "647666b912a5f19c0a1a910d81bcced4",
+  "trace_status": "found",
+  "spans": [
+    {
+      "name": "RunWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "5c+apoxH/ww=",
+      "parent_span_id": "0GY5o7bjd9g=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    },
+    {
+      "name": "StartActivity:governance_diagnostic_model",
+      "span_id": "N2fyHn+R3FI=",
+      "parent_span_id": "0GY5o7bjd9g=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    },
+    {
+      "name": "model.prompt_render",
+      "span_id": "2Ku8bHRkUf0=",
+      "parent_span_id": "CslSHiYSvWM=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000776524,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.prompt_render"
+      }
+    },
+    {
+      "name": "model.quota_wait.interactive",
+      "span_id": "rJqJ7ffipsc=",
+      "parent_span_id": "ITJ06ZdPm2c=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.001953477,
+      "attributes": {
+        "newsagent.stage": "quota_admission"
+      }
+    },
+    {
+      "name": "model.inference",
+      "span_id": "ITJ06ZdPm2c=",
+      "parent_span_id": "CslSHiYSvWM=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.008213256,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.inference",
+        "model.provider_request_id": "native-local-512d438e078a3a0f7bc449a7"
+      }
+    },
+    {
+      "name": "model.response_decode",
+      "span_id": "9WdKuLtoIzs=",
+      "parent_span_id": "CslSHiYSvWM=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000382106,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.response_decode"
+      }
+    },
+    {
+      "name": "model.schema_validate",
+      "span_id": "gGBlBJfsRqk=",
+      "parent_span_id": "CslSHiYSvWM=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000154608,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.schema_validate"
+      }
+    },
+    {
+      "name": "model.structured",
+      "span_id": "CslSHiYSvWM=",
+      "parent_span_id": "NUMzBRvoWIs=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.009997922,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.structured",
+        "model.provider_request_id": "native-local-512d438e078a3a0f7bc449a7"
+      }
+    },
+    {
+      "name": "model.business_validate",
+      "span_id": "g+qOMpuwP/w=",
+      "parent_span_id": "NUMzBRvoWIs=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000191103,
+      "attributes": {
+        "newsagent.stage": "model.business_validate"
+      }
+    },
+    {
+      "name": "temporal.activity",
+      "span_id": "NUMzBRvoWIs=",
+      "parent_span_id": "TPWufZY3ikY=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.050513584,
+      "attributes": {
+        "temporal.activity.attempt": "1",
+        "temporal.workflow.id": "governance-probe-0dd4f4e2-b4fd-4cdc-92c8-0ca2fc76857d",
+        "newsagent.stage": "temporal.activity"
+      }
+    },
+    {
+      "name": "RunActivity:governance_diagnostic_model",
+      "span_id": "TPWufZY3ikY=",
+      "parent_span_id": "N2fyHn+R3FI=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.050635868,
+      "attributes": {}
+    },
+    {
+      "name": "CompleteWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "U0dLW184QF4=",
+      "parent_span_id": "0GY5o7bjd9g=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "4c9f2d55d084443bbb61a8008bded548",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    },
+    {
+      "name": "StartWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "0GY5o7bjd9g=",
+      "parent_span_id": "ajlKiogZqvU=",
+      "service": "newsagent-governance-probe-api",
+      "instance": "d6e39ea057b044b49815ea682e53263c",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.016429656,
+      "attributes": {}
+    },
+    {
+      "name": "POST /probe/{request_id}",
+      "span_id": "ajlKiogZqvU=",
+      "parent_span_id": "jQZzoBT1Vmc=",
+      "service": "newsagent-governance-probe-api",
+      "instance": "d6e39ea057b044b49815ea682e53263c",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.12228015,
+      "attributes": {}
+    }
+  ],
+  "passed": true
+}

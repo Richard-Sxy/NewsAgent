@@ -1,0 +1,5 @@
+FROM newsagent-streaming-base:local@sha256:16c1e0877eac59ec9237568f4e0874a73518dac86deac66b37be673820a94f18
+USER root
+COPY requirements-dynamic.txt /tmp/requirements-dynamic.txt
+RUN python -m pip install --no-cache-dir --no-deps --require-hashes -r /tmp/requirements-dynamic.txt
+USER app

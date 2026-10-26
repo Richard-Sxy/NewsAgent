@@ -1,0 +1,20 @@
+# Optional local persistence overlay. Migrate/back up existing tmpfs before use.
+services:
+  tempo:
+    # Allow query working memory in addition to the existing 512 MiB tmpfs.
+    mem_limit: 3072m
+    memswap_limit: 3072m
+  prometheus:
+    mem_limit: 2048m
+    tmpfs: !reset []
+    volumes:
+      - prometheus-data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=24h
+      - --storage.tsdb.retention.size=2GB
+      - --storage.tsdb.wal-compression
+      - --enable-feature=exemplar-storage
+volumes:
+  prometheus-data:

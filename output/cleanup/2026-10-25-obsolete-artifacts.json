@@ -1,0 +1,4339 @@
+{
+  "scope": "Remove obsolete docs and generated artifacts; retain runtime, tests, source packages and acceptance evidence",
+  "status": "blocked_before_deletion",
+  "preserved_pdfs": [
+    "NewsAgent_当前新闻与用户标签_字段手册.pdf",
+    "NewsAgent_项目架构_数仓与OSS_RAG_2026-10-22.pdf",
+    "newsagent-vector-recall-architecture-2026-10-20.pdf",
+    "DataLoop_运营反馈与数据集扩充_可视化指南.pdf",
+    "NewsAgent_评测与训练数据规范_2026-10-13.pdf"
+  ],
+  "files": [
+    {
+      "path": "agent/docs/enterprise-synthetic-data.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 14476,
+      "sha256": "a7262b58e00f218b136689b798540bcbc93e723110223af97fd14b9c0a828983"
+    },
+    {
+      "path": "agent/docs/local-project-simulation.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 11335,
+      "sha256": "894dc896153caa74a8b37025f690e91a182d1bcdef6b30c87d6f14d9f2abbf24"
+    },
+    {
+      "path": "agent/docs/public-headlines-demo.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 5929,
+      "sha256": "30690e543f7c0b91f5b81b1efc398d6c39ecab4e250de56d9d34e3cbb8f0476f"
+    },
+    {
+      "path": "agent/docs/real-news-demo.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 11771,
+      "sha256": "b9eb98761b28a59713b439a8a4cb248205234e45e3b220c3f46a118fdac5461f"
+    },
+    {
+      "path": "agent/docs/realtime-warehouse-background.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 15782,
+      "sha256": "e6b5757e9cd7f6f0b0ce384bb94a17a29ac66b52ea7aeff9ac887754b54ae51f"
+    },
+    {
+      "path": "agent/docs/sql/news-hotspot-audience-query-example.sql",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 8371,
+      "sha256": "1806d2ead90680f241e739f0e0f5557f186f78e3a35957cac3c2915d3ac0d812"
+    },
+    {
+      "path": "agent/docs/sql/news-reader-audience-proposal-v1.sql",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 17853,
+      "sha256": "50143834d17c851c6e20e1d2cf198c118c44eea981d79501cd7b41452192ce66"
+    },
+    {
+      "path": "agent/docs/tencent-news-simulation-v7.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 37101,
+      "sha256": "f23e000c0c3ed8431af4183617e35fed771395c55c4c0dd0cabd4bafa2ce5da3"
+    },
+    {
+      "path": "agent/evaluation/render_tencent_warehouse_architecture_pdf.py",
+      "reason": "obsolete_document_generator",
+      "bytes": 28109,
+      "sha256": "da587888e348b392c98d16c3104fe4e799ffc4e5a2d63bbfb2656cd4d430fed5"
+    },
+    {
+      "path": "agent/evaluation/render_tencent_warehouse_poster.py",
+      "reason": "obsolete_document_generator",
+      "bytes": 17012,
+      "sha256": "57d9892f3a0d505420c8242a560d066377625266a10ae9852e7cc4b0012658b2"
+    },
+    {
+      "path": "DemoMD/DEMO_SCRIPT.md",
+      "reason": "superseded_simulation_guide_or_unimplemented_proposal",
+      "bytes": 9423,
+      "sha256": "9ff11f7b38b8773d668a69a9f79c7dc77017261368f83fe2d85acc413879bac6"
+    },
+    {
+      "path": "output/pdf/backups/NewsAgent_专题资料与综合总览_2026-10-16_原15页合订版备份_20261016-170328.pdf",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 2096370,
+      "sha256": "fee01f853f31174cba51e53df85c1e9568d33831134c242316f325c084539a74"
+    },
+    {
+      "path": "output/pdf/mentor-request-01-answer-feedback-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 46652,
+      "sha256": "cee9ec247684fecab07ff101cc11c923098e88ae72b39b3c5bd965feb23e0184"
+    },
+    {
+      "path": "output/pdf/NewsAgent_八月热点数据写作评测集_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 131134,
+      "sha256": "e042b52db4e08e0c7871012b9a514e43143bfded855f61320b18db714bcb569e"
+    },
+    {
+      "path": "output/pdf/NewsAgent_本地冷温热分层召回模拟_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 180385,
+      "sha256": "d6e43e9ab9d4dd2c18a04121c02afb333691aeb6996886567861efafcc9ccde8"
+    },
+    {
+      "path": "output/pdf/NewsAgent_第一版分层召回企业中间件接入_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 190854,
+      "sha256": "b5ebc1eaaeefc9289829d290bff073938c9e2eafcdd4a637e293a5a1f787e52c"
+    },
+    {
+      "path": "output/pdf/NewsAgent_多人运营业务仿真_2026-10-18.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 126443,
+      "sha256": "71cad349ec95b889f8d9af84f4265905cf9f725abbfcf54a272716177b9dbdb6"
+    },
+    {
+      "path": "output/pdf/NewsAgent_多智能体架构_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 145866,
+      "sha256": "7d5f04a820a0f5c024aef7a736d2e6ae4c09b064625facc132bcbad1cc69862d"
+    },
+    {
+      "path": "output/pdf/NewsAgent_多智能体架构_简版_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 78201,
+      "sha256": "f89ba26d70c1690e3629a95818bac744e44e889214f7a7970d132843ea6a3c11"
+    },
+    {
+      "path": "output/pdf/NewsAgent_多智能体运营架构更新_2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 142716,
+      "sha256": "5686c61697ccba92d64ea82d076e9b5b4fd3d12bb070fdb6964db1c6c18b3615"
+    },
+    {
+      "path": "output/pdf/NewsAgent_分层召回实际测试指导_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 192963,
+      "sha256": "1444158960a8a287204878e34651988942a90e6069b2c9e506bf2866653ee9e4"
+    },
+    {
+      "path": "output/pdf/NewsAgent_分层召回实现与测试路线_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 198414,
+      "sha256": "c41b91754a4f5d1232eb7e6ce73b65c333e1f5bcf5a46d3e7307752763ef8cce"
+    },
+    {
+      "path": "output/pdf/NewsAgent_高并发与多租户场景模拟图解.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 382360,
+      "sha256": "4998275479f371d63919f85fdb10b5089bc526195a0d98df53315d5cf0c015ed"
+    },
+    {
+      "path": "output/pdf/NewsAgent_基线与热点量化_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 188947,
+      "sha256": "c8f27200b825d9299556a1dac6e4ffe52d1cfa15143d378407a2abc4175d5400"
+    },
+    {
+      "path": "output/pdf/NewsAgent_链路优化四步_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 75755,
+      "sha256": "fe2328ba4540f986b2834212539830a8cdfef8377c1ebdff84325c5831eb81b8"
+    },
+    {
+      "path": "output/pdf/NewsAgent_每日千篇新闻导入扩容图解_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 75487,
+      "sha256": "092d7222aaac5e861afe46dc91c94024dff27ccd61cef8bc90a5128ebcc9aa93"
+    },
+    {
+      "path": "output/pdf/NewsAgent_内容运营业务流程图_A4_2026-10-19.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 133738,
+      "sha256": "cfdd76fa52ac891d52c2bad6d54cfe2372e829655a6800de47ad51e3ff5de93b"
+    },
+    {
+      "path": "output/pdf/NewsAgent_内容运营与算法协作_业务仿真_2026-10-19.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 149625,
+      "sha256": "4fff313a4f14a6071d96229ed074e6c77168398f27d7f9583a65e0a7b1fdc48f"
+    },
+    {
+      "path": "output/pdf/NewsAgent_热点查询修复与对话评测图解.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 261579,
+      "sha256": "4d8775dff6931ea619f5e23c59397b5097c596273ba0d4df1c6e2a8678005a81"
+    },
+    {
+      "path": "output/pdf/NewsAgent_热点分析判断依据与提示词_2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 179432,
+      "sha256": "3d24868fe7177e88f956d29d8c4f8a6e7717227952363c66d179553bc4e4f2f1"
+    },
+    {
+      "path": "output/pdf/NewsAgent_热点分析判断依据与提示词_2026-10-16.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 486533,
+      "sha256": "bdf4abc1338b4769932e0cd782a731a73cbd3406ed6f1c36c152b8cbf0f5c459"
+    },
+    {
+      "path": "output/pdf/NewsAgent_热点建议的指标依据_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 142021,
+      "sha256": "0f54fd4e662e918a4035ccae51e5b60af6ca89baf400bdfa9a2af406ac9bb6d8"
+    },
+    {
+      "path": "output/pdf/NewsAgent_热点新闻与用户标签_TDSQL接入表结构_2026-10-25.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 497145,
+      "sha256": "d92e11f903c70a908065168aacedd436c794b9c2615671c24b4b67c84d2a083d"
+    },
+    {
+      "path": "output/pdf/NewsAgent_三层配置与状态迁移实现_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 146049,
+      "sha256": "62fe6648627b2a54123e7ad3f3a68234b8158c59905ea635d1af09725f7e7c9b"
+    },
+    {
+      "path": "output/pdf/NewsAgent_三层生命周期函数定位_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 120556,
+      "sha256": "b24587240b86a43715eb05a7db54dcc2688a28eb97d17cf80b5125d355ca456c"
+    },
+    {
+      "path": "output/pdf/NewsAgent_三层实施缺口补齐_2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 170429,
+      "sha256": "8d077d229ace73ac8de236e77828713d2e2c845a1ad9eb9d51d2e63b4b90f932"
+    },
+    {
+      "path": "output/pdf/NewsAgent_实时数仓热点UV与时间窗口原理图解.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 344912,
+      "sha256": "673c5f618e2ee734d98e532c0c704003bf5a4e9b252b12b1f5801d3566a20198"
+    },
+    {
+      "path": "output/pdf/NewsAgent_索引构建参数与严格评测_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 173366,
+      "sha256": "e4f99527297576f701c2d6a155903b86cc72222f092097d77001027068ac7eac"
+    },
+    {
+      "path": "output/pdf/NewsAgent_腾讯企业数仓与SQL_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 104847,
+      "sha256": "79fe32978ea23213ccf23844651eeed9c99ec20bb943d633ddb8f46bae689ecf"
+    },
+    {
+      "path": "output/pdf/NewsAgent_腾讯新闻模拟数仓_一页架构总览.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 162622,
+      "sha256": "5c94edffd076841d7f63ea9d59b224704b3cc25191de7f09fc560a33cefd8815"
+    },
+    {
+      "path": "output/pdf/NewsAgent_腾讯新闻模拟数仓_一页架构总览.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 429731,
+      "sha256": "9764f901a668582d0683d0c4f492a4d33aec5c627a0b6a481fb04e91dad4604d"
+    },
+    {
+      "path": "output/pdf/NewsAgent_腾讯新闻模拟数仓架构图解_v7.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 344516,
+      "sha256": "4450821f2abaa20ac51a9aee4b386cec5aa238b9f4d4935ae36ce0d48136a557"
+    },
+    {
+      "path": "output/pdf/NewsAgent_腾讯新闻数据写作与企业价值_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 139340,
+      "sha256": "58616f209a184345787e5607dff09926961268c58ea84fd4b503ce3fce1eddf4"
+    },
+    {
+      "path": "output/pdf/NewsAgent_同小时基线与新闻峰值_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 100761,
+      "sha256": "46180340d3fb8f228564a6dced8261a05409be4650377136354c33e19c32a2d5"
+    },
+    {
+      "path": "output/pdf/NewsAgent_相关PDF综合归纳_2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 127937,
+      "sha256": "0b2e2a57e5b224fea9f6b99bbeb98ded9bbef10e70f0e95bf6b72dfd3f8da703"
+    },
+    {
+      "path": "output/pdf/NewsAgent_向量召回链路_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 152644,
+      "sha256": "4382a50131b0c7c773314043a0132fc12502b7b6a1308e290046f89b500c8409"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻点击与访问统计_底层架构图-1.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 419096,
+      "sha256": "2be4c75f3aad6ac3c25db439b2f19f69815cb1c080fbda9d3df5061655d5f2b8"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻点击与访问统计_底层架构图-2.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 400571,
+      "sha256": "4b7314d27042185494898c46f8b731f7b0f3fcfc235659df32c212c2023bdfc7"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻点击与访问统计_底层架构图.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 227641,
+      "sha256": "dae94071ee9000fbb740e46faa7bb0dcd2de893e69476252ebbef952d1fe8113"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻多模态入库设计_2026-10-14.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 137884,
+      "sha256": "e80206fdf42ba02f6c922feb3a08f13accaa08b15fadde3154cd344a59e21f83"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻运营目标与DataAgent差异_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 146679,
+      "sha256": "07d96a925cbaf05e368ac369794238e41326979152930733aef26e718d40b4ab"
+    },
+    {
+      "path": "output/pdf/NewsAgent_新闻主题覆盖简评_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 100808,
+      "sha256": "3cf6f5ec4af3652cfa580a5f9daedc2814118dc00d1bdddd86489ac80f4e3cad"
+    },
+    {
+      "path": "output/pdf/NewsAgent_召回延时测试前状态核查_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 147088,
+      "sha256": "2741c80f9b07a9e8674e165c6bcd11b490f88a800affdf03c8af7d6b03a541a7"
+    },
+    {
+      "path": "output/pdf/NewsAgent_真实新闻模拟数仓_一页架构图_v8.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 149652,
+      "sha256": "87433724312160ae334ea60fce241dab27e7527daa4b1396442641f565c284d2"
+    },
+    {
+      "path": "output/pdf/NewsAgent_真实新闻模拟数仓_一页架构图_v8.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 471378,
+      "sha256": "d6e3396e2b2e4ca99fd30375658c853147be28e94b1d25e01cd847a18724ca5b"
+    },
+    {
+      "path": "output/pdf/NewsAgent_整体架构与整合路线_2026-10-10.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 324572,
+      "sha256": "eea88e1d0afb89c987c36e441238bebb05ef2b6560a266ca82e07a0b8a18a6c1"
+    },
+    {
+      "path": "output/pdf/NewsAgent_专题资料与综合总览_2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 315151,
+      "sha256": "1dcd8aaa5405bf43b15f2ee891e0f789d4ee46ca179eafe5a111b882ce3f88d4"
+    },
+    {
+      "path": "output/pdf/NewsAgent_DataAgent前沿方向映射_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 121704,
+      "sha256": "77a15d9122b0dfac4240e9ae88b7a4fab735916281f2063c341cc63d9c794898"
+    },
+    {
+      "path": "output/pdf/NewsAgent_Feed流与热点榜关系_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 193519,
+      "sha256": "0ff38ffd3cab34882f4e89e1d0a09940e44700dab769c8917f80433b40840937"
+    },
+    {
+      "path": "output/pdf/NewsAgent_Feed流与热点榜关系_2026-10-15.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 499226,
+      "sha256": "d2dbcfaf53eca30f2a4857a66e9e5b5de17be6123233d453250ce89bd8d1ce18"
+    },
+    {
+      "path": "output/pdf/NewsAgent_SQL查询与热点全链路_2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 156964,
+      "sha256": "4b2221548bd41f67271a96cc8b359bde6bb8bc4657ce9a69e89e4e4b2961b005"
+    },
+    {
+      "path": "output/pdf/NewsAgent_SQL查询与热点全链路_2026-10-15.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 503513,
+      "sha256": "c7ec17824ae26c5ec6f247010649f0832dafcbc7712c64fe0d5855c2e13376dc"
+    },
+    {
+      "path": "output/pdf/newsagent-agentic-rl-scope-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 168855,
+      "sha256": "bd60ef847cc341e6889d1b42597ade7b9495a859593ed79743f5c93d986abfc1"
+    },
+    {
+      "path": "output/pdf/newsagent-behavior-knowledge-graph-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 170355,
+      "sha256": "b8d4c6ead78016df8f4ef6a81218c92b926858fb13f8edf00ec76e4914786365"
+    },
+    {
+      "path": "output/pdf/newsagent-bge-position-and-effects-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 160647,
+      "sha256": "3377328c842e1e64ebc3a2f79c0e2959e393a0d489c4056b3e687a482679f72a"
+    },
+    {
+      "path": "output/pdf/newsagent-code-location-map-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 160067,
+      "sha256": "a6d8f142c3f8228347d0b299737045adc83c8d79e69b23fffb7ace8d0b26c717"
+    },
+    {
+      "path": "output/pdf/newsagent-concurrency-multitenancy-100users-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 162077,
+      "sha256": "c8f399a6416dc33fe94fde90b87133dc690780bba68910061505945d8dd1f467"
+    },
+    {
+      "path": "output/pdf/newsagent-consumer-data-flywheel-scope-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 105668,
+      "sha256": "9f62a861d1524f0b3384c2d32175b31091acc89b73767896e181df8a0a16dd05"
+    },
+    {
+      "path": "output/pdf/newsagent-cross-window-progress-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 200555,
+      "sha256": "54bf83bcdfc244fc6e4e3f742fd7077ccec027a57bd3c2c5842cf5ef6818da32"
+    },
+    {
+      "path": "output/pdf/newsagent-current-folder-map-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 149494,
+      "sha256": "2e550cecaa43f452c8a8f38772cccae05a8f6bd29349190d5c56d9b69162c894"
+    },
+    {
+      "path": "output/pdf/newsagent-data-loop-dialogue-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 2953156,
+      "sha256": "d04f938df8d88737a9ed669ddc14af059cc56cabc4a8cae45764e95a3e86af84"
+    },
+    {
+      "path": "output/pdf/newsagent-data-loop-scenarios-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 130404,
+      "sha256": "40930d43596d06dbeb6d9d9ab8ed9cbf65d2b046729aa9a30f3bedd0b4d54b17"
+    },
+    {
+      "path": "output/pdf/NewsAgent-deployment-and-startup-guide-2026-10-11.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 354989,
+      "sha256": "4e76a6dba284e963a08d4ebf6457feae23fef4e49161f3a5c143d3b8f6838e9c"
+    },
+    {
+      "path": "output/pdf/newsagent-docker-consolidated-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 84598,
+      "sha256": "3a1b690417b3464f1760c2c48ac4e53022d98fe46ce765587acf65fed9fd0997"
+    },
+    {
+      "path": "output/pdf/newsagent-docker-startup-guide-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 107406,
+      "sha256": "6876ed8d59b75f3a367bbf441d39e544838bcddcef760941385d37bfd549db31"
+    },
+    {
+      "path": "output/pdf/newsagent-ebike-push-human-review-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 167868,
+      "sha256": "efb3d9884ad8d281d14733ae9f16984e2b1270a259e7ca17d0c09b569764b5ed"
+    },
+    {
+      "path": "output/pdf/newsagent-enterprise-audience-integration-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 180535,
+      "sha256": "f7f6f351d62c6c8238dd7a444b6763067d2bfb689ce1a7e324b19ea3ab5ef072"
+    },
+    {
+      "path": "output/pdf/newsagent-enterprise-introduction-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 153040,
+      "sha256": "de3a85853073884c29d2c74d390118c378c5834c6239f0afb0fe5c2bf50250b9"
+    },
+    {
+      "path": "output/pdf/NewsAgent-enterprise-realtime-warehouse-reference-2026-10-12.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 377694,
+      "sha256": "938b0c7fba421cff0b1128de2072b90b06469d4adf0295afc3cbdcc558c00c13"
+    },
+    {
+      "path": "output/pdf/newsagent-evaluation-skill-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 138635,
+      "sha256": "b7ccd0ff7b71fc04c7d8b3dc934e31ef5659523605cb1772abe4cd103a52876b"
+    },
+    {
+      "path": "output/pdf/newsagent-execution-chain-review-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 132981,
+      "sha256": "ed8fe9b46eb3e813e471d858c603a6e70ae9bdc2f0a1d91e77eb8303d72636a3"
+    },
+    {
+      "path": "output/pdf/newsagent-execution-chain-update-2026-10-17.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 133636,
+      "sha256": "7c8d5eb9d06fcb1118ab85ba8714a45d64603714020f2ab0ec9dc9ab09599940"
+    },
+    {
+      "path": "output/pdf/newsagent-hnsw-build-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 145432,
+      "sha256": "d82d14528e5d83ded1b63b0975889d2baa58f1a4cf5d102a4e669b91a7cce806"
+    },
+    {
+      "path": "output/pdf/newsagent-hnsw-build-2026-10-16.png",
+      "reason": "superseded_document_or_preview",
+      "bytes": 513793,
+      "sha256": "d1175a1fea7ffaed198de5920c316dd679e3d578d0704fe9e451664cb4117c4d"
+    },
+    {
+      "path": "output/pdf/newsagent-hot-news-retrieve-and-reply-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 138551,
+      "sha256": "5583544d30cfa1a4eafb37d67b9e5838d87cee75165d31a3d811a3d464f3db94"
+    },
+    {
+      "path": "output/pdf/newsagent-hotspot-data-loop-analysis-2026-10-14.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 180408,
+      "sha256": "464a11531b8aad6bf56691e850c4a02473690b08504d2e3407158d0ce7ce7631"
+    },
+    {
+      "path": "output/pdf/newsagent-infra-12-capabilities-audit-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 157401,
+      "sha256": "bdaee2f81f0ea77f5005419715362a2273cb56ce0d59db8152aec1355162a390"
+    },
+    {
+      "path": "output/pdf/newsagent-interaction-entry-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 80450,
+      "sha256": "744660acf7d74dab5391ccba5f78d785d237c2f85602e2e615b9b005ab660b0b"
+    },
+    {
+      "path": "output/pdf/newsagent-local-behavior-tags-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 174910,
+      "sha256": "eb8646834a26a6f1644b508ac95fb16c139b205454a157862912e2c63be807ca"
+    },
+    {
+      "path": "output/pdf/newsagent-locking-and-fencing-principles-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 151442,
+      "sha256": "ad7969e73f1faa189abfe766dd0a9650dab3ace9776cb0ba7128b7b95b698163"
+    },
+    {
+      "path": "output/pdf/newsagent-multitenant-concurrency-audit-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 146663,
+      "sha256": "33542e0477027e34e22285f1e4192bb8fa3d4cfa2f3678a6523818144ae2a01f"
+    },
+    {
+      "path": "output/pdf/newsagent-news-reader-implementation-2026-10-17.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 163350,
+      "sha256": "9cdc9098a6612a8bd614d70df05db0a74a7ae31527398e59ea9625bcf791259c"
+    },
+    {
+      "path": "output/pdf/newsagent-news-reader-million-scale-design-2026-10-17.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 165587,
+      "sha256": "9b704debe1bed89c6ac940255f3994c04d6864ba8f5c2f9dacbfe3b24f81f1e3"
+    },
+    {
+      "path": "output/pdf/newsagent-observability-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 144882,
+      "sha256": "478b281797d82e40c3e85d0f3185a6b2df0d45f213cff95f4e01a3bbbd37d003"
+    },
+    {
+      "path": "output/pdf/newsagent-original-requirements-trace-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 176602,
+      "sha256": "301fd308019a33da2d418b66b913ab72e9019e8187737b098939a5e46fc5f4c1"
+    },
+    {
+      "path": "output/pdf/newsagent-project-structure-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 131673,
+      "sha256": "7d9c4789bc5910be42143823dd1d2d4f7a5d7110baed2a0bc7621d52c40e460f"
+    },
+    {
+      "path": "output/pdf/newsagent-prompt-scope-and-warehouse-time-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 154996,
+      "sha256": "8a35c1440b6de4c1d6fd2768687d36de8771a1f9f3a988e89b7a5eb49c110a8f"
+    },
+    {
+      "path": "output/pdf/newsagent-reader-code-map-2026-10-17.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 110231,
+      "sha256": "fc055f0e802f23184dbe3b1acfa9505d24ff54c094287e08abf487d74cf6d96c"
+    },
+    {
+      "path": "output/pdf/newsagent-reader-technical-details-2026-10-17.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 138255,
+      "sha256": "0e0a711575b36ad16758bf75309a7bb54788fc1b1555615bee7af1500f7f8606"
+    },
+    {
+      "path": "output/pdf/newsagent-retrieval-rl-design-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 185693,
+      "sha256": "f5b89a38f4732485319532890c2b2211a6f69e7d80daea52ea4b85c3e8a0fdde"
+    },
+    {
+      "path": "output/pdf/newsagent-rl-ebike-case-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 165739,
+      "sha256": "0a2b17eca513af55ad749fd83812146c8b41cc489d8ba63f796ff593a7ef2962"
+    },
+    {
+      "path": "output/pdf/newsagent-simulated-company-roles-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 40040,
+      "sha256": "203558b46303fb3c41fe2c612996b8c828dad02bd881a27fb549eaf66b666c40"
+    },
+    {
+      "path": "output/pdf/newsagent-start-and-interact-2026-10-16.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 137588,
+      "sha256": "e620dad4980ac4fc5d4678600a12b39a36721f71200b71b7fd3974ccc72668b5"
+    },
+    {
+      "path": "output/pdf/NewsAgent-Text2SQL-implementation-report-2026-10-10.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 265134,
+      "sha256": "c3e2719421853d163c4f93d39848dbd7efe8c551f21d9ce2939e534be6120221"
+    },
+    {
+      "path": "output/pdf/newsagent-tke-deployment-2026-10-15.pdf",
+      "reason": "superseded_document_or_preview",
+      "bytes": 103732,
+      "sha256": "01301257d3c60d06a9377ccc7ac6d7ee1ec87b641631a3b772cd3a37239c3a37"
+    },
+    {
+      "path": "output/pdf/sources/build_tdsql_schema_20261025.py",
+      "reason": "obsolete_document_generator",
+      "bytes": 47154,
+      "sha256": "8d337d761c0fe689b147ff33d16bf17105bc9f70b4c09f30e2aba9d31a7ffca7"
+    },
+    {
+      "path": "output/pdf/sources/tdsql_schema_20261025.validation.json",
+      "reason": "obsolete_document_generator",
+      "bytes": 469,
+      "sha256": "e557a1c099b8ef15c05099bddb5528990c91d2def792e655d52ec333afc49ba0"
+    },
+    {
+      "path": "output/warehouse/timeline-v4-data-preview-2026-10-12.json",
+      "reason": "obsolete_dataset_preview",
+      "bytes": 18016,
+      "sha256": "48a0f81a7c19078e1ba6cb2d6bffd88b44c899f29ddc1a729baa308b8d137e2c"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/extracted.txt",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 14704,
+      "sha256": "fe35673781301e948dd6d12f68ad2c597a4e20c23e142e234bb97451f104be77"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-1.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 199166,
+      "sha256": "fb139c149c6c1402fb6b3d01a102e7ffefdf9fa23f8bd995ae52f91d36043655"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-2.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 206852,
+      "sha256": "58d2fca0a4558a9825d73685a0b589bf275329c22563eae3aca1a54500d1df5c"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-3.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 240725,
+      "sha256": "2a3f98bfc7ec6a59086524dbbb0141b798aa3d29f725b561d074da7eb7afe64b"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-4.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 228259,
+      "sha256": "3d5ec733fb1db572f5915a5999a7b6a5b667e8c2794b4acefa6a3128de70bd74"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-5.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 255717,
+      "sha256": "7109e678ed6f49a3ec2380548e24006089b9f83e0c1510baa3511f67415ee733"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/page-6.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 243631,
+      "sha256": "7a3adc6d8905f2fdd3c8ef75cd4bd3f3950e9d8655baf443a012547baf961242"
+    },
+    {
+      "path": "tmp/pdfs/current-schema/validation.json",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 4076,
+      "sha256": "7892a9d79f9225cec8b13a10c03f4962b872547398189da497e3deb02f4a1922"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/extracted.txt",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 41065,
+      "sha256": "1e91d74640d6daec9d7245311fb5ad67f7d9b10b4547dcf72f72a88fbb8654d0"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-01.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 253960,
+      "sha256": "a46e7e9fecb62ebf16770ef69048c97407ee8ab24b7015ee433af500e2b4e755"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-02.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 242081,
+      "sha256": "abe21e686a0e6b0fdec8cc460d11aa3831bd934f2e932d69e0560e3cf422f45e"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-03.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 259312,
+      "sha256": "5ed5ba117443c020ae728e34ffd541593f21171d607c28426cabac11841818ec"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-04.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 253933,
+      "sha256": "f4d5b59c58469f13eabebb7868bc42a1a3cf615d280ac7e33ec044006e54199f"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-05.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 255822,
+      "sha256": "31a325998ed6fa6aebb12ec0a919d0387e1ee786b8c080fd9c8976da5f84bc76"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-06.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 239958,
+      "sha256": "0f375466309e50099fc7678b82324459304848b8558388fcb1e01136c27c24f8"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-07.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 259699,
+      "sha256": "ce5893c4352af7a9fd8f18264365a3f631c4f07009041d288d8de1a9c95cacaa"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-08.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 293342,
+      "sha256": "26a57b5439d930cd8155ea5148c96ed5469f1fd2f5f605b04acf66a91ed4db5d"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-09.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 287329,
+      "sha256": "abfd8dfba3ff50d28d05c7ac302069ff19df8afb0f06b79f33354bc157ab6b1e"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-10.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 275974,
+      "sha256": "eb0494ad8e715f617e90bbd4bd9b1afc2895509a4cdf8c3beaabfab35a34616f"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-11.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 251527,
+      "sha256": "1cab94f1914a9c8489fb4d5d0865f3c45f3c439ff68e45dbc421e62183206296"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-12.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 247770,
+      "sha256": "d069ccb02672d47824cf740bcb2aec6fb07c195132879b7a4b21296c543a3151"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-13.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 290910,
+      "sha256": "eaf4f589dda8b8d7b7ba681c126b0e0644b03ddf719494dbdd1f07ad41d22194"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-14.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 256102,
+      "sha256": "1cd72b2fdebf42a7abfddaf9c537e2ea7b99656d80cd5c6db124354817981ad6"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-15.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 279689,
+      "sha256": "042bf3b2eda0f94f03bfbdeebb3eadc687ceaf7a3e9eed41b47efb4a71652936"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/page-16.png",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 302615,
+      "sha256": "f6a8b166137c56daa943232859e4b2dd541514efa41989a0406b9872cce4d8c0"
+    },
+    {
+      "path": "tmp/pdfs/tdsql-schema-20261025/validation.json",
+      "reason": "obsolete_backup_or_render_cache",
+      "bytes": 383,
+      "sha256": "f5a5ee0c05df943d83d8f04e01c6239689f72261319613a46c476869c0ba9e44"
+    }
+  ],
+  "file_count": 134,
+  "bytes": 28828390.0,
+  "protected_files": [
+    {
+      "path": "agent/app/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/config.py",
+      "sha256": "cfabca19cfe4a0267127026245ba71ccea223678c813250dcb9badb367eab0c8"
+    },
+    {
+      "path": "agent/app/data_loop_worker.py",
+      "sha256": "fc7257cadf9229cee1b85248834bb2499b901f31c7041a3af667fc38fe5f49e5"
+    },
+    {
+      "path": "agent/app/hot_news_bootstrap.py",
+      "sha256": "6c760a9378ece3ddeb67b85a4333cec634c9dc9fd09a3c3e2a356fad03baf6d7"
+    },
+    {
+      "path": "agent/app/hot_news_dependencies.py",
+      "sha256": "463a0dadff71189ee04c465c3ac4203788241c7ba0856fa1212a47a16bb9b8ef"
+    },
+    {
+      "path": "agent/app/hot_news_scheduler.py",
+      "sha256": "47ebbe3c5cba82db8f11e7fc91d066030d3bf3ca8142861a8402605686d55d4b"
+    },
+    {
+      "path": "agent/app/hot_news_worker.py",
+      "sha256": "8d9d3e9e7fbc87c82922abedfd1d7945cfd36eb84edd0b5ff49abb3af1b6cc5d"
+    },
+    {
+      "path": "agent/app/knowledge_lifecycle_worker.py",
+      "sha256": "2febb310e40db9373504f87c26ef95580247d3560fdca46510e59b17bc378b9b"
+    },
+    {
+      "path": "agent/app/main.py",
+      "sha256": "016723115c6dc398c314920cc3291790b1460a16644333ea45aee99c7d19c9ca"
+    },
+    {
+      "path": "agent/app/outbox_worker.py",
+      "sha256": "9527218796bb4a06ecf19e96f751bcd2d61d7375df9b3d5763b0cf27a2cff25b"
+    },
+    {
+      "path": "agent/app/worker.py",
+      "sha256": "c497189bc21f2060145e862dd93f5049236341e1dab2937551267ca28e182852"
+    },
+    {
+      "path": "agent/app/services/__init__.py",
+      "sha256": "348019c99f5d24eedf7a7b44563705e5a50be9c05ded601c21c633e8a8db2393"
+    },
+    {
+      "path": "agent/app/services/active_bundle_hot_news.py",
+      "sha256": "f5ad9067e08b9795762c82d4ae52027c7ee43f52069952b55a46d214aeea7ba6"
+    },
+    {
+      "path": "agent/app/services/artifact_pipeline.py",
+      "sha256": "dfe9045a0c4a775c17e250dd629b25ff3fddccc570eaebb351c3537996f5c5ef"
+    },
+    {
+      "path": "agent/app/services/checkpoint.py",
+      "sha256": "ca55c873c6bf11824322e88326ab063f180af815ead0ef4af90e3cf1a9b48848"
+    },
+    {
+      "path": "agent/app/services/event_publisher.py",
+      "sha256": "b28926b87bcd6708a71e43cb5834ca2f69092170cd2c185567d2c915aaa2b6f7"
+    },
+    {
+      "path": "agent/app/services/event_reader.py",
+      "sha256": "ef3aa29b705c2ae0fba54894fbb575243de076ecb5986a481d26ac81258725c0"
+    },
+    {
+      "path": "agent/app/services/execution.py",
+      "sha256": "92767f64b8335a838893b91445de94b95bc979ecac9c2d01643f7181b3f5ec03"
+    },
+    {
+      "path": "agent/app/services/hot_event_lifecycle.py",
+      "sha256": "489e414cf020eee5ba6551b86259e5fa19d9b67c704f389b063c210b6ee88c1d"
+    },
+    {
+      "path": "agent/app/services/hot_news_analysis_batch.py",
+      "sha256": "e582769f47d675eae364d906715d812a5a5482b77d8de808ab678067b78392a8"
+    },
+    {
+      "path": "agent/app/services/hot_news_analysis.py",
+      "sha256": "4f7f98f6e42ff98d907f83bf397560e75092907708589db35c45bfd6744f5d4f"
+    },
+    {
+      "path": "agent/app/services/hot_news_decision.py",
+      "sha256": "9d31d7c1cb83695eb374a51b9507cf73b5ba6ef61020bc20db7e817f6abfa83c"
+    },
+    {
+      "path": "agent/app/services/hot_news_event_stream.py",
+      "sha256": "25cb202b0cdc08070d9c57c18e947d05c6fb5aa912b8bbd67428b6addc4276b5"
+    },
+    {
+      "path": "agent/app/services/hot_news_orchestration.py",
+      "sha256": "87df463913cc1999cc6026258ae7bdc4df220f58e8f6e82f51fb75f4c5d9fd4f"
+    },
+    {
+      "path": "agent/app/services/hot_news_query.py",
+      "sha256": "34e2971d4170ad934bd8daad03b391e2e861794a50212610f2c6a78d2bf293ea"
+    },
+    {
+      "path": "agent/app/services/hot_news_run_store.py",
+      "sha256": "3e6fd2cad1b3797583160ddc30b7eb2d7f344811b98b793af775f722822f27fc"
+    },
+    {
+      "path": "agent/app/services/hot_news_schedule.py",
+      "sha256": "cd90f00ac56efa4f151e8146ed38e052ac80730066cc2918b8b779482a7b1c67"
+    },
+    {
+      "path": "agent/app/services/hot_news_writing_handoff.py",
+      "sha256": "2a770c8a43725b19f202fad6a805dd71f068bd6f6a62c6c7329309607a36930f"
+    },
+    {
+      "path": "agent/app/services/job_state.py",
+      "sha256": "9a4714b7ef304fd8e56adf41257ee29d93cf5e4a143d0dbb5b043ade941d0a59"
+    },
+    {
+      "path": "agent/app/services/job.py",
+      "sha256": "4a81a4be021533457e529017ee090f5e1054a201f6259d0945507a93328ad6b9"
+    },
+    {
+      "path": "agent/app/services/memory_aware_hot_news_analysis.py",
+      "sha256": "75c91f8641e73acbb833725838761769e849359b55dba4df77471b395baf6894"
+    },
+    {
+      "path": "agent/app/services/memory_context_application.py",
+      "sha256": "58397c8c3f2b2c4ca3413470bddd2c7e5868e7218c735488f57ff47c6c990c31"
+    },
+    {
+      "path": "agent/app/services/memory_context.py",
+      "sha256": "0bac8a90235b15a07aa431e48a2bc9fb5f6fb87c7646d8d91ff9a0c0d2ea4fd1"
+    },
+    {
+      "path": "agent/app/services/memory_promotion_application.py",
+      "sha256": "bb9b669ab943645de5f5885bb25c6f603817b9fe0ced2cd0592962b1cd2f05e6"
+    },
+    {
+      "path": "agent/app/services/memory_promotion.py",
+      "sha256": "ad503615b5bee16f2dc18e5fd1f65f58e1b0bb0275b0052c0d15e52c291d8350"
+    },
+    {
+      "path": "agent/app/services/memory_prompt.py",
+      "sha256": "e8a3991023854fa867ebae0fb9f36f99401cc361c481a56c86d2beb9e7718107"
+    },
+    {
+      "path": "agent/app/services/memory_write_application.py",
+      "sha256": "66d0651dfce6a54d2ffccd87d77c8a14c187a63ff00a38c2c27caa73dc795efd"
+    },
+    {
+      "path": "agent/app/services/news_step_handler.py",
+      "sha256": "26f964506dc7c2e5301e112b11dc0fbb44ce9928dcf2496284d492d442b6181c"
+    },
+    {
+      "path": "agent/app/services/orchestrator.py",
+      "sha256": "e0b19d8cf875365429762f09bc85771d5badf3e5150feead958f176930d53ebd"
+    },
+    {
+      "path": "agent/app/services/outbox.py",
+      "sha256": "cbfe3d97dd6d7f23935e61b4b2a8eef97d070281e48c417a88e60cfde606e941"
+    },
+    {
+      "path": "agent/app/services/production_bundle_application.py",
+      "sha256": "8f79625b8940e754c849bed3368d5c191e0795269ad5af886aa612efdbea3665"
+    },
+    {
+      "path": "agent/app/services/production_bundle.py",
+      "sha256": "f4ef0e602726d60e31cf4321a66fdcd8e4f9c3744559e9d4c2acebfceb54c805"
+    },
+    {
+      "path": "agent/app/services/progress.py",
+      "sha256": "b42b164ac7f6013cd1485dc4cf8b470139f040205f80d94b9af3de1f65aa2b23"
+    },
+    {
+      "path": "agent/app/services/prompt_injection_harness.py",
+      "sha256": "eca13dcf41a20fd1c86585c43e98931b7445eeb511865cc3d1027cb4d553ebb2"
+    },
+    {
+      "path": "agent/app/services/push_policy.py",
+      "sha256": "18bc10b3aa23b0a93658c3b0446066a0011c240e788c957bf73b6bc98c981105"
+    },
+    {
+      "path": "agent/app/services/push_strategy.py",
+      "sha256": "e62f8a79caa05cf08bfd2b8ca175bd7487d5ec4def66d3ae63e0ce0e4b51ba1b"
+    },
+    {
+      "path": "agent/app/services/recovery.py",
+      "sha256": "944b3864798897d0357c2fc78f922e3fc557112352747fe0ad5cfe8006c4c08a"
+    },
+    {
+      "path": "agent/app/services/data_loop/__init__.py",
+      "sha256": "4d1a7ef0ecba95941dd7ba2aea1cba9c92bee2c0f2604d66f420be00c67658ae"
+    },
+    {
+      "path": "agent/app/services/agents/__init__.py",
+      "sha256": "69b37a67a6c8bb335b793377b04b797faa6e09bc8772493a22c2a005c1098b36"
+    },
+    {
+      "path": "agent/app/services/agents/error_attribution.py",
+      "sha256": "effab5cb37ff6ab9c087fbaf3a25c483886b6f2f9c16cffc63aa2ac23bcf4873"
+    },
+    {
+      "path": "agent/app/services/agents/push_strategy.py",
+      "sha256": "7b59413bd6b8a700c900f59a4485d41ed4e941748b32eb677c1bd8e2e9658899"
+    },
+    {
+      "path": "agent/app/services/agents/research.py",
+      "sha256": "55ed4dcb6ab8b6f5f91942d4c42b28da6e25312d457ef0ceef243982c34b1157"
+    },
+    {
+      "path": "agent/app/services/agents/reviewer.py",
+      "sha256": "a6fc1b8b72ebb6092cdd138ff8c41dbc9cb333563dd302b1eb97831987cd62b8"
+    },
+    {
+      "path": "agent/app/services/agents/text2sql.py",
+      "sha256": "2f0604abbdc4386ff746bc9797c44f12551bb2a82847aecc9c56810328b3b70c"
+    },
+    {
+      "path": "agent/app/services/agents/writer.py",
+      "sha256": "fd35ae3cf66ce6d8d41e8fd91f5cfd0fe980a768e546564fc352550f87c34c35"
+    },
+    {
+      "path": "agent/app/sql_assistant/__init__.py",
+      "sha256": "44012514e3b7cb7c950c7426009a22984fe76bd0e04936f09af9597de415e2ec"
+    },
+    {
+      "path": "agent/app/sql_assistant/audit.py",
+      "sha256": "59d998eb1843a7ad0b86e45fe5c37062336e62f69740a3baea14a316b53be970"
+    },
+    {
+      "path": "agent/app/sql_assistant/bootstrap.py",
+      "sha256": "24fee21bdcd27ee57982a20cf4c97ea49816709c4c3d650c42a736337465b349"
+    },
+    {
+      "path": "agent/app/sql_assistant/corpus_profiles.py",
+      "sha256": "03c1e0dc30263ef53def8b43dc0b2f807736f1c4186c2478a6c72dde1a8f97d2"
+    },
+    {
+      "path": "agent/app/sql_assistant/guard.py",
+      "sha256": "35b71eff56e5ad14708753a4c08988d9cfe360d3c79ac6e4e0fefd51ceda2858"
+    },
+    {
+      "path": "agent/app/sql_assistant/hot_news_binding.py",
+      "sha256": "65c4716e027a451e125700ef17b44adad94c168bef33d1d111ab5e611d5ba103"
+    },
+    {
+      "path": "agent/app/sql_assistant/input_boundary.py",
+      "sha256": "c4464aa9b63256446dd41b49fe6bd78ced21c06b0bcc6733dd0aa7b27751cbe9"
+    },
+    {
+      "path": "agent/app/sql_assistant/planner.py",
+      "sha256": "1febcb4f9e7dac25fd738e194b197b05bfa752f7db3b5d841cbaa656bf62bea0"
+    },
+    {
+      "path": "agent/app/sql_assistant/presentation.py",
+      "sha256": "893557251f90f7993ab5f57face1990503f53d5d5459d7d302cfcd2cf681bc38"
+    },
+    {
+      "path": "agent/app/sql_assistant/public_headlines.py",
+      "sha256": "23930b818133635bdb2b52fa3979efac7e8d096cdaaabb01a8e04dffc5b64d1e"
+    },
+    {
+      "path": "agent/app/sql_assistant/real_news_profiles.py",
+      "sha256": "cefaa9f348e8c3b31853fe44dc588907e6145350341c2561111033c7d3bcef80"
+    },
+    {
+      "path": "agent/app/sql_assistant/scaled_profiles.py",
+      "sha256": "ff0919e49c60fe3e45816b4618797715ec61202ac053636a67b108c76d525a71"
+    },
+    {
+      "path": "agent/app/sql_assistant/scenarios.py",
+      "sha256": "322a7cf6de77422062f02d4f70d4804f327af459c68c0afe5e95fa485f1edd0b"
+    },
+    {
+      "path": "agent/app/sql_assistant/service.py",
+      "sha256": "76f85a8a6b882ce575a70e029b4177dc4cb3a99bb6a5d156c62e9fb91440e103"
+    },
+    {
+      "path": "agent/app/sql_assistant/synthetic_profiles.py",
+      "sha256": "98bd13b891d78f35b68b8af98401fcdbafabf2cf689dcebab96a5b9028516cd6"
+    },
+    {
+      "path": "agent/app/sql_assistant/timeline_profiles.py",
+      "sha256": "9ed9dc6cfca05229b57ed41e2543a4f21925aedffea394994ab0802af78e734c"
+    },
+    {
+      "path": "agent/app/sql_assistant/timeline_rich_profiles.py",
+      "sha256": "275903dc9653d2477d3378db31f540f0f144701801686c4d6bbcde72f5790a66"
+    },
+    {
+      "path": "agent/app/sql_assistant/warehouse.py",
+      "sha256": "ceba3e11e247ca17fc8bdf9d4b310e04f624d78e89daa68b43301851273d16d3"
+    },
+    {
+      "path": "agent/app/reader_profiles/__init__.py",
+      "sha256": "9721439683f11c35a3206e0b5cab8a334cf5f7cc254e0ee21096cbf8d6038888"
+    },
+    {
+      "path": "agent/app/behavior_tags/__init__.py",
+      "sha256": "c01af133ce19a6117abbaceff1e6e713ac8f981d8b2123580fbbcc6cd12db588"
+    },
+    {
+      "path": "agent/app/audience/__init__.py",
+      "sha256": "af87485358d749353cc864a626de6c29eb406e367d251603f5c9d76604265892"
+    },
+    {
+      "path": "agent/app/db/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/db/base.py",
+      "sha256": "cbf5af221b7fab784188a0477496bb1ca6df93b1902ce0c837b3155445e0cf4a"
+    },
+    {
+      "path": "agent/app/db/session.py",
+      "sha256": "000fc732c9ecbad7410b19edf0d4df29e682cdce3a273f58cbd1349648e5c78d"
+    },
+    {
+      "path": "agent/app/conversation/__init__.py",
+      "sha256": "90b6dbf5412bec04417404e3d0f58f87653cecf4239af37b1d558e4899db39f4"
+    },
+    {
+      "path": "agent/app/activities/__init__.py",
+      "sha256": "34e900f1bb8e75a57b8cb0653bc85c9cdeb7059e5b024b7e59effcd82bbf5168"
+    },
+    {
+      "path": "agent/app/activities/data_loop.py",
+      "sha256": "26327955ede895ca3d10f72a389299339ba3b123e4aa53fd612aafceff71f652"
+    },
+    {
+      "path": "agent/app/activities/hot_news.py",
+      "sha256": "c460652131c11dcf0f462bd9db85479b69b9edbec18f912e3374be5353372238"
+    },
+    {
+      "path": "agent/app/activities/news_steps.py",
+      "sha256": "7cb6b72445c5198015b17234080857115b8f469f478e4dadbda70ecf60624298"
+    },
+    {
+      "path": "agent/app/models/__init__.py",
+      "sha256": "09c84535d5bfd25ffa65ec9c37fcf877d7c73793f35c4023a860964ec5c986a7"
+    },
+    {
+      "path": "agent/app/models/agent_run.py",
+      "sha256": "bab576f3ff373291285cfd9ebb323856a3941957ae2f140933e5a1a6f5c6d335"
+    },
+    {
+      "path": "agent/app/models/analysis_feedback.py",
+      "sha256": "0126958574bd3b0263d61595cbf8d7650523119e2b8a681c0e233797ba9556af"
+    },
+    {
+      "path": "agent/app/models/artifact.py",
+      "sha256": "93e7e39d083df8365b4837864be62bfc1d4925259d50197d87cd417d3ce504df"
+    },
+    {
+      "path": "agent/app/models/common.py",
+      "sha256": "3f7a693c2904fa08a2a00491c5ebf7cf0b94b0275839e8389aabc638cfb90043"
+    },
+    {
+      "path": "agent/app/models/conversation.py",
+      "sha256": "e2339e9b985e251310c24d81c1341696394dc784ef7830c2d5af939eb0225fb7"
+    },
+    {
+      "path": "agent/app/models/evaluation_dataset.py",
+      "sha256": "dbc59f2c5a6c4ae4e646e44eb96a95e109e460ed355286516e350a881535659e"
+    },
+    {
+      "path": "agent/app/models/hot_event.py",
+      "sha256": "6abc4bc801879f17aa94e847e5448db19b7f51eb5862eaf98907e3ba06dd5c96"
+    },
+    {
+      "path": "agent/app/models/hot_news_decision.py",
+      "sha256": "b324c7b3ca82945e9ffe8a2f9c62c9e9d8c78bc02ce933e6fe5fb10040a31914"
+    },
+    {
+      "path": "agent/app/models/hot_news.py",
+      "sha256": "1f4add4b631512f5cca088f0c3b0be96d7084806998d0ef2fc4034bce2c0d3b2"
+    },
+    {
+      "path": "agent/app/models/job.py",
+      "sha256": "99b1a99834ebf0cd0e319f14a89a16b68321f9160294cc0a2d45ba186d266cf7"
+    },
+    {
+      "path": "agent/app/models/outbox.py",
+      "sha256": "5e9a16238c2182ae340a4564567fc131a7a73c6af21d8d779d27f54cf50e5dcf"
+    },
+    {
+      "path": "agent/app/models/production_bundle.py",
+      "sha256": "f99e121712d030a068f5a0eafe53688cf051411d23882a01cd309faeb42e7bb7"
+    },
+    {
+      "path": "agent/app/models/step.py",
+      "sha256": "24dfb12f0d382a2bbd892be37efbc58a527c76ed9fb2aefca2eeb7bfaf6d9193"
+    },
+    {
+      "path": "agent/app/models/types.py",
+      "sha256": "c85b00065ca146e150fa92a7c4215d56e200d779faf4fea18ed3788fea2268d1"
+    },
+    {
+      "path": "agent/app/models/user_memory.py",
+      "sha256": "5190a1fdc40ca3c8b4432966f624f277997c39ac4d6e053e47fa047380cc07b6"
+    },
+    {
+      "path": "agent/app/domain/__init__.py",
+      "sha256": "c103fdb7e0f4a008c8b9a067ecec49f8394357c04dc04ad99fec259b09f74d4b"
+    },
+    {
+      "path": "agent/app/domain/errors.py",
+      "sha256": "94bc92819de17d669f78593584ccfdbb8b1bf9c0143daa6436a25a4df485f2fe"
+    },
+    {
+      "path": "agent/app/domain/execution.py",
+      "sha256": "ca91e89f76cd276e714e7cecd87652922f1ebc6f313a7a5e960e720f977773e8"
+    },
+    {
+      "path": "agent/app/domain/job_scenario.py",
+      "sha256": "b8c5e1ceb4598771963004a9298d42e94003bc18a047ec760c4f0bc501ed1535"
+    },
+    {
+      "path": "agent/app/domain/job_status.py",
+      "sha256": "c85315b33d4771858bf7f13a5fabab73d080fae068c99b755fe2985bec35a975"
+    },
+    {
+      "path": "agent/app/domain/transition.py",
+      "sha256": "1cb2da1db98c8a16a815c8eb76c9797b4728939337fa8d0ef4340867332d5694"
+    },
+    {
+      "path": "agent/app/data_analysis/__init__.py",
+      "sha256": "c73dd7e5379c372385100b77b183c1ea46bed627fb3caf7f7819bed6ff5244e1"
+    },
+    {
+      "path": "agent/app/model_runtime/__init__.py",
+      "sha256": "6b0f461aa31ec8e21f7a17fd71916c7fbbd2a56d63b25d631527b30d0efd56b9"
+    },
+    {
+      "path": "agent/app/model_runtime/agent_client.py",
+      "sha256": "ccf6ff8b80c1d312524b4814f80da95ff122b4a85ee9d1a7c722e7bf495dea30"
+    },
+    {
+      "path": "agent/app/model_runtime/bundle_contract.py",
+      "sha256": "0b3c11fc2e0192d322f65ebb4eb7d9f440f6909ce56bc5457f3da73904457cc8"
+    },
+    {
+      "path": "agent/app/model_runtime/bundle_runtime.py",
+      "sha256": "5823f89a8c3d660c7c9e5790ef301c3e5d2bfb6b07a8e297c22c27dbbeeec6d6"
+    },
+    {
+      "path": "agent/app/model_runtime/config_file.py",
+      "sha256": "e3884ecf71d4060a3b299b9edfc8c9954e9631236b988b4704410d32b3661770"
+    },
+    {
+      "path": "agent/app/model_runtime/core.py",
+      "sha256": "cbd744ebecdad3ea927ff7ae5644e29c3c21a7bc4707b61f1febbb77a7c77cea"
+    },
+    {
+      "path": "agent/app/model_runtime/factory.py",
+      "sha256": "79878106106bd08abe724480757ffd8a0c3099d88f3a2fe9f02f3206f06df844"
+    },
+    {
+      "path": "agent/app/model_runtime/governance.py",
+      "sha256": "4c3bccc39425047d41dd75d68ea30f159eaac474485b1403bf5d27df6b56b5b6"
+    },
+    {
+      "path": "agent/app/model_runtime/hot_news.py",
+      "sha256": "558f391d6f5afa2ab19db693797e79bacf9a2000f7ef097406b8405a9bbbf31c"
+    },
+    {
+      "path": "agent/app/model_runtime/http.py",
+      "sha256": "90b221d77343e39d047ac1c7d422e0037c1828f51c31eb74b7eca8c460b2302b"
+    },
+    {
+      "path": "agent/app/model_runtime/knowledge_factory.py",
+      "sha256": "34a902cd399906753439f54e4941315dda5c781f1a00326d879cc96e584f8271"
+    },
+    {
+      "path": "agent/app/model_runtime/local_embedding.py",
+      "sha256": "6191e0bad096dbd7a56dbe5eee800c346adbb4e6712412d5c33ed9eeb065393a"
+    },
+    {
+      "path": "agent/app/model_runtime/local_inference.py",
+      "sha256": "907479c622418d29d8ef72529bdf07e4758094ff2f22dfc7c9f6df28f08e10ae"
+    },
+    {
+      "path": "agent/app/model_runtime/query_embedding.py",
+      "sha256": "66e3b75377ef4204a89a9a4bddde2b14b0c37d0581000851841f670675e9903f"
+    },
+    {
+      "path": "agent/app/model_runtime/query_understanding.py",
+      "sha256": "e6610560c0d7a06908f1be9f3e1f891a196b66334955c15725f2751fde863e37"
+    },
+    {
+      "path": "agent/app/model_runtime/result.py",
+      "sha256": "0c3419a8c01d6a43229f0017751974272f65c07b5f0a0499e764fb47b5e502a6"
+    },
+    {
+      "path": "agent/app/retrieval/bge_snapshot.py",
+      "sha256": "3270398db98d8edc52b7694bd86577c1de5b7c99958694b33ef98693d98f22d2"
+    },
+    {
+      "path": "agent/app/retrieval/in_memory_index.py",
+      "sha256": "bb5472244fb6f894b2c70e8419ad1ad7705082cb8c3b6b4fa61b5996216149fa"
+    },
+    {
+      "path": "agent/app/retrieval/news_features.py",
+      "sha256": "6c74c941fc09d990eca5b89b9a11a9b4ecd98019bee37c48e56927b24060b913"
+    },
+    {
+      "path": "agent/app/retrieval/related_news_reranker.py",
+      "sha256": "8b62403d97536fd209c32f48424913b232e643405d5d34830a634ab5b9027ecb"
+    },
+    {
+      "path": "agent/app/retrieval/retention.py",
+      "sha256": "ff231ee71f668572aea51b2b7a80006e5b895cd03d1780705e9dd618719b72b3"
+    },
+    {
+      "path": "agent/app/retrieval/tiered_vector.py",
+      "sha256": "2ddcfa743703b58083a0ebf9837fbd5f9d2abceac1ca4b51a9e5a53f8b440bd9"
+    },
+    {
+      "path": "agent/app/evaluation/__init__.py",
+      "sha256": "f141d8e8ac5b4cde4fa50dd7354fa1b9a080166b291bf6ad118a382a1d83f5a2"
+    },
+    {
+      "path": "agent/app/api/__init__.py",
+      "sha256": "3a8d36ce427038c5d88561693554948d220a77d7505f47525be918f20acf7b08"
+    },
+    {
+      "path": "agent/app/api/audience.py",
+      "sha256": "da08205404b22974ad2ce136a584b4fe5ceb0dc9a5263dcf851d165b257bec68"
+    },
+    {
+      "path": "agent/app/api/behavior_tags.py",
+      "sha256": "fb3088d8bdbd0bf54c1b25c1398860f55c482449511e8c2925b78596cb2f7502"
+    },
+    {
+      "path": "agent/app/api/conversations.py",
+      "sha256": "219024d3ae92ea82fbba61d500983d6b26ace8e370b65cb890a231548de22934"
+    },
+    {
+      "path": "agent/app/api/data_loop.py",
+      "sha256": "45d5940b6d10ab6b040b989f88c421051450ebdffe3ff3ce47dac1ad83604d5b"
+    },
+    {
+      "path": "agent/app/api/dependencies.py",
+      "sha256": "82c16837384a59ff968f88eaae0cc57f894f811654f91506e1e36daf8a3e852d"
+    },
+    {
+      "path": "agent/app/api/events.py",
+      "sha256": "c5bde61dbe9bdcd852d045398c189d841b00e83bce003905fa345146eb5b5dce"
+    },
+    {
+      "path": "agent/app/api/hot_news.py",
+      "sha256": "f83343cd981a1fc2a83e66be22b09855c30455a1ec44e6f9492f6cc3647ae414"
+    },
+    {
+      "path": "agent/app/api/jobs.py",
+      "sha256": "c3531aeb29434dad7da5b30f50d7d3b19713dd4b8d140c334de958634d7f4310"
+    },
+    {
+      "path": "agent/app/api/knowledge.py",
+      "sha256": "7325440021d562691cf7f28a56e01c70944ca275fb6d9dd429ce6e9475a0a7f9"
+    },
+    {
+      "path": "agent/app/api/memory.py",
+      "sha256": "a82f46a9007d287abf8dc27d2a3284d238fec4d31400252639010a0df0e4c5f4"
+    },
+    {
+      "path": "agent/app/api/reader_profiles.py",
+      "sha256": "f0d89badea7a50b3375c8b4e66eddc3b9a4aad7fb56677261b77b83dd4100347"
+    },
+    {
+      "path": "agent/app/api/security_tests.py",
+      "sha256": "79e4517b51442d4d5e4ddbb64a3378d777fb70785a73665d035a3a3b8f86dc1c"
+    },
+    {
+      "path": "agent/app/api/sql_assistant.py",
+      "sha256": "a9723c456466f77dd406047436d65f0becdcb33aef3a89446e970aa4e30def4c"
+    },
+    {
+      "path": "agent/app/bootstrap/__init__.py",
+      "sha256": "44bf3f562000ec62a74b2c961eebb7d15d10329b93fed963bc5f8d1f782d5405"
+    },
+    {
+      "path": "agent/app/bootstrap/api_lifespan.py",
+      "sha256": "5491dbbe90bb7b791af346de77247b956b25cf243b7876633ee808d1d507967b"
+    },
+    {
+      "path": "agent/app/bootstrap/hot_news_dependencies.py",
+      "sha256": "dcf5b7fd2724d0ae0304db26ae917d0abda2229647cd2d04d63880bad0756c07"
+    },
+    {
+      "path": "agent/app/bootstrap/hot_news.py",
+      "sha256": "a03888d0d03e09d4664d0b52c4173e7dddbd8c28d381b3eac25eb64f04639c0f"
+    },
+    {
+      "path": "agent/app/bootstrap/worker.py",
+      "sha256": "0d79341d34b32587b48c7eab3d26c496c506084494495ac48d12cacf17b40077"
+    },
+    {
+      "path": "agent/app/clients/__init__.py",
+      "sha256": "b78ccfe3536d4572936500fd0c8ea2964e6e5095c495a75eba8000e9a8cacc30"
+    },
+    {
+      "path": "agent/app/clients/cms.py",
+      "sha256": "fe7dbcc9c89c31c8945e187f42ab484c1fd32534eb30a8049e4223895243e56d"
+    },
+    {
+      "path": "agent/app/clients/knowledge_base.py",
+      "sha256": "bf1747f0319ab5b880c1c23c852e2d736d5e2e09992a71f5f617e0cdce5de10a"
+    },
+    {
+      "path": "agent/app/clients/local_whisper.py",
+      "sha256": "77ec747d7ced1b0f02a2afce73aacaa61cb9abab635cf034359539d51228dd86"
+    },
+    {
+      "path": "agent/app/clients/enterprise/__init__.py",
+      "sha256": "d2c86a1ad3bb6b07917a2e26725c0de71b3ff8b9851bb49057154d63c4fdd5df"
+    },
+    {
+      "path": "agent/app/clients/enterprise/audio_transcription.py",
+      "sha256": "fe418232929b44c1dfd466a2b72b248d73fc5ee769697802e6d4e17dd3dc9a3d"
+    },
+    {
+      "path": "agent/app/clients/enterprise/baseline.py",
+      "sha256": "184b1739c3263767877426478fb3372b09ba846067a2e5f476e2def9c1fc32a9"
+    },
+    {
+      "path": "agent/app/clients/enterprise/behavior_data.py",
+      "sha256": "413f7a9d255efb9d40dd824ab526d2731494ae1860c20f88c35d1b23ee522704"
+    },
+    {
+      "path": "agent/app/clients/enterprise/common.py",
+      "sha256": "e64182aabb3caef33f2276df92e4a0a76e5654e646448aca97e22940553d2096"
+    },
+    {
+      "path": "agent/app/clients/enterprise/dependencies.py",
+      "sha256": "4a904faea971ac7639086060b654dd2e4179d4f675dc169c78b342a2d3c6a709"
+    },
+    {
+      "path": "agent/app/clients/enterprise/hunyuan_video.py",
+      "sha256": "2ef3d1586b01e785e014f1233b35d0d78b4f3473b5100026eebf76798f755ae0"
+    },
+    {
+      "path": "agent/app/clients/enterprise/milvus_lifecycle_contract.py",
+      "sha256": "56ea12d3fe803c424de9ec2931b356813d2bbaaa21e89ba8096cf3af259fc699"
+    },
+    {
+      "path": "agent/app/clients/enterprise/milvus_vector.py",
+      "sha256": "e1219c6bae575d63458c0b3d40eb6489ef2fed71da55582f36411428c15b042e"
+    },
+    {
+      "path": "agent/app/clients/enterprise/model_gateway.py",
+      "sha256": "d477a1794e62b21eb1689f544626c25b8f27931ec3cefcec36ecd54bcb657419"
+    },
+    {
+      "path": "agent/app/clients/enterprise/multimodal_gateway.py",
+      "sha256": "f49d0a34390ad8198ec481c206de989da2708cadea3bf0797d8662861dcc1f2d"
+    },
+    {
+      "path": "agent/app/clients/enterprise/news_content.py",
+      "sha256": "83035438c5374e3da9497a9e33ffafc115926057ed0bfa4f98d6033bea62465c"
+    },
+    {
+      "path": "agent/app/clients/enterprise/related_news.py",
+      "sha256": "85192eb7e02c3d777db673322b1f55dc20c80aa9ec2cf8ee9099d581d88d15ce"
+    },
+    {
+      "path": "agent/app/clients/enterprise/sql_warehouse.py",
+      "sha256": "0912bfa4d31da46df10acf21cc252a2e67441b10b6f648eac9031987f162c22c"
+    },
+    {
+      "path": "agent/app/clients/enterprise/tencent_asr.py",
+      "sha256": "8ba4d19f0dcec22a645d784c0d5883b6214fd262dd62a213c4e105fd9d0f4b7b"
+    },
+    {
+      "path": "agent/app/modules/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/data_loop/__init__.py",
+      "sha256": "0fec9f42f2eaee0d2aa219b56bf500c83d015a60e659978bcde7ddd3e7920afc"
+    },
+    {
+      "path": "agent/app/modules/data_loop/activities.py",
+      "sha256": "83cb0c3f8dd422c234fc8c786b5da4718d6d23f7350c1dc4a84bccaf41db8fb8"
+    },
+    {
+      "path": "agent/app/modules/data_loop/api.py",
+      "sha256": "68255dea687e9f0af6a9ac487140fbe84e8324fbe3b2722030798740d61dc767"
+    },
+    {
+      "path": "agent/app/modules/data_loop/artifacts.py",
+      "sha256": "6295bc79c561e7585173d53a0a8d1bccf3abb29335815f7f7dd06fdb451a57c2"
+    },
+    {
+      "path": "agent/app/modules/data_loop/automatic_feedback.py",
+      "sha256": "bb80fc26bc0cbb7c1a359b96ecc20b08e7b6590b3050a1fad624450aa03c417d"
+    },
+    {
+      "path": "agent/app/modules/data_loop/bundle_contract.py",
+      "sha256": "042ac48885c951bef00bcfb1d314c36845349c5594a52bb3c44c8999255593de"
+    },
+    {
+      "path": "agent/app/modules/data_loop/bundle_runtime.py",
+      "sha256": "2567ace57785027480527f262eabafa8a3893d8a0e3d7c990df08c55b85c859c"
+    },
+    {
+      "path": "agent/app/modules/data_loop/dataset_analysis.py",
+      "sha256": "2614d50cf0a22f8155f71372b46a178c2d3b90cbc50c3b69624e6989a3bb8019"
+    },
+    {
+      "path": "agent/app/modules/data_loop/dataset_freezer.py",
+      "sha256": "b720f981d5df85f4c3a774ff1afabf443ab60dc274f79433e692e18cfe6f81ad"
+    },
+    {
+      "path": "agent/app/modules/data_loop/evaluation_gate.py",
+      "sha256": "b94d4f2f79720ee8b3f2a61b77167bf8786c55e581894dc43a0de4df9408b884"
+    },
+    {
+      "path": "agent/app/modules/data_loop/feedback_collector.py",
+      "sha256": "cff190ddbfc304266dce0b2a8ec4bd6d544d99f30830868dba38076c1ff21333"
+    },
+    {
+      "path": "agent/app/modules/data_loop/offline_replay.py",
+      "sha256": "f127f1c148cb72bc4d66ef0f4b71cb3e2e3175086d745ffb6408c88df059171e"
+    },
+    {
+      "path": "agent/app/modules/data_loop/orchestrator.py",
+      "sha256": "a812269c6f4fff80169d78987aa6dca63d52ad6b36527262f4ad5e3ac5c8654b"
+    },
+    {
+      "path": "agent/app/modules/data_loop/production_bundle_application.py",
+      "sha256": "740d72845d6152de51e42c74d80a3cebbe9beaf895cc4ef4f5eaa865ea411651"
+    },
+    {
+      "path": "agent/app/modules/data_loop/production_bundle.py",
+      "sha256": "2445505dcb751e0e9a068497c76a45ef52850566abf52411dbe39b38b76eab64"
+    },
+    {
+      "path": "agent/app/modules/data_loop/publication_outcome.py",
+      "sha256": "a134e5ed8b3ce276a4fb6ca65f5d76fa389062d6f2caedbf884c65156c32221d"
+    },
+    {
+      "path": "agent/app/modules/data_loop/push_policy.py",
+      "sha256": "af3fc156ef30811d16583474349ecbc0d42de2c9bbedadd194153e2172109a07"
+    },
+    {
+      "path": "agent/app/modules/data_loop/push_strategy.py",
+      "sha256": "867e664b9391952475b16e99b2652b365c6bb83dff2bd3addbb09d1eebe0e9dc"
+    },
+    {
+      "path": "agent/app/modules/data_loop/step_handler.py",
+      "sha256": "db9bca0b28555062569c313fd3cbdb61fada1b0777651a633ff195e01a7a8ea7"
+    },
+    {
+      "path": "agent/app/modules/data_loop/workflow_contracts.py",
+      "sha256": "8a1981a86468c314b776ec1a91124269dcafaeca754294d70a42234572f78329"
+    },
+    {
+      "path": "agent/app/modules/data_loop/workflows.py",
+      "sha256": "8b4ae3ea7f19b9f1e29f229c4dbafa59237e55ff663299d2b2aaf881ced8f687"
+    },
+    {
+      "path": "agent/app/modules/data_loop/evaluation/__init__.py",
+      "sha256": "b050399ce1a28f89680be82a209fda63c3320bdaeb1cf8be44dd7f34aba165f6"
+    },
+    {
+      "path": "agent/app/modules/data_loop/evaluation/fault_drill.py",
+      "sha256": "d418e57cc89f4c98c7912d365541e38c86c4f80d135f4992546199f535405db6"
+    },
+    {
+      "path": "agent/app/modules/data_loop/evaluation/hot_news.py",
+      "sha256": "5c9cceb998cf2dfc5cd6949b7e0ec3bf654d34e9bb6c6e03e1e0b522f475e962"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/analysis_feedback.py",
+      "sha256": "9b00e764d7d9e86cd163d2db0107feaa55fe4bc9389bd9029e1326b14af49c0e"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/data_loop_api.py",
+      "sha256": "4ece5e1d7081584f28e24d985d154e4efb42925c76aef4f50dc22ce4efdd5626"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/evaluation_dataset.py",
+      "sha256": "b80ea8ef236bccc1be54443fd8a4c32046a4178a912456e0d279c6af7003e536"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/operations_feedback.py",
+      "sha256": "8a700844ce97f3d1a7c21f7cea35d5af5cbb2524ca5615b209559f0ebd5571da"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/production_bundle.py",
+      "sha256": "d3d2b1d585f18f73e66dc185f6721fdf70d9438dbc1c2f6672404d6192ff22f7"
+    },
+    {
+      "path": "agent/app/modules/data_loop/contracts/push.py",
+      "sha256": "d398567f702af7b210fc42a1a4b5e1ab990a08761d94e66b6422cedddc54a92a"
+    },
+    {
+      "path": "agent/app/modules/data_loop/agents/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/data_loop/agents/error_attribution.py",
+      "sha256": "3ef7202d5ec0d4e7405644c2bcbf1df8a95dc72ed8b750e6919ff15d1351efda"
+    },
+    {
+      "path": "agent/app/modules/data_loop/agents/push_strategy.py",
+      "sha256": "792b5d9391d98f460c551d05b71bbf142782592279c0863fdface5dd95e8579b"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/__init__.py",
+      "sha256": "0bc99fddea887dac724f1c6a08bd6e21c1291287862ceadf95e79e6197ec59ed"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/analysis_feedback_repository.py",
+      "sha256": "86fb2022c50fbfc2f2262acee06d001362442fbba9917fe52d18e70ce2fe69bb"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/analysis_feedback.py",
+      "sha256": "694ac43c5ed0bff79b2191a01092933b6eabec28506b14a1f87bab4536919ad9"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/evaluation_dataset_repository.py",
+      "sha256": "16dd87a0f39d7bfed49a26831006f2f6fdebecc39c8c86eda10adafdc24ad7c9"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/evaluation_dataset.py",
+      "sha256": "50cccde760d08e061ab9536e7b50a6fc2219ea0c43e526cad1844a46710ffb1d"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/production_bundle_repository.py",
+      "sha256": "2fcf758aab213fb7e2f4f9ec59f63309547af77a294ea94ee6611806823fd01a"
+    },
+    {
+      "path": "agent/app/modules/data_loop/persistence/production_bundle.py",
+      "sha256": "5878b923f4ab2005ea3effb1a16301af347cd4f3640a4c88dd786475b8343797"
+    },
+    {
+      "path": "agent/app/modules/hot_news/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/api.py",
+      "sha256": "59f43c76b344d9a1af478c0f4be5b3f6106f9c443e99ac4183fd0be11ad86f4f"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/active_bundle_hot_news.py",
+      "sha256": "86e19bc84902e89042342762e5c73b400ee0a6969df5b97137da7919e30af0cb"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_event_lifecycle.py",
+      "sha256": "603872db19ba4055d707639644ffee06ff7097571019d17868aa89acf3b6e497"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_decision.py",
+      "sha256": "acfb4ca1429c3f413b775d6bc16fb4cc36cde51849eb18fcb195c00bce26649a"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_event_stream.py",
+      "sha256": "aac0fde526580ee9d3ab597222780ae9fb724f84b0021bcbb83e76f2bfcc9b13"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_orchestration.py",
+      "sha256": "9b099409c36dc009aed0f7b1bf1c03f7833b860e0311ed5f2e1fba5e02d83c2d"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_query.py",
+      "sha256": "749885fe36c4a4a7d9e968f388f3b6ffe5c7c447386259db66fdd4323a29598c"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_schedule.py",
+      "sha256": "f8e063257909f9228a13952058286a5833c1c6b3b8b36284b380b74c20f40e5a"
+    },
+    {
+      "path": "agent/app/modules/hot_news/application/hot_news_writing_handoff.py",
+      "sha256": "632652c3d02518c5b7b06f4641b308c489c7e79844cb3b16a1f4e22c0ce5f4ba"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/baseline.py",
+      "sha256": "a6808239a70547b735ad36b07a875c48db4dcc3caf7a1689d1fceace5bba0352"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/data_source.py",
+      "sha256": "7cc19caf774232e4a6f76bd04d9dffc64f24656efa3988c820c26254390fc2ae"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/hot_score.py",
+      "sha256": "01b24f5a18068292b613b4279fefd0186934c1fcb8bc07e32c3932f7f65b4009"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/metric_source.py",
+      "sha256": "43e0626324a0e1e7b53b922407bec70a7f65e554dea16817af8aa7268943e39b"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/metric_sql_contract.py",
+      "sha256": "bec126ae0a646eeb9ad9b5cc191b5acd112eb948e5fc055fee5aa7dfd1c0d6c9"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/metrics.py",
+      "sha256": "7c9ddfe0fc859ffd6f60622f2b80c3e67770bae309c8bf589870fe98be2754b8"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/ranking.py",
+      "sha256": "4686134c77aa7395107c0f4c205272f5d2cc1fcf8ead7b47129f46e258fc0689"
+    },
+    {
+      "path": "agent/app/modules/hot_news/scoring/text2sql_metric_source.py",
+      "sha256": "bc5742afe3a7143550f158ffe3c97ed2f9836bf6b6bbe9b7e3257a9e1695ec20"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_event.py",
+      "sha256": "e5df027b36db79416b685152ab5f94f49bcb6ad42ff353137d377042a519de91"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_news_api.py",
+      "sha256": "d5dd52cc0a77a8f425189608fc0289dcee130f7d0851ba83aaadc4347c761a0d"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_news_decision.py",
+      "sha256": "5fe36bc2535ed0c07c6fd0f1bd1a53e70af13b0aa9d70b4aa223ecbfbafbd08b"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_news_events.py",
+      "sha256": "8c8e5e97b01ff2f27fe356bfb59852b7c67d675619e5972e1411bbac0858e7a8"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_news_memory.py",
+      "sha256": "e3271aa8dca1e85ee4d6a53f074a4bdc028c3a798432400334ce591df75b8456"
+    },
+    {
+      "path": "agent/app/modules/hot_news/contracts/hot_news.py",
+      "sha256": "21bc26112960d6116319f52ec6340367b321b136d06dd0c8bb9063431ac4f07e"
+    },
+    {
+      "path": "agent/app/modules/hot_news/persistence/__init__.py",
+      "sha256": "6b95888f669427e118e70c2680aa27e3c6aadbd8ade83cf04e602514d0b98776"
+    },
+    {
+      "path": "agent/app/modules/hot_news/persistence/hot_event_repository.py",
+      "sha256": "0395ad18e9c0e5f6d6e15820a38d379794d057df405915639dd679f509805f5d"
+    },
+    {
+      "path": "agent/app/modules/hot_news/persistence/hot_event.py",
+      "sha256": "1b25491d89450c7d4406f5d9d2c95c4107da0419780b58d5edfa00f06cf25380"
+    },
+    {
+      "path": "agent/app/modules/hot_news/persistence/hot_news_decision.py",
+      "sha256": "4c831937a9166c23c27ecc8b5046104b68927eb8400cf8a3fb625c1c96ee877e"
+    },
+    {
+      "path": "agent/app/modules/hot_news/persistence/hot_news.py",
+      "sha256": "742384e564d4e2a2000126e1ada6d9ea0a9fd22aa7ad1c31b56e2f2976dc2c37"
+    },
+    {
+      "path": "agent/app/modules/hot_news/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/adapters/hot_news_run_store.py",
+      "sha256": "1c0040551e5fea36c63b53b25f3798c8bf2346c6dd4baeb98108fce0dc18e3ba"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/corpus_knowledge_search.py",
+      "sha256": "e468f54d456fda9d8fc3c6a70a15cc565f52519b56158907047139c7df94cfcc"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/hot_news_analysis_batch.py",
+      "sha256": "6c889c60786ec5c2b7433771bf8aaedf5146f24bcbc14624f176d149d6273f74"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/hot_news_analysis.py",
+      "sha256": "54b7dfa952a2bb8695bc895f2cd7d6ffed1b4148ca13da3a0d5f297acbad7e6c"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/hot_news_enrichment.py",
+      "sha256": "6e06c03a745136c1b9fbd10a5b49840033245d81a9502fbfcbdf7fe5641c5b26"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/memory_aware_hot_news_analysis.py",
+      "sha256": "69bbb63baf745e4ef05a8ae287755fe977672d647c1d555bc73c44f236fcfe67"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/news_features.py",
+      "sha256": "6d73b7dd691c026a243713e68fb3b5559acb0b1bd2698830ae1721e5f815e572"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/related_news_reranker.py",
+      "sha256": "88a9483592f87cb20c123d17862629c500fd5c3ee896fd40061da53e900eaf7a"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/runner.py",
+      "sha256": "08ccd0d590cdb4d94dc23d4c0a81220af1af1fba64deb9bf63de11169a87f83d"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/tencent_content_bridge.py",
+      "sha256": "5cbf730736de713a4b2b3e592d293321e1e7e53ed43349d8b2871160e51a194a"
+    },
+    {
+      "path": "agent/app/modules/hot_news/analysis/text2sql_agent.py",
+      "sha256": "03610da5277070910441ffedfca78cecc0e1492dfedda0b699ddbe27c2bc32fe"
+    },
+    {
+      "path": "agent/app/modules/hot_news/workflows/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/hot_news/workflows/activities.py",
+      "sha256": "5b8b78e78326597ddfe04071206037f68431657242edeb1ad1b71992be19b33e"
+    },
+    {
+      "path": "agent/app/modules/hot_news/workflows/hot_news.py",
+      "sha256": "00e16742c225177c8934b7d3e34d93ea706f9a084580a8525e2e60cbb8b5c853"
+    },
+    {
+      "path": "agent/app/modules/news_storage/__init__.py",
+      "sha256": "e6560911f995a680079ef8020fa7d6513a89f941e4930343fb75551852573095"
+    },
+    {
+      "path": "agent/app/modules/news_storage/legacy_tags.py",
+      "sha256": "fb00e942a8e9b552c5cab26ab049358ba17d7a2996c83488f794135726fea2f4"
+    },
+    {
+      "path": "agent/app/modules/news_storage/model.py",
+      "sha256": "57ea6f58ce4fa53c625442386b0f08f99673f05e8d3ebc607d8d646060368876"
+    },
+    {
+      "path": "agent/app/modules/news_storage/package_io.py",
+      "sha256": "476f3e86ac6ba6bc31fb9b4401715bad12bef8ad40e951f30668ea50adb57d32"
+    },
+    {
+      "path": "agent/app/modules/news_storage/sources.py",
+      "sha256": "850a434bb0105a3edd5a519929a6ed78ae7a6066a8f086aa3a79e03b4afe7360"
+    },
+    {
+      "path": "agent/app/modules/news_storage/store.py",
+      "sha256": "881faaade9040e83d6acbc9ca2e4b656f66dc61960e7405bacc9c4981e07af70"
+    },
+    {
+      "path": "agent/app/modules/news_storage/tag_store.py",
+      "sha256": "03b22de4ec1ec13f56f9d6e0c6c5d047daf42406fb14735695af43b6ac5355a5"
+    },
+    {
+      "path": "agent/app/modules/news_storage/topic_labels.py",
+      "sha256": "b95a951fb0a651d3881b08d091d6887e8f684f4fbdcef5cb85ab18e35b974e29"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/__init__.py",
+      "sha256": "76c4844a9f76547b76be07c5326b17e030d31a73cb88f464fb29c0dafad26061"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/build.py",
+      "sha256": "c737e3d785e0ef4dfa4f9c31bfc53568621029f68e7b556700983a8e588a2347"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/client.py",
+      "sha256": "c7c988ab74678b3626fb86a6111062cf0b7ea97ef5bf8c18bc6ecde1772fe867"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/contracts.py",
+      "sha256": "117421ee77f5581f7acca2df3877b0e36a6c4f687dacd29ea0d43eb49d64adfc"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/factory.py",
+      "sha256": "519be7cf7ab619155fef440930a912af4b6ef4027461783d410d7aa861eb1e8c"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/local.py",
+      "sha256": "c332b29c70b97926b2db403ac6691ba82cd25d237131f775b20ef401dde4005e"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/service.py",
+      "sha256": "7bc7df6175fd3bd38a0c8ed915b9340c4dcf1d147ab6f17088ff5ad6a25979c7"
+    },
+    {
+      "path": "agent/app/modules/reader_profiles/warehouse.py",
+      "sha256": "35612b3d0597ceebb1fb42735f90192a38501eb6688bd9fd4aeb835d2fc0f0c1"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/__init__.py",
+      "sha256": "5df88d9aedc9f0e7496eb27d942cc4239a612ad1d54428f2acf51c2584e4dcbf"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/build.py",
+      "sha256": "f1cd3c7cb072055ed1d870fc4c688b6df546dc596d2f5aee1846d3d5f6634c2b"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/merge.py",
+      "sha256": "bbbd3aabd352fe9fc407c3e2340932095bd6b43d44897262cd912aaa8cb1b59f"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/query.py",
+      "sha256": "b3aea5f72d1edc2ac078a39cba7199c63017974a45cddb8390ea8b3e66e43c12"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/runtime.py",
+      "sha256": "139bdc98760045d9a10d5b6e1ad5f055721fa73581aa070153b1e3c9246c4177"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/source.py",
+      "sha256": "aed9e694093ec2f4b833e75edf293ed4c143a4587569cf74dbdd9b09b93e4895"
+    },
+    {
+      "path": "agent/app/modules/behavior_tags/tagging.py",
+      "sha256": "8ffab7f19148e8b67289d6dad01b86876705af7621c9ed6b049c36b88bfd32c0"
+    },
+    {
+      "path": "agent/app/modules/audience/__init__.py",
+      "sha256": "4e017fb52d1fedfad7870550d9a25d442206f6e337f6617b0f66b98fd1b036ab"
+    },
+    {
+      "path": "agent/app/modules/audience/behavior_package.py",
+      "sha256": "7296546098753ee69eb2b2b2373fe06f2f6828ea2284644303c865b07307158b"
+    },
+    {
+      "path": "agent/app/modules/audience/client.py",
+      "sha256": "5fbd4c0a62682994c23bdaad431e2d42be7f0b97b3d6e65d6fefc6a4db66db84"
+    },
+    {
+      "path": "agent/app/modules/audience/contracts.py",
+      "sha256": "37fc4812413163b96a98dfea4deec8234304f60626d34d1c6903fb90beb39da7"
+    },
+    {
+      "path": "agent/app/modules/audience/factory.py",
+      "sha256": "df4de3254ebcb07a3d8f26da5a581b889b3f656e555e9c69628940f0147cd43d"
+    },
+    {
+      "path": "agent/app/modules/audience/local.py",
+      "sha256": "70c23432ec4ee95c5ee629d32392a522949cf63a03282d4c3c8de862bb5c3993"
+    },
+    {
+      "path": "agent/app/modules/audience/service.py",
+      "sha256": "a57ece76268e7f87b65f6c9f7b75262547c9c7a801852e409c330ca2cdea3822"
+    },
+    {
+      "path": "agent/app/modules/audience/taxonomy.py",
+      "sha256": "f8f237702f1524135ff4f99e15305ca3e95fdab88f551cec18a571825ad585ea"
+    },
+    {
+      "path": "agent/app/modules/conversation/__init__.py",
+      "sha256": "5e3b71f4d2d87be9f2c2b858dfc99ddcf66f41e44602df797981902ea2ab1b18"
+    },
+    {
+      "path": "agent/app/modules/conversation/admission_contracts.py",
+      "sha256": "70c9892a54702d409ebacdebb71d7fd3d4222a09d311494a08f5539fbddf4952"
+    },
+    {
+      "path": "agent/app/modules/conversation/admission_workflows.py",
+      "sha256": "ebd0822404b0fe147df4c6322027ad93be46c37ad29c47632546a1f6f1097b92"
+    },
+    {
+      "path": "agent/app/modules/conversation/admission.py",
+      "sha256": "ba5195593f799b34b39665c25f9f0536d7744adc5dbb224ab36316b657a8c876"
+    },
+    {
+      "path": "agent/app/modules/conversation/candidate_templates.py",
+      "sha256": "ad8006895fcdfc3114d3bec62afc5234b94395055debcc346270c74b16ad5e6b"
+    },
+    {
+      "path": "agent/app/modules/conversation/confirmation.py",
+      "sha256": "f2654c16a22577f9ad450d55a3d055ac45fc882b7aa01b8fdd668965f3a24b83"
+    },
+    {
+      "path": "agent/app/modules/conversation/context.py",
+      "sha256": "190c22cb0d50fac9e42b1cf8138084af1b594c1eed59d26b3e26e0df9999dfc7"
+    },
+    {
+      "path": "agent/app/modules/conversation/dataloop_hooks.py",
+      "sha256": "1f72e086a036164a89b57d6aa64f5d566be621ddb287d32eaadcd4b0ff3718b0"
+    },
+    {
+      "path": "agent/app/modules/conversation/feedback_hooks.py",
+      "sha256": "cb7ba02a60189c0a97feb3b358190b20988b6bb0e55483006c8fee8d068f8f09"
+    },
+    {
+      "path": "agent/app/modules/conversation/input_state.py",
+      "sha256": "e7b6c9fb1d664454a4635a5224f3c5de928db90df070480a73f86128128138ea"
+    },
+    {
+      "path": "agent/app/modules/conversation/local.py",
+      "sha256": "9b585915b1e359ccd816ff501ee09fa886e20bbad0798ba02782b543ba7189a7"
+    },
+    {
+      "path": "agent/app/modules/conversation/memory_hooks.py",
+      "sha256": "c1e1af9cb8a7d3d12b5e3681a23f681900a837d05dd71d87c7802d513a4473ac"
+    },
+    {
+      "path": "agent/app/modules/conversation/plan.py",
+      "sha256": "2b5c0c235162212f857e5c70fa0fa56c7fae638138d9a9a037c6869b78ca164a"
+    },
+    {
+      "path": "agent/app/modules/conversation/query_time.py",
+      "sha256": "a39de63c78936edf67d640f63b1bb69affa482ccdd193f69f129eb67341df2e8"
+    },
+    {
+      "path": "agent/app/modules/conversation/query_understanding.py",
+      "sha256": "e9a2e2e340e0de089ec8cf711285d61fc661ebe23551a5e6a45f34ce13bd89f8"
+    },
+    {
+      "path": "agent/app/modules/conversation/receipt_reads.py",
+      "sha256": "57b6afab4838c129e4ff992906f106d018d9a72c5801ee3ce52957ca2b6e6072"
+    },
+    {
+      "path": "agent/app/modules/conversation/receipts.py",
+      "sha256": "c1defcdb077e38bd75273ea99408332b18727ea6f1fe6cde23912b4eb82a45cc"
+    },
+    {
+      "path": "agent/app/modules/conversation/related_articles.py",
+      "sha256": "0794dbe2f3e00009ce02cc58ebbdc04f7b2bb17688cd59b74a4fb4b41debe99b"
+    },
+    {
+      "path": "agent/app/modules/conversation/service.py",
+      "sha256": "54cf8550cf328ccef157e6253913563d5c2ef647c6928629391083fb69942d51"
+    },
+    {
+      "path": "agent/app/modules/conversation/streaming.py",
+      "sha256": "cb8ad8f30caf0e9124a93009b27dc14bd2576fcde5e8b88314ca6cc579fa7649"
+    },
+    {
+      "path": "agent/app/modules/conversation/structured_query_resolution.py",
+      "sha256": "be101ceab8575ce6bb7e0ec35465ff9779de64e9cbf64620c1231bfeebcfe649"
+    },
+    {
+      "path": "agent/app/modules/conversation/tools.py",
+      "sha256": "863460d4f1c30e5d7defec1ab9d47c0cfe6c1e9111584f6e11efa229a9d81895"
+    },
+    {
+      "path": "agent/app/modules/conversation/writing.py",
+      "sha256": "f5ff3b5d28784689cedf8aa729acfc34bb5a44995f5447bbd5f6b762db4fc06e"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/__init__.py",
+      "sha256": "289e049243378a6ed9b4c0cf90f23f1697f41572143f58fdc70052266dcb7454"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/acceptance.py",
+      "sha256": "adc3c16d6f486c9a286f3aad83481adf5170fd0f3a29a8ce1dcb560b0cb5a364"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/engine.py",
+      "sha256": "5d22f6c1302d7db9d4ee97ec6f6f25ab57e66e9b5e6ee137370bf86035afd06b"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/factory.py",
+      "sha256": "8e7b025cfd9faf63d5035a34f45d87f41ec7016dd2c24006511567a48a920093"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/projection.py",
+      "sha256": "5d6225f60609475295a53094f95943a239a58d842950d0cb78553742cd64e147"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/remote.py",
+      "sha256": "1a4ab66737e2b7cac8ae6e49b9f361e4531b43b2077f735941681fffa72d3909"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/runner.py",
+      "sha256": "628a3e850ebcbf9b13486c888a65b788e582251aab4596be7884d46b310f4df7"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/service.py",
+      "sha256": "cb328abaef7efd8243f7e4f6d88ce97ad957fbcd37345c754f80a32b73b27fe6"
+    },
+    {
+      "path": "agent/app/modules/data_analysis/worker.py",
+      "sha256": "1d79f0bf6cc2fc50b4bb891b4865785c90c3a80a7066d08f0d2a88f31610efb8"
+    },
+    {
+      "path": "agent/app/modules/writing/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/writing/artifact_pipeline.py",
+      "sha256": "357723f7feed2e50354c66f148236d7dd03c0baf611548a42f9817b7675bd034"
+    },
+    {
+      "path": "agent/app/modules/writing/checkpoint.py",
+      "sha256": "c8ba96c8b63e1d8be8faef4b66138269bfd5b407cb0420a38f0af6ab2be5136b"
+    },
+    {
+      "path": "agent/app/modules/writing/event_publisher.py",
+      "sha256": "b0a51937cc72228ded0adcf4a6068fa60d5b7aca765e3bbb4267c2c676749d27"
+    },
+    {
+      "path": "agent/app/modules/writing/event_reader.py",
+      "sha256": "4c98359fc0bba20a3c9c917bc777ce0a135b51699e8b00d83a01db27f4c9d04a"
+    },
+    {
+      "path": "agent/app/modules/writing/events.py",
+      "sha256": "156656b040f74ffb3be100c4210e46c7015b40ac037675a8cc799472b6a48872"
+    },
+    {
+      "path": "agent/app/modules/writing/execution.py",
+      "sha256": "559fe5e0f9ccec5d38944650cf7d22e332486852ee8423020d694b7acdf2aba8"
+    },
+    {
+      "path": "agent/app/modules/writing/job_state.py",
+      "sha256": "ec10f4b734e56af86f8140ee32f6abe21fe4b62641c686d4873f081aaad5556b"
+    },
+    {
+      "path": "agent/app/modules/writing/job.py",
+      "sha256": "4620330e6044e4495e603e0bcfd0db56969b5d390608a157a27eca47465e5564"
+    },
+    {
+      "path": "agent/app/modules/writing/jobs.py",
+      "sha256": "3dbd0d9f5b29b134194a49f90d7b5c8bb2266b86ae97dbc73907f80ed34e6adb"
+    },
+    {
+      "path": "agent/app/modules/writing/news_step_handler.py",
+      "sha256": "c48fd46f21f881ff794f0dc325fb31835f7954d51e51877239458642b77d0536"
+    },
+    {
+      "path": "agent/app/modules/writing/news_steps.py",
+      "sha256": "3f282c160e534bdc9fdab4723fb85477f5909c004caece8be4954c45bed5ea5c"
+    },
+    {
+      "path": "agent/app/modules/writing/news_writing.py",
+      "sha256": "c70cb370725d15c55e35f8ea66be15f2f06baf5536ad6f65653c7795e087ec0b"
+    },
+    {
+      "path": "agent/app/modules/writing/orchestrator.py",
+      "sha256": "ff11e4a6f47553bbd8bfb9ccf08d005be05c90d7a5473c088f99887c8d810a2c"
+    },
+    {
+      "path": "agent/app/modules/writing/outbox.py",
+      "sha256": "7a59305fe8a9d9bc1bae968034e2983095deec6352dea43de3148fd3b69a07fd"
+    },
+    {
+      "path": "agent/app/modules/writing/progress.py",
+      "sha256": "af7560eca3bab0358811d14fbe3ac6ac1cf488374f14089486e9bb78845f0be7"
+    },
+    {
+      "path": "agent/app/modules/writing/recovery.py",
+      "sha256": "1ff664ff9e48d10b1791a1f42c0503de55b4a4997d77fb3b11dd41bc4f4d1057"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/checkpoint.py",
+      "sha256": "b67e706af825844c62a30362771bb2eb57411e35ca5ef26016d998e7fd60dd94"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/events.py",
+      "sha256": "37016455fcc5a966f13ed3312bf1d77d18a5670b442426db97df3c40d1305a25"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/job.py",
+      "sha256": "7ac8344bc885307081773a31086a811be37209dd99ecbe9e78d96c62e4a0d624"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/research.py",
+      "sha256": "d80ffdd68f5b8bacfd888eeaf77ac9bc5afd8f17b6a941d482937fe8abe80cf5"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/review.py",
+      "sha256": "16da39e811e2ac76be7bb4c8765708ccdd4d9be554186981676a7a775a4f6396"
+    },
+    {
+      "path": "agent/app/modules/writing/contracts/writing.py",
+      "sha256": "ae737e34fa6985f2f04fe002e06dad8f9802952e44d904dd1d571527d83836f2"
+    },
+    {
+      "path": "agent/app/modules/writing/agents/__init__.py",
+      "sha256": "8545c9cab62975cce0331f7acfa5582740b0d2b3aab500d665c2c616518ed147"
+    },
+    {
+      "path": "agent/app/modules/writing/agents/research.py",
+      "sha256": "775de4bce436cd640779b73c0a7f56a72e516985abb86ae70d84d9822b9e14fe"
+    },
+    {
+      "path": "agent/app/modules/writing/agents/reviewer.py",
+      "sha256": "fac943df59fcdc10b8103ff4cf131cad88b5f2d3f596f1eba425b96f7509ce9f"
+    },
+    {
+      "path": "agent/app/modules/writing/agents/writer.py",
+      "sha256": "589b41527cd656debf2cf8fc67a9bd5c2a5fb3b8431292421d92c313efcda7c7"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/__init__.py",
+      "sha256": "f90b67375d06f86332ba3bb43db8de090dda82d7a0d9d6c80f562cb5661a5acf"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/agent_run.py",
+      "sha256": "b4af744dc03f333ce1deaee14817b4c295fd3a51fc68e9c6604845cc7004402b"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/artifact.py",
+      "sha256": "efa12411f24600f632aec5ce9fc93a3634ba4d4c90828894dc3ea6b4a9be83cf"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/job.py",
+      "sha256": "ed9c9ba46ce5a890e1cba4764032ebfe81269bb4110ca9aebd78f31c165655d4"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/outbox.py",
+      "sha256": "63b8a2c06fd3e5163e129c2fd7e7f16519ee55a08c88446345e15f9db411fbd9"
+    },
+    {
+      "path": "agent/app/modules/writing/persistence/step.py",
+      "sha256": "2b64c57d1f0ad47df6e434ec06ab94c4d07e452238dc5eeb65a821018bcbbdf2"
+    },
+    {
+      "path": "agent/app/modules/knowledge/__init__.py",
+      "sha256": "5492a46427badf92764e70094cd8bda8a7c14603017a1ac8a547d24916bcf3a6"
+    },
+    {
+      "path": "agent/app/modules/knowledge/board_policy.py",
+      "sha256": "91244fab527b27e69e1fb501c293565bdcb8ebdc6b534fe3a2c1b0260981136d"
+    },
+    {
+      "path": "agent/app/modules/knowledge/bootstrap.py",
+      "sha256": "643eaaf9c85427484c54e932224b752d57c6dcb8bd468ba2f906c82f31524019"
+    },
+    {
+      "path": "agent/app/modules/knowledge/document.py",
+      "sha256": "51425057794a34baaa99c68c5097d1d3aaff8296ff68ca308446708ae45e513d"
+    },
+    {
+      "path": "agent/app/modules/knowledge/ingest.py",
+      "sha256": "6c3901aa4b1123322522a60604ce04f97c9d9fa06385013176cf5008cb437ac4"
+    },
+    {
+      "path": "agent/app/modules/knowledge/native_indexing.py",
+      "sha256": "3cc2dfc564de194cf93071c3c0fd82557b612b3886f1ad08f381ee5632482753"
+    },
+    {
+      "path": "agent/app/modules/knowledge/postgres_store.py",
+      "sha256": "0a3a5d7a391d84c34f47529f2d61bbbbdcd90c9e06f98992639268ac38827d75"
+    },
+    {
+      "path": "agent/app/modules/knowledge/qa.py",
+      "sha256": "5dc4a4d501db9f99e736ca36e9238b50fb80f2202519702eed45f28beedd2e5a"
+    },
+    {
+      "path": "agent/app/modules/knowledge/search_config.py",
+      "sha256": "fe38a37dbb6bf63e8900f099acecc48c65a0b8f3927f4124976961eefb810167"
+    },
+    {
+      "path": "agent/app/modules/knowledge/search_factory.py",
+      "sha256": "4f124d17535014fd7d77cba70b635005019326e8e11f793865a0b8f78304d44e"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_config.py",
+      "sha256": "20c5a40b0187fcf684cdeb5f97184c5cf718d4e530dbbd3532eb8d5266c121ff"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_factory.py",
+      "sha256": "2363ec6d42f8bec3f9f34e206cca6db0df41ad64c1f7010b9e818992f6dac60d"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_index.py",
+      "sha256": "db2a621b1f83ca8294816859d466974b0eca08f0d2378468e56752909e86c2a1"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_local_index.py",
+      "sha256": "d4588bbd3b208cdf1d1a8981c88bd59d5666e13573e11a130523a8b39cf49ba0"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_query.py",
+      "sha256": "649dbd9a649a63fb5f382f147946db25e9072935ff24753fb9b9da4883c616b5"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle_store.py",
+      "sha256": "d9f64946e9220e3a0b98013c65476be81c4e217847d4606bed0c33087f475183"
+    },
+    {
+      "path": "agent/app/modules/knowledge/tier_lifecycle.py",
+      "sha256": "8194492dff279a3ec16d0df86cf441a6aa3f8a8a484d8d713322666d862326d8"
+    },
+    {
+      "path": "agent/app/modules/memory/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/memory/api.py",
+      "sha256": "e48c9b59d82b624bd211aef6ec11acb95aafa56e0d8646cce57ba8e15ba918fa"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_context_application.py",
+      "sha256": "489d49ea98b071d5dafa120658d41bb658e648f3104b658a2ec92af860c06f50"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_context.py",
+      "sha256": "a6c5c474d7134f5bcc7f6f21d9fe91afc8fa1032e5e0c16a8111d4e1e86543fc"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_promotion_application.py",
+      "sha256": "04cfbc5ec3bf9816da501f3510968bfc51464299eaab663ca838e40c1af64e44"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_promotion.py",
+      "sha256": "921fe5d0ecc80afe7473942b0ce2c4e99b105799353f8ce1467244184212a918"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_prompt.py",
+      "sha256": "a93747d607f99eb283ba297fce423d8080838aa173ae4313477303739be9cc44"
+    },
+    {
+      "path": "agent/app/modules/memory/memory_write_application.py",
+      "sha256": "96ecbb8048daad9d3e54588f082a8eb9991e527fce93451bd0df99beb7248c90"
+    },
+    {
+      "path": "agent/app/modules/memory/contracts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/app/modules/memory/contracts/user_memory_api.py",
+      "sha256": "657aa54c480673a98fe8e9356e603e98f694881134ed6d8bbd64717247bd1925"
+    },
+    {
+      "path": "agent/app/modules/memory/contracts/user_memory.py",
+      "sha256": "f2a70e3f0ca23f63b345b6fc54b9988fe6358cf49661aca11707d8e187840bb9"
+    },
+    {
+      "path": "agent/app/modules/memory/persistence/__init__.py",
+      "sha256": "ea3d340d5a2b875b7d8947d1b41291de95284f37fda6f473de8627962668dbb0"
+    },
+    {
+      "path": "agent/app/modules/memory/persistence/user_memory_repository.py",
+      "sha256": "93886b2119f3e2f9f799809da0d84424ca31faa6a88f7f3b10c7692d1ff3a6af"
+    },
+    {
+      "path": "agent/app/modules/memory/persistence/user_memory.py",
+      "sha256": "f7bc33e4298db27a7abb3e8e2598e4635bd84e6d4c84873567635653039bebaa"
+    },
+    {
+      "path": "agent/app/repositories/__init__.py",
+      "sha256": "aecf2f1e54c8fcecf5816efe3aee42d5d5e543a6a69353da5d8e535b5902eef2"
+    },
+    {
+      "path": "agent/app/repositories/analysis_feedback.py",
+      "sha256": "db98884d2e1315692f5d71a6ca759c0d25d6dccb4d09af325f6902c82498c8b1"
+    },
+    {
+      "path": "agent/app/repositories/conversation.py",
+      "sha256": "1ddbe3839947239f6d6851b5f927a41a710168391c8d13d8ddecd20a99bf5111"
+    },
+    {
+      "path": "agent/app/repositories/evaluation_dataset.py",
+      "sha256": "f306c0ce8838f4d9ed9866d0aaa6eb504109066b4f3d395b949459c0511e4265"
+    },
+    {
+      "path": "agent/app/repositories/hot_event.py",
+      "sha256": "fd5dd98f822f9c0ea3d595fb956eead18725c45881a2379dfda08b9700dc037b"
+    },
+    {
+      "path": "agent/app/repositories/production_bundle.py",
+      "sha256": "d0106fd34490d09559925a0534f9eef56437c96b616936e87d344cab6e4be2dc"
+    },
+    {
+      "path": "agent/app/repositories/user_memory.py",
+      "sha256": "52ed7bfa82a0257233a2d105143fa051812e3ff8f50b764d2a8a6cafd872e6a1"
+    },
+    {
+      "path": "agent/app/agents/hot_news_analysis.py",
+      "sha256": "6395af6e4f4c56d287a4ea2b3f82cc351f4ca9ee7a9d0e7fa4bb4f3d0b1f91bc"
+    },
+    {
+      "path": "agent/app/knowledge/__init__.py",
+      "sha256": "e51ddf40b536bbce917e1382cc93c31cf2bef43b0055dce4823348b88ea99494"
+    },
+    {
+      "path": "agent/app/knowledge/tier_lifecycle.py",
+      "sha256": "5f10d91cc90e9d915a7f99fb7993de93478f848f99aee2252d520b00a841c02c"
+    },
+    {
+      "path": "agent/app/observability/__init__.py",
+      "sha256": "2bf786174ab48574ad2acaeebb7f5eb8d3c64df59d09b288a3915cdd786f9405"
+    },
+    {
+      "path": "agent/app/observability/database.py",
+      "sha256": "825625d8ef622351f1d52ea2f4513ec9496b22bafeee6316dd1e8736b9361034"
+    },
+    {
+      "path": "agent/app/observability/decorator.py",
+      "sha256": "d37ead09f05b35f751aaa72e1f861d346c6c7220d83488b8d2366f302e0d5358"
+    },
+    {
+      "path": "agent/app/observability/decorators.py",
+      "sha256": "6234733e262d761a118be8925a39537d81be3c736564167c419ed49b37e38ecd"
+    },
+    {
+      "path": "agent/app/observability/hot_news.py",
+      "sha256": "8afd353d749bb006900fcefc9a5771063c9a0e28b97fb20a59908282ec9b247d"
+    },
+    {
+      "path": "agent/app/observability/process.py",
+      "sha256": "cba67ed014769b28de33fbb56f6bac2c6ee8be696d585d4bc3a91bfde2298591"
+    },
+    {
+      "path": "agent/app/observability/settings.py",
+      "sha256": "55c2a1a66b017ee9784622a7d712c051e3252bc617910801a2ab412084b074c3"
+    },
+    {
+      "path": "agent/app/observability/telemetry.py",
+      "sha256": "9b9002efffdd1225d616dbb8c5f6de5ff1753ba8810fe008bf3291d663096760"
+    },
+    {
+      "path": "agent/app/observability/temporal.py",
+      "sha256": "8be9b8ee7520f5ea63613dbfa2438f31aff38ac9029517cc6be20230ff8f4cb8"
+    },
+    {
+      "path": "agent/app/observability/web.py",
+      "sha256": "2f92d10e6d5e85182b1cd9cbaa49682f2b08020017e20e11d99678fa987a5278"
+    },
+    {
+      "path": "agent/app/storage/__init__.py",
+      "sha256": "25b15bba967c01f231e65fb0425861159210172a68ca5deb7981320834253da8"
+    },
+    {
+      "path": "agent/app/storage/s3.py",
+      "sha256": "fed3586b9978864c52a807698f4e117dac4755830a87566d8a27a657102befc2"
+    },
+    {
+      "path": "agent/app/analytics/__init__.py",
+      "sha256": "ac1bc6fb8e8b5cd33b14772d8a51f809a96f686209e634cd60a164fd073057bd"
+    },
+    {
+      "path": "agent/app/analytics/audio_transcription.py",
+      "sha256": "391943c340083da0694bb5edf2c02593ffd5399a71be5c154822711ab08c282a"
+    },
+    {
+      "path": "agent/app/analytics/baseline.py",
+      "sha256": "de2b565c41b38c3b725c59ff1aa5ec6e067430b2a6583ec21af80df8d340f4b3"
+    },
+    {
+      "path": "agent/app/analytics/corpus_knowledge_search.py",
+      "sha256": "41d48236c16c1bc6b0e315aaa3f6202c1c68dbce990914b294c414c1b129adcc"
+    },
+    {
+      "path": "agent/app/analytics/data_source.py",
+      "sha256": "e6f5ddfc955fac9048667bda276967712c79ac54fbe20b525fdcf8984382149d"
+    },
+    {
+      "path": "agent/app/analytics/entities.py",
+      "sha256": "3abd68fe5c56d4619e6d0636e5c5d648c303d57091849cef17bd8e09fb869258"
+    },
+    {
+      "path": "agent/app/analytics/hot_news_enrichment.py",
+      "sha256": "350b6f15cc22a3f295eefea5331c0cb47cf9888bfb6b8163eae7d39b31b9908a"
+    },
+    {
+      "path": "agent/app/analytics/hot_score.py",
+      "sha256": "2d46b118a61797f7c4fe12c796d36edf877c7ffbf3d4fda957ba432a0bf7086c"
+    },
+    {
+      "path": "agent/app/analytics/lifecycle_news_content.py",
+      "sha256": "d6980b88f360e83ac1e0157302765636b63369df56599a61a6ad13b83c7df8ba"
+    },
+    {
+      "path": "agent/app/analytics/metric_source.py",
+      "sha256": "daac6626807d574ca495f5b4442e4eb5d00ec4e5bd49fc5537bd2e1aa6472c5e"
+    },
+    {
+      "path": "agent/app/analytics/metrics.py",
+      "sha256": "3cb27e5e40999df4b4165031343efc142f83aae9b19a40c5d273f46214683841"
+    },
+    {
+      "path": "agent/app/analytics/news_content.py",
+      "sha256": "487d62397db10c235a6fdfad494eec19ee703a91ccada65aee6e5218903ebc7f"
+    },
+    {
+      "path": "agent/app/analytics/ranking.py",
+      "sha256": "54ca4fe4ffb484f76cc4e67fe296ba486b44d45d27176d7efa5ea10a371eda35"
+    },
+    {
+      "path": "agent/app/analytics/sql_guard.py",
+      "sha256": "5239ba068c53908d8b14ac7f2820f5e04f119f38c3c8e20e10a319dce8de5a4f"
+    },
+    {
+      "path": "agent/app/analytics/tencent_content_bridge.py",
+      "sha256": "d60a83bd86f99e5c32e1ad16e243d6f7e9304695176217f3d0fba99847c73f93"
+    },
+    {
+      "path": "agent/app/analytics/text2sql_metric_source.py",
+      "sha256": "f678e5bb53d02257c0b1c0cd77ab4d0f58ea515ae7d27e95fdb4088acc80ca81"
+    },
+    {
+      "path": "agent/app/analytics/video_textualization.py",
+      "sha256": "fb1ba73b5332e2bff50f6fbeb227579cd5458db4e09a264b99e6e93d84bcc76c"
+    },
+    {
+      "path": "agent/app/warehouse_simulation/__init__.py",
+      "sha256": "c2db954aa3ea7a8db397b879cd00e6be2bf6463fb915d16f19d815f40b0fea01"
+    },
+    {
+      "path": "agent/app/schemas/__init__.py",
+      "sha256": "20abe8f4cb48fcd6444f22974591e3f97dcd6415a84d4f08cb14c06419cc9177"
+    },
+    {
+      "path": "agent/app/schemas/analysis_feedback.py",
+      "sha256": "0a8171003c354e3519678a611fe8764b07fc284bc9e0c89ecf81c086a1c3699d"
+    },
+    {
+      "path": "agent/app/schemas/checkpoint.py",
+      "sha256": "15db3de6b84f7ede2010439896144f371eaec0c30a1526a959146b5fe5e919a0"
+    },
+    {
+      "path": "agent/app/schemas/conversation.py",
+      "sha256": "0c8c1fac5e8dd1a3d7ae8ebf601085036c3d6cb616a3388821481936144bd595"
+    },
+    {
+      "path": "agent/app/schemas/data_loop_api.py",
+      "sha256": "f3a3e8c8ef6adb603aad72b91dc46342b112be8f925b3e7abc4db20cd8eb6cbe"
+    },
+    {
+      "path": "agent/app/schemas/error_attribution.py",
+      "sha256": "bdc65bf35bab338f8e92cf9ac568fdf2414ed9b3f2a3438ed0f067a7a8a56347"
+    },
+    {
+      "path": "agent/app/schemas/evaluation_dataset.py",
+      "sha256": "a6a89464916a982256a978a927667c13b7729b7f2da078d00064eaec072dc70a"
+    },
+    {
+      "path": "agent/app/schemas/events.py",
+      "sha256": "7a4d1c93b961bedd13d1c7d51ee63a1f3de5a159bc928ee32e523df18c59a97c"
+    },
+    {
+      "path": "agent/app/schemas/hot_event.py",
+      "sha256": "16d8f5989e50a9525fd62451cda2364691e906e2510c2627875606b81c8a2ce2"
+    },
+    {
+      "path": "agent/app/schemas/hot_news_api.py",
+      "sha256": "f18e6fb4ed0c9c9b9703316fd99c72a8dea1e6ab556da0acc5b30892fb7c44a5"
+    },
+    {
+      "path": "agent/app/schemas/hot_news_decision.py",
+      "sha256": "d31e4a11e290082afeeb1489e13d4cd5adc19466eb32f872a86823ddeb0eb22d"
+    },
+    {
+      "path": "agent/app/schemas/hot_news_events.py",
+      "sha256": "6595577ceef86feea9cbe323e79065714de92f2468f34b5fc7ce0381a32fd09f"
+    },
+    {
+      "path": "agent/app/schemas/hot_news_memory.py",
+      "sha256": "8ad10d58819c6316214a4f12f8036448d2febdf8a44c505417803407eaf475bf"
+    },
+    {
+      "path": "agent/app/schemas/hot_news.py",
+      "sha256": "6e4e8c6aa0e6c1f2ec36c5a05568e23aafeff93ad27d119bc16572fa135bb294"
+    },
+    {
+      "path": "agent/app/schemas/job.py",
+      "sha256": "564f8c964d312334ae4cae0422dd12506e1e604816b997b4fcaea18dc71ac372"
+    },
+    {
+      "path": "agent/app/schemas/operations_feedback.py",
+      "sha256": "7618f73cf2fe4bc83ebff52d892ac4cbb7522f19adaf24e13f5a58a51ad85b69"
+    },
+    {
+      "path": "agent/app/schemas/production_bundle.py",
+      "sha256": "1a9f51b2ae3923456598de729881279c70ed3e1f592e5e0b317b8b3df9ba9218"
+    },
+    {
+      "path": "agent/app/schemas/push.py",
+      "sha256": "2dba9562baa3c7a289992bd3f58293d0eedb23daeb6f3d0a5f30d1a74fb76fe2"
+    },
+    {
+      "path": "agent/app/schemas/research.py",
+      "sha256": "78bde3182bbbb8cbe1c554f24f1178edbc75a0aa3d14b24e35330ccd64aa536b"
+    },
+    {
+      "path": "agent/app/schemas/review.py",
+      "sha256": "ce876d0430f9a492350fad6894db43d121d0acdcafc4355fe700f0d89654149f"
+    },
+    {
+      "path": "agent/app/schemas/security_test.py",
+      "sha256": "b904487ca9e02866c19b36976e3f21257a1b758c7872727a724d55e6b35d6f2f"
+    },
+    {
+      "path": "agent/app/schemas/sql_assistant.py",
+      "sha256": "59b232365aa012ed1e881dd0072b9104edee133cc0b99a79c7e32a69f38d776d"
+    },
+    {
+      "path": "agent/app/schemas/text2sql.py",
+      "sha256": "6a3770bf81a30bd5f5c733a7a2d8e19856cf42a807abbef97fed43f86d8c7ac1"
+    },
+    {
+      "path": "agent/app/schemas/user_memory_api.py",
+      "sha256": "4c7fb117f5d0b26da897d923f1872c7fdb7f169703e418c954119333b0c40660"
+    },
+    {
+      "path": "agent/app/schemas/user_memory.py",
+      "sha256": "889752864b891784100b1f4441e394db061e4e5a375f1773769c68988b4a7227"
+    },
+    {
+      "path": "agent/app/schemas/writing.py",
+      "sha256": "bebf7b1d7fd23b276ac10a7b23a4548cf913aed39714c9bcda8ab17046eaa49d"
+    },
+    {
+      "path": "agent/app/workflows/__init__.py",
+      "sha256": "b1087afc50596796cc1c2c3099e42e5808c38670e78780b0b2009c3c7485152a"
+    },
+    {
+      "path": "agent/app/workflows/contracts.py",
+      "sha256": "3f6b72ec7eee1687ab16d9ad200359be998a39927c52be047ef9309fc668246b"
+    },
+    {
+      "path": "agent/app/workflows/data_loop_contracts.py",
+      "sha256": "511ace53b134894b4c37e6534e0febe5c1ad7ab295cd12aedd514d6c11d2a1ce"
+    },
+    {
+      "path": "agent/app/workflows/data_loop.py",
+      "sha256": "5bed8adc31f41bdb325cf61957423d288e6111b562b9b27338e28791cb8e45a6"
+    },
+    {
+      "path": "agent/app/workflows/hot_news.py",
+      "sha256": "cdb63e54cad1513a621060fd1606e41b79cbd00f3be0b642449b8c4dc18ea02f"
+    },
+    {
+      "path": "agent/app/workflows/knowledge_lifecycle.py",
+      "sha256": "8165c7981dd361a59558381d75d28b086ad8f13bebd5c66d8d8abf8ccf629d42"
+    },
+    {
+      "path": "agent/app/workflows/news_writing.py",
+      "sha256": "9890c5055284cc008d492b46c3fdb09ebb30749a36c640cc4dc9e1661962f40e"
+    },
+    {
+      "path": "agent/simulation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agent/simulation/conversation_hot_news.py",
+      "sha256": "e665c88d1ffe2aeb0b0d3ada3c2a935563eb97d12aa5166f2f3596ca930797dd"
+    },
+    {
+      "path": "agent/simulation/hot_news_demo.py",
+      "sha256": "e334e8436f03cdb2a8c3752e75b2b0c8e9abb2e68aa06c2429082f8707b8fe99"
+    },
+    {
+      "path": "agent/simulation/hot_news_e2e_support.py",
+      "sha256": "982bff4d27657d3b50c87cc89ff382fa08736cacd1eb4a8e3d11de46d5ff4b9b"
+    },
+    {
+      "path": "agent/simulation/hot_news_scenario_factory.py",
+      "sha256": "9200bde0cf31a68df8b79e6d05bbc021902e2eadb3fe0894d056510e8579fd11"
+    },
+    {
+      "path": "agent/simulation/local_simulation.py",
+      "sha256": "d820a73ddd458a2045be512e88a270abe6085dff6038589a8a96ea75e9001b56"
+    },
+    {
+      "path": "agent/simulation/native_hot_news_e2e_knowledge.py",
+      "sha256": "6be58825c39d732350d7d8f82b2661834c14bf26a58808ad96e02c0ef449ccd0"
+    },
+    {
+      "path": "agent/simulation/native_hot_news_e2e_worker.py",
+      "sha256": "ae3b01e8639de944de727e63ce0d9951ef5b3c8f9e846b852ed068623324c406"
+    },
+    {
+      "path": "agent/simulation/native_hot_news_sql_support.py",
+      "sha256": "7e395c49b49fd06f2d2e4f82375d1cdb132b76694128d54436f586e510125d9f"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/__init__.py",
+      "sha256": "1b42a96bc1e6c370fdce4783b59be49a0a7969ce5ce548baf6f6645aab1658a3"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/backfill.py",
+      "sha256": "cd37db2f55d24743d6e33347dd8e83848a200e7b22bf997ea28f0e466ce71444"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/bridge.py",
+      "sha256": "8181fd12f7534179cfb837f2f907a674cb148ad7710d3c27d0578d2c6a913a42"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/dispatcher.py",
+      "sha256": "8dd6f782dbd44619ecd62e4cf31ae8bdaf604dd8c64f5dc06841f36e2d97088b"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/dynamic_data.py",
+      "sha256": "4144951c960a741a528a48c94c17b950f3abd1cb4184f0e596f1008a67f1ea92"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/dynamic_feed.py",
+      "sha256": "bb8a995a2b9b07b3748254df306e73091ab786393e84e3a1eb3cc98d3ec12f3c"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/migrations.py",
+      "sha256": "1ea1bba0fecd525f418d4ded0e1bfb62af74d23cfb7cf3dffa8717087ba915f1"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/public_news.py",
+      "sha256": "2f0e9ee54f8c3a7f3fef12eb15c0054b97fb72446030508a90d523947795303c"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/reader_port.py",
+      "sha256": "4f6b504cb461b43e27bdbdabb03b1f5ff6788e7207e00c483e89edf898fee2b3"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/realtime_readers.py",
+      "sha256": "9373f9d28bcd0231f4a064a585addf149a6995a60927bcd55288d4fe19c3e7c3"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/runtime.py",
+      "sha256": "977a90d93787f9a7cf5fd888ec980186440642813da7c25bea90005eb17b5a6c"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/sql_retrieval.py",
+      "sha256": "348dcaa2e44e60e3185a212f727ef0de5d892c627bd4196cad61fc7c5e239326"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/wallclock_data.py",
+      "sha256": "b75060593181c1d3142c6e05fc4c56268fb9f87e360347ce125b17fe5dbd6850"
+    },
+    {
+      "path": "agent/simulation/streaming_lab/wallclock_feed.py",
+      "sha256": "b5a20114c1b7a8424ae823b0ca43b7fdab4fb773746758f5f2a68a1de9ea7ac9"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/__init__.py",
+      "sha256": "0280e6bfce7bf47272455ef3179e32b989128e7704ab93f8f912e5332a01773a"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/content_features.py",
+      "sha256": "f7a65caf498866637d4355c31b1a9b77fa049c4f56775fb253c7e55e4a78ef2e"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/queries.py",
+      "sha256": "44d9d39cd48ebb102942722fa6a5f9b88a17ef0635a2a41bc74f0ca0a212edeb"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/real_news_catalog.py",
+      "sha256": "489080c45c5462713ae996c48c991e3d6dcf4b3d48bbd637c11845397fd1af40"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/real_news.py",
+      "sha256": "fc9e977631399261d864f86ad05be39ffb6bcda93e3b76c7754771cc95986c28"
+    },
+    {
+      "path": "agent/simulation/warehouse_simulation/tencent_news.py",
+      "sha256": "9434164476df8a512cc19a0113f94c07e01dc3f773b6bb1e615a5f631ce84638"
+    },
+    {
+      "path": "agent/tests/__init__.py",
+      "sha256": "41050e786d7121da0192aedc69e5fa74f2a4e6f4382fc10ea78b15591b3ce095"
+    },
+    {
+      "path": "agent/tests/observability_temporal_workflow.py",
+      "sha256": "3f60b92609386e37e796df63fda5f0bc1d977c314d3b8ddab3383d3de26a5477"
+    },
+    {
+      "path": "agent/tests/test_activate_structured_query_demo.py",
+      "sha256": "37d30fd77fad32d602646951b683f3a0e5f2cd7fce1382e4a156c17a8b03d2fb"
+    },
+    {
+      "path": "agent/tests/test_active_bundle_hot_news.py",
+      "sha256": "c703f422b5673f4f1da392f87846f6c0fd7442badf96f88520641d8b4ba9dbeb"
+    },
+    {
+      "path": "agent/tests/test_analysis_data_acceptance.py",
+      "sha256": "49fe1e1eb44274acfb5fe5f954085fefc92dedb2fe65ce0d445e80f24cb6509c"
+    },
+    {
+      "path": "agent/tests/test_analysis_feedback_repository.py",
+      "sha256": "b7465a49894c196b42b631c00cbe4560311a06e92b9c1dc0048ac84b4325df30"
+    },
+    {
+      "path": "agent/tests/test_analysis_feedback_schema.py",
+      "sha256": "777a8b14a927d7794a6cded88d203f3afd275020f4c2a5f792043ad320c724c7"
+    },
+    {
+      "path": "agent/tests/test_analysis_service_deployment.py",
+      "sha256": "b26aecf67801f0a95218e1e2676b8cd3bfd28d2bcab7762d3746249d275b1a23"
+    },
+    {
+      "path": "agent/tests/test_analytics_data_source.py",
+      "sha256": "3439c8ae6372be37c1ea44a500512e660b5891aeed2ba226f2afbd4597960dfb"
+    },
+    {
+      "path": "agent/tests/test_archive_migration.py",
+      "sha256": "549afe0a657d44e6accef2bddd2a4f1c5e21df13c76dd7014250a4402adb9862"
+    },
+    {
+      "path": "agent/tests/test_artifact_pipeline.py",
+      "sha256": "5b4333cc51db430535e156595bf049bc125bb9e00bd439097465826bd7ccdf7d"
+    },
+    {
+      "path": "agent/tests/test_asr_bootstrap.py",
+      "sha256": "86c60245fc9122b1c7212a02a7c9a62188a9329773ad8fd4caace1b1b40cdaaa"
+    },
+    {
+      "path": "agent/tests/test_audience_client.py",
+      "sha256": "f5d053c5b39a1eafe6af08c991ab6722e35135f14828ced4e5d31b043907edee"
+    },
+    {
+      "path": "agent/tests/test_audience_preview.py",
+      "sha256": "155a65a6025e3ab60ce004eb406470ac5ddf7b8c95aef79e65b75e35bc085c10"
+    },
+    {
+      "path": "agent/tests/test_audience_runtime.py",
+      "sha256": "0b1412123f73ceefc643f352ac2c4c88df76803f705aecac2c75af75f4c17ac0"
+    },
+    {
+      "path": "agent/tests/test_audience_taxonomy.py",
+      "sha256": "2057c010fb39cce0a9ae123f2bd98b4c44d98229943213212ad17c06061eda3f"
+    },
+    {
+      "path": "agent/tests/test_audio_transcription.py",
+      "sha256": "655d5b15c21eb4548bc0f7954fa7c30f76b7010cf4d39c55f041e3490f99e105"
+    },
+    {
+      "path": "agent/tests/test_automatic_feedback.py",
+      "sha256": "308bd92f292baa6441e04d01ad1d7a6b6973590203b456141e09b02e92b03ebf"
+    },
+    {
+      "path": "agent/tests/test_baseline.py",
+      "sha256": "517bdc4a0d58190feccf184182976dcea406c83d009d0a76b7e135ec9fe267fd"
+    },
+    {
+      "path": "agent/tests/test_behavior_hot_news_integration.py",
+      "sha256": "a39f6001a1cc4213269f229befb1a529d1e69bee52d089a10952a02319fa8631"
+    },
+    {
+      "path": "agent/tests/test_behavior_tag_api.py",
+      "sha256": "99d7b654776a94ff4bf891e33737e6a5fa3be18ad02f77cfcb025ac5db5812bc"
+    },
+    {
+      "path": "agent/tests/test_behavior_tag_build.py",
+      "sha256": "5da259b80202b586265652c177d62d6235557dc3f0268e499113d3e897ca94a9"
+    },
+    {
+      "path": "agent/tests/test_behavior_tag_merge.py",
+      "sha256": "3dfe14619086f9249dfe75ed70edbd47d99bcb2bc444b9563667d4c9afb73269"
+    },
+    {
+      "path": "agent/tests/test_behavior_tag_runtime.py",
+      "sha256": "e3e95cc262cec81424dfc8dc37ae9efba1ac7df750608da44fc8ff5115b9bd4a"
+    },
+    {
+      "path": "agent/tests/test_behavior_tag_source.py",
+      "sha256": "3e76aee159f90d5e52c8a79199fcb4888b2375ac739a75b240a23d46a1ca1ca6"
+    },
+    {
+      "path": "agent/tests/test_behavior_tagging.py",
+      "sha256": "161d25f5e85841e37efb952a19acdf2a85c1bec8026b08595c67e51a7642239f"
+    },
+    {
+      "path": "agent/tests/test_benchmark_tier_lifecycle.py",
+      "sha256": "67f88b179ab83dea7efca9201ad4c2af7dcdaaca980e474764557ca1fb8f79c5"
+    },
+    {
+      "path": "agent/tests/test_bge_ann_evaluation.py",
+      "sha256": "a07442eebae50b0a7ff054afd0ee67b05912e01d5a50f2cb54e76ec55a680d8c"
+    },
+    {
+      "path": "agent/tests/test_bge_demo_deploy.py",
+      "sha256": "33ef23041867dca8edef4b7da19eb65a61b54f4d6ff036c34da17f49c20b7e41"
+    },
+    {
+      "path": "agent/tests/test_bge_snapshot_index.py",
+      "sha256": "9de2ce772b59912b09b4f32e6ee4e4830d2303e1fb3bd969a919002c9eee901a"
+    },
+    {
+      "path": "agent/tests/test_bge_snapshot_live.py",
+      "sha256": "2b63cc2c2e81b84c9303123d263cbb43d5f0bf01a92619e9c71908b41778b3dc"
+    },
+    {
+      "path": "agent/tests/test_bge_snapshot_wiring.py",
+      "sha256": "418d22359bec1d9abbd326144ca7572c90ab2d3f768e2445b95baf111616b1e2"
+    },
+    {
+      "path": "agent/tests/test_checkpoint_service.py",
+      "sha256": "693090bb7b3b5a46ce2ec2782b0fd3fe16356406fed77e078fda5deb8ef15858"
+    },
+    {
+      "path": "agent/tests/test_collect_public_headlines.py",
+      "sha256": "5870b0a0846006298e3aacc894cb397dce6230f7621752afbe275add44eab8d4"
+    },
+    {
+      "path": "agent/tests/test_conversation_admission_temporal.py",
+      "sha256": "ef024e531628fbccc81508dc405029a7acd4ebcbfc5d6211035eb5e1c6dbbf80"
+    },
+    {
+      "path": "agent/tests/test_conversation_admission_wiring.py",
+      "sha256": "f6bcb0d0301e8a98e921fba6f1e97b679c22a64ce207fb561884646329825fe3"
+    },
+    {
+      "path": "agent/tests/test_conversation_admission.py",
+      "sha256": "6d9688f10301f9032fc576693ad6a110697fd14605c2d82acc6fa202e6a1e3c3"
+    },
+    {
+      "path": "agent/tests/test_conversation_agent.py",
+      "sha256": "4de347686896112b810a962652d6a50ed119ea867509fbdb6413b233c352eabe"
+    },
+    {
+      "path": "agent/tests/test_conversation_analysis_comparison.py",
+      "sha256": "d1266848a68f2c43cd7b29b3f79a1755de50fc0cd701082bf7a85e3d9d39d033"
+    },
+    {
+      "path": "agent/tests/test_conversation_article_delivery.py",
+      "sha256": "19dfa8f783dc0985b0996efe79ec70c223f6f8f2c7064762f226413bdf4d11ae"
+    },
+    {
+      "path": "agent/tests/test_conversation_capability_e2e.py",
+      "sha256": "8a30041125defe657b504275e1366f3daffa95b57f139fb9cc19d896f45bedc2"
+    },
+    {
+      "path": "agent/tests/test_conversation_capability_integration.py",
+      "sha256": "8bba6dc7a386542a60ccdb3d33a60aa95e9b6516927f3fa336e58cc4d4600161"
+    },
+    {
+      "path": "agent/tests/test_conversation_compaction_policy.py",
+      "sha256": "bcce18a8d5d1c95afba7c4b09343bd929a45ece2173087c15258a30147a396c9"
+    },
+    {
+      "path": "agent/tests/test_conversation_data_analysis.py",
+      "sha256": "d77b98478da38473a8165bbc92a0ec72afca13589c7fdc4a79be9b0dd72e6300"
+    },
+    {
+      "path": "agent/tests/test_conversation_dataloop_e2e.py",
+      "sha256": "630a52f1485b0db90bbaa74d7213a2c47eb9073acf817faf20827b1314d7085c"
+    },
+    {
+      "path": "agent/tests/test_conversation_dataloop_hook.py",
+      "sha256": "7692f5431fd5061b8eeeec22722a160074dc6b849dec5f6980f0683e8efc6d2d"
+    },
+    {
+      "path": "agent/tests/test_conversation_deletion.py",
+      "sha256": "ee0008d38647c9c2ed11bb923bcaa592dc6ec553a1271ad8dffc03f191650fbe"
+    },
+    {
+      "path": "agent/tests/test_conversation_e2e.py",
+      "sha256": "2aa8992c151d0b00c8a63e4e1a1a54d4f23ea548b2ef62513f0afee36b38f1e2"
+    },
+    {
+      "path": "agent/tests/test_conversation_evaluation_seed.py",
+      "sha256": "3c58ee097606a0a6d7127e2ebb62ab2836c728fae7c788537af0fc16ea5bb0dc"
+    },
+    {
+      "path": "agent/tests/test_conversation_feedback_hook.py",
+      "sha256": "4f462e2bc708d6825043ba5f25042fd8237a80028a00d0421d7cf7e44f2707c3"
+    },
+    {
+      "path": "agent/tests/test_conversation_hooks_load.py",
+      "sha256": "644d692e670580a2f357bf59cd82676e4ed6c67e18dae7de4202e416d4e09ee4"
+    },
+    {
+      "path": "agent/tests/test_conversation_hot_news_e2e.py",
+      "sha256": "5b1b5b4da41e0f60b4f279e2d4b45714005c933ea68ce37d6cbfcf064a1b9e14"
+    },
+    {
+      "path": "agent/tests/test_conversation_hot_news_query.py",
+      "sha256": "87ac6bcd87eaa41495275a8d6331ed30763be4c53fd91b61fabdc037bcbad332"
+    },
+    {
+      "path": "agent/tests/test_conversation_inputs_migration.py",
+      "sha256": "af5fb32f79e556acd18ce82d97536136a0c9098d6819da36d6b243a02e3d9825"
+    },
+    {
+      "path": "agent/tests/test_conversation_inputs_postgres.py",
+      "sha256": "6a9e0fe619e2e5ed3c01daa7eedc7d4b531cc9d98714ab70e26d9866059b691a"
+    },
+    {
+      "path": "agent/tests/test_conversation_inputs.py",
+      "sha256": "ddecfa072605a12453140c79cd715d1b7dd8ebea7c226c86758714560c3d5d52"
+    },
+    {
+      "path": "agent/tests/test_conversation_load.py",
+      "sha256": "f0074a098040527845accf054fdcf945ca09d0c4ac62d396961413b88ddbdd2b"
+    },
+    {
+      "path": "agent/tests/test_conversation_memory_postgres.py",
+      "sha256": "6fc0451719f58e7e1e54afba2878a1382b6a5ffad4dc184d2e3e986d5315a0af"
+    },
+    {
+      "path": "agent/tests/test_conversation_memory_tools.py",
+      "sha256": "f31c82135414be1d669ba6fa33c94bea570840a534fe37ce6ad4c7e4e0d2d93e"
+    },
+    {
+      "path": "agent/tests/test_conversation_memory.py",
+      "sha256": "a464047cdd296aeb0a1600a009786245297bea784dbb25db54d74f5c1746f9b0"
+    },
+    {
+      "path": "agent/tests/test_conversation_postgres.py",
+      "sha256": "23d8237aa65efa502d4c3f3bacfb9fc9928d3db6392f625a832eb0b9d4b299ee"
+    },
+    {
+      "path": "agent/tests/test_conversation_query_resolution.py",
+      "sha256": "0a295ae757b29d11ad1aefa28bbb26766d906052cf4ceb78c6118ebaad913206"
+    },
+    {
+      "path": "agent/tests/test_conversation_receipt_reads.py",
+      "sha256": "30f50ad1dcb61f9a8803fd492b0094a74d451e631ef60286129a69ed3973dca6"
+    },
+    {
+      "path": "agent/tests/test_conversation_receipts.py",
+      "sha256": "4d0781d1e599e2a86e280908475ce6e7eca2a3e94bbc421bb916816a6fabf392"
+    },
+    {
+      "path": "agent/tests/test_conversation_related_news.py",
+      "sha256": "9a770f80b9cd1bf67fcab5f79092db1343e17f921256e8071a9915447876ae94"
+    },
+    {
+      "path": "agent/tests/test_conversation_security.py",
+      "sha256": "10a939dfca058cc3566422835ec7da515fb253afbe20542c3afc465ce497fdd4"
+    },
+    {
+      "path": "agent/tests/test_conversation_store.py",
+      "sha256": "5c7bed3e8f046bd64b657c1e5693e9c9f38b6bed001392e4594e3c0ddfa66e70"
+    },
+    {
+      "path": "agent/tests/test_conversation_stream_e2e.py",
+      "sha256": "a852022cce44042afd725c1cee41ecb7f24efd256435625fb4e571e3f00a3cb3"
+    },
+    {
+      "path": "agent/tests/test_conversation_stream.py",
+      "sha256": "d911f77fcbc2a6e12a5fe89de47168e36b64b587ce8ce1b43ba07d63df72d2df"
+    },
+    {
+      "path": "agent/tests/test_conversation_tool_checkpoints.py",
+      "sha256": "6b5a6858247906737cbc35bad834706b94ffe61d011993203007f039fe812401"
+    },
+    {
+      "path": "agent/tests/test_conversation_tools_writing.py",
+      "sha256": "d900745ad94408bede9bde9ab29a0f127aac86e68a73c1fc21128a7288c0f557"
+    },
+    {
+      "path": "agent/tests/test_conversation_writing_commands.py",
+      "sha256": "cd6eada4805f6c5274251734b88996bdaa482e3b17429b3da9a867bbf441ef67"
+    },
+    {
+      "path": "agent/tests/test_conversation_writing_confirm.py",
+      "sha256": "b695c0d7cf300ff4af6e3caa0f110986a962542be3e479c15f2400e0589b8296"
+    },
+    {
+      "path": "agent/tests/test_conversation_writing_e2e.py",
+      "sha256": "15be44cd02190d7dd4a25f3676b651093dc28d267e5bb190b29ee47599ebdc33"
+    },
+    {
+      "path": "agent/tests/test_conversation_writing_stream.py",
+      "sha256": "d0f7d0145e7a1615f7860b0c354e1149c05313b0484da2c46e89dc49cd4424ec"
+    },
+    {
+      "path": "agent/tests/test_corpus_profiles.py",
+      "sha256": "d4744d1be7671d5c18b5874f55b4200b673bdc5f24d00d0d3a84936716d70693"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_comparison.py",
+      "sha256": "fcbc2b0fcee525413532731cad1b6d2a1a4206c41fb13f8cad4393dae1f50c8c"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_demo.py",
+      "sha256": "c3e8ba8261fa6cb904a8132014a3fa571b493b14786bf1b14ab66e8b4f30596b"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_engine.py",
+      "sha256": "cf8e17740b1dd96bf7a7646cf6262d9d856b2b1b598a4ead2b2d0d4dd20ed509"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_output_integrity.py",
+      "sha256": "1c317f6a0ffc2e12ec5157e6f837e6cd83f423153f26cb9fa89ca726125a09bb"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_remote.py",
+      "sha256": "c77834fdeb9212361dde3403205cb1d8f8f4a76a434dea5987b0ab96ea6eba57"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_runner.py",
+      "sha256": "c239c37fc9d81988bd0c9900f81b7069996707367d98f5621a0d14b2d41857cc"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_service_docker.py",
+      "sha256": "2be9ad1a78a1ac1dcd0ba2cbd69ed458580888006b1ffb0b9dc8da90eec85b84"
+    },
+    {
+      "path": "agent/tests/test_data_analysis_service.py",
+      "sha256": "5ecf835b5ccd833f25a071028ee1798fa9ef67780b9071e5d8e46bc34c2a14da"
+    },
+    {
+      "path": "agent/tests/test_data_loop_activity_retries.py",
+      "sha256": "03b9f55bd0e5190ffd0a778b779062a408292cd20e06e8f5118ca14ddd53c1a4"
+    },
+    {
+      "path": "agent/tests/test_data_loop_analysis_integration.py",
+      "sha256": "aee945b4a2e0d90b92422da1d9cb69ad23a00dd8a7b330b6bcba4027a543691e"
+    },
+    {
+      "path": "agent/tests/test_data_loop_analysis_replay.py",
+      "sha256": "23639fd59919d3165a736ddf37d33c397b4c2a13419d2ce36f2b06689a89cf2e"
+    },
+    {
+      "path": "agent/tests/test_data_loop_api.py",
+      "sha256": "0416957ae66ebfdcbd3a96ee9c5d46ae864d5e700286fc166a31075a0b551eaa"
+    },
+    {
+      "path": "agent/tests/test_data_loop_artifact_store.py",
+      "sha256": "2d6858d7be8b5f826abf4e9e202ed081e789c4d01f28aee79b54b9e98a715364"
+    },
+    {
+      "path": "agent/tests/test_data_loop_dataset_analysis.py",
+      "sha256": "6ff5952d214a662585f989e0bc87f27b68f740735af59e601056f47762f5ba90"
+    },
+    {
+      "path": "agent/tests/test_data_loop_integrity_migration.py",
+      "sha256": "c1cca7f1f880706ae7379b5c83e01418d2e99af332ab51fdec5a7c8ff9a88515"
+    },
+    {
+      "path": "agent/tests/test_data_loop_management_api.py",
+      "sha256": "4b658f42d2bfca01b74f551e41d7230f338d980960e454f21c524dc4e1cc5484"
+    },
+    {
+      "path": "agent/tests/test_data_loop_orchestrator.py",
+      "sha256": "722ca446658c6cd8d47f8d5af2c89fbbf1cbcac7774071737b44308176c07680"
+    },
+    {
+      "path": "agent/tests/test_data_loop_step_handler.py",
+      "sha256": "d90c70f3e88e93b2c0ca76d8ad7062f62fa5e4b379722fc877bfc7c31031e4b8"
+    },
+    {
+      "path": "agent/tests/test_data_loop_time_skipping.py",
+      "sha256": "f69fdd23bba01cb74818a0841ece8b8882b0fce70fee46d1be90fd28d706f7f8"
+    },
+    {
+      "path": "agent/tests/test_data_loop_worker.py",
+      "sha256": "b1dd2df32f6313aa0998137075bb1b77bea45738c08973e23a57fafb0aec6e98"
+    },
+    {
+      "path": "agent/tests/test_data_loop_workflow.py",
+      "sha256": "303b4eaab409ee7de8fa23d96db02e0889a27eabef49a775f7facd2278e4fcff"
+    },
+    {
+      "path": "agent/tests/test_data_writing_august_sample.py",
+      "sha256": "60a78499245d3d61876417a31078fb85c157b9c4f2f31cca3b17cb45ea08d5a6"
+    },
+    {
+      "path": "agent/tests/test_data_writing_dataset.py",
+      "sha256": "8a4750cccc34ea7d442969bcd7aa44b630ed875d29d577390b15d39dcce37f08"
+    },
+    {
+      "path": "agent/tests/test_dataset_freezer.py",
+      "sha256": "33bed3fb65a2aea806fe14bd7e0ea84126ccfe80e8271c5541c159a5a7247dff"
+    },
+    {
+      "path": "agent/tests/test_dynamic_feed.py",
+      "sha256": "64aa7f2357376a95e4ef6174b2ad3a93c2bd70fdc084573e5c32c82e25a5384f"
+    },
+    {
+      "path": "agent/tests/test_enterprise_analysis_contracts.py",
+      "sha256": "02e7ddc626e99b3ca72e93ac66e29bbb1c3999ac2d489875884082b6cfb66965"
+    },
+    {
+      "path": "agent/tests/test_enterprise_demo_http.py",
+      "sha256": "5578c037ca629fd3fb5e779f35d758d418daaea94abd56db5037f86952825223"
+    },
+    {
+      "path": "agent/tests/test_enterprise_hot_news_adapters.py",
+      "sha256": "f8ad330cc2ae7cd2c37f1ca0201c25f56c8be8f4c904364f89c82b953056066e"
+    },
+    {
+      "path": "agent/tests/test_error_attribution_agent.py",
+      "sha256": "0b5281a80e3b20ed53740d779a4b139e6e4576248f39d633f4fd70afe2142507"
+    },
+    {
+      "path": "agent/tests/test_evaluation_dataset_artifact_store.py",
+      "sha256": "f0c65b210cdb747f05f3dbb2c98a13203b3dd909d5c54b91a087a62abf73c020"
+    },
+    {
+      "path": "agent/tests/test_evaluation_dataset_schema.py",
+      "sha256": "e29fbc20b11f2592b3ac2eda6b7b8f4ed2d9cae2bc436ee25895d7485fa4d011"
+    },
+    {
+      "path": "agent/tests/test_evaluation_gate.py",
+      "sha256": "479fd1c58f5ba51f0ef4571b6d6c3c35b6fcaa5c37eb92c753fb7d734856bb0f"
+    },
+    {
+      "path": "agent/tests/test_event_publisher.py",
+      "sha256": "58ac042401be4ac3d2fe9ed5810814681ff5e080d4326f224842baeffaac18fe"
+    },
+    {
+      "path": "agent/tests/test_event_reader.py",
+      "sha256": "a90ce8a008322df2389af788765be0d0b2082e20d51f67bb105c07c4541fa8d7"
+    },
+    {
+      "path": "agent/tests/test_execution_service.py",
+      "sha256": "74d98c4ae3151d7a112f297437f7f82a4f8772993c47ca9f692ee0c1ff1ffae5"
+    },
+    {
+      "path": "agent/tests/test_feedback_collector.py",
+      "sha256": "d733b01fbb44a0372703f2d849f04414c27f9f745c0ed52e396247545d8bfda3"
+    },
+    {
+      "path": "agent/tests/test_finqa_runner.py",
+      "sha256": "d002f4d7b815ca89731f0d3292b5ea3e50d464a8c3ae01a63ce2a34ba1744bdc"
+    },
+    {
+      "path": "agent/tests/test_governance_load.py",
+      "sha256": "d6cf47e1b5037ebe73b0da8328808a018d92b20f3c1cf44bbefd983eb386b8b8"
+    },
+    {
+      "path": "agent/tests/test_health.py",
+      "sha256": "acbe8b6d4a707a39467f023577bf05e05871957d707a15d5dafbf3800045e46a"
+    },
+    {
+      "path": "agent/tests/test_hot_event_lifecycle.py",
+      "sha256": "39a854dfcf6c1787095eb71eae78b3a9d645377efd1318e11a15c6f6d967350c"
+    },
+    {
+      "path": "agent/tests/test_hot_news_activity.py",
+      "sha256": "78379f31e363c97257974809e69fb7476250c17178c7bc62b44c317b6f626c44"
+    },
+    {
+      "path": "agent/tests/test_hot_news_agent_module.py",
+      "sha256": "db7cff365a557b79ccc84d34e4a423edf0cae6c3bd4ea3924a15c8eacc1be867"
+    },
+    {
+      "path": "agent/tests/test_hot_news_analysis_attempt.py",
+      "sha256": "d378b7c92420297b32ccd6103ac979f078d77a8d53b9fcc514951135b32ae7ff"
+    },
+    {
+      "path": "agent/tests/test_hot_news_analysis_batch.py",
+      "sha256": "a22c23c4a2d7012f029c03e0f4960361237e189ed3d8a2f0f6d27d0874153009"
+    },
+    {
+      "path": "agent/tests/test_hot_news_api.py",
+      "sha256": "2e92085db2f1090d806a1bf6e927b00081c4e740fbb368cd72b98de783037cd3"
+    },
+    {
+      "path": "agent/tests/test_hot_news_decision_service.py",
+      "sha256": "bb43095d5f9211adbc6c4856c345d6421344e3386670c8c46f9f6ffceb2749b0"
+    },
+    {
+      "path": "agent/tests/test_hot_news_demo.py",
+      "sha256": "7b94d73e970d883db3ba803e7400adf6ad43b782e5433886a1fc3b30e57bcf5a"
+    },
+    {
+      "path": "agent/tests/test_hot_news_dialogue_eval.py",
+      "sha256": "abcaf185f730ddad4fb3991cbc175e864fc2d3589545e800bcec5ea72713d33f"
+    },
+    {
+      "path": "agent/tests/test_hot_news_enrichment.py",
+      "sha256": "2640f2724bf7564ee46e7f071c06744777c8af188db4296e283bd666f3f1ef77"
+    },
+    {
+      "path": "agent/tests/test_hot_news_evaluation.py",
+      "sha256": "e03c72600765846ebdd3d9c150fa78624bf404d32459a743859adc4162d89565"
+    },
+    {
+      "path": "agent/tests/test_hot_news_event_stream.py",
+      "sha256": "9909b728b3bfc8f0ce0b7b1e451d48707d2d71b2fa22237425bff537bbfc2f63"
+    },
+    {
+      "path": "agent/tests/test_hot_news_fault_drill.py",
+      "sha256": "9d3cbf6734cc6156c1f6abed26209378542a10127fc31909a260bcde74e78e8a"
+    },
+    {
+      "path": "agent/tests/test_hot_news_feedback_boundary.py",
+      "sha256": "88bdf30c3db8cf17ad2cb63b449a562fcd3dca6bb4f79b40cafe93f5078542c7"
+    },
+    {
+      "path": "agent/tests/test_hot_news_orchestration.py",
+      "sha256": "d1198e9bcced080fb5b57d0186d4649c4c47c1a53264a2473fc2f4df49a54a59"
+    },
+    {
+      "path": "agent/tests/test_hot_news_query_diagnostics.py",
+      "sha256": "6515a5aacae3cb56bd1ca057b4d75811a5293f4df71237a8bac08eaa32bad447"
+    },
+    {
+      "path": "agent/tests/test_hot_news_query_windows.py",
+      "sha256": "ceb7bee8193e539758115e02534a39c67753a6207ffe686f36ea4eacfd172e70"
+    },
+    {
+      "path": "agent/tests/test_hot_news_run_identity.py",
+      "sha256": "9292057ce1d5f2c7562c97b08150923216acc6511ad6a0fe7653c132b138ef0c"
+    },
+    {
+      "path": "agent/tests/test_hot_news_schedule.py",
+      "sha256": "f0c809dddef762407e1abe2a40387af04c404e90c2cc4c93c023bb83dc1d71ff"
+    },
+    {
+      "path": "agent/tests/test_hot_news_sql_binding.py",
+      "sha256": "cf4f743a769a972786e067d39b4b422bdfde47896b88b3436b88f3f992d33e11"
+    },
+    {
+      "path": "agent/tests/test_hot_news_workflow.py",
+      "sha256": "5adb6b7ffc9fd744e2270637803dfef5c1966090f0c2094a26f02ce65831eda3"
+    },
+    {
+      "path": "agent/tests/test_hot_news_writing_handoff.py",
+      "sha256": "280a9da923a186ecb1cd765ff99c33fd722462465b56cb8e7fefb39eef657d8f"
+    },
+    {
+      "path": "agent/tests/test_hot_score.py",
+      "sha256": "30a67205199187487166f83a7f9241a8510f4ffc328cc8c4035159204afb0e89"
+    },
+    {
+      "path": "agent/tests/test_hunyuan_video_adapter.py",
+      "sha256": "9fe5a7dde8a977c5398dfc9b7f0e89238e77f334ebc7290134b883b41ab8731a"
+    },
+    {
+      "path": "agent/tests/test_import_news_cache.py",
+      "sha256": "3a03d222702428a675d9fac0823e466b98c4ebd670b74bee8aaf5283d1271c52"
+    },
+    {
+      "path": "agent/tests/test_incremental_news_index.py",
+      "sha256": "d6523e63e919df9e4f54281bc1faa7f909565494d23f2d9bcee12a84e47a9d43"
+    },
+    {
+      "path": "agent/tests/test_index_tokenization_audit.py",
+      "sha256": "8db8dcd0f7fb733b2dd60e983067e2e9e1e7de92000f00a3431cd21db89cba12"
+    },
+    {
+      "path": "agent/tests/test_inventory_expansion.py",
+      "sha256": "7bc6ed0f7c4a67eb6a911047a0ab4882daef4be83e18dae877f237f5b8bf01e1"
+    },
+    {
+      "path": "agent/tests/test_job_service.py",
+      "sha256": "b9635bb3879d4dd4d8e3f2cb6d6a33d4e06bb7157dcfb6dad3f1bdf2143d6944"
+    },
+    {
+      "path": "agent/tests/test_job_state.py",
+      "sha256": "bf34c7229a6c1e86d560b7c2c9dcf16b8681dea5e43bb392ee536f83e0fae6a4"
+    },
+    {
+      "path": "agent/tests/test_jobs_api.py",
+      "sha256": "32b0ce2a4866fbb24c71465f141ab3d4088a1064f8fa1658c8647e773a002089"
+    },
+    {
+      "path": "agent/tests/test_k8s_deployment.py",
+      "sha256": "930af8e245d108306bbc8555dd270d230c1376b4d530bc6e35518eeb231e5019"
+    },
+    {
+      "path": "agent/tests/test_knowledge_embedding_dimensions.py",
+      "sha256": "9c0ff7ff98d970976611885816de55780e4050c2ec0ec22e1199197fbe0f4a31"
+    },
+    {
+      "path": "agent/tests/test_lifecycle_news_content.py",
+      "sha256": "1d077920971527276acb11ad35c2fa2b582099a68d79b7f4d1c05b630e3e6f87"
+    },
+    {
+      "path": "agent/tests/test_local_simulation.py",
+      "sha256": "939c3db03320aba10aa9fe4a0c710bc9b7a65726199713ead7ae87ac7caa5b3a"
+    },
+    {
+      "path": "agent/tests/test_local_whisper_transcriber.py",
+      "sha256": "4bedb052ee523de265640a5afc3defae912b71167fc4018b855ac71fa04f9044"
+    },
+    {
+      "path": "agent/tests/test_memory_api.py",
+      "sha256": "6dd5dd30eff72c5b2cdadc5a27a6001820bcd386c4a954d5e76938bc2beb75f9"
+    },
+    {
+      "path": "agent/tests/test_memory_aware_hot_news_analysis.py",
+      "sha256": "2247518e430ea36c472c0d4241ea02bd148e8ba04cb021100ff484d11f4396fd"
+    },
+    {
+      "path": "agent/tests/test_memory_context_application.py",
+      "sha256": "a3cd88b2b5055d60cf24da0d903176b1307645f9871f4aea31b84daed6a2adbc"
+    },
+    {
+      "path": "agent/tests/test_memory_context.py",
+      "sha256": "60e1c0a3839ff616065dbf23f3d3c8ac4970a46603c32c8855c9274fff490172"
+    },
+    {
+      "path": "agent/tests/test_memory_promotion_application.py",
+      "sha256": "24da1ceb2d7b070b264c70fa950a6ba2c94d87d3cff1fc3b0ba64a195a3acdf4"
+    },
+    {
+      "path": "agent/tests/test_memory_promotion.py",
+      "sha256": "bc731a9b0d9f1563a272ebae4eebd36962137c2583e58bc67de678e70f3fe3b9"
+    },
+    {
+      "path": "agent/tests/test_memory_prompt.py",
+      "sha256": "cb3199782c8f9ac4ae42e0c1e27983323f4c0b607877f75b96c8323bbbb2b9fb"
+    },
+    {
+      "path": "agent/tests/test_memory_write_application.py",
+      "sha256": "ebd8035402f963897344f95b579bb6c12914ec992ecd00ab749115a51009e06f"
+    },
+    {
+      "path": "agent/tests/test_metric_sql_contract.py",
+      "sha256": "73b3fa0c45e05b49e237d6d6bcbe5963bf8cf6baa6510936b067f104d4a34abd"
+    },
+    {
+      "path": "agent/tests/test_milvus_lifecycle_live.py",
+      "sha256": "612709b2fb33fd0ef0affe9b03337e44a3a59810ba2f585e8d6fa65f1c2a1e1e"
+    },
+    {
+      "path": "agent/tests/test_milvus_lifecycle_preflight.py",
+      "sha256": "3d4a217e48c901866dad0b8562e717bd43a6471855c8c929818c74fa3500eec3"
+    },
+    {
+      "path": "agent/tests/test_milvus_rpc_budget.py",
+      "sha256": "266f841db7a6645a982ded7dceac4e8901d298077a02e7187c4a7720695e540e"
+    },
+    {
+      "path": "agent/tests/test_milvus_search_config.py",
+      "sha256": "7c56847f99b7a9c8d938aa5ed54a69960f787e807b6ab30825c7cea0866763ac"
+    },
+    {
+      "path": "agent/tests/test_milvus_search_live.py",
+      "sha256": "1334926217ae98d6144d80ca00961bd88a538294f6e77d66145be2d24cf2a3e2"
+    },
+    {
+      "path": "agent/tests/test_milvus_vector_index.py",
+      "sha256": "81410076369414241ba56d36ee54bccc7ba90b06263be08d78f9082db019a9e6"
+    },
+    {
+      "path": "agent/tests/test_mock_cms.py",
+      "sha256": "cedd7f6a96f31490ada41408926e5c0e93d2e64a43842aee8819742bac60b358"
+    },
+    {
+      "path": "agent/tests/test_model_governance.py",
+      "sha256": "1a8fffdaec4420e4058808fa39a2fd62d3ef754fe03fec5ae5942e5e66c658d7"
+    },
+    {
+      "path": "agent/tests/test_model_input_budget.py",
+      "sha256": "93a1a9418125f43b2f5b192f3d2a1b7b7e409bc5c837eae52846e66ecbbc06f9"
+    },
+    {
+      "path": "agent/tests/test_model_observability.py",
+      "sha256": "69a4ede23827d756b6a96445516cea8362a64ba4ffe50f909b6b7844d80e4ff4"
+    },
+    {
+      "path": "agent/tests/test_model_runtime_config_and_http.py",
+      "sha256": "fad9f06573bd059a5dd712aa6176bd8359a6466c2dbc37d312b03199b98a5335"
+    },
+    {
+      "path": "agent/tests/test_model_runtime_core.py",
+      "sha256": "638b93c2bd5c536eda70af87ac863cd78f9cc5a07180557d92701caccaa2657e"
+    },
+    {
+      "path": "agent/tests/test_models.py",
+      "sha256": "5fdd4d3113684247883c21930abdde2b42294696a5c346d848ff7f6c58f55e06"
+    },
+    {
+      "path": "agent/tests/test_native_hot_news_runtime.py",
+      "sha256": "44a4911bce539ae39ee5ea9e9ff04b3fd3416cbfe275ad5845b784649a4e4c28"
+    },
+    {
+      "path": "agent/tests/test_native_hot_news_sql_scaled.py",
+      "sha256": "a34e27b6591e09ad10899d263175ee0d37ff60029545c62e97159fb4fa67fb59"
+    },
+    {
+      "path": "agent/tests/test_native_hot_news_sql_support.py",
+      "sha256": "37a771cbce35a3cc67f525a0c7faf7078ea387b220a58dfc7cbf2c65a975f302"
+    },
+    {
+      "path": "agent/tests/test_native_knowledge_indexing.py",
+      "sha256": "c5deedb8d716b382c667b38abf31a561b4de38faa5f1a9e3ca06f3f22238ee7e"
+    },
+    {
+      "path": "agent/tests/test_native_writing_chain.py",
+      "sha256": "827e9979ca437fb9ecf4872af2ae246950d64b1c48b9f842f45ac959382a156d"
+    },
+    {
+      "path": "agent/tests/test_news_board_admission.py",
+      "sha256": "76ff3f054beb6e52b2f89426a4a77efe90d0a4dee4664974fa9757d8fd3aad7a"
+    },
+    {
+      "path": "agent/tests/test_news_content_repository.py",
+      "sha256": "efeffcde044baf9d17e58ac16e817d18ded983ea214089258ebb9e60ddadfdd5"
+    },
+    {
+      "path": "agent/tests/test_news_metric_calculator.py",
+      "sha256": "d565cb2800a79a2c1276dbcc3ade84af28b8ddab3120b243dd59d02dbcd86c66"
+    },
+    {
+      "path": "agent/tests/test_news_recall_cli.py",
+      "sha256": "cc90cb331621069d1d9063083effdccee45c91cd61ed20f13e6c659b8a103c48"
+    },
+    {
+      "path": "agent/tests/test_news_retention.py",
+      "sha256": "adad8694280336659899e4bf359129aa1d9d24dae3fe256d43e7dd00f1a58d45"
+    },
+    {
+      "path": "agent/tests/test_news_step_handler.py",
+      "sha256": "84700b7918ec8c90551fd61c0f3053b278766be9f7224a7dbc701d43b6d3df83"
+    },
+    {
+      "path": "agent/tests/test_observability_business.py",
+      "sha256": "43246d4ac1fcd1a55aefec55a30e2257df62fc5018283db4eb96afdcafd9d0ff"
+    },
+    {
+      "path": "agent/tests/test_observability_chain.py",
+      "sha256": "23623476fcab3672a2a020f3d2fb0cc9264755ec738be691eaa69d1f1b75b38b"
+    },
+    {
+      "path": "agent/tests/test_observability_deploy.py",
+      "sha256": "c5ef0fb1d64e441f1f97624eda0379945d5a255e5e7a8133d3b831ae6d0bbbcc"
+    },
+    {
+      "path": "agent/tests/test_observability_telemetry.py",
+      "sha256": "0b75a267f2f42d0abce3f46758c1580d5576fe0c274fbc4b1a8ff40cc2b488c8"
+    },
+    {
+      "path": "agent/tests/test_observability_temporal_e2e.py",
+      "sha256": "f6742e0481260b6868a0eb20f74f20be4ba4c057d339670cc154784cf401d6b4"
+    },
+    {
+      "path": "agent/tests/test_offline_replay.py",
+      "sha256": "7b0b832dff01da716c0718cc6aa59b6246ff8b7f5e893e269665952c574e247d"
+    },
+    {
+      "path": "agent/tests/test_operations_evolution.py",
+      "sha256": "c09dcf0c7eb782678fdd8b4b2db894767900c63d1e9bdd0cc86eaf5a29565b06"
+    },
+    {
+      "path": "agent/tests/test_operations_feedback_migration.py",
+      "sha256": "acf899c72824f78d7abc2af7fed2078f47a723dc517b77111034f80559badb2c"
+    },
+    {
+      "path": "agent/tests/test_operations_feedback.py",
+      "sha256": "2ba7a9577330f935ca3c4f60e6b5f070cfc06b5f1e63e727a145439e7fca86ff"
+    },
+    {
+      "path": "agent/tests/test_operations_research.py",
+      "sha256": "0b6cfda34c04ef7bc459fb6c6585f64777a05dcfc74577dc9495104ec068cc6e"
+    },
+    {
+      "path": "agent/tests/test_operations_synthetic.py",
+      "sha256": "f87563fe5a84f570c66b567eb84a51e2d75a87a8b66f02a672c5d6d455e40017"
+    },
+    {
+      "path": "agent/tests/test_orchestrator_service.py",
+      "sha256": "f7d314ffab3d67df2a97475bfe434b7656b5cc5305d7ce45a6944d92603b9eca"
+    },
+    {
+      "path": "agent/tests/test_outbox.py",
+      "sha256": "40afa1c34f95b1a1ea5772784a90a8953ac15412c3b45ae5acceec306cec56fa"
+    },
+    {
+      "path": "agent/tests/test_production_bundle_application.py",
+      "sha256": "f2c7a3a22d005689affc4f2a7ff928e90eff496740f5b8d00b1664c76ee568b9"
+    },
+    {
+      "path": "agent/tests/test_production_bundle.py",
+      "sha256": "d73ada10cff22397cb9a62a4ab17a1a40ce942ed8cd82a9aeeca5a943b376a80"
+    },
+    {
+      "path": "agent/tests/test_progress.py",
+      "sha256": "d079a6ed98efc19c70b2cf07b102debf1e8ee0ead09fdb6d50a5af5b7a9f5a6a"
+    },
+    {
+      "path": "agent/tests/test_prompt_injection_harness.py",
+      "sha256": "054c7ecfaa3910a3d6e895d3ca070ea126035a81797762eb81b2db82715d56ec"
+    },
+    {
+      "path": "agent/tests/test_public_headlines.py",
+      "sha256": "1d580e8a39715e04109e3c6af1c2eace4fdc893c8ef501f41ad308439f533035"
+    },
+    {
+      "path": "agent/tests/test_public_news_stream.py",
+      "sha256": "553e54e19cb9522ea207b5ba12f0ff26b3bea5367d73ac9f801b48a95cf93b0b"
+    },
+    {
+      "path": "agent/tests/test_publication_outcome_feedback.py",
+      "sha256": "35e4ee06cac0e07910c04d3d456bd9881e223062e9ff2a94d5ddf476ab8f1b49"
+    },
+    {
+      "path": "agent/tests/test_push_policy.py",
+      "sha256": "2c9c4bb5d70af58c337e60019433dde9fedad076c054a253740b78a63bfc2cb0"
+    },
+    {
+      "path": "agent/tests/test_push_strategy.py",
+      "sha256": "14c17568883cb81768b021cf3fd52628bfb367a8beab479a793de4cb4f1a380a"
+    },
+    {
+      "path": "agent/tests/test_query_presentation.py",
+      "sha256": "d7752b20ebfe54a1f1b6f09b4928d2d738ea363955840067e612a7a233013020"
+    },
+    {
+      "path": "agent/tests/test_query_semantics_local.py",
+      "sha256": "f4d6d6d7045d67421f174a067a81ac9e42e207dd85e9ec27590d35ebeef1ee50"
+    },
+    {
+      "path": "agent/tests/test_query_semantics_preparation.py",
+      "sha256": "5e0706b76246af21d5ccf49b1b8039ce750bb5b89b960abf026b3111ab72ff26"
+    },
+    {
+      "path": "agent/tests/test_query_semantics_runner.py",
+      "sha256": "a6baf703d989fc039d52860dddeb64394fd8c9153182ea34c3a9baf7a60604a8"
+    },
+    {
+      "path": "agent/tests/test_query_semantics_scoring.py",
+      "sha256": "08a8b167b774169b2bce2d85158180f41ef680d806d8491cec7a47c262428988"
+    },
+    {
+      "path": "agent/tests/test_query_semantics_seed.py",
+      "sha256": "612bcc26e15b244cf66ece03e8613f9ea5516b871b51165018d3a61ecca346e5"
+    },
+    {
+      "path": "agent/tests/test_query_time.py",
+      "sha256": "120449252cd8be0a5e56ac91b1f7d787d77d7f2f36864db97adee944deda82a5"
+    },
+    {
+      "path": "agent/tests/test_query_understanding_integration.py",
+      "sha256": "7f0b72a759a8e6e84f7461fac0462d6420afde0d783ef20685421f78c4651bd9"
+    },
+    {
+      "path": "agent/tests/test_query_understanding_prompt_v2.py",
+      "sha256": "53c71913e998559df5f6f381ba93636fbb0a9b8bb2a4f990798b41dc0bd4339b"
+    },
+    {
+      "path": "agent/tests/test_query_understanding_runtime.py",
+      "sha256": "ac6d84a88323ec611728f207ce06b0c3f92b2c23442e21aa721190b2cc10e620"
+    },
+    {
+      "path": "agent/tests/test_query_understanding.py",
+      "sha256": "7471203a789546870a056406f3b809889e5f03f6e7536cf93a083f1a05545bc6"
+    },
+    {
+      "path": "agent/tests/test_ranking.py",
+      "sha256": "de944d9642ff889c7b0fe670552dfa00bbfb93f23fcd8717a8f46e7574698c4b"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_api_factory.py",
+      "sha256": "104647a20722bdafe64db275e8beb010be71692946d425d8cb76577af4339a0c"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_build.py",
+      "sha256": "7a36deac2febf826aa917eb7ba2acc09bc9c6b7e3614a1b65521b36c294b293d"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_client_service.py",
+      "sha256": "e2b75ed7ea4bcedac1ecf5e1b23be3c8acd54c4a40e69b37078d8206e2749c91"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_contracts.py",
+      "sha256": "7952a4ab92b7ce5e680e2f24b16104b3a31ac5f670d3dfd33dff0b4e519566e2"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_hot_news_integration.py",
+      "sha256": "d852bd60a2a2affab07a17fdc260ac07b86365c632632e40c9bd582c5e60ddae"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_local.py",
+      "sha256": "c23a81487d5fa934960aec66d21a1deb95aaf1cbf7348513091b14f058b39a08"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_runtime_assets.py",
+      "sha256": "707378f0256e117ae8d85c0ed40faae6befbbd61fd2a5448b4032a0af2dc5605"
+    },
+    {
+      "path": "agent/tests/test_reader_profile_warehouse.py",
+      "sha256": "4a540d4aefaef1f7f6ae57eaa0f0353e12878ae6e6b90918044c3cd1c3487ab0"
+    },
+    {
+      "path": "agent/tests/test_real_news_demo_deploy.py",
+      "sha256": "2d8d1bb3e73a0d2bb773b8db9408bdca68fa5e1ea03d6e810c1e396ba14d16e8"
+    },
+    {
+      "path": "agent/tests/test_real_news_profiles.py",
+      "sha256": "387dbf498b14d67fa85225463e657f662da537d4d481d8b0a12d5520e1056f45"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_catalog.py",
+      "sha256": "85de8541f9a14a6946f35ea2e33ec2173400b22ea921f5bb41e8b16f13f7e92e"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_deploy.py",
+      "sha256": "2fa4c4cd12490ee2f7216441f4a444f9090e6abd9a606bc9fb47039c8a6f6898"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_extension.py",
+      "sha256": "09c0071a5cdf4adf0568bb172043ae320cadce89aa61b6cddba4347e30f7b868"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_package.py",
+      "sha256": "c2b800a5c35e70bdfcacdd9d01bd0ffde8fd99d32a023414f5a7b00189cbd8a1"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_queries.py",
+      "sha256": "0138b08dcce20a965cb3b7c613d4f4be1ff0fdb0fa65e58d4edc88f6ed52f463"
+    },
+    {
+      "path": "agent/tests/test_real_news_warehouse_simulation.py",
+      "sha256": "500b1bae5f96f3da63f635936c6b4d6c74d3c0e30f18573e654feed4a24e13c6"
+    },
+    {
+      "path": "agent/tests/test_real_news_wiring.py",
+      "sha256": "a58cb79ffc2e22e863345cdfba3724738a5a4d7672afcc13dc551ff18328f289"
+    },
+    {
+      "path": "agent/tests/test_recovery_service.py",
+      "sha256": "4c9abcfd2ab5fe5d6dcc083e79528623eecc45d360ee6962ab978b70ceef985f"
+    },
+    {
+      "path": "agent/tests/test_related_news_reranker.py",
+      "sha256": "17c33b74a30a08e2f56af1b0a61bddcd503c213b64b988644f1b9b1046e852ff"
+    },
+    {
+      "path": "agent/tests/test_report_pilot_cli.py",
+      "sha256": "ab36db61b3ced8823a6dcf06c40458501be23e8b87f7794e0bd40c2a8b19b5ec"
+    },
+    {
+      "path": "agent/tests/test_report_pilot_core.py",
+      "sha256": "15751f872f127b26f9e2f37bb9314917bca6230b9a1d7fabacae7ae4be70e84a"
+    },
+    {
+      "path": "agent/tests/test_report_pilot_preparation.py",
+      "sha256": "f88f04538493793533d0597b1ae5ba10aebe677b66bf07e2ce97d48923ac34f8"
+    },
+    {
+      "path": "agent/tests/test_report_pilot_scoring.py",
+      "sha256": "3c2452274f99486351c3c84e0af5b7c329febead28eb8c506bb5d15f99fc4a1a"
+    },
+    {
+      "path": "agent/tests/test_research_schema.py",
+      "sha256": "c5313dfa473bb81c54196cf8ace9839b5f6a36eae78b0a5f53ab587b5ad7ba39"
+    },
+    {
+      "path": "agent/tests/test_retrieval_judgment_scoring.py",
+      "sha256": "740e86c80d37cfaca14971c7ff52b884f92d78ba0524b00115c22efda948bbcb"
+    },
+    {
+      "path": "agent/tests/test_retrieval_judgments.py",
+      "sha256": "acb444aec8f8fe1620edcfc158a39166f63648020c74707e4d5510fa740982fa"
+    },
+    {
+      "path": "agent/tests/test_review_schema.py",
+      "sha256": "a0284cb6b2162409b2c32ab1d2acdedf51a3956180a5bf681305f6ee639191ff"
+    },
+    {
+      "path": "agent/tests/test_s3_artifact_store.py",
+      "sha256": "3c9f167708de65672aaf489caca9ae6c33c1bc17cc94bd083ba7947153a879cb"
+    },
+    {
+      "path": "agent/tests/test_scaled_demo_http.py",
+      "sha256": "379ceaade94ac37b6f3366c2d2bd3da24861847977bd6eea9ebd3c5a2d6853bd"
+    },
+    {
+      "path": "agent/tests/test_scaled_profiles.py",
+      "sha256": "0c19fcba622c07d996a73527bcdef2f54bf5105731d51437ada9058c96f94efb"
+    },
+    {
+      "path": "agent/tests/test_scaled_sql_identity.py",
+      "sha256": "a7f31bc730d42e3110f5f4368f6f01c5096b0b824396ce162b4efef525fb548a"
+    },
+    {
+      "path": "agent/tests/test_snapshot_fixture_content.py",
+      "sha256": "a0d7aaaf0021c56b63ada07afe7c01dae5f8f068a979886d1376a90468693f85"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_api.py",
+      "sha256": "5e9dfc479721b0f6a6a4c570588e171cef0d1eb3f356f40ae6a0299c7945a1eb"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_confirmed_intent.py",
+      "sha256": "c077f97d5e27613b8c5f9d6837aa1d8948c021393f92b065669f2e421ad6a5c2"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_e2e.py",
+      "sha256": "7b597fafe99c744311ebe340aca9ddd748b92b09284ad40e36f13192ed39a0ef"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_guard.py",
+      "sha256": "4046010c2b116748cacd8f7c7ac79565617732c6089922f996592c56b5b17d96"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_planner.py",
+      "sha256": "2fd8fafbc4570167efb9654d1994655434ae060554f2cd6a26c3e6117fc3432c"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_service.py",
+      "sha256": "a13eaa8768636b8ca177c90ab9efce3af129ea7ce34cd6d376e2862e06e77142"
+    },
+    {
+      "path": "agent/tests/test_sql_assistant_warehouse.py",
+      "sha256": "9056ea3342bc8d6411c7c7b515e17abce17cad76d5d82b9aa33c74bdaedfa0d8"
+    },
+    {
+      "path": "agent/tests/test_start_local_demo.py",
+      "sha256": "90b4d2adb4b98c6abbe07128cc71a78c42c54158274c25ae93a727537e0ad4b3"
+    },
+    {
+      "path": "agent/tests/test_streaming_backfill.py",
+      "sha256": "024e2fb87e5ec7a3d081bf0736df7dc04a6f166e231eca0dfbda02fe27bc288e"
+    },
+    {
+      "path": "agent/tests/test_streaming_dispatcher.py",
+      "sha256": "d7d6bf1351fb818dc5e4b9504d599272deb8e5624922eca473a14ab3feebd30b"
+    },
+    {
+      "path": "agent/tests/test_streaming_lab.py",
+      "sha256": "ab8981f38c2840147280362817ab5dcc5a0c1d14712be8c92e1d1751f73b9e86"
+    },
+    {
+      "path": "agent/tests/test_streaming_sql_retrieval.py",
+      "sha256": "eb210583f2cb9537a3e6539ebe3230e9308bb91f8acbbe712198439264afb3db"
+    },
+    {
+      "path": "agent/tests/test_structured_query_resolution.py",
+      "sha256": "26956ebfe83c1819352f01a8f25df2f68a2ffef4729c403b42edcc446142e4cb"
+    },
+    {
+      "path": "agent/tests/test_synthetic_profiles.py",
+      "sha256": "826f0bd5c8d63862ac17170db7c9d6c2749076ea5a60c600071e4d0fb645872e"
+    },
+    {
+      "path": "agent/tests/test_temporal_orchestration.py",
+      "sha256": "3aa4657f2e61cd86654842295a47c65492646cd7fc819d91c12dc0dfbce70245"
+    },
+    {
+      "path": "agent/tests/test_tencent_asr_adapter.py",
+      "sha256": "efa292782d211db036e5542d0028716d75c0ce0f8cef24e11fe292cb316ceb10"
+    },
+    {
+      "path": "agent/tests/test_tencent_content_bridge.py",
+      "sha256": "b0dcee253e428b0d9d6e57afebff57b3e224aa1a26c90e55a0273e14af7c7ad7"
+    },
+    {
+      "path": "agent/tests/test_tencent_news_warehouse_simulation.py",
+      "sha256": "138ea4f8f0d3c9d0dc44b0a751ecc18dfdc836958f913da02dcf49edd1ac4d5f"
+    },
+    {
+      "path": "agent/tests/test_text2sql_agent.py",
+      "sha256": "47d02d7d5121feeef28410a18d8f0a2e72012b73ac55c6219a1497dd72c681b9"
+    },
+    {
+      "path": "agent/tests/test_text2sql_guard.py",
+      "sha256": "ecc8afecbb69b64edc30693815f7117e01b5a9e21f168d896fb1ccbb8961d302"
+    },
+    {
+      "path": "agent/tests/test_text2sql_metric_source.py",
+      "sha256": "6effc9960a1a537ab26692baf0175cc946fffa0007ee882032fc7a897a033ec6"
+    },
+    {
+      "path": "agent/tests/test_text2sql_security_evaluation.py",
+      "sha256": "6b833827db51b6520be6858a256b4181cdacd1fea26f0b6d2f6720f68b67f747"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_config.py",
+      "sha256": "ebf65c7e1b95ea3b5f809b1ae78c6fea72a21bd4874e7140997097a6fa3cf2c2"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_index.py",
+      "sha256": "63968399abc4daecef16354e576f85c3b0226bb0e001ee69315d1430bf438dd9"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_migration.py",
+      "sha256": "bd512f0d436142948e626c1ba7b72705941a19f94040aef851eb515661f93d14"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_observability.py",
+      "sha256": "7d17c6a826723f5cbfd2fc86e6bf49c306d006e50a9f137d11626d598895baee"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_replay.py",
+      "sha256": "f45c23a53cbefa5e6e3f5adf4cd59fb6b78b90200c244ad0891369064dc91fed"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_runtime.py",
+      "sha256": "1430b6e0897d4b8e5616793652ed3e1014b76e45d3dec2edfac840f92e5f38b3"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_stability.py",
+      "sha256": "f55370e22fdbb083fed62a02d5e365aa3c7f1b7b6b4ee95c5f6924c62a3c00e2"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_store.py",
+      "sha256": "5e8f24c2b70fdc19ee6e65b5f492509a4ba61a34c42749c525ea3eb51268488b"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_vector_reuse.py",
+      "sha256": "30390b7bd9e5c3c29614af25689a555033c6b69f7caf9d79845c772ccb2a84af"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_wiring.py",
+      "sha256": "97e13342a382d308598c489693cf4cdb78904975f1c5151e18bab4c81772ce08"
+    },
+    {
+      "path": "agent/tests/test_tier_lifecycle_worker.py",
+      "sha256": "0477946198524335dd0719277c2f93976cc14d480b01a1973bab34c8ed01962f"
+    },
+    {
+      "path": "agent/tests/test_tiered_vector_retrieval.py",
+      "sha256": "b15b876605c2877b83984e266afb497aa33b71659d875728e15a05c63703e65c"
+    },
+    {
+      "path": "agent/tests/test_timeline_profiles.py",
+      "sha256": "93f8ae435c5fbbee8b75b07bf72be6092acefa1066d840c71ae728078fee4da6"
+    },
+    {
+      "path": "agent/tests/test_timeline_v5_profiles.py",
+      "sha256": "7a7faa0814ae230ee7099edcefd5af6e2197300977babd56c72f7427f39c61a4"
+    },
+    {
+      "path": "agent/tests/test_transitions.py",
+      "sha256": "3546a767295b1c70c855e2b8f2312b7ed9e00a47d087ef6797010907d82dd4d2"
+    },
+    {
+      "path": "agent/tests/test_unified_news_cli.py",
+      "sha256": "65bb954b57c73a8d26d76802cae29a7c712152d12b26534d58e9b5b59e4ea8d5"
+    },
+    {
+      "path": "agent/tests/test_unified_news_legacy_tags.py",
+      "sha256": "85c16fbece7cf590548a4481d98bd6dc133a026dfe57a8684f1024d32968c3a7"
+    },
+    {
+      "path": "agent/tests/test_unified_news_model.py",
+      "sha256": "424196c79d78747ec9df917240f772859e39771468f820262c9aec7e7f8d5123"
+    },
+    {
+      "path": "agent/tests/test_unified_news_package_io.py",
+      "sha256": "1a4703a1d90fe99b42abbcbae0c2eff552b487228a191dd1f55f981806c12624"
+    },
+    {
+      "path": "agent/tests/test_unified_news_store.py",
+      "sha256": "6660e7378b4feea4c398d15435d5695b3c7a9db242af75b3b971c2c53c78468c"
+    },
+    {
+      "path": "agent/tests/test_unified_news_tag_store.py",
+      "sha256": "9f64faf5b13e0ea8cc59636eb662483d34113a4c71da1ac71c7d91babb571eb3"
+    },
+    {
+      "path": "agent/tests/test_unified_news_topic_labels.py",
+      "sha256": "58fca457358b045374355750b49481aa72744b8d55bb0084367592d1c29d22b4"
+    },
+    {
+      "path": "agent/tests/test_user_memory_models.py",
+      "sha256": "ff866a3fb3eacca6b0722e002895257e8b7ed9ec598445d0016b4151848903b2"
+    },
+    {
+      "path": "agent/tests/test_user_memory_schema.py",
+      "sha256": "db8f18c8ff67604bde07b2d5416f5e80b7e05a85cd71178302d3d4d99b59a0a7"
+    },
+    {
+      "path": "agent/tests/test_verify_bulk_news_index.py",
+      "sha256": "505901b574196a52628573b462c852a1ba0518e59b06b656513ef89e42d04e0c"
+    },
+    {
+      "path": "agent/tests/test_video_knowledge_ingest.py",
+      "sha256": "e076df9ff621e266dca8249bb48e6ac3c149611bd4bbf1fdcd7922c3a86bd015"
+    },
+    {
+      "path": "agent/tests/test_video_textualization.py",
+      "sha256": "e30c88dca5e25d09a08b993cc89bceee0fe605776c7e2352a86ab598b2da7c45"
+    },
+    {
+      "path": "agent/tests/test_wallclock_readers.py",
+      "sha256": "8f14fd26060a79889950a4cccb4ebc63adf1a68b10fbb83bcc2f69315acde79b"
+    },
+    {
+      "path": "agent/tests/test_writing_gateway_permissions.py",
+      "sha256": "6187656e4598fd942e5616043fd1f7b55f4aec5bccc56545c3ccde9cc013b7a9"
+    },
+    {
+      "path": "agent/tests/test_writing_schema.py",
+      "sha256": "1a15b3788c1e92064305553caa3eda204238330d673b165cc66e493256a1e3c1"
+    },
+    {
+      "path": "agent/tests/e2e/__init__.py",
+      "sha256": "acbda235a8d38984dedf6eda153f4ec6a304aa45717fa42158be6b2bde775ed0"
+    },
+    {
+      "path": "agent/tests/e2e/test_data_loop_full_chain.py",
+      "sha256": "ac22a6d55b02832ac67d8b339bb65a12989b4cc6fea9eb0f2d7d2b13243ed675"
+    },
+    {
+      "path": "agent/tools/activate_structured_query_demo.py",
+      "sha256": "e4c049f01d4befb198b86a36a5197489477d2a3cc42f6c370d236d7cd95e9bae"
+    },
+    {
+      "path": "agent/tools/audit_index_tokenization.py",
+      "sha256": "06c8d7a7b6aadbf80d42ac08a4c9c181b1720e68c75b84728eebec1da05bb24e"
+    },
+    {
+      "path": "agent/tools/benchmark_tier_lifecycle.py",
+      "sha256": "f93177b1cd74aba1b19974b3c7d37e15ef494fc51f6dec7258cab112cd16096f"
+    },
+    {
+      "path": "agent/tools/build_incremental_news_index.py",
+      "sha256": "5148ecbbaccadfb63f61a5521658e3fcf7037bbdeaac287d594bfabb1c28b6bd"
+    },
+    {
+      "path": "agent/tools/check_analysis_data_contract.py",
+      "sha256": "1b5c3e608a1f85b8a456060c63489c582121bba0b0686e8843d7149e8eccd00a"
+    },
+    {
+      "path": "agent/tools/check_public_news_stream.py",
+      "sha256": "b9bd95ad81c53aff58e95a22a6e9ed019e001bbe3076e50a8d3fc8deed86c378"
+    },
+    {
+      "path": "agent/tools/check_wallclock_readers.py",
+      "sha256": "cfe83b03fc98ac8ecd6fe850dfc9d404c8bffd8ed5dee1921c4c7972b72ecde8"
+    },
+    {
+      "path": "agent/tools/collect_public_headlines.py",
+      "sha256": "0db9a3d7f7f68ffa58a0e3a539f72f39dad382a7c8af76991fc47c0a967e3ea3"
+    },
+    {
+      "path": "agent/tools/connect_public_news_stream.py",
+      "sha256": "bd2cb943e8804050bf51a026f96a5c69bdd841c93282ab379d1e19eb755fad9d"
+    },
+    {
+      "path": "agent/tools/conversation_hooks_load.py",
+      "sha256": "1d234fd139bde8591ea31f24d241c50613c569eec793293cfbf8f913528bfa07"
+    },
+    {
+      "path": "agent/tools/conversation_load.py",
+      "sha256": "0219ef01081a1ff7e30e55f6919eb470e341a2c5a0d53c434d6ab651a351f178"
+    },
+    {
+      "path": "agent/tools/deploy_bge_demo.py",
+      "sha256": "155f9f3da8333a31ae9ccf9042f42cd13c238f79c11f5432c9c7efe0883f47d6"
+    },
+    {
+      "path": "agent/tools/evaluate_bge_ann.py",
+      "sha256": "fa39a1087f2109e107fcb309f1982af52d6a07e906de5fa63fd1e9c27d6614bd"
+    },
+    {
+      "path": "agent/tools/freeze_real_news_warehouse_catalog.py",
+      "sha256": "156039e5f8753e6faa508dbc2a54e66e8814235261b0f54c23d7515adbeeaf68"
+    },
+    {
+      "path": "agent/tools/freeze_real_news_warehouse_extension.py",
+      "sha256": "b7f5fbf46122368ecd5499e719caf44686ff1cf2bc6a24d7c2fda125a471b37c"
+    },
+    {
+      "path": "agent/tools/generate_real_news_warehouse.py",
+      "sha256": "29a6331e4716eca392e7ab3561a430a0102b21cd178b38611c862d0829ac1a70"
+    },
+    {
+      "path": "agent/tools/generate_tencent_news_warehouse.py",
+      "sha256": "208ab18d7da593ac39c78ff1fd7109be4a875568b54400feec650ad3455cb001"
+    },
+    {
+      "path": "agent/tools/governance_load.py",
+      "sha256": "39ba538a2574bedfb39fc604fb2601779a938f1ffe32957ef91290178e04349b"
+    },
+    {
+      "path": "agent/tools/governance_probe_check.py",
+      "sha256": "b8e842207e9782267cbbe0f354a7fc1d9f7b3717354b83ecbc4c9e1b060fba4b"
+    },
+    {
+      "path": "agent/tools/governance_temporal_probe.py",
+      "sha256": "83f55ac4923fd7516d0e1b0e82bc459c8bdc4710586c3b9672e8fe38b6761ba0"
+    },
+    {
+      "path": "agent/tools/import_news_cache.py",
+      "sha256": "7ff4f6fe23cf414ce11b7507ce1099118f0b39dc6d4eb7891256fd46987d29d8"
+    },
+    {
+      "path": "agent/tools/import_reader_audience.py",
+      "sha256": "8e435fd5f8415011099c03f7e88f1e597aec8f303c60bfcc7240c210f4810cdc"
+    },
+    {
+      "path": "agent/tools/inspect_behavior_package.py",
+      "sha256": "bc4a79f069625e1115b8f399cfcd417ae3830308368e5087d5cbcbf0f3e73321"
+    },
+    {
+      "path": "agent/tools/prepare_retrieval_judgments.py",
+      "sha256": "d3b2b1e67b625552c6b285dca1c0144610fa044dea79000b01ebd94fcdfe7bc3"
+    },
+    {
+      "path": "agent/tools/prune_public_news_categories.py",
+      "sha256": "8d1664edd0a551cf89c2da049e9a517a800206516dd7e9996cfdeee639261f4c"
+    },
+    {
+      "path": "agent/tools/query_news_recall.py",
+      "sha256": "e011a6c7939e7ae480752fa92fefd9d7ea2ebf6d216191732f3b84d68d4c5941"
+    },
+    {
+      "path": "agent/tools/query_real_news_warehouse.py",
+      "sha256": "36f7b415e23c62c2c248d8aa5a1e13ca5bc8cb8c90725bd7ddf55430f0da6c86"
+    },
+    {
+      "path": "agent/tools/replay_streaming_retrieval.py",
+      "sha256": "3b56bf61b7505343dbefb1200fbaff516b250c939bd5985ba7a6224daa1f6324"
+    },
+    {
+      "path": "agent/tools/replay_tier_lifecycle.py",
+      "sha256": "3964bb3b711d91b3c7bda549d5e61847380bb86fa4e8f36e17ba15919de4f1a6"
+    },
+    {
+      "path": "agent/tools/score_retrieval_judgments.py",
+      "sha256": "af7dcd6c44998e07d7a47857d1ab187469fddb239d3d8dd559e81dbf820cc728"
+    },
+    {
+      "path": "agent/tools/seed_conversation_evaluation_demo.py",
+      "sha256": "7050d6c62ec46c450940a3a4c1fadfc38d9a8702e3004aedc20efa9f70873831"
+    },
+    {
+      "path": "agent/tools/start_local_demo.py",
+      "sha256": "27e9af4e948fcb244172207b596a64c69f8cb20a6d3b763ce583b79b72582be2"
+    },
+    {
+      "path": "agent/tools/start_real_news_demo.py",
+      "sha256": "d3853f410fe7171d0c7f056339172813690627b80e08537bfb7b207577d17a67"
+    },
+    {
+      "path": "agent/tools/start_real_news_warehouse.py",
+      "sha256": "b1e35f7f91cb92005f22916f7ca5c0819bf445547c9499c9a977078db46b05bb"
+    },
+    {
+      "path": "agent/tools/streaming_lab_acceptance.py",
+      "sha256": "4e006f448f185278c8d9ed2a885fb15233c78c7411b2ce2751cbe6a2d6b11023"
+    },
+    {
+      "path": "agent/tools/streaming_lab_backfill_check.py",
+      "sha256": "d0581fa9b9ab0f7fdf9b5c10143295dd2648b6f86e88af099ecca476ad7d49db"
+    },
+    {
+      "path": "agent/tools/streaming_lab_backfill.py",
+      "sha256": "51179bfe7886a293c4bc50ad05cebc7b8e6f5e0231a82f92fe7abae33faf7b07"
+    },
+    {
+      "path": "agent/tools/streaming_lab_dynamic_check.py",
+      "sha256": "5cd077bd27714fd9b5519aaa28fb893c54195c4e040d979a7fe553d6ec699ad5"
+    },
+    {
+      "path": "agent/tools/streaming_lab_dynamic.py",
+      "sha256": "c7329e17223deacc0a2cc17478af1bb8af95cf9b7f86544830084e0c347f82e8"
+    },
+    {
+      "path": "agent/tools/streaming_lab_ops.py",
+      "sha256": "794ffbd6f6b4928df3a81bbff319bbbb1c2a3023b6ce2754fb8ba01e42b7c5a1"
+    },
+    {
+      "path": "agent/tools/streaming_lab_recovery_check.py",
+      "sha256": "eeb296af125e0bbe7d9bd33684d807e645e8743fa5d9332f4a21556f336362c5"
+    },
+    {
+      "path": "agent/tools/streaming_lab_resilience_check.py",
+      "sha256": "2e51a75019442a6c3d4a369a038954cbd34f692220b6290cb014b5f36f9bdec2"
+    },
+    {
+      "path": "agent/tools/streaming_lab_workload.py",
+      "sha256": "660ed820eb43c60439c5278cc7a64e3a5e8247596058140273d92c06732c0a64"
+    },
+    {
+      "path": "agent/tools/test_multitier_news_recall.py",
+      "sha256": "c931325a1f9b156a186b217f868ba42db67614fd308f7bbebdc59f027ba57f87"
+    },
+    {
+      "path": "agent/tools/unify_news_storage.py",
+      "sha256": "917bb58bbc8b976a751b1cd4b9e2daae1de9663284188815fb052e1cafba9e54"
+    },
+    {
+      "path": "agent/tools/validate_real_news_warehouse.py",
+      "sha256": "80ece22e3506d19081f41d20775b28f3888738b73476fd9b39141dce7f365cf0"
+    },
+    {
+      "path": "agent/tools/verify_bulk_news_index.py",
+      "sha256": "e5e9a0bad86152f6890814b7e4101dda84ceacddfe6fb1e456632a87824beccd"
+    },
+    {
+      "path": "agent/tools/verify_timeline_demo.py",
+      "sha256": "484b378d96e24e2cf82a950e37b010da1f66f659312267560fd9a82089ee2fb9"
+    },
+    {
+      "path": "agent/tools/video_ingest_demo.py",
+      "sha256": "7565f8fc4f7eca977ede9bf2098e287a1343a2cf66538be35cc08f1c508fd7bb"
+    },
+    {
+      "path": "agent/tools/tests/test_streaming_workload_budget.py",
+      "sha256": "c36c6b59c6893f6b0079b41614f6c14684bda7ba6eb0cc67336943408b2540e2"
+    },
+    {
+      "path": "agent/alembic/env.py",
+      "sha256": "0b562a5399b711923ae224948214f15ad18b44df839a3acaabb2d8762a5d4ee8"
+    },
+    {
+      "path": "agent/alembic/versions/20260826_0001_initial_checkpoint_schema.py",
+      "sha256": "d1e15650a7b2a008b1a328ccf53626ee63c98016e5681ee202ce1a836887d765"
+    },
+    {
+      "path": "agent/alembic/versions/20260827_0002_outbox_events.py",
+      "sha256": "4f3a02761e371a0139e0ead6debedc7983a50e562a570bb72b5fcfe57b72602b"
+    },
+    {
+      "path": "agent/alembic/versions/20260827_0003_job_progress.py",
+      "sha256": "ae9b6898e8854519a9967c8301248eeb6d2614bbed578d2d142ccad15a8a4e5e"
+    },
+    {
+      "path": "agent/alembic/versions/20260828_0004_publication_tracking.py",
+      "sha256": "37c4ca3fb6eb8c8e2d4b03a66d53e899a6d572d4fb10fae9d8750c9043b74f00"
+    },
+    {
+      "path": "agent/alembic/versions/20260831_0005_job_scenario.py",
+      "sha256": "3fe4d2752f07df2cb20007e7e943ed83e09acabc4e4f5e9bb39f8fc6bfb7b41d"
+    },
+    {
+      "path": "agent/alembic/versions/20260831_0006_research_completed_status.py",
+      "sha256": "deb1ab222cb69e5cc33dcef6d6262d74ccc817ebfa07f28955b1c23ddb8c1004"
+    },
+    {
+      "path": "agent/alembic/versions/20260905_0007_hot_news_analysis_runs.py",
+      "sha256": "9666920a5123cb68a76153d4b574fe9088fb6e993b73fff25c0fd005c1dfa92c"
+    },
+    {
+      "path": "agent/alembic/versions/20260907_0008_hot_news_decisions.py",
+      "sha256": "c2f1236fc8536e2b8085c0e26735cb167290ab96998d5560e79f7cb20b861565"
+    },
+    {
+      "path": "agent/alembic/versions/20260907_0009_user_memories.py",
+      "sha256": "872bfa92ca906bd9c4488b74b59b450a5e833f2c3ffd2ec08b293eb6203b7213"
+    },
+    {
+      "path": "agent/alembic/versions/20260909_0010_analysis_feedback.py",
+      "sha256": "e3561bf1b2de8eb39f2c09ba99b64bab72d0535734c03c0bb1c02971c3019963"
+    },
+    {
+      "path": "agent/alembic/versions/20260909_0011_evaluation_datasets.py",
+      "sha256": "75ebbdf99ff57835667b052c759f02aeb29e9184a0966965e9b8334b3a5170a5"
+    },
+    {
+      "path": "agent/alembic/versions/20260909_0012_production_bundles.py",
+      "sha256": "18a08a41777b717da71c4ec6908fd6122fd515eb761864ff2c7cab62b2a9476d"
+    },
+    {
+      "path": "agent/alembic/versions/20260910_0013_data_loop_integrity.py",
+      "sha256": "a29ae42f21cf901fadb968054cd3a22419bed8b3e42ea691db8a2a67d6fd83d0"
+    },
+    {
+      "path": "agent/alembic/versions/20260911_0014_feedback_label_review.py",
+      "sha256": "a37a7f505fc8076a66f4ac483d9111e46829d55352954d71b480a8b6e3ca6637"
+    },
+    {
+      "path": "agent/alembic/versions/20260912_0015_hot_events.py",
+      "sha256": "5c53f8e33253cdba5e11b9e53d2bfbd8bfae4de7a94fb86e93cb92883f223deb"
+    },
+    {
+      "path": "agent/alembic/versions/20261002_0016_native_knowledge.py",
+      "sha256": "7313f04da16b0d9830dcf8095c24885db17c5893bf2dbabf2e1f7442c1b8c477"
+    },
+    {
+      "path": "agent/alembic/versions/20261002_0017_model_identity_cleanup.py",
+      "sha256": "63a6639afe3830048d9bafc1bf7f125e02f5b88577f4930b39a1818fbdf04b40"
+    },
+    {
+      "path": "agent/alembic/versions/20261004_0018_conversations.py",
+      "sha256": "219ac22a4652c2db6d8888439b278168d67f8db85a8371e095d7af0a6393f747"
+    },
+    {
+      "path": "agent/alembic/versions/20261006_0019_conversation_memory.py",
+      "sha256": "f4e6eadbe620d7369f9b6627bd322f83b75dd6399a025183cbafaa9997c88cad"
+    },
+    {
+      "path": "agent/alembic/versions/20261007_0020_conversation_deletion.py",
+      "sha256": "c1a466e3972753052fb20e54349a9095fa0def90ba53acbe6277b599ad928806"
+    },
+    {
+      "path": "agent/alembic/versions/20261010_0021_operations_feedback.py",
+      "sha256": "ef2d3b6927af2466a6ba99008e4ec870ca30c6f350164666daecacca4b5db8e4"
+    },
+    {
+      "path": "agent/alembic/versions/20261010_0022_conversation_inputs.py",
+      "sha256": "d68a913ad01dfc90297d9ed244006480a86e4c807f35cc952587c32713de357b"
+    },
+    {
+      "path": "agent/alembic/versions/20261015_0023_tier_lifecycle.py",
+      "sha256": "559e7cdbe6ff63a95ed3f66d68915dd6b242c2452141e01cbc3488f979a8f097"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v1.md",
+      "sha256": "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v2.md",
+      "sha256": "b46023255d18b583048cbe8f5c5ce2a2e4372d3d867da2a1b24b493551c18273"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v3.md",
+      "sha256": "ac6982fcb42a3b9efe29db8c9a4524eebc51a2144ab8dbc78c69e91e458614b6"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v4.md",
+      "sha256": "d5758d7fd699eff3907574629cd9e5e4d5c09809d891fcf71efc17dfa6d2730e"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v5.md",
+      "sha256": "3c3403bddb3d4613aa7c734dbc2265752422843f12994e1244924a8eab735a0e"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v6.md",
+      "sha256": "bb4fb8fb45113b250ac953beb6c7789fe9a519d98c130d78c50b4277802480b7"
+    },
+    {
+      "path": "agent/docs/sql-warehouse-schema-v7.md",
+      "sha256": "96bee2a00e6cb6ed4d9f401b246f3efae1fa2a198b68cd4bc62ab442d2c933c9"
+    },
+    {
+      "path": "output/pdf/NewsAgent_当前新闻与用户标签_字段手册.pdf",
+      "sha256": "338ce325bb4e11f2b6e03ca213bc9015acc253cd0b86d61caf557139c7255542"
+    },
+    {
+      "path": "output/pdf/sources/build_current_schema.py",
+      "sha256": "4afe7e420ae852c2214d669dd6a227bcdbe7a32311b766e7bb3da684e9af3cd0"
+    },
+    {
+      "path": "var/warehouse/real-news-v8-20261014/manifest.json",
+      "sha256": "951b4b131f2272d06a725404d0a34e282ff44e2792515148c7e8c5aa949ed63f"
+    },
+    {
+      "path": "var/warehouse/tencent-news-v7-20261014/manifest.json",
+      "sha256": "0584bb0f624bce07b5028c079cf204c4b67b020cde5a7aefe4db040d18fed87b"
+    }
+  ],
+  "deletion_block": "Both exec_command attempts were rejected before execution: blocked by policy. The second attempt followed explicit user authorization. No file was deleted.",
+  "manual_script": "output/cleanup/clean-obsolete-artifacts.ps1",
+  "deleted_files": 0,
+  "validation": {
+    "protected_files_unchanged": 877,
+    "frozen_schema_hashes_match": 7,
+    "script_syntax": "passed",
+    "script_execution": "not_run",
+    "deletion": "blocked_by_tool_policy"
+  }
+}

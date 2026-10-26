@@ -38,9 +38,10 @@ exporters:
     enable_open_metrics: true
     metric_expiration: 5m
     translation_strategy: UnderscoreEscapingWithSuffixes
-    # Keep high-cardinality resource attributes out of metric labels.
+    # Instance identifies an SDK process, never a request/user. Without it,
+    # replicas overwrite cumulative counters with identical label sets.
     resource_constant_labels:
-      included: [service.name, service.namespace, deployment.environment.name]
+      included: [service.name, service.namespace, deployment.environment.name, service.instance.id]
 
 service:
   telemetry:

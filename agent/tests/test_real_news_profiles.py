@@ -7,7 +7,7 @@ import pytest
 
 from app.sql_assistant.real_news_profiles import (
     REAL_NEWS_COUNT, iter_real_news_rows, real_news_manifest, real_news_news_ids,
-    validate_real_news_count,
+    validate_real_news_count, real_news_dataset_path, verified_real_news_dataset_path,
 )
 from app.sql_assistant.scenarios import load_sql_scenarios
 from app.sql_assistant.warehouse import dataset_window, warehouse_contract
@@ -30,7 +30,18 @@ def test_profile_roster_and_window_are_the_frozen_extension():
     assert warehouse_contract("real-news-v8").version == "news-warehouse-v7"
 
 
-def test_profile_manifest_reports_content_only_and_metric_counts():
+@pytest.fixture
+def runtime_package():
+    try:
+        real_news_dataset_path()
+    except ValueError:
+        pytest.skip("expanded real-news-v8 runtime package is not installed")
+    # An installed but corrupt package must fail rather than be skipped.
+    return verified_real_news_dataset_path()
+
+
+@pytest.mark.integration
+def test_profile_manifest_reports_content_only_and_metric_counts(runtime_package):
     manifest = real_news_manifest()
     assert manifest["catalog_count"] == 661
     assert manifest["extension_count"] == 7459
@@ -42,7 +53,8 @@ def test_profile_manifest_reports_content_only_and_metric_counts():
     assert manifest["metric_data_synthetic"] is True
 
 
-def test_dimension_rows_include_content_only_articles_but_metrics_do_not():
+@pytest.mark.integration
+def test_dimension_rows_include_content_only_articles_but_metrics_do_not(runtime_package):
     extension_id = catalog.load_extension()[0]["news_id"]
     dimension_ids = {row["news_id"] for row in iter_real_news_rows("dim_news")}
     assert extension_id in dimension_ids

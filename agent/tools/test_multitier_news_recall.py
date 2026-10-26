@@ -20,7 +20,6 @@ import os
 from pathlib import Path
 import platform
 import shlex
-import signal
 import subprocess
 import sys
 import time
@@ -441,13 +440,9 @@ async def execute(args, queries, chunks, rows, manifest_digest, results):
             mapped.close()
 
 
-def main(argv=None) -> int:
+def _run(argv=None) -> int:
     args = parse_args(argv)
     started = time.perf_counter()
-    def timeout(signum, frame):
-        raise TimeoutError("fixed total budget exhausted")
-    previous_handler = signal.signal(signal.SIGALRM, timeout)
-    signal.alarm(BUDGET_SECONDS)
     results = {"run_id": args.output_dir.name, "started_at": stamp(), "stage": "validate_and_freeze", "queries": [], "indexes": {},
                "status": {"index_contract": "not_run", "recall_contract": "not_run", "semantic_quality": "blocked"}}
     try:
@@ -502,9 +497,6 @@ def main(argv=None) -> int:
             results["status"]["index_contract"] = "failed"
         else:
             results["status"]["recall_contract"] = "failed"
-    finally:
-        signal.alarm(0)
-        signal.signal(signal.SIGALRM, previous_handler)
     results["finished_at"] = stamp()
     results["elapsed_seconds"] = time.perf_counter() - started
     if args.output_dir.is_dir() and (args.output_dir / "run-spec.json").is_file():
@@ -513,6 +505,25 @@ def main(argv=None) -> int:
             target.write(report_text(results))
     print(json.dumps({"output_dir": str(args.output_dir), "stage": results["stage"], "status": results["status"], "completed_queries": len(results["queries"]), "planned_queries": results.get("planned_queries", 0), "elapsed_seconds": results["elapsed_seconds"], "error": results.get("error")}, ensure_ascii=False))
     return 0 if results["status"]["recall_contract"] == "passed" else 1
+
+
+def main(argv=None) -> int:
+    """Bound native model/index work in a child process on Windows and POSIX."""
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    if arguments[:1] == ["--budget-worker"]:
+        return _run(arguments[1:])
+    args = parse_args(arguments)
+    try:
+        return subprocess.run(
+            [sys.executable, str(Path(__file__).resolve()), "--budget-worker", *arguments],
+            timeout=BUDGET_SECONDS, check=False,
+        ).returncode
+    except subprocess.TimeoutExpired:
+        failure = {"stage": "budget_exhausted", "status": "failed", "budget_seconds": BUDGET_SECONDS}
+        if args.output_dir.is_dir() and (args.output_dir / "run-spec.json").is_file():
+            write_json(args.output_dir / "timeout.json", failure)
+        print(json.dumps(failure), file=sys.stderr)
+        return 124
 
 
 if __name__ == "__main__":

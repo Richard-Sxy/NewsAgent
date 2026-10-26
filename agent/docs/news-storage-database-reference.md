@@ -1,10 +1,19 @@
 # NewsAgent 本地统一数据库：库表、字段与查询手册
 
-核对日期：**2026-10-23（北京时间）**。本文以本地 PostgreSQL 实际系统目录、实际行数、导入代码和验收报告为依据，汇总已经创建的对象。适合按表名、字段名、业务关键词检索。
+历史数据库验收日期：**2026-10-23（北京时间）**；源码与清单复核日期：**2026-10-26**。本文保留 10 月 23 日的库表字典与验收基线，并补充 10 月 25 日清理后的当前清单。本次仅核对源码和已有非敏感清单，未连接数据库或重跑验收。
 
-**当前成果是一个独立 database、两个业务 Schema、14 张表、4 个视图。** 新闻正文、内容标签和新闻受众聚合已经可以用 SQL 联查。数据是冻结快照，不是持续更新中的企业实时数仓。
+**2026-10-23的正文/标签/受众基线为一个独立 database、两个业务 Schema、14 张表、4 个视图。** 新闻正文、内容标签和新闻受众聚合已经可以用 SQL 联查。该基线是历史冻结包投影。后续本地模拟已增加 `news_realtime` 聚合投影，不能再把 14 表/4 视图当作整个当前数据库的对象总数；企业实时数仓仍未验收。
 
-公开新闻内容来自已有采集包；受众人数全部为 `synthetic` 合成数据；内容标签为规则推断。三者分别用于内容读取、主题筛选和聚合链路验证，不能直接当成人工金标或企业真实业务效果。
+**2026-10-25清单记录（2026-10-26复核）：** 10类保守清理后当前新闻16,369篇；原不确定4,714篇已全部自动标注，
+当前目标10类13,462篇、范围外2,895篇、综合/信息不足12篇；流程中没有待用户补标项，但自动结果未经人工金标验收。
+当前release与路径以 `var/news-storage/current-selection.json` 为准；下文原release与行数属于10月23日历史基线。
+清理新增审计表及 `news_content_current_categories` 视图，自动标注新增
+`news_content_annotation_releases`、`news_content_auto_annotations` 两表，视图追加
+`primary_category`、`primary_name`、`annotation_confidence`、`retention_scope`、
+`annotation_version`、`annotation_evidence`。当前查询、完整调用链、配置、测试和恢复分别见
+[当前类别与自动标注](#current-categories)。
+
+公开新闻内容来自已有采集包；受众人数全部为 `synthetic` 合成数据；原内容标签为规则推断，10 月 25 日补充类别来自模型推断与版本化边界规则。三者分别用于内容读取、主题筛选和聚合链路验证，不能直接当成人工金标或企业真实业务效果。
 
 ## 目录与检索入口
 
@@ -18,15 +27,17 @@
 - [8. 导入与读取的完整调用链](#call-chain)
 - [9. 已有验证证据与测试入口](#verification)
 - [10. 使用边界与未完成事项](#todo)
+- [11. 当前类别与自动标注](#current-categories)
+- [12. 本地实时模拟的 SQL 投影](#realtime)
 
 关键词：PostgreSQL、TDSQL-A、新闻正文、全文、内容标签、tag、用户兴趣、读者画像、受众聚合、reader_count、share_all、share_profiled、lift、snapshot_id、news_id、release、哈希、SQL、表结构、对象存储、ES、评测素材。
 
 <a id="connection"></a>
 ## 1. 连接、位置与固定版本
 
-### 1.1 数据库连接
+### 1.1 本机连接约定（源自 2026-10-23 验收）
 
-| 项目 | 实际值 |
+| 项目 | 历史验收值 / 配置约定 |
 |---|---|
 | PostgreSQL 版本 | `16.15` |
 | 主机与宿主机端口 | `127.0.0.1:25432` |
@@ -59,9 +70,9 @@ SET TIME ZONE 'Asia/Shanghai';
 
 `\d` 等反斜杠命令只在 `psql` 内有效；图形数据库客户端应运行第 6 节的标准 SQL。退出使用 `\q`。
 
-### 1.2 固定身份：查询时不要省略
+### 1.2 历史基线身份：不作为当前查询默认值
 
-| 身份 | 当前值 | 作用 |
+| 身份 | 2026-10-23 基线值 | 作用 |
 |---|---|---|
 | 内容域 / 内容租户 | `public-news-local` | 统一公开新闻的逻辑域，文本类型 |
 | 内容 release | `news-0c74530f2864db20a73d7a96` | 冻结本次选定正文及来源 |
@@ -75,6 +86,22 @@ SET TIME ZONE 'Asia/Shanghai';
 | 受众 Schema 版本 | `news-reader-audience-v1` | 本地聚合投影结构版本 |
 
 内容域与业务租户不能直接相等连接。两者通过 `news_audience.unified_news_binding` 显式关联，并校验 `news_id + body_sha256` 及固定正文版本。
+
+### 1.3 当前选定发布
+
+以 `var/news-storage/current-selection.json` 为指针。本次复核读到的清单如下；这是已有文件记录，不是本次对运行中数据库重新计数。
+
+| 项目 | 清单值 |
+|---|---|
+| 内容 release | `news-1443103656c4351fe52c0882` |
+| 标签 release | `tags-7fa91bd81c8e70530d53e291` |
+| 自动标注版本 | `news-uncertain-semantic-20261025-v2` |
+| 保留新闻 / 内容版本 / 来源记录 | 16,369 / 16,669 / 17,105 |
+| 正文 / 历史片段 / 仅标题 | 6,732 / 8,669 / 968 |
+| 目录 ID | `public-37050d7b7046f8bad85b8d57` |
+| 内容与标签包 | `var/news-storage/retained-ten-categories-20261025/content`、同目录 `tags` |
+
+10 月 25 日清理建立了新的冻结子集，并把原内容/标签 release 标为 `archived`；旧库投影中被删除新闻的版本、选定项、标签、来源和相关正文绑定已清理。原磁盘冻结包与清理前备份仍是完整历史来源，数据库中的旧 release 不再代表原来的完整包。`news_content_selected` 和标签联合视图只读 `frozen` 发布；用旧 release 查询它们可能为空，不能据此判断历史包丢失。
 
 <a id="lookup"></a>
 ## 2. 按业务问题找表
@@ -122,7 +149,7 @@ SET TIME ZONE 'Asia/Shanghai';
 | `news_audience.news_reader_population` | 105,436 | 某租户、快照、新闻、兴趣回看期限的人群汇总 |
 | `news_audience.news_reader_topic` | 1,282,053 | 上述人群中一个保留主题的读者数和基准人数 |
 
-四个视图不另存一份数据。当前两份内容视图均对应 21,435 条选定新闻；受众人群视图对应 105,436 行，主题视图对应 1,282,053 行。
+这四个视图不另存一份数据。2026-10-23 验收时，两份内容视图均对应 21,435 条选定新闻；受众人群视图对应 105,436 行，主题视图对应 1,282,053 行。
 
 - **21,435 个新闻 ID**：8,441 篇有缓存正文、11,794 篇仅历史片段、1,200 条仅标题。`body_available` 不是人工完整性认证。
 - **21,828 个版本**：同一新闻可能保留正文版本和片段版本，故多于选定新闻数。
@@ -159,13 +186,13 @@ SET TIME ZONE 'Asia/Shanghai';
 <a id="dictionary"></a>
 ## 4. 14 张表的完整字段字典
 
-字段、类型、是否可空和主外键来自本次数据库系统目录。`timestamptz` 表示带时区时间，显示由会话时区决定；文档示例统一使用北京时间。表中未列出的 CHECK 约束可使用 `\d+ 表名` 查看。
+下列 14 张基线表的字段、类型、是否可空和主外键来自 2026-10-23 数据库验收记录，并以对应 Store/DDL 为源码依据；行数统一是历史基线。后续清理审计、自动标注和 `news_realtime` 对象见第 11、12 节。`timestamptz` 表示带时区时间，显示由会话时区决定；文档示例统一使用北京时间。表中未列出的 CHECK 约束可使用 `\d+ 表名` 查看。
 
 `public` 内容表的枚举、哈希和业务一致性还依赖 Python 导入校验；不能把代码校验全部视为数据库 CHECK。`unified_news_binding` 对统一正文的精确匹配由绑定程序校验，当前没有跨 Schema 的正文外键。
 
 ### 4.1 `public.news_content_versions`：不可变内容版本
 
-一行代表：某内容域中的一篇新闻的一个标准化内容版本。当前 **21,828 行**。
+一行代表：某内容域中的一篇新闻的一个标准化内容版本。2026-10-23 基线 **21,828 行**。
 
 - `PRIMARY KEY (tenant_id, news_id, record_sha256)`
 
@@ -183,11 +210,11 @@ SET TIME ZONE 'Asia/Shanghai';
 | `body_sha256` | `varchar(64)` | 是 | 正文 UTF-8 字节的 SHA-256；无正文时为空 |
 | `record` | `jsonb` | 否 | 扩展 JSON，仅含 fragments、quality_flags；不重复存正文。片段含 chunk_index、text，历史源另有 chunk_id |
 
-内容版本全部保留；不同 news_id 即使正文相同也不合并。`record_sha256` 与 `body_sha256` 是两种不同身份。
+普通导入保留各内容版本；不同 news_id 即使正文相同也不合并。10 月 25 日经授权清理会删除指定新闻的数据库版本，完整历史依靠原磁盘包与清理前备份恢复。`record_sha256` 与 `body_sha256` 是两种不同身份。
 
 ### 4.2 `public.news_content_releases`：内容冻结发布
 
-一行代表：一个冻结的内容发布版本。当前 **1 行**。
+一行代表：一个冻结的内容发布版本。2026-10-23 基线 **1 行**。
 
 - `PRIMARY KEY (tenant_id, release_id)`
 
@@ -202,11 +229,11 @@ SET TIME ZONE 'Asia/Shanghai';
 | `manifest` | `jsonb` | 否 | 内容包 manifest.json 的 release 子对象：租户、版本、schema、选择策略、identity 和 counts；不含磁盘外层 files/source_inventory |
 | `created_at` | `timestamptz` | 否 | 首次导入时间；不是新闻发布时间 |
 
-`status=frozen`。同一新闻的选定规则依次为：正文优于片段、片段优于标题；随后比较来源优先级和记录哈希。
+可供普通读取的发布为 `status=frozen`；已清理的原发布为 `archived`，不能作为完整冻结包读取。同一新闻的选定规则依次为：正文优于片段、片段优于标题；随后比较来源优先级和记录哈希。
 
 ### 4.3 `public.news_content_release_items`：发布选定项
 
-一行代表：某 release 为某 news_id 选定的一个内容版本。当前 **21,435 行**。
+一行代表：某 release 为某 news_id 选定的一个内容版本。2026-10-23 基线 **21,435 行**。
 
 - `PRIMARY KEY (tenant_id, release_id, news_id)`
 - `FOREIGN KEY (tenant_id, news_id, record_sha256) REFERENCES news_content_versions(tenant_id, news_id, record_sha256)`
@@ -224,7 +251,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.4 `public.news_content_provenance`：原始来源证据
 
-一行代表：某发布中的内容版本的一条来源观察。当前 **22,369 行**。
+一行代表：某发布中的内容版本的一条来源观察。2026-10-23 基线 **22,369 行**。
 
 - `PRIMARY KEY (tenant_id, release_id, news_id, record_sha256, source_sha256)`
 - `FOREIGN KEY (tenant_id, news_id, record_sha256) REFERENCES news_content_versions(tenant_id, news_id, record_sha256)`
@@ -243,7 +270,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.5 `public.news_content_tag_releases`：内容标签发布
 
-一行代表：绑定到内容 release 的一个冻结标签版本。当前 **1 行**。
+一行代表：绑定到内容 release 的一个冻结标签版本。2026-10-23 基线 **1 行**。
 
 - `PRIMARY KEY (tenant_id, content_release_id, tag_release_id)`
 - `FOREIGN KEY (tenant_id, content_release_id) REFERENCES news_content_releases(tenant_id, release_id)`
@@ -269,7 +296,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.6 `public.news_content_tags`：新闻内容标签
 
-一行代表：某选定新闻在指定标签版本下的标签与状态。当前 **21,435 行**。
+一行代表：某选定新闻在指定标签版本下的标签与状态。2026-10-23 基线 **21,435 行**。
 
 - `PRIMARY KEY (tenant_id, content_release_id, tag_release_id, news_id)`
 - `FOREIGN KEY (tenant_id, content_release_id, news_id) REFERENCES news_content_release_items(tenant_id, release_id, news_id)`
@@ -295,7 +322,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.7 `public.news_content_topic_memberships`：新闻与主题关系
 
-一行代表：某标签版本中一篇新闻与一个主题的关系。当前 **35,888 行**。
+一行代表：某标签版本中一篇新闻与一个主题的关系。2026-10-23 基线 **35,888 行**。
 
 - `FOREIGN KEY (tenant_id, content_release_id, tag_release_id, news_id) REFERENCES news_content_tags(tenant_id, content_release_id, tag_release_id, news_id)`
 - `PRIMARY KEY (tenant_id, content_release_id, tag_release_id, news_id, topic_id)`
@@ -312,7 +339,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.8 `news_audience.package_release`：受众来源发布
 
-一行代表：一个冻结受众源包及其导入审计信息。当前 **1 行**。
+一行代表：一个冻结受众源包及其导入审计信息。2026-10-23 基线 **1 行**。
 
 - `PRIMARY KEY (source_release_sha256)`
 
@@ -330,7 +357,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.9 `news_audience.content_binding`：来源新闻资格
 
-一行代表：原业务租户的源包内一篇新闻及正文/主题绑定。当前 **2,474 行**。
+一行代表：原业务租户的源包内一篇新闻及正文/主题绑定。2026-10-23 基线 **2,474 行**。
 
 - `PRIMARY KEY (tenant_id, source_release_sha256, news_id)`
 - `FOREIGN KEY (source_release_sha256) REFERENCES news_audience.package_release(source_release_sha256)`
@@ -348,7 +375,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.10 `news_audience.unified_news_binding`：业务新闻与统一正文映射
 
-一行代表：一个业务租户的源新闻与一个统一内容版本的精确映射。当前 **1,266 行**。
+一行代表：一个业务租户的源新闻与一个统一内容版本的精确映射。2026-10-23 基线 **1,266 行**。
 
 - `PRIMARY KEY (tenant_id, source_release_sha256, news_id, content_tenant_id, content_release_id)`
 - `FOREIGN KEY (tenant_id, source_release_sha256, news_id) REFERENCES news_audience.content_binding(tenant_id, source_release_sha256, news_id)`
@@ -369,7 +396,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.11 `news_audience.reader_snapshot`：受众覆盖窗口快照
 
-一行代表：某业务租户、来源 release 的一个覆盖窗口。当前 **1,488 行**。
+一行代表：某业务租户、来源 release 的一个覆盖窗口。2026-10-23 基线 **1,488 行**。
 
 - `PRIMARY KEY (tenant_id, snapshot_id)`
 - `FOREIGN KEY (source_release_sha256) REFERENCES news_audience.package_release(source_release_sha256)`
@@ -406,7 +433,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.12 `news_audience.topic_dictionary`：受众主题字典
 
-一行代表：某目录版本中的一个主题。当前 **84 行**。
+一行代表：某目录版本中的一个主题。2026-10-23 基线 **84 行**。
 
 - `FOREIGN KEY (taxonomy_version, parent_topic_id) REFERENCES news_audience.topic_dictionary(taxonomy_version, topic_id)`
 - `PRIMARY KEY (taxonomy_version, topic_id)`
@@ -423,7 +450,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.13 `news_audience.news_reader_population`：新闻读者人群
 
-一行代表：某租户、快照、新闻、兴趣回看期限的人群汇总。当前 **105,436 行**。
+一行代表：某租户、快照、新闻、兴趣回看期限的人群汇总。2026-10-23 基线 **105,436 行**。
 
 - `PRIMARY KEY (tenant_id, snapshot_id, news_id, lookback_hours)`
 - `FOREIGN KEY (tenant_id, snapshot_id) REFERENCES news_audience.reader_snapshot(tenant_id, snapshot_id)`
@@ -453,7 +480,7 @@ SET TIME ZONE 'Asia/Shanghai';
 
 ### 4.14 `news_audience.news_reader_topic`：新闻读者主题计数
 
-一行代表：上述人群中一个保留主题的读者数和基准人数。当前 **1,282,053 行**。
+一行代表：上述人群中一个保留主题的读者数和基准人数。2026-10-23 基线 **1,282,053 行**。
 
 - `FOREIGN KEY (taxonomy_version, topic_id) REFERENCES news_audience.topic_dictionary(taxonomy_version, topic_id)`
 - `PRIMARY KEY (tenant_id, snapshot_id, news_id, lookback_hours, topic_id)`
@@ -476,7 +503,7 @@ SET TIME ZONE 'Asia/Shanghai';
 只保存来源保留的 Top20 主题。主题重叠，人数不能加总；没出现的主题不等于人数为零。
 
 <a id="views"></a>
-## 5. 4 个查询视图及指标口径
+## 5. 基线 4 个查询视图及指标口径
 
 | 视图 | 组合来源 | 适合查询 |
 |---|---|---|
@@ -523,7 +550,7 @@ SET TIME ZONE 'Asia/Shanghai';
 <a id="queries"></a>
 ## 6. 直接复制执行：查结构、正文、标签与受众
 
-以下 SQL 在 `newsagent_unified_news_20261023` 执行。时间字面量使用 `+08`，无需猜测数据库默认时区。
+以下 SQL 在 `newsagent_unified_news_20261023` 执行。内容/标签查询已改为第 1.3 节的当前 release；后续清单变更时需同步替换。受众查询仍演示原历史小时窗口，不代表当前实时访问。时间字面量使用 `+08`，无需猜测数据库默认时区。本次未执行这些 SQL。
 
 ### 6.1 查看有哪些表、视图和字段
 
@@ -571,11 +598,11 @@ SELECT news_id, title, publish_time, url, content_state,
        item_quality_flags, record_sha256, body_sha256
 FROM public.news_content_selected
 WHERE tenant_id = 'public-news-local'
-  AND release_id = 'news-0c74530f2864db20a73d7a96'
+  AND release_id = 'news-1443103656c4351fe52c0882'
   AND news_id = '20260718A03B9V00';
 ```
 
-`body` 是数据库保存的全部抓取正文，没有在查询中截断。若终端显示难读，可先执行 `\x on`。`fragments_only` 新闻请看 `record->'fragments'`；标签联合视图没有 `record` 字段。
+示例 news_id 来自历史验收；若它已不在当前保留集合，应替换为第 11 节查询返回的 ID。`body` 是数据库保存的全部抓取正文，没有在查询中截断。若终端显示难读，可先执行 `\x on`。`fragments_only` 新闻请看 `record->'fragments'`；标签联合视图没有 `record` 字段。
 
 ### 6.3 查看内容标签及其原文证据
 
@@ -585,8 +612,8 @@ SELECT news_id, title, topic_ids, tag_status, tag_provenance,
        label->'matches' AS matched_text_evidence
 FROM public.news_content_tagged_selected
 WHERE tenant_id = 'public-news-local'
-  AND content_release_id = 'news-0c74530f2864db20a73d7a96'
-  AND tag_release_id = 'tags-33c4054fd01bd98cd5ef2826'
+  AND content_release_id = 'news-1443103656c4351fe52c0882'
+  AND tag_release_id = 'tags-7fa91bd81c8e70530d53e291'
   AND news_id = '20260718A03B9V00';
 ```
 
@@ -600,8 +627,8 @@ JOIN public.news_content_topic_memberships m
  AND m.content_release_id = c.release_id
  AND m.news_id = c.news_id
 WHERE c.tenant_id = 'public-news-local'
-  AND c.release_id = 'news-0c74530f2864db20a73d7a96'
-  AND m.tag_release_id = 'tags-33c4054fd01bd98cd5ef2826'
+  AND c.release_id = 'news-1443103656c4351fe52c0882'
+  AND m.tag_release_id = 'tags-7fa91bd81c8e70530d53e291'
   AND m.topic_id = 'ai'
 ORDER BY c.news_id
 LIMIT 20;
@@ -648,7 +675,7 @@ ORDER BY topic_reader_count DESC, topic_id
 LIMIT 5;
 ```
 
-该样例为 **6 位模拟详情读者**，长期画像人数为 6，AI 兴趣人数为 5，全部读者占比约 83.33%。这些只是核验样例，不是企业真实访问指标。短期改为 `lookback_hours=24`，其余窗口条件保持不变。
+2026-10-23 验收中该样例为 **6 位模拟详情读者**，长期画像人数为 6，AI 兴趣人数为 5，全部读者占比约 83.33%。这些只是核验样例，不是企业真实访问指标。短期改为 `lookback_hours=24`，其余窗口条件保持不变。
 
 ### 6.5 联查“新闻全文 + 内容主题 + 读者人数”
 
@@ -680,14 +707,14 @@ WHERE p.tenant_id = '11111111-1111-4111-8111-111111111111'::uuid
   AND p.watermark_at >= p.window_end
   AND (p.expires_at IS NULL OR p.expires_at > CURRENT_TIMESTAMP)
   AND c.tenant_id = 'public-news-local'
-  AND c.content_release_id = 'news-0c74530f2864db20a73d7a96'
-  AND c.tag_release_id = 'tags-33c4054fd01bd98cd5ef2826';
+  AND c.content_release_id = 'news-1443103656c4351fe52c0882'
+  AND c.tag_release_id = 'tags-7fa91bd81c8e70530d53e291';
 ```
 
 这里只展示有精确绑定且有实际人群行的交集。未返回行不代表这篇新闻无人阅读；需要进一步区分内容未绑定、窗口缺失、数据门禁未通过或确实空人群。
 
 包含来源审计、正文联查、主要兴趣和“未知/0 人”判断的现有完整脚本：
-[news-audience-local-query.sql](sql/news-audience-local-query.sql)。从仓库根目录执行：
+[news-audience-local-query.sql](sql/news-audience-local-query.sql)。该 SQL 文件保留 10 月 23 日的历史 release；用于当前内容时须先在副本中替换内容/标签 release，并选择仍在保留集合中的新闻。历史受众窗口与来源不能一起改成当前时间。历史脚本入口如下：
 
 ```bash
 docker exec -i news-agent-native-e2e-postgres-1 \
@@ -700,7 +727,7 @@ docker exec -i news-agent-native-e2e-postgres-1 \
 <a id="files"></a>
 ## 7. 原始包、导出素材与个人画像的位置
 
-以下路径均相对仓库根 `/Users/shi/Project/myProject/NewsAgent`。
+以下是 2026-10-23 历史包和导出路径，均相对仓库根 `/home/shi/project/NewsAgent`。当前子集与标注路径见第 1.3、11 节。
 
 | 路径 | 内容与用途 |
 |---|---|
@@ -726,7 +753,7 @@ docker exec -i news-agent-native-e2e-postgres-1 \
 
 ### 7.2 公开正文的上游来源
 
-来源包括已有增量 v2/v1、旧本地正文缓存、历史 BGE 切片和公开标题目录；准确路径及校验方式见 [unified-news-storage.md 第 2 节](unified-news-storage.md#2-数据来源及统一规则)。历史片段只保留原切片，没有拼接伪全文；旧内容索引不因本次导入自动重建。
+来源包括已有增量 v2/v1、旧本地正文缓存、历史 BGE 切片和公开标题目录；准确路径及校验方式见 [统一存储工具](../tools/unify_news_storage.py)（`import` / `import-tags`）及 [受众导入工具](../tools/import_reader_audience.py)（`bind-content`）。历史片段只保留原切片，没有拼接伪全文；旧内容索引不因本次导入自动重建。
 
 <a id="call-chain"></a>
 ## 8. 导入与读取的完整调用链
@@ -745,7 +772,7 @@ docker exec -i news-agent-native-e2e-postgres-1 \
 → CLI get / list / export，或 ReleaseNewsContentRepository 返回 NewsContent
 ```
 
-`ReleaseNewsContentRepository` 只接收绑定租户/版本，返回满足正文、标题、URL、时间且无需元数据复核的记录；它不自动执行 CLI 的 100 字符候选过滤。该 Port 已有代码，尚未将本次统一库替换为在线 Worker 的内容源。
+`ReleaseNewsContentRepository` 只接收绑定租户/版本，返回满足正文、标题、URL、时间且无需元数据复核的记录；它不自动执行 CLI 的 100 字符候选过滤。该 Port 已有代码；独立 streaming lab 的 `PublicContentRepository` 已包装它读取绑定目录的统一正文。通用热点 Worker 是否使用本库取决于其装配，不能把实验入口接线视为生产切换。
 
 ### 8.2 新闻内容标签
 
@@ -805,18 +832,18 @@ export UNIFIED_NEWS_DATABASE_URL='postgresql+psycopg://YOUR_USER@127.0.0.1:25432
 export AUDIENCE_DATABASE_URL='postgresql://YOUR_USER@127.0.0.1:25432/newsagent_unified_news_20261023'
 ```
 
-这些独立 CLI 只使用显式连接变量，不读取 `.env`。依赖 Python、PostgreSQL、SQLAlchemy、psycopg、SQLite 和已有 Pydantic/规则代码；本次存储与查询不调用 LLM、Embedding、ES 或企业 HTTP 接口。
+这些独立 CLI 只使用显式连接变量，不读取 `.env`。依赖 Python、PostgreSQL、SQLAlchemy、psycopg、SQLite 和已有 Pydantic/规则代码；本节的原始正文/规则标签存储与查询不调用 LLM、Embedding、ES 或企业 HTTP 接口；第 11 节的自动类别标注另有本地模型依赖。
 
-只读 CLI 示例：
+在已安装本项目依赖的 Python 环境中，从仓库根目录执行以下只读 CLI 示例；不要复用其他机器复制来的虚拟环境：
 
 ```bash
-agent/.venv/bin/python agent/tools/unify_news_storage.py get \
+python agent/tools/unify_news_storage.py get \
   --tenant-id public-news-local \
-  --release-id news-0c74530f2864db20a73d7a96 \
-  --tag-release-id tags-33c4054fd01bd98cd5ef2826 \
+  --release-id news-1443103656c4351fe52c0882 \
+  --tag-release-id tags-7fa91bd81c8e70530d53e291 \
   --news-id 20260718A03B9V00
 
-agent/.venv/bin/python agent/tools/import_reader_audience.py query \
+python agent/tools/import_reader_audience.py query \
   --release 03fab1518c30f6822aedc73a67bbcede4831273b141db9a4a6aa1c8129ff19f5 \
   --tenant 11111111-1111-4111-8111-111111111111 \
   --start 2026-09-24T22:00:00+08:00 \
@@ -824,12 +851,12 @@ agent/.venv/bin/python agent/tools/import_reader_audience.py query \
   --news-id 20260718A03B9V00 --lookback-hours 720 --top-k 5
 ```
 
-已有库无需为浏览重复导入；需要重建时，完整 import / import-tags / bind-content 命令与事务说明见 [统一新闻存储说明](unified-news-storage.md)。本次文档整理没有重新导入或修改库中数据。
+已有库无需为浏览重复导入；需要重建时，完整 import / import-tags / bind-content 命令与事务说明见 [统一存储工具](../tools/unify_news_storage.py)（`import` / `import-tags`）及 [受众导入工具](../tools/import_reader_audience.py)（`bind-content`）。本次文档整理没有重新导入或修改库中数据。
 
 <a id="verification"></a>
 ## 9. 已有验证证据与测试入口
 
-以下是此前导入和功能验收记录，不是模型效果或生产性能指标。本次文档整理另外只读核对了实际数据库结构、14 张表的行数和覆盖范围，并在 READ ONLY 事务中成功执行第 6 节的全部 8 段 SQL；相对文件链接均已检查存在。
+以下是 2026-10-23 的导入和功能验收记录，不是本次重跑结果，也不是模型效果或生产性能指标。原验收曾核对数据库结构、14 张表行数和覆盖范围，并以 READ ONLY 事务执行当时第 6 节的 8 段 SQL。2026-10-26 的修订仅核对源码与当前清单；修改后的示例未在数据库执行。
 
 | 验证 | 已有结果 | 证据 |
 |---|---|---|
@@ -843,9 +870,9 @@ agent/.venv/bin/python agent/tools/import_reader_audience.py query \
 测试入口（需要检查代码修改时再运行）：
 
 ```bash
-agent/.venv/bin/python -m pytest -q agent/tests/test_unified_news_*.py
+python -m pytest -q agent/tests/test_unified_news_*.py
 
-agent/.venv/bin/python -m pytest -q \
+python -m pytest -q \
   agent/tests/test_reader_profile_warehouse.py \
   agent/tests/test_reader_profile_contracts.py \
   agent/tests/test_reader_profile_local.py
@@ -858,24 +885,98 @@ agent/.venv/bin/python -m pytest -q \
 
 | 项目 | 当前状态 / TODO |
 |---|---|
-| 本地统一存储 | 正文、内容主题、受众聚合表和查询已落地；数据为冻结包，没有持续同步任务 |
+| 本地统一存储 | 正文/规则标签按冻结 release 导入；历史受众在 `news_audience`，独立实时模拟在 `news_realtime`。后者已有投影循环，运行状态需另行检查 |
 | 个人行为 | 未将企业原始个人行为或个人画像导入本库；旧个人画像是独立合成包 |
 | 企业实时数仓 | 用户确认背景为 TDSQL-A / PostgreSQL 兼容；企业连接、DDL/权限/性能尚需联调 |
 | 企业正文对象存储 | 用户确认企业原文在对象存储；本地原文仍在 PostgreSQL，尚未落实企业对象键和读取适配 |
 | ES 检索 | 未接入线上 ES。按 news_id 读取已知全文不依赖 ES；相关内容全文检索可单独评估 |
-| 在线 Agent | 本次统一库没有自动替换 Worker 内容源；受众 PG 查询尚未装配成在线 SQL Reader Port |
+| 在线 Agent | streaming lab 已接统一正文及独立实时读者聚合；通用 `reader_profiles.factory` 仍仅支持 `local_package` / `enterprise_http`，未装配 `news_audience` PostgreSQL Reader Port |
 | 热度与排行 | 由已有行为指标与 Python 确定性链路计算；本库受众占比不是权威热度，也不能把 reader_count 当作点击 UV |
 | 租户权限 | 当前 tenant_id 为逻辑隔离；正式数据库角色授权与 RLS 尚待落实，不能声称已有生产隔离验收 |
-| 更新与版本 | 冻结包可追溯；持续增量、迟到数据修订、多版本选择、有效期和线上发布仍待设计/接入 |
-| 评测集 | 8,144 篇为输入候选；需人工审阅与标注、冻结任务和数据划分，不能把规则标签直接当金标 |
+| 更新与版本 | 本地模拟已有窗口修订、水位、暂定/定稿和失效门禁；企业迟到修订、有效期、一致性读取与上线验收仍待接入。磁盘包不可变不代表数据库永不清理 |
+| 评测集 | 8,144 篇是 10 月 23 日历史导出候选，不等于当前保留正文数；评测仍需独立金标、冻结任务和数据划分，不能把规则/自动标签直接当金标 |
 | 受众分布 | 源只保留 Top20；完整分布需上游重新提供，不可从当前表补造 |
 
-旧文件 [news-reader-audience-proposal-v1.sql](sql/news-reader-audience-proposal-v1.sql) 是设计稿，验证时已回滚；**不要去查询 `news_audience_proposal_v1`**。当前实际对象以 `news_audience` 和本文字典为准。
+受众查询使用 `news_audience`，字段和关联以本文字典及现有 DDL 为准。
 
-完整的已有热点链路是：行为指标查询 → Python 热度与排行 → 新闻正文/相关证据 → ReaderProfileService 聚合兴趣 → HotNewsAnalysisInputBuilder → 模型解释 → 结构化校验与报告。本次库表为其中的正文、内容主题与受众查询提供离线可验证的数据基础；在线接线和企业真实数据仍属于后续工作。
+完整的已有热点链路是：行为指标查询 → Python 热度与排行 → 新闻正文/相关证据 → ReaderProfileService 聚合兴趣 → HotNewsAnalysisInputBuilder → 模型解释 → 结构化校验与报告。本库为正文、内容主题与历史受众提供可验证数据基础；独立 streaming lab 的实时模拟另有实现，通用 SQL Reader Port 和企业真实数据接线仍是后续工作。
 
 在仓库根目录快速检索本手册：
 
 ```bash
 rg -n 'news_reader_population|reader_count|lift|body|topic_ids' agent/docs/news-storage-database-reference.md
 ```
+
+<a id="current-categories"></a>
+## 11. 当前类别与自动标注（合并 2026-10-25 记录）
+
+本节合并原清理、自动标注记录中的日常查询与恢复要点。实际 release 与路径以
+`var/news-storage/current-selection.json` 为准；上文 10 月 23 日的数量与 release 是历史基线。
+本次文档整理没有重新运行分类、删除新闻或写入数据库。
+
+- 当前保留 16,369 篇新闻；原 4,714 篇不确定新闻已自动标注。
+  目标 10 类共 13,462 篇、范围外 2,895 篇、综合/信息不足 12 篇。范围外正文仍保留。
+- 自动标签是模型推断及版本化边界规则的结果，`human_verified=false`、
+  `manual_annotation_required=false`；置信等级不是经校准的准确率。
+- `news_content_prune_runs` / `news_content_prune_decisions` 保存清理审计；
+  `news_content_annotation_releases` / `news_content_auto_annotations` 保存自动标注版本和逐篇结果。
+  当前统一查询入口为 `news_content_current_categories`；`review_flags` 保留历史标记，
+  当前补标状态看 `category_status`。
+
+```sql
+-- 当前目标新闻，包含原规则标签与后续自动标注。
+SELECT news_id, title, primary_category, primary_name,
+       category_status, annotation_confidence
+FROM public.news_content_current_categories
+WHERE tenant_id = 'public-news-local' AND retention_scope = 'target';
+
+-- 自动标注的类别、范围与置信分布。
+SELECT primary_name, retention_scope, annotation_confidence, count(*)
+FROM public.news_content_current_categories
+WHERE tenant_id = 'public-news-local' AND category_status = 'auto_labeled'
+GROUP BY 1, 2, 3 ORDER BY 1, 2, 3;
+```
+
+清理调用链：冻结正文/标签包与逐篇 decisions →
+`prune_public_news_categories.py build` 校验哈希并生成子集 → `apply` 获取 PostgreSQL 锁 →
+`FrozenNewsStore` / `FrozenNewsTagStore` 导入新冻结子集 → 保存审计、删除获准清理的旧数据库行并归档旧 release、使相关旧窗口失效 →
+实时目录绑定 → `verify_prune_live.py` 只读验收 → 当前清单与 HTML 报告。
+
+自动标注调用链：原 `hold_*` ID 与冻结文本 → `annotate_uncertain_news.py::inputs`
+检查 ID/版本并提取有界片段 → 本地 Hunyuan-7B-Instruct 推理 →
+`publish_news_annotations.py::finalize` 校验全量 ID/文本/Prompt，应用
+`news_annotation_policy.decide` 与有证据的助手补标 → `apply` 通过 psycopg 事务导入版本和结果
+→ 当前类别视图 → `report` 更新清单与逐篇 HTML。依赖 Transformers、PyTorch、bitsandbytes、
+psycopg 与 PostgreSQL；数量仍由 Python/SQL 计算。
+
+配置入口为工具的 `--model-dir`、`--directory`、`--database-env`；数据库连接由显式环境变量
+（原执行使用 `LAB_UNIFIED_DSN` / `LAB_DSN`）注入，不读取 `.env`。
+正式标注证据位于 `var/news-storage/uncertain-annotations-20261025/full-v2/`，
+以 `apply-result.json` 的 `applied_verified` 状态核对入库，不能只看模型输出。
+逐篇结果见 `output/news-topic-classification-20261025/auto-annotations-report.html`。
+
+恢复入口：清理前数据库备份位于
+`var/backups/news-category-prune-20261025/unified-news.before.dump`；先在独立库恢复并核对，
+再按受控流程切换。仅回滚源码不能恢复已删除数据。停用自动标注需恢复原视图定义并调整
+当前清单的 annotation 指针，保留标注表作审计；原定义见标注目录的
+`previous-current-categories-view.sql`。不要通过整库覆盖来撤销标注。
+
+测试入口：`agent/tests/test_news_category_prune.py`、`agent/tests/test_news_auto_annotations.py`、
+`agent/tests/test_unified_news_store.py`、`agent/tests/test_unified_news_tag_store.py`、
+`agent/tests/test_public_news_stream.py`。历史执行证据在清理包的 `live-verification.json`
+与标注包的 `dry-run-result.json` / `apply-result.json`，本次未重跑数据库验收。
+TODO：独立分类质量评测、正式来源栏目接入、未来新增新闻的持续准入策略；没有用户人工补标待办。
+
+<a id="realtime"></a>
+## 12. 本地实时模拟的 SQL 投影
+
+此处描述 2026-10-26 源码已有能力，不表示本次确认服务正在运行。冻结历史受众 `news_audience` 与实时模拟 `news_realtime` 是两条来源、窗口和用途不同的链路。
+
+- 正文绑定：`connect_public_news_stream.py prepare/activate` → `public_news.register_catalog` 校验内容/标签 release、news_id 与正文哈希 → 源库与目标库目录；`PublicContentRepository` 为独立实验运行读取对应正文。
+- 指标投影：实验源库已提交聚合快照 → `public_news.project_once` / `projection_loop` → `news_realtime.snapshot/metric`；目标提交后再确认源记录，重复投影检查身份。
+- 实时读者：本地合成 Kafka 事件 → `realtime_readers.consume` 去重与校验 → `summaries` 使用访问窗口之前、排除目标新闻的合成兴趣 → `materialize` → `news_realtime.live_window` 暂定/修订状态与 `reader_final` 定稿记录 → 只读 SQL 视图。分钟窗口不能与第 6 节历史小时快照直接混用。
+- 展示：`news_realtime.news_live_current`、`reader_interest_current`、`news_reader_overview` 联合正文、内容标签、指标与读者兴趣。`source_check_fresh` 只表示最近同步检查有效；还须检查窗口、最新事件时间和定稿状态。
+
+代码与配置入口：[目录与投影](../simulation/streaming_lab/public_news.py)、[合成读者聚合](../simulation/streaming_lab/realtime_readers.py)、[实验 Compose](../../deploy/docker-compose.streaming-lab.yml)。连接由显式 `LAB_DSN`（实验源库）、`LAB_UNIFIED_DSN`（统一库）提供，内容导入另需 `UNIFIED_NEWS_DATABASE_URL`；依赖 PostgreSQL、psycopg/SQLAlchemy、Kafka 及实验指标流。这里只接本地合成行为，不采集企业个人行为。
+
+只读查询脚本：[实时正文/指标](sql/news-realtime-query.sql)、[实时读者](sql/news-wallclock-readers-query.sql)、[中文读者概览](sql/news-reader-overview-query.sql)。测试入口为 `agent/tests/test_public_news_stream.py` 和 `agent/tests/test_wallclock_readers.py`；本次未重跑。待办是企业聚合来源、生产权限/负载与通用 Reader Port 验收，不是从零实现本地实时兴趣聚合。

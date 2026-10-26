@@ -1,6 +1,10 @@
--- 已实际落库，可在 SQL 客户端逐段运行；PostgreSQL 127.0.0.1:25432，
+-- 2026-10-23 历史验收查询，可在匹配的历史库逐段运行；PostgreSQL 127.0.0.1:25432，
 -- database=newsagent_unified_news_20261023，所有访问人数均为 synthetic 模拟聚合。
--- 新闻正文当前在同库 public Schema；企业对象存储正文接入尚未切换。
+-- 本地新闻正文在同库 public Schema；企业对象存储正文接入尚未切换。
+-- 2026-10-25 清理后，下面硬编码的旧内容 release 已归档，正文联查可能返回空。
+-- 查询当前正文时，先在脚本副本中按 var/news-storage/current-selection.json 替换内容 release，
+-- 并选择当前保留且具备受众绑定的 news_id；历史受众来源、snapshot_id 和小时窗口保持原义。
+-- 当前正文为空不代表历史受众人数为0；本脚本不是实时分钟窗口查询。
 -- 来源 release 是 reader 包 manifest 原始字节SHA，不是企业生产快照。
 -- 不需要模型或 ES；全文读取与用户兴趣统计是不同数据链路。
 -- 源每个期限最多保留20个主题：未出现主题不等于0人；人数多标签重叠不能相加。
@@ -25,7 +29,7 @@ WHERE tenant_id = '11111111-1111-4111-8111-111111111111'::uuid
   AND window_start = '2026-09-24 22:00:00+08'::timestamptz
   AND window_end = '2026-09-24 23:00:00+08'::timestamptz;
 
--- 3. 正文 + 长期兴趣人群概况。6位模拟详情读者不是企业真实访问量，也不是热度分数。
+-- 3. 历史正文 + 长期兴趣人群概况。原验收为6位模拟详情读者，不是企业访问量或热度。
 -- binding是明确的业务租户到内容域映射，不把public-news-local等同于业务UUID。
 SELECT p.news_id, c.title, c.body, c.content_state, p.window_start, p.window_end,
        p.reader_count, p.profiled_reader_count, p.unknown_reader_count,
@@ -96,4 +100,5 @@ FROM joined ORDER BY news_id;
 -- 导入入口：agent/tools/import_reader_audience.py，显式AUDIENCE_DATABASE_URL，不读.env。
 -- 来源聚合包 -> SHA/合同校验 -> ReaderWarehouseSource -> 单事务COPY/全量摘要读回
 -- -> news_audience表/视图 -> 本文件SQL或CLI query。依赖psycopg、PostgreSQL、SQLite。
--- 原news_content_*表未改，个人事件/逐用户画像未导入，线上Worker配置未切换。
+-- 2026-10-23 受众导入当时未改原news_content_*表、未切换线上Worker配置。
+-- 后续内容清理和独立streaming lab接线另有版本记录；本查询不导入个人事件或逐用户画像。

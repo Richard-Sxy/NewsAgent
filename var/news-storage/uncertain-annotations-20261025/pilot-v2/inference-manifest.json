@@ -1,0 +1,111 @@
+{
+  "version": "news-uncertain-semantic-20261025-v2",
+  "source_release_id": "news-1443103656c4351fe52c0882",
+  "tenant_id": "public-news-local",
+  "model": "tencent/Hunyuan-7B-Instruct",
+  "revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+  "quantization": "nf4-double-quant",
+  "prompt_sha256": "3dec8a2f2664f6c816450d0a0135a695f0d135a715448363b92450cbb0e85f12",
+  "count": 48,
+  "category_schema": [
+    [
+      "tech",
+      "科技",
+      "科学研究、工程技术、航天、互联网技术；医学诊疗归健康"
+    ],
+    [
+      "ai",
+      "AI",
+      "人工智能、大模型、算法、智能体及AI应用为主角"
+    ],
+    [
+      "finance",
+      "财经",
+      "经济、金融、产业、企业经营、商业消费；证券行情归股票"
+    ],
+    [
+      "stocks",
+      "股票",
+      "股市行情、股票交易、上市公司公告、投资评级、证券研报"
+    ],
+    [
+      "auto",
+      "汽车",
+      "汽车产品、车企、汽车产业、用车；普通交通事故归社会"
+    ],
+    [
+      "digital",
+      "数码",
+      "手机、电脑、相机、消费电子、家电及其软硬件体验"
+    ],
+    [
+      "international",
+      "国际",
+      "海外政治、外交、国际组织、海外社会事件；外国体育或企业仍按主题归类"
+    ],
+    [
+      "military",
+      "军事",
+      "国防、军队、武器、战争、军演、战役军史"
+    ],
+    [
+      "sports",
+      "体育",
+      "体育赛事、运动员、球队、体育产业；含赛车、冰雪、棋类"
+    ],
+    [
+      "games",
+      "游戏",
+      "电子游戏、网游、游戏攻略、电竞"
+    ],
+    [
+      "education",
+      "教育",
+      "学校、高校、招生考试、教学、学生培养"
+    ],
+    [
+      "health",
+      "健康",
+      "疾病、临床医学、医药、养生、医疗服务和医生"
+    ],
+    [
+      "society",
+      "社会",
+      "国内社会事件、治安法律、事故、公益、地方民生"
+    ],
+    [
+      "domestic",
+      "国内时政",
+      "国内党政会议、政策治理、干部任免"
+    ],
+    [
+      "culture",
+      "文化",
+      "文化艺术、文学、考古、历史；战争军史归军事"
+    ],
+    [
+      "lifestyle",
+      "生活",
+      "旅游、天气、生活技巧、情感育儿、美食时尚、自然景观"
+    ],
+    [
+      "entertainment",
+      "娱乐",
+      "明星、影视综艺、演艺娱乐和艺人私生活"
+    ],
+    [
+      "house",
+      "房产",
+      "楼市、买房租房、住宅装修、住房政策"
+    ],
+    [
+      "insufficient",
+      "综合/信息不足",
+      "没有可辨主题的空泛标题、无信息文本；有明确主题时不选此项"
+    ]
+  ],
+  "method": "constrained category-token likelihood; greedy inference; no training",
+  "confidence_note": "Model category scores are uncalibrated relative signals, not accuracy probabilities.",
+  "torch": "2.9.1+cu128",
+  "transformers": "4.57.6"
+}

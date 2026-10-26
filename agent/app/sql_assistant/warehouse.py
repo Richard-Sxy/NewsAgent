@@ -49,7 +49,7 @@ from app.sql_assistant.real_news_profiles import (
 
 SCHEMA_VERSION = "news-warehouse-v1"
 SCHEMA_SHA256 = "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0"
-SCHEMA_PATH = Path(__file__).resolve().parents[2] / "docs" / "sql-warehouse-schema-v1.md"
+SCHEMA_PATH = Path(__file__).resolve().parents[2] / "docs" / "sql-warehouse" / "sql-warehouse-schema-v1.md"
 SCHEMA_VERSION_V2 = "news-warehouse-v2"
 SCHEMA_SHA256_V2 = "b46023255d18b583048cbe8f5c5ce2a2e4372d3d867da2a1b24b493551c18273"
 SCHEMA_PATH_V2 = SCHEMA_PATH.with_name("sql-warehouse-schema-v2.md")
@@ -247,10 +247,11 @@ def demo_dataset_info(profile: str = CLASSIC_PROFILE, *, news_per_tenant: int = 
                     metric_article_count=manifest["metric_available_article_count"],
                     content_only_article_count=manifest["content_only_article_count"],
                     extension_sha256=manifest["extension_sha256"])
-        info["metric_row_count"] = manifest["tables"]["news_metric_hourly"]["rows"]
-        info["baseline_row_count"] = manifest["tables"]["news_metric_baseline_hourly"]["rows"]
-        info["total_metric_row_count"] = info["metric_row_count"] * 2
-        info["total_baseline_row_count"] = info["baseline_row_count"] * 2
+        primary = manifest["tenant_table_rows"][str(DEMO_TENANT_ID)]
+        info["metric_row_count"] = primary["news_metric_hourly"]
+        info["baseline_row_count"] = primary["news_metric_baseline_hourly"]
+        info["total_metric_row_count"] = manifest["tables"]["news_metric_hourly"]["rows"]
+        info["total_baseline_row_count"] = manifest["tables"]["news_metric_baseline_hourly"]["rows"]
     if profile == PUBLIC_HEADLINES_PROFILE:
         catalog = public_catalog()
         dates = [datetime.fromisoformat(article["published_at"]) for article in catalog["articles"]]

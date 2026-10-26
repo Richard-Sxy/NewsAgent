@@ -1,0 +1,201 @@
+{
+  "synthetic_only": true,
+  "request_id": "b0ba6e49-b8d4-4524-871c-c52b412e1e25",
+  "workflow_id": "governance-probe-b0ba6e49-b8d4-4524-871c-c52b412e1e25",
+  "model_request_id": "native-local-e8423ad3df8b4b12f202669b",
+  "checks": {
+    "completed": true,
+    "parent_preserved": true,
+    "http": true,
+    "workflow": true,
+    "activity": true,
+    "model": true,
+    "quota": true,
+    "business_validation": true,
+    "two_services": true
+  },
+  "trace_id": "06b9e4ff6d807b2e7fb0447f4de24b51",
+  "trace_status": "found",
+  "spans": [
+    {
+      "name": "POST /probe/{request_id}",
+      "span_id": "/ZIahRFBuH8=",
+      "parent_span_id": "rJkWsKopstQ=",
+      "service": "newsagent-governance-probe-api",
+      "instance": "b7cf51dba44942c78df014d2250a494a",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.141773749,
+      "attributes": {}
+    },
+    {
+      "name": "StartWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "+h5xBFnuSxk=",
+      "parent_span_id": "/ZIahRFBuH8=",
+      "service": "newsagent-governance-probe-api",
+      "instance": "b7cf51dba44942c78df014d2250a494a",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.017889484,
+      "attributes": {}
+    },
+    {
+      "name": "RunWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "V3N0pqKsNUM=",
+      "parent_span_id": "+h5xBFnuSxk=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    },
+    {
+      "name": "StartActivity:governance_diagnostic_model",
+      "span_id": "on/364iEPV0=",
+      "parent_span_id": "+h5xBFnuSxk=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    },
+    {
+      "name": "RunActivity:governance_diagnostic_model",
+      "span_id": "b0Z2SXOjrjY=",
+      "parent_span_id": "on/364iEPV0=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.060924709,
+      "attributes": {}
+    },
+    {
+      "name": "temporal.activity",
+      "span_id": "Zi7ISFoFS7o=",
+      "parent_span_id": "b0Z2SXOjrjY=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.060791205,
+      "attributes": {
+        "temporal.activity.attempt": "1",
+        "temporal.workflow.id": "governance-probe-b0ba6e49-b8d4-4524-871c-c52b412e1e25",
+        "newsagent.stage": "temporal.activity"
+      }
+    },
+    {
+      "name": "model.structured",
+      "span_id": "8CD3iuqzbjU=",
+      "parent_span_id": "Zi7ISFoFS7o=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.012172272,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.structured",
+        "model.provider_request_id": "native-local-e8423ad3df8b4b12f202669b"
+      }
+    },
+    {
+      "name": "model.prompt_render",
+      "span_id": "BpIKTUmaXNo=",
+      "parent_span_id": "8CD3iuqzbjU=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.00099531,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.prompt_render"
+      }
+    },
+    {
+      "name": "model.inference",
+      "span_id": "rrnpIEudSKw=",
+      "parent_span_id": "8CD3iuqzbjU=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.009921254,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.inference",
+        "model.provider_request_id": "native-local-e8423ad3df8b4b12f202669b"
+      }
+    },
+    {
+      "name": "model.quota_wait.interactive",
+      "span_id": "Nhypp5CmjVk=",
+      "parent_span_id": "rrnpIEudSKw=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.002227306,
+      "attributes": {
+        "newsagent.stage": "quota_admission"
+      }
+    },
+    {
+      "name": "model.response_decode",
+      "span_id": "Mq5euUm4d7g=",
+      "parent_span_id": "8CD3iuqzbjU=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000403875,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.response_decode"
+      }
+    },
+    {
+      "name": "model.schema_validate",
+      "span_id": "CavM0m7RQlA=",
+      "parent_span_id": "8CD3iuqzbjU=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000196582,
+      "attributes": {
+        "model.scene": "conversation",
+        "newsagent.stage": "model.schema_validate"
+      }
+    },
+    {
+      "name": "model.business_validate",
+      "span_id": "u53j4MImHkI=",
+      "parent_span_id": "Zi7ISFoFS7o=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.000146786,
+      "attributes": {
+        "newsagent.stage": "model.business_validate"
+      }
+    },
+    {
+      "name": "CompleteWorkflow:GovernanceDiagnosticWorkflow",
+      "span_id": "n7ytj0WLIHs=",
+      "parent_span_id": "+h5xBFnuSxk=",
+      "service": "newsagent-governance-probe-worker",
+      "instance": "9f894b82fc394ce6894749e1785abf13",
+      "version": "local-governance-v1",
+      "status": 0,
+      "seconds": 0.0,
+      "attributes": {}
+    }
+  ],
+  "passed": true
+}

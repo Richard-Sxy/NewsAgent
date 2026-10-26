@@ -9,6 +9,7 @@ export interface RuntimeConfig {
   /** 由网关注入身份时的兜底租户；正常情况下保持为空。 */
   tenantId: string
   enableHotNews: boolean
+  enableStreamingLab: boolean
   environment: string
   /** 空字符串表示关闭前端错误上报。 */
   errorReportingDsn: string
@@ -19,6 +20,7 @@ const DEFAULTS: RuntimeConfig = {
   appTitle: 'NewsAgent 运营控制台',
   tenantId: '',
   enableHotNews: false,
+  enableStreamingLab: false,
   environment: 'development',
   errorReportingDsn: '',
 }
@@ -31,6 +33,7 @@ function normalize(raw: Partial<RuntimeConfig>): RuntimeConfig {
     appTitle: raw.appTitle ?? DEFAULTS.appTitle,
     tenantId: raw.tenantId ?? DEFAULTS.tenantId,
     enableHotNews: raw.enableHotNews ?? DEFAULTS.enableHotNews,
+    enableStreamingLab: raw.enableStreamingLab === true,
     environment: raw.environment ?? DEFAULTS.environment,
     errorReportingDsn: raw.errorReportingDsn ?? DEFAULTS.errorReportingDsn,
   }

@@ -74,7 +74,12 @@ def test_json_reader_enforces_size_and_symlink_boundaries(tmp_path):
     with pytest.raises(ValueError, match="size budget"):
         catalog._bounded_json(source, 8)
     link = tmp_path / "linked.json"
-    link.symlink_to(source)
+    try:
+        link.symlink_to(source)
+    except OSError as error:
+        if getattr(error, "winerror", None) == 1314:
+            pytest.skip("Windows symlink privilege is unavailable")
+        raise
     with pytest.raises(ValueError, match="regular JSON"):
         catalog._bounded_json(link, 1024)
 

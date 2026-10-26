@@ -1,8 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+import { runtimeConfig } from '@/config/runtime'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/chat' },
+  {
+    path: '/streaming-lab',
+    name: 'streaming-lab',
+    component: () => import('@/views/StreamingLabView.vue'),
+    meta: { title: '流式快照工作台' },
+  },
   {
     path: '/chat',
     name: 'chat',
@@ -91,6 +98,12 @@ export const router = createRouter({
   scrollBehavior(to) {
     return to.hash ? { el: to.hash } : { top: 0 }
   },
+})
+
+router.beforeEach((to) => {
+  const config = runtimeConfig()
+  if (config.environment === 'streaming-lab' && to.name !== 'streaming-lab') return '/streaming-lab'
+  if (to.name === 'streaming-lab' && !config.enableStreamingLab) return '/chat'
 })
 
 router.afterEach((to) => {

@@ -31,6 +31,7 @@ build/
 
 # User-approved endpoint configuration; credentials still belong in injected env.
 /agent/deploy/model-runtime.compatible.yml
+/deploy/model-runtime.compatible.yml
 
 # rag
 rag-recall-demo/
@@ -58,6 +59,7 @@ tmp/
 /var/warehouse/**/*.jsonl
 /var/warehouse/**/warehouse.sql
 /var/knowledge-snapshots/
+/var/backups/news-category-prune-20261025/
 
 # Rebuildable local synthetic behavior packages; keep small manifests/reports.
 /output/behavior-tags/**/label_index.sqlite
@@ -82,3 +84,36 @@ tmp/
 # Frozen public-news source material. Keep small manifests, not captured bodies.
 /var/news-storage/**/*.jsonl
 /var/news-storage/.*.building-*/
+
+# Local Hunyuan weights, runtime logs and experimental adapters (rebuildable).
+/var/models/
+/var/hunyuan/
+
+# Local observability recovery archives contain bulk runtime storage.
+/var/observability-backup-*/
+# Full local soak evidence stays available on disk; compact summaries are tracked.
+/output/governance-*/soak*.json
+/output/governance-*/*.samples.jsonl
+
+# Unified small-model workspace: large/private/generated assets stay local.
+/small_model/models/
+/small_model/environments/
+/small_model/runtime/
+/small_model/adapters/*
+!/small_model/adapters/README.md
+/small_model/training/*/
+/small_model/runs/*
+!/small_model/runs/README.md
+# Renamed Hunyuan workspace uses the same local-only asset boundaries.
+/Hunyuan7B/models/
+/Hunyuan7B/environments/
+/Hunyuan7B/runtime/
+/Hunyuan7B/adapters/*
+!/Hunyuan7B/adapters/README.md
+/Hunyuan7B/training/*/
+/Hunyuan7B/runs/*
+!/Hunyuan7B/runs/README.md
+# Compatibility aliases to ignored assets (symlinks are not directory patterns).
+/.venv-hunyuan
+/var/hunyuan
+/var/query-eval

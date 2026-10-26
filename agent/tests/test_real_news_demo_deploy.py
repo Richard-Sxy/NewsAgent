@@ -3,6 +3,7 @@
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 from types import SimpleNamespace
@@ -44,7 +45,7 @@ def source_root(tmp_path, module):
     catalog.parent.mkdir(parents=True)
     catalog.write_text(json.dumps({"articles": [{"news_id": str(i)} for i in range(120)]}))
     schema = root / module.SCHEMA
-    schema.parent.mkdir()
+    schema.parent.mkdir(parents=True)
     schema.write_text("frozen-v6-contract\n")
     app = root / "app/sql_assistant"
     app.mkdir(parents=True)
@@ -144,7 +145,7 @@ class Harness:
 def test_commands_fix_new_project_disable_dotenv_and_keep_all_five_overlays(module, source_root):
     instance = deployment(module, source_root)
     command = instance.compose_command("config", "--quiet", runtime=True)
-    assert command[:6] == ["docker", "compose", "--env-file", "/dev/null", "-p", "news-agent-real-news-demo"]
+    assert command[:6] == ["docker", "compose", "--env-file", os.devnull, "-p", "news-agent-real-news-demo"]
     overlays = [Path(command[i + 1]).name for i, arg in enumerate(command) if arg == "-f"]
     assert overlays == list(module.OVERLAYS)
     assert "timeline-query-model" not in " ".join(command)
@@ -164,7 +165,7 @@ def test_check_reads_only_frozen_files_and_local_image_ids(module, source_root, 
     assert "news-agent-real-news-demo" in output and "fixture-model-key" not in output
 
 
-@pytest.mark.parametrize("relative", ["data/corpus-news-v6/catalog.json", "docs/sql-warehouse-schema-v6.md"])
+@pytest.mark.parametrize("relative", ["data/corpus-news-v6/catalog.json", "docs/sql-warehouse/sql-warehouse-schema-v6.md"])
 def test_changed_frozen_file_blocks_before_docker(module, source_root, monkeypatch, relative):
     instance = deployment(module, source_root)
     harness = Harness(module, instance, monkeypatch)

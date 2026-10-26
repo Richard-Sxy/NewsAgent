@@ -34,7 +34,15 @@ SORT_METRICS = ("clicks", "ctr", "detail_page_views", "detail_visitors", "intera
 TABLES = ("dim_behavior_policy", "dim_channel", "dim_news", "news_content_feature", "window_snapshot",
           "news_metric_5min", "news_metric_channel_hourly", "news_metric_hourly", "news_metric_daily",
           "news_metric_baseline_hourly", "content_change_event", "content_tombstone", "index_cleanup_task")
-QUERY_CATALOG_VERSION = "v8-readonly-query-catalog-v2"
+LEGACY_DATASET_SHA256 = "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
+LEGACY_SCHEMA_SHA256 = "5e08cf08c090796b7aee62be3a8dcb4f688452d29fc3567d30f6f2c3465ed073"
+LEGACY_TABLES = tuple(table for table in TABLES if table != "news_content_feature")
+# Both identities are frozen in code. A rewritten manifest cannot approve itself.
+APPROVED_DATASETS = {
+    DATASET_SHA256: (SCHEMA_SHA256, TABLES),
+    LEGACY_DATASET_SHA256: (LEGACY_SCHEMA_SHA256, LEGACY_TABLES),
+}
+QUERY_CATALOG_VERSION = "v8-readonly-query-catalog-v3"
 
 GATE_SQL = """SELECT tenant_id,event_time,snapshot_revision,window_end,watermark_at,snapshot_at,
  completeness,quality_status,policy_version
@@ -222,28 +230,30 @@ def load_identity(dataset_dir: Path | str = DEFAULT_DATASET) -> tuple[dict[str, 
     manifest = _read_json(manifest_path, 1024 * 1024)
     unsigned = dict(manifest)
     digest = unsigned.pop("dataset_sha256", None)
-    if digest != DATASET_SHA256 or sha256(_json(unsigned).encode()).hexdigest() != DATASET_SHA256:
+    if (not isinstance(digest, str) or digest not in APPROVED_DATASETS
+            or sha256(_json(unsigned).encode()).hexdigest() != digest):
         raise WarehouseQueryError("dataset manifest differs from the fixed v8 query identity")
+    schema_digest, tables = APPROVED_DATASETS[digest]
     if (manifest.get("schema") != "news_sim_v8" or manifest.get("tenants") != list(TENANTS)
             or manifest.get("catalog_sha256") != CATALOG_SHA256
-            or manifest.get("schema_sha256") != SCHEMA_SHA256
+            or manifest.get("schema_sha256") != schema_digest
             or manifest.get("news_content_synthetic") is not False
             or manifest.get("metric_data_synthetic") is not True
-            or set(manifest.get("tables", {})) != set(TABLES)):
+            or set(manifest.get("tables", {})) != set(tables)):
         raise WarehouseQueryError("query manifest schema, tenant or content provenance mismatch")
     schema_path = directory / "schema.sql"
-    if schema_path.is_symlink() or schema_path.stat().st_size > 128 * 1024 or sha256(schema_path.read_bytes()).hexdigest() != SCHEMA_SHA256:
+    if schema_path.is_symlink() or schema_path.stat().st_size > 128 * 1024 or sha256(schema_path.read_bytes()).hexdigest() != schema_digest:
         raise WarehouseQueryError("v8 frozen schema digest mismatch")
     load_catalog(directory / "catalog.json")
-    columns = {table: manifest["tables"][table]["columns"] for table in TABLES}
+    columns = {table: manifest["tables"][table]["columns"] for table in tables}
     if any(not isinstance(values, list) or not values or len(set(values)) != len(values)
            or any(not isinstance(field, str) or not re.fullmatch(r"[a-z][a-z0-9_]*", field) for field in values)
            for values in columns.values()):
         raise WarehouseQueryError("invalid frozen table column directory")
     identity = {
-        "dataset_version": manifest["dataset_version"], "dataset_sha256": DATASET_SHA256,
+        "dataset_version": manifest["dataset_version"], "dataset_sha256": digest,
         "manifest_sha256": sha256(manifest_path.read_bytes()).hexdigest(),
-        "catalog_sha256": CATALOG_SHA256, "schema_sha256": SCHEMA_SHA256,
+        "catalog_sha256": CATALOG_SHA256, "schema_sha256": schema_digest,
         "table_columns_sha256": sha256(_json(columns).encode()).hexdigest(),
         "query_catalog_version": QUERY_CATALOG_VERSION,
         "query_catalog_sha256": sha256(_json({"queries": SQL_QUERIES, "gate": GATE_SQL,
@@ -335,7 +345,7 @@ def _validate_gate(gate: Any, compiled: CompiledQuery) -> None:
 
 
 def _validate_schema_columns(rows: list[dict[str, Any]], manifest: dict[str, Any]) -> None:
-    observed = {table: [] for table in TABLES}
+    observed = {table: [] for table in manifest["tables"]}
     for row in rows:
         name = row.get("table_name")
         if name not in observed:
@@ -343,7 +353,7 @@ def _validate_schema_columns(rows: list[dict[str, Any]], manifest: dict[str, Any
         if row.get("ordinal_position") != len(observed[name]) + 1:
             raise WarehouseQueryError("database table column ordinal mismatch")
         observed[name].append(row.get("column_name"))
-    if observed != {table: manifest["tables"][table]["columns"] for table in TABLES}:
+    if observed != {table: values["columns"] for table, values in manifest["tables"].items()}:
         raise WarehouseQueryError("database table columns differ from the frozen v8 directory")
 
 
@@ -367,7 +377,7 @@ def run_query(request: QueryRequest, dataset_dir: Path | str = DEFAULT_DATASET, 
                 cursor.execute("SET LOCAL TIME ZONE 'Asia/Shanghai';")
                 cursor.execute("SET LOCAL statement_timeout = '10s';")
                 cursor.execute("SET LOCAL lock_timeout = '2s';")
-                cursor.execute(SCHEMA_COLUMNS_SQL, {"table_names": list(TABLES)})
+                cursor.execute(SCHEMA_COLUMNS_SQL, {"table_names": list(manifest["tables"])})
                 column_rows = cursor.fetchmany(513)
                 if len(column_rows) > 512:
                     raise WarehouseQueryError("database column response exceeded its bound")

@@ -21,7 +21,7 @@ from uuid import UUID
 
 from app.sql_assistant.scaled_profiles import ScaledTableHasher, TABLES, TENANTS
 from simulation.warehouse_simulation.real_news_catalog import (
-    EXTENSION_SHA256, EXTENSION_VERSION, load_catalog, load_extension,
+    EXTENSION_PATH, EXTENSION_SHA256, EXTENSION_VERSION, load_catalog, load_extension,
 )
 
 REAL_NEWS_PROFILE = "real-news-v8"
@@ -76,9 +76,8 @@ def real_news_news_ids(news_per_tenant: int = REAL_NEWS_COUNT) -> tuple[str, ...
     return tuple(article["news_id"] for article in _articles())
 
 
-@lru_cache(maxsize=1)
-def _package_identity() -> dict[str, Any]:
-    root = real_news_dataset_path()
+@lru_cache(maxsize=2)
+def _package_identity(root: Path) -> dict[str, Any]:
     manifest_path = root / "manifest.json"
     if manifest_path.is_symlink() or not manifest_path.is_file():
         raise ValueError("real-news-v8 manifest is unavailable")
@@ -92,12 +91,53 @@ def _package_identity() -> dict[str, Any]:
             or manifest.get("news_content_synthetic") is not False
             or manifest.get("metric_data_synthetic") is not True):
         raise ValueError("real-news-v8 package identity or provenance changed")
-    extension_path = root / manifest["extension_path"]
+    unsigned = dict(manifest)
+    digest = unsigned.pop("dataset_sha256", None)
+    encoded = json.dumps(unsigned, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+    if sha256(encoded).hexdigest() != digest:
+        raise ValueError("real-news-v8 manifest digest changed")
+    if manifest.get("extension_path") != EXTENSION_PATH.name:
+        raise ValueError("real-news-v8 extension path differs from the frozen version")
+    extension_path = root / EXTENSION_PATH.name
     if extension_path.is_symlink() or not extension_path.is_file():
         raise ValueError("real-news-v8 extension manifest is unavailable")
     if sha256(extension_path.read_bytes()).hexdigest() != EXTENSION_SHA256:
         raise ValueError("real-news-v8 extension digest changed")
+    for table in ("dim_news", "window_snapshot", "news_metric_hourly", "news_metric_baseline_hourly", "content_tombstone"):
+        path = root / f"{table}.jsonl"
+        if path.is_symlink() or not path.is_file():
+            raise ValueError("real-news-v8 table is unavailable")
+        with path.open("rb") as stream:
+            actual = sha256()
+            for block in iter(lambda: stream.read(1024 * 1024), b""):
+                actual.update(block)
+        if actual.hexdigest() != manifest.get("tables", {}).get(table, {}).get("sha256"):
+            raise ValueError("real-news-v8 table digest changed")
     return manifest
+
+
+def verified_real_news_dataset_path() -> Path:
+    root = real_news_dataset_path().resolve()
+    _package_identity(root)
+    return root
+
+
+def _eligible_metric_ids(root: Path) -> set[tuple[str, str]]:
+    """Apply the same publication/tombstone gate as the standalone v8 views."""
+    known = {row["news_id"] for row in _articles() if row["metric_available"]}
+    tenants = {str(tenant) for tenant in TENANTS}
+    eligible = set()
+    with (root / "dim_news.jsonl").open(encoding="utf-8") as stream:
+        for line in stream:
+            row = json.loads(line)
+            if (row["tenant_id"] in tenants and row["news_id"] in known
+                    and row.get("metric_available") is True and row.get("status") == "published"):
+                eligible.add((row["tenant_id"], row["news_id"]))
+    with (root / "content_tombstone.jsonl").open(encoding="utf-8") as stream:
+        for line in stream:
+            row = json.loads(line)
+            eligible.discard((row["tenant_id"], row["news_id"]))
+    return eligible
 
 
 def _valid_hours() -> dict[tuple[str, str], int]:
@@ -115,10 +155,13 @@ def _valid_hours() -> dict[tuple[str, str], int]:
 
 
 def _iter_metrics(table: str, valid: dict[tuple[str, str], int]) -> Iterator[dict[str, Any]]:
-    root = real_news_dataset_path()
+    root = verified_real_news_dataset_path()
+    eligible = _eligible_metric_ids(root)
     with (root / f"{table}.jsonl").open(encoding="utf-8") as stream:
         for line in stream:
             row = json.loads(line)
+            if (row["tenant_id"], row["news_id"]) not in eligible:
+                continue
             key = (row["tenant_id"], row["event_time"])
             if key not in valid:
                 continue
@@ -159,19 +202,25 @@ def iter_real_news_rows(table: str, news_per_tenant: int = REAL_NEWS_COUNT) -> I
                     "publish_time": datetime.fromisoformat(article["publish_time"]),
                 }
         return
+    verified_real_news_dataset_path()
     valid = _valid_hours()
     yield from _iter_metrics(table, valid)
 
 
-@lru_cache(maxsize=1)
-def _cached_manifest() -> dict[str, Any]:
-    _package_identity()
+@lru_cache(maxsize=2)
+def _cached_manifest(root: Path) -> dict[str, Any]:
+    _package_identity(root)
     hashes = {}
+    tenant_rows = {str(tenant): {} for tenant in TENANTS}
     for table in TABLES:
         hasher = ScaledTableHasher(table)
+        counts = {str(tenant): 0 for tenant in TENANTS}
         for row in iter_real_news_rows(table):
             hasher.update(row)
+            counts[str(row["tenant_id"])] += 1
         hashes[table] = {"sha256": hasher.digest(), "rows": hasher.count}
+        for tenant, count in counts.items():
+            tenant_rows[tenant][table] = count
     identity = {
         "dataset_profile": REAL_NEWS_PROFILE,
         "dataset_version": REAL_NEWS_DATASET_VERSION,
@@ -181,6 +230,7 @@ def _cached_manifest() -> dict[str, Any]:
         "window_end": REAL_NEWS_WINDOW_END.isoformat(),
         "hash_protocol": "news-scaled-fixture-v1",
         "tables": hashes,
+        "tenant_table_rows": tenant_rows,
         "catalog_count": 661,
         "extension_count": 7459,
         "extension_sha256": EXTENSION_SHA256,
@@ -198,5 +248,5 @@ def _cached_manifest() -> dict[str, Any]:
 
 def real_news_manifest(news_per_tenant: int = REAL_NEWS_COUNT) -> dict[str, Any]:
     validate_real_news_count(news_per_tenant)
-    real_news_dataset_path()
-    return deepcopy(_cached_manifest())
+    root = verified_real_news_dataset_path()
+    return deepcopy(_cached_manifest(root))

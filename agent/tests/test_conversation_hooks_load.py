@@ -81,7 +81,12 @@ async def test_non_e2e_environment_and_environment_symlink_are_rejected(monkeypa
         await load.run(arguments(tmp_path))
     monkeypatch.setenv("ENVIRONMENT", "e2e")
     alias = tmp_path / "resource.json"
-    alias.symlink_to(tmp_path / ".env")
+    try:
+        alias.symlink_to(tmp_path / ".env")
+    except OSError as error:
+        if getattr(error, "winerror", None) == 1314:
+            pytest.skip("Windows symlink privilege is unavailable")
+        raise
     with pytest.raises(ValueError, match="environment files"):
         await load.run(arguments(tmp_path, resource_report=alias))
 

@@ -1,0 +1,70 @@
+{
+  "run_id": "6b85467c46cc4134821cba842696f09e",
+  "users": 10,
+  "duration_requested_seconds": 600.0,
+  "duration_actual_seconds": 600.005,
+  "think_seconds": 5.0,
+  "client_peak_inflight": 10,
+  "attempts": 1175,
+  "business_correct": 1174,
+  "business_correct_pct": 99.9149,
+  "latency_seconds_all": {
+    "p50": 0.071,
+    "p95": 0.215,
+    "p99": 0.27,
+    "max": 0.323
+  },
+  "trace_found": 1174,
+  "trace_expected": 1174,
+  "passed": false,
+  "workloads": {
+    "greeting": {
+      "attempts": 592,
+      "business_correct": 591,
+      "p95_seconds": 0.087569
+    },
+    "existing_reports": {
+      "attempts": 583,
+      "business_correct": 583,
+      "p95_seconds": 0.236583
+    }
+  },
+  "failures": [
+    {
+      "user_index": 2,
+      "sequence": 53,
+      "replica": "http://api-b:8000",
+      "workload": "greeting",
+      "request_id": "474674e2-008e-4739-a0c2-7e0968b89921",
+      "status": "failed",
+      "business_correct": false,
+      "history": false,
+      "replay": false,
+      "isolation": false,
+      "check_error": "ReadError",
+      "trace_status": "missing_response_trace_id"
+    }
+  ],
+  "tokens": {
+    "status": "unknown",
+    "reason": "local deterministic Port does not report provider token usage"
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "105",
+    "time": "15.992",
+    "timestamp": "2026-10-25T06:03:53.419515+00:00",
+    "hostname": "79f39b02fcfa"
+  },
+  "post_recovery_smoke": {
+    "attempts": 19,
+    "business_correct": 19,
+    "trace_found": 19,
+    "passed": true
+  },
+  "cross_process_trace": "647666b912a5f19c0a1a910d81bcced4",
+  "observability_incident": "Prometheus tmpfs full; repaired via backup and persistent volume. Bulk trace readback exhausted Tempo memory and caused exporter failures; raised limit to 3 GiB and bounded sequential readback. Original 1174 submitted message traces recovered; intervening exporter failures remain in evidence."
+}

@@ -41,6 +41,9 @@ EXTENSION_PATH = Path(__file__).resolve().parents[2] / "data/real-news-warehouse
 EXTENSION_VERSION = "real-news-warehouse-extension-v2-20261018"
 EXTENSION_COUNT = 7459
 EXTENSION_SHA256 = "6b7e65df3590ce84974adcf77d4505bc494e05ecbd5a0b1e7c5eec1732ad766f"
+# Windows v3 is accepted explicitly; the established WSL v2 stays the default.
+V3_EXTENSION_VERSION = "real-news-warehouse-extension-v3-20261023"
+V3_EXTENSION_SHA256 = "2cf4566f54c5641076d45f6a18d25f157f9d45c2019fa364eac9d728c9fc12dc"
 CATALOG_SOURCE_PACKAGES = {
     "corpus-v6": (CORPUS_MANIFEST, CORPUS_MANIFEST_SHA256, 120,
                   "news/data/local_recall/articles-v1", "title-keyword-demo-v1"),
@@ -151,15 +154,27 @@ def _digest(value: Any, label: str) -> str:
     return value
 
 
+def _resolve_source(root: Path, relative: str) -> Path:
+    """Resolve frozen source names across the data-root move, without symlinks."""
+    name = PurePosixPath(relative)
+    if name.is_absolute() or ".." in name.parts or "\\" in relative or ":" in relative:
+        raise ValueError("real-news source path escapes the repository")
+    path = root / relative
+    # Windows checkouts may not carry the old news/data/incremental symlink.
+    # Never fall back from an existing but corrupt legacy artifact.
+    if not path.exists() and not path.is_symlink() and relative.startswith("news/data/incremental/"):
+        path = root / "var" / relative
+    if not path.resolve().is_relative_to(root.resolve()) or path.is_symlink():
+        raise ValueError("real-news source path escapes the repository")
+    return path
+
+
 def _source_path(root: Path, relative: str, directory: str, news_id: str) -> Path:
     expected = f"{directory}/{news_id}.json"
     if (not isinstance(relative, str) or relative != expected
             or PurePosixPath(relative).is_absolute() or ".." in PurePosixPath(relative).parts):
         raise ValueError("real-news source path or identity mismatch")
-    path = root / relative
-    if not path.resolve().is_relative_to(root.resolve()) or path.is_symlink():
-        raise ValueError("real-news source path escapes the repository")
-    return path
+    return _resolve_source(root, relative)
 
 
 def _validate_article(row: Any) -> None:
@@ -335,7 +350,7 @@ def build_catalog(repository_root: Path | str = REPOSITORY_ROOT) -> dict[str, An
     """Rebuild the exact catalog from two independently hash-pinned packages."""
     root = Path(repository_root).resolve()
     corpus = _bounded_json(root / CORPUS_MANIFEST, MAX_SOURCE_BYTES, CORPUS_MANIFEST_SHA256)
-    incremental = _bounded_json(root / INCREMENTAL_MANIFEST, MAX_SOURCE_BYTES, INCREMENTAL_MANIFEST_SHA256)
+    incremental = _bounded_json(_resolve_source(root, INCREMENTAL_MANIFEST), MAX_SOURCE_BYTES, INCREMENTAL_MANIFEST_SHA256)
     if (not isinstance(corpus, dict) or corpus.get("dataset_profile") != "corpus-v6"
             or corpus.get("corpus_count") != 120 or not isinstance(corpus.get("articles"), list)
             or len(corpus["articles"]) != 120 or not isinstance(incremental, dict)
@@ -444,10 +459,10 @@ def _validate_extension_article(row: Any) -> None:
         raise ValueError("invalid real-news extension keyword list")
 
 
-def _validate_extension(payload: Any) -> tuple[dict[str, Any], ...]:
+def _validate_extension(payload: Any, *, version: str = EXTENSION_VERSION) -> tuple[dict[str, Any], ...]:
     if not isinstance(payload, dict) or set(payload) != _EXTENSION_KEYS:
         raise ValueError("invalid real-news extension fields")
-    if (payload["schema_version"] != 1 or payload["extension_version"] != EXTENSION_VERSION
+    if (payload["schema_version"] != 1 or payload["extension_version"] != version
             or payload["catalog_version"] != CATALOG_VERSION or payload["dataset_version"] != DATASET_VERSION
             or payload["source_label"] != SOURCE_LABEL or payload["source_package"] != "incremental-20261014-v2"
             or payload["source_manifest_path"] != INCREMENTAL_V2_MANIFEST
@@ -478,9 +493,13 @@ def load_extension(path: Path | str | None = None) -> tuple[dict[str, Any], ...]
     """Read the frozen real-content metadata/feature manifest, never source caches."""
 
     selected = EXTENSION_PATH if path is None else Path(path)
-    if selected.name != EXTENSION_PATH.name:
+    if selected.name == EXTENSION_PATH.name:
+        version, digest = EXTENSION_VERSION, EXTENSION_SHA256
+    elif selected.name == "catalog-extension-v3.json":
+        version, digest = V3_EXTENSION_VERSION, V3_EXTENSION_SHA256
+    else:
         raise ValueError("frozen real-news extension must use its versioned filename")
-    return _validate_extension(_bounded_json(selected, MAX_MANIFEST_BYTES, EXTENSION_SHA256 or None))
+    return _validate_extension(_bounded_json(selected, MAX_MANIFEST_BYTES, digest), version=version)
 
 
 def build_extension(repository_root: Path | str = REPOSITORY_ROOT) -> dict[str, Any]:
@@ -489,7 +508,7 @@ def build_extension(repository_root: Path | str = REPOSITORY_ROOT) -> dict[str, 
     root = Path(repository_root).resolve()
     catalog = load_catalog()
     catalog_ids = {row["news_id"] for row in catalog}
-    manifest = _bounded_json(root / INCREMENTAL_V2_MANIFEST, MAX_MANIFEST_BYTES,
+    manifest = _bounded_json(_resolve_source(root, INCREMENTAL_V2_MANIFEST), MAX_MANIFEST_BYTES,
                              INCREMENTAL_V2_MANIFEST_SHA256)
     if (not isinstance(manifest, dict) or manifest.get("schema_version") != 1
             or manifest.get("timezone") != "Asia/Shanghai"
@@ -554,6 +573,8 @@ def freeze_extension(output_path: Path | str = EXTENSION_PATH, *,
         raise ValueError("real-news extension output already exists; refusing overwrite")
     payload = build_extension(repository_root)
     raw = (json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
+    if sha256(raw).hexdigest() != EXTENSION_SHA256:
+        raise ValueError("rebuilt extension differs from the frozen version; create a reviewed new version")
     if len(raw) > MAX_MANIFEST_BYTES:
         raise ValueError("real-news extension exceeds its size budget")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -570,9 +591,7 @@ def freeze_extension(output_path: Path | str = EXTENSION_PATH, *,
 def _extension_content(root: Path, row: dict[str, Any]) -> dict[str, Any]:
     """Read one approved source body and verify metadata/features before generation."""
 
-    path = root / row["source_file"]
-    if not path.resolve().is_relative_to(root.resolve()) or path.is_symlink():
-        raise ValueError("real-news extension source path escapes the repository")
+    path = _resolve_source(root, row["source_file"])
     cached = _bounded_json(path, MAX_SOURCE_BYTES, row["source_sha256"])
     expected_keys = {"url", "news_id", "title", "content", "publish_time", "content_version", "fetched_at",
                      "publish_time_original", "category", "discovery_channels", "feed_publish_time",

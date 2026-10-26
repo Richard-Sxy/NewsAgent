@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-25",
+  "workspace": "/home/shi/project/NewsAgent",
+  "moves": [
+    {
+      "old": "deploy/hunyuan",
+      "new": "small_model/scripts",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "var/models/Hunyuan-7B-Instruct",
+      "new": "small_model/models/Hunyuan-7B-Instruct",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "var/hunyuan",
+      "new": "small_model/runtime/hunyuan",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": ".venv-hunyuan",
+      "new": "small_model/environments/hunyuan",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "var/query-eval",
+      "new": "small_model/environments/query-eval",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "agent/evaluation/datasets/business_sql/query_semantics_v1",
+      "new": "small_model/data/query_semantics_v1",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "agent/evaluation/config/query_semantics",
+      "new": "small_model/configs/query_semantics",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "output/evaluation-configs/hunyuan-wsl-query-20261025",
+      "new": "small_model/configs/hunyuan-wsl-query-20261025",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "agent/docs/hunyuan-wsl.md",
+      "new": "small_model/docs/hunyuan-wsl.md",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "agent/docs/hunyuan-local.md",
+      "new": "small_model/docs/hunyuan-windows.md",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "agent/evaluation/QUERY_SEMANTICS.md",
+      "new": "small_model/docs/query-semantics.md",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "output/evaluation-inputs/query-semantics-dev-v1",
+      "new": "small_model/packages/query-semantics-dev-v1",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2",
+      "new": "small_model/packages/query-semantics-dev-wsl-20261025-v2",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    },
+    {
+      "old": "output/query-semantics-desktop-kit-v1.zip",
+      "new": "small_model/packages/query-semantics-desktop-kit-v1.zip",
+      "compatibility": "relative_symlink",
+      "inode_preserved": true
+    }
+  ],
+  "protected_sha256": {
+    "agent/evaluation/datasets/business_sql/query_semantics_v1/labels.jsonl": "ab83a68ddbcabd2c234caeed304c8b905fa230980f8fa9454aa21423d527d3d9",
+    "agent/evaluation/datasets/business_sql/query_semantics_v1/cases.jsonl": "b9b13fb78aa69d9645e5e614f8bc791cdf10b5f4dd2be3f312e3aa6bfcf25617",
+    "agent/evaluation/datasets/business_sql/query_semantics_v1/README.md": "73bac4093d6dc7efa67a8eb4f1eb9ca0e271d528b972308f45a85582a7a21601",
+    "output/evaluation-inputs/query-semantics-dev-v1/runtime.json": "852130f3ca74063335181c1e5c2abdff584ae46fececdc2b2e8b56d0104aed91",
+    "output/evaluation-inputs/query-semantics-dev-v1/inputs.jsonl": "b9b13fb78aa69d9645e5e614f8bc791cdf10b5f4dd2be3f312e3aa6bfcf25617",
+    "output/evaluation-inputs/query-semantics-dev-v1/schema.json": "10bd7da1266d4413f0432001f3b27b0bc0f5e833a5281512ae078b2d66b28a41",
+    "output/evaluation-inputs/query-semantics-dev-v1/manifest.json": "d28c8b140b1dc87be79e684c9ea0a0fa4e5fdbe293edceda22e8e514b8f70259",
+    "output/evaluation-inputs/query-semantics-dev-v1/private/labels.jsonl": "ab83a68ddbcabd2c234caeed304c8b905fa230980f8fa9454aa21423d527d3d9",
+    "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2/runtime.json": "852130f3ca74063335181c1e5c2abdff584ae46fececdc2b2e8b56d0104aed91",
+    "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2/inputs.jsonl": "b9b13fb78aa69d9645e5e614f8bc791cdf10b5f4dd2be3f312e3aa6bfcf25617",
+    "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2/schema.json": "10bd7da1266d4413f0432001f3b27b0bc0f5e833a5281512ae078b2d66b28a41",
+    "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2/manifest.json": "1f244189a58ae43bf25ee05e380f908b8ec976d5d5b069009cfc4a9f52673bb8",
+    "output/evaluation-inputs/query-semantics-dev-wsl-20261025-v2/private/labels.jsonl": "ab83a68ddbcabd2c234caeed304c8b905fa230980f8fa9454aa21423d527d3d9",
+    "output/query-semantics-desktop-kit-v1.zip": "43f32495c832c76f5504bda4d16fa38a8a8833ae94219130a911f77780490e12",
+    "agent/evaluation/query_semantics_runner.py": "46d756e9e0d61ed046c96908681dd73dfae38631e0a4c1be9fcfda5c80cb8ad4",
+    "agent/evaluation/query_semantics_local.py": "19c6d443a33aa7b69cada3ca95c1e7505e98c5225c4a68af2e6fec9b8d1de889",
+    "agent/evaluation/query_semantics_common.py": "829b2ee11cc6c1594873362ac314dbf8b6ad34682c52b7d3f334bb65dd84edea",
+    "agent/evaluation/query_semantics_scoring.py": "a1a9d511590625a2fc7008a88329d8f668a818cfe4329e2ad729fc2e298b33f4",
+    "agent/evaluation/run_query_semantics.py": "605c25c693ea46e711adc2e4fceeaba3db7f09f38de035ec5bc3f457967ad849"
+  },
+  "protected_bytes_unchanged": true,
+  "gpu_loaded": false,
+  "training_started": false,
+  "quality_evaluation_run": false
+}

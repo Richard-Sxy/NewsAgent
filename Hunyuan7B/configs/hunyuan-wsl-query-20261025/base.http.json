@@ -1,0 +1,20 @@
+{
+  "base_url": "http://127.0.0.1:8008/v1",
+  "model_route": "hunyuan-7b-instruct-6fd6ecb-nf4",
+  "api_key_env": "HUNYUAN_LOCAL_EVAL_TOKEN",
+  "timeout_seconds": 120,
+  "response_format": "none",
+  "extra_body": {
+    "max_tokens": 320
+  },
+  "identity": {
+    "base_model": "tencent/Hunyuan-7B-Instruct",
+    "base_revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+    "tokenizer_revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+    "chat_template_sha256": "816b4f48ac106aa74c041ae835ececba878e43e50dfa85f1f5426d174bb2275a",
+    "quantization": "bitsandbytes-nf4-double-quant:compute-bfloat16",
+    "adapter_sha256": null,
+    "role": "base",
+    "training_group_ids": []
+  }
+}

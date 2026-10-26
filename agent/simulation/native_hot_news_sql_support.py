@@ -260,7 +260,8 @@ def _real_news_content_path() -> Path:
     path = Path(configured)
     if not path.is_dir() or path.is_symlink():
         raise HotNewsDataQualityError("real-news-v8 content package is unavailable")
-    return path
+    from app.sql_assistant.real_news_profiles import verified_real_news_dataset_path
+    return verified_real_news_dataset_path()
 
 
 def _load_real_news_content(tenant_id: str) -> dict[str, dict[str, Any]]:
@@ -310,6 +311,9 @@ class SqlHotNewsContentRepository:
                         or _aware_time(source["publish_time"]) != _aware_time(row["publish_time"])):
                     raise HotNewsDataQualityError("real-news-v8 metadata differs from its real body")
                 body = source["content"]
+                if (source.get("status") != "published"
+                        or sha256(body.encode("utf-8")).hexdigest() != source.get("content_sha256")):
+                    raise HotNewsDataQualityError("real-news-v8 content status or digest is invalid")
                 content = NewsContent(
                     news_id=news_id, title=source["title"],
                     summary=body[:300], body=body,

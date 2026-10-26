@@ -22,6 +22,8 @@ TABLES = (
     "news_metric_hourly", "news_metric_daily", "news_metric_baseline_hourly",
     "content_change_event", "content_tombstone", "index_cleanup_task",
 )
+LEGACY_TABLES = tuple(table for table in TABLES if table != "news_content_feature")
+LEGACY_DATASET_SHA256 = "a933780d744f0e95447f46cc328a317993987c61e870a36fe97b89485463fc81"
 FORBIDDEN_FIELDS = frozenset({
     "user_id", "user_ids", "device_id", "session_id", "session_ids",
     "view_id", "anonymous_id", "audience_intervals", "user_intervals",
@@ -58,6 +60,13 @@ def _read_json(path: Path, maximum: int) -> dict[str, Any]:
     return result
 
 
+def package_tables(manifest: dict[str, Any]) -> tuple[str, ...]:
+    tables = LEGACY_TABLES if manifest.get("dataset_sha256") == LEGACY_DATASET_SHA256 else TABLES
+    if set(manifest.get("tables", {})) != set(tables):
+        raise ValueError("unexpected versioned warehouse tables")
+    return tables
+
+
 def validate_package(directory: Path) -> dict[str, Any]:
     directory = directory.absolute()
     if directory.is_symlink() or not directory.is_dir():
@@ -68,7 +77,8 @@ def validate_package(directory: Path) -> dict[str, Any]:
     actual_dataset_digest = hashlib.sha256(_json(unsigned).encode("utf-8")).hexdigest()
     if expected_dataset_digest != actual_dataset_digest:
         raise ValueError("manifest dataset digest mismatch")
-    if manifest.get("schema") != "news_sim_v8" or set(manifest.get("tables", {})) != set(TABLES):
+    tables = package_tables(manifest)
+    if manifest.get("schema") != "news_sim_v8":
         raise ValueError("unexpected versioned warehouse schema or tables")
     if manifest.get("news_content_synthetic") is not False or manifest.get("metric_data_synthetic") is not True:
         raise ValueError("real-content / simulated-metric provenance is required")
@@ -81,6 +91,8 @@ def validate_package(directory: Path) -> dict[str, Any]:
         "warehouse.sql": "warehouse_sql_sha256",
     }
     if manifest.get("extension_sha256"):
+        if manifest.get("extension_path") not in {"catalog-extension-v2.json", "catalog-extension-v3.json"}:
+            raise ValueError("extension path must be an approved versioned filename")
         artifacts[manifest["extension_path"]] = "extension_sha256"
     for name, field in artifacts.items():
         path = directory / name
@@ -132,7 +144,7 @@ def validate_package(directory: Path) -> dict[str, Any]:
     dim_identities: set[tuple[str, str]] = set()
     feature_identities: set[tuple[str, str]] = set()
     ineligible = {news_id for news_id, article in by_id.items() if not article.get("metric_available", True)}
-    for table in TABLES:
+    for table in tables:
         path = directory / f"{table}.jsonl"
         if path.is_symlink() or not path.is_file():
             raise ValueError(f"invalid table artifact: {table}")
@@ -174,7 +186,7 @@ def validate_package(directory: Path) -> dict[str, Any]:
                         raise ValueError("news dimension changed original body")
                     if row.get("news_content_synthetic") is not False:
                         raise ValueError("synthetic content entered the news dimension")
-                    if row.get("metric_available") is not source.get("metric_available", True):
+                    if row.get("metric_available", True if tables == LEGACY_TABLES else None) is not source.get("metric_available", True):
                         raise ValueError("news dimension metric availability differs from its source")
                 if table == "news_content_feature":
                     identity = (row["tenant_id"], row["news_id"])
@@ -205,7 +217,7 @@ def validate_package(directory: Path) -> dict[str, Any]:
     expected_identities = {(tenant, news_id) for tenant in tenants for news_id in by_id}
     if dim_identities != expected_identities:
         raise ValueError("news dimensions do not contain the complete corpus in both tenants")
-    if feature_identities != expected_identities:
+    if "news_content_feature" in tables and feature_identities != expected_identities:
         raise ValueError("content features do not contain the complete corpus in both tenants")
     return {
         "status": "passed", "validation_kind": "streamed_artifact_integrity",

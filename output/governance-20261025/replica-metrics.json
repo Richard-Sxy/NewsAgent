@@ -1,0 +1,50 @@
+{
+  "query": "newsagent_model_calls_total{service_name=\"newsagent-api\",instance=~\"[0-9a-f]{32}\"}",
+  "distinct_api_instances": 2,
+  "response": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "__name__": "newsagent_model_calls_total",
+            "deployment_environment_name": "local",
+            "gen_ai_operation_name": "chat",
+            "instance": "5b03201b0d264bba8e7df3675ef7789c",
+            "job": "newsagent-api",
+            "model_route": "native-local-model-v1",
+            "model_scene": "conversation",
+            "newsagent_outcome": "success",
+            "newsagent_stage": "completed",
+            "otel_scope_name": "newsagent",
+            "service_name": "newsagent-api"
+          },
+          "value": [
+            1792907331.213,
+            "245"
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "newsagent_model_calls_total",
+            "deployment_environment_name": "local",
+            "gen_ai_operation_name": "chat",
+            "instance": "a5d1af4ea2804c978dc63319656ae65e",
+            "job": "newsagent-api",
+            "model_route": "native-local-model-v1",
+            "model_scene": "conversation",
+            "newsagent_outcome": "success",
+            "newsagent_stage": "completed",
+            "otel_scope_name": "newsagent",
+            "service_name": "newsagent-api"
+          },
+          "value": [
+            1792907331.213,
+            "246"
+          ]
+        }
+      ]
+    }
+  }
+}

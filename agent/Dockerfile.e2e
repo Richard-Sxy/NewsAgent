@@ -62,13 +62,7 @@ COPY deploy/behavior-topic-policy.local.yml ./deploy/behavior-topic-policy.local
 COPY deploy/docker-compose.behavior-tags.local.yml ./deploy/docker-compose.behavior-tags.local.yml
 COPY deploy/text2sql-scenes.enterprise-v2.yml ./deploy/text2sql-scenes.enterprise-v2.yml
 COPY deploy/text2sql-scenes.public-headlines-v3.yml ./deploy/text2sql-scenes.public-headlines-v3.yml
-COPY agent/docs/sql-warehouse-schema-v1.md ./docs/sql-warehouse-schema-v1.md
-COPY agent/docs/sql-warehouse-schema-v2.md ./docs/sql-warehouse-schema-v2.md
-COPY agent/docs/sql-warehouse-schema-v3.md ./docs/sql-warehouse-schema-v3.md
-COPY agent/docs/sql-warehouse-schema-v4.md ./docs/sql-warehouse-schema-v4.md
-COPY agent/docs/sql-warehouse-schema-v5.md ./docs/sql-warehouse-schema-v5.md
-COPY agent/docs/sql-warehouse-schema-v6.md ./docs/sql-warehouse-schema-v6.md
-COPY agent/docs/sql-warehouse-schema-v7.md ./docs/sql-warehouse-schema-v7.md
+COPY agent/docs/sql-warehouse/ ./docs/sql-warehouse/
 COPY deploy/text2sql-scenes.timeline-v4.yml ./deploy/text2sql-scenes.timeline-v4.yml
 COPY agent/data/public-headlines/2026-10-07/catalog.json ./data/public-headlines/2026-10-07/catalog.json
 COPY agent/tests ./tests

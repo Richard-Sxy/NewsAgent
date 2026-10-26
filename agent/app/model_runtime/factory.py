@@ -93,7 +93,12 @@ def build_model_runtime_ports(
         )
     )
     return ModelRuntimePorts(
-        inference=inference,
+        inference=_govern_inference(inference),
         embedding=embedding,
         prompts=prompts,
     )
+
+
+def _govern_inference(inference):
+    from app.model_runtime.governance import govern_inference
+    return govern_inference(inference)
