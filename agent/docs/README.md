@@ -18,6 +18,7 @@
 
 ## 文档类型与保留原因
 
+- [运营判断与持续跟进技术实施](operations-judgment-followup-implementation.md)：待实现设计与跨机交接，包含事实增量卡、持久跟进、事务派发、评测及部署步骤；不代表功能已部署。
 - 上表7份是主要使用说明；其中数据库恢复记录有明确的数据集和恢复日期，不能当作适用于所有环境的重建命令。
 - [查询诊断](hot-news-query-diagnosis.md)、[热点并发](hot-news-concurrency.md)、
   [多租户并发设计](multi-tenant-concurrency-design.md) 包含特定阶段的诊断、验证和设计记录，仍被PDF报告脚本检查。
