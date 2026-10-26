@@ -140,7 +140,7 @@ class HotScoreCalculator:
             interaction_component=interaction_component,
             growth_component=growth_component,
         )
-    
+
     @staticmethod
     def _safe_ratio(
         numerator: int,
