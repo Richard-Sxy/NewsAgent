@@ -1,0 +1,17 @@
+{
+  "schema": "annual-synthetic-capacity-build-evidence-v1",
+  "synthetic": true,
+  "tests_passed": 12,
+  "base_commit": "a02992f552c1f1b9316720f4a83f873dcb637c86",
+  "command": "python -B agent/tools/prepare_annual_news_capacity.py --emit-raw --emit-vectors",
+  "verify_command": "python -B agent/tools/verify_annual_news_capacity.py",
+  "artifact_bytes": 5179545793,
+  "full_validation_status": "verified_synthetic_capacity",
+  "source_sha256": {
+    "agent/evaluation/annual_capacity.py": "3c04d7f59145e2c6ff74884df7b3cc73681818c52d34123aef7216f832bda8e0",
+    "agent/tools/prepare_annual_news_capacity.py": "af6103b136c55624b59456130e4bd4ad9755896e707db15ed7724a69f52d7250",
+    "agent/tools/verify_annual_news_capacity.py": "7b3e3037d48688f0a2d1baaafd599f176300e8fd0f7645360846dfc6cfa46581",
+    "deploy/annual-news-capacity.profile.json": "6ac50c29889243a70af965b7109fa635588904f72abbd3f0d247220c1f71d8c3",
+    "agent/tests/test_annual_capacity.py": "de3510e4de62f3917bd7274eb8f1b2e4dc744b2b581a247cccb23cb5f5f456be"
+  }
+}

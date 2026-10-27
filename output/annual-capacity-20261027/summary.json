@@ -1,0 +1,107 @@
+{
+  "schema": "synthetic-news-capacity-v1",
+  "synthetic": true,
+  "capacity_plan": {
+    "schema": "synthetic-news-capacity-v1",
+    "source": "user_provided_business_estimate_plus_explicit_planning_assumptions",
+    "raw_articles_per_year": 2920000,
+    "admitted_documents_upper_bound": 182500,
+    "admission_ratio": 0.0625,
+    "interpretation": "500/day treated as net-new upper bound; actual stock is lower if this includes updates",
+    "tier_documents": {
+      "hot": 3500,
+      "warm": 11500,
+      "cold": 167500
+    },
+    "tier_vectors": {
+      "hot": 17500,
+      "warm": 57500,
+      "cold": 837500
+    },
+    "active_chunk_vectors": 912500,
+    "float32_vector_bytes": 3737600000,
+    "float32_vector_gib": 3.4809112548828125,
+    "index_and_replication_overhead_included": false,
+    "assumed_chunks_per_document": 5,
+    "expired_probe_documents": 3500,
+    "replacement_probe_actions": 1000,
+    "profile": {
+      "raw_per_day": 8000,
+      "admitted_per_day": 500,
+      "horizon_days": 365,
+      "hot_days": 7,
+      "warm_days": 30,
+      "retention_days": 365,
+      "chunks_per_document": 5,
+      "dimensions": 1024,
+      "seed": 20261027,
+      "replacement_probes": 1000,
+      "expired_probe_days": 7,
+      "as_of": "2026-10-27T12:00:00+00:00"
+    }
+  },
+  "materialized_counts": {
+    "document_versions": 187000,
+    "replacement_actions": 1000,
+    "superseded_versions": 1000,
+    "hot_documents": 3500,
+    "active_chunks": 912500,
+    "warm_documents": 11500,
+    "cold_documents": 167500,
+    "expired_documents": 3500,
+    "raw_records": 2920000
+  },
+  "files": {
+    "replacement-probes.jsonl": {
+      "bytes": 497000,
+      "sha256": "7b1c3cea0fa8412b3315681be094c8c9249da517f38d85605ce15f50a771f9be"
+    },
+    "synthetic-chunks.jsonl": {
+      "bytes": 185220000,
+      "sha256": "deac230e07db10c832804a5cd2783a07d46e0562460702a71f49508ddabb0d3b"
+    },
+    "synthetic-intake.jsonl": {
+      "bytes": 270497500,
+      "sha256": "f898934a4f3aa3b81def40ad1dcc4729ce00e1a8db24f6002ad79839ddba51e7"
+    },
+    "synthetic-news.jsonl": {
+      "bytes": 985727481,
+      "sha256": "29612639204a49e550e7fecc37c910abe3a6f28562d68fa607e1803b3071af41"
+    }
+  },
+  "vectors": {
+    "hot": {
+      "path": "synthetic-vectors-hot.npy",
+      "rows": 17500,
+      "dimensions": 1024,
+      "dtype": "float32",
+      "sha256": "8985999399afa1ea1e9160d73f8dc3634ed1c05b7538aa4db3ad534845d093ef",
+      "kind": "normalized_isotropic_random_not_BGE_embeddings"
+    },
+    "warm": {
+      "path": "synthetic-vectors-warm.npy",
+      "rows": 57500,
+      "dimensions": 1024,
+      "dtype": "float32",
+      "sha256": "449aaf232d99ee293195fccdb22c4b42f495d2a57c87fc36f8477006625c6f1d",
+      "kind": "normalized_isotropic_random_not_BGE_embeddings"
+    },
+    "cold": {
+      "path": "synthetic-vectors-cold.npy",
+      "rows": 837500,
+      "dimensions": 1024,
+      "dtype": "float32",
+      "sha256": "5ea96ab2f21e067fb5134b57f4602acf81cf553033fd3f046852bfa975ae355b",
+      "kind": "normalized_isotropic_random_not_BGE_embeddings"
+    }
+  },
+  "raw_materialized": true,
+  "vectors_materialized": true,
+  "elapsed_seconds": 54.06786068697693,
+  "quality_metrics": null,
+  "production_acceptance": false,
+  "ttl_scope": "offline workload policy only; no production deletion job was enabled",
+  "ranking_scope": "random vectors are for storage/load only, never relevance or BGE quality evaluation",
+  "dataset_path": "/home/shi/project/NewsAgent/var/news-capacity-20261027/synthetic-annual-v1",
+  "profile_path": "/home/shi/project/NewsAgent/deploy/annual-news-capacity.profile.json"
+}

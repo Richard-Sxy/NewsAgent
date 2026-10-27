@@ -1,0 +1,24 @@
+{
+  "schema": "annual-news-capacity-scenario-v1",
+  "business_inputs_source": "user_provided_approximate_workload_2026-10-27_not_independently_verified",
+  "planning_assumptions": [
+    "500/day is modeled as net-new upper bound; updates may lower actual stock",
+    "5 chunks/document is a capacity assumption, not measured annual average",
+    "1000 extra replacement actions and 7 expired probe days are synthetic tests, not daily business rates",
+    "7/30/365 use fixed rolling 24-hour days, not natural calendar months or leap-year retention"
+  ],
+  "generator": {
+    "raw_per_day": 8000,
+    "admitted_per_day": 500,
+    "horizon_days": 365,
+    "hot_days": 7,
+    "warm_days": 30,
+    "retention_days": 365,
+    "chunks_per_document": 5,
+    "dimensions": 1024,
+    "seed": 20261027,
+    "replacement_probes": 1000,
+    "expired_probe_days": 7,
+    "as_of": "2026-10-27T12:00:00+00:00"
+  }
+}
