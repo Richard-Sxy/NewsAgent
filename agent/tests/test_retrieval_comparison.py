@@ -180,5 +180,44 @@ class LegacyConfigurationContracts(unittest.TestCase):
             self.read("query_rrf_k: 60\nquery_weights:\n  hot: 1\n  warm: 1\n  cold: 1\n")
 
 
+class PortableReviewPathContracts(unittest.TestCase):
+    def cli(self):
+        import importlib.util
+        path=Path(__file__).resolve().parents[1]/"tools/compare_annual_retrieval.py"
+        spec=importlib.util.spec_from_file_location("annual_comparison_portable_test",path)
+        module=importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_current_checkout_replaces_historical_absolute_path(self):
+        module=self.cli()
+        with tempfile.TemporaryDirectory() as temp:
+            directory=Path(temp)
+            (directory/"human-review.export.json").write_text("frozen")
+            comp={"config":{"review_dir":"/nonexistent/old-computer/review",
+                            "review_export_sha256":sha_file(directory/"human-review.export.json")}}
+            module.DEFAULT_REVIEW=directory
+            self.assertEqual(module.resolve_review_path(comp),directory.resolve())
+            self.assertEqual(comp["config"]["review_dir"],"/nonexistent/old-computer/review")
+
+    def test_explicit_new_location_preserves_expected_hash(self):
+        module=self.cli()
+        with tempfile.TemporaryDirectory() as temp:
+            directory=Path(temp)
+            (directory/"human-review.export.json").write_text("frozen")
+            comp={"config":{"review_dir":"/old-machine",
+                            "review_export_sha256":sha_file(directory/"human-review.export.json")}}
+            self.assertEqual(module.resolve_review_path(comp,directory),directory.resolve())
+
+    def test_wrong_review_cannot_bypass_identity_check(self):
+        module=self.cli()
+        with tempfile.TemporaryDirectory() as temp:
+            directory=Path(temp)
+            (directory/"human-review.export.json").write_text("different")
+            comp={"config":{"review_dir":"/old-machine","review_export_sha256":"0"*64}}
+            with self.assertRaises(ValueError):
+                module.resolve_review_path(comp,directory)
+
+
 if __name__=="__main__":
     unittest.main()

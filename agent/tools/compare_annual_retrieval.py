@@ -24,11 +24,27 @@ def write_json(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def score(directory):
+def resolve_review_path(comp, override=None):
+    """Resolve this machine's review location without changing frozen identity."""
+    expected = comp["config"]["review_export_sha256"]
+    if override is not None:
+        candidates = [Path(override).resolve()]
+    else:
+        candidates = [DEFAULT_REVIEW, Path(comp["config"]["review_dir"])]
+    for candidate in candidates:
+        export = candidate / "human-review.export.json"
+        if export.is_file() and sha_file(export) == expected:
+            return candidate.resolve()
+    raise ValueError("Matching frozen review not found; use score --review-dir PATH. "
+                     "The export SHA-256 must match the frozen experiment.")
+
+
+def score(directory, review_dir=None):
     comp = json.loads((directory / "comparison.json").read_text())
     if digest(comp["config"]) != comp["config_sha256"]:
         raise ValueError("comparison configuration drift")
-    review = load_review(comp["config"]["review_dir"])
+    resolved_review = resolve_review_path(comp, review_dir)
+    review = load_review(resolved_review)
     labels = known_labels(review)
     extra = read_supplemental_labels(directory / "supplemental.sqlite3", comp)
     if set(labels) & set(extra):
@@ -41,6 +57,8 @@ def score(directory):
                 if label and label["body_sha256"] != p["body_sha256"]:
                     raise ValueError("label evidence hash changed")
     report = calculate_comparison(comp, labels)
+    report["input_review"] = {"directory": str(resolved_review),
+                            "export_sha256": sha_file(resolved_review / "human-review.export.json")}
     write_json(directory / "results.json", report)
     lines = ["# 旧 RRF 与全局相似度排序：冻结对照", "",
         "本轮是同候选预算的融合排序消融。实际调用 LifecycleKnowledgeSearch 的两个分支；数据源是冻结的 NumPy 精确检索和不可变新闻门禁替身。",
@@ -174,11 +192,12 @@ def main():
     serving.add_argument("--port", type=int, default=8879)
     scoring = sub.add_parser("score")
     scoring.add_argument("--directory", type=Path, default=DEFAULT_OUT)
+    scoring.add_argument("--review-dir", type=Path, help="relocated frozen review with identical export SHA-256")
     args = p.parse_args()
     if args.command == "prepare":
         asyncio.run(prepare(args))
     elif args.command == "score":
-        score(args.directory)
+        score(args.directory, args.review_dir)
     else:
         if not 1024 <= args.port <= 65535:
             p.error("port must be in 1024..65535")

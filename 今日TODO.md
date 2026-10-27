@@ -4,6 +4,12 @@
 工作区：`/home/shi/project/NewsAgent`（WSL Ubuntu-20.04）。
 Windows 路径：`\\wsl.localhost\Ubuntu-20.04\home\shi\project\NewsAgent`。
 
+## 跨电脑执行入口
+
+先阅读 `agent/docs/evaluation-transfer-20261027.md`。评测代码和公开语料／冻结标注已经纳入Git；拉取后新建Python环境，先运行迁移校验，再启动8879补标服务。原机器绝对路径仅作历史证据，不要修改冻结配置来替换路径；score会按导出SHA匹配当前工作区，也支持`--review-dir`。
+
+旧的`comparison-v1/verify_replay.py`包含原机器绝对路径、零补标前提及历史源码SHA断言；跨电脑改用`agent/tools/verify_annual_retrieval_transfer.py`。模型权重、虚拟环境、密钥和运行中的服务不会随Git迁移。
+
 ## 给接手智能体的任务
 
 推进下列任务并交付实际结果，优先完成检索对照和当前版本的本地性能测量。
