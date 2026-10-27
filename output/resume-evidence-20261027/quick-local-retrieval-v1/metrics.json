@@ -1,0 +1,56 @@
+{
+  "schema": "quick-local-real-bge-retrieval-v1",
+  "created_at": "2026-10-27T14:34:39.398205+00:00",
+  "status": "completed",
+  "environment": "local_WSL_Ubuntu_20.04_RTX4070_numpy_exact",
+  "enterprise_measurement": false,
+  "independent_test": false,
+  "python": "3.11.9",
+  "versions": {
+    "corpus": "annual-1f977788a4e26f1bb710fee5",
+    "model": "bge-large-zh-v1.5:d9eb05180107021f8e72",
+    "strategy": "annual-lab-global-cosine-v1"
+  },
+  "corpus_documents": 545,
+  "vector_chunks": 2577,
+  "query_count": 30,
+  "human_judgments": 300,
+  "warmup_requests": 30,
+  "measurement_requests": 150,
+  "successful_requests": 150,
+  "failed_requests": 0,
+  "top10_reproduced_requests": 150,
+  "concurrency": 1,
+  "percentile_method": "nearest_rank_successful_requests_after_warmup",
+  "latency_ms": {
+    "p50": 31.09520097495988,
+    "p95": 63.117281009908766,
+    "p99": 74.17060900479555,
+    "max": 83.86308897752315
+  },
+  "quality_existing_single_human_pool": {
+    "query_count": 30,
+    "5": {
+      "precision_mean": 0.56,
+      "precision_eligible_queries": 30,
+      "pool_ndcg_mean": 0.9501287223645629,
+      "ndcg_eligible_queries": 30,
+      "ndcg_unavailable_reasons": {}
+    },
+    "10": {
+      "precision_mean": 0.34,
+      "precision_eligible_queries": 30,
+      "pool_ndcg_mean": 0.9640310638349668,
+      "ndcg_eligible_queries": 30,
+      "ndcg_unavailable_reasons": {}
+    }
+  },
+  "scope": "Python engine.search including real query embedding IPC, exact cosine tier retrieval, news dedup, fusion and metadata; excluding initialization, HTTP, persistence, SQL lifecycle gates and production ANN.",
+  "limitations": [
+    "30 development question queries, not independent related-news test.",
+    "No paired RRF quality scores: 154 supplemental human labels pending.",
+    "Request completion and frozen-output reproduction are not business-answer correctness.",
+    "No LoRA training, report-writing quality experiment or human edit-time study performed."
+  ],
+  "script_sha256": "e431c616a85f1eb01170cd4fdaddfa4fb1604f6ace7d3ef09ed7ff3c0944eecc"
+}
