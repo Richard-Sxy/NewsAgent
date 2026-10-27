@@ -1,0 +1,6 @@
+# Opt-in overlay for the local API; run the updated streaming-lab and API code first.
+# Does not enable collection or modify existing monitor cursors.
+services:
+  api:
+    environment:
+      HOT_NEWS_MONITOR_URL: http://host.docker.internal:48000

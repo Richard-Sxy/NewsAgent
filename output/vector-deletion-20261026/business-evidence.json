@@ -1,0 +1,1479 @@
+{
+  "schema_version": 1,
+  "source_release": {
+    "tenant_id": "public-news-local",
+    "schema_version": "unified-news-content-v1",
+    "selection_policy": "prefer-cached-body-source-priority-v1",
+    "release_id": "news-1443103656c4351fe52c0882",
+    "identity_sha256": "1443103656c4351fe52c08824fdc21731f0dc701f4abd4fe0405289e773de2d6",
+    "counts": {
+      "news_count": 16369,
+      "version_count": 16669,
+      "provenance_count": 17105,
+      "body_available_count": 6732,
+      "fragments_only_count": 8669,
+      "title_only_count": 968,
+      "conflicting_body_news_count": 0
+    }
+  },
+  "manifest_sha256": "e5296688e6bbcbaa62ecfd9b9e27c386ada210d1e26660a80b2b35ae8e873000",
+  "selected_count": 16369,
+  "body_count": 6732,
+  "exact_body_duplicate_groups_min_100_chars": 0,
+  "sample_sources": [
+    {
+      "news_id": "20260729A08XKX00",
+      "title": "具身智能半年融935亿，20多家公司估值过百亿，但量产才是生死关",
+      "record_sha256": "67113421cad11a298b0e280f93897143b11aba19a312f1fbe66b7152aced50c9",
+      "body_sha256": "c2eb2c3f45fc53112f283496e961e58ab67bda212bc32836a7bd445a7f4a0f9b",
+      "publish_time": "2026-07-29T17:02:28+08:00"
+    },
+    {
+      "news_id": "20260812A0BLLJ00",
+      "title": "腾讯二季度营收增长11%，马化腾：大幅增加算力采购，将模型使用转化成收入",
+      "record_sha256": "81d12cd5ebdda09f337441bf7fe5b79c8f8da9ecb392875bb449b1b590a57e87",
+      "body_sha256": "9163f7101ecc6ba861c10e6001830e2d285a051543e39f2b0b66df87c3ef16bd",
+      "publish_time": "2026-08-12T18:26:28+08:00"
+    },
+    {
+      "news_id": "20260812A0BLWD00",
+      "title": "腾讯Q2财报：模型与产品双向赋能，云收入同比增长，Hy4近期发布",
+      "record_sha256": "e1bb372110006bdef70a03a4935d4d7b5a0b0a2102b0bf9e902c4f6cba22f8f6",
+      "body_sha256": "ffdf7cc84e60fce0eecbc1bb665747f684cb0b58cc2492bd4024d6609d246df6",
+      "publish_time": "2026-08-12T18:27:08+08:00"
+    }
+  ],
+  "positive_cases": "derived test copies; not observed duplicates in the public corpus",
+  "embedding": "LocalHashEmbedding; not semantic-quality acceptance",
+  "vector_backend": "persistent_local_sql; not Milvus acceptance",
+  "execution": "in-process authenticated HTTP and Worker service handlers; no Temporal server",
+  "distributed_otel_export": "not enabled in this isolated test harness",
+  "cases": [
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[sqlite-hot]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "b364f58a6bd24765833a30d02319fb57",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "11b71b5fc4f043ec9e6987a404337de6",
+          "news_id": "20260729A08XKX00",
+          "kind": "migrate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "cb2b56f6fa8e4eafae96af1045ccddf8",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "8ba26dc30c014b109246d62d44249991",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "f14ea6619b6d47f98684f193052f531e",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "1481de7ee25c4f5bb2d61ff52330b6fe",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[sqlite-warm]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "7197f8df5ebd433c99c6a4d704607343",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "4e5c97887a074d2b9289ca2575e28dc7",
+          "news_id": "20260729A08XKX00",
+          "kind": "migrate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "3627e5f5ab7c416ea16735301a5e8f7a",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "1da84869e4d24c689ef85d5523626793",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "64106b208d0946368e359fa36b8b2b0b",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "518879339ade49cebaa4ee5e5ec6d533",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[sqlite-cold]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "d12a28a08bf641509f8f4054c019acdb",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "0155efdb653046f1a5f1f06486932ce6",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "448adac9cfd3425b95358ed045b02ad2",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "2f8106b851d54625b77a3b0533b28bf3",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "9ee7327d93c64f1697bdd1386e9c90d2",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[postgres-hot]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "47b51c1d38444abe8c1711cb3d90ed3f",
+          "news_id": "20260729A08XKX00",
+          "kind": "migrate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "85175e7765014b7ca6936fe9cd93a0b4",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "48cfaa89ed1e49ad9b180c28ceca801a",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "548daf0ecbc44f5d88f4ac3a1b23d3b7",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "27f3c3d692314cc19f5650cf6f274a9a",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "1c35463a112c4290b4e3b73cb9bc99f8",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[postgres-warm]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "95f305044b3b455fb33439148eb85624",
+          "news_id": "20260729A08XKX00",
+          "kind": "migrate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "ddd3da62d837443d804b775b981dc279",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "b8c029b0c9954f8f88ed5b3eaea84faf",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d3aa3db8ffbe4a69bf2b8e4ff74abfab",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "321641e0de0542c08db3ad4dafcb72a2",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "f27e998f6b6f4723aeb43467f7d7ef7f",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_duplicate_http_retirement_deletes_only_manifest_and_keeps_source_content[postgres-cold]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "1147c971457740458e1f789f6f693bc7",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "c497380ede724219afca02dc05f972c7",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "b2befd1fd5574fd784bd8f564af6f0c3",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "6337b43d5adf43b19bad6c948f3e8a52",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "94ed1db1d66849c2b8534f8f2c2cc984",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 13
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-extra_fact]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "8db8125bf75a447d8c849e95544a202b",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "bee1356e6f5b48888643642c1ee7b484",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-negation]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "70da4efddd0b4f1495875767b1bf9afe",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d92dad96992141d785d8aec3a95a9466",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-number]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "e9061f12da61489aaac8c82e41eb6fa3",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "abf66dae657c4e46a5cac59044a0c7ff",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-date]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "68c5d781f36244c387bc0c6c592b02b8",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "a483fd05123f4f34bb372f1963da2e59",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-title]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "b03e5c9459954614bca26df4d40593a6",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "4b520ba68baf4b73832f7d84b347b188",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-unrelated]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "cf724ec827c249289fa591c968054aeb",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "77d156a532464c6baa64df23fa6b7308",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 8
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-same_event]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "cd893e7577a3476c810555f41925ac87",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d7f323a5f3444d0ca12c2d9b25cf1e7c",
+          "news_id": "20260812A0BLWD00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 4
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[sqlite-short]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "1b76607d5fe9468a9327fcd87e9ba0cf",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "3923937294b84330a37cd82a65747693",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 2
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-extra_fact]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "d4eb22bcd4004662906c934581d23c43",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "72da74e870e04aa194f1bbcf5333378b",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-negation]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "072a90bcaa104b5b83d3cd8a722e7fc1",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "ed621ab9c4b449d8a2561c48f186a639",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-number]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "5b5cc3f5452e44cbb63c10f7cb931bef",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "b920d2aeedf64e7fa391d0132b1315d2",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-date]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "a9377708bdd149b798545fafaa7fa6ae",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "a00657a1cd4c42bda6db6f4cdf9dd91f",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-title]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "13dcedc29f2a4b6cb69277265bf46858",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "fa2af289623247329e81127a2e98967e",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-unrelated]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "8d5867f7e3414f10b6cb6c139960a228",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "c85f267bf6bb4a2590a244682669cb3a",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 8
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-same_event]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "2f365f51660b46dbbd1dbff9993db40a",
+          "news_id": "20260812A0BLLJ00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "191646462a9f40b1b7aa96817f5c6331",
+          "news_id": "20260812A0BLWD00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 4
+    },
+    {
+      "test": "test_complementary_or_conflicting_news_must_not_be_deleted[postgres-short]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "9a750b2e4e62499a861532e22017f01d",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "69ebf624ca9a4732b9d0cd5a07db2a2c",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 2
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[sqlite-timeout]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "d852c762258e4032be6e3273ba2f78dc",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "cb8dafdf31944921bdf997fe98aa16c7",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "f81227a1961345e6958f69beb2ad3e56",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[sqlite-false_ack]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "dcfa4b6c2aef48b88412359aca30e1cf",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "9d4128b2b4cf4b21a53b7db201bde45a",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "0ff152103d8041078ab164ac1442f5b5",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[sqlite-partial]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "c981ea36f08746ab821e665063e89a33",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "244dcf1550404f19af7ad2cd2ca81bf1",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d6f75775ff7b4c01b482849ee27b555c",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[postgres-timeout]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "1c846055b0bf42fe84e67cff82be8d90",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "48c942bdb8834b7ea68441759d9e1662",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        },
+        {
+          "job_id": "89077f33426948028285486b799d0b40",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[postgres-false_ack]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "22c20a74273a4d5e84902e8a16a50625",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "b5fd25b071694e0ca6b2f119957fdd05",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        },
+        {
+          "job_id": "2a18fd59dd2c4dc1a7bda4dc22747ab2",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_delete_failure_hides_stale_hits_and_recovers_after_restart[postgres-partial]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "df26485fde724688875691b1f4718afc",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "a5dda64a8e754be3b45d14856753aa23",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 1,
+          "last_error": null
+        },
+        {
+          "job_id": "b66db99c46c5461f928dad59592a3493",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 50
+    },
+    {
+      "test": "test_restore_creates_new_projection_and_late_cleanup_cannot_delete_it[sqlite]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "ce95423b27f04968929ce66ebf2993ea",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d754d36c493a4908b2b21f1337c31257",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "83be0b1c771c46aeb71a031a944d4cb9",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "6539ccae9d224f9f9ff03cc73f18fbef",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "4691c56c9372415aa7aef7f73c9086a0",
+          "news_id": "20260729A08XKX00",
+          "kind": "retract",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 5
+    },
+    {
+      "test": "test_restore_creates_new_projection_and_late_cleanup_cannot_delete_it[postgres]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "d9c0d17d01d34a46a88bde629f601f74",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "0c31e878a3ab4552b8f5cb7cfb64b2e8",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "8834194da9e04ebc86ca7ee427118998",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "29bb987c256541a4a3c30d6d3c800d18",
+          "news_id": "20260729A08XKX00",
+          "kind": "retract",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "138fb9280f394213974c4ffa03ef083c",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 5
+    },
+    {
+      "test": "test_unready_or_changed_replacement_cannot_authorize_deletion[sqlite]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "b0ff4a13824c4a879b3f118eef872ab3",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "688154a306df4cdbb8524a535a8feddd",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "5a2d6f55ee77428fb8ccc3e9edcc27f8",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "retract",
+          "status": "pending",
+          "phase": "pending",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_unready_or_changed_replacement_cannot_authorize_deletion[postgres]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "8ba6dff008a844149677fdf5657d7462",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "3b8d904561ea46079e47585095246ef1",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "retract",
+          "status": "pending",
+          "phase": "pending",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "e34083b871054b2280428dfd0a6c36e6",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": true,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 10
+    },
+    {
+      "test": "test_concurrent_retries_have_one_retirement_and_reverse_requests_cannot_delete_both[sqlite]",
+      "ledger_backend": "sqlite",
+      "jobs": [],
+      "remaining_vector_rows": 0
+    },
+    {
+      "test": "test_concurrent_retries_have_one_retirement_and_reverse_requests_cannot_delete_both[postgres]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "1014f049418346c0860175e00b720b7c",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "76707db4fd5b4261bb77ba4d56cb0e73",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "9e7be344acc6455aa46517035ede0644",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 5
+    },
+    {
+      "test": "test_revision_and_tenant_guards_reject_stale_delete_intent[sqlite]",
+      "ledger_backend": "sqlite",
+      "jobs": [
+        {
+          "job_id": "deded3d5abc9469fa0c08525ea32349b",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "d8dde79bc60e4ed9aa8cb36b8849d0f8",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "02f99c2402984db68aa1d98316a1c614",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "87e6f1cc860a43b58ac94934c842db3b",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 15
+    },
+    {
+      "test": "test_revision_and_tenant_guards_reject_stale_delete_intent[postgres]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "76e85edf76714723b820e3c6f10bb0eb",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "ec18de19a3dd416683c6dbddd1a1e50f",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "81bf6ee6764c45489de244c83c657c1a",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "402856aa95f744f3b33b84c41d8a01df",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 15
+    },
+    {
+      "test": "test_simultaneous_opposite_retirements_cannot_remove_last_representative[sqlite]",
+      "ledger_backend": "sqlite",
+      "jobs": [],
+      "remaining_vector_rows": 0
+    },
+    {
+      "test": "test_simultaneous_opposite_retirements_cannot_remove_last_representative[postgres]",
+      "ledger_backend": "postgres",
+      "jobs": [
+        {
+          "job_id": "63344f49b7474bed80f6d7b5102a5e33",
+          "news_id": "20260729A08XKX00-test-copy",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "6af12e2484a444fd9551a81224bfc81b",
+          "news_id": "20260729A08XKX00",
+          "kind": "upsert",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        },
+        {
+          "job_id": "2be71f488c4d4b5083430179a04f4ec9",
+          "news_id": "20260729A08XKX00",
+          "kind": "deduplicate",
+          "status": "complete",
+          "phase": "complete",
+          "cleanup_dirty": false,
+          "attempts": 0,
+          "last_error": null
+        }
+      ],
+      "remaining_vector_rows": 5
+    }
+  ],
+  "source_unchanged": true,
+  "implementation_sha256": {
+    "agent/app/modules/knowledge/duplicate_policy.py": "d2782273a6fb1444e6cefb9ee82e61ba85db321b25e4b0e68e10bfa988e3d22f",
+    "agent/app/modules/knowledge/tier_lifecycle.py": "e7d10e893b7423fe770f672fbe8b568e60d68ef5e69451bb281cbb37a1b3c31f",
+    "agent/app/modules/knowledge/tier_lifecycle_store.py": "33dc1d6a4c911e611be151ee31522839e35679d521704c004af72c9da3a7f9b3",
+    "agent/app/analytics/lifecycle_news_content.py": "94d089f59d78e4449e774cc0bac07ef68e77eb3d062f46b268a8f295786082be",
+    "agent/app/api/knowledge.py": "2c4182063e42615fdae73c0e028f995e802db2c83ef1798479378bbea008ab52",
+    "agent/tests/test_duplicate_retirement.py": "106d78bc903552e8553bba0ae97ace98e4a6df2e0b508143deda1476255f53b8",
+    "agent/tests/test_news_vector_deletion.py": "2a28cc327d6dfdc7c6933b2da69d730bc15e68e51e362a5daec17dd19486eb6a"
+  },
+  "verified_runtime": {
+    "postgresql": "16.15",
+    "test_image": "16c1e0877eac",
+    "private_schemas_remaining": 0,
+    "python": "3.11.16"
+  },
+  "pytest_summary": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 329,
+    "skipped": 8
+  }
+}

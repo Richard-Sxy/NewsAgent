@@ -1,0 +1,60 @@
+# 仅供 environment=e2e 的本地确定性模拟。下列数字不是企业容量或 SLO 建议。
+# 启用：KNOWLEDGE_LIFECYCLE_CONFIG_PATH 指向此文件；模型另配 model-runtime.local.yml。
+# 企业使用前必须填企业模板；此文件不包含连接地址、凭证或模型端点。
+schema_version: 1
+policy_version: local-tier-query-aware-candidate-v1
+embedding_version: native-local-embedding-v1
+expected_embedding_dimensions: 32
+chunking_version: chars-overlap-local-v1
+chunk_chars: 800
+chunk_overlap: 80
+max_chunks_per_document: 256
+max_vector_coordinates_per_document: 65536
+embedding_batch_size: 16
+vector_batch_size: 64
+
+# [0, 120) 秒热；[120, 480) 秒温；[480, +∞) 秒冷。用业务时钟快进。
+hot_max_age_seconds: 120
+cold_min_age_seconds: 480
+reheat_hold_seconds: 180
+migration_interval_seconds: 10
+scan_batch_size: 100
+dispatch_interval_seconds: 1
+
+max_attempts: 3
+retry_initial_interval_seconds: 1
+retry_max_interval_seconds: 10
+activity_timeout_seconds: 60
+workflow_timeout_seconds: 300
+task_queue: knowledge-lifecycle-local
+
+# 单层切片候选数，去重后不是等量新闻；拒绝旧版本后可有界补搜。
+query_candidate_limit: 20
+query_max_candidates: 80
+query_refill_factor: 2
+query_request_timeout_seconds: 10
+query_rrf_k: 60
+query_weights: {hot: 1.0, warm: 1.0, cold: 1.0}
+query_max_concurrency: 4
+# 仅本地 SQL 精确搜索的扫描上限；不代表 Milvus 索引容量。
+max_search_rows: 50000
+
+# 候选实验配置：不自动启用。复制成新版本并绑定同一模型/索引后离线回放。
+# 预算是期望的去重新闻数；query_max_candidates 仍限制单轮原始切片数。
+# 主题词表属于推断草稿，不是正式栏目或人工金标。
+query_retrieval:
+  version: query-aware-global-similarity-candidate-v1
+  fusion: global_similarity
+  candidate_multiplier: 2
+  min_per_tier: 20
+  intent_multipliers:
+    general: {hot: 1, warm: 1, cold: 1}
+    recent: {hot: 2, warm: 1, cold: 1}
+    background: {hot: 1, warm: 1, cold: 2}
+  topic_rules:
+    ai: [人工智能, 大模型, AIGC]
+    finance: [财经, 财报, 股票]
+    history: [历史研究, 历史事件]
+  # 仅在没有明确时间意图、且主题唯一命中时采用主题的预算先验。
+  # AI与财经默认通用，避免将某一主题永远等同于追新。
+  topic_intents: {ai: general, finance: general, history: background}

@@ -1,0 +1,218 @@
+{
+  "schema": "annual-retrieval-human-review-report-v1",
+  "created_at": "2026-10-27T16:21:30.470946+08:00",
+  "scope": "single_human_review_of_one_strategy_top10_pool",
+  "task": "question_search",
+  "formal_independent_test": false,
+  "versions": {
+    "corpus": "annual-1f977788a4e26f1bb710fee5",
+    "model": "bge-large-zh-v1.5:d9eb05180107021f8e72",
+    "strategy": "annual-lab-global-cosine-v1"
+  },
+  "label_counts": {
+    "relevant": 102,
+    "irrelevant": 164,
+    "partial": 34
+  },
+  "judgment_count": 300,
+  "audit_count": 306,
+  "overall": {
+    "query_count": 30,
+    "5": {
+      "precision_mean": 0.56,
+      "precision_eligible_queries": 30,
+      "pool_ndcg_mean": 0.9501287223645629,
+      "ndcg_eligible_queries": 30,
+      "ndcg_unavailable_reasons": {}
+    },
+    "10": {
+      "precision_mean": 0.34,
+      "precision_eligible_queries": 30,
+      "pool_ndcg_mean": 0.9640310638349668,
+      "ndcg_eligible_queries": 30,
+      "ndcg_unavailable_reasons": {}
+    }
+  },
+  "by_category": {
+    "AI": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.33333333333333337,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9397167768169046,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.16666666666666669,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.960580896781809,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "体育": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.9333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9434732991210639,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.9333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9814051372814214,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "军事": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.6666666666666666,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9899707969394914,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.3333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9906832460125841,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "国际": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.5333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9203048458858698,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.26666666666666666,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9367723191272722,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "数码": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.7333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9978591646335998,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.39999999999999997,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9974920389663188,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "汽车": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.4,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.7457325709230987,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.23333333333333334,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.8102080387955224,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "游戏": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.8,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 1.0,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.4666666666666667,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.99893919205914,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "科技": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.4666666666666667,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9642297693256009,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.23333333333333334,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 0.9642297693256009,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "股票": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.4,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 1.0,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.2,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 1.0,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    },
+    "财经": {
+      "query_count": 3,
+      "5": {
+        "precision_mean": 0.3333333333333333,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 1.0,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      },
+      "10": {
+        "precision_mean": 0.16666666666666666,
+        "precision_eligible_queries": 3,
+        "pool_ndcg_mean": 1.0,
+        "ndcg_eligible_queries": 3,
+        "ndcg_unavailable_reasons": {}
+      }
+    }
+  },
+  "recall": null,
+  "before_after_improvement": null,
+  "production_p95": null,
+  "limitations": [
+    "Only this strategy's ten returned documents per query were judged.",
+    "Pool nDCG ideal order is restricted to these ten documents; it does not measure missed relevant news.",
+    "Queries are discovery-based question drafts, not a source-news related-report evaluation.",
+    "One human reviewer; no independent double review, adjudication, or event-group split.",
+    "No historical-RRF baseline, multi-strategy pool, semantic-retirement experiment, or production performance test."
+  ]
+}

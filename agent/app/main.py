@@ -22,6 +22,7 @@ from app.api import (
 from app.api.audience import router as audience_router
 from app.api.behavior_tags import router as behavior_tags_router
 from app.api.reader_profiles import router as reader_profiles_router
+from app.api.hot_news_monitor import router as hot_news_monitor_router
 from app.observability.web import TelemetryMiddleware
 from app.bootstrap.api_lifespan import lifespan
 
@@ -44,6 +45,7 @@ def create_app() -> FastAPI:
     application.include_router(audience_router)
     application.include_router(behavior_tags_router)
     application.include_router(reader_profiles_router)
+    application.include_router(hot_news_monitor_router)
 
     application.get("/health")(health)
     application.get("/ready")(ready)

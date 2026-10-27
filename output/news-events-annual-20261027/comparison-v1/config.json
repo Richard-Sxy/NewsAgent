@@ -1,0 +1,34 @@
+{
+  "version": "annual-frozen-fusion-ablation-v1",
+  "created_at": "2026-10-27T08:35:03.334175+00:00",
+  "review_dir": "/home/shi/project/NewsAgent/output/news-events-annual-20261027/human-review-v1",
+  "review_export_sha256": "f1fdc456e96ff17111445018071f5d717e615e00486574ed39c9660fa4b319b3",
+  "package_dir": "/home/shi/project/NewsAgent/var/news-events-annual-20261027/retrieval-lab-v1",
+  "legacy_config": "/home/shi/project/NewsAgent/deploy/knowledge-lifecycle.local.example.yml",
+  "legacy_config_sha256": "7e4f1eb21e2b62b95b3104894aff993680c426303864492e79ed53766d5ee059",
+  "rrf_k": 60,
+  "weights": {
+    "hot": 1.0,
+    "warm": 1.0,
+    "cold": 1.0
+  },
+  "candidate_limit_per_tier": 20,
+  "candidate_unit": "unique_news",
+  "intent": "general",
+  "limit": 10,
+  "score_ks": [
+    5,
+    10
+  ],
+  "semantic_retirement": false,
+  "business_reranker": false,
+  "independent_test": false,
+  "backend": "numpy_exact",
+  "source_code": {
+    "agent/app/modules/retrieval_lab/comparison.py": "e96980217fb3990bfc5381efcc9fcfc0aa291f92bb17b00c0fda8e374f1fbe2e",
+    "agent/tools/compare_annual_retrieval.py": "e5da957e98df4c2fa289b7f960aafafe99b4b2eeb35cbaa234d09dbf49ea8829",
+    "agent/app/modules/knowledge/tier_lifecycle_query.py": "c5e4f69f84cc0867b7df1cb6bf8902c84fa1820c547c89bffef470adfc0c104e",
+    "agent/app/retrieval/query_policy.py": "6f260bfad8ec8f01d009caf688a0f090473e5057dca8018b9c3ce60e2b760414",
+    "agent/app/modules/retrieval_lab/engine.py": "1a67a7e89cd6a4a5a557625da7e2a69d8c7c547d95a6ffada11f09d0f2ecaa4e"
+  }
+}

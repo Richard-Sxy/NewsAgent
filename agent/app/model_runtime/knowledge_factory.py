@@ -21,12 +21,17 @@ def build_native_knowledge_index(
     database: Database,
     config_path: str | None = None,
     lifecycle_config_path: str | None = None,
+    semantic_config_path: str | None = None,
+    inference=None,
     environment: str = "production",
 ):
+    if semantic_config_path and not lifecycle_config_path:
+        raise ValueError("news semantics requires the lifecycle runtime")
     if lifecycle_config_path:
         from app.modules.knowledge.tier_lifecycle_factory import build_lifecycle_runtime
         return build_lifecycle_runtime(lifecycle_config_path=lifecycle_config_path,
             search_config_path=config_path, model_config=config, embedding=embedding,
+            semantic_config_path=semantic_config_path, inference=inference,
             database=database, environment=environment).index
     index = PostgresKnowledgeStore(
         database=database,

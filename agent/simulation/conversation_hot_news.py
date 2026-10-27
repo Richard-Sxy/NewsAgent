@@ -105,6 +105,9 @@ class LocalConversationHotNewsQuery:
                 "coverage_window_start": self._policy.coverage_window_start.isoformat(),
                 "coverage_window_end": self._policy.coverage_window_end.isoformat(),
                 "query_policy": self._policy.model_dump(mode="json"),
+                "time_resolution_version": "calendar-window-v1",
+                "time_window_semantics": "今日为本地自然日00:00至完整数据水位；历史日期为完整自然日，不要求用户补小时。",
+                "aggregation_capability": "single_hour_only_no_cross_hour_uv",
                 "understanding_model": self._understanding_metadata,
                 "resolution_mode": "structured_fields" if self._resolve_query is resolve_structured_query else "local_rules",
                 "understanding_schema": QueryUnderstanding.model_json_schema()}
@@ -131,7 +134,7 @@ class LocalConversationHotNewsQuery:
                 # 这边输入到项目当中
                 async with asyncio.timeout(self._understanding_timeout):
                     result = await self._understanding_agent.run_structured(
-                        app_id="python:query-understanding-v5", mode="query_understanding",
+                        app_id="python:query-understanding-v6", mode="query_understanding",
                         payload={"question": screened, "policy": self._policy.model_dump(mode="json"),
                                  "temporal_context": {"server_now": clock.isoformat(),
                                     "timezone": self._policy.timezone,

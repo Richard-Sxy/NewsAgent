@@ -105,6 +105,33 @@ async def test_canonical_content_reads_are_tenant_scoped(runtime):
     assert rows["source"].title == "本租户标题"
 
 
+@pytest.mark.asyncio
+async def test_duplicate_retirement_between_recall_and_hydration_filters_candidate_but_keeps_source(runtime):
+    body = "测试正文包含明确的独立来源和新闻身份，重复向量退役不能改变按新闻 ID 获取正文的结果。" * 3
+    first = await index_document(runtime, document("source", text=body))
+    duplicate = await index_document(runtime, document("related", text=body))
+    repository = canonical_repository(runtime)
+
+    class SearchThenRetireCandidate:
+        index = runtime.guarded
+
+        async def batch_search_related_news(self, queries, *, tenant_id):
+            result = await runtime.query.batch_search_related_news(queries, tenant_id=tenant_id)
+            await runtime.service.retire_duplicate(tenant_id=tenant_id, news_id="related",
+                source_revision=1, source_job_id=duplicate["job_id"], replacement_news_id="source",
+                replacement_revision=1, replacement_job_id=first["job_id"])
+            return result
+
+    enriched = await HotNewsEnrichmentService(repository, SearchThenRetireCandidate()).enrich(
+        ranking(), tenant_id=TENANT)
+    assert enriched[0].content is not None and enriched[0].related_news == ()
+    # The retired article is still a valid exact-ID hotspot source of its own.
+    source = await repository.batch_get_by_news_ids(tenant_id=TENANT, news_ids=["related"])
+    assert source["related"].body == body
+    resolved, _ = await repository.resolve_enrichment(tenant_id=TENANT, sources=source, recalled={})
+    assert resolved == source
+
+
 def test_lifecycle_search_cannot_be_paired_with_legacy_cache(runtime):
     with pytest.raises(ValueError, match="canonical lifecycle content"):
         HotNewsEnrichmentService(InMemoryNewsContentRepository([]), runtime.query)

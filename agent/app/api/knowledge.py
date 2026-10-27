@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from secrets import compare_digest
-from typing import Annotated
+from typing import Annotated, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Header, HTTPException, Request
@@ -150,6 +150,65 @@ class RetractionPayload(BaseModel):
 class LifecycleSearchPayload(BaseModel):
     query: str = Field(min_length=1, max_length=2000)
     limit: int = Field(default=10, ge=1, le=1000)
+    retrieval_intent: Literal["auto", "general", "recent", "background"] = "auto"
+    retrieval_topic: str | None = Field(default=None, min_length=1, max_length=128)
+
+
+class DuplicateRetirementPayload(BaseModel):
+    source_revision: int = Field(ge=1, le=9_223_372_036_854_775_807)
+    source_job_id: str = Field(pattern=r"^[0-9a-f]{32}$")
+    replacement_news_id: str = Field(min_length=1, max_length=160)
+    replacement_revision: int = Field(ge=1, le=9_223_372_036_854_775_807)
+    replacement_job_id: str = Field(pattern=r"^[0-9a-f]{32}$")
+
+
+class DuplicateRestorePayload(BaseModel):
+    retirement_job_id: str = Field(pattern=r"^[0-9a-f]{32}$")
+
+
+class SemanticRetirementPayload(BaseModel):
+    decision_id: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+
+def _semantics(request, authorization):
+    service = _lifecycle(request, authorization).service.semantics
+    if service is None:
+        raise HTTPException(status_code=503, detail="news semantics is not enabled")
+    return service
+
+
+@router.get("/news/{news_id}/semantics")
+async def news_semantics(news_id: str, request: Request,
+    x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
+    authorization: Annotated[str | None, Header()] = None):
+    result = await _semantics(request, authorization).status(str(x_tenant_id), news_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail="news not found")
+    return result
+
+
+@router.post("/news/{news_id}/semantics/retry", status_code=202)
+async def retry_news_semantics(news_id: str, request: Request,
+    x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
+    authorization: Annotated[str | None, Header()] = None):
+    service = _semantics(request, authorization)
+    row = await service.lifecycle.ledger.get_news(tenant_id=str(x_tenant_id), news_id=news_id)
+    if not row or row["status"] != "active":
+        raise HTTPException(status_code=409, detail="only active news can be reprocessed")
+    await service.store.retry(row)
+    return {"status": "accepted", "news_id": news_id}
+
+
+@router.post("/semantic-decisions/retire", status_code=202)
+async def retire_semantic_news(payload: SemanticRetirementPayload, request: Request,
+    x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
+    authorization: Annotated[str | None, Header()] = None):
+    try:
+        job = await _semantics(request, authorization).retire(
+            tenant_id=str(x_tenant_id), decision_id=payload.decision_id)
+        return _public_job(job)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
 
 
 def _lifecycle(request, authorization):
@@ -190,6 +249,30 @@ async def reheat_news(news_id: str, request: Request,
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 
 
+@router.post("/news/{news_id}/retire-duplicate", status_code=202)
+async def retire_duplicate_news(news_id: str, payload: DuplicateRetirementPayload, request: Request,
+    x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
+    authorization: Annotated[str | None, Header()] = None):
+    service = _lifecycle(request, authorization).service
+    try:
+        return _public_job(await service.retire_duplicate(
+            tenant_id=str(x_tenant_id), news_id=news_id, **payload.model_dump()))
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+
+@router.post("/news/{news_id}/restore-duplicate", status_code=202)
+async def restore_duplicate_news(news_id: str, payload: DuplicateRestorePayload, request: Request,
+    x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
+    authorization: Annotated[str | None, Header()] = None):
+    service = _lifecycle(request, authorization).service
+    try:
+        return _public_job(await service.restore_duplicate(
+            tenant_id=str(x_tenant_id), news_id=news_id, **payload.model_dump()))
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+
 @router.get("/index-jobs/{job_id}")
 async def index_job_status(job_id: str, request: Request,
     x_tenant_id: Annotated[UUID, Header(alias="X-Tenant-ID")],
@@ -207,7 +290,11 @@ async def lifecycle_search(payload: LifecycleSearchPayload, request: Request,
     authorization: Annotated[str | None, Header()] = None):
     runtime = _lifecycle(request, authorization)
     try:
-        result = await runtime.query.search(query_text=payload.query, tenant_id=str(x_tenant_id), limit=payload.limit)
+        hints = {}
+        if payload.retrieval_intent != "auto" or payload.retrieval_topic is not None:
+            hints = {"retrieval_intent": payload.retrieval_intent, "retrieval_topic": payload.retrieval_topic}
+        result = await runtime.query.search(query_text=payload.query, tenant_id=str(x_tenant_id),
+                                           limit=payload.limit, **hints)
     except LifecycleQueryTimeout as exc:
         raise HTTPException(status_code=504, detail={"code": exc.code, "trace": exc.trace}) from None
     except LifecycleQueryUnavailable as exc:

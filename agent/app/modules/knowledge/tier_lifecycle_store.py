@@ -21,6 +21,7 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import JSONB
 
 from app.db.session import Database
+from app.modules.knowledge.duplicate_policy import duplicate_evidence
 from app.retrieval.tiered_vector import VectorSearchHit, VectorTier
 
 
@@ -244,6 +245,109 @@ class TierLifecycleStore:
             await self._dirty_old(session, tenant_id, news_id, job["job_id"])
             return _public(job)
 
+    async def retire_duplicate(self, *, tenant_id: str, news_id: str, source_revision: int,
+                               source_job_id: str, replacement_news_id: str,
+                               replacement_revision: int, replacement_job_id: str,
+                               semantic_decision_id: str | None = None,
+                               semantic_bundle_id: str | None = None) -> dict:
+        """Retire one verified duplicate projection, preserving its source content.
+
+        The service verifies the replacement in the vector backend first. Here
+        ordered row locks recheck both exact versions and the strict policy;
+        retirement and durable cleanup intent commit together. No source
+        revision is invented and no source news record is deleted.
+        """
+        _identity(tenant_id, news_id, source_revision)
+        _identity(tenant_id, replacement_news_id, replacement_revision)
+        if news_id == replacement_news_id:
+            raise ValueError("replacement must be a different news item")
+        request = dict(source_job_id=source_job_id, replacement_news_id=replacement_news_id,
+                       replacement_revision=replacement_revision, replacement_job_id=replacement_job_id)
+        if bool(semantic_decision_id) != bool(semantic_bundle_id):
+            raise ValueError("semantic decision and bundle are both required")
+        if semantic_decision_id:
+            request.update(semantic_decision_id=semantic_decision_id, semantic_bundle_id=semantic_bundle_id)
+        async with self._database.session() as session:
+            rows = {key: await self._lock(session, tenant_id, key)
+                    for key in sorted((news_id, replacement_news_id))}
+            current, replacement = rows[news_id], rows[replacement_news_id]
+            if not current or current["source_revision"] != source_revision:
+                raise ValueError("source revision is not current")
+            if current["status"] == "deduplicated":
+                previous = await self._job(session, tenant_id, current["current_job_id"])
+                if all(previous["payload"].get(key) == value for key, value in request.items()):
+                    return _public(previous)
+                raise ValueError("source was already retired by a different decision")
+            for row, expected_revision, expected_job in (
+                (current, source_revision, source_job_id),
+                (replacement, replacement_revision, replacement_job_id),
+            ):
+                if (not row or row["status"] != "active"
+                        or row["source_revision"] != expected_revision
+                        or row["active_job_id"] != expected_job
+                        or row["current_job_id"] != expected_job):
+                    raise ValueError("both exact projections must remain active with no pending change")
+            # Do not create A -> B -> C replacement chains. A target cannot itself
+            # retire while retained sources depend on it; ordered news locks serialize this.
+            dependent = (await session.execute(select(_jobs.c.job_id).select_from(_jobs.join(_news,
+                and_(_news.c.tenant_id == _jobs.c.tenant_id, _news.c.current_job_id == _jobs.c.job_id))).where(
+                    _news.c.tenant_id == tenant_id, _news.c.status == "deduplicated",
+                    _jobs.c.payload["replacement_news_id"].as_string() == news_id).limit(1))).first()
+            if dependent:
+                raise ValueError("source is still the replacement for retired news")
+            if semantic_decision_id:
+                from app.modules.knowledge.news_semantics_store import validate_retirement
+                evidence = await validate_retirement(session, tenant_id=tenant_id,
+                    decision_id=semantic_decision_id, source=current, replacement=replacement,
+                    bundle_id=semantic_bundle_id)
+            else:
+                evidence = duplicate_evidence(current, replacement)
+            job = self._new_job(tenant_id=tenant_id, news_id=news_id,
+                source_revision=source_revision, generation=current["generation"] + 1,
+                kind="deduplicate", target_tier=current["desired_tier"], config=current["config"],
+                payload={**request, **evidence})
+            await session.execute(insert(_jobs).values(**job))
+            # Keep active_job_id as the source-content provenance. Vector gates
+            # require status=active, and obsolete_jobs retires all its old IDs.
+            await session.execute(update(_news).where(_scope(tenant_id, news_id)).values(
+                status="deduplicated", generation=job["generation"], current_job_id=job["job_id"],
+                hold_until=None, updated_at=datetime.now(UTC)))
+            await self._dirty_old(session, tenant_id, news_id, job["job_id"])
+            return _public(job)
+
+    async def restore_duplicate(self, *, tenant_id: str, news_id: str,
+                                retirement_job_id: str, target_tier: str) -> dict:
+        """Explicitly rebuild the retained source using fresh, non-reusable IDs."""
+        _identity(tenant_id, news_id)
+        async with self._database.session() as session:
+            current = await self._lock(session, tenant_id, news_id)
+            retired = await self._job(session, tenant_id, retirement_job_id)
+            if (not current or not retired or retired["news_id"] != news_id
+                    or retired["kind"] != "deduplicate"
+                    or retired["source_revision"] != current["source_revision"]):
+                raise ValueError("retirement does not match the current source revision")
+            # A lost HTTP response may replay a successful restore submission.
+            if current["generation"] == retired["generation"] + 1:
+                job = await self._job(session, tenant_id, current["current_job_id"])
+                if job["kind"] == "upsert":
+                    return _public(job)
+            current_job = await self._job(session, tenant_id, current["current_job_id"])
+            if (current["status"] != "deduplicated" or current_job["kind"] != "deduplicate"
+                    or current_job["job_id"] != retirement_job_id):
+                raise ValueError("only the current duplicate retirement can be restored")
+            job = self._new_job(tenant_id=tenant_id, news_id=news_id,
+                source_revision=current["source_revision"], generation=current["generation"] + 1,
+                kind="upsert", target_tier=target_tier, config=current["config"],
+                payload={key: _public(current)[key] for key in
+                         ("title", "body", "publish_time", "source_url")})
+            await session.execute(insert(_jobs).values(**job))
+            await session.execute(update(_news).where(_scope(tenant_id, news_id)).values(
+                status="pending", generation=job["generation"], desired_tier=job["target_tier"],
+                active_job_id=None, active_tier=None, current_job_id=job["job_id"],
+                accepted_job_id=job["job_id"], updated_at=datetime.now(UTC)))
+            await self._dirty_old(session, tenant_id, news_id, job["job_id"])
+            return _public(job)
+
     async def request_migration(self, *, tenant_id: str, news_id: str, target_tier: str,
                                 config: dict | None = None, expected_generation: int | None = None,
                                 hold_until: datetime | None = None) -> dict | None:
@@ -253,7 +357,7 @@ class TierLifecycleStore:
             _datetime_json(hold_until)
         async with self._database.session() as session:
             current = await self._lock(session, tenant_id, news_id)
-            if not current or current["status"] == "retracted":
+            if not current or current["status"] in ("retracted", "deduplicated"):
                 return None
             if expected_generation is not None and current["generation"] != expected_generation:
                 return None
@@ -369,7 +473,7 @@ class TierLifecycleStore:
                 raise ValueError("job not found")
             if job["records"]:
                 return _public(job)
-            if job["kind"] == "retract" or not canonical:
+            if job["kind"] in ("retract", "deduplicate") or not canonical:
                 raise ValueError("only content projections accept nonempty records")
             dimension = None
             for index, record in enumerate(canonical):
@@ -401,7 +505,8 @@ class TierLifecycleStore:
                 raise ValueError("job not found")
             current = await self._lock(session, tenant_id, job["news_id"])
             job = await self._job(session, tenant_id, job_id, locked=True)
-            if (not current or current["status"] == "retracted" or job["kind"] == "retract"
+            if (not current or current["status"] in ("retracted", "deduplicated")
+                or job["kind"] in ("retract", "deduplicate")
                 or job["status"] == "failed"
                 or current["generation"] != job["generation"]
                 or current["current_job_id"] != job_id or not job["records"]):
@@ -429,6 +534,15 @@ class TierLifecycleStore:
                 _jobs.c.job_id == job_id, _jobs.c.status.not_in(("complete", "failed"))).values(
                     status="retry" if retryable else "failed", attempts=_jobs.c.attempts + 1,
                     last_error=error[:2000], updated_at=datetime.now(UTC)))
+
+    async def cleanup_complete(self, *, tenant_id: str, job_id: str) -> None:
+        await self.complete(tenant_id=tenant_id, job_id=job_id)
+        # A failed indexing job stays failed, but verified cleanup must not
+        # remain falsely marked dirty forever.
+        async with self._database.session() as session:
+            await session.execute(update(_jobs).where(_jobs.c.tenant_id == tenant_id,
+                _jobs.c.job_id == job_id, _jobs.c.status == "failed").values(
+                    cleanup_dirty=False, updated_at=datetime.now(UTC)))
 
     async def record_maintenance_error(self, *, tenant_id: str, job_id: str,
                                        error: str, cleanup_dirty: bool = False) -> None:
@@ -479,7 +593,8 @@ class TierLifecycleStore:
                 return []
             query = select(_jobs).where(_jobs.c.tenant_id == tenant_id, _jobs.c.news_id == news_id)
             # Never delete the ready predecessor while a replacement is indexing.
-            excluded = {value for value in (current["active_job_id"], current["current_job_id"],
+            active = current["active_job_id"] if current["status"] != "deduplicated" else None
+            excluded = {value for value in (active, current["current_job_id"],
                                              exclude_job_id) if value}
             if excluded:
                 query = query.where(_jobs.c.job_id.not_in(excluded))

@@ -1,0 +1,44 @@
+{
+  "schema": "annual-human-review-snapshot-manifest-v1",
+  "created_at": "2026-10-27T16:21:30.470946+08:00",
+  "source_database": "/home/shi/project/NewsAgent/var/news-events-annual-20261027/retrieval-lab-v1/judgments.sqlite3",
+  "versions": {
+    "corpus": "annual-1f977788a4e26f1bb710fee5",
+    "model": "bge-large-zh-v1.5:d9eb05180107021f8e72",
+    "strategy": "annual-lab-global-cosine-v1"
+  },
+  "source_code": {
+    "agent/app/modules/retrieval_lab/store.py": "d94c2f2b7db4a64a9c6d3991819cb1a824bda9824f229933b584562616b006c0",
+    "agent/app/modules/retrieval_lab/metrics.py": "16bb6a1dd4b4308a8c11649990d83106d764d065490dec7220fd57715266d4fc"
+  },
+  "files": {
+    "freeze_review.py": {
+      "sha256": "e2f3b4da90a0ed885f2947916efb90490790ddb67514ea222938b9891a0c9596",
+      "bytes": 9957
+    },
+    "human-review.export.json": {
+      "sha256": "f1fdc456e96ff17111445018071f5d717e615e00486574ed39c9660fa4b319b3",
+      "bytes": 3521674
+    },
+    "judgments.single-human.jsonl": {
+      "sha256": "c5b04832121825161062c2794044a700f89387bbed126fba16b4dc0d14588781",
+      "bytes": 249794
+    },
+    "judgments.snapshot.sqlite3": {
+      "sha256": "9f397695154cd2e9692bcddff9b7366cb9d6c2d1f607a389e1682d80145a38bc",
+      "bytes": 3305472
+    },
+    "metrics.json": {
+      "sha256": "a6d6900c9e8deccef964a897663919140ea2f4a23c570a8899c0fcce33ac2e7e",
+      "bytes": 6546
+    },
+    "per-query.jsonl": {
+      "sha256": "0ec6f84c5abaf6290d6ef2727afa95c6c77e0f68a4023bfda4f4a1808abda804",
+      "bytes": 59598
+    },
+    "report.md": {
+      "sha256": "8ed94ef50b20680a90c40436e195a0304dea1aece15a9f1374c5ce1b8e31288b",
+      "bytes": 3023
+    }
+  }
+}

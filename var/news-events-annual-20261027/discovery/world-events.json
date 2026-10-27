@@ -1,0 +1,1532 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "start_date": "2025-10-27",
+    "end_date": "2026-10-27",
+    "categories": [
+      "财经",
+      "股票",
+      "国际",
+      "军事",
+      "体育"
+    ]
+  },
+  "limitations": [
+    "清单来自实际web搜索；URL正文、标题和发布日期需采集器再核验；部分title为搜索摘要支持的描述性标题。",
+    "role_hint仅为采集意图，不是人工关系或相关性金标；没有自动生成相关性grade。",
+    "包含同事实转载以供去重验证；部分官方统计发布和PDF候选需要专门解析。",
+    "事件目录为发现候选，尚未写入统一新闻数据库或向量索引。",
+    "体育专题由主代理单独展开，本文件没有重复纳入体育条目。",
+    "日期以搜索结果明确发布日期为发现线索；event_date是事件发生日期，不能替代文章发布时间。",
+    "新闻不因重复的URL数量被当成事实增量；同一主线可包含同事实转载、后续和观点稿，需正文校验后处理。"
+  ],
+  "events": [
+    {
+      "event_id": "finance_fed_202512",
+      "category": "财经",
+      "title": "美联储2025年12月利率决议及市场影响",
+      "event_date": "2025-12-10",
+      "keywords": [
+        "美联储",
+        "降息",
+        "短债购买"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20251211/45dd82a398634fc3982ee4fa0484f215/c.html",
+          "title": "美联储年内第三次降息",
+          "published_at": "2025-12-11",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20251211/2c0a37745cd74bc69030bc14ea82fdef/c.html",
+          "title": "美联储12月降息及政策分歧",
+          "published_at": "2025-12-11",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.cnfin.com/yw-lb/detail/20251211/4348895_1.html",
+          "title": "美联储实施年内第三次降息并启动短债购买 美债收益率应声下跌",
+          "published_at": "2025-12-11",
+          "source": "新华财经",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_hainan_closure_202512",
+      "category": "财经",
+      "title": "海南自贸港正式启动全岛封关",
+      "event_date": "2025-12-18",
+      "keywords": [
+        "海南",
+        "全岛封关",
+        "自贸港"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20251218/e82aa4dd5d9a446f8838040033dc64be/c.html",
+          "title": "海南自由贸易港正式启动全岛封关",
+          "published_at": "2025-12-18",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.court.gov.cn/xinshidai/xiangqing/484411.html",
+          "title": "历史性时刻！海南自贸港正式启动全岛封关",
+          "published_at": "2025-12-18",
+          "source": "最高人民法院",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.tid.gov.hk/sc/tradecircular/2025/ci10732025.html?categoryId=17",
+          "title": "中国内地：关于海南自由贸易港正式启动全岛封关的通告",
+          "published_at": null,
+          "source": "香港工业贸易署",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_gdp_2025_release",
+      "category": "财经",
+      "title": "2025年中国GDP年度数据发布",
+      "event_date": "2026-01-19",
+      "keywords": [
+        "GDP",
+        "2025年经济",
+        "国家统计局"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/fortune/20260119/f259a43007894c38a5f4f284eef9b686/c.html",
+          "title": "增长5%！2025年中国GDP跨越140万亿元关口",
+          "published_at": "2026-01-19",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://big5.www.gov.cn/gate/big5/www.gov.cn/lianbo/202601/content_7055247.htm",
+          "title": "增长5%！2025年中国GDP跨越140万亿元关口",
+          "published_at": "2026-01-19",
+          "source": "中国政府网",
+          "discovery_kind": "web_search",
+          "role_hint": "unknown"
+        }
+      ],
+      "notes": "两稿可能同事实转载，保留来源用于去重验证。"
+    },
+    {
+      "event_id": "finance_gdp_2026q1",
+      "category": "财经",
+      "title": "2026年一季度经济数据发布",
+      "event_date": "2026-04-16",
+      "keywords": [
+        "一季度",
+        "GDP",
+        "经济运行"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260416/447e5ab0080c4719802f7079a62a3ed2/c.html",
+          "title": "一季度中国GDP同比增长5.0%",
+          "published_at": "2026-04-16",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.stats.gov.cn/zs/tjwh/tjkw/tjqk/zgxxb/202604/P020260420319590487193.pdf",
+          "title": "中国信息报：一季度经济运行及核算结果",
+          "published_at": "2026-04-20",
+          "source": "国家统计局",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "含报纸PDF，仅为候选；正文采集器可能需要独立PDF适配。"
+    },
+    {
+      "event_id": "finance_gdp_2026h1",
+      "category": "财经",
+      "title": "2026年上半年经济数据发布",
+      "event_date": "2026-07-15",
+      "keywords": [
+        "上半年",
+        "GDP",
+        "新动能"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260715/9b9fffe77dcc4e6a936963ddf0269139/c.html",
+          "title": "新华社权威快报丨上半年我国GDP同比增长4.7%",
+          "published_at": "2026-07-15",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.stats.gov.cn/sj/zxfbhjd/202607/t20260715_1964134.html",
+          "title": "国家统计局副局长就2026年上半年国民经济运行情况答记者问",
+          "published_at": "2026-07-15",
+          "source": "国家统计局",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.ndrc.gov.cn/wsdwhfz/202607/t20260727_1406694.html",
+          "title": "2026上半年，中国经济交出“稳”答卷",
+          "published_at": "2026-07-27",
+          "source": "国家发展改革委",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_gdp_2026q3",
+      "category": "财经",
+      "title": "2026年前三季度经济数据发布",
+      "event_date": "2026-10-19",
+      "keywords": [
+        "前三季度",
+        "GDP",
+        "经济运行"
+      ],
+      "articles": [
+        {
+          "url": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965618.html",
+          "title": "前三季度经济运行总体平稳 高质量发展取得新成效",
+          "published_at": "2026-10-19",
+          "source": "国家统计局",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261020_1965658.html",
+          "title": "2026年三季度国内生产总值初步核算结果",
+          "published_at": "2026-10-20",
+          "source": "国家统计局",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.news.cn/20261020/60de498a37964c8e92020d83a70aa56f/c.html",
+          "title": "多领域数据勾勒前三季度经济运行图景",
+          "published_at": "2026-10-20",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_cewc_202512",
+      "category": "财经",
+      "title": "2025年中央经济工作会议与2026年政策部署",
+      "event_date": "2025-12-11",
+      "keywords": [
+        "中央经济工作会议",
+        "内需",
+        "2026年"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/politics/20251211/6c2d50e9440743c38c1a90211f410b15/c.html",
+          "title": "中央经济工作会议在北京举行",
+          "published_at": "2025-12-11",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.nbd.com.cn/articles/2025-12-12/4177930.html",
+          "title": "中央经济工作会议首提坚持内需主导 专家：首先需要形成一个城乡居民收入有效增长机制",
+          "published_at": "2025-12-12",
+          "source": "每日经济新闻",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_growth_target_202603",
+      "category": "财经",
+      "title": "2026年政府工作报告经济增长目标",
+      "event_date": "2026-03-05",
+      "keywords": [
+        "政府工作报告",
+        "经济增长目标",
+        "两会"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260305/30e6e4c643ef4f2584746d37f196eb25/c.html",
+          "title": "两会新华社快讯：2026年发展主要预期目标",
+          "published_at": "2026-03-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.ndrc.gov.cn/wsdwhfz/202603/t20260312_1404111.html",
+          "title": "朝闻天下丨《政府工作报告》解读：设置4.5%—5%的增长目标，背后有哪些考量？",
+          "published_at": "2026-03-12",
+          "source": "国家发展改革委",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_cop30_202511",
+      "category": "国际",
+      "title": "COP30贝伦气候大会闭幕及中方回应",
+      "event_date": "2025-11-22",
+      "keywords": [
+        "COP30",
+        "贝伦",
+        "全球气候治理"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/world/20251123/c6f766727e8e461fb961609683b0d6a5/c.html",
+          "title": "COP30在巴西贝伦闭幕",
+          "published_at": "2025-11-23",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20251124/19406b7fcb3c4128baa3f3f0d1d36f40/c.html",
+          "title": "中方介绍COP30成果与中国贡献",
+          "published_at": "2025-11-24",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.news.cn/world/20251122/d314b3ba7ed346e8bda122b7f9aaf4b1/c.html",
+          "title": "COP30闭幕前观察",
+          "published_at": "2025-11-22",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_us_shutdown_202511",
+      "category": "国际",
+      "title": "美国史上最长联邦政府停摆结束",
+      "event_date": "2025-11-12",
+      "keywords": [
+        "美国政府",
+        "停摆",
+        "拨款法案"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20251105/eafd92c4b62f4fd29633c4c4ec3f408a/c.html",
+          "title": "美国联邦政府停摆进入第36天创历史纪录",
+          "published_at": "2025-11-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20251113/1d7aa856b0f241c69ed2d621a867d21c/c.html",
+          "title": "美国创纪录43天政府停摆结束",
+          "published_at": "2025-11-13",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_busan_202510",
+      "category": "国际",
+      "title": "中美元首釜山会晤及经贸共识",
+      "event_date": "2025-10-30",
+      "keywords": [
+        "中美",
+        "釜山",
+        "经贸磋商"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/politics/leaders/20251030/f43aece1d2e34626a7c6fde0bc3e0712/c.html",
+          "title": "习近平同美国总统特朗普在釜山举行会晤",
+          "published_at": "2025-10-30",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://politics.people.com.cn/n1/2025/1030/c1024-40593256.html",
+          "title": "习近平同美国总统特朗普在釜山举行会晤",
+          "published_at": "2025-10-30",
+          "source": "人民网",
+          "discovery_kind": "web_search",
+          "role_hint": "unknown"
+        }
+      ],
+      "notes": "同事实来源稿，待补独立进展报道；不把转载当新增事实。"
+    },
+    {
+      "event_id": "military_venezuela_202601",
+      "category": "军事",
+      "title": "美军对委内瑞拉行动与马杜罗后续",
+      "event_date": "2026-01-03",
+      "keywords": [
+        "委内瑞拉",
+        "马杜罗",
+        "美军"
+      ],
+      "articles": [
+        {
+          "url": "https://www3.xinhuanet.com/20260104/206f70d3f91b4363b95c20e8820d1ff0/c.html",
+          "title": "美军披露抓走马杜罗行动过程",
+          "published_at": "2026-01-04",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260105/3a3b1834e4f1480db8ae7e4b6a024cb0/c.html",
+          "title": "委内瑞拉官员重申对马杜罗支持并呼吁恢复生活",
+          "published_at": "2026-01-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.xinhuanet.com/20260625/5d13bf2f88fc44b6b672e7b255d69366/c.html",
+          "title": "马杜罗夫妇呼吁委内瑞拉人民在强震后团结",
+          "published_at": "2026-06-25",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_moore_ipo_202512",
+      "category": "股票",
+      "title": "摩尔线程科创板上市及首日交易",
+      "event_date": "2025-12-05",
+      "keywords": [
+        "摩尔线程",
+        "科创板",
+        "GPU"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/tech/20251208/5b177db91de04907a46a46b134916285/c.html",
+          "title": "摩尔线程成功登陆科创板",
+          "published_at": "2025-12-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.thepaper.cn/newsDetail_forward_32115002",
+          "title": "科创板年内最大IPO摩尔线程上市",
+          "published_at": "2025-12-06",
+          "source": "澎湃新闻",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://4g.stockstar.com/detail/SN2025120300037930",
+          "title": "摩尔线程首次公开发行股票科创板上市公告书",
+          "published_at": "2025-12-03",
+          "source": "证券之星",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_metax_ipo_202512",
+      "category": "股票",
+      "title": "沐曦股份科创板上市及浦东产业背景",
+      "event_date": "2025-12-17",
+      "keywords": [
+        "沐曦",
+        "科创板",
+        "GPU"
+      ],
+      "articles": [
+        {
+          "url": "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20251216_10801769.shtml",
+          "title": "关于沐曦集成电路（上海）股份有限公司人民币普通股股票科创板上市交易的公告",
+          "published_at": "2025-12-16",
+          "source": "上海证券交易所",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.sfic.cn/xw/xq/1/27060",
+          "title": "沐曦股份正式挂牌科创板",
+          "published_at": "2025-12-18",
+          "source": "上海市工商联",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.shanghai.gov.cn/nw15343/20251223/51fa0a2f2bf2437b809f1fd705257ca4.html",
+          "title": "浦东集成电路产业集聚成势厚积薄发",
+          "published_at": "2025-12-21",
+          "source": "上海市政府",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_ai_ipos_202601",
+      "category": "股票",
+      "title": "智谱与MiniMax密集登陆港交所",
+      "event_date": "2026-01-08",
+      "keywords": [
+        "智谱",
+        "MiniMax",
+        "港股IPO"
+      ],
+      "articles": [
+        {
+          "url": "https://www2.xinhuanet.com/tech/20260109/d965de0fb32b417ea0ad0030f32702b4/c.html",
+          "title": "AI企业密集登陆资本市场 商业化进程按下“加速键”",
+          "published_at": "2026-01-09",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www1.xinhuanet.com/tech/20260112/f8329b94fe12418a9c90fbde9b8b57b7/c.html",
+          "title": "AI大模型迈向价值兑现",
+          "published_at": "2026-01-12",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.yicai.com/news/102997322.html",
+          "title": "从“六小龙”到“AI双雄”，中国大模型进入上市分水岭",
+          "published_at": "2026-01-10",
+          "source": "第一财经",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.nbd.com.cn/articles/2026-05-30/4412971.html",
+          "title": "“大模型双雄”，将会师A股？MiniMax正式启动上市辅导",
+          "published_at": "2026-05-30",
+          "source": "每日经济新闻",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_shanghai4000_202510",
+      "category": "股票",
+      "title": "上证指数时隔十年盘中重返4000点",
+      "event_date": "2025-10-28",
+      "keywords": [
+        "上证指数",
+        "4000点",
+        "A股"
+      ],
+      "articles": [
+        {
+          "url": "https://www.cnfin.com/yw-lb/detail/20251028/4324375_1.html",
+          "title": "时隔十年！沪指重返4000点",
+          "published_at": "2025-10-28",
+          "source": "新华财经",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.cnfin.com/yw-lb/detail/20251028/4324490_1.html",
+          "title": "收评：沪指冲高回落4000点得而复失 福建板块掀涨停潮",
+          "published_at": "2025-10-28",
+          "source": "新华财经",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202510/t20251029_6519911.html",
+          "title": "上证指数盘中重返4000点 六大要点数说十年蝶变",
+          "published_at": "2025-10-29",
+          "source": "中国证券报",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_thai_cambodia_ceasefire_202512",
+      "category": "军事",
+      "title": "泰柬边境冲突停火与中柬泰抚仙会晤",
+      "event_date": "2025-12-27",
+      "keywords": [
+        "泰国",
+        "柬埔寨",
+        "停火",
+        "抚仙湖"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20251227/166368f04190464c9eb90fe3bfaf2d42/c.html",
+          "title": "泰国和柬埔寨签署停火联合声明",
+          "published_at": "2025-12-27",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://news.cctv.cn/2025/12/28/ARTIWzaD2ljtLZ8iWqrw0SiV251228.shtml",
+          "title": "泰柬停火生效后首日 双方通报最新局势",
+          "published_at": "2025-12-28",
+          "source": "央视网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.fmprc.gov.cn/fyrbt_673021/202512/t20251227_11788673.shtml",
+          "title": "外交部发言人就柬泰签署停火联合声明答记者问",
+          "published_at": "2025-12-27",
+          "source": "外交部",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.mfa.gov.cn/web/gjhdq_676201/gj_676203/yz_676205/1206_676572/1207_676584/202512/t20251229_11789058.shtml",
+          "title": "中柬泰三方抚仙会晤新闻公报（全文）",
+          "published_at": "2025-12-29",
+          "source": "外交部",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_justice_mission_202512",
+      "category": "军事",
+      "title": "东部战区正义使命2025演习",
+      "event_date": "2025-12-29",
+      "keywords": [
+        "东部战区",
+        "正义使命2025",
+        "演习"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/politics/20251229/7741c69864a847ab81f5d36b051ce8e2/c.html",
+          "title": "东部战区组织“正义使命-2025”演习",
+          "published_at": "2025-12-29",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www1.xinhuanet.com/tw/20251230/e25c8f8aac4c4fe587bee6423e26199b/c.html",
+          "title": "正义之师行正义使命——军事专家谈“正义使命-2025”演习",
+          "published_at": "2025-12-30",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_iran_war_202602",
+      "category": "军事",
+      "title": "美以打击伊朗及地区反应",
+      "event_date": "2026-02-28",
+      "keywords": [
+        "伊朗",
+        "美国",
+        "以色列",
+        "军事打击"
+      ],
+      "articles": [
+        {
+          "url": "https://www3.xinhuanet.com/world/20260228/63dc64f99f1d44f495b3d402b3b69d2c/c.html",
+          "title": "美以协同对伊朗发动军事打击",
+          "published_at": "2026-02-28",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www2.xinhuanet.com/20260228/46e1c5eeacef41b0ae3cb3ae9900f88f/c.html",
+          "title": "国际社会对美以军事打击伊朗作出反应",
+          "published_at": "2026-02-28",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www3.xinhuanet.com/world/20260408/9a417b4fb63b4249b511bafd960a4ba9/c.html",
+          "title": "美以伊战事持续40天后按下暂停键",
+          "published_at": "2026-04-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_iran_ceasefire_202604",
+      "category": "军事",
+      "title": "美伊同意停火两周并展开谈判",
+      "event_date": "2026-04-08",
+      "keywords": [
+        "美伊停火",
+        "巴基斯坦",
+        "谈判"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/20260408/2930d926d4da44b1a140dca0288b14d2/c.html",
+          "title": "美伊宣布停火并开启为期两周的谈判",
+          "published_at": "2026-04-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.xinhuanet.com/20260408/227fa42710e24f4cb5e2391e330f3306/c.html",
+          "title": "万斯称美伊停火是脆弱的休战",
+          "published_at": "2026-04-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www2.xinhuanet.com/20260408/3ea1f03a9b7b444da8c2339325db79c6/c.html",
+          "title": "中东多国对美伊停火表示欢迎",
+          "published_at": "2026-04-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "是伊朗战争主线的重要阶段，后续可以与military_iran_war_202602连接，不自动定因果。"
+    },
+    {
+      "event_id": "military_newstart_expiry_202602",
+      "category": "军事",
+      "title": "美俄新削减战略武器条约到期及各方回应",
+      "event_date": "2026-02-05",
+      "keywords": [
+        "新削减战略武器条约",
+        "核军控",
+        "美俄"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260205/76f8dc103dcb4c3ba5b0c57331bc826e/c.html",
+          "title": "古特雷斯：《新削减战略武器条约》失效是国际和平与安全的严峻时刻",
+          "published_at": "2026-02-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260205/b2e538ea00fb4b4a830c0635db9c64de/c.html",
+          "title": "外交部：中方对美俄《新削减战略武器条约》到期失效表示遗憾",
+          "published_at": "2026-02-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.xinhuanet.com/world/20260206/5fedf9d8557e445ba29a8a289c074282/c.html",
+          "title": "特朗普称应制定改进且现代化的新军控条约",
+          "published_at": "2026-02-06",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_ukraine_talks_202601",
+      "category": "军事",
+      "title": "俄美乌阿布扎比三方安全会谈",
+      "event_date": "2026-01-23",
+      "keywords": [
+        "俄美乌",
+        "阿布扎比",
+        "乌克兰危机"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260124/24253613a711452abac654a42cf5773f/c.html",
+          "title": "俄美乌三方会谈在阿布扎比举行",
+          "published_at": "2026-01-24",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/world/20260204/54290a1a9ca1440aa96d904b630c4635/c.html",
+          "title": "新一轮俄美乌会谈在阿联酋阿布扎比举行",
+          "published_at": "2026-02-04",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.xinhuanet.com/20261023/52b02ce1df8e45cba1ec0bb02372bf13/c.html",
+          "title": "俄方：俄美乌会谈将于11月上旬在阿布扎比举行",
+          "published_at": "2026-10-23",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "10月稿为未来会谈计划，不能当作11月会谈已发生。"
+    },
+    {
+      "event_id": "military_us_nss_202512",
+      "category": "军事",
+      "title": "美国2025版国家安全战略及外部解读",
+      "event_date": "2025-12-04",
+      "keywords": [
+        "美国",
+        "国家安全战略",
+        "西半球"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/world/20251210/b48299bffee74ab9b7cafa63180f8d18/c.html",
+          "title": "新版美国国家安全战略观察",
+          "published_at": "2025-12-10",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20251212/c270fc6b52b54d7c8444e6a42aa84274/c.html",
+          "title": "国际观察丨八年三份报告，美国国家安全战略的变与不变",
+          "published_at": "2025-12-12",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_fujian_commission_202511",
+      "category": "军事",
+      "title": "福建舰入列与首次海上实兵训练",
+      "event_date": "2025-11-05",
+      "keywords": [
+        "福建舰",
+        "电磁弹射",
+        "航母"
+      ],
+      "articles": [
+        {
+          "url": "https://www3.xinhuanet.com/politics/20251108/e8541fdc62c241e397f763e66cddeb2f/c.html",
+          "title": "海军新闻发言人就福建舰入列有关问题答记者问",
+          "published_at": "2025-11-08",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www1.xinhuanet.com/politics/20251118/97616c7763fe45ecb9f89f830ebbdcf5/c.html",
+          "title": "海军福建舰开展入列后首次海上实兵训练",
+          "published_at": "2025-11-18",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.mod.gov.cn/gfbw/wzll/hj/16422680.html",
+          "title": "海军福建舰开展入列后首次海上实兵训练",
+          "published_at": "2025-11-18",
+          "source": "国防部",
+          "discovery_kind": "web_search",
+          "role_hint": "unknown"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "military_jointsea_202607",
+      "category": "军事",
+      "title": "中俄海上联合2026演习与联合巡航",
+      "event_date": "2026-07-06",
+      "keywords": [
+        "中俄",
+        "海上联合2026",
+        "青岛"
+      ],
+      "articles": [
+        {
+          "url": "https://www.mod.gov.cn/gfbw/qwfb/16471809.html",
+          "title": "中俄两军将举行“海上联合-2026”联合演习和海上联合巡航",
+          "published_at": "2026-07-05",
+          "source": "国防部",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.mod.gov.cn/gfbw/qwfb/16473430.html",
+          "title": "中俄“海上联合-2026”联合演习闭幕",
+          "published_at": "2026-07-13",
+          "source": "国防部",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_g20_202511",
+      "category": "国际",
+      "title": "G20约翰内斯堡峰会与联合宣言",
+      "event_date": "2025-11-22",
+      "keywords": [
+        "G20",
+        "约翰内斯堡",
+        "全球南方"
+      ],
+      "articles": [
+        {
+          "url": "https://www3.xinhuanet.com/world/20251123/48a751c1958f440f94ec7a810562c755/c.html",
+          "title": "顶住美国压力 G20约堡峰会通过联合宣言",
+          "published_at": "2025-11-23",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/world/20251123/7f103f5c0e434916b979fc3d46d8e3b8/c.html",
+          "title": "为全球治理体系变革凝聚南方共识",
+          "published_at": "2025-11-23",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.spa.gov.sa/zh/N2450942",
+          "title": "沙特外交大臣参加约翰内斯堡G20领导人峰会的第二次会议",
+          "published_at": "2025-11-23",
+          "source": "沙特通讯社",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_starmer_china_202601",
+      "category": "国际",
+      "title": "英国首相斯塔默访华及成果",
+      "event_date": "2026-01-28",
+      "keywords": [
+        "中英关系",
+        "斯塔默",
+        "访华"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260128/76380baa6cfa4b089049f50d13a37484/c.html",
+          "title": "英国首相斯塔默抵达北京开始正式访问",
+          "published_at": "2026-01-28",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/politics/leaders/20260129/d2282be83f9048e8bbdbc56c5d111340/c.html",
+          "title": "习近平会见英国首相斯塔默",
+          "published_at": "2026-01-29",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.news.cn/20260130/83419691d72348d3a30fe18b403189ca/c.html",
+          "title": "外交部介绍英国首相斯塔默访华成果",
+          "published_at": "2026-01-30",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_macron_china_202512",
+      "category": "国际",
+      "title": "马克龙访华与成都交流",
+      "event_date": "2025-12-03",
+      "keywords": [
+        "中法关系",
+        "马克龙",
+        "成都"
+      ],
+      "articles": [
+        {
+          "url": "https://www.fmprc.gov.cn/wjdt_674879/wsrc_674883/202512/t20251201_11763771.shtml",
+          "title": "法国总统马克龙将访华",
+          "published_at": "2025-12-01",
+          "source": "外交部",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.xinhuanet.com/politics/leaders/20251205/932969632585415d895b21665d041b9b/c.html",
+          "title": "习近平同法国总统马克龙在成都进行友好交流",
+          "published_at": "2025-12-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www1.xinhuanet.com/politics/20251205/dd390587d74b42e0a3003f366bd9d74e/c.html",
+          "title": "法国总统马克龙结束对中国的国事访问",
+          "published_at": "2025-12-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_lee_china_202601",
+      "category": "国际",
+      "title": "韩国总统李在明访华",
+      "event_date": "2026-01-04",
+      "keywords": [
+        "中韩关系",
+        "李在明",
+        "访华"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/politics/20260104/47d6799306c349b8b7cdfa3e935e76a1/c.html",
+          "title": "韩国总统李在明抵达北京开始国事访问",
+          "published_at": "2026-01-04",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260105/ebaeb2f064df49458987b5cb4c1dbb0b/c.html",
+          "title": "习近平为韩国总统李在明举行欢迎仪式",
+          "published_at": "2026-01-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_trump_china_202605",
+      "category": "国际",
+      "title": "特朗普访华与中美元首北京会谈",
+      "event_date": "2026-05-14",
+      "keywords": [
+        "特朗普",
+        "中美关系",
+        "北京会谈"
+      ],
+      "articles": [
+        {
+          "url": "https://www3.xinhuanet.com/politics/leaders/20260514/94fe0d22f1d340008651826543d29937/c.html",
+          "title": "习近平同美国总统特朗普会谈",
+          "published_at": "2026-05-14",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/politics/leaders/20260514/fd189daed7bd41ae9fea86c97ab20b13/c.html",
+          "title": "习近平为美国总统特朗普举行欢迎宴会",
+          "published_at": "2026-05-14",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www2.xinhuanet.com/politics/leaders/20260515/2b83c6d829a442dcbaee222b9fee00d3/c.html",
+          "title": "中美元首北京会谈观察",
+          "published_at": "2026-05-15",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_unga81_202609",
+      "category": "国际",
+      "title": "第81届联合国大会一般性辩论",
+      "event_date": "2026-09-22",
+      "keywords": [
+        "联合国大会",
+        "一般性辩论",
+        "多边主义"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260923/8c8cf14a24ee4878998ef305a1ed5c56/c.html",
+          "title": "第81届联合国大会一般性辩论开幕",
+          "published_at": "2026-09-23",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260929/6a18f504de5e4243bbc649ff4583f215/c.html",
+          "title": "第81届联合国大会一般性辩论落幕",
+          "published_at": "2026-09-29",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://webtv.un.org/zh/asset/k16/k16g777u83",
+          "title": "第五天一般性辩论：大会第八十一届会议全体会议",
+          "published_at": null,
+          "source": "联合国Web TV",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "联合国Web TV为视频候选；普通正文适配可能跳过。"
+    },
+    {
+      "event_id": "international_greenland_202601",
+      "category": "国际",
+      "title": "美国格陵兰岛主张与欧洲关税争议",
+      "event_date": "2026-01-20",
+      "keywords": [
+        "格陵兰岛",
+        "达沃斯",
+        "美国",
+        "欧洲关税"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/world/20260120/2c46724fede84c30bcee01a669d67ead/c.html",
+          "title": "特朗普发布有关格陵兰岛的图片并拟在达沃斯讨论",
+          "published_at": "2026-01-20",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/world/20260122/525095e0530f42b3bcfe30c5d4b4a1b0/c.html",
+          "title": "特朗普称不会以武力夺取格陵兰岛",
+          "published_at": "2026-01-22",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www.news.cn/20260122/fef31d1418b4441786939bb23bb88bdc/c.html",
+          "title": "特朗普称不会实施原定对欧洲八国加征关税措施",
+          "published_at": "2026-01-22",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_brazil_election_202610",
+      "category": "国际",
+      "title": "巴西总统选举首轮与第二轮结果",
+      "event_date": "2026-10-04",
+      "keywords": [
+        "巴西大选",
+        "卢拉",
+        "博索纳罗"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20261005/fbfea852771149ac84c9af68bdd0a3f3/c.html",
+          "title": "巴西总统选举首轮投票结果出炉",
+          "published_at": "2026-10-05",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20261026/cbf15c746ad041718364bc5fe09c93ee/c.html",
+          "title": "卢拉赢得巴西总统选举第二轮投票",
+          "published_at": "2026-10-26",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://www3.xinhuanet.com/world/20261026/d93ae44c9e0344cba50318878f6b6b06/c.html",
+          "title": "第四次当选的巴西总统卢拉",
+          "published_at": "2026-10-26",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_japan_election_202602",
+      "category": "国际",
+      "title": "日本众议院选举与中方回应",
+      "event_date": "2026-02-08",
+      "keywords": [
+        "日本众议院",
+        "高市早苗",
+        "选举"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/20260209/b755663410b74b808355e67e9904ba03/c.html",
+          "title": "日本执政联盟在众议院选举中获得过半数议席",
+          "published_at": "2026-02-09",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260209/ac9e880b2b864684930514abf9bd2a30/c.html",
+          "title": "外交部回应日本众议院选举有关问题",
+          "published_at": "2026-02-09",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "international_hungary_election_202604",
+      "category": "国际",
+      "title": "匈牙利国会选举与最终计票结果",
+      "event_date": "2026-04-12",
+      "keywords": [
+        "匈牙利",
+        "蒂萨党",
+        "毛焦尔",
+        "欧尔班"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/20260413/0fe9a6744e6340038e67b26c87125aab/c.html",
+          "title": "外交部祝贺毛焦尔领导的蒂萨党赢得匈牙利国会选举",
+          "published_at": "2026-04-13",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        },
+        {
+          "url": "https://www.xinhuanet.com/20260419/13aec3e51fbb4add8a686529157fd8b4/c.html",
+          "title": "匈牙利公布国会选举最终结果 蒂萨党获199个席中的141席",
+          "published_at": "2026-04-19",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_cIIe_202511",
+      "category": "财经",
+      "title": "第八届进博会闭幕与成交成果",
+      "event_date": "2025-11-10",
+      "keywords": [
+        "进博会",
+        "意向成交额",
+        "上海"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/world/20251110/cd046eb524614e4fa271435928775e24/c.html",
+          "title": "新华社权威快报丨第八届进博会按年计意向成交额突破834亿美元",
+          "published_at": "2025-11-10",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://news.cctv.cn/2025/11/10/ARTIZNdhIAcdzqhoBPVDkLV9251110.shtml",
+          "title": "第八届进博会闭幕 成交额创历史新高",
+          "published_at": "2025-11-10",
+          "source": "央视网",
+          "discovery_kind": "web_search",
+          "role_hint": "unknown"
+        },
+        {
+          "url": "https://www.stcn.com/article/detail/3487718.html",
+          "title": "意向成交额834.9亿美元！进博会，今日闭幕丨聚焦第八届进博会",
+          "published_at": "2025-11-10",
+          "source": "证券时报",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "finance_pboc_structural_rates_202601",
+      "category": "财经",
+      "title": "央行下调结构性货币政策工具利率",
+      "event_date": "2026-01-15",
+      "keywords": [
+        "央行",
+        "结构性货币政策",
+        "再贷款"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/fortune/20260115/f4a17deb08274ac78abb31f88fa0d5b3/c.html",
+          "title": "中国人民银行下调各类结构性货币政策工具利率0.25个百分点",
+          "published_at": "2026-01-15",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.news.cn/20260116/8fec7c984c414431b8a52d993704b574/c.html",
+          "title": "央行一揽子货币金融新政策释放逆周期调节信号",
+          "published_at": "2026-01-16",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_nvidia_fy2026",
+      "category": "股票",
+      "title": "英伟达2026财年财报与股价反应",
+      "event_date": "2026-02-25",
+      "keywords": [
+        "英伟达",
+        "财报",
+        "数据中心",
+        "H200"
+      ],
+      "articles": [
+        {
+          "url": "https://www.news.cn/20260226/eb9d5081a30d49a48927d1f44d85ada4/c.html",
+          "title": "英伟达2026财年第四季度和全年营收创新高",
+          "published_at": "2026-02-26",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://blogs.nvidia.cn/blog/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026/",
+          "title": "NVIDIA发布2026财年第四季度及全年财务报告",
+          "published_at": "2026-02-25",
+          "source": "英伟达中国",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.stcn.com/article/detail/3652266.html",
+          "title": "拆解英伟达2026财年业绩 三大改变正在发生",
+          "published_at": null,
+          "source": "证券时报",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_buffett_handover_202609",
+      "category": "股票",
+      "title": "巴菲特卸任伯克希尔董事长与接班",
+      "event_date": "2026-09-18",
+      "keywords": [
+        "巴菲特",
+        "伯克希尔",
+        "阿贝尔",
+        "董事长"
+      ],
+      "articles": [
+        {
+          "url": "https://www.cnfin.com/gs-lb/detail/20260918/4472029_1.html",
+          "title": "巴菲特卸任伯克希尔董事长",
+          "published_at": "2026-09-18",
+          "source": "新华财经",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://news.rthk.hk/rthk/ch/component/k2/1870652-20260918.htm",
+          "title": "巴菲特卸任巴郡董事长 将出任名誉董事长",
+          "published_at": "2026-09-18",
+          "source": "香港电台",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        },
+        {
+          "url": "https://m.bjnews.com.cn/detail/1789889970129974.html",
+          "title": "巴菲特“退休”：儿子接任董事长，CEO继续“操盘”",
+          "published_at": null,
+          "source": "新京报",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_trading_rules_202604",
+      "category": "股票",
+      "title": "沪深北交易规则修订与7月6日生效",
+      "event_date": "2026-04-24",
+      "keywords": [
+        "A股",
+        "交易规则",
+        "风险警示股票",
+        "收盘集合竞价"
+      ],
+      "articles": [
+        {
+          "url": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/c/c_20260424_10816482.shtml",
+          "title": "上海证券交易所交易规则（2026年修订）",
+          "published_at": "2026-04-24",
+          "source": "上海证券交易所",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www1.xinhuanet.com/finance/20260427/7df22c77af42497088688df5f783fcdd/c.html",
+          "title": "沪深北交易所修订发布交易规则 自7月6日起实施",
+          "published_at": "2026-04-27",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.csrc.gov.cn/shanghai/c105566/c7643909/content.shtml",
+          "title": "A股交易新规7月6日起施行",
+          "published_at": "2026-07-06",
+          "source": "证监会上海监管局",
+          "discovery_kind": "web_search",
+          "role_hint": "follow_up"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_spacex_ipo_202606",
+      "category": "股票",
+      "title": "SpaceX上市与估值讨论",
+      "event_date": "2026-06-12",
+      "keywords": [
+        "SpaceX",
+        "纳斯达克",
+        "IPO"
+      ],
+      "articles": [
+        {
+          "url": "https://www.xinhuanet.com/photo/20260613/0b4d440f3c59487e840c745f56afce3b/c.html",
+          "title": "SpaceX上市 公司估值约1.77万亿美元",
+          "published_at": "2026-06-13",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www3.xinhuanet.com/world/20260615/69c1fd08bb5242869f0147726aef6e9f/c.html",
+          "title": "综述丨SpaceX高光上市难掩美股泡沫担忧",
+          "published_at": "2026-06-15",
+          "source": "新华网",
+          "discovery_kind": "web_search",
+          "role_hint": "background"
+        },
+        {
+          "url": "https://www.cnfin.com/gs-lb/detail/20260612/4425899_1.html",
+          "title": "SpaceX12日登陆纳斯达克 A股商业航天冲高回落",
+          "published_at": "2026-06-12",
+          "source": "新华财经",
+          "discovery_kind": "web_search",
+          "role_hint": "response"
+        }
+      ],
+      "notes": "发现清单；角色仅为采集意图，相关性与关系须人工复核。"
+    },
+    {
+      "event_id": "stocks_nvidia_fy2027q2_202608",
+      "category": "股票",
+      "title": "英伟达2027财年第二季度财报发布",
+      "event_date": "2026-08-26",
+      "keywords": [
+        "英伟达",
+        "2027财年第二季度",
+        "财报"
+      ],
+      "articles": [
+        {
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
+          "title": "NVIDIA Announces Financial Results for Second Quarter Fiscal 2027",
+          "published_at": "2026-08-26",
+          "source": "NVIDIA投资者关系",
+          "discovery_kind": "web_search",
+          "role_hint": "initial"
+        },
+        {
+          "url": "https://www.ithome.com/0/994/791.htm",
+          "title": "英伟达2027财年半年报归母净利润1180.1亿美元，同比增长161.1%",
+          "published_at": "2026-08-27",
+          "source": "IT之家",
+          "discovery_kind": "web_search",
+          "role_hint": "unknown"
+        }
+      ],
+      "notes": "官方英文稿与中文报道为同事实候选，用于跨来源去重；财年不等于自然年，须保留期间。"
+    }
+  ]
+}

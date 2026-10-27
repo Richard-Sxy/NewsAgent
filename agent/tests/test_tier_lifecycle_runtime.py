@@ -230,6 +230,9 @@ async def test_migration_keeps_ready_source_until_target_verified_then_cleans_so
     assert await hits(runtime)
 
     class CheckingIndex:
+        async def contains(self, **kwargs):
+            return await runtime.raw_index.contains(**kwargs)
+
         async def upsert(self, **kwargs):
             return await runtime.raw_index.upsert(**kwargs)
 
@@ -287,6 +290,9 @@ async def test_new_revision_accepted_during_old_verification_fences_old_activati
     newer = []
 
     class RevisionDuringVerification:
+        async def contains(self, **kwargs):
+            return await runtime.raw_index.contains(**kwargs)
+
         async def upsert(self, **kwargs):
             return await runtime.raw_index.upsert(**kwargs)
 

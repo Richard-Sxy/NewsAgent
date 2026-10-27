@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "parser_version": 1,
+  "url": "https://www.thepaper.cn/newsDetail_forward_32621821",
+  "article_id": "be872831e62254a166c72775",
+  "title": "阿里除夕开源千问3.5：性能媲美Gemini 3 Pro， 实现原生多模态模型代际跃迁",
+  "body": "2月16日除夕当天，阿里巴巴开源全新一代大模型千问Qwen3.5-Plus，性能媲美Gemini 3 Pro。千问3.5实现了底层模型架构的全面革新，此次发布的Qwen3.5-Plus版本总参数为3970亿，激活仅170亿，以小胜大，性能超过万亿参数的Qwen3-Max模型，部署显存占用降低60%，推理效率大幅提升，最大推理吞吐量可提升至19倍。Qwen3.5-Plus的API价格每百万Token低至0.8元，仅为Gemini 3 Pro的1/18。\n据介绍，与前几代的千问大语言模型不同，千问3.5实现了从纯文本模型到原生多模态模型的代际跃迁。千问3预训练在纯文本Tokens上进行，而千问3.5则基于视觉和文本混合token上预训练，并大幅新增中英文、多语言、STEM和推理等数据，以不到40%的参数量获得超万亿的Qwen3-Max基座模型的顶尖性能：千问3.5在MMLU-Pro知识推理评测中得分87.8分，超越GPT-5.2；在博士级难题GPQA测评中斩获88.4分，高于Claude 4.5；在指令遵循IFBench以76.5分刷新所有模型纪录；而在通用Agent评测BFCL-V4、搜索Agent评测Browsecomp等基准中，千问3.5表现均超越Gemini 3 Pro、GPT-5.2。\n千问3.5性能跃升的背后，是对Transformer经典架构的重大创新突破。\n图注：千问3.5推理效率大幅提升\n此外，基于顶级视觉能力，千问3.5也实现了从Agent框架到Agent应用的新突破。千问3.5可自主操作手机与电脑，高效完成日常任务，在移动端支持更多主流APP与指令，在PC端可处理更复杂的多步骤操作，如跨应用数据整理、自动化流程执行等，显著提升操作效率。\n同时，千问团队构建了一个可扩展的Agent异步强化学习框架，端到端可加速3到5倍，并将插件式智能体Agent支持扩展至百万级规模。\n和阿里发布于2025年9月的最强基础模型Qwen3-Max相比，通过训练稳定优化以及多token预测等系列技术，Qwen3.5性能与Qwen3-Max模型持平，并进一步提升了推理效率：在常用的32K上下文场景中，千问3.5推理吞吐量可提升8.6倍；在256K超长上下文情况下，Qwen3.5推理吞吐量最大提升至19倍，推理效率大幅提升。\n目前，千问APP、PC端已第一时间接入Qwen3.5-Plus模型。阿里很快将继续开源不同尺寸、不同功能的千问3.5系列模型，性能更强的旗舰模型Qwen3.5-Max不久也将发布。\n最近春节档AI大战愈发激烈，不仅仅是多家AI应用“撒钱”吸引用户，多个国产大模型也频频上新。\n字节跳动旗下AI视频生成模型Seedance2.0凭借多模态输入、文本/图片生成电影级视频等出色能力引爆网络，吸引全球关注。马斯克转发评论Seedance 2.0相关推文，并表示：模型发展速度太快（It's happening fast），导演贾樟柯在社交平台发文表示：“Seedance 2.0确实厉害，我准备用它做个短片。”\n“目前在AI视频生成领域，Seedance可谓是遥遥领先。”业内人士向澎湃新闻记者介绍，“在技术能力上，它确实已经超过Sora（OpenAI旗下视频大模型）和Google Veo3.1、NanoBanana（谷歌旗下图像视频大模型），这是国产大模型第一次在真正意义上做到世界第一，具有标志性意义。”\n2月14日，字节跳动宣布推出豆包大模型2.0（Doubao-Seed-2.0）系列。豆包2.0针对大规模生产环境的使用需求进行系统性优化，旨在更好地完成真实世界的复杂任务。\n在技术细节上，豆包方面披露，在语言模型基础能力上，豆包2.0 Pro旗舰版取得IMO、CMO数学竞赛和ICPC编程竞赛金牌成绩，也超越了Gemini 3 Pro在Putnam基准测试上的表现，数学和推理能力达到世界顶尖水平。\n阿里千问C端事业群总裁吴嘉披露，2月6日，阿里千问APP“春节30亿大免单”正式上线，发起奶茶攻势，请全国人民用AI一句话免费点奶茶，在阿里历史上的春节活动中投入最大。第一天的实际订单达到1500万单，是原来预计的15倍，一度火到用户无法下单，2月14日，千问启动第二波免单活动，将AI大战推向高潮。\n吴嘉表示，千问做这件事的初衷，并不是为了和谁卷，从来没有想过内卷，真正想的是让AI融进老百姓的日常生活场景中，“这是未来一定会发生的事情。”他坚信这一波的AI应用，中国一定会走在世界的最前列，模型则会在各家之间的你追我赶中，不断往前发展。\n2月12日，智谱正式上线并开源其新一代旗舰模型GLM-5，这个新模型正是此前在全球模型服务平台OpenRouter登顶热度榜首、引发圈内疯狂猜测的神秘模型“Pony Alpha”。\n2月13日，MiniMax正式上线新一代文本模型MiniMax M2.5，在编程能力方面，M2.5在权威榜单SWE-Bench Verified得分80.2%、Multi-SWE-Bench得分51.3%，较上一代显著提升。\n2月13日，据DeepSeek官方披露，DeepSeek网页/ APP正在测试新的长文本模型结构，支持1M上下文，其API 服务不变，仍为V3.2，仅支持128K上下文。也被外界认为，DeepSeek或将在今年春节再次“炸场”发布新模型，复刻去年春节现象级轰动。\nAndroid版\n派生万物开放平台\nIP SHANGHAI\nSIXTH TONE\n报料热线: 021-962866\n报料邮箱: news@thepaper.cn\n沪ICP备14003370号\n沪公网安备31010602008124号\n互联网新闻信息服务许可证：31120170006\n增值电信业务经营许可证：沪B2-2017116\n© 2014- 2026 上海东方报业有限公司",
+  "body_basis": "dom:main",
+  "body_sha256": "f81198078a03a4485bcaa72c654b7faebc5523a865571441a94b7e0e0aaaf63f",
+  "fetched_at": "2026-10-27T03:02:30.161849+00:00",
+  "quality_flags": [],
+  "relevance_label": null,
+  "relevance_review_status": "pending_human",
+  "published_at": "2026-02-16T13:02:18+00:00",
+  "publication_date": "2026-02-16",
+  "date_precision": "second",
+  "source_timezone": "+00:00",
+  "date_basis": "meta:article:published_time",
+  "date_evidence": "2026-02-16T13:02:18.620Z",
+  "raw_sha256": "8f018162aa96159656a87f228f128d14425e98bd78b09f8baeb7fb542f83b513",
+  "raw_bytes": 33640,
+  "raw_path": "raw/be872831e62254a166c72775.html",
+  "final_url": "https://www.thepaper.cn/newsDetail_forward_32621821",
+  "source_charset": "utf-8",
+  "event_ids": [
+    "ai-qwen35-202602"
+  ],
+  "categories": [
+    "AI"
+  ],
+  "discovery_hints": [
+    {
+      "title": "阿里除夕开源千问3.5：性能媲美Gemini 3 Pro， 实现原生多模态模型代际跃迁_10%公司_澎湃新闻-The Paper",
+      "published_at": "2026-02-16",
+      "source": "www.thepaper.cn",
+      "discovery_kind": "web_search",
+      "role_hint": "unknown",
+      "event_id": "ai-qwen35-202602",
+      "category": "AI",
+      "verified": false,
+      "role_hint_is_gold": false
+    }
+  ],
+  "status": "body_ready"
+}

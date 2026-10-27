@@ -1,0 +1,18 @@
+{
+  "schema": "annual-fusion-comparison-validation-v1",
+  "real_embedding_model": "bge-large-zh-v1.5:d9eb05180107021f8e72",
+  "queries": 30,
+  "global_frozen_top10_reproduced": 30,
+  "independent_saved_vector_ranking_replays": 30,
+  "original_human_labels_unchanged": 300,
+  "top10_pairs_per_strategy": 300,
+  "top10_overlap": 146,
+  "union_pairs": 454,
+  "pending_pairs": 154,
+  "rrf_top5_pending_pairs": 69,
+  "backend_tests_passed": 57,
+  "backend_test_command": "python -B -m unittest tests.test_retrieval_comparison tests.test_retrieval_lab_store tests.test_retrieval_lab_api -q",
+  "quality_comparison_status": "requires_154_additional_human_labels",
+  "formal_independent_test": false,
+  "production_performance_validated": false
+}

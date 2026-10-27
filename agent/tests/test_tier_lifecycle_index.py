@@ -197,3 +197,154 @@ async def test_rejects_unbounded_limits_before_remote_work():
 def test_invalid_refill_policy_is_rejected(kwargs):
     with pytest.raises(ValueError):
         GuardedTieredIndex(Backend([]), Ledger(set()), **kwargs)
+
+
+async def news_search(index, *, limit=2, exclude_news_ids=frozenset(), trace=None):
+    return await index.search_news_with_trace(
+        tier=VectorTier.HOT, tenant_id="tenant-1", vector=(1.0, 0.0),
+        embedding_version="embedding-v1", exclude_news_ids=exclude_news_ids,
+        limit=limit, trace=trace,
+    )
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_refill_past_duplicate_chunks_preserves_first_representative():
+    rows = [hit("a-1"), hit("a-2"), replace(hit("b-1"), news_id="news-2")]
+    backend = Backend(rows)
+    ledger = Ledger({row.chunk_id for row in rows})
+    guarded = GuardedTieredIndex(backend, ledger)
+    selected, trace = await news_search(guarded)
+    assert selected == [rows[0], rows[2]]
+    assert backend.limits == [2, 4]
+    assert [r["unique_news"] for r in trace["rounds"]] == [1, 2]
+    assert [r["duplicate_chunks"] for r in trace["rounds"]] == [1, 1]
+    assert trace["unique_news"] == 2 and trace["duplicate_chunks"] == 1
+    assert trace["termination_reason"] == "enough_news"
+    assert ledger.calls == [("tenant-1", rows[:2]), ("tenant-1", rows)]
+    # The original entry point deliberately retains chunk candidates.
+    assert await search(guarded) == rows[:2]
+    assert backend.limits[-1] == 2
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_refill_rechecks_withdrawn_earlier_representative():
+    rows = [hit("a-1"), hit("a-2"), replace(hit("b-1"), news_id="news-2")]
+    class ChangingLedger(Ledger):
+        async def filter_hits(self, *, tenant_id, hits):
+            if self.calls:
+                self.approved = {"b-1"}
+            return await super().filter_hits(tenant_id=tenant_id, hits=hits)
+    backend = Backend(rows)
+    guarded = GuardedTieredIndex(backend, ChangingLedger({"a-1", "a-2"}))
+    selected, trace = await news_search(guarded)
+    assert selected == [rows[2]]
+    assert backend.limits == [2, 4]
+    assert trace["termination_reason"] == "exhausted"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("max_candidates,rounds,expected_limits,reason", [
+    (5, 4, [2, 4, 5], "max_candidates"),
+    (20, 1, [2, 4], "max_rounds"),
+    (20, 0, [2], "max_rounds"),
+])
+async def test_distinct_news_refill_stops_at_hard_budgets(max_candidates, rounds, expected_limits, reason):
+    rows = [hit(f"duplicate-{i}") for i in range(30)]
+    backend = Backend(rows)
+    guarded = GuardedTieredIndex(backend, Ledger({r.chunk_id for r in rows}),
+        max_candidates=max_candidates, max_refill_rounds=rounds)
+    selected, trace = await news_search(guarded)
+    assert selected == rows[:1]
+    assert backend.limits == expected_limits
+    assert trace["termination_reason"] == reason and trace["hits"] == 1
+    assert trace["duplicate_chunks"] == expected_limits[-1] - 1
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_rejects_adapter_over_return_outside_requested_prefix():
+    rows = [hit("a-1"), hit("a-2"), replace(hit("b-1"), news_id="news-2")]
+    class OverReturningBackend(Backend):
+        async def search(self, **kwargs):
+            self.limits.append(kwargs["limit"])
+            return self.rows
+    backend = OverReturningBackend(rows)
+    ledger = Ledger({r.chunk_id for r in rows})
+    selected, trace = await news_search(GuardedTieredIndex(backend, ledger, max_candidates=2))
+    assert selected == rows[:1]
+    assert ledger.calls == [("tenant-1", rows[:2])]
+    assert trace["rounds"][0]["retrieved"] == 2
+    assert trace["termination_reason"] == "max_candidates"
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_enforces_exclusion_tier_and_embedding_after_adapter_search():
+    rows = [hit("excluded"), replace(hit("wrong-tier"), news_id="warm-news", tier=VectorTier.WARM),
+        replace(hit("wrong-model"), news_id="other-model", embedding_version="embedding-v2"),
+        replace(hit("valid"), news_id="valid-news")]
+    backend = Backend(rows)
+    ledger = Ledger({r.chunk_id for r in rows})
+    selected, trace = await news_search(GuardedTieredIndex(backend, ledger, max_candidates=8),
+        exclude_news_ids=frozenset({"news-1"}))
+    assert selected == rows[-1:]
+    assert backend.limits == [2, 4, 8]
+    assert trace["termination_reason"] == "exhausted"
+    assert trace["unique_news"] == 1 and trace["duplicate_chunks"] == 0
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_gate_cannot_inject_identity_or_return_unguarded_hits():
+    rows = [hit("a"), replace(hit("b"), news_id="news-2")]
+    class OddLedger:
+        async def filter_hits(self, **kwargs):
+            return [replace(rows[0], content_version=2), rows[1], hit("injected")]
+    selected, trace = await news_search(GuardedTieredIndex(Backend(rows), OddLedger(), max_refill_rounds=0))
+    assert selected == rows[1:]
+    assert trace["termination_reason"] == "max_rounds"
+    class BrokenLedger:
+        async def filter_hits(self, **kwargs):
+            raise RuntimeError("ledger unavailable")
+    trace = {}
+    with pytest.raises(RuntimeError, match="ledger unavailable"):
+        await news_search(GuardedTieredIndex(Backend(rows), BrokenLedger()), trace=trace)
+    assert trace["status"] == "interrupted" and trace["error_type"] == "RuntimeError"
+    assert trace["search_and_gate_ms"] >= trace["state_gate_ms"] >= 0
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("limit", [0, 3, True, 1.5])
+async def test_distinct_news_rejects_invalid_limit_before_remote_work(limit):
+    backend = Backend([])
+    with pytest.raises(ValueError, match="max_candidates"):
+        await news_search(GuardedTieredIndex(backend, Ledger(set()), max_candidates=2), limit=limit)
+    assert backend.limits == []
+
+
+def test_similarity_metric_forwards_adapter_contract_without_guessing():
+    backend = Backend([])
+    guarded = GuardedTieredIndex(backend, Ledger(set()))
+    assert guarded.similarity_metric is None
+    backend.similarity_metric = "IP"
+    assert guarded.similarity_metric == "IP"
+
+
+@pytest.mark.asyncio
+async def test_distinct_news_selects_later_better_chunk_and_stable_score_ties():
+    rows = [replace(hit("a-z"), raw_score=0.5), hit("a-b"), hit("a-a"),
+            replace(hit("z"), news_id="news-z"), replace(hit("b"), news_id="news-b")]
+    backend = Backend(rows)
+    guarded = GuardedTieredIndex(backend, Ledger({r.chunk_id for r in rows}))
+    selected, trace = await news_search(guarded, limit=3)
+    assert selected == [rows[2], rows[4], rows[3]]
+    assert backend.limits == [3, 6]
+    assert trace["termination_reason"] == "enough_news"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("score", [float("nan"), float("inf"), float("-inf")])
+async def test_distinct_news_rejects_nonfinite_scores_before_ranking(score):
+    rows = [replace(hit("invalid"), raw_score=score)]
+    trace = {}
+    guarded = GuardedTieredIndex(Backend(rows), Ledger({"invalid"}))
+    with pytest.raises(ValueError, match="finite"):
+        await news_search(guarded, trace=trace)
+    assert trace["status"] == "interrupted" and trace["error_type"] == "ValueError"

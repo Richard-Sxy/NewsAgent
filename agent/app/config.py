@@ -52,6 +52,7 @@ class Settings(BaseSettings):
     knowledge_search_config_path: str | None = None
     # Opt-in durable news revisions, three-tier projections and migration.
     knowledge_lifecycle_config_path: str | None = None
+    knowledge_semantics_config_path: str | None = None
     # Read-only operations integration; recipient-level profiles stay in enterprise systems.
     audience_enabled: bool = False
     audience_backend: Literal["enterprise_http", "synthetic", "behavior_package"] = "enterprise_http"
@@ -82,6 +83,8 @@ class Settings(BaseSettings):
     audience_max_snapshot_age_seconds: int = Field(default=900, ge=60, le=3600)
     # Explicit feature approval. Old enterprise deployments remain unchanged.
     conversation_enabled: bool = False
+    # Local monitor bridge; origin is private to the API, never sent to browsers.
+    hot_news_monitor_url: str | None = None
     # Explicit rollout for conversation async hooks only; page/API launches
     # retain their existing behavior. Temporal history is admission authority.
     conversation_async_admission_enabled: bool = False
@@ -180,6 +183,16 @@ class Settings(BaseSettings):
 
     @model_validator(mode="after")
     def require_native_model_runtime(self) -> "Settings":
+        if self.hot_news_monitor_url:
+            from urllib.parse import urlsplit
+            origin = urlsplit(self.hot_news_monitor_url)
+            if (self.environment not in {"local", "development", "test", "e2e"} or
+                    origin.scheme not in {"http", "https"} or not origin.hostname or
+                    origin.username or origin.password or origin.query or origin.fragment or
+                    origin.path not in {"", "/"}):
+                raise ValueError("HOT_NEWS_MONITOR_URL requires a local service origin without credentials")
+        if self.knowledge_semantics_config_path and not self.knowledge_lifecycle_config_path:
+            raise ValueError("news semantics requires KNOWLEDGE_LIFECYCLE_CONFIG_PATH")
         if self.conversation_context_recent_chars + 2 * self.conversation_context_summary_chars + 1000 >= int(
             self.conversation_context_max_chars * self.conversation_context_threshold_ratio
         ):

@@ -236,7 +236,7 @@ def _local_text(requirements: dict) -> str:
         text = re.sub(prefixes, "", text)
     text = re.sub(r"(?:有哪些|有哪几条|有什么|是什么|有哪些新闻)(?:吗|呢|呀)?[?？。!！\s]*$", "", text)
     text = re.sub(r"(?:吗|呢|吧|呀|啊|呗)[?？。!！\s]*$", "", text)
-    for before, after in (("热门", "热点"), ("热榜", "热点排行"), ("排行榜", "排行"), ("榜单", "排行"), ("点击数", "点击量"), ("看一下", "查看"), ("列出", "展示")):
+    for before, after in (("热门", "热点"), ("热榜", "热点排行"), ("排行榜", "排行"), ("榜单", "排行"), ("点击数", "点击量"), ("看一下", "查看"), ("找一下", "查询"), ("列出", "展示")):
         text = text.replace(before, after)
     for before, after in (("clicks", "点击量"), ("impressions", "曝光量"), ("interactions", "互动量"), ("hot_score", "热度分")):
         text = re.sub(r"(?<![A-Za-z_])" + before + r"(?![A-Za-z_])", after, text, flags=re.I)
@@ -391,43 +391,12 @@ def resolve_query_understanding(original_question: str, proposal: QueryUnderstan
     if intent.category is None and len(policy.scenario.allowed_categories) == 1:
         defaults["category"] = policy.scenario.allowed_categories[0]
     intent = intent.model_copy(update=defaults)
-    watermark = (policy.data_watermark or end).astimezone(zone)
-    if proposal.hour_start is not None:
-        target = (relative_date if relative_date is not None else expected_date if expected_time == "date"
-                  else (min(watermark, coverage_end) - timedelta(hours=1)).date()
-                  if expected_time == "latest" else start.date())
-        requested_start = datetime.combine(target, datetime.min.time(), tzinfo=zone) + timedelta(hours=proposal.hour_start)
-        requested_end = requested_start + timedelta(hours=1)
-    elif expected_time in {"sample", "latest"}:
-        requested_start, requested_end = start, end
-        if ranged and expected_time == "latest":
-            requested_end = min(watermark, coverage_end)
-            requested_start = requested_end - timedelta(hours=1)
-        elif expected_time == "latest" and watermark != end:
-            return resolved("unsupported", "latest_window_unavailable", "最新完整数据窗口不在当前批准窗口内，没有自动替换查询范围。")
-    else:
-        target = relative_date if relative_date is not None else expected_date
-        requested_start = datetime.combine(target, datetime.min.time(), tzinfo=zone)
-        requested_end = requested_start + timedelta(days=1)
-        if ranged:
-            requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
-            if requested_start < coverage_start or requested_start >= min(watermark, coverage_end):
-                return resolved("unsupported", "time_coverage_unavailable", "该日期不在当前完整样本覆盖内，没有替换为其他日期。")
-            example_start = max(requested_start, coverage_start)
-            return resolved("clarify", "ambiguous_requirements", "已识别新闻查询和展示意图；热点分析每次取一个整点小时，请补充开始和结束小时，"
-                            f"例如“{example_start:%Y-%m-%d %H:%M}至{example_start + timedelta(hours=1):%H:%M}点击量前5条新闻”。")
-        if expected_time == "today":
-            completed_hour = clock.replace(minute=0, second=0, microsecond=0)
-            requested_end = min(completed_hour, watermark) if watermark > requested_start else completed_hour
-        requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
-        if requested_start >= requested_end:
-            return resolved("clarify", "no_complete_hour", "当前日期尚无完整小时可供查询，请稍后查询或明确选择演示样本。")
+    from app.modules.conversation.query_window import resolve_requested_window
+    window = resolve_requested_window(proposal, policy, clock)
+    requested_start, requested_end = window.start, window.end
     requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
-    if watermark < requested_end or requested_start < coverage_start or requested_end > coverage_end:
-        sample = "合成样本" if policy.data_kind == "synthetic" else "批准数据"
-        return resolved("unsupported", "time_coverage_unavailable", f"请求的时间范围不在当前完整数据覆盖内；当前{sample}仅覆盖{coverage_start:%Y-%m-%d %H:%M}至{coverage_end:%Y-%m-%d %H:%M}（{policy.timezone}）。没有查询今日实时数据，也没有自动替换为样本。")
-    if not ranged and (requested_start, requested_end) != (start, end):
-        return resolved("unsupported", "window_not_approved", "当前热点接口只批准一个完整小时，不能直接执行全天或其他窗口查询；跨小时UV不能相加。")
+    if window.reason:
+        return resolved("unsupported", window.reason, window.message)
     labels = {"clicks": "点击量", "ctr": "点击率", "impressions": "曝光量", "interactions": "互动量", "hot_score": "SQL候选热度分"}
     notes = ["按行为指标发生时间取数，不代表该时段发布的全部新闻。",
              f"SQL按{labels[intent.sort_by]}选择至多{intent.row_limit}条候选；最终榜单由Python权威热度计算，候选指标顺序不保证保留。",

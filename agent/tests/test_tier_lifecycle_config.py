@@ -79,8 +79,10 @@ def test_invalid_policy_is_rejected(config, overrides, match):
         changed(config, **overrides)
 
 
-def test_all_settings_are_explicit(config):
+def test_all_lifecycle_settings_are_explicit(config):
     for key in KnowledgeLifecycleConfig.model_fields:
+        if key == "query_retrieval":  # Optional candidate policy has no implicit activation.
+            continue
         values = config.model_dump()
         del values[key]
         with pytest.raises(ValueError, match=key):

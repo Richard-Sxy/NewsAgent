@@ -1,0 +1,38 @@
+{
+  "release": {
+    "tenant_id": "public-news-local",
+    "schema_version": "unified-news-content-v1",
+    "selection_policy": "prefer-cached-body-source-priority-v1",
+    "release_id": "news-b08d194a6744415f3a0143d7",
+    "identity_sha256": "b08d194a6744415f3a0143d791ba26f32d16d82c401d03e6440ecb5e6fa54b83",
+    "counts": {
+      "news_count": 559,
+      "version_count": 559,
+      "provenance_count": 559,
+      "body_available_count": 559,
+      "fragments_only_count": 0,
+      "title_only_count": 0,
+      "conflicting_body_news_count": 0
+    }
+  },
+  "files": {
+    "versions.jsonl": {
+      "sha256": "4a5773640a1567c1dcdbd0c500360359c268b7ffa537618e100775b184caf0d8",
+      "bytes": 2960413,
+      "rows": 559
+    },
+    "provenance.jsonl": {
+      "sha256": "f9e4d5a60c671b0bb7fe1580085675d3204177daa41661eb6253e18f4e9d5748",
+      "bytes": 465298,
+      "rows": 559
+    },
+    "release_items.jsonl": {
+      "sha256": "3619cbe9e165b81e4128346780c2e8f2eaccf8629e12fba2e6ea0f3495e3e874",
+      "bytes": 112519,
+      "rows": 559
+    }
+  },
+  "source_inventory": {
+    "corpus_report_sha256": "a795b598d32305bd7585d5bd9c7b97cfa7221ac743d4320611fe85e33d5a19e2"
+  }
+}

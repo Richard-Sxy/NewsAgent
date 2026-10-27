@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "corpus_version": "annual-1f977788a4e26f1bb710fee5",
+  "as_of_date": "2026-10-27",
+  "tier_policy": {
+    "version": "annual-date-tiers-exact-body-v1",
+    "basis": "publication_calendar_day_age",
+    "hot_max_age_days": 7,
+    "warm_max_age_days": 90,
+    "no_behavior_heat": true
+  },
+  "source_count": 559,
+  "canonical_count": 545,
+  "exact_duplicate_sources_collapsed": 14,
+  "content_release": {
+    "tenant_id": "public-news-local",
+    "schema_version": "unified-news-content-v1",
+    "selection_policy": "prefer-cached-body-source-priority-v1",
+    "release_id": "news-b08d194a6744415f3a0143d7",
+    "identity_sha256": "b08d194a6744415f3a0143d791ba26f32d16d82c401d03e6440ecb5e6fa54b83",
+    "counts": {
+      "news_count": 559,
+      "version_count": 559,
+      "provenance_count": 559,
+      "body_available_count": 559,
+      "fragments_only_count": 0,
+      "title_only_count": 0,
+      "conflicting_body_news_count": 0
+    }
+  },
+  "files": {
+    "news.jsonl": {
+      "sha256": "6798f4387fb3ed996a495a4fc7bad739ba548d9a3296655a90a5ce7ee682ce61",
+      "rows": 545
+    },
+    "queries.jsonl": {
+      "sha256": "e27301d102bcd91af9b54be4b7d2d82f8848a08591afcf190e8b1cd47ba9997c",
+      "rows": 30
+    },
+    "relations.jsonl": {
+      "sha256": "8006b66939fc310f16ac7462af26ea173aeb02d68eec8928e01e2c2d09ded262",
+      "rows": 82
+    },
+    "event-chains.jsonl": {
+      "sha256": "64323b29a2882fa6c80481a58aed083f4afb75005de1d3ad98a5e7a38c7e4e5e",
+      "rows": 68
+    }
+  },
+  "category_counts": {
+    "股票": 9,
+    "科技": 36,
+    "体育": 281,
+    "游戏": 15,
+    "汽车": 35,
+    "AI": 69,
+    "数码": 19,
+    "国际": 25,
+    "财经": 34,
+    "军事": 22
+  },
+  "tier_counts": {
+    "cold": 425,
+    "warm": 115,
+    "hot": 5
+  },
+  "query_count": 30,
+  "relation_candidate_count": 82,
+  "publication_time_missing": 538,
+  "discovery_sources": [
+    {
+      "path": "var/news-events-annual-20261027/discovery/tech-events.json",
+      "sha256": "ef352b39fbe5dcc06b02fd59ee6fe9853b674d033afd72e77a2c63a929faa591"
+    },
+    {
+      "path": "var/news-events-annual-20261027/discovery/world-events.json",
+      "sha256": "38930c70deaabc50477bb196cd297592c2e9ab1371e119a82183924c6b365c9c"
+    },
+    {
+      "path": "var/news-events-annual-20261027/discovery/topic-links.json",
+      "sha256": "b261fcd9a805bc8adce3c428386c408bb24763ba0d296a59da26ea85772b7c1d"
+    }
+  ],
+  "relevance_status": "pending_human",
+  "relations_status": "chronological_candidates_only",
+  "warnings": [
+    "当前分层按公开新闻的发布日期计算，不含真实行为热度。",
+    "事件归组与时间线是待核查线索，不证明因果，也不参与召回加分。",
+    "人工标注前不报告语义准确率；未判定不能当作不相关。",
+    "这是559条公开来源的冻结实验语料，板块和月份分布不均衡。"
+  ]
+}

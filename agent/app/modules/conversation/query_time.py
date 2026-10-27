@@ -296,7 +296,7 @@ def extract_query_time(text: str, *, now: datetime, timezone: str) -> QueryTimeR
         except ValueError:
             reject("ambiguous_hour")
             continue
-        if not (0 <= start <= 23 and 1 <= end <= 24 and end - start == 1
+        if not (0 <= start <= 23 and 1 <= end <= 24 and end > start
                 and _whole_hour(match["start_colon"], match["start_fraction"])
                 and _whole_hour(match["end_colon"], match["end_fraction"])):
             reject("invalid_hour_window")

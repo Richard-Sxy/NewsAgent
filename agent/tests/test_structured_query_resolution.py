@@ -52,7 +52,7 @@ def test_original_phrase_reaches_structured_resolution_without_regex(policy, mon
     ({"hour_end": 10}, "window_not_approved"),
     ({"hour_end": 8}, "window_not_approved"),
     ({"hour_end": None}, "invalid_proposal"),
-    ({"hour_start": None, "hour_end": None}, "ambiguous_requirements"),
+    ({"hour_start": None, "hour_end": None}, "window_not_approved"),
     ({"time_basis": "publication"}, "unsupported_condition"),
     ({"ranking_source": "enterprise_board"}, "ranking_source_unavailable"),
     ({"sql": "SELECT secret"}, "invalid_proposal"),
@@ -131,7 +131,7 @@ async def test_configured_model_adapter_uses_fields_and_preserves_original_quest
 def test_v5_prompt_interprets_natural_input_before_python_field_checks(filename, prefix):
     from app.model_runtime.config_file import load_model_runtime_config
     config = load_model_runtime_config("deploy/" + filename)
-    assert config.agent_scene("query_understanding").prompt_version == prefix + "-query-understanding-v5"
+    assert config.agent_scene("query_understanding").prompt_version == prefix + "-query-understanding-v6"
     text = config.prompt_registry().resolve(scene="query_understanding",
         version=prefix + "-query-understanding-v5").system_prompt
     for rule in ("9.19日", "理解自然语言并归一为结构化字段", "未指定数量时采用policy.default_limit",

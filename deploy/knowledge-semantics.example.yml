@@ -1,0 +1,22 @@
+# Opt in on API, hotspot Worker and lifecycle Worker with KNOWLEDGE_SEMANTICS_CONFIG_PATH.
+# Replace these identities with an approved route and its exact response model version.
+policy_version: news-semantics-v1
+model_route: approved-news-model
+model_version: approved-news-model-version
+prompt_version: news-semantics-v1
+candidate_limit: 8
+max_body_chars: 18000
+timeout_seconds: 45
+task_timeout_seconds: 240
+lease_seconds: 300
+max_attempts: 3
+retry_seconds: 60
+refresh_seconds: 900
+poll_seconds: 5
+query_expansion_limit: 3
+query_timeout_seconds: 1
+source_priority: {}
+# Review decisions using GET /api/v1/knowledge/news/{news_id}/semantics.
+# Enabling automatic retirement requires an independently reviewed evaluation version.
+auto_retire: false
+evaluation_version: null

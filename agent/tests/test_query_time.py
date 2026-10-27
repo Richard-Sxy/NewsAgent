@@ -85,7 +85,6 @@ def test_ambiguous_or_unsupported_time_cannot_become_sample(phrase):
     ("2月29号8点到9点", "invalid_date"),
     ("2026年10月99日8点到9点", "invalid_date"),
     ("13月9号8点到9点", "invalid_date"),
-    ("9号8点到10点", "invalid_hour_window"),
     ("9号08:30到09:30", "invalid_hour_window"),
     ("9号8点半到9点半", "invalid_hour_window"),
     ("9号8点30分到9点30分", "invalid_hour_window"),
@@ -202,3 +201,9 @@ def test_extraction_is_immutable_and_requires_trusted_aware_clock():
         extract("昨天早八到九新闻", now=datetime(2026, 10, 10))
     with pytest.raises(ValueError, match="timezone"):
         extract_query_time("新闻", now=NOW, timezone="not-a-timezone")
+
+
+def test_multiple_hours_are_understood_without_shortening_the_range():
+    result = extract("查询9号8点到10点新闻前5条")
+    assert result.hours == ((8, 10),)
+    assert not result.requires_clarification

@@ -14,6 +14,7 @@ import logging
 from app.observability.decorators import traced
 from app.modules.knowledge.document import IngestOutcome, IngestReport, IngestStatus
 from app.modules.knowledge.board_policy import NewsBoardExcluded, excluded_board_outcome
+from app.modules.knowledge.duplicate_policy import duplicate_evidence
 from app.modules.knowledge.native_indexing import split_text, require_embedding_dimension
 from app.modules.knowledge.tier_lifecycle_config import KnowledgeLifecycleConfig
 from app.modules.knowledge.tier_lifecycle_store import projection_chunk_id
@@ -40,6 +41,7 @@ def record_from_dict(value: dict) -> ChunkVectorRecord:
 class KnowledgeLifecycleService:
     def __init__(self, *, ledger, index, embedding, config: KnowledgeLifecycleConfig):
         self.ledger, self.index, self.embedding, self.config = ledger, index, embedding, config
+        self.semantics = None
 
     async def accept(self, *, tenant_id: str, document, now: datetime | None = None) -> dict:
         document.validate()
@@ -94,11 +96,60 @@ class KnowledgeLifecycleService:
     async def retract(self, *, tenant_id, news_id, source_revision):
         return await self.ledger.retract(tenant_id=tenant_id, news_id=news_id, source_revision=source_revision)
 
+    @traced("knowledge.duplicate_retirement", identity={"news_id": "newsagent.news_id"})
+    async def retire_duplicate(self, *, tenant_id, news_id, source_revision, source_job_id,
+                               replacement_news_id, replacement_revision, replacement_job_id,
+                               semantic_decision_id=None, semantic_bundle_id=None):
+        request = dict(tenant_id=tenant_id, news_id=news_id, source_revision=source_revision,
+            source_job_id=source_job_id, replacement_news_id=replacement_news_id,
+            replacement_revision=replacement_revision, replacement_job_id=replacement_job_id)
+        if semantic_decision_id or semantic_bundle_id:
+            if (not self.semantics or not semantic_decision_id
+                    or semantic_bundle_id != self.semantics.config.bundle_id):
+                raise ValueError("semantic retirement requires the active versioned runtime")
+            request.update(semantic_decision_id=semantic_decision_id, semantic_bundle_id=semantic_bundle_id)
+        source = await self.ledger.get_news(tenant_id=tenant_id, news_id=news_id)
+        if source and source["status"] == "deduplicated":
+            return await self.ledger.retire_duplicate(**request)  # Idempotent receipt only.
+        replacement = await self.ledger.get_news(tenant_id=tenant_id, news_id=replacement_news_id)
+        if not source or not replacement:
+            raise ValueError("source and replacement must exist in this tenant")
+        if source["source_revision"] != source_revision:
+            raise ValueError("source revision is not current")
+        if not semantic_decision_id:
+            duplicate_evidence(source, replacement)
+        target = await self.ledger.get_job(tenant_id=tenant_id, job_id=replacement_job_id)
+        if (not target or target["news_id"] != replacement_news_id
+                or target["source_revision"] != replacement_revision or not target["records"]
+                or replacement["status"] != "active"
+                or replacement["active_job_id"] != replacement_job_id):
+            raise ValueError("replacement projection is not ready")
+        cfg = KnowledgeLifecycleConfig.model_validate(target["config"])
+        if (cfg.embedding_version != self.config.embedding_version
+                or cfg.expected_embedding_dimensions != self.config.expected_embedding_dimensions
+                or self.config.query_weights[VectorTier(target["target_tier"])] <= 0):
+            raise ValueError("replacement is outside the current query configuration")
+        records = [record_from_dict(value) for value in target["records"]]
+        for start in range(0, len(records), cfg.vector_batch_size):
+            if not await self.index.verify_records(tier=VectorTier(target["target_tier"]),
+                    records=records[start:start + cfg.vector_batch_size]):
+                raise ValueError("replacement projection verification failed; source retained")
+        return await self.ledger.retire_duplicate(**request)
+
+    async def restore_duplicate(self, *, tenant_id, news_id, retirement_job_id, now=None):
+        row = await self.ledger.get_news(tenant_id=tenant_id, news_id=news_id)
+        if not row or not row["publish_time"]:
+            raise ValueError("unknown source news")
+        cfg = KnowledgeLifecycleConfig.model_validate(row["config"])
+        tier = cfg.classify_tier(datetime.fromisoformat(row["publish_time"]), now or datetime.now(UTC))
+        return await self.ledger.restore_duplicate(tenant_id=tenant_id, news_id=news_id,
+            retirement_job_id=retirement_job_id, target_tier=tier.value)
+
     async def reheat(self, *, tenant_id, news_id, now=None):
         now = now or datetime.now(UTC)
         row = await self.ledger.get_news(tenant_id=tenant_id, news_id=news_id)
-        if row is None or row["status"] == "retracted":
-            raise ValueError("cannot reheat unknown or retracted news")
+        if row is None or row["status"] in ("retracted", "deduplicated"):
+            raise ValueError("cannot reheat unknown, retracted or deduplicated news; restore its index first")
         policy = KnowledgeLifecycleConfig.model_validate(row["config"])
         return await self.ledger.request_migration(tenant_id=tenant_id, news_id=news_id,
             target_tier="hot", expected_generation=row["generation"],
@@ -204,8 +255,14 @@ class KnowledgeLifecycleService:
         ids = [record["chunk_id"] for record in job["records"]]
         cfg = KnowledgeLifecycleConfig.model_validate(job["config"]) if job.get("config") else self.config
         for start in range(0, len(ids), cfg.vector_batch_size):
-            await self.index.delete(tier=VectorTier(job["target_tier"]),
-                                    chunk_ids=ids[start:start+cfg.vector_batch_size])
+            batch = ids[start:start+cfg.vector_batch_size]
+            tier = VectorTier(job["target_tier"])
+            await self.index.delete(tier=tier, chunk_ids=batch)
+            # An ACK/delete_count is not evidence that all IDs are gone. The
+            # Milvus lifecycle adapter uses Strong reads; local SQL commits
+            # each operation. Partial/no-op deletes remain dirty and retryable.
+            if await self.index.contains(tier=tier, chunk_ids=batch):
+                raise RuntimeError("vector deletion verification failed")
 
     async def reconcile(self, *, tenant_id, news_id):
         # Repeated sweeps also remove late writes from abandoned SDK calls.
@@ -216,7 +273,7 @@ class KnowledgeLifecycleService:
                 await self.ledger.record_maintenance_error(tenant_id=tenant_id, job_id=old["job_id"],
                     error="Cleanup" + type(exc).__name__, cleanup_dirty=True)
                 raise
-            await self.ledger.complete(tenant_id=tenant_id, job_id=old["job_id"])
+            await self.ledger.cleanup_complete(tenant_id=tenant_id, job_id=old["job_id"])
 
     @traced("knowledge.index", identity={"job_id": "newsagent.job_id"})
     async def process_job(self, *, tenant_id, job_id):
@@ -230,7 +287,7 @@ class KnowledgeLifecycleService:
             cfg = KnowledgeLifecycleConfig.model_validate(job["config"]) if job.get("config") else self.config
             row = await self.ledger.get_news(tenant_id=tenant_id, news_id=job["news_id"])
             current = row["generation"] == job["generation"] and row["status"] != "retracted"
-            if job["kind"] == "retract" or not current:
+            if job["kind"] in ("retract", "deduplicate") or not current:
                 # Never touch the active projection, even after a later restore.
                 await self.reconcile(tenant_id=tenant_id, news_id=job["news_id"])
             elif row["active_job_id"] == job_id:

@@ -78,6 +78,8 @@ async def run_hot_news_worker(
                 config=config, embedding=native_ports.embedding, database=knowledge_database,
                 config_path=resolved_settings.knowledge_search_config_path,
                 lifecycle_config_path=resolved_settings.knowledge_lifecycle_config_path,
+                semantic_config_path=getattr(resolved_settings, "knowledge_semantics_config_path", None),
+                inference=inference_port,
                 environment=resolved_settings.environment,
             )
             knowledge_search = build_native_knowledge_search(

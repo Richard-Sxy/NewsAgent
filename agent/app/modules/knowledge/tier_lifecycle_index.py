@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import inspect
+import math
 from time import perf_counter
 from typing import Protocol, Sequence
 
@@ -58,6 +59,10 @@ class GuardedTieredIndex:
     @property
     def tiers(self) -> tuple[VectorTier, ...]:
         return tuple(getattr(self._index, "tiers", tuple(VectorTier)))
+
+    @property
+    def similarity_metric(self):
+        return getattr(self._index, "similarity_metric", None)
 
     async def search(
         self,
@@ -150,6 +155,90 @@ class GuardedTieredIndex:
                 return filtered[:limit]
             requested = min(requested * self._refill_factor, self._max_candidates)
         raise AssertionError("unreachable bounded refill state")
+
+    async def search_news_with_trace(self, *, tier, tenant_id, vector, embedding_version,
+                                     exclude_news_ids, limit, trace=None):
+        """Refill for distinct news while retaining the chunk candidate budget.
+
+        Every refill revalidates its complete bounded prefix against the ledger.
+        A short result is explicit when exhaustion or a hard budget stops refill;
+        the legacy search methods continue to return chunk candidates.
+        """
+        if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= self._max_candidates:
+            raise ValueError("search limit must be between 1 and max_candidates")
+        trace = {} if trace is None else trace
+        trace.update(vector_search_ms=0.0, state_gate_ms=0.0, filter_ms=0.0,
+                     rounds=[], refill_rounds=0, hits=0, unique_news=0,
+                     duplicate_chunks=0, status="running", components_available=True)
+        started = perf_counter()
+        requested = limit
+        try:
+            for round_number in range(self._max_refill_rounds + 1):
+                current = {"requested": requested, "retrieved": None, "accepted": None}
+                trace["rounds"].append(current)
+                trace["refill_rounds"] = round_number
+                begin = perf_counter()
+                try:
+                    raw = await self._index.search(
+                        tier=tier, tenant_id=tenant_id, vector=vector,
+                        embedding_version=embedding_version,
+                        exclude_news_ids=exclude_news_ids, limit=requested)
+                    # An adapter cannot expand the configured candidate budget.
+                    candidates = raw[:requested]
+                    current["retrieved"] = len(candidates)
+                finally:
+                    current["vector_search_ms"] = (perf_counter() - begin) * 1000
+                    trace["vector_search_ms"] += current["vector_search_ms"]
+                begin = perf_counter()
+                try:
+                    approved = await self._ledger.filter_hits(tenant_id=tenant_id, hits=candidates)
+                finally:
+                    current["state_gate_ms"] = (perf_counter() - begin) * 1000
+                    trace["state_gate_ms"] += current["state_gate_ms"]
+                begin = perf_counter()
+                approved_keys = {
+                    (hit.chunk_id, hit.news_id, hit.tier, hit.content_version, hit.embedding_version)
+                    for hit in approved
+                }
+                filtered = [hit for hit in candidates
+                    if hit.news_id not in exclude_news_ids and hit.tier == tier
+                    and hit.embedding_version == embedding_version
+                    and (hit.chunk_id, hit.news_id, hit.tier, hit.content_version, hit.embedding_version)
+                    in approved_keys]
+                if any(not math.isfinite(hit.raw_score) for hit in filtered):
+                    raise ValueError("vector candidate score must be finite")
+                distinct = {}
+                for hit in filtered:
+                    previous = distinct.get(hit.news_id)
+                    if previous is None or (-hit.raw_score, hit.chunk_id) < (-previous.raw_score, previous.chunk_id):
+                        distinct[hit.news_id] = hit
+                current.update(accepted=len(filtered), unique_news=len(distinct),
+                               duplicate_chunks=len(filtered) - len(distinct))
+                current["filter_ms"] = (perf_counter() - begin) * 1000
+                trace["filter_ms"] += current["filter_ms"]
+                if len(distinct) >= limit:
+                    reason = "enough_news"
+                elif len(candidates) < requested:
+                    reason = "exhausted"
+                elif requested >= self._max_candidates:
+                    reason = "max_candidates"
+                elif round_number == self._max_refill_rounds:
+                    reason = "max_rounds"
+                else:
+                    requested = min(requested * self._refill_factor, self._max_candidates)
+                    continue
+                hits = sorted(distinct.values(),
+                    key=lambda hit: (-hit.raw_score, hit.news_id, hit.chunk_id))[:limit]
+                trace.update(hits=len(hits), unique_news=len(distinct),
+                             duplicate_chunks=current["duplicate_chunks"],
+                             termination_reason=reason, status="complete")
+                return hits, trace
+            raise AssertionError("unreachable bounded news refill state")
+        except BaseException as exc:
+            trace.update(status="interrupted", error_type=type(exc).__name__)
+            raise
+        finally:
+            trace["search_and_gate_ms"] = (perf_counter() - started) * 1000
 
     async def upsert(
         self, *, tier: VectorTier, records: Sequence[ChunkVectorRecord]

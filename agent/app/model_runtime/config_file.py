@@ -14,6 +14,7 @@ from app.model_runtime.core import PromptRegistry, PromptSpec
 
 
 class PromptConfig(BaseModel):
+    """ 场景名称/版本号/系统提示词 """
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     scene: str = Field(min_length=1, max_length=128)
@@ -56,7 +57,7 @@ class EndpointConfig(BaseModel):
             raise ValueError("local model provider cannot declare remote connection")
         return self
 
-"""模型执行的配置"""
+""" 模型执行的配置 """
 class ModelRuntimeConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
@@ -82,6 +83,7 @@ class ModelRuntimeConfig(BaseModel):
         return self
 
     def agent_scene(self, scene: str) -> AgentSceneConfig:
+        """ 这边是获取系统提示词的场景名称 """
         for item in self.agent_scenes:
             if item.scene == scene:
                 return item

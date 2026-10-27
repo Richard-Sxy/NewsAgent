@@ -17,6 +17,7 @@ from app.retrieval.tiered_vector import VectorTier, VectorSearchHit
 
 class LocalLifecycleVectorIndex:
     tiers = tuple(VectorTier)
+    similarity_metric = "IP"
 
     def __init__(self, *, database, max_search_rows, environment):
         if environment != "e2e":

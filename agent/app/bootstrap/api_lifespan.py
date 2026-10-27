@@ -144,6 +144,8 @@ async def _business_lifespan(app: FastAPI):
                     lifecycle_config_path=settings.knowledge_lifecycle_config_path,
                     search_config_path=settings.knowledge_search_config_path,
                     model_config=model_config, embedding=model_ports.embedding,
+                    semantic_config_path=settings.knowledge_semantics_config_path,
+                    inference=model_ports.inference,
                     database=database, environment=settings.environment)
                 knowledge_search_index = lifecycle.index
                 await lifecycle.validate()

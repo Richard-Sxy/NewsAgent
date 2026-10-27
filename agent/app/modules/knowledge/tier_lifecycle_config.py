@@ -2,8 +2,9 @@
 
 This configuration owns lifecycle policy, not endpoint credentials or model
 selection. Enterprise vector connections remain in knowledge-search YAML and
-model endpoints remain in model-runtime YAML. All values are required so that
-the local simulator's example numbers cannot become hidden production defaults.
+model endpoints remain in model-runtime YAML. Lifecycle values are required so
+the local simulator's numbers cannot become hidden production defaults. The
+optional query_retrieval policy is inactive when omitted for compatibility.
 """
 
 from datetime import datetime, timezone
@@ -14,6 +15,7 @@ import yaml
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.retrieval.tiered_vector import VectorTier
+from app.retrieval.query_policy import QueryRetrievalPolicy
 
 
 Version = Annotated[str, Field(min_length=1, max_length=256)]
@@ -61,6 +63,8 @@ class KnowledgeLifecycleConfig(BaseModel):
     query_weights: dict[VectorTier, Weight]
     query_max_concurrency: int = Field(strict=True, ge=1, le=256)
     max_search_rows: int = Field(strict=True, ge=1, le=1_000_000)
+    # Omitted policies preserve the existing weighted RRF behavior.
+    query_retrieval: QueryRetrievalPolicy | None = None
 
     @field_validator("schema_version", mode="before")
     @classmethod

@@ -194,7 +194,7 @@ async def analyze_snapshot(payload_text, snapshot_id, tenant_id, *, catalog=None
             'reader_profile_context_sha256':request.reader_profile_context_sha256} if public else {}),
         'ranking': [{'rank':r.rank, 'news_id':r.current.news_id, 'hot_score':str(r.hot_score.score),
             'metrics':{k:getattr(r.current,k) for k in FIELDS}} for r in result.ranked_news],
-        'analyses': [{'news_id':a.news_id,'model_request_id':a.analysis.request_id,
+        'analyses': [{'news_id':a.news_id,'title':a.analysis_input.title,'model_request_id':a.analysis.request_id,
             **({'retrieval_evidence':[e.model_dump(mode='json',exclude={'excerpt'}) for e in a.analysis_input.related_news],
                 'reader_profile_trace':a.reader_profile_trace} if related_search is not None else {}),
             'report':a.analysis.value.model_dump(mode='json')} for a in result.analyzed_news],

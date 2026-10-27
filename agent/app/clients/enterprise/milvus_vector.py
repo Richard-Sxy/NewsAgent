@@ -120,6 +120,11 @@ class MilvusTieredVectorIndex:
         )
 
     @property
+    def similarity_metric(self) -> str:
+        """All configured collections use this higher-is-better metric."""
+        return self._metric_type
+
+    @property
     def tiers(self) -> tuple[VectorTier, ...]:
         return tuple(self._collections)
 

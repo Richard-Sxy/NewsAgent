@@ -60,8 +60,10 @@ def test_user_example_understood_then_resolved_as_time_requirement(policy):
     assert proposal.status == "ready" and proposal.time_expression == "today"
     assert proposal.response_style == "summary"
     result = resolve_query_understanding(question, proposal, policy, now=NOW)
-    assert result.status == "clarify" and result.reason_code == "ambiguous_requirements"
-    assert "整点小时" in result.message and "2026-10-09" in result.message
+    assert result.status == "unsupported" and result.reason_code == "window_not_approved"
+    assert "跨小时去重用户数" in result.message and "2026-10-09" in result.message
+    assert result.requested_window_start.hour == 0
+    assert "请补充" not in result.message
     assert result.intent is None and not result.canonical_question
     unavailable = resolve_query_understanding(question, proposal, policy, now=NOW + timedelta(days=1))
     assert unavailable.reason_code == "time_coverage_unavailable"

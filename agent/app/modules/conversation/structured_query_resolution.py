@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 from pydantic import ValidationError
@@ -31,7 +31,6 @@ def resolve_structured_query(
     ranged = policy.coverage_window_start is not None
     coverage_start = (policy.coverage_window_start or start).astimezone(zone)
     coverage_end = (policy.coverage_window_end or end).astimezone(zone)
-    watermark = (policy.data_watermark or coverage_end).astimezone(zone)
     fields = {}
     requested = {}
 
@@ -64,7 +63,7 @@ def resolve_structured_query(
         "ranking_source": source,
     }
     if proposal.status == "clarify":
-        return resolved("clarify", "model_unresolved", "查询条件尚不明确，请补充日期、小时或筛选要求，没有执行查询。")
+        return resolved("clarify", "model_unresolved", "查询条件尚不明确，请补充有歧义的时间或筛选要求，没有执行查询。")
     if proposal.status == "unsupported" or proposal.unsupported_conditions:
         return resolved("unsupported", "unsupported_condition", "问题包含当前未支持的查询条件，没有执行查询。")
     if proposal.time_basis != "behavior":
@@ -87,47 +86,13 @@ def resolve_structured_query(
         defaults["category"] = policy.scenario.allowed_categories[0]
     intent = intent.model_copy(update=defaults)
 
+    from app.modules.conversation.query_window import resolve_requested_window
     expression = proposal.time_expression
-    relative_days = {"today": 0, "yesterday": 1, "day_before_yesterday": 2}
-    if expression == "date":
-        target = proposal.explicit_date
-    elif expression in relative_days:
-        target = clock.date() - timedelta(days=relative_days[expression])
-    elif expression == "latest":
-        target = (min(watermark, coverage_end) - timedelta(hours=1)).date()
-    else:
-        target = start.date()
-
-    if proposal.hour_start is None:
-        if expression == "sample":
-            requested_start, requested_end = start, end
-        elif expression == "latest":
-            requested_end = min(watermark, coverage_end)
-            requested_start = requested_end - timedelta(hours=1)
-        else:
-            day_start = datetime.combine(target, datetime.min.time(), tzinfo=zone)
-            if day_start >= min(watermark, coverage_end) or target < coverage_start.date():
-                return resolved("unsupported", "time_coverage_unavailable", "该日期不在当前完整数据覆盖内，没有替换成其他日期。")
-            return resolved("clarify", "ambiguous_requirements", "已识别日期；当前热点分析每次查询一个整点小时，请补充开始和结束小时。")
-    else:
-        # Check both model fields. Never replace a requested two-hour range
-        # with start + one hour and then claim it is the user's request.
-        if proposal.hour_end - proposal.hour_start != 1:
-            return resolved("unsupported", "window_not_approved", "当前只支持一个整点小时，没有缩短或替换请求范围。")
-        try:
-            midnight = datetime.combine(target, datetime.min.time(), tzinfo=zone)
-            requested_start = midnight + timedelta(hours=proposal.hour_start)
-            requested_end = midnight + timedelta(hours=proposal.hour_end)
-        except OverflowError:
-            return resolved("unsupported", "invalid_proposal", "日期或小时超出可表示范围，没有执行查询。")
-
+    window = resolve_requested_window(proposal, policy, clock)
+    requested_start, requested_end = window.start, window.end
     requested = {"requested_window_start": requested_start, "requested_window_end": requested_end}
-    if requested_start < coverage_start or requested_end > min(watermark, coverage_end):
-        return resolved("unsupported", "time_coverage_unavailable",
-                        f"请求时间不在完整数据覆盖内；当前覆盖{coverage_start:%Y-%m-%d %H:%M}至{coverage_end:%Y-%m-%d %H:%M}（结束不含），没有替换查询时间。")
-    if not ranged and (requested_start, requested_end) != (start, end):
-        return resolved("unsupported", "window_not_approved", "该窗口不在当前批准范围内，没有执行查询。")
-
+    if window.reason:
+        return resolved("unsupported", window.reason, window.message)
     labels = {"clicks": "点击量", "ctr": "点击率", "impressions": "曝光量", "interactions": "互动量", "hot_score": "SQL候选热度分"}
     notes = [
         "按行为指标发生时间取数，不代表该时段发布的全部新闻。",

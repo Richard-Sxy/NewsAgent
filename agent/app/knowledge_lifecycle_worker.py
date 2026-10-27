@@ -129,6 +129,7 @@ async def run():
         ports = build_model_runtime_ports(model, environment=settings.environment)
         runtime = build_lifecycle_runtime(lifecycle_config_path=settings.knowledge_lifecycle_config_path,
             search_config_path=settings.knowledge_search_config_path, model_config=model,
+            semantic_config_path=settings.knowledge_semantics_config_path, inference=ports.inference,
             embedding=ports.embedding, database=database, environment=settings.environment)
         # Validate schema/index/load contracts before accepting queue work.
         await runtime.validate()
@@ -140,12 +141,20 @@ async def run():
             activities=[activities.process, activities.scan],
             max_concurrent_activities=1)
         dispatcher = asyncio.create_task(dispatch_loop(client=client, service=runtime.service))
+        semantic_task = None
+        if runtime.service.semantics is not None:
+            from app.modules.knowledge.news_semantics import semantic_loop
+            semantic_task = asyncio.create_task(semantic_loop(runtime.service.semantics))
         try:
             await worker.run()
         finally:
             dispatcher.cancel()
             with suppress(asyncio.CancelledError):
                 await dispatcher
+            if semantic_task is not None:
+                semantic_task.cancel()
+                with suppress(asyncio.CancelledError):
+                    await semantic_task
     finally:
         if runtime:
             await runtime.index.close()

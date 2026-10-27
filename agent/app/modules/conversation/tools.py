@@ -573,8 +573,9 @@ def render_tool_results(traces) -> str:
                 coverage_end = resolution.coverage_window_end or resolution.supported_window_end
                 parts.append("当前可用查询窗口："
                              f"{coverage_start.isoformat(timespec='minutes')} 至 "
-                             f"{coverage_end.isoformat(timespec='minutes')}（结束不含），每次查询一个整点小时。"
-                             "可以发送“查看当前样本的热点新闻”，或明确日期和小时。")
+                             f"{coverage_end.isoformat(timespec='minutes')}（结束不含）。")
+                if resolution.reason_code == "time_coverage_unavailable":
+                    parts.append("如需查看历史演示数据，可以明确发送“查看当前样本的热点新闻”。")
                 parts.append("本轮没有执行 SQL 或启动热点运行，也没有用已保存的旧榜单代替请求结果。")
                 continue
         if trace.status != "completed":

@@ -455,7 +455,7 @@ async def test_shared_command_forwards_expected_intent_and_preserves_error_befor
 def test_versioned_new_scenes_leave_previous_conversation_prompt_available(path, prefix):
     config = load_model_runtime_config(path)
     assert config.agent_scene("conversation").prompt_version == f"{prefix}-conversation-v5"
-    assert config.agent_scene("query_understanding").prompt_version == f"{prefix}-query-understanding-v5"
+    assert config.agent_scene("query_understanding").prompt_version == f"{prefix}-query-understanding-v6"
     assert config.prompt_registry().resolve(scene="conversation", version=f"{prefix}-conversation-v4")
 
 

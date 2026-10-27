@@ -23,14 +23,26 @@ class LifecycleRuntime:
         """Startup preflight does not imply Worker consumption or model quality."""
         await self.service.ledger.list_pending(limit=1)
         await self.service.ledger.list_news(limit=1, include_retracted=True)
+        if self.service.semantics:
+            await self.service.semantics.store.validate()
         return await self.index.validate_collections(
             expected_dimensions=self.service.config.expected_embedding_dimensions,
             query_max_candidates=self.service.config.query_max_candidates)
 
 
 def build_lifecycle_runtime(*, lifecycle_config_path, search_config_path, model_config,
-                            embedding, database, environment):
+                            embedding, database, environment, semantic_config_path=None, inference=None):
     cfg = load_knowledge_lifecycle_config(lifecycle_config_path)
+    semantic_cfg = None
+    if semantic_config_path:
+        from app.modules.knowledge.news_semantics_contracts import load_semantic_config
+        semantic_cfg = load_semantic_config(semantic_config_path)
+        if inference is None or semantic_cfg.model_route not in model_config.inference.model_routes:
+            raise ValueError("semantic model route requires an approved inference Port")
+        if model_config.inference.provider == "local":
+            raise ValueError("deterministic local inference does not implement news semantics")
+        if semantic_cfg.candidate_limit > cfg.query_max_candidates:
+            raise ValueError("semantic candidate budget exceeds query limit")
     endpoint = model_config.embedding
     if cfg.embedding_version != endpoint.model_routes[0]:
         raise ValueError("lifecycle embedding_version must match model runtime route")
@@ -70,6 +82,13 @@ def build_lifecycle_runtime(*, lifecycle_config_path, search_config_path, model_
     service = KnowledgeLifecycleService(ledger=ledger, index=index, embedding=embedding, config=cfg)
     query = LifecycleKnowledgeSearch(index=index, ledger=ledger, config=cfg,
         embedder=ModelQueryEmbedder(embedding, version=cfg.embedding_version))
+    if semantic_cfg is not None:
+        from app.modules.knowledge.news_semantics_model import NewsSemanticModel
+        from app.modules.knowledge.news_semantics_store import NewsSemanticStore
+        from app.modules.knowledge.news_semantics import NewsSemanticService
+        semantics = NewsSemanticService(store=NewsSemanticStore(database, ledger, semantic_cfg),
+            model=NewsSemanticModel(inference, semantic_cfg), lifecycle=service, query=query, config=semantic_cfg)
+        service.semantics = query.semantics = semantics
     index.lifecycle_service = service
     index.lifecycle_query = query
     runtime = LifecycleRuntime(service=service, index=index, query=query)

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新闻召回 · 人工相关性标注</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">N</div>
+    <div><p class="eyebrow">NEWSAGENT / RETRIEVAL LAB</p><h1>新闻召回 · 人工相关性标注</h1></div>
+    <a id="export-link" class="button quiet" href="/api/export" download="news-relevance-judgments.json">导出标注</a>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="查询导航">
+      <div class="sidebar-title"><h2>待评查询</h2><button id="refresh-queries" class="icon-button" title="刷新查询列表" type="button">刷新</button></div>
+      <p id="query-count" class="muted">正在加载…</p>
+      <label class="field-label" for="query-filter">查找查询</label>
+      <input id="query-filter" type="search" placeholder="输入关键词或板块" autocomplete="off">
+      <nav id="query-list" aria-label="查询列表"></nav>
+      <details class="new-query" open><summary>添加自己的查询</summary>
+        <form id="search-form">
+          <label class="field-label" for="custom-query">查询问题</label>
+          <textarea id="custom-query" rows="3" maxlength="500" placeholder="例如：某事件有什么最新进展？" required></textarea>
+          <label class="field-label" for="custom-category">板块提示</label>
+          <select id="custom-category"><option value="">不指定板块</option><option>科技</option><option>AI</option><option>财经</option><option>股票</option><option>汽车</option><option>数码</option><option>国际</option><option>军事</option><option>体育</option><option>游戏</option></select>
+          <button id="search-button" class="button primary full-width" type="submit">召回并开始标注</button>
+          <p id="search-status" class="muted" role="status"></p>
+        </form>
+      </details>
+    </aside>
+    <main>
+      <section class="intro-card">
+        <div><span class="pill">人工判断 · 持久保存</span><h2>判断这篇新闻能否帮助回答查询</h2><p>先读问题，再看新闻。选择相关性并保存；正文来源和召回过程可随时查看。</p></div>
+        <details class="environment"><summary>语料与实验说明</summary><p id="environment-note" class="muted">正在读取实验信息…</p><ul id="environment-warnings"></ul><pre id="environment-json"></pre></details>
+      </section>
+      <div id="global-error" class="notice error" role="alert" hidden></div>
+      <section id="loading-state" class="empty-state"><span class="loading-dot" aria-hidden="true"></span><p>正在加载查询和召回结果…</p></section>
+      <section id="empty-state" class="empty-state" hidden><h2>还没有可标注的查询</h2><p>在左侧输入一个问题，即可生成候选结果。</p></section>
+      <div id="run-content" hidden>
+        <section class="query-card">
+          <div class="section-kicker">当前查询 <span id="query-category" class="pill subtle"></span></div>
+          <h2 id="query-text"></h2>
+          <div class="query-footer"><p id="run-progress" class="muted"></p><div class="inline-actions"><button id="previous-query" type="button" class="button quiet">上一查询</button><button id="next-query" type="button" class="button quiet">下一查询</button></div></div>
+          <div class="progress-track"><div id="progress-bar"></div></div>
+        </section>
+        <details class="trace-card"><summary>查看召回链路与人工评测指标 <span class="summary-hint">分数默认隐藏</span></summary>
+          <p id="routing-summary" class="fine-print"></p><div id="tier-summary" class="tier-grid"></div><div id="trace-stages" class="trace-stages"></div>
+          <div id="metrics" class="metric-grid"></div>
+          <p class="fine-print">相似度只反映模型匹配程度。质量指标来自已保存的人工判断；未满足评测条件时显示“待标注”。候选池内指标不代表全库 Recall。</p>
+          <details><summary>完整召回记录</summary><pre id="trace-json"></pre></details>
+          <details><summary>版本信息</summary><pre id="versions-json"></pre></details>
+        </details>
+        <div class="review-grid">
+          <section class="document-card" aria-label="新闻正文">
+            <div class="document-nav"><span id="candidate-position"></span><div class="inline-actions"><button id="previous-candidate" type="button" class="button quiet">上一篇</button><button id="next-candidate" type="button" class="button quiet">下一篇</button></div></div>
+            <div id="candidate-tabs" class="candidate-tabs" aria-label="切换候选新闻"></div>
+            <div id="no-candidates" class="empty-state" hidden><h3>这个查询没有召回候选</h3><p>可以尝试更具体的表述或切换查询。</p></div>
+            <article id="article-content">
+              <div class="article-meta"><span id="article-category" class="pill subtle"></span><span id="article-date"></span><span id="article-tier"></span></div>
+              <h2 id="article-title"></h2>
+              <a id="article-source" target="_blank" rel="noopener noreferrer">查看原始来源 ↗</a>
+              <details class="score-detail"><summary>查看模型分数与匹配片段</summary><p id="article-score"></p><blockquote id="article-excerpt"></blockquote></details>
+              <div id="article-body" class="article-body"></div>
+              <details id="duplicate-detail"><summary id="duplicate-summary">其他来源</summary><ul id="duplicate-list"></ul></details>
+              <details id="relation-detail"><summary>关系与证据</summary><p class="fine-print">以下关系保留其推断状态，不能代替你对当前问题的相关性判断。</p><div id="relation-list"></div></details>
+            </article>
+          </section>
+          <aside class="judgment-card" aria-label="人工标注">
+            <h2>你的判断</h2><p class="muted">针对上方查询，判断当前新闻的帮助程度。</p>
+            <fieldset id="label-options"><legend class="visually-hidden">相关性</legend>
+              <label class="label-choice"><input type="radio" name="relevance" value="relevant"><span><strong>相关</strong><small>能直接帮助回答问题</small></span><kbd>1</kbd></label>
+              <label class="label-choice"><input type="radio" name="relevance" value="partial"><span><strong>部分相关</strong><small>提供背景或间接信息</small></span><kbd>2</kbd></label>
+              <label class="label-choice"><input type="radio" name="relevance" value="irrelevant"><span><strong>不相关</strong><small>词语相似，但没有回答价值</small></span><kbd>3</kbd></label>
+              <label class="label-choice"><input type="radio" name="relevance" value="unsure"><span><strong>无法判断</strong><small>正文或证据不足，暂时跳过</small></span><kbd>4</kbd></label>
+            </fieldset>
+            <label class="field-label" for="judgment-notes">备注 <span class="muted">（可选）</span></label><textarea id="judgment-notes" rows="4" maxlength="4000" placeholder="例如：只交代背景，缺少查询中的后续进展。"></textarea>
+            <label class="field-label" for="reviewer">标注人</label><input id="reviewer" maxlength="100" value="人工审核员" autocomplete="off">
+            <div id="saved-info" class="saved-info"></div>
+            <button id="save-next" type="button" class="button primary full-width">保存并下一篇</button>
+            <button id="save" type="button" class="button secondary full-width">保存当前判断</button>
+            <p id="save-status" class="save-status" role="status" aria-live="polite"></p>
+            <button id="reload-run" type="button" class="button quiet full-width" hidden>重新加载当前查询</button>
+            <p class="fine-print">点击保存后写入本地服务，刷新页面可恢复。按 1–4 选标签，Ctrl / ⌘ + Enter 保存并继续。“无法判断”单独统计，不计作不相关。</p>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

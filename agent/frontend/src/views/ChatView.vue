@@ -42,6 +42,7 @@ import AnalysisDemoPanel from '@/components/conversation/AnalysisDemoPanel.vue'
 import AnalysisResultCard from '@/components/conversation/AnalysisResultCard.vue'
 import RelatedArticlesPanel from '@/components/conversation/RelatedArticlesPanel.vue'
 import CapabilityReceiptsPanel from '@/components/conversation/CapabilityReceiptsPanel.vue'
+import HotNewsMonitorPanel from '@/components/conversation/HotNewsMonitorPanel.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -693,6 +694,7 @@ onBeforeUnmount(() => {
             </button>
           </div>
         </div>
+        <HotNewsMonitorPanel />
         <article v-for="turn in visibleTurns" :key="turn.id" class="na-chat__turn">
           <div class="na-chat__message na-chat__message--user">
             <div class="na-chat__message-head">
@@ -839,8 +841,8 @@ onBeforeUnmount(() => {
           <p v-if="runtimeInfo?.available_tools?.includes('propose_long_term_memory')" class="na-muted">长期记忆候选等待人工晋升后才生效。</p>
           <p v-if="runtimeInfo?.query_enabled && runtimeInfo.query_scope" class="na-muted">
             可查询 {{ formatDateTime(runtimeInfo.query_scope.coverage_window_start ?? runtimeInfo.query_scope.window_start) }} 至
-            {{ formatDateTime(runtimeInfo.query_scope.coverage_window_end ?? runtimeInfo.query_scope.window_end) }}（结束不含），每次一个整点小时。
-            未指定日期时使用样本窗口；“今日热点”在样本不覆盖今天时会明确提示。
+            {{ formatDateTime(runtimeInfo.query_scope.coverage_window_end ?? runtimeInfo.query_scope.window_end) }}（结束不含）。
+            “今日热点”表示今天零点至完整数据水位。系统会分别说明数据覆盖和区间聚合能力；未指定时间时使用样本窗口。
           </p>
           <p v-if="runtimeInfo?.model_provider === 'local'" class="na-muted">本地模型用于测试交互链路，不代表企业模型质量。</p>
           <p v-if="runtimeInfo?.query_scope?.dataset_profile === 'corpus-v6'" class="na-muted">新闻标题与正文来自原文缓存；指标窗口为模拟日期，栏目为演示分类。</p>

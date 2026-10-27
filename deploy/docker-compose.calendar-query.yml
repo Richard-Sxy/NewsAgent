@@ -1,0 +1,6 @@
+# Apply last to the isolated real-news-v8 API overlays.
+# Query understanding v6 changes only calendar resolution and user guidance.
+# This does not enable cross-hour UV aggregation or alter worker heat rules.
+services:
+  api:
+    image: news-agent/writing-agent-service:calendar-query-v6

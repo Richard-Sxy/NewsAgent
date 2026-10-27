@@ -1,0 +1,1546 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-27T03:18:43.148550+00:00",
+  "scope": {
+    "start_date": "2025-10-27",
+    "end_date": "2026-10-27"
+  },
+  "collector_original_url_count": 775,
+  "attempted_url_count": 775,
+  "body_ready": 559,
+  "non_success_count": 216,
+  "non_success_by_status": {
+    "date_missing": 19,
+    "metadata_only": 186,
+    "failed": 11
+  },
+  "discovery_article_entries": 783,
+  "discovery_unique_url_count": 783,
+  "discovery_real_event_count": 82,
+  "discovery_topic_collection_count": 9,
+  "category_coverage": {
+    "科技": 43,
+    "AI": 75,
+    "财经": 35,
+    "股票": 9,
+    "汽车": 35,
+    "数码": 19,
+    "国际": 25,
+    "军事": 22,
+    "体育": 281,
+    "游戏": 15
+  },
+  "month_coverage": {
+    "2025-10": 3,
+    "2025-11": 96,
+    "2025-12": 24,
+    "2026-01": 21,
+    "2026-02": 77,
+    "2026-03": 43,
+    "2026-04": 49,
+    "2026-05": 7,
+    "2026-06": 7,
+    "2026-07": 115,
+    "2026-08": 4,
+    "2026-09": 49,
+    "2026-10": 64
+  },
+  "event_coverage": [
+    {
+      "event_id": "ai-baidu-world-20251113",
+      "title": "百度世界2025与文心5.0发布",
+      "category": "AI",
+      "event_date_hint": "2025-11-13",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-claude45-20251124",
+      "title": "Claude Opus 4.5发布",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "ai-deepseek32-202512",
+      "title": "DeepSeek V3.2及数学推理模型发布",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-doubao-phone-202512",
+      "title": "豆包手机助手预览与生态争议",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-gemini3-20251118",
+      "title": "谷歌Gemini 3发布与模型竞争",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-humanoid-spring-202602",
+      "title": "2026春晚机器人展示及具身智能进展",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-qwen35-202602",
+      "title": "阿里千问3.5开源发布",
+      "category": "AI",
+      "event_date_hint": "2026-02-16",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "ai-seedance2-202602",
+      "title": "Seedance 2.0发布与视频生成应用",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "ai-waic-2026-topic",
+      "title": "2026世界人工智能大会连续报道",
+      "category": "AI",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 77,
+      "body_ready": 56,
+      "not_body_ready": 21,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-battery-standard-202607",
+      "title": "动力电池安全新国标实施",
+      "category": "汽车",
+      "event_date_hint": "2026-07-01",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-beijing-2026-topic",
+      "title": "2026北京车展连续报道",
+      "category": "汽车",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 18,
+      "body_ready": 16,
+      "not_body_ready": 2,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-byd-flashcharge-202603",
+      "title": "比亚迪第二代刀片电池与闪充",
+      "category": "汽车",
+      "event_date_hint": "2026-03-05",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-guangzhou-show-202511",
+      "title": "2025广州国际汽车展",
+      "category": "汽车",
+      "event_date_hint": "2025-11-21",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-handles-standard-202602",
+      "title": "汽车门把手安全国家标准发布",
+      "category": "汽车",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-l3-202512",
+      "title": "首批L3级自动驾驶汽车准入许可",
+      "category": "汽车",
+      "event_date_hint": "2025-12-15",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-li-l9-202605",
+      "title": "新一代理想L9上市与交付",
+      "category": "汽车",
+      "event_date_hint": "2026-05-15",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "auto-su7new-202603",
+      "title": "新一代小米SU7上市交付",
+      "category": "汽车",
+      "event_date_hint": "2026-03-19",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "auto-tradein-202601",
+      "title": "2026汽车以旧换新政策",
+      "category": "汽车",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-awe2026-202603",
+      "title": "AWE2026消费电子展与智能家居",
+      "category": "数码",
+      "event_date_hint": "2026-03-12",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-ces2026-202601",
+      "title": "CES2026消费电子展与中国企业",
+      "category": "数码",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-ifa2026-202609",
+      "title": "IFA2026柏林消费电子展",
+      "category": "数码",
+      "event_date_hint": "2026-09-04",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-iphone17e-202603",
+      "title": "苹果iPhone17e与春季新品发布",
+      "category": "数码",
+      "event_date_hint": "2026-03-02",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-mate80-20251125",
+      "title": "华为Mate80系列发布",
+      "category": "数码",
+      "event_date_hint": "2025-11-25",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-matex7-20251125",
+      "title": "华为Mate X7折叠屏发布",
+      "category": "数码",
+      "event_date_hint": "2025-11-25",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-pura90-202604",
+      "title": "华为Pura90系列发布",
+      "category": "数码",
+      "event_date_hint": "2026-04-20",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "digital-xiaomi17ultra-202512",
+      "title": "小米17 Ultra影像旗舰发布",
+      "category": "数码",
+      "event_date_hint": "2025-12-25",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance-services-2026-topic",
+      "title": "2026服贸会连续报道",
+      "category": "财经",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 32,
+      "body_ready": 26,
+      "not_body_ready": 6,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "finance_cIIe_202511",
+      "title": "第八届进博会闭幕与成交成果",
+      "category": "财经",
+      "event_date_hint": "2025-11-10",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_cewc_202512",
+      "title": "2025年中央经济工作会议与2026年政策部署",
+      "category": "财经",
+      "event_date_hint": "2025-12-11",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 0,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_fed_202512",
+      "title": "美联储2025年12月利率决议及市场影响",
+      "category": "财经",
+      "event_date_hint": "2025-12-10",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_gdp_2025_release",
+      "title": "2025年中国GDP年度数据发布",
+      "category": "财经",
+      "event_date_hint": "2026-01-19",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_gdp_2026h1",
+      "title": "2026年上半年经济数据发布",
+      "category": "财经",
+      "event_date_hint": "2026-07-15",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_gdp_2026q1",
+      "title": "2026年一季度经济数据发布",
+      "category": "财经",
+      "event_date_hint": "2026-04-16",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_gdp_2026q3",
+      "title": "2026年前三季度经济数据发布",
+      "category": "财经",
+      "event_date_hint": "2026-10-19",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "finance_growth_target_202603",
+      "title": "2026年政府工作报告经济增长目标",
+      "category": "财经",
+      "event_date_hint": "2026-03-05",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 0,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_hainan_closure_202512",
+      "title": "海南自贸港正式启动全岛封关",
+      "category": "财经",
+      "event_date_hint": "2025-12-18",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "finance_pboc_structural_rates_202601",
+      "title": "央行下调结构性货币政策工具利率",
+      "category": "财经",
+      "event_date_hint": "2026-01-15",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "game-chinajoy2026-202607",
+      "title": "ChinaJoy2026中国国际数码互动娱乐展",
+      "category": "游戏",
+      "event_date_hint": "2026-07-31",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "game-gamescom2026-202608",
+      "title": "2026科隆国际游戏展",
+      "category": "游戏",
+      "event_date_hint": "2026-08-26",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "game-industry-report-202512",
+      "title": "2025年度至2026上半年中国游戏产业报告",
+      "category": "游戏",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "game-msi2026-202607",
+      "title": "2026英雄联盟季中冠军赛",
+      "category": "游戏",
+      "event_date_hint": "2026-07-12",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "game-netease520-202605",
+      "title": "2026网易520游戏发布会",
+      "category": "游戏",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "game-tencent-spark-202605",
+      "title": "2026腾讯游戏发布会",
+      "category": "游戏",
+      "event_date_hint": "2026-05-27",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "game-tga2025-202512",
+      "title": "TGA2025颁奖与年度游戏",
+      "category": "游戏",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "game-worlds2025-202511",
+      "title": "2025英雄联盟全球总决赛",
+      "category": "游戏",
+      "event_date_hint": "2025-11-09",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "international_brazil_election_202610",
+      "title": "巴西总统选举首轮与第二轮结果",
+      "category": "国际",
+      "event_date_hint": "2026-10-04",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_busan_202510",
+      "title": "中美元首釜山会晤及经贸共识",
+      "category": "国际",
+      "event_date_hint": "2025-10-30",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "international_cop30_202511",
+      "title": "COP30贝伦气候大会闭幕及中方回应",
+      "category": "国际",
+      "event_date_hint": "2025-11-22",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_g20_202511",
+      "title": "G20约翰内斯堡峰会与联合宣言",
+      "category": "国际",
+      "event_date_hint": "2025-11-22",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_greenland_202601",
+      "title": "美国格陵兰岛主张与欧洲关税争议",
+      "category": "国际",
+      "event_date_hint": "2026-01-20",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_hungary_election_202604",
+      "title": "匈牙利国会选举与最终计票结果",
+      "category": "国际",
+      "event_date_hint": "2026-04-12",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 1,
+      "not_body_ready": 1,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "international_japan_election_202602",
+      "title": "日本众议院选举与中方回应",
+      "category": "国际",
+      "event_date_hint": "2026-02-08",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_lee_china_202601",
+      "title": "韩国总统李在明访华",
+      "category": "国际",
+      "event_date_hint": "2026-01-04",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 0,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "international_macron_china_202512",
+      "title": "马克龙访华与成都交流",
+      "category": "国际",
+      "event_date_hint": "2025-12-03",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "international_starmer_china_202601",
+      "title": "英国首相斯塔默访华及成果",
+      "category": "国际",
+      "event_date_hint": "2026-01-28",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_trump_china_202605",
+      "title": "特朗普访华与中美元首北京会谈",
+      "category": "国际",
+      "event_date_hint": "2026-05-14",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_unga81_202609",
+      "title": "第81届联合国大会一般性辩论",
+      "category": "国际",
+      "event_date_hint": "2026-09-22",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "international_us_shutdown_202511",
+      "title": "美国史上最长联邦政府停摆结束",
+      "category": "国际",
+      "event_date_hint": "2025-11-12",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_fujian_commission_202511",
+      "title": "福建舰入列与首次海上实兵训练",
+      "category": "军事",
+      "event_date_hint": "2025-11-05",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_iran_ceasefire_202604",
+      "title": "美伊同意停火两周并展开谈判",
+      "category": "军事",
+      "event_date_hint": "2026-04-08",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_iran_war_202602",
+      "title": "美以打击伊朗及地区反应",
+      "category": "军事",
+      "event_date_hint": "2026-02-28",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_jointsea_202607",
+      "title": "中俄海上联合2026演习与联合巡航",
+      "category": "军事",
+      "event_date_hint": "2026-07-06",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 0,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "military_justice_mission_202512",
+      "title": "东部战区正义使命2025演习",
+      "category": "军事",
+      "event_date_hint": "2025-12-29",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_newstart_expiry_202602",
+      "title": "美俄新削减战略武器条约到期及各方回应",
+      "category": "军事",
+      "event_date_hint": "2026-02-05",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_thai_cambodia_ceasefire_202512",
+      "title": "泰柬边境冲突停火与中柬泰抚仙会晤",
+      "category": "军事",
+      "event_date_hint": "2025-12-27",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 2,
+      "not_body_ready": 2,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_ukraine_talks_202601",
+      "title": "俄美乌阿布扎比三方安全会谈",
+      "category": "军事",
+      "event_date_hint": "2026-01-23",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_us_nss_202512",
+      "title": "美国2025版国家安全战略及外部解读",
+      "category": "军事",
+      "event_date_hint": "2025-12-04",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "military_venezuela_202601",
+      "title": "美军对委内瑞拉行动与马杜罗后续",
+      "category": "军事",
+      "event_date_hint": "2026-01-03",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "sports-asian-2026-topic",
+      "title": "第20届亚运会连续报道",
+      "category": "体育",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 100,
+      "body_ready": 73,
+      "not_body_ready": 27,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "sports-beach-2026-topic",
+      "title": "第六届亚沙会连续报道",
+      "category": "体育",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 24,
+      "body_ready": 23,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "sports-fifa-2026-topic",
+      "title": "2026美加墨世界杯连续报道",
+      "category": "体育",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 57,
+      "body_ready": 51,
+      "not_body_ready": 6,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "sports-milano-2026-topic",
+      "title": "2026米兰冬奥会连续报道",
+      "category": "体育",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 95,
+      "body_ready": 64,
+      "not_body_ready": 31,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "sports-national-2025-topic",
+      "title": "第十五届全国运动会连续报道",
+      "category": "体育",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 100,
+      "body_ready": 70,
+      "not_body_ready": 30,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "stocks_ai_ipos_202601",
+      "title": "智谱与MiniMax密集登陆港交所",
+      "category": "股票",
+      "event_date_hint": "2026-01-08",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 2,
+      "not_body_ready": 2,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "stocks_buffett_handover_202609",
+      "title": "巴菲特卸任伯克希尔董事长与接班",
+      "category": "股票",
+      "event_date_hint": "2026-09-18",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "stocks_metax_ipo_202512",
+      "title": "沐曦股份科创板上市及浦东产业背景",
+      "category": "股票",
+      "event_date_hint": "2025-12-17",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "stocks_moore_ipo_202512",
+      "title": "摩尔线程科创板上市及首日交易",
+      "category": "股票",
+      "event_date_hint": "2025-12-05",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "stocks_nvidia_fy2026",
+      "title": "英伟达2026财年财报与股价反应",
+      "category": "股票",
+      "event_date_hint": "2026-02-25",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "stocks_nvidia_fy2027q2_202608",
+      "title": "英伟达2027财年第二季度财报发布",
+      "category": "股票",
+      "event_date_hint": "2026-08-26",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 0,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "stocks_shanghai4000_202510",
+      "title": "上证指数时隔十年盘中重返4000点",
+      "category": "股票",
+      "event_date_hint": "2025-10-28",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "stocks_spacex_ipo_202606",
+      "title": "SpaceX上市与估值讨论",
+      "category": "股票",
+      "event_date_hint": "2026-06-12",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "stocks_trading_rules_202604",
+      "title": "沪深北交易规则修订与7月6日生效",
+      "category": "股票",
+      "event_date_hint": "2026-04-24",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 1,
+      "not_body_ready": 2,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "tech-brain-interface-202603",
+      "title": "侵入式脑机接口医疗器械获批",
+      "category": "科技",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 4,
+      "body_ready": 4,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "tech-juno-first-202511",
+      "title": "江门中微子实验首批物理成果",
+      "category": "科技",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "tech-mengzhou-20260211",
+      "title": "长征十号与梦舟飞船逃逸试验",
+      "category": "科技",
+      "event_date_hint": "2026-02-11",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 2,
+      "body_ready": 2,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "tech-shenzhou21-20251031",
+      "title": "神舟二十一号发射与在轨工作",
+      "category": "科技",
+      "event_date_hint": "2025-10-31",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 3,
+      "not_body_ready": 0,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "tech-shenzhou22-20251125",
+      "title": "神舟二十二号首次应急发射",
+      "category": "科技",
+      "event_date_hint": "2025-11-25",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "tech-shenzhou23-20260524",
+      "title": "神舟二十三号载人飞行任务",
+      "category": "科技",
+      "event_date_hint": "2026-05-24",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "tech-tianzhou10-20260511",
+      "title": "天舟十号货运飞船任务",
+      "category": "科技",
+      "event_date_hint": "2026-05-11",
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 0,
+      "not_body_ready": 3,
+      "coverage_gap": true,
+      "coverage_note": "fewer_than_two_verified_bodies"
+    },
+    {
+      "event_id": "tech-zgc-2026-topic",
+      "title": "2026中关村论坛连续报道",
+      "category": "科技",
+      "event_date_hint": null,
+      "discovery_group_type": "topic_collection",
+      "membership_status": "pending_human",
+      "discovered_urls": 46,
+      "body_ready": 30,
+      "not_body_ready": 16,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    },
+    {
+      "event_id": "tech-zhuque3-20251203",
+      "title": "朱雀三号首飞与回收试验",
+      "category": "科技",
+      "event_date_hint": null,
+      "discovery_group_type": "event",
+      "membership_status": "pending_human",
+      "discovered_urls": 3,
+      "body_ready": 2,
+      "not_body_ready": 1,
+      "coverage_gap": false,
+      "coverage_note": "unreviewed_membership"
+    }
+  ],
+  "events_without_verified_body": 14,
+  "events_with_fewer_than_two_bodies": 31,
+  "exact_duplicate_group_count": 14,
+  "exact_duplicate_groups": [
+    {
+      "group_id": "exact-body-184cfd3701f4c00075a0",
+      "body_sha256": "184cfd3701f4c00075a0ba71595cf1e1db9ca2c44b23cefbd3a6aad0a36a81d1",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "8c478c059d77f8e5e88a590d",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "8c478c059d77f8e5e88a590d",
+          "url": "https://www.news.cn/20260329/da75c0cbf7494931ac16a0f7bb7581ec/c.html",
+          "parsed_sha256": "c0e784997082fdba7b72edc69f2fb6a8a0c6a6629f133e460cddc41919f84d2b"
+        },
+        {
+          "article_id": "0acbe7ce54498a8b632464a8",
+          "url": "https://www.news.cn/tech/20260329/7af39ee8e2f3443b8b8ff5a2dd863c40/c.html",
+          "parsed_sha256": "de9c9a1aefccd10e9df2be6de64bc97d1edb8b7f2edbd825ffc195747d3ff68b"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-328f510d5adcc7872247",
+      "body_sha256": "328f510d5adcc78722477b623d40250b8b2706026c43258861b7047548b719b6",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "671d74ecab4d37597d7b5db1",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "671d74ecab4d37597d7b5db1",
+          "url": "https://www.news.cn/20260328/092f0977bd914dd397aefa9ad5fc4ddb/c.html",
+          "parsed_sha256": "d57dc34d83e2d699314b475e8d294ebeae3669fe4951fa588922d3d4bf4bb5a2"
+        },
+        {
+          "article_id": "8ff4f9ae59ab281701ac657c",
+          "url": "https://www.news.cn/world/20260328/2f1dac4cc3c041eebf77d09d652bf09d/c.html",
+          "parsed_sha256": "1da4b8f19d27faac5c258964378f77464a05a07a9cc9ea2806c5440c0e55baee"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-3f6a1dfbd8ba72554ce4",
+      "body_sha256": "3f6a1dfbd8ba72554ce47d20a7b642b2c7c80dea1cc965573e81ce318011930d",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "8907b7fb8af99513acd229d3",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "8907b7fb8af99513acd229d3",
+          "url": "https://www.news.cn/20260329/0b3cf55db1ec4948a88b07be458397b0/c.html",
+          "parsed_sha256": "1b5e07ed742d25b1007e6c120ee0506477d23ada9cc122b551dc73b20a389a76"
+        },
+        {
+          "article_id": "bcc4b1fece6cb38a938461f2",
+          "url": "https://www.news.cn/tech/20260329/85978dae935b44cf9967a4ffb0da2c90/c.html",
+          "parsed_sha256": "5a202062dcb31999048b210e9e26205b246267f903fddec674747a6c386c4d11"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-43108a1b732bb59048ca",
+      "body_sha256": "43108a1b732bb59048ca1a827b5923160237b90f267d9eb48171525308754917",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "5eef1988088ab5e6c122d385",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "5eef1988088ab5e6c122d385",
+          "url": "https://www.news.cn/20260720/9ed550bb1c174559b0c19cd34e70ae32/c.html",
+          "parsed_sha256": "964749cb7f27f9f14663e44a364b859b050d43b3aec77a4bcc0db3f5e0e85d66"
+        },
+        {
+          "article_id": "56b6a315ad6591a7bd1f6c67",
+          "url": "https://www.news.cn/photo/20260720/fd812e2954c34e898d1a05de4a1d77a6/c.html",
+          "parsed_sha256": "07e09ab8a774829d97ca97ed6217430999feb8a1f14d0ae670cfc60f5cecfb1f"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-58cfa62d64ff1087363e",
+      "body_sha256": "58cfa62d64ff1087363ed06af507a641affe9e1bb1d0e0a7b99e212a653b1325",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "d631b3155ea86c076983445b",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "d631b3155ea86c076983445b",
+          "url": "https://www.news.cn/20260327/ae12124f2c8f4b92a28f89b20280fbde/c.html",
+          "parsed_sha256": "13b6af8e4c2ee27deedab76438f696b1dec3559803b181d4b187a5bff9e776e5"
+        },
+        {
+          "article_id": "a64c048d35bbd964a96e7863",
+          "url": "https://www.news.cn/local/20260327/e125927022dd4e54858c5b8070ce3dfc/c.html",
+          "parsed_sha256": "9f733c30937196f6950efb71fd2b8e6ba31e01b0be0da75f6482ba7a7c296838"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-5c8162a40346d648e3db",
+      "body_sha256": "5c8162a40346d648e3db7fb4fb525482e48c7910117b352e9dc868fca3d6f8f2",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "9e325e8da5bb5b3bc23efedb",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "9e325e8da5bb5b3bc23efedb",
+          "url": "https://www.news.cn/20260720/b4a37b350365492697705718eec524f0/c.html",
+          "parsed_sha256": "1fa53766a2eb10917ecad447b1179637351390e9dce0266dcc7a7adcc8d6c41c"
+        },
+        {
+          "article_id": "eb13fd8e6b19aadabe669547",
+          "url": "https://www.news.cn/tech/20260720/d088e4d59ad4469d99a37558818f1ec9/c.html",
+          "parsed_sha256": "10a47e40671501832e00cec8afd3332eef286b9fc2fbb242751d2accd1c3c580"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-795b85f82e21c315f5ec",
+      "body_sha256": "795b85f82e21c315f5ec4306ba361c3640c210eea15ad354c72315ea0b1c2f0a",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "27d77e527d7acad6f6f08fbd",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "27d77e527d7acad6f6f08fbd",
+          "url": "https://www.news.cn/20260721/b447e6b709774806aff90d648dfa4162/c.html",
+          "parsed_sha256": "938a340363ad626f4d556190a9787d4e33e1f182d1d93e7ff9935ebe195b24d6"
+        },
+        {
+          "article_id": "196095f0c26cedafc1be018d",
+          "url": "https://www.news.cn/tech/20260721/bc0a0e48596343988a73b95e78cb963e/c.html",
+          "parsed_sha256": "8d5c29c5a6f920cd3ad3692920b733f65113becffd89e40f8f16e4972a2d4750"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-8874f551c165f4aa27fe",
+      "body_sha256": "8874f551c165f4aa27feb346260c60e396e9af3506f3b1e246c6e7bb1605db9a",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "d59938809dc2d18f845e3fca",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "d59938809dc2d18f845e3fca",
+          "url": "https://www.news.cn/20260328/e01b15ed653b41a48bd2f9677e80c17e/c.html",
+          "parsed_sha256": "737f0996e7ae51c870f803b1474d55ebc6512bed68ed5d28d25653f54e48b518"
+        },
+        {
+          "article_id": "7d99f0794068bbf90223a633",
+          "url": "https://www.news.cn/tech/20260328/4f98250aa70746858c00329bca3f7142/c.html",
+          "parsed_sha256": "3779bc2d650aaf77a73a6e15333d46e1e10c84e10511e38fdfdbef688ff9d095"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-952acc0a8d9e337c8013",
+      "body_sha256": "952acc0a8d9e337c801380fa2c00de5eb885b0e95f7cbaad1156e3f67660e0c1",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "ab32020541efbdb607e30bc5",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "ab32020541efbdb607e30bc5",
+          "url": "https://www.news.cn/20260721/48c4b88e3bc643768e9820ad46606697/c.html",
+          "parsed_sha256": "2686fb740ab48a0fb2b009c5a1c7dcc74592b35b4c13628b6f3f6e21fe65e341"
+        },
+        {
+          "article_id": "913416e2005558f69a9c9565",
+          "url": "https://www.news.cn/politics/leaders/20260721/3d1363e7e2804ebeaa7e670decd6ab37/c.html",
+          "parsed_sha256": "b2a276147454e8239415fdf560756b20c3bfd88a2d4789fe0ee838c9068f0697"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-a35fadac1687e3f6c00f",
+      "body_sha256": "a35fadac1687e3f6c00fe68da6bab94a03ae908c4352cae32ef2dd39e24ca6a3",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "da011661e4e45765b64c00e9",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "da011661e4e45765b64c00e9",
+          "url": "https://www.news.cn/20260719/54216ade0abf41c88b787368a3391090/c.html",
+          "parsed_sha256": "07938c470efd1ad616519adc90f5dd24823eb263e5f19bfb164bacb75545a8a0"
+        },
+        {
+          "article_id": "7bdb57ad93c85dd4515afe8f",
+          "url": "https://www.news.cn/tech/20260719/1753fecc3dd2446995328c58365d087b/c.html",
+          "parsed_sha256": "ceb7d013cf56d6d3cc966fd016358b673c8adba8742de56af79731d62a55ec32"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-ae2a1c1f78e49b773d29",
+      "body_sha256": "ae2a1c1f78e49b773d29b633e847c2fd6af06c166ff028ba8b6122174f2511e8",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "f9ae107585f1845f5074963f",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "f9ae107585f1845f5074963f",
+          "url": "https://www.news.cn/20260913/f44f39dc2be6432ca86144c68ec760bb/c.html",
+          "parsed_sha256": "e6311464a3617ef638a5e2bd23d61a27bea1664aefc2e2a204d49cf48b7a8dae"
+        },
+        {
+          "article_id": "e0715bdf46b0976fbac902a7",
+          "url": "https://www.news.cn/world/20260913/16cdde6df3f248be8e10392612fbd8ca/c.html",
+          "parsed_sha256": "ed987ce611ca202e5f39d472f6f2271ec9d5ce5b7ab65359225920c53d8e0c14"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-b2c4ebce6a5b6f82fc49",
+      "body_sha256": "b2c4ebce6a5b6f82fc49a14484bf9805ecfa1ca459312989aff76751de341ff9",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "8612497efe4e50317eb406e1",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "8612497efe4e50317eb406e1",
+          "url": "https://www.news.cn/20260330/0c5b18badce049639c1d9508c74547d3/c.html",
+          "parsed_sha256": "ca8027b02f16b35ae14f9eac881148bbf2f8662d22423fe889ee0c12f5807e46"
+        },
+        {
+          "article_id": "c2a074d965d42fdf33c90e94",
+          "url": "https://www.news.cn/tech/20260330/2ed634026af84366b63169dafc1f27df/c.html",
+          "parsed_sha256": "1e89ae215b81ea4f63ea803f056a1990b7f4ef3c98809a649dad85c9918e4b7e"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-e52064ecc14f8563f6a5",
+      "body_sha256": "e52064ecc14f8563f6a55ffb3b926d33154f2c0ec4f772421990a386a3561a8b",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "06ec16a7f725cf74cf9d2bc2",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "06ec16a7f725cf74cf9d2bc2",
+          "url": "https://www.news.cn/20260329/7457f5266fad4ff988c2547dab798a34/c.html",
+          "parsed_sha256": "eda46aa88ff88903056a2599539116ded9834a2a0101fd40b204bd0448c2a362"
+        },
+        {
+          "article_id": "b3b81597268542dd9763172d",
+          "url": "https://www.news.cn/tech/20260329/931cf84784d74285a983a5063249d4f7/c.html",
+          "parsed_sha256": "0c3eab3401cbbdcd13120a30bed2501e90f2bb715fc961aac15bc13725a5c13e"
+        }
+      ]
+    },
+    {
+      "group_id": "exact-body-f0f69f2353a7424aeb44",
+      "body_sha256": "f0f69f2353a7424aeb44cd142084e11c2456cc174b9f4f061904ccf6da45960d",
+      "comparison": "byte_identical_extracted_body_only",
+      "fact_equivalence_status": "pending_human",
+      "representative_suggestion": "fd9487996c1634e6de8a8cd3",
+      "representative_status": "suggestion_only",
+      "sources": [
+        {
+          "article_id": "fd9487996c1634e6de8a8cd3",
+          "url": "https://www.news.cn/20260719/b806e84648be42f593a7423215c01684/c.html",
+          "parsed_sha256": "5c5eca886bbfb8a4261dde808617934bfc114501c05af7d1d9bbb7a604439806"
+        },
+        {
+          "article_id": "2f8facea3ae3a00051908fd2",
+          "url": "https://www.news.cn/politics/leaders/20260719/f3a01c5920dc4a7290cfe820beaaa328/c.html",
+          "parsed_sha256": "8b98301debb8564c5cf8014889ca6d6a56fd3fa8ec2f610a492a4addd6c25080"
+        }
+      ]
+    }
+  ],
+  "content_candidate_count": 559,
+  "content_candidate_skipped": {},
+  "content_candidates_with_aware_publish_time": 7,
+  "content_candidates_publication_pending": 552,
+  "discovery_sources": [
+    {
+      "path": "/home/shi/project/NewsAgent/var/news-events-annual-20261027/discovery/tech-events.json",
+      "sha256": "ef352b39fbe5dcc06b02fd59ee6fe9853b674d033afd72e77a2c63a929faa591"
+    },
+    {
+      "path": "/home/shi/project/NewsAgent/var/news-events-annual-20261027/discovery/world-events.json",
+      "sha256": "38930c70deaabc50477bb196cd297592c2e9ab1371e119a82183924c6b365c9c"
+    },
+    {
+      "path": "/home/shi/project/NewsAgent/var/news-events-annual-20261027/discovery/topic-links.json",
+      "sha256": "b261fcd9a805bc8adce3c428386c408bb24763ba0d296a59da26ea85772b7c1d"
+    }
+  ],
+  "event_membership_status": "pending_human",
+  "relevance_review_status": "pending_human",
+  "relevance_label": null,
+  "retrieval_accuracy": null,
+  "notes": [
+    "Exact body hashes are source-preserving duplicate suggestions, not same-fact judgments.",
+    "Topic collections and event membership are unreviewed discovery hints.",
+    "No queries, qrels, relevance judgments, or retrieval accuracy are generated.",
+    "Missing timezone or day-only dates are preserved without an invented publication instant."
+  ]
+}

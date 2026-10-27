@@ -201,6 +201,51 @@ def monitor_status(tenant_id: str):
     return {'monitors':rows,'loop':monitor_health.public(),'scope':'isolated_synthetic'}
 
 
+# The main API binds gateway tenant/permissions before calling these isolated endpoints.
+from app.modules.hot_news.contracts.monitor import MonitorStart, MonitorSwitch
+
+
+def monitor_feed_projection(db, tenant_id):
+    from simulation.streaming_lab.notifications import feed
+    value = feed(db, tenant_id)
+    if monitor_health.public()['state'] != 'ready':
+        value.source_state = 'unavailable'
+        value.items = []
+    return value
+
+
+@app.get('/streaming-lab-api/hot-monitor-feed')
+def hot_monitor_feed(tenant_id: str):
+    if tenant_id not in TENANTS:
+        raise HTTPException(404, 'Unknown tenant')
+    with connect() as db:
+        return monitor_feed_projection(db, tenant_id)
+
+
+@app.post('/streaming-lab-api/hot-monitor-feed')
+def start_hot_monitor(body: MonitorStart, tenant_id: str):
+    from simulation.streaming_lab.notifications import start_latest
+    if tenant_id not in TENANTS:
+        raise HTTPException(404, 'Unknown tenant')
+    try:
+        with connect() as db:
+            start_latest(db, tenant_id, body.window_minutes)
+            return monitor_feed_projection(db, tenant_id)
+    except ValueError as exc:
+        raise HTTPException(409, 'No active source session or compatible monitor') from exc
+
+
+@app.put('/streaming-lab-api/hot-monitor-feed/{monitor_id}')
+def switch_hot_monitor(monitor_id: str, body: MonitorSwitch, tenant_id: str):
+    from simulation.streaming_lab.notifications import switch_owned
+    if tenant_id not in TENANTS or not re.fullmatch('[0-9a-f]{64}', monitor_id):
+        raise HTTPException(404, 'Monitor not found')
+    with connect() as db:
+        if switch_owned(db, tenant_id, monitor_id, body.enabled) is None:
+            raise HTTPException(404, 'Monitor not found')
+        return monitor_feed_projection(db, tenant_id)
+
+
 def operational_snapshot():
     with connect() as db, db.transaction():
         db.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY')

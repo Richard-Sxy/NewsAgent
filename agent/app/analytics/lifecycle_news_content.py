@@ -27,7 +27,7 @@ class LifecycleNewsContentRepository:
         identities = tuple(dict.fromkeys(news_ids))
         rows = {}
         fields = [_news.c.news_id, _news.c.title, _news.c.source_url,
-                  _news.c.publish_time, _news.c.active_job_id, _jobs.c.chunk_ids]
+                  _news.c.publish_time, _news.c.active_job_id, _news.c.status, _jobs.c.chunk_ids]
         if include_body:
             fields.append(_news.c.body)
         async with self._database.session() as session:
@@ -36,7 +36,7 @@ class LifecycleNewsContentRepository:
                     and_(_news.c.active_job_id == _jobs.c.job_id,
                          _news.c.tenant_id == _jobs.c.tenant_id,
                          _news.c.source_revision == _jobs.c.source_revision))).where(
-                    _news.c.tenant_id == tenant_id, _news.c.status == "active",
+                    _news.c.tenant_id == tenant_id, _news.c.status.in_(("active", "deduplicated")),
                     _news.c.news_id.in_(identities[start:start + 500])))
                 for row in result.mappings():
                     rows[row["news_id"]] = dict(row)
@@ -79,7 +79,8 @@ class LifecycleNewsContentRepository:
             values = []
             for candidate in candidates:
                 row = rows.get(candidate.news_id)
-                if row is None or candidate.collection_id not in manifests[candidate.news_id]:
+                if (row is None or row["status"] != "active"
+                        or candidate.collection_id not in manifests[candidate.news_id]):
                     continue
                 values.append(replace(candidate, title=row["title"],
                     source_url=row["source_url"] or None,
