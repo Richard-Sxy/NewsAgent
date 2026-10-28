@@ -1,6 +1,6 @@
 # 基于统一新闻正文的标准答案核对稿
 
-状态：待人工确认；这是材料与草案答案核对稿，不是模型评测成绩。
+状态：用户已在本聊天确认审核完成；这是材料与标准答案核对稿，不是模型评测成绩。
 来源：[body-candidates.jsonl](/Users/shi/Project/myProject/NewsAgent/var/news-storage/exports/20261023/body-candidates.jsonl)；release `news-0c74530f2864db20a73d7a96`。
 已核对 8,144 条正文的文件与正文哈希，新闻身份不重复；本导出的完全相同正文重复组为 0。这不证明事件或近重复去重。
 当前两个开发主题的四篇正文与统一导出逐字一致；银行验证案例的正文也一致，但仍缺第二来源。

@@ -1,0 +1,316 @@
+{
+  "status": "independently_recomputed",
+  "scope": "single-human development pooled fusion ablation",
+  "formal_independent_test": false,
+  "queries": 30,
+  "pooled_pairs": 454,
+  "label_distribution": {
+    "original:relevant": 102,
+    "original:irrelevant": 164,
+    "original:partial": 34,
+    "supplement:irrelevant": 154
+  },
+  "metrics": {
+    "legacy_rrf": {
+      "ndcg_at_5": 0.5633509452729536,
+      "precision_at_5": 0.37333333333333335,
+      "query_denominator": 30
+    },
+    "global_similarity": {
+      "ndcg_at_5": 0.9501287223645629,
+      "precision_at_5": 0.56,
+      "query_denominator": 30
+    }
+  },
+  "query_changes": {
+    "improved": 29,
+    "unchanged": 1
+  },
+  "ndcg_absolute_gain": 0.3867777770916093,
+  "precision_gain_percentage_points": 18.66666666666667,
+  "per_query": [
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "category": "科技",
+      "ndcg5": {
+        "legacy_rrf": 0.5129358148703672,
+        "global_similarity": 0.8926893079768027
+      },
+      "delta": 0.37975349310643547
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "category": "科技",
+      "ndcg5": {
+        "legacy_rrf": 0.2781491965442198,
+        "global_similarity": 1.0
+      },
+      "delta": 0.7218508034557802
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "category": "科技",
+      "ndcg5": {
+        "legacy_rrf": 0.6509209298071326,
+        "global_similarity": 1.0
+      },
+      "delta": 0.34907907019286744
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "category": "AI",
+      "ndcg5": {
+        "legacy_rrf": 0.5922402282545404,
+        "global_similarity": 0.9129675424759451
+      },
+      "delta": 0.32072731422140477
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "category": "AI",
+      "ndcg5": {
+        "legacy_rrf": 0.5562983930884396,
+        "global_similarity": 0.9061827879747687
+      },
+      "delta": 0.34988439488632905
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "category": "AI",
+      "ndcg5": {
+        "legacy_rrf": 0.8772153153380493,
+        "global_similarity": 1.0
+      },
+      "delta": 0.1227846846619507
+    },
+    {
+      "query_id": "annual-d2b0c85609b0183c30c6",
+      "category": "财经",
+      "ndcg5": {
+        "legacy_rrf": 0.6628891614718674,
+        "global_similarity": 1.0
+      },
+      "delta": 0.3371108385281326
+    },
+    {
+      "query_id": "annual-36e5e0af57e75838023c",
+      "category": "财经",
+      "ndcg5": {
+        "legacy_rrf": 1.0,
+        "global_similarity": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "category": "财经",
+      "ndcg5": {
+        "legacy_rrf": 0.46737094873235197,
+        "global_similarity": 1.0
+      },
+      "delta": 0.532629051267648
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "category": "股票",
+      "ndcg5": {
+        "legacy_rrf": 0.6509209298071326,
+        "global_similarity": 1.0
+      },
+      "delta": 0.34907907019286744
+    },
+    {
+      "query_id": "annual-76ada442fc571556a7fc",
+      "category": "股票",
+      "ndcg5": {
+        "legacy_rrf": 0.5706417189553201,
+        "global_similarity": 1.0
+      },
+      "delta": 0.4293582810446799
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "category": "股票",
+      "ndcg5": {
+        "legacy_rrf": 0.5706417189553201,
+        "global_similarity": 1.0
+      },
+      "delta": 0.4293582810446799
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "category": "汽车",
+      "ndcg5": {
+        "legacy_rrf": 0.4417029399283996,
+        "global_similarity": 1.0
+      },
+      "delta": 0.5582970600716004
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "category": "汽车",
+      "ndcg5": {
+        "legacy_rrf": 0.0,
+        "global_similarity": 0.23719771276929622
+      },
+      "delta": 0.23719771276929622
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "category": "汽车",
+      "ndcg5": {
+        "legacy_rrf": 0.48306700197788277,
+        "global_similarity": 1.0
+      },
+      "delta": 0.5169329980221172
+    },
+    {
+      "query_id": "annual-27c0aa3a9ad3585f6a81",
+      "category": "数码",
+      "ndcg5": {
+        "legacy_rrf": 0.6508205185601091,
+        "global_similarity": 1.0
+      },
+      "delta": 0.34917948143989086
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "category": "数码",
+      "ndcg5": {
+        "legacy_rrf": 0.40918057602524965,
+        "global_similarity": 0.9935774939007994
+      },
+      "delta": 0.5843969178755497
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "category": "数码",
+      "ndcg5": {
+        "legacy_rrf": 0.47036528278595785,
+        "global_similarity": 1.0
+      },
+      "delta": 0.5296347172140421
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "category": "国际",
+      "ndcg5": {
+        "legacy_rrf": 0.7122630665145961,
+        "global_similarity": 1.0
+      },
+      "delta": 0.28773693348540386
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "category": "国际",
+      "ndcg5": {
+        "legacy_rrf": 0.42501747489323527,
+        "global_similarity": 0.8145672023038535
+      },
+      "delta": 0.3895497274106182
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "category": "国际",
+      "ndcg5": {
+        "legacy_rrf": 0.5952621370614727,
+        "global_similarity": 0.946347335353756
+      },
+      "delta": 0.35108519829228335
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "category": "军事",
+      "ndcg5": {
+        "legacy_rrf": 0.3945674498005165,
+        "global_similarity": 0.989141344633751
+      },
+      "delta": 0.5945738948332345
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "category": "军事",
+      "ndcg5": {
+        "legacy_rrf": 0.4234691753285843,
+        "global_similarity": 0.9807710461847231
+      },
+      "delta": 0.5573018708561388
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "category": "军事",
+      "ndcg5": {
+        "legacy_rrf": 0.6673071725340496,
+        "global_similarity": 1.0
+      },
+      "delta": 0.3326928274659504
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "category": "体育",
+      "ndcg5": {
+        "legacy_rrf": 0.6548086577531306,
+        "global_similarity": 1.0
+      },
+      "delta": 0.3451913422468694
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "category": "体育",
+      "ndcg5": {
+        "legacy_rrf": 0.6992148198508501,
+        "global_similarity": 1.0
+      },
+      "delta": 0.3007851801491499
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "category": "体育",
+      "ndcg5": {
+        "legacy_rrf": 0.33916020527361607,
+        "global_similarity": 0.8304198973631919
+      },
+      "delta": 0.4912596920895758
+    },
+    {
+      "query_id": "annual-353d0b0ef957f626033d",
+      "category": "游戏",
+      "ndcg5": {
+        "legacy_rrf": 0.9674679834891694,
+        "global_similarity": 1.0
+      },
+      "delta": 0.0325320165108306
+    },
+    {
+      "query_id": "annual-fe82276ee5aaee1e9e45",
+      "category": "游戏",
+      "ndcg5": {
+        "legacy_rrf": 0.34620964322385606,
+        "global_similarity": 1.0
+      },
+      "delta": 0.6537903567761439
+    },
+    {
+      "query_id": "annual-3b314af2149faa40de5d",
+      "category": "游戏",
+      "ndcg5": {
+        "legacy_rrf": 0.8304198973631919,
+        "global_similarity": 1.0
+      },
+      "delta": 0.16958010263680812
+    }
+  ],
+  "evidence_sha256": {
+    "output/news-events-annual-20261027/comparison-v1/comparison.json": "7e62d82c0d413eaed5400dd5fc70b1aa9f1980379468ec9dbf7c75f971a1c322",
+    "output/news-events-annual-20261027/human-review-v1/human-review.export.json": "f1fdc456e96ff17111445018071f5d717e615e00486574ed39c9660fa4b319b3",
+    "output/news-events-annual-20261027/comparison-v1/results.json": "7c704f0ee26d9b2e71331769306a6db73986df0b6b971e390238b34c8331088f",
+    "output/resume-quality-20261028/verified-results-v1/supplemental.completed.sqlite3": "3a759b6d39a6041faecf83dc614b937527443ffad001799dca7d5c67c037f426",
+    "output/resume-quality-20261028/verified-results-v1/verify_metrics.py": "5e6bc41cf9621581604d70abcc6020592c3f5912cfc6f20b281df79df98ef681"
+  },
+  "limitations": [
+    "30 development questions, not independent test",
+    "154 supplementary judgments are all irrelevant; recommend human spot-check",
+    "local example RRF versus global cosine only; no entity/event reranking",
+    "7/90-day frozen corpus, separate from 7/30/365 capacity workload"
+  ]
+}

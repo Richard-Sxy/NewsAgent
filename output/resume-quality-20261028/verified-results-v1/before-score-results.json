@@ -1,0 +1,871 @@
+{
+  "status": "needs_human_labels",
+  "scope": "frozen_question_search_equal_news_budget_fusion_ablation",
+  "formal_independent_test": false,
+  "queries": 30,
+  "required_pool_pairs": 454,
+  "missing_pairs": 154,
+  "missing": [
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "news_id": "pub-25b0c0100ea13614585471eb"
+    },
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "news_id": "pub-a1f4acf29e4c9c95d4ac87ae"
+    },
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-7ed297a049d8a5838342d31f"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-a4217ceda984f39ceb592570"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-c6ccc401d6b13addea5edcf5"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-8f6a8c10ddebc8ab5745482a"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "news_id": "pub-f0b72b3b4b0c4a5e5d09a54e"
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "news_id": "pub-865978f7866bee740202ec18"
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-6c2cfa6b9545dac6e146c513"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "news_id": "pub-f0b72b3b4b0c4a5e5d09a54e"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-8d6e60cc6e75d87eefde2add"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-a1f4acf29e4c9c95d4ac87ae"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-b224ca44e66f1b0eaf9b5897"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-c13c3e8597bc4f24c47c7038"
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-d2b0c85609b0183c30c6",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-36e5e0af57e75838023c",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-36e5e0af57e75838023c",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-36e5e0af57e75838023c",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "news_id": "pub-fbc7c2b1e40a0884d4856ab6"
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "news_id": "pub-e3236ea063f42c5a5da70439"
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "news_id": "pub-f0b72b3b4b0c4a5e5d09a54e"
+    },
+    {
+      "query_id": "annual-76ada442fc571556a7fc",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-76ada442fc571556a7fc",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-76ada442fc571556a7fc",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-8d6e60cc6e75d87eefde2add"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-c8b64674c8be06112e612630"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-d69f964a1e1508aa38e5de31"
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "news_id": "pub-8d6e60cc6e75d87eefde2add"
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "news_id": "pub-b224ca44e66f1b0eaf9b5897"
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-6ac1ad455d5ef428c1467d97"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "news_id": "pub-fe14faf85afb1064ecd1339c"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-6368969859978663e5f7ae22"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-b224ca44e66f1b0eaf9b5897"
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-27c0aa3a9ad3585f6a81",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-27c0aa3a9ad3585f6a81",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-27c0aa3a9ad3585f6a81",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-8d6e60cc6e75d87eefde2add"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-a1f4acf29e4c9c95d4ac87ae"
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-2bfa0c2f28b4a5080a48169c"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-8d6e60cc6e75d87eefde2add"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-a1f4acf29e4c9c95d4ac87ae"
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "news_id": "pub-02f53bdc1887ee47b63b75e5"
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "news_id": "pub-54fd6311140fb5f1762d1362"
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-b94d25e783dfcc2c976084c7"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-2399b598b0087f8dc858be80"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-6669aabf01641720df16d998"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "news_id": "pub-fb1091db856df130af634f40"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-6669aabf01641720df16d998"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-ca251eb0fc00cb359a5794c6"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "news_id": "pub-fb1091db856df130af634f40"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-2399b598b0087f8dc858be80"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-6669aabf01641720df16d998"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "news_id": "pub-fb1091db856df130af634f40"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-02f53bdc1887ee47b63b75e5"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-6669aabf01641720df16d998"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "news_id": "pub-fb1091db856df130af634f40"
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "news_id": "pub-830d02fb5d6e656e2628bbb8"
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-439153933d99ed3c789a4b72"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-a9bac33b8be28d62e60fad98"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-c6ccc401d6b13addea5edcf5"
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-02f53bdc1887ee47b63b75e5"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-7ed297a049d8a5838342d31f"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-a9fe2d9e4f79e9d6c51edf4a"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "news_id": "pub-fb1091db856df130af634f40"
+    },
+    {
+      "query_id": "annual-353d0b0ef957f626033d",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-353d0b0ef957f626033d",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-353d0b0ef957f626033d",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-fe82276ee5aaee1e9e45",
+      "news_id": "pub-925367073c43c0adaf732896"
+    },
+    {
+      "query_id": "annual-fe82276ee5aaee1e9e45",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    },
+    {
+      "query_id": "annual-fe82276ee5aaee1e9e45",
+      "news_id": "pub-d6b50ef911454b3d0604a9fe"
+    },
+    {
+      "query_id": "annual-3b314af2149faa40de5d",
+      "news_id": "pub-6c219c02748e240e4b8029aa"
+    },
+    {
+      "query_id": "annual-3b314af2149faa40de5d",
+      "news_id": "pub-ccdd5fd1784c7cdb70e18399"
+    }
+  ],
+  "metrics": null,
+  "production_p95": null,
+  "recall": null,
+  "per_query": [
+    {
+      "query_id": "annual-acd33108a303f80724ff",
+      "category": "科技",
+      "query": "侵入式脑机接口医疗器械获批有哪些具体报道？",
+      "pool_size": 15,
+      "missing_labels": 5,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-b3775039cc4bbdfa759b",
+      "category": "科技",
+      "query": "神舟二十一号发射与在轨工作的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-10b18f06dfeb3cd46aad",
+      "category": "科技",
+      "query": "江门中微子实验首批物理成果有哪些背景和细节报道？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-579a738b9b7bb8863838",
+      "category": "AI",
+      "query": "百度世界2025与文心5.0发布有哪些具体报道？",
+      "pool_size": 15,
+      "missing_labels": 5,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-a32e8f11078ba4b3075c",
+      "category": "AI",
+      "query": "DeepSeek V3.2及数学推理模型发布的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-bd32708d3fe1dfe066f1",
+      "category": "AI",
+      "query": "豆包手机助手预览与生态争议有哪些背景和细节报道？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-d2b0c85609b0183c30c6",
+      "category": "财经",
+      "query": "2026年前三季度经济数据发布有哪些具体报道？",
+      "pool_size": 11,
+      "missing_labels": 1,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-36e5e0af57e75838023c",
+      "category": "财经",
+      "query": "第八届进博会闭幕与成交成果的进展与相关回应有哪些？",
+      "pool_size": 13,
+      "missing_labels": 3,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-7a3d5dfe16230868c45a",
+      "category": "财经",
+      "query": "美联储2025年12月利率决议及市场影响有哪些背景和细节报道？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-1e4e3e039cf6f2a2c16f",
+      "category": "股票",
+      "query": "智谱与MiniMax密集登陆港交所有哪些具体报道？",
+      "pool_size": 15,
+      "missing_labels": 5,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-76ada442fc571556a7fc",
+      "category": "股票",
+      "query": "摩尔线程科创板上市及首日交易的进展与相关回应有哪些？",
+      "pool_size": 13,
+      "missing_labels": 3,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-36f9945d907392aee9ff",
+      "category": "股票",
+      "query": "SpaceX上市与估值讨论有哪些背景和细节报道？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-2509f707d68b9cacbfb8",
+      "category": "汽车",
+      "query": "比亚迪第二代刀片电池与闪充有哪些具体报道？",
+      "pool_size": 15,
+      "missing_labels": 5,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-bbea48dc3db1ffd07a97",
+      "category": "汽车",
+      "query": "2025广州国际汽车展的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-bee1a191275c98c26c3e",
+      "category": "汽车",
+      "query": "动力电池安全新国标实施有哪些背景和细节报道？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-27c0aa3a9ad3585f6a81",
+      "category": "数码",
+      "query": "IFA2026柏林消费电子展有哪些具体报道？",
+      "pool_size": 13,
+      "missing_labels": 3,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-2f27603f5d4d1a40e4be",
+      "category": "数码",
+      "query": "华为Pura90系列发布的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-30a3f0c9ac24cb3f9e83",
+      "category": "数码",
+      "query": "华为Mate X7折叠屏发布有哪些背景和细节报道？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-02676d36d4911df9d32e",
+      "category": "国际",
+      "query": "巴西总统选举首轮与第二轮结果有哪些具体报道？",
+      "pool_size": 14,
+      "missing_labels": 4,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-486d9c30527fb5280cd1",
+      "category": "国际",
+      "query": "COP30贝伦气候大会闭幕及中方回应的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-fd7d3ff006c24913b9c8",
+      "category": "国际",
+      "query": "美国格陵兰岛主张与欧洲关税争议有哪些背景和细节报道？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-7e5981101011a066c3e5",
+      "category": "军事",
+      "query": "美伊同意停火两周并展开谈判有哪些具体报道？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-f30fb8ecdf1e09be0b27",
+      "category": "军事",
+      "query": "美以打击伊朗及地区反应的进展与相关回应有哪些？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-f880583676308e0cab3f",
+      "category": "军事",
+      "query": "俄美乌阿布扎比三方安全会谈有哪些背景和细节报道？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-368f039a1fd7fa797970",
+      "category": "体育",
+      "query": "第20届亚运会连续报道有哪些具体报道？",
+      "pool_size": 14,
+      "missing_labels": 4,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-5fdf48cc99c8e0c3496e",
+      "category": "体育",
+      "query": "第十五届全国运动会连续报道的进展与相关回应有哪些？",
+      "pool_size": 16,
+      "missing_labels": 6,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-4593fdd41c9379b3be81",
+      "category": "体育",
+      "query": "2026米兰冬奥会连续报道有哪些背景和细节报道？",
+      "pool_size": 17,
+      "missing_labels": 7,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-353d0b0ef957f626033d",
+      "category": "游戏",
+      "query": "ChinaJoy2026中国国际数码互动娱乐展有哪些具体报道？",
+      "pool_size": 13,
+      "missing_labels": 3,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-fe82276ee5aaee1e9e45",
+      "category": "游戏",
+      "query": "2026科隆国际游戏展的进展与相关回应有哪些？",
+      "pool_size": 13,
+      "missing_labels": 3,
+      "metrics": null
+    },
+    {
+      "query_id": "annual-3b314af2149faa40de5d",
+      "category": "游戏",
+      "query": "2025年度至2026上半年中国游戏产业报告有哪些背景和细节报道？",
+      "pool_size": 12,
+      "missing_labels": 2,
+      "metrics": null
+    }
+  ]
+}
