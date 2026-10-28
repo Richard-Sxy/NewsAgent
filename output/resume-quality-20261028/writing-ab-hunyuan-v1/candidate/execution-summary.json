@@ -1,0 +1,28 @@
+{
+  "run_id": "bbce5502-4df8-42a4-aee1-4322d72f8bac",
+  "finished_at": "2026-10-28T06:59:42.300711+00:00",
+  "planned": 2,
+  "completed": 0,
+  "failed": 2,
+  "blocked": 0,
+  "not_run": 0,
+  "status": "incomplete",
+  "backend": "http",
+  "model_attempts": 2,
+  "abort_type": null,
+  "unattributed_attempts": 0,
+  "model_quality": "not_scored",
+  "production_acceptance": "not_approved",
+  "cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "status": "failed",
+      "execution_sha256": "f40826dcd140f8e8cdf63693b621820310b30c26930e4b9a92d780adab98b033"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "status": "failed",
+      "execution_sha256": "6576703fc17af5a333479017c2eb1e2c7958df2b4b75cd1fdda0026ec95b92db"
+    }
+  ]
+}

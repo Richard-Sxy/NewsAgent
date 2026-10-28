@@ -1,0 +1,41 @@
+{
+  "attempt": 1,
+  "elapsed_ms": 55707.368,
+  "error_code": "stage_failure",
+  "error_type": "AgentOutputValidationError",
+  "failure_kind": null,
+  "failure_stage": null,
+  "model_route": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "output": {
+    "conflicts": [],
+    "evidence_gaps": [],
+    "facts": [],
+    "job_id": "report-106da59fbb0041869f42838420961217",
+    "metrics": {
+      "angle_count": 0,
+      "average_confidence": 0.0,
+      "citation_coverage_percent": 0.0,
+      "conflict_count": 0,
+      "evidence_gap_count": 0,
+      "fact_count": 0,
+      "numeric_fact_count": 0,
+      "timeline_event_count": 0,
+      "unique_source_count": 0
+    },
+    "suggested_angles": [],
+    "timeline": [],
+    "topic": "OpenAI收入、亏损与上市计划解读"
+  },
+  "prompt_version": "native-writing-v1",
+  "raw_bytes": 3495,
+  "raw_sha256": "09612ede10e4a9086e3fcc6a55aad9d9c21877c82c7be8b7b8cfb5e3f7fb3f2f",
+  "request_id": "chatcmpl-b8195f1af90c48aea8f0853df309fbfd",
+  "stage": "research",
+  "status": "failed",
+  "trace_id": "d34be8d49a7b4b8c9ac7fbf99714e17b",
+  "usage": {
+    "completion_tokens": 1070,
+    "prompt_tokens": 3996,
+    "total_tokens": 5066
+  }
+}

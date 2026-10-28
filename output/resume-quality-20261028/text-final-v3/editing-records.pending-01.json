@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "experiment_id": "writing-final-20261028-v3",
+  "status": "pending_human_review",
+  "reviewer": null,
+  "reviewed_at": null,
+  "data_origin": "human_recorded",
+  "gold_sha256": "587d239c0a56c15488731c0d4f3aa5f19aa61b081d7e25674df199648de15b06",
+  "gold_status_at_template": "approved",
+  "criterion_version": "editor-ready-v1",
+  "criterion_text": "事实、数字、单位和期间正确；覆盖列出的必需事实和派生指标；来源可追溯；计划与近似值标识完整；无严重错误，满足任务和结构要求。",
+  "planned_cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS"
+    }
+  ],
+  "records": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "arm": "baseline",
+      "criterion_version": "editor-ready-v1",
+      "editor": null,
+      "source_run_id": "text-final-v3/baseline",
+      "draft_sha256": "842cfcf93a091ccb8f806c34957c3cbe33317cbf6ede4254616df730e386ebfe",
+      "edited_sha256": null,
+      "blind_id": "W314",
+      "order_index": null,
+      "started_at": null,
+      "finished_at": null,
+      "paused_seconds": null,
+      "reviewer": null,
+      "reviewed_at": null,
+      "meets_criterion": null,
+      "notes": ""
+    },
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "arm": "candidate",
+      "criterion_version": "editor-ready-v1",
+      "editor": null,
+      "source_run_id": "text-final-v3/candidate",
+      "draft_sha256": "a7f91cb4377c94b4ae3d003fc56feebd010532c7d8edc6e46898a5defbff1bf1",
+      "edited_sha256": null,
+      "blind_id": "W596",
+      "order_index": null,
+      "started_at": null,
+      "finished_at": null,
+      "paused_seconds": null,
+      "reviewer": null,
+      "reviewed_at": null,
+      "meets_criterion": null,
+      "notes": ""
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "arm": "baseline",
+      "criterion_version": "editor-ready-v1",
+      "editor": null,
+      "source_run_id": "text-final-v3/baseline",
+      "draft_sha256": "16a8d0f8d7383aa0c979345763213f01c6a87a7026943c286300cd528afb3202",
+      "edited_sha256": null,
+      "blind_id": "W142",
+      "order_index": null,
+      "started_at": null,
+      "finished_at": null,
+      "paused_seconds": null,
+      "reviewer": null,
+      "reviewed_at": null,
+      "meets_criterion": null,
+      "notes": ""
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "arm": "candidate",
+      "criterion_version": "editor-ready-v1",
+      "editor": null,
+      "source_run_id": "text-final-v3/candidate",
+      "draft_sha256": "b400e2270128790b1d33addb71f63b6904184a8998c563ffb0a865b9e7a9a267",
+      "edited_sha256": null,
+      "blind_id": "W827",
+      "order_index": null,
+      "started_at": null,
+      "finished_at": null,
+      "paused_seconds": null,
+      "reviewer": null,
+      "reviewed_at": null,
+      "meets_criterion": null,
+      "notes": ""
+    }
+  ],
+  "instructions": [
+    "Fill genuine editing times, never infer minutes from model latency.",
+    "Use the same completion criterion; active reading, evidence checking and correction count.",
+    "paused_seconds excludes interruptions/model waiting; overlapping pauses count only once.",
+    "Record blind IDs and each editor's positive order_index; balance arm order where possible.",
+    "Set data_origin to human_recorded, or synthetic_test for artificial fixtures.",
+    "A human signs status=approved after checking all records; this is not production approval."
+  ],
+  "package_sha256": "f2efedd0a9ffb813e44abb903cd70c23b000a561b0e3b0bf819d6c4fd5bb3f56",
+  "timing_note": "Server timestamps and saved events; no automatic quality approval. This does not independently prove actual human attention or editing."
+}

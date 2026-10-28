@@ -1,0 +1,29 @@
+{
+  "status": "preregistered_before_generation",
+  "event_groups": 2,
+  "complete_report_tasks": 2,
+  "planned_outputs_per_arm": 2,
+  "planned_outputs_total": 4,
+  "arms": [
+    "baseline",
+    "candidate"
+  ],
+  "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "context_tokens": 16384,
+  "max_output_tokens_per_call": 3072,
+  "max_calls_per_arm": 12,
+  "max_wall_seconds_per_arm": 3600,
+  "only_intended_difference": "research/section/assemble/review evidence-constraint prompts",
+  "scope": "local first-pass development pilot; no automatic revisions; no enterprise model",
+  "human_editing_order": "first case baseline,second case candidate,first case candidate,second case baseline; opaque IDs hide arms",
+  "scoring": "assistant draft annotations plus deterministic numeric checks; human approval separately required",
+  "training": false,
+  "sources_sha256": {
+    "agent/evaluation/run_report_pilot.py": "58e633287006a4a8b566d8832c5765c3ff57a129a73aea4052948572479f98af",
+    "agent/evaluation/report_pilot_core.py": "919ebe0749e71d57ef14e60cc4b6fe1f745254ec7ad7672afbe5f4ab8fb7ed5f",
+    "agent/evaluation/report_pilot_scoring.py": "660a4f40654a7effe499b4b50f56fcf2d1edb0718ba4d717100b3b6977e784b6",
+    "Hunyuan7B/scripts/serve_writing_eval.py": "9c919d1b02a5aa426b972e92bf82b50ada1d6728a57c6cd07c8e5cb590b08f62",
+    "agent/evaluation/config/report-pilot.hunyuan-baseline-20261028.yml": "40842f2405131b6ae96e153ec7d4e293415b3f5719f84a2376af9ca6f60fee74",
+    "agent/evaluation/config/report-pilot.hunyuan-candidate-20261028.yml": "858909b11c5ea7629332e5fc66fd71512fb4bdfa63c3bd0f57855c31f4873c8b"
+  }
+}

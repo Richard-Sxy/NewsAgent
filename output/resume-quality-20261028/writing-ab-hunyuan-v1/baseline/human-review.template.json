@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "run_id": "63085d9e-2192-4823-9a5f-e90fee560cc5",
+  "status": "pending_human_review",
+  "reviewer": null,
+  "reviewed_at": null,
+  "gold_sha256": "669b884ff3db48fba36701bff34f64deeeba1ab68a4648db018f34d38a1ee2ed",
+  "traces_sha256": "5cd9f9e06887f9831825f574b83920dba5ecb6e4697e05117cd1fb4cd1ece270",
+  "cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "trace_sha256": "fdece031ab25756bff3204d7eb538e0c4138e88223c8dc16218059465ae0ac2a",
+      "fact_checks": [
+        {
+          "fact_id": "F-TEN-REV",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-TEN-OP",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-TEN-FCF",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-TEN-FCF-ADJ",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-TEN-WB-OLD",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-TEN-WB-NEW",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "check_id": "WB-REL",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        }
+      ],
+      "critical_errors": null,
+      "usable": null,
+      "usable_note": "",
+      "reviewer_assessment": {
+        "draft_has_major_error": null,
+        "detected_major_error": null,
+        "false_alarm": null,
+        "issue_ids": [],
+        "output_quote": "",
+        "evidence_note": ""
+      }
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "trace_sha256": "319bee4c3593188dcb9409dc33d116a8edb397d81ee62f8da595963f8d389cb4",
+      "fact_checks": [
+        {
+          "fact_id": "F-OAI-PLAN",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-OAI-REV-Q2",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-OAI-REV-Q1",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q1",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q2",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "fact_id": "F-OAI-REPORTED-QOQ",
+          "correct": null,
+          "output_quote": "",
+          "evidence_note": ""
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "check_id": "REV-REL",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        },
+        {
+          "check_id": "LOSS-REL",
+          "correct_context": null,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": ""
+        }
+      ],
+      "critical_errors": null,
+      "usable": null,
+      "usable_note": "",
+      "reviewer_assessment": {
+        "draft_has_major_error": null,
+        "detected_major_error": null,
+        "false_alarm": null,
+        "issue_ids": [],
+        "output_quote": "",
+        "evidence_note": ""
+      }
+    }
+  ]
+}

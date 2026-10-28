@@ -1,0 +1,104 @@
+{
+  "automatic_retry": false,
+  "automatic_revision": false,
+  "case_id": "E01-TENCENT-Q2-REPORT",
+  "completed_stage_count": 0,
+  "event_group_id": "E01-TENCENT-Q2",
+  "failed_stage_count": 1,
+  "human_approval": false,
+  "input_sha256": "d31450e76aba25447a901626f64860c51beeeeb485e0e9cc9b35ae84af0d71a5",
+  "job_id": "report-bcb3bd0d9e3a4e979847d931d4d9417d",
+  "max_sections": 2,
+  "mode": "native_stages_first_pass_only",
+  "model_calls": 1,
+  "not_run_stage_count": 4,
+  "outputs": {
+    "draft": null,
+    "outline": null,
+    "research": {
+      "conflicts": [],
+      "evidence_gaps": [],
+      "facts": [],
+      "job_id": "report-bcb3bd0d9e3a4e979847d931d4d9417d",
+      "metrics": {
+        "angle_count": 0,
+        "average_confidence": 0.0,
+        "citation_coverage_percent": 0.0,
+        "conflict_count": 0,
+        "evidence_gap_count": 0,
+        "fact_count": 0,
+        "numeric_fact_count": 0,
+        "timeline_event_count": 0,
+        "unique_source_count": 0
+      },
+      "suggested_angles": [],
+      "timeline": [],
+      "topic": "腾讯二季度财报与数据口径解读"
+    },
+    "review": null,
+    "sections": []
+  },
+  "planned_stage_count": 5,
+  "quality_status": "pending_human_review",
+  "review_decision": null,
+  "source_urls_sha256": "3da534a63336f3e8d913e2ceb0a000d540c269eb2e0e527c26cb154183ef26b3",
+  "split": "development",
+  "stages": [
+    {
+      "artifact": "01-research.json",
+      "attempt": 1,
+      "elapsed_ms": 61922.586,
+      "error_code": "stage_failure",
+      "error_type": "AgentOutputValidationError",
+      "failure_kind": null,
+      "failure_stage": null,
+      "model_route": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "prompt_version": "native-writing-v1",
+      "raw_bytes": 3929,
+      "raw_sha256": "560ff2b17a9ec84968b4a81492447607c46372537d2aefb48a7a05b58b7b140a",
+      "request_id": "chatcmpl-90766a41ca9c4ed0a6b9680dcc615a24",
+      "sha256": "c5e31e06f6a38cdf7a07a1af74ad229ed6e3a8519eb11c61be464cb85667e410",
+      "stage": "research",
+      "status": "failed",
+      "trace_id": "38d1efc2ecb842bb95c9381e77f2276c",
+      "usage": {
+        "completion_tokens": 1207,
+        "prompt_tokens": 2896,
+        "total_tokens": 4103
+      }
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "outline",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "sections",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "assemble",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "review",
+      "status": "not_run",
+      "usage": {}
+    }
+  ],
+  "status": "failed"
+}

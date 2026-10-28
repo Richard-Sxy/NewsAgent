@@ -1,0 +1,193 @@
+{
+  "status": "assistant_review_provisional",
+  "human_approved": false,
+  "scope": "two development report tasks; local model; direct writing with Python metric appendix; not native RWR",
+  "events": 2,
+  "tasks": 2,
+  "paired_drafts": 4,
+  "formal_independent_test": false,
+  "metrics": {
+    "baseline": {
+      "core_fact_coverage": {
+        "count": 11,
+        "denominator": 12,
+        "rate": 0.9166666666666666
+      },
+      "required_numeric_pass": {
+        "count": 1,
+        "denominator": 6,
+        "rate": 0.16666666666666666
+      },
+      "critical_report_rate": {
+        "count": 1,
+        "denominator": 2,
+        "rate": 0.5
+      },
+      "required_check_failure_report_rate": {
+        "count": 2,
+        "denominator": 2,
+        "rate": 1.0
+      },
+      "usable_report_rate": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      }
+    },
+    "candidate": {
+      "core_fact_coverage": {
+        "count": 11,
+        "denominator": 12,
+        "rate": 0.9166666666666666
+      },
+      "required_numeric_pass": {
+        "count": 6,
+        "denominator": 6,
+        "rate": 1.0
+      },
+      "critical_report_rate": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      },
+      "required_check_failure_report_rate": {
+        "count": 1,
+        "denominator": 2,
+        "rate": 0.5
+      },
+      "usable_report_rate": {
+        "count": 0,
+        "denominator": 2,
+        "rate": 0.0
+      }
+    }
+  },
+  "source_metric_evidence_verified": 3,
+  "derived_numeric_values_recomputed": 6,
+  "per_draft": [
+    {
+      "blind_id": "W314",
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "arm": "baseline",
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "passed": false,
+          "expected": "18",
+          "observed": null
+        },
+        {
+          "check_id": "WB-REL",
+          "passed": false,
+          "expected": "25",
+          "observed": null
+        }
+      ],
+      "correct_facts": 5,
+      "critical_errors": 0
+    },
+    {
+      "blind_id": "W827",
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "arm": "candidate",
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "passed": true,
+          "expected": "10",
+          "observed": "10"
+        },
+        {
+          "check_id": "REV-REL",
+          "passed": true,
+          "expected": "17.54",
+          "observed": "17.54"
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "passed": true,
+          "expected": "30",
+          "observed": "30"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "passed": true,
+          "expected": "32.26",
+          "observed": "32.26"
+        }
+      ],
+      "correct_facts": 6,
+      "critical_errors": 0
+    },
+    {
+      "blind_id": "W596",
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "arm": "candidate",
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "passed": true,
+          "expected": "18",
+          "observed": "18"
+        },
+        {
+          "check_id": "WB-REL",
+          "passed": true,
+          "expected": "25",
+          "observed": "25"
+        }
+      ],
+      "correct_facts": 5,
+      "critical_errors": 0
+    },
+    {
+      "blind_id": "W142",
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "arm": "baseline",
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "passed": false,
+          "expected": "10",
+          "observed": null
+        },
+        {
+          "check_id": "REV-REL",
+          "passed": false,
+          "expected": "17.54",
+          "observed": null
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "passed": true,
+          "expected": "30",
+          "observed": "30"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "passed": false,
+          "expected": "32.26",
+          "observed": null
+        }
+      ],
+      "correct_facts": 6,
+      "critical_errors": 1
+    }
+  ],
+  "human_editing_minutes": null,
+  "valid_as_human_reviewed_resume_metrics": false,
+  "limitations": [
+    "AI semantic proposals still require user confirmation",
+    "source table correctness does not prove narrative or final report usability",
+    "candidate contains a deterministic computed appendix; this is not a Prompt-only effect",
+    "two development cases; revisions were designed after observing development failures",
+    "source citations and one required cash-flow fact still need human editing",
+    "real manual editing time is collected separately, never inferred from model elapsed time"
+  ],
+  "evidence_sha256": {
+    "agent/evaluation/datasets/writing/report_pilot_v1/private/gold-review.json": "587d239c0a56c15488731c0d4f3aa5f19aa61b081d7e25674df199648de15b06",
+    "output/resume-quality-20261028/text-final-v3/assistant-review.proposal.json": "17f3f5dc519e841979e74419042ce7b46b79bd12ddc6ea8804b2eea3a1207764",
+    "output/resume-quality-20261028/text-final-v3/editing-tasks.json": "f2efedd0a9ffb813e44abb903cd70c23b000a561b0e3b0bf819d6c4fd5bb3f56",
+    "output/resume-quality-20261028/text-final-v3/verify_provisional_metrics.py": "26ad658a72983bd03d50ad5f9190162c9a9a714a0c3249f53618dbdbdc48ff76"
+  }
+}

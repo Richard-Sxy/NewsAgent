@@ -1,0 +1,41 @@
+{
+  "attempt": 1,
+  "elapsed_ms": 61922.586,
+  "error_code": "stage_failure",
+  "error_type": "AgentOutputValidationError",
+  "failure_kind": null,
+  "failure_stage": null,
+  "model_route": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "output": {
+    "conflicts": [],
+    "evidence_gaps": [],
+    "facts": [],
+    "job_id": "report-bcb3bd0d9e3a4e979847d931d4d9417d",
+    "metrics": {
+      "angle_count": 0,
+      "average_confidence": 0.0,
+      "citation_coverage_percent": 0.0,
+      "conflict_count": 0,
+      "evidence_gap_count": 0,
+      "fact_count": 0,
+      "numeric_fact_count": 0,
+      "timeline_event_count": 0,
+      "unique_source_count": 0
+    },
+    "suggested_angles": [],
+    "timeline": [],
+    "topic": "腾讯二季度财报与数据口径解读"
+  },
+  "prompt_version": "native-writing-v1",
+  "raw_bytes": 3929,
+  "raw_sha256": "560ff2b17a9ec84968b4a81492447607c46372537d2aefb48a7a05b58b7b140a",
+  "request_id": "chatcmpl-90766a41ca9c4ed0a6b9680dcc615a24",
+  "stage": "research",
+  "status": "failed",
+  "trace_id": "38d1efc2ecb842bb95c9381e77f2276c",
+  "usage": {
+    "completion_tokens": 1207,
+    "prompt_tokens": 2896,
+    "total_tokens": 4103
+  }
+}

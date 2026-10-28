@@ -1,0 +1,23 @@
+{
+  "case_id": "E01-TENCENT-Q2-REPORT",
+  "event_group_id": "E01-TENCENT-Q2",
+  "arm": "baseline",
+  "started_at": "2026-10-28T07:01:07.285083+00:00",
+  "request_sha256": "e7348778efa83de8b9a044a05f105b4236a9ec23203ac5ba3d1a5252018413ca",
+  "public_input_sha256": "7e752718b8d9aad5cb51e858f065f959504b97f167143891e97d88fa82cd6e84",
+  "request_attempts": 1,
+  "status": "completed",
+  "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+  "response_sha256": "3a15107b8cd3e4e5cd24e0a155aba15fd6359284501379fb543314ad4af187d2",
+  "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 1703,
+    "completion_tokens": 610,
+    "total_tokens": 2313
+  },
+  "draft_sha256": "842cfcf93a091ccb8f806c34957c3cbe33317cbf6ede4254616df730e386ebfe",
+  "finished_at": "2026-10-28T07:01:39.536914+00:00",
+  "reused_from": "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-ab-v1/cases/E01-TENCENT-Q2-REPORT/baseline/draft.md",
+  "new_model_calls": 0
+}

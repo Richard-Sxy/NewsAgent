@@ -1,0 +1,81 @@
+{
+  "automatic_retry": false,
+  "automatic_revision": false,
+  "case_id": "E07-OPENAI-BUSINESS-REPORT",
+  "completed_stage_count": 0,
+  "event_group_id": "E07-OPENAI-BUSINESS",
+  "failed_stage_count": 1,
+  "human_approval": false,
+  "input_sha256": "43505510746ce8d8ce948d65a5a834dba5b4aba27b73363be1b498986c5da394",
+  "job_id": "report-7056ce373edd413bbaffab5ba169cd3f",
+  "max_sections": 2,
+  "mode": "native_stages_first_pass_only",
+  "model_calls": 1,
+  "not_run_stage_count": 4,
+  "outputs": {
+    "draft": null,
+    "outline": null,
+    "research": null,
+    "review": null,
+    "sections": []
+  },
+  "planned_stage_count": 5,
+  "quality_status": "pending_human_review",
+  "review_decision": null,
+  "source_urls_sha256": "7516230a8227987a5e7bc00164073c30b67d44b432c9c7d4bd6a254445ec5487",
+  "split": "development",
+  "stages": [
+    {
+      "artifact": "01-research.json",
+      "attempt": 1,
+      "elapsed_ms": 107634.853,
+      "error_code": "stage_failure",
+      "error_type": "AgentOutputValidationError",
+      "failure_kind": "invalid_json",
+      "failure_stage": "response_decode",
+      "model_route": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "prompt_version": "native-writing-evidence-v2-20261028",
+      "raw_bytes": 7788,
+      "raw_sha256": "2e16ebe318e8716a10d13945209bbf683a221c01dbfd220a089e94f2295c06ba",
+      "request_id": "chatcmpl-78fcd19153b34c418303f6004d912aa5",
+      "sha256": "fcabea6a1b98034f3cdf0cfa77613ff02c609ce4c2efa0eb67476968d2e1a4dd",
+      "stage": "research",
+      "status": "failed",
+      "trace_id": "bff6cc10452845cf901a79db9b4364c4",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "outline",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "sections",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "assemble",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "review",
+      "status": "not_run",
+      "usage": {}
+    }
+  ],
+  "status": "failed"
+}

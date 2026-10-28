@@ -1,0 +1,104 @@
+{
+  "status": "completed",
+  "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+  "finished_at": "2026-10-28T07:03:09.634630+00:00",
+  "planned_tasks": 2,
+  "planned_requests": 4,
+  "attempted_requests": 4,
+  "completed_requests": 4,
+  "failed_requests": 0,
+  "not_run": 0,
+  "requests": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "arm": "baseline",
+      "started_at": "2026-10-28T07:01:07.285083+00:00",
+      "request_sha256": "e7348778efa83de8b9a044a05f105b4236a9ec23203ac5ba3d1a5252018413ca",
+      "public_input_sha256": "7e752718b8d9aad5cb51e858f065f959504b97f167143891e97d88fa82cd6e84",
+      "request_attempts": 1,
+      "status": "completed",
+      "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+      "response_sha256": "3a15107b8cd3e4e5cd24e0a155aba15fd6359284501379fb543314ad4af187d2",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1703,
+        "completion_tokens": 610,
+        "total_tokens": 2313
+      },
+      "draft_sha256": "842cfcf93a091ccb8f806c34957c3cbe33317cbf6ede4254616df730e386ebfe",
+      "finished_at": "2026-10-28T07:01:39.536914+00:00"
+    },
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "arm": "candidate",
+      "started_at": "2026-10-28T07:01:39.537571+00:00",
+      "request_sha256": "197280ec15ad7359515fe228309cf99fa511813cffc1535bc6b640d1043dd51e",
+      "public_input_sha256": "7e752718b8d9aad5cb51e858f065f959504b97f167143891e97d88fa82cd6e84",
+      "request_attempts": 1,
+      "status": "completed",
+      "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+      "response_sha256": "ef9bc20ce4a5f2c5a86ea95e3a1901799c06d709a10c699ff872d6b9a486d28f",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 1807,
+        "completion_tokens": 815,
+        "total_tokens": 2622
+      },
+      "draft_sha256": "c1a754982122e95922cf53e22b34ceda02aeeb2e8c0a996459605fc175ca3c81",
+      "finished_at": "2026-10-28T07:02:21.012264+00:00"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "arm": "baseline",
+      "started_at": "2026-10-28T07:02:21.013735+00:00",
+      "request_sha256": "fd2b242c40263115efb94d4613236e668a87fc9f788772517a5d84cb0c43a527",
+      "public_input_sha256": "0fa9cf2d6484a013a5103809bf6460f10bc02c6e43dcac405b0048035a91b31a",
+      "request_attempts": 1,
+      "status": "completed",
+      "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+      "response_sha256": "360ac5dad178f3e683e8ee682e075c4c1556ba8144cd6aab3af1ab54d3c542a3",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 2802,
+        "completion_tokens": 559,
+        "total_tokens": 3361
+      },
+      "draft_sha256": "16a8d0f8d7383aa0c979345763213f01c6a87a7026943c286300cd528afb3202",
+      "finished_at": "2026-10-28T07:02:50.691798+00:00"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "arm": "candidate",
+      "started_at": "2026-10-28T07:02:50.692930+00:00",
+      "request_sha256": "c38f996e19b8a63752153c586105500ae0d2648cf6fd199060979d90278c81e7",
+      "public_input_sha256": "0fa9cf2d6484a013a5103809bf6460f10bc02c6e43dcac405b0048035a91b31a",
+      "request_attempts": 1,
+      "status": "completed",
+      "scope": "direct writing Prompt development pilot, not native RWR pipeline",
+      "response_sha256": "d2deeafec4bd3c270d59abcb1c8b1e20bda107db3b35a84c22733bde088ac8d5",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 2906,
+        "completion_tokens": 351,
+        "total_tokens": 3257
+      },
+      "draft_sha256": "57cf63f0aa65fee11c263ff957d812997208b1fc8379e13ad507d0b1e02570da",
+      "finished_at": "2026-10-28T07:03:09.634440+00:00"
+    }
+  ],
+  "scoring": "not_performed",
+  "human_editing_time": null,
+  "limitations": [
+    "two development tasks",
+    "direct text generation, not the native RWR pipeline",
+    "no injected errors, no automatic review approval, no human editing times inferred"
+  ]
+}

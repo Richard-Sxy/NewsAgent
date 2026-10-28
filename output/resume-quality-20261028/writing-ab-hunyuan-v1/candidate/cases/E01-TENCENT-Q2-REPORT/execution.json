@@ -1,0 +1,81 @@
+{
+  "automatic_retry": false,
+  "automatic_revision": false,
+  "case_id": "E01-TENCENT-Q2-REPORT",
+  "completed_stage_count": 0,
+  "event_group_id": "E01-TENCENT-Q2",
+  "failed_stage_count": 1,
+  "human_approval": false,
+  "input_sha256": "d31450e76aba25447a901626f64860c51beeeeb485e0e9cc9b35ae84af0d71a5",
+  "job_id": "report-e56651584b974187a7fc9fcc83b19fda",
+  "max_sections": 2,
+  "mode": "native_stages_first_pass_only",
+  "model_calls": 1,
+  "not_run_stage_count": 4,
+  "outputs": {
+    "draft": null,
+    "outline": null,
+    "research": null,
+    "review": null,
+    "sections": []
+  },
+  "planned_stage_count": 5,
+  "quality_status": "pending_human_review",
+  "review_decision": null,
+  "source_urls_sha256": "3da534a63336f3e8d913e2ceb0a000d540c269eb2e0e527c26cb154183ef26b3",
+  "split": "development",
+  "stages": [
+    {
+      "artifact": "01-research.json",
+      "attempt": 1,
+      "elapsed_ms": 101850.585,
+      "error_code": "stage_failure",
+      "error_type": "AgentOutputValidationError",
+      "failure_kind": "invalid_json",
+      "failure_stage": "response_decode",
+      "model_route": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "prompt_version": "native-writing-evidence-v2-20261028",
+      "raw_bytes": 7788,
+      "raw_sha256": "2e16ebe318e8716a10d13945209bbf683a221c01dbfd220a089e94f2295c06ba",
+      "request_id": "chatcmpl-79a8aabb32d540f3a33d363645944c00",
+      "sha256": "9cfdd57d37a8df1eb78fc9baeca87e9ddba5ba33746595954d5143e4044f1eeb",
+      "stage": "research",
+      "status": "failed",
+      "trace_id": "b2ecd4edfb364bbd9f87164a3434a998",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "outline",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "sections",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "assemble",
+      "status": "not_run",
+      "usage": {}
+    },
+    {
+      "elapsed_ms": 0.0,
+      "reason": "upstream_not_completed",
+      "request_id": null,
+      "stage": "review",
+      "status": "not_run",
+      "usage": {}
+    }
+  ],
+  "status": "failed"
+}

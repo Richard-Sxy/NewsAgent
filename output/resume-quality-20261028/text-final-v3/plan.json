@@ -1,0 +1,29 @@
+{
+  "status": "preregistered_before_assembly",
+  "prepared_at": "2026-10-28T07:27:44.961623+00:00",
+  "scope": "development raw-material writing versus public-source Python metrics + writing + deterministic numeric appendix; not native RWR",
+  "source_run": "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-snapshot-v2",
+  "source_plan_sha256": "8b14d09dbb271eaed97cf59703141665b5f665b7bd5a645089f254f8a743a51c",
+  "gold_reference": {
+    "path": "/home/shi/project/NewsAgent/agent/evaluation/datasets/writing/report_pilot_v1/private/gold-review.json",
+    "sha256": "587d239c0a56c15488731c0d4f3aa5f19aa61b081d7e25674df199648de15b06",
+    "status": "approved",
+    "case_ids": [
+      "E01-TENCENT-Q2-REPORT",
+      "E07-OPENAI-BUSINESS-REPORT"
+    ]
+  },
+  "planned_tasks": 2,
+  "new_model_calls": 0,
+  "transformation": "Append every extracted public-source metric as a correctly unit-labelled table, preserving the model narrative and all original drafts.",
+  "source_drafts_sha256": {
+    "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-snapshot-v2/cases/E01-TENCENT-Q2-REPORT/baseline/draft.md": "842cfcf93a091ccb8f806c34957c3cbe33317cbf6ede4254616df730e386ebfe",
+    "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-snapshot-v2/cases/E01-TENCENT-Q2-REPORT/candidate/draft.md": "5a7d43504828523d5dfa755be7ec7fd4e123be9bb97d95298db390f8145079ec",
+    "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-snapshot-v2/cases/E07-OPENAI-BUSINESS-REPORT/baseline/draft.md": "16a8d0f8d7383aa0c979345763213f01c6a87a7026943c286300cd528afb3202",
+    "/home/shi/project/NewsAgent/output/resume-quality-20261028/text-snapshot-v2/cases/E07-OPENAI-BUSINESS-REPORT/candidate/draft.md": "dd2c5981c816dd271aa271f8535dd3c4524e90c589c57ee3522d640736c324c6"
+  },
+  "snapshots_sha256": "fef9df2593c4f555b7e6876765921fdda10370cc0293220909c4e5f0651dd6db",
+  "source_script_sha256": "155c714ad6cbb55474a94d7b5deb643c524afbbb691d8b964ed6ec0f7ab911a9",
+  "quality": "pending independent review",
+  "human_editing_minutes": null
+}

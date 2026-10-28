@@ -259,3 +259,14 @@ dataset_version, model_version, code_sha256, evidence_paths, valid_for_resume, l
 - [ ] 修订时间：已生成2任务/4条待填记录；用editing_time保存实际计时并统计，缺失/未审核不算0。
 - [ ] LoRA：36条仍为development/draft，需分组审核train/validation/test、真实训练adapter并对齐量化推理。
 新增计时工具12项合成合同测试通过；真实C/D仍未知。新方案含精确入口、配置、调用链、依赖、产物和TODO。
+
+
+## 写作A/B实际执行与人工计时入口（2026-10-28）
+
+- [x] 两例gold已用户确认，真实本地Hunyuan原生A/B已运行但均在Research失败，保留全部失败。
+- [x] 直接写作v1四稿、公开指标快照v2两候选稿已真实生成；最终v3四篇配对稿已装配。
+- [x] 3项来源度量、6个派生数值独立复算通过；数值检查1/6→6/6，严重错期稿1/2→0/2仅为待人工确认的助手初评。
+- [x] 本批180项相关离线合同回归通过。
+- [ ] 用户在http://127.0.0.1:8881/实际完成四稿编辑、暂停/结束，并确认统一交付质量。
+- [ ] 用户确认助手评分；从真实事件导出并计算C/D分钟，未完成保持未知，不填0。
+说明：agent/docs/writing-ab-20261028.md；简历表述：output/resume-quality-20261028/text-final-v3/resume-ready.md。

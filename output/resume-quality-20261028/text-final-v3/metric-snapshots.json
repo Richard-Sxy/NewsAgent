@@ -1,0 +1,172 @@
+{
+  "E01-TENCENT-Q2-REPORT": {
+    "schema_version": 1,
+    "scope": "narrow_regex_pilot",
+    "rules_version": "public-source-three-patterns-20261028-v1",
+    "public_input_sha256": "7e752718b8d9aad5cb51e858f065f959504b97f167143891e97d88fa82cd6e84",
+    "metrics": [
+      {
+        "metric_id": "metric-7d8dee939fdc5dbed57e",
+        "rule_id": "percentage_transition",
+        "metric_label": "来源中明确陈述的百分比变化",
+        "base_value": "72",
+        "current_value": "90",
+        "unit": "%",
+        "from_period": null,
+        "to_period": null,
+        "absolute_change": {
+          "value": "18",
+          "unit": "个百分点",
+          "display": "18个百分点",
+          "formula": "current_value - base_value"
+        },
+        "relative_change": {
+          "value": "25.00",
+          "unit": "%",
+          "display": "25.00%",
+          "formula": "(current_value - base_value) / base_value * 100"
+        },
+        "approximate": false,
+        "operand_approximate": {
+          "base": false,
+          "current": false
+        },
+        "semantic_note": "绝对变化是百分点，相对变化是相对基数的百分比；二者不可混用。主体和期间由所引原文确定。",
+        "evidence": {
+          "source_id": "S-TENCENT",
+          "source_url": "https://news.qq.com/rain/a/20260812A0BLLJ00",
+          "source_content_sha256": "9163f7101ecc6ba861c10e6001830e2d285a051543e39f2b0b66df87c3ef16bd",
+          "quote": "重要路径。目前Hy3已迅速接入WorkBuddy、CodeBuddy、元宝、ima、Marvis等产品，并带来明显的体验改善。其中，WorkBuddy任务解决率由72%提升至90%。模型能力提升带来了调用量的迅速攀升。以OpenRouter的Token消耗量计，Hy3自推出以来持续位列全球前三。此外，Hy3日均Token用量是previe",
+          "quote_start": 1319,
+          "quote_end": 1489,
+          "quote_sha256": "e3f069342f3a530dfeb71765f93c40edfb1ed603a2905713cfb075f4038fd7f6",
+          "matched_text": "由72%提升至90%",
+          "match_start": 1399,
+          "match_end": 1409,
+          "offset_unit": "unicode_codepoints"
+        }
+      }
+    ],
+    "gaps": [
+      {
+        "code": "rule_not_matched",
+        "rule_id": "q1_q2_revenue",
+        "note": "所给来源未匹配该窄规则；不等于该任务缺少必需事实。"
+      },
+      {
+        "code": "rule_not_matched",
+        "rule_id": "operating_loss_magnitude",
+        "note": "所给来源未匹配该窄规则；不等于该任务缺少必需事实。"
+      }
+    ],
+    "limitations": [
+      "只实现三个显式文字模式，不是通用数仓或新闻指标抽取器。",
+      "缺口只说明规则未匹配或计算条件不足，不据此判定任务缺少必需事实。",
+      "计算相对于给定来源，不独立核真来源；近似或取整输入的派生结果仍为近似值。",
+      "重复来源或多个匹配分别保留证据，不将匹配条数当成独立事件数量。"
+    ]
+  },
+  "E07-OPENAI-BUSINESS-REPORT": {
+    "schema_version": 1,
+    "scope": "narrow_regex_pilot",
+    "rules_version": "public-source-three-patterns-20261028-v1",
+    "public_input_sha256": "0fa9cf2d6484a013a5103809bf6460f10bc02c6e43dcac405b0048035a91b31a",
+    "metrics": [
+      {
+        "metric_id": "metric-35052fa05e29a145cd47",
+        "rule_id": "q1_q2_revenue",
+        "metric_label": "营收",
+        "base_value": "57",
+        "current_value": "67",
+        "unit": "亿美元",
+        "from_period": "Q1",
+        "to_period": "Q2",
+        "absolute_change": {
+          "value": "10",
+          "unit": "亿美元",
+          "display": "10亿美元",
+          "formula": "current_value - base_value"
+        },
+        "relative_change": {
+          "value": "17.54",
+          "unit": "%",
+          "display": "17.54%",
+          "formula": "(current_value - base_value) / base_value * 100"
+        },
+        "approximate": true,
+        "operand_approximate": {
+          "base": true,
+          "current": false
+        },
+        "semantic_note": "这是所给来源营收数值的差额和相对变化，不是年化营收或利润；年份不由本规则推断。 基数含近似或取整限定；不要用派生值与报道取整差异证明来源错误。",
+        "evidence": {
+          "source_id": "S-OPENAI-GROWTH",
+          "source_url": "https://news.qq.com/rain/a/20260820A0A9DO00",
+          "source_content_sha256": "7245bd364ccaa5044efabc87c9f8de27eec911c8b0807f26e09de46182a4ad38",
+          "quote": "作者｜张贝贝\n编辑｜丁萍\n头图｜AI制图\nOpenAI的万亿美元估值，正在迎来一次关键压力测试。\n2026年第二季度，OpenAI交出了一份令市场紧绷的成绩单。营收从Q1的约57亿美元涨到Q2的67亿美元，环比仅增长18%，较一季度35.7%的环比增速近乎腰斩；营业亏损更是从第一季度的93亿美元扩大至123亿美元。也就是说，OpenAI距离盈利依然遥远。\n这组数",
+          "quote_start": 22,
+          "quote_end": 204,
+          "quote_sha256": "53f4165cfb8945d3131a1d60a2863336474a8e8d9d5ddbee1a7661b3469d0dc1",
+          "matched_text": "营收从Q1的约57亿美元涨到Q2的67亿美元",
+          "match_start": 102,
+          "match_end": 124,
+          "offset_unit": "unicode_codepoints"
+        }
+      },
+      {
+        "metric_id": "metric-366ff87fed67e7e5b0a1",
+        "rule_id": "operating_loss_magnitude",
+        "metric_label": "营业亏损规模",
+        "base_value": "93",
+        "current_value": "123",
+        "unit": "亿美元",
+        "from_period": "第一季度",
+        "to_period": null,
+        "absolute_change": {
+          "value": "30",
+          "unit": "亿美元",
+          "display": "30亿美元",
+          "formula": "current_value - base_value"
+        },
+        "relative_change": {
+          "value": "32.26",
+          "unit": "%",
+          "display": "32.26%",
+          "formula": "(current_value - base_value) / base_value * 100"
+        },
+        "approximate": false,
+        "operand_approximate": {
+          "base": false,
+          "current": false
+        },
+        "semantic_note": "正数表示亏损规模；扩大表示亏损增加，不是利润增长，也不等同净利润或净亏损。扩大后期间须结合原文，规则不自行推断。",
+        "evidence": {
+          "source_id": "S-OPENAI-GROWTH",
+          "source_url": "https://news.qq.com/rain/a/20260820A0A9DO00",
+          "source_content_sha256": "7245bd364ccaa5044efabc87c9f8de27eec911c8b0807f26e09de46182a4ad38",
+          "quote": "26年第二季度，OpenAI交出了一份令市场紧绷的成绩单。营收从Q1的约57亿美元涨到Q2的67亿美元，环比仅增长18%，较一季度35.7%的环比增速近乎腰斩；营业亏损更是从第一季度的93亿美元扩大至123亿美元。也就是说，OpenAI距离盈利依然遥远。\n这组数据之所以引发市场较多讨论，是因为它暴露出一个此前被高速增长掩盖的问题：OpenAI何时才能盈利？以及，它目前的",
+          "quote_start": 73,
+          "quote_end": 259,
+          "quote_sha256": "1ef547e9a5c84ea28c8607a050f2378b176f4bf476eec1116b9ca2f368e4583f",
+          "matched_text": "营业亏损更是从第一季度的93亿美元扩大至123亿美元",
+          "match_start": 153,
+          "match_end": 179,
+          "offset_unit": "unicode_codepoints"
+        }
+      }
+    ],
+    "gaps": [
+      {
+        "code": "rule_not_matched",
+        "rule_id": "percentage_transition",
+        "note": "所给来源未匹配该窄规则；不等于该任务缺少必需事实。"
+      }
+    ],
+    "limitations": [
+      "只实现三个显式文字模式，不是通用数仓或新闻指标抽取器。",
+      "缺口只说明规则未匹配或计算条件不足，不据此判定任务缺少必需事实。",
+      "计算相对于给定来源，不独立核真来源；近似或取整输入的派生结果仍为近似值。",
+      "重复来源或多个匹配分别保留证据，不将匹配条数当成独立事件数量。"
+    ]
+  }
+}

@@ -25,6 +25,9 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DATASET = Path(__file__).parent / "datasets/writing/report_pilot_v1"
 DEFAULT_CONFIG = Path(__file__).parent / "config/report-pilot.deepseek.yml"
 SCENES = ("research", "outline", "section", "revise", "assemble", "review")
+LOCAL_WRITING_URL = "http://127.0.0.1:8018/v1/chat/completions"
+LOCAL_WRITING_MODEL = "local-hunyuan-7b-6fd6ecb-nf4-writing"
+LOCAL_WRITING_KEY_ENV = "NEWSAGENT_LOCAL_WRITING_API_KEY"
 FROZEN_FILES = {"inputs.json", "gold.json"}
 
 
@@ -137,6 +140,31 @@ def init_labels(args) -> dict:
     return {"status": "pending_human_review", "cases": len(rows), "path": str(args.output_file.resolve())}
 
 
+def _local_writing_profile(config) -> bool:
+    """Only the dedicated loopback, pinned model and unconstrained JSON-text route."""
+    endpoint = config.inference
+    return (
+        endpoint.provider == "openai_compatible"
+        and str(endpoint.url) == LOCAL_WRITING_URL
+        and endpoint.api_key_env == LOCAL_WRITING_KEY_ENV
+        and endpoint.model_routes == (LOCAL_WRITING_MODEL,)
+        and endpoint.response_format == "none"
+        and all(config.agent_scene(scene).model_route == LOCAL_WRITING_MODEL for scene in SCENES)
+    )
+
+
+def _execution_api_key(config) -> str:
+    """The isolated local endpoint uses a public placeholder, never a real key."""
+    if _local_writing_profile(config):
+        return "local-only"
+    key = os.environ.get("DEEPSEEK_API_KEY", "")
+    if not key:
+        if not sys.stdin.isatty():
+            raise ValueError("set DEEPSEEK_API_KEY in your controlled environment or run interactively")
+        key = getpass.getpass("DeepSeek API key (hidden, not saved): ")
+    return key
+
+
 def safe_config(path: Path):
     from app.model_runtime.config_file import load_model_runtime_config
     # Only the dedicated public evaluation directory is an accepted config source.
@@ -148,11 +176,17 @@ def safe_config(path: Path):
     for scene in SCENES:
         config.agent_scene(scene)
     endpoint = config.inference
-    if (endpoint.provider != "openai_compatible" or
-            str(endpoint.url) != "https://api.deepseek.com/v1/chat/completions" or
-            endpoint.api_key_env != "DEEPSEEK_API_KEY"):
-        raise ValueError("this public-material pilot requires the explicit DeepSeek endpoint/key variable")
-    if set(endpoint.extra_body) - {"thinking", "max_tokens"}:
+    local_profile = _local_writing_profile(config)
+    deepseek_profile = (
+        endpoint.provider == "openai_compatible"
+        and str(endpoint.url) == "https://api.deepseek.com/v1/chat/completions"
+        and endpoint.api_key_env == "DEEPSEEK_API_KEY"
+    )
+    if not (local_profile or deepseek_profile):
+        raise ValueError("this public-material pilot requires the explicit DeepSeek endpoint/key variable "
+                         "or the fixed loopback Hunyuan writing profile")
+    allowed_extra = {"max_tokens"} if local_profile else {"thinking", "max_tokens"}
+    if set(endpoint.extra_body) - allowed_extra:
         raise ValueError("unexpected inference body fields")
     cap = endpoint.extra_body.get("max_tokens")
     if type(cap) is not int or not 1 <= cap <= 8192:
@@ -449,7 +483,7 @@ def parser() -> argparse.ArgumentParser:
     prep.add_argument("--exploratory", action="store_true")
     prep.add_argument("--max-calls", type=int)
     prep.add_argument("--max-wall-seconds", type=float, default=1800)
-    run = sub.add_parser("run", help="call real DeepSeek, save stages; no automatic retry")
+    run = sub.add_parser("run", help="call real DeepSeek or the fixed loopback Hunyuan profile; no automatic retry")
     run.add_argument("--run-dir", type=Path, required=True)
     review = sub.add_parser("review-template", help="create another independent human review form; offline")
     review.add_argument("--run-dir", type=Path, required=True)
@@ -471,12 +505,8 @@ def main() -> None:
     try:
         if args.command == "run":
             run_dir = args.run_dir.resolve()
-            verify(run_dir, for_execution=True)
-            key = os.environ.get("DEEPSEEK_API_KEY", "")
-            if not key:
-                if not sys.stdin.isatty():
-                    raise ValueError("set DEEPSEEK_API_KEY in your controlled environment or run interactively")
-                key = getpass.getpass("DeepSeek API key (hidden, not saved): ")
+            spec = verify(run_dir, for_execution=True)
+            key = _execution_api_key(safe_config(Path(spec["config"]["path"])))
             result = asyncio.run(execute(run_dir, key))
         else:
             result = {"init-labels": init_labels, "prepare": prepare, "review-template": review_template,

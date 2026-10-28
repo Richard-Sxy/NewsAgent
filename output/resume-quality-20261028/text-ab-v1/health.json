@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+  "quantization": "nf4-double-quant",
+  "compute_dtype": "bfloat16",
+  "context_tokens": 16384,
+  "max_output_tokens": 3072,
+  "model_path": "/home/shi/project/NewsAgent/Hunyuan7B/models/Hunyuan-7B-Instruct",
+  "device": "NVIDIA GeForce RTX 4070",
+  "torch": "2.9.1+cu128",
+  "transformers": "4.57.6",
+  "asset_manifest_sha256": "6a1c1caacb82d6b861ad8e4c960582b6c2bb90567cf271f0610c1c80ec02e982",
+  "scope": "isolated local real-model writing pilot; no LoRA or enterprise acceptance"
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "reviewer": "chat_user",
+  "reviewed_at": "2026-10-28T13:55:19+08:00",
+  "inputs_sha256": "2a51afd0d6369472a35453fb3fdd251d6556a0d1542b5cc9f55e7ce083cc4794",
+  "cases": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "split": "development",
+      "source_facts": [
+        {
+          "fact_id": "F-TEN-REV",
+          "statement": "缓存报道所述：腾讯2026年二季度营收2047.9亿元。",
+          "value": "2047.9",
+          "unit": "亿元",
+          "source_id": "S-TENCENT",
+          "source_url": "https://news.qq.com/rain/a/20260812A0BLLJ00",
+          "locator": "content.chars[50:60]"
+        },
+        {
+          "fact_id": "F-TEN-OP",
+          "statement": "缓存报道所述：同期Non-IFRS经营利润756.4亿元。",
+          "value": "756.4",
+          "unit": "亿元",
+          "source_id": "S-TENCENT",
+          "source_url": "https://news.qq.com/rain/a/20260812A0BLLJ00",
+          "locator": "content.chars[77:88]"
+        },
+        {
+          "fact_id": "F-TEN-WB-OLD",
+          "statement": "缓存报道所述：WorkBuddy任务解决率的前值为72%。",
+          "value": "72",
+          "unit": "%",
+          "source_id": "S-TENCENT",
+          "source_url": "https://news.qq.com/rain/a/20260812A0BLLJ00",
+          "locator": "content.chars[1399:1409]"
+        },
+        {
+          "fact_id": "F-TEN-WB-NEW",
+          "statement": "缓存报道所述：WorkBuddy任务解决率提升至90%。",
+          "value": "90",
+          "unit": "%",
+          "source_id": "S-TENCENT",
+          "source_url": "https://news.qq.com/rain/a/20260812A0BLLJ00",
+          "locator": "content.chars[1399:1409]"
+        },
+        {
+          "fact_id": "F-TEN-FCF",
+          "statement": "缓存报道所述：腾讯2026年二季度自由现金流为负138亿元。",
+          "value": "-138",
+          "unit": "亿元",
+          "source_id": "S-TENCENT-CASH",
+          "source_url": "https://news.qq.com/rain/a/20260812A0C2Q700",
+          "locator": "content.chars[118:130]"
+        },
+        {
+          "fact_id": "F-TEN-FCF-ADJ",
+          "statement": "缓存报道所述：剔除算力采购预付款项后的自由现金流为376亿元。",
+          "value": "376",
+          "unit": "亿元",
+          "source_id": "S-TENCENT-CASH",
+          "source_url": "https://news.qq.com/rain/a/20260812A0C2Q700",
+          "locator": "content.chars[156:169]"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "expected_value": "18",
+          "operands": [
+            "F-TEN-WB-NEW",
+            "F-TEN-WB-OLD"
+          ],
+          "operation": "percentage_point_delta",
+          "tolerance": "0.01",
+          "unit": "个百分点"
+        },
+        {
+          "check_id": "WB-REL",
+          "expected_value": "25",
+          "operands": [
+            "F-TEN-WB-NEW",
+            "F-TEN-WB-OLD"
+          ],
+          "operation": "relative_change_percent",
+          "tolerance": "0.01",
+          "unit": "%"
+        }
+      ],
+      "critical_error_definition": "建议：捏造或误述核心事实、金额/单位/期间/同比环比口径错误、把亏损写成利润、把缓存转述写成已独立核实的事实，或违反本例禁止断言并实质改变结论，属于严重错误。请审核者结合具体样本修改并确认。",
+      "usable_definition": "建议：研究覆盖全部必需事实，成稿数字、单位和比较口径正确，保留来源归属与必需限制，没有严重错误，结构与任务要求相符，可供运营编辑使用；未完成流程不算可用报告。请审核者结合具体样本修改并确认。",
+      "required_fact_ids": [
+        "F-TEN-REV",
+        "F-TEN-OP",
+        "F-TEN-FCF",
+        "F-TEN-FCF-ADJ",
+        "F-TEN-WB-OLD",
+        "F-TEN-WB-NEW"
+      ],
+      "forbidden_claims": [
+        "把负138亿元写成Non-IFRS经营亏损",
+        "把调整后自由现金流当未调整值",
+        "称任务解决率提高90%",
+        "把18个百分点当作相对提高18%"
+      ],
+      "required_caveats": [
+        "CACHED_REPORT_NOT_INDEPENDENT_VERIFICATION",
+        "FINANCIAL_DEFINITIONS_DIFFER",
+        "EVALUATION_SAMPLE_NOT_DISCLOSED",
+        "REPORT_ATTRIBUTION"
+      ]
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "split": "development",
+      "source_facts": [
+        {
+          "fact_id": "F-OAI-PLAN",
+          "statement": "缓存转述所述：OpenAI计划最晚2027年完成IPO。",
+          "source_id": "S-OPENAI-IPO",
+          "source_url": "https://news.qq.com/rain/a/20260820A07JJO00",
+          "locator": "content.chars[73:77]"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q2",
+          "statement": "缓存转述所述：OpenAI二季度营收67亿美元。",
+          "value": "67",
+          "unit": "亿美元",
+          "source_id": "S-OPENAI-IPO",
+          "source_url": "https://news.qq.com/rain/a/20260820A07JJO00",
+          "locator": "content.chars[532:535]"
+        },
+        {
+          "fact_id": "F-OAI-REPORTED-QOQ",
+          "statement": "缓存转述所述：上述营收报道环比增长18%。",
+          "value": "18",
+          "unit": "%",
+          "source_id": "S-OPENAI-IPO",
+          "source_url": "https://news.qq.com/rain/a/20260820A07JJO00",
+          "locator": "content.chars[544:547]"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q1",
+          "statement": "缓存报道所述：一季度营收约57亿美元；这是取整近似值。",
+          "value": "57",
+          "unit": "亿美元",
+          "source_id": "S-OPENAI-GROWTH",
+          "source_url": "https://news.qq.com/rain/a/20260820A0A9DO00",
+          "locator": "content.chars[109:112]"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q1",
+          "statement": "缓存报道所述：一季度营业亏损规模93亿美元。",
+          "value": "93",
+          "unit": "亿美元",
+          "source_id": "S-OPENAI-GROWTH",
+          "source_url": "https://news.qq.com/rain/a/20260820A0A9DO00",
+          "locator": "content.chars[165:168]"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q2",
+          "statement": "缓存报道所述：二季度营业亏损规模123亿美元。",
+          "value": "123",
+          "unit": "亿美元",
+          "source_id": "S-OPENAI-GROWTH",
+          "source_url": "https://news.qq.com/rain/a/20260820A0A9DO00",
+          "locator": "content.chars[173:177]"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "expected_value": "10",
+          "operands": [
+            "F-OAI-REV-Q2",
+            "F-OAI-REV-Q1"
+          ],
+          "operation": "delta",
+          "tolerance": "0.01",
+          "unit": "亿美元"
+        },
+        {
+          "check_id": "REV-REL",
+          "expected_value": "17.54",
+          "operands": [
+            "F-OAI-REV-Q2",
+            "F-OAI-REV-Q1"
+          ],
+          "operation": "relative_change_percent",
+          "tolerance": "0.01",
+          "unit": "%"
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "expected_value": "30",
+          "operands": [
+            "F-OAI-LOSS-Q2",
+            "F-OAI-LOSS-Q1"
+          ],
+          "operation": "delta",
+          "tolerance": "0.01",
+          "unit": "亿美元"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "expected_value": "32.26",
+          "operands": [
+            "F-OAI-LOSS-Q2",
+            "F-OAI-LOSS-Q1"
+          ],
+          "operation": "relative_change_percent",
+          "tolerance": "0.01",
+          "unit": "%"
+        }
+      ],
+      "critical_error_definition": "建议：捏造或误述核心事实、金额/单位/期间/同比环比口径错误、把亏损写成利润、把缓存转述写成已独立核实的事实，或违反本例禁止断言并实质改变结论，属于严重错误。请审核者结合具体样本修改并确认。",
+      "usable_definition": "建议：研究覆盖全部必需事实，成稿数字、单位和比较口径正确，保留来源归属与必需限制，没有严重错误，结构与任务要求相符，可供运营编辑使用；未完成流程不算可用报告。请审核者结合具体样本修改并确认。",
+      "required_fact_ids": [
+        "F-OAI-PLAN",
+        "F-OAI-REV-Q2",
+        "F-OAI-REV-Q1",
+        "F-OAI-LOSS-Q1",
+        "F-OAI-LOSS-Q2",
+        "F-OAI-REPORTED-QOQ"
+      ],
+      "forbidden_claims": [
+        "OpenAI已经完成IPO",
+        "营业亏损等于净利润",
+        "仅因17.54%与18%不同就断言报道造假",
+        "营业亏损变成净利润"
+      ],
+      "required_caveats": [
+        "PLAN_NOT_COMPLETED",
+        "SECONDARY_REPORT",
+        "APPROXIMATE_INPUT",
+        "ROUNDING_NOT_AUTOMATIC_CONTRADICTION",
+        "LOSS_NOT_PROFIT"
+      ]
+    }
+  ]
+}

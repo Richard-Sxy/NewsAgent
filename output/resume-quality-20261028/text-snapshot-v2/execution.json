@@ -1,0 +1,49 @@
+{
+  "scope": "development direct-writing: raw material baseline versus Python source metrics plus evidence Prompt; not native RWR",
+  "planned_tasks": 2,
+  "baseline_drafts_reused": 2,
+  "attempted_candidate_calls": 2,
+  "completed_candidate_drafts": 2,
+  "records": [
+    {
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "event_group_id": "E01-TENCENT-Q2",
+      "arm": "candidate",
+      "scope": "development direct-writing: raw material baseline versus Python source metrics plus evidence Prompt; not native RWR",
+      "status": "completed",
+      "started_at": "2026-10-28T07:12:20.895250+00:00",
+      "request_attempts": 1,
+      "request_sha256": "d8ed3940ee7af6eff9a706cc96d1806f8b3a223a9edffff64f7cb33a919b8902",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 2638,
+        "completion_tokens": 406,
+        "total_tokens": 3044
+      },
+      "draft_sha256": "5a7d43504828523d5dfa755be7ec7fd4e123be9bb97d95298db390f8145079ec",
+      "finished_at": "2026-10-28T07:12:42.407522+00:00"
+    },
+    {
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "event_group_id": "E07-OPENAI-BUSINESS",
+      "arm": "candidate",
+      "scope": "development direct-writing: raw material baseline versus Python source metrics plus evidence Prompt; not native RWR",
+      "status": "completed",
+      "started_at": "2026-10-28T07:12:42.410220+00:00",
+      "request_attempts": 1,
+      "request_sha256": "d162e9cb7906b83e1a315ee69e8d3f8b1d5db9527ec039777744f6d6292e0b16",
+      "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4287,
+        "completion_tokens": 329,
+        "total_tokens": 4616
+      },
+      "draft_sha256": "dd2c5981c816dd271aa271f8535dd3c4524e90c589c57ee3522d640736c324c6",
+      "finished_at": "2026-10-28T07:13:00.834329+00:00"
+    }
+  ],
+  "human_editing_time": null,
+  "quality": "pending_independent_review"
+}

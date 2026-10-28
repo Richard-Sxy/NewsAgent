@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "review_type": "assistant_proposal",
+  "status": "pending_human_review",
+  "gold_sha256": "587d239c0a56c15488731c0d4f3aa5f19aa61b081d7e25674df199648de15b06",
+  "scope": "assistant source-grounding proposals plus independently checked arithmetic; not human-approved scores",
+  "reviews": [
+    {
+      "blind_id": "W314",
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "draft_sha256": "842cfcf93a091ccb8f806c34957c3cbe33317cbf6ede4254616df730e386ebfe",
+      "fact_checks": [
+        {
+          "fact_id": "F-TEN-REV",
+          "correct": true,
+          "output_quote": "- **营收**：2047.9亿元，同比增长11%",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-OP",
+          "correct": true,
+          "output_quote": "- **Non-IFRS经营利润**：756.4亿元，同比增长9%",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-FCF",
+          "correct": false,
+          "output_quote": "",
+          "evidence_note": "稿件未明确给出原口径自由现金流负138亿元，不能用“为负”或调整后376亿元替代该必需事实。"
+        },
+        {
+          "fact_id": "F-TEN-FCF-ADJ",
+          "correct": true,
+          "output_quote": "- **自由现金流**：376亿元（剔除算力采购预付款项）",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-WB-OLD",
+          "correct": true,
+          "output_quote": "- **任务解决率**：由72%提升至90%",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-WB-NEW",
+          "correct": true,
+          "output_quote": "- **任务解决率**：由72%提升至90%",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "correct_context": false,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": "未明确呈现本项要求的派生数值；遗漏单列，不自动当作严重事实错误。"
+        },
+        {
+          "check_id": "WB-REL",
+          "correct_context": false,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": "未明确呈现本项要求的派生数值；遗漏单列，不自动当作严重事实错误。"
+        }
+      ],
+      "critical_errors": [],
+      "usable": false,
+      "usable_note": "必需事实/数值或来源引用标准未全部达成，尚需真实人工修订。",
+      "source_notes": [
+        "没有给出可追溯来源链接；部分表述直接称财报，未完整保留材料为缓存报道的来源边界。",
+        "原口径自由现金流负138亿元遗漏；部分AI成效/回报性推断须人工核对证据，不先等同重大事实错误。"
+      ],
+      "reviewer_kind": "assistant"
+    },
+    {
+      "blind_id": "W827",
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "draft_sha256": "b400e2270128790b1d33addb71f63b6904184a8998c563ffb0a865b9e7a9a267",
+      "fact_checks": [
+        {
+          "fact_id": "F-OAI-PLAN",
+          "correct": true,
+          "output_quote": "OpenAI计划最迟于2027年完成上市，如果业务发展态势良好，上市时间有望进一步提前。公司今年3月完成了1220亿美元的融资，为上市筹备提供了充足的资金支持[2](@ref)。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q2",
+          "correct": true,
+          "output_quote": "- **第二季度**：营收增长至67亿美元，环比增长18%[1](@ref)。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q1",
+          "correct": true,
+          "output_quote": "- **第一季度**：营收约为57亿美元。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q1",
+          "correct": true,
+          "output_quote": "- **第一季度**：营业亏损为93亿美元。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q2",
+          "correct": true,
+          "output_quote": "- **第二季度**：营业亏损扩大至123亿美元，环比增长32.26%[1](@ref)。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REPORTED-QOQ",
+          "correct": true,
+          "output_quote": "- **第二季度**：营收增长至67亿美元，环比增长18%[1](@ref)。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "correct_context": true,
+          "observed_value": "10",
+          "observed_unit": "亿美元",
+          "output_quote": "| 营收（Q1 → Q2）（近似） | 57亿美元 | 67亿美元 | 10亿美元 | 17.54% | [S-OPENAI-GROWTH](https://news.qq.com/rain/a/20260820A0A9DO00) |",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        },
+        {
+          "check_id": "REV-REL",
+          "correct_context": true,
+          "observed_value": "17.54",
+          "observed_unit": "%",
+          "output_quote": "| 营收（Q1 → Q2）（近似） | 57亿美元 | 67亿美元 | 10亿美元 | 17.54% | [S-OPENAI-GROWTH](https://news.qq.com/rain/a/20260820A0A9DO00) |",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "correct_context": true,
+          "observed_value": "30",
+          "observed_unit": "亿美元",
+          "output_quote": "| 营业亏损规模（第一季度） | 93亿美元 | 123亿美元 | 30亿美元 | 32.26% | [S-OPENAI-GROWTH](https://news.qq.com/rain/a/20260820A0A9DO00) |",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "correct_context": true,
+          "observed_value": "32.26",
+          "observed_unit": "%",
+          "output_quote": "| 营业亏损规模（第一季度） | 93亿美元 | 123亿美元 | 30亿美元 | 32.26% | [S-OPENAI-GROWTH](https://news.qq.com/rain/a/20260820A0A9DO00) |",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        }
+      ],
+      "critical_errors": [],
+      "usable": false,
+      "usable_note": "必需事实/数值或来源引用标准未全部达成，尚需真实人工修订。",
+      "source_notes": [
+        "存在[1](@ref)/[2](@ref)等未解析引用；附表来源链接真实，但不能据此认定所有叙事引用都已可追溯。"
+      ],
+      "reviewer_kind": "assistant"
+    },
+    {
+      "blind_id": "W596",
+      "case_id": "E01-TENCENT-Q2-REPORT",
+      "draft_sha256": "a7f91cb4377c94b4ae3d003fc56feebd010532c7d8edc6e46898a5defbff1bf1",
+      "fact_checks": [
+        {
+          "fact_id": "F-TEN-REV",
+          "correct": true,
+          "output_quote": "- **营收**：2047.9亿元，同比增长11%[1](@ref)",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-OP",
+          "correct": true,
+          "output_quote": "- **Non-IFRS经营利润**：756.4亿元，同比增长9%[1](@ref)。若剔除新AI产品的影响，Non-IFRS经营利润同比增长19%至861亿元[1](@ref)",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-FCF",
+          "correct": false,
+          "output_quote": "",
+          "evidence_note": "稿件未明确给出原口径自由现金流负138亿元，不能用“为负”或调整后376亿元替代该必需事实。"
+        },
+        {
+          "fact_id": "F-TEN-FCF-ADJ",
+          "correct": true,
+          "output_quote": "- **自由现金流**：若剔除算力采购的预付款项，实际为376亿元[1](@ref)",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-WB-OLD",
+          "correct": true,
+          "output_quote": "WorkBuddy任务解决率从72%提升至90%，这一变化带来了显著的体验改善。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-TEN-WB-NEW",
+          "correct": true,
+          "output_quote": "WorkBuddy任务解决率从72%提升至90%，这一变化带来了显著的体验改善。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "WB-PP",
+          "correct_context": true,
+          "observed_value": "18",
+          "observed_unit": "个百分点",
+          "output_quote": "- **绝对变化**：提升了18个百分点。",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        },
+        {
+          "check_id": "WB-REL",
+          "correct_context": true,
+          "observed_value": "25",
+          "observed_unit": "%",
+          "output_quote": "- **相对变化**：提升了25%。",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        }
+      ],
+      "critical_errors": [],
+      "usable": false,
+      "usable_note": "必需事实/数值或来源引用标准未全部达成，尚需真实人工修订。",
+      "source_notes": [
+        "存在[1](@ref)/[2](@ref)等未解析引用；附表来源链接真实，但不能据此认定所有叙事引用都已可追溯。",
+        "原口径自由现金流负138亿元遗漏；部分AI成效/回报性推断须人工核对证据，不先等同重大事实错误。"
+      ],
+      "reviewer_kind": "assistant"
+    },
+    {
+      "blind_id": "W142",
+      "case_id": "E07-OPENAI-BUSINESS-REPORT",
+      "draft_sha256": "16a8d0f8d7383aa0c979345763213f01c6a87a7026943c286300cd528afb3202",
+      "fact_checks": [
+        {
+          "fact_id": "F-OAI-PLAN",
+          "correct": true,
+          "output_quote": "OpenAI计划在2027年完成上市，若业务发展顺利，上市时间可能提前。",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q2",
+          "correct": true,
+          "output_quote": "- **第二季度营收**：67亿美元",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REV-Q1",
+          "correct": true,
+          "output_quote": "- **第一季度营收**：约57亿美元",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q1",
+          "correct": true,
+          "output_quote": "- **第一季度营业亏损**：93亿美元",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-LOSS-Q2",
+          "correct": true,
+          "output_quote": "- **第二季度营业亏损**：123亿美元",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        },
+        {
+          "fact_id": "F-OAI-REPORTED-QOQ",
+          "correct": true,
+          "output_quote": "- **环比增长**：18%",
+          "evidence_note": "助手核对量值、主体和上下文期间；来源归属与完整可用性另列。"
+        }
+      ],
+      "numeric_checks": [
+        {
+          "check_id": "REV-DELTA",
+          "correct_context": false,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": "未明确呈现本项要求的派生数值；遗漏单列，不自动当作严重事实错误。"
+        },
+        {
+          "check_id": "REV-REL",
+          "correct_context": false,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": "未明确呈现本项要求的派生数值；遗漏单列，不自动当作严重事实错误。"
+        },
+        {
+          "check_id": "LOSS-DELTA",
+          "correct_context": true,
+          "observed_value": "30",
+          "observed_unit": "亿美元",
+          "output_quote": "- **环比扩大**：亏损增加了30亿美元",
+          "evidence_note": "助手确认该行与指标/期间相符，数学与容差另由Decimal核验。"
+        },
+        {
+          "check_id": "LOSS-REL",
+          "correct_context": false,
+          "observed_value": null,
+          "observed_unit": null,
+          "output_quote": "",
+          "evidence_note": "未明确呈现本项要求的派生数值；遗漏单列，不自动当作严重事实错误。"
+        }
+      ],
+      "critical_errors": [
+        {
+          "kind": "period_misattribution",
+          "output_quote": "- **第二季度研发支出**：86亿美元",
+          "evidence_note": "给定S-OPENAI-GROWTH原文写的是“2026年第一季度，研发支出高达86亿美元”，初稿改为第二季度，构成明确的统计期间错误。",
+          "source_quote": "2026年第一季度，研发支出高达86亿美元，是当季毛利（约22亿美元）的近四倍。",
+          "source_id": "S-OPENAI-GROWTH"
+        }
+      ],
+      "usable": false,
+      "usable_note": "必需事实/数值或来源引用标准未全部达成，尚需真实人工修订。",
+      "source_notes": [
+        "没有给出可追溯来源链接；部分表述直接称财报，未完整保留材料为缓存报道的来源边界。"
+      ],
+      "reviewer_kind": "assistant"
+    }
+  ],
+  "human_editing_minutes": null,
+  "formal_independent_test": false
+}
