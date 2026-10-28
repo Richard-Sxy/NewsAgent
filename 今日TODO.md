@@ -248,3 +248,14 @@ dataset_version, model_version, code_sha256, evidence_paths, valid_for_resume, l
 28项数据/统计合同测试及2265条请求记录独立复核通过。
 详见agent/docs/annual-capacity-benchmark-20261028.md；简历替换段见output/annual-capacity-benchmark-20261028/resume-ready.md。
 后续继续完成154项人工补标、新闻相关性对照与生产接线；不需要重复本轮已冻结容量基准。
+
+
+## 四项简历质量指标补齐（2026-10-28）
+
+执行方案：agent/docs/resume-quality-evaluation-20261028.md；清单与预登记目标在output/resume-quality-20261028/。
+本次只准备协议和工具，没有新增质量成绩、模型调用、训练adapter或人工批准。
+- [ ] 检索：8879新增库实查0/154，补齐后用原score得到30条开发查询的共同池A/B；独立test另建。
+- [ ] 写作：先人工审核现有2个报告gold，再同模型同链路跑两方案各2稿；原runner首轮无自动返工。
+- [ ] 修订时间：已生成2任务/4条待填记录；用editing_time保存实际计时并统计，缺失/未审核不算0。
+- [ ] LoRA：36条仍为development/draft，需分组审核train/validation/test、真实训练adapter并对齐量化推理。
+新增计时工具12项合成合同测试通过；真实C/D仍未知。新方案含精确入口、配置、调用链、依赖、产物和TODO。

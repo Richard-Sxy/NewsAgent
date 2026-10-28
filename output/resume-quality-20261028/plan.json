@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-10-28",
+  "status": "prepared_not_executed",
+  "scope": "Quality experiment preparation; no new model calls, training, human approvals or measured quality gains.",
+  "protocol": "agent/docs/resume-quality-evaluation-20261028.md",
+  "current_audit": {
+    "retrieval": {
+      "documents": 545,
+      "chunks": 2577,
+      "development_queries": 30,
+      "pooled_pairs": 454,
+      "original_human_labels": 300,
+      "supplemental_candidates": 154,
+      "supplemental_human_labels": 0,
+      "baseline": "legacy_rrf local example k=60 equal tier weights",
+      "candidate": "global_similarity",
+      "tier_policy": "frozen 7/90 days",
+      "sqlite": "output/news-events-annual-20261027/comparison-v1/supplemental.sqlite3"
+    },
+    "report": {
+      "manifest_event_groups": 3,
+      "manifest_tasks": 3,
+      "structurally_ready_development_cases": 2,
+      "gold_status": "pending_human_review",
+      "required_facts": 12,
+      "numeric_checks": 6,
+      "complete_report_runs_found": 0,
+      "runner_scope": "first pass; no automatic revision"
+    },
+    "lora": {
+      "development_cases": 36,
+      "main_semantic_cases": 31,
+      "model_rejection_cases": 5,
+      "groups": 30,
+      "label_status": "draft",
+      "saved_adapter_found": false,
+      "training_script_ready": false,
+      "nf4_service_adapter_loading": false,
+      "local_peft_quantization": "none"
+    }
+  },
+  "suggested_targets_not_actual": {
+    "retrieval": {
+      "new_independent_test_queries": 100,
+      "unit": "real natural-language queries",
+      "event_group_split": true,
+      "dual_review_fraction": 0.2
+    },
+    "writing": {
+      "event_groups": 10,
+      "complete_tasks": 20,
+      "outputs_per_arm": 20,
+      "total_outputs": 40,
+      "note": "pilot scale proposal; split development/test by event group; do not count stage calls as reports"
+    },
+    "lora": {
+      "train": 300,
+      "validation": 60,
+      "independent_main_test": 100,
+      "rejection_risk_test": null,
+      "note": "risk-set size must be preregistered separately; counts are proposed, no data generated"
+    }
+  },
+  "metric_values": {
+    "retrieval_ndcg_at_5": {
+      "baseline": null,
+      "candidate": null,
+      "status": "pending_154_human_judgments_and_independent_test"
+    },
+    "critical_report_rate": {
+      "baseline": null,
+      "candidate": null,
+      "status": "pending_gold_real_runs_and_human_review"
+    },
+    "human_editing_minutes": {
+      "baseline": null,
+      "candidate": null,
+      "status": "pending_actual_complete_paired_editing_records"
+    },
+    "lora_semantic_exact_match": {
+      "baseline": null,
+      "candidate": null,
+      "status": "pending_approved_splits_adapter_and_matched_runs"
+    }
+  },
+  "next_actions": [
+    "Complete 154 existing retrieval judgments, back up SQLite, then use existing score CLI.",
+    "Approve the two report gold cases personally, freeze same-model baseline/candidate Prompt experiments, generate and human-score four pilot drafts.",
+    "Use editing_time template and actual timed editing sessions; do not fill approved or time values automatically.",
+    "Create grouped audited semantic train/validation/test, fix stale paths and align adapter inference quantization, then run genuine SFT and paired inference."
+  ],
+  "prohibited_substitutions": [
+    "synthetic vector probes for independent news queries or nDCG",
+    "FinQA numerical QA accuracy for full-report error rates",
+    "model response latency for human editing time",
+    "NF4 model loading or backward smoke for trained LoRA results"
+  ]
+}
