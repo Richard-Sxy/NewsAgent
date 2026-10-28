@@ -1,0 +1,50 @@
+{
+  "status": "verified_from_saved_measurements",
+  "synthetic": true,
+  "unit_tests_passed": 28,
+  "index_vectors": 912500,
+  "document_capacity": 182500,
+  "synthetic_query_count": 100,
+  "measured_case_requests": 1600,
+  "soak_requests": 665,
+  "cases": [
+    {
+      "nprobe": 256,
+      "concurrency": 1,
+      "samples": 100,
+      "recomputed_p95_ms": 217.675057973247,
+      "recomputed_ann_recall": 1.0
+    },
+    {
+      "nprobe": 16,
+      "concurrency": 1,
+      "samples": 500,
+      "recomputed_p95_ms": 14.234029626823029,
+      "recomputed_ann_recall": 0.17000000000000004
+    },
+    {
+      "nprobe": 64,
+      "concurrency": 1,
+      "samples": 500,
+      "recomputed_p95_ms": 55.55698302050587,
+      "recomputed_ann_recall": 0.458
+    },
+    {
+      "nprobe": 16,
+      "concurrency": 10,
+      "samples": 500,
+      "recomputed_p95_ms": 87.51643123687244,
+      "recomputed_ann_recall": 0.17000000000000004
+    }
+  ],
+  "soak_seconds": 60.327447435993236,
+  "soak_p95_ms": 1135.0831683841534,
+  "physical_deletion_probes": 22500,
+  "production_or_semantic_quality_verified": false,
+  "source_sha256": {
+    "agent/evaluation/annual_capacity_benchmark.py": "f1cf42c49e47d93db19bfe9e1684af39b462fb3b1eff599f9377ecc6aa69dc36",
+    "agent/tools/benchmark_annual_capacity.py": "a6aeaa4ad7215a72eadaa4b1929463a631a3190c7c9f8c6dda5b94e3543f54e6",
+    "agent/tools/soak_annual_capacity.py": "b8960e5b0d2d4bf01c69f2a6cc8685189d32672f4d1dad537713b49f1c9fc7ca",
+    "agent/tests/test_annual_capacity_benchmark.py": "a8f0b3c9c8370b247206086a27f3950c2d7394b4a7ac757d5d39b4365fa2eb66"
+  }
+}

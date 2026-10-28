@@ -1,0 +1,51 @@
+{
+  "dataset_manifest_sha256": "b8376f5b40bea6042462e91c6f624a431b25ec243f4f2aea927ddb57bc8eb3cc",
+  "faiss_version": "1.12.0",
+  "numpy_version": "2.2.0",
+  "python": "3.11.9",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+  "dimensions": 1024,
+  "vectors": 912500,
+  "documents": 182500,
+  "chunks_per_document": 5,
+  "index_type": "IndexIVFFlat",
+  "metric": "inner_product_of_L2_normalized_vectors",
+  "nlist": {
+    "hot": 64,
+    "warm": 128,
+    "cold": 256
+  },
+  "training_samples_per_cluster": 64,
+  "training_iterations": 10,
+  "seed": 20261028,
+  "train_add_threads": 4,
+  "search_threads_per_worker": 1,
+  "query_count": 100,
+  "query_mix": "half independently random; half existing vector plus Gaussian noise",
+  "cases": [
+    {
+      "nprobe": 256,
+      "requests": 100,
+      "concurrency": 1
+    },
+    {
+      "nprobe": 16,
+      "requests": 500,
+      "concurrency": 1
+    },
+    {
+      "nprobe": 64,
+      "requests": 500,
+      "concurrency": 1
+    },
+    {
+      "nprobe": 16,
+      "requests": 500,
+      "concurrency": 10
+    }
+  ],
+  "synthetic": true,
+  "enterprise": false,
+  "news_ndcg": null,
+  "scope": "ANN stage only; fixed parameters before observation, not production endpoint"
+}

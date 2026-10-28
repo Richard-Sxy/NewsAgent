@@ -1,0 +1,11 @@
+{
+  "concurrency": 10,
+  "duration_seconds": 60,
+  "nprobe": 256,
+  "query_vectors_sha256": "0012505bb3fb883ac46d3c876082b056164243707d2493ef4e0ef0fa71052ad8",
+  "max_requests": 10000,
+  "load": "closed_loop",
+  "scope": "local index stage; pre-encoded synthetic query, no HTTP/LLM/PG",
+  "completion_definition": "ten actual news results and exact vector-neighbor oracle match",
+  "enterprise_business_correctness": false
+}

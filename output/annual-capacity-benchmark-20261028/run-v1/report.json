@@ -1,0 +1,220 @@
+{
+  "status": "completed",
+  "synthetic": true,
+  "config": {
+    "dataset_manifest_sha256": "b8376f5b40bea6042462e91c6f624a431b25ec243f4f2aea927ddb57bc8eb3cc",
+    "faiss_version": "1.12.0",
+    "numpy_version": "2.2.0",
+    "python": "3.11.9",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "dimensions": 1024,
+    "vectors": 912500,
+    "documents": 182500,
+    "chunks_per_document": 5,
+    "index_type": "IndexIVFFlat",
+    "metric": "inner_product_of_L2_normalized_vectors",
+    "nlist": {
+      "hot": 64,
+      "warm": 128,
+      "cold": 256
+    },
+    "training_samples_per_cluster": 64,
+    "training_iterations": 10,
+    "seed": 20261028,
+    "train_add_threads": 4,
+    "search_threads_per_worker": 1,
+    "query_count": 100,
+    "query_mix": "half independently random; half existing vector plus Gaussian noise",
+    "cases": [
+      {
+        "nprobe": 256,
+        "requests": 100,
+        "concurrency": 1
+      },
+      {
+        "nprobe": 16,
+        "requests": 500,
+        "concurrency": 1
+      },
+      {
+        "nprobe": 64,
+        "requests": 500,
+        "concurrency": 1
+      },
+      {
+        "nprobe": 16,
+        "requests": 500,
+        "concurrency": 10
+      }
+    ],
+    "synthetic": true,
+    "enterprise": false,
+    "news_ndcg": null,
+    "scope": "ANN stage only; fixed parameters before observation, not production endpoint"
+  },
+  "index_build": {
+    "hot": {
+      "vectors": 17500,
+      "build_seconds": 0.225655677029863,
+      "index_bytes": 72082795,
+      "index_sha256": "15f14f417a8f487b7d7d076f26dddb64ceca66314fbb091c53e562b20644608c"
+    },
+    "warm": {
+      "vectors": 57500,
+      "build_seconds": 0.9577013729722239,
+      "index_bytes": 236505451,
+      "index_sha256": "cd062b01fd32efabda9717bad9a4608f005f556c9e49df72b29b910cb321d5f2"
+    },
+    "cold": {
+      "vectors": 837500,
+      "build_seconds": 21.8581645200029,
+      "index_bytes": 3438150763,
+      "index_sha256": "905131c836eb1fea8b003347ff50d56ffc7f2ef301bbd7d1fb7e44151fcc7329"
+    }
+  },
+  "exact_oracle_seconds": 1.4502977590309456,
+  "cases": [
+    {
+      "nprobe": 256,
+      "concurrency": 1,
+      "search_threads_per_worker": 1,
+      "warmup_requests": 20,
+      "planned_requests": 100,
+      "completed_requests": 100,
+      "failed_requests": 0,
+      "elapsed_seconds": 18.598598618002143,
+      "completed_requests_per_second": 5.376749187070847,
+      "latency_ms": {
+        "count": 100,
+        "p50": 181.40405500889756,
+        "p95": 217.675057973247,
+        "p99": 235.7429442793364
+      },
+      "latency_all_requests_ms": {
+        "count": 100,
+        "p50": 181.40405500889756,
+        "p95": 217.675057973247,
+        "p99": 235.7429442793364
+      },
+      "ann_document_recall_at10": 1.0,
+      "scope": "process-local pre-encoded query, sequential three-tier ANN + news dedup/fusion; no HTTP/Embedding/SQL"
+    },
+    {
+      "nprobe": 16,
+      "concurrency": 1,
+      "search_threads_per_worker": 1,
+      "warmup_requests": 20,
+      "planned_requests": 500,
+      "completed_requests": 500,
+      "failed_requests": 0,
+      "elapsed_seconds": 6.491723986982834,
+      "completed_requests_per_second": 77.02114276617382,
+      "latency_ms": {
+        "count": 500,
+        "p50": 12.848826998379081,
+        "p95": 14.234029626823029,
+        "p99": 15.905395974405108
+      },
+      "latency_all_requests_ms": {
+        "count": 500,
+        "p50": 12.848826998379081,
+        "p95": 14.234029626823029,
+        "p99": 15.905395974405108
+      },
+      "ann_document_recall_at10": 0.17000000000000004,
+      "scope": "process-local pre-encoded query, sequential three-tier ANN + news dedup/fusion; no HTTP/Embedding/SQL"
+    },
+    {
+      "nprobe": 64,
+      "concurrency": 1,
+      "search_threads_per_worker": 1,
+      "warmup_requests": 20,
+      "planned_requests": 500,
+      "completed_requests": 500,
+      "failed_requests": 0,
+      "elapsed_seconds": 25.244385622965638,
+      "completed_requests_per_second": 19.806384178553103,
+      "latency_ms": {
+        "count": 500,
+        "p50": 49.881978979101405,
+        "p95": 55.55698302050587,
+        "p99": 59.8098102340009
+      },
+      "latency_all_requests_ms": {
+        "count": 500,
+        "p50": 49.881978979101405,
+        "p95": 55.55698302050587,
+        "p99": 59.8098102340009
+      },
+      "ann_document_recall_at10": 0.458,
+      "scope": "process-local pre-encoded query, sequential three-tier ANN + news dedup/fusion; no HTTP/Embedding/SQL"
+    },
+    {
+      "nprobe": 16,
+      "concurrency": 10,
+      "search_threads_per_worker": 1,
+      "warmup_requests": 20,
+      "planned_requests": 500,
+      "completed_requests": 500,
+      "failed_requests": 0,
+      "elapsed_seconds": 3.190828593040351,
+      "completed_requests_per_second": 156.6991097831362,
+      "latency_ms": {
+        "count": 500,
+        "p50": 59.87597149214707,
+        "p95": 87.51643123687244,
+        "p99": 101.52574591105802
+      },
+      "latency_all_requests_ms": {
+        "count": 500,
+        "p50": 59.87597149214707,
+        "p95": 87.51643123687244,
+        "p99": 101.52574591105802
+      },
+      "ann_document_recall_at10": 0.17000000000000004,
+      "scope": "process-local pre-encoded query, sequential three-tier ANN + news dedup/fusion; no HTTP/Embedding/SQL"
+    }
+  ],
+  "lifecycle_probes": {
+    "status": "passed_isolated_faiss_index_probe",
+    "tiers": [
+      {
+        "tier": "hot",
+        "retired_chunk_probes": 100,
+        "expired_chunk_probes": 0,
+        "physically_removed": 100,
+        "readback_remaining": 0,
+        "active_count_restored": true
+      },
+      {
+        "tier": "warm",
+        "retired_chunk_probes": 315,
+        "expired_chunk_probes": 0,
+        "physically_removed": 315,
+        "readback_remaining": 0,
+        "active_count_restored": true
+      },
+      {
+        "tier": "cold",
+        "retired_chunk_probes": 4585,
+        "expired_chunk_probes": 17500,
+        "physically_removed": 22085,
+        "readback_remaining": 0,
+        "active_count_restored": true
+      }
+    ],
+    "replacement_document_scenarios": 1000,
+    "expired_document_scenarios": 3500,
+    "production_worker_or_pg_concurrency_tested": false,
+    "model_fact_understanding_tested": false
+  },
+  "max_process_rss_kib": 7823536,
+  "source_data_generation": "normalized synthetic random vectors, not news embeddings",
+  "news_ndcg": null,
+  "enterprise_online_p95": null,
+  "limitations": [
+    "query vectors are pre-encoded; no model inference, HTTP, PG or real business correctness",
+    "ANN recall is neighbor recall versus exact best-chunk news ranking, not news relevance",
+    "all lifetime checks are isolated index probes, not production TTL orchestration"
+  ]
+}

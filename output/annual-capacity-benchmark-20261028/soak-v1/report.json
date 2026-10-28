@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "synthetic": true,
+  "parameters": {
+    "concurrency": 10,
+    "duration_seconds": 60,
+    "nprobe": 256,
+    "query_vectors_sha256": "0012505bb3fb883ac46d3c876082b056164243707d2493ef4e0ef0fa71052ad8",
+    "max_requests": 10000,
+    "load": "closed_loop",
+    "scope": "local index stage; pre-encoded synthetic query, no HTTP/LLM/PG",
+    "completion_definition": "ten actual news results and exact vector-neighbor oracle match",
+    "enterprise_business_correctness": false
+  },
+  "measured_wall_seconds": 60.327447435993236,
+  "attempted_requests": 665,
+  "completed_oracle_matched_requests": 665,
+  "failed_requests": 0,
+  "request_completion_rate": 1.0,
+  "completed_requests_per_second": 11.023174827769031,
+  "latency_ms": {
+    "count": 665,
+    "p50": 884.6378889866173,
+    "p95": 1135.0831683841534,
+    "p99": 1270.6672093109228
+  },
+  "all_requests_latency_ms": {
+    "count": 665,
+    "p50": 884.6378889866173,
+    "p95": 1135.0831683841534,
+    "p99": 1270.6672093109228
+  },
+  "ran_full_duration": true,
+  "enterprise_online_latency": null,
+  "news_relevance_correctness": null
+}
