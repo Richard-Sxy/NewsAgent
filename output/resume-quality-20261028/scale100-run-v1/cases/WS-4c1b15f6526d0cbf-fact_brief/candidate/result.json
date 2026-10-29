@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-afe187bd4c816a348db9ad9971443f3527e984a0ddab895a",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 华为Pura 90系列发布：聚焦影像与美学创新\n\n2026年4月20日，华为正式发布了新一代旗舰智能手机Pura 90系列，以影像技术、外观设计和系统体验为核心升级方向。该系列包括Pura 90、Pura 90 Pro和Pura 90 Pro Max三款机型，起售价分别为4699元、5499元和6499元。华为Pura 90 Pro Max搭载超高感光超大底2亿像素长焦传感器，支持远距离高清拍摄与视频录制，首发远距人声增强功能。\n\n在系统层面，华为Pura 90系列首发搭载鸿蒙6.1操作系统，系统界面采用全局沉浸设计，优化视觉层级与操作逻辑，新增舞林萌主、桌面精灵等交互组件，支持心率检测、设备间分享等功能。鸿蒙生态终端设备已突破5500万台，应用与服务落地场景持续拓展，覆盖便捷生活、文旅出行、金融支付等18个核心垂直领域。\n\n此次发布正值五一消费节点临近，华为将继续以用户需求为导向，推进技术研发与生态建设，保持系统流畅、安全、智能、易用的核心优势，推动鸿蒙生态稳步发展。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793235610,
+    "id": "chatcmpl-wab-afe187bd4c816a348db9ad9971443f3527e984a0ddab895a",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 286,
+      "prompt_tokens": 2755,
+      "total_tokens": 3041
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:59:15.650553+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-b3b44e94dcdaf37cf88c6ad4b202cfd18be9b639e8543268",
+        "wab-afe187bd4c816a348db9ad9971443f3527e984a0ddab895a",
+        "wab-640a2746fe974047c57efa21664c6935ea70e6f9fc9c1c8a",
+        "wab-29b2b5a50ec2a2d7951b4478067de50dc012fe00143bf10e"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

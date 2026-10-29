@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-0047a35a6e414707250fa9a5baec7416cdf9d29dc3e3bff6",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 英格兰队举行赛前新闻发布会\n\n2026年7月14日，英格兰队主教练图赫尔在美国佐治亚州亚特兰大市举行了新闻发布会。据悉，英格兰队将于7月15日在2026年美加墨世界杯半决赛中对阵阿根廷队。此次新闻发布会为球队备战关键比赛提供了重要指导和支持。\n\n## 主要事件\n\n- **时间**：2026年7月14日\n- **地点**：美国佐治亚州亚特兰大市\n- **发言人**：英格兰队主教练图赫尔\n- **主要议题**：球队备战2026年美加墨世界杯半决赛\n\n## 相关背景\n\n英格兰队将于7月15日参加2026年美加墨世界杯半决赛，对手是阿根廷队。这场比赛对于英格兰队来说具有重要意义，尤其是在世界杯这样的高水平赛事中，球队需要充分准备以争取胜利。\n\n此次新闻发布会不仅是对球队备战工作的总结和规划，也是对未来比赛的展望和激励。图赫尔在发布会上强调了球队的团结和拼搏精神，为球队注入了强大的动力。\n\n以上信息来源于新华社记者李明的报道。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234977,
+    "id": "chatcmpl-wab-0047a35a6e414707250fa9a5baec7416cdf9d29dc3e3bff6",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 259,
+      "prompt_tokens": 2193,
+      "total_tokens": 2452
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:48:57.916519+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-0047a35a6e414707250fa9a5baec7416cdf9d29dc3e3bff6",
+        "wab-ea247cc603adde53e6cb1fd279a9e8430011a7c61ca28fd2",
+        "wab-832356ef79ae15efa90b029cb543be4deaf4b51f01430e3b",
+        "wab-a0149d5140ac1b31d4f05e4f10d6b6b0cdd7881e337231bd"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

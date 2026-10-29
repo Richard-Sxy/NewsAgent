@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-820d71070682d26cb5a8b0eb48687715de3d81061c62ae0f",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 首款侵入式脑机接口医疗器械获批上市\n\n近日，国家药监局批准了博睿康医疗科技（上海）有限公司植入式脑机接口手部运动功能代偿系统创新产品注册申请，标志着国际首个侵入式脑机接口医疗器械进入临床应用阶段。该产品由脑机接口植入体、植入式脑电电极套件等组成，适用于18岁到60岁，C2～C6颈段脊髓损伤评级A～C级的四肢瘫患者。\n\n该产品采用硬脑膜外微创植入与无线供能通信技术，临床试验结果显示，受试者通过该产品实现了手部抓握能力的明显提高，进而改善患者生活质量。自2023年10月完成首例植入，到2025年在全国11家医院开展多中心临床试验，完成32例颈段脊髓损伤患者的临床植入，NEO系统跑出了惊人的“中国速度”。\n\n下一步，国家药监局将继续做好高端医疗器械审评审批工作，切实以高效能监管助力医疗器械产业高质量发展，造福人民群众高品质生活。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793236124,
+    "id": "chatcmpl-wab-820d71070682d26cb5a8b0eb48687715de3d81061c62ae0f",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 240,
+      "prompt_tokens": 2111,
+      "total_tokens": 2351
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T01:08:12.987935+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-d9f8be21496a095d48d427b8dfc818b4dd34283a1c052575",
+        "wab-820d71070682d26cb5a8b0eb48687715de3d81061c62ae0f",
+        "wab-e43995dc60be91ca21ada94431a4cc70e6892707a75039c3",
+        "wab-721264bec7cb718e81fb06babf3f42d6b768aee2587be74c"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

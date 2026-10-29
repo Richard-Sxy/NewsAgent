@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-2a3e458e4696379face69eea5f51565809cf06d0bc4efba9",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# Seedance 2.0上线内测，引海内外高度关注\n\n近日，字节跳动新一代AI视频生成模型Seedance 2.0上线内测，凭借多模态创作方式和自带运镜的呈现效果，迅速在全球范围内引发高度关注。海外社交平台上，不少用户称赞其生成效果媲美好莱坞大片，相关话题迅速冲上热门，多条演示视频播放量破百万。\n\n一名海外专业创作者使用该模型制作短片后，很快引爆关注。评论区不少网友对短片效果感到惊讶。据悉，目前Seedance 2.0仅在国内部分产品小范围开启内测。还用不上新模型的海外创作者，已经迫不及待地开始分享国内AI创作者发布的测评视频。\n\n国内创作者对于该模型的表现能力也十分惊艳。游戏科学CEO冯骥试用后评价说，Seedance 2.0是“当前地表最强的视频生成模型”，其在多模态信息理解与整合能力上实现了飞跃，并称“庆幸这款顶尖模型来自中国”。\n\nSeedance 2.0在内容安全上也做了一些积极探索。用户在即梦APP、豆包APP体验模型时，需要完成录音录像，通过真人校验后才能生成自己的专属分身，在AI短片中出镜。\n\n据模型内测介绍文档显示，Seedance 2.0搭载双分支扩散变换器架构，用户只需输入文字提示词或上传参考图像，即可产出带有完整原生音轨的多镜头视频内容。其最具突破性的“单指令生成连贯多场景”能力，能让AI自动解析叙事逻辑，生成环环相扣的镜头序列，在角色、光影、风格与氛围上保持高度统一，实现近乎“零后期”的成片效果，彻底突破了早期AI视频工具仅能生成碎片化片段的局限，大幅降低了专业视频创作的门槛与成本。\n\nSeedance 2.0的发布标志着AI视频生成技术正经历代际跃迁，可能成为视频内容创作的一个转折点。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793235908,
+    "id": "chatcmpl-wab-2a3e458e4696379face69eea5f51565809cf06d0bc4efba9",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 427,
+      "prompt_tokens": 2277,
+      "total_tokens": 2704
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T01:03:51.802917+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-b8972a2bf7dfa80fa699965ac26c0bf915e0b4ce1721d773",
+        "wab-16c5eded5f884fc8240c2bc2bcc7c24f2fe3f62b95e71b20",
+        "wab-016bd9ad2ae15525072772cc6b5951f660ee2dac7e4e73c5",
+        "wab-2a3e458e4696379face69eea5f51565809cf06d0bc4efba9"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

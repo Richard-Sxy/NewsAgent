@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-2aeb28cca007cae1fabea2e6ee8aac0f622eec5f6a92e4c4",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 从世界人工智能大会看国产AI集群化突破\n\n2026年7月17日至20日，2026世界人工智能大会暨人工智能全球治理高级别会议在上海举行。华为昇腾950超节点、中科曙光全国产十万卡AI超集群等一批算力设备集中展出，体现了我国人工智能技术创新的群体性突破。据介绍，2025年我国AI相关产业规模超万亿元，2026年增速预计仍超30%。\n\n大会吸引了超过40万名现场观众，并组织了全球177个重要采购团组，预计达成意向采购金额约203.6亿元，同比增长25%。会上还签约了32个上海市人工智能重点项目，投资额超过409亿元。\n\n此次大会在全球人工智能领域取得了显著成果，彰显了中国推动人工智能向上向善发展的责任担当，为全球人工智能发展和治理注入新动能。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234166,
+    "id": "chatcmpl-wab-2aeb28cca007cae1fabea2e6ee8aac0f622eec5f6a92e4c4",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 207,
+      "prompt_tokens": 2250,
+      "total_tokens": 2457
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:35:30.700209+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-ca91a740e05830665fc502924db4ce17aa58bc911de01076",
+        "wab-2932d8e23095866f09495eb318d96d56e4ea33e439e72fff",
+        "wab-527c28effc60de1b3600c0a7ecffa20b0894217e5a836a8e",
+        "wab-2aeb28cca007cae1fabea2e6ee8aac0f622eec5f6a92e4c4"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

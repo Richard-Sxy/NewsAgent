@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-7d9b5a9bf4bdcf6ac500465b3f9a53011554d070b52de24d",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 2026年消费品以旧换新政策解读\n\n2026年1月1日，新一轮“国补”政策正式启动，首批625亿元国补资金已下达。此次政策延续了消费品以旧换新的趋势，并加大了对设备更新的扶持力度。\n\n数码和智能产品继续享受15%的国补，单件最高补贴500元，新增了智能眼镜这一品类。家电产品则只补贴1级能效或水效标准的产品，每位消费者每类产品可补贴1件，每件补贴不超过1500元。\n\n在汽车方面，政策调整为按价格比例补贴。报废旧车并购买符合条件的新能源乘用车，按新车销售价格的12%给予补贴，最高2万元；报废燃油乘用车并购买2.0升及以下排量的燃油乘用车，按新车销售价格的10%给予补贴，最高1.5万元。置换更新则分别给予8%和6%的补贴，最高分别为1.5万元和1.3万元。\n\n此外，政策还增加了对老旧小区加装电梯、养老机构设备更新等民生领域的支持。每位消费者在2026年只能享受一次汽车报废更新补贴或一次汽车置换更新补贴。\n\n此次政策旨在提升消费品“得补率”，相关部门将组织开展专项行动，打击骗补套补等违法违规行为。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234130,
+    "id": "chatcmpl-wab-7d9b5a9bf4bdcf6ac500465b3f9a53011554d070b52de24d",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 296,
+      "prompt_tokens": 2452,
+      "total_tokens": 2748
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:34:45.900565+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-7ba969d304aeb9d2f3fcd9b9f95e6370b0f7d66cad815ccd",
+        "wab-7d9b5a9bf4bdcf6ac500465b3f9a53011554d070b52de24d",
+        "wab-3edcf45d25903368d0959d5dd85b452a48684253f9ae5d6f",
+        "wab-661cafb775c66f4a5c830346d7683cdfd4f262357e5a311e"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

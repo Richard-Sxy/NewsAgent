@@ -270,3 +270,28 @@ dataset_version, model_version, code_sha256, evidence_paths, valid_for_resume, l
 - [ ] 用户在http://127.0.0.1:8881/实际完成四稿编辑、暂停/结束，并确认统一交付质量。
 - [ ] 用户确认助手评分；从真实事件导出并计算C/D分钟，未完成保持未知，不填0。
 说明：agent/docs/writing-ab-20261028.md；简历表述：output/resume-quality-20261028/text-final-v3/resume-ready.md。
+
+
+## 写作扩充已执行（2026-10-29，覆盖原2例之外的新批次）
+
+- [x] 真实缓存筛选并冻结50个候选事件组、100项evaluation任务；另9组18项development。
+- [x] 本地Hunyuan NF4真实生成200/200篇A/B稿，失败/未知/未跑0，单次提交/生成均200次，无自动重发。
+- [x] 完成全部原稿哈希、来源、断点终态、跨电脑路径核验；本轮相关94项工程检查通过。
+- [x] 生成前固定的格式/引用信号已审计：显式ID/URL匹配5/100→0/100，250–350字4/100→8/100。
+  该结果没有证明候选写作质量提升，不作为事实正确率或上线依据。
+- [x] 导出200条待评分记录和预登记10对20稿计时包；当前页面http://127.0.0.1:18882/，20项均未自动开始。
+- [ ] 人工核对新50个evaluation候选事件组及gold；旧两例的批准不覆盖这些新材料。
+- [ ] 逐稿填写语义评分并给出错误证据；未审核均为null。
+- [ ] 真实完成10对编辑计时并审核，再统计C/D。不能用生成的41分52秒推断人工分钟/篇。
+- [ ] 依据开发集修复引用与篇幅服从性、原生Research失败后，另冻版本和测试；保留本轮失败信号。
+
+入口：agent/docs/writing-scale100-20261029.md。
+汇总：output/resume-quality-20261028/scale100-results-v1/report.md。
+金标：output/resume-quality-20261028/scale100-v1/human-review.md 及 private/gold-review.draft.json。
+评分：output/resume-quality-20261028/scale100-review-v1/review-template.json。
+跨机只读验证：verify_writing_run_portable --run-dir <本机run> --dataset <本机dataset>，无需GPU。
+原8019模型服务已结束释放GPU；计时页保留。旧8881四稿独立保留。
+
+简历当前可写G=50候选事件组、N=100任务及200篇真实A/B生成；
+新批次的错误率A/B、人工耗时C/D仍未知。LoRA收益也未由此产生。
+另：早期“0/154补标”的历史清单已被后续检索454条共同池与30条开发查询结果取代，勿重复按0/154启动。

@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-3e9760ae4736edb3876dd8b0d7b6fdbbce07360a0049a059",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 摩尔线程科创板上市及首日交易\n\n2025年12月5日，摩尔线程（688795）成功登陆上海证券交易所科创板。上市首日，摩尔线程开盘报650元/股，较发行价114.28元/股大涨468.78%，中一签（500股）新股可赚约26.79万元。若以盘中最高价688元/股估算，一签浮盈一度接近28.69万元。截至收盘，摩尔线程收报于600.50元/股，市值2822.52亿元，创下年内科创板募资规模及首日打新盈利双纪录。\n\n此次发行的网下申购倍数高达1572倍，267家机构参与报价，总申购股数超700亿股，最终仅获配3920万股，超额认购倍数达1796倍；网上发行有效申购户数为482.66万户，有效申购股数高达462.17亿股，回拨后中签率约万分之三点六。\n\n摩尔线程提醒投资者，上市初期流通股数量仅2938.24万股，占总股本的6.25%，可能存在流动性不足风险，需理性研判投资价值。近期，昂瑞微、优迅股份、摩尔线程、健信超导、沐曦股份等5家公司科创板IPO相继获准注册，显示出市场对科创板IPO的积极态度。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234898,
+    "id": "chatcmpl-wab-3e9760ae4736edb3876dd8b0d7b6fdbbce07360a0049a059",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 340,
+      "prompt_tokens": 2077,
+      "total_tokens": 2417
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:47:31.912672+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-3e9760ae4736edb3876dd8b0d7b6fdbbce07360a0049a059",
+        "wab-6abbf95a26ad4725615b79aa5f516727e6f01ad688a4af8d",
+        "wab-e4f92c01678cc0ed7e57a5d8219b2bf312381404ddaad22d",
+        "wab-572ae5133776f7717e27a5643ae519d6b1aed45939275473"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

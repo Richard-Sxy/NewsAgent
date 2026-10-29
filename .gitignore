@@ -123,3 +123,9 @@ tmp/
 
 # Live human editing events; export a consistent reviewed snapshot separately.
 /output/resume-quality-20261028/text-final-v3/manual-editing-state/
+
+# Export reviewed snapshots separately from live scale-100 stopwatch events.
+/output/resume-quality-20261028/scale100-review-*/manual-editing-state/
+
+# Local process locks are not evaluation evidence.
+/output/resume-quality-20261028/scale100-*/.runner.lock

@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-e5e716f6cfe31214217830aa0d11d61dc74dcc0089a58e7c",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 工信部许可两款L3级自动驾驶车型产品\n\n2025年12月15日，工业和信息化部宣布，经过一系列审批程序，许可了两款搭载L3级有条件自动驾驶功能的智能网联汽车产品。这两款车分别是长安牌SC7000AAARBEV型纯电动轿车和极狐牌BJ7001A61NBEV型纯电动轿车。\n\n长安牌SC7000AAARBEV型纯电动轿车将在重庆市内环快速路、新内环快速路及渝都大道等路段开启自动驾驶功能。而极狐牌BJ7001A61NBEV型纯电动轿车则将在北京市京台高速、机场北线高速及大兴机场高速等路段进行自动驾驶测试。\n\n这两款车型已经通过了产品测试和安全评估，即将开始上路通行试点。工业和信息化部表示，将联合相关部门和地方主管部门加强车辆运行监测和安全保障，及时总结经验，不断完善智能网联汽车准入管理和标准法规体系。\n\n与此同时，北京市公安局交通管理局于12月23日正式发放了首批L3级高速公路自动驾驶车辆的专用号牌，其中包括三辆北汽极狐智能网联汽车。这些车辆目前处于有条件的自动驾驶阶段，可以在限定条件下执行动态驾驶任务，最高时速达到80公里。\n\n总的来说，中国正在积极推进L3级自动驾驶技术的应用，为未来的智能交通发展奠定基础。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793233879,
+    "id": "chatcmpl-wab-e5e716f6cfe31214217830aa0d11d61dc74dcc0089a58e7c",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 312,
+      "prompt_tokens": 1233,
+      "total_tokens": 1545
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:30:32.629982+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-e5e716f6cfe31214217830aa0d11d61dc74dcc0089a58e7c",
+        "wab-aca420c4b78d054d2d447897d862dd6df0761ed66bdd9363",
+        "wab-239979ddb61d1d6dbe999ea81edad43e00073d70a4418324",
+        "wab-89deafd5f8ca2c293e2614f12aa93bcda18615517f5e4ee3"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

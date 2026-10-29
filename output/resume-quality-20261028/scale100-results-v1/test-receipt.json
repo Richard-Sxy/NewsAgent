@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "exit_code": 0,
+  "test_count": 94,
+  "scope": "engineering tests, not model quality samples",
+  "command": "cd agent && ../Hunyuan7B/runtime/writing-eval/app-venv/bin/python -m pytest -q tests/test_writing_scale_dataset.py tests/test_writing_batch_runner.py tests/test_writing_batch_service.py tests/test_writing_scale_review.py tests/test_writing_batch_output_audit.py tests/test_writing_run_portable.py tests/test_manual_editing_server.py tests/test_editing_time.py",
+  "note": "Executed in WSL; 94 engineering checks passed. No test count is a human quality sample."
+}

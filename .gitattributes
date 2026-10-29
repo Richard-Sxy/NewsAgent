@@ -11,3 +11,14 @@ small_model/scripts/*.sh text eol=lf
 small_model/configs/**/*.sh text eol=lf
 small_model/data/query_semantics_v1/*.jsonl -text
 small_model/packages/** -text
+
+# Frozen writing evidence: keep byte hashes stable across Windows/WSL clones.
+agent/evaluation/run_writing_batch.py -text
+agent/evaluation/prepare_writing_scale.py -text
+agent/evaluation/writing_metric_snapshot.py -text
+Hunyuan7B/scripts/serve_writing_batch_eval.py -text
+Hunyuan7B/scripts/serve_writing_eval.py -text
+output/resume-quality-20261028/scale100-*/** -text whitespace=-blank-at-eol,-blank-at-eof
+agent/evaluation/verify_writing_run_portable.py -text
+agent/evaluation/audit_writing_batch_outputs.py -text
+agent/evaluation/prepare_writing_scale_review.py -text

@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-067e11d899c7957e375b4670357d55e0c7707704aa098d30",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 比亚迪宋Ultra EV正式上市，开启闪充时代\n\n2026年3月26日，比亚迪宋Ultra EV正式上市，共推出4款车型，包括605KM领先型、605KM超越型、710KM超越型和710KM卓越型，官方指导价为15.19万至17.99万元。新车全系搭载比亚迪第二代刀片电池及闪充技术，提供710公里CLTC纯电续航，并配备天神之眼B、云辇-C、TBC高速爆胎稳行系统等豪华配置，为消费者带来全新的纯电出行方式。\n\n比亚迪宋Ultra EV不仅搭载第二代刀片电池及闪充技术，还配备了激光雷达，实现了“常温充电，5分钟充好，9分钟充饱；低温充电，零下30度，只多3分钟”的快速充电能力。这一技术突破了电动化上半场“充电慢”和“低温充电难”的难题，成为全球领先的新能源技术之一。\n\n此外，宋Ultra EV还提供了“0元购、0元用、0元养”的超重磅购车权益，以及其他丰富的购车体验。宋Ultra EV以其先进的电池技术、强大的动力系统和宽敞的空间，旨在成为B级纯电SUV的价值新标杆，开启便捷、舒适、安全的纯电出行时代。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793236166,
+    "id": "chatcmpl-wab-067e11d899c7957e375b4670357d55e0c7707704aa098d30",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 301,
+      "prompt_tokens": 2144,
+      "total_tokens": 2445
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T01:08:44.983335+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-067e11d899c7957e375b4670357d55e0c7707704aa098d30",
+        "wab-e2dae310527849bf36efdcd2fb7eca70fad1292745c244e0",
+        "wab-a4dbe9bdbf0b8056ed356ce0d8244ff57b96a787240ed826",
+        "wab-2037ef1277bb7449b63d38912a0117fd13aca7325f0aa44a"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

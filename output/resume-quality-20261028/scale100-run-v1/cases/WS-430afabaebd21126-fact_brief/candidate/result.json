@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-f7c8f1e338165fef152d2565bb36db287c1d1cded13e4ed9",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 海尔四筒洗衣机亮相柏林国际消费电子展\n\n2026年9月4日至8日，海尔洗衣机在即将开幕的2026年德国柏林国际消费电子展（IFA2026）上展示了其四筒AI洗护智能体。这款洗衣机由10KG主洗涤筒、10KG烘干筒和两个1KG洗涤小筒组成，主筒29分钟即可洗净四件套，具备健康分区新体验。海尔洗衣机还展示了悬浮吸振智平衡科技，四筒同转时振幅不足0.3mm，噪音仅48dB，机身压缩至592mm，完美嵌入主流橱柜。\n\n此外，海尔四筒洗衣机还搭载了AI智慧之眼2.0，能够根据洗涤全过程自动调整洗涤模式，实现智能洗护。据悉，本届IFA海尔洗衣机还将带来多款新品，包括标尺三筒、Vision 15洗烘套系、NX系列、中子系列和LS系列等，进一步完善AI洗护生态。\n\n此次展览展示了消费电子迈向“主动智能”时代的趋势，海尔等企业在AI技术方面的创新成果得到了展示。未来，随着AI与传感器、控制系统和机器人等技术的加速融合，消费电子产品将更加智能化，为用户提供更便捷的服务。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234212,
+    "id": "chatcmpl-wab-f7c8f1e338165fef152d2565bb36db287c1d1cded13e4ed9",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 284,
+      "prompt_tokens": 2459,
+      "total_tokens": 2743
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:36:06.535849+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-bf4e87cd0ae3faa75b366afd7557eb9f1989ca780e72ce0a",
+        "wab-f7c8f1e338165fef152d2565bb36db287c1d1cded13e4ed9",
+        "wab-34c433f4e46436eeeb43e361bba7436c147e2db9e9aa567a",
+        "wab-79da1fcf855c7fdeec3ddc81dc93e847f8eaec1e9b9b2282"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-46d912eed08165691fb0373320923760aaaa9bc93ba1c8a3",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# DeepSeek V3.2及高计算版本DeepSeek-V3.2-Speciale发布\n\n2025年12月1日晚间，深度求索公司（DeepSeek）宣布发布了两个正式版模型：DeepSeek-V3.2和高计算版本DeepSeek-V3.2-Speciale。该公司成立于2023年7月，专注于大语言模型及多模态AI技术研发。\n\nDeepSeek-V3.2模型在保持卓越推理能力和智能体性能的同时，实现了高计算效率的平衡。这一发布标志着公司在人工智能领域的又一次重大突破，进一步巩固了其在全球AI市场的领先地位。\n\n自2025年1月成立以来，DeepSeek凭借其高效的算法结构和开源策略，迅速吸引了阿里巴巴、腾讯、百度等互联网巨头接入，并在金融、医疗、汽车等行业得到广泛应用。公司的开源举措不仅降低了企业使用AI技术的门槛，还推动了AI技术的普惠化进程。\n\n业内专家指出，DeepSeek的崛起反映了中国AI产业从“技术追赶”向“模式创新”的深刻跨越，彰显了中国AI“硬实力”与“软实力”的双重提升。未来，DeepSeek将继续致力于推动AI技术的创新与应用，为社会发展注入更多活力。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234722,
+    "id": "chatcmpl-wab-46d912eed08165691fb0373320923760aaaa9bc93ba1c8a3",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 264,
+      "prompt_tokens": 2658,
+      "total_tokens": 2922
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:44:44.980392+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-6249efbaf40dd93ca6b137446aae24cdd7c12c9a63c6a96f",
+        "wab-05b01e3c5af572d2aa694eef220a0eac47f77c1553ad48de",
+        "wab-46d912eed08165691fb0373320923760aaaa9bc93ba1c8a3",
+        "wab-d8e85a24ecfb602a2e316abc06888cd3d33884f775689337"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-ad24cb709d697c81d6638c6f469898777ecc6eec0426c9d8",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 智谱与MiniMax密集登陆港交所：事实数据简报\n\n2026年1月8日，智谱AI在港交所主板挂牌，成为全球首家以通用人工智能（AGI）基座大模型为核心业务的上市公司。同日，MiniMax（稀宇科技）也于港交所挂牌，显示出AI企业在资本市场的活跃态势。\n\n智谱AI的上市标志着AI大模型从技术探索迈向规模化、商业化发展的新阶段。智谱AI自2019年成立以来，凭借其深厚的技术基础和广泛的商业布局，成为大模型服务企业的隐形巨头。截至2025年9月，智谱已服务全球12000家企业客户、超8000万台终端用户设备以及超4500万名开发者。\n\nMiniMax的上市则反映了AI企业在商业化进程中的加速。其收入来源主要包括AI原生产品收入和开放平台及基于AI的企业服务收入，2025年1至9月，前者达到3802万美元，同比增长181%；后者收入1541.7万美元，同比增长160%。\n\n资本市场对AI产业的认可已从早期的概念验证转向了更为理性的商业接纳。专家表示，AI企业扎堆上市不仅标志着行业从“技术叙事”正式跨入“商业验证”阶段，也意味着投资者更看重AI企业将技术转化为稳定营收和现金流的实际能力。\n\n总体来看，AI企业在资本市场的活跃表现，预示着AI产业正迎来新的发展机遇。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234392,
+    "id": "chatcmpl-wab-ad24cb709d697c81d6638c6f469898777ecc6eec0426c9d8",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 329,
+      "prompt_tokens": 2292,
+      "total_tokens": 2621
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:39:03.324068+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-56c5770dd90a96c6ff2a5e234d53a072f6d4db63e72966a1",
+        "wab-ad24cb709d697c81d6638c6f469898777ecc6eec0426c9d8",
+        "wab-3611a7eb09eab870a9b9b17ea47515de574f1ad92880910f",
+        "wab-6ff84dfd7a365426a76d39e0dd46eaf1407fa7ac57ed7c77"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

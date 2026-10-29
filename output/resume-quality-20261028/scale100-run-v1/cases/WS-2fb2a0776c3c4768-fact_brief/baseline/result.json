@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-bd2d28dd444718202cd20efd1d435d0eaf1233e3761a2ae6",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "**神舟二十一号发射圆满成功**\n\n2025年10月31日，搭载神舟二十一号载人飞船的长征二号F遥二十一运载火箭在酒泉卫星发射中心成功发射。约10分钟后，飞船与火箭成功分离，进入预定轨道，航天员乘组状态良好，发射任务圆满成功。\n\n此次发射是我国2025年载人航天发射任务的收官之战，标志着我国进入空间站应用与发展阶段的第6次载人飞行任务。截至目前，我国已有28名航天员、44人次进入太空执行飞行任务。\n\n神舟二十一号飞船于11月1日凌晨与空间站组合体完成自主快速交会对接，创造了神舟飞船与空间站交会对接的最快纪录，整个对接过程历时约3.5小时。此前，神舟十二号至神舟二十号载人飞船均采用6.5小时交会对接方案。\n\n神舟二十一号航天员乘组将在空间生命与人体研究、微重力物理科学、空间新技术等领域开展多项实验与应用，进行多次出舱活动，完成空间站碎片防护装置安装，以及舱内外设备安装、调试、维护维修等任务。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234937,
+    "id": "chatcmpl-wab-bd2d28dd444718202cd20efd1d435d0eaf1233e3761a2ae6",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 266,
+      "prompt_tokens": 1580,
+      "total_tokens": 1846
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:48:19.422867+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-bd2d28dd444718202cd20efd1d435d0eaf1233e3761a2ae6",
+        "wab-080b028263a6c8fcf0ad37ade674d7e362e61747d71af9f2",
+        "wab-db3d642a5fc92c0415683e107776e12831b21a25dadd4e7d",
+        "wab-0e3d9d60bc69b239a8de43b27e8c369bf876dd3d90348fb8"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

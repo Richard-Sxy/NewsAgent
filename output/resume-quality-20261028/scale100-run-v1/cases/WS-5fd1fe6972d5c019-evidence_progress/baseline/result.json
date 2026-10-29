@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-dc1f8d4d57c8c1e7c2ec00983734b81ffe02b5800dfd927b",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 苹果发布iPhone 17e：起售价4499元\n\n北京时间3月2日，苹果公司正式发布了iPhone 17e，这是iPhone 16e的迭代产品，定位入门级。iPhone 17e提供256GB版本售价4499元，512GB版本定价为6499元，将于3月4日开启预售，3月11日正式发售。外观方面，iPhone 17e提供粉色、黑色和白色三种配色，整体设计与iPhone 16e相近，但屏幕尺寸略小。\n\n硬件配置上，iPhone 17e搭载A19芯片，配备6.1英寸超视网膜XDR显示屏，4800万像素单摄系统，支持夜景模式和智能HDR等功能。存储规格从256GB起步，取消128GB版本，支持单nano-SIM与eSIM。苹果CEO蒂姆・库克表示，iPhone 17e兼具强大性能和用户喜爱的功能，价格极具竞争力，是升级到iPhone 17系列的理想选择。\n\n此外，苹果将于3月4日在上海、纽约、伦敦三地同步举办线下媒体体验活动，国行版本与全球同步开售。彭博社科技记者马克・古尔曼指出，iPhone 17e的屏幕刷新率较低，没有采用灵动岛界面，与普通iPhone的主要区别在于摄像头、电池续航时间和屏幕尺寸。\n\n来源：S-pub-e00109370db08dcbe8e33755",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234762,
+    "id": "chatcmpl-wab-dc1f8d4d57c8c1e7c2ec00983734b81ffe02b5800dfd927b",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 348,
+      "prompt_tokens": 1272,
+      "total_tokens": 1620
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:45:23.170546+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-e714668673f85ee987e92454a04c0ffb39a669c5658f43cd",
+        "wab-4040c32f9f7fd54e2426d50fae52fbd8228587a4b2aa937f",
+        "wab-dc1f8d4d57c8c1e7c2ec00983734b81ffe02b5800dfd927b",
+        "wab-a0c8d0ed5edc133a1ab507a5bb1f4546214a435ae5849953"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

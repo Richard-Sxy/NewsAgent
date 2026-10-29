@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-217703dab93eee353bc9728d0d45e14a5b2ae501d0e31136",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 第81届联合国大会一般性辩论进展\n\n2026年9月22日至28日，第81届联合国大会一般性辩论在纽约联合国总部举行。主席拉赫曼在开幕和闭幕讲话中强调了深化改革的必要性，呼吁各成员国共同努力，重建信任。\n\n本届辩论共有194个代表团代表参与，讨论了包括和平、发展、人权、联合国改革、下一任秘书长遴选等议题。特别值得注意的是，人工智能成为辩论的中心话题，有128个代表团提及，超过谈及气候变化和人权话题的代表团数量。\n\n拉赫曼呼吁各国不要放弃和平，致力于可持续发展，捍卫人权，确保技术转型服务于人类，并进行有意义的、具有代表性的、公平改革，努力恢复信任。此外，辩论期间还举行了气候行动、公正转型、纪念《发展权利宣言》通过40周年等重要会议。\n\n联合国大会是联合国主要的审议、监督和审查机构，由联合国全体会员国共同组成。本届联大的主题是“重建信任，管理变革：一个为所有人带来实效的联合国”。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793236295,
+    "id": "chatcmpl-wab-217703dab93eee353bc9728d0d45e14a5b2ae501d0e31136",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 235,
+      "prompt_tokens": 1250,
+      "total_tokens": 1485
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T01:10:50.747319+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-b1826d7f0029e20e704f455134f0d31d3f9dba8c1539526b",
+        "wab-0d7ca089412a370dd8361c9968c960e097dc7fb84c574361",
+        "wab-4ed0a8b3c0b1ecec0c5fbfe858461abdd910363234a8e8d7",
+        "wab-217703dab93eee353bc9728d0d45e14a5b2ae501d0e31136"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}

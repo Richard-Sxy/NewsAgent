@@ -1,0 +1,22 @@
+{
+  "asset_manifest_sha256": "6a1c1caacb82d6b861ad8e4c960582b6c2bb90567cf271f0610c1c80ec02e982",
+  "compute_dtype": "bfloat16",
+  "context_tokens": 16384,
+  "device": "NVIDIA GeForce RTX 4070",
+  "generation_max_time_seconds": 240,
+  "max_batch_size": 4,
+  "max_output_tokens": 1024,
+  "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+  "model_path": "/home/shi/project/NewsAgent/Hunyuan7B/models/Hunyuan-7B-Instruct",
+  "profile": "batch-writing-v1",
+  "quantization": "nf4-double-quant",
+  "revision": "6fd6ecb05e76589bc43b79f49e3619445c6b4593",
+  "runtime_source_sha256": "9c919d1b02a5aa426b972e92bf82b50ada1d6728a57c6cd07c8e5cb590b08f62",
+  "scope": "isolated local real-model writing pilot; no LoRA or enterprise acceptance",
+  "source_sha256": "82733293f703a2c56dd7a00e9fc89b71f259197cc160b5b7119af675c60402a2",
+  "status": "ok",
+  "thinking_mode": "disabled",
+  "torch": "2.9.1+cu128",
+  "transformers": "4.57.6",
+  "user_prefix": "/no_think "
+}

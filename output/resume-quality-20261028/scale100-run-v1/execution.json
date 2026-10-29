@@ -1,0 +1,2018 @@
+{
+  "mode": "generation_only_exploratory",
+  "run_dir": "/home/shi/project/NewsAgent/output/resume-quality-20261028/scale100-run-v1",
+  "planned_tasks": 100,
+  "planned_event_groups": 50,
+  "planned_requests": 200,
+  "started_requests": 200,
+  "completed_requests": 200,
+  "failed_requests": 0,
+  "unknown_requests": 0,
+  "not_run": 0,
+  "fully_paired_tasks": 100,
+  "scoring": "not_performed",
+  "human_editing_time": null,
+  "formal_quality_scoring_eligible": false,
+  "requests": [
+    {
+      "case_id": "WS-f1d66dbc55d40a45-fact_brief",
+      "event_group_id": "stocks_spacex_ipo_202606",
+      "arm": "baseline",
+      "request_id": "wab-38ea0dbc5bc76db6d5053b8808b8ebf6f768f1b467be02fb",
+      "request_sha256": "f34e3dbff027edb763b6216a974f3090bb4c9f54548d87343a8b004ab6756528",
+      "public_input_sha256": "3664d7f0a342350e469f247aeb9d61720e2c02a9685919ae68fb2dcfa5f20cd1",
+      "batch_index": 0,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f1d66dbc55d40a45-fact_brief",
+      "event_group_id": "stocks_spacex_ipo_202606",
+      "arm": "candidate",
+      "request_id": "wab-768216c46f1bfafde28b1278f8afac75f28ecd6a7c7686e2",
+      "request_sha256": "12d49ea3bbf3ea2a1192b85c5bf75ded8cb1366865914e1dbc98690e44afd36b",
+      "public_input_sha256": "3664d7f0a342350e469f247aeb9d61720e2c02a9685919ae68fb2dcfa5f20cd1",
+      "batch_index": 0,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f1d66dbc55d40a45-evidence_progress",
+      "event_group_id": "stocks_spacex_ipo_202606",
+      "arm": "baseline",
+      "request_id": "wab-1eaebfa32f04e0b42ce7979d5beafd88aee3d2103f5f251a",
+      "request_sha256": "f5c37248459b3067d017ea91251f47aec2e985ed13785040cb75d143fe6cd6ea",
+      "public_input_sha256": "83ac0758f0df765768a9705d9c2b51caa65f28c50fe0ce89090221ff038a9599",
+      "batch_index": 0,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f1d66dbc55d40a45-evidence_progress",
+      "event_group_id": "stocks_spacex_ipo_202606",
+      "arm": "candidate",
+      "request_id": "wab-54c161c95d97fdb6cde697fb899156f94335acdcba6fca8a",
+      "request_sha256": "154315a6ec14a61a82cc2894bfe54686943d4af286de956f34541a2f95b3a83c",
+      "public_input_sha256": "83ac0758f0df765768a9705d9c2b51caa65f28c50fe0ce89090221ff038a9599",
+      "batch_index": 0,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6ea189bed54399cf-fact_brief",
+      "event_group_id": "tech-zhuque3-20251203",
+      "arm": "baseline",
+      "request_id": "wab-a05bab775fc138c7088fd2a7db8c5d0288e365e951764d41",
+      "request_sha256": "24978f568b9fcdd0bcdd1ebd60296382091403305ee17dcfa574a5c8f329df9f",
+      "public_input_sha256": "a91ad37d464a9a09228b970889463be594cc88c51036ee81a0a9ecac4da35839",
+      "batch_index": 1,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6ea189bed54399cf-fact_brief",
+      "event_group_id": "tech-zhuque3-20251203",
+      "arm": "candidate",
+      "request_id": "wab-d2130db6d2968f57f14f9fb8f9ea25443f5e865993b5736c",
+      "request_sha256": "f4e0f8800b2915742a39e8967c724cb08f718716795571043eea10f10cd92fc8",
+      "public_input_sha256": "a91ad37d464a9a09228b970889463be594cc88c51036ee81a0a9ecac4da35839",
+      "batch_index": 1,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6ea189bed54399cf-evidence_progress",
+      "event_group_id": "tech-zhuque3-20251203",
+      "arm": "baseline",
+      "request_id": "wab-12718eeb65f77a2ab3af7ffa36d2ac4c5317a45053b1040e",
+      "request_sha256": "504c08a51a4789c0b1b48458adaed00556de7ad084f47f7e738dafb89089bae7",
+      "public_input_sha256": "3c23a60224a19d7b820c7a76b775d55a087968ae794f91c569fafdf57b048ca9",
+      "batch_index": 1,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6ea189bed54399cf-evidence_progress",
+      "event_group_id": "tech-zhuque3-20251203",
+      "arm": "candidate",
+      "request_id": "wab-de611622bfff08324a4d4d1b173d924d9703c54256bfc895",
+      "request_sha256": "d40023c7db7ca07a72d422286ea78d58053962c92f7c0487eb733e466c31020c",
+      "public_input_sha256": "3c23a60224a19d7b820c7a76b775d55a087968ae794f91c569fafdf57b048ca9",
+      "batch_index": 1,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1e03b9be0410b985-fact_brief",
+      "event_group_id": "sports-national-2025-topic",
+      "arm": "baseline",
+      "request_id": "wab-5bffa9b738aeb75bb66114bf95c10d717157719e71ca22f7",
+      "request_sha256": "9065b53e362f10dcda0ee48124ac3bb9f49e7da88f62e88d4b87b8b863ceecd7",
+      "public_input_sha256": "3596e54210defb238d4182f988f47924d5591712877842a2c50cad0e2a1c009f",
+      "batch_index": 2,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1e03b9be0410b985-fact_brief",
+      "event_group_id": "sports-national-2025-topic",
+      "arm": "candidate",
+      "request_id": "wab-ec05501061edca8c4a704d1aff2e9ad5af57d05fcbbbfef4",
+      "request_sha256": "ed69ffa989ac2f10d80c9c76b139164f66be2bfb0be6929c2deae7426b6e7cf6",
+      "public_input_sha256": "3596e54210defb238d4182f988f47924d5591712877842a2c50cad0e2a1c009f",
+      "batch_index": 2,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1e03b9be0410b985-evidence_progress",
+      "event_group_id": "sports-national-2025-topic",
+      "arm": "baseline",
+      "request_id": "wab-13caec496d446ee12c69ffb21acf495bc1e7889e380b45e5",
+      "request_sha256": "59e040846cb2685523c7c564b87dbac0e8c6eb7157fdf6b4f41583131ce0dbb9",
+      "public_input_sha256": "5a39fb3d756ebc017cf5d84c5ef526d62e3fe4240c6e0f1993f639357ebc81ea",
+      "batch_index": 2,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1e03b9be0410b985-evidence_progress",
+      "event_group_id": "sports-national-2025-topic",
+      "arm": "candidate",
+      "request_id": "wab-df947e2324e76306e9e08835ae917e5df0ad75e003eca3f1",
+      "request_sha256": "bc825c89a3432f4abb4ea973c68444e601c62725ecf11e51824dcefdaffa9313",
+      "public_input_sha256": "5a39fb3d756ebc017cf5d84c5ef526d62e3fe4240c6e0f1993f639357ebc81ea",
+      "batch_index": 2,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1fcb2db58f52f6b4-fact_brief",
+      "event_group_id": "game-gamescom2026-202608",
+      "arm": "baseline",
+      "request_id": "wab-196851fecb382d85a2ae0590e05174fe8cf35fb65942db99",
+      "request_sha256": "88a96fd9ec898cc1884a14fa2df3b4c1507472944166587bbbab593bd5a86c0f",
+      "public_input_sha256": "abc2f9cb5c3e91f26f30f7be7c93c084ca615a37887edea54834889fa18f0528",
+      "batch_index": 3,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1fcb2db58f52f6b4-fact_brief",
+      "event_group_id": "game-gamescom2026-202608",
+      "arm": "candidate",
+      "request_id": "wab-ca3de3b82f6f0eb2ace407aa8633b472da22fd8aa0f5b34c",
+      "request_sha256": "e95eacda11fcf6749dc0b499b6e8a7590c1afbf5f9d63f44c86d7fc685cf1231",
+      "public_input_sha256": "abc2f9cb5c3e91f26f30f7be7c93c084ca615a37887edea54834889fa18f0528",
+      "batch_index": 3,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1fcb2db58f52f6b4-evidence_progress",
+      "event_group_id": "game-gamescom2026-202608",
+      "arm": "baseline",
+      "request_id": "wab-89c661761d5c588746ac47a4293df89b29bb57d8ec77947b",
+      "request_sha256": "982f7f2f27df58c5a635fe31748cce97e55ca6868a22a5a82a66dc28f0787afd",
+      "public_input_sha256": "63b8f996b6a75e894fc47b2e70ea9066ff5e7569a72cb5d9028376515d92e43b",
+      "batch_index": 3,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1fcb2db58f52f6b4-evidence_progress",
+      "event_group_id": "game-gamescom2026-202608",
+      "arm": "candidate",
+      "request_id": "wab-7e29dc86cd140abb57388732736bc27de116dab1102f4fb0",
+      "request_sha256": "a143bc13e967b700c7154fcd4014e73ce79421d1e3a06dcb8a2b2ce57b30e578",
+      "public_input_sha256": "63b8f996b6a75e894fc47b2e70ea9066ff5e7569a72cb5d9028376515d92e43b",
+      "batch_index": 3,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-fde1595daf994e50-fact_brief",
+      "event_group_id": "auto-tradein-202601",
+      "arm": "baseline",
+      "request_id": "wab-7ba969d304aeb9d2f3fcd9b9f95e6370b0f7d66cad815ccd",
+      "request_sha256": "c428571ed5c267094a34cd5c16feb2876c0bbbb073222fc9809ca2c45c642e22",
+      "public_input_sha256": "dba017192714063aea7810a00de6f253cb2e36e1d0a78f38840b0d82ee2e4ba0",
+      "batch_index": 4,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-fde1595daf994e50-fact_brief",
+      "event_group_id": "auto-tradein-202601",
+      "arm": "candidate",
+      "request_id": "wab-7d9b5a9bf4bdcf6ac500465b3f9a53011554d070b52de24d",
+      "request_sha256": "5c2e3dba0424711106d3d8581808ff672003a5d469956c3cde92f51d73ecaf2d",
+      "public_input_sha256": "dba017192714063aea7810a00de6f253cb2e36e1d0a78f38840b0d82ee2e4ba0",
+      "batch_index": 4,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-fde1595daf994e50-evidence_progress",
+      "event_group_id": "auto-tradein-202601",
+      "arm": "baseline",
+      "request_id": "wab-3edcf45d25903368d0959d5dd85b452a48684253f9ae5d6f",
+      "request_sha256": "9748b3c52dcf227b1afbd8ee7e2d547f555701b94ce4439b7c344d318b764bc4",
+      "public_input_sha256": "bbd607b6d80c3219f67135b305945d45dc769515187db29ba814d1f7bb148c8f",
+      "batch_index": 4,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-fde1595daf994e50-evidence_progress",
+      "event_group_id": "auto-tradein-202601",
+      "arm": "candidate",
+      "request_id": "wab-661cafb775c66f4a5c830346d7683cdfd4f262357e5a311e",
+      "request_sha256": "d6592c56a71952df925f995369d89cb09c5cf68a59963f86ed634d9d85961682",
+      "public_input_sha256": "bbd607b6d80c3219f67135b305945d45dc769515187db29ba814d1f7bb148c8f",
+      "batch_index": 4,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5344d6f13f6d90cd-fact_brief",
+      "event_group_id": "ai-waic-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-ca91a740e05830665fc502924db4ce17aa58bc911de01076",
+      "request_sha256": "8f57767705eb52ac2508f24b1c1ba8a24cb6ade64ee6169654fee4a1919b5efe",
+      "public_input_sha256": "30cf2d87b8aeeca5dfe71b55ea7904aa1ebf948b50c21e4d6cd4e551a49914c7",
+      "batch_index": 5,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5344d6f13f6d90cd-fact_brief",
+      "event_group_id": "ai-waic-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-2932d8e23095866f09495eb318d96d56e4ea33e439e72fff",
+      "request_sha256": "4a25bcd82ffffce7485a35fc4bd8c42d575583f1961b347661df5b47bbfc4504",
+      "public_input_sha256": "30cf2d87b8aeeca5dfe71b55ea7904aa1ebf948b50c21e4d6cd4e551a49914c7",
+      "batch_index": 5,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5344d6f13f6d90cd-evidence_progress",
+      "event_group_id": "ai-waic-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-527c28effc60de1b3600c0a7ecffa20b0894217e5a836a8e",
+      "request_sha256": "3011be0e1a49751de7b1fada0ae62c4c0b6e35205a6eae3296c989604ddf3639",
+      "public_input_sha256": "5ce12af798256195afa55c72a39372c4304248c7c25a32819c9eb6cf84d2f941",
+      "batch_index": 5,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5344d6f13f6d90cd-evidence_progress",
+      "event_group_id": "ai-waic-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-2aeb28cca007cae1fabea2e6ee8aac0f622eec5f6a92e4c4",
+      "request_sha256": "9e4eafbcac086a6541d77ff49c1ab1aa2ddbf436fb4b9615d8e777328c475c45",
+      "public_input_sha256": "5ce12af798256195afa55c72a39372c4304248c7c25a32819c9eb6cf84d2f941",
+      "batch_index": 5,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-430afabaebd21126-fact_brief",
+      "event_group_id": "digital-ifa2026-202609",
+      "arm": "baseline",
+      "request_id": "wab-bf4e87cd0ae3faa75b366afd7557eb9f1989ca780e72ce0a",
+      "request_sha256": "afea63190cbbfad82e71701aa53d3dc595b83193844ec4d43696b1f76ada8d01",
+      "public_input_sha256": "1a840fdc96ad696c82df61b50e103e50f3b11c87d35e8f7efa0ff0bc72b7ad46",
+      "batch_index": 6,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-430afabaebd21126-fact_brief",
+      "event_group_id": "digital-ifa2026-202609",
+      "arm": "candidate",
+      "request_id": "wab-f7c8f1e338165fef152d2565bb36db287c1d1cded13e4ed9",
+      "request_sha256": "02be7aeb8c28bea905e104f2006cf9005844bf2cdd2bba5f9857d46141394efd",
+      "public_input_sha256": "1a840fdc96ad696c82df61b50e103e50f3b11c87d35e8f7efa0ff0bc72b7ad46",
+      "batch_index": 6,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-430afabaebd21126-evidence_progress",
+      "event_group_id": "digital-ifa2026-202609",
+      "arm": "baseline",
+      "request_id": "wab-34c433f4e46436eeeb43e361bba7436c147e2db9e9aa567a",
+      "request_sha256": "565ece32470a368772ae42b4a5e58cec68cb3d95a7fcd937360305bdca533512",
+      "public_input_sha256": "00b56a2b361bc9302d01ad4941853aaa1c9f094c521caff9dcf8a7122ffb2338",
+      "batch_index": 6,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-430afabaebd21126-evidence_progress",
+      "event_group_id": "digital-ifa2026-202609",
+      "arm": "candidate",
+      "request_id": "wab-79da1fcf855c7fdeec3ddc81dc93e847f8eaec1e9b9b2282",
+      "request_sha256": "5fc6c6f8cd685802de5fb9745b4b97e95b4f6c0e5924af1dfe50caa8b10e9ad4",
+      "public_input_sha256": "00b56a2b361bc9302d01ad4941853aaa1c9f094c521caff9dcf8a7122ffb2338",
+      "batch_index": 6,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f965f8ca9ec9baa2-fact_brief",
+      "event_group_id": "international_cop30_202511",
+      "arm": "baseline",
+      "request_id": "wab-e91540037690474b61cc098f7a3064968e791d402fe4c375",
+      "request_sha256": "f2419667b1623e2b4da0854894114a847e213941e6435b3f7805e27fd9bbb68a",
+      "public_input_sha256": "71ac1e9bf8cc9556d9d3b819a2df9385b2479665bee3b23af9c5bff6ec8aa96b",
+      "batch_index": 7,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f965f8ca9ec9baa2-fact_brief",
+      "event_group_id": "international_cop30_202511",
+      "arm": "candidate",
+      "request_id": "wab-2baec3272201817d425a4fe5ad595adb4175d064d82a47a2",
+      "request_sha256": "102faca06166dcc4566f4c9779353341eb970848f4c94435d11dd18a92d2fd21",
+      "public_input_sha256": "71ac1e9bf8cc9556d9d3b819a2df9385b2479665bee3b23af9c5bff6ec8aa96b",
+      "batch_index": 7,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f965f8ca9ec9baa2-evidence_progress",
+      "event_group_id": "international_cop30_202511",
+      "arm": "baseline",
+      "request_id": "wab-72f22ba1dd28dee10bf46847d730ca123e1e434d1f467e6a",
+      "request_sha256": "8aebcaaf22e9423a5857684d86a40f5cb0d44cb5f9c0c6040b1e9592c833e8b7",
+      "public_input_sha256": "126f08eddaa30ee693cbce34658c205af8463e74d8208aa22bf019effebd4c5d",
+      "batch_index": 7,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-f965f8ca9ec9baa2-evidence_progress",
+      "event_group_id": "international_cop30_202511",
+      "arm": "candidate",
+      "request_id": "wab-08c8ebd74d3a14494803b75a7e177ca97ec53734c61a1a19",
+      "request_sha256": "856d03e30d811001b86f8cf08626a991bb41030f4fa39a8b499fd062ce8d1e6d",
+      "public_input_sha256": "126f08eddaa30ee693cbce34658c205af8463e74d8208aa22bf019effebd4c5d",
+      "batch_index": 7,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-18751138294f1fff-fact_brief",
+      "event_group_id": "finance-services-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-21240d88263b9e45d2d908a52811b10897127d66c8f22b90",
+      "request_sha256": "2cc54e5d3966585ffea7f9c960e2a8364975468cb7758c0f538939d68850470f",
+      "public_input_sha256": "c56f54ca0c982fd1092ff0a7c795e8d18682c236613970d67b46b0afee4e4bde",
+      "batch_index": 8,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-18751138294f1fff-fact_brief",
+      "event_group_id": "finance-services-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-696dd16102c9176a0695d8f33c613303e525f4b80fedb914",
+      "request_sha256": "016a78f32a8eb2140b8f982d9e357cd48dcc876f0554b2297eb43c329c066efa",
+      "public_input_sha256": "c56f54ca0c982fd1092ff0a7c795e8d18682c236613970d67b46b0afee4e4bde",
+      "batch_index": 8,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-18751138294f1fff-evidence_progress",
+      "event_group_id": "finance-services-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-0f155756c8006b66cf6920f659d5ccadb9bd6e6d06be3032",
+      "request_sha256": "d5eb4ab6fd67c4080858a51965a36f2ee34f83a231db9a7060350d5fb4ffd499",
+      "public_input_sha256": "7cbca8f7f8b07fb6a7655c15ef9d05f1656ddf37ec0062685c9486714f82cf36",
+      "batch_index": 8,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-18751138294f1fff-evidence_progress",
+      "event_group_id": "finance-services-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-68666c6f30e204aa89975d1aafc2b0380f1ca58b7164086f",
+      "request_sha256": "2ef291f4f984b4e76206cd4c367a12e9ad4705de377c7a465376ab8ce591f115",
+      "public_input_sha256": "7cbca8f7f8b07fb6a7655c15ef9d05f1656ddf37ec0062685c9486714f82cf36",
+      "batch_index": 8,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-b1404e80bbf35ff5-fact_brief",
+      "event_group_id": "military_us_nss_202512",
+      "arm": "baseline",
+      "request_id": "wab-829971c7f1f96c6cc8395b972c59688f92dcdf6ae9664e15",
+      "request_sha256": "8677e31fb569879e928053bcf689d82163586e085c62039da2b4fb9b0fe77cd1",
+      "public_input_sha256": "27d60d343665cc2d878f68f3086c28f791d3155479f63772b057286df6fe4a81",
+      "batch_index": 9,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-b1404e80bbf35ff5-fact_brief",
+      "event_group_id": "military_us_nss_202512",
+      "arm": "candidate",
+      "request_id": "wab-5d82a26d6ae10a6997d3dac90ac12420d739e06d15ed998f",
+      "request_sha256": "a96734197b1b08338243ca24baffa263537e3a8359c553e858883d0cee01eb88",
+      "public_input_sha256": "27d60d343665cc2d878f68f3086c28f791d3155479f63772b057286df6fe4a81",
+      "batch_index": 9,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-b1404e80bbf35ff5-evidence_progress",
+      "event_group_id": "military_us_nss_202512",
+      "arm": "baseline",
+      "request_id": "wab-cc613da63578a45fec7158cf427a583a4d426fbe94888f4c",
+      "request_sha256": "30ab08a511d3d20fc3d95f67ed745abcee404d41d00b3bec43101f4322ab228b",
+      "public_input_sha256": "dd63f1d8358cded245568125ed654edeb878ab19bb0836aacf371b2186e61002",
+      "batch_index": 9,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-b1404e80bbf35ff5-evidence_progress",
+      "event_group_id": "military_us_nss_202512",
+      "arm": "candidate",
+      "request_id": "wab-022b37e53e258bdf09599e783d3b8e4f9af2a52eb4f158fe",
+      "request_sha256": "719f4ead559343423aa5c1a41df7ef280718043005866c536da6028b0cd45ef6",
+      "public_input_sha256": "dd63f1d8358cded245568125ed654edeb878ab19bb0836aacf371b2186e61002",
+      "batch_index": 9,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7063f77d23d14f7d-fact_brief",
+      "event_group_id": "stocks_ai_ipos_202601",
+      "arm": "baseline",
+      "request_id": "wab-56c5770dd90a96c6ff2a5e234d53a072f6d4db63e72966a1",
+      "request_sha256": "8a81894afe6209758bc7e97392747ad3de7e15e6bb65f1467f7216aa368c2514",
+      "public_input_sha256": "146cb04cc272d9d541fb416fc992dcdf5984ad98b58c00c10706cf7fe41ce352",
+      "batch_index": 10,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7063f77d23d14f7d-fact_brief",
+      "event_group_id": "stocks_ai_ipos_202601",
+      "arm": "candidate",
+      "request_id": "wab-ad24cb709d697c81d6638c6f469898777ecc6eec0426c9d8",
+      "request_sha256": "eb69d24ec64e5420ec11a5399c09f00e1c45d2f391ee1b2d767fc6ac7f656575",
+      "public_input_sha256": "146cb04cc272d9d541fb416fc992dcdf5984ad98b58c00c10706cf7fe41ce352",
+      "batch_index": 10,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7063f77d23d14f7d-evidence_progress",
+      "event_group_id": "stocks_ai_ipos_202601",
+      "arm": "baseline",
+      "request_id": "wab-3611a7eb09eab870a9b9b17ea47515de574f1ad92880910f",
+      "request_sha256": "2b3d3d0c5324954b8881509a9725c3f9fd7ff72b84545dee6c34f45ce00bac2b",
+      "public_input_sha256": "a7f695582dd948dc24e0ffe85dd48412e17ae38c7a87b1f633bfa31f91ced8e0",
+      "batch_index": 10,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7063f77d23d14f7d-evidence_progress",
+      "event_group_id": "stocks_ai_ipos_202601",
+      "arm": "candidate",
+      "request_id": "wab-6ff84dfd7a365426a76d39e0dd46eaf1407fa7ac57ed7c77",
+      "request_sha256": "40f54ef917350437d0622757fb40174561e6f2cb6a4de4cca97dca4c7375d37d",
+      "public_input_sha256": "a7f695582dd948dc24e0ffe85dd48412e17ae38c7a87b1f633bfa31f91ced8e0",
+      "batch_index": 10,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-0b45e2e5e4e27a20-fact_brief",
+      "event_group_id": "tech-mengzhou-20260211",
+      "arm": "baseline",
+      "request_id": "wab-6b0ef933d695cb54852ecd3397d6a5ab9f34e552bae3c1dd",
+      "request_sha256": "047635bb4fc11473ae22eada323502ecef30a8fc6a3a3aab301d795df4c75076",
+      "public_input_sha256": "379ae0d7e5946172ea6dd08548f570b9ca145eafac1405e2354a36656184bb23",
+      "batch_index": 11,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-0b45e2e5e4e27a20-fact_brief",
+      "event_group_id": "tech-mengzhou-20260211",
+      "arm": "candidate",
+      "request_id": "wab-9ce598845e11b66bc3e6b672712bbacfa5c6ab2548e30d96",
+      "request_sha256": "9aa0cf1390f55f995494e5de1f41f18ebd07dde3ad4ded081adf9c938d878dea",
+      "public_input_sha256": "379ae0d7e5946172ea6dd08548f570b9ca145eafac1405e2354a36656184bb23",
+      "batch_index": 11,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-0b45e2e5e4e27a20-evidence_progress",
+      "event_group_id": "tech-mengzhou-20260211",
+      "arm": "baseline",
+      "request_id": "wab-30cc71b654aba822eef47d5fa3adf34d3424118c71081fa8",
+      "request_sha256": "c53b946513ce977eb70ea902225c0f98b62c0a5943bc199b2245e64cc3309f88",
+      "public_input_sha256": "24bcd354ddd69727c44311c36e814635cecb8df2c2e0a4bf34f7689bfcf4d0b7",
+      "batch_index": 11,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-0b45e2e5e4e27a20-evidence_progress",
+      "event_group_id": "tech-mengzhou-20260211",
+      "arm": "candidate",
+      "request_id": "wab-c16b04cf4a481f80fd02493eba7586843ac705c184cdc566",
+      "request_sha256": "2786a8ac06e1dd2a007e7d0f1026020a3b410f0970a54a1ae9fae93c6eed05d9",
+      "public_input_sha256": "24bcd354ddd69727c44311c36e814635cecb8df2c2e0a4bf34f7689bfcf4d0b7",
+      "batch_index": 11,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ef74d81b410a10f9-fact_brief",
+      "event_group_id": "sports-beach-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-78b16980d517228e7f0c453d6fbfaacc20866b83300f238d",
+      "request_sha256": "e6316a392747e6bdd42a618b1d9b2bb52e5b999402643fa833e2bf8264143e9a",
+      "public_input_sha256": "8ad05c4a403fca1b0786f3cfece26d06a89670a4653cb0eced7fb5cecf211c80",
+      "batch_index": 12,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ef74d81b410a10f9-fact_brief",
+      "event_group_id": "sports-beach-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-6f1e83b21a740d32e9a88d75aef18a680e9fdf548f8b36e6",
+      "request_sha256": "7d9ee22f24dc29c1d928c08bec971ae26afadec1f17b2913ec4481f0d9d26971",
+      "public_input_sha256": "8ad05c4a403fca1b0786f3cfece26d06a89670a4653cb0eced7fb5cecf211c80",
+      "batch_index": 12,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ef74d81b410a10f9-evidence_progress",
+      "event_group_id": "sports-beach-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-31bfef22332b7b7275990a18185a44a5536ac60ad71c1dd5",
+      "request_sha256": "4adc63efe30481c335116e7943016801aa5185bc2fc27ec49cb59a1418da3358",
+      "public_input_sha256": "23138a5da1075ea2c7bd441a16007ddea4cfd3ec962e930e0fe6b196838af7ab",
+      "batch_index": 12,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ef74d81b410a10f9-evidence_progress",
+      "event_group_id": "sports-beach-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-e0ed43e57003c9514363be5f4a87be6570c5bf8203471724",
+      "request_sha256": "b7c7a67b118860047269c3bb114df6deac4f1423ebe34ebd9d4519bf26abe6a0",
+      "public_input_sha256": "23138a5da1075ea2c7bd441a16007ddea4cfd3ec962e930e0fe6b196838af7ab",
+      "batch_index": 12,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-05813dcc6da97052-fact_brief",
+      "event_group_id": "game-tencent-spark-202605",
+      "arm": "baseline",
+      "request_id": "wab-10d7ab02a5626518e01889b0053cb46f761a1a806b0268c6",
+      "request_sha256": "d7ef93e4289b5bbba2c717812aeadecd62f77a5b9fe6c4c3794e8d82751cabfc",
+      "public_input_sha256": "f5b9406d9a327897afa9cb3533afc95a57b460c16a38b8777d2584b5e51d80f3",
+      "batch_index": 13,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-05813dcc6da97052-fact_brief",
+      "event_group_id": "game-tencent-spark-202605",
+      "arm": "candidate",
+      "request_id": "wab-c08507110f2e57bebc88228435543f900725cc4320a8b153",
+      "request_sha256": "6a5d71d8c86014b5f04105150805914dcd713aa6f044ee6ad49210baf5d1453e",
+      "public_input_sha256": "f5b9406d9a327897afa9cb3533afc95a57b460c16a38b8777d2584b5e51d80f3",
+      "batch_index": 13,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-05813dcc6da97052-evidence_progress",
+      "event_group_id": "game-tencent-spark-202605",
+      "arm": "baseline",
+      "request_id": "wab-e00a751dead400d31b348e407eb3a45d5324c155fe5736e8",
+      "request_sha256": "3facd9f4642f58ee5914b15094c3381247c63e56e7eb0dcc82140931050a2289",
+      "public_input_sha256": "0a4d21f5572eae60f065b9529e51a187382061f9b736b771c971a3f5798c7885",
+      "batch_index": 13,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-05813dcc6da97052-evidence_progress",
+      "event_group_id": "game-tencent-spark-202605",
+      "arm": "candidate",
+      "request_id": "wab-e6c2a8f73412ba78d0bf29ae6fa4babd8b49c3aaddc95a85",
+      "request_sha256": "29923260138a30ddb00fbd308118cb4e7577072ae41f30193dc033b124ab71cb",
+      "public_input_sha256": "0a4d21f5572eae60f065b9529e51a187382061f9b736b771c971a3f5798c7885",
+      "batch_index": 13,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-847ce31d7838c1d5-fact_brief",
+      "event_group_id": "auto-handles-standard-202602",
+      "arm": "baseline",
+      "request_id": "wab-0e5f1d08bfed9d96dd1fa19963d07ec5e620e525426fbf9c",
+      "request_sha256": "2a234ee5bf2a171988e38d53e7a97966b26f6367cfef145dbcd1ca3bb119a729",
+      "public_input_sha256": "a7b434395d67d78d5c4b375c01826328d70fc01dd80255a94e1c12fd27e76199",
+      "batch_index": 14,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-847ce31d7838c1d5-fact_brief",
+      "event_group_id": "auto-handles-standard-202602",
+      "arm": "candidate",
+      "request_id": "wab-e8ba4ce6139fd9fc449e25ebb39e8b6424dbe3805be1c47a",
+      "request_sha256": "db1767aeb89857fc153b3744bb2b00f4d8370dedea989b7d559cc46e0d570aa8",
+      "public_input_sha256": "a7b434395d67d78d5c4b375c01826328d70fc01dd80255a94e1c12fd27e76199",
+      "batch_index": 14,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-847ce31d7838c1d5-evidence_progress",
+      "event_group_id": "auto-handles-standard-202602",
+      "arm": "baseline",
+      "request_id": "wab-36eb6b9c06a56d549373c1f4f3cf5a70c28f07206ea8aa46",
+      "request_sha256": "86f22280f92b9c11c36d762e0e610919bad05721c4ac3235ba6cff4023512fc2",
+      "public_input_sha256": "c3eb4ed8dc3bf3349027c2848885a56cc24bf21f4707b278b3f1dcb5ae24533c",
+      "batch_index": 14,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-847ce31d7838c1d5-evidence_progress",
+      "event_group_id": "auto-handles-standard-202602",
+      "arm": "candidate",
+      "request_id": "wab-9ff9549d51a58323bd0ad145d10e26b32b95e8953058ab68",
+      "request_sha256": "770e803f38329411485fc237ee401e228683e5aa40a4c77e5923e85a041e86d3",
+      "public_input_sha256": "c3eb4ed8dc3bf3349027c2848885a56cc24bf21f4707b278b3f1dcb5ae24533c",
+      "batch_index": 14,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-a7480950777d6f1e-fact_brief",
+      "event_group_id": "ai-deepseek32-202512",
+      "arm": "baseline",
+      "request_id": "wab-6249efbaf40dd93ca6b137446aae24cdd7c12c9a63c6a96f",
+      "request_sha256": "345bf48d05d600aa69930680f6ba1d1b57a83aa11e80562c70ea0d8baa87300f",
+      "public_input_sha256": "e9a667072e4636e4dcf389f037b445c39485c05ce8f1678ce45af39fdf862937",
+      "batch_index": 15,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-a7480950777d6f1e-fact_brief",
+      "event_group_id": "ai-deepseek32-202512",
+      "arm": "candidate",
+      "request_id": "wab-05b01e3c5af572d2aa694eef220a0eac47f77c1553ad48de",
+      "request_sha256": "183c40964696ac05b08a81cdd8521908a793c8603f1e62ea9fdee96e936e84ce",
+      "public_input_sha256": "e9a667072e4636e4dcf389f037b445c39485c05ce8f1678ce45af39fdf862937",
+      "batch_index": 15,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-a7480950777d6f1e-evidence_progress",
+      "event_group_id": "ai-deepseek32-202512",
+      "arm": "baseline",
+      "request_id": "wab-46d912eed08165691fb0373320923760aaaa9bc93ba1c8a3",
+      "request_sha256": "96e136dbe51e10933b9031931ed39a4c75c4ed2a753cb3d699670f8069ec8524",
+      "public_input_sha256": "1b180867bc85a35c970063bce1b5ef0dfbe0cab2a152d57c0d17378ddbe8986b",
+      "batch_index": 15,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-a7480950777d6f1e-evidence_progress",
+      "event_group_id": "ai-deepseek32-202512",
+      "arm": "candidate",
+      "request_id": "wab-d8e85a24ecfb602a2e316abc06888cd3d33884f775689337",
+      "request_sha256": "bfebff548ee39d64599b7b182f9c9531983dc1c7250a894d96f4d1eabe22c101",
+      "public_input_sha256": "1b180867bc85a35c970063bce1b5ef0dfbe0cab2a152d57c0d17378ddbe8986b",
+      "batch_index": 15,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5fd1fe6972d5c019-fact_brief",
+      "event_group_id": "digital-iphone17e-202603",
+      "arm": "baseline",
+      "request_id": "wab-e714668673f85ee987e92454a04c0ffb39a669c5658f43cd",
+      "request_sha256": "37a0f35e060c602ad5676165765220301bb384b02cf3e0c9dbeb210332e1cabe",
+      "public_input_sha256": "b8bc9f8a35df0d9135fbf79c0539456049bc395ab20261a4c2eddb238afb4698",
+      "batch_index": 16,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5fd1fe6972d5c019-fact_brief",
+      "event_group_id": "digital-iphone17e-202603",
+      "arm": "candidate",
+      "request_id": "wab-4040c32f9f7fd54e2426d50fae52fbd8228587a4b2aa937f",
+      "request_sha256": "4215aa812a0ad47486bf9291e4d8c0d31505308fef165d629318738367cb8eff",
+      "public_input_sha256": "b8bc9f8a35df0d9135fbf79c0539456049bc395ab20261a4c2eddb238afb4698",
+      "batch_index": 16,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5fd1fe6972d5c019-evidence_progress",
+      "event_group_id": "digital-iphone17e-202603",
+      "arm": "baseline",
+      "request_id": "wab-dc1f8d4d57c8c1e7c2ec00983734b81ffe02b5800dfd927b",
+      "request_sha256": "cf85b41ef4871009353d0756eee759deedd793e383cb1221cf195cba0cfc380c",
+      "public_input_sha256": "002d0a388c4d9f5007d02ca3fb492a8566baa3707cf7ccccb692bf3f6439349b",
+      "batch_index": 16,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-5fd1fe6972d5c019-evidence_progress",
+      "event_group_id": "digital-iphone17e-202603",
+      "arm": "candidate",
+      "request_id": "wab-a0c8d0ed5edc133a1ab507a5bb1f4546214a435ae5849953",
+      "request_sha256": "32f853e2fedb54677b15aee6f34e0c356ef82c878c4b88aa580d228414851fba",
+      "public_input_sha256": "002d0a388c4d9f5007d02ca3fb492a8566baa3707cf7ccccb692bf3f6439349b",
+      "batch_index": 16,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-93a29cc654aaea6d-fact_brief",
+      "event_group_id": "international_g20_202511",
+      "arm": "baseline",
+      "request_id": "wab-1e9e55b687964b78822d7f429659ccaba4b1e22ae0108920",
+      "request_sha256": "6d1df634827c1c1492dcf3c6545dcbc0da1c5543455ed3478cab9f36ae29755d",
+      "public_input_sha256": "0fe3fc00f8b71fb5d1ba0fd2378c6916d6bde6cc616ad501c13ab694bc878c5f",
+      "batch_index": 17,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-93a29cc654aaea6d-fact_brief",
+      "event_group_id": "international_g20_202511",
+      "arm": "candidate",
+      "request_id": "wab-b36fee71f129f1fc6bf48e11b80943adb53beacc339af817",
+      "request_sha256": "29886668996816b4cfdbaff841ddd88549f254665e3c3dab4001dba011af1e06",
+      "public_input_sha256": "0fe3fc00f8b71fb5d1ba0fd2378c6916d6bde6cc616ad501c13ab694bc878c5f",
+      "batch_index": 17,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-93a29cc654aaea6d-evidence_progress",
+      "event_group_id": "international_g20_202511",
+      "arm": "baseline",
+      "request_id": "wab-4e749ad3f99a485acaad15fc38371bec52888d8d7b91b93e",
+      "request_sha256": "bb9fe4b1fe07bd5a89c37ca670f025f627ca88cb24c58e4ffb16568710ab4a78",
+      "public_input_sha256": "8f13e9caadd8161f02419c7dbd60050098898e8031abe6208cc7c4b85b268439",
+      "batch_index": 17,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-93a29cc654aaea6d-evidence_progress",
+      "event_group_id": "international_g20_202511",
+      "arm": "candidate",
+      "request_id": "wab-2cadf193ef80924248c094be3b970e89a0ffd9f6786f2d71",
+      "request_sha256": "60f10587d3cb6f57d343f31d1e9746b243f409bf74f0549eaa9928fb0f414670",
+      "public_input_sha256": "8f13e9caadd8161f02419c7dbd60050098898e8031abe6208cc7c4b85b268439",
+      "batch_index": 17,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2d856e2439bd7bd2-fact_brief",
+      "event_group_id": "military_newstart_expiry_202602",
+      "arm": "baseline",
+      "request_id": "wab-68f63125771dc857acdcca398ba13301c1600ce98684136b",
+      "request_sha256": "eef62c33a1588daaa16ae7eba5ec17a4cf6b50b8249592cb84a7402950ed031d",
+      "public_input_sha256": "3334cbd858b37fe0ff221424805b23b67cd2e4368138bd6c3b102e58c6d3a9d3",
+      "batch_index": 18,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2d856e2439bd7bd2-fact_brief",
+      "event_group_id": "military_newstart_expiry_202602",
+      "arm": "candidate",
+      "request_id": "wab-21decb16cdef93f8a404a06234da70ee29a3940981cfd9ca",
+      "request_sha256": "378238947e8487510f511cc66299385faf19e835ce4562655e94f573a14154f1",
+      "public_input_sha256": "3334cbd858b37fe0ff221424805b23b67cd2e4368138bd6c3b102e58c6d3a9d3",
+      "batch_index": 18,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2d856e2439bd7bd2-evidence_progress",
+      "event_group_id": "military_newstart_expiry_202602",
+      "arm": "baseline",
+      "request_id": "wab-e47385ef4cdba9b7f6a85869fd3a4f3235bddfa1b7b9e395",
+      "request_sha256": "55cc6733658e6f2eddeadaccce86a36091827898fb2798eb65b2bde986b241c0",
+      "public_input_sha256": "bb91eaf17b4ca1592ee38dada5be6d1faa07930d05b63b057eba47b085a4ace3",
+      "batch_index": 18,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2d856e2439bd7bd2-evidence_progress",
+      "event_group_id": "military_newstart_expiry_202602",
+      "arm": "candidate",
+      "request_id": "wab-a351bf77a29878e8c2bc58a4c743a928dd5fcc0d2110462b",
+      "request_sha256": "619e91f50496774e12a4813c88e5b275878b9ce10ea1ee2a0652605874727a48",
+      "public_input_sha256": "bb91eaf17b4ca1592ee38dada5be6d1faa07930d05b63b057eba47b085a4ace3",
+      "batch_index": 18,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eda34e7aefef4380-fact_brief",
+      "event_group_id": "stocks_moore_ipo_202512",
+      "arm": "baseline",
+      "request_id": "wab-3e9760ae4736edb3876dd8b0d7b6fdbbce07360a0049a059",
+      "request_sha256": "4b4e8cb08fc897825af974b8319506a43a8af95b8ab13fd4a8c2ef596d685ebd",
+      "public_input_sha256": "b7a0ecff07f8df34570bd2fe678d74960aa830891c4e02c5496fc18b0617576f",
+      "batch_index": 19,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eda34e7aefef4380-fact_brief",
+      "event_group_id": "stocks_moore_ipo_202512",
+      "arm": "candidate",
+      "request_id": "wab-6abbf95a26ad4725615b79aa5f516727e6f01ad688a4af8d",
+      "request_sha256": "445caeab97f3994051bcfe1598a3de5abbb7561b7d2e8ebe5f22cad5349aeeee",
+      "public_input_sha256": "b7a0ecff07f8df34570bd2fe678d74960aa830891c4e02c5496fc18b0617576f",
+      "batch_index": 19,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eda34e7aefef4380-evidence_progress",
+      "event_group_id": "stocks_moore_ipo_202512",
+      "arm": "baseline",
+      "request_id": "wab-e4f92c01678cc0ed7e57a5d8219b2bf312381404ddaad22d",
+      "request_sha256": "35cff54c9e1d9c70f7a8a48220c7dadf738314cb93cc26eaac884051ccec6439",
+      "public_input_sha256": "4c6b742d17a730ca7888e58ff4f1f1d0a04d5a3d505d58f849524822c52eec2d",
+      "batch_index": 19,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eda34e7aefef4380-evidence_progress",
+      "event_group_id": "stocks_moore_ipo_202512",
+      "arm": "candidate",
+      "request_id": "wab-572ae5133776f7717e27a5643ae519d6b1aed45939275473",
+      "request_sha256": "0b7cfb9b16287e5076a4f646d5396e1a03a658457ccd99e16025c254969c745a",
+      "public_input_sha256": "4c6b742d17a730ca7888e58ff4f1f1d0a04d5a3d505d58f849524822c52eec2d",
+      "batch_index": 19,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2fb2a0776c3c4768-fact_brief",
+      "event_group_id": "tech-shenzhou21-20251031",
+      "arm": "baseline",
+      "request_id": "wab-bd2d28dd444718202cd20efd1d435d0eaf1233e3761a2ae6",
+      "request_sha256": "488769778ec786dbbd3a232d6555290bca99205693657992bfc7a2427039d6c4",
+      "public_input_sha256": "d11683e5f33118cb43e4ca12f955c9ba89601f70a2ffecb7ac2aea039a308354",
+      "batch_index": 20,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2fb2a0776c3c4768-fact_brief",
+      "event_group_id": "tech-shenzhou21-20251031",
+      "arm": "candidate",
+      "request_id": "wab-080b028263a6c8fcf0ad37ade674d7e362e61747d71af9f2",
+      "request_sha256": "4ecfd2d999f93a666c55883b4c63ca580b67d1850dc84644fa6d83614423e14c",
+      "public_input_sha256": "d11683e5f33118cb43e4ca12f955c9ba89601f70a2ffecb7ac2aea039a308354",
+      "batch_index": 20,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2fb2a0776c3c4768-evidence_progress",
+      "event_group_id": "tech-shenzhou21-20251031",
+      "arm": "baseline",
+      "request_id": "wab-db3d642a5fc92c0415683e107776e12831b21a25dadd4e7d",
+      "request_sha256": "52a69d184a0648aa687e616dc3c7c6b6e2680a0b99096a682c052048b57022fa",
+      "public_input_sha256": "d13be1098cd8350f1a5cdad6e8e8244ffaf3ea7d067e61378dc63ddc7d299f54",
+      "batch_index": 20,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2fb2a0776c3c4768-evidence_progress",
+      "event_group_id": "tech-shenzhou21-20251031",
+      "arm": "candidate",
+      "request_id": "wab-0e3d9d60bc69b239a8de43b27e8c369bf876dd3d90348fb8",
+      "request_sha256": "6d0c918edb19175250af1270971ec4f0d1374bb1a0b7078009009b335368bea0",
+      "public_input_sha256": "d13be1098cd8350f1a5cdad6e8e8244ffaf3ea7d067e61378dc63ddc7d299f54",
+      "batch_index": 20,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-15fadc6cd74a248d-fact_brief",
+      "event_group_id": "sports-fifa-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-0047a35a6e414707250fa9a5baec7416cdf9d29dc3e3bff6",
+      "request_sha256": "73f4a264d3a8c75b7554576abf49523432617f438b6afe2601b30c06428d1a21",
+      "public_input_sha256": "e39b9d93578ef8b6aff60d7c4095ef84c66013227c79eb981e4872aee579eb8d",
+      "batch_index": 21,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-15fadc6cd74a248d-fact_brief",
+      "event_group_id": "sports-fifa-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-ea247cc603adde53e6cb1fd279a9e8430011a7c61ca28fd2",
+      "request_sha256": "9dea929baf77b091422568c2e02509e7d3f08f005f82faf09763f51e391e4a25",
+      "public_input_sha256": "e39b9d93578ef8b6aff60d7c4095ef84c66013227c79eb981e4872aee579eb8d",
+      "batch_index": 21,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-15fadc6cd74a248d-evidence_progress",
+      "event_group_id": "sports-fifa-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-832356ef79ae15efa90b029cb543be4deaf4b51f01430e3b",
+      "request_sha256": "0b4d16f3c8ee64ba2457c3c029f64ebf100a26dee0db144e1933a8b4b5806bfc",
+      "public_input_sha256": "4e9d5538a9ee0a4e8f581d97c80312d2fd3b5b9f6a368b8c26f4502a5535791c",
+      "batch_index": 21,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-15fadc6cd74a248d-evidence_progress",
+      "event_group_id": "sports-fifa-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-a0149d5140ac1b31d4f05e4f10d6b6b0cdd7881e337231bd",
+      "request_sha256": "80bf93f5d15b5ca67288cf020ea425bede49896b3e55dcf3f660fe9aadc9ba59",
+      "public_input_sha256": "4e9d5538a9ee0a4e8f581d97c80312d2fd3b5b9f6a368b8c26f4502a5535791c",
+      "batch_index": 21,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9ece5ed558ad066c-fact_brief",
+      "event_group_id": "game-chinajoy2026-202607",
+      "arm": "baseline",
+      "request_id": "wab-0aaad2ac178602d943d8a3820a7061cf6d65289e3682881f",
+      "request_sha256": "f2a6958a57d52d254ed23d06bc251d6c6f15149e1e5d7b29b54ad62d6130ad29",
+      "public_input_sha256": "0bfb57221146dfcf0a00565440fcd5cef5caf6689ec6b8e56b27e545634fae99",
+      "batch_index": 22,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9ece5ed558ad066c-fact_brief",
+      "event_group_id": "game-chinajoy2026-202607",
+      "arm": "candidate",
+      "request_id": "wab-71acad7e4e080283141fe8f5c4100863727929fedbfe9d3e",
+      "request_sha256": "54be87a4cfe211f9a0952ff04e4807ceb5e9d925bf91fd205b897cac3e3cc339",
+      "public_input_sha256": "0bfb57221146dfcf0a00565440fcd5cef5caf6689ec6b8e56b27e545634fae99",
+      "batch_index": 22,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9ece5ed558ad066c-evidence_progress",
+      "event_group_id": "game-chinajoy2026-202607",
+      "arm": "baseline",
+      "request_id": "wab-9e8f86c280306df5233c1bea525fcb4f3fbba14c0d85fae9",
+      "request_sha256": "ed14c14734660f1a6ecdf7759822d8ebd562f3bd2545f6a9a886db8402b0700c",
+      "public_input_sha256": "82767a7a0d6547dd2d1b0526d9bc2056ea76f85ee77c50e9c40147457bafb8bf",
+      "batch_index": 22,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9ece5ed558ad066c-evidence_progress",
+      "event_group_id": "game-chinajoy2026-202607",
+      "arm": "candidate",
+      "request_id": "wab-5f276555995273cfa4f1c0333d65e3ec61b2b66ce042bbfd",
+      "request_sha256": "b4e1f4c2e90019e6fa9dc8173641eaa537d857cff28bbf1d5552d219b1dde36b",
+      "public_input_sha256": "82767a7a0d6547dd2d1b0526d9bc2056ea76f85ee77c50e9c40147457bafb8bf",
+      "batch_index": 22,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ff40c05c8ee2c747-fact_brief",
+      "event_group_id": "auto-guangzhou-show-202511",
+      "arm": "baseline",
+      "request_id": "wab-816bd5cffb77086cce87a7035d409cc031edcce7c5054b02",
+      "request_sha256": "6d3c6e34963e592f8b93724b5d00adf9f55941dfc0034a57cdc386a59126d473",
+      "public_input_sha256": "8a2a4f938d3f1877c549325bf94b73d87aa09e79947c048ea65c2e932bf2ff0c",
+      "batch_index": 23,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ff40c05c8ee2c747-fact_brief",
+      "event_group_id": "auto-guangzhou-show-202511",
+      "arm": "candidate",
+      "request_id": "wab-ba5ceb4f7a9d824ff796dbb01d68828a121c8e3dc9d3bae5",
+      "request_sha256": "878c1b30c1ac9d60114d64e97329912a9ba7c3e8f98be0123f669cb0d2a1fc06",
+      "public_input_sha256": "8a2a4f938d3f1877c549325bf94b73d87aa09e79947c048ea65c2e932bf2ff0c",
+      "batch_index": 23,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ff40c05c8ee2c747-evidence_progress",
+      "event_group_id": "auto-guangzhou-show-202511",
+      "arm": "baseline",
+      "request_id": "wab-7e747e0fe0a12a38a7d60696560212314358a0afc448613c",
+      "request_sha256": "2e2921f9c6880690727f1bbe34c9028cd03053f1d7c8bb6544cb3cdbc8997f71",
+      "public_input_sha256": "3a07b6ff7c0ca987d239828c72e4132e147d35a4cd1b095ca92ce735ef72db94",
+      "batch_index": 23,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ff40c05c8ee2c747-evidence_progress",
+      "event_group_id": "auto-guangzhou-show-202511",
+      "arm": "candidate",
+      "request_id": "wab-1714c9c02758c0b5bfb28e50b5b3e19d1f38e9d0a0522cbf",
+      "request_sha256": "8a6fb9799fb9c0b271e53e257b9059117237d68f08b79e0868f5659e1a8bda0d",
+      "public_input_sha256": "3a07b6ff7c0ca987d239828c72e4132e147d35a4cd1b095ca92ce735ef72db94",
+      "batch_index": 23,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ffee6d2d7747d1ac-fact_brief",
+      "event_group_id": "ai-humanoid-spring-202602",
+      "arm": "baseline",
+      "request_id": "wab-55c2a774814efeaa73c9dc70e6ff8831fe70d51d7679dcea",
+      "request_sha256": "19564ac6d5acd8708dab73caf84d08410fdfaab9ea91ac3c23dba66da97fcd96",
+      "public_input_sha256": "2fb22a23857e8f029abbc4ff8b656a669ebde07562b53f509bfe04c46db7de8a",
+      "batch_index": 24,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ffee6d2d7747d1ac-fact_brief",
+      "event_group_id": "ai-humanoid-spring-202602",
+      "arm": "candidate",
+      "request_id": "wab-7c047186684ec2324151359e7a2a30333669768257ac8745",
+      "request_sha256": "cb841a85281caec0cedfe2b493ab21380635ae3ecc37ca232c99fc9f1f93e418",
+      "public_input_sha256": "2fb22a23857e8f029abbc4ff8b656a669ebde07562b53f509bfe04c46db7de8a",
+      "batch_index": 24,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ffee6d2d7747d1ac-evidence_progress",
+      "event_group_id": "ai-humanoid-spring-202602",
+      "arm": "baseline",
+      "request_id": "wab-b338aa682cd44c6370c686980a04c91f93b1f35b3deb8a1d",
+      "request_sha256": "d4275cbba56d07d92110af3a22e909c6dc06c7b4f05c5507093bd1e3c07cf079",
+      "public_input_sha256": "ce7030e17583091ee6c97b92318a912e91162c7bcb2e21aafe0c76511a14090d",
+      "batch_index": 24,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ffee6d2d7747d1ac-evidence_progress",
+      "event_group_id": "ai-humanoid-spring-202602",
+      "arm": "candidate",
+      "request_id": "wab-3b38872b170e830eef51f014e9e1e0ee736a8224c0324fb5",
+      "request_sha256": "9975a0bf00960ea945ab79d58eb26506a6d07c7a00c3c205dcddbc193ddf5fcd",
+      "public_input_sha256": "ce7030e17583091ee6c97b92318a912e91162c7bcb2e21aafe0c76511a14090d",
+      "batch_index": 24,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-87d7a7caa19d4fa0-fact_brief",
+      "event_group_id": "digital-matex7-20251125",
+      "arm": "baseline",
+      "request_id": "wab-d7c6258dcf371fc36446bdc5c0f436bb434017c8d71e12dd",
+      "request_sha256": "8617087485d8f5424942885e246920f8f7fa6bb632dfdc0663c38b4730227cc2",
+      "public_input_sha256": "42e981983af34ce30255ee6896f7c225c10fc8da264f47aeeef75e943d79e0d8",
+      "batch_index": 25,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-87d7a7caa19d4fa0-fact_brief",
+      "event_group_id": "digital-matex7-20251125",
+      "arm": "candidate",
+      "request_id": "wab-2b336f2f2b9a6e53afa87785a6499989e07097ef40534627",
+      "request_sha256": "e76d381d30e3f09eae5d133cdaaacac50fdcc4ea91d40fababfae129f1ca0ca0",
+      "public_input_sha256": "42e981983af34ce30255ee6896f7c225c10fc8da264f47aeeef75e943d79e0d8",
+      "batch_index": 25,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-87d7a7caa19d4fa0-evidence_progress",
+      "event_group_id": "digital-matex7-20251125",
+      "arm": "baseline",
+      "request_id": "wab-e6e80c7200584f783a454aa6fb215d8fc27111fa4db1f022",
+      "request_sha256": "b9fdc5adaad370015e36af990bd8110ffc737c9804362832280e806bb0712d67",
+      "public_input_sha256": "b69ffbb7f3d0a091fa56363cd39d2ddf8b2a54c63216d5f08afce071ac42e048",
+      "batch_index": 25,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-87d7a7caa19d4fa0-evidence_progress",
+      "event_group_id": "digital-matex7-20251125",
+      "arm": "candidate",
+      "request_id": "wab-674fa8854213b55297b3647929bac2c77158b408cc9f16e9",
+      "request_sha256": "ad0bc6fa5418ec0d94bb0f1dd3bdb139b6919978d22c73f38a60f9330a75d842",
+      "public_input_sha256": "b69ffbb7f3d0a091fa56363cd39d2ddf8b2a54c63216d5f08afce071ac42e048",
+      "batch_index": 25,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e8b4b095f24249cc-fact_brief",
+      "event_group_id": "international_starmer_china_202601",
+      "arm": "baseline",
+      "request_id": "wab-2f11b14b17150c29313e650e77be75bc77b8fd29c6077c5e",
+      "request_sha256": "a1216a4005c83a3579c7bf1dbc627164989e6439b8b8fb8e97d822431409b200",
+      "public_input_sha256": "30f08ffe3bc6364e18cbca2e3bf203e7a416bd03f368ac626b353113a3216819",
+      "batch_index": 26,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e8b4b095f24249cc-fact_brief",
+      "event_group_id": "international_starmer_china_202601",
+      "arm": "candidate",
+      "request_id": "wab-73083066f1cde43f1313c1dfa26eb971b0d9b54c743bcc9c",
+      "request_sha256": "f6f48dad822c1088510ecee64722b2866f4be13facfd39a6e25b7a81610e8228",
+      "public_input_sha256": "30f08ffe3bc6364e18cbca2e3bf203e7a416bd03f368ac626b353113a3216819",
+      "batch_index": 26,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e8b4b095f24249cc-evidence_progress",
+      "event_group_id": "international_starmer_china_202601",
+      "arm": "baseline",
+      "request_id": "wab-1d878e5f71000769edafb3faa7b5f6d350c5e8d47dcf95a4",
+      "request_sha256": "f106e507c76b47d0d28df647bd00975b24a02d23357cb52cbf500af99cb7f417",
+      "public_input_sha256": "6523f2ef58d2513fb9b6001fc3d0fb65a2c0207885d4a81c5287ecce8667b578",
+      "batch_index": 26,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e8b4b095f24249cc-evidence_progress",
+      "event_group_id": "international_starmer_china_202601",
+      "arm": "candidate",
+      "request_id": "wab-d052636645c6b1b46c49f8f86c75099849ae0f462afd0604",
+      "request_sha256": "f9f6e376e415d4b0ca41207a4742f09b462323fb40895e8836c0793924edcad0",
+      "public_input_sha256": "6523f2ef58d2513fb9b6001fc3d0fb65a2c0207885d4a81c5287ecce8667b578",
+      "batch_index": 26,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eb56825a3bf36e9d-fact_brief",
+      "event_group_id": "military_venezuela_202601",
+      "arm": "baseline",
+      "request_id": "wab-246548b27a3f45027bce33805092e902ccb7a68489a5a112",
+      "request_sha256": "95ceade67f7be2d07aed99e03350cd7572c0868520cd01e8a6d735e8f1845d59",
+      "public_input_sha256": "996c5647bc60b742da15e194441b95959c704920a135836302cc23d8c0c1cd9a",
+      "batch_index": 27,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eb56825a3bf36e9d-fact_brief",
+      "event_group_id": "military_venezuela_202601",
+      "arm": "candidate",
+      "request_id": "wab-dbe7b0dce3efd5f07c791ea56b3414a365b540fd167b4746",
+      "request_sha256": "86f3a402329dc37977662bee37bf754f5d3539ff0837ea6ed1d32d7405c084ca",
+      "public_input_sha256": "996c5647bc60b742da15e194441b95959c704920a135836302cc23d8c0c1cd9a",
+      "batch_index": 27,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eb56825a3bf36e9d-evidence_progress",
+      "event_group_id": "military_venezuela_202601",
+      "arm": "baseline",
+      "request_id": "wab-d12e164977fd7471b27aab8d39aa2f6ab9453f85988b5c74",
+      "request_sha256": "a1ff7816fd1adf6a182a61fb99c64d96331fdb2bcf06c7cd20e55e51f9d2b6d9",
+      "public_input_sha256": "bcd208182b50bf71293b9d06027d68fd7ba1ec691fdef447c4d5cf90226b91b2",
+      "batch_index": 27,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-eb56825a3bf36e9d-evidence_progress",
+      "event_group_id": "military_venezuela_202601",
+      "arm": "candidate",
+      "request_id": "wab-72183555da5af9df18db36b9889ea1c76dde28d3a13fceec",
+      "request_sha256": "01d2f183bcdce0586bc8f9f3da011fa57d9b975049680976d4c724ba361ee42f",
+      "public_input_sha256": "bcd208182b50bf71293b9d06027d68fd7ba1ec691fdef447c4d5cf90226b91b2",
+      "batch_index": 27,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1d13f7ce5d07bca9-fact_brief",
+      "event_group_id": "tech-juno-first-202511",
+      "arm": "baseline",
+      "request_id": "wab-e5eac5f1361eee68ccc8e35a05b73415e63dd528cf084ea4",
+      "request_sha256": "22f17100176aec480704a2aa43a3daea9da4b4bc7975313f5699059b5786fe59",
+      "public_input_sha256": "ae4966f41909c8f2b70d43b9edfc4be684b868152019b3bc174ae4b28e7c2a2f",
+      "batch_index": 28,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1d13f7ce5d07bca9-fact_brief",
+      "event_group_id": "tech-juno-first-202511",
+      "arm": "candidate",
+      "request_id": "wab-d17d6c8f2b3ea24778015784d63cedd8b4ff1eef9ad1a590",
+      "request_sha256": "f4dfa5632bd9253cf1df215b228f262fcdbcd9da6c8e498c75a7c093812f11f1",
+      "public_input_sha256": "ae4966f41909c8f2b70d43b9edfc4be684b868152019b3bc174ae4b28e7c2a2f",
+      "batch_index": 28,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1d13f7ce5d07bca9-evidence_progress",
+      "event_group_id": "tech-juno-first-202511",
+      "arm": "baseline",
+      "request_id": "wab-a8bd4555897f581554c01c51753302101bfd0c78e1d41f78",
+      "request_sha256": "5236272c2dbe7a4affabc32b72e66b371615ce08f04cd8601f8c31bf6093aa4d",
+      "public_input_sha256": "6da0f2abf7932640365a0defd53b7b47a85ce05196ed1874fa0ea055ced4572e",
+      "batch_index": 28,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1d13f7ce5d07bca9-evidence_progress",
+      "event_group_id": "tech-juno-first-202511",
+      "arm": "candidate",
+      "request_id": "wab-fb640619a61d1b8c652d5179322c27b732fca96456e34d5c",
+      "request_sha256": "4f7b46cd42e19f2ee92476dd8bf6c70e65cb9511e01eea94d08a890d968c834d",
+      "public_input_sha256": "6da0f2abf7932640365a0defd53b7b47a85ce05196ed1874fa0ea055ced4572e",
+      "batch_index": 28,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6388324ccfcb6700-fact_brief",
+      "event_group_id": "sports-asian-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-9028b3c32c6971d4cacd20f7d19a4880d8c368d0d09566bd",
+      "request_sha256": "b78eaf27120c95fd404419419d4240235213a7c478b90c9b8643470156234780",
+      "public_input_sha256": "0b82d945a674fab71b10e062c3d66db5d9af6f0ed7c0a8588972f48e78815123",
+      "batch_index": 29,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6388324ccfcb6700-fact_brief",
+      "event_group_id": "sports-asian-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-ab316b592ca727f5c923739d1a71d086a10cc0810534e7e0",
+      "request_sha256": "fc6c63d119d293afcc50b59a65af7cfc937835d195f7df61f9e341654dba7d0a",
+      "public_input_sha256": "0b82d945a674fab71b10e062c3d66db5d9af6f0ed7c0a8588972f48e78815123",
+      "batch_index": 29,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6388324ccfcb6700-evidence_progress",
+      "event_group_id": "sports-asian-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-2768630d5c7382b0af735bc5f7ad1d1000b2d13bba1ba041",
+      "request_sha256": "c99e80a87ce3af51c9760d97a547a2e98e1d691fddd01bb0bf1968ffa57ba2b7",
+      "public_input_sha256": "ce708ca8c60c3178461894d135b6f7921907a98c3761b44ffc82e316b0200add",
+      "batch_index": 29,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6388324ccfcb6700-evidence_progress",
+      "event_group_id": "sports-asian-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-86305d14a124f88fe18a131d1ca2c55bbf6f6cc147fa8e42",
+      "request_sha256": "a262ccf5b06871666bcf2ab6bfb8e2352fe74e0b1c21c34c369625c7bde23bae",
+      "public_input_sha256": "ce708ca8c60c3178461894d135b6f7921907a98c3761b44ffc82e316b0200add",
+      "batch_index": 29,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-70029040eb742b3e-fact_brief",
+      "event_group_id": "game-industry-report-202512",
+      "arm": "baseline",
+      "request_id": "wab-806191970776e154c0a269081f4b2048ddb5db9947040f53",
+      "request_sha256": "d8ce9de4a89d55eee070fbeece4171cc6f1f0c0cabd6af0c4793501cb9f1e02a",
+      "public_input_sha256": "0b4de40e3264eb1dc65a4a0dd9cab0b7d4a6f3f078d8bd0af1b163cddc2dbd8e",
+      "batch_index": 30,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-70029040eb742b3e-fact_brief",
+      "event_group_id": "game-industry-report-202512",
+      "arm": "candidate",
+      "request_id": "wab-50ab19fbfa13ea349dc1891c73c52152935373f0595336ac",
+      "request_sha256": "49f97fa2a16747495aa03cd1dca13ac9d52675d614c4ea47eb63d0e759459757",
+      "public_input_sha256": "0b4de40e3264eb1dc65a4a0dd9cab0b7d4a6f3f078d8bd0af1b163cddc2dbd8e",
+      "batch_index": 30,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-70029040eb742b3e-evidence_progress",
+      "event_group_id": "game-industry-report-202512",
+      "arm": "baseline",
+      "request_id": "wab-9af2ada5e5eab118b1419a81ad10120031b7c1ed7804333b",
+      "request_sha256": "9b8d5c93d4024f66cfb227d8d6b19d7a8e47eb6c6f37b24a3ae85babf6f4c3d6",
+      "public_input_sha256": "96e5de61179b23464bfd049a10b762e1b805168c2029c0fb7adeb9921f969110",
+      "batch_index": 30,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-70029040eb742b3e-evidence_progress",
+      "event_group_id": "game-industry-report-202512",
+      "arm": "candidate",
+      "request_id": "wab-742d3f3bc5414c1de3937c9c17e08b4d03f7a4abdf31e01b",
+      "request_sha256": "bfc92ad9e5fb891c7ce7396c2c8278bf07f75e22b67ded33236b5d92f54fff34",
+      "public_input_sha256": "96e5de61179b23464bfd049a10b762e1b805168c2029c0fb7adeb9921f969110",
+      "batch_index": 30,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3da3fc68d5672fe4-fact_brief",
+      "event_group_id": "auto-battery-standard-202607",
+      "arm": "baseline",
+      "request_id": "wab-6b44c33136ef82ba04ff4c74e65f51e5a7c3a2a3b8f92923",
+      "request_sha256": "cfc1cbb411b83b2eafb737f374313f39625b4b4bec8daa7dc5f6006b13442ae1",
+      "public_input_sha256": "e518b34fa56c42bab821768016c30ad2ebb79f95600ff1c119cf266929acb8fe",
+      "batch_index": 31,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3da3fc68d5672fe4-fact_brief",
+      "event_group_id": "auto-battery-standard-202607",
+      "arm": "candidate",
+      "request_id": "wab-f841b5fe8d41e03941d530bbaf6693651716cab62e13b66f",
+      "request_sha256": "5429835155db59221593ac0ec6a6e135e37a8e8c8d8fd5cffad402d754ec1258",
+      "public_input_sha256": "e518b34fa56c42bab821768016c30ad2ebb79f95600ff1c119cf266929acb8fe",
+      "batch_index": 31,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3da3fc68d5672fe4-evidence_progress",
+      "event_group_id": "auto-battery-standard-202607",
+      "arm": "baseline",
+      "request_id": "wab-53746e90cac611eeb1283ef7623f6c0d8af67efbf728312b",
+      "request_sha256": "8a43693bbd5ebefad68b29fe657f01b687e60d44b103f87f896e90a9fa5d1748",
+      "public_input_sha256": "27a13d4610d796eae27acba198a246138e51517ec2c5045c96aa310b730045dc",
+      "batch_index": 31,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3da3fc68d5672fe4-evidence_progress",
+      "event_group_id": "auto-battery-standard-202607",
+      "arm": "candidate",
+      "request_id": "wab-cee48f55fdcc6d2fed5df31cb54a3f6cfab913206e268d62",
+      "request_sha256": "a0b77eeb00c03e9335950a34b79a2379b0f46cede6d433f811ff220496293f77",
+      "public_input_sha256": "27a13d4610d796eae27acba198a246138e51517ec2c5045c96aa310b730045dc",
+      "batch_index": 31,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ee22c244eacb53f6-fact_brief",
+      "event_group_id": "ai-doubao-phone-202512",
+      "arm": "baseline",
+      "request_id": "wab-484772cd7b48c7834df7616f0d5643cdb7e3d8e1ac0f61f5",
+      "request_sha256": "231beb6e79cf4f9240b543dde381aec37a72757336062894782add82ed5eae34",
+      "public_input_sha256": "3c58b586b25b57c096a7daf8602ee7268b53bd138b1793ba63871f7ce7d3a742",
+      "batch_index": 32,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ee22c244eacb53f6-fact_brief",
+      "event_group_id": "ai-doubao-phone-202512",
+      "arm": "candidate",
+      "request_id": "wab-e99a646de623e8f2b866b21a499688c96c72727fce614a57",
+      "request_sha256": "a9cdc7bb6ea754f073fd844251694dd53ed63c859f0691924717c3ae1e2d44ff",
+      "public_input_sha256": "3c58b586b25b57c096a7daf8602ee7268b53bd138b1793ba63871f7ce7d3a742",
+      "batch_index": 32,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ee22c244eacb53f6-evidence_progress",
+      "event_group_id": "ai-doubao-phone-202512",
+      "arm": "baseline",
+      "request_id": "wab-439c012b82afbac5bfb3a0f7e0790f86023a2b714d3eb23c",
+      "request_sha256": "ffc439c69a80936091ee797f52a7f5184e5e95cafbebf168e1d1710b91826075",
+      "public_input_sha256": "4adfb42da6462d8466c0b81d6a3462fcbda26ed39cf158917dede6290236c8c9",
+      "batch_index": 32,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-ee22c244eacb53f6-evidence_progress",
+      "event_group_id": "ai-doubao-phone-202512",
+      "arm": "candidate",
+      "request_id": "wab-713be28e3ec704525c8654707669b5ec32785e00664fb96d",
+      "request_sha256": "14a84b5d4086a243dddd2fed5ea950185901d009c615c79f1e17fcd8cc691ac1",
+      "public_input_sha256": "4adfb42da6462d8466c0b81d6a3462fcbda26ed39cf158917dede6290236c8c9",
+      "batch_index": 32,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4c1b15f6526d0cbf-fact_brief",
+      "event_group_id": "digital-pura90-202604",
+      "arm": "baseline",
+      "request_id": "wab-b3b44e94dcdaf37cf88c6ad4b202cfd18be9b639e8543268",
+      "request_sha256": "3b64df50fa9f50c5e8964363c0588a972acb8bbd1431bed8d42d8c2e8af10094",
+      "public_input_sha256": "d1076e1f686c9bf6563a0af28901ea65a260fb80cb61df9bd03fdfbb0853768a",
+      "batch_index": 33,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4c1b15f6526d0cbf-fact_brief",
+      "event_group_id": "digital-pura90-202604",
+      "arm": "candidate",
+      "request_id": "wab-afe187bd4c816a348db9ad9971443f3527e984a0ddab895a",
+      "request_sha256": "ea76f08528bc333fdfc2a1ce5c2753e8013c8b942f9bef457e9d5c9205cafadf",
+      "public_input_sha256": "d1076e1f686c9bf6563a0af28901ea65a260fb80cb61df9bd03fdfbb0853768a",
+      "batch_index": 33,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4c1b15f6526d0cbf-evidence_progress",
+      "event_group_id": "digital-pura90-202604",
+      "arm": "baseline",
+      "request_id": "wab-640a2746fe974047c57efa21664c6935ea70e6f9fc9c1c8a",
+      "request_sha256": "c47686f00d80a875832055d53801e4688c6b97692d519583dca67fd5945d3653",
+      "public_input_sha256": "30042c49a63b38f5c0dc3d8b04ba85da8b9ef82ed7a5e5623ce7e498bb96e3b4",
+      "batch_index": 33,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4c1b15f6526d0cbf-evidence_progress",
+      "event_group_id": "digital-pura90-202604",
+      "arm": "candidate",
+      "request_id": "wab-29b2b5a50ec2a2d7951b4478067de50dc012fe00143bf10e",
+      "request_sha256": "1318354393d811e3cc07ac38cad18864b6f9519ed4e1aa50e71f513e1852be65",
+      "public_input_sha256": "30042c49a63b38f5c0dc3d8b04ba85da8b9ef82ed7a5e5623ce7e498bb96e3b4",
+      "batch_index": 33,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e51689ae02ce15ae-fact_brief",
+      "event_group_id": "international_us_shutdown_202511",
+      "arm": "baseline",
+      "request_id": "wab-adb6efae3b4fd33bfa3e99bf9f12e850d8afd31c13a048d7",
+      "request_sha256": "23305299b3af1e7b5baa1f266ae467bf46c526e2d46ea5c1ba75eb6da5d6f665",
+      "public_input_sha256": "34ce58bf5712d04c38190ca60888f1c599e266042e875a525eeee72fabc419aa",
+      "batch_index": 34,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e51689ae02ce15ae-fact_brief",
+      "event_group_id": "international_us_shutdown_202511",
+      "arm": "candidate",
+      "request_id": "wab-087d14ca9072b961035f350f076a1190ad9f749d26e7ab64",
+      "request_sha256": "8a4ff5fd94a5edb51c2e637a6afc9e4f23c4f08371b75182b3c612b003fc3f8d",
+      "public_input_sha256": "34ce58bf5712d04c38190ca60888f1c599e266042e875a525eeee72fabc419aa",
+      "batch_index": 34,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e51689ae02ce15ae-evidence_progress",
+      "event_group_id": "international_us_shutdown_202511",
+      "arm": "baseline",
+      "request_id": "wab-a69703d5cdff4959362a9fd0a6a46f58b92127930e2bac62",
+      "request_sha256": "a96bd31f9b09617312681ccb6cd271e0c1888099f1ec2a4b751899e554685f66",
+      "public_input_sha256": "0d2eabf49c9301da8351e6f96f088fcfee6334609411109d9bbdf05e8955d05b",
+      "batch_index": 34,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-e51689ae02ce15ae-evidence_progress",
+      "event_group_id": "international_us_shutdown_202511",
+      "arm": "candidate",
+      "request_id": "wab-1efe255369d5370d682ef1adec5f373aa704e78730450cbc",
+      "request_sha256": "dec9140a5d04d2ac6a72eaee359c4471da78a0b694ec43cfca0e095b185c1a25",
+      "public_input_sha256": "0d2eabf49c9301da8351e6f96f088fcfee6334609411109d9bbdf05e8955d05b",
+      "batch_index": 34,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3de8bcbd13056fe5-fact_brief",
+      "event_group_id": "military_thai_cambodia_ceasefire_202512",
+      "arm": "baseline",
+      "request_id": "wab-2a549cfaa541445d1a81169bdbee38e428c98dfe1e65b356",
+      "request_sha256": "3f50a8eec86c29cf5f3602a0ef1155775bc343a926c7de8853faad4ee71880bc",
+      "public_input_sha256": "e1bb911015b65e166b67e4e7f8f6784a25c24a11e7dc424944617794291aa915",
+      "batch_index": 35,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3de8bcbd13056fe5-fact_brief",
+      "event_group_id": "military_thai_cambodia_ceasefire_202512",
+      "arm": "candidate",
+      "request_id": "wab-94d7b6411281f1ff1cf981c217ed22dc0c9dd9c614b6caa6",
+      "request_sha256": "91439faf5e8ddb000b4f642e9bb2929d10141850e018c6a12e43f5dd0ab42c92",
+      "public_input_sha256": "e1bb911015b65e166b67e4e7f8f6784a25c24a11e7dc424944617794291aa915",
+      "batch_index": 35,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3de8bcbd13056fe5-evidence_progress",
+      "event_group_id": "military_thai_cambodia_ceasefire_202512",
+      "arm": "baseline",
+      "request_id": "wab-aca5f6a32f9124a19ab20d81c5161c106b3ee6c0a9aa6fa2",
+      "request_sha256": "2a1def25603adf4be702ecdc54489cc858760604e8d4adad02e3ac3b7a3772b0",
+      "public_input_sha256": "49d52712530da27fde7ec4be19c8094ccdb10a2e2561c7f5edb9e5cd96f2d31b",
+      "batch_index": 35,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3de8bcbd13056fe5-evidence_progress",
+      "event_group_id": "military_thai_cambodia_ceasefire_202512",
+      "arm": "candidate",
+      "request_id": "wab-400857e5f6c59761d6721b9811c4204f029f679ef6b9beae",
+      "request_sha256": "1d76d04a5830f8303247d24bcb7f47da0a4ae40bc339305d8aa63a0d82488d77",
+      "public_input_sha256": "49d52712530da27fde7ec4be19c8094ccdb10a2e2561c7f5edb9e5cd96f2d31b",
+      "batch_index": 35,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9054515a094f5509-fact_brief",
+      "event_group_id": "tech-zgc-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-cffd465d8b2094c8477f830955cc49b1d1fe4234fcc7fa36",
+      "request_sha256": "bf040421ad6d42b20a3ea7793c95d3d67f34df7fba50ad6ffebb387aa4984408",
+      "public_input_sha256": "7ae54cb586eb14c210dc1571b6c899bd5c3786e97a0f964ca8804251ff75b049",
+      "batch_index": 36,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9054515a094f5509-fact_brief",
+      "event_group_id": "tech-zgc-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-a6c642868b6e2df84136396a63d863359d22add097595f16",
+      "request_sha256": "74a1a6a611ba165f539c6bfe6f45a42bbf19135f65736a67e1f6f9e33f49ad52",
+      "public_input_sha256": "7ae54cb586eb14c210dc1571b6c899bd5c3786e97a0f964ca8804251ff75b049",
+      "batch_index": 36,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9054515a094f5509-evidence_progress",
+      "event_group_id": "tech-zgc-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-7a19f207342ac00055b9f9ebe49a913901c65c1fcc69e48b",
+      "request_sha256": "276820f09d7a7cf64e193db7558d09cf41d4884efe17ba1853f5ca6c62c0435b",
+      "public_input_sha256": "41d4f46e58e537a9f67ab797a89b37a66de3b45b9a76e24f6fc65052c6750470",
+      "batch_index": 36,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-9054515a094f5509-evidence_progress",
+      "event_group_id": "tech-zgc-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-ec737b9387f202d6157d8f3e1f58b1ca72c3e9caaef11e6e",
+      "request_sha256": "2bc7a582745a29f1e8f9e5fd83d756b1c7c39b029e49a38c77356321cf823dfa",
+      "public_input_sha256": "41d4f46e58e537a9f67ab797a89b37a66de3b45b9a76e24f6fc65052c6750470",
+      "batch_index": 36,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-c4cbedfcf4d9e50e-fact_brief",
+      "event_group_id": "sports-milano-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-292a121a6be7f83b292d550724ea64b74e4a8de0c2799b4c",
+      "request_sha256": "64c2d4a834a3b0a4dbb2085b4036b60eb09451cea2a599f9e60b3aaa84881e72",
+      "public_input_sha256": "175e5933a50284311d60ae4a3cc1f6f4253dabb73c32c8e29e3a038554ac7d06",
+      "batch_index": 37,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-c4cbedfcf4d9e50e-fact_brief",
+      "event_group_id": "sports-milano-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-1d521d0a34ce1030be2f94d0c9d597b558df126f995845a4",
+      "request_sha256": "392f7cbc6851beacf6253c16f80680b0db20bcb62ef8880069fca40c69914fb8",
+      "public_input_sha256": "175e5933a50284311d60ae4a3cc1f6f4253dabb73c32c8e29e3a038554ac7d06",
+      "batch_index": 37,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-c4cbedfcf4d9e50e-evidence_progress",
+      "event_group_id": "sports-milano-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-e343d7a232a9e92aae80f0d8df333787d11f329d85389b9e",
+      "request_sha256": "780620fb69249eac7df8963740606bb175727d4a71793e46a99d34a214fbd1b0",
+      "public_input_sha256": "0afc5783742b1fd8e12d468980f2fa909e10e4ebdb60f43b0c2bf93a3c289bb5",
+      "batch_index": 37,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-c4cbedfcf4d9e50e-evidence_progress",
+      "event_group_id": "sports-milano-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-1286d7383f49fd306a4526e1253119f9e4b61b498d4622a4",
+      "request_sha256": "40ef84bc19a5ed9d3315debcac44d4bc18f14b642c2e187610ab7fbf858d4cbb",
+      "public_input_sha256": "0afc5783742b1fd8e12d468980f2fa909e10e4ebdb60f43b0c2bf93a3c289bb5",
+      "batch_index": 37,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-508f18c5a673050d-fact_brief",
+      "event_group_id": "auto-beijing-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-8627278ee9a26d3de9ed7b71ef95b850c2f2144f4cf5c63b",
+      "request_sha256": "43d7afc8dc9d4e534e7ec02d62ea933e9f11b93c742079c1ee6d21bb0a7b1812",
+      "public_input_sha256": "1bda7a89ac1c74a2b37fd02b12bebe5d5629afe603e39954408ebdf95bccc21f",
+      "batch_index": 38,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-508f18c5a673050d-fact_brief",
+      "event_group_id": "auto-beijing-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-62fe52c10e9b68258a496a63a35330886cc68db3cf30edc9",
+      "request_sha256": "ac667362477654a0616822e8f32a163c53539343eea78b26512c83c1135a7bfb",
+      "public_input_sha256": "1bda7a89ac1c74a2b37fd02b12bebe5d5629afe603e39954408ebdf95bccc21f",
+      "batch_index": 38,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-508f18c5a673050d-evidence_progress",
+      "event_group_id": "auto-beijing-2026-topic",
+      "arm": "baseline",
+      "request_id": "wab-dddd6ce47948f3c8961e1294d6e9a01a2fdf349aeb95d82a",
+      "request_sha256": "1a43e9031f96d96b127c7fe6523c695d76aaf035579a00528af60183d863ed17",
+      "public_input_sha256": "06daba320e18bca921ba0df6d8b395462cbe5345a8f1db4a30603e9fa6767e63",
+      "batch_index": 38,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-508f18c5a673050d-evidence_progress",
+      "event_group_id": "auto-beijing-2026-topic",
+      "arm": "candidate",
+      "request_id": "wab-ea66b6c3f6393f79780c867a7d7b48ef9d6c497cc30bf71e",
+      "request_sha256": "3874738e2f34f2e731cd1ef5d0cbe07d6de3e9b9fc1dc4cbe1314365f832e8c8",
+      "public_input_sha256": "06daba320e18bca921ba0df6d8b395462cbe5345a8f1db4a30603e9fa6767e63",
+      "batch_index": 38,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-59a84090977c61cd-fact_brief",
+      "event_group_id": "ai-seedance2-202602",
+      "arm": "baseline",
+      "request_id": "wab-b8972a2bf7dfa80fa699965ac26c0bf915e0b4ce1721d773",
+      "request_sha256": "d25db6b5c3115ab9ba7ace7b56f48aa2552d43b8b171b2f264f61f56c40c807e",
+      "public_input_sha256": "39f298594adfbb7d874d31b169c1915b770961492512856a6573bc0dd9fbc3bf",
+      "batch_index": 39,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-59a84090977c61cd-fact_brief",
+      "event_group_id": "ai-seedance2-202602",
+      "arm": "candidate",
+      "request_id": "wab-16c5eded5f884fc8240c2bc2bcc7c24f2fe3f62b95e71b20",
+      "request_sha256": "635b6e95070e9be12bde8a7338abb06fbf10ad01bb0f0bbffaab18f00135e35f",
+      "public_input_sha256": "39f298594adfbb7d874d31b169c1915b770961492512856a6573bc0dd9fbc3bf",
+      "batch_index": 39,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-59a84090977c61cd-evidence_progress",
+      "event_group_id": "ai-seedance2-202602",
+      "arm": "baseline",
+      "request_id": "wab-016bd9ad2ae15525072772cc6b5951f660ee2dac7e4e73c5",
+      "request_sha256": "e9b93cd7c62e6f8cfce7bb0c5ce060a4226c421f42f0e5a56cc88ce7f0256181",
+      "public_input_sha256": "7fa3c4d6f0672320ed19cf9c10e5a5c0d9311135ed6ce54afb6e803c1c2f0bea",
+      "batch_index": 39,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-59a84090977c61cd-evidence_progress",
+      "event_group_id": "ai-seedance2-202602",
+      "arm": "candidate",
+      "request_id": "wab-2a3e458e4696379face69eea5f51565809cf06d0bc4efba9",
+      "request_sha256": "66a342e3049bda489cde69d0b3e1149036b3411bbed7f7f48582652fac5077be",
+      "public_input_sha256": "7fa3c4d6f0672320ed19cf9c10e5a5c0d9311135ed6ce54afb6e803c1c2f0bea",
+      "batch_index": 39,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1cd15ffb291b4e48-fact_brief",
+      "event_group_id": "digital-awe2026-202603",
+      "arm": "baseline",
+      "request_id": "wab-13406ab25fc490f8c9e37fc1fc9b7b5624503d81efb3aae2",
+      "request_sha256": "46a8a74d60f1f4e5e1394f898cebc3c11fe2e4eac7a059f0ee3ca8992ec07a9a",
+      "public_input_sha256": "7b7448a89e99c0324a1166f4d12c0bbda98a523abe9bf563adadb4a798f7a643",
+      "batch_index": 40,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1cd15ffb291b4e48-fact_brief",
+      "event_group_id": "digital-awe2026-202603",
+      "arm": "candidate",
+      "request_id": "wab-920e9ae704406c0713f2418453ca8cb381586bc011016b77",
+      "request_sha256": "5ccb358a8dd032fa329d37b02e5c4eb4083dbe0ac5f9392bb4caf07fa3d37a9d",
+      "public_input_sha256": "7b7448a89e99c0324a1166f4d12c0bbda98a523abe9bf563adadb4a798f7a643",
+      "batch_index": 40,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1cd15ffb291b4e48-evidence_progress",
+      "event_group_id": "digital-awe2026-202603",
+      "arm": "baseline",
+      "request_id": "wab-a37d2a5f5206a8e7255bb56d88879f6576ede1f6b2cace65",
+      "request_sha256": "ae45a384c9facfb3dc3e1ca7a8c36bab19ec049a3fd4e9fa9a34ff08d8f19b12",
+      "public_input_sha256": "40a9a9e7de9431f625cf8b2207978b7b7b0116a667b64cddf19bd230ea9ebc62",
+      "batch_index": 40,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-1cd15ffb291b4e48-evidence_progress",
+      "event_group_id": "digital-awe2026-202603",
+      "arm": "candidate",
+      "request_id": "wab-9295eba358ae91b6b4d304de58b56956eb38aaebacc5ea94",
+      "request_sha256": "ede874ebfcc5cb797d7667f3d15442b637f9e561c762648912d8a1e84df3a6dc",
+      "public_input_sha256": "40a9a9e7de9431f625cf8b2207978b7b7b0116a667b64cddf19bd230ea9ebc62",
+      "batch_index": 40,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2bc4127fceb73a3a-fact_brief",
+      "event_group_id": "international_brazil_election_202610",
+      "arm": "baseline",
+      "request_id": "wab-e198fb1de02594ecb2d21c0d69978c3c517b4d48170d488b",
+      "request_sha256": "05c2748fc9e8220f0c528d2f790f0d7afef5c8c90851c657cd4a0f52cd3598b2",
+      "public_input_sha256": "90e76289dc1ee8d216ff54b700fcc5d719aec51810938cc1c25eccc8c34c0c59",
+      "batch_index": 41,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2bc4127fceb73a3a-fact_brief",
+      "event_group_id": "international_brazil_election_202610",
+      "arm": "candidate",
+      "request_id": "wab-b57e0bcf1e41716400c818a3e0fbd1ae2ff1f23093560906",
+      "request_sha256": "6dd59b4fb27b4cb6d089b12825d7c9ac07e8ded3e17973ff70b944bc80e64230",
+      "public_input_sha256": "90e76289dc1ee8d216ff54b700fcc5d719aec51810938cc1c25eccc8c34c0c59",
+      "batch_index": 41,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2bc4127fceb73a3a-evidence_progress",
+      "event_group_id": "international_brazil_election_202610",
+      "arm": "baseline",
+      "request_id": "wab-e6543565e2af244d35d47e62b5e04c96c7b3f7c5e56bc8b5",
+      "request_sha256": "add76f53248602a59a9f0fcd1d5d9f690d5212974903a6e8465936dfff5baa97",
+      "public_input_sha256": "6fcdbfdf1bd0a7a62e4abb4bd18fc58bd78f23e5e5f168ed0d4d3c77c56a0a45",
+      "batch_index": 41,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2bc4127fceb73a3a-evidence_progress",
+      "event_group_id": "international_brazil_election_202610",
+      "arm": "candidate",
+      "request_id": "wab-0aaf56351692ad122f8ee7feb60f130cbd294d925089295a",
+      "request_sha256": "76cfb99ae7d5346462546cf45cbe6fad890d64df85ae17f5113d4bbb54bd20a1",
+      "public_input_sha256": "6fcdbfdf1bd0a7a62e4abb4bd18fc58bd78f23e5e5f168ed0d4d3c77c56a0a45",
+      "batch_index": 41,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7aa0bb5b7885783d-fact_brief",
+      "event_group_id": "military_justice_mission_202512",
+      "arm": "baseline",
+      "request_id": "wab-d4c4b00d2651fbdc05eb0d39dbd0b214cc8c1590a4a0c628",
+      "request_sha256": "662ae058d7b9c14f8321934fd1d6c08efd0a5ee78f3912220c6f9992bf540132",
+      "public_input_sha256": "cd7d487b9bf42746629b3aab04ed92d84c15950c7e87d96b134a28d3223058da",
+      "batch_index": 42,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7aa0bb5b7885783d-fact_brief",
+      "event_group_id": "military_justice_mission_202512",
+      "arm": "candidate",
+      "request_id": "wab-a5468cb2d038720c8a36e94c1b9062015e0ced5805de92c0",
+      "request_sha256": "c42ab820c37a6b671498262311224fcb15ed992df05e68834f4ad05c9d229f81",
+      "public_input_sha256": "cd7d487b9bf42746629b3aab04ed92d84c15950c7e87d96b134a28d3223058da",
+      "batch_index": 42,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7aa0bb5b7885783d-evidence_progress",
+      "event_group_id": "military_justice_mission_202512",
+      "arm": "baseline",
+      "request_id": "wab-e0f9c2969078958b3844be01712e3b7bc49096c9fe250020",
+      "request_sha256": "8222088b5bc989ba9f6f232d50596171809ba05eeb1c03ccd3281ba0fa2ef2d1",
+      "public_input_sha256": "9abea407f6c29dc29b478118a7bb4bba95325d36e19704ea10beee564fe27188",
+      "batch_index": 42,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-7aa0bb5b7885783d-evidence_progress",
+      "event_group_id": "military_justice_mission_202512",
+      "arm": "candidate",
+      "request_id": "wab-6062762fd58772db441205d8bee74bba61ef81e32e807aa9",
+      "request_sha256": "6930a99fe4a52f68d9b09d3658cd0bbdd205bc3ebb0fbb82c9f3e009d7b35cfe",
+      "public_input_sha256": "9abea407f6c29dc29b478118a7bb4bba95325d36e19704ea10beee564fe27188",
+      "batch_index": 42,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-bbd7ea323cdcd7a7-fact_brief",
+      "event_group_id": "tech-brain-interface-202603",
+      "arm": "baseline",
+      "request_id": "wab-d9f8be21496a095d48d427b8dfc818b4dd34283a1c052575",
+      "request_sha256": "87e1173db034c6327eda3ef13ae3db3c84c4360a5aa9f6e92f6434f5e554ef65",
+      "public_input_sha256": "831d5dbdb1d2a869abe9739b910aa7a2d83f9289dc7250594a3ade03dddeb77f",
+      "batch_index": 43,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-bbd7ea323cdcd7a7-fact_brief",
+      "event_group_id": "tech-brain-interface-202603",
+      "arm": "candidate",
+      "request_id": "wab-820d71070682d26cb5a8b0eb48687715de3d81061c62ae0f",
+      "request_sha256": "3efc1706603b40de03e8defb5858d1d2142e78f8568abb08c2e3db80566f2ed6",
+      "public_input_sha256": "831d5dbdb1d2a869abe9739b910aa7a2d83f9289dc7250594a3ade03dddeb77f",
+      "batch_index": 43,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-bbd7ea323cdcd7a7-evidence_progress",
+      "event_group_id": "tech-brain-interface-202603",
+      "arm": "baseline",
+      "request_id": "wab-e43995dc60be91ca21ada94431a4cc70e6892707a75039c3",
+      "request_sha256": "f876ac1813250d96baf3181929c3f1fe77bf3472f5f2507f514209319eaa1499",
+      "public_input_sha256": "373be93cdb50dd8b74a34b45392d8d45077116b96caf330eb91104cb9efd6aa3",
+      "batch_index": 43,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-bbd7ea323cdcd7a7-evidence_progress",
+      "event_group_id": "tech-brain-interface-202603",
+      "arm": "candidate",
+      "request_id": "wab-721264bec7cb718e81fb06babf3f42d6b768aee2587be74c",
+      "request_sha256": "f703befa534956db56f29881d3a7ff979104ca83df73b9791b8d527051cfc416",
+      "public_input_sha256": "373be93cdb50dd8b74a34b45392d8d45077116b96caf330eb91104cb9efd6aa3",
+      "batch_index": 43,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4b5ba649d2d51548-fact_brief",
+      "event_group_id": "auto-byd-flashcharge-202603",
+      "arm": "baseline",
+      "request_id": "wab-067e11d899c7957e375b4670357d55e0c7707704aa098d30",
+      "request_sha256": "931f2a40d8ff53720443474d8e2d9a205c1fc12b66e293409df337d4f6288df9",
+      "public_input_sha256": "c2b0d51d5d2582f45a1486de1b0d149d94bc58cf28908749ab8648a0d0ea0ea2",
+      "batch_index": 44,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4b5ba649d2d51548-fact_brief",
+      "event_group_id": "auto-byd-flashcharge-202603",
+      "arm": "candidate",
+      "request_id": "wab-e2dae310527849bf36efdcd2fb7eca70fad1292745c244e0",
+      "request_sha256": "584a9569ad52470540085405e96cd8ef132317519178e54bd0c4a44da36005e0",
+      "public_input_sha256": "c2b0d51d5d2582f45a1486de1b0d149d94bc58cf28908749ab8648a0d0ea0ea2",
+      "batch_index": 44,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4b5ba649d2d51548-evidence_progress",
+      "event_group_id": "auto-byd-flashcharge-202603",
+      "arm": "baseline",
+      "request_id": "wab-a4dbe9bdbf0b8056ed356ce0d8244ff57b96a787240ed826",
+      "request_sha256": "2814b37512282610c1d9fccec92d4eb719781cbf7765abdf6dcd3df91672d124",
+      "public_input_sha256": "c6cd229635b8a1113413cff09acc54af3fe8cd948e7f23d44a79bdd07564f988",
+      "batch_index": 44,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-4b5ba649d2d51548-evidence_progress",
+      "event_group_id": "auto-byd-flashcharge-202603",
+      "arm": "candidate",
+      "request_id": "wab-2037ef1277bb7449b63d38912a0117fd13aca7325f0aa44a",
+      "request_sha256": "74cf10abe30afb4f0c088acd6edfa7464b1aa25ffc2a63395d343850304d301c",
+      "public_input_sha256": "c6cd229635b8a1113413cff09acc54af3fe8cd948e7f23d44a79bdd07564f988",
+      "batch_index": 44,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-d15b65306f0a8298-fact_brief",
+      "event_group_id": "ai-baidu-world-20251113",
+      "arm": "baseline",
+      "request_id": "wab-93dddaae6edcc01b709b3ac72ff97263c333753013c90d86",
+      "request_sha256": "355361fb889cb3b3f8b0499105af9141072e72ad695ddc2ed86b469f6bdd96d8",
+      "public_input_sha256": "31ed95d6098d04d4900a1a5c600127d2522a2c4e7cc922016a2d20f0e3bf9b89",
+      "batch_index": 45,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-d15b65306f0a8298-fact_brief",
+      "event_group_id": "ai-baidu-world-20251113",
+      "arm": "candidate",
+      "request_id": "wab-710876d22cd0fd5abf07a13cd94f0ec49fd8bf28c3e4141c",
+      "request_sha256": "7aff68636e975940fca459a4f0f1c874bee914790c5ec5f47ad2ab7d6c2e85eb",
+      "public_input_sha256": "31ed95d6098d04d4900a1a5c600127d2522a2c4e7cc922016a2d20f0e3bf9b89",
+      "batch_index": 45,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-d15b65306f0a8298-evidence_progress",
+      "event_group_id": "ai-baidu-world-20251113",
+      "arm": "baseline",
+      "request_id": "wab-a246d36e629428c10d87695d490cf4b7ea6b2b012ecd56a3",
+      "request_sha256": "b9807c1e1c20a377aec6425a99094919a5c84c9dfd6e7a719682cc9198221059",
+      "public_input_sha256": "636311f1f958f089022cf93705b808f9ee90743fab8c82ee0d990c95532b8e11",
+      "batch_index": 45,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-d15b65306f0a8298-evidence_progress",
+      "event_group_id": "ai-baidu-world-20251113",
+      "arm": "candidate",
+      "request_id": "wab-0cf5132b2c3e8f317041c3d91e845964e428e941420bef67",
+      "request_sha256": "9b9199f7abee5cee0724e7a1683051c50ce91e969d99d52be558bd9c6c23516c",
+      "public_input_sha256": "636311f1f958f089022cf93705b808f9ee90743fab8c82ee0d990c95532b8e11",
+      "batch_index": 45,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2dfa4e38ab6b75da-fact_brief",
+      "event_group_id": "digital-ces2026-202601",
+      "arm": "baseline",
+      "request_id": "wab-e4f32b8c179184491cc8902ca3c72e686a7c6267cd4da81f",
+      "request_sha256": "a1ce38c92cbb434f1af22c8bea60aa8c294cc8ce32a0220d49c435ad5edd0333",
+      "public_input_sha256": "81a67e3a81dae0dc243dae456556b26161e947fbe4ca2a851f60aa2dc6c2cefb",
+      "batch_index": 46,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2dfa4e38ab6b75da-fact_brief",
+      "event_group_id": "digital-ces2026-202601",
+      "arm": "candidate",
+      "request_id": "wab-66f86356cecb3e5ab2e72f674a90b1d781c7144ad8ff5959",
+      "request_sha256": "6343c2c8a234248891aea4f59859fc8674d1eafa06b38fa18fce78b27e8fb90b",
+      "public_input_sha256": "81a67e3a81dae0dc243dae456556b26161e947fbe4ca2a851f60aa2dc6c2cefb",
+      "batch_index": 46,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2dfa4e38ab6b75da-evidence_progress",
+      "event_group_id": "digital-ces2026-202601",
+      "arm": "baseline",
+      "request_id": "wab-747dd50004b1707aa12744ad0d3d86e08adf5957ef93de4b",
+      "request_sha256": "31e1265e9ea71a4e8242db971734ca03a7391e17c7eee020c5c5183000dc346e",
+      "public_input_sha256": "474b2ae7949d18b524e1401a2b4e236dd1b1d22f54721876cc5bd4e36960e973",
+      "batch_index": 46,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-2dfa4e38ab6b75da-evidence_progress",
+      "event_group_id": "digital-ces2026-202601",
+      "arm": "candidate",
+      "request_id": "wab-cfb09b08e8a81e6f06b3fef0651a9dc5c6399ea24abbc9ad",
+      "request_sha256": "f56b834cfa5666657ac95d5f1e9f4f972adb75dd1fd55681e74fb81350f29ffa",
+      "public_input_sha256": "474b2ae7949d18b524e1401a2b4e236dd1b1d22f54721876cc5bd4e36960e973",
+      "batch_index": 46,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3d0a55c4c4b4915b-fact_brief",
+      "event_group_id": "international_unga81_202609",
+      "arm": "baseline",
+      "request_id": "wab-b1826d7f0029e20e704f455134f0d31d3f9dba8c1539526b",
+      "request_sha256": "110219d9fcec08fd2d9c1f99ce908654605cef316451e629f4ef221d9d3607ac",
+      "public_input_sha256": "e70a4965568dc2db0d412ba778d7c0e002ff0f657e342321a9fc63bf2b84e597",
+      "batch_index": 47,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3d0a55c4c4b4915b-fact_brief",
+      "event_group_id": "international_unga81_202609",
+      "arm": "candidate",
+      "request_id": "wab-0d7ca089412a370dd8361c9968c960e097dc7fb84c574361",
+      "request_sha256": "a8bdc4a663bec2128ff9f8b31ded36bd1c84a329bda8dfc607590bbc36243b3a",
+      "public_input_sha256": "e70a4965568dc2db0d412ba778d7c0e002ff0f657e342321a9fc63bf2b84e597",
+      "batch_index": 47,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3d0a55c4c4b4915b-evidence_progress",
+      "event_group_id": "international_unga81_202609",
+      "arm": "baseline",
+      "request_id": "wab-4ed0a8b3c0b1ecec0c5fbfe858461abdd910363234a8e8d7",
+      "request_sha256": "8f89dc2aa01c5a6e05f05eea0c547d7bb01110359af0b2909b0e077cdedf7f88",
+      "public_input_sha256": "e94339550f4989dbe4a94e656f08230b334a4c3e32b88fb1b7c22a6872a79b19",
+      "batch_index": 47,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-3d0a55c4c4b4915b-evidence_progress",
+      "event_group_id": "international_unga81_202609",
+      "arm": "candidate",
+      "request_id": "wab-217703dab93eee353bc9728d0d45e14a5b2ae501d0e31136",
+      "request_sha256": "e3d4432aa4df891183766a7aeb15e4bdc796b09a296481ee86f1971d87d17b78",
+      "public_input_sha256": "e94339550f4989dbe4a94e656f08230b334a4c3e32b88fb1b7c22a6872a79b19",
+      "batch_index": 47,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-963ba890f58e9373-fact_brief",
+      "event_group_id": "military_fujian_commission_202511",
+      "arm": "baseline",
+      "request_id": "wab-6bcaf99d498985f795a28c14a0e7883d1919fcccff10e0f1",
+      "request_sha256": "cf8e2674a885a561d8439f093f7a40f7c6aaedf2ba39aa672d091258cd08b20b",
+      "public_input_sha256": "e7521b9160be3a9a34620c339198c1fe44484f63224129a18980d5746dac15ac",
+      "batch_index": 48,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-963ba890f58e9373-fact_brief",
+      "event_group_id": "military_fujian_commission_202511",
+      "arm": "candidate",
+      "request_id": "wab-77177adc4cdf68ee4df7b90a029fb00e5f6052c80ba46c9a",
+      "request_sha256": "301e034d94862898a6a56aa8ed0c89d5433d7f5ba6752456f969a8325000701f",
+      "public_input_sha256": "e7521b9160be3a9a34620c339198c1fe44484f63224129a18980d5746dac15ac",
+      "batch_index": 48,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-963ba890f58e9373-evidence_progress",
+      "event_group_id": "military_fujian_commission_202511",
+      "arm": "baseline",
+      "request_id": "wab-27968eed14927d2e563420f398b8e02bc52abb9c139e8e48",
+      "request_sha256": "45af28ee1b35a283e81363dd39dda3494aba2f5c86cf990047af237e1311da8b",
+      "public_input_sha256": "983376559d4c7da2a81c2f49c88330af8265a8ec208ba9a826dc379c5f739c22",
+      "batch_index": 48,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-963ba890f58e9373-evidence_progress",
+      "event_group_id": "military_fujian_commission_202511",
+      "arm": "candidate",
+      "request_id": "wab-dc00c8a319ce0bb9965458ce64c7a3e06676095c5d3c9bbf",
+      "request_sha256": "58d4838817021bb2ab44e3224b68f0e81c8341c93cec0834d097bfa4826ef6f8",
+      "public_input_sha256": "983376559d4c7da2a81c2f49c88330af8265a8ec208ba9a826dc379c5f739c22",
+      "batch_index": 48,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6f589738fc2f1b80-fact_brief",
+      "event_group_id": "auto-su7new-202603",
+      "arm": "baseline",
+      "request_id": "wab-cd3e32cb0efa0d8d1fdc71df5f3da905d7db3b61ef390fdb",
+      "request_sha256": "316aafc3b2bbec64d3478cc859111c85e691e3d0373f9291f569e5f6986eb314",
+      "public_input_sha256": "0714698f0f426a0eeab6dff09b374955acd19ba231f6fb5dae65fb6f6c5d7967",
+      "batch_index": 49,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6f589738fc2f1b80-fact_brief",
+      "event_group_id": "auto-su7new-202603",
+      "arm": "candidate",
+      "request_id": "wab-dadcfd23d3633f2e2801103da403180cfdb3a8b28c9e6b37",
+      "request_sha256": "c5e10bc16a7cd8ec977d686e618f1c81fb1c6ca5d08221b6069719865676e6a3",
+      "public_input_sha256": "0714698f0f426a0eeab6dff09b374955acd19ba231f6fb5dae65fb6f6c5d7967",
+      "batch_index": 49,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6f589738fc2f1b80-evidence_progress",
+      "event_group_id": "auto-su7new-202603",
+      "arm": "baseline",
+      "request_id": "wab-fcb5ac691f2db14fbe32436b7ab7bf9b141afc434f7ae1a3",
+      "request_sha256": "25334cac9aca7cd4a5d8cbcf26d071e3436e4728894113b13f59eeb3d775dfb8",
+      "public_input_sha256": "2c24f86e4faab1a0533e946c899a32341c9650a614d0a6f4b092e393aea27b4f",
+      "batch_index": 49,
+      "status": "completed"
+    },
+    {
+      "case_id": "WS-6f589738fc2f1b80-evidence_progress",
+      "event_group_id": "auto-su7new-202603",
+      "arm": "candidate",
+      "request_id": "wab-7401f3cc15d59bd78e50fed0b0f7d07bb5f0e3c3847a566c",
+      "request_sha256": "0ccb5ef96468ad3c404b4422edc4b7ed6b8eff19bb1bd721be09a7006e60be8a",
+      "public_input_sha256": "2c24f86e4faab1a0533e946c899a32341c9650a614d0a6f4b092e393aea27b4f",
+      "batch_index": 49,
+      "status": "completed"
+    }
+  ]
+}

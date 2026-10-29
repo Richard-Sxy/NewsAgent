@@ -1,0 +1,40 @@
+{
+  "request_id": "wab-661cafb775c66f4a5c830346d7683cdfd4f262357e5a311e",
+  "status": "completed",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "# 2026年消费品以旧换新政策解读\n\n2026年1月1日，新一轮“国补”政策正式启动，首批625亿元国补资金已下达。此次政策延续了消费品以旧换新的趋势，并加大了对设备更新的力度。\n\n数码和智能产品继续享受15%的国补，单件最高补贴500元，新增了智能眼镜这一品类。家电产品只补贴1级能效或水效标准的产品，补贴品类包括冰箱、洗衣机、电视、空调、电脑、热水器等6类产品，每件补贴不超过1500元。\n\n汽车以旧换新政策也有所调整，汽油乘用车的注册登记时间需在2013年6月30日之前，柴油及其他燃料乘用车需在2015年6月30日之前，新能源乘用车需在2019年12月31日之前。补贴比例为新车销售价格的12%、10%或8%，最高补贴金额分别为2万元、1.5万元和1.5万元。\n\n此外，政策还增加了对老旧小区加装电梯、养老机构设备更新等民生领域的支持。每位消费者每类产品可补贴1件，补贴资金使用完毕或政策期满即止。\n\n来源：[1] 2026年消费品以旧换新政策解读，2026-01-02；[2] 重庆启动2026年消费品以旧换新，2026-01-02。",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1793234130,
+    "id": "chatcmpl-wab-661cafb775c66f4a5c830346d7683cdfd4f262357e5a311e",
+    "model": "local-hunyuan-7b-6fd6ecb-nf4-writing",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 339,
+      "prompt_tokens": 2464,
+      "total_tokens": 2803
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "at": "2026-10-29T00:34:45.900565+00:00",
+      "batch_size": 4,
+      "phase": "initial",
+      "request_ids": [
+        "wab-7ba969d304aeb9d2f3fcd9b9f95e6370b0f7d66cad815ccd",
+        "wab-7d9b5a9bf4bdcf6ac500465b3f9a53011554d070b52de24d",
+        "wab-3edcf45d25903368d0959d5dd85b452a48684253f9ae5d6f",
+        "wab-661cafb775c66f4a5c830346d7683cdfd4f262357e5a311e"
+      ]
+    }
+  ],
+  "attempt_count": 1
+}
