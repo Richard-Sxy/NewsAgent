@@ -13,6 +13,7 @@ from app.modules.conversation.query_understanding import (
     QueryPolicy, QueryResolutionError, QueryUnderstanding, resolve_query_understanding,
 )
 from app.modules.conversation.structured_query_resolution import resolve_structured_query
+from app.modules.conversation.query_catalog import build_query_understanding_payload, query_context_identity
 from app.domain.errors import AgentOutputValidationError
 from app.model_runtime.agent_client import model_request_context
 from app.schemas.sql_assistant import SqlAssistantPreviewRequest
@@ -55,7 +56,7 @@ class _HotNewsQueryBreaker:
 
 class LocalConversationHotNewsQuery:
     def __init__(self, state, *, understanding_agent=None, understanding_metadata=None,
-                 understanding_timeout=None, clock=None):
+                 understanding_timeout=None, clock=None, query_context_enabled=False):
         settings = state.settings
         if settings.environment != "e2e" or not settings.conversation_hot_news_query_enabled:
             raise ValueError("conversation SQL query requires explicit isolated configuration")
@@ -84,12 +85,21 @@ class LocalConversationHotNewsQuery:
         self._resolve_query = (resolve_structured_query
             if self._understanding_metadata.get("provider") == "openai_compatible"
             else resolve_query_understanding)
+        if type(query_context_enabled) is not bool:
+            raise ValueError("query context opt-in must be boolean")
+        self._query_context_enabled = query_context_enabled
         self._understanding_timeout = understanding_timeout or config.model_timeout_seconds
         self._clock = clock or (lambda: datetime.now(timezone.utc))
         self._breaker = _HotNewsQueryBreaker(failure_threshold=3, open_seconds=60.0)
 
+    def _query_context_audit(self):
+        if not getattr(self, "_query_context_enabled", False):
+            return {}
+        return {"query_context": {"enabled": True, **query_context_identity()}}
+
     def description(self):
         return {"name": "query_hot_news",
+                **self._query_context_audit(),
                 **({"dataset_profile": "corpus-v6", "news_content_source": "tencent-news-cache",
                     "metric_data_synthetic": True, "category_data_synthetic": True}
                    if self._dataset_profile == "corpus-v6" else
@@ -135,12 +145,10 @@ class LocalConversationHotNewsQuery:
                 async with asyncio.timeout(self._understanding_timeout):
                     result = await self._understanding_agent.run_structured(
                         app_id="python:query-understanding-v6", mode="query_understanding",
-                        payload={"question": screened, "policy": self._policy.model_dump(mode="json"),
-                                 "temporal_context": {"server_now": clock.isoformat(),
-                                    "timezone": self._policy.timezone,
-                                    "date_without_year": "current_year",
-                                    "day_without_month": "current_year_and_month",
-                                    "hour_convention": "24_hour"}},
+                        payload=build_query_understanding_payload(
+                            screened, self._policy, clock,
+                            query_context_enabled=getattr(self, "_query_context_enabled", False),
+                        ),
                         output_type=QueryUnderstanding,
                     )
             except AgentOutputValidationError as exc:
@@ -171,7 +179,7 @@ class LocalConversationHotNewsQuery:
             principal = DataLoopPrincipal(tenant_id=UUID(tenant_id), user_id=UUID(user_id),
                                         permissions=frozenset({HotNewsPermission.ADMIN.value}))
             async def bound_with_resolution(metadata):
-                await on_bound({**metadata, "question": question,
+                await on_bound({**metadata, **self._query_context_audit(), "question": question,
                                 "query_resolution": resolution.model_dump(mode="json"),
                                 "understanding_model_request_id": understanding_request_id})
 
@@ -189,7 +197,8 @@ class LocalConversationHotNewsQuery:
                 raise ValueError("completed query report unavailable")
             if detail.sql_tool_trace.query_id != result.sql_query_id:
                 raise ValueError("query report binding drift")
-            response = {"run_id": str(result.run_id), "workflow_id": result.workflow_id,
+            response = {**self._query_context_audit(),
+                    "run_id": str(result.run_id), "workflow_id": result.workflow_id,
                     "sql_query_id": result.sql_query_id, "status": result.status,
                     "production_bundle_version": result.production_bundle_version,
                     "window_start": window_start.isoformat(), "window_end": window_end.isoformat(),

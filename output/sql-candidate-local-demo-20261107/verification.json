@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-07T15:48:02.449109+00:00",
+  "status": "passed_with_explicit_scope",
+  "project": "news-agent-sql-candidate-demo",
+  "frontend": "http://127.0.0.1:12880/chat",
+  "api": "http://127.0.0.1:12800",
+  "image_id": "sha256:f031887da36a6114c4fdd1459a5cb1fc6cae7d01e1412371c7cabac1d7f25ffc",
+  "running_container_image": "sha256:f031887da36a6114c4fdd1459a5cb1fc6cae7d01e1412371c7cabac1d7f25ffc",
+  "source_matches_running_image": true,
+  "source_sha256": {
+    "agent/app/model_runtime/local_inference.py": "6c94aadf5b7baaf8b8a079ea5497c3805c180ddd9ed2b9b785a24a01f1768b2d",
+    "agent/app/model_runtime/core.py": "773cdcd72f80000f4d1f402fe59584b6ef69836e4b0caaee36771a323cfab6c6",
+    "agent/app/model_runtime/http.py": "6e764badbc935fbc7cec15adcc7cb75ea462d537355d70419a4b3152cbb17bd3",
+    "agent/app/sql_assistant/candidate.py": "1779f785a4699d63ac626432c327590f375508e8d0db68f8457cbef7293e39ea",
+    "agent/app/sql_assistant/candidate_validation.py": "97fc54f2ccb56d6f851c0e12c40761b9819c4b6135a474d84dcddb4892130c11",
+    "agent/app/sql_assistant/service.py": "20b217279d94aa68e017d7ce2506d26eae11c3f0bd9915c2efde1969d3d997c6",
+    "agent/app/sql_assistant/hot_news_binding.py": "d18c2625742c5b036afe1dadc2b28cc99d471bf287a51dadf86504b474e9bc09",
+    "agent/app/sql_assistant/bootstrap.py": "841f0353c164f86eb813198de4f32722e9235e49c761ad2a54cd8ae7069e7d72",
+    "agent/app/modules/conversation/query_catalog.py": "1e2acdaa2259b97e799fd40f2967ca48c652ce094cae95730bb2e890482cfbfa",
+    "agent/app/modules/conversation/query_catalog_v1.json": "c9d29328fa833d4545a99be0b3cc882fe31b4bec9528c170c18ca89fa85a4c09",
+    "agent/simulation/conversation_hot_news.py": "e2145d3e7f21a53c1bc0a814372a36c5c44a85017088b4bc65c2fee2c8b6d9c9",
+    "agent/simulation/local_simulation.py": "ccf04311470d31710bba36e142c8e5eeb6d5bbe7cffde0edfb40d22bd2ac92ef",
+    "agent/tools/start_sql_candidate_demo.py": "9c874dc8346bc6c27f73cc543b0891ec7fb306697f5b9c700141306d641d855a",
+    "agent/frontend/dev-server/isolated.mjs": "13584d4a95095481117695f348ae16ef89189dd3d22278a6709a3be3181755df",
+    "agent/frontend/vite.config.ts": "ddfe6931ab50e8333347ed95d0321a4edcb7c29f72b6661f68376b4bbcd63486",
+    "agent/frontend/dist/index.html": "d90a54b5bd117985a18f98cc8b1058c2a117eea232c6b7a52ec1382f4ee48bd8",
+    "deploy/docker-compose.sql-candidate-demo.yml": "367a23d08c2ce44b1e975591b285087b01d414e5c0dba6246bde5bca20e40958",
+    "deploy/sql-candidate.local.yml": "89b013f545b6aefa3e2a00b2a1e2a0a82bc419c0b6d5a108cde788258c620dd0",
+    "deploy/sql-candidate.frontend.json": "e3799a6f655be8746eff577184e37811c0bdecbe17f7157eef08a3c46bd7e336",
+    "agent/tests/test_sql_candidate_e2e.py": "0093fc0bb20cbfa0421aced151c7e04615a0c380d3ca90069182bf6d2cffc30b",
+    "agent/tests/test_local_sql_candidate_inference.py": "a7e5ab63ac25a88f2ca0d677ce50332d09d10e694e32e99c1f6fee71d09a9199",
+    "agent/tests/test_conversation_e2e.py": "16adc5a526cf90b1167f9480a0c6553140d7d6f53a71f8ab0e72193312f8d561",
+    "agent/tests/test_conversation_hot_news_e2e.py": "0096ecc6ffb365d0272b77735d47bf66347f987c75bfffc37cc6bd9486d64fc6",
+    "agent/tests/test_hot_news_query_windows.py": "6fb86f6e162baa90dc7bea8ecf0455124569d8d4cb53c40ff37015a6af6500c9",
+    "agent/app/sql_assistant/assets/candidate_catalog_v1.json": "432dff6d7c7e174211a521082d7544d50f110a033949df8268fb07378c191d90",
+    "agent/app/sql_assistant/assets/DB-GPT-LICENSE.txt": "88414a65349da04361cdbe964c785dc916b72d211c1c41add52ca259b4f7f327",
+    "agent/app/sql_assistant/assets/candidate_prompt_v1.txt": "9376103b9e44fd6baac62d0afac087dcc5e10356e28a219941cbfb20e2ce0a47",
+    "agent/app/sql_assistant/assets/dbgpt_source.json": "bec9a29eafd808d0b0f0ceda50359624fee38039f94d58574a056d26a0d16676",
+    "agent/app/sql_assistant/assets/candidate_examples_v1.json": "b35b9d56b6ddfee8eb7bee716a56d6c9a106afe2289bbae9e5cd85deb699eff0"
+  },
+  "ready": {
+    "status": "ready",
+    "checks": {
+      "postgres": "ok",
+      "redis": "ok",
+      "temporal": "ok"
+    }
+  },
+  "tests": {
+    "backend_container": {
+      "passed": 925,
+      "skipped": 5,
+      "deselected": 9
+    },
+    "source_security": {
+      "passed": 27
+    },
+    "http_sse_e2e": {
+      "passed": 32
+    },
+    "frontend": {
+      "passed": 372,
+      "typecheck": "passed",
+      "build_isolated": "passed"
+    },
+    "browser_ui": "passed",
+    "restart_and_fresh_workflow": "passed",
+    "process_data_analysis": "passed"
+  },
+  "not_run": [
+    "enterprise model quality",
+    "enterprise warehouse",
+    "load and long-duration tests",
+    "Data Loop dedicated replay/approval/activation",
+    "writing approval and publication",
+    "full security evaluation CLI inside deployment image"
+  ],
+  "model": "isolated deterministic local Port; not enterprise or open-source model accuracy",
+  "artifacts": {
+    "ui-03-hot-news-run-and-sql.png": "8ab70768922ba369da774ed8a44903fbeb0bac53e1156360389127f3453d2691",
+    "backend-verification.json": "c0acdc1893b3ebd6a4e173f098ce7699ad420737cdf5e0409bcb4be83c4d78f4",
+    "http-verification.json": "bfa3122f1fe1dcab32a0ca9d9ab517961fee7f7dd6d145ed68cc28e918c81945",
+    "ui-01-chat-initial.png": "0a9008335e4769e6b9b4471064ab9c08b425309e3145507ca314b968eb866e64",
+    "restart-before.json": "6be4cdad5d150f0e7c96a5adecf65565cd52ea535cd31598a188eb3b03da55e8",
+    "ui-07-followup-answer-top.png": "ed55722f8f31f097acb1300244ead388e3abe04050d6b99d50a73ab2b4bea4d6",
+    "data-analysis-verification.json": "a6153cfb444aa9c1b1586bc5042a446b3f597f8b0fc59aa91d77a26787558dde",
+    "restart-verification.json": "be6dc5b3108f07757c61bd11f14ea868baf58338ee9167edafeddfefd4fae78a",
+    "ui-02-chat-query-and-traces.png": "8528f757c557940d8e9d6b520904dbbf3ac3c1f8451b00e580bd1cae5f48575f",
+    "ui-04-chat-restored-history.png": "2e7290b063a295271808984c197c1f7b14009e6b1dbfe5f66dc0685e64fcfa47",
+    "ui-browser-report.json": "542119e8e2f9188f1166e7d13687cd704535bc365e7fc510998ca9fa72c8ab87",
+    "ui-05-follow-up-first-news.png": "1e4a097e56f4d6560f65cbadb641415a0751392ca101372083ac7acc22ebbf84",
+    "ui-06-chat-answer-top.png": "992962f9b122ffab99dbb98ce7dd4bd95326cbd4921f298207cad9f1db953a5f"
+  }
+}

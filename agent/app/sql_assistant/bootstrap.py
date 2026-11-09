@@ -3,6 +3,7 @@
 from app.model_runtime.agent_client import NativeStructuredAgentClient
 from app.model_runtime.core import StructuredInferenceService
 from app.sql_assistant.audit import PostgresQuerySnapshotStore, initialize_query_audit
+from app.sql_assistant.candidate import load_sql_candidate_config, build_sql_candidate_generator
 from app.sql_assistant.hot_news_binding import HotNewsSqlBindingStore
 from app.sql_assistant.scenarios import load_sql_scenarios
 from app.sql_assistant.service import SqlAssistantService
@@ -18,6 +19,10 @@ async def build_local_hot_news_sql_service(*, database, settings, model_config, 
     news_per_tenant = getattr(settings, "sql_assistant_news_per_tenant", 1200)
     if config.warehouse_schema_version != warehouse_contract(dataset_profile).version:
         raise ValueError("local SQL scenario warehouse version differs from its dataset profile")
+    candidate_config = load_sql_candidate_config(getattr(settings, "sql_candidate_config_path", None))
+    candidate_generator = build_sql_candidate_generator(
+        config=candidate_config, model_config=model_config, inference=model_ports.inference,
+    )
     await initialize_demo_warehouse(database, environment=settings.environment, dataset_profile=dataset_profile,
                                     news_per_tenant=news_per_tenant)
     await initialize_query_audit(database, environment=settings.environment)
@@ -36,4 +41,5 @@ async def build_local_hot_news_sql_service(*, database, settings, model_config, 
         dataset_profile=dataset_profile,
         news_per_tenant=news_per_tenant,
         hot_news_bindings=bindings,
+        candidate_config=candidate_config, candidate_generator=candidate_generator,
     )

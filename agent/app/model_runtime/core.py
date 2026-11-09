@@ -192,6 +192,7 @@ class InferenceRequest:
     messages: tuple[InferenceMessage, ...]
     output_json_schema: dict[str, Any]
     timeout_seconds: float = 120.0
+    max_output_tokens: int | None = None
 
     def __post_init__(self) -> None:
         for value in (
@@ -206,6 +207,10 @@ class InferenceRequest:
                 raise ValueError("inference identity fields must be non-empty")
         if self.timeout_seconds <= 0:
             raise ValueError("inference timeout must be positive")
+        if self.max_output_tokens is not None and (
+            type(self.max_output_tokens) is not int or not 1 <= self.max_output_tokens <= 32768
+        ):
+            raise ValueError("inference output token limit must be an integer between 1 and 32768")
         if not self.messages or self.messages[0].role != "system":
             raise ValueError("inference requires a trusted system message")
 

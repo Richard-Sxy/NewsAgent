@@ -44,7 +44,7 @@ def test_chat_uses_bound_sql_workflow_and_analysis_then_followup_replay(client):
     assert result["query_model_provider"] == "python-confirmed-intent"
     assert result["items"] and all(item["metrics"]["content_type"] == "video" for item in result["items"])
     assert result["parameters"]["content_type"] == "video"
-    assert "SELECT" in result["sql"] and "dw.news_behavior_aggregate" in result["sql"]
+    assert "SELECT" in result["sql"].upper() and "dw.news_behavior_aggregate" in result["sql"]
     report = client.get(f"/api/v1/hot-news/runs/{result['run_id']}")
     assert report.status_code == 200, report.text
     assert report.json()["sql_tool_trace"]["query_id"] == result["sql_query_id"]

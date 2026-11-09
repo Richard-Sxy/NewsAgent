@@ -56,6 +56,8 @@ function isolatedProject(t) {
     join(frontendDirectory, 'dev-server', 'local.yml'),
     'utf8',
   ).replace(/^ {2}token:.*$/m, `  token: ${publicYamlToken}`)
+    // A developer's ignored local target must not change this fixture contract.
+    .replace(/^ {2}target:.*$/m, '  target: http://127.0.0.1:28000')
   writeFileSync(join(rootDirectory, 'dev-server', 'local.yml'), publicYaml, 'utf8')
   writeFileSync(join(rootDirectory, 'package.json'), '{"type":"module"}', 'utf8')
   writeFileSync(
@@ -341,3 +343,21 @@ test(
     )
   },
 )
+
+test('isolated launch ignores dotenv at both config and Vite layers', async (t) => {
+  const project = isolatedProject(t)
+  const previous = process.env.NEWSAGENT_SKIP_DOTENV
+  t.after(() => {
+    if (previous === undefined) delete process.env.NEWSAGENT_SKIP_DOTENV
+    else process.env.NEWSAGENT_SKIP_DOTENV = previous
+  })
+  process.env.NEWSAGENT_SKIP_DOTENV = '1'
+  writeFileSync(join(project.rootDirectory, '.env.local'),
+    'VITE_ROUTER_BASE=/dotenv-canary/\nVITE_DEV_PROXY_TARGET=http://127.0.0.1:29999\n', 'utf8')
+  process.env.VITE_DEV_PROXY_TARGET = 'http://127.0.0.1:12800'
+  const config = await resolveConfig(inlineConfiguration(project, { envFile: false }), 'serve')
+  assert.equal(config.base, '/')
+  assert.equal(apiProxy(config).target, 'http://127.0.0.1:12800')
+  assert.equal(config.server.host, '127.0.0.1')
+  assert.equal(config.define['import.meta.env.VITE_LOCAL_SIMULATION'], '"1"')
+})

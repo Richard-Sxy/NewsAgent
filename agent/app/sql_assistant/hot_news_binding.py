@@ -6,13 +6,17 @@ import hashlib
 import json
 import re
 from datetime import datetime, timedelta, timezone
-from typing import Any
+from collections.abc import Awaitable, Callable
+from typing import Any, TYPE_CHECKING
 from uuid import UUID
 
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
 from app.db.session import Database
+
+if TYPE_CHECKING:
+    from app.schemas.sql_assistant import SqlAssistantPreview
 
 
 class HotNewsSqlBindingError(RuntimeError):
@@ -67,6 +71,7 @@ def build_hot_news_sql_scope(
     user_id: str | None = None,
     warehouse_schema_version: str = "news-warehouse-v1",
     dataset_identity: dict | None = None,
+    generation_identity: dict | None = None,
 ) -> str:
     """Hash the approved scope independently of randomized preview IDs.
 
@@ -119,6 +124,13 @@ def build_hot_news_sql_scope(
         raise HotNewsSqlBindingError("Scaled SQL run requires its dataset identity")
     if user_id is not None:
         payload["user_id"] = _uuid(user_id, name="user_id")
+    if generation_identity is not None:
+        if (
+            not isinstance(generation_identity, dict) or not generation_identity
+            or any(not isinstance(key, str) or not key.strip() for key in generation_identity)
+        ):
+            raise HotNewsSqlBindingError("SQL generation identity must be a nonempty JSON object")
+        payload["generation_identity"] = generation_identity
     try:
         canonical = json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
     except (TypeError, ValueError) as exc:
@@ -138,6 +150,47 @@ class HotNewsSqlBindingStore:
 
     def __init__(self, database: Database) -> None:
         self.database = database
+
+    async def plan_once(
+        self, *, build_preview: Callable[[], Awaitable["SqlAssistantPreview"]],
+        **values: Any,
+    ) -> dict[str, Any]:
+        """Reuse a frozen binding or generate once while holding a run lock.
+
+        The caller supplies a bounded generation operation and a temporary
+        query UUID, replaced with the saved preview's UUID. The lock is
+        transaction-scoped and never waits: contenders retry the same run
+        instead of holding a connection while waiting for another model call.
+        Preview persistence and the existing claim commit before releasing
+        this lock. Cancellation/crashes release it when this session closes;
+        any unclaimed preview cannot execute a hotspot run.
+        """
+        expected = self._expected(**values)
+        lock_key = int.from_bytes(
+            hashlib.sha256(expected["run_key"].encode("utf-8")).digest()[:8],
+            "big", signed=True,
+        )
+        try:
+            async with self.database.session() as session:
+                lock = await session.execute(
+                    text("SELECT pg_try_advisory_xact_lock(:lock_key)"),
+                    {"lock_key": lock_key},
+                )
+                if lock.scalar_one() is not True:
+                    raise HotNewsSqlBindingPersistenceError("SQL plan generation is already in progress")
+                result = await session.execute(text(f"""
+                    SELECT {_FIELD_SQL} FROM public.hot_news_sql_bindings
+                    WHERE run_key=:run_key
+                """), {"run_key": expected["run_key"]})
+                row = result.mappings().one_or_none()
+                if row is not None:
+                    return self._validate_binding(dict(row), expected, canonical_query=True)
+                preview = await build_preview()
+                return await self.get_or_claim(**{
+                    **expected, "query_id": _uuid(preview.query_id, name="query_id"),
+                })
+        except SQLAlchemyError as exc:
+            raise HotNewsSqlBindingPersistenceError("SQL plan binding store is temporarily unavailable") from exc
 
     async def initialize(self, environment: str) -> None:
         if environment != "e2e":

@@ -96,6 +96,7 @@ class Settings(BaseSettings):
     # Optional existing endpoint YAML for query understanding only; other scenes
     # continue to use MODEL_RUNTIME_CONFIG_PATH and their approved Bundle.
     conversation_query_understanding_config_path: str | None = None
+    conversation_query_context_enabled: bool = False
     conversation_data_analysis_enabled: bool = False
     data_loop_data_analysis_enabled: bool = False
     data_analysis_backend: Literal["process", "docker", "service"] = "process"
@@ -126,6 +127,8 @@ class Settings(BaseSettings):
     text2sql_max_rows: int = Field(default=1000, ge=1, le=100000)
     text2sql_timeout_ms: int = Field(default=30000, ge=1000, le=300000)
     sql_assistant_scenarios_path: str = "deploy/text2sql-scenes.local.yml"
+    # Absent policy preserves the existing native query path.
+    sql_candidate_config_path: str | None = None
     # Only the isolated local SQL application/worker can initialize this fixture.
     sql_assistant_dataset_profile: Literal["classic-v1", "enterprise-v1", "enterprise-v2", "public-headlines-v3", "timeline-v4", "timeline-v5", "corpus-v6", "real-news-v8"] = "classic-v1"
     sql_assistant_news_per_tenant: Literal[120, 1200, 8120, 12000] = 1200

@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/eosphoros-ai/DB-GPT",
+  "release": "v0.8.2",
+  "commit": "83609c471266607490b24e72188311efa23a0d16",
+  "source_path": "packages/dbgpt-app/src/dbgpt_app/scene/chat_db/auto_execute/prompt.py",
+  "source_sha256": "a3229c52afd96369a69357ccfe1f621d90898c36e043028a10d93321a11da377",
+  "license": "MIT",
+  "reuse_scope": "Adapted prompt asset only; no DB-GPT executable module or runtime dependency is imported.",
+  "changes": [
+    "Kept schema, dialect, row-limit, SQL-only table restriction and JSON-output organization.",
+    "Removed direct-answer, chart, history, Config, registry and parser execution paths.",
+    "Added NewsAgent confirmed-intent, exact projection, parameter and strict status contract."
+  ],
+  "runtime_dependencies_added": []
+}

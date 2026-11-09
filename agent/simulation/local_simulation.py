@@ -13,7 +13,7 @@ from hashlib import sha256
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from typing import Annotated, Literal
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request
 from pydantic import BaseModel
@@ -119,7 +119,8 @@ def create_local_app() -> FastAPI:
                         understanding_timeout = endpoint_config.inference.timeout_seconds
                     application.state.conversation_service.enable_hot_news_query(
                         LocalConversationHotNewsQuery(application.state, understanding_agent=understanding_agent,
-                            understanding_metadata=understanding_metadata, understanding_timeout=understanding_timeout),
+                            understanding_metadata=understanding_metadata, understanding_timeout=understanding_timeout,
+                            query_context_enabled=settings.conversation_query_context_enabled),
                     )
                 yield
             finally:
@@ -234,6 +235,7 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
         if scene.result_mode != "ranking":
             raise SqlAssistantError("热点 Agent 只接受新闻候选排名场景，不接受跨新闻趋势聚合", 422)
         model_binding = model_config.agent_scene(config.model_scene)
+        generation_identity = tool.generation_identity() if hasattr(tool, "generation_identity") else None
         scope = build_hot_news_sql_scope(
             question=body.question.strip(), scenario_id=body.scenario_id,
             window_start=body.window_start, window_end=body.window_end,
@@ -241,6 +243,7 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
             warehouse_schema_version=tool.contract.version,
             dataset_identity=tool.dataset_identity() if tool.dataset_profile in STREAMED_PROFILES else None,
             model_scene=config.model_scene,
+            generation_identity=generation_identity,
             user_id=str(principal.user_id),
             scenario={"scene": scene.model_dump(mode="json"),
                       "model_binding": model_binding.model_dump(mode="json"),
@@ -254,21 +257,38 @@ async def execute_local_hot_news_query(*, state, principal: DataLoopPrincipal,
         preview_kwargs = {"tenant_id": E2E_TENANT_ID, "user_id": str(principal.user_id)}
         if expected_intent is not None:
             preview_kwargs["expected_intent"] = expected_intent
-        preview = await tool.preview(body, **preview_kwargs)
+        # The randomized query ID is excluded from the stable run key. Reserve
+        # candidate generation before invoking the model, then reuse a prior
+        # binding without another proposal. Native retains its legacy path.
+        preview = None
+        if generation_identity is None:
+            preview = await tool.preview(body, **preview_kwargs)
         run_request = HotNewsRunRequest(
             tenant_id=E2E_TENANT_ID, window_start=body.window_start, window_end=body.window_end,
             production_bundle_version=active.bundle_version, workflow_version=HOT_NEWS_WORKFLOW_NAME,
-            sql_query_id=preview.query_id, sql_query_user_id=str(principal.user_id), sql_query_scope_sha256=scope,
+            sql_query_id=preview.query_id if preview is not None else str(uuid4()),
+            sql_query_user_id=str(principal.user_id), sql_query_scope_sha256=scope,
             retrieval_context_sha256=behavior_context.identity_sha256 if behavior_context is not None else None,
             reader_profile_context_sha256=reader_context,
         )
         run_request.validate()
-        binding = await tool.hot_news_bindings.get_or_claim(
-            run_key=run_request.idempotency_key, query_id=preview.query_id,
+        binding_args = dict(
+            run_key=run_request.idempotency_key, query_id=run_request.sql_query_id,
             tenant_id=E2E_TENANT_ID, user_id=str(principal.user_id),
             production_bundle_version=active.bundle_version, scope_sha256=scope,
             window_start=body.window_start, window_end=body.window_end,
         )
+        if generation_identity is None:
+            binding = await tool.hot_news_bindings.get_or_claim(**binding_args)
+        else:
+            async def build_preview():
+                return await tool.preview(body, **preview_kwargs)
+            try:
+                # Bound lock/connection occupation as well as model generation.
+                async with asyncio.timeout(tool.candidate_config.deadline_seconds + 10):
+                    binding = await tool.hot_news_bindings.plan_once(build_preview=build_preview, **binding_args)
+            except TimeoutError as exc:
+                raise SqlAssistantError("查询计划生成或绑定超时，请用相同请求重试", 503, retryable=True) from exc
         from dataclasses import replace
         run_request = replace(run_request, sql_query_id=str(binding["query_id"]))
     except QueryResolutionError:

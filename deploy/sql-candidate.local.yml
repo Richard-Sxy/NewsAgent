@@ -1,0 +1,11 @@
+# Deterministic local integration fixture, never a model quality benchmark.
+schema_version: 1
+mode: dbgpt_candidate
+model_scene: text2sql_assistant
+deadline_seconds: 10
+max_output_tokens: 2048
+max_input_chars: 40000
+max_output_chars: 16000
+max_model_attempts: 1
+max_repair_attempts: 0
+allow_native_fallback: false

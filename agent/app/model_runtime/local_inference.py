@@ -35,9 +35,10 @@ class LocalHotNewsInference:
         if request.scene != "hot_news_analysis":
             content = self._complete_other_scene(request.scene, payload)
             digest = sha256(request.idempotency_key.encode("utf-8")).hexdigest()[:24]
+            request_prefix = "native-local-sql-candidate-v1" if request.scene in {"sql_candidate", "sql_candidate_shadow"} else "native-local"
             return RawInferenceResult(
                 content=content,
-                request_id=f"native-local-{digest}",
+                request_id=f"{request_prefix}-{digest}",
                 model_version=request.model_route,
                 usage={"local_stub": True},
             )
@@ -131,6 +132,8 @@ class LocalHotNewsInference:
             from app.modules.conversation.query_understanding import local_query_understanding
 
             return local_query_understanding(payload)
+        if scene in {"sql_candidate", "sql_candidate_shadow"}:
+            return _local_sql_candidate(payload)
         if scene == "text2sql_assistant":
             from app.sql_assistant.planner import local_query_intent
 
@@ -252,3 +255,76 @@ class LocalHotNewsInference:
                 )
             ).model_dump_json()
         raise ValueError(f"unsupported local scene: {scene}")
+
+
+def _local_sql_candidate(payload: dict) -> str:
+    """Isolated deterministic wiring fixture, never evidence of model quality.
+
+    Rebuild the SQL from approved intent slots, rather than echoing SQL or
+    executing any supplied schema/projection. The additional contract checks
+    make malformed, unknown and injected requests explicitly unsupported.
+    Factory policy still confines local inference to the E2E environment.
+    """
+    from pathlib import Path
+
+    from app.schemas.sql_assistant import SqlAssistantIntent
+    from app.sql_assistant.candidate import SqlCandidateResponse
+    from app.sql_assistant.planner import compile_query
+    from app.sql_assistant.scenarios import SqlScenario
+
+    unsupported = SqlCandidateResponse(status="unsupported", sql=None, reason_code="unsupported_contract")
+    expected_fields = {
+        "contract_version", "schema_version", "schema_ddl", "confirmed_intent",
+        "result_mode", "catalog", "required_projection", "required_predicates",
+        "group_by", "order_by", "allowed_parameters", "examples",
+    }
+    try:
+        if not isinstance(payload, dict) or set(payload) != expected_fields:
+            return unsupported.model_dump_json()
+        if payload["contract_version"] != "sql-candidate-v1":
+            return unsupported.model_dump_json()
+        if payload["schema_version"] not in {f"news-warehouse-v{number}" for number in range(1, 8)}:
+            return unsupported.model_dump_json()
+        if not isinstance(payload["schema_ddl"], str) or not payload["schema_ddl"].strip():
+            return unsupported.model_dump_json()
+        catalog_path = Path(__file__).resolve().parents[1] / "sql_assistant/assets/candidate_catalog_v1.json"
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8-sig"))
+        if payload["catalog"] != catalog or payload["examples"] != []:
+            return unsupported.model_dump_json()
+        slots = payload["confirmed_intent"]
+        if not isinstance(slots, dict) or set(slots) != {
+            "sort_by", "sort_direction", "content_type", "category", "row_limit",
+        }:
+            return unsupported.model_dump_json()
+        intent = SqlAssistantIntent.model_validate({
+            **slots, "explanation": "Isolated deterministic SQL candidate fixture; no real model inference.",
+        }, strict=True)
+        scenario = SqlScenario(
+            id="local-candidate", name="Local candidate fixture", description="Isolated contract-only simulation",
+            result_mode=payload["result_mode"],
+            allowed_sort_metrics=("clicks", "ctr", "interactions", "impressions", "hot_score"),
+            max_limit=1000, sample_questions=("Local deterministic fixture",),
+        )
+        dimensions = catalog["ranking_dimensions" if scenario.result_mode == "ranking" else "trend_dimensions"]
+        predicates = list(catalog["base_predicates"])
+        parameters = ["tenant_id", "window_start", "window_end", "row_limit"]
+        for field in ("content_type", "category"):
+            if getattr(intent, field) is not None:
+                predicates.append(f"{field} = :{field}")
+                parameters.append(field)
+        ordering = ([f"{intent.sort_by} {intent.sort_direction.upper()}", "news_id ASC"]
+                    if scenario.result_mode == "ranking" else ["event_time ASC"])
+        if any((
+            payload["required_projection"] != [*dimensions, *catalog["measures"]],
+            payload["required_predicates"] != predicates,
+            payload["group_by"] != dimensions,
+            payload["order_by"] != ordering,
+            payload["allowed_parameters"] != parameters,
+        )):
+            return unsupported.model_dump_json()
+        # A formatting-only variant exercises actual candidate selection and
+        # fingerprint handling; no literals or untrusted SQL are interpolated.
+        sql = compile_query(intent, scenario).lower().replace("\n", " ")
+        return SqlCandidateResponse(status="proposed", sql=sql, reason_code=None).model_dump_json()
+    except (KeyError, TypeError, ValueError):
+        return unsupported.model_dump_json()

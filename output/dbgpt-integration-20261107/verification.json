@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-07",
+  "scope": "local_code_and_isolated_contract_validation",
+  "runtime_mode_changed": false,
+  "enterprise_model_calls": 0,
+  "tests": {
+    "affected_modules": 39,
+    "passed": 893,
+    "skipped": 8,
+    "deselected": 5,
+    "real_postgres_binding_passed": 2,
+    "native_contract_smoke_passed": 6
+  },
+  "packaging": {
+    "status": "passed",
+    "required_assets_present": 6,
+    "temporary_setuptools": "80.9.0",
+    "temporary_wheel": "0.45.1"
+  },
+  "not_run": [
+    "real_model_candidate_comparison",
+    "actual_temporal_worker_end_to_end",
+    "production_load_and_process_crash_recovery",
+    "human_reviewed_semantics_quality"
+  ],
+  "source_sha256": {
+    "agent/app/sql_assistant/candidate.py": "1779f785a4699d63ac626432c327590f375508e8d0db68f8457cbef7293e39ea",
+    "agent/app/sql_assistant/candidate_validation.py": "97fc54f2ccb56d6f851c0e12c40761b9819c4b6135a474d84dcddb4892130c11",
+    "agent/app/sql_assistant/service.py": "20b217279d94aa68e017d7ce2506d26eae11c3f0bd9915c2efde1969d3d997c6",
+    "agent/app/sql_assistant/bootstrap.py": "841f0353c164f86eb813198de4f32722e9235e49c761ad2a54cd8ae7069e7d72",
+    "agent/app/sql_assistant/hot_news_binding.py": "d18c2625742c5b036afe1dadc2b28cc99d471bf287a51dadf86504b474e9bc09",
+    "agent/simulation/local_simulation.py": "ccf04311470d31710bba36e142c8e5eeb6d5bbe7cffde0edfb40d22bd2ac92ef",
+    "agent/simulation/conversation_hot_news.py": "e2145d3e7f21a53c1bc0a814372a36c5c44a85017088b4bc65c2fee2c8b6d9c9",
+    "agent/app/model_runtime/core.py": "773cdcd72f80000f4d1f402fe59584b6ef69836e4b0caaee36771a323cfab6c6",
+    "agent/app/model_runtime/http.py": "6e764badbc935fbc7cec15adcc7cb75ea462d537355d70419a4b3152cbb17bd3",
+    "agent/app/modules/conversation/query_catalog.py": "1e2acdaa2259b97e799fd40f2967ca48c652ce094cae95730bb2e890482cfbfa",
+    "agent/app/modules/conversation/query_catalog_v1.json": "c9d29328fa833d4545a99be0b3cc882fe31b4bec9528c170c18ca89fa85a4c09",
+    "agent/evaluation/run_sql_candidates.py": "5ada1682989cc5d36a8eea4ba77a3e5074f726899e4696d906356001733367a6",
+    "deploy/sql-candidate.example.yml": "6b93a19c7fd364e8a93c4e78d32f81dd42bad6031c1b68492a4f392be6a0200b"
+  }
+}

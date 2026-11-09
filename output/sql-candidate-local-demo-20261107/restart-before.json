@@ -1,0 +1,113 @@
+{
+  "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+  "query_id": "b385513e-f174-4610-9855-d491a927aaec",
+  "sql_hash": "0eedcd4725b44c3128a46afd633468c010f8449f2b701c481d1a36eb3a9ab1ff",
+  "sql": "select news_id, title, content_type, category, source,   sum(impressions) as impressions,   sum(clicks) as clicks,   sum(effective_consumptions) as effective_consumptions,   sum(interactions) as interactions,   coalesce(round(sum(clicks) * 1.0 / nullif(sum(impressions), 0), 4), 0) as ctr,   coalesce(round((sum(clicks) * 0.4 + sum(effective_consumptions) * 0.35 + sum(interactions) * 0.25) / nullif(sum(impressions), 0), 4), 0) as hot_score from dw.news_behavior_aggregate where tenant_id = :tenant_id   and event_time >= :window_start   and event_time < :window_end   and content_type = :content_type group by news_id, title, content_type, category, source order by ctr desc, news_id asc limit :row_limit",
+  "generation": {
+    "contract_version": "sql-candidate-plan-v1",
+    "mode": "dbgpt_candidate",
+    "identity": {
+      "config": {
+        "mode": "dbgpt_candidate",
+        "model_scene": "text2sql_assistant",
+        "schema_version": 1,
+        "max_input_chars": 40000,
+        "deadline_seconds": 10.0,
+        "max_output_chars": 16000,
+        "max_output_tokens": 2048,
+        "max_model_attempts": 1,
+        "max_repair_attempts": 0,
+        "allow_native_fallback": false
+      },
+      "generator": {
+        "scene": "sql_candidate",
+        "config": {
+          "mode": "dbgpt_candidate",
+          "model_scene": "text2sql_assistant",
+          "schema_version": 1,
+          "max_input_chars": 40000,
+          "deadline_seconds": 10.0,
+          "max_output_chars": 16000,
+          "max_output_tokens": 2048,
+          "max_model_attempts": 1,
+          "max_repair_attempts": 0,
+          "allow_native_fallback": false
+        },
+        "provider": "dbgpt_prompt_asset",
+        "validator": {
+          "version": "sql-candidate-validation-v1",
+          "source_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec"
+        },
+        "model_route": "native-local-model-v1",
+        "reuse_scope": "prompt_template_only",
+        "prompt_sha256": "9376103b9e44fd6baac62d0afac087dcc5e10356e28a219941cbfb20e2ce0a47",
+        "adapter_sha256": "1779f785a4699d63ac626432c327590f375508e8d0db68f8457cbef7293e39ea",
+        "catalog_sha256": "432dff6d7c7e174211a521082d7544d50f110a033949df8268fb07378c191d90",
+        "model_provider": "local",
+        "prompt_version": "dbgpt-template-candidate-v1",
+        "adapter_version": "sql-candidate-v1",
+        "catalog_version": "news-sql-candidate-catalog-v1",
+        "examples_sha256": "b35b9d56b6ddfee8eb7bee716a56d6c9a106afe2289bbae9e5cd85deb699eff0",
+        "upstream_commit": "83609c471266607490b24e72188311efa23a0d16",
+        "examples_version": "news-sql-candidate-examples-none-v1",
+        "validator_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec",
+        "response_schema_sha256": "fa4e83553fe63f11c2b928e966c62418b2ace43d79351f5601a856a14e181db6",
+        "source_manifest_sha256": "bec9a29eafd808d0b0f0ceda50359624fee38039f94d58574a056d26a0d16676"
+      },
+      "validator": {
+        "version": "sql-candidate-validation-v1",
+        "source_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec"
+      }
+    },
+    "identity_sha256": "18c854e44d8bc66e23eef9eb484209cdf686033abb2ab9ecee07bfdaabfee78f",
+    "status": "validated",
+    "reason_code": null,
+    "candidate_sql_hash": "0eedcd4725b44c3128a46afd633468c010f8449f2b701c481d1a36eb3a9ab1ff",
+    "metadata": {
+      "scene": "sql_candidate",
+      "usage": {},
+      "config": {
+        "mode": "dbgpt_candidate",
+        "model_scene": "text2sql_assistant",
+        "schema_version": 1,
+        "max_input_chars": 40000,
+        "deadline_seconds": 10.0,
+        "max_output_chars": 16000,
+        "max_output_tokens": 2048,
+        "max_model_attempts": 1,
+        "max_repair_attempts": 0,
+        "allow_native_fallback": false
+      },
+      "attempts": 1,
+      "provider": "dbgpt_prompt_asset",
+      "validator": {
+        "version": "sql-candidate-validation-v1",
+        "source_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec"
+      },
+      "elapsed_ms": 2,
+      "request_id": "b385513e-f174-4610-9855-d491a927aaec",
+      "model_route": "native-local-model-v1",
+      "reuse_scope": "prompt_template_only",
+      "intent_sha256": "139f772958baca6639192b00b68fb2d8cebea428c5097a4dc847d1dbca526464",
+      "model_version": "native-local-model-v1",
+      "prompt_sha256": "9376103b9e44fd6baac62d0afac087dcc5e10356e28a219941cbfb20e2ce0a47",
+      "schema_sha256": "38c2bfe32e7ea06ab3a75c17831b078c5c5689c8320722344b5b39b7f5040e93",
+      "adapter_sha256": "1779f785a4699d63ac626432c327590f375508e8d0db68f8457cbef7293e39ea",
+      "catalog_sha256": "432dff6d7c7e174211a521082d7544d50f110a033949df8268fb07378c191d90",
+      "model_provider": "local",
+      "prompt_version": "dbgpt-template-candidate-v1",
+      "schema_version": "news-warehouse-v1",
+      "adapter_version": "sql-candidate-v1",
+      "catalog_version": "news-sql-candidate-catalog-v1",
+      "examples_sha256": "b35b9d56b6ddfee8eb7bee716a56d6c9a106afe2289bbae9e5cd85deb699eff0",
+      "scenario_sha256": "2304c22c431ba06042e18f121c2e25ecb4fc6ed8d47e2696b026fb5fd1f0f8ed",
+      "upstream_commit": "83609c471266607490b24e72188311efa23a0d16",
+      "examples_version": "news-sql-candidate-examples-none-v1",
+      "model_request_id": "native-local-sql-candidate-v1-4468edea02a39dc83dada704",
+      "validator_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec",
+      "response_schema_sha256": "fa4e83553fe63f11c2b928e966c62418b2ace43d79351f5601a856a14e181db6",
+      "source_manifest_sha256": "bec9a29eafd808d0b0f0ceda50359624fee38039f94d58574a056d26a0d16676"
+    }
+  },
+  "status": "completed"
+}

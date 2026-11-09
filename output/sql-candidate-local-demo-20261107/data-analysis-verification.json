@@ -1,0 +1,53 @@
+{
+  "name": "analyze_hot_news_data",
+  "status": "completed",
+  "attempts": 1,
+  "arguments": {
+    "metric": "ctr",
+    "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+    "operation": "distribution"
+  },
+  "result": {
+    "metric": "ctr",
+    "source": {
+      "scope": "ranked_news_only",
+      "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+      "row_count": 5,
+      "window_end": "2026-10-02T17:00:00+00:00",
+      "window_start": "2026-10-02T16:00:00+00:00",
+      "bundle_version": "local-simulation-bundle-v1",
+      "snapshot_sha256": "e615ff64728d91948c2eb41c40bdf59b5b2dcc44b7ebb650d8592ee5d8a30ee2"
+    },
+    "analysis": {
+      "max": "0.14",
+      "min": "0.08944099378881987577639751553",
+      "p90": "0.14",
+      "mean": "0.115603825405350026221032308706",
+      "count": 5,
+      "median": "0.1096256684491978609625668449"
+    },
+    "execution": {
+      "limits": {
+        "max_rows": 200,
+        "memory_mb": 128,
+        "max_concurrency": 2,
+        "max_input_bytes": 262144,
+        "timeout_seconds": 3.0,
+        "max_output_bytes": 262144,
+        "os_resource_limits_enforced": true
+      },
+      "backend": "process",
+      "elapsed_ms": 129,
+      "input_sha256": "b7904d0e348adfb52cf16af531a87a4b9ac8076e9b5d63e9a69f62009688d281"
+    },
+    "operation": "distribution",
+    "limitations": [
+      "仅分析当前 run 的上榜新闻，不代表全量新闻或全站指标。",
+      "UV（unique_users）不可跨新闻相加，不能由该快照推断全站去重用户数。",
+      "单个时间窗口不支持趋势判断或因果归因。"
+    ],
+    "schema_version": "1.0",
+    "algorithm_version": "news-analysis-v1"
+  },
+  "error_code": null
+}

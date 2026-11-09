@@ -28,8 +28,11 @@ from app.model_runtime.config_file import EndpointConfig, ModelRuntimeConfig
 from app.model_runtime.core import StructuredInferenceService
 from app.model_runtime.http import ModelTransportError, OpenAICompatibleInferenceClient
 from app.modules.conversation.query_understanding import QueryPolicy, QueryUnderstanding
+from app.modules.conversation.query_catalog import (
+    build_query_understanding_payload, query_context_identity,
+)
 from app.modules.conversation.structured_query_resolution import resolve_structured_query
-from app.sql_assistant.input_boundary import normalize_question, SqlAssistantQuestionError
+from app.sql_assistant.input_boundary import SqlAssistantQuestionError
 from evaluation.query_semantics_common import load_package, read_json, sha256_file
 
 
@@ -147,19 +150,13 @@ def _runtime(package: Path, endpoint: RemoteEndpoint) -> ModelRuntimeConfig:
     return ModelRuntimeConfig.model_validate(data)
 
 
-def _payload(case: dict) -> tuple[dict, QueryPolicy, datetime]:
+def _payload(case: dict, *, query_context_enabled: bool = False) -> tuple[dict, QueryPolicy, datetime]:
     policy = QueryPolicy.model_validate(case["policy"])
     clock = datetime.fromisoformat(case["now"])
-    if clock.tzinfo is None or clock.utcoffset() is None:
-        raise ValueError("case clock must be timezone aware")
-    from zoneinfo import ZoneInfo
-    clock = clock.astimezone(ZoneInfo(policy.timezone))
-    question = normalize_question(case["question"])
-    return {"question": question, "policy": policy.model_dump(mode="json"),
-            "temporal_context": {"server_now": clock.isoformat(), "timezone": policy.timezone,
-                                 "date_without_year": "current_year",
-                                 "day_without_month": "current_year_and_month",
-                                 "hour_convention": "24_hour"}}, policy, clock
+    payload = build_query_understanding_payload(
+        case["question"], policy, clock, query_context_enabled=query_context_enabled,
+    )
+    return payload, policy, datetime.fromisoformat(payload["temporal_context"]["server_now"])
 
 
 def _error_kind(exc: Exception) -> str:
@@ -182,12 +179,16 @@ def _safe_usage(value: dict) -> dict:
 
 
 async def run_predictions(package: Path, endpoint_path: Path, out: Path,
-                          max_calls: int, max_seconds: float) -> dict:
+                          max_calls: int, max_seconds: float, *,
+                          query_context_enabled: bool = False) -> dict:
     """Make one attempt per case; keep failed/unattempted cases in the denominator.
 
     Caller must explicitly run this on the machine hosting the chosen service.
     Credentials are read only from the named environment variable, never .env.
     """
+    if type(query_context_enabled) is not bool:
+        raise ValueError("query context opt-in must be boolean")
+    context_identity = query_context_identity() if query_context_enabled else None
     if type(max_calls) is not int or max_calls < 0:
         raise ValueError("max_calls must be a nonnegative integer")
     if type(max_seconds) not in {float, int} or not math.isfinite(max_seconds) or max_seconds <= 0:
@@ -231,6 +232,8 @@ async def run_predictions(package: Path, endpoint_path: Path, out: Path,
             "input_sha256": {case["id"]: _digest(case) for case in cases},
             "identity_verification": "declared_weights_response_model_checked",
             "production_acceptance": "not_approved", "training_started": False}
+    if context_identity is not None:
+        spec["query_context"] = {"enabled": True, **context_identity}
     _write_new(out / "run-spec.json", spec)
     started, calls, rows, stop = monotonic(), 0, [], None
     inference = OpenAICompatibleInferenceClient(config.inference, api_key=api_key)
@@ -254,7 +257,9 @@ async def run_predictions(package: Path, endpoint_path: Path, out: Path,
                 else:
                     before = monotonic()
                     try:
-                        payload, policy, clock = _payload(case)
+                        payload, policy, clock = _payload(
+                            case, query_context_enabled=query_context_enabled,
+                        )
                         calls += 1
                         row["attempts"] = 1
                         with model_request_context(tenant_id="query-semantics-evaluation",

@@ -29,7 +29,7 @@ SOURCE_ROOTS = (
 
 
 def source_closure() -> dict[str, str]:
-    """Copy only Python source reachable from this harness, never .env/data/weights."""
+    """Copy reachable Python and the pinned context asset; never private data."""
     pending, found = list(SOURCE_ROOTS), {}
     while pending:
         module = pending.pop()
@@ -60,6 +60,9 @@ def source_closure() -> dict[str, str]:
                 break
             if (parent / "__init__.py").is_file():
                 pending.append(".".join(parent.relative_to(AGENT_ROOT).parts))
+    if "app/modules/conversation/query_catalog.py" in found:
+        relative = "app/modules/conversation/query_catalog_v1.json"
+        found[relative] = sha256_file(AGENT_ROOT / relative)
     return dict(sorted(found.items()))
 
 
@@ -217,6 +220,9 @@ def main(argv=None) -> int:
             p.add_argument("--" + name, type=Path, required=True)
         p.add_argument("--max-calls", type=int, required=True)
         p.add_argument("--max-seconds", type=float, required=True)
+        if command == "run":
+            p.add_argument("--query-context", action="store_true",
+                           help="opt into versioned development context (not human-reviewed gold)")
     p = commands.add_parser("score")
     for name in ("package", "run", "out"):
         p.add_argument("--" + name, type=Path, required=True)
@@ -237,7 +243,10 @@ def main(argv=None) -> int:
             result = export_train(args.cases, args.labels, args.holdout_cases, args.package, args.out)
         elif args.command == "run":
             from evaluation.query_semantics_runner import run_predictions
-            result = asyncio.run(run_predictions(args.package, args.endpoint, args.out, args.max_calls, args.max_seconds))
+            result = asyncio.run(run_predictions(
+                args.package, args.endpoint, args.out, args.max_calls, args.max_seconds,
+                query_context_enabled=args.query_context,
+            ))
         elif args.command == "run-local":
             from evaluation.query_semantics_local import run_local_predictions
             result = asyncio.run(run_local_predictions(args.package, args.config, args.out, args.max_calls, args.max_seconds))

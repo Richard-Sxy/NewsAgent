@@ -256,6 +256,8 @@ def compare_runs(package: Path, baseline: Path, candidate: Path, out: Path) -> d
         for key in ("package_manifest_sha256", "source_files_sha256", "dependency_versions", "budget"):
             if not left.get(key) or left.get(key) != right.get(key):
                 reasons.append(f"run_contract_mismatch:{key}")
+        if left.get("query_context") != right.get("query_context"):
+            reasons.append("run_contract_mismatch:query_context")
         settings = []
         for spec in (left, right):
             values = spec.get("endpoint_settings")

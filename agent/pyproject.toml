@@ -62,3 +62,6 @@ markers = [
 
 [tool.setuptools.packages.find]
 include = ["app*", "simulation*"]
+
+[tool.setuptools.package-data]
+app = ["sql_assistant/assets/*.txt", "sql_assistant/assets/*.json", "modules/conversation/query_catalog_v1.json"]

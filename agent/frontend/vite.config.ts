@@ -11,7 +11,13 @@ import { assertLocalDevBoundary, loadLocalDevSettings } from './dev-server/local
  */
 export default defineConfig(({ command, mode, isPreview }) => {
   const rootDirectory = fileURLToPath(new URL('.', import.meta.url))
-  const env = loadEnv(mode, rootDirectory, 'VITE_')
+  // The isolated launcher also disables Vite's automatic dotenv loading.
+  // Default commands retain their existing configuration behavior.
+  const env = process.env.NEWSAGENT_SKIP_DOTENV === '1'
+    ? Object.fromEntries(Object.entries(process.env).filter(
+        (entry): entry is [string, string] => entry[0].startsWith('VITE_') && typeof entry[1] === 'string',
+      ))
+    : loadEnv(mode, rootDirectory, 'VITE_')
   if (command === 'serve' && mode === 'development' && !isPreview) {
     // YAML replaces legacy .env dev settings; explicit shell overrides still work.
     for (const key of Object.keys(env)) {

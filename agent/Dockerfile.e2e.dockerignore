@@ -19,3 +19,17 @@ sandbox
 rag-recall-demo
 docs
 k8s
+
+# Never send local model environments or private dotenv files to the builder.
+Hunyuan7B
+small_model
+.codex
+.agents
+.env
+.env.*
+**/.env
+**/.env.*
+**/__pycache__
+
+.venv*
+**/.venv*

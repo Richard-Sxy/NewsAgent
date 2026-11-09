@@ -1,0 +1,65 @@
+# Use with docker-compose.native-e2e.yml and --env-file /dev/null.
+# Separate project/volumes, loopback-only public fixture gateway, no enterprise services.
+name: news-agent-sql-candidate-demo
+
+x-candidate-env: &candidate-env
+  SQL_CANDIDATE_CONFIG_PATH: /app/deploy/sql-candidate.local.yml
+
+services:
+  postgres:
+    ports: !override []
+  temporal:
+    ports: !override []
+  minio:
+    ports: !override []
+  migrate:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+  api:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+    ports: !override ["127.0.0.1:12800:8000"]
+    environment:
+      <<: *candidate-env
+      CONVERSATION_QUERY_CONTEXT_ENABLED: "true"
+    volumes:
+      - ./sql-candidate.local.yml:/app/deploy/sql-candidate.local.yml:ro
+  hot-news-worker:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+    environment: *candidate-env
+    volumes:
+      - ./sql-candidate.local.yml:/app/deploy/sql-candidate.local.yml:ro
+  writing-worker:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+  outbox-worker:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+  data-loop-worker:
+    extends:
+      file: docker-compose.native-e2e.yml
+      service: writing-worker
+    image: news-agent/writing-agent-service:sql-candidate-demo
+    command: ["python", "-m", "app.data_loop_worker"]
+  test-runner:
+    image: news-agent/writing-agent-service:sql-candidate-demo
+  web:
+    image: nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+    # Avoid entrypoint configuration writes; nginx only writes to bounded tmpfs.
+    entrypoint: ["nginx"]
+    command: ["-g", "daemon off;"]
+    ports: ["127.0.0.1:12880:8080"]
+    volumes:
+      - ../agent/frontend/dist:/usr/share/nginx/html:ro
+      - ./sql-candidate.frontend.json:/usr/share/nginx/html/config.json:ro
+      - ./bge-demo.nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:size=32m,mode=1777
+      - /var/run:size=1m,mode=1777
+    security_opt: ["no-new-privileges:true"]
+    networks: [native]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 10

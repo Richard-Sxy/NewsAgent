@@ -5,6 +5,8 @@ from typing import Literal
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
+from app.sql_assistant.candidate_validation import SqlCandidateTrace
+
 
 SqlMetric = Literal["clicks", "ctr", "interactions", "impressions", "hot_score"]
 
@@ -64,6 +66,7 @@ class SqlAssistantPreview(BaseModel):
     model_provider: str
     expires_at: datetime
     stages: list[SqlAssistantStage]
+    generation: SqlCandidateTrace | None = None
 
 
 class SqlAssistantResult(BaseModel):

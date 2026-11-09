@@ -1,0 +1,253 @@
+{
+  "cases": [
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.003,
+      "id": "ctr-article",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\n  AND content_type = :content_type\n  AND category = :category\nGROUP BY news_id, title, content_type, category, source\nORDER BY ctr DESC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    },
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.001,
+      "id": "clicks-article",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\n  AND content_type = :content_type\n  AND category = :category\nGROUP BY news_id, title, content_type, category, source\nORDER BY clicks DESC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    },
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.001,
+      "id": "ctr-video",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\n  AND content_type = :content_type\nGROUP BY news_id, title, content_type, category, source\nORDER BY ctr DESC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    },
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.001,
+      "id": "impressions-asc",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\n  AND category = :category\nGROUP BY news_id, title, content_type, category, source\nORDER BY impressions ASC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    },
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.0,
+      "id": "hot-score",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\nGROUP BY news_id, title, content_type, category, source\nORDER BY hot_score DESC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    },
+    {
+      "attempts": 0,
+      "candidate_sql": null,
+      "database_executions": 0,
+      "elapsed_ms": 0.001,
+      "id": "interactions",
+      "native_sql": "SELECT news_id, title, content_type, category, source,\n  SUM(impressions) AS impressions,\n  SUM(clicks) AS clicks,\n  SUM(effective_consumptions) AS effective_consumptions,\n  SUM(interactions) AS interactions,\n  COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr,\n  COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score\nFROM dw.news_behavior_aggregate\nWHERE tenant_id = :tenant_id\n  AND event_time >= :window_start\n  AND event_time < :window_end\n  AND category = :category\nGROUP BY news_id, title, content_type, category, source\nORDER BY interactions DESC, news_id ASC\nLIMIT :row_limit",
+      "reason_code": "native_guard_passed",
+      "status": "passed",
+      "usage": {}
+    }
+  ],
+  "config": {
+    "allow_native_fallback": false,
+    "deadline_seconds": 10.0,
+    "max_input_chars": 40000,
+    "max_model_attempts": 1,
+    "max_output_chars": 16000,
+    "max_output_tokens": 2048,
+    "max_repair_attempts": 0,
+    "mode": "native",
+    "model_scene": "text2sql_assistant",
+    "schema_version": 1
+  },
+  "contract": {
+    "candidate_budget": {
+      "allow_native_fallback": false,
+      "deadline_seconds": 10.0,
+      "max_input_chars": 40000,
+      "max_model_attempts": 1,
+      "max_output_chars": 16000,
+      "max_output_tokens": 2048,
+      "max_repair_attempts": 0,
+      "model_scene": "text2sql_assistant",
+      "schema_version": 1
+    },
+    "cases": [
+      {
+        "id": "ctr-article",
+        "intent": {
+          "category": "科技",
+          "content_type": "article",
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 10,
+          "sort_by": "ctr",
+          "sort_direction": "desc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      },
+      {
+        "id": "clicks-article",
+        "intent": {
+          "category": "科技",
+          "content_type": "article",
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 10,
+          "sort_by": "clicks",
+          "sort_direction": "desc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      },
+      {
+        "id": "ctr-video",
+        "intent": {
+          "category": null,
+          "content_type": "video",
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 5,
+          "sort_by": "ctr",
+          "sort_direction": "desc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      },
+      {
+        "id": "impressions-asc",
+        "intent": {
+          "category": "社会",
+          "content_type": null,
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 3,
+          "sort_by": "impressions",
+          "sort_direction": "asc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      },
+      {
+        "id": "hot-score",
+        "intent": {
+          "category": null,
+          "content_type": null,
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 20,
+          "sort_by": "hot_score",
+          "sort_direction": "desc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      },
+      {
+        "id": "interactions",
+        "intent": {
+          "category": "财经",
+          "content_type": null,
+          "explanation": "Synthetic confirmed intent; no model-understanding claim.",
+          "row_limit": 5,
+          "sort_by": "interactions",
+          "sort_direction": "desc"
+        },
+        "review_status": "synthetic_not_human_reviewed",
+        "split": "development"
+      }
+    ],
+    "frozen_now": "2026-10-03T12:00:00+08:00",
+    "max_calls": 6,
+    "max_seconds": 60.0,
+    "scenario": {
+      "allowed_categories": [
+        "科技",
+        "财经",
+        "体育",
+        "社会"
+      ],
+      "allowed_content_types": [
+        "article",
+        "video"
+      ],
+      "allowed_sort_metrics": [
+        "clicks",
+        "ctr",
+        "impressions",
+        "interactions",
+        "hot_score"
+      ],
+      "default_limit": 5,
+      "default_sort": "clicks",
+      "description": "Confirmed intents for offline contract checks, not reviewed quality data.",
+      "id": "candidate-contract-development",
+      "max_limit": 100,
+      "name": "Synthetic candidate contracts",
+      "result_mode": "ranking",
+      "sample_questions": [
+        "合成开发案例，不用于自然语言理解评分"
+      ]
+    },
+    "schema": {
+      "dataset_profile": "classic-v1",
+      "ddl_sha256": "38c2bfe32e7ea06ab3a75c17831b078c5c5689c8320722344b5b39b7f5040e93",
+      "document_sha256": "e4498800da447c72beb3be13ad375d9efa458605f8accf90af56b531c0aee3d0",
+      "version": "news-warehouse-v1"
+    },
+    "tenant_sha256": "bd7662a5eeb41614e720d477abfcb2272e19a8a70a93b7e3bc8560d44ad326e9",
+    "validator": {
+      "source_sha256": "30c5b21a2e7838693e754b8891c35bcfa04cdadb966a9cc5f6d476d53256b8ec",
+      "version": "sql-candidate-validation-v1"
+    },
+    "window_end": "2026-10-03T11:00:00+08:00",
+    "window_start": "2026-10-03T10:00:00+08:00"
+  },
+  "contract_sha256": "1eaacca1f2f68ab5cb514f74d6dac90f17a54d42fa1a9389a3c677b2de50fd7f",
+  "data_status": "synthetic_development_not_human_reviewed",
+  "experiment_kind": "sql-candidate-contract-v1",
+  "generator_identity": {
+    "provider": "native_compiler"
+  },
+  "generator_identity_sha256": "7b8189acff4a51aa76d573b44b696076e9ae0846800d59e31aa25572b18910dc",
+  "mode": "native",
+  "not_evaluated": [
+    "natural_language_understanding",
+    "database_result_equivalence",
+    "hot_news_end_to_end",
+    "enterprise_quality",
+    "production_acceptance"
+  ],
+  "production_acceptance": "not_approved",
+  "runner_sha256": "5ada1682989cc5d36a8eea4ba77a3e5074f726899e4696d906356001733367a6",
+  "scope": "contract_only_no_database",
+  "summary": {
+    "contract_pass_rate": 1.0,
+    "database_executions": 0,
+    "elapsed_ms": 0.028,
+    "failed": 0,
+    "generation_calls": 0,
+    "not_passed": 0,
+    "not_run": 0,
+    "passed": 6,
+    "total": 6,
+    "unsupported": 0,
+    "usage": {},
+    "usage_known_cases": 0,
+    "usage_missing_cases": 6
+  }
+}

@@ -214,8 +214,8 @@ test('safe denied capability outcomes show only validated unpersisted receipts a
 
 test('Data Loop deep links route to the actual matching run or candidate panel and preserve selectors', () => {
   const routerModule = load(source('router/index.ts').replaceAll('import.meta.env.BASE_URL', "'/'"), { 'vue-router': {
-    createWebHistory: () => ({}), createRouter: (configuration) => ({ ...configuration, afterEach() {} }),
-  } })
+    createWebHistory: () => ({}), createRouter: (configuration) => ({ ...configuration, beforeEach() {}, afterEach() {} }),
+  }, '@/config/runtime': { runtimeConfig: () => ({ environment: 'development', enableStreamingLab: false }) } })
   const route = routerModule.router.routes.find((item) => item.path === '/data-loop')
   assert.deepEqual(route.redirect({ query: { workflow_id: WORKFLOW } }), { name: 'data-loop-runs', query: { workflow_id: WORKFLOW } })
   assert.deepEqual(route.redirect({ query: { candidate_id: ROW } }), { name: 'data-loop-candidates', query: { candidate_id: ROW } })

@@ -1,0 +1,20 @@
+{
+  "version": "news-sql-candidate-catalog-v1",
+  "dialect": "postgres",
+  "allowed_view": "dw.news_behavior_aggregate",
+  "ranking_dimensions": ["news_id", "title", "content_type", "category", "source"],
+  "trend_dimensions": ["event_time"],
+  "measures": [
+    "SUM(impressions) AS impressions",
+    "SUM(clicks) AS clicks",
+    "SUM(effective_consumptions) AS effective_consumptions",
+    "SUM(interactions) AS interactions",
+    "COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0) AS ctr",
+    "COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0) AS hot_score"
+  ],
+  "time_semantics": "event_time is the behavior bucket, not publication time; the server binds the confirmed half-open window",
+  "metric_semantics": "clicks is a count; ctr is aggregated clicks / impressions, with zero-denominator result 0; hot_score only selects candidates, final authoritative heat is computed downstream",
+  "parameter_syntax": ":name",
+  "base_predicates": ["tenant_id = :tenant_id", "event_time >= :window_start", "event_time < :window_end"],
+  "limit": ":row_limit"
+}

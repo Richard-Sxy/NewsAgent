@@ -1,0 +1,591 @@
+{
+  "browser": "Microsoft Edge headless, isolated temporary profile",
+  "base_url": "http://127.0.0.1:12880",
+  "scope": "Local deterministic fixture; UI wiring, not model quality validation",
+  "steps": [
+    {
+      "name": "sent_query_via_ui",
+      "conversation_id": "4706fd57-9411-4710-8ecf-c701108ba5b3",
+      "url": "http://127.0.0.1:12880/chat?conversation=4706fd57-9411-4710-8ecf-c701108ba5b3",
+      "question": "查询点击率最高的前5条视频新闻并分析原因"
+    },
+    {
+      "name": "query_completed_with_persisted_tools",
+      "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+      "tool_labels": [
+        "query_hot_news · 已完成 · 尝试 1 次"
+      ],
+      "body_excerpt": "你\n2026/11/7 23:42:09\n\n查询点击率最高的前5条视频新闻并分析原因\n\nNewsAgent\n\n本轮已按问题查询模拟数仓，并复用热点分析链路。以下展示取数与分析的已保存结果；当前解释仍为规则模拟。\n\n本次使用项目计算榜，查询合成样本2026-10-03 00:00至01:00（Asia/Shanghai），按点击率选取最多5条候选，再由Python计算权威热度排行。\n\n按行为指标发生时间取数，不代表该时段发布的全部新闻。\n\nSQL按点击率选择至多5条候选；最终榜单由Python权威热度计算，候选指标顺序不保证保留。\n\n只覆盖查询选中的候选范围，不代表全站或企业原始榜单。\n\n未指定榜单来源，使用已批准的项目计算榜。\n\n本轮数仓查询：b385513e-f174-4610-9855-d491a927aaec\nPython确定性编译（已确认意图）；已分析 5 篇新闻，已上榜 5 篇。\n\nSQL 按照问题指定指标筛选候选；以下榜单再按 Python 权威热度排序，不等同于 SQL 指标顺序。\n\n热点运行：9d059fb4-c3a5-4fc8-8725-068285b944d1\n窗口：2026-10-03T00:00:00+08:00 至 2026-10-03T01:00:00+08:00\n\n模型分析任务 5 篇；本轮并发峰值 1；分析阶段耗时 98 毫秒（含等待并发名额）。\n\n1. [合成样本] 中小企业服务平台上线新工具（news_id=demo-news-005）\n热度 0.3260927887814115359025538666；点击 189；点击率 0.14。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3261；点击率 0.1400。\n\n2. [合成样本] 志愿团队开展安全知识演示（news_id=demo-news-011）\n热度 0.3173746922654674596598556014；点击 276；点击率 0.1295774647887323943661971831。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3174；点击率 0.1296。\n\n3. [合成样本] 城市马拉松公布赛事安排（news_id=demo-news-007）\n热度 0.3026178419517238155727675908；点击 144；点击率 0.08944099378881987577639751553。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3026；点击率 0.0894。\n\n4. [合成样本] 国产机器人展示精细操作能力（news_id=demo-news-002）\n热度 0.2950659383250445140295941549；点击 105；点击率 0.109375。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.2951；点击率 0.1094。\n\n5. [合成样本] 社区运动场开放夜间时段（news_id=demo-news-009）\n热度 0.2784189117790751912776084165；点击 205；点击率 0.1096256684491978609625668449。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.2784；点击率 0.1096。\n\n相关新闻\n\n以下为检索到的新闻片段，供核对与延伸阅读；片段不代表完整原文，事实和时效请核对来源。\n\n根据「[合成样本] 中小企业服务平台上线新工具」召回\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n根据「[合成样本] 志愿团队开展安全知识演示」召回\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 公共图书馆推出便民阅读服务\n\n发布时间：2026/10/2 22:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n根据「[合成样本] 城市马拉松公布赛事安排」召回\n[合成样本] 公共图书馆推出便民阅读服务\n\n发布时间：2026/10/2 22:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 志愿团队开展安全知识演示\n\n发布时间：2026/10/2 23:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 志愿团队开展安全知识演示。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-011；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n处理详情\nquery_hot_news · 已完成 · "
+    },
+    {
+      "name": "hot_news_selected_matching_run",
+      "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+      "body_excerpt": "新闻洞察\n\n热点工作台\n\n查看热点榜单与分析，记录运营判断。\n\n刷新榜单\n热点榜单\n已完成\n分析窗口\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:30\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:29\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:06\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:06\n\n上榜 5 篇\n已分析 5 篇\n\n排名\t新闻\t阅读表现\t热度\t置信度\t操作\n1\t\n[合成样本] 中小企业服务平台上线新工具\n视频\ndemo-news-005\n\t189 次点击\nCTR 14.00%\n\t0.3261\t100.00%\t\n分析\n决策\n\n2\t\n[合成样本] 志愿团队开展安全知识演示\n视频\ndemo-news-011\n\t276 次点击\nCTR 12.96%\n\t0.3174\t100.00%\t\n分析\n决策\n\n3\t\n[合成样本] 城市马拉松公布赛事安排\n视频\ndemo-news-007\n\t144 次点击\nCTR 8.94%\n\t0.3026\t100.00%\t\n分析\n决策\n\n4\t\n[合成样本] 国产机器人展示精细操作能力\n视频\ndemo-news-002\n\t105 次点击\nCTR 10.94%\n\t0.2951\t100.00%\t\n分析\n决策\n\n5\t\n[合成样本] 社区运动场开放夜间时段\n视频\ndemo-news-009\n\t205 次点击\nCTR 10.96%\n\t0.2784\t100.00%\t\n分析\n决策\n\n热度由后端确定性计算，分析与证据可在榜单中展开查看。\n\n运行详情\n运行编号\n9d059fb4-c3a5-4fc8-8725-068285b944d1\n配置版本\nlocal-simulation-bundle-v1\n行为记录\n5 条\n指标快照\n5 篇\n\n取数证据与当前榜单属于同一次运行。最终热度由后端计算，可能与候选筛选顺序不同。\n\n已分析 5 篇 · 耗时 98 毫秒 · 并发峰值 1 / 上限 3\n\n历史运行最近 4 次\n查询过程与完整取数证据\n本次热点运行 · SQL 工具调用\n\n查询视频新闻按点击率从高到低前5条\n\n5 个候选 · 7 ms\n热点运行 ID\n9d059fb4-c3a5-4fc8-8725-068285b944d1\nSQL 工具查询 ID\nb385513e-f174-4610-9855-d491a927aaec\n场景 / 模型\nnews-ranking / python-confirmed-intent\nSQL 排序只决定候选筛选顺序。下面的 SQL 参考分不等于最终热度；热点 Agent 使用可信指标与基线，由 Python HotNewsRanker 再计算并排序。\n实际 SQL\nselect news_id, title, content_type, category, source,   sum(impressions) as impressions,   sum(clicks) as clicks,   sum(effective_consumptions) as effective_consumptions,   sum(interactions) as interactions,   coalesce(round(sum(clicks) * 1.0 / nullif(sum(impressions), 0), 4), 0) as ctr,   coalesce(round((sum(clicks) * 0.4 + sum(effective_consumptions) * 0.35 + sum(interactions) * 0.25) / nullif(sum(impressions), 0), 4), 0) as hot_score from dw.news_behavior_aggregate where tenant_id = :tenant_id   and event_time >= :window_start   and event_time < :window_end   and content_type = :content_type group by news_id, title, content_type, category, source order by ctr desc, news_id asc limit :row_limit\n身份与窗口绑定参数\n展开\n复制\n{\n  \"row_limit\": 5,\n  \"tenant_id\": \"11111111-1111-4111-8111-111111111111\",\n  \"window_end\": \"2026-10-03T01:00:00+08:00\",\n  \"content_type\": \"video\",\n  \"window_start\": \"2026-10-03T00:00:00+08:00\"\n}\n\n本地规则推理：按页面确认的时间窗口查询，指标为 ctr，结果形式为 ranking。 时间以已确认的整点窗口为准；SQL 热度仅是候选召回分，热点最终热度由 Python 规则计算。\n\n查看候选筛选输入（与本次热点运行绑定）\nSQL 结果如何进入热点 Agent\n\nSQL 查询挑选候选新闻；Python HotNewsRanker 重新计算权威热度与最终排行。\n\n窗口严格限定一个小时桶：unique_users 使用该桶真实去重值，禁止跨小时求和。\n\n候选计数与同一聚合视图交叉校验；时长、小时 UV 与基线由固定 Python 参数化 SQL 补充。\n\n基线的 UV 与时长未提供，保持 null；sample_count=1 表示一份合成参考，不代表推断出的历史样本数量。\n\nSQL 演示热度仅用于候选筛选；热点 Agent 仍采用原有 Python 四分量热度公式。\n\n查看补充指标与基线查询\nSQL 工具阶段记录\n阶段\t状态\t说明\t耗时\t尝试\n1. 输入与权限\t通过\t身份由网关注入；问题只用于选择批准的查询指标和过滤条件\t0 ms\t1\n2. intent_confirmed\t通过\tPython 独立复核已确认的查询条件；直接编译 SQL，没有再次调用模型规划\t1 ms\t0\n3. sql_candidate\t通过\tdbgpt_candidate: validated\t2 ms\t1\n4. SQL 安全校验\t通过\t参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过\t0 ms\t1\n5. 查询计划保存\t通过\t预览已保存；执行仅接受 query_id，并重新校验快照\t0 ms\t1\n6. 执行前快照复核\t通过\t用户、租户、格式哈希、配置版本和 SQL 均已复核\t0 ms\t1\n7. 本地聚合数据查询\t通过\tPostgreSQL 只读事务执行；设置 statement_timeout\t7 ms\t1\n8. SQL 结果保存\t通过\t查询结果与预览关联保存，重复执行返回同一已保存结果\t0 ms\t1\n查看版本与完整性标识\n本次决策记录1 条\n记录运营决策采纳、驳回、延后或修正"
+    },
+    {
+      "name": "browser_reload_and_refresh_history",
+      "conversation_id": "4706fd57-9411-4710-8ecf-c701108ba5b3",
+      "turn_count": 1
+    },
+    {
+      "name": "followup_completed",
+      "question": "解释第一条新闻",
+      "tool_labels": [
+        "read_hot_news · 已完成 · 尝试 1 次"
+      ],
+      "body_excerpt": "你\n2026/11/7 23:42:11\n\n解释第一条新闻\n\nNewsAgent\n\n以下内容来自同一租户的已完成运行或新闻知识；指标保持工具快照原值。\n\n热点运行：9d059fb4-c3a5-4fc8-8725-068285b944d1\n窗口：2026-10-02T16:00:00+00:00 至 2026-10-02T17:00:00+00:00\n\n模型分析任务 5 篇；本轮并发峰值 1；分析阶段耗时 98 毫秒（含等待并发名额）。\n\n1. [合成样本] 中小企业服务平台上线新工具（news_id=demo-news-005）\n热度 0.3260927887814115359025538666；点击 189；点击率 0.14。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3261；点击率 0.1400。\n\n相关新闻\n\n以下为检索到的新闻片段，供核对与延伸阅读；片段不代表完整原文，事实和时效请核对来源。\n\n根据「[合成样本] 中小企业服务平台上线新工具」召回\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n处理详情\nread_hot_news · 已完成 · 尝试 1 次\n参数\n{\n  \"run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n  \"news_rank\": 1\n}\n结果\n{\n  \"run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n  \"window_start\": \"2026-10-02T16:00:00+00:00\",\n  \"window_end\": \"2026-10-02T17:00:00+00:00\",\n  \"ranked_news_count\": 5,\n  \"analyzed_news_count\": 5,\n  \"sql_query_id\": \"b385513e-f174-4610-9855-d491a927aaec\",\n  \"analysis_execution\": {\n    \"executor_version\": \"bounded-analysis-v1\",\n    \"max_concurrency\": 3,\n    \"observed_concurrency\": 1,\n    \"task_count\": 5,\n    \"elapsed_ms\": 98\n  },\n  \"items\": [\n    {\n      \"rank\": 1,\n      \"news_id\": \"demo-news-005\",\n      \"title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-005\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 1350,\n        \"clicks\": 189,\n        \"unique_users\": 156,\n        \"total_duration_seconds\": 8505,\n        \"effective_consumptions\": 117,\n        \"interactions\": 28,\n        \"ctr\": \"0.14\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.3260927887814115359025538666\",\n        \"click_component\": \"0.0420\",\n        \"consumption_component\": \"0.2166666666666666666666666666\",\n        \"interaction_component\": \"0.04786324786324786324786324786\",\n        \"growth_component\": \"0.01956287425149700598802395210\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.3261；点击率 0.1400。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    }\n  ],\n  \"truncated\": false,\n  \"related_articles\": [\n    {\n      \"source_run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n      \"source_news_id\": \"demo-news-005\",\n      \"source_title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"items\": [\n        {\n          \"news_id\": \"demo-news-004\",\n          \"chunk_id\": \"3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9\",\n          \"title\": \"[合成样本] 假日消费市场呈现多样化趋势\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-004\",\n          \"publish_time\": \"2026-10-02T08:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.5,\n          \"re"
+    },
+    {
+      "name": "acceptance_passed",
+      "conversation_id": "4706fd57-9411-4710-8ecf-c701108ba5b3",
+      "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1"
+    }
+  ],
+  "page_errors": [],
+  "http_errors": [],
+  "screenshots": [
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-01-chat-initial.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-02-chat-query-and-traces.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-03-hot-news-run-and-sql.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-04-chat-restored-history.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-05-follow-up-first-news.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-06-chat-answer-top.png",
+    "\\\\wsl.localhost\\Ubuntu-20.04\\home\\shi\\project\\NewsAgent\\output\\sql-candidate-local-demo-20261107\\ui-07-followup-answer-top.png"
+  ],
+  "first_turn_tools": [
+    {
+      "label": "query_hot_news · 已完成 · 尝试 1 次",
+      "arguments": {
+        "question": "查询点击率最高的前5条视频新闻并分析原因"
+      },
+      "result": {
+        "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+        "window_start": "2026-10-03T00:00:00+08:00",
+        "window_end": "2026-10-03T01:00:00+08:00",
+        "ranked_news_count": 5,
+        "analyzed_news_count": 5,
+        "sql_query_id": "b385513e-f174-4610-9855-d491a927aaec",
+        "analysis_execution": {
+          "executor_version": "bounded-analysis-v1",
+          "max_concurrency": 3,
+          "observed_concurrency": 1,
+          "task_count": 5,
+          "elapsed_ms": 98
+        },
+        "items": [
+          {
+            "rank": 1,
+            "news_id": "demo-news-005",
+            "title": "[合成样本] 中小企业服务平台上线新工具",
+            "metrics": {
+              "news_id": "demo-news-005",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 1350,
+              "clicks": 189,
+              "unique_users": 156,
+              "total_duration_seconds": 8505,
+              "effective_consumptions": 117,
+              "interactions": 28,
+              "ctr": "0.14"
+            },
+            "hot_score": {
+              "score": "0.3260927887814115359025538666",
+              "click_component": "0.0420",
+              "consumption_component": "0.2166666666666666666666666666",
+              "interaction_component": "0.04786324786324786324786324786",
+              "growth_component": "0.01956287425149700598802395210"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.3261；点击率 0.1400。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          },
+          {
+            "rank": 2,
+            "news_id": "demo-news-011",
+            "title": "[合成样本] 志愿团队开展安全知识演示",
+            "metrics": {
+              "news_id": "demo-news-011",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 2130,
+              "clicks": 276,
+              "unique_users": 229,
+              "total_duration_seconds": 17388,
+              "effective_consumptions": 165,
+              "interactions": 41,
+              "ctr": "0.1295774647887323943661971831"
+            },
+            "hot_score": {
+              "score": "0.3173746922654674596598556014",
+              "click_component": "0.03887323943661971830985915493",
+              "consumption_component": "0.2092391304347826086956521739",
+              "interaction_component": "0.04969696969696969696969696970",
+              "growth_component": "0.01956535269709543568464730290"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.3174；点击率 0.1296。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          },
+          {
+            "rank": 3,
+            "news_id": "demo-news-007",
+            "title": "[合成样本] 城市马拉松公布赛事安排",
+            "metrics": {
+              "news_id": "demo-news-007",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 1610,
+              "clicks": 144,
+              "unique_users": 119,
+              "total_duration_seconds": 7344,
+              "effective_consumptions": 92,
+              "interactions": 15,
+              "ctr": "0.08944099378881987577639751553"
+            },
+            "hot_score": {
+              "score": "0.3026178419517238155727675908",
+              "click_component": "0.02683229813664596273291925466",
+              "consumption_component": "0.2236111111111111111111111111",
+              "interaction_component": "0.03260869565217391304347826086",
+              "growth_component": "0.01956573705179282868525896415"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.3026；点击率 0.0894。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          },
+          {
+            "rank": 4,
+            "news_id": "demo-news-002",
+            "title": "[合成样本] 国产机器人展示精细操作能力",
+            "metrics": {
+              "news_id": "demo-news-002",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 960,
+              "clicks": 105,
+              "unique_users": 87,
+              "total_duration_seconds": 3780,
+              "effective_consumptions": 61,
+              "interactions": 12,
+              "ctr": "0.109375"
+            },
+            "hot_score": {
+              "score": "0.2950659383250445140295941549",
+              "click_component": "0.03281250",
+              "consumption_component": "0.2033333333333333333333333334",
+              "interaction_component": "0.03934426229508196721311475410",
+              "growth_component": "0.01957584269662921348314606741"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.2951；点击率 0.1094。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          },
+          {
+            "rank": 5,
+            "news_id": "demo-news-009",
+            "title": "[合成样本] 社区运动场开放夜间时段",
+            "metrics": {
+              "news_id": "demo-news-009",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 1870,
+              "clicks": 205,
+              "unique_users": 170,
+              "total_duration_seconds": 11685,
+              "effective_consumptions": 118,
+              "interactions": 26,
+              "ctr": "0.1096256684491978609625668449"
+            },
+            "hot_score": {
+              "score": "0.2784189117790751912776084165",
+              "click_component": "0.03288770053475935828877005347",
+              "consumption_component": "0.2014634146341463414634146342",
+              "interaction_component": "0.04406779661016949152542372882",
+              "growth_component": "0.00"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.2784；点击率 0.1096。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          }
+        ],
+        "truncated": false,
+        "related_articles": [
+          {
+            "source_run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+            "source_news_id": "demo-news-005",
+            "source_title": "[合成样本] 中小企业服务平台上线新工具",
+            "items": [
+              {
+                "news_id": "demo-news-004",
+                "chunk_id": "3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9",
+                "title": "[合成样本] 假日消费市场呈现多样化趋势",
+                "excerpt": "本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-004",
+                "publish_time": "2026-10-02T08:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.5,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-003",
+                "chunk_id": "4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663",
+                "title": "[合成样本] 研究团队公布低碳电池材料成果",
+                "excerpt": "本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-003",
+                "publish_time": "2026-10-02T07:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4935,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-008",
+                "chunk_id": "5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71",
+                "title": "[合成样本] 青年球队完成友谊赛",
+                "excerpt": "本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-008",
+                "publish_time": "2026-10-02T12:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4873,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              }
+            ],
+            "status": "completed",
+            "evidence_is_untrusted": true,
+            "notice": "相关文章片段供参考，需核对原文。"
+          },
+          {
+            "source_run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+            "source_news_id": "demo-news-011",
+            "source_title": "[合成样本] 志愿团队开展安全知识演示",
+            "items": [
+              {
+                "news_id": "demo-news-003",
+                "chunk_id": "4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663",
+                "title": "[合成样本] 研究团队公布低碳电池材料成果",
+                "excerpt": "本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-003",
+                "publish_time": "2026-10-02T07:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.5,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-010",
+                "chunk_id": "329cefc39dfafde717a6e61cae51bc595c3124b05be5e6ae2da4162f7725347d",
+                "title": "[合成样本] 公共图书馆推出便民阅读服务",
+                "excerpt": "本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-010",
+                "publish_time": "2026-10-02T14:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4873,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-008",
+                "chunk_id": "5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71",
+                "title": "[合成样本] 青年球队完成友谊赛",
+                "excerpt": "本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-008",
+                "publish_time": "2026-10-02T12:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4813,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              }
+            ],
+            "status": "completed",
+            "evidence_is_untrusted": true,
+            "notice": "相关文章片段供参考，需核对原文。"
+          },
+          {
+            "source_run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+            "source_news_id": "demo-news-007",
+            "source_title": "[合成样本] 城市马拉松公布赛事安排",
+            "items": [
+              {
+                "news_id": "demo-news-010",
+                "chunk_id": "329cefc39dfafde717a6e61cae51bc595c3124b05be5e6ae2da4162f7725347d",
+                "title": "[合成样本] 公共图书馆推出便民阅读服务",
+                "excerpt": "本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-010",
+                "publish_time": "2026-10-02T14:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.5,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-004",
+                "chunk_id": "3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9",
+                "title": "[合成样本] 假日消费市场呈现多样化趋势",
+                "excerpt": "本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-004",
+                "publish_time": "2026-10-02T08:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4935,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-011",
+                "chunk_id": "5e0927d17f930d8dfe87b3174e7bb449c89e529bc107b9e81b446e13afcf81bc",
+                "title": "[合成样本] 志愿团队开展安全知识演示",
+                "excerpt": "本地合成新闻样本：[合成样本] 志愿团队开展安全知识演示。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-011；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-011",
+                "publish_time": "2026-10-02T15:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4873,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              }
+            ],
+            "status": "completed",
+            "evidence_is_untrusted": true,
+            "notice": "相关文章片段供参考，需核对原文。"
+          }
+        ],
+        "query_context": {
+          "enabled": true,
+          "version": "news-query-context-v1",
+          "asset_sha256": "c9d29328fa833d4545a99be0b3cc882fe31b4bec9528c170c18ca89fa85a4c09",
+          "builder_sha256": "1e2acdaa2259b97e799fd40f2967ca48c652ce094cae95730bb2e890482cfbfa",
+          "review_status": "development_draft_not_human_reviewed",
+          "production_approved": false
+        },
+        "workflow_id": "hot-news-1d900d11c8e94773c3a9b00c659144417709b44fb5ac5fc71b6ae929c703703f",
+        "status": "completed",
+        "production_bundle_version": "local-simulation-bundle-v1",
+        "question": "查询点击率最高的前5条视频新闻并分析原因",
+        "scenario_id": "news-ranking",
+        "query_resolution": {
+          "status": "ready",
+          "reason_code": "ready",
+          "message": "本次使用项目计算榜，查询合成样本2026-10-03 00:00至01:00（Asia/Shanghai），按点击率选取最多5条候选，再由Python计算权威热度排行。",
+          "intent": {
+            "sort_by": "ctr",
+            "sort_direction": "desc",
+            "content_type": "video",
+            "category": null,
+            "row_limit": 5,
+            "explanation": "本地规则推理：按页面确认的时间窗口查询，指标为 ctr，结果形式为 ranking。"
+          },
+          "canonical_question": "查询视频新闻按点击率从高到低前5条",
+          "time_expression": "sample",
+          "explicit_date": null,
+          "time_basis": "behavior",
+          "ranking_source": "project_computed",
+          "response_style": "list",
+          "requested_window_start": "2026-10-03T00:00:00+08:00",
+          "requested_window_end": "2026-10-03T01:00:00+08:00",
+          "supported_window_start": "2026-10-03T00:00:00+08:00",
+          "supported_window_end": "2026-10-03T01:00:00+08:00",
+          "coverage_window_start": "2026-10-03T00:00:00+08:00",
+          "coverage_window_end": "2026-10-04T00:00:00+08:00",
+          "notes": [
+            "按行为指标发生时间取数，不代表该时段发布的全部新闻。",
+            "SQL按点击率选择至多5条候选；最终榜单由Python权威热度计算，候选指标顺序不保证保留。",
+            "只覆盖查询选中的候选范围，不代表全站或企业原始榜单。",
+            "未指定榜单来源，使用已批准的项目计算榜。"
+          ]
+        },
+        "understanding_model_request_id": "native-local-92fd7045ca591a5f3eb5545f",
+        "understanding_model": {
+          "provider": "local"
+        },
+        "sql": "select news_id, title, content_type, category, source,   sum(impressions) as impressions,   sum(clicks) as clicks,   sum(effective_consumptions) as effective_consumptions,   sum(interactions) as interactions,   coalesce(round(sum(clicks) * 1.0 / nullif(sum(impressions), 0), 4), 0) as ctr,   coalesce(round((sum(clicks) * 0.4 + sum(effective_consumptions) * 0.35 + sum(interactions) * 0.25) / nullif(sum(impressions), 0), 4), 0) as hot_score from dw.news_behavior_aggregate where tenant_id = :tenant_id   and event_time >= :window_start   and event_time < :window_end   and content_type = :content_type group by news_id, title, content_type, category, source order by ctr desc, news_id asc limit :row_limit",
+        "parameters": {
+          "row_limit": 5,
+          "tenant_id": "11111111-1111-4111-8111-111111111111",
+          "window_end": "2026-10-03T01:00:00+08:00",
+          "content_type": "video",
+          "window_start": "2026-10-03T00:00:00+08:00"
+        },
+        "query_model_provider": "python-confirmed-intent",
+        "query_model_request_id": null,
+        "analysis_model_request_ids": [
+          "native-local-733654c3fac2e0331925cdf9",
+          "native-local-2f9e065259192b23810f473c",
+          "native-local-d0be32021922f89b09d322a9",
+          "native-local-f373c4c252b93550da1d5301",
+          "native-local-12b5336b788406767285ebb6"
+        ]
+      }
+    }
+  ],
+  "first_turn_text": "你\n2026/11/7 23:42:09\n\n查询点击率最高的前5条视频新闻并分析原因\n\nNewsAgent\n\n本轮已按问题查询模拟数仓，并复用热点分析链路。以下展示取数与分析的已保存结果；当前解释仍为规则模拟。\n\n本次使用项目计算榜，查询合成样本2026-10-03 00:00至01:00（Asia/Shanghai），按点击率选取最多5条候选，再由Python计算权威热度排行。\n\n按行为指标发生时间取数，不代表该时段发布的全部新闻。\n\nSQL按点击率选择至多5条候选；最终榜单由Python权威热度计算，候选指标顺序不保证保留。\n\n只覆盖查询选中的候选范围，不代表全站或企业原始榜单。\n\n未指定榜单来源，使用已批准的项目计算榜。\n\n本轮数仓查询：b385513e-f174-4610-9855-d491a927aaec\nPython确定性编译（已确认意图）；已分析 5 篇新闻，已上榜 5 篇。\n\nSQL 按照问题指定指标筛选候选；以下榜单再按 Python 权威热度排序，不等同于 SQL 指标顺序。\n\n热点运行：9d059fb4-c3a5-4fc8-8725-068285b944d1\n窗口：2026-10-03T00:00:00+08:00 至 2026-10-03T01:00:00+08:00\n\n模型分析任务 5 篇；本轮并发峰值 1；分析阶段耗时 98 毫秒（含等待并发名额）。\n\n1. [合成样本] 中小企业服务平台上线新工具（news_id=demo-news-005）\n热度 0.3260927887814115359025538666；点击 189；点击率 0.14。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3261；点击率 0.1400。\n\n2. [合成样本] 志愿团队开展安全知识演示（news_id=demo-news-011）\n热度 0.3173746922654674596598556014；点击 276；点击率 0.1295774647887323943661971831。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3174；点击率 0.1296。\n\n3. [合成样本] 城市马拉松公布赛事安排（news_id=demo-news-007）\n热度 0.3026178419517238155727675908；点击 144；点击率 0.08944099378881987577639751553。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3026；点击率 0.0894。\n\n4. [合成样本] 国产机器人展示精细操作能力（news_id=demo-news-002）\n热度 0.2950659383250445140295941549；点击 105；点击率 0.109375。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.2951；点击率 0.1094。\n\n5. [合成样本] 社区运动场开放夜间时段（news_id=demo-news-009）\n热度 0.2784189117790751912776084165；点击 205；点击率 0.1096256684491978609625668449。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.2784；点击率 0.1096。\n\n相关新闻\n\n以下为检索到的新闻片段，供核对与延伸阅读；片段不代表完整原文，事实和时效请核对来源。\n\n根据「[合成样本] 中小企业服务平台上线新工具」召回\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n根据「[合成样本] 志愿团队开展安全知识演示」召回\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 公共图书馆推出便民阅读服务\n\n发布时间：2026/10/2 22:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n根据「[合成样本] 城市马拉松公布赛事安排」召回\n[合成样本] 公共图书馆推出便民阅读服务\n\n发布时间：2026/10/2 22:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 志愿团队开展安全知识演示\n\n发布时间：2026/10/2 23:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 志愿团队开展安全知识演示。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-011；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n处理详情\nquery_hot_news · 已完成 · 尝试 1 次\n参数\n{\n  \"question\": \"查询点击率最高的前5条视频新闻并分析原因\"\n}\n结果\n{\n  \"run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n  \"window_start\": \"2026-10-03T00:00:00+08:00\",\n  \"window_end\": \"2026-10-03T01:00:00+08:00\",\n  \"ranked_news_count\": 5,\n  \"analyzed_news_count\": 5,\n  \"sql_query_id\": \"b385513e-f174-4610-9855-d491a927aaec\",\n  \"analysis_execution\": {\n    \"executor_version\": \"bounded-analysis-v1\",\n    \"max_concurrency\": 3,\n    \"observed_concurrency\": 1,\n    \"task_count\": 5,\n    \"elapsed_ms\": 98\n  },\n  \"items\": [\n    {\n      \"rank\": 1,\n      \"news_id\": \"demo-news-005\",\n      \"title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-005\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 1350,\n        \"clicks\": 189,\n        \"unique_users\": 156,\n        \"total_duration_seconds\": 8505,\n        \"effective_consumptions\": 117,\n        \"interactions\": 28,\n        \"ctr\": \"0.14\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.3260927887814115359025538666\",\n        \"click_component\": \"0.0420\",\n        \"consumption_component\": \"0.2166666666666666666666666666\",\n        \"interaction_component\": \"0.04786324786324786324786324786\",\n        \"growth_component\": \"0.01956287425149700598802395210\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.3261；点击率 0.1400。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    },\n    {\n      \"rank\": 2,\n      \"news_id\": \"demo-news-011\",\n      \"title\": \"[合成样本] 志愿团队开展安全知识演示\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-011\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 2130,\n        \"clicks\": 276,\n        \"unique_users\": 229,\n        \"total_duration_seconds\": 17388,\n        \"effective_consumptions\": 165,\n        \"interactions\": 41,\n        \"ctr\": \"0.1295774647887323943661971831\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.3173746922654674596598556014\",\n        \"click_component\": \"0.03887323943661971830985915493\",\n        \"consumption_component\": \"0.2092391304347826086956521739\",\n        \"interaction_component\": \"0.04969696969696969696969696970\",\n        \"growth_component\": \"0.01956535269709543568464730290\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.3174；点击率 0.1296。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    },\n    {\n      \"rank\": 3,\n      \"news_id\": \"demo-news-007\",\n      \"title\": \"[合成样本] 城市马拉松公布赛事安排\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-007\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 1610,\n        \"clicks\": 144,\n        \"unique_users\": 119,\n        \"total_duration_seconds\": 7344,\n        \"effective_consumptions\": 92,\n        \"interactions\": 15,\n        \"ctr\": \"0.08944099378881987577639751553\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.3026178419517238155727675908\",\n        \"click_component\": \"0.02683229813664596273291925466\",\n        \"consumption_component\": \"0.2236111111111111111111111111\",\n        \"interaction_component\": \"0.03260869565217391304347826086\",\n        \"growth_component\": \"0.01956573705179282868525896415\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.3026；点击率 0.0894。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    },\n    {\n      \"rank\": 4,\n      \"news_id\": \"demo-news-002\",\n      \"title\": \"[合成样本] 国产机器人展示精细操作能力\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-002\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 960,\n        \"clicks\": 105,\n        \"unique_users\": 87,\n        \"total_duration_seconds\": 3780,\n        \"effective_consumptions\": 61,\n        \"interactions\": 12,\n        \"ctr\": \"0.109375\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.2950659383250445140295941549\",\n        \"click_component\": \"0.03281250\",\n        \"consumption_component\": \"0.2033333333333333333333333334\",\n        \"interaction_component\": \"0.03934426229508196721311475410\",\n        \"growth_component\": \"0.01957584269662921348314606741\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.2951；点击率 0.1094。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    },\n    {\n      \"rank\": 5,\n      \"news_id\": \"demo-news-009\",\n      \"title\": \"[合成样本] 社区运动场开放夜间时段\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-009\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 1870,\n        \"clicks\": 205,\n        \"unique_users\": 170,\n        \"total_duration_seconds\": 11685,\n        \"effective_consumptions\": 118,\n        \"interactions\": 26,\n        \"ctr\": \"0.1096256684491978609625668449\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.2784189117790751912776084165\",\n        \"click_component\": \"0.03288770053475935828877005347\",\n        \"consumption_component\": \"0.2014634146341463414634146342\",\n        \"interaction_component\": \"0.04406779661016949152542372882\",\n        \"growth_component\": \"0.00\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.2784；点击率 0.1096。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    }\n  ],\n  \"truncated\": false,\n  \"related_articles\": [\n    {\n      \"source_run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n      \"source_news_id\": \"demo-news-005\",\n      \"source_title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"items\": [\n        {\n          \"news_id\": \"demo-news-004\",\n          \"chunk_id\": \"3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9\",\n          \"title\": \"[合成样本] 假日消费市场呈现多样化趋势\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-004\",\n          \"publish_time\": \"2026-10-02T08:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.5,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-003\",\n          \"chunk_id\": \"4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663\",\n          \"title\": \"[合成样本] 研究团队公布低碳电池材料成果\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-003\",\n          \"publish_time\": \"2026-10-02T07:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4935,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-008\",\n          \"chunk_id\": \"5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71\",\n          \"title\": \"[合成样本] 青年球队完成友谊赛\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-008\",\n          \"publish_time\": \"2026-10-02T12:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4873,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        }\n      ],\n      \"status\": \"completed\",\n      \"evidence_is_untrusted\": true,\n      \"notice\": \"相关文章片段供参考，需核对原文。\"\n    },\n    {\n      \"source_run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n      \"source_news_id\": \"demo-news-011\",\n      \"source_title\": \"[合成样本] 志愿团队开展安全知识演示\",\n      \"items\": [\n        {\n          \"news_id\": \"demo-news-003\",\n          \"chunk_id\": \"4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663\",\n          \"title\": \"[合成样本] 研究团队公布低碳电池材料成果\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-003\",\n          \"publish_time\": \"2026-10-02T07:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.5,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-010\",\n          \"chunk_id\": \"329cefc39dfafde717a6e61cae51bc595c3124b05be5e6ae2da4162f7725347d\",\n          \"title\": \"[合成样本] 公共图书馆推出便民阅读服务\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-010\",\n          \"publish_time\": \"2026-10-02T14:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4873,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-008\",\n          \"chunk_id\": \"5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71\",\n          \"title\": \"[合成样本] 青年球队完成友谊赛\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-008\",\n          \"publish_time\": \"2026-10-02T12:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4813,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        }\n      ],\n      \"status\": \"completed\",\n      \"evidence_is_untrusted\": true,\n      \"notice\": \"相关文章片段供参考，需核对原文。\"\n    },\n    {\n      \"source_run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n      \"source_news_id\": \"demo-news-007\",\n      \"source_title\": \"[合成样本] 城市马拉松公布赛事安排\",\n      \"items\": [\n        {\n          \"news_id\": \"demo-news-010\",\n          \"chunk_id\": \"329cefc39dfafde717a6e61cae51bc595c3124b05be5e6ae2da4162f7725347d\",\n          \"title\": \"[合成样本] 公共图书馆推出便民阅读服务\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 公共图书馆推出便民阅读服务。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-010；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-010\",\n          \"publish_time\": \"2026-10-02T14:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.5,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-004\",\n          \"chunk_id\": \"3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9\",\n          \"title\": \"[合成样本] 假日消费市场呈现多样化趋势\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-004\",\n          \"publish_time\": \"2026-10-02T08:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4935,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-011\",\n          \"chunk_id\": \"5e0927d17f930d8dfe87b3174e7bb449c89e529bc107b9e81b446e13afcf81bc\",\n          \"title\": \"[合成样本] 志愿团队开展安全知识演示\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 志愿团队开展安全知识演示。栏目为社会，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-011；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-011\",\n          \"publish_time\": \"2026-10-02T15:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4873,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        }\n      ],\n      \"status\": \"completed\",\n      \"evidence_is_untrusted\": true,\n      \"notice\": \"相关文章片段供参考，需核对原文。\"\n    }\n  ],\n  \"query_context\": {\n    \"enabled\": true,\n    \"version\": \"news-query-context-v1\",\n    \"asset_sha256\": \"c9d29328fa833d4545a99be0b3cc882fe31b4bec9528c170c18ca89fa85a4c09\",\n    \"builder_sha256\": \"1e2acdaa2259b97e799fd40f2967ca48c652ce094cae95730bb2e890482cfbfa\",\n    \"review_status\": \"development_draft_not_human_reviewed\",\n    \"production_approved\": false\n  },\n  \"workflow_id\": \"hot-news-1d900d11c8e94773c3a9b00c659144417709b44fb5ac5fc71b6ae929c703703f\",\n  \"status\": \"completed\",\n  \"production_bundle_version\": \"local-simulation-bundle-v1\",\n  \"question\": \"查询点击率最高的前5条视频新闻并分析原因\",\n  \"scenario_id\": \"news-ranking\",\n  \"query_resolution\": {\n    \"status\": \"ready\",\n    \"reason_code\": \"ready\",\n    \"message\": \"本次使用项目计算榜，查询合成样本2026-10-03 00:00至01:00（Asia/Shanghai），按点击率选取最多5条候选，再由Python计算权威热度排行。\",\n    \"intent\": {\n      \"sort_by\": \"ctr\",\n      \"sort_direction\": \"desc\",\n      \"content_type\": \"video\",\n      \"category\": null,\n      \"row_limit\": 5,\n      \"explanation\": \"本地规则推理：按页面确认的时间窗口查询，指标为 ctr，结果形式为 ranking。\"\n    },\n    \"canonical_question\": \"查询视频新闻按点击率从高到低前5条\",\n    \"time_expression\": \"sample\",\n    \"explicit_date\": null,\n    \"time_basis\": \"behavior\",\n    \"ranking_source\": \"project_computed\",\n    \"response_style\": \"list\",\n    \"requested_window_start\": \"2026-10-03T00:00:00+08:00\",\n    \"requested_window_end\": \"2026-10-03T01:00:00+08:00\",\n    \"supported_window_start\": \"2026-10-03T00:00:00+08:00\",\n    \"supported_window_end\": \"2026-10-03T01:00:00+08:00\",\n    \"coverage_window_start\": \"2026-10-03T00:00:00+08:00\",\n    \"coverage_window_end\": \"2026-10-04T00:00:00+08:00\",\n    \"notes\": [\n      \"按行为指标发生时间取数，不代表该时段发布的全部新闻。\",\n      \"SQL按点击率选择至多5条候选；最终榜单由Python权威热度计算，候选指标顺序不保证保留。\",\n      \"只覆盖查询选中的候选范围，不代表全站或企业原始榜单。\",\n      \"未指定榜单来源，使用已批准的项目计算榜。\"\n    ]\n  },\n  \"understanding_model_request_id\": \"native-local-92fd7045ca591a5f3eb5545f\",\n  \"understanding_model\": {\n    \"provider\": \"local\"\n  },\n  \"sql\": \"select news_id, title, content_type, category, source,   sum(impressions) as impressions,   sum(clicks) as clicks,   sum(effective_consumptions) as effective_consumptions,   sum(interactions) as interactions,   coalesce(round(sum(clicks) * 1.0 / nullif(sum(impressions), 0), 4), 0) as ctr,   coalesce(round((sum(clicks) * 0.4 + sum(effective_consumptions) * 0.35 + sum(interactions) * 0.25) / nullif(sum(impressions), 0), 4), 0) as hot_score from dw.news_behavior_aggregate where tenant_id = :tenant_id   and event_time >= :window_start   and event_time < :window_end   and content_type = :content_type group by news_id, title, content_type, category, source order by ctr desc, news_id asc limit :row_limit\",\n  \"parameters\": {\n    \"row_limit\": 5,\n    \"tenant_id\": \"11111111-1111-4111-8111-111111111111\",\n    \"window_end\": \"2026-10-03T01:00:00+08:00\",\n    \"content_type\": \"video\",\n    \"window_start\": \"2026-10-03T00:00:00+08:00\"\n  },\n  \"query_model_provider\": \"python-confirmed-intent\",\n  \"query_model_request_id\": null,\n  \"analysis_model_request_ids\": [\n    \"native-local-733654c3fac2e0331925cdf9\",\n    \"native-local-2f9e065259192b23810f473c\",\n    \"native-local-d0be32021922f89b09d322a9\",\n    \"native-local-f373c4c252b93550da1d5301\",\n    \"native-local-12b5336b788406767285ebb6\"\n  ]\n}\n模型调用编号\n\n全链路耗时 0.1s",
+  "conversation_id": "4706fd57-9411-4710-8ecf-c701108ba5b3",
+  "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+  "hot_news_text": "新闻洞察\n\n热点工作台\n\n查看热点榜单与分析，记录运营判断。\n\n刷新榜单\n热点榜单\n已完成\n分析窗口\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:30\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:29\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:06\n2026/10/3 00:00:00 ～ 2026/10/3 01:00:00 · 完成于 2026/11/7 23:35:06\n\n上榜 5 篇\n已分析 5 篇\n\n排名\t新闻\t阅读表现\t热度\t置信度\t操作\n1\t\n[合成样本] 中小企业服务平台上线新工具\n视频\ndemo-news-005\n\t189 次点击\nCTR 14.00%\n\t0.3261\t100.00%\t\n分析\n决策\n\n2\t\n[合成样本] 志愿团队开展安全知识演示\n视频\ndemo-news-011\n\t276 次点击\nCTR 12.96%\n\t0.3174\t100.00%\t\n分析\n决策\n\n3\t\n[合成样本] 城市马拉松公布赛事安排\n视频\ndemo-news-007\n\t144 次点击\nCTR 8.94%\n\t0.3026\t100.00%\t\n分析\n决策\n\n4\t\n[合成样本] 国产机器人展示精细操作能力\n视频\ndemo-news-002\n\t105 次点击\nCTR 10.94%\n\t0.2951\t100.00%\t\n分析\n决策\n\n5\t\n[合成样本] 社区运动场开放夜间时段\n视频\ndemo-news-009\n\t205 次点击\nCTR 10.96%\n\t0.2784\t100.00%\t\n分析\n决策\n\n热度由后端确定性计算，分析与证据可在榜单中展开查看。\n\n运行详情\n运行编号\n9d059fb4-c3a5-4fc8-8725-068285b944d1\n配置版本\nlocal-simulation-bundle-v1\n行为记录\n5 条\n指标快照\n5 篇\n\n取数证据与当前榜单属于同一次运行。最终热度由后端计算，可能与候选筛选顺序不同。\n\n已分析 5 篇 · 耗时 98 毫秒 · 并发峰值 1 / 上限 3\n\n历史运行最近 4 次\n查询过程与完整取数证据\n本次热点运行 · SQL 工具调用\n\n查询视频新闻按点击率从高到低前5条\n\n5 个候选 · 7 ms\n热点运行 ID\n9d059fb4-c3a5-4fc8-8725-068285b944d1\nSQL 工具查询 ID\nb385513e-f174-4610-9855-d491a927aaec\n场景 / 模型\nnews-ranking / python-confirmed-intent\nSQL 排序只决定候选筛选顺序。下面的 SQL 参考分不等于最终热度；热点 Agent 使用可信指标与基线，由 Python HotNewsRanker 再计算并排序。\n实际 SQL\nselect news_id, title, content_type, category, source,   sum(impressions) as impressions,   sum(clicks) as clicks,   sum(effective_consumptions) as effective_consumptions,   sum(interactions) as interactions,   coalesce(round(sum(clicks) * 1.0 / nullif(sum(impressions), 0), 4), 0) as ctr,   coalesce(round((sum(clicks) * 0.4 + sum(effective_consumptions) * 0.35 + sum(interactions) * 0.25) / nullif(sum(impressions), 0), 4), 0) as hot_score from dw.news_behavior_aggregate where tenant_id = :tenant_id   and event_time >= :window_start   and event_time < :window_end   and content_type = :content_type group by news_id, title, content_type, category, source order by ctr desc, news_id asc limit :row_limit\n身份与窗口绑定参数\n展开\n复制\n{\n  \"row_limit\": 5,\n  \"tenant_id\": \"11111111-1111-4111-8111-111111111111\",\n  \"window_end\": \"2026-10-03T01:00:00+08:00\",\n  \"content_type\": \"video\",\n  \"window_start\": \"2026-10-03T00:00:00+08:00\"\n}\n\n本地规则推理：按页面确认的时间窗口查询，指标为 ctr，结果形式为 ranking。 时间以已确认的整点窗口为准；SQL 热度仅是候选召回分，热点最终热度由 Python 规则计算。\n\n查看候选筛选输入（与本次热点运行绑定）\nSQL 结果如何进入热点 Agent\n\nSQL 查询挑选候选新闻；Python HotNewsRanker 重新计算权威热度与最终排行。\n\n窗口严格限定一个小时桶：unique_users 使用该桶真实去重值，禁止跨小时求和。\n\n候选计数与同一聚合视图交叉校验；时长、小时 UV 与基线由固定 Python 参数化 SQL 补充。\n\n基线的 UV 与时长未提供，保持 null；sample_count=1 表示一份合成参考，不代表推断出的历史样本数量。\n\nSQL 演示热度仅用于候选筛选；热点 Agent 仍采用原有 Python 四分量热度公式。\n\n查看补充指标与基线查询\nSQL 工具阶段记录\n阶段\t状态\t说明\t耗时\t尝试\n1. 输入与权限\t通过\t身份由网关注入；问题只用于选择批准的查询指标和过滤条件\t0 ms\t1\n2. intent_confirmed\t通过\tPython 独立复核已确认的查询条件；直接编译 SQL，没有再次调用模型规划\t1 ms\t0\n3. sql_candidate\t通过\tdbgpt_candidate: validated\t2 ms\t1\n4. SQL 安全校验\t通过\t参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过\t0 ms\t1\n5. 查询计划保存\t通过\t预览已保存；执行仅接受 query_id，并重新校验快照\t0 ms\t1\n6. 执行前快照复核\t通过\t用户、租户、格式哈希、配置版本和 SQL 均已复核\t0 ms\t1\n7. 本地聚合数据查询\t通过\tPostgreSQL 只读事务执行；设置 statement_timeout\t7 ms\t1\n8. SQL 结果保存\t通过\t查询结果与预览关联保存，重复执行返回同一已保存结果\t0 ms\t1\n查看版本与完整性标识\n本次决策记录1 条\n记录运营决策采纳、驳回、延后或修正",
+  "followup_tools": [
+    {
+      "label": "read_hot_news · 已完成 · 尝试 1 次",
+      "arguments": {
+        "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+        "news_rank": 1
+      },
+      "result": {
+        "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+        "window_start": "2026-10-02T16:00:00+00:00",
+        "window_end": "2026-10-02T17:00:00+00:00",
+        "ranked_news_count": 5,
+        "analyzed_news_count": 5,
+        "sql_query_id": "b385513e-f174-4610-9855-d491a927aaec",
+        "analysis_execution": {
+          "executor_version": "bounded-analysis-v1",
+          "max_concurrency": 3,
+          "observed_concurrency": 1,
+          "task_count": 5,
+          "elapsed_ms": 98
+        },
+        "items": [
+          {
+            "rank": 1,
+            "news_id": "demo-news-005",
+            "title": "[合成样本] 中小企业服务平台上线新工具",
+            "metrics": {
+              "news_id": "demo-news-005",
+              "content_type": "video",
+              "window_start": "2026-10-03T00:00:00+08:00",
+              "window_end": "2026-10-03T01:00:00+08:00",
+              "impressions": 1350,
+              "clicks": 189,
+              "unique_users": 156,
+              "total_duration_seconds": 8505,
+              "effective_consumptions": 117,
+              "interactions": 28,
+              "ctr": "0.14"
+            },
+            "hot_score": {
+              "score": "0.3260927887814115359025538666",
+              "click_component": "0.0420",
+              "consumption_component": "0.2166666666666666666666666666",
+              "interaction_component": "0.04786324786324786324786324786",
+              "growth_component": "0.01956287425149700598802395210"
+            },
+            "analysis": {
+              "trend_assessment": "本地模拟：热度 0.3261；点击率 0.1400。",
+              "dominant_driver": "consumption",
+              "limitations": [
+                "本结果由本地确定性推理替身产生，不代表真实模型判断。"
+              ]
+            }
+          }
+        ],
+        "truncated": false,
+        "related_articles": [
+          {
+            "source_run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+            "source_news_id": "demo-news-005",
+            "source_title": "[合成样本] 中小企业服务平台上线新工具",
+            "items": [
+              {
+                "news_id": "demo-news-004",
+                "chunk_id": "3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9",
+                "title": "[合成样本] 假日消费市场呈现多样化趋势",
+                "excerpt": "本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-004",
+                "publish_time": "2026-10-02T08:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.5,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-003",
+                "chunk_id": "4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663",
+                "title": "[合成样本] 研究团队公布低碳电池材料成果",
+                "excerpt": "本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-003",
+                "publish_time": "2026-10-02T07:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4935,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              },
+              {
+                "news_id": "demo-news-008",
+                "chunk_id": "5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71",
+                "title": "[合成样本] 青年球队完成友谊赛",
+                "excerpt": "本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。",
+                "source_url": "https://example.invalid/local-news/demo-news-008",
+                "publish_time": "2026-10-02T12:00:00+00:00",
+                "embedding_version": "native-local-embedding-v1",
+                "relevance_score": 0.4873,
+                "rerank_reasons": [
+                  "标题关键词相近",
+                  "发布时间接近"
+                ]
+              }
+            ],
+            "status": "completed",
+            "evidence_is_untrusted": true,
+            "notice": "相关文章片段供参考，需核对原文。"
+          }
+        ]
+      }
+    }
+  ],
+  "followup_text": "你\n2026/11/7 23:42:11\n\n解释第一条新闻\n\nNewsAgent\n\n以下内容来自同一租户的已完成运行或新闻知识；指标保持工具快照原值。\n\n热点运行：9d059fb4-c3a5-4fc8-8725-068285b944d1\n窗口：2026-10-02T16:00:00+00:00 至 2026-10-02T17:00:00+00:00\n\n模型分析任务 5 篇；本轮并发峰值 1；分析阶段耗时 98 毫秒（含等待并发名额）。\n\n1. [合成样本] 中小企业服务平台上线新工具（news_id=demo-news-005）\n热度 0.3260927887814115359025538666；点击 189；点击率 0.14。\n\n模型分析摘要（数字以快照为准，需人工核对）：本地模拟：热度 0.3261；点击率 0.1400。\n\n相关新闻\n\n以下为检索到的新闻片段，供核对与延伸阅读；片段不代表完整原文，事实和时效请核对来源。\n\n根据「[合成样本] 中小企业服务平台上线新工具」召回\n[合成样本] 假日消费市场呈现多样化趋势\n\n发布时间：2026/10/2 16:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 研究团队公布低碳电池材料成果\n\n发布时间：2026/10/2 15:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\n\n[合成样本] 青年球队完成友谊赛\n\n发布时间：2026/10/2 20:00:00\n查看原文\n\n本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\n\n相关文章片段供参考，需核对原文。\n\n处理详情\nread_hot_news · 已完成 · 尝试 1 次\n参数\n{\n  \"run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n  \"news_rank\": 1\n}\n结果\n{\n  \"run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n  \"window_start\": \"2026-10-02T16:00:00+00:00\",\n  \"window_end\": \"2026-10-02T17:00:00+00:00\",\n  \"ranked_news_count\": 5,\n  \"analyzed_news_count\": 5,\n  \"sql_query_id\": \"b385513e-f174-4610-9855-d491a927aaec\",\n  \"analysis_execution\": {\n    \"executor_version\": \"bounded-analysis-v1\",\n    \"max_concurrency\": 3,\n    \"observed_concurrency\": 1,\n    \"task_count\": 5,\n    \"elapsed_ms\": 98\n  },\n  \"items\": [\n    {\n      \"rank\": 1,\n      \"news_id\": \"demo-news-005\",\n      \"title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"metrics\": {\n        \"news_id\": \"demo-news-005\",\n        \"content_type\": \"video\",\n        \"window_start\": \"2026-10-03T00:00:00+08:00\",\n        \"window_end\": \"2026-10-03T01:00:00+08:00\",\n        \"impressions\": 1350,\n        \"clicks\": 189,\n        \"unique_users\": 156,\n        \"total_duration_seconds\": 8505,\n        \"effective_consumptions\": 117,\n        \"interactions\": 28,\n        \"ctr\": \"0.14\"\n      },\n      \"hot_score\": {\n        \"score\": \"0.3260927887814115359025538666\",\n        \"click_component\": \"0.0420\",\n        \"consumption_component\": \"0.2166666666666666666666666666\",\n        \"interaction_component\": \"0.04786324786324786324786324786\",\n        \"growth_component\": \"0.01956287425149700598802395210\"\n      },\n      \"analysis\": {\n        \"trend_assessment\": \"本地模拟：热度 0.3261；点击率 0.1400。\",\n        \"dominant_driver\": \"consumption\",\n        \"limitations\": [\n          \"本结果由本地确定性推理替身产生，不代表真实模型判断。\"\n        ]\n      }\n    }\n  ],\n  \"truncated\": false,\n  \"related_articles\": [\n    {\n      \"source_run_id\": \"9d059fb4-c3a5-4fc8-8725-068285b944d1\",\n      \"source_news_id\": \"demo-news-005\",\n      \"source_title\": \"[合成样本] 中小企业服务平台上线新工具\",\n      \"items\": [\n        {\n          \"news_id\": \"demo-news-004\",\n          \"chunk_id\": \"3b7530131474d80dc0ca9b295125a69a3a038fe3d504624f84b93adf40abb0d9\",\n          \"title\": \"[合成样本] 假日消费市场呈现多样化趋势\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 假日消费市场呈现多样化趋势。栏目为财经，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-004；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-004\",\n          \"publish_time\": \"2026-10-02T08:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.5,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-003\",\n          \"chunk_id\": \"4a7f240af13f526466adddc9b372f5306aea039e13c1d091aa4d52ce07d0f663\",\n          \"title\": \"[合成样本] 研究团队公布低碳电池材料成果\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 研究团队公布低碳电池材料成果。栏目为科技，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-003；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-003\",\n          \"publish_time\": \"2026-10-02T07:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4935,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        },\n        {\n          \"news_id\": \"demo-news-008\",\n          \"chunk_id\": \"5449b07b783bf086652a1ec8790cab64c3c7afb60cb023bdb98d42d69b920a71\",\n          \"title\": \"[合成样本] 青年球队完成友谊赛\",\n          \"excerpt\": \"本地合成新闻样本：[合成样本] 青年球队完成友谊赛。栏目为体育，来源为本地模拟新闻中心。用于演示从小时指标筛选、Python热度排行到正文与关联证据分析的完整链路。这里没有企业真实正文，合成内容不用于新闻事实判断。 该样本的统一新闻标识为demo-news-008；数仓、内容和知识索引通过此标识关联。\",\n          \"source_url\": \"https://example.invalid/local-news/demo-news-008\",\n          \"publish_time\": \"2026-10-02T12:00:00+00:00\",\n          \"embedding_version\": \"native-local-embedding-v1\",\n          \"relevance_score\": 0.4873,\n          \"rerank_reasons\": [\n            \"标题关键词相近\",\n            \"发布时间接近\"\n          ]\n        }\n      ],\n      \"status\": \"completed\",\n      \"evidence_is_untrusted\": true,\n      \"notice\": \"相关文章片段供参考，需核对原文。\"\n    }\n  ]\n}\n模型调用编号\n\n全链路耗时 0.1s",
+  "status": "passed",
+  "semantic_assertions": {
+    "five_analyzed_video_candidates": true,
+    "ctr_desc_confirmed_and_parameterized": true,
+    "candidate_validated_visible_in_hot_news": true,
+    "query_context_identity_visible_in_tool_result": true,
+    "followup_same_run_and_query": true,
+    "followup_first_news_and_metrics_unchanged": true
+  }
+}

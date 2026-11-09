@@ -17,6 +17,13 @@ from app.schemas.sql_assistant import (
     SqlAssistantResult, SqlAssistantStage,
 )
 from app.sql_assistant.audit import QuerySnapshotStore
+from app.sql_assistant.candidate import (
+    SqlCandidateConfig, SqlCandidateGenerator, SqlCandidateError, SqlCandidateResponse,
+)
+from app.sql_assistant.candidate_validation import (
+    SqlCandidateTrace, validate_candidate, validate_selected_plan, validator_identity,
+)
+from app.domain.errors import Text2SqlGuardError
 from app.sql_assistant.guard import SqlAssistantGuard
 from app.sql_assistant.planner import compile_query, local_query_intent, screen_question, validate_intent
 from app.sql_assistant.input_boundary import SqlAssistantQuestionError
@@ -73,7 +80,20 @@ class SqlAssistantService:
         hot_news_bindings: "HotNewsSqlBindingStore | None" = None,
         dataset_profile: str = CLASSIC_PROFILE,
         news_per_tenant: int = 1200,
+        candidate_config: SqlCandidateConfig | None = None,
+        candidate_generator: SqlCandidateGenerator | None = None,
     ) -> None:
+        self.candidate_config = candidate_config or SqlCandidateConfig()
+        self.candidate_generator = candidate_generator
+        if self.candidate_config.mode != "native" and candidate_generator is None:
+            raise ValueError("candidate mode requires a generation-only adapter")
+        self._generation_identity = None
+        if self.candidate_config.mode != "native":
+            self._generation_identity = json.loads(json.dumps({
+                "config": self.candidate_config.model_dump(mode="json"),
+                "generator": candidate_generator.identity(),
+                "validator": validator_identity(),
+            }, sort_keys=True, allow_nan=False))
         self.agent = agent
         self.store = store
         self.warehouse_factory = warehouse_factory
@@ -89,6 +109,10 @@ class SqlAssistantService:
         # frozen config's global maximum, including 168-row hourly trends.
         self.guard = SqlAssistantGuard(max_rows=1000)
 
+    def generation_identity(self) -> dict | None:
+        # A copy prevents callers from mutating the configuration frozen at boot.
+        return json.loads(json.dumps(self._generation_identity))
+
     def config(self) -> dict:
         markdown = verify_schema_contract(self.dataset_profile)
         config = self._scenarios()
@@ -100,6 +124,7 @@ class SqlAssistantService:
             "scenarios": [scenario.model_dump(mode="json") for scenario in config.scenarios],
             "configuration_template": Path(self.scenarios_path).read_text(encoding="utf-8"),
             "model_provider": self.model_provider,
+            "sql_candidate_mode": self.candidate_config.mode,
         }
 
     def _scenarios(self):
@@ -221,6 +246,61 @@ class SqlAssistantService:
         self._validate_category_scope(intent, scenario)
         sql = compile_query(intent, scenario)
         self.guard.validate(sql, params)
+        generation = None
+        candidate_failure = None
+        if self._generation_identity is not None:
+            # Selection happens only after the existing intent and scope checks.
+            # No real tenant/window parameter values are passed to the model.
+            status, reason, candidate_hash, metadata = "failed", None, None, {}
+            try:
+                async with asyncio.timeout(self.candidate_config.deadline_seconds):
+                    proposed = await self.candidate_generator.generate(
+                        intent=intent, scenario=scenario,
+                        schema_ddl=get_text2sql_schema(self.dataset_profile).render_ddl(),
+                        schema_version=self.contract.version,
+                        tenant_id=tenant_id, request_id=query_id,
+                    )
+                checked = SqlCandidateResponse.model_validate({
+                    "status": proposed.status, "sql": proposed.sql, "reason_code": proposed.reason_code,
+                })
+                metadata = json.loads(json.dumps(proposed.metadata, allow_nan=False))
+                if not isinstance(metadata, dict):
+                    raise ValueError("invalid adapter metadata")
+                if checked.status == "unsupported":
+                    status, reason = "unsupported", "unsupported"
+                else:
+                    candidate_hash = sha256(proposed.sql.encode()).hexdigest()
+                    validate_candidate(proposed.sql, approved_sql=sql, params=params, guard=self.guard)
+                    status = "validated"
+                    if self.candidate_config.mode == "dbgpt_candidate":
+                        sql = proposed.sql
+            except Text2SqlGuardError:
+                status, reason = "rejected", "sql_contract_rejected"
+            except SqlCandidateError as exc:
+                status, reason, metadata = "failed", exc.code, exc.metadata
+            except TimeoutError:
+                status, reason = "failed", "deadline_exceeded"
+            except Exception:
+                # A replacement adapter must not turn shadow failures into an
+                # online outage or expose its private exception text. Cancellation
+                # is a BaseException and deliberately continues to the caller.
+                status, reason, metadata = "failed", "candidate_internal_error", {}
+            generation = SqlCandidateTrace(
+                mode=self.candidate_config.mode, identity=self.generation_identity(),
+                identity_sha256=_digest(self._generation_identity), status=status,
+                reason_code=reason, candidate_sql_hash=candidate_hash, metadata=metadata,
+            )
+            if status != "validated" and generation.mode == "dbgpt_candidate":
+                candidate_failure = SqlAssistantError(
+                    f"SQL候选未通过校验（{reason}），没有执行查询；查询编号 {query_id}",
+                    503 if status == "failed" else 422,
+                )
+            stages.append(SqlAssistantStage(
+                name="sql_candidate", status="passed" if status == "validated" else (
+                    "blocked" if candidate_failure else "degraded"),
+                detail=f"{generation.mode}: {status}" + (f" ({reason})" if reason else ""),
+                elapsed_ms=metadata.get("elapsed_ms", 0), attempts=metadata.get("attempts", 1),
+            ))
         stages.append(SqlAssistantStage(name="sql_guard", detail="参数化 SELECT、单视图、租户、双向时间边界、白名单与行数均通过"))
         stages.append(SqlAssistantStage(name="preview_saved", detail="预览已保存；执行仅接受 query_id，并重新校验快照"))
         preview = SqlAssistantPreview(
@@ -230,6 +310,7 @@ class SqlAssistantService:
             explanation=f"{intent.explanation} 时间以已确认的整点窗口为准；SQL 热度仅是候选召回分，热点最终热度由 Python 规则计算。",
             model_request_id=model_request_id, model_provider=planning_provider,
             expires_at=datetime.now(timezone.utc) + timedelta(seconds=config.preview_ttl_seconds), stages=stages,
+            generation=generation,
         )
         snapshot = {
             "preview": preview.model_dump(mode="json"), "tenant_id": tenant_id,
@@ -241,6 +322,10 @@ class SqlAssistantService:
             snapshot["dataset_contract"] = self.dataset_identity()
         snapshot["fingerprint"] = _snapshot_fingerprint(snapshot)
         await self.store.save(snapshot)
+        if candidate_failure is not None:
+            # Keep failed attempts in the denominator. This snapshot is blocked
+            # by validate_selected_plan even if its query ID is submitted later.
+            raise candidate_failure
         return preview
 
     @staticmethod
@@ -300,9 +385,13 @@ class SqlAssistantService:
         validate_intent(intent, scenario)
         self._validate_category_scope(intent, scenario)
         expected_sql = compile_query(intent, scenario)
-        if preview.sql != expected_sql or preview.sql_hash != sha256(expected_sql.encode()).hexdigest():
-            raise SqlAssistantError("SQL 与批准的查询计划不一致", 409)
-        self.guard.validate(preview.sql, preview.parameters)
+        try:
+            validate_selected_plan(
+                preview.sql, sql_hash=preview.sql_hash, approved_sql=expected_sql,
+                params=preview.parameters, trace=preview.generation, guard=self.guard,
+            )
+        except Text2SqlGuardError as exc:
+            raise SqlAssistantError("SQL 与批准的查询计划不一致", 409) from exc
         expected_parameters = {
             "tenant_id": tenant_id,
             "window_start": preview.parameters["window_start"],

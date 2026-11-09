@@ -17,7 +17,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,vue,css}\"",
-    "gen:api": "openapi-typescript ${OPENAPI_URL:-http://127.0.0.1:8000/openapi.json} -o src/api/schema.d.ts"
+    "gen:api": "openapi-typescript ${OPENAPI_URL:-http://127.0.0.1:8000/openapi.json} -o src/api/schema.d.ts",
+    "dev:isolated": "node dev-server/isolated.mjs serve",
+    "build:isolated": "npm run typecheck && node dev-server/isolated.mjs build"
   },
   "dependencies": {
     "pinia": "^2.3.0",

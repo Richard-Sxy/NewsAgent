@@ -62,10 +62,12 @@ def test_non_hour_or_multiple_window_or_uv_aggregation_rejected(question, expect
     assert result.intent is None
 
 
-def test_date_without_hour_requires_explicit_selection(policy):
+def test_date_without_hour_preserves_full_day_and_rejects_unapproved_window(policy):
     result=resolve('查询2026-10-09点击量前5条新闻',policy)
-    assert result.status=='clarify'
-    assert '整点小时' in result.message
+    assert result.status=='unsupported'
+    assert result.reason_code=='window_not_approved'
+    assert result.requested_window_start == END-timedelta(days=1)
+    assert result.requested_window_end == END
     assert result.intent is None
 
 

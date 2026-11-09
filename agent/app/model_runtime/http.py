@@ -99,6 +99,7 @@ class _HttpModelEndpoint:
         idempotency_key: str | None = None,
         timeout_seconds: float | None = None,
         attributes: dict[str, Any] | None = None,
+        output_token_limit: int | None = None,
     ) -> tuple[dict[str, Any], str | None]:
         selected = {**(attributes or {}), "http.request.method": "POST", "gen_ai.provider.name": "openai_compatible"}
         with operation("model.http.request", attributes=selected, kind=SpanKind.CLIENT) as span:
@@ -106,7 +107,7 @@ class _HttpModelEndpoint:
                 return await self._post_impl(
                     payload, tenant_id=tenant_id, trace_id=trace_id,
                     idempotency_key=idempotency_key, timeout_seconds=timeout_seconds,
-                    span=span,
+                    span=span, output_token_limit=output_token_limit,
                 )
             except BaseException as exc:
                 record_error(span, exc, stage=getattr(exc, "failure_stage", "inference"))
@@ -115,7 +116,13 @@ class _HttpModelEndpoint:
     async def _post_impl(
         self, payload: dict[str, Any], *, tenant_id: str, trace_id: str,
         idempotency_key: str | None, timeout_seconds: float | None, span: Any,
+        output_token_limit: int | None = None,
     ) -> tuple[dict[str, Any], str | None]:
+        payload = {**self._config.extra_body, **payload}
+        if output_token_limit is not None:
+            token_key = "max_completion_tokens" if "max_completion_tokens" in payload else "max_tokens"
+            payload.pop("max_tokens" if token_key == "max_completion_tokens" else "max_completion_tokens", None)
+            payload[token_key] = output_token_limit
         headers = {
             "Authorization": f"Bearer {self._api_key}",
             "Content-Type": "application/json",
@@ -129,7 +136,7 @@ class _HttpModelEndpoint:
         try:
             response = await self._client.post(
                 str(self._config.url),
-                json={**self._config.extra_body, **payload},
+                json=payload,
                 headers=headers,
                 timeout=timeout_seconds or self._config.timeout_seconds,
             )
@@ -207,7 +214,7 @@ class OpenAICompatibleInferenceClient(_HttpModelEndpoint):
             trace_id=request.trace_id,
             idempotency_key=request.idempotency_key,
             timeout_seconds=request.timeout_seconds,
-            attributes=attributes,
+            attributes=attributes, output_token_limit=request.max_output_tokens,
         )
         with operation("model.response_validate", attributes=attributes) as span:
             set_safe_attributes(span, provider_response_attributes(request_id=request_id))

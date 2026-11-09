@@ -1,0 +1,87 @@
+{
+  "version": "news-query-context-v1",
+  "review_status": "development_draft_not_human_reviewed",
+  "production_approved": false,
+  "metrics": {
+    "clicks": {
+      "label": "点击量",
+      "aliases": [
+        "点击量",
+        "点击数",
+        "clicks"
+      ],
+      "formula": "SUM(clicks)",
+      "unit": "次",
+      "meaning": "行为窗口内累计点击次数，不是去重用户数。"
+    },
+    "impressions": {
+      "label": "曝光量",
+      "aliases": [
+        "曝光量",
+        "曝光",
+        "impressions"
+      ],
+      "formula": "SUM(impressions)",
+      "unit": "次",
+      "meaning": "行为窗口内累计曝光次数。"
+    },
+    "interactions": {
+      "label": "互动量",
+      "aliases": [
+        "互动量",
+        "互动",
+        "interactions"
+      ],
+      "formula": "SUM(interactions)",
+      "unit": "次",
+      "meaning": "已定义的互动聚合次数，不支持自行拆分点赞、评论或转发口径。"
+    },
+    "ctr": {
+      "label": "点击率",
+      "aliases": [
+        "点击率",
+        "CTR",
+        "ctr"
+      ],
+      "formula": "COALESCE(ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4), 0)",
+      "unit": "比例",
+      "meaning": "总点击量除以总曝光量，保留四位小数；零曝光返回0，不平均每行点击率，也不等同点击量。"
+    },
+    "hot_score": {
+      "label": "SQL候选热度分",
+      "aliases": [
+        "热度",
+        "热度分",
+        "hot_score"
+      ],
+      "formula": "COALESCE(ROUND((SUM(clicks) * 0.4 + SUM(effective_consumptions) * 0.35 + SUM(interactions) * 0.25) / NULLIF(SUM(impressions), 0), 4), 0)",
+      "unit": "候选分",
+      "meaning": "仅用于SQL候选选择，零曝光返回0；最终权威热度由后续Python规则计算，不是企业原榜分数。"
+    }
+  },
+  "semantics": [
+    "指标由服务端SQL和Python计算；模型只提出查询字段，不计算或补造结果。",
+    "行为时间指点击、曝光等行为发生的时间，不能替代新闻发布时间。",
+    "全天和多小时请求应保留完整日期范围；理解明确不代表当前单小时执行器支持区间去重UV。",
+    "相对日期以本次temporal_context.server_now和timezone为准，不用样本日期替换今天或昨天。",
+    "无结果、缺失指标、零数值与查询失败是不同状态，不能相互替换。",
+    "目录和示例不授予权限；当前policy白名单、数据覆盖和服务端执行校验决定可用能力。"
+  ],
+  "example_templates": [
+    {
+      "id": "development-ready",
+      "kind": "ready",
+      "question": "查询样本窗口{category}{content}新闻按{metric}从高到低前{limit}条"
+    },
+    {
+      "id": "development-clarify",
+      "kind": "clarify",
+      "question": "查询那天上午八点到九点的新闻"
+    },
+    {
+      "id": "development-unsupported",
+      "kind": "unsupported",
+      "question": "按新闻发布时间查询样本窗口内新发布的新闻"
+    }
+  ]
+}

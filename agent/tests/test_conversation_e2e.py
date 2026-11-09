@@ -239,5 +239,10 @@ def test_identity_injection_and_mutation_requests_cannot_create_mutating_tools(c
     # The local planner refuses; an explicit business failure must also satisfy
     # _assert_turn's same read-only allowlist and durable error requirements.
     assert reply["tools"] == []
-    assert "只读" in reply["assistant_content"] or reply["status"] == "failed"
+    assert reply["status"] == "completed"
+    # Current conversation capabilities include explicitly gated commands.
+    # This forbidden request must still refuse every requested unsafe action.
+    assert all(message in reply["assistant_content"] for message in (
+        "不能删除数据", "执行审批", "配置激活", "回滚或发布", "人工审批流程",
+    ))
     assert _history(client, conversation["id"])["turns"] == [reply]

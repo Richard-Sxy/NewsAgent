@@ -103,3 +103,31 @@ SQL、候选输入、热点排名和分析保存于同一个运行，查看历�
 ```bash
 docker compose -f deploy/docker-compose.native-e2e.yml down
 ```
+
+
+## 独立本地栈与不读取 dotenv 的入口
+
+需要避开工作区已有 dotenv 配置时，使用 npm run dev:isolated 或
+npm run build:isolated。前者读取现有本地 YAML 和终端显式覆盖；后者生成普通生产静态资源，
+不注入开发身份，也不开启开发专用热点工具区。两者同时关闭 Vite 自动加载和配置文件中的
+显式 dotenv 加载；原有 dev、build 命令的行为保持不变。
+
+例如 API 绑定 127.0.0.1:12800，确认前端 12881 未占用后：
+
+    cd /home/shi/project/NewsAgent/agent/frontend
+    VITE_DEV_PROXY_TARGET=http://127.0.0.1:12800 VITE_DEV_PORT=12881 npm run dev:isolated
+
+从 http://127.0.0.1:12881/chat 进入对话，或使用
+http://127.0.0.1:12881/hot-news#query-tools。代理继续使用公开本地租户、用户、角色和演示令牌；
+若独立 API 使用另一公开演示令牌，显式设置 VITE_DEV_GATEWAY_TOKEN 以匹配后端，
+不要修改或提交企业凭证。
+
+交付静态资源时运行 npm run build:isolated；输出在本目录 dist/，可由独立本地 nginx
+提供同源 API 代理和演示身份。静态站点通过 /chat 使用后端 runtime 已启用的查数工具，
+/hot-news 用于查看同一次运行的结果。静态构建保持既有生产边界，不显示开发专用的启动工具区。
+
+调用链：package scripts → dev-server/isolated.mjs → Vite envFile:false +
+vite.config.ts 的进程环境分支 → 本地开发代理或 dist → 现有 Python API。
+测试入口为 npm test、npm run typecheck 和 npm run build:isolated；
+tests/vite-config.test.mjs 覆盖 dotenv 绕过、显式端口覆盖、身份隔离与生产构建边界。
+这些检查只验证前端合同，真实后端 Workflow 和模型执行需单独验收。

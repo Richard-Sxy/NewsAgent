@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "task": "NewsAgent SQL candidate local HTTP and SSE verification",
+  "client_date": "2026-11-07",
+  "timezone": "Asia/Shanghai",
+  "status": "passed",
+  "final_distinct_tests": {
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "environment": {
+    "compose_project": "news-agent-sql-candidate-demo",
+    "image": "news-agent/writing-agent-service:sql-candidate-demo",
+    "api_container": "news-agent-sql-candidate-demo-api-1",
+    "docker_network": "news-agent-sql-candidate-demo_native",
+    "host_base_url": "http://127.0.0.1:12800",
+    "test_base_url": "http://api:8000",
+    "sql_candidate_mode": "dbgpt_candidate",
+    "query_context_enabled": true,
+    "warehouse": "isolated synthetic local PostgreSQL warehouse",
+    "workflow": "real local Temporal Workflow and Activity execution",
+    "inference": "isolated local deterministic InferencePort; not enterprise model quality evidence",
+    "dotenv": "Settings and VideoIngestSettings env_file explicitly disabled; no .env read",
+    "dependencies": {
+      "postgres": "ok",
+      "redis": "ok",
+      "temporal": "ok"
+    }
+  },
+  "runs": [
+    {
+      "name": "new_candidate_http_and_sse",
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "seconds": 1.27
+      },
+      "command_argv": [
+        "docker",
+        "exec",
+        "-e",
+        "SQL_CANDIDATE_E2E_BASE_URL=http://api:8000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "news-agent-sql-candidate-demo-api-1",
+        "python",
+        "-B",
+        "-c",
+        "from app.config import Settings; Settings.model_config[\"env_file\"]=None; from app.knowledge.bootstrap import VideoIngestSettings; VideoIngestSettings.model_config[\"env_file\"]=None; import pytest; raise SystemExit(pytest.main([\"tests/test_sql_candidate_e2e.py\",\"-o\",\"addopts=\",\"-p\",\"no:cacheprovider\",\"-q\"]))"
+      ],
+      "test_files": [
+        "agent/tests/test_sql_candidate_e2e.py"
+      ]
+    },
+    {
+      "name": "existing_http_and_sse_initial",
+      "result": {
+        "passed": 26,
+        "failed": 2,
+        "skipped": 0,
+        "seconds": 3.63
+      },
+      "command_argv": [
+        "docker",
+        "exec",
+        "-e",
+        "CONVERSATION_E2E_BASE_URL=http://api:8000",
+        "-e",
+        "SQL_ASSISTANT_E2E_BASE_URL=http://api:8000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "news-agent-sql-candidate-demo-api-1",
+        "python",
+        "-B",
+        "-c",
+        "from app.config import Settings; Settings.model_config[\"env_file\"]=None; from app.knowledge.bootstrap import VideoIngestSettings; VideoIngestSettings.model_config[\"env_file\"]=None; import pytest; raise SystemExit(pytest.main([\"tests/test_conversation_e2e.py\",\"tests/test_conversation_stream_e2e.py\",\"tests/test_conversation_capability_e2e.py\",\"tests/test_conversation_writing_e2e.py\",\"tests/test_sql_assistant_e2e.py\",\"tests/test_conversation_hot_news_e2e.py\",\"-o\",\"addopts=\",\"-p\",\"no:cacheprovider\",\"-q\"]))"
+      ],
+      "failures": [
+        {
+          "node_id": "tests/test_conversation_e2e.py::test_identity_injection_and_mutation_requests_cannot_create_mutating_tools",
+          "cause": "Outdated assertion required the literal phrase 只读. Current application correctly returned no tools and explicitly refused deletion, approval, activation, rollback and publication.",
+          "observed_answer": "对话不能删除数据、执行审批、配置激活、回滚或发布；请在现有工作台按人工审批流程处理。",
+          "fix": "Retained tools == []; now require completed refusal and each explicit refusal phrase: 不能删除数据, 执行审批, 配置激活, 回滚或发布, 人工审批流程.",
+          "business_code_changed": false
+        },
+        {
+          "node_id": "tests/test_conversation_hot_news_e2e.py::test_chat_uses_bound_sql_workflow_and_analysis_then_followup_replay",
+          "cause": "Outdated case-sensitive SELECT assertion rejected a validated equivalent lowercase candidate SQL.",
+          "fix": "Check SELECT against sql.upper(); retain approved view name, query/run binding, metrics, analysis and replay assertions.",
+          "business_code_changed": false
+        }
+      ]
+    },
+    {
+      "name": "existing_http_and_sse_corrected_rerun",
+      "result": {
+        "passed": 28,
+        "failed": 0,
+        "skipped": 0,
+        "seconds": 3.37
+      },
+      "command_argv": [
+        "wsl",
+        "-d",
+        "Ubuntu-20.04",
+        "--cd",
+        "/home/shi/project/NewsAgent",
+        "docker",
+        "run",
+        "--rm",
+        "--read-only",
+        "--tmpfs",
+        "/tmp:size=128m",
+        "--network",
+        "news-agent-sql-candidate-demo_native",
+        "-e",
+        "CONVERSATION_E2E_BASE_URL=http://api:8000",
+        "-e",
+        "SQL_ASSISTANT_E2E_BASE_URL=http://api:8000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-v",
+        "/home/shi/project/NewsAgent/agent/tests/test_conversation_e2e.py:/app/tests/test_conversation_e2e.py:ro",
+        "-v",
+        "/home/shi/project/NewsAgent/agent/tests/test_conversation_hot_news_e2e.py:/app/tests/test_conversation_hot_news_e2e.py:ro",
+        "news-agent/writing-agent-service:sql-candidate-demo",
+        "python",
+        "-B",
+        "-c",
+        "from app.config import Settings; Settings.model_config[\"env_file\"]=None; from app.knowledge.bootstrap import VideoIngestSettings; VideoIngestSettings.model_config[\"env_file\"]=None; import pytest; raise SystemExit(pytest.main([\"tests/test_conversation_e2e.py\",\"tests/test_conversation_stream_e2e.py\",\"tests/test_conversation_capability_e2e.py\",\"tests/test_conversation_writing_e2e.py\",\"tests/test_sql_assistant_e2e.py\",\"tests/test_conversation_hot_news_e2e.py\",\"-o\",\"addopts=\",\"-p\",\"no:cacheprovider\",\"-q\"]))"
+      ],
+      "test_files": [
+        "agent/tests/test_conversation_e2e.py",
+        "agent/tests/test_conversation_stream_e2e.py",
+        "agent/tests/test_conversation_capability_e2e.py",
+        "agent/tests/test_conversation_writing_e2e.py",
+        "agent/tests/test_sql_assistant_e2e.py",
+        "agent/tests/test_conversation_hot_news_e2e.py"
+      ],
+      "source_note": "Only the two corrected test files were mounted read-only. The running API image was not modified. This command does not establish that a later rebuilt image was tested.",
+      "test_container_cleanup": "docker run --rm exited successfully"
+    }
+  ],
+  "observed_evidence": {
+    "workbench": {
+      "workflow_id": "hot-news-6b3a211c21d0931692bd18d497a29dacac43fe812fd1c3b8c03804b7b08af000",
+      "run_id": "ff1413c5-8ea9-45f6-af17-37ae1fa3a82d",
+      "sql_query_id": "5632c678-6f7b-4cc5-a4be-6dd2e2f42505",
+      "status": "completed",
+      "production_bundle_version": "local-simulation-bundle-v1",
+      "ranked_news_count": 5,
+      "analyzed_news_count": 5,
+      "generation": {
+        "mode": "dbgpt_candidate",
+        "status": "validated",
+        "identity_sha256": "18c854e44d8bc66e23eef9eb484209cdf686033abb2ab9ecee07bfdaabfee78f",
+        "candidate_sql_hash": "0eedcd4725b44c3128a46afd633468c010f8449f2b701c481d1a36eb3a9ab1ff",
+        "model_request_id": "native-local-sql-candidate-v1-f1eaf78ce5ae73c49219c799"
+      }
+    },
+    "chat": {
+      "conversation_id": "f90f73d5-8972-461d-93e3-132e8bb2cb7c",
+      "turn_id": "e8f585dc-ea94-4d02-b55f-5dcdd30cf901",
+      "request_id": "d6ace4d2-c593-4b3f-88f8-6d1610a16d8e",
+      "workflow_id": "hot-news-1d900d11c8e94773c3a9b00c659144417709b44fb5ac5fc71b6ae929c703703f",
+      "run_id": "9d059fb4-c3a5-4fc8-8725-068285b944d1",
+      "sql_query_id": "b385513e-f174-4610-9855-d491a927aaec",
+      "status": "completed",
+      "analyzed_news_count": 5,
+      "query_context": {
+        "enabled": true,
+        "version": "news-query-context-v1",
+        "asset_sha256": "c9d29328fa833d4545a99be0b3cc882fe31b4bec9528c170c18ca89fa85a4c09",
+        "builder_sha256": "1e2acdaa2259b97e799fd40f2967ca48c652ce094cae95730bb2e890482cfbfa",
+        "review_status": "development_draft_not_human_reviewed",
+        "production_approved": false
+      }
+    }
+  },
+  "validated_call_chain": [
+    "HTTP hotspot command or conversation SSE",
+    "QueryUnderstanding and server-owned scope/intent checks",
+    "SqlAssistantService.preview plus generation-only candidate adapter",
+    "SQL AST guard and semantic contract validation",
+    "PostgreSQL frozen snapshot and canonical run binding",
+    "Temporal Workflow and Activity",
+    "read-only PostgreSQL query plus supplemental metrics",
+    "deterministic Python ranking",
+    "local model analysis and validator",
+    "persisted same-run report and conversation history"
+  ],
+  "coverage": [
+    "candidate generation provenance and selected SQL/result hashes",
+    "single bound query/run/report identity",
+    "repeat submission and saved result replay",
+    "CTR calculated from real synthetic warehouse rows",
+    "Python authoritative hot-score order",
+    "validated analysis for five ranked news items",
+    "gateway roles and cross-tenant/cross-user access rejection",
+    "independent arbitrary SQL routes remain unavailable",
+    "invalid SQL and unsupported cross-hour input blocked",
+    "query context asset/builder identity and explicit nonproduction approval status",
+    "chat SSE terminal persistence and idempotent request replay",
+    "existing knowledge retrieval and persistent history",
+    "short-term memory and unpromoted long-term candidates",
+    "feedback draft and approval boundaries",
+    "writing intent confirmation, cancellation, disconnect and job status"
+  ],
+  "not_run": [
+    {
+      "item": "dedicated Data Loop cohort/evaluation HTTP suite",
+      "status": "not_run",
+      "reason": "Requires separate local preset, synthetic dataset seed and evaluation worker validation; explicitly deferred."
+    },
+    {
+      "item": "full writing generation through all approval gates and CMS publication",
+      "status": "not_run",
+      "reason": "Existing writing HTTP tests stop at task creation/progress and preserve human gates; no end-to-end approval or publication claim."
+    },
+    {
+      "item": "enterprise inference or production warehouse quality/capacity acceptance",
+      "status": "not_run",
+      "reason": "This stack uses a local deterministic InferencePort and synthetic warehouse."
+    },
+    {
+      "item": "browser visual acceptance and frontend interaction",
+      "status": "not_run",
+      "reason": "This artifact records HTTP/SSE tests only."
+    },
+    {
+      "item": "production rollout, production shadow traffic or automatic model/prompt promotion",
+      "status": "not_run",
+      "reason": "Isolated local integration only."
+    },
+    {
+      "item": "long-duration load and actual Worker process crash/restart during execution",
+      "status": "not_run",
+      "reason": "Not included in these 32 HTTP/SSE assertions."
+    }
+  ],
+  "preservation": "All synthetic test conversations, reports and jobs were retained for inspection. No existing data was deleted, no production configuration was changed, and no article was published."
+}
